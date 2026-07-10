@@ -1,0 +1,16 @@
+# 大数据文件不进git,只在文件系统里,worktree共享同一份
+_sandbox/
+_data/processed/
+_data/interim/
+_tmp/
+_outputs/*.h5
+_outputs/*.zip
+_outputs/*.segy
+*.h5
+*.zip
+*.segy
+*.dszip
+*.bck
+__pycache__/
+*.pyc
+.parts/
