@@ -48,11 +48,27 @@ code_domains:
   - id: task_datasets
     path: _pipelines/02_task_datasets
     type: pipeline
-    status: planned
+    status: active
     owner: project
     description: >
       Layer2每赛道样本构建器，子目录 fault/facies/reservoir/lithofacies/sweetspot/reconstruction，
       各自build_dataset.py读Layer1产出+对应标签源，调用dataset_io.save_split()写出统一schema的train/test。
+      ①②⑥已用Codex worker(leader mode)跑通baseline:①fault逻辑回归+局部卷积特征，
+      ②facies_f3/facies_penobscot各自SmallUNet(F3/Penobscot标签空间不兼容,不强行统一),
+      ⑥reconstruction岭回归+IDW。当前均为验证管道用的简单baseline,非最终模型。
+
+  - id: ml_framework
+    path: _code/ml_framework
+    type: shared_library
+    status: active
+    owner: project
+    description: >
+      2026-07-11军伟拍板的模块化训练骨架:preprocess.py(去噪骨架/归一化+反归一化配对/深度对齐指针)、
+      model_registry.py(register_model/get_model,换模型只加文件不改训练循环)、
+      train.py(train_loop统一训练循环,记录train/val loss,按最小val loss存best checkpoint,
+      不擅自早停,让人看得到欠拟合->过拟合的完整曲线)、visualize.py(plot_loss_curve标出best epoch)。
+      各赛道应重构为调用这里而非各自重复实现预处理/训练循环。TODO(非本轮):接入开源社区已包装好的
+      预训练/大模型，只需实现build_model()适配层。
 
 entrypoints:
   - id: project_plan
