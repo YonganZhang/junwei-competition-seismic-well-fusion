@@ -24,7 +24,12 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROCESSED_DIR = PROJECT_ROOT / "_data" / "processed"
 
-VALID_TASKS = ("fault", "facies", "reservoir", "lithofacies", "sweetspot", "reconstruction")
+VALID_TASKS = (
+    "fault", "facies", "reservoir", "lithofacies", "sweetspot", "reconstruction",
+    # 2026-07-11: F3和Penobscot两个相分类数据集类别定义不兼容(军伟拍板不强行统一标签空间)，
+    # 拆成两个独立子任务，同一模型架构各自训练/测试，不做跨数据集标签映射。
+    "facies_f3", "facies_penobscot",
+)
 VALID_SPLITS = ("train", "test")
 
 
