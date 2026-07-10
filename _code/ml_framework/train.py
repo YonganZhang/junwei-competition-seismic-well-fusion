@@ -92,6 +92,11 @@ def train_loop(
     history = TrainHistory()
     history_path = checkpoint_dir / "history.json"
 
+    if epochs <= 0:
+        # 🔴 2026-07-11 二轮审查修复：旧版本epochs<=0会静默返回空history(range(0)直接跳过循环)，
+        # 看起来"跑完了"但其实什么都没训练，容易被误当成正常结果。
+        raise ValueError(f"epochs={epochs} 必须>0，否则不会训练任何东西")
+
     if epochs < min_epochs_before_early_check:
         print(
             f"⚠️ epochs={epochs} 小于建议值{min_epochs_before_early_check}，"

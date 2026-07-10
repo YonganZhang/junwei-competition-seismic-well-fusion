@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from typing import Any
 
@@ -48,12 +49,23 @@ class NormStats:
     vmax: float | None = None
 
     def __post_init__(self):
+        # 🔴 2026-07-11 二轮审查修复(Codex实测复现)：旧版本只检查字段是否为None，
+        # std=0/mean=NaN/vmin=NaN这类非法值全部放行，等到normalize()里除以0/带着NaN跑
+        # 才报错，错误被推迟到训练阶段才暴露。现在fit时就地拦截。
         if self.method == "zscore" and (self.mean is None or self.std is None):
             raise ValueError("method='zscore' 必须提供 mean 和 std，用 fit_zscore() 生成，不要手填")
         if self.method == "minmax" and (self.vmin is None or self.vmax is None):
             raise ValueError("method='minmax' 必须提供 vmin 和 vmax，用 fit_minmax() 生成，不要手填")
         if self.method not in ("zscore", "minmax"):
             raise ValueError(f"未知归一化方法: {self.method!r}，只支持 zscore/minmax")
+        for field_name in ("mean", "std", "vmin", "vmax"):
+            v = getattr(self, field_name)
+            if v is not None and not math.isfinite(v):
+                raise ValueError(f"NormStats.{field_name}={v} 不是有限数值，说明fit时输入数据本身有NaN/Inf")
+        if self.method == "zscore" and self.std <= 0:
+            raise ValueError(f"NormStats.std={self.std} 必须>0，否则归一化会除以0/负数")
+        if self.method == "minmax" and self.vmax < self.vmin:
+            raise ValueError(f"NormStats.vmax({self.vmax}) < vmin({self.vmin})，数据有误")
 
     def to_dict(self) -> dict[str, Any]:
         return {"method": self.method, "mean": self.mean, "std": self.std,

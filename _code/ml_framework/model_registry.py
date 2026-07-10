@@ -47,10 +47,16 @@ def get_model(name: str, models_package: str | None = None, **kwargs):
     这样新增一个模型文件（文件名=注册名）就能直接被发现，不需要手动改任何集中 import 列表。
     """
     if name not in MODEL_REGISTRY and models_package:
+        target_module = f"{models_package}.{name}"
         try:
-            importlib.import_module(f"{models_package}.{name}")
-        except ModuleNotFoundError:
-            pass  # 走到下面统一报错，给出已注册列表
+            importlib.import_module(target_module)
+        except ModuleNotFoundError as e:
+            # 🔴 2026-07-11 二轮审查修复(Codex实测复现)：只有"目标模块本身就不存在"才吞掉走
+            # 统一报错；如果是目标模块存在、但它内部import了别的缺失依赖导致的ModuleNotFoundError，
+            # e.name不等于target_module，必须原样抛出，不能被误判成"模型未注册"掩盖真实缺依赖故障。
+            if e.name != target_module:
+                raise
+            # 走到下面统一报错，给出已注册列表
 
     if name not in MODEL_REGISTRY:
         raise KeyError(
