@@ -1,0 +1,60 @@
+{
+  "raw": {
+    "search-results": {
+      "opensearch:totalResults": "0",
+      "opensearch:startIndex": "0",
+      "opensearch:itemsPerPage": "0",
+      "opensearch:Query": {
+        "@role": "request",
+        "@searchTerms": "TITLE-ABS-KEY(\"well log normalization\" AND \"core calibration\")",
+        "@startPage": "0"
+      },
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=3&query=TITLE-ABS-KEY%28%22well+log+normalization%22+AND+%22core+calibration%22%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        }
+      ],
+      "entry": [
+        {
+          "@_fa": "true",
+          "error": "Result set was empty"
+        }
+      ]
+    }
+  },
+  "normalized": {
+    "status": 200,
+    "quota": {
+      "limit": "20000",
+      "remaining": "19998",
+      "reset": "1784115113",
+      "els_status": "NO_SEARCH_RESULTS(Result set was empty)"
+    },
+    "query": "TITLE-ABS-KEY(\"well log normalization\" AND \"core calibration\")",
+    "view": "STANDARD",
+    "count": 3,
+    "total_results": "0",
+    "start_index": "0",
+    "items_per_page": "0",
+    "entries": [
+      {
+        "title": "",
+        "creator": "",
+        "publication": "",
+        "date": "",
+        "year": "",
+        "doi": "",
+        "eid": "",
+        "scopus_id": "",
+        "citedby_count": "",
+        "subtype": "",
+        "openaccess": "",
+        "abstract": "",
+        "link": ""
+      }
+    ]
+  }
+}

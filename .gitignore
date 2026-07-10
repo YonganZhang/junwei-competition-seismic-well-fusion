@@ -14,3 +14,7 @@ _outputs/*.segy
 __pycache__/
 *.pyc
 .parts/
+.playwright-cli/
+# 2026-07-10 发现的疑似串项目残留(AI Session Cards调度台相关,与本项目无关),排除跟踪但不删除,待用户确认
+_tests/_artifacts/
+_reports/

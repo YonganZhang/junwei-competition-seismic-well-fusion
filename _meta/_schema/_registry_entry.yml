@@ -1,0 +1,52 @@
+# Schema note: _meta/_registry.yml
+#
+# Default v4 registry is a code-domain / entrypoint registry, not a function ledger.
+# Function-level registration is opt-in and must be documented by the project.
+
+top_level:
+  required:
+    project: string
+    schema_version: string
+    code_domains: array
+  optional:
+    entrypoints: array
+    cross_domain_edges: array
+    non_code_assets: object
+
+code_domain_fields:
+  required:
+    id: string
+    path: string
+    type: string
+    status: string
+    owner: string
+    description: string
+  optional:
+    codemap: string
+    tests: string
+    notes: string
+
+entrypoint_fields:
+  required:
+    id: string
+    path: string
+    type: string
+    status: string
+    owner: string
+    description: string
+
+cross_domain_edge_fields:
+  required:
+    from: string
+    to: string
+    contract: string
+
+# Example:
+# code_domains:
+#   - id: main_pipeline
+#     path: _pipelines
+#     type: local_pipeline
+#     status: active
+#     owner: project
+#     codemap: _codemap.md
+#     description: "Main reproducible workflow entrypoints."

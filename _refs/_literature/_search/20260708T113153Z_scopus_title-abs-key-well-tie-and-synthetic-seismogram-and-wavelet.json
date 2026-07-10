@@ -1,0 +1,417 @@
+{
+  "raw": {
+    "search-results": {
+      "opensearch:totalResults": "20",
+      "opensearch:startIndex": "0",
+      "opensearch:itemsPerPage": "5",
+      "opensearch:Query": {
+        "@role": "request",
+        "@searchTerms": "TITLE-ABS-KEY(\"well tie\" AND \"synthetic seismogram\" AND wavelet)",
+        "@startPage": "0"
+      },
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=5&query=TITLE-ABS-KEY%28%22well+tie%22+AND+%22synthetic+seismogram%22+AND+wavelet%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "first",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=5&query=TITLE-ABS-KEY%28%22well+tie%22+AND+%22synthetic+seismogram%22+AND+wavelet%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "next",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=5&count=5&query=TITLE-ABS-KEY%28%22well+tie%22+AND+%22synthetic+seismogram%22+AND+wavelet%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "last",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=15&count=5&query=TITLE-ABS-KEY%28%22well+tie%22+AND+%22synthetic+seismogram%22+AND+wavelet%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        }
+      ],
+      "entry": [
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85218388127"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85218388127?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85218388127&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85218388127&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "full-text",
+              "@href": "https://api.elsevier.com/content/article/eid/3-s2.0-B9780443235177000083"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85218388127",
+          "dc:identifier": "SCOPUS_ID:85218388127",
+          "eid": "2-s2.0-85218388127",
+          "dc:title": "Automatic seismic-well tie",
+          "dc:creator": "Di H.",
+          "prism:publicationName": "Artificial Intelligence for Subsurface Characterization and Monitoring",
+          "prism:isbn": [
+            {
+              "@_fa": "true",
+              "$": "[9780443224225, 9780443235177]"
+            }
+          ],
+          "prism:pageRange": "187-198",
+          "prism:coverDate": "2025-01-01",
+          "prism:coverDisplayDate": "1 January 2025",
+          "prism:doi": "10.1016/B978-0-443-23517-7.00008-3",
+          "citedby-count": "1",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "SLB",
+              "affiliation-city": "Houston",
+              "affiliation-country": "United States"
+            }
+          ],
+          "prism:aggregationType": "Book",
+          "subtype": "ch",
+          "subtypeDescription": "Book Chapter",
+          "source-id": "21101276215",
+          "openaccess": "0",
+          "openaccessFlag": false
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85149327159"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85149327159?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85149327159&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85149327159&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85149327159",
+          "dc:identifier": "SCOPUS_ID:85149327159",
+          "eid": "2-s2.0-85149327159",
+          "dc:title": "Automating seismic-well tie via self-supervised learning",
+          "dc:creator": "Di H.",
+          "prism:publicationName": "Geophysical Prospecting",
+          "prism:issn": "00168025",
+          "prism:eIssn": "13652478",
+          "prism:volume": "71",
+          "prism:issueIdentifier": "4",
+          "prism:pageRange": "698-712",
+          "prism:coverDate": "2023-05-01",
+          "prism:coverDisplayDate": "May 2023",
+          "prism:doi": "10.1111/1365-2478.13333",
+          "citedby-count": "9",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "SLB",
+              "affiliation-city": "Houston",
+              "affiliation-country": "United States"
+            }
+          ],
+          "prism:aggregationType": "Journal",
+          "subtype": "ar",
+          "subtypeDescription": "Article",
+          "source-id": "27961",
+          "openaccess": "0",
+          "openaccessFlag": false
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85176765507"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85176765507?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85176765507&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85176765507&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85176765507",
+          "dc:identifier": "SCOPUS_ID:85176765507",
+          "eid": "2-s2.0-85176765507",
+          "dc:title": "The Wiggle that Makes a Difference: Using AI to get the Right Wavelet with Multi Well Input",
+          "dc:creator": "Alkhanjari H.S.N.",
+          "prism:publicationName": "Society of Petroleum Engineers Adipec Adip 2023",
+          "prism:isbn": [
+            {
+              "@_fa": "true",
+              "$": "[9781959025078]"
+            }
+          ],
+          "prism:pageRange": null,
+          "prism:coverDate": "2023-01-01",
+          "prism:coverDisplayDate": "2023",
+          "prism:doi": "10.2118/216492-MS",
+          "citedby-count": "2",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "Petroleum Development Oman",
+              "affiliation-city": "Muscat",
+              "affiliation-country": "Oman"
+            }
+          ],
+          "prism:aggregationType": "Conference Proceeding",
+          "subtype": "cp",
+          "subtypeDescription": "Conference Paper",
+          "source-id": "21101186330",
+          "openaccess": "0",
+          "openaccessFlag": false
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85142711269"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85142711269?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85142711269&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85142711269&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85142711269",
+          "dc:identifier": "SCOPUS_ID:85142711269",
+          "eid": "2-s2.0-85142711269",
+          "dc:title": "NONSTATIONARY SEISMIC-WELL TIE USING DYNAMIC TIME WARPING",
+          "dc:creator": "Cai S.",
+          "prism:publicationName": "83rd Eage Conference and Exhibition 2022",
+          "prism:isbn": [
+            {
+              "@_fa": "true",
+              "$": "[9781713859314]"
+            }
+          ],
+          "prism:volume": "4",
+          "prism:pageRange": "2949-2953",
+          "prism:coverDate": "2022-01-01",
+          "prism:coverDisplayDate": "2022",
+          "citedby-count": "0",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "Imperial College London",
+              "affiliation-city": "London",
+              "affiliation-country": "United Kingdom"
+            }
+          ],
+          "prism:aggregationType": "Conference Proceeding",
+          "subtype": "cp",
+          "subtypeDescription": "Conference Paper",
+          "source-id": "21101122715",
+          "openaccess": "0",
+          "openaccessFlag": false
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85123322557"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85123322557?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85123322557&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85123322557&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85123322557",
+          "dc:identifier": "SCOPUS_ID:85123322557",
+          "eid": "2-s2.0-85123322557",
+          "dc:title": "Quantitative borehole matching of surface seismic using zero-offset VSP data",
+          "dc:creator": "Guerra R.",
+          "prism:publicationName": "6th Eage Borehole Geophysics Workshop Maximising Data Value During the Energy Transition",
+          "prism:isbn": [
+            {
+              "@_fa": "true",
+              "$": "[9781713839286]"
+            }
+          ],
+          "prism:pageRange": null,
+          "prism:coverDate": "2021-01-01",
+          "prism:coverDisplayDate": "2021",
+          "prism:doi": "10.3997/2214-4609.2021613026",
+          "citedby-count": "1",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "Schlumberger Limited",
+              "affiliation-city": "Sugar Land",
+              "affiliation-country": "United States"
+            }
+          ],
+          "prism:aggregationType": "Conference Proceeding",
+          "subtype": "cp",
+          "subtypeDescription": "Conference Paper",
+          "source-id": "21101073580",
+          "openaccess": "0",
+          "openaccessFlag": false
+        }
+      ]
+    }
+  },
+  "normalized": {
+    "status": 200,
+    "quota": {
+      "limit": "20000",
+      "remaining": "20000",
+      "reset": "1784115113",
+      "els_status": "OK"
+    },
+    "query": "TITLE-ABS-KEY(\"well tie\" AND \"synthetic seismogram\" AND wavelet)",
+    "view": "STANDARD",
+    "count": 5,
+    "total_results": "20",
+    "start_index": "0",
+    "items_per_page": "5",
+    "entries": [
+      {
+        "title": "Automatic seismic-well tie",
+        "creator": "Di H.",
+        "publication": "Artificial Intelligence for Subsurface Characterization and Monitoring",
+        "date": "2025-01-01",
+        "year": "2025",
+        "doi": "10.1016/B978-0-443-23517-7.00008-3",
+        "eid": "2-s2.0-85218388127",
+        "scopus_id": "SCOPUS_ID:85218388127",
+        "citedby_count": "1",
+        "subtype": "Book Chapter",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85218388127&origin=inward"
+      },
+      {
+        "title": "Automating seismic-well tie via self-supervised learning",
+        "creator": "Di H.",
+        "publication": "Geophysical Prospecting",
+        "date": "2023-05-01",
+        "year": "2023",
+        "doi": "10.1111/1365-2478.13333",
+        "eid": "2-s2.0-85149327159",
+        "scopus_id": "SCOPUS_ID:85149327159",
+        "citedby_count": "9",
+        "subtype": "Article",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85149327159&origin=inward"
+      },
+      {
+        "title": "The Wiggle that Makes a Difference: Using AI to get the Right Wavelet with Multi Well Input",
+        "creator": "Alkhanjari H.S.N.",
+        "publication": "Society of Petroleum Engineers Adipec Adip 2023",
+        "date": "2023-01-01",
+        "year": "2023",
+        "doi": "10.2118/216492-MS",
+        "eid": "2-s2.0-85176765507",
+        "scopus_id": "SCOPUS_ID:85176765507",
+        "citedby_count": "2",
+        "subtype": "Conference Paper",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85176765507&origin=inward"
+      },
+      {
+        "title": "NONSTATIONARY SEISMIC-WELL TIE USING DYNAMIC TIME WARPING",
+        "creator": "Cai S.",
+        "publication": "83rd Eage Conference and Exhibition 2022",
+        "date": "2022-01-01",
+        "year": "2022",
+        "doi": "",
+        "eid": "2-s2.0-85142711269",
+        "scopus_id": "SCOPUS_ID:85142711269",
+        "citedby_count": "0",
+        "subtype": "Conference Paper",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85142711269&origin=inward"
+      },
+      {
+        "title": "Quantitative borehole matching of surface seismic using zero-offset VSP data",
+        "creator": "Guerra R.",
+        "publication": "6th Eage Borehole Geophysics Workshop Maximising Data Value During the Energy Transition",
+        "date": "2021-01-01",
+        "year": "2021",
+        "doi": "10.3997/2214-4609.2021613026",
+        "eid": "2-s2.0-85123322557",
+        "scopus_id": "SCOPUS_ID:85123322557",
+        "citedby_count": "1",
+        "subtype": "Conference Paper",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85123322557&origin=inward"
+      }
+    ]
+  }
+}

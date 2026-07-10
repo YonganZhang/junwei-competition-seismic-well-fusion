@@ -1,0 +1,23 @@
+# Schema: _outputs/v<NN>/_run_meta.yml
+#
+# 每次跑实验,_pipelines/.../outputs/v<NN>/ 下必有 _run_meta.yml,合本 schema.
+# AI 跑实验时自动生成,不手写.
+
+required_fields:
+  run_id:         {type: string, pattern: "^v\\d{2,4}$"}
+  pipeline:       {type: string, pattern: "^_pipelines/"}
+  start_time:     {type: string, format: "ISO 8601"}
+  end_time:       {type: string, format: "ISO 8601"}
+  git_commit:     {type: string, length: 7}        # 短 hash
+  env_hash:       {type: string}                    # 环境 hash (pip freeze sha256)
+  why_this_run:   {type: string, max_length: 200}   # 跑前问你 1 行
+  outcome:        {type: enum, values: [success, failed, partial]}
+  outcome_note:   {type: string, max_length: 500}
+
+optional_fields:
+  parent_run:     {type: string, pattern: "^v\\d{2,4}$"}
+  changed_steps:  {type: array, items: string}
+  paper_used:     {type: bool, default: false}
+  parliament_models: {type: array}                 # 用了哪 8 个评委 + Consul
+  total_cost_usd: {type: float}                    # 估算花费
+  artifacts:      {type: array}                    # 产出文件清单

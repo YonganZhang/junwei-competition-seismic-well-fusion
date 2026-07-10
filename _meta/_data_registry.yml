@@ -1,0 +1,69 @@
+# _meta/_data_registry.yml — 数据资产注册表(单一真源)
+project: 军伟的比赛-地震测井多模态融合
+schema_version: v4.0
+last_synced: 2026-07-08
+
+assets:
+  - id: volve-north-sea
+    name: Volve 油田数据集（挪威北海，Equinor）
+    status: downloading
+    size_approx: ~7.7TB（全套）
+    location: _sandbox/volve_data/
+    source: >
+      官方唯一现行渠道 = Databricks Marketplace 自助注册
+      (https://marketplace.databricks.com/details/5c3558ef-315c-44dd-baef-7062ac301f22/Equinor-ASA_Volve-Data-Village)。
+      旧 data.equinor.com 官方直链已下线。
+    license: Equinor Open Data Licence（改良版CC BY，允许复用署名，禁止转售；非CC BY-NC-SA）
+    contents:
+      - Volve_Production_data.zip（2MB，生产历史，已下载完成）
+      - Volve_Well_logs.zip / Well_logs_pr_WELL.zip（各7GB，LAS测井曲线，已下载完成）
+      - Volve_Reservoir_Model-Eclipse_model.zip / RMS_model.zip（391MB+2.2GB，已下载完成）
+      - Volve_GeoScience_OW_Archive.zip（58.67GB真实大小，OpenWorks地质工程归档，2026-07-10发现此前
+        标记"已完成"其实缺827MB被截断——早期下载脚本没做完整性校验的遗留坑，已用断点续传补全，
+        目录结构校验通过：5个文件(license.txt/VOLVE_PUBLIC.bck 497MB Oracle导出/
+        VOLVE_PUBLIC_Externalfiles.dszip 88MB地震解释体/VOLVE_PUBLIC_Seismic.dszip 58.5GB纯地震)）
+      - Volve_Geophysical_Interpretations.zip（100MB，层位断层解释，已下载完成）
+      - Volve_Reports.zip（162MB，作业报告PDF，已下载完成）
+      - Volve_Well_technical_data.zip（212MB，井身结构，已下载完成）
+      - Volve_Seismic_VSP.zip（96MB，垂直地震剖面测井，已下载完成）
+      - Volve_WITSML Realtime drilling data.zip（2.3GB，钻井实时数据，下载中）
+      - Volve_Seismic_ST0202.zip（1.17TB，一期3D地震体，下载中）
+      - Volve_Seismic_ST10010.zip（2.59TB，另一期3D地震体，下载中）
+      - Volve_Seismic_ST0202vsST10010_4D.zip（330GB，4D时移地震，下载中）
+    access_note: >
+      通过 Databricks CLI（本机 ~/.local/bin/databricks，配置存于 ~/.databrickscfg 600权限）
+      + Files API 直连下载（不走本机mihomo代理，代理转发对大文件长连接不稳定）。
+      账号 yonganzhang27@gmail.com，workspace host 见 ~/.databrickscfg（不明文记录于此）。
+    extracted_subsets_for_layer1: >
+      2026-07-10 为 _pipelines/01_common_preprocess 只解压了必要文件(不整包解压1.17TB地震压缩包)：
+      _sandbox/volve_data/_extracted_seismic/(1.1G，ST0202/Stacks/..FULL_OFFSET_PP_TIME..segy，
+      PZ全偏移距PP时间叠后体，唯一从ST0202解出的文件)；
+      _sandbox/volve_data/_extracted_welllogs/(109M，只有06.LFP目录，3口井LAS，Volve测井绝大多数
+      井是DLIS/LIS格式而非LAS，这3口是仅有的完整LFP LAS导出)；
+      _sandbox/volve_data/_extracted_interp/(388M，Geophysical_Interpretations.zip全量解压，
+      含Volve_Official_Faults.dat断层棒线 + Horizons_TWT层位 + Well_picks_Volve_v1.dat井分层点)。
+      解压产物合计约1.6GB，磁盘从解压前到此刻仍有1.2T可用(节点为共享盘，波动来自其他用户)。
+
+  - id: f3-demo-netherlands
+    name: F3 Demo（荷兰北海）
+    status: downloaded
+    size_approx: ~8GB
+    location: _sandbox/f3_penobscot/f3demo/（实际1.6GB，8个文件，MD5全部校验通过）
+    source: https://terranubis.com/datainfo/F3-Demo-2023
+    zenodo_ml_slice: https://zenodo.org/records/1471548
+    note: >
+      2026-07-10更正：zenodo编号之前登记反了，已核实 1471548 才是F3（IBM Research发布，
+      "Netherlands F3 Interpretation Dataset"，post-stack数据+8个层位+4口井测井+9类标注，
+      651个inline mask+951个crossline mask），3924682 是Penobscot。下载中。
+
+  - id: penobscot-canada
+    name: Penobscot（加拿大 Nova Scotia 海域）
+    status: downloaded
+    size_approx: ~13GB
+    location: _sandbox/f3_penobscot/penobscot/（实际2.2GB，5个文件，MD5全部校验通过）
+    source: https://terranubis.com/datainfo/Penobscot
+    zenodo_ml_slice: https://zenodo.org/records/3924682
+    note: >
+      2026-07-10更正：zenodo编号之前登记反了，已核实 3924682 才是Penobscot（"Penobscot
+      Interpretation Dataset"，采自加拿大新斯科舍近海Scotian shelf，超10万张标注图，7个地层分类）。
+      下载中；用于多个开源下游分割任务测试（赛题要求项）。

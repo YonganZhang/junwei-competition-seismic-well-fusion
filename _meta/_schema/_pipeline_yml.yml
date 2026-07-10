@@ -1,0 +1,23 @@
+# Schema: _pipelines/<NN_name>/pipeline.yml
+#
+# 每个 pipeline 必有 pipeline.yml, 声明 DAG.
+# 合本 schema.
+
+required_fields:
+  name:           {type: string}                    # pipeline 唯一名
+  version:        {type: string}                    # pipeline 版本
+  description:    {type: string, max_length: 200}
+  steps:                                            # DAG (顺序 list)
+    type: array
+    items:
+      step_id:        {type: string, pattern: "^step_\\d{2}_"}
+      file:           {type: string}                # _pipelines/.../step_NN_xxx.py
+      depends_on:     {type: array}                 # 上游 step_id
+      description:    {type: string, max_length: 100}
+      input_artifacts:  {type: array}               # 上游产出
+      output_artifacts: {type: array}               # 本步产出
+
+optional_fields:
+  related_phase:  {type: string, pattern: "^P\\d"}  # plan/phase 联动
+  related_method: {type: string}                    # 主要方法论 link
+  notes:          {type: string}

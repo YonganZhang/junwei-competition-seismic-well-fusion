@@ -1,0 +1,16 @@
+{
+  "segy_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/_sandbox/volve_data/_extracted_seismic/ST0202/Stacks/ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME.MIG_FIN.POST_STACK.3D.JS-017534.segy",
+  "il_range": [
+    9985,
+    10369
+  ],
+  "xl_range": [
+    1932,
+    2536
+  ],
+  "n_traces": 232925,
+  "n_samples": 1126,
+  "sample_interval_ms": 4.0,
+  "affine_fit_rms_m": 0.08155261092956825,
+  "note": "affine_il_xl_to_xy 行0=X系数[a,b,c] 行1=Y系数[d,e,f]，X=a*il+b*xl+c"
+}

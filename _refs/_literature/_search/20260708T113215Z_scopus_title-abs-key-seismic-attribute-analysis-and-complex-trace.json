@@ -1,0 +1,296 @@
+{
+  "raw": {
+    "search-results": {
+      "opensearch:totalResults": "7",
+      "opensearch:startIndex": "0",
+      "opensearch:itemsPerPage": "3",
+      "opensearch:Query": {
+        "@role": "request",
+        "@searchTerms": "TITLE-ABS-KEY(\"seismic attribute analysis\" AND \"complex trace\")",
+        "@startPage": "0"
+      },
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=3&query=TITLE-ABS-KEY%28%22seismic+attribute+analysis%22+AND+%22complex+trace%22%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "first",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=3&query=TITLE-ABS-KEY%28%22seismic+attribute+analysis%22+AND+%22complex+trace%22%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "next",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=3&count=3&query=TITLE-ABS-KEY%28%22seismic+attribute+analysis%22+AND+%22complex+trace%22%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "last",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=4&count=3&query=TITLE-ABS-KEY%28%22seismic+attribute+analysis%22+AND+%22complex+trace%22%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        }
+      ],
+      "entry": [
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85092907363"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85092907363?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85092907363&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85092907363&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85092907363",
+          "dc:identifier": "SCOPUS_ID:85092907363",
+          "eid": "2-s2.0-85092907363",
+          "dc:title": "Seismic attributes via robust and high-resolution seismic complex trace analysis",
+          "dc:creator": "Kazemnia Kakhki M.",
+          "prism:publicationName": "Acta Geophysica",
+          "prism:issn": "18956572",
+          "prism:eIssn": "18957455",
+          "prism:volume": "68",
+          "prism:issueIdentifier": "6",
+          "prism:pageRange": "1689-1701",
+          "prism:coverDate": "2020-12-01",
+          "prism:coverDisplayDate": "December 2020",
+          "prism:doi": "10.1007/s11600-020-00499-w",
+          "citedby-count": "6",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "Universidade Federal do Rio de Janeiro",
+              "affiliation-city": "Rio de Janeiro",
+              "affiliation-country": "Brazil"
+            },
+            {
+              "@_fa": "true",
+              "affilname": "Ferdowsi University of Mashhad",
+              "affiliation-city": "Mashhad",
+              "affiliation-country": "Iran"
+            }
+          ],
+          "prism:aggregationType": "Journal",
+          "subtype": "ar",
+          "subtypeDescription": "Article",
+          "source-id": "4700152838",
+          "openaccess": "2",
+          "openaccessFlag": false,
+          "freetoread": {
+            "value": [
+              {
+                "$": "all"
+              },
+              {
+                "$": "repository"
+              },
+              {
+                "$": "repositoryam"
+              }
+            ]
+          },
+          "freetoreadLabel": {
+            "value": [
+              {
+                "$": "All Open Access"
+              },
+              {
+                "$": "Green"
+              }
+            ]
+          }
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85085291034"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85085291034?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85085291034&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85085291034&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85085291034",
+          "dc:identifier": "SCOPUS_ID:85085291034",
+          "eid": "2-s2.0-85085291034",
+          "dc:title": "Seismic attribute analysis of Chicxulub impact crater",
+          "dc:creator": "Salguero-Hernández E.",
+          "prism:publicationName": "Acta Geophysica",
+          "prism:issn": "18956572",
+          "prism:eIssn": "18957455",
+          "prism:volume": "68",
+          "prism:issueIdentifier": "3",
+          "prism:pageRange": "627-640",
+          "prism:coverDate": "2020-06-01",
+          "prism:coverDisplayDate": "1 June 2020",
+          "prism:doi": "10.1007/s11600-020-00442-z",
+          "citedby-count": "9",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "Universidad Autónoma del Carmen",
+              "affiliation-city": "Ciudad del Carmen",
+              "affiliation-country": "Mexico"
+            }
+          ],
+          "prism:aggregationType": "Journal",
+          "subtype": "ar",
+          "subtypeDescription": "Article",
+          "source-id": "4700152838",
+          "openaccess": "0",
+          "openaccessFlag": false
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85055703896"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85055703896?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85055703896&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85055703896&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85055703896",
+          "dc:identifier": "SCOPUS_ID:85055703896",
+          "eid": "2-s2.0-85055703896",
+          "dc:title": "Seismic attribute analysis and geobody visualization: Detection and delineation of high-gamma sand sequences in a steam-affected and merged 3D seismic dataset of a highly heterogeneous reservoir",
+          "dc:creator": "Mahapatra S.N.",
+          "prism:publicationName": "Society of Exploration Geophysicists Seg International Exposition and 76tth Annual Meeting 2006 Seg 2006",
+          "prism:isbn": [
+            {
+              "@_fa": "true",
+              "$": "[9781604236972]"
+            }
+          ],
+          "prism:pageRange": "1605-1609",
+          "prism:coverDate": "2018-01-01",
+          "prism:coverDisplayDate": "2018",
+          "citedby-count": "0",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "Virginia Polytechnic Institute and State University",
+              "affiliation-city": "Blacksburg",
+              "affiliation-country": "United States"
+            }
+          ],
+          "prism:aggregationType": "Conference Proceeding",
+          "subtype": "cp",
+          "subtypeDescription": "Conference Paper",
+          "source-id": "21100883662",
+          "openaccess": "0",
+          "openaccessFlag": false
+        }
+      ]
+    }
+  },
+  "normalized": {
+    "status": 200,
+    "quota": {
+      "limit": "20000",
+      "remaining": "19996",
+      "reset": "1784115113",
+      "els_status": "OK"
+    },
+    "query": "TITLE-ABS-KEY(\"seismic attribute analysis\" AND \"complex trace\")",
+    "view": "STANDARD",
+    "count": 3,
+    "total_results": "7",
+    "start_index": "0",
+    "items_per_page": "3",
+    "entries": [
+      {
+        "title": "Seismic attributes via robust and high-resolution seismic complex trace analysis",
+        "creator": "Kazemnia Kakhki M.",
+        "publication": "Acta Geophysica",
+        "date": "2020-12-01",
+        "year": "2020",
+        "doi": "10.1007/s11600-020-00499-w",
+        "eid": "2-s2.0-85092907363",
+        "scopus_id": "SCOPUS_ID:85092907363",
+        "citedby_count": "6",
+        "subtype": "Article",
+        "openaccess": "2",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85092907363&origin=inward"
+      },
+      {
+        "title": "Seismic attribute analysis of Chicxulub impact crater",
+        "creator": "Salguero-Hernández E.",
+        "publication": "Acta Geophysica",
+        "date": "2020-06-01",
+        "year": "2020",
+        "doi": "10.1007/s11600-020-00442-z",
+        "eid": "2-s2.0-85085291034",
+        "scopus_id": "SCOPUS_ID:85085291034",
+        "citedby_count": "9",
+        "subtype": "Article",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85085291034&origin=inward"
+      },
+      {
+        "title": "Seismic attribute analysis and geobody visualization: Detection and delineation of high-gamma sand sequences in a steam-affected and merged 3D seismic dataset of a highly heterogeneous reservoir",
+        "creator": "Mahapatra S.N.",
+        "publication": "Society of Exploration Geophysicists Seg International Exposition and 76tth Annual Meeting 2006 Seg 2006",
+        "date": "2018-01-01",
+        "year": "2018",
+        "doi": "",
+        "eid": "2-s2.0-85055703896",
+        "scopus_id": "SCOPUS_ID:85055703896",
+        "citedby_count": "0",
+        "subtype": "Conference Paper",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85055703896&origin=inward"
+      }
+    ]
+  }
+}

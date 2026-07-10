@@ -1,0 +1,261 @@
+{
+  "raw": {
+    "search-results": {
+      "opensearch:totalResults": "3",
+      "opensearch:startIndex": "0",
+      "opensearch:itemsPerPage": "3",
+      "opensearch:Query": {
+        "@role": "request",
+        "@searchTerms": "TITLE-ABS-KEY(cokriging AND \"seismic data\" AND \"well log\" AND interpolation)",
+        "@startPage": "0"
+      },
+      "link": [
+        {
+          "@_fa": "true",
+          "@ref": "self",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=3&query=TITLE-ABS-KEY%28cokriging+AND+%22seismic+data%22+AND+%22well+log%22+AND+interpolation%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "first",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=3&query=TITLE-ABS-KEY%28cokriging+AND+%22seismic+data%22+AND+%22well+log%22+AND+interpolation%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        },
+        {
+          "@_fa": "true",
+          "@ref": "last",
+          "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=3&query=TITLE-ABS-KEY%28cokriging+AND+%22seismic+data%22+AND+%22well+log%22+AND+interpolation%29&view=STANDARD&httpAccept=application%2Fjson",
+          "@type": "application/json"
+        }
+      ],
+      "entry": [
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85073695582"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/85073695582?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85073695582&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85073695582&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85073695582",
+          "dc:identifier": "SCOPUS_ID:85073695582",
+          "eid": "2-s2.0-85073695582",
+          "dc:title": "Use of an artificial neural network algorithm and cokriging method for reservoir porosity modeling",
+          "dc:creator": "Stepanov A.",
+          "prism:publicationName": "International Multidisciplinary Scientific Geoconference Surveying Geology and Mining Ecology Management Sgem",
+          "prism:issn": "13142704",
+          "prism:isbn": [
+            {
+              "@_fa": "true",
+              "$": "[9786197408768]"
+            }
+          ],
+          "prism:volume": "19",
+          "prism:issueIdentifier": "1.1",
+          "prism:pageRange": "677-684",
+          "prism:coverDate": "2019-01-01",
+          "prism:coverDisplayDate": "2019",
+          "prism:doi": "10.5593/sgem2019/1.1/S01.084",
+          "citedby-count": "3",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "Kazan Federal University",
+              "affiliation-city": "Kazan",
+              "affiliation-country": "Russian Federation"
+            }
+          ],
+          "prism:aggregationType": "Conference Proceeding",
+          "subtype": "cp",
+          "subtypeDescription": "Conference Paper",
+          "source-id": "21100274701",
+          "openaccess": "0",
+          "openaccessFlag": false
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/84890045989"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/84890045989?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=84890045989&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=84890045989&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/84890045989",
+          "dc:identifier": "SCOPUS_ID:84890045989",
+          "eid": "2-s2.0-84890045989",
+          "dc:title": "Predicting porosity by using seismic multi-attributes and well data and combining these available data by geostatistical methods in a South Iranian oil field",
+          "dc:creator": "Jalalalhosseini S.",
+          "prism:publicationName": "Petroleum Science and Technology",
+          "prism:issn": "10916466",
+          "prism:eIssn": "15322459",
+          "prism:volume": "32",
+          "prism:issueIdentifier": "1",
+          "prism:pageRange": "29-37",
+          "prism:coverDate": "2014-01-01",
+          "prism:coverDisplayDate": "1 January 2014",
+          "prism:doi": "10.1080/10916466.2011.584102",
+          "citedby-count": "19",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "University of Tehran",
+              "affiliation-city": "Tehran",
+              "affiliation-country": "Iran"
+            }
+          ],
+          "prism:aggregationType": "Journal",
+          "subtype": "ar",
+          "subtypeDescription": "Article",
+          "source-id": "13716",
+          "openaccess": "0",
+          "openaccessFlag": false
+        },
+        {
+          "@_fa": "true",
+          "link": [
+            {
+              "@_fa": "true",
+              "@ref": "self",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/33847727506"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "author-affiliation",
+              "@href": "https://api.elsevier.com/content/abstract/scopus_id/33847727506?field=author,affiliation"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus",
+              "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=33847727506&origin=inward"
+            },
+            {
+              "@_fa": "true",
+              "@ref": "scopus-citedby",
+              "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=33847727506&origin=inward"
+            }
+          ],
+          "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/33847727506",
+          "dc:identifier": "SCOPUS_ID:33847727506",
+          "eid": "2-s2.0-33847727506",
+          "dc:title": "Integrating seismic-derived porosity into a geocellular model - A case study",
+          "dc:creator": "Mercado G.",
+          "prism:publicationName": "12th Abu Dhabi International Petroleum Exhibition and Conference Adipec 2006 Meeting the Increasing Oil and Gas Demand Through Innovation",
+          "prism:volume": "2",
+          "prism:pageRange": "887-889",
+          "prism:coverDate": "2006-12-01",
+          "prism:coverDisplayDate": "2006",
+          "citedby-count": "0",
+          "affiliation": [
+            {
+              "@_fa": "true",
+              "affilname": "ADNOC Offshore",
+              "affiliation-city": "Abu Dhabi",
+              "affiliation-country": "United Arab Emirates"
+            }
+          ],
+          "prism:aggregationType": "Conference Proceeding",
+          "subtype": "cp",
+          "subtypeDescription": "Conference Paper",
+          "source-id": "5300152211",
+          "openaccess": "0",
+          "openaccessFlag": false
+        }
+      ]
+    }
+  },
+  "normalized": {
+    "status": 200,
+    "quota": {
+      "limit": "20000",
+      "remaining": "19997",
+      "reset": "1784115113",
+      "els_status": "OK"
+    },
+    "query": "TITLE-ABS-KEY(cokriging AND \"seismic data\" AND \"well log\" AND interpolation)",
+    "view": "STANDARD",
+    "count": 3,
+    "total_results": "3",
+    "start_index": "0",
+    "items_per_page": "3",
+    "entries": [
+      {
+        "title": "Use of an artificial neural network algorithm and cokriging method for reservoir porosity modeling",
+        "creator": "Stepanov A.",
+        "publication": "International Multidisciplinary Scientific Geoconference Surveying Geology and Mining Ecology Management Sgem",
+        "date": "2019-01-01",
+        "year": "2019",
+        "doi": "10.5593/sgem2019/1.1/S01.084",
+        "eid": "2-s2.0-85073695582",
+        "scopus_id": "SCOPUS_ID:85073695582",
+        "citedby_count": "3",
+        "subtype": "Conference Paper",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85073695582&origin=inward"
+      },
+      {
+        "title": "Predicting porosity by using seismic multi-attributes and well data and combining these available data by geostatistical methods in a South Iranian oil field",
+        "creator": "Jalalalhosseini S.",
+        "publication": "Petroleum Science and Technology",
+        "date": "2014-01-01",
+        "year": "2014",
+        "doi": "10.1080/10916466.2011.584102",
+        "eid": "2-s2.0-84890045989",
+        "scopus_id": "SCOPUS_ID:84890045989",
+        "citedby_count": "19",
+        "subtype": "Article",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=84890045989&origin=inward"
+      },
+      {
+        "title": "Integrating seismic-derived porosity into a geocellular model - A case study",
+        "creator": "Mercado G.",
+        "publication": "12th Abu Dhabi International Petroleum Exhibition and Conference Adipec 2006 Meeting the Increasing Oil and Gas Demand Through Innovation",
+        "date": "2006-12-01",
+        "year": "2006",
+        "doi": "",
+        "eid": "2-s2.0-33847727506",
+        "scopus_id": "SCOPUS_ID:33847727506",
+        "citedby_count": "0",
+        "subtype": "Conference Paper",
+        "openaccess": "0",
+        "abstract": "",
+        "link": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=33847727506&origin=inward"
+      }
+    ]
+  }
+}

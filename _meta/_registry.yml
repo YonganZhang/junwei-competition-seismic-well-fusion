@@ -1,0 +1,74 @@
+# _meta/_registry.yml — code-domain / entrypoint registry
+project: 军伟的比赛-地震测井多模态融合
+schema_version: code-domain-v1
+last_synced: 2026-07-10 (common_preprocess 4 steps 实测跑通)
+
+# Default v4 registry is coarse-grained. Register code domains, public entrypoints,
+# reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
+
+code_domains:
+  - id: main
+    path: _code
+    type: local_code
+    status: active
+    owner: project
+    codemap: _codemap.md
+    description: "Primary reusable code or project wrapper entrypoints."
+
+  - id: dataset_io
+    path: _code/dataset_io.py
+    type: shared_library
+    status: active
+    owner: project
+    description: >
+      六赛道统一数据接口：save_split()/load_dataset()/dataset_stats()。
+      固定样本schema(seismic_patch/well_log_seq/position/label/meta)，
+      6条赛道的build_dataset.py都调用它写出train/test，建模代码都调用它读取，
+      不允许绕过此接口直接手写HDF5读写。python -m dataset_io stats <task>/<split> 可查统计。
+
+  - id: common_preprocess
+    path: _pipelines/01_common_preprocess
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      Layer1公共预处理(6条赛道共用，不属于任何单一赛道)：4个step已用真实Volve数据跑通。
+      step_01_load_seismic.py：segyio读ST0202/Stacks/..FULL_OFFSET_PP_TIME(PZ全偏移距PP时间叠后体，
+      1.1GB，inline 9985-10369×crossline 1932-2536规则网格)，按需读道+UTM<->il/xl仿射索引，不整体入内存。
+      step_02_load_well_logs.py：lasio读06.LFP目录3口井(15_9-19 A/BT2/SR)LAS，每口171条LFP_*曲线，
+      选LFP_GR/RHOB/NPHI/DT/DTS/RT/CALI/VSH/PHIE共9条做"核心九线"，缺失值/野值清洗+0.5m重采样+
+      GR泥岩基线归一化(用逐点LFP_GRMIN/GRMAX)+其余z-score。
+      step_03_load_fault_horizon.py：定长文本解析Volve_Official_Faults.dat(3998点/66条断层)，
+      通用CSV解析Horizons_TWT/Other_Horizons下BCU层位(225558点)，断层UTM反解最近il/xl，层位IL/XL
+      本身已与ST0202体一致(实测验证过范围吻合)。
+      step_04_well_tie_weak.py：弱井震标定——用Well_picks_Volve_v1.dat同井分层点的MD/TWT/UTM做
+      分段线性插值+外推(非速度模型)，得到深度->TWT->最近(il,xl)的粗略轨迹，代码内注释明确标注
+      为弱标定局限。outputs/下产出可复用中间文件，产出清单见pipeline README。
+
+  - id: task_datasets
+    path: _pipelines/02_task_datasets
+    type: pipeline
+    status: planned
+    owner: project
+    description: >
+      Layer2每赛道样本构建器，子目录 fault/facies/reservoir/lithofacies/sweetspot/reconstruction，
+      各自build_dataset.py读Layer1产出+对应标签源，调用dataset_io.save_split()写出统一schema的train/test。
+
+entrypoints:
+  - id: project_plan
+    path: _wiki-methodology/_top/_task_plan.md
+    type: plan
+    status: active
+    owner: col2
+    description: "Current phase, next action, blockers and pause list."
+
+cross_domain_edges:
+  - from: task_datasets
+    to: dataset_io
+    relation: calls
+  - from: task_datasets
+    to: common_preprocess
+    relation: depends_on
+
+non_code_assets:
+  registry: _meta/_data_registry.yml
