@@ -37,12 +37,23 @@ DENOISE_FN = denoise_identity  # 换策略只改这一行指向的函数
 
 @dataclass
 class NormStats:
-    """归一化参数，随样本/数据集一起持久化，保证反归一化时能精确还原。"""
+    """归一化参数，随样本/数据集一起持久化，保证反归一化时能精确还原。
+
+    🔴 只能在训练集上fit（fit_zscore/fit_minmax传训练数据），不能在验证/测试集上重新fit，
+    否则等于让模型提前看到测试集分布，是数据泄漏。"""
     method: str  # "zscore" | "minmax"
     mean: float | None = None
     std: float | None = None
     vmin: float | None = None
     vmax: float | None = None
+
+    def __post_init__(self):
+        if self.method == "zscore" and (self.mean is None or self.std is None):
+            raise ValueError("method='zscore' 必须提供 mean 和 std，用 fit_zscore() 生成，不要手填")
+        if self.method == "minmax" and (self.vmin is None or self.vmax is None):
+            raise ValueError("method='minmax' 必须提供 vmin 和 vmax，用 fit_minmax() 生成，不要手填")
+        if self.method not in ("zscore", "minmax"):
+            raise ValueError(f"未知归一化方法: {self.method!r}，只支持 zscore/minmax")
 
     def to_dict(self) -> dict[str, Any]:
         return {"method": self.method, "mean": self.mean, "std": self.std,
