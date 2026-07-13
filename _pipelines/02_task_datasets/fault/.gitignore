@@ -1,0 +1,33 @@
+# Local Python environments and caches.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Real processed datasets stay in the data registry / local data workspace.
+*.h5
+
+# Models and checkpoints are reproducible local artifacts, not merge payload.
+*.ckpt
+*.joblib
+
+# Historical duplicate reports at the track root are preserved locally only.
+/baseline_metrics.json
+/build_summary.json
+
+# Ignore all generated outputs, then allowlist portable canonical evidence.
+/_outputs/*
+!/_outputs/runs/
+/_outputs/runs/*
+!/_outputs/runs/audited_v2/
+/_outputs/runs/audited_v2/*
+!/_outputs/runs/audited_v2/baseline_metrics.json
+!/_outputs/runs/audited_v2/build_summary.json
+!/_outputs/runs/audited_v2/split_manifest.json
+!/_outputs/runs/audited_v2/loss_curve.png
+!/_outputs/runs/audited_v2/prediction_visualization.png
+!/_outputs/runs/audited_v2/visualization_report.json
+!/_outputs/runs/audited_v2/reproducibility_report.json
