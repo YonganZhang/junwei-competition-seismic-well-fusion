@@ -489,6 +489,9 @@ def _normalize_samples(
                     "crossline": raw["crossline"],
                     "time_ms": raw["twt_ms"],
                     "well_name": raw["well_id"],
+                    # Preserve the actual sampling center for P4 depth tracks.
+                    # The interval midpoint is not an acceptable reconstruction.
+                    "center_md_m": raw["center_md_m"],
                 },
                 "label": np.int64(raw["class_id"]),
                 "meta": {
@@ -619,6 +622,7 @@ def build_dataset(args: argparse.Namespace) -> dict[str, Any]:
                             "raw_log": raw_log,
                             "log_mask": log_mask,
                             "raw_seismic": seismic_patch,
+                            "center_md_m": float(center_md_m),
                             "inline": inline,
                             "crossline": crossline,
                             "twt_ms": twt_ms,

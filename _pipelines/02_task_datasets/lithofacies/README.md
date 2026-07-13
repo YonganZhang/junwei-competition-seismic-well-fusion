@@ -215,3 +215,122 @@ Artifacts:
   rejected.
 - The held-out test family has zero support for two frozen classes. Metrics
   report this directly; no same-well random split is used to fill the gap.
+
+## P4 training, validation, and reproducibility SOP
+
+The P4 implementation is a track-private plugin over the read-only shared
+contracts in `_code/ml_framework`. It does not change the accepted GM09 label
+schema or the measured baseline above. The existing models remain available
+through a strict `TaskSpec` / `ModelBatch` / `ModelOutput` adapter because this
+integration batch does not authorize writes to the canonical `_models/` tree.
+
+### Frozen split and fold-local fitting
+
+- F-5 remains the frozen test mother family.
+- The requested fold count is five, but only four independent development
+  families have real multimodal samples: 15/9-19, F-14, F-15, and F-4.
+  P4 therefore records `effective_n_splits=4` and runs leave-one-family-out.
+  It never splits rows from one mother family to manufacture a fifth fold.
+- Every fold archives train/validation class support. When F-15 is held out,
+  class 8 is absent from fold-train. The model still emits nine logits, its
+  fold loss weight is zero for that unseen class, and both fixed-nine and
+  observed-support metrics remain visible.
+- Existing HDF5 values are first reversed with their stored statistics. Log,
+  seismic, and class-weight statistics are then fitted only on the current
+  fold-train families. A validation-only log channel is masked rather than
+  normalized with validation data.
+- New builds persist the actual `center_md_m` sampling coordinate. Legacy
+  archives without it produce a `not_feasible_depth_facies_track.json`; an
+  interval midpoint is never substituted.
+
+### Lifecycle and commands
+
+Use a run directory below this track, for example
+`_pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1`. Commands have
+separate responsibilities and must be executed in order:
+
+```bash
+python3 _pipelines/02_task_datasets/lithofacies/p4_runner.py prepare \
+  --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1
+
+python3 _pipelines/02_task_datasets/lithofacies/p4_runner.py smoke \
+  --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1
+
+python3 _pipelines/02_task_datasets/lithofacies/p4_runner.py cv \
+  --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1
+
+python3 _pipelines/02_task_datasets/lithofacies/p4_runner.py hpo-plan \
+  --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1
+
+python3 _pipelines/02_task_datasets/lithofacies/p4_runner.py freeze \
+  --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1
+
+python3 _pipelines/02_task_datasets/lithofacies/p4_runner.py refit \
+  --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1
+
+python3 _pipelines/02_task_datasets/lithofacies/p4_runner.py test \
+  --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1
+```
+
+`prepare` is the only split-locking stage that indexes both HDF5 files. `cv`
+and `refit` accept development data only. The `test` subcommand is the only
+entry allowed to open F-5; it durably consumes the lifecycle before accessing
+the HDF5 and rejects a second invocation for the same experiment.
+
+Training consumes raw logits with cross-entropy. Softmax is applied only by
+the inference/metric adapter. OOF logits fit one scalar temperature without
+test labels. The primary HPO direction is to maximize development-fold
+supported-class macro-F1, retaining fold mean/std/worst and calibration
+guardrails. The archived plan is 8 random/sanity trials followed by 20
+single-process TPE trials, `NopPruner` by default, and top-three configurations
+confirmed with three registered seeds. `hpo-plan` records this contract but
+does not launch HPO.
+
+After OOF or frozen-test prediction archives exist, visualization is a
+separate read-only operation:
+
+```bash
+python3 _pipelines/02_task_datasets/lithofacies/visualize_p4.py \
+  --predictions _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1/frozen_test/predictions.json \
+  --metrics _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1/frozen_test/metrics.json \
+  --output-dir _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/gm09_v1/visualizations
+```
+
+It verifies that prediction and metric hashes are unchanged and produces the
+depth facies/GT/prediction/confidence/error track, count plus row-normalized
+confusion matrix, per-class precision/recall/F1/support, and calibration plot.
+
+### P4 tests
+
+The torch-free contract suite validates TaskSpec, F-5 isolation, honest LOGO-4
+downgrade, fold class support, fold-local preprocessing, logits/softmax
+separation, HPO direction, metric schemas, and read-only visualization. With
+PyTorch available it additionally executes all three existing models, an
+optimizer step, tiny-overfit, complete synthetic OOF/checkpoint/refit/single
+test lifecycle, and checkpoint/artifact verification:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests \
+  -p 'test_p4_contract.py' -v
+```
+
+The integration worktree intentionally does not carry the ignored HDF5 files.
+The real-data one-step smoke gate therefore skips with an explicit reason until
+those existing assets are mounted or the approved builder is rerun:
+
+```bash
+LITHOFACIES_P4_REAL_SMOKE=1 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests \
+  -p 'test_p4_contract.py' -v
+```
+
+If an integration worktree intentionally keeps ignored data elsewhere, point
+the read-only gate at it with `LITHOFACIES_P4_DATASET_ROOT=/path/to/lithofacies`;
+the test writes only to a temporary run directory and does not copy the HDF5.
+
+No P4 score is a formal result until all four development folds complete,
+configuration and epoch policy are frozen from OOF evidence, development is
+refitted, and the single F-5 campaign is archived. The historical F-5 baseline
+has already been observed, so this family is a frozen regression/final campaign
+test rather than a previously unseen blind test.
