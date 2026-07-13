@@ -1,0 +1,177 @@
+{
+  "blockers": [
+    {
+      "code": "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+      "detail": "no covered, audit-proven formal negative voxels are available"
+    },
+    {
+      "code": "COVERAGE_AUDITED_UNKNOWN_MASK_MISSING",
+      "detail": "P4 represents unlabelled voxels as unknown in memory, but the source evidence has no explicit coverage-audited unknown mask/provenance"
+    },
+    {
+      "code": "DEVELOPMENT_SPLIT_NOT_FEASIBLE",
+      "detail": "the frozen buffered development CV plan has fewer than two valid folds"
+    },
+    {
+      "code": "NO_FROZEN_STAGE3_TOP3",
+      "detail": "the Stage-3 protocol freezes no fault top-3 because effective folds are zero"
+    }
+  ],
+  "coverage": {
+    "negative_provenance": {
+      "audit_sha256": null,
+      "audit_status": "absent",
+      "status": "blocked",
+      "verified_negative_labels": 0
+    },
+    "positive_annotation": {
+      "fault_point_count": 3998,
+      "real_probe_positive_labels": 32,
+      "status": "observed_not_sufficient_for_binary_cv"
+    },
+    "spatial": {
+      "block_support_count": 0,
+      "buffer_inlines": 8,
+      "complete_annotation_blocks": 0,
+      "coverage_audited_slice_count": null,
+      "coverage_audited_volume_count": 0,
+      "development_unique_inlines": 177,
+      "scope": "portable aggregate annotation audit; no raw volume or test labels read",
+      "searched_inline_count": 385,
+      "searched_inline_extent": [
+        9985,
+        10369
+      ],
+      "slice_coverage_status": "not_quantifiable"
+    },
+    "unknown_provenance": {
+      "in_memory_semantics": "unlabelled voxels are unknown and invalid for formal loss",
+      "source_mask_audit_sha256": null,
+      "source_mask_audit_status": "absent",
+      "source_mask_kind": "absent",
+      "status": "blocked"
+    },
+    "voxel_probe": {
+      "batch_shape": [
+        1,
+        1,
+        32,
+        64
+      ],
+      "positive_fraction": 0.015625,
+      "positive_labels": 32,
+      "sample_count": 1,
+      "scope": "one archived real Stage-1 development smoke crop",
+      "source_role": "audited_v2_train_development",
+      "source_sha256": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221",
+      "total_voxels": 2048,
+      "unknown_fraction": 0.984375,
+      "unknown_labels": 2016,
+      "valid_labels": 32,
+      "verified_negative_fraction": 0.0,
+      "verified_negative_labels": 0
+    }
+  },
+  "frozen_top_models": [],
+  "lane": "fault_3d_segmentation_data_gate",
+  "minimum_data_contract_to_unblock": [
+    {
+      "contract_id": "coverage_manifest",
+      "minimum": "coordinate-aligned per-volume/per-block/per-slice annotation coverage manifest with source SHA-256 and annotation_status"
+    },
+    {
+      "contract_id": "verified_negative_mask",
+      "minimum": "non-empty coverage-audited verified_negative_mask disjoint from fault positives; count and provenance reported for every development block"
+    },
+    {
+      "contract_id": "unknown_and_proxy_masks",
+      "minimum": "explicit unknown_mask equals complement of valid_label_mask; proxy_mask remains separate and never enables formal loss or metrics"
+    },
+    {
+      "contract_id": "buffered_development_folds",
+      "minimum": "P4-regenerated buffered spatial plan with at least two independent valid folds; each train/validation side contains positives and audited negatives"
+    },
+    {
+      "contract_id": "fold_train_fit_provenance",
+      "minimum": "preprocessing, class weights, target transform, and calibration each carry a fold-train-only fit hash before any Stage-3 cell can run"
+    },
+    {
+      "contract_id": "test_firewall",
+      "minimum": "development coordinates and artifacts exclude frozen/regression-test material; test paths, labels, predictions, and metrics remain unavailable to selection"
+    }
+  ],
+  "protocol": "fault-p5-stage3-data-readiness-v1",
+  "protocol_baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+  "ranking_status": "not_rankable",
+  "reason_code": "NO_VALID_FAULT_DEVELOPMENT_FOLDS",
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "source_hashes": {
+    "P5_stage3_multiseed_cv.md": "5e01ae7993d3e9daa10c7b9b0f5e48c006bd6e170e6ebcf12614f9bfe286d3b7",
+    "fault_p5_stage2.py": "702374da5c614aa990a469fff474c06ac8971e00bca4ba76cccc96c072bdd726",
+    "fault_p5_stage3.py": "d8de2896b9237e7fbc875928e1c019ebcaa1ff484400569278ddd9ff971d87d7",
+    "fault_p5_stage3_visualize.py": "ef5af5b4db6323d746196326bfd4608740c12146a0cf1ecf1ba229e4155d0199",
+    "p4_preflight/blind_test_not_feasible.json": "46096d75e36d73bf8df7f510bb754675b17e887e8d411352dfe8c4ffa48a65f3",
+    "p4_preflight/buffered_cv_plan.json": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+    "p5_source_locks.json": "0e69a7a6ea12d059d0be97b1f19bf645e35ec360ae003a2d1033cadd12b0289f",
+    "p5_stage1/summary.json": "8d9958507fc57a82d8652313f5d3e699d78d831154651e8e68e38f0f5d068dc2",
+    "p5_stage2/p5_stage2_results.jsonl": "70f161c25c4bbdcdecc607b659b708f497f3271965104eefa3f1116e22dbe930",
+    "p5_stage2/p5_stage2_summary.json": "3d83d6f91c5ab6bd32628703a5d595bdf5f5cdccfd618260b04f277427421511"
+  },
+  "source_snapshot_sha256": "fb022a52b2c9d405d91085c99f5d9e4453c6bdd6714b306f0d2f46a26c3b5fea",
+  "split": {
+    "effective_n_splits": 0,
+    "fold_count": 0,
+    "requested_n_splits": 5,
+    "source": "p4_preflight/buffered_cv_plan.json",
+    "split_hash": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+    "status": "not_feasible",
+    "temporary_fraction_split_allowed": false,
+    "temporary_split_created": false
+  },
+  "stage2_reuse": {
+    "candidate_configuration_sha256": "0e69a7a6ea12d059d0be97b1f19bf645e35ec360ae003a2d1033cadd12b0289f",
+    "candidate_model_ids": [
+      "monai_segresnet",
+      "monai_dynunet",
+      "nnunet_v2_3d_fullres",
+      "pytorch3dunet_unet3d",
+      "faultnet_md",
+      "faultseg3d_keras",
+      "monai_vnet",
+      "mednext_v1_s_k3",
+      "uxnet3d",
+      "monai_swinunetr"
+    ],
+    "configuration_changed": false,
+    "fixed_budget": {
+      "lane_type": "3d_neural_or_operator",
+      "max_parameter_updates": 80,
+      "max_wall_seconds": 900,
+      "sample_caps_status": "unavailable_until_valid_development_split",
+      "train_sample_cap": null,
+      "validation_sample_cap": null
+    },
+    "hpo_performed": false,
+    "loss_changed": false,
+    "preprocessing_changed": false,
+    "stage2_results_sha256": "70f161c25c4bbdcdecc607b659b708f497f3271965104eefa3f1116e22dbe930",
+    "stage2_status": "not_rankable",
+    "update_budget_changed": false
+  },
+  "status": "blocked",
+  "task_id": "fault_stick_segmentation",
+  "test_firewall": {
+    "blind_audit_used_for": "coverage/firewall status only",
+    "frozen_test_accessed": false,
+    "historical_test_role": "regression_evidence_only",
+    "runner_accepts_test_inputs": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault"
+}

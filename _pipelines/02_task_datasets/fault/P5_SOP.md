@@ -1,4 +1,4 @@
-# Fault P5 open-model Stage-1 and Stage-2 SOP
+# Fault P5 open-model Stage-1 through Stage-3 SOP
 
 This SOP is subordinate to `P5_open_model_benchmark_protocol.md` and the
 frozen fault P4 mask/test contract. Stage-1 covers contract smoke and Stage-2
@@ -114,3 +114,27 @@ Portable results are private to this track:
 
 - `_outputs/p5_stage2/p5_stage2_results.jsonl`;
 - `_outputs/p5_stage2/p5_stage2_summary.json`.
+
+## Stage-3 zero-fold data-readiness confirmation
+
+The frozen Stage-3 protocol assigns fault zero effective folds and no top-3.
+Consequently, the only legal execution is the prefixed readiness gate below;
+it must not build or train any model:
+
+```bash
+python3 _pipelines/02_task_datasets/fault/fault_p5_stage3.py
+python3 -m unittest discover -v \
+  -s _pipelines/02_task_datasets/fault -p 'test_fault_p5_stage3.py'
+```
+
+The runner reuses the accepted Stage-2 candidate lock and 3-D budget, the P4
+buffered split hash, and repeat seeds `1867973658`, `2137841944`, and
+`3902865753`. Because the legal training-cell count is zero, the results JSONL
+contains one explicitly non-cell `data_readiness_gate` record. It reports zero
+updates and a `blocked/not_rankable` state rather than inventing model/fold/seed
+rows or a temporary split.
+
+Portable Stage-3 evidence lives only under `_outputs/p5_stage3/`: results and
+summary, data/OOF/visualization/artifact manifests, one lane-specific
+not-rankable leaderboard, and three SVG coverage figures. Full predictions,
+checkpoints, caches, and any future large artifacts remain ignored.

@@ -59,3 +59,21 @@ __pycache__/
 /_outputs/p5_stage2/*
 !/_outputs/p5_stage2/p5_stage2_results.jsonl
 !/_outputs/p5_stage2/p5_stage2_summary.json
+
+# Portable fault-private P5 Stage-3 readiness evidence. Raw OOF/checkpoints stay ignored.
+!/_outputs/p5_stage3/
+/_outputs/p5_stage3/*
+!/_outputs/p5_stage3/p5_stage3_results.jsonl
+!/_outputs/p5_stage3/p5_stage3_summary.json
+!/_outputs/p5_stage3/p5_stage3_data_manifest.json
+!/_outputs/p5_stage3/p5_stage3_oof_manifest.json
+!/_outputs/p5_stage3/p5_stage3_visualization_manifest.json
+!/_outputs/p5_stage3/p5_stage3_artifact_manifest.json
+!/_outputs/p5_stage3/leaderboards/
+/_outputs/p5_stage3/leaderboards/*
+!/_outputs/p5_stage3/leaderboards/fault_stick_segmentation__fault_3d_segmentation_data_gate.json
+!/_outputs/p5_stage3/figures/
+/_outputs/p5_stage3/figures/*
+!/_outputs/p5_stage3/figures/fault_readiness.svg
+!/_outputs/p5_stage3/figures/fault_negative_coverage.svg
+!/_outputs/p5_stage3/figures/fault_unknown_coverage.svg
