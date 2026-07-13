@@ -4,6 +4,8 @@
 
 本目录只实现标签决策合同和真实字段审计。Volve 和现有 Layer1 产物没有经批准的 sweetspot 真值，因此当前不允许生成标签、`train.h5`/`test.h5`、模型、checkpoint 或指标。
 
+P5 的十候选模型接入骨架位于 [`p5/`](p5/README.md)。它只增加 source lock、七目标独立 TaskSpec/adapter 和 development-only Stage-1 gate；当前所有适配单元仍会在未批准标签合同处结构化 `SKIP`，不会把 P4 代理实现自动升级为 P5 真值。
+
 `build_dataset.py` 的命名是为了与六赛道未来公共接口保持一致；当前文件刻意只有 `audit` 和 `validate-only` 两种模式，不导入 `_code/dataset_io.py`，也没有数据写入路径。
 
 ## 文件
