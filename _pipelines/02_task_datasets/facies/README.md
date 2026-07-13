@@ -448,3 +448,57 @@ Run the asset-free contract tests with the shared environment:
 ```bash
 PYTHONDONTWRITEBYTECODE=1 "${P5_TORCH_PYTHON:-python3}" -m unittest discover -s _pipelines/02_task_datasets/facies/tests -p 'test_*.py' -v
 ```
+
+## P5 fixed-budget Stage-2 pilot
+
+`facies_p5_stage2.py` consumes the two already-frozen P4 split manifests and
+only the referenced `train.h5` development archives. It never enumerates a P4
+run directory, exposes no test/frozen-test argument, and its archive adapter
+rejects every split except `train` before path resolution. If either exact
+manifest or its development IDs cannot be reused, all ten cells for that task
+are recorded as `blocked`; the runner never creates a replacement split.
+
+The pilot is frozen to fold 0, root seed 2693, scratch weights, 32 train and 16
+validation patches, batch size 2, 40 optimizer updates, validation every 10
+updates, and a 180-second per-model wall-clock cap. The same label-independent
+seeded sample selection and update schedule are reused by all models within a
+task. Normalization is fit only on the selected fold-train amplitudes; class
+weights use the locked manifest's full fold-train support. Missing classes in
+the small validation subset remain support 0 and receive finite IoU/F1 0 in
+the fixed full-label-space macro metrics; labels are never consulted to alter
+the subset.
+
+The six Stage-1-eligible 2-D models run real development forward, weighted
+CrossEntropy on raw logits, backward, AdamW steps, minimum-validation-loss
+checkpoint and checkpoint prediction round-trip. Softmax is applied only for
+validation inference. The three unavailable legacy ports and the unverified
+3-D block model retain their Stage-1 structured skip reasons and are not
+replaced. F3 (10 classes) and Penobscot (8 classes) have separate results and
+leaderboards; a cross-task rank is forbidden.
+
+Use the shared Torch environment and pass the two exact locked manifest files
+explicitly. CUDA execution acquires the P5 protocol's frozen `gpu0.lock` with
+an exclusive POSIX `flock`; lock wait is excluded from each model wall time.
+
+```bash
+P5_TORCH_PYTHON=${P5_TORCH_PYTHON:-python3}
+FACIES_PROCESSED_ROOT=/path/to/processed
+F3_P4_SPLIT_MANIFEST=/path/to/facies_f3/split_manifest.json
+PEN_P4_SPLIT_MANIFEST=/path/to/facies_penobscot/split_manifest.json
+
+CUDA_VISIBLE_DEVICES=0 PYTHONDONTWRITEBYTECODE=1 "$P5_TORCH_PYTHON" \
+  _pipelines/02_task_datasets/facies/facies_p5_stage2.py \
+  --processed-root "$FACIES_PROCESSED_ROOT" \
+  --f3-manifest "$F3_P4_SPLIT_MANIFEST" \
+  --penobscot-manifest "$PEN_P4_SPLIT_MANIFEST" \
+  --device cuda
+```
+
+Portable evidence is written only under the track-private
+`_outputs/p5_stage2/`: `p5_stage2_results.jsonl`,
+`p5_stage2_summary.json`, and one scratch leaderboard per task. Large best
+checkpoints stay under ignored `_outputs/p5_stage2_runtime/`; portable JSON
+stores only its runtime-relative path, hash and byte count. The Stage-2 test
+basename and dynamic import name are respectively
+`test_facies_p5_stage2.py` and `facies_p5_stage2`, preventing collisions with
+other tracks in an integrated test process.

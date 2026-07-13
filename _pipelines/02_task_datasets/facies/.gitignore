@@ -13,4 +13,5 @@ _outputs/legacy/
 _outputs/p4_runs/
 _outputs/p4_smoke/
 _outputs/p5_stage1/
+_outputs/p5_stage2_runtime/
 _outputs/leakage_fixed_v2/data_build_manifest.json

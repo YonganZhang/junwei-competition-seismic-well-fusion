@@ -1,0 +1,73 @@
+{
+  "frozen_test_consumed": false,
+  "label_version": "f3-zenodo-1471548-ids-0-9-v1",
+  "lane": "scratch",
+  "primary_metric": "miou",
+  "ranking_scope": "locked_development_fold0_validation_only",
+  "rows": [
+    {
+      "accuracy": 0.31626129150390625,
+      "all_classes_supported": true,
+      "macro_f1": 0.21729979093385157,
+      "miou": 0.128479839409748,
+      "model_id": "smp_fpn_r18",
+      "rank": 1,
+      "updates": 40,
+      "wall_seconds": 9.217425075359643
+    },
+    {
+      "accuracy": 0.1938629150390625,
+      "all_classes_supported": true,
+      "macro_f1": 0.1566895387262092,
+      "miou": 0.09013618425795131,
+      "model_id": "smp_deeplabv3plus_r18",
+      "rank": 2,
+      "updates": 40,
+      "wall_seconds": 32.80275387363508
+    },
+    {
+      "accuracy": 0.21635818481445312,
+      "all_classes_supported": true,
+      "macro_f1": 0.14494806930797663,
+      "miou": 0.0811606390714915,
+      "model_id": "hf_segformer_b0",
+      "rank": 3,
+      "updates": 40,
+      "wall_seconds": 19.199432726949453
+    },
+    {
+      "accuracy": 0.15861892700195312,
+      "all_classes_supported": true,
+      "macro_f1": 0.1082577581127371,
+      "miou": 0.0629922007039073,
+      "model_id": "smp_unet_r18",
+      "rank": 4,
+      "updates": 40,
+      "wall_seconds": 10.511280196718872
+    },
+    {
+      "accuracy": 0.15113449096679688,
+      "all_classes_supported": true,
+      "macro_f1": 0.10789368199249841,
+      "miou": 0.05881593552543339,
+      "model_id": "smp_unetpp_r18",
+      "rank": 5,
+      "updates": 40,
+      "wall_seconds": 16.973210747353733
+    },
+    {
+      "accuracy": 0.01025390625,
+      "all_classes_supported": true,
+      "macro_f1": 0.002029966167230546,
+      "miou": 0.001025390625,
+      "model_id": "torchvision_lraspp_mbv3",
+      "rank": 6,
+      "updates": 40,
+      "wall_seconds": 3.5581927867606282
+    }
+  ],
+  "schema_version": "facies-p5-stage2-v1",
+  "secondary_metric": "macro_f1",
+  "task_id": "facies_f3",
+  "track_id": "facies"
+}
