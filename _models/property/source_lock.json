@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "track_id": "property",
+  "frozen_at": "2026-07-14",
+  "root_seed": 2693,
+  "policy": {
+    "source_archives_downloaded": false,
+    "source_archive_sha256": "not_applicable_until_an_archive_is_explicitly_provisioned",
+    "revision_is_the_code_identity": true,
+    "auto_install": false,
+    "auto_download_weights": false,
+    "installed_distribution_version_must_match": true
+  },
+  "model_order": [
+    "catboost_regressor",
+    "lightgbm_regressor",
+    "tabm_regressor",
+    "xgboost_regressor",
+    "extra_trees_regressor",
+    "hist_gradient_boosting_regressor",
+    "realmlp_regressor",
+    "ft_transformer_regressor",
+    "tabiclv2_regressor",
+    "monai_densenet3d_regressor"
+  ],
+  "models": {
+    "catboost_regressor": {
+      "family": "ordered_gradient_boosting",
+      "source_url": "https://github.com/catboost/catboost",
+      "tag": "v1.2.10",
+      "revision": "b1bd2a6d77219e82a1acfcedfccb8e6f6c1ee084",
+      "license": "Apache-2.0",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "catboost", "import_name": "catboost", "version": "1.2.10"}
+      ],
+      "weights": {"required": false}
+    },
+    "lightgbm_regressor": {
+      "family": "histogram_gradient_boosting",
+      "source_url": "https://github.com/lightgbm-org/LightGBM",
+      "tag": "v4.6.0",
+      "revision": "d02a01ac6f51d36c9e62388243bcb75c3b1b1774",
+      "license": "MIT",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "lightgbm", "import_name": "lightgbm", "version": "4.6.0"}
+      ],
+      "weights": {"required": false}
+    },
+    "tabm_regressor": {
+      "family": "parameter_efficient_mlp_ensemble",
+      "source_url": "https://github.com/yandex-research/tabm",
+      "tag": null,
+      "revision": "28e47ae301c92ec37787dde1ce923a0793f405b4",
+      "license": "Apache-2.0",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "tabm", "import_name": "tabm", "version": "0.0.3"},
+        {"distribution": "torch", "import_name": "torch", "version": "2.13.0"}
+      ],
+      "weights": {"required": false}
+    },
+    "xgboost_regressor": {
+      "family": "regularized_gradient_boosting",
+      "source_url": "https://github.com/dmlc/xgboost",
+      "tag": "v3.2.0",
+      "revision": "7991260512353c8f408adf2e2cea1a0d0b4b4468",
+      "license": "Apache-2.0",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "xgboost", "import_name": "xgboost", "version": "3.2.0"}
+      ],
+      "weights": {"required": false}
+    },
+    "extra_trees_regressor": {
+      "family": "randomized_forest",
+      "source_url": "https://github.com/scikit-learn/scikit-learn",
+      "tag": "1.7.2",
+      "revision": "25dee604bae18205b01548348388baf7a1cdfe0e",
+      "license": "BSD-3-Clause",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "scikit-learn", "import_name": "sklearn.ensemble", "version": "1.7.2"}
+      ],
+      "weights": {"required": false}
+    },
+    "hist_gradient_boosting_regressor": {
+      "family": "histogram_gradient_boosting",
+      "source_url": "https://github.com/scikit-learn/scikit-learn",
+      "tag": "1.7.2",
+      "revision": "25dee604bae18205b01548348388baf7a1cdfe0e",
+      "license": "BSD-3-Clause",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "scikit-learn", "import_name": "sklearn.ensemble", "version": "1.7.2"}
+      ],
+      "weights": {"required": false}
+    },
+    "realmlp_regressor": {
+      "family": "tuned_default_mlp",
+      "source_url": "https://github.com/dholzmueller/pytabkit",
+      "tag": "v1.7.3",
+      "revision": "c126ea51187c5080b91f28d352481dbd3b2194b0",
+      "license": "Apache-2.0",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "pytabkit", "import_name": "pytabkit", "version": "1.7.3"},
+        {"distribution": "torch", "import_name": "torch", "version": "2.13.0"}
+      ],
+      "weights": {"required": false}
+    },
+    "ft_transformer_regressor": {
+      "family": "feature_tokenizer_transformer",
+      "source_url": "https://github.com/yandex-research/rtdl-revisiting-models",
+      "tag": null,
+      "revision": "e3ed46cac38568785289d8fa16b8cfa585bde27e",
+      "license": "Apache-2.0",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "rtdl-revisiting-models", "import_name": "rtdl_revisiting_models", "version": "0.0.2"},
+        {"distribution": "torch", "import_name": "torch", "version": "2.13.0"}
+      ],
+      "weights": {"required": false}
+    },
+    "tabiclv2_regressor": {
+      "family": "in_context_tabular_foundation_model",
+      "source_url": "https://github.com/soda-inria/tabicl",
+      "tag": "v2.0.0",
+      "revision": "f719c886a586ed4a29236345e319ac1ea596c478",
+      "license": "BSD-3-Clause-code-only",
+      "dependency_group": "tabular-cpu",
+      "dependencies": [
+        {"distribution": "tabicl", "import_name": "tabicl", "version": "2.0.0"}
+      ],
+      "weights": {
+        "required": true,
+        "checkpoint_name": "tabicl-regressor-v2-20260212.ckpt",
+        "source_url": "https://github.com/soda-inria/tabicl",
+        "license_status": "unconfirmed",
+        "sha256": null,
+        "auto_download": false
+      }
+    },
+    "monai_densenet3d_regressor": {
+      "family": "densenet3d_seismic_regression",
+      "source_url": "https://github.com/Project-MONAI/MONAI",
+      "tag": "1.6.0",
+      "revision": "eccefc57550b111ed781d82249dfe77872a0e918",
+      "license": "Apache-2.0",
+      "dependency_group": "torch-common",
+      "dependencies": [
+        {"distribution": "monai", "import_name": "monai", "version": "1.6.0"},
+        {"distribution": "torch", "import_name": "torch", "version": "2.12.1+cu130"}
+      ],
+      "weights": {"required": false, "lane": "scratch_only"}
+    }
+  }
+}

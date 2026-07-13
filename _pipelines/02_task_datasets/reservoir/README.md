@@ -94,3 +94,41 @@ python3 _code/dataset_io.py stats reservoir/test
 - HPO目标固定为development OOF物理单位MAE、方向`minimize`；本轮只跑简单ridge基线，没有运行Optuna或长HPO。
 
 实现与测试仍在reservoir赛道目录；两个面向甜点目标的规范入口位于`_pipelines/02_task_datasets/sweetspot/targets/porosity/`与`_pipelines/02_task_datasets/sweetspot/targets/permeability/`。真实复跑命令见各目标README和`P4_SOP.md`。
+
+## P5 首批模型 Stage-1
+
+P5 只做 development-only contract smoke，不加载冻结test、不计算正式指标，也不运行
+HPO。三个输出固定为独立mask的 `PHIF`、`log1p(KLOGH_mD)`、`SW`；
+模型域原始输出会保留，物理视图才执行PHIF/SW边界裁剪和KLOGH的可逆
+`expm1`。
+
+首批动态模型入口位于 `_models/property/`：
+`catboost_regressor`、`lightgbm_regressor`、`tabm_regressor`、
+`xgboost_regressor`、`extra_trees_regressor`、
+`hist_gradient_boosting_regressor`、`realmlp_regressor`、
+`ft_transformer_regressor`、`tabiclv2_regressor` 和
+`monai_densenet3d_regressor`。精确上游revision、许可证、依赖版本和权重gate
+在 `_models/property/source_lock.json`。runner从项目根执行：
+
+```bash
+python3 _pipelines/02_task_datasets/reservoir/p5_stage1.py --help
+python3 _pipelines/02_task_datasets/reservoir/p5_stage1.py prepare \
+  --train-h5 <development-only-train.h5> \
+  --guard-npz <development-only-guard.npz> \
+  --output _pipelines/02_task_datasets/reservoir/_outputs/p5_stage1/development.npz
+${TABULAR_PYTHON:-python3} _pipelines/02_task_datasets/reservoir/p5_stage1.py run \
+  --development-batch _pipelines/02_task_datasets/reservoir/_outputs/p5_stage1/development.npz \
+  --output-dir _pipelines/02_task_datasets/reservoir/_outputs/p5_stage1 \
+  --models catboost_regressor,lightgbm_regressor,tabm_regressor,xgboost_regressor,extra_trees_regressor,hist_gradient_boosting_regressor,realmlp_regressor,ft_transformer_regressor,tabiclv2_regressor
+${TORCH_PYTHON:-python3} _pipelines/02_task_datasets/reservoir/p5_stage1.py run \
+  --development-batch _pipelines/02_task_datasets/reservoir/_outputs/p5_stage1/development.npz \
+  --output-dir _pipelines/02_task_datasets/reservoir/_outputs/p5_stage1 \
+  --models monai_densenet3d_regressor
+```
+
+TabICLv2必须先在source lock中确认checkpoint许可证与SHA-256，并由负责人显式
+提供本地权重；否则结构化 `SKIP`，绝不自动下载。
+
+MONAI DenseNet3D使用scratch-only权重。为满足CUDA同seed严格replay，PyTorch 2.12
+中没有确定性反向实现的3D pooling会替换为固定depthwise下采样和直接空间均值；
+替换计数随checkpoint config记录，replay不通过仍判为失败。
