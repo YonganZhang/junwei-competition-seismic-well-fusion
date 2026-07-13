@@ -122,6 +122,17 @@ dynamically discovered; adding a model requires only a new
 `@register_model("<name>") build_model(...)`, then selecting `--model <name>`.
 There are no manual model imports.
 
+Available models:
+
+- `small_unet`: the unchanged two-level U-Net used for the reported baseline.
+- `facies_linear_pixel`: a 1x1 per-pixel linear classifier with no spatial
+  context.
+- `facies_tiny_fcn`: a shallow three-convolution FCN with local spatial
+  context.
+
+Only `small_unet` produced the canonical metrics below; the alternatives are
+swappable architecture references and do not change the reported results.
+
 Training uses the shared `ml_framework.train.train_loop` with repeatable
 zero-argument DataLoader factories. It records train and validation loss every
 epoch, writes `best.ckpt` on minimum validation loss and `last.ckpt` every
