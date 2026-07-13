@@ -1,0 +1,16 @@
+{
+  "physical": {
+    "MAE": 0.01205574707408998,
+    "R2": 0.9341149216171467,
+    "R2_reason": null,
+    "RMSE": 0.017223538024520847
+  },
+  "physical_unit": "fraction",
+  "target": "PHIF",
+  "uncertainty": {
+    "empirical_test_coverage": 0.9593023255813954,
+    "mean_interval_width": 0.0748484328956856,
+    "method": "symmetric 90% OOF absolute-residual interval in model domain",
+    "unit": "fraction"
+  }
+}

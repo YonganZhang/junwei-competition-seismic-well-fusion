@@ -1,0 +1,23 @@
+{
+  "log1p_domain": {
+    "MAE": 0.706676049995735,
+    "R2": 0.8687303530942981,
+    "R2_reason": null,
+    "RMSE": 0.864602393484708
+  },
+  "physical": {
+    "MAE": 226.47635404370868,
+    "R2": 0.5770877514946018,
+    "R2_reason": null,
+    "RMSE": 544.5992267513993
+  },
+  "physical_unit": "mD",
+  "target": "KLOGH",
+  "transform": "train in log1p(KLOGH); physical KLOGH=expm1(clamp(log_prediction,0))",
+  "uncertainty": {
+    "empirical_test_coverage": 0.9709302325581395,
+    "mean_interval_width": 2105.0984044147517,
+    "method": "symmetric 90% OOF absolute-residual interval in model domain",
+    "unit": "mD"
+  }
+}

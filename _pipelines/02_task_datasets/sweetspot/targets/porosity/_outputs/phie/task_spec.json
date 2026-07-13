@@ -1,0 +1,100 @@
+{
+  "calibration_policy": {
+    "uncertainty": "OOF_absolute_residual_q90_if_feasible"
+  },
+  "forbidden_inputs": [
+    "PHIF",
+    "PHIE",
+    "LFP_PHIE",
+    "KLOGH",
+    "KLOGH_NEW",
+    "KLOGV",
+    "SW",
+    "BVW",
+    "SWIRR",
+    "VSH",
+    "LFP_VSH"
+  ],
+  "group_keys": [
+    "mother_well_family"
+  ],
+  "guardrail_metrics": [
+    "finite_predictions"
+  ],
+  "hpo": {
+    "direction": "minimize",
+    "objective": "development_OOF_physical_MAE"
+  },
+  "inference_transform": {
+    "PHIE": "clip_identity_prediction_to_[0,1]"
+  },
+  "input_modalities": [
+    "real_ST0202_seismic_patch",
+    "raw_well_log_sequence"
+  ],
+  "input_whitelist": [
+    "ST0202_seismic_patch",
+    "GR",
+    "RT",
+    "NPHI",
+    "RHOB",
+    "GR_observed_mask",
+    "RT_observed_mask",
+    "NPHI_observed_mask",
+    "RHOB_observed_mask"
+  ],
+  "inverse_transform": {
+    "PHIE": "identity"
+  },
+  "label_version": "target6-exact-phie-v1",
+  "metadata": {
+    "enable_only_if": "exact PHIE covers frozen test plus >=2 development mother-well families",
+    "mixed_with_PHIF": false,
+    "never_alias": [
+      "PHIF",
+      "LFP_PHIE"
+    ],
+    "primary_label_version": false
+  },
+  "metric_directions": {
+    "finite_predictions": "maximize",
+    "physical_MAE": "minimize",
+    "physical_R2": "maximize",
+    "physical_RMSE": "minimize"
+  },
+  "primary_metrics": [
+    "physical_MAE"
+  ],
+  "required_figures": [
+    "prediction_vs_truth.png",
+    "residuals.png",
+    "depth_curve.png",
+    "distribution_uncertainty.png"
+  ],
+  "secondary_metrics": [
+    "physical_RMSE",
+    "physical_R2"
+  ],
+  "spatial_buffer": null,
+  "target_masks": {
+    "PHIE": "isfinite(exact_PHIE)"
+  },
+  "target_transform": {
+    "PHIE": "identity"
+  },
+  "targets": [
+    "PHIE"
+  ],
+  "task_id": "target6_porosity_phie",
+  "task_type": "regression",
+  "threshold_policy": {},
+  "time_cutoff": null,
+  "track_id": "sweetspot",
+  "train_loss": {
+    "PHIE": "mean_squared_error_on_fold_train_zscore"
+  },
+  "units": {
+    "PHIE": "fraction"
+  },
+  "visualizer_id": "target6_porosity_regression"
+}

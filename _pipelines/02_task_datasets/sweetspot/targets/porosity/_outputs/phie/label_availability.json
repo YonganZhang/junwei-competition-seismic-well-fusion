@@ -1,0 +1,37 @@
+{
+  "LFP_PHIE_not_an_alias_or_target": {
+    "families": [
+      "15/9-19"
+    ],
+    "hits": [
+      {
+        "family_id": "15/9-19",
+        "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+        "well_id": "15/9-19 A"
+      },
+      {
+        "family_id": "15/9-19",
+        "member": "Well_logs/06.LFP/15_9-19 BT2/159-19BT2_LFP.las",
+        "well_id": "15/9-19 BT2"
+      },
+      {
+        "family_id": "15/9-19",
+        "member": "Well_logs/06.LFP/15_9-19 SR/159-19SR_LFP.las",
+        "well_id": "15/9-19 SR"
+      }
+    ]
+  },
+  "archive_sha256": "0a496a55c865a7bce1d8e5bae767869534ae3c43a8d9dbd33601259d25da6bb4",
+  "exact_PHIE": {
+    "families": [],
+    "hits": []
+  },
+  "feasibility_gate": {
+    "feasible": false,
+    "requires": "exact PHIE in frozen test plus at least two development mother-well families"
+  },
+  "label_version": "target6-exact-phie-v1",
+  "las_files_scanned": 33,
+  "source_path_persisted": false,
+  "target": "PHIE"
+}

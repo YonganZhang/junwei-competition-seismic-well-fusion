@@ -1,0 +1,52 @@
+{
+  "evidence": {
+    "CONFIG_FROZEN": {
+      "config_hash": "256ab455e2c53f660ba1f7ab5b815372201bac0f85f5bca707e5fd77c0dcc2a8"
+    },
+    "CV_COMPLETE": {
+      "effective_folds": 4,
+      "oof_predictions_hash": "9d2a2583a02b957896a3b87e25dd1b9f08ee98d167bf205fbfd343a9fb93c9df",
+      "primary_metric": "physical_MAE",
+      "primary_score": 197.12708169852274
+    },
+    "REFIT_COMPLETE": {
+      "checkpoint_hash": "6936ccc1aa4ab1b8dabebaf6fe0569f8e5137fc39e2ac58f2260d36654c38d29",
+      "development_samples": 1216,
+      "test_loaded": false
+    },
+    "SMOKE_PASSED": {
+      "families": [
+        "15/9-19",
+        "15/9-F-1"
+      ],
+      "final_loss": 0.3743733692601835,
+      "initial_loss": 0.9999999917794001,
+      "model": "reservoir_ridge",
+      "samples": 16,
+      "status": "passed"
+    },
+    "SPLIT_LOCKED": {
+      "selection_basis": "label_availability",
+      "split_hash": "cf44b38c1e7304ffa2ee089c1328054c376bed1e670c8f144d03bdce4a0778d7",
+      "test_family": "15/9-F-15"
+    },
+    "TEST_CONSUMED": {
+      "checkpoint_hash": "6936ccc1aa4ab1b8dabebaf6fe0569f8e5137fc39e2ac58f2260d36654c38d29",
+      "config_hash": "256ab455e2c53f660ba1f7ab5b815372201bac0f85f5bca707e5fd77c0dcc2a8",
+      "split_hash": "cf44b38c1e7304ffa2ee089c1328054c376bed1e670c8f144d03bdce4a0778d7"
+    },
+    "VERIFIED": {
+      "metrics_hash": "c41e6a5b8e29b78c5604718e9a41cf5101884d7eb478fbb4705c446040d73230",
+      "prediction_hash": "af3809acdd9f6fabc7173957380cc27bbd6de06648989a5f9b8d5f3a0b584c43",
+      "required_figures": [
+        "prediction_vs_truth.png",
+        "residuals.png",
+        "depth_curve.png",
+        "distribution_uncertainty.png"
+      ]
+    }
+  },
+  "experiment_id": "target7_permeability_klogh-target7-klogh-cpi-v1",
+  "state": "VERIFIED",
+  "test_consumed_at": "2026-07-13T17:10:31.925272+00:00"
+}

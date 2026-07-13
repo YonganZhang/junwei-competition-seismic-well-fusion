@@ -34,8 +34,8 @@ python3 _code/dataset_io.py stats reservoir/test
 ## 可切换简单模型
 
 - `tiny_mlp`：已有的24单元单隐层MLP，是下文正式指标的唯一来源。
-- `reservoir_linear`：简单三输出线性SGD回归。
-- `reservoir_ridge`：同接口的L2 ridge SGD回归。
+- `reservoir_linear`：简单线性SGD回归；兼容旧三输出和P4独立单输出。
+- `reservoir_ridge`：同接口的L2 ridge SGD回归；兼容旧三输出和P4独立单输出。
 
 两个线性替代模型仅通过默认便携契约测试，未进行正式重训；它们不改变下文`tiny_mlp`的既有指标与科学结论。
 
@@ -82,3 +82,15 @@ python3 _code/dataset_io.py stats reservoir/test
 - 只有5个母井家族；本次test只有一个`F-15`家族，指标不是跨区块泛化结论。
 - 三维Hugin面用于逐样本储层筛选；水平井多次穿层会造成同井样本高度相关，但不会跨split泄漏。
 - 这是管道验证用简单baseline，不代表最终模型或调优结论。
+
+## P4与甜点目标6/7插件
+
+`p4_pipeline.py`是在上述真实数据层之上的独立P4入口，不改旧三目标baseline指标。它提供：
+
+- 目标6主版本`PHIF`和目标7`KLOGH`各自独立的TaskSpec、label availability、母井split manifest、4折LOGO OOF、fold-train统计、完整checkpoint、冻结test指标与四类专属图。
+- requested5会如实降级为effective4，因为冻结`15/9-F-15`后只有4个development母井家族。
+- KLOGH仅在`log1p(KLOGH)`域训练，评估时通过`expm1`回到mD；同时保留log域诊断。
+- PHIE是目标6下完全独立的label version。当前实扫精确`PHIE`为0；只出现一个井族的`LFP_PHIE`，不会作为别名或混入PHIF，因此状态为`not_feasible`。
+- HPO目标固定为development OOF物理单位MAE、方向`minimize`；本轮只跑简单ridge基线，没有运行Optuna或长HPO。
+
+实现与测试仍在reservoir赛道目录；两个面向甜点目标的规范入口位于`_pipelines/02_task_datasets/sweetspot/targets/porosity/`与`_pipelines/02_task_datasets/sweetspot/targets/permeability/`。真实复跑命令见各目标README和`P4_SOP.md`。

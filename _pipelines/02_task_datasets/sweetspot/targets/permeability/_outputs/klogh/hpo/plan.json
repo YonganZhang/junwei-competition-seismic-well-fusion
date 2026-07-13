@@ -1,0 +1,20 @@
+{
+  "direction": "minimize",
+  "future_search_space": {
+    "direction": "minimize",
+    "l2_strength": [
+      0.0,
+      0.01
+    ],
+    "learning_rate": [
+      0.001,
+      0.01
+    ],
+    "objective": "development_OOF_physical_MAE",
+    "test_access": "forbidden"
+  },
+  "objective": "development OOF physical-unit MAE",
+  "reason": "P4 delivery runs the preregistered simple baseline; no long HPO was authorized",
+  "status": "not_run",
+  "test_access": "forbidden"
+}
