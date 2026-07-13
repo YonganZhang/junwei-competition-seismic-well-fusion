@@ -23,3 +23,12 @@ _outputs/p5_stage2/**
 !_outputs/p5_stage2/p5_stage2_results.jsonl
 !_outputs/p5_stage2/p5_stage2_summary.json
 !_outputs/p5_stage2/p5_stage2_p_leaderboard.json
+!_outputs/p5_stage3/
+_outputs/p5_stage3/**
+!_outputs/p5_stage3/p5_stage3_results.jsonl
+!_outputs/p5_stage3/p5_stage3_summary.json
+!_outputs/p5_stage3/p5_stage3_gm09_p_leaderboard.json
+!_outputs/p5_stage3/p5_stage3_oof_manifest.json
+!_outputs/p5_stage3/p5_stage3_visualization_manifest.json
+!_outputs/p5_stage3/figures/
+!_outputs/p5_stage3/figures/*.png

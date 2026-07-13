@@ -1,0 +1,113 @@
+{
+  "schema_version": "lithofacies-p5-stage3-summary-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "lane": "P",
+  "class_names": [
+    "F-MARSH",
+    "F-MOUTHBAR",
+    "F-OFFSHORE",
+    "F-LOWER SHOREFACE",
+    "F-UPPER SHOREFACE",
+    "F-TIDAL BAR",
+    "F-TIDAL CHANNEL",
+    "F-TIDAL FLAT MUDDY",
+    "F-TIDAL FLAT SANDY"
+  ],
+  "class_count": 9,
+  "top3": [
+    "xgboost_multisoftprob_window",
+    "catboost_multiclass_window",
+    "inceptiontime_window"
+  ],
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "fold_ids": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "expected_cells": 36,
+  "recorded_cells": 36,
+  "legal_cells": 33,
+  "completion_rate": 0.9166666666666666,
+  "minimum_completion_rate": 0.8,
+  "status": "ranked",
+  "status_counts": {
+    "pass": 33,
+    "skip": 0,
+    "fail": 3,
+    "timeout": 0
+  },
+  "passed_cells": 33,
+  "skipped_cells": 0,
+  "failed_cells": 3,
+  "timeout_cells": 0,
+  "budget": {
+    "well_shape": [
+      26,
+      33
+    ],
+    "seismic_shape": [
+      3,
+      3,
+      33
+    ],
+    "fold_train_sample_limit": 320,
+    "fold_validation_sample_limit": 160,
+    "batch_size": 32,
+    "neural_parameter_updates": 40,
+    "tiny_gate_updates_included": 3,
+    "neural_wall_limit_seconds": 600.0,
+    "estimator_wall_limit_seconds": 300.0,
+    "optimizer": "AdamW(lr=0.001,weight_decay=0.0001)",
+    "xgboost": {
+      "rounds": 40,
+      "max_depth": 2
+    },
+    "catboost": {
+      "iterations": 40,
+      "depth": 3
+    },
+    "inceptiontime": {
+      "nf": 8,
+      "kernel_size": 31
+    },
+    "pretrained_weights": false,
+    "hpo": false,
+    "budget_hash": "8e37c0396444cae4e73995b68db4ce1da2239b3eedeb218a1016afdc94965036"
+  },
+  "source_lock_sha256": "b91749e023fa5162e65acf5fac13fa6e381e797d50ae27810d038d27a9bd0e61",
+  "stage2_summary_sha256": "4fcebc47fc2e4ad8a405437d04fb7d682764f39901da1c15343b7cfb8d442e4d",
+  "stage2_leaderboard_sha256": "4ebaded657eae63e4cd04995a78e2d9c2da9e8074b51e4b0bddac01c3bc73688",
+  "batch_sha256": "b6817ae218dee12bc72a1551e76423a61eb4ff11faf70dcb0444b01ba422f51c",
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "results_sha256": "8e14145117b8b44e3b9ee1131b9ade65e9f2b25151641d7b2b74f46898f966cb",
+  "leaderboard_sha256": "b63a2ad5b71d6727031e398a72824b3da0a695a1d199f5c289ee9af414c5c4e8",
+  "oof_manifest_sha256": "16817af0fb719ed7b3c6a663f99a4b361aa5e3c93ea24fed5ffb80661b28f9a3",
+  "visualization_manifest_sha256": "3b1538c2eef47462420dd9598094f5a66c241ca9ab4842f6584fc265f18982a2",
+  "leaderboard": {
+    "path": "p5_stage3_gm09_p_leaderboard.json",
+    "status": "ranked",
+    "primary_metric": "fixed_schema_macro_f1_mean",
+    "winner": "xgboost_multisoftprob_window"
+  },
+  "oof": {
+    "path": "p5_stage3_oof_manifest.json",
+    "complete_covers": 6,
+    "expected_covers": 9,
+    "full_predictions_committed": false
+  },
+  "visualization": {
+    "path": "p5_stage3_visualization_manifest.json",
+    "figure_count": 6,
+    "depth_track_status": "not_feasible"
+  },
+  "development_only": true,
+  "frozen_test_accessed": false,
+  "test_metrics_used": false
+}

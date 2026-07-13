@@ -515,3 +515,86 @@ Canonical evidence lives in `_outputs/p5_stage2/` as
 `p5_stage2_results.jsonl`, `p5_stage2_summary.json`, and
 `p5_stage2_p_leaderboard.json`; it contains no host/worktree path or retained
 checkpoint.
+
+## P5 Stage-3 multiseed LOGO4 confirmation
+
+`lithofacies_p5_stage3.py` reuses the accepted Stage-2 adapters, candidate
+configuration, loss, preprocessing, context and update budgets. Its frozen
+roster is exactly three P-lane models by four P4 LOGO folds by repeat seeds
+`1867973658`, `2137841944`, and `3902865753` (36 cells). F-5 remains the
+unopened frozen test family. The batch builder accepts the development dataset
+directory but opens only `train.h5`; every fold fits normalization and class
+weights on its three fold-train mother families before applying them to its
+held-out family. Target IDs remain the fixed GM09 nine-class identity mapping,
+and no post-hoc calibration is introduced.
+
+The portable development result records all 36 cells: 33 `PASS`, 3 `FAIL`, 0
+`SKIP`, and 0 `TIMEOUT`, for a 91.67% legal completion rate. XGBoost and
+InceptionTime completed 12/12 cells. CatBoost completed 9/12 and is marked
+`not_rankable` at 75%: fold 2 has zero fold-train support for class 8, and all
+three CatBoost seeds returned non-finite logits instead of a legal fixed-nine
+prediction. That failure is retained rather than merging classes or changing
+the model. The eligible P leaderboard is therefore:
+
+| Rank | Model ID | Fixed-9 macro-F1 mean | 95% cell-bootstrap CI | Worst fold | Seed-mean std |
+|---:|---|---:|---:|---:|---:|
+| 1 | `xgboost_multisoftprob_window` | 0.194938 | [0.187808, 0.202440] | 0.181276 | 0.000000 |
+| 2 | `inceptiontime_window` | 0.078467 | [0.056435, 0.099647] | 0.055085 | 0.007954 |
+
+The primary metric, bootstrap, worst-fold guardrail and ranking all use the
+fixed nine-class Macro-F1. Supported-class Macro-F1 remains a diagnostic field
+only. These are development OOF results, not frozen-test results.
+
+Six committed figures cover the winning model's fixed-nine confusion matrix,
+per-class precision/recall/F1, raw-softmax calibration, fold-by-seed scores and
+missing-modality behavior. A continuous measured-depth facies track is
+explicitly `not_feasible`: all 447 development samples have non-finite
+`center_md_m`, so the runner emits an explanatory evidence panel and does not
+fabricate depth from interval midpoints or row order. Full OOF predictions and
+checkpoints remain ignored under `_outputs/p5_stage3/runtime/`; their portable
+paths and hashes are recorded in the OOF manifest.
+
+### Reproduce Stage-3
+
+Run from the project root with the approved shared environments and an
+existing development dataset. The finalizer writes all canonical artifacts but
+returns non-zero when any cell is `FAIL`/`TIMEOUT`; that exit is expected for
+the recorded three CatBoost failures and must not be interpreted as missing
+artifacts.
+
+```bash
+TORCH_PYTHON="${TORCH_PYTHON:?set the approved torch-common interpreter}"
+TABULAR_PYTHON="${TABULAR_PYTHON:?set the approved tabular-cpu interpreter}"
+DATASET_ROOT="${LITHOFACIES_P5_DATASET_ROOT:?point to the existing lithofacies directory}"
+GPU_LOCK="${VOLVE_P5_GPU_LOCK:-$HOME/.cache/volve-p5/locks/gpu0.lock}"
+STAGE3=_pipelines/02_task_datasets/lithofacies/lithofacies_p5_stage3.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$STAGE3" prepare-batch \
+  --dataset-root "$DATASET_ROOT" --batch-file "$OUT/runtime/development_logo4.npz"
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$STAGE3" run \
+  --batch-file "$OUT/runtime/development_logo4.npz" \
+  --models xgboost_multisoftprob_window,catboost_multiclass_window \
+  --folds 0,1,2,3 --repeats 0,1,2 --device cpu \
+  --output "$OUT/runtime/tabular_estimators.json"
+
+flock -w 900 "$GPU_LOCK" env PYTHONDONTWRITEBYTECODE=1 \
+  "$TABULAR_PYTHON" "$STAGE3" run \
+  --batch-file "$OUT/runtime/development_logo4.npz" \
+  --models inceptiontime_window --folds 0,1,2,3 --repeats 0,1,2 \
+  --device cuda:0 --output "$OUT/runtime/inceptiontime.json"
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$STAGE3" finalize \
+  --inputs "$OUT/runtime/tabular_estimators.json" "$OUT/runtime/inceptiontime.json" \
+  --batch-file "$OUT/runtime/development_logo4.npz" --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests \
+  -p 'test_lithofacies_p5*.py' -v
+```
+
+Canonical evidence is `_outputs/p5_stage3/p5_stage3_results.jsonl`,
+`p5_stage3_summary.json`, `p5_stage3_gm09_p_leaderboard.json`,
+`p5_stage3_oof_manifest.json`, `p5_stage3_visualization_manifest.json`, and the
+six PNG files under `_outputs/p5_stage3/figures/`.
