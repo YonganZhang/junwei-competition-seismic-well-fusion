@@ -114,4 +114,3 @@ class TinyMultiOutputMLP:
 @register_model("tiny_mlp")
 def build_model(**kwargs) -> TinyMultiOutputMLP:
     return TinyMultiOutputMLP(**kwargs)
-

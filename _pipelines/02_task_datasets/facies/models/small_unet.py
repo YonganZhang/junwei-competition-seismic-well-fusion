@@ -51,4 +51,3 @@ class SmallUNet(nn.Module):
 def build_model(*, num_classes: int, base_channels: int = 8, **_: object) -> nn.Module:
     """Build the registered facies baseline model."""
     return SmallUNet(num_classes=num_classes, base_channels=base_channels)
-
