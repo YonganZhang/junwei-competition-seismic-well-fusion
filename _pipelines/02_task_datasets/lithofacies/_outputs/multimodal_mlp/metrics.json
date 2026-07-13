@@ -1,0 +1,480 @@
+{
+  "pipeline_version": "gm09_multimodal_v1",
+  "model_name": "multimodal_mlp",
+  "architecture": "MultimodalMLP",
+  "device": "cpu",
+  "seed": 2693,
+  "epochs": 80,
+  "best_epoch": 2,
+  "best_guard_loss": 1.8434728980064392,
+  "elapsed_seconds": 4.246966802049428,
+  "sample_counts": {
+    "train": 360,
+    "guard": 87,
+    "test": 120
+  },
+  "class_support": {
+    "train": [
+      8,
+      83,
+      6,
+      32,
+      27,
+      98,
+      99,
+      6,
+      1
+    ],
+    "guard": [
+      3,
+      21,
+      1,
+      8,
+      0,
+      26,
+      28,
+      0,
+      0
+    ],
+    "test": [
+      2,
+      31,
+      2,
+      17,
+      3,
+      24,
+      41,
+      0,
+      0
+    ]
+  },
+  "family_isolation": {
+    "train": [
+      "15/9-19",
+      "15/9-F-14",
+      "15/9-F-15"
+    ],
+    "guard": [
+      "15/9-F-4"
+    ],
+    "test": [
+      "15/9-F-5"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.35,
+    "balanced_accuracy": 0.20967741935483872,
+    "macro_f1": 0.10152098222466556,
+    "fixed_schema_balanced_accuracy": 0.16308243727598568,
+    "supported_class_macro_f1": 0.13052697714599856,
+    "fixed_schema_mean_iou": 0.0670995670995671,
+    "supported_class_mean_iou": 0.0862708719851577,
+    "per_class": [
+      {
+        "class_id": 0,
+        "class_name": "F-MARSH",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "support": 2,
+        "predicted": 0
+      },
+      {
+        "class_id": 1,
+        "class_name": "F-MOUTHBAR",
+        "precision": 0.39473684210526316,
+        "recall": 0.967741935483871,
+        "f1": 0.5607476635514018,
+        "iou": 0.38961038961038963,
+        "support": 31,
+        "predicted": 76
+      },
+      {
+        "class_id": 2,
+        "class_name": "F-OFFSHORE",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "support": 2,
+        "predicted": 0
+      },
+      {
+        "class_id": 3,
+        "class_name": "F-LOWER SHOREFACE",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "support": 17,
+        "predicted": 0
+      },
+      {
+        "class_id": 4,
+        "class_name": "F-UPPER SHOREFACE",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "support": 3,
+        "predicted": 0
+      },
+      {
+        "class_id": 5,
+        "class_name": "F-TIDAL BAR",
+        "precision": 0.2727272727272727,
+        "recall": 0.5,
+        "f1": 0.3529411764705882,
+        "iou": 0.21428571428571427,
+        "support": 24,
+        "predicted": 44
+      },
+      {
+        "class_id": 6,
+        "class_name": "F-TIDAL CHANNEL",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "support": 41,
+        "predicted": 0
+      },
+      {
+        "class_id": 7,
+        "class_name": "F-TIDAL FLAT MUDDY",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "support": 0,
+        "predicted": 0
+      },
+      {
+        "class_id": 8,
+        "class_name": "F-TIDAL FLAT SANDY",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "iou": 0.0,
+        "support": 0,
+        "predicted": 0
+      }
+    ],
+    "confusion_matrix": [
+      [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        30,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        13,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        12,
+        0,
+        0,
+        0,
+        12,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        19,
+        0,
+        0,
+        0,
+        22,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "evaluated_samples": 120
+  },
+  "per_well_test_metrics": {
+    "15/9-F-5": {
+      "accuracy": 0.35,
+      "balanced_accuracy": 0.20967741935483872,
+      "macro_f1": 0.10152098222466556,
+      "fixed_schema_balanced_accuracy": 0.16308243727598568,
+      "supported_class_macro_f1": 0.13052697714599856,
+      "fixed_schema_mean_iou": 0.0670995670995671,
+      "supported_class_mean_iou": 0.0862708719851577,
+      "per_class": [
+        {
+          "class_id": 0,
+          "class_name": "F-MARSH",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "iou": 0.0,
+          "support": 2,
+          "predicted": 0
+        },
+        {
+          "class_id": 1,
+          "class_name": "F-MOUTHBAR",
+          "precision": 0.39473684210526316,
+          "recall": 0.967741935483871,
+          "f1": 0.5607476635514018,
+          "iou": 0.38961038961038963,
+          "support": 31,
+          "predicted": 76
+        },
+        {
+          "class_id": 2,
+          "class_name": "F-OFFSHORE",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "iou": 0.0,
+          "support": 2,
+          "predicted": 0
+        },
+        {
+          "class_id": 3,
+          "class_name": "F-LOWER SHOREFACE",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "iou": 0.0,
+          "support": 17,
+          "predicted": 0
+        },
+        {
+          "class_id": 4,
+          "class_name": "F-UPPER SHOREFACE",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "iou": 0.0,
+          "support": 3,
+          "predicted": 0
+        },
+        {
+          "class_id": 5,
+          "class_name": "F-TIDAL BAR",
+          "precision": 0.2727272727272727,
+          "recall": 0.5,
+          "f1": 0.3529411764705882,
+          "iou": 0.21428571428571427,
+          "support": 24,
+          "predicted": 44
+        },
+        {
+          "class_id": 6,
+          "class_name": "F-TIDAL CHANNEL",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "iou": 0.0,
+          "support": 41,
+          "predicted": 0
+        },
+        {
+          "class_id": 7,
+          "class_name": "F-TIDAL FLAT MUDDY",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "iou": 0.0,
+          "support": 0,
+          "predicted": 0
+        },
+        {
+          "class_id": 8,
+          "class_name": "F-TIDAL FLAT SANDY",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "iou": 0.0,
+          "support": 0,
+          "predicted": 0
+        }
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          30,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          13,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          19,
+          0,
+          0,
+          0,
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluated_samples": 120
+    }
+  },
+  "artifacts": {
+    "best_checkpoint": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/checkpoints/best.ckpt",
+    "last_checkpoint": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/checkpoints/last.ckpt",
+    "history": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/checkpoints/history.json",
+    "loss_curve": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/loss_curve.png",
+    "confusion_matrix": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/confusion_matrix.png",
+    "predictions": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/best_checkpoint_predictions.png"
+  }
+}

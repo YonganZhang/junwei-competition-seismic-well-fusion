@@ -1,0 +1,2536 @@
+{
+  "pipeline_version": "gm09_multimodal_v1",
+  "label_contract": {
+    "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+    "workbooks": 11,
+    "wells": 11,
+    "intervals": 139,
+    "source": "GM09",
+    "curve_type": "GENETIC FACIES",
+    "field": "Litho Class",
+    "class_names": [
+      "F-MARSH",
+      "F-MOUTHBAR",
+      "F-OFFSHORE",
+      "F-LOWER SHOREFACE",
+      "F-UPPER SHOREFACE",
+      "F-TIDAL BAR",
+      "F-TIDAL CHANNEL",
+      "F-TIDAL FLAT MUDDY",
+      "F-TIDAL FLAT SANDY"
+    ],
+    "excluded": [
+      "LITH",
+      "UNKNOWN",
+      "UNDEFINED",
+      "out-of-interval"
+    ]
+  },
+  "split_contract": {
+    "unit": "mother well family including sidetracks",
+    "assignment_before": [
+      "resampling",
+      "windowing",
+      "normalization"
+    ],
+    "frozen_family_partitions": {
+      "15/9-19": "train",
+      "15/9-F-12": "train",
+      "15/9-F-14": "train",
+      "15/9-F-15": "train",
+      "15/9-F-4": "guard",
+      "15/9-F-5": "test"
+    },
+    "usable_families": {
+      "train": [
+        "15/9-19",
+        "15/9-F-14",
+        "15/9-F-15"
+      ],
+      "guard": [
+        "15/9-F-4"
+      ],
+      "test": [
+        "15/9-F-5"
+      ]
+    },
+    "guard_storage": "guard samples are stored in lithofacies/train with meta.partition=guard; optimizer filters them out"
+  },
+  "input_contract": {
+    "log_channels": [
+      "gamma_ray",
+      "acoustic_slowness",
+      "caliper",
+      "bulk_density",
+      "neutron_porosity",
+      "deep_resistivity",
+      "rate_of_penetration",
+      "weight_on_bit",
+      "rotary_speed",
+      "flow_rate",
+      "torque",
+      "standpipe_pressure",
+      "equivalent_circulating_density"
+    ],
+    "leakage_policy": "strict observed/basic measurement whitelist; no facies/petrophysical target derivatives",
+    "log_window_samples": 33,
+    "log_step_m": 0.5,
+    "sample_step_m": 2.0,
+    "max_log_distance_m": 0.6,
+    "min_log_mask_fraction": 0.05,
+    "seismic_source": "ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME",
+    "seismic_shape": [
+      3,
+      3,
+      33
+    ],
+    "weak_tie": "official MD/TWT/XY picks, bracketed interpolation only, no extrapolation"
+  },
+  "sample_counts": {
+    "train": 360,
+    "guard": 87,
+    "test": 120
+  },
+  "class_counts": {
+    "train": {
+      "F-TIDAL BAR": 98,
+      "F-UPPER SHOREFACE": 27,
+      "F-OFFSHORE": 6,
+      "F-TIDAL CHANNEL": 99,
+      "F-MOUTHBAR": 83,
+      "F-LOWER SHOREFACE": 32,
+      "F-MARSH": 8,
+      "F-TIDAL FLAT MUDDY": 6,
+      "F-TIDAL FLAT SANDY": 1
+    },
+    "guard": {
+      "F-TIDAL BAR": 26,
+      "F-LOWER SHOREFACE": 8,
+      "F-OFFSHORE": 1,
+      "F-TIDAL CHANNEL": 28,
+      "F-MOUTHBAR": 21,
+      "F-MARSH": 3
+    },
+    "test": {
+      "F-TIDAL BAR": 24,
+      "F-UPPER SHOREFACE": 3,
+      "F-LOWER SHOREFACE": 17,
+      "F-OFFSHORE": 2,
+      "F-TIDAL CHANNEL": 41,
+      "F-MOUTHBAR": 31,
+      "F-MARSH": 2
+    }
+  },
+  "per_well": {
+    "15/9-19 A": {
+      "well_id": "15/9-19 A",
+      "family_id": "15/9-19",
+      "partition": "train",
+      "label_intervals": 15,
+      "requested_centers": 51,
+      "kept_samples": 51,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+          "size_bytes": 8810367,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "LFP_GR",
+              "points": 3850,
+              "depth_range_m": [
+                3500.0183,
+                4086.9106
+              ]
+            },
+            "acoustic_slowness": {
+              "mnemonic": "LFP_DT",
+              "points": 3905,
+              "depth_range_m": [
+                3500.0183,
+                4094.9878
+              ]
+            },
+            "caliper": {
+              "mnemonic": "LFP_CALI",
+              "points": 3905,
+              "depth_range_m": [
+                3500.0183,
+                4094.9878
+              ]
+            },
+            "bulk_density": {
+              "mnemonic": "LFP_RHOB",
+              "points": 3902,
+              "depth_range_m": [
+                3500.0183,
+                4094.9878
+              ]
+            },
+            "neutron_porosity": {
+              "mnemonic": "LFP_NPHI",
+              "points": 3905,
+              "depth_range_m": [
+                3500.0183,
+                4094.9878
+              ]
+            },
+            "deep_resistivity": {
+              "mnemonic": "LFP_RT",
+              "points": 3905,
+              "depth_range_m": [
+                3500.0183,
+                4094.9878
+              ]
+            }
+          },
+          "index_points": 3905
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 3850,
+        "acoustic_slowness": 3905,
+        "caliper": 3905,
+        "bulk_density": 3902,
+        "neutron_porosity": 3905,
+        "deep_resistivity": 3905,
+        "rate_of_penetration": 0,
+        "weight_on_bit": 0,
+        "rotary_speed": 0,
+        "flow_rate": 0,
+        "torque": 0,
+        "standpipe_pressure": 0,
+        "equivalent_circulating_density": 0
+      },
+      "official_tie": {
+        "points": 13,
+        "md_range_m": [
+          106.0,
+          4097.0
+        ],
+        "surfaces": [
+          "Seabed",
+          "Utsira Fm. Top",
+          "HORDALAND GP. Top",
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base",
+          "Skagerrak Fm. Top",
+          "Smith Bank Fm. Top"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-19 BT2": {
+      "well_id": "15/9-19 BT2",
+      "family_id": "15/9-19",
+      "partition": "train",
+      "label_intervals": 16,
+      "requested_centers": 71,
+      "kept_samples": 71,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/06.LFP/15_9-19 BT2/159-19BT2_LFP.las"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/06.LFP/15_9-19 BT2/159-19BT2_LFP.las",
+          "size_bytes": 15769458,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "LFP_GR",
+              "points": 6895,
+              "depth_range_m": [
+                3170.0725,
+                4220.8706
+              ]
+            },
+            "acoustic_slowness": {
+              "mnemonic": "LFP_DT",
+              "points": 6955,
+              "depth_range_m": [
+                3170.0725,
+                4229.8623
+              ]
+            },
+            "bulk_density": {
+              "mnemonic": "LFP_RHOB",
+              "points": 6955,
+              "depth_range_m": [
+                3170.0725,
+                4229.8623
+              ]
+            },
+            "neutron_porosity": {
+              "mnemonic": "LFP_NPHI",
+              "points": 6855,
+              "depth_range_m": [
+                3178.4546,
+                4223.0039
+              ]
+            },
+            "deep_resistivity": {
+              "mnemonic": "LFP_RT",
+              "points": 6955,
+              "depth_range_m": [
+                3170.0725,
+                4229.8623
+              ]
+            }
+          },
+          "index_points": 6955
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 6895,
+        "acoustic_slowness": 6955,
+        "caliper": 0,
+        "bulk_density": 6955,
+        "neutron_porosity": 6855,
+        "deep_resistivity": 6955,
+        "rate_of_penetration": 0,
+        "weight_on_bit": 0,
+        "rotary_speed": 0,
+        "flow_rate": 0,
+        "torque": 0,
+        "standpipe_pressure": 0,
+        "equivalent_circulating_density": 0
+      },
+      "official_tie": {
+        "points": 12,
+        "md_range_m": [
+          106.0,
+          4214.0
+        ],
+        "surfaces": [
+          "Seabed",
+          "Utsira Fm. Top",
+          "HORDALAND GP. Top",
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base",
+          "Smith Bank Fm. Top"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-19 SR": {
+      "well_id": "15/9-19 SR",
+      "family_id": "15/9-19",
+      "partition": "train",
+      "label_intervals": 6,
+      "requested_centers": 10,
+      "kept_samples": 10,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/04.COMPOSITE/15_9-19 SR/STAT1990__30-1__15-9-19_SR__COMPOSITE__1.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/04.COMPOSITE/15_9-19 SR/STAT1990__30-1__15-9-19_SR__COMPOSITE__1.LAS",
+          "size_bytes": 2621599,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GR",
+              "points": 28117,
+              "depth_range_m": [
+                102.1568,
+                4634.6852
+              ]
+            },
+            "acoustic_slowness": {
+              "mnemonic": "AC",
+              "points": 7007,
+              "depth_range_m": [
+                3550.2068,
+                4617.9212
+              ]
+            },
+            "caliper": {
+              "mnemonic": "CALI",
+              "points": 7007,
+              "depth_range_m": [
+                3550.2068,
+                4617.9212
+              ]
+            },
+            "bulk_density": {
+              "mnemonic": "DEN",
+              "points": 7084,
+              "depth_range_m": [
+                3550.2068,
+                4629.656
+              ]
+            },
+            "neutron_porosity": {
+              "mnemonic": "NEU",
+              "points": 7096,
+              "depth_range_m": [
+                3550.2068,
+                4631.4848
+              ]
+            },
+            "deep_resistivity": {
+              "mnemonic": "RDEP",
+              "points": 12223,
+              "depth_range_m": [
+                105.8144,
+                4636.514
+              ]
+            }
+          },
+          "index_points": 29754
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 28117,
+        "acoustic_slowness": 7007,
+        "caliper": 7007,
+        "bulk_density": 7084,
+        "neutron_porosity": 7096,
+        "deep_resistivity": 12223,
+        "rate_of_penetration": 0,
+        "weight_on_bit": 0,
+        "rotary_speed": 0,
+        "flow_rate": 0,
+        "torque": 0,
+        "standpipe_pressure": 0,
+        "equivalent_circulating_density": 0
+      },
+      "official_tie": {
+        "points": 12,
+        "md_range_m": [
+          106.0,
+          4579.0
+        ],
+        "surfaces": [
+          "Seabed",
+          "Utsira Fm. Top",
+          "HORDALAND GP. Top",
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base",
+          "Smith Bank Fm. Top"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-F-12": {
+      "well_id": "15/9-F-12",
+      "family_id": "15/9-F-12",
+      "partition": "train",
+      "label_intervals": 15,
+      "requested_centers": 76,
+      "kept_samples": 0,
+      "dropped": {
+        "no_log_at_label_center": 76
+      },
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_3.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_4.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1798503,
+          "status": "loaded",
+          "selected_curves": {
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 8239,
+              "depth_range_m": [
+                0.61,
+                1546.1
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 8283,
+              "depth_range_m": [
+                0.61,
+                1546.1
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 8283,
+              "depth_range_m": [
+                0.61,
+                1546.1
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 8282,
+              "depth_range_m": [
+                0.61,
+                1546.1
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 8283,
+              "depth_range_m": [
+                0.61,
+                1546.1
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 8099,
+              "depth_range_m": [
+                0.61,
+                1546.1
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 8856,
+              "depth_range_m": [
+                0.76,
+                1350.26
+              ]
+            }
+          },
+          "index_points": 10142
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+          "size_bytes": 1353696,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_RT",
+              "points": 4911,
+              "depth_range_m": [
+                1350.1116,
+                2500.5791
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 7530,
+              "depth_range_m": [
+                1361.8464,
+                2512.6189
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 7554,
+              "depth_range_m": [
+                1361.5416,
+                2512.6189
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 7554,
+              "depth_range_m": [
+                1361.5416,
+                2512.6189
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 7554,
+              "depth_range_m": [
+                1361.5416,
+                2512.6189
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 7554,
+              "depth_range_m": [
+                1361.5416,
+                2512.6189
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 7554,
+              "depth_range_m": [
+                1361.5416,
+                2512.6189
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 7554,
+              "depth_range_m": [
+                1350.1116,
+                2501.1887
+              ]
+            }
+          },
+          "index_points": 7629
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_3.LAS",
+          "size_bytes": 110625,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_RT",
+              "points": 523,
+              "depth_range_m": [
+                2480.0051,
+                2560.3201
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 592,
+              "depth_range_m": [
+                2480.0051,
+                2572.2073
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 606,
+              "depth_range_m": [
+                2480.0051,
+                2572.2073
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 606,
+              "depth_range_m": [
+                2480.0051,
+                2572.2073
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 604,
+              "depth_range_m": [
+                2480.0051,
+                2572.2073
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 605,
+              "depth_range_m": [
+                2480.0051,
+                2572.2073
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 606,
+              "depth_range_m": [
+                2480.0051,
+                2572.2073
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 532,
+              "depth_range_m": [
+                2480.0051,
+                2560.9297
+              ]
+            }
+          },
+          "index_points": 606
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-12/WL_RAW_BHPR-GR-MECH_MWD_4.LAS",
+          "size_bytes": 821837,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_RT",
+              "points": 3428,
+              "depth_range_m": [
+                2450.1348,
+                3075.8892
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 4130,
+              "depth_range_m": [
+                2480.3101,
+                3113.2273
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 4157,
+              "depth_range_m": [
+                2480.0051,
+                3113.3796
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 4157,
+              "depth_range_m": [
+                2480.0051,
+                3113.3796
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 4157,
+              "depth_range_m": [
+                2480.0051,
+                3113.3796
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 4157,
+              "depth_range_m": [
+                2480.0051,
+                3113.3796
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 4157,
+              "depth_range_m": [
+                2480.0051,
+                3113.3796
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 4113,
+              "depth_range_m": [
+                2450.1348,
+                3076.8037
+              ]
+            }
+          },
+          "index_points": 4353
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 8228,
+        "acoustic_slowness": 0,
+        "caliper": 0,
+        "bulk_density": 0,
+        "neutron_porosity": 0,
+        "deep_resistivity": 0,
+        "rate_of_penetration": 19649,
+        "weight_on_bit": 19739,
+        "rotary_speed": 19739,
+        "flow_rate": 19738,
+        "torque": 19739,
+        "standpipe_pressure": 19555,
+        "equivalent_circulating_density": 20187
+      },
+      "official_tie": {
+        "points": 8,
+        "md_range_m": [
+          2539.5,
+          3337.56
+        ],
+        "surfaces": [
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base",
+          "Skagerrak Fm. Top"
+        ]
+      },
+      "status": "excluded_no_joint_samples"
+    },
+    "15/9-F-14": {
+      "well_id": "15/9-F-14",
+      "family_id": "15/9-F-14",
+      "partition": "train",
+      "label_intervals": 16,
+      "requested_centers": 101,
+      "kept_samples": 101,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-14/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-14/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-14/WL_RAW_BHPR-GR-MECH_MWD_3.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-14/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1749518,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_UNC_RT",
+              "points": 5368,
+              "depth_range_m": [
+                1050.036,
+                2268.7788
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 8068,
+              "depth_range_m": [
+                1050.3408,
+                2281.5804
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 8082,
+              "depth_range_m": [
+                1050.036,
+                2281.5804
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 8082,
+              "depth_range_m": [
+                1050.036,
+                2281.5804
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 8082,
+              "depth_range_m": [
+                1050.036,
+                2281.5804
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 8082,
+              "depth_range_m": [
+                1050.036,
+                2281.5804
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 8082,
+              "depth_range_m": [
+                1050.036,
+                2281.5804
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 7827,
+              "depth_range_m": [
+                1076.706,
+                2269.3884
+              ]
+            }
+          },
+          "index_points": 8082
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-14/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+          "size_bytes": 744995,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_RT",
+              "points": 1531,
+              "depth_range_m": [
+                2250.0336,
+                2758.8972
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 3520,
+              "depth_range_m": [
+                2250.3384,
+                2787.2436
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 3526,
+              "depth_range_m": [
+                2250.0336,
+                2787.2436
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 3526,
+              "depth_range_m": [
+                2250.0336,
+                2787.2436
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 3526,
+              "depth_range_m": [
+                2250.0336,
+                2787.2436
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 3526,
+              "depth_range_m": [
+                2250.0336,
+                2787.2436
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 3526,
+              "depth_range_m": [
+                2250.0336,
+                2787.2436
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 3349,
+              "depth_range_m": [
+                2250.0336,
+                2760.2688
+              ]
+            }
+          },
+          "index_points": 3530
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-14/WL_RAW_BHPR-GR-MECH_MWD_3.LAS",
+          "size_bytes": 1349449,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA_ECO_RT",
+              "points": 4169,
+              "depth_range_m": [
+                2778.0996,
+                3740.2008
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 6374,
+              "depth_range_m": [
+                2778.0996,
+                3749.9544
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 6378,
+              "depth_range_m": [
+                2778.0996,
+                3749.9544
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 6378,
+              "depth_range_m": [
+                2778.0996,
+                3749.9544
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 6378,
+              "depth_range_m": [
+                2778.0996,
+                3749.9544
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 6378,
+              "depth_range_m": [
+                2778.0996,
+                3749.9544
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 6378,
+              "depth_range_m": [
+                2778.0996,
+                3749.9544
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD",
+              "points": 6313,
+              "depth_range_m": [
+                2778.0996,
+                3740.0484
+              ]
+            }
+          },
+          "index_points": 6378
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 10997,
+        "acoustic_slowness": 0,
+        "caliper": 0,
+        "bulk_density": 0,
+        "neutron_porosity": 0,
+        "deep_resistivity": 0,
+        "rate_of_penetration": 17697,
+        "weight_on_bit": 17717,
+        "rotary_speed": 17717,
+        "flow_rate": 17717,
+        "torque": 17717,
+        "standpipe_pressure": 17717,
+        "equivalent_circulating_density": 17361
+      },
+      "official_tie": {
+        "points": 15,
+        "md_range_m": [
+          146.0,
+          3680.2
+        ],
+        "surfaces": [
+          "Seabed",
+          "Utsira Fm. Top",
+          "HORDALAND GP. Top",
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base",
+          "Sleipner Fm. Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base",
+          "Hugin Fm. VOLVE Base"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-F-15": {
+      "well_id": "15/9-F-15",
+      "family_id": "15/9-F-15",
+      "partition": "train",
+      "label_intervals": 14,
+      "requested_centers": 55,
+      "kept_samples": 55,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-15/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-15/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-15/WL_RAW_BHPR-GR-MECH_MWD_2.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1594825,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA_ECO_RT",
+              "points": 7379,
+              "depth_range_m": [
+                2535.0216,
+                4078.986
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 10133,
+              "depth_range_m": [
+                2543.2512,
+                4089.8064
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 10151,
+              "depth_range_m": [
+                2542.9464,
+                4089.8064
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 10151,
+              "depth_range_m": [
+                2542.9464,
+                4089.8064
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 10151,
+              "depth_range_m": [
+                2542.9464,
+                4089.8064
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 10151,
+              "depth_range_m": [
+                2542.9464,
+                4089.8064
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 10151,
+              "depth_range_m": [
+                2542.9464,
+                4089.8064
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD",
+              "points": 9968,
+              "depth_range_m": [
+                2535.0216,
+                4078.8336
+              ]
+            }
+          },
+          "index_points": 10203
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1956626,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_RT",
+              "points": 6330,
+              "depth_range_m": [
+                1365.0468,
+                2516.4288
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 7675,
+              "depth_range_m": [
+                1365.0468,
+                2536.3932
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 7687,
+              "depth_range_m": [
+                1365.0468,
+                2536.3932
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 7687,
+              "depth_range_m": [
+                1365.0468,
+                2536.3932
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 7687,
+              "depth_range_m": [
+                1365.0468,
+                2536.3932
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 7687,
+              "depth_range_m": [
+                1365.0468,
+                2536.3932
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 7687,
+              "depth_range_m": [
+                1365.0468,
+                2536.3932
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 7561,
+              "depth_range_m": [
+                1365.0468,
+                2517.1908
+              ]
+            }
+          },
+          "index_points": 7687
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+          "size_bytes": 1184393,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRM1",
+              "points": 4937,
+              "depth_range_m": [
+                217.02,
+                1348.89
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 7609,
+              "depth_range_m": [
+                216.87,
+                1378.15
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 7621,
+              "depth_range_m": [
+                216.87,
+                1378.15
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 7621,
+              "depth_range_m": [
+                216.87,
+                1378.15
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 7621,
+              "depth_range_m": [
+                216.87,
+                1378.15
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 7621,
+              "depth_range_m": [
+                216.87,
+                1378.15
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 7621,
+              "depth_range_m": [
+                216.87,
+                1378.15
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_MWD",
+              "points": 4757,
+              "depth_range_m": [
+                217.02,
+                1351.48
+              ]
+            }
+          },
+          "index_points": 7621
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 18646,
+        "acoustic_slowness": 0,
+        "caliper": 0,
+        "bulk_density": 0,
+        "neutron_porosity": 0,
+        "deep_resistivity": 0,
+        "rate_of_penetration": 25414,
+        "weight_on_bit": 25456,
+        "rotary_speed": 25456,
+        "flow_rate": 25456,
+        "torque": 25456,
+        "standpipe_pressure": 25456,
+        "equivalent_circulating_density": 22286
+      },
+      "official_tie": {
+        "points": 7,
+        "md_range_m": [
+          2672.41,
+          4062.72
+        ],
+        "surfaces": [
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Base"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-F-15 A": {
+      "well_id": "15/9-F-15 A",
+      "family_id": "15/9-F-15",
+      "partition": "train",
+      "label_intervals": 13,
+      "requested_centers": 48,
+      "kept_samples": 48,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-15 A/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-15 A/WL_RAW_BHPR-GR-MECH_MWD_1.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15 A/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 2243334,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA_ECO_RT",
+              "points": 2786,
+              "depth_range_m": [
+                3170.0724,
+                4086.1488
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 10410,
+              "depth_range_m": [
+                2500.4268,
+                4094.988
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 10456,
+              "depth_range_m": [
+                2500.122,
+                4094.988
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 10456,
+              "depth_range_m": [
+                2500.122,
+                4094.988
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 10369,
+              "depth_range_m": [
+                2500.122,
+                4094.988
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 10450,
+              "depth_range_m": [
+                2500.122,
+                4094.988
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 10311,
+              "depth_range_m": [
+                2500.122,
+                4094.988
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD",
+              "points": 10407,
+              "depth_range_m": [
+                2500.122,
+                4085.9964
+              ]
+            }
+          },
+          "index_points": 10466
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15 A/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1558976,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_UNC_RT",
+              "points": 7943,
+              "depth_range_m": [
+                1350.1116,
+                2570.6831
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 8119,
+              "depth_range_m": [
+                1350.1116,
+                2591.1047
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 8143,
+              "depth_range_m": [
+                1350.1116,
+                2591.1047
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 8143,
+              "depth_range_m": [
+                1350.1116,
+                2591.1047
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 8142,
+              "depth_range_m": [
+                1350.1116,
+                2591.1047
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 8142,
+              "depth_range_m": [
+                1350.1116,
+                2591.1047
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 8142,
+              "depth_range_m": [
+                1350.1116,
+                2591.1047
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 8015,
+              "depth_range_m": [
+                1350.1116,
+                2571.4453
+              ]
+            }
+          },
+          "index_points": 8144
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 10729,
+        "acoustic_slowness": 0,
+        "caliper": 0,
+        "bulk_density": 0,
+        "neutron_porosity": 0,
+        "deep_resistivity": 0,
+        "rate_of_penetration": 18286,
+        "weight_on_bit": 18353,
+        "rotary_speed": 18353,
+        "flow_rate": 18278,
+        "torque": 18348,
+        "standpipe_pressure": 18247,
+        "equivalent_circulating_density": 18230
+      },
+      "official_tie": {
+        "points": 9,
+        "md_range_m": [
+          146.0,
+          3897.01
+        ],
+        "surfaces": [
+          "NORDLAND GP. Top",
+          "Utsira Fm. Top",
+          "HORDALAND GP. Top",
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-F-15 B": {
+      "well_id": "15/9-F-15 B",
+      "family_id": "15/9-F-15",
+      "partition": "train",
+      "label_intervals": 3,
+      "requested_centers": 6,
+      "kept_samples": 5,
+      "dropped": {
+        "outside_bracketed_official_picks": 1
+      },
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-15 B/WL_RAW_BHPR-GR-MECH_MWD_1.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15 B/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 333408,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA_ECO_RT",
+              "points": 1070,
+              "depth_range_m": [
+                3175.1016,
+                3487.5216
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 2113,
+              "depth_range_m": [
+                3175.1016,
+                3497.58
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 2115,
+              "depth_range_m": [
+                3175.1016,
+                3497.58
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 2115,
+              "depth_range_m": [
+                3175.1016,
+                3497.58
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 2115,
+              "depth_range_m": [
+                3175.1016,
+                3497.58
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 2115,
+              "depth_range_m": [
+                3175.1016,
+                3497.58
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 2115,
+              "depth_range_m": [
+                3175.1016,
+                3497.58
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD",
+              "points": 2052,
+              "depth_range_m": [
+                3175.1016,
+                3487.674
+              ]
+            }
+          },
+          "index_points": 2117
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 1070,
+        "acoustic_slowness": 0,
+        "caliper": 0,
+        "bulk_density": 0,
+        "neutron_porosity": 0,
+        "deep_resistivity": 0,
+        "rate_of_penetration": 2113,
+        "weight_on_bit": 2115,
+        "rotary_speed": 2115,
+        "flow_rate": 2115,
+        "torque": 2115,
+        "standpipe_pressure": 2115,
+        "equivalent_circulating_density": 2052
+      },
+      "official_tie": {
+        "points": 6,
+        "md_range_m": [
+          2608.55,
+          3378.59
+        ],
+        "surfaces": [
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-F-15 C": {
+      "well_id": "15/9-F-15 C",
+      "family_id": "15/9-F-15",
+      "partition": "train",
+      "label_intervals": 13,
+      "requested_centers": 19,
+      "kept_samples": 19,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-15 C/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-15 C/WL_RAW_BHPR-GR-MECH_MWD_1.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15 C/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 513592,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_RT",
+              "points": 2238,
+              "depth_range_m": [
+                2550.1092,
+                2900.3244
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 2418,
+              "depth_range_m": [
+                2550.1092,
+                2919.984
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 2428,
+              "depth_range_m": [
+                2550.1092,
+                2919.984
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 2428,
+              "depth_range_m": [
+                2550.1092,
+                2919.984
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 2426,
+              "depth_range_m": [
+                2550.1092,
+                2919.984
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 2428,
+              "depth_range_m": [
+                2550.1092,
+                2919.984
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 2428,
+              "depth_range_m": [
+                2550.1092,
+                2919.984
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 2303,
+              "depth_range_m": [
+                2550.1092,
+                2900.934
+              ]
+            }
+          },
+          "index_points": 2428
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-15 C/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 532258,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA_ECO_RT",
+              "points": 1420,
+              "depth_range_m": [
+                2920.1364,
+                3222.1932
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 2023,
+              "depth_range_m": [
+                2920.4412,
+                3231.9468
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 2042,
+              "depth_range_m": [
+                2920.1364,
+                3231.9468
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 2042,
+              "depth_range_m": [
+                2920.1364,
+                3231.9468
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 2020,
+              "depth_range_m": [
+                2922.5748,
+                3231.9468
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 2025,
+              "depth_range_m": [
+                2922.5748,
+                3231.9468
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 2025,
+              "depth_range_m": [
+                2922.5748,
+                3231.9468
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD",
+              "points": 1984,
+              "depth_range_m": [
+                2920.1364,
+                3222.3456
+              ]
+            }
+          },
+          "index_points": 2047
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 3658,
+        "acoustic_slowness": 0,
+        "caliper": 0,
+        "bulk_density": 0,
+        "neutron_porosity": 0,
+        "deep_resistivity": 0,
+        "rate_of_penetration": 4441,
+        "weight_on_bit": 4470,
+        "rotary_speed": 4470,
+        "flow_rate": 4446,
+        "torque": 4453,
+        "standpipe_pressure": 4453,
+        "equivalent_circulating_density": 4287
+      },
+      "official_tie": {
+        "points": 7,
+        "md_range_m": [
+          2606.03,
+          3161.67
+        ],
+        "surfaces": [
+          "Ty Fm. Top",
+          "SHETLAND GP. Top",
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-F-4": {
+      "well_id": "15/9-F-4",
+      "family_id": "15/9-F-4",
+      "partition": "guard",
+      "label_intervals": 13,
+      "requested_centers": 87,
+      "kept_samples": 87,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-4/Run4_EcoScope_Processed_Data/Volve_15_9_F_4_LWD_Run4_EcoScope_CRC_PrePlus_Basic_Logs.las",
+        "Well_logs/02.LWD_EWL/15_9-F-4/Run5_EcoScope_Processed_Data/Volve_15_9_F_4_LWD_Run5_EcoScope_CRC_PrePlus_Basic_Logs.las",
+        "Well_logs/02.LWD_EWL/15_9-F-4/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-4/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-4/WL_RAW_BHPR-GR-MECH_MWD_3.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-4/Run4_EcoScope_Processed_Data/Volve_15_9_F_4_LWD_Run4_EcoScope_CRC_PrePlus_Basic_Logs.las",
+          "size_bytes": 328256,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA",
+              "points": 1650,
+              "depth_range_m": [
+                2741.371,
+                2992.6786
+              ]
+            },
+            "caliper": {
+              "mnemonic": "BCAV",
+              "points": 1650,
+              "depth_range_m": [
+                2741.371,
+                2992.6786
+              ]
+            },
+            "bulk_density": {
+              "mnemonic": "ROBB",
+              "points": 1650,
+              "depth_range_m": [
+                2741.371,
+                2992.6786
+              ]
+            },
+            "neutron_porosity": {
+              "mnemonic": "BPHI",
+              "points": 1649,
+              "depth_range_m": [
+                2741.371,
+                2992.6786
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5_RM",
+              "points": 1650,
+              "depth_range_m": [
+                2741.371,
+                2992.6786
+              ]
+            }
+          },
+          "index_points": 1650
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-4/Run5_EcoScope_Processed_Data/Volve_15_9_F_4_LWD_Run5_EcoScope_CRC_PrePlus_Basic_Logs.las",
+          "size_bytes": 770479,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA",
+              "points": 3568,
+              "depth_range_m": [
+                2955.95,
+                3499.5608
+              ]
+            },
+            "caliper": {
+              "mnemonic": "BCAV",
+              "points": 3636,
+              "depth_range_m": [
+                2955.95,
+                3509.924
+              ]
+            },
+            "bulk_density": {
+              "mnemonic": "ROBB",
+              "points": 3568,
+              "depth_range_m": [
+                2955.95,
+                3499.5608
+              ]
+            },
+            "neutron_porosity": {
+              "mnemonic": "BPHI",
+              "points": 3631,
+              "depth_range_m": [
+                2955.95,
+                3509.924
+              ]
+            },
+            "deep_resistivity": {
+              "mnemonic": "RT_ARC",
+              "points": 3636,
+              "depth_range_m": [
+                2955.95,
+                3509.924
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5_RM",
+              "points": 3636,
+              "depth_range_m": [
+                2955.95,
+                3509.924
+              ]
+            }
+          },
+          "index_points": 3636
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-4/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1697955,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA_ECO_RT",
+              "points": 4073,
+              "depth_range_m": [
+                2677.3632,
+                3499.2564
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 5312,
+              "depth_range_m": [
+                2700.3756,
+                3510.0768
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 5316,
+              "depth_range_m": [
+                2700.0708,
+                3510.0768
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 5316,
+              "depth_range_m": [
+                2700.0708,
+                3510.0768
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 5316,
+              "depth_range_m": [
+                2700.0708,
+                3510.0768
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 5316,
+              "depth_range_m": [
+                2700.0708,
+                3510.0768
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ECO_RT",
+              "points": 4006,
+              "depth_range_m": [
+                2677.3632,
+                3499.104
+              ]
+            }
+          },
+          "index_points": 5589
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-4/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+          "size_bytes": 1245956,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRM1",
+              "points": 2396,
+              "depth_range_m": [
+                232.71,
+                1336.7
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 7337,
+              "depth_range_m": [
+                240.33,
+                1359.87
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 7349,
+              "depth_range_m": [
+                240.03,
+                1359.87
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 7349,
+              "depth_range_m": [
+                240.03,
+                1359.87
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 7349,
+              "depth_range_m": [
+                240.03,
+                1359.87
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 7348,
+              "depth_range_m": [
+                240.03,
+                1359.87
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 7349,
+              "depth_range_m": [
+                240.03,
+                1359.87
+              ]
+            }
+          },
+          "index_points": 7397
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-4/WL_RAW_BHPR-GR-MECH_MWD_3.LAS",
+          "size_bytes": 1353757,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GR_ARC",
+              "points": 9248,
+              "depth_range_m": [
+                1340.05,
+                2749.3
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 9366,
+              "depth_range_m": [
+                1340.05,
+                2769.41
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 9380,
+              "depth_range_m": [
+                1340.05,
+                2769.41
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 9380,
+              "depth_range_m": [
+                1340.05,
+                2769.41
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 9380,
+              "depth_range_m": [
+                1340.05,
+                2769.41
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 9380,
+              "depth_range_m": [
+                1340.05,
+                2769.41
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 9380,
+              "depth_range_m": [
+                1340.05,
+                2769.41
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 9254,
+              "depth_range_m": [
+                1340.05,
+                2750.21
+              ]
+            }
+          },
+          "index_points": 9380
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 20923,
+        "acoustic_slowness": 0,
+        "caliper": 5286,
+        "bulk_density": 5218,
+        "neutron_porosity": 5280,
+        "deep_resistivity": 3636,
+        "rate_of_penetration": 27156,
+        "weight_on_bit": 21896,
+        "rotary_speed": 21896,
+        "flow_rate": 21896,
+        "torque": 21895,
+        "standpipe_pressure": 16598,
+        "equivalent_circulating_density": 13253
+      },
+      "official_tie": {
+        "points": 6,
+        "md_range_m": [
+          2939.0,
+          3423.53
+        ],
+        "surfaces": [
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base"
+        ]
+      },
+      "status": "usable"
+    },
+    "15/9-F-5": {
+      "well_id": "15/9-F-5",
+      "family_id": "15/9-F-5",
+      "partition": "test",
+      "label_intervals": 15,
+      "requested_centers": 120,
+      "kept_samples": 120,
+      "dropped": {},
+      "selected_las_members": [
+        "Well_logs/02.LWD_EWL/15_9-F-5/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-5/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+        "Well_logs/02.LWD_EWL/15_9-F-5/WL_RAW_BHPR-GR-MECH_MWD_2.LAS"
+      ],
+      "las_member_reports": [
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-5/WLC_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1095069,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRMA_ECO_RT",
+              "points": 2798,
+              "depth_range_m": [
+                2893.0092,
+                3782.4156
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 5879,
+              "depth_range_m": [
+                2893.0092,
+                3792.1692
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 5901,
+              "depth_range_m": [
+                2893.0092,
+                3792.1692
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 5901,
+              "depth_range_m": [
+                2893.0092,
+                3792.1692
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 5900,
+              "depth_range_m": [
+                2893.0092,
+                3792.1692
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 5900,
+              "depth_range_m": [
+                2893.0092,
+                3792.1692
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 5900,
+              "depth_range_m": [
+                2893.0092,
+                3792.1692
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD",
+              "points": 5649,
+              "depth_range_m": [
+                2893.0092,
+                3782.2632
+              ]
+            }
+          },
+          "index_points": 5901
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-5/WL_RAW_BHPR-GR-MECH_MWD_1.LAS",
+          "size_bytes": 1527033,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "GRM1",
+              "points": 4774,
+              "depth_range_m": [
+                190.5,
+                1387.45
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 7951,
+              "depth_range_m": [
+                200.41,
+                1415.03
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 7973,
+              "depth_range_m": [
+                200.1,
+                1415.03
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 7973,
+              "depth_range_m": [
+                200.1,
+                1415.03
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 7973,
+              "depth_range_m": [
+                200.1,
+                1415.03
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 7973,
+              "depth_range_m": [
+                200.1,
+                1415.03
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 7973,
+              "depth_range_m": [
+                200.1,
+                1415.03
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_MWD",
+              "points": 4735,
+              "depth_range_m": [
+                195.53,
+                1390.04
+              ]
+            }
+          },
+          "index_points": 8104
+        },
+        {
+          "member": "Well_logs/02.LWD_EWL/15_9-F-5/WL_RAW_BHPR-GR-MECH_MWD_2.LAS",
+          "size_bytes": 2609952,
+          "status": "loaded",
+          "selected_curves": {
+            "gamma_ray": {
+              "mnemonic": "ARC_GR_RT",
+              "points": 6364,
+              "depth_range_m": [
+                1333.1952,
+                2907.4872
+              ]
+            },
+            "rate_of_penetration": {
+              "mnemonic": "ROP5",
+              "points": 10664,
+              "depth_range_m": [
+                1300.1244,
+                2927.604
+              ]
+            },
+            "weight_on_bit": {
+              "mnemonic": "SWOB",
+              "points": 10680,
+              "depth_range_m": [
+                1300.1244,
+                2927.604
+              ]
+            },
+            "rotary_speed": {
+              "mnemonic": "RPM",
+              "points": 10680,
+              "depth_range_m": [
+                1300.1244,
+                2927.604
+              ]
+            },
+            "flow_rate": {
+              "mnemonic": "TFLO",
+              "points": 9915,
+              "depth_range_m": [
+                1377.0864,
+                2927.604
+              ]
+            },
+            "torque": {
+              "mnemonic": "TQA",
+              "points": 10175,
+              "depth_range_m": [
+                1377.0864,
+                2927.604
+              ]
+            },
+            "standpipe_pressure": {
+              "mnemonic": "SPPA",
+              "points": 9915,
+              "depth_range_m": [
+                1377.0864,
+                2927.604
+              ]
+            },
+            "equivalent_circulating_density": {
+              "mnemonic": "ECD_ARC",
+              "points": 10553,
+              "depth_range_m": [
+                1300.1244,
+                2908.2492
+              ]
+            }
+          },
+          "index_points": 10680
+        }
+      ],
+      "channel_points": {
+        "gamma_ray": 13845,
+        "acoustic_slowness": 0,
+        "caliper": 0,
+        "bulk_density": 0,
+        "neutron_porosity": 0,
+        "deep_resistivity": 0,
+        "rate_of_penetration": 24240,
+        "weight_on_bit": 24296,
+        "rotary_speed": 24296,
+        "flow_rate": 23550,
+        "torque": 23810,
+        "standpipe_pressure": 23550,
+        "equivalent_circulating_density": 20824
+      },
+      "official_tie": {
+        "points": 6,
+        "md_range_m": [
+          3083.56,
+          3712.93
+        ],
+        "surfaces": [
+          "Hod Fm. Top",
+          "Draupne Fm. Top",
+          "Heather Fm. Top",
+          "Heather Fm. Sand VOLVE Top",
+          "Hugin Fm. VOLVE Top",
+          "Hugin Fm. VOLVE Base"
+        ]
+      },
+      "status": "usable"
+    }
+  },
+  "normalization": {
+    "fit_scope": "train_mother_well_families_only",
+    "denoise": "denoise_identity",
+    "logs": {
+      "gamma_ray": {
+        "method": "zscore",
+        "mean": 32.89362615304757,
+        "std": 24.299890097145187,
+        "vmin": null,
+        "vmax": null
+      },
+      "acoustic_slowness": {
+        "method": "zscore",
+        "mean": 80.93909402327104,
+        "std": 6.238224392342255,
+        "vmin": null,
+        "vmax": null
+      },
+      "caliper": {
+        "method": "zscore",
+        "mean": 8.41347442097292,
+        "std": 0.3728699134255846,
+        "vmin": null,
+        "vmax": null
+      },
+      "bulk_density": {
+        "method": "zscore",
+        "mean": 2.304485532945181,
+        "std": 0.10976885322391558,
+        "vmin": null,
+        "vmax": null
+      },
+      "neutron_porosity": {
+        "method": "zscore",
+        "mean": 1.7548719905333934,
+        "std": 5.701894224677585,
+        "vmin": null,
+        "vmax": null
+      },
+      "deep_resistivity": {
+        "method": "zscore",
+        "mean": 15.93428537138388,
+        "std": 62.37459099956996,
+        "vmin": null,
+        "vmax": null
+      },
+      "rate_of_penetration": {
+        "method": "zscore",
+        "mean": 23.80313382222892,
+        "std": 9.950346859354507,
+        "vmin": null,
+        "vmax": null
+      },
+      "weight_on_bit": {
+        "method": "zscore",
+        "mean": 7.006426766053325,
+        "std": 2.9191652516260826,
+        "vmin": null,
+        "vmax": null
+      },
+      "rotary_speed": {
+        "method": "zscore",
+        "mean": 166.06802159684062,
+        "std": 12.481109349099329,
+        "vmin": null,
+        "vmax": null
+      },
+      "flow_rate": {
+        "method": "zscore",
+        "mean": 1963.1979561561857,
+        "std": 194.42975783554823,
+        "vmin": null,
+        "vmax": null
+      },
+      "torque": {
+        "method": "zscore",
+        "mean": 19.015601330206536,
+        "std": 7.8936000822707575,
+        "vmin": null,
+        "vmax": null
+      },
+      "standpipe_pressure": {
+        "method": "zscore",
+        "mean": 171.75956506440133,
+        "std": 17.903548871255104,
+        "vmin": null,
+        "vmax": null
+      },
+      "equivalent_circulating_density": {
+        "method": "zscore",
+        "mean": 1.4455733378950044,
+        "std": 0.030207339427961204,
+        "vmin": null,
+        "vmax": null
+      }
+    },
+    "seismic": {
+      "method": "zscore",
+      "mean": 0.00015864014905138404,
+      "std": 0.04046726162657261,
+      "vmin": null,
+      "vmax": null
+    },
+    "max_round_trip_error": 2.842170943040401e-14
+  },
+  "outputs": {
+    "train": "_data/processed/lithofacies/train.h5",
+    "test": "_data/processed/lithofacies/test.h5"
+  }
+}
