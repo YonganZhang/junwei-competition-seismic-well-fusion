@@ -19,6 +19,76 @@ JSON remain unchanged. See `P4_SOP.md` for commands, data provisioning and the
 unit → contract → tiny → real-smoke → CV → refit → single-test order. Known
 scientific limits are machine-readable in `not_feasible.json`.
 
+## P5 open-model Stage 1
+
+P5 adds ten dynamically discovered thin adapters under
+`_models/reconstruction/`, with immutable upstream revisions and licenses in
+`_models/reconstruction/source_lock.json`.  `p5_stage1.py` performs only
+contract smoke: synthetic plus real **development** fit/forward/loss/backward
+(where trainable), finite/shape checks, same-seed replay and checkpoint
+round-trip.  It has no frozen-test command or loader.
+
+Strict and conditional runs have different TaskSpecs and output directories.
+Strict receives six seismic/coordinate features and zero target-derived well
+values; conditional receives the P4 fold-train IDW feature as a seventh
+feature.  MPSlib produces a structured `missing_legal_training_image` skip
+unless an independently licensed training image is explicitly approved; the
+Eclipse reference/test volume is forbidden as a training image.  Missing
+optional packages likewise produce structured skips—Stage 1 never installs,
+compiles or substitutes dependencies and never downloads weights.
+
+Portable adapter/firewall tests:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s _pipelines/02_task_datasets/reconstruction/_tests \
+  -p 'test_p5_stage1.py' -v
+```
+
+Explicit real-development smoke (use a pre-provisioned shared environment):
+
+```bash
+RECONSTRUCTION_DATA_DIR=/path/to/reconstruction \
+PYTHONDONTWRITEBYTECODE=1 /path/to/shared/env/bin/python -m unittest discover \
+  -s _pipelines/02_task_datasets/reconstruction/_tests \
+  -p 'test_p5_real_smoke.py' -v
+
+PYTHONDONTWRITEBYTECODE=1 /path/to/shared/env/bin/python \
+  _pipelines/02_task_datasets/reconstruction/p5_stage1.py \
+  --mode both --models scipy_rbf_neighbors \
+  --data-dir /path/to/reconstruction --output-root _tmp/p5-stage1-reconstruction
+```
+
+When HDF5 provisioning and optional model dependencies live in different
+shared environments, first materialize a small development-only batch cache
+with the HDF5-capable interpreter, then run each dependency group against that
+cache.  The cache manifest hashes every batch and records
+`frozen_test_i_blocks_loaded=[]`; it is a disposable `_tmp` artifact, not a
+tracked dataset or a frozen-test export.
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 /path/to/hdf5/env/bin/python \
+  _pipelines/02_task_datasets/reconstruction/p5_stage1.py \
+  --prepare-cache-only --data-dir /path/to/reconstruction \
+  --batch-cache _tmp/p5-stage1-cache
+
+PYTHONDONTWRITEBYTECODE=1 /path/to/model/env/bin/python \
+  _pipelines/02_task_datasets/reconstruction/p5_stage1.py \
+  --mode both --models neuralop_fno3d \
+  --batch-cache _tmp/p5-stage1-cache \
+  --output-root _tmp/p5-stage1-reconstruction --device cuda:0 \
+  --fail-on-failed
+```
+
+The audited first execution is summarized without host paths or bulky
+checkpoints in `p5_stage1_results.json`.  These are one-step Stage-1 contract
+diagnostics, not CV scores, rankings or frozen-test metrics.
+
+The legacy file names `train.h5` and `test.h5` are physical containers from
+P3.  P5's scientific firewall is the mode-specific frozen I-block contract;
+the runner asserts that selected arrays contain only development I-blocks and
+archives `frozen_test_i_blocks_loaded=[]` for every result.
+
 P4 strict is intentionally stricter than the historical strict baseline below:
 because the available sparse porosity values were sampled from Eclipse target
 cells, P4 strict excludes every well-porosity/IDW value and uses only seismic
