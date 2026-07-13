@@ -131,12 +131,21 @@ Models live under `models/`. `models/<name>.py` exports a decorated
 `build_model()` and is discovered dynamically with
 `get_model(name, models_package="models")`; no central import list is required.
 
-`fault_local_logistic` retains raw amplitude, local 3×3 mean/std, and Sobel
-features with an incremental logistic classifier. `baseline.py` still delegates
-all epochs to `ml_framework.train.train_loop()` using zero-argument reusable
-`train_batches_fn` and `val_batches_fn` factories. Empty batches fail loudly,
-train/validation loss is recorded every epoch, and minimum-validation-loss
-`best.ckpt` is distinct from `last.ckpt`.
+Three deliberately simple model adapters are selectable through `--model`:
+
+- `fault_local_logistic` (default) retains raw amplitude, local 3×3 mean/std,
+  and Sobel features with an incremental logistic classifier;
+- `fault_raw_logistic` is a weighted incremental logistic classifier using only
+  the raw amplitude at each voxel;
+- `fault_local_huber` uses the same kind of local amplitude/statistic/gradient
+  features with a modified-Huber incremental classifier.
+
+The two alternatives are interface-verified options, not new audited benchmark
+claims. The formal `audited_v2` metrics remain those of `fault_local_logistic`.
+`baseline.py` still delegates all epochs to `ml_framework.train.train_loop()`
+using zero-argument reusable `train_batches_fn` and `val_batches_fn` factories.
+Empty batches fail loudly, train/validation loss is recorded every epoch, and
+minimum-validation-loss `best.ckpt` is distinct from `last.ckpt`.
 
 ## Audited run outputs
 

@@ -2,9 +2,11 @@
 """Focused unit tests for fault-stick parsing and voxel rasterization."""
 from __future__ import annotations
 
+import io
 import unittest
 from unittest.mock import Mock, patch
 
+import joblib
 import numpy as np
 
 import build_dataset
@@ -68,6 +70,35 @@ class FaultDatasetTests(unittest.TestCase):
         self.assertTrue(callable(model.train_batch))
         self.assertTrue(callable(model.loss_batch))
         self.assertTrue(callable(model.predict_batch))
+
+    def test_model_alternatives_satisfy_batch_and_checkpoint_contracts(self) -> None:
+        patches = np.linspace(-1.5, 1.5, num=24, dtype=np.float32).reshape(2, 1, 3, 4)
+        labels = (patches[:, 0] > 0.0).astype(np.uint8)
+        weights = np.where(labels == 1, 4.0, 1.0).astype(np.float32)
+        validation_patches = patches * np.float32(0.8) + np.float32(0.05)
+
+        for name in ("fault_raw_logistic", "fault_local_huber"):
+            with self.subTest(model=name):
+                model = get_model(name, models_package="models", seed=7)
+                self.assertEqual(model.__class__.__module__, f"models.{name}")
+
+                train_loss = model.train_batch(patches, labels, weights)
+                validation_loss = model.loss_batch(validation_patches, labels, weights)
+                probabilities = model.predict_batch(validation_patches)
+
+                self.assertTrue(np.isfinite(train_loss))
+                self.assertTrue(np.isfinite(validation_loss))
+                self.assertEqual(probabilities.shape, labels.shape)
+                self.assertTrue(np.isfinite(probabilities).all())
+                self.assertTrue(np.logical_and(probabilities >= 0.0, probabilities <= 1.0).all())
+
+                checkpoint = io.BytesIO()
+                joblib.dump(model, checkpoint)
+                checkpoint.seek(0)
+                restored = joblib.load(checkpoint)
+                np.testing.assert_allclose(
+                    restored.predict_batch(validation_patches), probabilities, rtol=0.0, atol=0.0
+                )
 
     def test_split_plan_has_explicit_disjoint_guard(self) -> None:
         plan = build_dataset.make_split_plan(100, 199, test_fraction=0.2, guard_inlines=5)
