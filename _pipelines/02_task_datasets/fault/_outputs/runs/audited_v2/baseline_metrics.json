@@ -1,0 +1,137 @@
+{
+  "model": "fault_local_logistic",
+  "models_package": "models",
+  "batch_factory_contract": {
+    "train": "lambda: iter(ShuffledBatches)",
+    "validation": "lambda: iter(list)"
+  },
+  "model_description": "balanced_logistic_pixel_classifier_with_local_convolutional_features",
+  "seed": 2693,
+  "run_name": "audited_v2",
+  "arguments": {
+    "model": "fault_local_logistic",
+    "seed": 2693,
+    "threshold": "auto",
+    "epochs": 120,
+    "batch_size": 16,
+    "val_fraction": 0.2,
+    "val_guard_inlines": 2,
+    "run_name": "audited_v2"
+  },
+  "threshold": 0.4505760073661804,
+  "threshold_source": "validation_max_f1",
+  "validation_f1_at_selected_threshold": 0.029329675915713147,
+  "epochs_completed": 120,
+  "best_epoch": 16,
+  "best_val_loss": 0.6910069305306786,
+  "final_train_loss": 0.6909806477782994,
+  "final_val_loss": 0.6942058592671437,
+  "epochs_after_best": 104,
+  "validation_turn_visible": true,
+  "validation_start_inline": 10225,
+  "validation_guard_inlines": [
+    10223,
+    10224
+  ],
+  "fit_samples": 198,
+  "validation_samples": 56,
+  "test_samples": 96,
+  "fit_unique_inlines": 139,
+  "validation_unique_inlines": 36,
+  "test_unique_inlines": 46,
+  "inline_overlap": [],
+  "train_voxels": 424710,
+  "train_positive_voxels": 4444,
+  "validation_voxels": 120120,
+  "validation_positive_voxels": 1771,
+  "test_voxels": 195636,
+  "test_positive_voxels": 1472,
+  "class_weights": {
+    "0": 0.5052871276762813,
+    "1": 47.78465346534654
+  },
+  "normalization": "ml_framework.fit_zscore/normalize/denormalize",
+  "normalization_roundtrip_max_abs_error": 1.1920928955078125e-07,
+  "normalization_stats": {
+    "method": "zscore",
+    "mean": -3.027221509910305e-06,
+    "std": 0.027938051149249077,
+    "vmin": null,
+    "vmax": null
+  },
+  "best_checkpoint": "_outputs/runs/audited_v2/checkpoints/best.ckpt",
+  "last_checkpoint": "_outputs/runs/audited_v2/checkpoints/last.ckpt",
+  "loss_curve": "_outputs/runs/audited_v2/loss_curve.png",
+  "validation_physical_voxel_coverage": {
+    "patch_voxel_observations": 120120,
+    "unique_physical_voxels": 117897,
+    "repeated_physical_voxels": 2223,
+    "max_coverage_multiplicity": 2
+  },
+  "test_physical_voxel_coverage": {
+    "patch_voxel_observations": 205920,
+    "unique_physical_voxels": 195636,
+    "repeated_physical_voxels": 10284,
+    "max_coverage_multiplicity": 2
+  },
+  "test_metrics": {
+    "tp": 1328,
+    "fp": 168215,
+    "fn": 144,
+    "tn": 25949,
+    "precision": 0.00783282117221,
+    "recall": 0.9021739130434783,
+    "dice": 0.015530801391690788,
+    "iou": 0.0078261740734411,
+    "f1": 0.015530801391690788
+  },
+  "test_probability_metrics": {
+    "average_precision": 0.006932547736753899,
+    "pr_auc": 0.006919308603666604
+  },
+  "all_negative_reference": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 1472,
+    "tn": 194164,
+    "precision": 0.0,
+    "recall": 0.0,
+    "dice": 0.0,
+    "iou": 0.0,
+    "f1": 0.0
+  },
+  "software_versions": {
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "h5py": "3.16.0",
+    "joblib": "1.5.3",
+    "segyio": "1.9.14",
+    "matplotlib": "3.10.9"
+  },
+  "dataset_sha256": {
+    "train": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221",
+    "test": "c7ada8f6483db352cc5484893ff1c12333316f2bffb8dfcf117139899197fa25"
+  },
+  "source_sha256": {
+    "baseline.py": "2e916f07f3a34e1054d01892c6a051351c79f4eb63c08c25eb75aa15f06e7bec",
+    "model": "8a8bdc887d1af8b2ecb4bbd1cea4016d835dde6268f98da8f4f43d10ff5790b4"
+  },
+  "historical_artifacts_verified": {
+    "baseline_metrics.json": "7f4537111e48e47123ec369400de7fb579cc4e5e340fdfdae0c01ee16fcdf520",
+    "baseline_model.joblib": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "build_summary.json": "8989a7664dc975a72e5b6ad6910953ba686f17086faba7163d9b144a1d33590d",
+    "_outputs/checkpoints/best.ckpt": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "_outputs/checkpoints/history.json": "0ec3592da34d3418391ac57df74729da31115b38308bc3a7a99f4e330d01228a",
+    "_outputs/checkpoints/last.ckpt": "bdc2d01e8a068a802091c098b635efda4d3e09aa325e73afa6a27171f95a07ef",
+    "_outputs/loss_curve.png": "ea59f1d6ec8c8a5eb95a487b5bb8aa68963b24716f505a74ff469fa66091d28a",
+    "_outputs/prediction_visualization.png": "abc5016cf67a600536130fc72d1fb00f63f51452e7c91f33c0014e83f64d7e4c"
+  },
+  "artifacts_sha256": {
+    "best_checkpoint": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+    "last_checkpoint": "ea968eab61e5a84b7743fc99580f2c22d3aecef04fadd738c4ab61d13cc8d831",
+    "baseline_model": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+    "loss_curve": "36a244c4ac10f197e7542447b12882cdfb511505af389131848e29ef9f5cde57"
+  }
+}
