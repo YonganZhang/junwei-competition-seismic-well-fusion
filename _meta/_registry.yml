@@ -118,6 +118,13 @@ entrypoints:
     owner: col3
     description: "P5 fixed-budget development pilots, per-lane rankings, GPU-lock evidence, structured scientific stops and cross-track integration gates."
 
+  - id: p5_stage3_protocol
+    path: _wiki-methodology/_top/_phases/P5_stage3_multiseed_cv.md
+    type: plan
+    status: active
+    owner: col2
+    description: "Frozen top-3 by task/lane, three derived seeds, all valid development folds, OOF visualization and final test-firewall contract."
+
   - id: sweetspot_target_registry
     path: _pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json
     type: artifact_registry

@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5 Stage 2验收完成，Stage 3准入准备] 六赛道已在隔离 `p4-training-integration` worktree 共存；
+> **🧭 当前: [P5 Stage 3多seed CV合同已冻结] 六赛道已在隔离 `p4-training-integration` worktree 共存；
 >   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
 >   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
 >   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
@@ -179,6 +179,10 @@
       53 pilot、87结构化停止、0 failed/timeout。`torch-common` Stage-2联合门59 passed+22 subtests，
       `tabular-cpu`适用四轨40 passed；frozen test继续封锁，未merge master，未push。完整证据见
       `_wiki-methodology/_tests/P5_stage2_acceptance_evidence.md`。
+- [x] 2026-07-14 P5 Stage-3准入合同冻结：严格从Stage-2同任务/同lane榜单锁定top-3，三个重复seed为
+      `1867973658/2137841944/3902865753`，使用P4全部科学有效development folds；不同数据集、目标、模态与
+      strict/conditional继续分榜。断层、物性3D单候选、甜点T5/T6/T7不强凑准入。统一预算、cell矩阵、
+      OOF专属可视化和test firewall见`_phases/P5_stage3_multiseed_cv.md`；frozen test仍封锁。
 
 ## 数据资产索引
 
