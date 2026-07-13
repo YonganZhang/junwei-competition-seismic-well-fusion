@@ -222,3 +222,173 @@ python3 -m unittest discover \
 CUDA 2-D cross-entropy warns that its kernel is not bitwise deterministic on
 this GPU. Seeds and deterministic settings are still fixed, but results should
 be compared with a small numeric tolerance rather than claimed bit-identical.
+
+## P4 training/validation plugin
+
+The P4 implementation is additive. It preserves the historical SmallUNet
+baseline and its metrics above, while providing the frozen lifecycle required
+for future development. The two task contracts remain independent:
+
+| Task ID | Label version | IDs | Internal CV buffer |
+|---|---|---:|---:|
+| `facies_f3` | `f3-zenodo-1471548-ids-0-9-v1` | 0–9 | 25 inline groups |
+| `facies_penobscot` | `penobscot-dataset-log-v3-ids-0-7-v1` | 0–7 | 23 inline groups |
+
+The P4 files are:
+
+- `p4_tasks.py`: strict `TaskSpec`, label versions, fixed simple baseline and
+  development-only HPO direction/plan.
+- `p4_data.py`: read-only HDF5 adapter to `ModelBatch`. It reverses the legacy
+  invertible normalization, applies explicit `denoise_identity`, and refits
+  normalization and class weights using fold-train only.
+- `p4_spatial.py`: test-first spatial manifest and buffered development CV.
+- `p4_losses.py`: raw-logit CE, Focal, CE+Generalized-Dice and
+  CE+Lovasz-Softmax adapters. Softmax is outside the model head.
+- `p4_metrics.py`: all-class Accuracy/mIoU/macro-F1, per-class support/IoU/F1,
+  confusion, NLL, Brier, ECE, reliability bins and OOF temperature scaling.
+- `p4_training.py`: shared P4 trainer/checkpoint integration and prediction
+  archives.
+- `p4_experiment.py`: lifecycle CLI and the only frozen-test inference entry.
+- `p4_visualize.py`: reads archived NPZ/JSON only; it never loads a model or
+  dataset and never selects a threshold.
+
+### Frozen spatial split and OOF contract
+
+`prepare` first indexes the existing test HDF5 without reading label values.
+It asserts the published outer ranges and missing inline guard, then partitions
+each task's saved development range into five contiguous core blocks separated
+by four permanent internal buffers. Permanent buffers are explicitly listed in
+`split_manifest.json` and excluded from declared development. Every declared
+development sample receives exactly one OOF prediction.
+
+Five folds are requested, not fabricated. The splitter tries 5 down to 2 and
+downgrades only when buffer capacity or per-class train/validation support
+requires it; `requested_n_splits`, `effective_n_splits`, the reason, every
+inline boundary, buffer and per-class support are archived. Random patch KFold
+is not available.
+
+The external test remains:
+
+- F3: development 100–586, guard 587–619, test 620–750.
+- Penobscot: development 1000–1448, guard 1449–1479, test 1480–1600.
+
+These test results were observed by the historical baseline, so P4 records
+them as a spatially isolated regression benchmark rather than claiming a new
+blind external volume.
+
+### Runtime provisioning
+
+The integration worktree does not contain HDF5 assets. Pass a read-only root
+containing `facies_f3/{train,test}.h5` and
+`facies_penobscot/{train,test}.h5` on every data command:
+
+```bash
+export FACIES_PROCESSED_ROOT=/path/to/processed
+export RUN_ROOT=_pipelines/02_task_datasets/facies/_outputs/p4_runs/facies-f3-example
+
+python3 _pipelines/02_task_datasets/facies/p4_experiment.py prepare \
+  --task facies_f3 --run-id facies-f3-example \
+  --processed-root "$FACIES_PROCESSED_ROOT" --run-root "$RUN_ROOT"
+```
+
+Paths used to provision data are not serialized into canonical run JSON.
+
+### State machine and commands
+
+Commands have deliberately separate responsibilities:
+
+```text
+prepare -> smoke -> cv -> freeze -> refit -> test -> visualize
+```
+
+```bash
+python3 _pipelines/02_task_datasets/facies/p4_experiment.py smoke \
+  --run-root "$RUN_ROOT" --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cpu --epochs 1
+
+python3 _pipelines/02_task_datasets/facies/p4_experiment.py cv \
+  --run-root "$RUN_ROOT" --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cuda --epochs 20
+
+python3 _pipelines/02_task_datasets/facies/p4_experiment.py freeze \
+  --run-root "$RUN_ROOT"
+
+python3 _pipelines/02_task_datasets/facies/p4_experiment.py refit \
+  --run-root "$RUN_ROOT" --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cuda
+
+python3 _pipelines/02_task_datasets/facies/p4_experiment.py test \
+  --run-root "$RUN_ROOT" --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cuda
+
+python3 _pipelines/02_task_datasets/facies/p4_experiment.py visualize \
+  --run-root "$RUN_ROOT"
+```
+
+`cv` and its fold runner have no test argument. `freeze` fits temperature and
+the final epoch rule from pooled OOF only. `test` verifies the frozen config,
+refit-checkpoint and split hashes, persists `TEST_CONSUMED`, and only then opens
+test labels. A failure after that point remains consumed and cannot silently
+rerun. `visualize` accepts only `frozen_test/predictions.npz` and
+`frozen_test/metrics.json`.
+
+The refit epoch is the median one-based CV best epoch. Because the read-only
+shared trainer currently has no fit-only entry, refit uses a development
+replay as a monitoring pass but ignores its best checkpoint; only the fixed
+last-epoch checkpoint is eligible for test. This limitation is recorded in
+`refit_evidence.json` and does not use validation or test for selection.
+
+### Loss, HPO and calibration policy
+
+The fixed pipeline proof uses `facies_linear_pixel`, weighted CrossEntropy,
+AdamW and root seed 2693. This is deliberately simple; the historical
+SmallUNet remains available. The task contract declares separate F3 and
+Penobscot studies with mIoU maximization, 8–12 sanity/random trials, 20–30
+single-process seeded TPE trials, `NopPruner`, and top three configurations
+confirmed over three seeds. This implementation does not launch long HPO.
+
+Class weights, loss parameters, threshold candidates and calibration may only
+use fold-train or pooled OOF. Temperature scaling archives its OOF fit count
+and before/after NLL. Frozen test can only apply that saved temperature.
+
+### P4 artifacts and visualization
+
+Run outputs follow the shared layout under `_outputs/p4_runs/` and are ignored
+by Git. They include TaskSpec/config/seed/environment/split hashes, per-fold
+preprocessing, full model/optimizer/scheduler/scaler/RNG checkpoints, OOF
+prediction maps and calibration subsets, refit evidence, one frozen-test
+prediction archive, metrics, diagnostic PNG/sidecar and a hashed manifest.
+
+The facies diagnostic figure contains a fixed prediction-independent seismic
+patch, GT, prediction, confidence and error maps, row-normalized confusion,
+per-class support/F1, and a reliability plot with ECE/NLL. The current public
+processed interface contains sparse 128x128 patches; a future dense whole-line
+artifact requires a raw-section sliding-window adapter, but must preserve the
+same test firewall and one-prediction-per-voxel metric rule.
+
+### Tests
+
+The default suite is asset-free. It covers both historical contracts and P4
+TaskSpec/I/O/spatial buffer/OOF/loss/metrics/calibration/read-only visualization,
+tiny overfit and complete checkpoint behavior:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s _pipelines/02_task_datasets/facies/tests -p 'test_*.py' -v
+```
+
+The real-data smoke is an explicit integration entry. It samples real
+development patches, keeps an ordered inline guard, performs one CPU epoch and
+never opens the test HDF5. Its observed-support metrics are smoke diagnostics,
+not formal all-class CV/test results:
+
+```bash
+FACIES_P4_PROCESSED_ROOT="$FACIES_PROCESSED_ROOT" \
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest \
+  _pipelines.02_task_datasets.facies.tests.test_p4_real_smoke -v
+```
+
+Canonical `_models/facies/` migration is intentionally not performed here
+because this track's write scope excludes `_models` and the shared framework.
+P4 therefore uses the existing dynamically registered local model files as a
+compatibility source until the shared owner performs the one-source migration.
