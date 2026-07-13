@@ -164,6 +164,19 @@ entire epoch loop to shared `train_loop` using zero-argument DataLoader
 factories; it saves `last.ckpt` every epoch and selects `best.ckpt` by minimum
 guard loss.
 
+Available swappable models follow the same two-input interface and are
+dynamically discovered from a file whose name equals its registered name:
+
+| Registered name | Architecture | Evidence status |
+|---|---|---|
+| `multimodal_mlp` | two shallow encoders plus fusion head | measured baseline below |
+| `lithofacies_concat_linear` | flattened log and seismic tensors concatenated into one linear classifier | contract-tested only |
+| `lithofacies_late_fusion` | independent shallow encoders followed by concatenated classification | contract-tested only |
+
+The alternatives are interface baselines, not new reported experiments. They
+have no formal train/test metrics in this repository; the measured results and
+artifacts below remain exclusively those of `multimodal_mlp`.
+
 ## Measured honest baseline
 
 Seed 2693, batch size 64, Adam `1e-3`, hidden size 64, CPU, 80 complete epochs:

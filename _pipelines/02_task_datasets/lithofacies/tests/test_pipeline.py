@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import io
 import json
 import os
 import sys
@@ -108,18 +109,10 @@ class PipelineUnitContractTests(unittest.TestCase):
     def test_dynamic_registration_and_nonempty_batch(self) -> None:
         well_log_shape = (26, 33)
         seismic_shape = (3, 3, 33)
-        model = get_model(
-            "multimodal_mlp",
-            models_package="models",
-            num_classes=len(CLASS_NAMES),
-            well_log_shape=well_log_shape,
-            seismic_shape=seismic_shape,
-            hidden_size=8,
-        )
         synthetic_samples = [
             {
-                "well_log_seq": np.zeros(well_log_shape, dtype=np.float32),
-                "seismic_patch": np.zeros(seismic_shape, dtype=np.float32),
+                "well_log_seq": np.full(well_log_shape, index + 0.25, dtype=np.float32),
+                "seismic_patch": np.full(seismic_shape, index - 0.25, dtype=np.float32),
                 "label": index,
             }
             for index in range(2)
@@ -127,10 +120,47 @@ class PipelineUnitContractTests(unittest.TestCase):
         loader = DataLoader(LithofaciesSamples(synthetic_samples), batch_size=2)
         assert_nonempty_loader(loader, "unit")
         well_log, seismic, label = next(iter(loader))
-        logits = model(well_log, seismic)
-        self.assertEqual(tuple(logits.shape), (2, len(CLASS_NAMES)))
-        self.assertTrue(torch.isfinite(logits).all())
         self.assertEqual(label.ndim, 1)
+        model_names = (
+            "multimodal_mlp",
+            "lithofacies_concat_linear",
+            "lithofacies_late_fusion",
+        )
+        for model_name in model_names:
+            with self.subTest(model=model_name):
+                model_kwargs = {
+                    "models_package": "models",
+                    "num_classes": len(CLASS_NAMES),
+                    "well_log_shape": well_log_shape,
+                    "seismic_shape": seismic_shape,
+                    "hidden_size": 8,
+                }
+                model = get_model(model_name, **model_kwargs)
+                self.assertEqual(model.__class__.__module__, f"models.{model_name}")
+
+                optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
+                logits = model(well_log, seismic)
+                self.assertEqual(tuple(logits.shape), (2, len(CLASS_NAMES)))
+                self.assertTrue(torch.isfinite(logits).all())
+                loss = torch.nn.functional.cross_entropy(logits, label)
+                self.assertTrue(torch.isfinite(loss))
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+
+                model.eval()
+                expected = model(well_log, seismic).detach()
+                checkpoint = io.BytesIO()
+                torch.save(model.state_dict(), checkpoint)
+                checkpoint.seek(0)
+                restored = get_model(model_name, **model_kwargs)
+                restored.load_state_dict(
+                    torch.load(checkpoint, map_location="cpu", weights_only=True)
+                )
+                restored.eval()
+                actual = restored(well_log, seismic).detach()
+                self.assertTrue(torch.isfinite(actual).all())
+                torch.testing.assert_close(actual, expected)
 
     def test_metrics_remain_finite_with_zero_support_classes(self) -> None:
         confusion = np.zeros((len(CLASS_NAMES), len(CLASS_NAMES)), dtype=np.int64)
