@@ -40,8 +40,13 @@ class TrialResult:
     guardrails: Mapping[str, float] = field(default_factory=dict)
     cost: Mapping[str, float] = field(default_factory=dict)
     seed: int = 0
+    metric_direction: str = "maximize"
     state: str = "complete"
     failure_reason: str | None = None
+
+    def __post_init__(self) -> None:
+        if self.metric_direction not in {"maximize", "minimize"}:
+            raise ValueError("metric_direction must be 'maximize' or 'minimize'")
 
     @property
     def mean(self) -> float:
@@ -56,7 +61,9 @@ class TrialResult:
 
     @property
     def worst(self) -> float:
-        return min(self.fold_scores)
+        if self.metric_direction == "maximize":
+            return min(self.fold_scores)
+        return max(self.fold_scores)
 
     def to_dict(self) -> dict[str, Any]:
         payload = asdict(self)
@@ -75,12 +82,15 @@ def run_fixed_trials(
     *,
     root_seed: int,
     output_dir: Path,
+    metric_direction: str = "maximize",
 ) -> list[TrialResult]:
     """Run deterministic development-only configurations.
 
     The signature deliberately has no test loader/data argument.  ``objective``
     must return ``fold_scores`` and may return guardrails/cost.
     """
+    if metric_direction not in {"maximize", "minimize"}:
+        raise ValueError("metric_direction must be 'maximize' or 'minimize'")
     if not configs:
         raise ValueError("at least one fixed baseline/HPO config is required")
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -102,6 +112,7 @@ def run_fixed_trials(
                 guardrails=dict(outcome.pop("guardrails", {})),
                 cost=cost,
                 seed=seed,
+                metric_direction=metric_direction,
             )
         except Exception as exc:
             result = TrialResult(
@@ -110,6 +121,7 @@ def run_fixed_trials(
                 fold_scores=(),
                 cost={"wall_seconds": time.monotonic() - started},
                 seed=seed,
+                metric_direction=metric_direction,
                 state="failed",
                 failure_reason=f"{type(exc).__name__}: {exc}",
             )
@@ -120,11 +132,19 @@ def run_fixed_trials(
     return results
 
 
-def rank_trials(results: Sequence[TrialResult], *, direction: str = "maximize") -> list[TrialResult]:
+def rank_trials(results: Sequence[TrialResult], *, direction: str | None = None) -> list[TrialResult]:
     complete = [result for result in results if result.state == "complete"]
-    if direction == "maximize":
+    declared = {result.metric_direction for result in complete}
+    if len(declared) > 1:
+        raise ValueError(f"cannot rank mixed metric directions: {sorted(declared)}")
+    active_direction = direction or (next(iter(declared)) if declared else "maximize")
+    if declared and active_direction not in declared:
+        raise ValueError(
+            f"ranking direction {active_direction!r} conflicts with archived trial direction {next(iter(declared))!r}"
+        )
+    if active_direction == "maximize":
         return sorted(complete, key=lambda item: (item.mean, min(item.fold_scores), -item.std), reverse=True)
-    if direction == "minimize":
+    if active_direction == "minimize":
         return sorted(complete, key=lambda item: (item.mean, max(item.fold_scores), item.std))
     raise ValueError("direction must be 'maximize' or 'minimize'")
 
@@ -185,6 +205,7 @@ def run_optuna_study(
                 guardrails=dict(outcome.pop("guardrails", {})),
                 cost={**dict(outcome.pop("cost", {})), "wall_seconds": time.monotonic() - started},
                 seed=seed,
+                metric_direction=active_plan.direction,
             )
             records.append(result)
             for key, value in result.to_dict().items():
@@ -200,6 +221,7 @@ def run_optuna_study(
                     fold_scores=(),
                     cost={"wall_seconds": time.monotonic() - started},
                     seed=seed,
+                    metric_direction=active_plan.direction,
                     state="failed",
                     failure_reason=f"{type(exc).__name__}: {exc}",
                 )

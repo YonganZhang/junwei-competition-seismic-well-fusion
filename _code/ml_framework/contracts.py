@@ -83,10 +83,13 @@ class TaskSpec:
             missing = sorted(set(self.targets) - set(getattr(self, field_name)))
             if missing:
                 raise ValueError(f"{field_name} missing targets: {missing}")
-        if not self.visualizer_id:
-            raise ValueError("visualizer_id must be explicit")
+        _nonempty_string(self.visualizer_id, "visualizer_id")
         if not self.required_figures:
             raise ValueError("required_figures must not be empty")
+        for index, figure in enumerate(self.required_figures):
+            _nonempty_string(figure, f"required_figures[{index}]")
+        if len(set(self.required_figures)) != len(self.required_figures):
+            raise ValueError("required_figures must be unique")
         leaked = sorted(set(self.input_whitelist) & set(self.forbidden_inputs))
         if leaked:
             raise ValueError(f"input whitelist contains forbidden label/future fields: {leaked}")

@@ -209,8 +209,16 @@ class LifecycleArtifactTests(unittest.TestCase):
                 scaler_state=None,
                 config_hash="config",
                 split_hash="split",
-                trainer_state={"next_epoch": 4, "global_step": 12, "best_epoch": 3},
-                seed_report={"root_seed": 2693},
+                trainer_state={
+                    "next_epoch": 4,
+                    "global_step": 12,
+                    "best_epoch": 3,
+                    "best_val_loss": 0.25,
+                    "epochs_without_improvement": 0,
+                    "stopped_early": False,
+                    "history": [{"epoch": 3, "validation_loss": 0.25}],
+                },
+                seed_report={"root_seed": 2693, "seed_tree": {"model": 17}},
                 environment={"python": "test"},
                 include_torch_rng=False,
             )
@@ -220,6 +228,53 @@ class LifecycleArtifactTests(unittest.TestCase):
             self.assertEqual(random.random(), expected)
             self.assertEqual(loaded["epoch"], 3)
             self.assertEqual(loaded["trainer_state"]["next_epoch"], 4)
+
+    def test_checkpoint_rejects_empty_resume_metadata(self):
+        complete_state = {
+            "next_epoch": 1,
+            "global_step": 2,
+            "best_epoch": 0,
+            "best_val_loss": 0.5,
+            "epochs_without_improvement": 0,
+            "stopped_early": False,
+            "history": [],
+        }
+        common = {
+            "epoch": 0,
+            "model_state": {},
+            "optimizer_state": {},
+            "scheduler_state": None,
+            "scaler_state": None,
+            "config_hash": "config",
+            "split_hash": "split",
+            "include_torch_rng": False,
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "checkpoint.pkl"
+            with self.assertRaises(ValueError):
+                save_checkpoint(
+                    path,
+                    trainer_state={},
+                    seed_report={"root_seed": 1, "seed_tree": {"x": 1}},
+                    environment={"python": "x"},
+                    **common,
+                )
+            with self.assertRaises(ValueError):
+                save_checkpoint(
+                    path,
+                    trainer_state=complete_state,
+                    seed_report={},
+                    environment={"python": "x"},
+                    **common,
+                )
+            with self.assertRaises(ValueError):
+                save_checkpoint(
+                    path,
+                    trainer_state=complete_state,
+                    seed_report={"root_seed": 1, "seed_tree": {"x": 1}},
+                    environment={},
+                    **common,
+                )
 
 
 class HPOTests(unittest.TestCase):
@@ -242,11 +297,23 @@ class HPOTests(unittest.TestCase):
                 lambda params, seed: {"fold_scores": [params["loss"], params["loss"] + 0.1]},
                 root_seed=2693,
                 output_dir=Path(directory) / "loss",
+                metric_direction="minimize",
             )
             self.assertEqual(rank_trials(loss_results, direction="minimize")[0].params["loss"], 1.0)
+            self.assertEqual(loss_results[0].to_dict()["worst_fold"], 2.1)
             payload = json.loads((Path(directory) / "trials.json").read_text())
             self.assertEqual(len(payload), 2)
             self.assertEqual(len(hash_payload(payload)), 64)
+
+    def test_task_spec_rejects_blank_visualization_contract(self):
+        payload = task_spec().to_dict()
+        payload["visualizer_id"] = " "
+        with self.assertRaises(ValueError):
+            TaskSpec.from_dict(payload)
+        payload = task_spec().to_dict()
+        payload["required_figures"] = [""]
+        with self.assertRaises(ValueError):
+            TaskSpec.from_dict(payload)
 
 
 class TrainerTests(unittest.TestCase):

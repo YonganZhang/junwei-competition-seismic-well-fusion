@@ -10,6 +10,38 @@ from typing import Any, Mapping
 
 
 CHECKPOINT_VERSION = "p4-v1"
+_TRAINER_STATE_FIELDS = {
+    "next_epoch",
+    "global_step",
+    "best_epoch",
+    "best_val_loss",
+    "epochs_without_improvement",
+    "stopped_early",
+    "history",
+}
+
+
+def _validate_resume_metadata(
+    trainer_state: Mapping[str, Any],
+    seed_report: Mapping[str, Any],
+    environment: Mapping[str, Any],
+) -> None:
+    missing_trainer = sorted(_TRAINER_STATE_FIELDS - set(trainer_state))
+    if missing_trainer:
+        raise ValueError(f"trainer_state missing fields: {missing_trainer}")
+    if not isinstance(trainer_state.get("history"), list):
+        raise ValueError("trainer_state.history must be a list")
+    for name in ("next_epoch", "global_step", "best_epoch", "epochs_without_improvement"):
+        if not isinstance(trainer_state.get(name), int):
+            raise ValueError(f"trainer_state.{name} must be an integer")
+    if not isinstance(trainer_state.get("stopped_early"), bool):
+        raise ValueError("trainer_state.stopped_early must be boolean")
+    if not isinstance(seed_report.get("root_seed"), int) or seed_report["root_seed"] < 0:
+        raise ValueError("seed_report.root_seed must be a non-negative integer")
+    if not isinstance(seed_report.get("seed_tree"), Mapping) or not seed_report["seed_tree"]:
+        raise ValueError("seed_report.seed_tree must be a non-empty mapping")
+    if not environment or not all(isinstance(key, str) and key.strip() for key in environment):
+        raise ValueError("environment must be a non-empty mapping with named fields")
 
 
 def capture_rng_state(*, include_torch: bool = True) -> dict[str, Any]:
@@ -67,6 +99,7 @@ def save_checkpoint(
     for name, value in (("config_hash", config_hash), ("split_hash", split_hash)):
         if not value:
             raise ValueError(f"{name} must not be empty")
+    _validate_resume_metadata(trainer_state, seed_report, environment)
     payload = {
         "checkpoint_version": CHECKPOINT_VERSION,
         "epoch": epoch,
@@ -109,4 +142,5 @@ def load_checkpoint(path: Path) -> dict[str, Any]:
     missing = sorted(required - set(payload))
     if missing:
         raise ValueError(f"checkpoint missing fields: {missing}")
+    _validate_resume_metadata(payload["trainer_state"], payload["seed_report"], payload["environment"])
     return payload
