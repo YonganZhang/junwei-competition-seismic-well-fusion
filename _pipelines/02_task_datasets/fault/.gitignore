@@ -44,3 +44,12 @@ __pycache__/
 !/_outputs/p4_preflight/tiny_baseline_smoke.json
 !/_outputs/p4_preflight/smoke_report.json
 !/_outputs/p4_preflight/manifest.json
+
+# Portable P5 Stage-1 gate/smoke evidence. Checkpoints remain excluded.
+!/_outputs/p5_stage1/
+/_outputs/p5_stage1/*
+!/_outputs/p5_stage1/models/
+/_outputs/p5_stage1/models/*
+!/_outputs/p5_stage1/models/*.json
+!/_outputs/p5_stage1/summary.json
+!/_outputs/p5_stage1/manifest.json

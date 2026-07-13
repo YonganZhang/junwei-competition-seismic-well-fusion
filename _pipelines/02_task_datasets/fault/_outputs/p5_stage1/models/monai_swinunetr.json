@@ -1,0 +1,196 @@
+{
+  "detail": "real development forward passed, but official masked loss/backward/checkpoint was skipped: positive=32, verified_negative=0",
+  "development": {
+    "batch_shape": [
+      1,
+      1,
+      32,
+      64
+    ],
+    "forward": {
+      "frozen_test_accessed": false,
+      "loss_backward_checkpoint": "not_run_until_binary_supervision_gate",
+      "output": {
+        "probability_range": [
+          2.4203405700973235e-05,
+          0.6256201863288879
+        ],
+        "probability_shape": [
+          1,
+          1,
+          32,
+          64
+        ],
+        "raw_finite": true,
+        "raw_shape": [
+          1,
+          1,
+          32,
+          64
+        ],
+        "sigmoid_applied_only_by_adapter": true
+      },
+      "status": "passed",
+      "wall_seconds": 0.023399650119245052
+    },
+    "loss_backward_checkpoint": "skipped",
+    "positive_labels": 32,
+    "sample_keys": [
+      "sample_0000001"
+    ],
+    "source_bytes": 3580480,
+    "source_role": "audited_v2_train_development",
+    "source_sha256": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221",
+    "status": "skipped",
+    "stored_zero_policy": "unknown unless covered by audited verified_negative_mask",
+    "unknown_labels": 2016,
+    "valid_labels": 32,
+    "verified_negative_audit_sha256": null,
+    "verified_negative_audit_status": "absent",
+    "verified_negative_labels": 0
+  },
+  "evidence_state": "synthetic_contract_smoked",
+  "frozen_test_accessed": false,
+  "model_id": "monai_swinunetr",
+  "reason_code": "NO_AUDITED_VERIFIED_NEGATIVES",
+  "runtime_gate": {
+    "detail": null,
+    "evidence": {
+      "code_license": "Apache-2.0",
+      "commercial_use": "allowed",
+      "dependencies": [
+        {
+          "distribution": "torch",
+          "import_name": "torch",
+          "importable": true,
+          "installed_version": "2.12.1+cu130",
+          "required": ">=2.8",
+          "version_ok": true
+        },
+        {
+          "distribution": "monai",
+          "import_name": "monai",
+          "importable": true,
+          "installed_version": "1.6.0",
+          "required": "==1.6.0",
+          "version_ok": true
+        },
+        {
+          "distribution": "einops",
+          "import_name": "einops",
+          "importable": true,
+          "installed_version": "0.8.2",
+          "required": ">=0.6",
+          "version_ok": true
+        }
+      ],
+      "model_id": "monai_swinunetr",
+      "source_revision": "eccefc57550b111ed781d82249dfe77872a0e918",
+      "source_tag": "1.6.0",
+      "source_url": "https://github.com/Project-MONAI/MONAI",
+      "weights": {
+        "approved": false,
+        "required": false,
+        "sha256": null,
+        "source": null
+      }
+    },
+    "reason_code": null,
+    "status": "ready"
+  },
+  "source_lock": {
+    "adapter": {
+      "backend": "monai",
+      "builder": "swinunetr",
+      "minimum_shape": [
+        32,
+        32,
+        32
+      ],
+      "shape_multiple": [
+        32,
+        32,
+        32
+      ],
+      "source_mode": "installed_distribution",
+      "trainable": true
+    },
+    "dependencies": [
+      {
+        "distribution": "torch",
+        "import_name": "torch",
+        "specifier": ">=2.8"
+      },
+      {
+        "distribution": "monai",
+        "import_name": "monai",
+        "specifier": "==1.6.0"
+      },
+      {
+        "distribution": "einops",
+        "import_name": "einops",
+        "specifier": ">=0.6"
+      }
+    ],
+    "family": "MONAI SwinUNETR hierarchical 3-D transformer",
+    "model_id": "monai_swinunetr",
+    "source": {
+      "commercial_use": "allowed",
+      "license_spdx": "Apache-2.0",
+      "license_url": "https://github.com/Project-MONAI/MONAI/blob/1.6.0/LICENSE",
+      "revision": "eccefc57550b111ed781d82249dfe77872a0e918",
+      "tag": "1.6.0",
+      "url": "https://github.com/Project-MONAI/MONAI"
+    },
+    "weights": {
+      "approved": false,
+      "required": false,
+      "sha256": null,
+      "source": null
+    }
+  },
+  "status": "skipped",
+  "synthetic_contract": {
+    "backward_finite": true,
+    "checkpoint": {
+      "bytes": 49955136,
+      "persisted": false,
+      "prediction_max_abs_diff": 0.0,
+      "sha256": "fbea854e282d1accac408b9d1baff245c83d60b0b59a056d1c16fd1905219a5a",
+      "trainer_state_restored": true
+    },
+    "device": "cuda:0",
+    "downloaded_bytes": 0,
+    "frozen_test_accessed": false,
+    "masked_loss": 0.7276043891906738,
+    "model_id": "monai_swinunetr",
+    "output": {
+      "probability_range": [
+        0.04491066560149193,
+        0.7421815395355225
+      ],
+      "probability_shape": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "raw_finite": true,
+      "raw_shape": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "sigmoid_applied_only_by_adapter": true
+    },
+    "peak_vram_bytes": 283124224,
+    "process_max_rss_kib_after": 3060692,
+    "process_max_rss_kib_before": 3060692,
+    "same_seed_max_abs_diff": 0.0,
+    "seed": 2693,
+    "status": "passed",
+    "vram_telemetry_error": null,
+    "wall_seconds": 0.7066487809643149
+  }
+}
