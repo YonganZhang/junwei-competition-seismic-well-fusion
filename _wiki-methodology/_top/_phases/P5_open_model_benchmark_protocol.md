@@ -3,7 +3,7 @@
 > 冻结日期：2026-07-14
 > 基线：`p4-training-integration@2d128b009bd1d943918f948785bf5f4e19ce4b7b`
 > 分支：`p5-model-benchmark-integration`
-> 状态：执行合同 v1；候选来源调研和Stage-1已验收，Stage-2已按固定预算合同启动
+> 状态：执行合同 v1；候选来源调研、Stage-1与Stage-2均已验收，待Stage-3准入冻结
 > 全局随机种子：`2693`
 
 ## 1. 目的与边界
@@ -215,3 +215,13 @@ Stage-1 的完成定义是“每个候选都有合同检查结果或可审计的
 
 因此，Stage-2只能纳入已有真实development标签、依赖和许可证边界清楚的候选。①与⑤应先完成数据/标签
 硬门，不得为了满足“10个模型”而制造负例、代理标签或训练分数。
+
+## 11. 2026-07-14 Stage-2验收结论
+
+完整逐轨命令门、结果矩阵、集成提交和科学停止线见
+`../../_tests/P5_stage2_acceptance_evidence.md`。Stage-2在140个预注册cell上得到53个真实development pilot、
+87个结构化skip/blocked、0个failed/timeout；所有结果都保持`root_seed=2693`、P4锁定fold和frozen-test防火墙。
+
+只有以下同lane、同任务候选可进入Stage-3 Pareto准入：地震相两数据集各6个、物性tabular lane 8个、
+岩相P lane 9个、甜点T1–T4各4个、重建strict/conditional各8个。断层、甜点T5、T6、T7继续保持
+科学阻塞；物性单候选3D lane为`not_rankable`。Stage-2开发折榜单不得改写为最终模型排名。

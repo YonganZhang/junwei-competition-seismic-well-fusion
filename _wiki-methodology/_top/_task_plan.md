@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5 Stage 2 固定预算pilot启动] 六赛道已在隔离 `p4-training-integration` worktree 共存；
+> **🧭 当前: [P5 Stage 2验收完成，Stage 3准入准备] 六赛道已在隔离 `p4-training-integration` worktree 共存；
 >   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
 >   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
 >   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
@@ -10,8 +10,11 @@
 >   集成到 `p5-model-benchmark-integration`，并通过两套共享环境的跨赛道联合测试。
 >   Stage-1不是性能排名：有真实标签/依赖的候选完成contract smoke，其余按许可证、标签或任务通道
 >   硬门结构化skip；没有用代理标签或测试集补数。因master仍有未归属脏改动，暂不直接merge；
->   六个Stage-2赛道工作树已从验收提交`85727fd`创建；当前对科学可行候选做同预算development pilot，
->   再做top-3×3-seed×有效fold和最终单次frozen-test。
+>   六个Stage-2赛道工作树已从验收提交`85727fd`创建并完成独立验收；六个干净提交已按固定顺序
+>   集成到 `p5-model-benchmark-integration@d46a7b5`。Stage-2共有140个预注册cell：53个真实
+>   development pilot、87个结构化skip/blocked、0个失败/超时；断层因无审核负例不训练，甜点T6/T7
+>   因无development-only特征源不偷读`test.h5`。下一步仅对同lane可比候选做top-3×3-seed×有效fold，
+>   再冻结唯一配置进入最终单次frozen-test。
 >   未 push。**
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
@@ -26,7 +29,7 @@
 | P2 数据 / 实现准备 | ✅ | 3/3 | Volve全套(含ST10010)+F3+Penobscot下载完成；③④赛道数据量核实足够(纠正见P2.2) |
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
 | P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
-| P5 合成 / 交付 | 🔄 | 0.45/1 | 六赛道模型调研、统一执行合同与Stage-1已完成：127个候选、92个L2、首批60个均有可审计尝试记录；科学可行候选的同预算pilot、CV/HPO、多seed、专属可视化与最终性能达标尚未完成 |
+| P5 合成 / 交付 | 🔄 | 0.65/1 | 六赛道模型调研、统一执行合同、Stage-1与固定预算Stage-2已完成；140个Stage-2 cell中53个真实pilot、87个结构化停止、0失败/超时。完整CV/HPO、多seed、专属可视化与最终性能达标尚未完成 |
 
 ## 协作与决策权边界
 
@@ -166,11 +169,16 @@
       `tabular-cpu`联合验收为31 passed、2 skipped、20 subtests passed。frozen test未被访问，master未merge，
       未push。完整验收证据见 `_wiki-methodology/_tests/P5_stage1_acceptance_evidence.md`。下一步只对科学可行
       候选执行Stage-2固定development pilot；⑤先补真实标签合同，①先补审核负例。
-- [ ] 2026-07-14 P5 Stage-2已启动：固定预算与停止线见
+- [x] 2026-07-14 P5 Stage-2完成并集成验收：固定预算与停止线见
       `_phases/P5_stage2_fixed_budget_pilot.md`。六个隔离工作树均从Stage-1集成验收提交`85727fd`创建；
       同赛道/同lane固定development fold、样本/更新/墙钟预算，全局seed=2693，GPU通过排他锁串行；
       ①只做负例/unknown data-gate，⑤先把P4七目标registry审计映射为P5 label-spec，其他可行候选执行pilot。
-      frozen test继续封锁，未merge master，未push。
+      六轨提交按①→⑥顺序集成到`d46a7b5`：①10个blocked/not_rankable；②F3/Penobscot各6 pilot+4 skip；
+      ③9 pilot+1许可证skip（表格与3D模态分榜）；④9 pilot+1 S通道skip；⑤70 cell中16 pilot+54 skip，
+      T6 PHIF/T7 KLOGH因缺development-only特征源阻断；⑥strict/conditional各8 pilot+2 skip。合计140 cell、
+      53 pilot、87结构化停止、0 failed/timeout。`torch-common` Stage-2联合门59 passed+22 subtests，
+      `tabular-cpu`适用四轨40 passed；frozen test继续封锁，未merge master，未push。完整证据见
+      `_wiki-methodology/_tests/P5_stage2_acceptance_evidence.md`。
 
 ## 数据资产索引
 

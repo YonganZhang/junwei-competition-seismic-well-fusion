@@ -2,7 +2,7 @@
 
 > 冻结日期：2026-07-14
 > 基线：`p5-model-benchmark-integration@85727fd`
-> 状态：执行中
+> 状态：已完成并独立验收
 > 根随机种子：`2693`
 
 ## 1. 本阶段回答什么
@@ -51,3 +51,19 @@ Stage-2只回答：在同一赛道、同一任务通道、同一development数�
 - 负责人独立复跑测试、读取结果、核对预注册cell覆盖和工作树状态。
 - Stage-2通过不等于模型优胜；只有同lane合法结果才能按预注册主指标、worst-group、稳定性和资源做Pareto。
 - 每赛道最多3个候选进入Stage-3；没有科学可比结果的赛道保持数据/标签阻塞，不强凑top-3。
+
+## 6. 实际验收结果
+
+| 赛道 | 预注册cell | 真实pilot | 结构化停止 | Stage-3边界 |
+|---|---:|---:|---:|---|
+| ①断层 | 10 | 0 | 10 | 缺审核负例与unknown覆盖，不排名 |
+| ②地震相 | 20 | 12 | 8 | F3、Penobscot各6个可比候选，榜单独立 |
+| ③储层物性 | 10 | 9 | 1 | tabular 8候选可排名；MONAI 3D单候选`not_rankable` |
+| ④岩相 | 10 | 9 | 1 | 仅P通道固定九类榜；S通道不混入 |
+| ⑤甜点 | 70 | 16 | 54 | T1–T4各4个可比；T5不可行；T6/T7缺development-only特征源 |
+| ⑥三维重建 | 20 | 16 | 4 | strict/conditional各8个可比，榜单独立 |
+| **合计** | **140** | **53** | **87** | **0 failed / 0 timeout；frozen test未访问** |
+
+六轨验收提交进入集成分支后的SHA依次为`dd44c0a`、`e98a870`、`df7f3a7`、`744c564`、
+`a359ad3`、`d46a7b5`。跨轨Stage-2联合门为`torch-common: 59 passed + 22 subtests`；
+`tabular-cpu`适用四轨为`40 passed`。完整证据见`../../_tests/P5_stage2_acceptance_evidence.md`。

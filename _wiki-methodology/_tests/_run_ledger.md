@@ -26,3 +26,17 @@
 - live development inputs: used where task labels/contracts were approved; fault formal comparison and all sweetspot real task cells stopped fail-closed at their scientific gates.
 - frozen test: not accessed by Stage-1 runners.
 - results, structured skips and SSDO downgrade: `P5_stage1_acceptance_evidence.md`.
+
+## 2026-07-14 P5 Stage-2 integration acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-model-benchmark-integration`
+- branch: `p5-model-benchmark-integration`
+- integrated HEAD: `d46a7b5`
+- root seed: `2693`
+- source commits: fault `53db563`, facies `3c6c3b8`, property `cab82e5`, lithofacies `5302954`, sweetspot `ad5fde8`, reconstruction `15c4ae1`; cherry-picked in fixed track order.
+- Stage-2 matrix: 140 preregistered cells; 53 development pilots, 87 structured skip/blocked, 0 failed, 0 timeout.
+- `torch-common` Stage-2 combined gate: 59 passed, 22 subtests passed.
+- `tabular-cpu` applicable four-track gate: 40 passed. Reconstruction is intentionally excluded from this environment because it lacks `h5py`; its 12 Stage-2 tests passed in `torch-common`.
+- Stage-1 regression after integration: 53 passed, 6 skipped, 77 subtests passed.
+- frozen test: not accessed by any Stage-2 runner; all leaderboards are fixed-fold development evidence only.
+- results and scientific stop lines: `P5_stage2_acceptance_evidence.md`.
