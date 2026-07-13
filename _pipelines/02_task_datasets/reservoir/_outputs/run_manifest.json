@@ -1,0 +1,35 @@
+{
+  "model": "tiny_mlp",
+  "framework": "NumPy small one-hidden-layer MLP via shared ml_framework.train_loop",
+  "epochs": 60,
+  "batch_size": 64,
+  "best_epoch": 26,
+  "best_val_loss": 0.21025216666836366,
+  "sample_counts": {
+    "train": 1135,
+    "guard": 81,
+    "test": 344
+  },
+  "families": {
+    "train": [
+      "15/9-19",
+      "15/9-F-1",
+      "15/9-F-11"
+    ],
+    "guard": [
+      "15/9-F-12"
+    ],
+    "test": [
+      "15/9-F-15"
+    ]
+  },
+  "family_zero_overlap": true,
+  "normalization_fit_sources": [
+    "train"
+  ],
+  "guard_used_for_val_loss_only": true,
+  "test_loaded_after_best_checkpoint": true,
+  "test_used_in_training_or_statistics": false,
+  "denoise": "denoise_identity",
+  "target_transform": "[PHIF, log1p(KLOGH), SW] with expm1 inverse"
+}
