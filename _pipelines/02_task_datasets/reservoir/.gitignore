@@ -1,0 +1,20 @@
+# Source-tree caches and local environments.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+
+# Runtime outputs are excluded by default.  Keep only the canonical portable
+# evidence explicitly unignored below.  The HDF5 files live under
+# ../../../_data/processed/reservoir/ and are already covered by the project
+# root rule `_data/processed/`.
+_outputs/**
+!_outputs/metrics.json
+!_outputs/normalization.json
+!_outputs/run_manifest.json
+!_outputs/split_manifest.json
+!_outputs/loss_curve.png
+!_outputs/real_seismic_input.png
+!_outputs/test_depth_gt_vs_pred.png
