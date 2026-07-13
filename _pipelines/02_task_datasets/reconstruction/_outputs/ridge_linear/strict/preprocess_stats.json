@@ -1,0 +1,172 @@
+{
+  "denoise": {
+    "function": "ml_framework.preprocess.denoise_identity",
+    "reason": "sharp seismic/well-log features may be real geology; no smoothing by default"
+  },
+  "structural_features": {
+    "method": "ml_framework.preprocess.fit_zscore + normalize/denormalize",
+    "fit_scope": "optimization train cells only",
+    "feature_names": [
+      "idw_porosity",
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized"
+    ],
+    "stats": [
+      {
+        "method": "zscore",
+        "mean": 0.20268146945015075,
+        "std": 0.009528471654609367,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.7846346945650514,
+        "std": 0.0804615812256156,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.593866407640389,
+        "std": 0.20948287388717218,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.5047891904699805,
+        "std": 0.2092401577139969,
+        "vmin": null,
+        "vmax": null
+      }
+    ],
+    "roundtrip": {
+      "optimization_train": {
+        "passed": true,
+        "max_abs_error": 5.551115123125783e-17,
+        "tolerance": 1.4210854715202004e-14
+      },
+      "validation": {
+        "passed": true,
+        "max_abs_error": 5.551115123125783e-17,
+        "tolerance": 1.4210854715202004e-14
+      },
+      "test": {
+        "passed": true,
+        "max_abs_error": 1.1102230246251565e-16,
+        "tolerance": 1.4210854715202004e-14
+      }
+    }
+  },
+  "seismic_features": {
+    "method": "ml_framework.preprocess.fit_zscore + normalize/denormalize",
+    "fit_scope": "optimization train cells only",
+    "feature_names": [
+      "idw_porosity",
+      "seismic_amplitude",
+      "seismic_local_rms",
+      "seismic_vertical_gradient",
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized"
+    ],
+    "stats": [
+      {
+        "method": "zscore",
+        "mean": 0.20268146945015075,
+        "std": 0.009528471654609367,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.0002718516861706494,
+        "std": 0.017041753532020337,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.015296406400418969,
+        "std": 0.0073127043012048655,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": -0.0005816139739748046,
+        "std": 0.023115500931676834,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.7846346945650514,
+        "std": 0.0804615812256156,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.593866407640389,
+        "std": 0.20948287388717218,
+        "vmin": null,
+        "vmax": null
+      },
+      {
+        "method": "zscore",
+        "mean": 0.5047891904699805,
+        "std": 0.2092401577139969,
+        "vmin": null,
+        "vmax": null
+      }
+    ],
+    "roundtrip": {
+      "optimization_train": {
+        "passed": true,
+        "max_abs_error": 5.551115123125783e-17,
+        "tolerance": 1.4210854715202004e-14
+      },
+      "validation": {
+        "passed": true,
+        "max_abs_error": 5.551115123125783e-17,
+        "tolerance": 1.4210854715202004e-14
+      },
+      "test": {
+        "passed": true,
+        "max_abs_error": 1.1102230246251565e-16,
+        "tolerance": 1.4210854715202004e-14
+      }
+    }
+  },
+  "target": {
+    "method": "ml_framework.preprocess.fit_minmax + normalize/denormalize",
+    "fit_scope": "optimization train targets only",
+    "stats": {
+      "method": "minmax",
+      "mean": null,
+      "std": null,
+      "vmin": 0.0010000000474974513,
+      "vmax": 0.2810821533203125
+    },
+    "roundtrip": {
+      "optimization_train": {
+        "passed": true,
+        "max_abs_error": 2.7755575615628914e-17,
+        "tolerance": 1.4210854715202004e-14
+      },
+      "validation": {
+        "passed": true,
+        "max_abs_error": 2.7755575615628914e-17,
+        "tolerance": 1.4210854715202004e-14
+      },
+      "test": {
+        "passed": true,
+        "max_abs_error": 5.551115123125783e-17,
+        "tolerance": 1.4210854715202004e-14
+      }
+    }
+  }
+}
