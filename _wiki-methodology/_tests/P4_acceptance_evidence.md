@@ -8,7 +8,7 @@
 
 | Evidence layer | Result | Boundary |
 |---|---|---|
-| Command gate | Shared 20; fault 29 (1 optional integration skip); facies 22 (1 skip); property 13 (4 skips); lithofacies 23 (7 skips); sweetspot 21; reconstruction 24 (2 skips). All executed suites exited 0. | Skips are explicit unavailable-data/artifact gates, not silent passes. |
+| Command gate | Passed/skipped: shared 20/0; fault 28/1; facies 21/1; property 13/4; lithofacies 16/7; sweetspot 21/0; reconstruction 22/2. All executed suites exited 0. | 141 passed and 15 explicitly skipped; skips are unavailable-data/artifact gates, not silent passes. |
 | Live/user journey | Explicit real smokes passed for fault preflight, F3, Penobscot, property, lithofacies and reconstruction. Feasible cases then ran real CV/refit/single-use test/visualization as listed below. | This is a research pipeline, not an interactive UI; the equivalent live journey is the real-data CLI lifecycle. |
 | Trace/SSDO audit | Lifecycle JSON, seed/environment report, split/config/checkpoint hashes, archived predictions/metrics/figures and manifests were read back. Hash audit: 7 manifests / 144 artifacts and 50 registry references verified. | No runtime trace service exists for these offline jobs; immutable lifecycle/artifact evidence is the declared SSDO downgrade. |
 
