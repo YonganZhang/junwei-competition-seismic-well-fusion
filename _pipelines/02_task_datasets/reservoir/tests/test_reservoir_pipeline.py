@@ -77,11 +77,33 @@ def test_mask_and_training_only_stats_roundtrip() -> None:
     assert channel_stats.mean == 1.0
 
 
-def test_nonempty_batch_factory_and_dynamic_registration() -> None:
+def test_nonempty_batch_factory_and_dynamic_model_contracts(tmp_path: Path) -> None:
     x = np.ones((5, 7), dtype=float)
     y = np.ones((5, 3), dtype=float)
     batches = make_batches_factory(x, y, batch_size=2, shuffle=True, seed=1)()
     assert batches and sum(len(batch[0]) for batch in batches) == 5
-    model = get_model("tiny_mlp", models_package="models", n_features=7, n_outputs=3, hidden_dim=4)
-    assert model.predict(x).shape == (5, 3)
+    for model_name in ("tiny_mlp", "reservoir_linear", "reservoir_ridge"):
+        model_kwargs = {
+            "n_features": 7,
+            "n_outputs": 3,
+            "hidden_dim": 4,
+            "learning_rate": 0.002,
+        }
+        if model_name != "tiny_mlp":
+            model_kwargs["unused_factory_option"] = True
+        model = get_model(model_name, models_package="models", **model_kwargs)
+        assert model.__class__.__module__ == f"models.{model_name}"
+        initial_prediction = model.predict(x)
+        assert initial_prediction.shape == (5, 3)
+        assert np.isfinite(initial_prediction).all()
+        assert np.isfinite(model.train_batch((x, y)))
+        assert np.isfinite(model.validation_loss((x, y)))
+        trained_prediction = model.predict(x)
+        assert trained_prediction.shape == (5, 3)
+        assert np.isfinite(trained_prediction).all()
 
+        checkpoint = tmp_path / f"{model_name}.ckpt"
+        model.save_checkpoint(checkpoint)
+        restored = get_model(model_name, models_package="models", **model_kwargs)
+        restored.load_checkpoint(checkpoint)
+        assert np.array_equal(restored.predict(x), trained_prediction)

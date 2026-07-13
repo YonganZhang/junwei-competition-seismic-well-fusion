@@ -31,6 +31,14 @@ python3 _code/dataset_io.py stats reservoir/test
 
 构建后的完整机器可读证据位于 `_outputs/build_report.json` 和 `_outputs/split_manifest.json`。
 
+## 可切换简单模型
+
+- `tiny_mlp`：已有的24单元单隐层MLP，是下文正式指标的唯一来源。
+- `reservoir_linear`：简单三输出线性SGD回归。
+- `reservoir_ridge`：同接口的L2 ridge SGD回归。
+
+两个线性替代模型仅通过默认便携契约测试，未进行正式重训；它们不改变下文`tiny_mlp`的既有指标与科学结论。
+
 ## 真实构建结果
 
 默认2 m中心点间隔、9点测井序列、`3×3×9`地震patch，实测得到train 1,135、guard 81、test 344个样本。确定性井族为：
