@@ -1,0 +1,2961 @@
+{
+  "calibration": [
+    {
+      "bins": [
+        {
+          "bin": 0,
+          "count": 6,
+          "mean_probability": 0.06590781609217326,
+          "positive_fraction": 0.5
+        },
+        {
+          "bin": 1,
+          "count": 3,
+          "mean_probability": 0.16538800299167633,
+          "positive_fraction": 1.0
+        },
+        {
+          "bin": 2,
+          "count": 2,
+          "mean_probability": 0.25900886207818985,
+          "positive_fraction": 1.0
+        },
+        {
+          "bin": 3,
+          "count": 8,
+          "mean_probability": 0.3412715047597885,
+          "positive_fraction": 0.5
+        },
+        {
+          "bin": 4,
+          "count": 51,
+          "mean_probability": 0.45167774371072356,
+          "positive_fraction": 0.11764705882352941
+        },
+        {
+          "bin": 5,
+          "count": 3,
+          "mean_probability": 0.5374147693316141,
+          "positive_fraction": 0.3333333333333333
+        },
+        {
+          "bin": 6,
+          "count": 1,
+          "mean_probability": 0.6053176522254944,
+          "positive_fraction": 1.0
+        },
+        {
+          "bin": 7,
+          "count": 1,
+          "mean_probability": 0.7734979391098022,
+          "positive_fraction": 1.0
+        },
+        {
+          "bin": 8,
+          "count": 4,
+          "mean_probability": 0.869303897023201,
+          "positive_fraction": 0.5
+        },
+        {
+          "bin": 9,
+          "count": 17,
+          "mean_probability": 0.9562138389138615,
+          "positive_fraction": 0.7647058823529411
+        }
+      ],
+      "model_id": "catboost"
+    },
+    {
+      "bins": [
+        {
+          "bin": 1,
+          "count": 6,
+          "mean_probability": 0.113987497985363,
+          "positive_fraction": 0.5
+        },
+        {
+          "bin": 5,
+          "count": 12,
+          "mean_probability": 0.5144595205783844,
+          "positive_fraction": 0.75
+        },
+        {
+          "bin": 6,
+          "count": 54,
+          "mean_probability": 0.6347369220521715,
+          "positive_fraction": 0.16666666666666666
+        },
+        {
+          "bin": 7,
+          "count": 3,
+          "mean_probability": 0.7579469680786133,
+          "positive_fraction": 0.0
+        },
+        {
+          "bin": 9,
+          "count": 21,
+          "mean_probability": 0.938090341431754,
+          "positive_fraction": 0.7142857142857143
+        }
+      ],
+      "model_id": "lightgbm"
+    },
+    {
+      "bins": [
+        {
+          "bin": 0,
+          "count": 11,
+          "mean_probability": 0.0672651119530201,
+          "positive_fraction": 0.7272727272727273
+        },
+        {
+          "bin": 1,
+          "count": 4,
+          "mean_probability": 0.15978323109447956,
+          "positive_fraction": 1.0
+        },
+        {
+          "bin": 7,
+          "count": 6,
+          "mean_probability": 0.759246697028478,
+          "positive_fraction": 0.5
+        },
+        {
+          "bin": 9,
+          "count": 75,
+          "mean_probability": 0.9414461342493693,
+          "positive_fraction": 0.28
+        }
+      ],
+      "model_id": "inceptiontime"
+    }
+  ],
+  "cell_metrics": [
+    {
+      "fold_id": 0,
+      "model_id": "catboost",
+      "primary_value": 0.95,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "catboost",
+      "primary_value": 0.95,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "catboost",
+      "primary_value": 0.95,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "catboost",
+      "primary_value": 1.0,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "catboost",
+      "primary_value": 0.8041666666666667,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "catboost",
+      "primary_value": 0.8041666666666667,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "catboost",
+      "primary_value": 0.1439425770308123,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "catboost",
+      "primary_value": 0.1439425770308123,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "catboost",
+      "primary_value": 0.14067460317460317,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "lightgbm",
+      "primary_value": 0.95,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "lightgbm",
+      "primary_value": 0.95,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "lightgbm",
+      "primary_value": 0.95,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "lightgbm",
+      "primary_value": 0.6666666666666666,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "lightgbm",
+      "primary_value": 0.6666666666666666,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "lightgbm",
+      "primary_value": 0.6666666666666666,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "lightgbm",
+      "primary_value": 0.15079365079365079,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "lightgbm",
+      "primary_value": 0.15079365079365079,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "lightgbm",
+      "primary_value": 0.15079365079365079,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "inceptiontime",
+      "primary_value": 0.95,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "inceptiontime",
+      "primary_value": 0.95,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 0,
+      "model_id": "inceptiontime",
+      "primary_value": 0.95,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "inceptiontime",
+      "primary_value": 0.8,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "inceptiontime",
+      "primary_value": 0.8,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 1,
+      "model_id": "inceptiontime",
+      "primary_value": 0.8,
+      "seed": 3902865753,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "inceptiontime",
+      "primary_value": 0.1439425770308123,
+      "seed": 1867973658,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "inceptiontime",
+      "primary_value": 0.1439425770308123,
+      "seed": 2137841944,
+      "status": "PASS"
+    },
+    {
+      "fold_id": 2,
+      "model_id": "inceptiontime",
+      "primary_value": 0.1439425770308123,
+      "seed": 3902865753,
+      "status": "PASS"
+    }
+  ],
+  "folds": [
+    0,
+    1,
+    2
+  ],
+  "group_error": [
+    {
+      "count": 18,
+      "group": "NO 15/9-F-1 C",
+      "metrics": {
+        "average_precision": 0.8664744977244978,
+        "brier": 0.28957845157497963,
+        "f1_at_0_5": 0.8
+      },
+      "model_id": "catboost"
+    },
+    {
+      "count": 15,
+      "group": "NO 15/9-F-11 H",
+      "metrics": {
+        "average_precision": 0.9629370629370629,
+        "brier": 0.31188227490287995,
+        "f1_at_0_5": 0.6666666666666666
+      },
+      "model_id": "catboost"
+    },
+    {
+      "count": 63,
+      "group": "NO 15/9-F-14 H",
+      "metrics": {
+        "average_precision": 0.13408103215332268,
+        "brier": 0.24595578712354346,
+        "f1_at_0_5": 0.0
+      },
+      "model_id": "catboost"
+    },
+    {
+      "count": 18,
+      "group": "NO 15/9-F-1 C",
+      "metrics": {
+        "average_precision": 0.8,
+        "brier": 0.3333304590792328,
+        "f1_at_0_5": 0.8
+      },
+      "model_id": "inceptiontime"
+    },
+    {
+      "count": 15,
+      "group": "NO 15/9-F-11 H",
+      "metrics": {
+        "average_precision": 0.9462454212454213,
+        "brier": 0.48669131841973573,
+        "f1_at_0_5": 0.4
+      },
+      "model_id": "inceptiontime"
+    },
+    {
+      "count": 63,
+      "group": "NO 15/9-F-14 H",
+      "metrics": {
+        "average_precision": 0.13437539242198052,
+        "brier": 0.7215279828913428,
+        "f1_at_0_5": 0.25
+      },
+      "model_id": "inceptiontime"
+    },
+    {
+      "count": 18,
+      "group": "NO 15/9-F-1 C",
+      "metrics": {
+        "average_precision": 0.6666666666666666,
+        "brier": 0.29313609361840065,
+        "f1_at_0_5": 0.8
+      },
+      "model_id": "lightgbm"
+    },
+    {
+      "count": 15,
+      "group": "NO 15/9-F-11 H",
+      "metrics": {
+        "average_precision": 0.95,
+        "brier": 0.22453272643131364,
+        "f1_at_0_5": 0.8571428571428571
+      },
+      "model_id": "lightgbm"
+    },
+    {
+      "count": 63,
+      "group": "NO 15/9-F-14 H",
+      "metrics": {
+        "average_precision": 0.15079365079365079,
+        "brier": 0.36175582904621656,
+        "f1_at_0_5": 0.32
+      },
+      "model_id": "lightgbm"
+    }
+  ],
+  "historical_test_metrics_used": false,
+  "models": [
+    "catboost",
+    "lightgbm",
+    "inceptiontime"
+  ],
+  "precision_recall": [
+    {
+      "model_id": "catboost",
+      "precision": [
+        0.375,
+        0.3723404255319149,
+        0.3695652173913043,
+        0.36666666666666664,
+        0.3595505617977528,
+        0.3522727272727273,
+        0.3448275862068966,
+        0.3372093023255814,
+        0.32941176470588235,
+        0.32142857142857145,
+        0.3132530120481928,
+        0.3048780487804878,
+        0.30864197530864196,
+        0.3,
+        0.3037974683544304,
+        0.3076923076923077,
+        0.3116883116883117,
+        0.36065573770491804,
+        0.36666666666666664,
+        0.45454545454545453,
+        0.46511627906976744,
+        0.47619047619047616,
+        0.6923076923076923,
+        0.72,
+        0.75,
+        0.7391304347826086,
+        0.7272727272727273,
+        0.7142857142857143,
+        0.7,
+        0.6842105263157895,
+        0.7222222222222222,
+        0.7647058823529411,
+        0.8125,
+        0.8,
+        0.7857142857142857,
+        0.7692307692307693,
+        0.75,
+        0.7272727272727273,
+        0.7,
+        0.7777777777777778,
+        0.875,
+        0.8571428571428571,
+        0.8333333333333334,
+        0.8,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "recall": [
+        1.0,
+        0.9722222222222222,
+        0.9444444444444444,
+        0.9166666666666666,
+        0.8888888888888888,
+        0.8611111111111112,
+        0.8333333333333334,
+        0.8055555555555556,
+        0.7777777777777778,
+        0.75,
+        0.7222222222222222,
+        0.6944444444444444,
+        0.6944444444444444,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.6666666666666666,
+        0.6111111111111112,
+        0.6111111111111112,
+        0.5555555555555556,
+        0.5555555555555556,
+        0.5555555555555556,
+        0.5,
+        0.5,
+        0.5,
+        0.4722222222222222,
+        0.4444444444444444,
+        0.4166666666666667,
+        0.3888888888888889,
+        0.3611111111111111,
+        0.3611111111111111,
+        0.3611111111111111,
+        0.3611111111111111,
+        0.3333333333333333,
+        0.3055555555555556,
+        0.2777777777777778,
+        0.25,
+        0.2222222222222222,
+        0.19444444444444445,
+        0.19444444444444445,
+        0.19444444444444445,
+        0.16666666666666666,
+        0.1388888888888889,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.08333333333333333,
+        0.05555555555555555,
+        0.027777777777777776,
+        0.0
+      ]
+    },
+    {
+      "model_id": "lightgbm",
+      "precision": [
+        0.375,
+        0.36666666666666664,
+        0.32142857142857145,
+        0.3333333333333333,
+        0.3076923076923077,
+        0.6666666666666666,
+        0.625,
+        0.7142857142857143,
+        1.0,
+        1.0
+      ],
+      "recall": [
+        1.0,
+        0.9166666666666666,
+        0.75,
+        0.75,
+        0.6666666666666666,
+        0.5,
+        0.4166666666666667,
+        0.4166666666666667,
+        0.08333333333333333,
+        0.0
+      ]
+    },
+    {
+      "model_id": "inceptiontime",
+      "precision": [
+        0.375,
+        0.3684210526315789,
+        0.3617021276595745,
+        0.3548387096774194,
+        0.34782608695652173,
+        0.34065934065934067,
+        0.3333333333333333,
+        0.33707865168539325,
+        0.3409090909090909,
+        0.3448275862068966,
+        0.3372093023255814,
+        0.32941176470588235,
+        0.32142857142857145,
+        0.3132530120481928,
+        0.3048780487804878,
+        0.2962962962962963,
+        0.2875,
+        0.27848101265822783,
+        0.2692307692307692,
+        0.2727272727272727,
+        0.27631578947368424,
+        0.28,
+        0.28378378378378377,
+        0.2876712328767123,
+        0.2916666666666667,
+        0.3392857142857143,
+        0.425,
+        0.625,
+        0.6086956521739131,
+        0.6363636363636364,
+        0.6666666666666666,
+        0.7,
+        0.6842105263157895,
+        0.6666666666666666,
+        0.7058823529411765,
+        0.75,
+        0.8,
+        1.0
+      ],
+      "recall": [
+        1.0,
+        0.9722222222222222,
+        0.9444444444444444,
+        0.9166666666666666,
+        0.8888888888888888,
+        0.8611111111111112,
+        0.8333333333333334,
+        0.8333333333333334,
+        0.8333333333333334,
+        0.8333333333333334,
+        0.8055555555555556,
+        0.7777777777777778,
+        0.75,
+        0.7222222222222222,
+        0.6944444444444444,
+        0.6666666666666666,
+        0.6388888888888888,
+        0.6111111111111112,
+        0.5833333333333334,
+        0.5833333333333334,
+        0.5833333333333334,
+        0.5833333333333334,
+        0.5833333333333334,
+        0.5833333333333334,
+        0.5833333333333334,
+        0.5277777777777778,
+        0.4722222222222222,
+        0.4166666666666667,
+        0.3888888888888889,
+        0.3888888888888889,
+        0.3888888888888889,
+        0.3888888888888889,
+        0.3611111111111111,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333,
+        0.0
+      ]
+    }
+  ],
+  "primary_metric": "average_precision",
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "scatter": [
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.46831321716308594,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9565029740333557,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9609461426734924,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9700958728790283,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.43419498205184937,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.34275397658348083,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.0626271665096283,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.0626271665096283,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.22980763018131256,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9455469846725464,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.8856328129768372,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.06691477447748184,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9659854769706726,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.3170138895511627,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9525236487388611,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.17146606743335724,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.35857221484184265,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.5242205858230591,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9640567898750305,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.7734979391098022,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.9051513075828552,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.5104827880859375,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.8754324913024902,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.32404786348342896,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.16926679015159607,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9466300010681152,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.06818150728940964,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.15543115139007568,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9785725474357605,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.28821009397506714,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.3218303620815277,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.3562169075012207,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4696083962917328,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.8201700448989868,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9629635214805603,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.577540934085846,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.06691477447748184,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9744129180908203,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.06818150728940964,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "catboost",
+      "prediction": 0.6053176522254944,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.34158816933631897,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9692456722259521,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.969961941242218,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9628924131393433,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9019602537155151,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.8959802389144897,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.36814865469932556,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.4932275116443634,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "catboost",
+      "prediction": 0.9681867957115173,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.45566704869270325,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "catboost",
+      "prediction": 0.405070960521698,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.10721956938505173,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.06397738307714462,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.08572620153427124,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.770895779132843,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 0.9999899864196777,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.06420788168907166,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.03775174915790558,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9244740009307861,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9318444132804871,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.09121962636709213,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9150570631027222,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.035203006118535995,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 0.9999960660934448,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.06423366814851761,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.7538883686065674,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9154227375984192,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 0.9999880790710449,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.0363975465297699,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.09106315672397614,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.7502920627593994,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.16944432258605957,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9331993460655212,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9419244527816772,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.7494102120399475,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.7657241821289062,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.08508256822824478,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9335291385650635,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9218404293060303,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.7652695775032043,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9233489632606506,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9213482737541199,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "inceptiontime",
+      "prediction": 1.0,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9323590993881226,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.18780337274074554,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.0850534439086914,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.1746656596660614,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "inceptiontime",
+      "prediction": 0.9160730242729187,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.505197286605835,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.113987497985363,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.113987497985363,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.505197286605835,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.9688528776168823,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.5156022310256958,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.505197286605835,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.505197286605835,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.5318412780761719,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.5318412780761719,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6767205595970154,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.113987497985363,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.7579469680786133,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.7579469680786133,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.505197286605835,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6767205595970154,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.5318412780761719,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.9688528776168823,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.113987497985363,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.113987497985363,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.9688528776168823,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.113987497985363,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.505197286605835,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 0,
+      "group": "NO 15/9-F-11 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6767205595970154,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.5156022310256958,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 1867973658
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.7579469680786133,
+      "seed": 3902865753
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.5156022310256958,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 1867973658
+    },
+    {
+      "actual": 1.0,
+      "fold_id": 1,
+      "group": "NO 15/9-F-1 C",
+      "model_id": "lightgbm",
+      "prediction": 0.9329632520675659,
+      "seed": 2137841944
+    },
+    {
+      "actual": 0.0,
+      "fold_id": 2,
+      "group": "NO 15/9-F-14 H",
+      "model_id": "lightgbm",
+      "prediction": 0.6322672963142395,
+      "seed": 3902865753
+    }
+  ],
+  "scatter_sample_policy": "sha256-stable maximum 600 points per model",
+  "schema_version": "sweetspot-p5-stage3-visualization-data/v1",
+  "task_id": "T4",
+  "task_type": "binary",
+  "test_accessed": false
+}

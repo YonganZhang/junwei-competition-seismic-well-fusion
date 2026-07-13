@@ -1,0 +1,15 @@
+{
+  "development_feature_source_available": false,
+  "expected_training_cells": 0,
+  "is_proxy": false,
+  "label_generated": false,
+  "label_version": null,
+  "lane": "remaining_oil_infill",
+  "proxy_semantics": "no label is defined; simulation case must not be presented as field truth",
+  "reason": "no label is defined; simulation case must not be presented as field truth",
+  "schema_version": "sweetspot-p5-stage3-status-gate/v1",
+  "status": "not_feasible",
+  "target_name": null,
+  "task_id": "T5",
+  "test_accessed": false
+}

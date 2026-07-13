@@ -676,6 +676,7 @@ def load_development_pilot_data(
     target_id: str,
     *,
     source_root: Path | None = None,
+    fold_id: int = 0,
 ) -> DevelopmentPilotData:
     target = audit.target(target_id)
     if target.get("status") != "approved_for_development_pilot":
@@ -687,7 +688,13 @@ def load_development_pilot_data(
         )
     split_path = PROJECT_ROOT / target["split_manifest"]["path"]
     split = json.loads(split_path.read_text(encoding="utf-8"))
-    fold = split["folds"][0]
+    matching_folds = [item for item in split["folds"] if int(item["fold_id"]) == int(fold_id)]
+    if len(matching_folds) != 1:
+        raise DevelopmentDataUnavailable(
+            "p4_fold_missing",
+            f"{target_id}: P4 manifest does not contain exactly one fold_id={fold_id}",
+        )
+    fold = matching_folds[0]
     development_groups = set(split["development_groups"])
     resolved_root = _resolve_source_root(source_root)
     if target_id in {"T1", "T2"}:
@@ -709,18 +716,24 @@ def load_development_pilot_data(
             f"{target_id}: rebuilt/manifest IDs differ; missing={len(missing)}, unexpected={len(unexpected)}",
         )
     train_ids = _seeded_subset(
-        fold["train_sample_ids"], TRAIN_SAMPLE_LIMIT, target_id=target_id, lane="train",
+        fold["train_sample_ids"], TRAIN_SAMPLE_LIMIT, target_id=target_id,
+        lane="train" if int(fold_id) == 0 else f"fold-{fold_id}-train",
     )
     validation_ids = _seeded_subset(
-        fold["validation_sample_ids"], VALIDATION_SAMPLE_LIMIT, target_id=target_id, lane="validation",
+        fold["validation_sample_ids"], VALIDATION_SAMPLE_LIMIT, target_id=target_id,
+        lane="validation" if int(fold_id) == 0 else f"fold-{fold_id}-validation",
     )
     train_x, train_sequence, train_y, train_groups = _take(dataset, train_ids)
     validation_x, validation_sequence, validation_y, validation_groups = _take(dataset, validation_ids)
     if set(train_groups) & set(validation_groups):
-        raise DevelopmentDataUnavailable("split_group_overlap", f"{target_id}: fold_0 group overlap")
+        raise DevelopmentDataUnavailable(
+            "split_group_overlap", f"{target_id}: fold_{fold_id} group overlap",
+        )
     if target["task_type"] == "binary":
         if set(np.unique(train_y.astype(int))) != {0, 1}:
-            raise DevelopmentDataUnavailable("fold_train_class_missing", f"{target_id}: fold_0 train lacks a class")
+            raise DevelopmentDataUnavailable(
+                "fold_train_class_missing", f"{target_id}: fold_{fold_id} train lacks a class",
+            )
     budget_hash = canonical_sha256({
         "target_id": target_id,
         "train_sample_ids": list(train_ids),

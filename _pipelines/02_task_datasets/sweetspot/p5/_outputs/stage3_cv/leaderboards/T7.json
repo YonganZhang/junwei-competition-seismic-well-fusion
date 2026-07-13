@@ -1,0 +1,11 @@
+{
+  "completed_cells": 0,
+  "expected_cells": 0,
+  "label_version": "target7-klogh-cpi-v1",
+  "lane": "permeability",
+  "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+  "schema_version": "sweetspot-p5-stage3-leaderboard/v1",
+  "status": "not_rankable",
+  "task_id": "T7",
+  "test_accessed": false
+}

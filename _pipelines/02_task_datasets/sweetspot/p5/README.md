@@ -70,3 +70,44 @@ PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest \
 ```
 
 Stage-2 CLI 没有 test 参数，不读取历史 test 指标，不持久化标签、checkpoint 或模型。
+
+## Stage-3：冻结 top-3 × P4 folds × 三个 repeat seeds
+
+Stage-3 以 `16bebd18a0bc722afcbc4b841610bf76ce9503e4` 为基线，只确认 Stage-2
+预注册候选在全部科学有效 development folds 上的重复稳定性。T1–T4 分别执行固定的
+27、27、36、27 个 cell，共 117 个；repeat seeds 只能是
+`1867973658/2137841944/3902865753`。模型、预处理、loss、64 次更新和每 fold
+`1024/512` 输入上限均沿用 Stage-2，不做 HPO，也不提供 frozen-test 参数。
+
+T5 仍为 `not_feasible`。T6 PHIF 与 T7 KLOGH 保留各自 P4 label version 和 split，
+但 development-only 特征源缺失，所以保持 `blocked`；禁止从物化测试数据回填。
+
+使用共享 `tabular-cpu` 解释器执行。InceptionTime cell 使用同一解释器的 CUDA，并强制由调用方
+传入 `VOLVE_P5_GPU_LOCK` 排他锁：
+
+```bash
+TABULAR_PYTHON="${VOLVE_P5_TABULAR_PYTHON:?shared tabular-cpu interpreter}"
+GPU_LOCK="${VOLVE_P5_GPU_LOCK:?shared GPU lock}"
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" \
+  -m _pipelines.02_task_datasets.sweetspot.p5.sweetspot_p5_stage3 \
+  --device cuda --gpu-lock "$GPU_LOCK"
+```
+
+便携结果位于 `p5/_outputs/stage3_cv/`：117-cell JSONL、summary、T1–T7 独立
+leaderboard、OOF/visualization manifest、每目标可复建聚合和 15 张赛道专属图。
+完整 OOF 预测仅写入 `.gitignore` 覆盖的 `_private_predictions/`，不提交 checkpoint。
+只从便携聚合复建图件的命令为：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" \
+  -m _pipelines.02_task_datasets.sweetspot.p5.sweetspot_p5_stage3 \
+  --rebuild-figures-only
+```
+
+fail-closed 测试覆盖 seed、预算、P4 split、test firewall、重复 cell、跨 lane 污染、
+80% 排名门和图件重建：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest \
+  _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage3.py -v
+```

@@ -36,6 +36,8 @@ training_artifacts/
 runs/
 wandb/
 tensorboard/
+p5/_outputs/stage3_cv/_private_predictions/
+p5/_outputs/stage3_cv/_private_checkpoints/
 *.ckpt
 *.pt
 *.pth

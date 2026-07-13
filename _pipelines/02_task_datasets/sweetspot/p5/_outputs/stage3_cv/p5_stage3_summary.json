@@ -1,0 +1,579 @@
+{
+  "attempted_cells": 117,
+  "baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+  "budgets": {
+    "cpu_wall_limit_seconds": 300,
+    "hpo": "forbidden",
+    "neural_update_limit": 64,
+    "neural_wall_limit_seconds": 600,
+    "technical_retries_used": 0,
+    "train_sample_limit_per_fold": 1024,
+    "tree_update_limit": 64,
+    "validation_sample_limit_per_fold": 512
+  },
+  "checkpoints_persisted": false,
+  "counts": {
+    "FAILED": 0,
+    "PASS": 117,
+    "SKIP": 0,
+    "TIMEOUT": 0
+  },
+  "device": "cuda",
+  "expected_cells": 117,
+  "fit_scope": {
+    "calibration": "not defined by Stage-2",
+    "class_weights": "not defined by Stage-2",
+    "preprocessing": "each fold train only",
+    "target_transform": "each fold train only or fixed formula"
+  },
+  "frozen_tasks": {
+    "T1": {
+      "folds": [
+        0,
+        1,
+        2
+      ],
+      "models": [
+        "lightgbm",
+        "catboost",
+        "xgboost"
+      ]
+    },
+    "T2": {
+      "folds": [
+        0,
+        1,
+        2
+      ],
+      "models": [
+        "catboost",
+        "xgboost",
+        "lightgbm"
+      ]
+    },
+    "T3": {
+      "folds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "models": [
+        "lightgbm",
+        "inceptiontime",
+        "xgboost"
+      ]
+    },
+    "T4": {
+      "folds": [
+        0,
+        1,
+        2
+      ],
+      "models": [
+        "catboost",
+        "lightgbm",
+        "inceptiontime"
+      ]
+    }
+  },
+  "frozen_test_metrics_reported": false,
+  "full_predictions_tracked": false,
+  "historical_test_metrics_used": false,
+  "label_mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+  "labels_generated": false,
+  "leaderboard_sha256": {
+    "T1": "7c992062b83f12da7a6de244ce543c898477a1bcd28765943fb47022f2c12d8b",
+    "T2": "69ed4d406b7d71b2bd65716c4e9afeb76b0b46eeeaa266bf3d9c27b83377ca9b",
+    "T3": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+    "T4": "0749130e47b6c7645fc2a2b497531d14d2c2ce29827fd9354ab4401a1bb7d048",
+    "T5": "869fb5494e0063e0251b7662b29f52672f95765d83fbfec44f629de5155f0d6e",
+    "T6": "8c39b306bbaa2a0e3ffc8c1d341a4a1c7d2b6e316fd8eb5325d05cb9360c720c",
+    "T7": "caa70a96ffb048d38cc8956cf0d211d4f6c42150f3a44eeb3c43d84d2f330b01"
+  },
+  "legal_completion_rate": 1.0,
+  "oof_manifest_sha256": "92907e7ba054ec1557864c9e2e1f78232e029cae8c6aab5aa538ebfe81268abd",
+  "portable_artifacts": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_results.jsonl",
+      "sha256": "34443cf1afa8c1387c80333a3119a88215d79203db005da7af1a60cb674934b8",
+      "size_bytes": 473074
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_oof_manifest.json",
+      "sha256": "92907e7ba054ec1557864c9e2e1f78232e029cae8c6aab5aa538ebfe81268abd",
+      "size_bytes": 71761
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_visualization_manifest.json",
+      "sha256": "f3d3b923a6dec774622defd60bd9f91764a0c5d9f2b32b4fc11cede1bfd0de51",
+      "size_bytes": 8216
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T1.json",
+      "sha256": "7c992062b83f12da7a6de244ce543c898477a1bcd28765943fb47022f2c12d8b",
+      "size_bytes": 3447
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T2.json",
+      "sha256": "69ed4d406b7d71b2bd65716c4e9afeb76b0b46eeeaa266bf3d9c27b83377ca9b",
+      "size_bytes": 3439
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
+      "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+      "size_bytes": 3512
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T4.json",
+      "sha256": "0749130e47b6c7645fc2a2b497531d14d2c2ce29827fd9354ab4401a1bb7d048",
+      "size_bytes": 3432
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T5.json",
+      "sha256": "869fb5494e0063e0251b7662b29f52672f95765d83fbfec44f629de5155f0d6e",
+      "size_bytes": 329
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T6.json",
+      "sha256": "8c39b306bbaa2a0e3ffc8c1d341a4a1c7d2b6e316fd8eb5325d05cb9360c720c",
+      "size_bytes": 378
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T7.json",
+      "sha256": "caa70a96ffb048d38cc8956cf0d211d4f6c42150f3a44eeb3c43d84d2f330b01",
+      "size_bytes": 383
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T1.json",
+      "sha256": "968098322f5d8acd6ea89f0157717396433d1ed294be2cba0270e68b7b041b52",
+      "size_bytes": 354415
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T2.json",
+      "sha256": "a2687717417490047fa2033e6b2b25366d12c5bd6f5d0229b087e2ea1fd383c8",
+      "size_bytes": 362547
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T3.json",
+      "sha256": "8649b7c74e22d56a21f5d6a47e6b7fa943d6c2d1479781122aa73558382588ee",
+      "size_bytes": 361639
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T4.json",
+      "sha256": "83af3bfb514f9ad082341e294efd322e142762827c5715fe6df9f729170eb932",
+      "size_bytes": 67635
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T5.json",
+      "sha256": "8d0283b3e34ff0dc890aefbdd0037cebd736f8b5a997766ed208f126277f8234",
+      "size_bytes": 533
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T6.json",
+      "sha256": "15fe65812cd79e7da53d4b60fcfdf0855076e604cfa8cbf9f24744439f18bc2a",
+      "size_bytes": 573
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T7.json",
+      "sha256": "4a0657cf0bc912530f40219b879b843d89425a949186ca3e9762d057f3c46ab6",
+      "size_bytes": 601
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_fold_seed.png",
+      "sha256": "1d405eab1d23843bac4e1559cfd3b33dba6ec3d3969acd342490e3ccd02ecb59",
+      "size_bytes": 38898
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_regression_scatter.png",
+      "sha256": "25671ea544d3473026099e626610c4123f89419fea178e7bfdfa03bc2b8d9507",
+      "size_bytes": 111421
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_well_group_error.png",
+      "sha256": "deb0b3c710c5b95c27e1f7fa5e8b53d61e5e35256592b05da66d7dc87eda3e9a",
+      "size_bytes": 28941
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_fold_seed.png",
+      "sha256": "c6fdde3ad615ba16a4767e23ae73b0dba277108e01cf8fb2c15b5b82de720170",
+      "size_bytes": 45089
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+      "sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+      "size_bytes": 107756
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_well_group_error.png",
+      "sha256": "a16643fa5444243eb80c6af0b028c40bb5c57e0216db7e6a5f0e90753daf908f",
+      "size_bytes": 33670
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_fold_seed.png",
+      "sha256": "3bd42fcfd236e0542487ca4950c4d88d9e0ac456c921f5d67c46e2f1ff11a830",
+      "size_bytes": 37213
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_regression_scatter.png",
+      "sha256": "88d7114f0d0b443bc583c2bdc929f9bc54bb27f6d0078025cf98f155c9a62082",
+      "size_bytes": 134909
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_well_group_error.png",
+      "sha256": "b1631a91ca2ecdd5769714b83d6893579ab2030d572ab10df065723d0f453a07",
+      "size_bytes": 38356
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_fold_seed.png",
+      "sha256": "c4339f7200674e59fe761d2165d4252511c6be0684b4523906f13916f3fe3a6a",
+      "size_bytes": 34846
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_pr_calibration.png",
+      "sha256": "093791f6c739ec47b047ba1e2fb53f2656389b41a94501768816fe20260dae46",
+      "size_bytes": 115209
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_well_group_error.png",
+      "sha256": "a61f20b11b8d679f7b8c10455cd20868c6bb704c06b90860df7e4a897f928434",
+      "size_bytes": 35450
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T5_status_gate.png",
+      "sha256": "fc89459be8b1272233f630a65abe724b1707a5217a887ee0cefc3dd98abc2a2c",
+      "size_bytes": 16222
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T6_data_gate.png",
+      "sha256": "1295214ffc687a6f635d7077c82b9dcdddadcdba72b191ea5c419aa965ac30eb",
+      "size_bytes": 21915
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T7_data_gate.png",
+      "sha256": "acb676321dfee9ee5b49e3072b20d605fcc8abead85ecb0ee4ec0e5bc4823973",
+      "size_bytes": 23085
+    }
+  ],
+  "rankable_completion_threshold": 0.8,
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "results_sha256": "34443cf1afa8c1387c80333a3119a88215d79203db005da7af1a60cb674934b8",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-stage3-summary/v1",
+  "source_lock_sha256": "cafe6a7123ad002f833153211195c66109c56ebc512f0bc9b56dd34965b56625",
+  "split_evidence": {
+    "T1": {
+      "development_group_count": 3,
+      "development_sample_count": 35810,
+      "execution_fields": [
+        "development_groups",
+        "development_sample_ids",
+        "folds"
+      ],
+      "folds": [
+        {
+          "fold_id": 0,
+          "train_groups": [
+            "15/9-F-1",
+            "15/9-F-12"
+          ],
+          "train_sample_count": 18327,
+          "validation_groups": [
+            "15/9-F-11"
+          ],
+          "validation_sample_count": 17483
+        },
+        {
+          "fold_id": 1,
+          "train_groups": [
+            "15/9-F-11",
+            "15/9-F-12"
+          ],
+          "train_sample_count": 20130,
+          "validation_groups": [
+            "15/9-F-1"
+          ],
+          "validation_sample_count": 15680
+        },
+        {
+          "fold_id": 2,
+          "train_groups": [
+            "15/9-F-1",
+            "15/9-F-11"
+          ],
+          "train_sample_count": 33163,
+          "validation_groups": [
+            "15/9-F-12"
+          ],
+          "validation_sample_count": 2647
+        }
+      ],
+      "manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/split_manifest.json",
+      "manifest_sha256": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f",
+      "test_partition_used": false
+    },
+    "T2": {
+      "development_group_count": 3,
+      "development_sample_count": 36122,
+      "execution_fields": [
+        "development_groups",
+        "development_sample_ids",
+        "folds"
+      ],
+      "folds": [
+        {
+          "fold_id": 0,
+          "train_groups": [
+            "15/9-F-1",
+            "15/9-F-12"
+          ],
+          "train_sample_count": 18572,
+          "validation_groups": [
+            "15/9-F-11"
+          ],
+          "validation_sample_count": 17550
+        },
+        {
+          "fold_id": 1,
+          "train_groups": [
+            "15/9-F-11",
+            "15/9-F-12"
+          ],
+          "train_sample_count": 20200,
+          "validation_groups": [
+            "15/9-F-1"
+          ],
+          "validation_sample_count": 15922
+        },
+        {
+          "fold_id": 2,
+          "train_groups": [
+            "15/9-F-1",
+            "15/9-F-11"
+          ],
+          "train_sample_count": 33472,
+          "validation_groups": [
+            "15/9-F-12"
+          ],
+          "validation_sample_count": 2650
+        }
+      ],
+      "manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/split_manifest.json",
+      "manifest_sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20",
+      "test_partition_used": false
+    },
+    "T3": {
+      "development_group_count": 4,
+      "development_sample_count": 1111,
+      "execution_fields": [
+        "development_groups",
+        "development_sample_ids",
+        "folds"
+      ],
+      "folds": [
+        {
+          "fold_id": 0,
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_count": 1012,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_count": 99
+        },
+        {
+          "fold_id": 1,
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_count": 684,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_count": 427
+        },
+        {
+          "fold_id": 2,
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H"
+          ],
+          "train_sample_count": 684,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_count": 427
+        },
+        {
+          "fold_id": 3,
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_count": 953,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_count": 158
+        }
+      ],
+      "manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+      "manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+      "test_partition_used": false
+    },
+    "T4": {
+      "development_group_count": 3,
+      "development_sample_count": 32,
+      "execution_fields": [
+        "development_groups",
+        "development_sample_ids",
+        "folds"
+      ],
+      "folds": [
+        {
+          "fold_id": 0,
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_count": 27,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_count": 5
+        },
+        {
+          "fold_id": 1,
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_count": 26,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_count": 6
+        },
+        {
+          "fold_id": 2,
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H"
+          ],
+          "train_sample_count": 11,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_count": 21
+        }
+      ],
+      "manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/split_manifest.json",
+      "manifest_sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+      "test_partition_used": false
+    }
+  },
+  "stage": "frozen_multiseed_development_cv",
+  "stage2_archived_results_sha256": "ec6cb112c22d387f524076a7dc348205d92c578e7283d554892b4c45f6d11b63",
+  "stage2_archived_summary_sha256": "98227cb4ab6c4fbea275bbc3eb005368d566e9060946cc0e0dc5937116bf928b",
+  "stage2_data_implementation_sha256": "8583ed8b5b07ebdb5aafbb1ba549d81f04f1c42c3a4f852c8c56d79051866b0a",
+  "stage2_implementation_sha256": "825f3dedc7a5484981701828eaa5276f13d40cfe145dadde672060fadd7714a6",
+  "stage3_implementation_sha256": "e03e6b2a7a1b23188ad7f7eb3795f853fb5c192f1b309b1267d0523116c8efa0",
+  "stage3_protocol_path": "_wiki-methodology/_top/_phases/P5_stage3_multiseed_cv.md",
+  "stage3_protocol_sha256": "5e01ae7993d3e9daa10c7b9b0f5e48c006bd6e170e6ebcf12614f9bfe286d3b7",
+  "target_status": {
+    "T1": {
+      "completed_cells": 27,
+      "completion_rate": 1.0,
+      "expected_cells": 27,
+      "is_proxy": true,
+      "label_version": "rqi-0.0314-sqrt-klogh-over-phif-v1",
+      "proxy_semantics": "petrophysical reservoir-quality proxy, not field sweetspot truth",
+      "status": "rankable"
+    },
+    "T2": {
+      "completed_cells": 27,
+      "completion_rate": 1.0,
+      "expected_cells": 27,
+      "is_proxy": true,
+      "label_version": "cpi-sand-flag-near-binary-v1",
+      "proxy_semantics": "SAND_FLAG net-reservoir/sand proxy, not direct hydrocarbon-pay truth",
+      "status": "rankable"
+    },
+    "T3": {
+      "completed_cells": 36,
+      "completion_rate": 1.0,
+      "expected_cells": 36,
+      "is_proxy": false,
+      "label_version": "future-30-calendar-row-mean-oil-v1",
+      "proxy_semantics": "future 30-calendar-row mean oil production; an operational production target, not unified sweetspot truth",
+      "status": "rankable"
+    },
+    "T4": {
+      "completed_cells": 27,
+      "completion_rate": 1.0,
+      "expected_cells": 27,
+      "is_proxy": true,
+      "label_version": "first-7-consecutive-positive-water-days-v1",
+      "proxy_semantics": "reported sustained positive-water event proxy; not a domain-approved water-cut threshold",
+      "status": "rankable"
+    },
+    "T5": {
+      "development_feature_source_available": false,
+      "expected_training_cells": 0,
+      "is_proxy": false,
+      "label_generated": false,
+      "label_version": null,
+      "lane": "remaining_oil_infill",
+      "proxy_semantics": "no label is defined; simulation case must not be presented as field truth",
+      "reason": "no label is defined; simulation case must not be presented as field truth",
+      "schema_version": "sweetspot-p5-stage3-status-gate/v1",
+      "status": "not_feasible",
+      "target_name": null,
+      "task_id": "T5",
+      "test_accessed": false
+    },
+    "T6": {
+      "development_feature_source_available": false,
+      "expected_training_cells": 0,
+      "is_proxy": false,
+      "label_generated": false,
+      "label_version": "target6-phif-cpi-v1",
+      "lane": "porosity",
+      "proxy_semantics": "PHIF CPI physical porosity target; independent from T7 permeability",
+      "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+      "schema_version": "sweetspot-p5-stage3-status-gate/v1",
+      "status": "blocked",
+      "target_name": "PHIF",
+      "task_id": "T6",
+      "test_accessed": false
+    },
+    "T7": {
+      "development_feature_source_available": false,
+      "expected_training_cells": 0,
+      "is_proxy": false,
+      "label_generated": false,
+      "label_version": "target7-klogh-cpi-v1",
+      "lane": "permeability",
+      "proxy_semantics": "KLOGH CPI permeability target in the P4 log1p stored domain; independent from T6 porosity",
+      "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+      "schema_version": "sweetspot-p5-stage3-status-gate/v1",
+      "status": "blocked",
+      "target_name": "KLOGH",
+      "task_id": "T7",
+      "test_accessed": false
+    }
+  },
+  "test_accessed": false,
+  "visualization_manifest_sha256": "f3d3b923a6dec774622defd60bd9f91764a0c5d9f2b32b4fc11cede1bfd0de51"
+}
