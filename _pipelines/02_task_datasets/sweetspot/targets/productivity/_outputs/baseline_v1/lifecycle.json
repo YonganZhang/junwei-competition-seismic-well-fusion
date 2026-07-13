@@ -1,0 +1,34 @@
+{
+  "evidence": {
+    "CONFIG_FROZEN": {
+      "config_hash": "a55d02f46e99fc84b33e8022c83a923aca4d9d9f9507734d9a7bacc163d8ee27"
+    },
+    "CV_COMPLETE": {
+      "oof_metrics_hash": "9d5f2c7a2b27724a67100d1ae4e2aa28037fddb80d56ea2f9cc5627cf5e00aca",
+      "sample_count": 1111
+    },
+    "REFIT_COMPLETE": {
+      "checkpoint_hash": "f039f8e1249aee3005cd9b9b69901c9a08209cc14b88c36c05bf7567a27f8bb0"
+    },
+    "SMOKE_PASSED": {
+      "finite_predictions": true,
+      "sample_count": 256
+    },
+    "SPLIT_LOCKED": {
+      "split_hash": "e130424b792aceefec20e9ce6aa3bab2e2ceb241c9d13cee965cf9c7781ae6ea"
+    },
+    "TEST_CONSUMED": {
+      "checkpoint_hash": "f039f8e1249aee3005cd9b9b69901c9a08209cc14b88c36c05bf7567a27f8bb0",
+      "config_hash": "a55d02f46e99fc84b33e8022c83a923aca4d9d9f9507734d9a7bacc163d8ee27",
+      "split_hash": "e130424b792aceefec20e9ce6aa3bab2e2ceb241c9d13cee965cf9c7781ae6ea"
+    },
+    "VERIFIED": {
+      "metrics_hash": "76369fa961ce551250049d692e6cd920125033b31545e4c04a07e23cbe931ab9",
+      "prediction_hash": "174144ff1db952241232915f036b8f437a03cd38dc9c46d256aded5b43f39f6f",
+      "test_rows_accessed": 132
+    }
+  },
+  "experiment_id": "sweetspot.productivity.baseline_v1",
+  "state": "VERIFIED",
+  "test_consumed_at": "2026-07-13T17:09:23.414760+00:00"
+}

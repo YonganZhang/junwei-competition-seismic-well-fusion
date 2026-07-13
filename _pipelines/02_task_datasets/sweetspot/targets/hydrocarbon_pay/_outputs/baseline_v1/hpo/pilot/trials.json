@@ -1,0 +1,542 @@
+[
+  {
+    "cost": {
+      "wall_seconds": 0.21686366107314825
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9597177430442526,
+    "fold_scores": [
+      0.9873238334073576,
+      0.9825088680014498,
+      0.9093205277239507
+    ],
+    "fold_std": 0.03569038579221474,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.001,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "f8fb8e47fcb7f98e0636c4c2bb40b61d54dfb1ab0cafc63e3737b995f6667689",
+    "seed": 1872803842,
+    "state": "complete",
+    "trial_id": 0,
+    "worst_fold": 0.9093205277239507
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.20642645517364144
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9585036127040327,
+    "fold_scores": [
+      0.9850688181802185,
+      0.9863336124791744,
+      0.9041084074527055
+    ],
+    "fold_std": 0.03846668421638988,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.003593813663804626,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "c14920b0abb977ec10d513043134030ece5a1a88b9ce44301fa5f54a1204c622",
+    "seed": 1636997475,
+    "state": "complete",
+    "trial_id": 1,
+    "worst_fold": 0.9041084074527055
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.22623085603117943
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9482165720465053,
+    "fold_scores": [
+      0.9570612249415991,
+      0.9881244865488722,
+      0.899464004649045
+    ],
+    "fold_std": 0.03673183157520113,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.01291549665014884,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "9a54e1538d0830b46c068dee6b3034e274aeea91ebe0e55ef98db112fc80551a",
+    "seed": 2706024361,
+    "state": "complete",
+    "trial_id": 2,
+    "worst_fold": 0.899464004649045
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.25063189398497343
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9448406262371143,
+    "fold_scores": [
+      0.9484823093617201,
+      0.9887752988597439,
+      0.8972642704898788
+    ],
+    "fold_std": 0.03744786126792463,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.046415888336127795,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "8d2740306d8435af31efaa93a78e15f228932c1daf83bd3b041830bd3bbcdb31",
+    "seed": 471117421,
+    "state": "complete",
+    "trial_id": 3,
+    "worst_fold": 0.8972642704898788
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.2801954750902951
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9431017228983712,
+    "fold_scores": [
+      0.9433772711192636,
+      0.9891070556269829,
+      0.8968208419488668
+    ],
+    "fold_std": 0.03767619278250968,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.1668100537200059,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "a1f0380b01c2e88ac765ad129e4bdb87f66c7062b1b7015b6284b94a443b67c2",
+    "seed": 792103282,
+    "state": "complete",
+    "trial_id": 4,
+    "worst_fold": 0.8968208419488668
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.29381364304572344
+    },
+    "failure_reason": null,
+    "fold_mean": 0.941642930616842,
+    "fold_scores": [
+      0.9383961127799533,
+      0.9895034677530812,
+      0.8970292113174915
+    ],
+    "fold_std": 0.037822201552159415,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.5994842503189409,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "4830b459e1321b8892249d17f395ae46f340a92d28209255121034a8314bca56",
+    "seed": 776922955,
+    "state": "complete",
+    "trial_id": 5,
+    "worst_fold": 0.8970292113174915
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.3203936917707324
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9404498081013486,
+    "fold_scores": [
+      0.9353648037331862,
+      0.9899642068779411,
+      0.8960204136929184
+    ],
+    "fold_std": 0.03852057477561613,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 2.1544346900318843,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "3055df555fbc2357e4cbe651339f81e4013cda1edd181a41f190f35fd51a4a0f",
+    "seed": 2314182834,
+    "state": "complete",
+    "trial_id": 6,
+    "worst_fold": 0.8960204136929184
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.34112918423488736
+    },
+    "failure_reason": null,
+    "fold_mean": 0.939145294551177,
+    "fold_scores": [
+      0.9329780776415885,
+      0.990271241130225,
+      0.8941865648817174
+    ],
+    "fold_std": 0.03946806452270465,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 7.742636826811277,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "5fd970e0098d979f8c5f09160f530c9d1eead8f486749d73adff90fa8db3703d",
+    "seed": 3842794184,
+    "state": "complete",
+    "trial_id": 7,
+    "worst_fold": 0.8941865648817174
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.3994745691306889
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9362183138431543,
+    "fold_scores": [
+      0.9320666669347278,
+      0.990422694850368,
+      0.8861655797443675
+    ],
+    "fold_std": 0.042663908569153614,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 27.825594022071257,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "ef61d5a049863296e5f423071ea92bdc07379576847e90980673ced710cc5023",
+    "seed": 2661956232,
+    "state": "complete",
+    "trial_id": 8,
+    "worst_fold": 0.8861655797443675
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.42631367314606905
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9359042200611557,
+    "fold_scores": [
+      0.9317433573311027,
+      0.9904953725661569,
+      0.8854739302862074
+    ],
+    "fold_std": 0.042975655268488566,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 100.0,
+      "class_weight": "balanced",
+      "max_iter": 750
+    },
+    "params_hash": "0ff8d0afedc3b1742dae1c7c46fa3c42f402ae7c087d95f85b690366706d7993",
+    "seed": 1286488630,
+    "state": "complete",
+    "trial_id": 9,
+    "worst_fold": 0.8854739302862074
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.20916100917384028
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9598468937159098,
+    "fold_scores": [
+      0.9868729033580922,
+      0.9824195171677189,
+      0.9102482606219183
+    ],
+    "fold_std": 0.03511862246476877,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.001,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "d4f39e8f55de474f9bbd8ac79a36ec07018aba22ae260ad6c72061a02ae93b71",
+    "seed": 141626099,
+    "state": "complete",
+    "trial_id": 10,
+    "worst_fold": 0.9102482606219183
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.22315182304009795
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9578343852360124,
+    "fold_scores": [
+      0.9824212628459731,
+      0.9867971286225824,
+      0.9042847642394813
+    ],
+    "fold_std": 0.03790741776115246,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.003593813663804626,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "6bc2a21793cc79735f444cacc69be8c325c87718affbcf4bdcb3cdb24b2b543e",
+    "seed": 3405326038,
+    "state": "complete",
+    "trial_id": 11,
+    "worst_fold": 0.9042847642394813
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.23766675032675266
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9478719365223389,
+    "fold_scores": [
+      0.9557854278527118,
+      0.9889364325117618,
+      0.8988939492025434
+    ],
+    "fold_std": 0.03718314769623135,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.01291549665014884,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "340abf95ab77185f6450d0250bb292a608d7c8bab2e9bde9850ada22750d6ea9",
+    "seed": 4079977591,
+    "state": "complete",
+    "trial_id": 12,
+    "worst_fold": 0.8988939492025434
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.2399571849964559
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9449153043835118,
+    "fold_scores": [
+      0.9488117624487331,
+      0.9897251119720712,
+      0.8962090387297312
+    ],
+    "fold_std": 0.03827706691790962,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.046415888336127795,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "bebb7a78f6da727672882c4784559449057cedfc18565ce14cd188daed202bae",
+    "seed": 3143427893,
+    "state": "complete",
+    "trial_id": 13,
+    "worst_fold": 0.8962090387297312
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.26574662094935775
+    },
+    "failure_reason": null,
+    "fold_mean": 0.943224072446205,
+    "fold_scores": [
+      0.9442491997839679,
+      0.9900377735061151,
+      0.8953852440485323
+    ],
+    "fold_std": 0.03864853164717144,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.1668100537200059,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "711ac2e00c2486fb98a24a85bb3f76c0df7ce0020814634816f41f926ace7334",
+    "seed": 1954203182,
+    "state": "complete",
+    "trial_id": 14,
+    "worst_fold": 0.8953852440485323
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.30464136227965355
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9418068076745327,
+    "fold_scores": [
+      0.9394399550905883,
+      0.9903111566233548,
+      0.8956693113096552
+    ],
+    "fold_std": 0.038673601801583406,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 0.5994842503189409,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "fe76272e7e79cf59e9c9f3f3811f3fa01dab2d0a335d545b53daf3fc04e99f9e",
+    "seed": 3350691764,
+    "state": "complete",
+    "trial_id": 15,
+    "worst_fold": 0.8956693113096552
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.3037366420030594
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9406600403290245,
+    "fold_scores": [
+      0.936031542464933,
+      0.9906614224161553,
+      0.8952871561059854
+    ],
+    "fold_std": 0.03907369032063413,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 2.1544346900318843,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "7868b32ba4816237320629a248df1ef243b52031a84798e56615b5a6e4a31411",
+    "seed": 619680784,
+    "state": "complete",
+    "trial_id": 16,
+    "worst_fold": 0.8952871561059854
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.3650195887312293
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9393533984103554,
+    "fold_scores": [
+      0.933980622031479,
+      0.9909348298100691,
+      0.8931447433895177
+    ],
+    "fold_std": 0.0401029948594681,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 7.742636826811277,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "5103d8c8fd56d80f874859b5a77529825bc3b32f1ddba04ea1e26534e71bd8ca",
+    "seed": 3825514365,
+    "state": "complete",
+    "trial_id": 17,
+    "worst_fold": 0.8931447433895177
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.3643064792267978
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9365140504155565,
+    "fold_scores": [
+      0.9328281888066445,
+      0.9910708369738709,
+      0.8856431254661538
+    ],
+    "fold_std": 0.04311952203112217,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 27.825594022071257,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "d98fee1c5534e056ef33f12c94a7e2d3fc9d1c8ddd6db34e249c68351b9b4fdc",
+    "seed": 1266171318,
+    "state": "complete",
+    "trial_id": 18,
+    "worst_fold": 0.8856431254661538
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.3855303190648556
+    },
+    "failure_reason": null,
+    "fold_mean": 0.9358004205591088,
+    "fold_scores": [
+      0.9324659865477231,
+      0.9911271045334185,
+      0.8838081705961849
+    ],
+    "fold_std": 0.043876168421200214,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "maximize",
+    "params": {
+      "c": 100.0,
+      "class_weight": null,
+      "max_iter": 750
+    },
+    "params_hash": "ee6104477bc940356b8b624109fee903f3d13ee8007295c91345b01ee1731f33",
+    "seed": 3569010754,
+    "state": "complete",
+    "trial_id": 19,
+    "worst_fold": 0.8838081705961849
+  }
+]

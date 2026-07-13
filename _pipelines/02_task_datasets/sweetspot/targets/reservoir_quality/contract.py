@@ -34,7 +34,12 @@ def task_spec() -> TaskSpec:
         group_keys=("well_family",),
         target_transform={"RQI": "log1p"},
         inverse_transform={"RQI": "expm1"},
-        train_loss={"RQI": "huber"},
+        train_loss={
+            "RQI": {
+                "candidates": ["huber", "squared_error"],
+                "selection": "development_oof_only",
+            }
+        },
         inference_transform={"RQI": "identity_after_expm1"},
         threshold_policy={},
         calibration_policy={},

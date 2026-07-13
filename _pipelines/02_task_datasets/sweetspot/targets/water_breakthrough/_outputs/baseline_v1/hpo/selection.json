@@ -1,0 +1,18 @@
+{
+  "direction": "maximize",
+  "fold_mean": 0.7786181139122316,
+  "fold_scores": [
+    0.95,
+    1.0,
+    0.3858543417366947
+  ],
+  "metric": "average_precision",
+  "model_config": {
+    "c": 0.001,
+    "class_weight": "balanced",
+    "max_iter": 750
+  },
+  "selection_scope": "development folds only",
+  "trial_id": 0,
+  "trial_stage": "pilot"
+}

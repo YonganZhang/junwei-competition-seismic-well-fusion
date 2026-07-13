@@ -31,7 +31,12 @@ def task_spec() -> TaskSpec:
         group_keys=("well_bore_code",),
         target_transform={"FUTURE_30D_MEAN_OIL": "log1p"},
         inverse_transform={"FUTURE_30D_MEAN_OIL": "expm1"},
-        train_loss={"FUTURE_30D_MEAN_OIL": "huber"},
+        train_loss={
+            "FUTURE_30D_MEAN_OIL": {
+                "candidates": ["huber", "squared_error"],
+                "selection": "development_oof_only",
+            }
+        },
         inference_transform={"FUTURE_30D_MEAN_OIL": "nonnegative_after_expm1"},
         threshold_policy={}, calibration_policy={},
         primary_metrics=("mae", "spearman"),

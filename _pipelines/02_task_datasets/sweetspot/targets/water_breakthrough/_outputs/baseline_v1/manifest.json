@@ -1,0 +1,150 @@
+{
+  "artifacts": {
+    "config.json": {
+      "bytes": 2766,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "ed0e0ba22de2489a0767fbba94d95f64f3386db3b3bd5923b672bb3cf6384e84"
+    },
+    "data_evidence.json": {
+      "bytes": 1270,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "73c93f955f1a51c475abe8e8c9744305e4c2d1ea79cdc4a2b27ff8da2550bc9f"
+    },
+    "folds/fold_0/checkpoint_best.pkl": {
+      "bytes": 11471,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "f5934a3aba2f9466cc090c1d8f3511ac04c002e685c127d3b2f769dd3decd756"
+    },
+    "folds/fold_1/checkpoint_best.pkl": {
+      "bytes": 11471,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "6e9c3e07b57e63ca171dfb9544714b541c9ab02f061d0615484dbf2ff9692424"
+    },
+    "folds/fold_2/checkpoint_best.pkl": {
+      "bytes": 11471,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "efad3861682d29f1c808286f5ce006cdececc76b0ae7087c9d514611d7f44e50"
+    },
+    "frozen_test/metrics.json": {
+      "bytes": 188,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "865007381a6a715dd50e4ab1c43d7de18f5f2dec5ce8816c411a33451824ee04"
+    },
+    "frozen_test/predictions.csv": {
+      "bytes": 3228,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "3eff99b7b57e5a64c32b638e77c2abd363a953dc1c46a3e4720969cf7094908a"
+    },
+    "hpo/pilot/trials.json": {
+      "bytes": 12967,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "2d19539c15bc453b5684dd3950077b391c2ea8118878482fd5ce5ea1eb96d151"
+    },
+    "hpo/plan.json": {
+      "bytes": 340,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "abba1f5fd77f371ddd7f06034557e7c45f1669757e8e81ee9c9b0611ed276692"
+    },
+    "hpo/selection.json": {
+      "bytes": 347,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "70542a2e436b007e948d0a3ba5e1ff893d30801df39829aa0bfb5b649b81b1d0"
+    },
+    "hpo/trials.json": {
+      "bytes": 5065,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "7a407511acde48078155f1d28c29dea5999409680c3d2828529d010199365ca9"
+    },
+    "lifecycle.json": {
+      "bytes": 1297,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "4bb592942d70e53e667caac964e2ebc41ce40b838196ad1b66a0238ad58a3bfc"
+    },
+    "oof/folds.json": {
+      "bytes": 919,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "3b4d0afd50d54deccf7e1670cf262b9f85e3ff97a2f262bd77832b7257e0ec4e"
+    },
+    "oof/metrics.json": {
+      "bytes": 174,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "9b1a9132b972d446f716f106fc4982b11cae0d3561509d27ab0adaeb7623486b"
+    },
+    "oof/predictions.csv": {
+      "bytes": 2788,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "f84d83b9b7598bd8975ced16f8ed760206ea85d97b08a4d9c56a3456c7eec64b"
+    },
+    "refit/checkpoint_best.pkl": {
+      "bytes": 11506,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "62763323253a189edbb86f94b0e831aa611caca0f426c3fcc85c76fb0889929a"
+    },
+    "split_manifest.json": {
+      "bytes": 9075,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402"
+    },
+    "status.json": {
+      "bytes": 1178,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "389bcbcc09119e9ac86ac2bda1b516e7941d7304d7dbbb4963b637195fb8e55f"
+    },
+    "task_spec.json": {
+      "bytes": 2305,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "9210aaab8b8ac35b5acf7b4285e292d4cca262bdec4b0a6de79fb059998a858d"
+    },
+    "visualizations/calibration.png": {
+      "bytes": 46064,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "3bac88c559fc87037b6c05ce14f9f9a9ceb6d8d20fd5638ffdc1fb4749843795"
+    },
+    "visualizations/confusion_by_well.png": {
+      "bytes": 30124,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "ef3b0812a92001820a04f47a20c8d7558f72662f5e29a5c5be8e0b8e290f9ec0"
+    },
+    "visualizations/pr_curve.png": {
+      "bytes": 31324,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "9fb23b0b624e6435d137358319427939f0240d125514e83070aed90e953802c6"
+    },
+    "visualizations/risk_timeline.png": {
+      "bytes": 45020,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "9c360e071a040c6e5f8c895d32432f2b3ad44ebfb0cde6cf0dd5ef07de250e3c"
+    },
+    "visualizations/visualization_manifest.json": {
+      "bytes": 738,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "2421bc2265aa92a6a7ffe3d9adaf33db0dee935695c95d02a2af5c1707185483"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "sweetspot.water_breakthrough.baseline_v1"
+}

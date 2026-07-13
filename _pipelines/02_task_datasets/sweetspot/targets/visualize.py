@@ -217,7 +217,9 @@ def render(target_id: str, prediction_csv: Path, output_dir: Path, *, frozen_thr
         raise RuntimeError("prediction archive changed during visualization")
     manifest: dict[str, object] = {
         "target_id": target_id,
-        "prediction_path": str(prediction_csv),
+        # Keep archives portable: provenance stores the local role/name and
+        # content hash, never a host- or worktree-specific absolute path.
+        "prediction_path": prediction_csv.name,
         "prediction_sha256": before,
         "frozen_threshold": frozen_threshold,
         "figures": [{"name": path.name, "sha256": _sha256(path)} for path in figures],

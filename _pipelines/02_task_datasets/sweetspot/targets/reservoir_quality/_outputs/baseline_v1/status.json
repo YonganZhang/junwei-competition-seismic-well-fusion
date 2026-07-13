@@ -1,0 +1,38 @@
+{
+  "development_samples": 35810,
+  "downgrade_reason": "only 3 independent development groups are available",
+  "effective_folds": 3,
+  "frozen_test_metrics": {
+    "mae": 0.384160336333919,
+    "r2": 0.42522020961538587,
+    "r2_reason": null,
+    "rmse": 0.659291968009092,
+    "sample_count": 11936,
+    "spearman": 0.9177394968144464
+  },
+  "hpo_pilot_status": "complete",
+  "hpo_pilot_trials": 20,
+  "hpo_sanity_trials": 8,
+  "label_version": "rqi-0.0314-sqrt-klogh-over-phif-v1",
+  "model_config": {
+    "alpha": 1.0,
+    "estimator": "ridge"
+  },
+  "model_id": "robust_linear",
+  "oof_metrics": {
+    "mae": 0.7168616369759928,
+    "r2": -3.5989621396821896,
+    "r2_reason": null,
+    "rmse": 1.9951092346449575,
+    "sample_count": 35810,
+    "spearman": 0.8356252394842112
+  },
+  "proxy_warning": "petrophysical reservoir-quality proxy, not field sweetspot truth",
+  "requested_folds": 5,
+  "status": "proxy_feasible",
+  "target_id": "reservoir_quality",
+  "target_number": 1,
+  "task_id": "sweetspot.reservoir_quality.rqi_v1",
+  "test_consumed_once": true,
+  "test_samples": 11936
+}

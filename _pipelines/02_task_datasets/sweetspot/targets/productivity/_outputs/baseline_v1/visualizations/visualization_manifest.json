@@ -1,0 +1,24 @@
+{
+  "figures": [
+    {
+      "name": "time_series_forecast.png",
+      "sha256": "a202662d1bfe2f27a1030fe7fa4aadff3796486a65cd4870d48758a4d670e044"
+    },
+    {
+      "name": "observed_predicted.png",
+      "sha256": "305f4f62d651431e39c7877a060658d82072758c2361f4523bf4ed3c48d9bbb5"
+    },
+    {
+      "name": "residual_by_well.png",
+      "sha256": "7226d5cbc285d5f3ad98fd5a962cac2e134e0e898664b5f74c3be8bf9f98877b"
+    },
+    {
+      "name": "topk_ranking.png",
+      "sha256": "6eef57d39de7408975e40f99daac7404136885e728b0bac6034e679f119aa168"
+    }
+  ],
+  "frozen_threshold": 0.5,
+  "prediction_path": "predictions.csv",
+  "prediction_sha256": "174144ff1db952241232915f036b8f437a03cd38dc9c46d256aded5b43f39f6f",
+  "target_id": "productivity"
+}

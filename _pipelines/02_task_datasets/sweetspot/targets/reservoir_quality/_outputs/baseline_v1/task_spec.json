@@ -1,0 +1,103 @@
+{
+  "calibration_policy": {},
+  "forbidden_inputs": [
+    "PHIF",
+    "PHIE",
+    "KLOGH",
+    "KLOGV",
+    "RQI",
+    "SAND_FLAG",
+    "SW",
+    "VSH"
+  ],
+  "group_keys": [
+    "well_family"
+  ],
+  "guardrail_metrics": [],
+  "hpo": {
+    "model_ids": [
+      "robust_linear"
+    ],
+    "selection_scope": "development_oof_only"
+  },
+  "inference_transform": {
+    "RQI": "identity_after_expm1"
+  },
+  "input_modalities": [
+    "well_logs"
+  ],
+  "input_whitelist": [
+    "GR",
+    "RHOB",
+    "NPHI",
+    "RT",
+    "DT",
+    "DTS",
+    "PEF",
+    "DRHO",
+    "CALI",
+    "BS",
+    "RD",
+    "RM",
+    "RACEHM",
+    "RACELM",
+    "RPCEHM",
+    "RPCELM"
+  ],
+  "inverse_transform": {
+    "RQI": "expm1"
+  },
+  "label_version": "rqi-0.0314-sqrt-klogh-over-phif-v1",
+  "metadata": {
+    "formula": "RQI = 0.0314 * sqrt(KLOGH / PHIF)",
+    "label_semantics": "petrophysical reservoir-quality proxy, not field sweetspot truth",
+    "status": "proxy_feasible",
+    "test_family": "15/9-F-15"
+  },
+  "metric_directions": {
+    "mae": "minimize",
+    "rmse": "minimize",
+    "spearman": "maximize"
+  },
+  "primary_metrics": [
+    "mae",
+    "spearman"
+  ],
+  "required_figures": [
+    "depth_track",
+    "observed_predicted",
+    "residual_by_well",
+    "rank_by_well"
+  ],
+  "secondary_metrics": [
+    "rmse"
+  ],
+  "spatial_buffer": null,
+  "target_masks": {
+    "RQI": "finite_phif_gt_0_and_klogh_ge_0"
+  },
+  "target_transform": {
+    "RQI": "log1p"
+  },
+  "targets": [
+    "RQI"
+  ],
+  "task_id": "sweetspot.reservoir_quality.rqi_v1",
+  "task_type": "regression",
+  "threshold_policy": {},
+  "time_cutoff": null,
+  "track_id": "sweetspot",
+  "train_loss": {
+    "RQI": {
+      "candidates": [
+        "huber",
+        "squared_error"
+      ],
+      "selection": "development_oof_only"
+    }
+  },
+  "units": {
+    "RQI": "sqrt(mD/fraction)"
+  },
+  "visualizer_id": "sweetspot_reservoir_quality"
+}

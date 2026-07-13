@@ -1,0 +1,24 @@
+{
+  "figures": [
+    {
+      "name": "risk_timeline.png",
+      "sha256": "9c360e071a040c6e5f8c895d32432f2b3ad44ebfb0cde6cf0dd5ef07de250e3c"
+    },
+    {
+      "name": "pr_curve.png",
+      "sha256": "9fb23b0b624e6435d137358319427939f0240d125514e83070aed90e953802c6"
+    },
+    {
+      "name": "calibration.png",
+      "sha256": "3bac88c559fc87037b6c05ce14f9f9a9ceb6d8d20fd5638ffdc1fb4749843795"
+    },
+    {
+      "name": "confusion_by_well.png",
+      "sha256": "ef3b0812a92001820a04f47a20c8d7558f72662f5e29a5c5be8e0b8e290f9ec0"
+    }
+  ],
+  "frozen_threshold": 0.5,
+  "prediction_path": "predictions.csv",
+  "prediction_sha256": "3eff99b7b57e5a64c32b638e77c2abd363a953dc1c46a3e4720969cf7094908a",
+  "target_id": "water_breakthrough"
+}

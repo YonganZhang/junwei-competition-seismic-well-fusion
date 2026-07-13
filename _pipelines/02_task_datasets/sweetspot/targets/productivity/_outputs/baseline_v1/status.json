@@ -1,0 +1,40 @@
+{
+  "development_samples": 1111,
+  "downgrade_reason": "only 4 independent development groups are available",
+  "effective_folds": 4,
+  "frozen_test_metrics": {
+    "mae": 117.16119389905455,
+    "r2": -2.938832598509715,
+    "r2_reason": null,
+    "rmse": 131.50579738013397,
+    "sample_count": 132,
+    "spearman": 0.4306744202197569,
+    "topk_hit": 0.35714285714285715
+  },
+  "hpo_pilot_status": "complete",
+  "hpo_pilot_trials": 20,
+  "hpo_sanity_trials": 8,
+  "label_version": "future-30-calendar-row-mean-oil-v1",
+  "model_config": {
+    "alpha": 31.622776601683793,
+    "estimator": "ridge"
+  },
+  "model_id": "robust_linear",
+  "oof_metrics": {
+    "mae": 918.1740623007915,
+    "r2": -3.47314564856467,
+    "r2_reason": null,
+    "rmse": 2708.652190244981,
+    "sample_count": 1111,
+    "spearman": 0.7621107733436846,
+    "topk_hit": 0.6964285714285714
+  },
+  "proxy_warning": null,
+  "requested_folds": 5,
+  "status": "feasible",
+  "target_id": "productivity",
+  "target_number": 3,
+  "task_id": "sweetspot.productivity.future_30d_oil_v1",
+  "test_consumed_once": true,
+  "test_samples": 132
+}

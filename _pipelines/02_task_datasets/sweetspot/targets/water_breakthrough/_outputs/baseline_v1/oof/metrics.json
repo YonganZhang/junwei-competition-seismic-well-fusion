@@ -1,0 +1,8 @@
+{
+  "average_precision": 0.7654914529914529,
+  "brier": 0.23039899086300547,
+  "f1": 0.6666666666666666,
+  "positive_rate": 0.375,
+  "sample_count": 32,
+  "threshold": 0.5
+}
