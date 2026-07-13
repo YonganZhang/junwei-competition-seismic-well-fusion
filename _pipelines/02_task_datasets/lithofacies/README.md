@@ -412,10 +412,10 @@ P5 contract tests, followed by the real-development batch gate:
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest discover \
-  -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_p5*.py' -v
+  -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_lithofacies_p5*.py' -v
 
 LITHOFACIES_P5_REAL_BATCH=1 \
 LITHOFACIES_P5_DATASET_ROOT="$DATASET_ROOT" \
 PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" -m unittest discover \
-  -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_p5*.py' -v
+  -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_lithofacies_p5*.py' -v
 ```

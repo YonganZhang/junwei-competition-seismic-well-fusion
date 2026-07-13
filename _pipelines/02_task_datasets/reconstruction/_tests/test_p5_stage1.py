@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import inspect
+import importlib.util
 import json
 import sys
 import tempfile
@@ -20,7 +21,19 @@ sys.path.insert(0, str(HERE))
 from ml_framework.model_discovery import discover_model  # noqa: E402
 
 import p4_reconstruction as p4  # noqa: E402
-import p5_stage1 as p5  # noqa: E402
+
+
+def _load_track_module(module_name: str, filename: str):
+    spec = importlib.util.spec_from_file_location(module_name, HERE / filename)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load {filename} as {module_name}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+p5 = _load_track_module("reconstruction_p5_stage1_tests", "p5_stage1.py")
 from _models.reconstruction._p5_adapter import AdapterSkip  # noqa: E402
 
 

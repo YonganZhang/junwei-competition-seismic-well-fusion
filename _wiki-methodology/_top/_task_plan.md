@@ -1,14 +1,17 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5开源模型基准启动] 六赛道已在隔离 `p4-training-integration` worktree 共存；
+> **🧭 当前: [P5 Stage 1 已集成验收] 六赛道已在隔离 `p4-training-integration` worktree 共存；
 >   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
 >   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
 >   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
 >   2026-07-14 已完成六赛道开源模型主源调研并独立验收：共127个去重候选、92个L2候选，
->   每赛道冻结首批10个模型；已从P4干净HEAD创建 `p5-model-benchmark-integration` 工作树。
->   因master仍有未归属脏改动，暂不直接merge；下一步按统一SOP完成60个contract smoke、同预算pilot、
->   top-3×3-seed×有效fold和最终单次frozen-test。未 push。**
+>   每赛道冻结首批10个模型；60个候选均已得到Stage-1可审计尝试记录，六赛道提交已按固定顺序
+>   集成到 `p5-model-benchmark-integration`，并通过两套共享环境的跨赛道联合测试。
+>   Stage-1不是性能排名：有真实标签/依赖的候选完成contract smoke，其余按许可证、标签或任务通道
+>   硬门结构化skip；没有用代理标签或测试集补数。因master仍有未归属脏改动，暂不直接merge；
+>   下一步对科学可行候选做同预算development pilot，再做top-3×3-seed×有效fold和最终单次frozen-test。
+>   未 push。**
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
 >   ⑤七目标均有可审计状态；主仓集成策略待授权；正式高性能模型尚待P5。
@@ -22,7 +25,7 @@
 | P2 数据 / 实现准备 | ✅ | 3/3 | Volve全套(含ST10010)+F3+Penobscot下载完成；③④赛道数据量核实足够(纠正见P2.2) |
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
 | P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
-| P5 合成 / 交付 | 🔄 | 0.2/1 | 六赛道模型调研与统一执行合同已完成：127个候选、92个L2、首批60个待实测；正式smoke/pilot/CV/HPO、多seed、专属可视化与最终性能达标尚未完成 |
+| P5 合成 / 交付 | 🔄 | 0.45/1 | 六赛道模型调研、统一执行合同与Stage-1已完成：127个候选、92个L2、首批60个均有可审计尝试记录；科学可行候选的同预算pilot、CV/HPO、多seed、专属可视化与最终性能达标尚未完成 |
 
 ## 协作与决策权边界
 
@@ -152,6 +155,16 @@
       新建干净分支/工作树 `p5-model-benchmark-integration@2d128b0`，统一执行合同见
       `_phases/P5_open_model_benchmark_protocol.md`。**边界**：目前完成的是调研和SOP，不是60个模型已实测；
       master仍有未归属脏改动，因此没有merge/push。
+- [x] 2026-07-14 P5 Stage-1 完成并集成验收：六赛道各10个候选均有独立、可审计的contract-smoke
+      尝试记录；状态不等于“60个全部成功”。①断层在无审核负例时仅做工程forward/contract检查并停止
+      正式排名；②F3与Penobscot各6个smoke通过、4个依赖/来源硬门skip；③9个通过、TabICLv2因未批准
+      checkpoint许可skip；④P通道9个通过、S通道因小批次缺连续同井MD样本而1个skip；⑤10模型×7目标
+      共70个真实运行格全部因`label_spec`未批准而fail-closed skip，但adapter fixture合同测试通过；⑥strict与
+      conditional各8个通过、2个硬门skip。六个赛道提交按①→⑥顺序集成；随后修复测试文件同名和裸模块名
+      在联合收集时的跨赛道碰撞。`torch-common`全量联合验收为53 passed、6 skipped、77 subtests passed；
+      `tabular-cpu`联合验收为31 passed、2 skipped、20 subtests passed。frozen test未被访问，master未merge，
+      未push。完整验收证据见 `_wiki-methodology/_tests/P5_stage1_acceptance_evidence.md`。下一步只对科学可行
+      候选执行Stage-2固定development pilot；⑤先补真实标签合同，①先补审核负例。
 
 ## 数据资产索引
 

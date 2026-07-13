@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 import io
 import sys
 import unittest
@@ -18,7 +19,19 @@ from _code.ml_framework.model_discovery import discover_model
 from _models.facies._p5_common import P5AdapterSkip, source_lock, source_locks
 
 from p4_tasks import get_task_spec
-from p5_stage1 import MODEL_IDS
+
+
+def _load_track_module(module_name: str, filename: str):
+    spec = importlib.util.spec_from_file_location(module_name, TRACK_DIR / filename)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load {filename} as {module_name}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+MODEL_IDS = _load_track_module("facies_p5_stage1_adapters", "p5_stage1.py").MODEL_IDS
 
 
 AVAILABLE_2D_IDS = (

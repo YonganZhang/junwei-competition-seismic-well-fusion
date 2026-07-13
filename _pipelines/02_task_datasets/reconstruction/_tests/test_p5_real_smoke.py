@@ -1,6 +1,7 @@
 """Explicit data-dependent P5 Stage-1 smoke; frozen test blocks remain closed."""
 from __future__ import annotations
 
+import importlib.util
 import os
 import sys
 import tempfile
@@ -14,7 +15,19 @@ sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "_code"))
 sys.path.insert(0, str(HERE))
 
-import p5_stage1 as p5  # noqa: E402
+
+
+def _load_track_module(module_name: str, filename: str):
+    spec = importlib.util.spec_from_file_location(module_name, HERE / filename)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load {filename} as {module_name}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+p5 = _load_track_module("reconstruction_p5_stage1_real_smoke", "p5_stage1.py")
 
 
 class P5RealDevelopmentSmokeTest(unittest.TestCase):

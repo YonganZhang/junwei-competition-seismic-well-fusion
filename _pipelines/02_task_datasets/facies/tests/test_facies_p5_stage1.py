@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 import inspect
 import json
 import sys
@@ -19,11 +20,22 @@ for import_root in (str(PROJECT_ROOT), str(TRACK_DIR)):
     if import_root not in sys.path:
         sys.path.insert(0, import_root)
 
-from p5_stage1 import (
-    DevelopmentOnlyArchive,
-    prepare_development_batch,
-    run_stage1,
-)
+
+
+def _load_track_module(module_name: str, filename: str):
+    spec = importlib.util.spec_from_file_location(module_name, TRACK_DIR / filename)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load {filename} as {module_name}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+_p5_stage1 = _load_track_module("facies_p5_stage1_firewall", "p5_stage1.py")
+DevelopmentOnlyArchive = _p5_stage1.DevelopmentOnlyArchive
+prepare_development_batch = _p5_stage1.prepare_development_batch
+run_stage1 = _p5_stage1.run_stage1
 
 
 def _write_development_archive(root: Path, task_id: str, classes: int) -> None:

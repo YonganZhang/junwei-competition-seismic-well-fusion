@@ -104,6 +104,13 @@ entrypoints:
     owner: col3
     description: "P4 portable suites, real smoke, CV/refit/frozen-test metrics, artifact verification and honest blockers."
 
+  - id: p5_stage1_acceptance
+    path: _wiki-methodology/_tests/P5_stage1_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P5 first-batch open-model contract attempts, cross-track integration gates, structured skips and scientific stop lines."
+
   - id: sweetspot_target_registry
     path: _pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json
     type: artifact_registry

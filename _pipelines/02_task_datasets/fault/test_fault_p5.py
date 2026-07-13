@@ -2,6 +2,7 @@
 """Unit, gate, adapter, and Stage-1 tests for fault P5 candidates."""
 from __future__ import annotations
 
+import importlib.util
 import inspect
 import json
 import sys
@@ -25,8 +26,25 @@ from _code.ml_framework.artifacts import atomic_write_json, hash_file  # noqa: E
 from _code.ml_framework.contracts import ModelOutput  # noqa: E402
 from _code.ml_framework.model_discovery import discover_model  # noqa: E402
 from _models.fault.p5_lock import evaluate_runtime_gate, load_source_locks  # noqa: E402
-from p4_contract import TARGET_NAME, fault_task_spec  # noqa: E402
-import p5_stage1  # noqa: E402
+
+
+def _load_track_module(module_name: str, filename: str):
+    """Load a track-local module without polluting the global short name."""
+
+    spec = importlib.util.spec_from_file_location(module_name, TRACK_DIR / filename)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot load {filename} as {module_name}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+_p4_contract = _load_track_module("fault_p4_contract", "p4_contract.py")
+TARGET_NAME = _p4_contract.TARGET_NAME
+fault_task_spec = _p4_contract.fault_task_spec
+sys.modules["p4_contract"] = _p4_contract
+p5_stage1 = _load_track_module("fault_p5_stage1", "p5_stage1.py")
 
 
 def write_development_hdf5(

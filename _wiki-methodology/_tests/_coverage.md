@@ -1,12 +1,14 @@
 # Test Coverage - 军伟的比赛
 
-> COL3 测试地图。长运行证据见 `_run_ledger.md`，P4 结果与科学性边界见 `P4_acceptance_evidence.md`。
+> COL3 测试地图。长运行证据见 `_run_ledger.md`，P4与P5 Stage-1结果及科学性边界分别见
+> `P4_acceptance_evidence.md`、`P5_stage1_acceptance_evidence.md`。
 
 ## Audit-First / SSDO
 
 | Gate | Entrypoint | Coverage Purpose |
 |---|---|---|
 | P4 验收报告 | `sed -n '1,260p' _wiki-methodology/_tests/P4_acceptance_evidence.md` | 先区分“工程流程通过”、“模型精度达标”和 `not_feasible` |
+| P5 Stage-1 验收报告 | `sed -n '1,260p' _wiki-methodology/_tests/P5_stage1_acceptance_evidence.md` | 区分候选尝试、contract smoke、结构化skip与禁止排名的科学硬门 |
 | 甜点七目标注册 | `python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json` | 重建独立目标注册并校验必需产物存在 |
 | TOP 结题检查 | `python3 /mnt/data/yongan-admin-2/.codex/skills/share-top/scripts/topic-closeout.py .` | 发现计划/codemap/registry/test map 漂移 |
 
@@ -28,6 +30,7 @@
 | `_pipelines/02_task_datasets/lithofacies/tests/test_p4_contract.py` | 母井家族划分、固定九类/支持类双口径、一次性 F-5 test |
 | `_pipelines/02_task_datasets/sweetspot/tests/test_p4_*.py` | 七目标独立性、代理标签泄漏防火墙、可行/`not_feasible` 分流 |
 | `_pipelines/02_task_datasets/reconstruction/_tests/test_p4_*.py` | strict/conditional 拆分、buffered block CV、约束审计、冻结测试 |
+| 六赛道 `*p5*` 测试 | 开源adapter/source lock、真实development小批次、确定性/shape/finite、结构化skip与test firewall |
 
 ## Leaves
 
@@ -44,3 +47,4 @@
 - 精确 PHIE 缺独立真值；不用 LFP_PHIE 替代。
 - 岩相冻结预测未持久化真实 `center_md_m`，因此深度轨迹图 `not_feasible`；其他分类/校准图已可用。
 - 长预算 HPO、top-3 配置×3 seeds×全 folds 和正式深度模型尚未执行；不属于本轮工程 baseline 已完成声明。
+- P5 Stage-2固定预算development pilot尚未执行；断层审核负例与甜点七目标已批准`label_spec`仍是硬阻塞。

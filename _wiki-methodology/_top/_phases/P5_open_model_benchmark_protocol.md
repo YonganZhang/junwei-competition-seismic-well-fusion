@@ -3,7 +3,7 @@
 > 冻结日期：2026-07-14
 > 基线：`p4-training-integration@2d128b009bd1d943918f948785bf5f4e19ce4b7b`
 > 分支：`p5-model-benchmark-integration`
-> 状态：执行合同 v1；候选来源调研已验收，模型实测尚未开始
+> 状态：执行合同 v1；候选来源调研和Stage-1已验收，Stage-2尚未开始
 > 全局随机种子：`2693`
 
 ## 1. 目的与边界
@@ -179,3 +179,37 @@ checkpoint/resume、artifact manifest、可视化从保存预测重建以及相�
 - 每赛道至多 3 个胜出候选完成有效 folds × 3 seeds；简单 P4 baseline 始终作为 control。
 - frozen test 仅由最终冻结配置消费一次；全部指标、checkpoint、环境、源码/数据哈希和专属可视化齐全。
 - 所有变更在 clean P5 worktree 中形成可审计 commit，并经负责人独立复跑后再进入合并决策。
+
+## 10. 2026-07-14 Stage-1 验收证据
+
+完整命令门、实时数据旅程与Trace/SSDO降级证据见 `../../_tests/P5_stage1_acceptance_evidence.md`。
+
+Stage-1 的完成定义是“每个候选都有合同检查结果或可审计的硬门停止原因”，不是“60个候选全部训练成功”，
+更不是性能排名。所有运行都禁止读取 frozen test。
+
+| 赛道 | 首批10个的Stage-1结果 | 科学停止线 |
+|---|---|---|
+| ①断层 | 可用依赖完成工程forward/contract检查；未形成正式比较榜 | 缺经审核负例，停止在HPO/CV前 |
+| ②地震相 | F3与Penobscot各6个`contract_smoked`、4个结构化skip | 两数据集独立榜单；未访问测试归档 |
+| ③储层物性 | 9个`contract_smoked`、1个许可证门skip | PHIF/KLOGH/SW独立mask；TabICLv2权重未批准 |
+| ④岩相 | P通道9个通过、S通道1个结构化skip | 固定小批次缺连续同井MD样本，不跨通道凑结果 |
+| ⑤甜点 | 70个“模型×目标”真实格全部label-gated skip；adapter fixture合同测试通过 | 七目标均无已批准真实`label_spec`，不生成代理标签 |
+| ⑥三维重建 | strict与conditional各8个通过、2个结构化skip | 两任务独立；条件井信息不流入strict |
+
+六个赛道提交以固定顺序进入P5集成分支：
+
+1. `53daaa7` fault
+2. `26c4250` facies
+3. `6ebea6f` property
+4. `0ce3bf1` lithofacies
+5. `2559b7b` sweetspot
+6. `fabe99b` reconstruction
+
+集成后发现多个赛道使用相同测试文件名和裸模块名，pytest联合收集会发生模块碰撞；现已在集成层使用
+赛道唯一文件名和显式文件路径加载进行隔离。两套共享环境联合复跑结果：
+
+- `torch-common`全量套件：53 passed、6 skipped、77 subtests passed；
+- `tabular-cpu`：31 passed、2 skipped、20 subtests passed。
+
+因此，Stage-2只能纳入已有真实development标签、依赖和许可证边界清楚的候选。①与⑤应先完成数据/标签
+硬门，不得为了满足“10个模型”而制造负例、代理标签或训练分数。

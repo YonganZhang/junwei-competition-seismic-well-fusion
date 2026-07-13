@@ -14,3 +14,15 @@
 - lithofacies campaign: `p4_runner.py freeze/refit/test --run-root _pipelines/02_task_datasets/lithofacies/_outputs/p4_runs/integration_cv_smoke --dataset-root <track-lithofacies real HDF5>`；`visualize_p4.py` 读归档预测生成分类/校准图。
 - artifact audit: 7 manifests / 144 manifest artifacts verified；seven-target registry 7 cases / 50 registry artifacts verified；`all_targets_independent=true`。
 - 结果与 blocker: `P4_acceptance_evidence.md`。
+
+## 2026-07-14 P5 Stage-1 integration acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-model-benchmark-integration`
+- branch: `p5-model-benchmark-integration`
+- root seed: `2693`
+- source branches: six clean P5 track commits, integrated in fault/facies/property/lithofacies/sweetspot/reconstruction order.
+- `torch-common` full combined gate: 53 passed, 6 skipped, 77 subtests passed.
+- `tabular-cpu` combined gate: 31 passed, 2 skipped, 20 subtests passed.
+- live development inputs: used where task labels/contracts were approved; fault formal comparison and all sweetspot real task cells stopped fail-closed at their scientific gates.
+- frozen test: not accessed by Stage-1 runners.
+- results, structured skips and SSDO downgrade: `P5_stage1_acceptance_evidence.md`.
