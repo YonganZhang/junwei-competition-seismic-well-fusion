@@ -1,0 +1,31 @@
+{
+  "schema_version": "p4-reconstruction-v1",
+  "status": "partial_scientific_feasibility",
+  "not_feasible": [
+    {
+      "claim": "new blind cross-field generalization",
+      "reason": "Only one Volve reference volume is available and the historical strict spatial block has already been reported.",
+      "needed": "An independent parseable field volume or pre-registered unseen realization."
+    },
+    {
+      "claim": "cross-well generalization",
+      "reason": "Only 15/9-19 intersects active cells in the final simulator grid.",
+      "needed": "Multiple independently intersecting wells with non-target-derived porosity constraints."
+    },
+    {
+      "claim": "fully constrained five-fold conditional IDW CV",
+      "reason": "Conditional development I-blocks 0-3 contain one sparse constraint in K-block 6; validation/purge folds can legitimately contain zero fit constraints.",
+      "mitigation": "Use the explicit audited fold-train-mean IDW feature fallback; never import frozen-test constraints into CV/HPO."
+    },
+    {
+      "claim": "strict P4 IDW from independent measured well porosity",
+      "reason": "The current sparse porosity values are sampled from Eclipse reference target cells, so strict P4 excludes them as derived truth.",
+      "needed": "Independently measured and spatially registered porosity well-log constraints."
+    }
+  ],
+  "not_executed": [
+    "Long Optuna HPO",
+    "Three-seed full-fold confirmation",
+    "New frozen-test campaign"
+  ]
+}

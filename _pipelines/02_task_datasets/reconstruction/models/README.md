@@ -24,3 +24,9 @@ Available same-name plugins:
 The alternatives implement the same adapter contract but have no canonical
 track metrics until they are intentionally trained and evaluated.  Adding a
 future model still requires only its same-name file and decorator line.
+
+`p4_reconstruction.py` adapts all three unchanged models to the frozen P4
+`train_with_validation` and resumable-checkpoint contracts.  Model files still
+contain only estimator behavior: TaskSpec, spatial split, preprocessing,
+metric direction, frozen-test access and visualization remain outside this
+directory.

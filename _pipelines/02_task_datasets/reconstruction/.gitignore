@@ -26,6 +26,11 @@ site-packages/
 *.pt
 *.pth
 *.onnx
+*.pkl
+
+# P4 run archives contain prediction NPZ/checkpoints and are generated from
+# source HDF5.  Keep them local; tracked source/SOP/tests remain portable.
+_outputs/runs/
 
 # Pre-dual-mode local snapshots are retained on disk but are not canonical.
 results.json

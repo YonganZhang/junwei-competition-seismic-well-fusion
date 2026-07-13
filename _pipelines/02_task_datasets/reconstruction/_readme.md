@@ -4,6 +4,27 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P4 training/validation plugin
+
+`p4_reconstruction.py` adds the frozen P4 TaskSpec, continuous spatial test,
+buffered development CV, fold-train preprocessing/constraint filtering,
+minimize-direction fixed baseline plan, full resumable checkpoint/artifact
+contract and one-shot test lifecycle. `p4_visualize.py` renders inline,
+crossline and time/depth truth/prediction/residual slices plus distribution and
+spectrum diagnostics from archived predictions only.
+
+Conditional and strict P4 runs are separate tasks and metric namespaces; their
+artifacts cannot be mixed. The existing `baseline.py` and canonical result
+JSON remain unchanged. See `P4_SOP.md` for commands, data provisioning and the
+unit → contract → tiny → real-smoke → CV → refit → single-test order. Known
+scientific limits are machine-readable in `not_feasible.json`.
+
+P4 strict is intentionally stricter than the historical strict baseline below:
+because the available sparse porosity values were sampled from Eclipse target
+cells, P4 strict excludes every well-porosity/IDW value and uses only seismic
+attributes plus coordinates. The following protocol bullets document the
+unchanged historical results and must not be read as the P4 input contract.
+
 Two explicitly separate evaluation protocols are available:
 
 - **Conditional reconstruction, NOT strict spatial holdout.**  Historical
