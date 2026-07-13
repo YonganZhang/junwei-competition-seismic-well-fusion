@@ -1,0 +1,65 @@
+# Python/test caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Dataset payloads: no generated or unapproved labels/splits belong in Git
+_data/
+data/
+datasets/
+generated_data/
+unapproved_data/
+labels/
+processed/
+*.h5
+*.hdf5
+*.zarr/
+*.npy
+*.npz
+*.parquet
+*.feather
+
+# Model/checkpoint/training-run artifacts
+checkpoints/
+model_artifacts/
+training_artifacts/
+runs/
+wandb/
+tensorboard/
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.joblib
+*.pkl
+
+# Training plots; documentation images with other names remain eligible
+*loss*.png
+*train*.png
+*metric*.png
+*confusion*.png
+*prediction*.png
+
+# Existing contract, implementation, tests, and small audit evidence stay visible
+!README.md
+!build_dataset.py
+!candidate_label_schemes.md
+!label_spec.schema.v1.json
+!label_spec.template.v1.yml
+!tests/
+!tests/test_validate_only.py
+!audit/
+!audit/contract_validation.json
+!audit/data_availability.json
+!audit/data_readiness.md

@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sweetspot-label-spec/v1",
+  "title": "Sweetspot label decision contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "spec_version",
+    "status",
+    "target_semantics",
+    "output",
+    "allowed_source_fields",
+    "label_construction",
+    "time_window",
+    "spatial_scale",
+    "class_rules",
+    "split_strategy",
+    "inference_allowed_inputs",
+    "metrics",
+    "approval",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {"const": "sweetspot-label-spec/v1"},
+    "spec_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[A-Za-z0-9.-]+)?$"
+    },
+    "status": {"enum": ["draft", "approved", "retired"]},
+    "target_semantics": {
+      "enum": ["geological", "engineering", "production", "joint"]
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "classes", "units", "probability_interpretation"],
+      "properties": {
+        "type": {
+          "enum": ["binary", "multiclass", "continuous_score", "probability"]
+        },
+        "classes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "units": {"type": ["string", "null"]},
+        "probability_interpretation": {"type": ["string", "null"]}
+      }
+    },
+    "allowed_source_fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/source_field_with_role"}
+    },
+    "label_construction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formula",
+        "formula_field_refs",
+        "thresholds",
+        "thresholds_not_applicable_reason",
+        "weights",
+        "weights_not_applicable_reason",
+        "fit_domain"
+      ],
+      "properties": {
+        "formula": {"type": "string"},
+        "formula_field_refs": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/source_field"}
+        },
+        "thresholds": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/threshold"}
+        },
+        "thresholds_not_applicable_reason": {"type": ["string", "null"]},
+        "weights": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/weight"}
+        },
+        "weights_not_applicable_reason": {"type": ["string", "null"]},
+        "fit_domain": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["statistics_scope", "population", "uses_test_statistics"],
+          "properties": {
+            "statistics_scope": {
+              "enum": ["train_only", "domain_expert", "external_fixed"]
+            },
+            "population": {"type": "string"},
+            "uses_test_statistics": {"const": false}
+          }
+        }
+      }
+    },
+    "time_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["definition", "start", "end", "timezone", "leakage_cutoff"],
+      "properties": {
+        "definition": {"type": "string"},
+        "start": {"type": ["string", "null"]},
+        "end": {"type": ["string", "null"]},
+        "timezone": {"type": ["string", "null"]},
+        "leakage_cutoff": {"type": "string"}
+      }
+    },
+    "spatial_scale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "support",
+        "coordinate_system",
+        "vertical_domain",
+        "resolution",
+        "alignment_tolerance"
+      ],
+      "properties": {
+        "support": {
+          "enum": ["well_point", "well_interval", "2d_slice", "3d_voxel"]
+        },
+        "coordinate_system": {"type": "string"},
+        "vertical_domain": {"type": "string"},
+        "resolution": {"type": "string"},
+        "alignment_tolerance": {"type": "string"}
+      }
+    },
+    "class_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["positive", "negative", "unlabeled"],
+      "properties": {
+        "positive": {"type": "string"},
+        "negative": {"type": "string"},
+        "unlabeled": {"type": "string"}
+      }
+    },
+    "split_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "group_key",
+        "train_rule",
+        "validation_rule",
+        "test_rule",
+        "fit_statistics_scope",
+        "leakage_guards"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": ["well_holdout", "spatial_block", "well_and_spatial"]
+        },
+        "group_key": {"type": "string"},
+        "train_rule": {"type": "string"},
+        "validation_rule": {"type": "string"},
+        "test_rule": {"type": "string"},
+        "fit_statistics_scope": {"const": "train_only"},
+        "leakage_guards": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "inference_allowed_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/source_field"}
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "aggregation", "decision_threshold"],
+        "properties": {
+          "name": {"type": "string"},
+          "aggregation": {"type": "string"},
+          "decision_threshold": {"type": ["number", "string", "null"]}
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approved",
+        "approved_by",
+        "approved_role",
+        "approved_at",
+        "decision_record"
+      ],
+      "properties": {
+        "approved": {"type": "boolean"},
+        "approved_by": {"type": ["string", "null"]},
+        "approved_role": {"type": ["string", "null"]},
+        "approved_at": {"type": ["string", "null"]},
+        "decision_record": {"type": ["string", "null"]}
+      }
+    },
+    "notes": {"type": ["string", "null"]}
+  },
+  "$defs": {
+    "source_field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "field"],
+      "properties": {
+        "source": {"type": "string"},
+        "field": {"type": "string"}
+      }
+    },
+    "source_field_with_role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "field", "role"],
+      "properties": {
+        "source": {"type": "string"},
+        "field": {"type": "string"},
+        "role": {
+          "enum": ["candidate_evidence", "inference_input", "label_only", "join_key"]
+        }
+      }
+    },
+    "threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "value", "units", "fit_scope", "rationale"],
+      "properties": {
+        "name": {"type": "string"},
+        "value": {"type": ["number", "string"]},
+        "units": {"type": ["string", "null"]},
+        "fit_scope": {"enum": ["train_only", "domain_expert", "external_fixed"]},
+        "rationale": {"type": "string"}
+      }
+    },
+    "weight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "value", "fit_scope", "rationale"],
+      "properties": {
+        "name": {"type": "string"},
+        "value": {"type": "number"},
+        "fit_scope": {"enum": ["train_only", "domain_expert", "external_fixed"]},
+        "rationale": {"type": "string"}
+      }
+    }
+  }
+}
