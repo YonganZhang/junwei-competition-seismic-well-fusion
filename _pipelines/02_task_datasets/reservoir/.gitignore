@@ -29,3 +29,27 @@ _outputs/p5_stage2/**
 !_outputs/p5_stage2/leaderboard_phif.json
 !_outputs/p5_stage2/leaderboard_klogh.json
 !_outputs/p5_stage2/leaderboard_sw.json
+
+# P5 Stage-3 portable confirmation evidence only. Per-cell OOF arrays,
+# checkpoints, contact sheets, and external-review scratch stay under the
+# ignored runtime/ subtree.
+!_outputs/p5_stage3/
+_outputs/p5_stage3/**
+!_outputs/p5_stage3/p5_stage3_budget.json
+!_outputs/p5_stage3/p5_stage3_split_manifest.json
+!_outputs/p5_stage3/p5_stage3_seed_manifest.json
+!_outputs/p5_stage3/p5_stage3_results.jsonl
+!_outputs/p5_stage3/p5_stage3_summary.json
+!_outputs/p5_stage3/p5_stage3_oof_manifest.json
+!_outputs/p5_stage3/p5_stage3_visualization_data.json
+!_outputs/p5_stage3/p5_stage3_visualization_manifest.json
+!_outputs/p5_stage3/leaderboard_phif_tabular_cpu.json
+!_outputs/p5_stage3/leaderboard_phif_seismic_3d_gpu.json
+!_outputs/p5_stage3/leaderboard_klogh_tabular_cpu.json
+!_outputs/p5_stage3/leaderboard_klogh_seismic_3d_gpu.json
+!_outputs/p5_stage3/leaderboard_sw_tabular_cpu.json
+!_outputs/p5_stage3/leaderboard_sw_seismic_3d_gpu.json
+!_outputs/p5_stage3/figures/
+_outputs/p5_stage3/figures/**
+!_outputs/p5_stage3/figures/*.png
+!_outputs/p5_stage3/figures/*.md

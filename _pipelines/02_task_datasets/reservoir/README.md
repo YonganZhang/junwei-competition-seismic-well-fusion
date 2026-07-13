@@ -156,7 +156,7 @@ ${TABULAR_PYTHON:-python3} \
 ${TORCH_PYTHON:-python3} \
   _pipelines/02_task_datasets/reservoir/reservoir_p5_stage2.py run \
   --models monai_densenet3d_regressor --seed 2693 --device cuda \
-  --gpu-lock /mnt/data/yongan-admin-2/.cache/volve-p5/locks/gpu0.lock
+  --gpu-lock "${GPU0_LOCK:?set GPU0_LOCK to the shared gpu0.lock path}"
 ```
 
 GPU入口对上述唯一lock文件执行阻塞式`flock`；锁等待不计入模型预算墙钟。
@@ -164,3 +164,47 @@ GPU入口对上述唯一lock文件执行阻塞式`flock`；锁等待不计入模
 三个target leaderboard均严格分成`tabular_cpu`与`seismic_3d_gpu` lane，禁止跨输入
 模态排序；当前tabular lane有8个合法候选可排名，MONAI 3D lane只有1个真实pilot，
 因此按合同标记为`not_rankable`。TabICLv2仍因权重许可证未确认而结构化skip。
+
+## P5 Stage-3 多seed LOGO4确认
+
+Stage-3入口为`reservoir_p5_stage3.py`。它冻结复用Stage-2的模型配置、32步更新预算、
+输入预处理和P4 development母井LOGO4，不运行HPO，也没有frozen-test参数或loader。
+固定repeat seeds为`1867973658/2137841944/3902865753`。PHIF、KLOGH和SW分别保留
+独立label mask、目标变换、指标和排行榜；每个fold的预处理只fit另外三个母井家族。
+KLOGH继续在`log1p(KLOGH_mD)`域训练，并在物理mD域排名与绘图。
+
+固定矩阵共108个cell：
+
+| 目标 | tabular候选 | LOGO folds | seeds | cells |
+|---|---|---:|---:|---:|
+| PHIF | Extra Trees、LightGBM、HistGradientBoosting | 4 | 3 | 36 |
+| KLOGH | LightGBM、Extra Trees、XGBoost | 4 | 3 | 36 |
+| SW | LightGBM、HistGradientBoosting、XGBoost | 4 | 3 | 36 |
+
+从项目根复跑。`prepare`只读取development train/guard产物，并生成被Git忽略的私有
+LOGO4 archive；`run`仅用tabular CPU环境消费该archive：
+
+```bash
+${PREP_PYTHON:-python3} \
+  _pipelines/02_task_datasets/reservoir/reservoir_p5_stage3.py prepare \
+  --train-h5 <development-only-train.h5> \
+  --guard-npz <development-only-guard.npz>
+
+${TABULAR_PYTHON:-python3} \
+  _pipelines/02_task_datasets/reservoir/reservoir_p5_stage3.py run
+
+${TABULAR_PYTHON:-python3} -m pytest -q \
+  _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_stage3.py
+```
+
+本次固定运行108/108个cell完成，合法完成率100%，三个tabular目标均`rankable`。
+按跨fold、跨seed物理RMSE均值排序，PHIF最佳为Extra Trees（0.027641 fraction），
+KLOGH最佳为Extra Trees（542.902564 mD），SW最佳为XGBoost（0.170427 fraction）。
+这些是development OOF结果，不是frozen-test指标。MONAI 3D只有一个候选且不在本轮
+108-cell矩阵内，其`seismic_3d_gpu` lane继续明确标为`not_rankable`，不与tabular排序。
+
+便携证据位于`_outputs/p5_stage3/`：逐cell JSONL、预算/seed/split/OOF/可视化
+manifest、每目标每lane排行榜，以及每目标的分井深度真值-预测、散点、残差、
+worst-family和fold×seed分布图。完整OOF数组、checkpoint和视觉质检contact sheet留在
+被忽略的`runtime/`。请求Times New Roman但当前环境未安装，图件manifest如实记录为
+Liberation Serif回退；不影响数据或指标。

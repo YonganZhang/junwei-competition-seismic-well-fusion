@@ -1,0 +1,26 @@
+{
+  "candidate_count": 1,
+  "candidates": [
+    {
+      "lane": "seismic_3d_gpu",
+      "model_id": "monai_densenet3d_regressor",
+      "reason": "single Stage-2 candidate; no top-3 can be formed and cross-lane ranking is forbidden",
+      "stage3_cells": 0,
+      "status": "not_rankable"
+    }
+  ],
+  "cross_lane_ranking": false,
+  "entries": [],
+  "lane": "seismic_3d_gpu",
+  "reason": "single Stage-2 candidate; no top-3 can be formed and cross-lane ranking is forbidden",
+  "schema_version": 1,
+  "split_hash": "2334f3cc301fc66d6b98c6edf3a4f9c920776469531003d62f5370e119426a18",
+  "stage": 3,
+  "stage3_completed_cells": 0,
+  "stage3_expected_cells": 0,
+  "status": "not_rankable",
+  "target": "SW",
+  "task_id": "reservoir_property_stage3_sw",
+  "test_access": false,
+  "track_id": "property"
+}
