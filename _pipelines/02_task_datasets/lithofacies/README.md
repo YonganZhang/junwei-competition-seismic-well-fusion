@@ -419,3 +419,99 @@ LITHOFACIES_P5_DATASET_ROOT="$DATASET_ROOT" \
 PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" -m unittest discover \
   -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_lithofacies_p5*.py' -v
 ```
+
+## P5 Stage-2 fixed-budget development pilot
+
+`lithofacies_p5_stage2.py` is the track-prefixed Stage-2 entry point. It keeps
+the GM09 nine-class schema and the first valid P4 fold fixed: `15/9-F-14`,
+`15/9-F-15`, and `15/9-F-4` train; `15/9-19` validates. The runner has no
+frozen-test argument or loader. It consumes the existing Stage-1 NPZ envelope,
+whose only loaded HDF5 basename is `train.h5`.
+
+All P cells receive the same `26x33` log tensor (13 observed-value rows plus
+13 missing-mask rows), `3x3x33` ST0202 patch, at most 320 fold-train samples,
+and at most 160 validation samples. The real fixed fold uses all 315/132
+available samples. Neural cells use batch size 32 and at most 40 parameter
+updates, including a three-update finite/shape/backward tiny-overfit gate;
+their wall limit is 600 seconds. XGBoost and CatBoost use 40 boosting
+iterations, MiniRocket uses the source-locked 1,000-kernel transform, and each
+CPU cell has a 300-second wall limit. Every seed is derived stably from root
+seed 2693 and the model/component ID. Preprocessing and class counts come only
+from the fold-train mother families.
+
+The development archive has no finite `center_md_m` for any of its 447
+samples. Consequently, the only S candidate (`ms_tcn2_dense`) remains a
+structured `SKIP/not_rankable`; no interval midpoint, row order, or repeated
+center label is used to fabricate a sequence, and S never enters the P board.
+
+### Reproduce Stage-2
+
+Use the approved shared environments. GPU commands must be wrapped by the
+single frozen lock; the runner independently fails closed when a CUDA command
+is not launched under that lock. Runtime NPZ/partials/checkpoints remain
+ignored below `_outputs/p5_stage2/runtime/`; only the portable JSONL, summary,
+and P leaderboard are versioned.
+
+```bash
+TORCH_PYTHON="${TORCH_PYTHON:?set the approved torch-common interpreter}"
+TABULAR_PYTHON="${TABULAR_PYTHON:?set the approved tabular-cpu interpreter}"
+DATASET_ROOT="${LITHOFACIES_P5_DATASET_ROOT:?point to the existing lithofacies directory}"
+GPU_LOCK="${VOLVE_P5_GPU_LOCK:-$HOME/.cache/volve-p5/locks/gpu0.lock}"
+STAGE2=_pipelines/02_task_datasets/lithofacies/lithofacies_p5_stage2.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage2
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$STAGE2" prepare-batch \
+  --dataset-root "$DATASET_ROOT" --batch-file "$OUT/runtime/development_fold0.npz"
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$STAGE2" pilot \
+  --batch-file "$OUT/runtime/development_fold0.npz" \
+  --models xgboost_multisoftprob_window,catboost_multiclass_window,minirocket_ridge_window \
+  --device cpu --output "$OUT/runtime/tabular_estimators.json"
+
+flock -w 900 "$GPU_LOCK" env PYTHONDONTWRITEBYTECODE=1 \
+  "$TABULAR_PYTHON" "$STAGE2" pilot \
+  --batch-file "$OUT/runtime/development_fold0.npz" --models inceptiontime_window \
+  --device cuda:0 --output "$OUT/runtime/tabular_inception.json"
+
+flock -w 900 "$GPU_LOCK" env PYTHONDONTWRITEBYTECODE=1 \
+  "$TORCH_PYTHON" "$STAGE2" pilot \
+  --batch-file "$OUT/runtime/development_fold0.npz" \
+  --models tcn_center_head,balanced_softmax_tcn,moderntcn_window,ms_tcn2_dense,embracenet_missing_modal,multibench_lowrank_tensor_fusion \
+  --device cuda:0 --output "$OUT/runtime/torch_models.json"
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$STAGE2" finalize \
+  --inputs "$OUT/runtime/tabular_estimators.json" \
+    "$OUT/runtime/tabular_inception.json" "$OUT/runtime/torch_models.json" \
+  --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests \
+  -p 'test_lithofacies_p5*.py' -v
+```
+
+### Recorded Stage-2 evidence
+
+All 10 preregistered cells have one portable record: 9 P `PASS`, 1 S
+`SKIP`, 0 `FAIL`, and 0 `TIMEOUT`. The legal development-only P board is:
+
+| Rank | Model ID | Fixed-9 macro-F1 (primary) | supported-class macro-F1 (diagnostic) |
+|---:|---|---:|---:|
+| 1 | `xgboost_multisoftprob_window` | 0.213580 | 0.274603 |
+| 2 | `catboost_multiclass_window` | 0.167689 | 0.215600 |
+| 3 | `inceptiontime_window` | 0.138188 | 0.177671 |
+| 4 | `tcn_center_head` | 0.123678 | 0.159015 |
+| 5 | `minirocket_ridge_window` | 0.123163 | 0.158352 |
+| 6 | `embracenet_missing_modal` | 0.105848 | 0.136090 |
+| 7 | `moderntcn_window` | 0.086816 | 0.111621 |
+| 8 | `multibench_lowrank_tensor_fusion` | 0.055556 | 0.071429 |
+| 9 | `balanced_softmax_tcn` | 0.007937 | 0.010204 |
+
+This is a single-fold fixed-budget screening result, not CV confirmation and
+not a frozen-test result. The primary metric and its worst-family guardrail
+both use the fixed nine-class Macro-F1 required by the frozen Stage-2 matrix;
+supported-class Macro-F1 is diagnostic only. The two fixed-nine values are
+equal here because the pilot has exactly one validation mother family.
+Canonical evidence lives in `_outputs/p5_stage2/` as
+`p5_stage2_results.jsonl`, `p5_stage2_summary.json`, and
+`p5_stage2_p_leaderboard.json`; it contains no host/worktree path or retained
+checkpoint.

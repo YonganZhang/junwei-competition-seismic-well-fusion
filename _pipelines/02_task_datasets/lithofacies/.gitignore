@@ -18,3 +18,8 @@ _outputs/**
 !_outputs/multimodal_mlp/loss_curve.png
 !_outputs/multimodal_mlp/confusion_matrix.png
 !_outputs/multimodal_mlp/best_checkpoint_predictions.png
+!_outputs/p5_stage2/
+_outputs/p5_stage2/**
+!_outputs/p5_stage2/p5_stage2_results.jsonl
+!_outputs/p5_stage2/p5_stage2_summary.json
+!_outputs/p5_stage2/p5_stage2_p_leaderboard.json

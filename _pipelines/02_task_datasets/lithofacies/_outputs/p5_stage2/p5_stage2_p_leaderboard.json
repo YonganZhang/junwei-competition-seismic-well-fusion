@@ -1,0 +1,121 @@
+{
+  "schema_version": "lithofacies-p5-stage2-p-leaderboard-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "lane": "P",
+  "status": "ranked",
+  "reason": null,
+  "primary_metric": "fixed_schema_macro_f1",
+  "tie_breakers": [
+    "worst_family_fixed_schema_macro_f1_desc",
+    "wall_seconds_asc",
+    "model_id_asc"
+  ],
+  "split_hash": "f40478d51c1278f950b5cc4bd42bb28e0af916fa8ae9468db47bbee344d1e86d",
+  "fold_id": 0,
+  "validation_family": "15/9-19",
+  "development_only": true,
+  "formal_test_ranking": false,
+  "entries": [
+    {
+      "rank": 1,
+      "model_id": "xgboost_multisoftprob_window",
+      "fixed_schema_macro_f1": 0.2135804514277343,
+      "worst_family_fixed_schema_macro_f1": 0.2135804514277343,
+      "supported_class_macro_f1": 0.2746034375499441,
+      "balanced_accuracy": 0.28585498844119533,
+      "wall_seconds": 2.1146539277397096,
+      "peak_vram_bytes": 0,
+      "seed": 2039818925
+    },
+    {
+      "rank": 2,
+      "model_id": "catboost_multiclass_window",
+      "fixed_schema_macro_f1": 0.16768896297615005,
+      "worst_family_fixed_schema_macro_f1": 0.16768896297615005,
+      "supported_class_macro_f1": 0.21560009525505006,
+      "balanced_accuracy": 0.24503455537938296,
+      "wall_seconds": 3.897337546106428,
+      "peak_vram_bytes": 0,
+      "seed": 804721409
+    },
+    {
+      "rank": 3,
+      "model_id": "inceptiontime_window",
+      "fixed_schema_macro_f1": 0.13818846420054898,
+      "worst_family_fixed_schema_macro_f1": 0.13818846420054898,
+      "supported_class_macro_f1": 0.17767088254356297,
+      "balanced_accuracy": 0.26084712119194875,
+      "wall_seconds": 3.55289719812572,
+      "peak_vram_bytes": 72715776,
+      "seed": 152591329
+    },
+    {
+      "rank": 4,
+      "model_id": "tcn_center_head",
+      "fixed_schema_macro_f1": 0.12367809550908143,
+      "worst_family_fixed_schema_macro_f1": 0.12367809550908143,
+      "supported_class_macro_f1": 0.15901469422596184,
+      "balanced_accuracy": 0.19936819936819936,
+      "wall_seconds": 1.026034056674689,
+      "peak_vram_bytes": 69697024,
+      "seed": 1902224110
+    },
+    {
+      "rank": 5,
+      "model_id": "minirocket_ridge_window",
+      "fixed_schema_macro_f1": 0.12316286422284883,
+      "worst_family_fixed_schema_macro_f1": 0.12316286422284883,
+      "supported_class_macro_f1": 0.1583522540008057,
+      "balanced_accuracy": 0.18353384732695077,
+      "wall_seconds": 1.2200659411028028,
+      "peak_vram_bytes": 0,
+      "seed": 1187192246
+    },
+    {
+      "rank": 6,
+      "model_id": "embracenet_missing_modal",
+      "fixed_schema_macro_f1": 0.10584795321637427,
+      "worst_family_fixed_schema_macro_f1": 0.10584795321637427,
+      "supported_class_macro_f1": 0.1360902255639098,
+      "balanced_accuracy": 0.19412074412074412,
+      "wall_seconds": 0.5267564230598509,
+      "peak_vram_bytes": 69028864,
+      "seed": 1623966955
+    },
+    {
+      "rank": 7,
+      "model_id": "moderntcn_window",
+      "fixed_schema_macro_f1": 0.08681616817021923,
+      "worst_family_fixed_schema_macro_f1": 0.08681616817021923,
+      "supported_class_macro_f1": 0.11162078764742474,
+      "balanced_accuracy": 0.1273737911668946,
+      "wall_seconds": 0.23316660011187196,
+      "peak_vram_bytes": 68356096,
+      "seed": 827012306
+    },
+    {
+      "rank": 8,
+      "model_id": "multibench_lowrank_tensor_fusion",
+      "fixed_schema_macro_f1": 0.05555555555555555,
+      "worst_family_fixed_schema_macro_f1": 0.05555555555555555,
+      "supported_class_macro_f1": 0.07142857142857142,
+      "balanced_accuracy": 0.14285714285714285,
+      "wall_seconds": 0.27323733689263463,
+      "peak_vram_bytes": 69058048,
+      "seed": 2031268081
+    },
+    {
+      "rank": 9,
+      "model_id": "balanced_softmax_tcn",
+      "fixed_schema_macro_f1": 0.007936507936507936,
+      "worst_family_fixed_schema_macro_f1": 0.007936507936507936,
+      "supported_class_macro_f1": 0.01020408163265306,
+      "balanced_accuracy": 0.14285714285714285,
+      "wall_seconds": 0.2752912603318691,
+      "peak_vram_bytes": 69697024,
+      "seed": 19339243
+    }
+  ],
+  "frozen_test_accessed": false
+}
