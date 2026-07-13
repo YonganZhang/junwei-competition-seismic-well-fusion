@@ -1,0 +1,13 @@
+.venv/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.h5
+*.pt
+*.ckpt
+
+# Local integration assets: reproducible from source but not canonical Git evidence.
+_outputs/facies_f3/
+_outputs/facies_penobscot/
+_outputs/legacy/
+_outputs/leakage_fixed_v2/data_build_manifest.json
