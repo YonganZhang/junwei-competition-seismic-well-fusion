@@ -3,7 +3,7 @@
 > 冻结日期：2026-07-14
 > 基线：`p4-training-integration@2d128b009bd1d943918f948785bf5f4e19ce4b7b`
 > 分支：`p5-model-benchmark-integration`
-> 状态：执行合同 v1；候选来源调研和Stage-1已验收，Stage-2尚未开始
+> 状态：执行合同 v1；候选来源调研和Stage-1已验收，Stage-2已按固定预算合同启动
 > 全局随机种子：`2693`
 
 ## 1. 目的与边界
@@ -111,6 +111,8 @@ MPS 无合法 training image 时必须 skip；所有方法分别运行 strict/co
 Stage 1 只回答“能否按统一接口运行”，不做优劣排名。
 
 ### Stage 2：固定 development pilot
+
+本轮冻结参数和六赛道执行矩阵见 `P5_stage2_fixed_budget_pilot.md`。
 
 - 每赛道 10 个候选使用相同的预注册 fold、输入预算、更新步数或 wall-clock 上限。
 - 预处理、类别权重、target transform、采样器和阈值只在 fold-train 拟合。

@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5 Stage 1 已集成验收] 六赛道已在隔离 `p4-training-integration` worktree 共存；
+> **🧭 当前: [P5 Stage 2 固定预算pilot启动] 六赛道已在隔离 `p4-training-integration` worktree 共存；
 >   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
 >   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
 >   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
@@ -10,7 +10,8 @@
 >   集成到 `p5-model-benchmark-integration`，并通过两套共享环境的跨赛道联合测试。
 >   Stage-1不是性能排名：有真实标签/依赖的候选完成contract smoke，其余按许可证、标签或任务通道
 >   硬门结构化skip；没有用代理标签或测试集补数。因master仍有未归属脏改动，暂不直接merge；
->   下一步对科学可行候选做同预算development pilot，再做top-3×3-seed×有效fold和最终单次frozen-test。
+>   六个Stage-2赛道工作树已从验收提交`85727fd`创建；当前对科学可行候选做同预算development pilot，
+>   再做top-3×3-seed×有效fold和最终单次frozen-test。
 >   未 push。**
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
@@ -165,6 +166,11 @@
       `tabular-cpu`联合验收为31 passed、2 skipped、20 subtests passed。frozen test未被访问，master未merge，
       未push。完整验收证据见 `_wiki-methodology/_tests/P5_stage1_acceptance_evidence.md`。下一步只对科学可行
       候选执行Stage-2固定development pilot；⑤先补真实标签合同，①先补审核负例。
+- [ ] 2026-07-14 P5 Stage-2已启动：固定预算与停止线见
+      `_phases/P5_stage2_fixed_budget_pilot.md`。六个隔离工作树均从Stage-1集成验收提交`85727fd`创建；
+      同赛道/同lane固定development fold、样本/更新/墙钟预算，全局seed=2693，GPU通过排他锁串行；
+      ①只做负例/unknown data-gate，⑤先把P4七目标registry审计映射为P5 label-spec，其他可行候选执行pilot。
+      frozen test继续封锁，未merge master，未push。
 
 ## 数据资产索引
 
