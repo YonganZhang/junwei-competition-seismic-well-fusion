@@ -334,3 +334,88 @@ configuration and epoch policy are frozen from OOF evidence, development is
 refitted, and the single F-5 campaign is archived. The historical F-5 baseline
 has already been observed, so this family is a frozen regression/final campaign
 test rather than a previously unseen blind test.
+
+## P5 open-model Stage-1 adapters
+
+P5 adds contract-smoke adapters without changing the P4 GM09 schema, existing
+models, split, baseline metrics, or frozen-test lifecycle. Exact upstream URLs,
+revisions, licenses, dependency groups, weight policy, and smoke configurations
+are frozen in `p5_source_lock.json`. Stage-1 uses scratch initialization only;
+it never downloads a pretrained weight.
+
+| Order | Model ID | Lane | Backend group |
+|---:|---|:---:|---|
+| 1 | `xgboost_multisoftprob_window` | P | `tabular-cpu` |
+| 2 | `catboost_multiclass_window` | P | `tabular-cpu` |
+| 3 | `minirocket_ridge_window` | P | `tabular-cpu` |
+| 4 | `inceptiontime_window` | P | `tabular-cpu` (`tsai==1.0.1`) |
+| 5 | `tcn_center_head` | P | `torch-common` |
+| 6 | `balanced_softmax_tcn` | P | `torch-common` |
+| 7 | `moderntcn_window` | P | `torch-common` |
+| 8 | `ms_tcn2_dense` | S | `torch-common` |
+| 9 | `embracenet_missing_modal` | P | `torch-common` |
+| 10 | `multibench_lowrank_tensor_fusion` | P | `torch-common` |
+
+P is the existing center-window classification contract (`[B,9]`). S is a
+separate real-MD-ordered sequence-labeling contract (`[B,9,L]`) and never
+shares a ranking with P. If the development archive lacks real
+`center_md_m`, the S adapter is a structured `SKIP`; interval midpoints or a
+center label repeated across a fabricated sequence are forbidden.
+
+Every adapter consumes both inputs. The 26-row log tensor retains all 13
+observed-value rows and all 13 missing-mask rows; the real `3x3x33` ST0202
+patch is never discarded. Estimator adapters flatten all 1,155 values. Torch
+adapters use explicit log and seismic paths and the tests perturb both the
+seismic tensor and missing-mask rows to prove that each path affects logits.
+
+### Stage-1 commands
+
+Set the two variables to already approved shared interpreters; do not create an
+environment or install dependencies from this runner. Runtime NPZ, reports,
+and checkpoints live below the ignored `_outputs/p5_stage1/` directory.
+
+```bash
+TORCH_PYTHON="${TORCH_PYTHON:?set the approved torch-common interpreter}"
+TABULAR_PYTHON="${TABULAR_PYTHON:?set the approved tabular-cpu interpreter}"
+DATASET_ROOT="${LITHOFACIES_P5_DATASET_ROOT:?point to the existing lithofacies directory}"
+
+"$TORCH_PYTHON" _pipelines/02_task_datasets/lithofacies/p5_stage1.py prepare-batch \
+  --dataset-root "$DATASET_ROOT" \
+  --batch-file _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/development_stage1.npz
+
+"$TABULAR_PYTHON" _pipelines/02_task_datasets/lithofacies/p5_stage1.py smoke \
+  --batch-file _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/development_stage1.npz \
+  --models xgboost_multisoftprob_window,catboost_multiclass_window,minirocket_ridge_window,inceptiontime_window \
+  --device cuda:0 \
+  --output _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/tabular.json
+
+"$TORCH_PYTHON" _pipelines/02_task_datasets/lithofacies/p5_stage1.py smoke \
+  --batch-file _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/development_stage1.npz \
+  --models tcn_center_head,balanced_softmax_tcn,moderntcn_window,ms_tcn2_dense,embracenet_missing_modal,multibench_lowrank_tensor_fusion \
+  --device cuda:0 \
+  --output _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/torch.json
+
+"$TORCH_PYTHON" _pipelines/02_task_datasets/lithofacies/p5_stage1.py merge \
+  --inputs \
+    _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/tabular.json \
+    _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/torch.json \
+  --output _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage1/summary.json
+```
+
+`prepare-batch` is development-only: its only HDF5 filename is `train.h5`, it
+requires exactly the four approved development mother families, builds all
+four LOGO folds, and records `frozen_test_accessed=false`. `smoke` performs a
+fixed small fit/forward/loss/checkpoint round-trip; gradient models also run
+backward and one AdamW step. It emits no formal metric or model ranking.
+
+P5 contract tests, followed by the real-development batch gate:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_p5*.py' -v
+
+LITHOFACIES_P5_REAL_BATCH=1 \
+LITHOFACIES_P5_DATASET_ROOT="$DATASET_ROOT" \
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_p5*.py' -v
+```
