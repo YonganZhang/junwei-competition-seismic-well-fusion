@@ -19,6 +19,71 @@ JSON remain unchanged. See `P4_SOP.md` for commands, data provisioning and the
 unit → contract → tiny → real-smoke → CV → refit → single-test order. Known
 scientific limits are machine-readable in `not_feasible.json`.
 
+## P5 fixed-budget Stage 2
+
+`reconstruction_p5_stage2.py` evaluates the ten preregistered reconstruction
+candidates on the first valid P4 development fold with root seed 2693.  The
+strict and conditional TaskSpecs, caches, result rows and leaderboards remain
+independent.  Both representations are scored on the same 2,048 validation
+voxels using RMSE, MAE and log-spectrum RMSE; this is a small fixed-fold pilot,
+not complete CV or frozen-test evidence.
+
+The fixed pilot exposes 512 fold-train targets.  Traditional interpolation
+fits once with a 300-second cap, point neural models receive 100 updates within
+the protocol's 200-update/600-second cap, and 3-D neural/operator models
+receive 20 updates within the 80-update/900-second cap.  All trainable
+neural/operator candidates must use `cuda:0`.  Their result is rejected unless
+it records an acquired 900-second GPU flock; CPU neural scores and unresolved
+`pilot_exception` records cannot enter collation.
+
+Prepare the disposable development-only cache with an HDF5-capable shared
+environment:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 /path/to/hdf5-env/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage2.py \
+  prepare-cache --data-dir /path/to/reconstruction \
+  --cache-dir _tmp/p5_stage2_reconstruction/cache
+```
+
+Run CPU interpolation cells directly.  Run every trainable cell through the
+single-GPU lock; the environment marker lets the child archive the external
+lock evidence without trying to acquire the same lock twice:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 /path/to/geostat-env/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage2.py \
+  run-cell --mode strict --model pykrige_ok3d \
+  --cache-dir _tmp/p5_stage2_reconstruction/cache \
+  --cell-root _tmp/p5_stage2_reconstruction/cells --device cpu
+
+LOCK="${VOLVE_P5_GPU_LOCK:-$HOME/.cache/volve-p5/locks/gpu0.lock}"
+flock -w 900 "$LOCK" env VOLVE_P5_GPU_LOCK_HELD=1 CUDA_VISIBLE_DEVICES=0 \
+  PYTHONDONTWRITEBYTECODE=1 /path/to/torch-env/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage2.py \
+  run-cell --mode strict --model neuralop_fno3d \
+  --cache-dir _tmp/p5_stage2_reconstruction/cache \
+  --cell-root _tmp/p5_stage2_reconstruction/cells --device cuda:0
+```
+
+After all twenty cells exist, `collate` writes only portable evidence into
+this track directory: `p5_stage2_results.jsonl`, `p5_stage2_summary.json` and
+the two mode-specific leaderboard JSON files.  MPS remains a structured skip
+without a legal training image; tiny-cuda-nn remains a dependency skip.
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage2.py \
+  collate --cell-root _tmp/p5_stage2_reconstruction/cells \
+  --output-dir _pipelines/02_task_datasets/reconstruction
+```
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s _pipelines/02_task_datasets/reconstruction/_tests \
+  -p 'test_reconstruction_p5_stage2.py' -v
+```
+
 ## P5 open-model Stage 1
 
 P5 adds ten dynamically discovered thin adapters under

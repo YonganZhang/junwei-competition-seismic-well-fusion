@@ -1,0 +1,109 @@
+{
+  "entries": [
+    {
+      "mae": 0.02121327996033974,
+      "model_id": "pykrige_ok3d",
+      "peak_cuda_bytes": 0,
+      "peak_rss_kib": 772768,
+      "rank": 1,
+      "result_hash": "fb238775d94f2122dbad4bd6da20554c256464175ff782b0ca10d14e2df6513f",
+      "rmse": 0.027239559050532134,
+      "spectral_log_rmse": 0.49232649345174007,
+      "updates": 1,
+      "wall_seconds": 30.742255174089223
+    },
+    {
+      "mae": 0.022822448110673577,
+      "model_id": "gpytorch_svgp",
+      "peak_cuda_bytes": 67985408,
+      "peak_rss_kib": 1681324,
+      "rank": 2,
+      "result_hash": "e85587eea39e32357a78425568feb6b672f6d19d406e9ed3a481e60c513e7b74",
+      "rmse": 0.028775642672822777,
+      "spectral_log_rmse": 0.46686979391549005,
+      "updates": 100,
+      "wall_seconds": 1.8349968548864126
+    },
+    {
+      "mae": 0.023048859565214318,
+      "model_id": "scipy_rbf_neighbors",
+      "peak_cuda_bytes": 0,
+      "peak_rss_kib": 706560,
+      "rank": 3,
+      "result_hash": "2ad387ed66ddee469507a2767c99b21d79912847cedb90fe31149304e74e0bbe",
+      "rmse": 0.028829333791597838,
+      "spectral_log_rmse": 0.3753715994901232,
+      "updates": 1,
+      "wall_seconds": 0.42649584682658315
+    },
+    {
+      "mae": 0.023002679671021167,
+      "model_id": "gstools_krige_condsrf",
+      "peak_cuda_bytes": 0,
+      "peak_rss_kib": 801156,
+      "rank": 4,
+      "result_hash": "333740af3983375ae07dcbc089b62105e4f396a5d87004bf704f2425eb41d933",
+      "rmse": 0.028904237821725944,
+      "spectral_log_rmse": 0.39433132984627856,
+      "updates": 1,
+      "wall_seconds": 16.547841342631727
+    },
+    {
+      "mae": 0.024773468801868148,
+      "model_id": "neuralop_fno3d",
+      "peak_cuda_bytes": 69518336,
+      "peak_rss_kib": 1914208,
+      "rank": 5,
+      "result_hash": "753151c08676823d341053dc5f168a7d962854d25af72e6f35f4083f247059a2",
+      "rmse": 0.030498571498999975,
+      "spectral_log_rmse": 0.5261054531804236,
+      "updates": 20,
+      "wall_seconds": 1.9300545533187687
+    },
+    {
+      "mae": 0.04474643350113183,
+      "model_id": "siren_inr",
+      "peak_cuda_bytes": 68005888,
+      "peak_rss_kib": 1671888,
+      "rank": 6,
+      "result_hash": "f39bc949eb5514665fa7d313d731698bf8612feec7d4d598d5bbc0db68b94245",
+      "rmse": 0.05365862128033416,
+      "spectral_log_rmse": 0.4282998206979112,
+      "updates": 100,
+      "wall_seconds": 1.0577738103456795
+    },
+    {
+      "mae": 0.3305113914011599,
+      "model_id": "monai_segresnet3d",
+      "peak_cuda_bytes": 4805632,
+      "peak_rss_kib": 2169604,
+      "rank": 7,
+      "result_hash": "85a92bb89cfcf7d0e5570c8f493cab4f98c584653a39b89dfb16bfb9ead9100f",
+      "rmse": 0.34841557639541043,
+      "spectral_log_rmse": 1.0600640972939643,
+      "updates": 20,
+      "wall_seconds": 3.7520432099699974
+    },
+    {
+      "mae": 0.4065556620262214,
+      "model_id": "monai_basicunet3d",
+      "peak_cuda_bytes": 14253568,
+      "peak_rss_kib": 2137252,
+      "rank": 8,
+      "result_hash": "052804cb440a661fbe195ead4d4f059dd65e1318d424abfcc941bc254a78fc06",
+      "rmse": 0.5854830958072961,
+      "spectral_log_rmse": 2.489317972820002,
+      "updates": 20,
+      "wall_seconds": 4.375463250558823
+    }
+  ],
+  "lane": "conditional",
+  "metric_direction": "minimize",
+  "not_frozen_test": true,
+  "not_rankable_reason": null,
+  "rankable": true,
+  "ranking_metric": "rmse",
+  "schema_version": "p5-stage2-reconstruction-leaderboard-v1",
+  "task_id": "volve_porosity_conditional_reconstruction",
+  "track_id": "reconstruction"
+}
