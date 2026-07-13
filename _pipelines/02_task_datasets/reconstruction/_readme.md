@@ -87,6 +87,11 @@ scope excludes `_data/`.
   `ridge_linear`.  `get_model(..., models_package="models")` dynamically imports
   `models/<registered-name>.py`; adding that same-name file is the entire model
   swap, with no manual import or training-script edit.
+- The available plugins are the canonical `ridge_linear`, lightly regularised
+  NumPy `reconstruction_linear_sgd`, and single-hidden-layer NumPy
+  `reconstruction_tiny_mlp`.  The two alternatives share the same adapter and
+  dynamic-import contract, but have not been assigned formal track metrics;
+  the results below remain the unchanged Ridge evidence.
 - Both structural and seismic variants call `ml_framework.train.train_loop`
   for 600 complete epochs without early stopping.  A central K-depth block is
   used for validation while all four training I-blocks remain represented.
