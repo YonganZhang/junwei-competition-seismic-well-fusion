@@ -1,0 +1,206 @@
+{
+  "historical_test_metrics_used": false,
+  "labels_generated": false,
+  "mapping": {
+    "approval_basis": "explicit user directive; does not promote any proxy to field sweetspot truth",
+    "approval_scope": "P5 Stage-2 development pilot only",
+    "mapping_version": "1.0.0",
+    "policy": {
+      "approved_target_ids": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T6",
+        "T7"
+      ],
+      "frozen_test_access": "forbidden",
+      "historical_test_metrics_for_selection": "forbidden",
+      "label_generation": "forbidden",
+      "not_feasible_target_ids": [
+        "T5"
+      ],
+      "proxy_semantics_must_be_preserved": true,
+      "split_scope": "P4 manifest fold_0 development only"
+    },
+    "registry": {
+      "path": "_pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json",
+      "sha256": "5a0d4fb66cf95b798ae7cd42dda2adac13ced224abcc207caadeef6bce410a42"
+    },
+    "root_seed": 2693,
+    "schema_version": "sweetspot-p5-label-mapping/v1",
+    "targets": {
+      "T1": {
+        "development_rebuild": "raw_source_development_groups_only",
+        "is_proxy": true,
+        "label_evidence": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/data_evidence.json",
+          "sha256": "ea4ee21b462eccf1e02c365802f5c9467d96d38ae525769e9817ed2c2bfcd01a"
+        },
+        "label_version": "rqi-0.0314-sqrt-klogh-over-phif-v1",
+        "p4_status": "proxy_feasible",
+        "primary_metric": "mae",
+        "primary_metric_direction": "minimize",
+        "proxy_semantics": "petrophysical reservoir-quality proxy, not field sweetspot truth",
+        "slug": "reservoir_quality",
+        "split_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f"
+        },
+        "status": "approved_for_development_pilot",
+        "target_name": "RQI",
+        "task_spec": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/task_spec.json",
+          "sha256": "a3bb3b079b89fa03a525eb19a16fc22e3d36e95cdb5769ca856ae6412f844830"
+        },
+        "task_type": "regression"
+      },
+      "T2": {
+        "development_rebuild": "raw_source_development_groups_only",
+        "is_proxy": true,
+        "label_evidence": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/data_evidence.json",
+          "sha256": "d37161eff0467334d2f3c1d574c313cc61a465f7e994fa9380d5df4ade714204"
+        },
+        "label_version": "cpi-sand-flag-near-binary-v1",
+        "p4_status": "proxy_feasible",
+        "primary_metric": "average_precision",
+        "primary_metric_direction": "maximize",
+        "proxy_semantics": "SAND_FLAG net-reservoir/sand proxy, not direct hydrocarbon-pay truth",
+        "slug": "hydrocarbon_pay",
+        "split_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20"
+        },
+        "status": "approved_for_development_pilot",
+        "target_name": "SAND_FLAG_PROXY",
+        "task_spec": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/task_spec.json",
+          "sha256": "45e8bca171a3d854076aaa1316737bf21288966c3fa93884039d76a7bc420e14"
+        },
+        "task_type": "binary"
+      },
+      "T3": {
+        "development_rebuild": "raw_source_development_groups_only",
+        "is_proxy": false,
+        "label_evidence": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/data_evidence.json",
+          "sha256": "e237be40d451c941f72a5eb94794bd958df5c8b54511a3815d14f26a35f4c83a"
+        },
+        "label_version": "future-30-calendar-row-mean-oil-v1",
+        "p4_status": "feasible",
+        "primary_metric": "mae",
+        "primary_metric_direction": "minimize",
+        "proxy_semantics": "future 30-calendar-row mean oil production; an operational production target, not unified sweetspot truth",
+        "slug": "productivity",
+        "split_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+        },
+        "status": "approved_for_development_pilot",
+        "target_name": "FUTURE_30D_MEAN_OIL",
+        "task_spec": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/task_spec.json",
+          "sha256": "726b4553db55d187fbfd58da5a0ec36e472d4796b12e013aa37f50bfd19b6b9b"
+        },
+        "task_type": "regression"
+      },
+      "T4": {
+        "development_rebuild": "raw_source_development_groups_only",
+        "is_proxy": true,
+        "label_evidence": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/data_evidence.json",
+          "sha256": "73c93f955f1a51c475abe8e8c9744305e4c2d1ea79cdc4a2b27ff8da2550bc9f"
+        },
+        "label_version": "first-7-consecutive-positive-water-days-v1",
+        "p4_status": "proxy_feasible",
+        "primary_metric": "average_precision",
+        "primary_metric_direction": "maximize",
+        "proxy_semantics": "reported sustained positive-water event proxy; not a domain-approved water-cut threshold",
+        "slug": "water_breakthrough",
+        "split_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402"
+        },
+        "status": "approved_for_development_pilot",
+        "target_name": "WATER_EVENT_WITHIN_30D",
+        "task_spec": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/task_spec.json",
+          "sha256": "9210aaab8b8ac35b5acf7b4285e292d4cca262bdec4b0a6de79fb059998a858d"
+        },
+        "task_type": "binary"
+      },
+      "T5": {
+        "development_rebuild": "forbidden",
+        "is_proxy": false,
+        "label_version": null,
+        "not_feasible_evidence": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/remaining_oil_infill/_outputs/not_feasible.json",
+          "sha256": "0dd4b03149880f2edab912c68a81b28dbdbed1dc19f74ca64aa6f4631f77ac13"
+        },
+        "p4_status": "not_feasible",
+        "primary_metric": null,
+        "primary_metric_direction": null,
+        "proxy_semantics": "no label is defined; simulation case must not be presented as field truth",
+        "slug": "remaining_oil_infill",
+        "status": "not_feasible",
+        "target_name": null,
+        "task_type": null
+      },
+      "T6": {
+        "development_rebuild": "requires_existing_development_only_feature_source",
+        "is_proxy": false,
+        "label_evidence": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/label_availability.json",
+          "sha256": "a6337f55fd9bccaea4d0a4955f56e1860218fe8831258ad8f78b9b78418868d3"
+        },
+        "label_version": "target6-phif-cpi-v1",
+        "p4_status": "complete",
+        "primary_metric": "physical_MAE",
+        "primary_metric_direction": "minimize",
+        "proxy_semantics": "PHIF CPI physical porosity target; independent from T7 permeability",
+        "slug": "porosity",
+        "split_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/split_manifest.json",
+          "sha256": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232"
+        },
+        "status": "approved_for_development_pilot",
+        "target_name": "PHIF",
+        "task_spec": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/task_spec.json",
+          "sha256": "550f28fa9771095371f642f27e46d5586c71bfeaa0dec3ea678da5463602f0e2"
+        },
+        "task_type": "regression"
+      },
+      "T7": {
+        "development_rebuild": "requires_existing_development_only_feature_source",
+        "is_proxy": false,
+        "label_evidence": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/label_availability.json",
+          "sha256": "7e5468fbfdabace9af861c84abd01d592f41402878f1747c32b439b80fccbf2e"
+        },
+        "label_version": "target7-klogh-cpi-v1",
+        "p4_status": "complete",
+        "primary_metric": "physical_MAE",
+        "primary_metric_direction": "minimize",
+        "proxy_semantics": "KLOGH CPI permeability target in the P4 log1p stored domain; independent from T6 porosity",
+        "slug": "permeability",
+        "split_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/split_manifest.json",
+          "sha256": "059eacdae735edc36347905218932fcd7693392f159572543d3420a2d0c4f447"
+        },
+        "status": "approved_for_development_pilot",
+        "target_name": "KLOGH",
+        "task_spec": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/task_spec.json",
+          "sha256": "82d1240f9137bc2546a1d87f7dd14d5cf5ef0838617079e014240e432bf684d0"
+        },
+        "task_type": "regression"
+      }
+    }
+  },
+  "mapping_path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+  "mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+  "schema_version": "sweetspot-p5-label-mapping-audit/v1",
+  "test_accessed": false
+}

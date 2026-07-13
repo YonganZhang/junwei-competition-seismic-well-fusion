@@ -1,0 +1,393 @@
+{
+  "attempted_cells": 70,
+  "budgets": {
+    "cpu_wall_limit_seconds": 300,
+    "neural_update_limit": 64,
+    "neural_wall_limit_seconds": 600,
+    "train_sample_limit_per_target": 1024,
+    "tree_update_limit": 64,
+    "validation_sample_limit_per_target": 512
+  },
+  "checkpoints_persisted": false,
+  "counts": {
+    "FAILED": 0,
+    "PASS": 16,
+    "SKIP": 54,
+    "TIMEOUT": 0
+  },
+  "device": "cuda",
+  "expected_cells": 70,
+  "frozen_test_metrics_reported": false,
+  "historical_test_metrics_used": false,
+  "label_mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+  "labels_generated": false,
+  "leaderboards": {
+    "T1": {
+      "direction": "minimize",
+      "entries": [
+        {
+          "model_id": "lightgbm",
+          "rank": 1,
+          "value": 0.16258668647708702,
+          "wall_seconds": 0.013676495756953955,
+          "worst_group_value": 0.16258668647708702
+        },
+        {
+          "model_id": "catboost",
+          "rank": 2,
+          "value": 0.1791312284271251,
+          "wall_seconds": 0.061823995783925056,
+          "worst_group_value": 0.1791312284271251
+        },
+        {
+          "model_id": "xgboost",
+          "rank": 3,
+          "value": 0.2127775491058148,
+          "wall_seconds": 0.09426218969747424,
+          "worst_group_value": 0.2127775491058148
+        },
+        {
+          "model_id": "inceptiontime",
+          "rank": 4,
+          "value": 42.70213642987562,
+          "wall_seconds": 0.5239340760745108,
+          "worst_group_value": 42.70213642987562
+        }
+      ],
+      "primary_metric": "mae",
+      "scope": "single fixed P4 development fold; not final model ranking",
+      "status": "rankable"
+    },
+    "T2": {
+      "direction": "maximize",
+      "entries": [
+        {
+          "model_id": "catboost",
+          "rank": 1,
+          "value": 0.9962172963328896,
+          "wall_seconds": 0.06109069474041462,
+          "worst_group_value": 0.9962172963328896
+        },
+        {
+          "model_id": "xgboost",
+          "rank": 2,
+          "value": 0.995578601657628,
+          "wall_seconds": 0.07387128518894315,
+          "worst_group_value": 0.995578601657628
+        },
+        {
+          "model_id": "lightgbm",
+          "rank": 3,
+          "value": 0.9941961982411164,
+          "wall_seconds": 0.01727474434301257,
+          "worst_group_value": 0.9941961982411164
+        },
+        {
+          "model_id": "inceptiontime",
+          "rank": 4,
+          "value": 0.9779481738900024,
+          "wall_seconds": 0.6022172071970999,
+          "worst_group_value": 0.9779481738900024
+        }
+      ],
+      "primary_metric": "average_precision",
+      "scope": "single fixed P4 development fold; not final model ranking",
+      "status": "rankable"
+    },
+    "T3": {
+      "direction": "minimize",
+      "entries": [
+        {
+          "model_id": "lightgbm",
+          "rank": 1,
+          "value": 193.22356866716228,
+          "wall_seconds": 0.018067027907818556,
+          "worst_group_value": 193.22356866716228
+        },
+        {
+          "model_id": "inceptiontime",
+          "rank": 2,
+          "value": 194.008375149766,
+          "wall_seconds": 0.34047905215993524,
+          "worst_group_value": 194.008375149766
+        },
+        {
+          "model_id": "xgboost",
+          "rank": 3,
+          "value": 253.40602969845546,
+          "wall_seconds": 0.07553529692813754,
+          "worst_group_value": 253.40602969845546
+        },
+        {
+          "model_id": "catboost",
+          "rank": 4,
+          "value": 253.43370864424,
+          "wall_seconds": 0.07010582508519292,
+          "worst_group_value": 253.43370864424
+        }
+      ],
+      "primary_metric": "mae",
+      "scope": "single fixed P4 development fold; not final model ranking",
+      "status": "rankable"
+    },
+    "T4": {
+      "direction": "maximize",
+      "entries": [
+        {
+          "model_id": "catboost",
+          "rank": 1,
+          "value": 0.95,
+          "wall_seconds": 0.02546949591487646,
+          "worst_group_value": 0.95
+        },
+        {
+          "model_id": "lightgbm",
+          "rank": 2,
+          "value": 0.95,
+          "wall_seconds": 0.004138616379350424,
+          "worst_group_value": 0.95
+        },
+        {
+          "model_id": "inceptiontime",
+          "rank": 3,
+          "value": 0.95,
+          "wall_seconds": 0.30624611116945744,
+          "worst_group_value": 0.95
+        },
+        {
+          "model_id": "xgboost",
+          "rank": 4,
+          "value": 0.8875,
+          "wall_seconds": 0.04749015811830759,
+          "worst_group_value": 0.8875
+        }
+      ],
+      "primary_metric": "average_precision",
+      "scope": "single fixed P4 development fold; not final model ranking",
+      "status": "rankable"
+    },
+    "T5": {
+      "candidate_count": 0,
+      "primary_metric": null,
+      "reason": "fewer than two comparable development pilots",
+      "status": "not_rankable"
+    },
+    "T6": {
+      "candidate_count": 0,
+      "primary_metric": "physical_MAE",
+      "reason": "fewer than two comparable development pilots",
+      "status": "not_rankable"
+    },
+    "T7": {
+      "candidate_count": 0,
+      "primary_metric": "physical_MAE",
+      "reason": "fewer than two comparable development pilots",
+      "status": "not_rankable"
+    }
+  },
+  "model_order": [
+    "xgboost",
+    "catboost",
+    "lightgbm",
+    "autogluon_limited",
+    "inceptiontime",
+    "patchtst",
+    "temporal_fusion_transformer",
+    "seg_spatial_tcn",
+    "graphsage",
+    "monai_unet3d"
+  ],
+  "portable_output_files": [
+    "p5_stage2_results.jsonl",
+    "p5_stage2_summary.json",
+    "p5_stage2_label_mapping.json"
+  ],
+  "results_sha256": "ec6cb112c22d387f524076a7dc348205d92c578e7283d554892b4c45f6d11b63",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-stage2-summary/v1",
+  "source_lock_sha256": "cafe6a7123ad002f833153211195c66109c56ebc512f0bc9b56dd34965b56625",
+  "stage": "fixed_development_pilot",
+  "target_data": {
+    "T1": {
+      "input_budget": {
+        "feature_count": 16,
+        "input_budget_sha256": "b86456ceb6b8d47fb0a687b901c9dce420e87380a3502a5a6dcbed9669fd9b8c",
+        "sequence_shape": [
+          16,
+          32
+        ],
+        "train_sample_limit": 1024,
+        "train_samples": 1024,
+        "validation_sample_limit": 512,
+        "validation_samples": 512
+      },
+      "provenance": {
+        "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+        "authorized_development_groups": [
+          "15/9-F-1",
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "frozen_test_files_opened": 0,
+        "historical_test_metrics_read": false,
+        "opened_member_count": 16,
+        "opened_member_crc_manifest_sha256": "405b76c034312b8006ba897a64033e58433f62e2ca40744f68972fe9815254cf",
+        "p4_fold_id": 0,
+        "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/split_manifest.json",
+        "p4_split_manifest_sha256": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f",
+        "rebuild_matches_manifest": true,
+        "rebuilt_development_sample_count": 35810,
+        "source_kind": "Volve_Well_logs.zip development members only",
+        "test_accessed": false,
+        "unauthorized_member_reads": 0
+      },
+      "reason": null,
+      "status": "READY"
+    },
+    "T2": {
+      "input_budget": {
+        "feature_count": 16,
+        "input_budget_sha256": "39d47a9720d2b0e75c4a347e4be6ee493bcfdae7011847c9cb6a1dbaeaf42273",
+        "sequence_shape": [
+          16,
+          32
+        ],
+        "train_sample_limit": 1024,
+        "train_samples": 1024,
+        "validation_sample_limit": 512,
+        "validation_samples": 512
+      },
+      "provenance": {
+        "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+        "authorized_development_groups": [
+          "15/9-F-1",
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "frozen_test_files_opened": 0,
+        "historical_test_metrics_read": false,
+        "opened_member_count": 16,
+        "opened_member_crc_manifest_sha256": "405b76c034312b8006ba897a64033e58433f62e2ca40744f68972fe9815254cf",
+        "p4_fold_id": 0,
+        "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/split_manifest.json",
+        "p4_split_manifest_sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20",
+        "rebuild_matches_manifest": true,
+        "rebuilt_development_sample_count": 36122,
+        "source_kind": "Volve_Well_logs.zip development members only",
+        "test_accessed": false,
+        "unauthorized_member_reads": 0
+      },
+      "reason": null,
+      "status": "READY"
+    },
+    "T3": {
+      "input_budget": {
+        "feature_count": 21,
+        "input_budget_sha256": "98d9d074b3da998a03e96f5550bce513666b93161cb55bd8d2322c73aae641d5",
+        "sequence_shape": [
+          7,
+          30
+        ],
+        "train_sample_limit": 1024,
+        "train_samples": 1012,
+        "validation_sample_limit": 512,
+        "validation_samples": 99
+      },
+      "provenance": {
+        "archive": "_sandbox/volve_data/Volve_Production_data.zip",
+        "authorized_development_groups": [
+          "NO 15/9-F-1 C",
+          "NO 15/9-F-11 H",
+          "NO 15/9-F-12 H",
+          "NO 15/9-F-14 H"
+        ],
+        "authorized_rows": 8023,
+        "frozen_test_files_opened": 0,
+        "historical_test_metrics_read": false,
+        "member_crc_manifest_sha256": "dd72ab7723672466ac9dab14a6dc79883139195cd49362f26fd01735be03de88",
+        "p4_fold_id": 0,
+        "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+        "p4_split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+        "rebuild_matches_manifest": true,
+        "rebuilt_development_sample_count": 1111,
+        "rejected_row_count": 7611,
+        "rejected_rows_values_accessed": 0,
+        "source_kind": "Volve production workbook with row-level development authorization",
+        "test_accessed": false
+      },
+      "reason": null,
+      "status": "READY"
+    },
+    "T4": {
+      "input_budget": {
+        "feature_count": 21,
+        "input_budget_sha256": "97ea085a7c65f19e6600ad54982cf33bc869fdbed2a7f872dfe4eeedb7f69253",
+        "sequence_shape": [
+          7,
+          7
+        ],
+        "train_sample_limit": 1024,
+        "train_samples": 27,
+        "validation_sample_limit": 512,
+        "validation_samples": 5
+      },
+      "provenance": {
+        "archive": "_sandbox/volve_data/Volve_Production_data.zip",
+        "authorized_development_groups": [
+          "NO 15/9-F-1 C",
+          "NO 15/9-F-11 H",
+          "NO 15/9-F-14 H"
+        ],
+        "authorized_rows": 4967,
+        "frozen_test_files_opened": 0,
+        "historical_test_metrics_read": false,
+        "member_crc_manifest_sha256": "dd72ab7723672466ac9dab14a6dc79883139195cd49362f26fd01735be03de88",
+        "p4_fold_id": 0,
+        "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/split_manifest.json",
+        "p4_split_manifest_sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+        "rebuild_matches_manifest": true,
+        "rebuilt_development_sample_count": 32,
+        "rejected_row_count": 10667,
+        "rejected_rows_values_accessed": 0,
+        "source_kind": "Volve production workbook with row-level development authorization",
+        "test_accessed": false
+      },
+      "reason": null,
+      "status": "READY"
+    },
+    "T5": {
+      "input_budget": null,
+      "provenance": null,
+      "reason": null,
+      "status": "NOT_FEASIBLE"
+    },
+    "T6": {
+      "input_budget": null,
+      "provenance": null,
+      "reason": {
+        "code": "development_feature_source_unavailable",
+        "detail": "T6: P4 labels/split are auditable, but no development-only feature source is present; test.h5 fallback is forbidden"
+      },
+      "status": "BLOCKED"
+    },
+    "T7": {
+      "input_budget": null,
+      "provenance": null,
+      "reason": {
+        "code": "development_feature_source_unavailable",
+        "detail": "T7: P4 labels/split are auditable, but no development-only feature source is present; test.h5 fallback is forbidden"
+      },
+      "status": "BLOCKED"
+    }
+  },
+  "target_order": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7"
+  ],
+  "test_accessed": false
+}

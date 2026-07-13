@@ -32,3 +32,41 @@ python3 -m _pipelines.02_task_datasets.sweetspot.p5.runner \
 ```
 
 树模型使用共享 `tabular-cpu` 环境；MONAI 使用共享 `torch-common` 环境。InceptionTime 与 TFT 当前也在 `tabular-cpu` 中。命令中的 `python` 应由调用方指向对应共享环境，不在仓库固化机器路径。不得为缺失的 PatchTST、SEG、PyG 或 AutoGluon 自行安装依赖，也不得用同名第三方实现替换 source lock。
+
+## Stage-2：P4 development 标签映射与固定预算 pilot
+
+Stage-2 的版本化映射是
+[`sweetspot_p5_label_mapping.v1.json`](sweetspot_p5_label_mapping.v1.json)。它只批准 P4
+已有标签进入单折 development pilot，并不批准一个新的“综合甜点真值”：
+
+- T1、T2、T4 保留 P4 的 `proxy_feasible` 语义；T3 保留未来 30 日产油定义；
+- T6 PHIF 与 T7 KLOGH 使用不同 TaskSpec、estimator/head、label version 和榜单；
+- T5 维持 `not_feasible`，runner 不提供任何代理或合成标签降级；
+- 当前 T6/T7 没有可在不打开 `test.h5` 的条件下复建的 development 特征源，因此标签映射可审计，但所有 pilot cell 结构化 `SKIP`。
+
+runner 固定使用各 P4 manifest 的 fold 0、`seed=2693`、每目标相同的样本 ID/输入预算。
+树模型最多 64 个 boosting updates；InceptionTime 最多 64 个 AdamW updates。所有预处理只在
+fold-train 拟合。GPU 任务必须由调用方显式传入协议锁路径；代码和结果不会固化机器路径。
+
+```bash
+TABULAR_PYTHON="${VOLVE_P5_TABULAR_PYTHON:?shared tabular-cpu interpreter}"
+GPU_LOCK="${VOLVE_P5_GPU_LOCK:?shared GPU lock}"
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" \
+  -m _pipelines.02_task_datasets.sweetspot.p5.sweetspot_p5_stage2 \
+  --device cuda --gpu-lock "$GPU_LOCK"
+```
+
+便携小型结果仅写入本赛道私有目录 `p5/_outputs/stage2_pilot/`：
+
+- `p5_stage2_results.jsonl`：冻结的 10×7 cell，每行一个真实 pilot 或结构化 skip；
+- `p5_stage2_summary.json`：每目标独立榜单、预算、资源和 test-firewall 汇总；
+- `p5_stage2_label_mapping.json`：带 P4 provenance/hash/status 的映射审计副本。
+
+准确测试命令（唯一赛道前缀 basename）为：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest \
+  _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage2.py -v
+```
+
+Stage-2 CLI 没有 test 参数，不读取历史 test 指标，不持久化标签、checkpoint 或模型。
