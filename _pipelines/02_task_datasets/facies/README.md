@@ -502,3 +502,68 @@ stores only its runtime-relative path, hash and byte count. The Stage-2 test
 basename and dynamic import name are respectively
 `test_facies_p5_stage2.py` and `facies_p5_stage2`, preventing collisions with
 other tracks in an integrated test process.
+
+## P5 Stage-3 multiseed spatial CV
+
+`facies_p5_stage3.py` confirms only the frozen Stage-2 top three for each
+independent scratch task. F3 runs `smp_fpn_r18`,
+`smp_deeplabv3plus_r18`, and `hf_segformer_b0`; Penobscot runs
+`smp_deeplabv3plus_r18`, `smp_fpn_r18`, and `smp_unet_r18`. Each roster runs
+all five effective folds from the exact P4 manifest and repeat model seeds
+`1867973658`, `2137841944`, and `3902865753`: 45 cells per task, 90 total.
+No candidate, lane, fold, seed, loss, optimizer, sample cap, update count, or
+wall budget can be changed through the CLI.
+
+Every fold deterministically selects at most 32 fold-train and 16 validation
+patches before reading labels. Its z-score is fit only on those fold-train
+amplitudes; class weights come only from the locked manifest's complete
+fold-train support. The target transform is fixed identity, and no calibrator
+is fit (raw-softmax calibration metrics are evaluation only). Missing classes
+remain support zero. The runner never enumerates a P4 run directory, never
+opens `test.h5`, and exposes no test/frozen-test parameter. A mismatched
+manifest hash, missing cell, duplicate cell, CPU device, wrong GPU lock,
+cross-lane record, or Stage-2 budget change fails closed.
+
+Use the provisioned torch-common interpreter. CUDA cells require the exact
+shared lock through `VOLVE_P5_GPU_LOCK`; the runner obtains one exclusive
+POSIX `flock`, records `cuda:0`, lock wait and peak VRAM, and refuses CPU
+execution. A repeat invocation resumes only cells whose contract, checkpoint
+and OOF hashes still match.
+
+```bash
+P5_TORCH_PYTHON=/path/to/torch-common/bin/python
+FACIES_PROCESSED_ROOT=/path/to/processed
+F3_P4_SPLIT_MANIFEST=/path/to/facies_f3/split_manifest.json
+PEN_P4_SPLIT_MANIFEST=/path/to/facies_penobscot/split_manifest.json
+export VOLVE_P5_GPU_LOCK=/mnt/data/yongan-admin-2/.cache/volve-p5/locks/gpu0.lock
+
+CUDA_VISIBLE_DEVICES=0 PYTHONDONTWRITEBYTECODE=1 "$P5_TORCH_PYTHON" \
+  _pipelines/02_task_datasets/facies/facies_p5_stage3.py run \
+  --processed-root "$FACIES_PROCESSED_ROOT" \
+  --f3-manifest "$F3_P4_SPLIT_MANIFEST" \
+  --penobscot-manifest "$PEN_P4_SPLIT_MANIFEST"
+```
+
+Portable Git evidence lives only in `_outputs/p5_stage3/`: one 90-row JSONL,
+summary, separate task/lane leaderboards, OOF and visualization manifests, and
+one OOF diagnostic PNG per task. Rankings use mean mIoU, then worst-fold mIoU,
+seed standard deviation and resource cost; below 80% legal completion a task
+is `not_rankable`, with no missing-cell imputation. Full best checkpoints and
+OOF prediction archives remain under ignored `_outputs/p5_stage3_runtime/`.
+Figures are reproducible without a model, dataset or test artifact:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$P5_TORCH_PYTHON" \
+  _pipelines/02_task_datasets/facies/facies_p5_stage3.py visualize
+```
+
+The figure contains a real development OOF seismic/GT/prediction profile,
+error, entropy, confidence, aggregate confusion, per-class IoU/F1 and the
+five-fold × three-seed distribution. Its deterministic selector keeps the
+seeded sample when it has at least two GT classes and both correct and error
+pixels; otherwise it searches only the winner's archived development OOF and
+chooses maximum GT diversity, then correct/error balance, then stable sample
+and cell ID. The selected sample ID, rule, outcome and pixel counts are stored
+in the visualization manifest. Stage-3 integration-safe basenames are
+`facies_p5_stage3.py` and `test_facies_p5_stage3.py`; the dynamic test module
+name is `facies_p5_stage3`.
