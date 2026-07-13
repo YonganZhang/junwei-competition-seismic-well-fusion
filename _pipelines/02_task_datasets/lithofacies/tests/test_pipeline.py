@@ -136,7 +136,10 @@ class PipelineUnitContractTests(unittest.TestCase):
                     "hidden_size": 8,
                 }
                 model = get_model(model_name, **model_kwargs)
-                self.assertEqual(model.__class__.__module__, f"models.{model_name}")
+                self.assertEqual(
+                    model.__class__.__module__,
+                    f"_models.lithofacies.{model_name}",
+                )
 
                 optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
                 logits = model(well_log, seismic)

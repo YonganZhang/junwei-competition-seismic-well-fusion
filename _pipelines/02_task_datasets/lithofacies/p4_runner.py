@@ -41,7 +41,7 @@ from _code.ml_framework.lifecycle import (  # noqa: E402
     ExperimentLifecycle,
     ExperimentState,
 )
-from _code.ml_framework.model_registry import get_model  # noqa: E402
+from _code.ml_framework.model_discovery import discover_model  # noqa: E402
 from _code.ml_framework.run_layout import create_run_layout  # noqa: E402
 from _code.ml_framework.seeding import SeedTree, derive_seed, seed_everything  # noqa: E402
 from _code.ml_framework.splits import Fold, SplitManifest, validate_manifest  # noqa: E402
@@ -362,9 +362,8 @@ def _batches(
 def _build_model(config: Mapping[str, Any], samples: Sequence[Mapping[str, Any]]) -> Any:
     _require_torch()
     first = samples[0]
-    return get_model(
-        str(config["model_id"]),
-        models_package="models",
+    return discover_model("lithofacies", str(config["model_id"])).build(
+        lithofacies_task_spec(),
         num_classes=len(CLASS_NAMES),
         well_log_shape=tuple(int(value) for value in np.asarray(first["well_log_seq"]).shape),
         seismic_shape=tuple(int(value) for value in np.asarray(first["seismic_patch"]).shape),

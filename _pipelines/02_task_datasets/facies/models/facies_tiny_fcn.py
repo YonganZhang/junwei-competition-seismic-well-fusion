@@ -1,40 +1,12 @@
-"""Shallow fully convolutional network for facies segmentation."""
+"""Compatibility shim for ``_models.facies.facies_tiny_fcn``."""
 from __future__ import annotations
-
-import torch
-from torch import nn
-
+from typing import Any
 from _code.ml_framework.model_registry import register_model
-
-
-class FaciesTinyFCN(nn.Module):
-    """Use two local feature layers followed by a per-pixel classifier."""
-
-    def __init__(self, num_classes: int, hidden_channels: int = 8) -> None:
-        super().__init__()
-        self.network = nn.Sequential(
-            nn.Conv2d(1, hidden_channels, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(hidden_channels, hidden_channels, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(hidden_channels, num_classes, kernel_size=1),
-        )
-
-    def forward(self, inputs: torch.Tensor) -> torch.Tensor:
-        if inputs.ndim != 4 or inputs.shape[1] != 1:
-            raise ValueError(
-                "facies_tiny_fcn expects input shaped [B, 1, H, W], "
-                f"got {tuple(inputs.shape)}"
-            )
-        return self.network(inputs)
+from _models.facies.facies_tiny_fcn import FaciesTinyFCN
+from models import compatibility_task_spec
 
 
 @register_model("facies_tiny_fcn")
-def build_model(
-    num_classes: int, hidden_channels: int = 8, **_: object
-) -> nn.Module:
-    """Build the registered shallow facies FCN."""
-    return FaciesTinyFCN(
-        num_classes=num_classes,
-        hidden_channels=hidden_channels,
-    )
+def build_model(num_classes: int, **config: Any) -> FaciesTinyFCN:
+    from _models.facies.facies_tiny_fcn import build_model as canonical_build
+    return canonical_build(compatibility_task_spec(num_classes), num_classes=num_classes, **config)

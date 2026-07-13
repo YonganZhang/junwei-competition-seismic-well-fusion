@@ -34,7 +34,7 @@ from ml_framework.contracts import TaskSpec  # noqa: E402
 from ml_framework.cv import run_development_cv  # noqa: E402
 from ml_framework.hpo import HPOPlan, run_fixed_trials  # noqa: E402
 from ml_framework.lifecycle import ExperimentLifecycle, ExperimentState  # noqa: E402
-from ml_framework.model_registry import get_model  # noqa: E402
+from _code.ml_framework.model_discovery import discover_model  # noqa: E402
 from ml_framework.preprocess import NormStats, denoise_identity, denormalize, fit_zscore, normalize  # noqa: E402
 from ml_framework.run_layout import create_run_layout  # noqa: E402
 from ml_framework.seeding import DEFAULT_ROOT_SEED, SeedTree, seed_everything  # noqa: E402
@@ -805,7 +805,7 @@ def train_model(
         ridge_alpha,
         model_seed,
     )
-    model = get_model(model_name, models_package="models", **kwargs)
+    model = discover_model("reconstruction", model_name).build(task_spec(mode), **kwargs)
     config_payload = _training_config_payload(
         mode=mode,
         model_name=model_name,
@@ -1083,7 +1083,7 @@ def run_development_baseline_cv(
             ridge_alpha=ridge_alpha,
             root_seed=SeedTree(root_seed).seed("cv", fold.fold_id),
         )
-        prediction = np.asarray(model.predict(prepared.validation_features), dtype=np.float64)
+        prediction = np.asarray(model.predict_array(prepared.validation_features), dtype=np.float64)
         mask = prepared.validation_metric_mask
         metric_cells = FlatCells(
             sample_ids=prepared.validation_cells.sample_ids[mask],
@@ -1379,9 +1379,12 @@ def run_frozen_test_once(
     features = _normalization_from_report(raw, preprocess)
     checkpoint_payload = load_checkpoint(checkpoint)
     config = checkpoint_payload["extra"]["config"]
-    model = get_model(config["model"], models_package="models", **config["model_kwargs"])
+    archived_task_spec = TaskSpec.from_dict(config["task_spec"])
+    model = discover_model("reconstruction", config["model"]).build(
+        archived_task_spec, **config["model_kwargs"]
+    )
     _restore_model_state(model, checkpoint_payload["model_state"])
-    prediction = np.asarray(model.predict(features), dtype=np.float64)
+    prediction = np.asarray(model.predict_array(features), dtype=np.float64)
     metric_mask = ~test_cells.observed_mask
     metric_cells = FlatCells(
         sample_ids=test_cells.sample_ids[metric_mask],
@@ -1589,7 +1592,7 @@ def tiny_smoke(output_dir: Path, mode: str = "strict", model_name: str = "ridge_
         ridge_alpha=0.1,
         root_seed=DEFAULT_ROOT_SEED,
     )
-    prediction = model.predict(prepared.validation_features)
+    prediction = model.predict_array(prepared.validation_features)
     return {
         "mode": mode,
         "model": model_name,

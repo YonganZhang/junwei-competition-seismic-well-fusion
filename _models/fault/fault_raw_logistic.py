@@ -1,17 +1,16 @@
-"""Canonical local-feature logistic baseline for fault segmentation."""
+"""Canonical weighted fault logistic baseline using raw amplitude only."""
 from __future__ import annotations
 
 from typing import Any, Mapping
 
 import numpy as np
-from scipy.ndimage import sobel, uniform_filter
 from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import log_loss
 
 from _code.ml_framework.contracts import ModelOutput, TaskSpec
 
 
-model_id = "fault_local_logistic"
+model_id = "fault_raw_logistic"
 
 
 def capabilities() -> dict[str, Any]:
@@ -23,10 +22,12 @@ def capabilities() -> dict[str, Any]:
     }
 
 
-class FaultLocalLogistic:
+class FaultRawLogistic:
+    description = "weighted_logistic_pixel_classifier_with_raw_amplitude_only"
+
     def __init__(self, task_spec: TaskSpec, *, seed: int = 2693, alpha: float = 1e-4) -> None:
         if task_spec.task_type != "binary" or len(task_spec.targets) != 1:
-            raise ValueError("fault_local_logistic requires one binary target")
+            raise ValueError("fault_raw_logistic requires one binary target")
         if alpha <= 0:
             raise ValueError("alpha must be positive")
         self.task_spec = task_spec
@@ -41,26 +42,17 @@ class FaultLocalLogistic:
         array = np.asarray(patches, dtype=np.float32)
         if array.ndim != 4 or array.shape[1] != 1:
             raise ValueError(f"expected [B,1,H,W] seismic patches, received {array.shape}")
-        features: list[np.ndarray] = []
-        for patch in array[:, 0]:
-            if not np.isfinite(patch).all():
-                raise ValueError("seismic features must be finite")
-            local_mean = uniform_filter(patch, size=3, mode="nearest")
-            local_sq_mean = uniform_filter(patch * patch, size=3, mode="nearest")
-            local_std = np.sqrt(np.maximum(local_sq_mean - local_mean * local_mean, 0.0))
-            features.append(np.column_stack((
-                patch.ravel(), local_mean.ravel(), local_std.ravel(),
-                (sobel(patch, axis=0, mode="nearest") / 8.0).ravel(),
-                (sobel(patch, axis=1, mode="nearest") / 8.0).ravel(),
-            )))
-        return np.concatenate(features).astype(np.float32)
+        features = array[:, 0].reshape(-1, 1)
+        if not np.isfinite(features).all():
+            raise ValueError("raw-amplitude features must be finite")
+        return features
 
     @staticmethod
     def _target_weight(labels: np.ndarray, weights: np.ndarray, size: int) -> tuple[np.ndarray, np.ndarray]:
         target = np.asarray(labels, dtype=np.uint8).ravel()
         weight = np.asarray(weights, dtype=np.float32).ravel()
         if target.size != size or weight.size != size:
-            raise ValueError("labels and weights must match the patch pixel count")
+            raise ValueError("labels and weights must match the patch voxel count")
         if not np.isin(target, [0, 1]).all():
             raise ValueError("fault labels must be binary")
         if not np.isfinite(weight).all() or np.any(weight < 0) or weight.sum() <= 0:
@@ -102,8 +94,8 @@ class FaultLocalLogistic:
         return ModelOutput(raw={target: logits}, transformed={target: probability})
 
 
-def build_model(task_spec: TaskSpec, **config: Any) -> FaultLocalLogistic:
-    return FaultLocalLogistic(task_spec, **config)
+def build_model(task_spec: TaskSpec, **config: Any) -> FaultRawLogistic:
+    return FaultRawLogistic(task_spec, **config)
 
 
 def suggest_hparams(trial: Any, task_spec: TaskSpec) -> Mapping[str, Any]:

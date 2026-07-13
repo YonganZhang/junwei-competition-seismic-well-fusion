@@ -42,16 +42,17 @@ class CanonicalTrackModelTests(unittest.TestCase):
         model.train_batch(x, y)
         self.assertEqual(model.predict_output(x).raw["facies"].shape, (2, 4, 8, 9))
 
-    def test_property_mask_capable_ridge(self):
+    def test_property_canonical_baselines_share_the_fixed_envelope(self):
         task = spec("property", "regression", "PHIF")
-        model = discover_model("property", "reservoir_ridge").build(task, n_features=3)
         x = np.arange(30, dtype=float).reshape(10, 3) / 10.0
         y = (x[:, :1] * 0.2) + 0.1
-        before = model.validation_loss((x, y))
-        for _ in range(5):
-            model.train_batch((x, y))
-        self.assertTrue(np.isfinite(before))
-        self.assertEqual(len(model.predict(x).raw["PHIF"]), 10)
+        for model_id in ("reservoir_linear", "reservoir_ridge", "tiny_mlp"):
+            model = discover_model("property", model_id).build(task, n_features=3, hidden_dim=6)
+            before = model.validation_loss((x, y))
+            for _ in range(5):
+                model.train_batch((x, y))
+            self.assertTrue(np.isfinite(before))
+            self.assertEqual(len(model.predict(x).raw["PHIF"]), 10)
 
     def test_lithofacies_fixed_nine_class_logits(self):
         task = spec("lithofacies", "multiclass", "GM09", num_classes=9)

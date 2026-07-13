@@ -30,7 +30,7 @@ from _code.ml_framework.lifecycle import (  # noqa: E402
     ExperimentLifecycle,
     ExperimentState,
 )
-from _code.ml_framework.model_registry import get_model  # noqa: E402
+from _code.ml_framework.model_discovery import discover_model  # noqa: E402
 from _code.ml_framework.run_layout import create_run_layout  # noqa: E402
 from _code.ml_framework.seeding import seed_everything  # noqa: E402
 from _code.ml_framework.splits import Fold, SplitManifest, validate_manifest  # noqa: E402
@@ -383,9 +383,8 @@ def frozen_test_run(args: argparse.Namespace) -> dict[str, Any]:
         _read_json(args.run_root / "refit" / "preprocess_stats.json")
     )
     spec = get_task_spec(config["task_id"])
-    model = get_model(
-        str(config["model_id"]),
-        models_package="models",
+    model = discover_model("facies", str(config["model_id"])).build(
+        spec,
         num_classes=int(spec.metadata["num_classes"]),
         **dict(config.get("model_config", {})),
     )

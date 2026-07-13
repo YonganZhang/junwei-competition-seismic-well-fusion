@@ -18,7 +18,7 @@ from _code.ml_framework.checkpoint import (
     save_checkpoint,
 )
 from _code.ml_framework.contracts import ModelBatch
-from _code.ml_framework.model_registry import get_model
+from _code.ml_framework.model_discovery import discover_model
 from _code.ml_framework.seeding import SeedTree, derive_seed, seed_everything
 from _code.ml_framework.lifecycle import ExperimentLifecycle, ExperimentState
 from _code.ml_framework.splits import Fold, SplitManifest
@@ -148,9 +148,8 @@ def train_development_model(
     num_classes = int(spec.metadata["num_classes"])
     root_seed = int(run_config["root_seed"])
     seed_report = seed_everything(root_seed, strict=strict_determinism).to_dict()
-    model = get_model(
-        str(run_config["model_id"]),
-        models_package="models",
+    model = discover_model("facies", str(run_config["model_id"])).build(
+        spec,
         num_classes=num_classes,
         **dict(run_config.get("model_config", {})),
     )

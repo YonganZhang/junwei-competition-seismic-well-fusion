@@ -1,6 +1,13 @@
-"""Reconstruction model package.
+"""Compatibility package for canonical reconstruction models."""
+from pathlib import Path
+import sys
 
-Modules are discovered dynamically by
-``get_model(name, models_package="models")``.  Do not add centralized imports
-here: adding ``models/<registered_name>.py`` is the complete swap workflow.
-"""
+
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+
+def compatibility_task_spec():
+    from p4_reconstruction import task_spec
+    return task_spec("strict")

@@ -32,7 +32,7 @@ from _code.ml_framework.lifecycle import ExperimentLifecycle, ExperimentState  #
 from _code.ml_framework.run_layout import create_run_layout  # noqa: E402
 from _code.ml_framework.seeding import SeedTree  # noqa: E402
 from _code.ml_framework.trainer import TrainerState  # noqa: E402
-from ml_framework.model_registry import get_model  # noqa: E402
+from _code.ml_framework.model_discovery import discover_model  # noqa: E402
 from p4_contract import TARGET_NAME, adapt_fault_arrays, fault_task_spec, validate_fault_batch  # noqa: E402
 from p4_split import BufferedCVPlan  # noqa: E402
 
@@ -162,7 +162,7 @@ class LegacyFaultBaselineAdapter:
             raise ValueError(f"unsupported fault legacy model {model_id!r}")
         self.model_id = model_id
         self.seed = seed
-        self.model = get_model(model_id, models_package="models", seed=seed)
+        self.model = discover_model("fault", model_id).build(fault_task_spec(), seed=seed)
 
     @staticmethod
     def _legacy_arrays(

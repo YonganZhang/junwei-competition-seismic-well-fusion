@@ -1,1 +1,8 @@
-"""Fault model package dynamically loaded by ml_framework.model_registry."""
+"""Compatibility package for canonical fault models."""
+from pathlib import Path
+import sys
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))

@@ -1,31 +1,37 @@
-"""L2-regularized multi-output linear SGD baseline for reservoir targets."""
+"""Compatibility shim for the canonical ``_models.property.reservoir_ridge``."""
 from __future__ import annotations
 
+from typing import Any
+
+import numpy as np
+
 from ml_framework.model_registry import register_model
+from _models.property.reservoir_ridge import ReservoirRidgeSGD as _CanonicalRidge
+from models.reservoir_linear import compatibility_task_spec
 
-from models.reservoir_linear import ReservoirLinearSGD
 
-
-class ReservoirRidgeSGD(ReservoirLinearSGD):
-    """Linear SGD with an L2 penalty on the regression weights."""
-
+class ReservoirRidgeSGD(_CanonicalRidge):
     def __init__(
         self,
-        *args: object,
+        n_features: int,
+        n_outputs: int = 3,
         l2_strength: float = 1e-3,
         weight_decay: float | None = None,
-        **kwargs: object,
+        **kwargs: Any,
     ) -> None:
         if weight_decay is not None:
             l2_strength = float(weight_decay)
         super().__init__(
-            *args,
+            compatibility_task_spec(n_outputs),
+            n_features=n_features,
             l2_strength=l2_strength,
-            weight_decay=weight_decay,
             **kwargs,
         )
 
+    def predict(self, features: np.ndarray) -> np.ndarray:
+        return self.predict_array(features)
+
 
 @register_model("reservoir_ridge")
-def build_model(**kwargs) -> ReservoirRidgeSGD:
+def build_model(**kwargs: Any) -> ReservoirRidgeSGD:
     return ReservoirRidgeSGD(**kwargs)
