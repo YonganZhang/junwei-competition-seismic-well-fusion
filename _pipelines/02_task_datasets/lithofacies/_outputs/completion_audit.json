@@ -1,0 +1,74 @@
+{
+  "audit": "lithofacies_completion_v1",
+  "pipeline_version": "gm09_multimodal_v1",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "explicit_gm09_label_contract",
+      "status": "PASS",
+      "evidence": {
+        "workbooks": 11,
+        "wells": 11,
+        "intervals": 139,
+        "classes": 9
+      }
+    },
+    {
+      "name": "real_multimodal_samples_and_family_isolation",
+      "status": "PASS",
+      "evidence": {
+        "roles": {
+          "train": 360,
+          "guard": 87,
+          "test": 120
+        },
+        "families": {
+          "train": [
+            "15/9-19",
+            "15/9-F-14",
+            "15/9-F-15"
+          ],
+          "guard": [
+            "15/9-F-4"
+          ],
+          "test": [
+            "15/9-F-5"
+          ]
+        }
+      }
+    },
+    {
+      "name": "train_family_only_reversible_normalization",
+      "status": "PASS",
+      "evidence": {
+        "fit_scope": "train_mother_well_families_only",
+        "max_round_trip_error": 2.842170943040401e-14
+      }
+    },
+    {
+      "name": "shared_loop_best_checkpoint_and_finite_metrics",
+      "status": "PASS",
+      "evidence": {
+        "epochs": 80,
+        "best_epoch": 2,
+        "best_guard_loss": 1.8434728980064392,
+        "metrics_finite": true
+      }
+    },
+    {
+      "name": "nonempty_checkpoint_and_visual_artifacts",
+      "status": "PASS",
+      "evidence": {
+        "best_checkpoint": 335437,
+        "loss_curve": 36632,
+        "confusion_matrix": 108137,
+        "best_checkpoint_predictions": 354680
+      }
+    }
+  ],
+  "source_files": {
+    "split_manifest": "_pipelines/02_task_datasets/lithofacies/_outputs/split_manifest.json",
+    "metrics": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/metrics.json",
+    "history": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/checkpoints/history.json"
+  }
+}
