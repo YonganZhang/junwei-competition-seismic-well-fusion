@@ -53,3 +53,9 @@ __pycache__/
 !/_outputs/p5_stage1/models/*.json
 !/_outputs/p5_stage1/summary.json
 !/_outputs/p5_stage1/manifest.json
+
+# Portable fault-private P5 Stage-2 data-gate evidence; no models/checkpoints.
+!/_outputs/p5_stage2/
+/_outputs/p5_stage2/*
+!/_outputs/p5_stage2/p5_stage2_results.jsonl
+!/_outputs/p5_stage2/p5_stage2_summary.json

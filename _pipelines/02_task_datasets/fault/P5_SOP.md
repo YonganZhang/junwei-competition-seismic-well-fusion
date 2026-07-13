@@ -1,8 +1,9 @@
-# Fault P5 open-model Stage-1 SOP
+# Fault P5 open-model Stage-1 and Stage-2 SOP
 
 This SOP is subordinate to `P5_open_model_benchmark_protocol.md` and the
-frozen fault P4 mask/test contract. It covers contract smoke only: no HPO, CV,
-model ranking, refit, or frozen-test consumption.
+frozen fault P4 mask/test contract. Stage-1 covers contract smoke and Stage-2
+adds only a fail-closed data gate: no HPO, CV training, model ranking, refit, or
+frozen-test consumption.
 
 ## Frozen candidates and sources
 
@@ -89,3 +90,27 @@ PYTHONNOUSERSITE=1 "$PYTHON" -m unittest discover -v \
 python3 -m unittest discover -v \
   -s _pipelines/02_task_datasets/fault -p 'test_fault_pipeline.py'
 ```
+
+## Stage-2 fixed-budget data gate
+
+Fault Stage-2 is data-gate only under the frozen pilot contract. It reads the
+portable P4 split/blind-audit evidence, the Stage-1 summary, and the exact source
+lock. It does not accept HDF5, model, loader, checkpoint, or test arguments:
+
+```bash
+python3 _pipelines/02_task_datasets/fault/fault_p5_stage2.py
+python3 -m unittest discover -v \
+  -s _pipelines/02_task_datasets/fault -p 'test_fault_p5_stage2.py'
+```
+
+The current source evidence has zero coverage-audited verified negatives and
+does not contain an explicit coverage-audited source unknown mask. Although P4
+correctly represents unlabelled voxels as unknown in memory, that representation
+cannot replace missing source-mask provenance. The runner therefore emits ten
+`blocked` rows, a `not_rankable` summary, zero allocated samples/updates, and no
+leaderboard. It never generates random negatives or reads the frozen test.
+
+Portable results are private to this track:
+
+- `_outputs/p5_stage2/p5_stage2_results.jsonl`;
+- `_outputs/p5_stage2/p5_stage2_summary.json`.
