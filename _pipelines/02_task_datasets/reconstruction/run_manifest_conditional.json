@@ -1,0 +1,41 @@
+{
+  "task": "reconstruction",
+  "evaluation_mode": "conditional",
+  "command": "python3 _pipelines/02_task_datasets/reconstruction/baseline.py --model ridge_linear --evaluation-mode conditional --epochs 600",
+  "git_head": "60fc6393944901014770c8d48de8b91f09d5cb96",
+  "note": "reconstruction sources are currently untracked; source SHA-256 values below, not git_head alone, identify the executed code",
+  "python": "3.10.12",
+  "packages": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.9",
+    "h5py": "3.16.0"
+  },
+  "source_sha256": {
+    "_pipelines/02_task_datasets/reconstruction/baseline.py": "de1b0a5403f59977a7d2913359cd1d746087cd9a1ee5cc3ed6141b106d48a6f2",
+    "_pipelines/02_task_datasets/reconstruction/models/ridge_linear.py": "d469231e292951136f142df47d5f20313cbbd7bf8333c2635ad785b8e6cdafc6",
+    "_code/ml_framework/preprocess.py": "9ec2b992db430586c79dba9f67d3ed912a23dfc6ab97750ed69cabebe9c54c5e",
+    "_code/ml_framework/model_registry.py": "955e04c2f10a5304fa22737dab679679754fb6210aefb7bf1b1bf59daedb7f5a",
+    "_code/ml_framework/train.py": "fb25143b5bb94b6e622a73a9aee6343afce6b4057365416f2ed4ca754e1e4c4f",
+    "_code/ml_framework/visualize.py": "a6e28f5c59d53af6c0b1f74e79fc1012ad3b60b80720a4f6dda6065adfd4e358",
+    "_code/dataset_io.py": "0da5e0eac71a8e33aa36e25c55bd49359db007959025f6269781702929e82751"
+  },
+  "input_data_sha256": {
+    "_data/processed/reconstruction/train.h5": "2e395d810feb067b24c2295d87e6b33e308cb21aba224c6d2ddd1e6fcd88de73",
+    "_data/processed/reconstruction/test.h5": "dc236785c50fb5a01984973bab67bbfd40db5f45f4676df54291e4192779a271"
+  },
+  "artifact_sha256": {
+    "_pipelines/02_task_datasets/reconstruction/results_conditional.json": "7cb2b53802f1a572b9dc55f43ba634e52ad4361a82965b74f3dae2d8301842eb",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/preprocess_stats.json": "53ee49a9c066bd43c4d0ceb46c101899de667dfd438a9fc9c402f68d0560e08c",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/structural/checkpoints/best.ckpt": "458acd49d20fc788e0cf239e7ecde78d61cb56fc4d3547e40a5a5d67af5b200e",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/structural/checkpoints/last.ckpt": "52564b95a120042c605e639da85db1f4a08cca11f97ac883fa294b38ea50c489",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/structural/checkpoints/history.json": "941c34f39aafcc1d1585a5cebef4e145c512293f18082ecf8094ff5f4d98f9f2",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/structural/loss_curve.png": "aefb4d267a9519dcc8ba951096d860130e1b64a15d6074b048ece2b3b962f050",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/structural/loss_curve_best_epoch_zoom.png": "e1e95048ccd4de0733bcc7e84fc913ca2ce8651f57e61ee2c4a50eebf7568f1b",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/seismic/checkpoints/best.ckpt": "72fa1e7ad75192d0a230e8f902f183136dd3770426558942db47f4b288793237",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/seismic/checkpoints/last.ckpt": "fb4ff1bb093a0175850a3151ec79f7afaedd5fbdd756811b13449262a3fad5e5",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/seismic/checkpoints/history.json": "1849aa156f35bc809b2f4f35af6fe3d1420d8b217c2559cbcecd0086ca37614b",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/seismic/loss_curve.png": "d772bc958cc3a23d64612e2cbdfec400705ce59d127291514fdf0903a8c5b6ae",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/conditional/seismic/loss_curve_best_epoch_zoom.png": "993a9b66daa576b94845cb98815108bd7ef1ffff1527ce50e67ba145293c1304"
+  }
+}

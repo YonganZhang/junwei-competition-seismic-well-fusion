@@ -1,0 +1,40 @@
+# Local inspection/build scratch.  This contains extracted Eclipse files and a
+# temporary resdata dependency target and must never enter Git.
+_tmp/
+**/_tmp/
+
+# Python/tool caches and local environments.
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+site-packages/
+*.dist-info/
+*.egg-info/
+
+# Unified datasets are provisioned through dataset_io and stay outside Git.
+*.h5
+*.hdf5
+
+# Checkpoints are reproducible integration assets, not canonical Git evidence.
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
+# Pre-dual-mode local snapshots are retained on disk but are not canonical.
+results.json
+_outputs/prediction_visualization.png
+_outputs/ridge_linear/preprocess_stats.json
+_outputs/ridge_linear/structural/
+_outputs/ridge_linear/seismic/
+
+# Canonical portable evidence intentionally remains trackable:
+# results_{conditional,strict}.json, run_manifest_*.json,
+# visualization_metadata_*.json, mode history/preprocess JSON, loss PNGs, and
+# prediction_visualization_{conditional,strict}.png.
