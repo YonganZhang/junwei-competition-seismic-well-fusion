@@ -1,0 +1,210 @@
+{
+  "schema_version": "p5-source-lock-v1",
+  "models": {
+    "smp_unet_r18": {
+      "family": "SMP U-Net ResNet18",
+      "source_url": "https://github.com/qubvel-org/segmentation_models.pytorch/tree/420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "source_tag": "v0.5.0",
+      "source_commit": "420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "code_license": "MIT",
+      "code_license_url": "https://github.com/qubvel-org/segmentation_models.pytorch/blob/420ce84b0c2df0286fa9bb2bd1499eea625c9b33/LICENSE",
+      "dependency_group": "torch-common",
+      "distribution": "segmentation-models-pytorch",
+      "import_module": "segmentation_models_pytorch",
+      "allowed_versions": ["0.5.0"],
+      "adapter_mode": "package",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "encoder-specific license not frozen",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "smp_deeplabv3plus_r18": {
+      "family": "SMP DeepLabV3+ ResNet18",
+      "source_url": "https://github.com/qubvel-org/segmentation_models.pytorch/tree/420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "source_tag": "v0.5.0",
+      "source_commit": "420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "code_license": "MIT",
+      "code_license_url": "https://github.com/qubvel-org/segmentation_models.pytorch/blob/420ce84b0c2df0286fa9bb2bd1499eea625c9b33/LICENSE",
+      "dependency_group": "torch-common",
+      "distribution": "segmentation-models-pytorch",
+      "import_module": "segmentation_models_pytorch",
+      "allowed_versions": ["0.5.0"],
+      "adapter_mode": "package",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "encoder-specific license not frozen",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "smp_unetpp_r18": {
+      "family": "SMP U-Net++ ResNet18",
+      "source_url": "https://github.com/qubvel-org/segmentation_models.pytorch/tree/420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "source_tag": "v0.5.0",
+      "source_commit": "420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "code_license": "MIT",
+      "code_license_url": "https://github.com/qubvel-org/segmentation_models.pytorch/blob/420ce84b0c2df0286fa9bb2bd1499eea625c9b33/LICENSE",
+      "dependency_group": "torch-common",
+      "distribution": "segmentation-models-pytorch",
+      "import_module": "segmentation_models_pytorch",
+      "allowed_versions": ["0.5.0"],
+      "adapter_mode": "package",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "encoder-specific license not frozen",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "smp_fpn_r18": {
+      "family": "SMP FPN ResNet18",
+      "source_url": "https://github.com/qubvel-org/segmentation_models.pytorch/tree/420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "source_tag": "v0.5.0",
+      "source_commit": "420ce84b0c2df0286fa9bb2bd1499eea625c9b33",
+      "code_license": "MIT",
+      "code_license_url": "https://github.com/qubvel-org/segmentation_models.pytorch/blob/420ce84b0c2df0286fa9bb2bd1499eea625c9b33/LICENSE",
+      "dependency_group": "torch-common",
+      "distribution": "segmentation-models-pytorch",
+      "import_module": "segmentation_models_pytorch",
+      "allowed_versions": ["0.5.0"],
+      "adapter_mode": "package",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "encoder-specific license not frozen",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "torchvision_lraspp_mbv3": {
+      "family": "TorchVision LR-ASPP MobileNetV3",
+      "source_url": "https://github.com/pytorch/vision/tree/df56172e4d5a8d0cd51384273bc6c5747f5ab931",
+      "source_tag": "v0.27.1",
+      "source_commit": "df56172e4d5a8d0cd51384273bc6c5747f5ab931",
+      "scout_source_url": "https://github.com/pytorch/vision/tree/336d36e8db990a905498c73933e35231876e28bc",
+      "scout_source_tag": "v0.26.0",
+      "scout_source_commit": "336d36e8db990a905498c73933e35231876e28bc",
+      "runtime_revision_note": "The owner-provisioned torch-common CUDA 13 wheel is explicitly locked instead of silently claiming the scouted 0.26.0 runtime.",
+      "code_license": "BSD-3-Clause",
+      "code_license_url": "https://github.com/pytorch/vision/blob/df56172e4d5a8d0cd51384273bc6c5747f5ab931/LICENSE",
+      "dependency_group": "torch-common",
+      "distribution": "torchvision",
+      "import_module": "torchvision",
+      "allowed_versions": ["0.27.1+cu130"],
+      "adapter_mode": "package",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "COCO/VOC data and weight terms not frozen",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "deepseismic_patch_skip": {
+      "family": "Microsoft DeepSeismic patch deconvolution network with skips",
+      "source_url": "https://github.com/microsoft/seismic-deeplearning/tree/3f74face5d087a3947419a698a6181733d8be8fd",
+      "source_tag": "0.2.1",
+      "source_commit": "3f74face5d087a3947419a698a6181733d8be8fd",
+      "code_license": "MIT",
+      "code_license_url": "https://github.com/microsoft/seismic-deeplearning/blob/3f74face5d087a3947419a698a6181733d8be8fd/LICENSE",
+      "dependency_group": "legacy-isolated",
+      "distribution": null,
+      "import_module": null,
+      "allowed_versions": [],
+      "adapter_mode": "legacy_source_port_required",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "checkpoint-specific terms and URL not frozen",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "deepseismic_seresnet_unet": {
+      "family": "Microsoft DeepSeismic SE-ResNet U-Net",
+      "source_url": "https://github.com/microsoft/seismic-deeplearning/tree/3f74face5d087a3947419a698a6181733d8be8fd",
+      "source_tag": "0.2.1",
+      "source_commit": "3f74face5d087a3947419a698a6181733d8be8fd",
+      "code_license": "MIT",
+      "code_license_url": "https://github.com/microsoft/seismic-deeplearning/blob/3f74face5d087a3947419a698a6181733d8be8fd/LICENSE",
+      "dependency_group": "legacy-isolated",
+      "distribution": null,
+      "import_module": null,
+      "allowed_versions": [],
+      "adapter_mode": "legacy_source_port_required",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "checkpoint-specific terms and URL not frozen",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "hf_segformer_b0": {
+      "family": "Hugging Face SegFormer MiT-B0",
+      "source_url": "https://github.com/huggingface/transformers/tree/5d9c11ebf0eab9aa67a9ec879d5b9c867ec2d7ff",
+      "source_tag": "v4.50.0",
+      "source_commit": "5d9c11ebf0eab9aa67a9ec879d5b9c867ec2d7ff",
+      "code_license": "Apache-2.0",
+      "code_license_url": "https://github.com/huggingface/transformers/blob/5d9c11ebf0eab9aa67a9ec879d5b9c867ec2d7ff/LICENSE",
+      "dependency_group": "torch-common",
+      "distribution": "transformers",
+      "import_module": "transformers",
+      "allowed_versions": ["4.50.0"],
+      "adapter_mode": "package",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "other",
+        "url": "https://huggingface.co/nvidia/mit-b0/tree/489d5cd81a0b59fab9b7ea758d3548ebe99677da",
+        "revision": "489d5cd81a0b59fab9b7ea758d3548ebe99677da",
+        "sha256": null
+      }
+    },
+    "sfm_base_facies": {
+      "family": "Seismic Foundation Model Base facies adapter",
+      "source_url": "https://github.com/shenghanlin/SeismicFoundationModel/tree/c256dfab68b9a13d506273a76370c3f555f397ce",
+      "source_tag": "SFM",
+      "source_commit": "c256dfab68b9a13d506273a76370c3f555f397ce",
+      "code_license": "MIT",
+      "code_license_url": "https://github.com/shenghanlin/SeismicFoundationModel/blob/c256dfab68b9a13d506273a76370c3f555f397ce/LICENSE",
+      "dependency_group": "legacy-isolated",
+      "distribution": null,
+      "import_module": null,
+      "allowed_versions": [],
+      "adapter_mode": "legacy_source_port_required",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_approved",
+        "license": "weight share license and content hash unresolved",
+        "url": null,
+        "sha256": null
+      }
+    },
+    "monai_unet3d": {
+      "family": "MONAI 3D U-Net",
+      "source_url": "https://github.com/Project-MONAI/MONAI/tree/eccefc57550b111ed781d82249dfe77872a0e918",
+      "source_tag": "1.6.0",
+      "source_commit": "eccefc57550b111ed781d82249dfe77872a0e918",
+      "code_license": "Apache-2.0",
+      "code_license_url": "https://github.com/Project-MONAI/MONAI/blob/eccefc57550b111ed781d82249dfe77872a0e918/LICENSE",
+      "dependency_group": "torch-common",
+      "distribution": "monai",
+      "import_module": "monai",
+      "allowed_versions": ["1.6.0"],
+      "adapter_mode": "package_requires_3d_blocks",
+      "allowed_lanes": ["scratch"],
+      "weights": {
+        "status": "not_available",
+        "license": null,
+        "url": null,
+        "sha256": null
+      }
+    }
+  }
+}

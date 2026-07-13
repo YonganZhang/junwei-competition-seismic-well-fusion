@@ -388,7 +388,63 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest \
   _pipelines.02_task_datasets.facies.tests.test_p4_real_smoke -v
 ```
 
-Canonical `_models/facies/` migration is intentionally not performed here
-because this track's write scope excludes `_models` and the shared framework.
-P4 therefore uses the existing dynamically registered local model files as a
-compatibility source until the shared owner performs the one-source migration.
+P4 retained the existing canonical `_models/facies/` control plugins and did
+not alter the shared framework.  P5 extends that same one-file discovery
+location with additive candidates; the historical local `models/` directory
+and SmallUNet evidence remain unchanged.
+
+## P5 open-model Stage-1
+
+P5 adds ten one-file plugins under `_models/facies/<model_id>.py` without
+changing the shared framework or the historical SmallUNet result.  Their
+versions, upstream revisions, code licenses and weight gates are frozen in
+`_models/facies/p5_sources.json`:
+
+- `smp_unet_r18`, `smp_deeplabv3plus_r18`, `smp_unetpp_r18` and
+  `smp_fpn_r18`;
+- `torchvision_lraspp_mbv3`;
+- `deepseismic_patch_skip` and `deepseismic_seresnet_unet`;
+- `hf_segformer_b0`;
+- `sfm_base_facies`;
+- `monai_unet3d`.
+
+The only currently approved lane is `scratch`.  Every adapter constructs with
+no external weights.  Passing a pretrained lane or any weight-bearing argument
+fails closed until the exact weight URL, SHA-256 and license are approved.
+DeepSeismic and SFM remain structured skips in `torch-common` because their
+pinned legacy sources do not expose an installed modern package; a same-name
+replacement architecture is forbidden.  MONAI 3-D U-Net is buildable, but the
+real Stage-1 run remains skipped until a contiguous same-development-core 3-D
+block adapter is frozen.  Stacking unrelated 2-D patches would be leakage-prone
+and is not accepted as a volume.
+
+The Stage-1 command uses only `<processed-root>/<task>/train.h5`.  Its archive
+adapter rejects every non-train split before resolving a path, and the CLI has
+no test argument.  It fits z-score and class weights only on a bounded real
+fold-train subset below the existing development guard (F3 at 464–488,
+Penobscot at 1336–1358), then runs synthetic and real forward, raw-logit weighted
+CrossEntropy, backward, one AdamW step, checkpoint prediction round-trip and a
+same-seed build check.  F3 and Penobscot get separate TaskSpecs, heads,
+checkpoints and JSON:
+
+```bash
+P5_TORCH_PYTHON=${P5_TORCH_PYTHON:-python3}
+FACIES_PROCESSED_ROOT=/path/to/processed
+
+CUDA_VISIBLE_DEVICES=0 PYTHONDONTWRITEBYTECODE=1 "$P5_TORCH_PYTHON" _pipelines/02_task_datasets/facies/p5_stage1.py --processed-root "$FACIES_PROCESSED_ROOT" --device cuda
+```
+
+Results are local integration artifacts under
+`_outputs/p5_stage1/<task>/<model_id>/scratch/` and are ignored by Git because
+they include checkpoints and environment-specific runtime evidence.  A
+`contract_smoked` result means both synthetic and real development checks
+passed.  Missing legacy dependencies, blocked weights and the unresolved 3-D
+I/O contract are recorded as structured `skipped` results; unexpected runtime
+errors are `failed`.  Stage-1 computes no Accuracy/mIoU or test metric because
+it is an interface smoke, not model selection.
+
+Run the asset-free contract tests with the shared environment:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "${P5_TORCH_PYTHON:-python3}" -m unittest discover -s _pipelines/02_task_datasets/facies/tests -p 'test_*.py' -v
+```
