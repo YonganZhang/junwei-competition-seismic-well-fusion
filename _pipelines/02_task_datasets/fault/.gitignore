@@ -31,3 +31,16 @@ __pycache__/
 !/_outputs/runs/audited_v2/prediction_visualization.png
 !/_outputs/runs/audited_v2/visualization_report.json
 !/_outputs/runs/audited_v2/reproducibility_report.json
+
+# Portable P4 preflight contracts and fail-closed evidence (no predictions/models).
+!/_outputs/p4_preflight/
+/_outputs/p4_preflight/*
+!/_outputs/p4_preflight/blind_test_manifest.json
+!/_outputs/p4_preflight/blind_test_not_feasible.json
+!/_outputs/p4_preflight/buffered_cv_plan.json
+!/_outputs/p4_preflight/task_spec.json
+!/_outputs/p4_preflight/hpo_plan.json
+!/_outputs/p4_preflight/fixed_baselines.json
+!/_outputs/p4_preflight/tiny_baseline_smoke.json
+!/_outputs/p4_preflight/smoke_report.json
+!/_outputs/p4_preflight/manifest.json

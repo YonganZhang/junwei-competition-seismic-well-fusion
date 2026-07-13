@@ -1,0 +1,48 @@
+{
+  "artifacts": {
+    "blind_test_not_feasible.json": {
+      "bytes": 2436,
+      "metadata": {},
+      "role": "blind_test_audit",
+      "sha256": "46096d75e36d73bf8df7f510bb754675b17e887e8d411352dfe8c4ffa48a65f3"
+    },
+    "buffered_cv_plan.json": {
+      "bytes": 522,
+      "metadata": {},
+      "role": "development_split_plan",
+      "sha256": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9"
+    },
+    "fixed_baselines.json": {
+      "bytes": 358,
+      "metadata": {},
+      "role": "fixed_baselines",
+      "sha256": "fbbe6505d6cb0c38c8a8727acda9d5eaeca8a36c269c5fbc54b204dcf30e29b8"
+    },
+    "hpo_plan.json": {
+      "bytes": 167,
+      "metadata": {},
+      "role": "hpo_plan",
+      "sha256": "edaa938fb5a8dcc7eab7066514be3da95cd97046ec0abc81529259ff537a7718"
+    },
+    "smoke_report.json": {
+      "bytes": 2923,
+      "metadata": {},
+      "role": "real_data_smoke",
+      "sha256": "9f07176045f82811a9ce61812b4c114bbfea414e03e38ec5d9873cec7efdcebe"
+    },
+    "task_spec.json": {
+      "bytes": 2591,
+      "metadata": {},
+      "role": "task_spec",
+      "sha256": "46b2ac07927c6df36b6a204ab2e1de881a320f96bf3a26cc300bd45f6545a972"
+    },
+    "tiny_baseline_smoke.json": {
+      "bytes": 377,
+      "metadata": {},
+      "role": "tiny_overfit_smoke",
+      "sha256": "c2599c4e4fc4d0bb80572ccfe951642699f7bc063615d5a730f3ab75b8bc3102"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "fault-p4-preflight"
+}

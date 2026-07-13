@@ -172,3 +172,47 @@ new training run.
 
 Architecture upgrades such as FaultSeg3D/3-D U-Net, focal loss, or semi-supervised
 learning are intentionally out of scope until the owner chooses a model route.
+
+## P4 sparse-label adapter
+
+The P4 adapter is implemented in `p4_contract.py`, `p4_split.py`,
+`p4_workflow.py`, and `p4_visualization.py`; the operational contract is
+documented in `P4_SOP.md`. It preserves the three historical SGD baselines while
+changing their scientific role:
+
+- rasterized fault-stick voxels are the only default valid positives;
+- all other voxels remain unknown with `valid_label_mask=false`;
+- historical annotation-free samples are separately marked `proxy_mask` and
+  cannot become formal negatives or enable a CV fold;
+- a real negative requires explicit complete-annotation coverage evidence.
+
+Run the fast P4 gate from the project root:
+
+```bash
+python3 -m unittest discover -v -s _pipelines/02_task_datasets/fault -p 'test_fault_p4.py'
+python3 _pipelines/02_task_datasets/fault/p4_smoke.py
+```
+
+The smoke first audits real coordinates and label coverage. If an unconsumed,
+contiguous, completely annotated block exists, it freezes that block before any
+model run. Otherwise it writes an auditable `blind_test_not_feasible.json`,
+keeps `audited_v2` as regression evidence only, and forbids frozen-test
+consumption. The current canonical data contain no complete-annotation coverage
+record, so lack of a blind test is reported rather than hidden.
+
+Development uses requested five-fold contiguous spatial blocks with global
+inline buffers. The adapter reduces folds only for independent-block or valid
+binary-label support and writes the reason; proxy counts never satisfy the
+negative-label gate. Development CV and fixed-trial HPO APIs expose no test
+argument. The default smoke records the optional HPO plan but does not run HPO.
+
+The legacy baseline adapter returns finite `[B,D,H,W]` raw logits plus sigmoid
+probabilities. Unknown voxels have zero official training weight; absent audited
+negatives make official training fail loudly. Full resumable checkpoint,
+artifact manifest, exact OOF, and one-shot test lifecycle entry points live in
+`p4_workflow.py`.
+
+`p4_visualization.py` only reads archived prediction/metric files. It cannot
+load a model or select a threshold, and produces the required masked
+input/GT/probability/confusion, orthogonal, PR/threshold, and
+boundary/components figures with source hashes.

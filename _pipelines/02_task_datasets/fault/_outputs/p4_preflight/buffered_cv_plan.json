@@ -1,0 +1,17 @@
+{
+  "block_support": {},
+  "buffer_inlines": 8,
+  "development_sample_ids": [],
+  "downgrade_reason": "no audited verified-negative labels; proxy/unknown voxels cannot enable binary CV",
+  "effective_n_splits": 0,
+  "excluded_buffer_sample_ids": [],
+  "folds": [],
+  "metadata": {
+    "negative_support_policy": "verified_negative_only",
+    "observed_unique_inlines": 177,
+    "proxy_counts_never_enable_a_fold": true
+  },
+  "plan_version": "fault-buffered-cv-v1",
+  "requested_n_splits": 5,
+  "status": "not_feasible"
+}
