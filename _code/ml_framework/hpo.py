@@ -19,6 +19,7 @@ class HPOPlan:
     confirm_seeds: int = 3
     sampler: str = "random_then_tpe"
     pruner: str = "nop"
+    direction: str = "maximize"
 
     def __post_init__(self) -> None:
         if not 8 <= self.sanity_trials <= 12:
@@ -27,6 +28,8 @@ class HPOPlan:
             raise ValueError("pilot_trials must be in [20, 30]")
         if self.top_configs < 3 or self.confirm_seeds < 3:
             raise ValueError("at least top 3 configs and 3 confirmation seeds are required")
+        if self.direction not in {"maximize", "minimize"}:
+            raise ValueError("direction must be 'maximize' or 'minimize'")
 
 
 @dataclass
@@ -117,9 +120,13 @@ def run_fixed_trials(
     return results
 
 
-def rank_trials(results: Sequence[TrialResult]) -> list[TrialResult]:
+def rank_trials(results: Sequence[TrialResult], *, direction: str = "maximize") -> list[TrialResult]:
     complete = [result for result in results if result.state == "complete"]
-    return sorted(complete, key=lambda item: (item.mean, item.worst, -item.std), reverse=True)
+    if direction == "maximize":
+        return sorted(complete, key=lambda item: (item.mean, min(item.fold_scores), -item.std), reverse=True)
+    if direction == "minimize":
+        return sorted(complete, key=lambda item: (item.mean, max(item.fold_scores), item.std))
+    raise ValueError("direction must be 'maximize' or 'minimize'")
 
 
 def run_optuna_study(
@@ -153,7 +160,7 @@ def run_optuna_study(
         raise ValueError(f"unsupported pruner={active_plan.pruner!r}")
     storage = f"sqlite:///{(output_dir / 'study.sqlite3').resolve()}"
     study = optuna.create_study(
-        direction="maximize",
+        direction=active_plan.direction,
         sampler=sampler,
         pruner=pruner,
         storage=storage,

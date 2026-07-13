@@ -18,6 +18,7 @@ def run_development_cv(
     *,
     output_dir: Path,
     primary_metric: str,
+    metric_direction: str,
 ) -> dict[str, Any]:
     """Run locked development folds.
 
@@ -25,6 +26,8 @@ def run_development_cv(
     runner must return exactly the current fold's validation sample IDs.
     """
     validate_manifest(manifest)
+    if metric_direction not in {"maximize", "minimize"}:
+        raise ValueError("metric_direction must be 'maximize' or 'minimize'")
     output_dir.mkdir(parents=True, exist_ok=True)
     fold_records: list[dict[str, Any]] = []
     oof_sample_ids: list[str] = []
@@ -70,7 +73,12 @@ def run_development_cv(
         "fold_std_unweighted": math.sqrt(
             sum((score - unweighted_mean) ** 2 for score, _ in metric_pairs) / len(metric_pairs)
         ),
-        "worst_fold": min(score for score, _ in metric_pairs),
+        "metric_direction": metric_direction,
+        "worst_fold": (
+            min(score for score, _ in metric_pairs)
+            if metric_direction == "maximize"
+            else max(score for score, _ in metric_pairs)
+        ),
         "effective_n_splits": manifest.effective_n_splits,
         "oof_sample_count": len(oof_sample_ids),
         "valid_label_count": total_weight,

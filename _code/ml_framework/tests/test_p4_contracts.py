@@ -3,6 +3,7 @@ from __future__ import annotations
 import inspect
 import json
 import random
+import subprocess
 import sys
 import tempfile
 import types
@@ -18,8 +19,9 @@ from _code.ml_framework.lifecycle import ExperimentLifecycle, ExperimentState
 from _code.ml_framework.model_discovery import discover_model
 from _code.ml_framework.reduction import WeightedReducer, weighted_mean
 from _code.ml_framework.run_layout import assert_visualization_is_read_only, create_run_layout
-from _code.ml_framework.seeding import SeedTree, derive_seed, seed_everything
+from _code.ml_framework.seeding import SeedTree, derive_seed, seed_everything, seeded_subprocess_env
 from _code.ml_framework.splits import build_group_folds, validate_manifest
+from _code.ml_framework.train import _run_epoch as legacy_run_epoch
 from _code.ml_framework.trainer import StepResult, TrainerConfig, train_with_validation
 
 
@@ -41,6 +43,9 @@ def task_spec() -> TaskSpec:
         threshold_policy={},
         calibration_policy={},
         primary_metrics=("mae",),
+        metric_directions={"mae": "minimize"},
+        visualizer_id="property_regression",
+        required_figures=("depth_track", "residual"),
         input_whitelist=("seismic", "GR"),
         forbidden_inputs=("PHIF", "PHIE"),
     )
@@ -88,6 +93,10 @@ class ContractTests(unittest.TestCase):
         finally:
             sys.modules.pop(module_name, None)
 
+        real_model = discover_model("property", "mean_regressor").build(task_spec())
+        real_model.fit({"PHIF": [0.1, 0.3]}, {"PHIF": [True, True]})
+        self.assertEqual(real_model.predict(2).raw["PHIF"], [0.2, 0.2])
+
 
 class SeedReducerTests(unittest.TestCase):
     def test_seed_tree_is_stable_and_role_separated(self):
@@ -98,6 +107,11 @@ class SeedReducerTests(unittest.TestCase):
         self.assertEqual(derive_seed(2693, "fold", 2), derive_seed(2693, "fold", 2))
         report = seed_everything(2693, include_torch=False)
         self.assertTrue(report.python_seeded)
+        command = [sys.executable, "-c", "print(hash('p4-hash-probe'))"]
+        environment = seeded_subprocess_env(2693)
+        first_hash = subprocess.check_output(command, env=environment, text=True).strip()
+        second_hash = subprocess.check_output(command, env=environment, text=True).strip()
+        self.assertEqual(first_hash, second_hash)
 
     def test_weighted_reducer_is_not_batch_mean(self):
         reducer = WeightedReducer()
@@ -142,7 +156,13 @@ class SplitCVTests(unittest.TestCase):
                     "valid_label_count": len(fold.validation_sample_ids),
                 }
 
-            summary = run_development_cv(manifest, runner, output_dir=Path(directory), primary_metric="score")
+            summary = run_development_cv(
+                manifest,
+                runner,
+                output_dir=Path(directory),
+                primary_metric="score",
+                metric_direction="maximize",
+            )
             self.assertEqual(summary["oof_sample_count"], len(manifest.development_sample_ids))
 
 
@@ -154,11 +174,9 @@ class LifecycleArtifactTests(unittest.TestCase):
         life.advance(ExperimentState.CV_COMPLETE, {"oof_hash": "o"})
         life.advance(ExperimentState.CONFIG_FROZEN, {"config_hash": "c"})
         life.advance(ExperimentState.REFIT_COMPLETE, {"checkpoint_hash": "k"})
-        life.require_test_access(config_hash="c", checkpoint_hash="k", split_hash="s")
-        life.advance(
-            ExperimentState.TEST_CONSUMED,
-            {"config_hash": "c", "checkpoint_hash": "k", "split_hash": "s"},
-        )
+        life.consume_test(config_hash="c", checkpoint_hash="k", split_hash="s")
+        with self.assertRaises(RuntimeError):
+            life.consume_test(config_hash="c", checkpoint_hash="k", split_hash="s")
         with self.assertRaises(RuntimeError):
             life.require_development_access()
         life.advance(ExperimentState.VERIFIED, {"reviewer": "independent"})
@@ -191,6 +209,7 @@ class LifecycleArtifactTests(unittest.TestCase):
                 scaler_state=None,
                 config_hash="config",
                 split_hash="split",
+                trainer_state={"next_epoch": 4, "global_step": 12, "best_epoch": 3},
                 seed_report={"root_seed": 2693},
                 environment={"python": "test"},
                 include_torch_rng=False,
@@ -200,6 +219,7 @@ class LifecycleArtifactTests(unittest.TestCase):
             restore_rng_state(loaded["rng_state"])
             self.assertEqual(random.random(), expected)
             self.assertEqual(loaded["epoch"], 3)
+            self.assertEqual(loaded["trainer_state"]["next_epoch"], 4)
 
 
 class HPOTests(unittest.TestCase):
@@ -217,12 +237,24 @@ class HPOTests(unittest.TestCase):
                 output_dir=Path(directory),
             )
             self.assertEqual(rank_trials(results)[0].params["lr"], 0.1)
+            loss_results = run_fixed_trials(
+                [{"loss": 2.0}, {"loss": 1.0}],
+                lambda params, seed: {"fold_scores": [params["loss"], params["loss"] + 0.1]},
+                root_seed=2693,
+                output_dir=Path(directory) / "loss",
+            )
+            self.assertEqual(rank_trials(loss_results, direction="minimize")[0].params["loss"], 1.0)
             payload = json.loads((Path(directory) / "trials.json").read_text())
             self.assertEqual(len(payload), 2)
             self.assertEqual(len(hash_payload(payload)), 64)
 
 
 class TrainerTests(unittest.TestCase):
+    def test_legacy_entrypoint_is_also_sample_weighted(self):
+        batches = [(1.0, [0]), (3.0, list(range(9)))]
+        value = legacy_run_epoch(lambda batch: batch[0], lambda: batches, "train")
+        self.assertAlmostEqual(value, 2.8)
+
     def test_trainer_weights_by_valid_labels_and_early_stops(self):
         with tempfile.TemporaryDirectory() as directory:
             checkpoints = []

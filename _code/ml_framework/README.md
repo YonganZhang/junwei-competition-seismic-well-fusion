@@ -15,7 +15,7 @@
 |---|---|
 | `preprocess.py` | 去噪(当前no-op) / 归一化+反归一化(zscore/minmax) / 深度对齐(指向Layer1的`well_tie_weak.npz`，不重复实现) |
 | `model_registry.py` | 模型注册表，`register_model`/`get_model` |
-| `train.py` | 通用训练循环，`train_loop()`接收任意框架的step函数，记录train/val loss、按val loss存best checkpoint |
+| `train.py` | P3 简单基线兼容入口；已修复为按样本/有效标签加权，但 P4 新实现使用 `trainer.py` |
 | `visualize.py` | `plot_loss_curve()`画train/val loss曲线，标出best epoch分界点 |
 
 ## 各赛道怎么接入
@@ -23,7 +23,7 @@
 各赛道的`build_dataset.py`/`train_baseline.py`应该：
 1. 预处理阶段调用`ml_framework.preprocess`里的函数，不要自己重复实现归一化/去噪逻辑
 2. 模型定义放单独文件（如`models/unet.py`），用`@register_model`注册，训练脚本读`--model`参数选择
-3. 训练循环调用`ml_framework.train.train_loop()`，不要自己写train/val循环
+3. P4 训练调用 `ml_framework.trainer.train_with_validation()`；旧 baseline 可继续用已加权的 `train_loop()`
 4. 训练完调用`ml_framework.visualize.plot_loss_curve()`产出loss曲线图，存到自己赛道的`_outputs/`下
 
 ## P4 公共合同

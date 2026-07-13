@@ -50,6 +50,7 @@ class DeterminismReport:
     seed_tree: dict[str, Any]
     strict_requested: bool
     python_seeded: bool = False
+    python_hash_seed_effective: bool = False
     numpy_seeded: bool = False
     torch_seeded: bool = False
     torch_deterministic: bool = False
@@ -73,7 +74,13 @@ def seed_everything(
         strict_requested=strict,
         environment={"python": platform.python_version(), "platform": platform.platform()},
     )
-    os.environ["PYTHONHASHSEED"] = str(tree.seed("model"))
+    expected_hash_seed = str(tree.seed("model"))
+    report.python_hash_seed_effective = os.environ.get("PYTHONHASHSEED") == expected_hash_seed
+    if not report.python_hash_seed_effective:
+        report.warnings.append(
+            "PYTHONHASHSEED is fixed only at interpreter startup; launch through seeded_subprocess_env() "
+            f"with PYTHONHASHSEED={expected_hash_seed}"
+        )
     random.seed(tree.seed("model"))
     report.python_seeded = True
     try:
@@ -107,6 +114,14 @@ def seed_everything(
                 raise
             report.warnings.append(f"Torch deterministic mode degraded: {exc}")
     return report
+
+
+def seeded_subprocess_env(root_seed: int = DEFAULT_ROOT_SEED, base_env: dict[str, str] | None = None) -> dict[str, str]:
+    """Return an environment that fixes Python hash randomization before process start."""
+    environment = dict(os.environ if base_env is None else base_env)
+    environment["PYTHONHASHSEED"] = str(SeedTree(root_seed).seed("model"))
+    environment["P4_ROOT_SEED"] = str(root_seed)
+    return environment
 
 
 def dataloader_worker_seed(root_seed: int, worker_id: int) -> int:

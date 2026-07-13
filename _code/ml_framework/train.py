@@ -23,6 +23,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
+from .reduction import WeightedReducer
+from .trainer import StepResult
+
 
 @dataclass
 class TrainHistory:
@@ -40,16 +43,46 @@ class TrainHistory:
         }
 
 
-def _run_epoch(step_fn: Callable[[Any], float], batches_fn: Callable[[], Iterable], split_name: str) -> float:
-    """跑一个epoch的一个split(train或val)，fail-loud：0个batch或非有限loss都直接报错。"""
-    losses = [step_fn(b) for b in batches_fn()]
-    if not losses:
+def _infer_batch_weight(batch: Any) -> int:
+    candidates = batch.values() if isinstance(batch, dict) else batch if isinstance(batch, (tuple, list)) else (batch,)
+    for value in candidates:
+        try:
+            weight = len(value)
+        except TypeError:
+            continue
+        if weight > 0:
+            return int(weight)
+    raise RuntimeError(
+        "cannot infer batch sample count; pass train_batch_weight_fn/val_batch_weight_fn or return StepResult"
+    )
+
+
+def _run_epoch(
+    step_fn: Callable[[Any], float | StepResult | tuple[float, int]],
+    batches_fn: Callable[[], Iterable],
+    split_name: str,
+    batch_weight_fn: Callable[[Any], int] | None = None,
+) -> float:
+    """Run one split with sample/valid-label weighting, never batch-mean weighting."""
+    reducer = WeightedReducer()
+    batch_count = 0
+    for batch in batches_fn():
+        result = step_fn(batch)
+        if isinstance(result, StepResult):
+            reducer.update_sum(result.loss_sum, result.valid_count)
+        elif isinstance(result, tuple) and len(result) == 2:
+            reducer.update_sum(float(result[0]), int(result[1]))
+        else:
+            weight = batch_weight_fn(batch) if batch_weight_fn is not None else _infer_batch_weight(batch)
+            reducer.update_mean(float(result), weight)
+        batch_count += 1
+    if batch_count == 0:
         raise RuntimeError(
             f"{split_name} 这个epoch拿到0个batch —— 这在旧版本会被静默算成loss=0.0并可能误判为最佳"
             f"checkpoint，现在直接报错。检查 {split_name}_batches_fn() 是不是传了一次性生成器"
             f"（生成器用完就空了，必须传能重复调用、每次都产出完整一轮数据的工厂函数）。"
         )
-    epoch_loss = sum(losses) / len(losses)
+    epoch_loss = reducer.mean
     if not math.isfinite(epoch_loss):
         raise RuntimeError(f"{split_name} loss出现非有限值({epoch_loss})，train_step_fn/val_step_fn返回了NaN/Inf。")
     return epoch_loss
@@ -65,6 +98,8 @@ def train_loop(
     save_checkpoint_fn: Callable[[Any, Path], None],
     checkpoint_dir: Path,
     min_epochs_before_early_check: int = 10,
+    train_batch_weight_fn: Callable[[Any], int] | None = None,
+    val_batch_weight_fn: Callable[[Any], int] | None = None,
 ) -> TrainHistory:
     """通用训练循环骨架。
 
@@ -105,8 +140,8 @@ def train_loop(
 
     try:
         for epoch in range(epochs):
-            epoch_train_loss = _run_epoch(train_step_fn, train_batches_fn, "train")
-            epoch_val_loss = _run_epoch(val_step_fn, val_batches_fn, "val")
+            epoch_train_loss = _run_epoch(train_step_fn, train_batches_fn, "train", train_batch_weight_fn)
+            epoch_val_loss = _run_epoch(val_step_fn, val_batches_fn, "val", val_batch_weight_fn)
 
             history.train_loss.append(epoch_train_loss)
             history.val_loss.append(epoch_val_loss)

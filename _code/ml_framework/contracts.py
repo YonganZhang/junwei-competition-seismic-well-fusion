@@ -35,6 +35,7 @@ class TaskSpec:
     threshold_policy: Mapping[str, Any]
     calibration_policy: Mapping[str, Any]
     primary_metrics: tuple[str, ...]
+    metric_directions: Mapping[str, str]
     secondary_metrics: tuple[str, ...] = ()
     guardrail_metrics: tuple[str, ...] = ()
     spatial_buffer: Mapping[str, Any] | None = None
@@ -67,6 +68,25 @@ class TaskSpec:
             raise ValueError("at least one leakage-safe group key is required")
         if not self.primary_metrics:
             raise ValueError("at least one primary metric is required")
+        declared_metrics = set(self.primary_metrics) | set(self.secondary_metrics) | set(self.guardrail_metrics)
+        missing_directions = sorted(declared_metrics - set(self.metric_directions))
+        if missing_directions:
+            raise ValueError(f"metric_directions missing metrics: {missing_directions}")
+        invalid_directions = {
+            metric: direction
+            for metric, direction in self.metric_directions.items()
+            if direction not in {"maximize", "minimize"}
+        }
+        if invalid_directions:
+            raise ValueError(f"invalid metric directions: {invalid_directions}")
+        for field_name in ("target_transform", "inverse_transform", "train_loss", "inference_transform"):
+            missing = sorted(set(self.targets) - set(getattr(self, field_name)))
+            if missing:
+                raise ValueError(f"{field_name} missing targets: {missing}")
+        if not self.visualizer_id:
+            raise ValueError("visualizer_id must be explicit")
+        if not self.required_figures:
+            raise ValueError("required_figures must not be empty")
         leaked = sorted(set(self.input_whitelist) & set(self.forbidden_inputs))
         if leaked:
             raise ValueError(f"input whitelist contains forbidden label/future fields: {leaked}")

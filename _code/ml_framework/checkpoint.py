@@ -56,6 +56,7 @@ def save_checkpoint(
     scaler_state: Any,
     config_hash: str,
     split_hash: str,
+    trainer_state: Mapping[str, Any],
     seed_report: Mapping[str, Any],
     environment: Mapping[str, Any],
     extra: Mapping[str, Any] | None = None,
@@ -76,6 +77,7 @@ def save_checkpoint(
         "rng_state": capture_rng_state(include_torch=include_torch_rng),
         "config_hash": config_hash,
         "split_hash": split_hash,
+        "trainer_state": dict(trainer_state),
         "seed_report": dict(seed_report),
         "environment": dict(environment),
         "extra": dict(extra or {}),
@@ -100,7 +102,10 @@ def load_checkpoint(path: Path) -> dict[str, Any]:
         payload = pickle.load(handle)
     if not isinstance(payload, dict) or payload.get("checkpoint_version") != CHECKPOINT_VERSION:
         raise ValueError("unsupported or malformed checkpoint")
-    required = {"epoch", "model_state", "optimizer_state", "rng_state", "config_hash", "split_hash"}
+    required = {
+        "epoch", "model_state", "optimizer_state", "scheduler_state", "scaler_state", "rng_state",
+        "config_hash", "split_hash", "trainer_state", "seed_report", "environment", "extra",
+    }
     missing = sorted(required - set(payload))
     if missing:
         raise ValueError(f"checkpoint missing fields: {missing}")

@@ -49,6 +49,17 @@ class ExperimentLifecycle:
                 raise ValueError(f"test consumption evidence missing {missing}")
             if self.test_consumed_at is not None:
                 raise RuntimeError("frozen test has already been consumed")
+            frozen = self.evidence.get(ExperimentState.CONFIG_FROZEN.value, {})
+            refit = self.evidence.get(ExperimentState.REFIT_COMPLETE.value, {})
+            locked = self.evidence.get(ExperimentState.SPLIT_LOCKED.value, {})
+            expected = {
+                "config_hash": frozen.get("config_hash"),
+                "checkpoint_hash": refit.get("checkpoint_hash"),
+                "split_hash": locked.get("split_hash"),
+            }
+            mismatched = sorted(key for key, value in expected.items() if evidence.get(key) != value)
+            if mismatched:
+                raise RuntimeError(f"test evidence does not match frozen run hashes: {mismatched}")
             self.test_consumed_at = datetime.now(timezone.utc).isoformat()
         self.state = next_state
         self.evidence[next_state.value] = dict(evidence)
@@ -57,7 +68,8 @@ class ExperimentLifecycle:
         if self.state in {ExperimentState.TEST_CONSUMED, ExperimentState.VERIFIED}:
             raise RuntimeError("this experiment already consumed frozen test; open a new experiment version")
 
-    def require_test_access(self, *, config_hash: str, checkpoint_hash: str, split_hash: str) -> None:
+    def consume_test(self, *, config_hash: str, checkpoint_hash: str, split_hash: str) -> None:
+        """Atomically validate and record the single allowed frozen-test access."""
         if self.state != ExperimentState.REFIT_COMPLETE:
             raise RuntimeError("frozen test is accessible only after CONFIG_FROZEN and REFIT_COMPLETE")
         frozen = self.evidence.get(ExperimentState.CONFIG_FROZEN.value, {})
@@ -69,6 +81,10 @@ class ExperimentLifecycle:
             raise RuntimeError("checkpoint hash does not match completed refit")
         if locked.get("split_hash") != split_hash:
             raise RuntimeError("split hash does not match locked split")
+        self.advance(
+            ExperimentState.TEST_CONSUMED,
+            {"config_hash": config_hash, "checkpoint_hash": checkpoint_hash, "split_hash": split_hash},
+        )
 
     def to_dict(self) -> dict[str, Any]:
         payload = asdict(self)
