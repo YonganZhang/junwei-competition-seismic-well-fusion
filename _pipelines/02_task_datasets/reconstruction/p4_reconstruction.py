@@ -25,6 +25,7 @@ from scipy.spatial import cKDTree
 
 HERE = Path(__file__).resolve().parent
 PROJECT_ROOT = HERE.parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "_code"))
 sys.path.insert(0, str(HERE))
 
@@ -34,7 +35,7 @@ from ml_framework.contracts import TaskSpec  # noqa: E402
 from ml_framework.cv import run_development_cv  # noqa: E402
 from ml_framework.hpo import HPOPlan, run_fixed_trials  # noqa: E402
 from ml_framework.lifecycle import ExperimentLifecycle, ExperimentState  # noqa: E402
-from _code.ml_framework.model_discovery import discover_model  # noqa: E402
+from ml_framework.model_discovery import discover_model  # noqa: E402
 from ml_framework.preprocess import NormStats, denoise_identity, denormalize, fit_zscore, normalize  # noqa: E402
 from ml_framework.run_layout import create_run_layout  # noqa: E402
 from ml_framework.seeding import DEFAULT_ROOT_SEED, SeedTree, seed_everything  # noqa: E402

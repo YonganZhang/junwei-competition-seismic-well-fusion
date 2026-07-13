@@ -7,6 +7,7 @@ import json
 import math
 import os
 from pathlib import Path
+import sys
 from typing import Any
 
 import matplotlib
@@ -14,6 +15,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(PROJECT_ROOT / "_code"))
 
 
 PROJECT_TASK_IDS = {

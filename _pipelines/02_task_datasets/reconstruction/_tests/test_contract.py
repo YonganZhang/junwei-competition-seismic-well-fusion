@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import math
 import re
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -23,6 +24,104 @@ from ml_framework.model_registry import MODEL_REGISTRY, get_model  # noqa: E402
 
 
 class PortableContractTest(unittest.TestCase):
+    def test_visualization_cli_runs_from_project_root(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            indices = np.asarray(
+                [(k, j, i) for k in range(2) for j in range(2) for i in range(2)],
+                dtype=np.int64,
+            )
+            truth = np.linspace(0.1, 0.3, indices.shape[0])
+            prediction = truth + np.linspace(-0.01, 0.01, indices.shape[0])
+            predictions = root / "predictions.npz"
+            metrics = root / "metrics.json"
+            output = root / "diagnostics.png"
+            np.savez_compressed(
+                predictions,
+                mode=np.asarray("strict"),
+                task_id=np.asarray("volve_porosity_strict_spatial_reconstruction"),
+                indices_kji=indices,
+                volume_shape_kji=np.asarray((2, 2, 2), dtype=np.int64),
+                truth=truth,
+                prediction=prediction,
+                residual=prediction - truth,
+                amplitude=np.linspace(-1.0, 1.0, indices.shape[0]),
+            )
+            metrics.write_text(
+                json.dumps(
+                    {
+                        "evaluation_mode": "strict",
+                        "task_id": "volve_porosity_strict_spatial_reconstruction",
+                        "strict_rmse": 0.01,
+                        "strict_r2": 0.9,
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(HERE / "p4_visualize.py"),
+                    "--predictions",
+                    str(predictions),
+                    "--metrics",
+                    str(metrics),
+                    "--output",
+                    str(output),
+                ],
+                cwd=PROJECT_ROOT,
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            self.assertTrue(output.is_file())
+            self.assertTrue(output.with_suffix(".json").is_file())
+
+    def test_p4_cli_runs_from_project_root(self):
+        completed = subprocess.run(
+            [
+                sys.executable,
+                str(HERE / "p4_reconstruction.py"),
+                "task-specs",
+                "--mode",
+                "strict",
+            ],
+            cwd=PROJECT_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        payload = json.loads(completed.stdout)
+        self.assertEqual(
+            payload["strict"]["task_id"],
+            "volve_porosity_strict_spatial_reconstruction",
+        )
+
+    def test_p4_cli_discovers_canonical_model_from_project_root(self):
+        with tempfile.TemporaryDirectory() as directory:
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(HERE / "p4_reconstruction.py"),
+                    "tiny-smoke",
+                    "--mode",
+                    "strict",
+                    "--model",
+                    "ridge_linear",
+                    "--output-dir",
+                    str(Path(directory) / "tiny"),
+                ],
+                cwd=PROJECT_ROOT,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+        payload = json.loads(completed.stdout)
+        self.assertTrue(payload["finite_prediction"])
+        self.assertEqual(payload["model"], "ridge_linear")
+
     def test_alternative_models_are_dynamic_and_checkpoint_compatible(self):
         features = np.asarray(
             [
