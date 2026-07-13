@@ -1,0 +1,338 @@
+{
+  "cross_lane_ranking": false,
+  "direction": "minimize",
+  "lane_isolation": "strict",
+  "lanes": {
+    "seismic_3d_gpu": {
+      "candidate_count": 1,
+      "cross_lane_ranking": false,
+      "direction": "minimize",
+      "eligibility": "same modality lane, same frozen fold, development_piloted, finite target metric",
+      "entries": [
+        {
+          "input_modalities": [
+            "seismic_patch"
+          ],
+          "model_domain_R2": -0.7930651295071378,
+          "model_domain_RMSE": 0.3717139808340835,
+          "model_id": "monai_densenet3d_regressor",
+          "physical_MAE": 0.2503528626014789,
+          "physical_R2": -0.7930651295071378,
+          "physical_RMSE": 0.3717139808340835,
+          "valid_count": 81,
+          "wall_seconds": 4.394045521970838,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.2503528626014789,
+              "R2": -0.7930651295071378,
+              "R2_reason": null,
+              "RMSE": 0.3717139808340835,
+              "bias": -0.2503528626014789
+            },
+            "physical": {
+              "MAE": 0.2503528626014789,
+              "R2": -0.7930651295071378,
+              "R2_reason": null,
+              "RMSE": 0.3717139808340835,
+              "bias": -0.2503528626014789
+            },
+            "valid_count": 81
+          }
+        }
+      ],
+      "modality_lane": "seismic_3d_gpu",
+      "primary_metric": "physical_RMSE",
+      "schema_version": 1,
+      "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+      "stage": 2,
+      "status": "not_rankable",
+      "target": "SW",
+      "task_id": "reservoir_property_stage2_sw_seismic_3d_gpu",
+      "test_access": false,
+      "track_id": "property"
+    },
+    "tabular_cpu": {
+      "candidate_count": 8,
+      "cross_lane_ranking": false,
+      "direction": "minimize",
+      "eligibility": "same modality lane, same frozen fold, development_piloted, finite target metric",
+      "entries": [
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.8222780907574071,
+          "model_domain_RMSE": 0.11702572725326912,
+          "model_id": "lightgbm_regressor",
+          "physical_MAE": 0.10261865068203954,
+          "physical_R2": 0.8222780907574071,
+          "physical_RMSE": 0.11702572725326912,
+          "rank": 1,
+          "valid_count": 81,
+          "wall_seconds": 2.3426139019429684,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.10261865068203954,
+              "R2": 0.8222780907574071,
+              "R2_reason": null,
+              "RMSE": 0.11702572725326912,
+              "bias": 0.06300947688022177
+            },
+            "physical": {
+              "MAE": 0.10261865068203954,
+              "R2": 0.8222780907574071,
+              "R2_reason": null,
+              "RMSE": 0.11702572725326912,
+              "bias": 0.06300947688022177
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.8017737867000821,
+          "model_domain_RMSE": 0.1235922976289738,
+          "model_id": "hist_gradient_boosting_regressor",
+          "physical_MAE": 0.10370294644292441,
+          "physical_R2": 0.8017737867000821,
+          "physical_RMSE": 0.1235922976289738,
+          "rank": 2,
+          "valid_count": 81,
+          "wall_seconds": 1.70713995071128,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.10370294644292441,
+              "R2": 0.8017737867000821,
+              "R2_reason": null,
+              "RMSE": 0.1235922976289738,
+              "bias": 0.06325686013594407
+            },
+            "physical": {
+              "MAE": 0.10370294644292441,
+              "R2": 0.8017737867000821,
+              "R2_reason": null,
+              "RMSE": 0.1235922976289738,
+              "bias": 0.06325686013594407
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.7810683630850568,
+          "model_domain_RMSE": 0.1298868324376177,
+          "model_id": "xgboost_regressor",
+          "physical_MAE": 0.11300199605340575,
+          "physical_R2": 0.7810683630850568,
+          "physical_RMSE": 0.1298868324376177,
+          "rank": 3,
+          "valid_count": 81,
+          "wall_seconds": 0.6804993567056954,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.11300199605340575,
+              "R2": 0.7810683630850568,
+              "R2_reason": null,
+              "RMSE": 0.1298868324376177,
+              "bias": 0.07238090155577218
+            },
+            "physical": {
+              "MAE": 0.11300199605340575,
+              "R2": 0.7810683630850568,
+              "R2_reason": null,
+              "RMSE": 0.1298868324376177,
+              "bias": 0.07238090155577218
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.5855602835797722,
+          "model_domain_RMSE": 0.17870699312986735,
+          "model_id": "catboost_regressor",
+          "physical_MAE": 0.1637289350078877,
+          "physical_R2": 0.5855602835797722,
+          "physical_RMSE": 0.17870699312986735,
+          "rank": 4,
+          "valid_count": 81,
+          "wall_seconds": 1.9746360420249403,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.1637289350078877,
+              "R2": 0.5855602835797722,
+              "R2_reason": null,
+              "RMSE": 0.17870699312986735,
+              "bias": 0.11825320818057711
+            },
+            "physical": {
+              "MAE": 0.1637289350078877,
+              "R2": 0.5855602835797722,
+              "R2_reason": null,
+              "RMSE": 0.17870699312986735,
+              "bias": 0.11825320818057711
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.49094429057316147,
+          "model_domain_RMSE": 0.1980585156961375,
+          "model_id": "extra_trees_regressor",
+          "physical_MAE": 0.1798248925572147,
+          "physical_R2": 0.49094429057316147,
+          "physical_RMSE": 0.1980585156961375,
+          "rank": 5,
+          "valid_count": 81,
+          "wall_seconds": 1.909974802751094,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.1798248925572147,
+              "R2": 0.49094429057316147,
+              "R2_reason": null,
+              "RMSE": 0.1980585156961375,
+              "bias": 0.15887352097406346
+            },
+            "physical": {
+              "MAE": 0.1798248925572147,
+              "R2": 0.49094429057316147,
+              "R2_reason": null,
+              "RMSE": 0.1980585156961375,
+              "bias": 0.15887352097406346
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -0.033669174734263674,
+          "model_domain_RMSE": 0.28222900605430223,
+          "model_id": "ft_transformer_regressor",
+          "physical_MAE": 0.1970523682963333,
+          "physical_R2": -0.033669174734263674,
+          "physical_RMSE": 0.28222900605430223,
+          "rank": 6,
+          "valid_count": 81,
+          "wall_seconds": 5.076281358953565,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.1970523682963333,
+              "R2": -0.033669174734263674,
+              "R2_reason": null,
+              "RMSE": 0.28222900605430223,
+              "bias": -0.026517889496904833
+            },
+            "physical": {
+              "MAE": 0.1970523682963333,
+              "R2": -0.033669174734263674,
+              "R2_reason": null,
+              "RMSE": 0.28222900605430223,
+              "bias": -0.026517889496904833
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -0.7045368230186502,
+          "model_domain_RMSE": 0.3624215867791523,
+          "model_id": "tabm_regressor",
+          "physical_MAE": 0.3336933195177052,
+          "physical_R2": -0.7045368230186502,
+          "physical_RMSE": 0.3624215867791523,
+          "rank": 7,
+          "valid_count": 81,
+          "wall_seconds": 4.828542402945459,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.3336933195177052,
+              "R2": -0.7045368230186502,
+              "R2_reason": null,
+              "RMSE": 0.3624215867791523,
+              "bias": 0.3097585872689515
+            },
+            "physical": {
+              "MAE": 0.3336933195177052,
+              "R2": -0.7045368230186502,
+              "R2_reason": null,
+              "RMSE": 0.3624215867791523,
+              "bias": 0.3097585872689515
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -6.228138041734481,
+          "model_domain_RMSE": 0.7463182859972416,
+          "model_id": "realmlp_regressor",
+          "physical_MAE": 0.700788316420383,
+          "physical_R2": -6.228138041734481,
+          "physical_RMSE": 0.7463182859972416,
+          "rank": 8,
+          "valid_count": 81,
+          "wall_seconds": 44.05430252989754,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.700788316420383,
+              "R2": -6.228138041734481,
+              "R2_reason": null,
+              "RMSE": 0.7463182859972416,
+              "bias": 0.6555763919734292
+            },
+            "physical": {
+              "MAE": 0.700788316420383,
+              "R2": -6.228138041734481,
+              "R2_reason": null,
+              "RMSE": 0.7463182859972416,
+              "bias": 0.6555763919734292
+            },
+            "valid_count": 81
+          }
+        }
+      ],
+      "modality_lane": "tabular_cpu",
+      "primary_metric": "physical_RMSE",
+      "schema_version": 1,
+      "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+      "stage": 2,
+      "status": "rankable",
+      "target": "SW",
+      "task_id": "reservoir_property_stage2_sw_tabular_cpu",
+      "test_access": false,
+      "track_id": "property"
+    }
+  },
+  "primary_metric": "physical_RMSE",
+  "schema_version": 2,
+  "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+  "stage": 2,
+  "target": "SW",
+  "task_id": "reservoir_property_stage2_sw",
+  "test_access": false,
+  "track_id": "property"
+}

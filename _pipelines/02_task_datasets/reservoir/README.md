@@ -132,3 +132,35 @@ TabICLv2必须先在source lock中确认checkpoint许可证与SHA-256，并由�
 MONAI DenseNet3D使用scratch-only权重。为满足CUDA同seed严格replay，PyTorch 2.12
 中没有确定性反向实现的3D pooling会替换为固定depthwise下采样和直接空间均值；
 替换计数随checkpoint config记录，replay不通过仍判为失败。
+
+## P5 Stage-2 固定预算 pilot
+
+Stage-2 入口使用赛道唯一模块名 `reservoir_p5_stage2.py`，只重用P4冻结的首个
+development fold，不接收或加载冻结test。所有候选固定seed 2693、相同的192个
+fold-train样本和81个validation样本；预处理仅fit fold-train。PHIF、KLOGH、SW
+始终使用独立mask、独立物理指标和独立最差母井家族证据，KLOGH另保留
+`log1p(KLOGH_mD)`域诊断。
+
+先准备一次私有runtime fold，再分别运行CPU与GPU lane：
+
+```bash
+python3 _pipelines/02_task_datasets/reservoir/reservoir_p5_stage2.py prepare \
+  --train-h5 <development-only-train.h5> \
+  --guard-npz <development-only-guard.npz>
+
+${TABULAR_PYTHON:-python3} \
+  _pipelines/02_task_datasets/reservoir/reservoir_p5_stage2.py run \
+  --models catboost_regressor,lightgbm_regressor,tabm_regressor,xgboost_regressor,extra_trees_regressor,hist_gradient_boosting_regressor,realmlp_regressor,ft_transformer_regressor,tabiclv2_regressor \
+  --seed 2693 --device cpu
+
+${TORCH_PYTHON:-python3} \
+  _pipelines/02_task_datasets/reservoir/reservoir_p5_stage2.py run \
+  --models monai_densenet3d_regressor --seed 2693 --device cuda \
+  --gpu-lock /mnt/data/yongan-admin-2/.cache/volve-p5/locks/gpu0.lock
+```
+
+GPU入口对上述唯一lock文件执行阻塞式`flock`；锁等待不计入模型预算墙钟。
+便携证据只写入本赛道 `_outputs/p5_stage2/`，runtime fold与checkpoint不纳入Git。
+三个target leaderboard均严格分成`tabular_cpu`与`seismic_3d_gpu` lane，禁止跨输入
+模态排序；当前tabular lane有8个合法候选可排名，MONAI 3D lane只有1个真实pilot，
+因此按合同标记为`not_rankable`。TabICLv2仍因权重许可证未确认而结构化skip。

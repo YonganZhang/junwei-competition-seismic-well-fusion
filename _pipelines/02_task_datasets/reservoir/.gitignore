@@ -18,3 +18,14 @@ _outputs/**
 !_outputs/loss_curve.png
 !_outputs/real_seismic_input.png
 !_outputs/test_depth_gt_vs_pred.png
+
+# P5 Stage-2 portable evidence only; raw fold arrays and checkpoints stay ignored.
+!_outputs/p5_stage2/
+_outputs/p5_stage2/**
+!_outputs/p5_stage2/p5_stage2_budget.json
+!_outputs/p5_stage2/p5_stage2_split_manifest.json
+!_outputs/p5_stage2/p5_stage2_results.jsonl
+!_outputs/p5_stage2/p5_stage2_summary.json
+!_outputs/p5_stage2/leaderboard_phif.json
+!_outputs/p5_stage2/leaderboard_klogh.json
+!_outputs/p5_stage2/leaderboard_sw.json
