@@ -1,6 +1,6 @@
 # Code Map — 军伟的比赛（地震+测井多模态融合识别有利油气目标）
 
-更新: 2026-07-08
+更新: 2026-07-13
 
 本文只做 COL4 代码地图 / 注册路由。当前 phase、下一步、运行态、最近测试结果只写 `_wiki-methodology/_top/_task_plan.md`。
 
@@ -40,6 +40,24 @@
 | 输出/图/论文 | `_outputs/` / `_figures/` / `_paper/` | `_meta/_runs.yml` / `_meta/_data_registry.yml` |
 | 实验代码 | `_sandbox/` | `_sandbox/_index.yml`; 优于 baseline 才进入主流程 |
 | 归档代码 | `_legacy/` | 每个归档目录需 README/TOMBSTONE |
+
+## P4 训练与评价系统
+
+| 代码域 | 真源 / 入口 | 测试指针 |
+|---|---|---|
+| 公共训练合同 | `_code/ml_framework/` | `_code/ml_framework/tests/` |
+| 规范模型真源 | `_models/<track>/<model_id>.py` | `_code/ml_framework/tests/test_canonical_track_models.py` |
+| ①断层 | `_pipelines/02_task_datasets/fault/p4_workflow.py` | `fault/test_fault_p4.py` |
+| ②地震相 | `_pipelines/02_task_datasets/facies/p4_training.py` | `facies/tests/test_p4_*.py` |
+| ③储层物性 | `_pipelines/02_task_datasets/reservoir/p4_pipeline.py` | `reservoir/tests/test_p4_*.py` |
+| ④岩相 | `_pipelines/02_task_datasets/lithofacies/p4_runner.py` | `lithofacies/tests/test_p4_contract.py` |
+| ⑤甜点七目标 | `_pipelines/02_task_datasets/sweetspot/targets/` | `sweetspot/tests/test_p4_*.py` |
+| ⑥三维重建 | `_pipelines/02_task_datasets/reconstruction/p4_reconstruction.py` | `reconstruction/_tests/test_p4_*.py` |
+
+公共外层是 `ModelBatch -> ModelOutput`，任务内部张量 shape、loss、activation、mask 和 metric 按赛道保留差异。
+⑤七目标的机读状态与产物哈希汇总在
+`_pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json`。
+最新真实运行证据和科学性边界在 `_wiki-methodology/_tests/P4_acceptance_evidence.md`。
 
 ## 注册维护
 

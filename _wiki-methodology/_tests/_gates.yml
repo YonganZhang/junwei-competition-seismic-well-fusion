@@ -1,21 +1,49 @@
-# COL3 gates manifest — 项目"可一键跑"的测试/校验闸门(机器外壳, 内容每项目自填)
-#
-# 用途(理念: 框架只给通用外壳):
-# - AI/人 跑 gate: 照 cmd 在项目根执行(信任级 = 项目内 Bash; timeout 必填)
-# - topic-brief 报 `tests: ... gates=N`; topic-doctor 活跃项目缺这份文件 → info 提醒
-# - CodeBook 节点的 owner_refs `test:<id>` 按这里的 gate id 解析(单一命名空间)
-#
-# 字段: id(唯一)/ cmd(项目根为 cwd)/ timeout(秒)/ expect(目前唯一语义 exit0)/ note(可选)
-gates: []
-# 示例(删掉 [] 后启用):
-# gates:
-#   - id: unit
-#     cmd: "python3 -m pytest tests/ -q"
-#     timeout: 300
-#     expect: exit0
-#     note: "单元测试全绿"
-#   - id: pipeline-validate
-#     cmd: "python3 _code/run_pipeline.py <name> --validate"
-#     timeout: 120
-#     expect: exit0
-#     note: "流水线扣子/线一致性校验(不执行)"
+# COL3 portable gates. All commands run from the project root.
+gates:
+  - id: p4-shared
+    cmd: "${P4_TORCH_PYTHON:?set P4_TORCH_PYTHON to a Python with torch} -m unittest discover -s _code/ml_framework/tests -p 'test_*.py' -v"
+    timeout: 180
+    expect: exit0
+    note: "Shared contracts and canonical model discovery."
+
+  - id: p4-fault
+    cmd: "python3 -m unittest discover -s _pipelines/02_task_datasets/fault -p 'test_*.py' -v"
+    timeout: 300
+    expect: exit0
+    note: "Fault portable suite; unavailable optional real artifacts must report skip."
+
+  - id: p4-facies
+    cmd: "${P4_TORCH_PYTHON:?set P4_TORCH_PYTHON to a Python with torch} -m unittest discover -s _pipelines/02_task_datasets/facies/tests -p 'test_*.py' -v"
+    timeout: 600
+    expect: exit0
+    note: "F3 and Penobscot contracts, lifecycle, tiny models and portable smoke."
+
+  - id: p4-property
+    cmd: "python3 -m pytest _pipelines/02_task_datasets/reservoir/tests -q"
+    timeout: 300
+    expect: exit0
+    note: "PHIF/KLOGH/SW contracts; external data integrations are explicitly gated."
+
+  - id: p4-lithofacies
+    cmd: "${P4_TORCH_PYTHON:?set P4_TORCH_PYTHON to a Python with torch} -m unittest discover -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_*.py' -v"
+    timeout: 300
+    expect: exit0
+    note: "Nine-class family-split contracts and portable pipeline suite."
+
+  - id: p4-sweetspot
+    cmd: "python3 -m pytest _pipelines/02_task_datasets/sweetspot/tests -q"
+    timeout: 300
+    expect: exit0
+    note: "Seven independent targets, proxy boundaries and not-feasible gates."
+
+  - id: p4-reconstruction
+    cmd: "python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_*.py' -v"
+    timeout: 600
+    expect: exit0
+    note: "Strict/conditional reconstruction and direct project-root CLI regressions."
+
+  - id: p4-target-registry
+    cmd: "python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json"
+    timeout: 120
+    expect: exit0
+    note: "Rebuild the seven-target registry without overwriting the canonical evidence file."

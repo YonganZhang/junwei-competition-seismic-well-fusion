@@ -1,32 +1,46 @@
-# Test Coverage - <PROJECT_NAME>
+# Test Coverage - 军伟的比赛
 
-> COL3 test map. Register reusable tests, coverage purpose, runnable entrypoints and gaps here. Long run evidence can go in `_run_ledger.md`.
-> For software projects with pipeline/service/log/status/report evidence, also register the SSDO/audit-first entrypoint here or record it as a current gap.
+> COL3 测试地图。长运行证据见 `_run_ledger.md`，P4 结果与科学性边界见 `P4_acceptance_evidence.md`。
 
 ## Audit-First / SSDO
 
 | Gate | Entrypoint | Coverage Purpose |
 |---|---|---|
-| <audit reader> | `<command>` | Read the latest trace/report/timeline before debugging or explaining test failures |
+| P4 验收报告 | `sed -n '1,260p' _wiki-methodology/_tests/P4_acceptance_evidence.md` | 先区分“工程流程通过”、“模型精度达标”和 `not_feasible` |
+| 甜点七目标注册 | `python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json` | 重建独立目标注册并校验必需产物存在 |
+| TOP 结题检查 | `python3 /mnt/data/yongan-admin-2/.codex/skills/share-top/scripts/topic-closeout.py .` | 发现计划/codemap/registry/test map 漂移 |
 
 ## Trunk
 
 | Gate | Entrypoint | Coverage Purpose |
 |---|---|---|
-| <main acceptance> | `<command>` | <what user-facing flow this proves> |
+| 公共合同 | `_code/ml_framework/tests/` | envelope、seed、split、reducer、checkpoint/resume、HPO、artifact、test firewall、规范模型动态发现 |
+| 六赛道便携回归 | `_wiki-methodology/_tests/_gates.yml` 中 `p4-*` gates | 无需私有数据时检查合同；PyTorch gates 要求显式设置 `P4_TORCH_PYTHON`；缺真实产物的用例必须明确 skip |
+| 真实数据验收 | 按 `_run_ledger.md` 中赛道命令执行 | 真实 smoke、CV、freeze、refit、single-use test 与归档可视化 |
 
 ## Branch
 
 | Test | Covers |
 |---|---|
-| `<test path>` | <module / integration boundary> |
+| `_pipelines/02_task_datasets/fault/test_fault_p4.py` | 断层标签审计、buffered spatial split、缺审核负例时 fail closed |
+| `_pipelines/02_task_datasets/facies/tests/test_p4_*.py` | F3/Penobscot 独立任务、像素 mask、CV/lifecycle、real smoke |
+| `_pipelines/02_task_datasets/reservoir/tests/test_p4_*.py` | PHIF/KLOGH/SW 分离 mask、物理空间指标、⑤目标6/7 adapter |
+| `_pipelines/02_task_datasets/lithofacies/tests/test_p4_contract.py` | 母井家族划分、固定九类/支持类双口径、一次性 F-5 test |
+| `_pipelines/02_task_datasets/sweetspot/tests/test_p4_*.py` | 七目标独立性、代理标签泄漏防火墙、可行/`not_feasible` 分流 |
+| `_pipelines/02_task_datasets/reconstruction/_tests/test_p4_*.py` | strict/conditional 拆分、buffered block CV、约束审计、冻结测试 |
 
 ## Leaves
 
 | Unit / Sample | Purpose |
 |---|---|
-| `<path>` | <why reusable> |
+| `_code/ml_framework/tests/test_canonical_track_models.py` | 六赛道 `_models/` 真源均能动态发现、训练一批、存取 checkpoint |
+| `_pipelines/02_task_datasets/reconstruction/_tests/test_contract.py` | 从项目根目录直接执行 task-spec/tiny-smoke/visualization CLI |
+| 各赛道 tiny-overfit/smoke | 在长训练前检查有限输出、loss 方向和检查点恢复 |
 
 ## Current Gaps
 
-- <missing coverage or unverified runner>
+- 断层只有 3998 个审核正例点，没有覆盖已核验负例；正式 blind test/CV 不可行，不允许用随机非断层 patch 伪造负例。
+- 甜点目标5缺已验证 Eclipse cell-state parser 与冻结的时间/候选井/经济约束；只能是 simulation case，不是 field truth。
+- 精确 PHIE 缺独立真值；不用 LFP_PHIE 替代。
+- 岩相冻结预测未持久化真实 `center_md_m`，因此深度轨迹图 `not_feasible`；其他分类/校准图已可用。
+- 长预算 HPO、top-3 配置×3 seeds×全 folds 和正式深度模型尚未执行；不属于本轮工程 baseline 已完成声明。

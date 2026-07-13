@@ -1,13 +1,14 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P4方案已冻结，待启动实施Goal] 六赛道baseline pipeline候选已在各自隔离worktree完成真实数据端到端验收+可移植性收口；
->   ①②③④⑥又各新增2个已通过动态发现/小批次训练/检查点契约的简单备选模型（每条现有3个模型，SHA见下方），
->   ⑤已由军伟拍板为一个赛道七个任务目标（储层品质、含油气/有效厚度、产能、见水风险、剩余油/加密井潜力、
->   孔隙度、渗透率）；五窗口只读调研、统一训练/验证/复现/可视化SOP与分批实施Goal均已收敛；主仓集成（merge）仍未执行**
+> **🧭 当前: [P4工程基线已实施并验收] 六赛道已在隔离 `p4-training-integration` worktree 共存；
+>   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
+>   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
+>   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
+>   尚未 merge 回主仓、未 push，等待用户明确授权。**
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
->   各自端到端验收通过(已达成，见下方P3行与`_findings/P2.6`)；军伟拍板③④标签/目标定义(已落地)、⑤代理标签
->   定义(待定)、主仓集成策略(待授权)；pipeline 骨架与官方赛题输入输出对齐
+>   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
+>   ⑤七目标均有可审计状态；主仓集成策略待授权；正式高性能模型尚待P5。
 > 目标交付物: 模型 + 模型参数 + 数据预处理代码 + 模型运行代码（无文字报告要求）
 > 距交付: TBD（官方未给最终截止时间，待军伟电话确认）
 
@@ -17,8 +18,8 @@
 | P1 方法论 / 方案 | 🔄 | 0/1 | pipeline 骨架已定（5阶段），具体算法待补 |
 | P2 数据 / 实现准备 | ✅ | 3/3 | Volve全套(含ST10010)+F3+Penobscot下载完成；③④赛道数据量核实足够(纠正见P2.2) |
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
-| P4 验证 | 🔄 | 1/2 | 五窗口训练/验证/调参/可视化只读调研已独立验收，统一SOP、架构决策、路线图与最终 `/goal` 已冻结；下一步由用户启动 Goal 分批实施 |
-| P5 合成 / 交付 | ⏸ | 0/1 | 无需文字报告，只交付模型+代码 |
+| P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
+| P5 合成 / 交付 | 🔄 | 0/1 | 待授权 merge/push；简单模型只是工程 baseline，正式深模型、长 HPO、多 seed 复验与最终性能达标尚未完成 |
 
 ## 协作与决策权边界
 
@@ -133,6 +134,14 @@
       `_decisions/P4.1_training_validation_reproducibility_architecture.md`，统一SOP见
       `../_wiki/_methods/training-evaluation-reproducibility-contract.md`，实施路线见
       `_phases/P4_implementation_roadmap.md`，最终可复制 `/goal` 见 `_phases/P4_goal_prompt.md`。本轮只做调研与文档，未实施模型/CV/HPO代码。
+- [x] 2026-07-13 P4 Goal 已在隔离 `p4-training-integration` 分支实施：安全集成五赛道候选，
+      完成 `_code/ml_framework` 公共合同、`_models/<track>/` 唯一模型真源、全局 seed=2693、
+      group/spatial split、加权 reducer、checkpoint/resume、HPO 接口、artifact manifest 与一次性冻结测试门。
+      ⑤七目标中 1–4、6、7 已训练并消费冻结测试，5 因缺 Eclipse 状态解析器与冻结时点/候选井/经济约束而
+      `not_feasible`；精确 PHIE 也独立 `not_feasible`，没有用 LFP_PHIE 偷换。断层真实数据有 3998 个正例点，
+      但缺覆盖已审核负例，因此正式 blind/CV 也诚实 `not_feasible`。可行赛道已补齐真实 smoke；
+      F3/Penobscot、岩相、strict/conditional 重建已走通 CV→freeze→refit→single-use test→archived visualization。
+      验收证据见 `_wiki-methodology/_tests/P4_acceptance_evidence.md`。**未 merge 回 master，未 push**。
 
 ## 数据资产索引
 

@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-07-10 (common_preprocess 4 steps 实测跑通)
+last_synced: 2026-07-13 (P4 training/evaluation baseline acceptance)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -63,12 +63,31 @@ code_domains:
     status: active
     owner: project
     description: >
-      2026-07-11军伟拍板的模块化训练骨架:preprocess.py(去噪骨架/归一化+反归一化配对/深度对齐指针)、
-      model_registry.py(register_model/get_model,换模型只加文件不改训练循环)、
-      train.py(train_loop统一训练循环,记录train/val loss,按最小val loss存best checkpoint,
-      不擅自早停,让人看得到欠拟合->过拟合的完整曲线)、visualize.py(plot_loss_curve标出best epoch)。
-      各赛道应重构为调用这里而非各自重复实现预处理/训练循环。TODO(非本轮):接入开源社区已包装好的
-      预训练/大模型，只需实现build_model()适配层。
+      P4共享训练/评价合同：ModelBatch/ModelOutput外层、TaskSpec、模型动态发现、
+      全局seed=2693与确定性报告、group/spatial split manifest、按样本或有效标签加权reducer、
+      checkpoint/resume包含优化器与RNG状态、可选HPO plan/backend、artifact manifest/hash、
+      SPLIT_LOCKED→CV_COMPLETE→CONFIG_FROZEN→REFIT_COMPLETE→TEST_CONSUMED一次性test firewall。
+      任务内部loss/activation/mask/metric由插件显式声明，不强迫六赛道共用一个head。
+
+  - id: canonical_models
+    path: _models
+    type: shared_library
+    status: active
+    owner: project
+    description: >
+      六赛道规范模型唯一真源：fault/facies/property/lithofacies/reconstruction/sweetspot。
+      每个可替换模型是独立<model_id>.py并导出build_model()；旧赛道models目录仅保留兼容shim。
+
+  - id: sweetspot_targets
+    path: _pipelines/02_task_datasets/sweetspot/targets
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      ⑤甜点一赛道七任务案例：储层品质代理、SAND_FLAG有效厚度代理、产能、
+      见水风险代理、剩余油/加密井simulation case、PHIF孔隙度、KLOGH渗透率。
+      每个目标独立task_id/split/config/checkpoint/metrics/figure或not_feasible；
+      _outputs/registry_targets_1_to_7.json汇总状态和哈希。
 
 entrypoints:
   - id: project_plan
@@ -78,6 +97,20 @@ entrypoints:
     owner: col2
     description: "Current phase, next action, blockers and pause list."
 
+  - id: p4_acceptance
+    path: _wiki-methodology/_tests/P4_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P4 portable suites, real smoke, CV/refit/frozen-test metrics, artifact verification and honest blockers."
+
+  - id: sweetspot_target_registry
+    path: _pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json
+    type: artifact_registry
+    status: active
+    owner: project
+    description: "Seven independent target cases and their content hashes."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -85,6 +118,18 @@ cross_domain_edges:
   - from: task_datasets
     to: common_preprocess
     relation: depends_on
+  - from: task_datasets
+    to: ml_framework
+    relation: calls
+  - from: task_datasets
+    to: canonical_models
+    relation: discovers
+  - from: sweetspot_targets
+    to: ml_framework
+    relation: calls
+  - from: sweetspot_targets
+    to: canonical_models
+    relation: discovers
 
 non_code_assets:
   registry: _meta/_data_registry.yml

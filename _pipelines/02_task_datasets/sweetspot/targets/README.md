@@ -15,7 +15,9 @@
 目标 1–4 的真实简单模型由 `baseline.py` 运行。默认每个目标执行 8 个 sanity 配置和 20 个 pilot 配置，只用 development OOF 选模型/阈值；随后冻结配置、全 development refit，并通过单次门消费预先冻结的测试井。目标 6/7 由 property adapter 运行。所有结果由 `registry.py` 汇总成 `_outputs/registry_targets_1_to_7.json`。
 
 ```bash
-python3 -m _pipelines.02_task_datasets.sweetspot.targets.baseline --target all
+python3 -m _pipelines.02_task_datasets.sweetspot.targets.baseline \
+  --target all \
+  --output-root _tmp/sweetspot-rerun-$(date +%Y%m%d-%H%M%S)
 python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry
 ```
 
