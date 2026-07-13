@@ -2,7 +2,7 @@
 
 > 冻结日期：2026-07-14
 > 基线：`p5-model-benchmark-integration@b1a2cf4`
-> 状态：执行合同 v1
+> 状态：✅ 已执行并独立验收；证据见 `../../_tests/P5_stage3_acceptance_evidence.md`
 > 根随机种子：`2693`
 > 重复模型seed：`1867973658`、`2137841944`、`3902865753`
 
@@ -74,3 +74,6 @@ loss或训练步数，不做frozen-test，不把不同数据集、任务、模�
 
 Stage-3只冻结每任务/lane一个候选与配置。若确有必要，Optuna只能在development CV内围绕该胜出候选做
 小规模预注册搜索；否则直接用全部development refit。最终frozen test仍由单独命令一次性消费，结果不得回流。
+
+Stage-3已于2026-07-14按本合同执行：五个可运行赛道共441个cell，437 pass、3 fail、1 timeout；
+断层因零个合法fold保持`not_rankable`。各任务胜出模型、精确指标、测试分组与科学边界见上述验收证据。

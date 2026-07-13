@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-07-13 (P4 training/evaluation baseline acceptance)
+last_synced: 2026-07-14 (P5 Stage-3 multiseed CV acceptance)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -124,6 +124,13 @@ entrypoints:
     status: active
     owner: col2
     description: "Frozen top-3 by task/lane, three derived seeds, all valid development folds, OOF visualization and final test-firewall contract."
+
+  - id: p5_stage3_acceptance
+    path: _wiki-methodology/_tests/P5_stage3_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P5 top-3 multiseed all-valid-fold results, per-task winners, OOF visualizations, honest failed/timeout cells, dependency-group regression and frozen-test firewall."
 
   - id: sweetspot_target_registry
     path: _pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json

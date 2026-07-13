@@ -40,3 +40,14 @@
 - Stage-1 regression after integration: 53 passed, 6 skipped, 77 subtests passed.
 - frozen test: not accessed by any Stage-2 runner; all leaderboards are fixed-fold development evidence only.
 - results and scientific stop lines: `P5_stage2_acceptance_evidence.md`.
+
+## 2026-07-14 P5 Stage-3 integration acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-model-benchmark-integration`
+- branch: `p5-model-benchmark-integration`; integrated result HEAD before documentation: `9e5f501`.
+- protocol commit: `16bebd1`; root seed `2693`; repeat seeds `1867973658`, `2137841944`, `3902865753`.
+- development matrix: five runnable tracks, 441 attempted cells; 437 pass, 3 fail, 1 timeout. Fault had zero scientifically legal training cells and remained `not_rankable`.
+- independent full regressions: fault `41 passed` plus `15 passed/7 skipped/2 subtests`; facies `47 passed/1 skipped/43 subtests`; property `37 passed/5 skipped`; lithofacies P5 `25 passed/1 skipped/26 subtests`, data contract `8 passed/4 skipped`, mixed legacy `5 passed/6 skipped/3 subtests`; sweetspot data `21 passed`, models `51 passed/1 skipped`; reconstruction `55 passed/10 skipped/53 subtests`.
+- dependency policy: `torch-common` and `tabular-cpu` were not modified. The legacy lithofacies module that imports Torch plus HDF5/LAS/SEG-Y readers was rerun in a one-shot `uv run --isolated` group.
+- frozen test: no Stage-3 runner opened frozen arrays, labels, predictions or historical metrics.
+- results, winners, figures and boundaries: `P5_stage3_acceptance_evidence.md`.

@@ -47,3 +47,39 @@ gates:
     timeout: 120
     expect: exit0
     note: "Rebuild the seven-target registry without overwriting the canonical evidence file."
+
+  - id: p5-stage3-fault
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m pytest -q _pipelines/02_task_datasets/fault/test_fault_p5_stage3.py"
+    timeout: 180
+    expect: exit0
+    note: "Fault Stage-3 zero-fold data gate and no-fake-performance contract."
+
+  - id: p5-stage3-facies
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m pytest -q _pipelines/02_task_datasets/facies/tests/test_facies_p5_stage3.py"
+    timeout: 300
+    expect: exit0
+    note: "F3/Penobscot separate top-3 multiseed OOF contracts."
+
+  - id: p5-stage3-property
+    cmd: "${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_stage3.py"
+    timeout: 180
+    expect: exit0
+    note: "PHIF/KLOGH/SW LOGO4 multiseed summaries and firewall."
+
+  - id: p5-stage3-lithofacies
+    cmd: "${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/lithofacies/tests/test_lithofacies_p5_stage3.py"
+    timeout: 180
+    expect: exit0
+    note: "Fixed-nine GM09 ranking, honest failed cells and OOF visualization contract."
+
+  - id: p5-stage3-sweetspot
+    cmd: "${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage3.py"
+    timeout: 300
+    expect: exit0
+    note: "Seven independent sweetspot cases; T1-T4 rank and T5-T7 stop gates."
+
+  - id: p5-stage3-reconstruction
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m pytest -q _pipelines/02_task_datasets/reconstruction/_tests/test_reconstruction_p5_stage3.py"
+    timeout: 300
+    expect: exit0
+    note: "Strict/conditional multiseed buffered-CV summaries, timeout retention and firewall."

@@ -1,7 +1,8 @@
 # Test Coverage - 军伟的比赛
 
 > COL3 测试地图。长运行证据见 `_run_ledger.md`，P4与P5 Stage-1结果及科学性边界分别见
-> `P4_acceptance_evidence.md`、`P5_stage1_acceptance_evidence.md`。
+> `P4_acceptance_evidence.md`、`P5_stage1_acceptance_evidence.md`、
+> `P5_stage2_acceptance_evidence.md`、`P5_stage3_acceptance_evidence.md`。
 
 ## Audit-First / SSDO
 
@@ -9,6 +10,7 @@
 |---|---|---|
 | P4 验收报告 | `sed -n '1,260p' _wiki-methodology/_tests/P4_acceptance_evidence.md` | 先区分“工程流程通过”、“模型精度达标”和 `not_feasible` |
 | P5 Stage-1 验收报告 | `sed -n '1,260p' _wiki-methodology/_tests/P5_stage1_acceptance_evidence.md` | 区分候选尝试、contract smoke、结构化skip与禁止排名的科学硬门 |
+| P5 Stage-3 验收报告 | `sed -n '1,300p' _wiki-methodology/_tests/P5_stage3_acceptance_evidence.md` | 核对top-3多seed全fold结果、worst-fold、OOF图、真实失败/超时和test firewall |
 | 甜点七目标注册 | `python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json` | 重建独立目标注册并校验必需产物存在 |
 | TOP 结题检查 | `python3 /mnt/data/yongan-admin-2/.codex/skills/share-top/scripts/topic-closeout.py .` | 发现计划/codemap/registry/test map 漂移 |
 
@@ -46,5 +48,6 @@
 - 甜点目标5缺已验证 Eclipse cell-state parser 与冻结的时间/候选井/经济约束；只能是 simulation case，不是 field truth。
 - 精确 PHIE 缺独立真值；不用 LFP_PHIE 替代。
 - 岩相冻结预测未持久化真实 `center_md_m`，因此深度轨迹图 `not_feasible`；其他分类/校准图已可用。
-- 长预算 HPO、top-3 配置×3 seeds×全 folds 和正式深度模型尚未执行；不属于本轮工程 baseline 已完成声明。
-- P5 Stage-2固定预算development pilot尚未执行；断层审核负例与甜点七目标已批准`label_spec`仍是硬阻塞。
+- Stage-3多seed全有效fold已执行；长预算HPO仍未执行且不是默认必做，必须先写预注册理由并仅在development CV内搜索。
+- 最终全development refit和一次性frozen-test尚未执行；断层审核负例、甜点T5模拟约束和T6/T7 development-only特征源仍是硬阻塞。
+- 岩相CatBoost在一个fold的三个seed均遇到NaN/Inf；重建PyKrige一个conditional cell达到300秒上限。两者均保留为真实Stage-3证据，未换预算补数。
