@@ -19,6 +19,100 @@ JSON remain unchanged. See `P4_SOP.md` for commands, data provisioning and the
 unit → contract → tiny → real-smoke → CV → refit → single-test order. Known
 scientific limits are machine-readable in `not_feasible.json`.
 
+## P5 multiseed spatial-CV Stage 3
+
+`reconstruction_p5_stage3.py` confirms only the frozen Stage-2 top three in
+each independent lane. Strict uses `pykrige_ok3d`, `gpytorch_svgp` and
+`gstools_krige_condsrf`; conditional uses `pykrige_ok3d`, `gpytorch_svgp` and
+`scipy_rbf_neighbors`. Every model runs all five buffered P4 development
+folds and repeat seeds `1867973658`, `2137841944`, and `3902865753`: exactly
+90 expected cells. There is no HPO, temporary 20% split, frozen-test command,
+or score backfill.
+
+Cache preparation requires the read-only Stage-2 cache because its frozen
+`split_manifest.json` files are the split source of truth. Stage 3 does not
+rescan frozen-test metadata; it loads only logical development I-block arrays.
+Fold preprocessing, identity target transform, conditional IDW constraints
+and the explicit zero-well fallback are fit from that fold's effective train
+IDs. The fixed 512 train / 2,048 validation-voxel maximum, model configs,
+losses, tiny gate and update counts remain Stage-2 values.
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 /path/to/torch-common/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage3.py \
+  prepare-cache --data-dir /path/to/reconstruction \
+  --stage2-cache _tmp/p5_stage2_reconstruction/cache \
+  --cache-dir _tmp/p5_stage3_reconstruction/cache
+```
+
+All cells use the torch-common interpreter. If its optional geostat modules
+are provided by another already-provisioned shared environment, append that
+environment's `site-packages` with `VOLVE_P5_AUX_SITE_PACKAGES`; core
+Torch/NumPy/SciPy still resolve from torch-common. Do not install or copy
+packages during the benchmark.
+
+CPU geostat example:
+
+```bash
+VOLVE_P5_AUX_SITE_PACKAGES=/path/to/shared-geostat/site-packages \
+VOLVE_P5_AUX_DEPENDENCY_GROUP=shared-geostat PYTHONDONTWRITEBYTECODE=1 \
+  /path/to/torch-common/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage3.py \
+  run-cell --mode conditional --model scipy_rbf_neighbors \
+  --fold-id 0 --repeat-id 0 \
+  --cache-dir _tmp/p5_stage3_reconstruction/cache \
+  --cell-root _tmp/p5_stage3_reconstruction/cells --device cpu
+```
+
+Every GPyTorch cell must run on `cuda:0` under the shared 900-second external
+flock. The launcher records real queue wait time for the cell audit:
+
+```bash
+export VOLVE_P5_GPU_LOCK="${VOLVE_P5_GPU_LOCK:-$HOME/.cache/volve-p5/locks/gpu0.lock}"
+export VOLVE_P5_LOCK_START_NS="$(date +%s%N)"
+flock -w 900 "$VOLVE_P5_GPU_LOCK" bash -c '
+  end_ns="$(date +%s%N)"
+  export VOLVE_P5_GPU_LOCK_WAIT_SECONDS="$(awk -v start="$VOLVE_P5_LOCK_START_NS" \
+    -v end="$end_ns" "BEGIN {printf \"%.9f\", (end-start)/1000000000}")"
+  export VOLVE_P5_GPU_LOCK_HELD=1 CUDA_VISIBLE_DEVICES=0 PYTHONDONTWRITEBYTECODE=1
+  exec /path/to/torch-common/bin/python \
+    _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage3.py \
+    run-cell --mode strict --model gpytorch_svgp --fold-id 0 --repeat-id 0 \
+    --cache-dir _tmp/p5_stage3_reconstruction/cache \
+    --cell-root _tmp/p5_stage3_reconstruction/cells --device cuda:0
+'
+```
+
+After all 90 status files exist, collation fails closed on missing/duplicate
+cells, wrong seeds or split hashes, budget/config drift, CPU neural results,
+missing GPU wait/VRAM evidence, test access and cross-lane contamination. It
+writes portable JSON/PNG evidence while checkpoints and sampled OOF archives
+remain in ignored `_tmp/p5_stage3_reconstruction/`:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 /path/to/torch-common/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage3.py \
+  collate --cell-root _tmp/p5_stage3_reconstruction/cells \
+  --output-dir _pipelines/02_task_datasets/reconstruction
+
+PYTHONDONTWRITEBYTECODE=1 /path/to/torch-common/bin/python -m unittest discover \
+  -s _pipelines/02_task_datasets/reconstruction/_tests \
+  -p 'test_reconstruction_p5_stage3.py' -v
+```
+
+The strict and conditional figures separately contain K/J/I truth,
+prediction and residual views, CDF, radial spectrum, empirical variogram,
+distance-to-fold-train-well error and fold-by-seed RMSE. These are sampled
+development OOF diagnostics, not frozen-test or full-volume claims. A lane is
+marked `not_rankable` when fewer than 80% of its frozen cells complete legally.
+
+Budget audit: `gpytorch_svgp` declares `batch_representation=point`, so Stage 3
+reuses the frozen Stage-2 `point_neural` budget verbatim: 100 formal training
+updates, a 200-update protocol cap, and a 600-second model-wall cap. Its tiny
+gate is recorded separately and is not added to the 100 updates. The
+80-update cap belongs only to the 3-D volume neural/operator class (whose
+frozen pilot actually uses 20 updates); it does not apply to `gpytorch_svgp`.
+
 ## P5 fixed-budget Stage 2
 
 `reconstruction_p5_stage2.py` evaluates the ten preregistered reconstruction
