@@ -94,21 +94,33 @@ def test_raw_output_is_preserved_and_physical_view_is_bounded() -> None:
     assert np.allclose(output.transformed["SW"], [1.0, 0.0])
 
 
-def test_tabiclv2_weight_license_gate_is_structured_and_precedes_import() -> None:
+def test_tabiclv2_official_weight_is_licensed_and_missing_local_artifact_is_structured() -> None:
+    lock = json.loads(
+        (PROJECT_ROOT / "_models/property/source_lock.json").read_text(encoding="utf-8")
+    )["models"]["tabiclv2_regressor"]
+    assert lock["revision"] == "46b91961db4f8873dd049ec09990698a435e1e29"
+    assert lock["license"] == "BSD-3-Clause"
+    weights = lock["weights"]
+    assert weights["repository"] == "jingang/TabICL"
+    assert weights["repository_snapshot"] == "4dcd344ece2c00be9e831fdd35bed57b5ad83e19"
+    assert weights["checkpoint_name"] == "tabicl-regressor-v2-20260212.ckpt"
+    assert weights["size_bytes"] == 114324594
+    assert weights["sha256"] == (
+        "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a"
+    )
+    assert weights["license_status"] == "approved"
+    assert weights["official_release_available"] is True
+    assert weights["private"] is False and weights["gated"] is False
+    assert weights["missing_local_status"] == "artifact_unavailable"
+    assert weights["auto_download"] is False
+
     with pytest.raises(Stage1GateError) as caught:
         require_approved_weight("tabiclv2_regressor", {})
-    assert caught.value.to_dict() == {
-        "code": "weight_license_unconfirmed",
-        "message": (
-            "tabiclv2_regressor checkpoint license is not approved in source_lock.json"
-        ),
-        "details": {
-            "model_id": "tabiclv2_regressor",
-            "checkpoint": "tabicl-regressor-v2-20260212.ckpt",
-            "license_status": "unconfirmed",
-            "auto_download": False,
-        },
-    }
+    gate = caught.value.to_dict()
+    assert gate["code"] == "weight_checkpoint_missing"
+    assert gate["details"]["checkpoint"] == "tabicl-regressor-v2-20260212.ckpt"
+    assert gate["details"]["auto_download"] is False
+    assert "license" not in gate["code"]
 
 
 def test_stage1_cli_has_no_frozen_test_argument_and_rejects_test_family(tmp_path: Path) -> None:

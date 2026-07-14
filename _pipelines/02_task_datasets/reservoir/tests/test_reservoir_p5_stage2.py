@@ -207,10 +207,10 @@ def test_firewall_rejects_frozen_family_and_cli_has_no_test_data_option(
         assert "--test-metrics" not in options
 
 
-def test_tabiclv2_remains_a_structured_license_skip() -> None:
+def test_tabiclv2_missing_local_checkpoint_is_not_a_license_skip() -> None:
     with pytest.raises(Stage1GateError) as caught:
         require_approved_weight("tabiclv2_regressor", {})
-    assert caught.value.code == "weight_license_unconfirmed"
+    assert caught.value.code == "weight_checkpoint_missing"
     assert caught.value.details["auto_download"] is False
 
 

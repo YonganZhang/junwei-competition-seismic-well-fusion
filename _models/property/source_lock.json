@@ -127,8 +127,8 @@
       "family": "in_context_tabular_foundation_model",
       "source_url": "https://github.com/soda-inria/tabicl",
       "tag": "v2.0.0",
-      "revision": "f719c886a586ed4a29236345e319ac1ea596c478",
-      "license": "BSD-3-Clause-code-only",
+      "revision": "46b91961db4f8873dd049ec09990698a435e1e29",
+      "license": "BSD-3-Clause",
       "dependency_group": "tabular-cpu",
       "dependencies": [
         {"distribution": "tabicl", "import_name": "tabicl", "version": "2.0.0"}
@@ -136,9 +136,18 @@
       "weights": {
         "required": true,
         "checkpoint_name": "tabicl-regressor-v2-20260212.ckpt",
-        "source_url": "https://github.com/soda-inria/tabicl",
-        "license_status": "unconfirmed",
-        "sha256": null,
+        "source_url": "https://huggingface.co/jingang/TabICL/blob/4dcd344ece2c00be9e831fdd35bed57b5ad83e19/tabicl-regressor-v2-20260212.ckpt",
+        "repository": "jingang/TabICL",
+        "repository_snapshot": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+        "size_bytes": 114324594,
+        "sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+        "license": "BSD-3-Clause",
+        "license_status": "approved",
+        "official_release_available": true,
+        "private": false,
+        "gated": false,
+        "missing_local_status": "artifact_unavailable",
+        "integrity_failure_status": "integrity_mismatch",
         "auto_download": false
       }
     },

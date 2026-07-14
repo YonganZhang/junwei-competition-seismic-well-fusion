@@ -1,0 +1,32 @@
+{
+  "command_template": "python3 _pipelines/02_task_datasets/reservoir/reservoir_p5_r01.py run --train-h5 <development_train.h5> --guard-npz <development_guard.npz>",
+  "config_sha256": "ec38da9d7f600307dbf5085d82fd872cf32431a79b1bd529643c0e0e13ee4bb9",
+  "environment": {
+    "numpy": "2.2.6",
+    "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12"
+  },
+  "phase": "P5.1_R0_R1",
+  "schema_version": 1,
+  "source_assets": [
+    {
+      "logical_name": "train.h5",
+      "path_persisted": false,
+      "role": "development_train_h5",
+      "sha256": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2",
+      "size_bytes": 3926640
+    },
+    {
+      "logical_name": "guard.npz",
+      "path_persisted": false,
+      "role": "development_guard_npz",
+      "sha256": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+      "size_bytes": 19372
+    }
+  ],
+  "source_lock_sha256": "fa109524a662fdc23cb793580206b9ca9dbcf58cc18a2947db0d6d3bb68a8269",
+  "source_paths_persisted": false,
+  "split_manifest_sha256": "059c7d66bd91a3eb8058a6e828af03939f56222b36dbdc4f5ee073672ea4c7fe",
+  "test_access": false,
+  "track_id": "property"
+}

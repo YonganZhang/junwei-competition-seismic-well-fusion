@@ -245,3 +245,48 @@ refit或重复确认。当前真实结果均为物理域：PHIF MAE/RMSE/R² =
 SW = 0.064412/0.080550/0.903155。完整target config、refit证据、344行预测、
 物理及模型域指标、OOF-q90区间诊断、9张图和artifact哈希位于
 `_outputs/p5_stage4_confirmation/`；私有NPZ、checkpoint和临时视觉复核继续忽略。
+
+## P5.1 R0/R1 切分机理诊断
+
+`reservoir_p5_r01.py`只接受哈希锁定的development `train.h5`和`guard.npz`，
+没有test/holdout参数或loader。R0零训练冻结PHIF、KLOGH、SW的标签、单位、
+独立mask、输入白名单、四个development母井家族及F-15防火墙，并明确记录现有
+数据构建使用`source_joint_complete_case_filter=true`。TabICLv2已按官方代码
+commit、BSD-3-Clause和公开HF regression checkpoint元数据重登记；未显式供应本地
+checkpoint时状态为`artifact_unavailable`，不会触发下载，也不再误报许可证问题。
+
+R1固定使用单输出`reservoir_ridge`、seed 2693和64次full-fold更新，分别比较：
+
+- `random_depth_kfold4`：四折随机深度点切分，四个母井家族跨train/validation重叠，
+  仅为故意泄漏的诊断对照；
+- `mother_family_logo4`：四个development母井家族逐一留出，家族交集严格为零，
+  是本轮唯一合法的development泛化证据。
+
+所有输入统计只fit当前fold-train，PHIF/KLOGH/SW独立训练和OOF；不做HPO、模型
+选择或最终排名。复跑命令为：
+
+```bash
+python3 _pipelines/02_task_datasets/reservoir/reservoir_p5_r01.py audit
+python3 _pipelines/02_task_datasets/reservoir/reservoir_p5_r01.py run \
+  --train-h5 /path/to/read-only/development/train.h5 \
+  --guard-npz /path/to/read-only/development/guard.npz
+python3 -m pytest -q -p no:cacheprovider \
+  _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_r01.py
+```
+
+真实development运行对每个目标均有1,216个OOF样本。下表是未裁剪物理域结果，
+仅说明切分会改变评价结论；随机切分不是合法排名证据。
+
+| 目标/单位 | 协议 | MAE | RMSE | R² | Pearson |
+|---|---|---:|---:|---:|---:|
+| PHIF/fraction | random depth | 0.022425 | 0.031216 | 0.809958 | 0.909206 |
+| PHIF/fraction | mother-family LOGO | 0.025017 | 0.034753 | 0.764460 | 0.886459 |
+| KLOGH/mD | random depth | 227.730 | 622.547 | 0.389137 | 0.762563 |
+| KLOGH/mD | mother-family LOGO | 213.015 | 585.371 | 0.459917 | 0.754401 |
+| SW/fraction | random depth | 0.190905 | 0.243663 | 0.513304 | 0.719683 |
+| SW/fraction | mother-family LOGO | 0.238514 | 0.288726 | 0.316637 | 0.608093 |
+
+KLOGH的log1p域RMSE分别为1.187993（random）和1.288717（LOGO）。完整逐折、
+逐母井、worst-family、越界率、fold-train统计哈希、split/artifact manifest及六份
+OOF CSV位于`_outputs/p5_r01/`；全部标记`protocol_diagnostic_only=true`、
+`final_model_ranking=false`、`test_access=false`。

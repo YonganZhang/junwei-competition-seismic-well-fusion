@@ -1,0 +1,65 @@
+{
+  "absolute_paths_persisted": false,
+  "artifacts": [
+    {
+      "path": "klogh/mother_family_logo4_oof.csv",
+      "sha256": "9a2fe26b475e742bab35050a78a13529fad4011188c8e48dae2cf398ce5f05e4",
+      "size_bytes": 178850
+    },
+    {
+      "path": "klogh/random_depth_kfold4_oof.csv",
+      "sha256": "1ca9f7dac4200f6b9c392e8b4ce5b73759dbcb8fbac94cffd3a4f9fcf5ee4aa3",
+      "size_bytes": 178744
+    },
+    {
+      "path": "phif/mother_family_logo4_oof.csv",
+      "sha256": "fbf575fb1abb1f8e8e3d684d2d262faddedb40aa99a1845e9a16e0f826ce34d9",
+      "size_bytes": 184826
+    },
+    {
+      "path": "phif/random_depth_kfold4_oof.csv",
+      "sha256": "6650bf99588d53fe40968c435c3a4877cfceae02eed2bf45e1fcfb950faa7ac9",
+      "size_bytes": 184999
+    },
+    {
+      "path": "r0_contract.json",
+      "sha256": "4b7fe52ee825a92cd7cb351573686d815ce996dd0486405345831c4023ae9c6d",
+      "size_bytes": 5035
+    },
+    {
+      "path": "r1_results.jsonl",
+      "sha256": "795bf446fe7bb5ff98e4e67a8c7ab992d54e2b90cd68e82c2a285092360cd3b3",
+      "size_bytes": 37161
+    },
+    {
+      "path": "r1_split_manifest.json",
+      "sha256": "059c7d66bd91a3eb8058a6e828af03939f56222b36dbdc4f5ee073672ea4c7fe",
+      "size_bytes": 20835
+    },
+    {
+      "path": "r1_summary.json",
+      "sha256": "8c3a5af1754359b06f5ba5f8704fc68ac08eeb01949bcce307b0e0f77e2c31a0",
+      "size_bytes": 85425
+    },
+    {
+      "path": "run_manifest.json",
+      "sha256": "6b3bc6afd7a20823b140d824b0c6f66d778c6ff5b4a465b46f00d64909b42712",
+      "size_bytes": 1190
+    },
+    {
+      "path": "sw/mother_family_logo4_oof.csv",
+      "sha256": "57a03670f89c3e38eee71ce7f74428b156c33e88e6b4e76ecc9dbbe45a864527",
+      "size_bytes": 177585
+    },
+    {
+      "path": "sw/random_depth_kfold4_oof.csv",
+      "sha256": "257841f4f451a1f894382ecc453e92672e3934eb1af4466a8b19aabad14d752e",
+      "size_bytes": 178165
+    }
+  ],
+  "large_runtime_artifacts_persisted": false,
+  "phase": "P5.1_R0_R1",
+  "schema_version": 1,
+  "test_access": false,
+  "track_id": "property"
+}

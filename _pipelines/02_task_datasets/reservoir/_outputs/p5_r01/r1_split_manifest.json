@@ -1,0 +1,614 @@
+{
+  "development_families": [
+    "15/9-19",
+    "15/9-F-1",
+    "15/9-F-11",
+    "15/9-F-12"
+  ],
+  "frozen_test_family": "15/9-F-15",
+  "phase": "P5.1_R1",
+  "root_seed": 2693,
+  "schema_version": 1,
+  "selection_registered_before_modeling": true,
+  "source_assets": [
+    {
+      "logical_name": "train.h5",
+      "path_persisted": false,
+      "role": "development_train_h5",
+      "sha256": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2",
+      "size_bytes": 3926640
+    },
+    {
+      "logical_name": "guard.npz",
+      "path_persisted": false,
+      "role": "development_guard_npz",
+      "sha256": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+      "size_bytes": 19372
+    }
+  ],
+  "source_joint_complete_case_filter": true,
+  "source_paths_persisted": false,
+  "split_manifest_sha256": "66a71a40f4f179948194332c6fe8b8c650ad08f021ed5e54fee5da72734355c9",
+  "targets": {
+    "KLOGH": {
+      "eligible_count": 1216,
+      "group_key": "mother_well_family",
+      "protocols": {
+        "mother_family_logo4": {
+          "folds": [
+            {
+              "fold_id": 0,
+              "mother_family_overlap": [],
+              "train_count": 1135,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11"
+              ],
+              "train_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+              "validation_count": 81,
+              "validation_groups": [
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "2bc634beac51f3edefdf21ee5cb07b65d196e29d22efe15925118f8d0d85a2d7"
+            },
+            {
+              "fold_id": 1,
+              "mother_family_overlap": [],
+              "train_count": 1069,
+              "train_groups": [
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+              "validation_count": 147,
+              "validation_groups": [
+                "15/9-19"
+              ],
+              "validation_sample_ids_sha256": "364ba19d5235760ce1bf34d82be8c96c1080fc8f9ee45adb257cc81ccd802ba3"
+            },
+            {
+              "fold_id": 2,
+              "mother_family_overlap": [],
+              "train_count": 679,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+              "validation_count": 537,
+              "validation_groups": [
+                "15/9-F-11"
+              ],
+              "validation_sample_ids_sha256": "10e7c5da340ac15b05dc47f4a0dcaa7c205ea308f3fdef6f18b97b9d36353877"
+            },
+            {
+              "fold_id": 3,
+              "mother_family_overlap": [],
+              "train_count": 765,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+              "validation_count": 451,
+              "validation_groups": [
+                "15/9-F-1"
+              ],
+              "validation_sample_ids_sha256": "9b98ad64d508cbfc31a2530044f2777edb8f5cc5f388cd78f9c0d41f70d36543"
+            }
+          ],
+          "kind": "mother_well_family_LOGO4",
+          "legal_for_model_assessment": true
+        },
+        "random_depth_kfold4": {
+          "folds": [
+            {
+              "fold_id": 0,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "cffac4397878d9b95a91f7e3f3c76084548ad69a0a031df1ed4b76723a78c0ad"
+            },
+            {
+              "fold_id": 1,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "ae506ea03f04a40c1e8967ea8d598a2e4e11927f501dce5f0bc1326ef40ce372"
+            },
+            {
+              "fold_id": 2,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "3f2ff93a1c4fff8d0103e5a463e50e1409cc5b0a5fdf3a1563961826793956ce"
+            },
+            {
+              "fold_id": 3,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "0dad934821b5c08a57841e6e513c62d9a6a85c921d3e89ddd9c1899bc0b2afe3"
+            }
+          ],
+          "kind": "RandomKFold4_shuffle_seed2693",
+          "legal_for_model_assessment": false
+        }
+      },
+      "sample_ids_sha256": "48b8ea9558f92ee751aa0a776b8daf5427c9ab973aa6550c6c67cba2e6e1a742",
+      "status": "frozen",
+      "support_by_family": {
+        "15/9-19": 147,
+        "15/9-F-1": 451,
+        "15/9-F-11": 537,
+        "15/9-F-12": 81
+      },
+      "target": "KLOGH"
+    },
+    "PHIF": {
+      "eligible_count": 1216,
+      "group_key": "mother_well_family",
+      "protocols": {
+        "mother_family_logo4": {
+          "folds": [
+            {
+              "fold_id": 0,
+              "mother_family_overlap": [],
+              "train_count": 1135,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11"
+              ],
+              "train_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+              "validation_count": 81,
+              "validation_groups": [
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "2bc634beac51f3edefdf21ee5cb07b65d196e29d22efe15925118f8d0d85a2d7"
+            },
+            {
+              "fold_id": 1,
+              "mother_family_overlap": [],
+              "train_count": 1069,
+              "train_groups": [
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+              "validation_count": 147,
+              "validation_groups": [
+                "15/9-19"
+              ],
+              "validation_sample_ids_sha256": "364ba19d5235760ce1bf34d82be8c96c1080fc8f9ee45adb257cc81ccd802ba3"
+            },
+            {
+              "fold_id": 2,
+              "mother_family_overlap": [],
+              "train_count": 679,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+              "validation_count": 537,
+              "validation_groups": [
+                "15/9-F-11"
+              ],
+              "validation_sample_ids_sha256": "10e7c5da340ac15b05dc47f4a0dcaa7c205ea308f3fdef6f18b97b9d36353877"
+            },
+            {
+              "fold_id": 3,
+              "mother_family_overlap": [],
+              "train_count": 765,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+              "validation_count": 451,
+              "validation_groups": [
+                "15/9-F-1"
+              ],
+              "validation_sample_ids_sha256": "9b98ad64d508cbfc31a2530044f2777edb8f5cc5f388cd78f9c0d41f70d36543"
+            }
+          ],
+          "kind": "mother_well_family_LOGO4",
+          "legal_for_model_assessment": true
+        },
+        "random_depth_kfold4": {
+          "folds": [
+            {
+              "fold_id": 0,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "cffac4397878d9b95a91f7e3f3c76084548ad69a0a031df1ed4b76723a78c0ad"
+            },
+            {
+              "fold_id": 1,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "ae506ea03f04a40c1e8967ea8d598a2e4e11927f501dce5f0bc1326ef40ce372"
+            },
+            {
+              "fold_id": 2,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "3f2ff93a1c4fff8d0103e5a463e50e1409cc5b0a5fdf3a1563961826793956ce"
+            },
+            {
+              "fold_id": 3,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "0dad934821b5c08a57841e6e513c62d9a6a85c921d3e89ddd9c1899bc0b2afe3"
+            }
+          ],
+          "kind": "RandomKFold4_shuffle_seed2693",
+          "legal_for_model_assessment": false
+        }
+      },
+      "sample_ids_sha256": "48b8ea9558f92ee751aa0a776b8daf5427c9ab973aa6550c6c67cba2e6e1a742",
+      "status": "frozen",
+      "support_by_family": {
+        "15/9-19": 147,
+        "15/9-F-1": 451,
+        "15/9-F-11": 537,
+        "15/9-F-12": 81
+      },
+      "target": "PHIF"
+    },
+    "SW": {
+      "eligible_count": 1216,
+      "group_key": "mother_well_family",
+      "protocols": {
+        "mother_family_logo4": {
+          "folds": [
+            {
+              "fold_id": 0,
+              "mother_family_overlap": [],
+              "train_count": 1135,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11"
+              ],
+              "train_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+              "validation_count": 81,
+              "validation_groups": [
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "2bc634beac51f3edefdf21ee5cb07b65d196e29d22efe15925118f8d0d85a2d7"
+            },
+            {
+              "fold_id": 1,
+              "mother_family_overlap": [],
+              "train_count": 1069,
+              "train_groups": [
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+              "validation_count": 147,
+              "validation_groups": [
+                "15/9-19"
+              ],
+              "validation_sample_ids_sha256": "364ba19d5235760ce1bf34d82be8c96c1080fc8f9ee45adb257cc81ccd802ba3"
+            },
+            {
+              "fold_id": 2,
+              "mother_family_overlap": [],
+              "train_count": 679,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+              "validation_count": 537,
+              "validation_groups": [
+                "15/9-F-11"
+              ],
+              "validation_sample_ids_sha256": "10e7c5da340ac15b05dc47f4a0dcaa7c205ea308f3fdef6f18b97b9d36353877"
+            },
+            {
+              "fold_id": 3,
+              "mother_family_overlap": [],
+              "train_count": 765,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+              "validation_count": 451,
+              "validation_groups": [
+                "15/9-F-1"
+              ],
+              "validation_sample_ids_sha256": "9b98ad64d508cbfc31a2530044f2777edb8f5cc5f388cd78f9c0d41f70d36543"
+            }
+          ],
+          "kind": "mother_well_family_LOGO4",
+          "legal_for_model_assessment": true
+        },
+        "random_depth_kfold4": {
+          "folds": [
+            {
+              "fold_id": 0,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "cffac4397878d9b95a91f7e3f3c76084548ad69a0a031df1ed4b76723a78c0ad"
+            },
+            {
+              "fold_id": 1,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "ae506ea03f04a40c1e8967ea8d598a2e4e11927f501dce5f0bc1326ef40ce372"
+            },
+            {
+              "fold_id": 2,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "3f2ff93a1c4fff8d0103e5a463e50e1409cc5b0a5fdf3a1563961826793956ce"
+            },
+            {
+              "fold_id": 3,
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_sample_ids_sha256": "0dad934821b5c08a57841e6e513c62d9a6a85c921d3e89ddd9c1899bc0b2afe3"
+            }
+          ],
+          "kind": "RandomKFold4_shuffle_seed2693",
+          "legal_for_model_assessment": false
+        }
+      },
+      "sample_ids_sha256": "48b8ea9558f92ee751aa0a776b8daf5427c9ab973aa6550c6c67cba2e6e1a742",
+      "status": "frozen",
+      "support_by_family": {
+        "15/9-19": 147,
+        "15/9-F-1": 451,
+        "15/9-F-11": 537,
+        "15/9-F-12": 81
+      },
+      "target": "SW"
+    }
+  },
+  "test_firewall": {
+    "frozen_test_family_seen": false,
+    "test_access": false,
+    "test_loader_implemented": false,
+    "test_metrics": false
+  },
+  "track_id": "property"
+}
