@@ -1,6 +1,6 @@
-# P5 sweetspot：十模型 Stage-1 合同 smoke
+# P5.2 / protocol R2：十模型 Stage-1 合同 smoke
 
-本目录实现 P5 首批十个模型家族的 source lock、T1–T7 独立 TaskSpec 构造、适配矩阵 gate 与 Stage-1 runner。它不定义标签，也不复用 P4 代理标签作为 P5 真值。
+本目录实现 P5.2 / protocol R2 的首批十个模型家族 source lock、T1–T7 独立 TaskSpec 构造、适配矩阵 gate 与 Stage-1 runner。它不定义标签，也不复用 P4 代理标签作为 P5 真值。Stage-2/3/4 目录分别对应后续的 R2/R3/R4 实施层，文件名保留既有兼容性。
 
 ## fail-closed 顺序
 
@@ -33,7 +33,7 @@ python3 -m _pipelines.02_task_datasets.sweetspot.p5.runner \
 
 树模型使用共享 `tabular-cpu` 环境；MONAI 使用共享 `torch-common` 环境。InceptionTime 与 TFT 当前也在 `tabular-cpu` 中。命令中的 `python` 应由调用方指向对应共享环境，不在仓库固化机器路径。不得为缺失的 PatchTST、SEG、PyG 或 AutoGluon 自行安装依赖，也不得用同名第三方实现替换 source lock。
 
-## Stage-2：P4 development 标签映射与固定预算 pilot
+## P5.2 / protocol R2：P4 development 标签映射与固定预算 pilot
 
 Stage-2 的版本化映射是
 [`sweetspot_p5_label_mapping.v1.json`](sweetspot_p5_label_mapping.v1.json)。它只批准 P4
@@ -71,7 +71,7 @@ PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest \
 
 Stage-2 CLI 没有 test 参数，不读取历史 test 指标，不持久化标签、checkpoint 或模型。
 
-## Stage-3：冻结 top-3 × P4 folds × 三个 repeat seeds
+## P5.3 / protocol R3：冻结 top-3 × P4 folds × 三个 repeat seeds
 
 Stage-3 以 `16bebd18a0bc722afcbc4b841610bf76ce9503e4` 为基线，只确认 Stage-2
 预注册候选在全部科学有效 development folds 上的重复稳定性。T1–T4 分别执行固定的
@@ -112,7 +112,7 @@ PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest \
   _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage3.py -v
 ```
 
-## Stage-4：已见 holdout 确认（不是 fresh-blind final test）
+## P5.4 / protocol R4：已见 holdout 确认（不是 fresh-blind final test）
 
 Stage-4 从 `p5-stage3-sweetspot@5a1fefe977efe20d2d7d12f1601143cdcb2d5678`
 冻结 T1 LightGBM、T2 CatBoost、T3 XGBoost、T4 CatBoost，均为 64 次 boosting update、
