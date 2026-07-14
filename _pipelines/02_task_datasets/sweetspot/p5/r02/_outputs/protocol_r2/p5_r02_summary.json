@@ -1,0 +1,146 @@
+{
+  "ablation_budget": 256,
+  "ablation_counts": {
+    "FAILED": 0,
+    "PASS": 12,
+    "SKIP": 18
+  },
+  "ablation_expected_cells": 30,
+  "artifact_manifest_sha256": "10a24fcda312c3efb35e934212c6420864fe4bceb09a0b98ed75a6bf528f57ac",
+  "attempted_cells": 120,
+  "budgets": [
+    64,
+    256,
+    1024
+  ],
+  "counts": {
+    "FAILED": 0,
+    "PASS": 48,
+    "SKIP": 72
+  },
+  "expected_cells": 120,
+  "historical_test_metrics_read": false,
+  "label_mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+  "labels_generated": false,
+  "main_counts": {
+    "FAILED": 0,
+    "PASS": 36,
+    "SKIP": 54
+  },
+  "main_expected_cells": 90,
+  "model_order": [
+    "xgboost",
+    "catboost",
+    "lightgbm",
+    "autogluon_limited",
+    "inceptiontime",
+    "patchtst",
+    "temporal_fusion_transformer",
+    "seg_spatial_tcn",
+    "graphsage",
+    "monai_unet3d"
+  ],
+  "plateau_gate_sha256": "d850999a1036f741f552b570865c32683ba4e68697aea96204bfffceed76f71e",
+  "portable_output_files": [
+    "p5_r02_results.jsonl",
+    "p5_r02_summary.json",
+    "p5_r02_plateau_gate.json",
+    "p5_r02_status_gates.json",
+    "p5_r02_visualization_manifest.json",
+    "p5_r02_artifact_manifest.json"
+  ],
+  "results_sha256": "5c65cba8536a5a36ea973608adfcb6f6515ebe8103fd70c8d45b5f8fda1c15d9",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-r02-summary/v1",
+  "source_lock_sha256": "cafe6a7123ad002f833153211195c66109c56ebc512f0bc9b56dd34965b56625",
+  "stage": "P5.2/protocol R2",
+  "status_gate": {
+    "historical_test_metrics_read": false,
+    "label_generated": false,
+    "root_seed": 2693,
+    "schema_version": "sweetspot-p5-r02-status-gate/v1",
+    "targets": {
+      "T4": {
+        "fresh_blind": false,
+        "reason": "kept outside the T1-T3 budget sweep; stage4 known-holdout confirmation remains the boundary record",
+        "status": "boundary"
+      },
+      "T5": {
+        "fresh_blind": false,
+        "reason": "no approved sweetspot field truth; proxy-only labels remain forbidden",
+        "status": "not_feasible"
+      },
+      "T6": {
+        "fresh_blind": false,
+        "reason": "no development-only feature source; test.h5 fallback is forbidden",
+        "status": "blocked"
+      },
+      "T7": {
+        "fresh_blind": false,
+        "reason": "no development-only feature source; test.h5 fallback is forbidden",
+        "status": "blocked"
+      }
+    },
+    "test_accessed": false
+  },
+  "status_gate_sha256": "12d6f546f178f34a380fece012b7ba38f5c7aba84dfc5ef977d33778684c6928",
+  "target_budget_curve": {
+    "T1": {
+      "budgets": {
+        "1024": 0.49135594339488975,
+        "256": 0.4824755221050552,
+        "64": 0.5085557855571632
+      },
+      "direction": "minimize",
+      "gain_256_to_1024": -0.018405951976773926,
+      "gain_64_to_1024": 0.0338209546538334,
+      "n_pass_cells": 12,
+      "primary_metric": "mae",
+      "status": "pass"
+    },
+    "T2": {
+      "budgets": {
+        "1024": 0.9878430249198806,
+        "256": 0.9910081554264367,
+        "64": 0.9967927119684092
+      },
+      "direction": "maximize",
+      "gain_256_to_1024": -0.0031938491012660905,
+      "gain_64_to_1024": -0.008978483631622144,
+      "n_pass_cells": 12,
+      "primary_metric": "average_precision",
+      "status": "pass"
+    },
+    "T3": {
+      "budgets": {
+        "1024": 367.90043841857414,
+        "256": 365.96439401708994,
+        "64": 339.42656269782924
+      },
+      "direction": "minimize",
+      "gain_256_to_1024": -0.005290253459449353,
+      "gain_64_to_1024": -0.08388817744383033,
+      "n_pass_cells": 12,
+      "primary_metric": "mae",
+      "status": "blocked"
+    }
+  },
+  "target_order": [
+    "T1",
+    "T2",
+    "T3"
+  ],
+  "target_pass_counts": {
+    "T1": 16,
+    "T2": 16,
+    "T3": 16
+  },
+  "target_status": {
+    "T4": "boundary",
+    "T5": "not_feasible",
+    "T6": "blocked",
+    "T7": "blocked"
+  },
+  "test_accessed": false,
+  "visualization_manifest_sha256": "4d357aec2c22c262cb5d68560dd6216f909c9bdbd657b0dcf53c5dcef258eae5"
+}
