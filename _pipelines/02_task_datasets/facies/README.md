@@ -567,3 +567,73 @@ and cell ID. The selected sample ID, rule, outcome and pixel counts are stored
 in the visualization manifest. Stage-3 integration-safe basenames are
 `facies_p5_stage3.py` and `test_facies_p5_stage3.py`; the dynamic test module
 name is `facies_p5_stage3`.
+
+## P5 Stage-4 known-holdout confirmation
+
+`facies_p5_stage4.py` freezes exactly one Stage-3 winner per independent task:
+F3 uses scratch `smp_fpn_r18` with its 10-class head, while Penobscot uses
+scratch `smp_deeplabv3plus_r18` with its 8-class head. Before training it
+checks the committed Stage-3 summary and leaderboard hashes, exact P4 split
+stable hashes, complete five-fold OOF coverage, the external inline guard, and
+the existing P4 `TEST_CONSUMED` lifecycle evidence. A mismatch fails before
+any `test.h5` label read.
+
+Each task fits z-score statistics and inverse-square-root class weights on all
+sample IDs in its locked legal development population. Model fitting retains
+the Stage-3 recipe exactly: scratch initialization, seed tree rooted at 2693,
+weighted CrossEntropy on raw logits, AdamW at `1e-4`, batch size 2, 40 updates,
+no early stopping/HPO/calibration, and the 180-second model wall cap. The
+frozen 40×2 sampler draws from the full development population; the compact
+refit evidence reports both the population size and actual unique draws so the
+small fixed budget is not misrepresented as exhaustive optimization. Softmax
+is used only for inference.
+
+Only after both final fixed-update checkpoints and refit evidence are durably
+written does the runner create its own single-use `stage4_state.json` and read
+the already-seen spatial holdouts. It never resets or writes the P4 lifecycle;
+those files are hash-checked before and after execution. All results are
+explicitly marked `evidence_class=previously_seen_reusable_holdout`,
+`prior_test_consumed=true`, and `fresh_blind=false`. They are reusable holdout
+confirmation, not a first blind test, external validation, or hidden contest
+score.
+
+Provision the same processed HDF5 root and pass the two exact P4 manifests and
+their read-only lifecycle files. The command is intentionally non-resumable;
+use a new empty output location only for a genuinely new authorized stage.
+If an infrastructure/setup exception occurs after `TEST_ACCESS_STARTED`, do
+not delete that state or rerun refit. The narrowly scoped `resume-incomplete`
+command accepts only the exact existing leaderboard/split/config/checkpoint/
+lifecycle hashes, allows one transparent completion attempt, and records that
+labels may already have been read by the failed attempt. It cannot operate on
+a completed state.
+
+```bash
+P5_TORCH_PYTHON=/path/to/torch-common/bin/python
+FACIES_PROCESSED_ROOT=/path/to/processed
+F3_P4_ROOT=/path/to/p4/facies_f3
+PEN_P4_ROOT=/path/to/p4/facies_penobscot
+export VOLVE_P5_GPU_LOCK=/mnt/data/yongan-admin-2/.cache/volve-p5/locks/gpu0.lock
+
+CUDA_VISIBLE_DEVICES=0 PYTHONDONTWRITEBYTECODE=1 "$P5_TORCH_PYTHON" \
+  _pipelines/02_task_datasets/facies/facies_p5_stage4.py run \
+  --processed-root "$FACIES_PROCESSED_ROOT" \
+  --f3-manifest "$F3_P4_ROOT/split_manifest.json" \
+  --penobscot-manifest "$PEN_P4_ROOT/split_manifest.json" \
+  --f3-prior-lifecycle "$F3_P4_ROOT/lifecycle.json" \
+  --penobscot-prior-lifecycle "$PEN_P4_ROOT/lifecycle.json"
+```
+
+Compact config, refit evidence, formal Accuracy/mIoU/Macro-F1 and per-class
+metrics, prediction/visualization manifests, artifact hashes, and one archived
+diagnostic PNG per task live under `_outputs/p5_stage4_confirmation/`. The PNG
+contains seismic, GT, prediction, confidence, entropy, error, normalized
+confusion, per-class IoU/F1 with support, and reliability. Checkpoints and full
+dense prediction arrays remain under the ignored track-private
+`_outputs/p5_stage4_confirmation_runtime/`, bound by relative path, SHA-256,
+shape, dtype, and byte count. Verify both compact and runtime hashes without
+opening data or a model:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$P5_TORCH_PYTHON" \
+  _pipelines/02_task_datasets/facies/facies_p5_stage4.py verify
+```

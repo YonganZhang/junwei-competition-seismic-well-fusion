@@ -1,0 +1,26 @@
+{
+  "evidence_class": "previously_seen_reusable_holdout",
+  "figure": "known_holdout_diagnostics.png",
+  "figure_bytes": 844500,
+  "figure_sha256": "9e63e4c64d5914f943d4132aeb991d2b4e5026fd86c2d8e8fcfde1acfe247f53",
+  "fresh_blind": false,
+  "metrics_sha256": "c89b6c1ec92f17a95e1a7e22f1ffb49efa7db87fc8cd77ce50f7f9e73257dbb2",
+  "model_or_dataset_loaded": false,
+  "prediction_sha256": "ac5d3419d9361b8c8c562b672e988820a020c6850a6c74dbcfa7249463344a01",
+  "prior_test_consumed": true,
+  "rendered_from_archived_predictions_only": true,
+  "schema_version": "facies-p5-stage4-known-holdout-v1",
+  "selection": {
+    "correct_pixels": 7658,
+    "eligible": true,
+    "eligible_candidate_count": 376,
+    "error_pixels": 8726,
+    "gt_class_count": 4,
+    "index": 73,
+    "sample_id": "facies_f3:test:sample_0000073",
+    "selection_outcome": "informative_gate_then_seed_modulo_sorted_ids",
+    "selection_rule": "prefer GT>=2 classes and both correct/error pixels; sort by sample_id; select seed2693 modulo eligible count; never alter predictions or metrics"
+  },
+  "task_id": "facies_f3",
+  "threshold_or_calibration_tuned": false
+}

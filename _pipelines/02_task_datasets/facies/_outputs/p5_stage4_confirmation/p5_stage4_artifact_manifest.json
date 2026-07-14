@@ -1,0 +1,276 @@
+{
+  "dense_arrays_committed": false,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "incomplete_access_recovery_recorded": true,
+  "p4_artifacts_copied_or_modified": false,
+  "portable_artifacts": [
+    {
+      "bytes": 844500,
+      "path": "facies_f3/known_holdout_diagnostics.png",
+      "sha256": "9e63e4c64d5914f943d4132aeb991d2b4e5026fd86c2d8e8fcfde1acfe247f53"
+    },
+    {
+      "bytes": 6725,
+      "path": "facies_f3/metrics.json",
+      "sha256": "c89b6c1ec92f17a95e1a7e22f1ffb49efa7db87fc8cd77ce50f7f9e73257dbb2"
+    },
+    {
+      "bytes": 1999,
+      "path": "facies_f3/prediction_manifest.json",
+      "sha256": "b8a3367a7fa2c3d87507cbce3291ef041bf1e11b28673fad4b0dbeff489fae8a"
+    },
+    {
+      "bytes": 9220,
+      "path": "facies_f3/refit_evidence.json",
+      "sha256": "ce694475bf4b80911871ae4b582c2c959b302b14a7f2064f37515df530ee80a2"
+    },
+    {
+      "bytes": 1133,
+      "path": "facies_f3/visualization_manifest.json",
+      "sha256": "011c746928de08d407212fa9c167cb919d0cfe8dc48d5eb94e38e0424ac3f921"
+    },
+    {
+      "bytes": 679784,
+      "path": "facies_penobscot/known_holdout_diagnostics.png",
+      "sha256": "4485fbfbf877d2ecb092c09a15076b185ba85b74934d73f0c4cda31c45b6c6c9"
+    },
+    {
+      "bytes": 5948,
+      "path": "facies_penobscot/metrics.json",
+      "sha256": "6f7d70043d82018824ab9a8486e68c518a786008cfa09378a855c39c9e65e89e"
+    },
+    {
+      "bytes": 2012,
+      "path": "facies_penobscot/prediction_manifest.json",
+      "sha256": "9a4e7ba6ddeb3d501d6d2d41dfdb863e8cdc6d11c2c7f5899401d1306f5139d6"
+    },
+    {
+      "bytes": 9217,
+      "path": "facies_penobscot/refit_evidence.json",
+      "sha256": "268d003586e1c74703259f54c044b869e0a46f4bada15fb5deab6eeeac4856d2"
+    },
+    {
+      "bytes": 1149,
+      "path": "facies_penobscot/visualization_manifest.json",
+      "sha256": "26e6237594601b17af21bd4698a1e72116edcb1f31423de43203c7d5855ee37e"
+    },
+    {
+      "bytes": 4445,
+      "path": "p5_stage4_config.json",
+      "sha256": "80ca460179edfb3e151a1e2f62add4e12bc2af487577792deb4c09a9e79e270b"
+    },
+    {
+      "bytes": 4284,
+      "path": "p5_stage4_summary.json",
+      "sha256": "c817b0dc6b5b207c39d83ff7762b278b54f1f542fd29f06d57c68c101e8b42b2"
+    },
+    {
+      "bytes": 2527,
+      "path": "stage4_state.json",
+      "sha256": "88aefdb7b1c592a06366868bcb91e36449d0113840cd54b9a94ebc7d8cf3f7b0"
+    }
+  ],
+  "prior_test_consumed": true,
+  "runtime_artifacts": {
+    "facies_f3": {
+      "checkpoint": {
+        "bytes": 156691305,
+        "kind": "final_fixed_update_refit_checkpoint_no_test_selection",
+        "prediction_max_abs_difference": 0.0,
+        "runtime_relative_path": "facies_f3/refit_final.ckpt",
+        "sha256": "1171b9158833adb8397333c53bde23be76999e88d8e4360e3d079df9e487b700"
+      },
+      "predictions": {
+        "arrays": {
+          "confidence": {
+            "dtype": "float16",
+            "shape": [
+              445,
+              128,
+              128
+            ]
+          },
+          "entropy": {
+            "dtype": "float16",
+            "shape": [
+              445,
+              128,
+              128
+            ]
+          },
+          "error": {
+            "dtype": "uint8",
+            "shape": [
+              445,
+              128,
+              128
+            ]
+          },
+          "inline": {
+            "dtype": "int64",
+            "shape": [
+              445
+            ]
+          },
+          "labels": {
+            "dtype": "uint8",
+            "shape": [
+              445,
+              128,
+              128
+            ]
+          },
+          "prediction": {
+            "dtype": "uint8",
+            "shape": [
+              445,
+              128,
+              128
+            ]
+          },
+          "probabilities": {
+            "dtype": "float16",
+            "shape": [
+              445,
+              10,
+              128,
+              128
+            ]
+          },
+          "sample_ids": {
+            "dtype": "<U29",
+            "shape": [
+              445
+            ]
+          },
+          "seismic": {
+            "dtype": "float16",
+            "shape": [
+              445,
+              128,
+              128
+            ]
+          }
+        },
+        "bytes": 161939102,
+        "checkpoint_sha256": "1171b9158833adb8397333c53bde23be76999e88d8e4360e3d079df9e487b700",
+        "configuration_hash": "08e95ded95007abb49e59122f019424d19bef6e08c3bc08a271b0d680780a428",
+        "evidence_class": "previously_seen_reusable_holdout",
+        "fresh_blind": false,
+        "leaderboard_sha256": "f79d1027a903eba4ba93ad8ec517bd7827098f9599ac526c5991184d56562242",
+        "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+        "prior_test_consumed": true,
+        "runtime_relative_path": "facies_f3/known_holdout_predictions.npz",
+        "sample_count": 445,
+        "sample_ids_hash": "dbfc72139c1e8fda450b748b978dbf6e0d5ba754e5ae4dfa2272db5ccbd8e3c6",
+        "schema_version": "facies-p5-stage4-known-holdout-v1",
+        "sha256": "ac5d3419d9361b8c8c562b672e988820a020c6850a6c74dbcfa7249463344a01",
+        "storage_boundary": "ignored_track_private_runtime_artifact",
+        "task_id": "facies_f3",
+        "test_groups_hash": "88993b32d2b8fa79c2627317baa1d0ab0a36273a83c3a93b188d213e05941f7d"
+      }
+    },
+    "facies_penobscot": {
+      "checkpoint": {
+        "bytes": 148112890,
+        "kind": "final_fixed_update_refit_checkpoint_no_test_selection",
+        "prediction_max_abs_difference": 0.0,
+        "runtime_relative_path": "facies_penobscot/refit_final.ckpt",
+        "sha256": "75d57a72ee39e2105355b108ed1fd2fbbc3c0a74ae770650975829ec096133f0"
+      },
+      "predictions": {
+        "arrays": {
+          "confidence": {
+            "dtype": "float16",
+            "shape": [
+              474,
+              128,
+              128
+            ]
+          },
+          "entropy": {
+            "dtype": "float16",
+            "shape": [
+              474,
+              128,
+              128
+            ]
+          },
+          "error": {
+            "dtype": "uint8",
+            "shape": [
+              474,
+              128,
+              128
+            ]
+          },
+          "inline": {
+            "dtype": "int64",
+            "shape": [
+              474
+            ]
+          },
+          "labels": {
+            "dtype": "uint8",
+            "shape": [
+              474,
+              128,
+              128
+            ]
+          },
+          "prediction": {
+            "dtype": "uint8",
+            "shape": [
+              474,
+              128,
+              128
+            ]
+          },
+          "probabilities": {
+            "dtype": "float16",
+            "shape": [
+              474,
+              8,
+              128,
+              128
+            ]
+          },
+          "sample_ids": {
+            "dtype": "<U36",
+            "shape": [
+              474
+            ]
+          },
+          "seismic": {
+            "dtype": "float16",
+            "shape": [
+              474,
+              128,
+              128
+            ]
+          }
+        },
+        "bytes": 119246981,
+        "checkpoint_sha256": "75d57a72ee39e2105355b108ed1fd2fbbc3c0a74ae770650975829ec096133f0",
+        "configuration_hash": "f2161f0c1e7a78bf567e7cd0eb3b39d9539b90b7b24da9c419d51b687013bdbe",
+        "evidence_class": "previously_seen_reusable_holdout",
+        "fresh_blind": false,
+        "leaderboard_sha256": "8904769dc0b4b806785ce304d449ecf18a132b2ca8f320b61475c3f9c2f74b21",
+        "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+        "prior_test_consumed": true,
+        "runtime_relative_path": "facies_penobscot/known_holdout_predictions.npz",
+        "sample_count": 474,
+        "sample_ids_hash": "4d9ab472720cb4805cc0831e5692bda0f20975ee8094f13b8b33854e8172739b",
+        "schema_version": "facies-p5-stage4-known-holdout-v1",
+        "sha256": "afd724ab133c138290cb5bd5a8b0ee4cacdbb82b241e35f8eaef6ed7f13e8663",
+        "storage_boundary": "ignored_track_private_runtime_artifact",
+        "task_id": "facies_penobscot",
+        "test_groups_hash": "d509366f2e22c6ac8ccffa745c5ad94171d5dfc691105b09da644814322dffc3"
+      }
+    }
+  },
+  "schema_version": "facies-p5-stage4-known-holdout-v1",
+  "summary_sha256": "c817b0dc6b5b207c39d83ff7762b278b54f1f542fd29f06d57c68c101e8b42b2",
+  "track_id": "facies"
+}

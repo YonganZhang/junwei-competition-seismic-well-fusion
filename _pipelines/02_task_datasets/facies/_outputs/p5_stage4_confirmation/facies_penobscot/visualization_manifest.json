@@ -1,0 +1,26 @@
+{
+  "evidence_class": "previously_seen_reusable_holdout",
+  "figure": "known_holdout_diagnostics.png",
+  "figure_bytes": 679784,
+  "figure_sha256": "4485fbfbf877d2ecb092c09a15076b185ba85b74934d73f0c4cda31c45b6c6c9",
+  "fresh_blind": false,
+  "metrics_sha256": "6f7d70043d82018824ab9a8486e68c518a786008cfa09378a855c39c9e65e89e",
+  "model_or_dataset_loaded": false,
+  "prediction_sha256": "afd724ab133c138290cb5bd5a8b0ee4cacdbb82b241e35f8eaef6ed7f13e8663",
+  "prior_test_consumed": true,
+  "rendered_from_archived_predictions_only": true,
+  "schema_version": "facies-p5-stage4-known-holdout-v1",
+  "selection": {
+    "correct_pixels": 1599,
+    "eligible": true,
+    "eligible_candidate_count": 170,
+    "error_pixels": 14785,
+    "gt_class_count": 2,
+    "index": 392,
+    "sample_id": "facies_penobscot:test:sample_0000392",
+    "selection_outcome": "informative_gate_then_seed_modulo_sorted_ids",
+    "selection_rule": "prefer GT>=2 classes and both correct/error pixels; sort by sample_id; select seed2693 modulo eligible count; never alter predictions or metrics"
+  },
+  "task_id": "facies_penobscot",
+  "threshold_or_calibration_tuned": false
+}
