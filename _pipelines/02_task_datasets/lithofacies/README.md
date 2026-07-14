@@ -598,3 +598,66 @@ Canonical evidence is `_outputs/p5_stage3/p5_stage3_results.jsonl`,
 `p5_stage3_summary.json`, `p5_stage3_gm09_p_leaderboard.json`,
 `p5_stage3_oof_manifest.json`, `p5_stage3_visualization_manifest.json`, and the
 six PNG files under `_outputs/p5_stage3/figures/`.
+
+## P5 Stage-4 known-holdout confirmation
+
+`lithofacies_p5_stage4.py` freezes the Stage-3 P winner
+`xgboost_multisoftprob_window` at 40 boosting rounds, depth 2, seed 2693 and
+the unchanged Stage-2 budget hash. This is not a fresh-blind campaign: the
+repository already contains an earlier F-5 baseline. Every Stage-4 artifact
+therefore records `prior_test_consumed=true`, `fresh_blind=false`, and
+`evidence_class=previously_seen_reusable_holdout`.
+
+The runner is independent of the Torch-only P4 lifecycle and never resets a
+P4 run. Its single-use state sequence is `CONFIG_FROZEN` → `REFIT_COMPLETE` →
+`KNOWN_HOLDOUT_CONSUMED` → `CONFIRMATION_COMPLETE`. The consumed transition,
+including the frozen config and checkpoint hashes, is written durably before
+the only Stage-4 function permitted to open F-5.
+
+The two approved environments have complementary dependencies: `torch-common`
+provides HDF5 reading and `tabular-cpu` provides XGBoost. Run the four commands
+in order from the project root:
+
+```bash
+HDF5_PYTHON="${HDF5_PYTHON:?set the approved torch-common interpreter}"
+TABULAR_PYTHON="${TABULAR_PYTHON:?set the approved tabular-cpu interpreter}"
+DATASET_ROOT="${LITHOFACIES_P5_DATASET_ROOT:?point to the existing lithofacies directory}"
+STAGE4=_pipelines/02_task_datasets/lithofacies/lithofacies_p5_stage4.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation
+
+PYTHONDONTWRITEBYTECODE=1 "$HDF5_PYTHON" "$STAGE4" prepare-development \
+  --dataset-root "$DATASET_ROOT" --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$STAGE4" refit \
+  --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 "$HDF5_PYTHON" "$STAGE4" prepare-holdout \
+  --dataset-root "$DATASET_ROOT" --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$STAGE4" confirm \
+  --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests \
+  -p 'test_lithofacies_p5_stage[34].py' -v
+```
+
+Preprocessing and class weights fit all 447 samples from the four development
+mother families. The unchanged Stage-2 cap then selects 320 deterministic,
+class-balanced refit samples while retaining all four families. F-5 evaluation
+uses all 120 samples, within the frozen validation cap of 160; no calibration
+parameter is fitted on its labels.
+
+The recorded confirmation completed with accuracy `0.416667`, fixed-nine
+Macro-F1 `0.189153`, supported-class Macro-F1 `0.243197` (diagnostic only),
+negative log-likelihood `1.702236`, multiclass Brier score `0.793780`, and ECE
+`0.141489`. F-5 support is `[2,31,2,17,3,24,41,0,0]`. Preparation, refit,
+holdout consumption and inference took `2.339s`, `30.641s`, `2.492s`, and
+`4.255s`, respectively.
+
+Portable evidence lives under `_outputs/p5_stage4_confirmation/`; ignored
+runtime batches and the refit checkpoint are referenced by hash but are not
+committed. The fixed-nine confusion, per-class precision/recall/F1/support and
+raw-softmax reliability figures are committed. F-5 contains no finite
+`center_md_m`, so the continuous depth track remains explicitly
+`not_feasible`; interval midpoints and row order are never substituted.

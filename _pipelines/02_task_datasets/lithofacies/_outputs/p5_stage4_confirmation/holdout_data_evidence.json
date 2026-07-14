@@ -1,0 +1,31 @@
+{
+  "schema_version": "lithofacies-p5-stage4-known-holdout-batch-v1",
+  "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b",
+  "checkpoint_sha256": "4ed736aa41e45d853c42f1df37da5ef8f3d42d9c7c997c822552b601c6d51423",
+  "preprocessor_sha256": "ebdfdecd0eb6028aed822f40fae39b04e4f397a5181d1f2de0b5c212e5f04a6d",
+  "holdout_family": "15/9-F-5",
+  "holdout_samples": 120,
+  "class_support": [
+    2,
+    31,
+    2,
+    17,
+    3,
+    24,
+    41,
+    0,
+    0
+  ],
+  "known_holdout_consumed_at": "2026-07-14T02:10:41.822446+00:00",
+  "consumed_before_hdf5_open": true,
+  "prior_test_consumed": true,
+  "fresh_blind": false,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "calibration_fit": "none_test_labels_never_fit",
+  "test_hdf5_basename": "test.h5",
+  "test_hdf5_sha256": "c33a0325395ec0baeac25b2f66ddc4bd23497957f56bd0ff3a4f3b1c3ba0ebc1",
+  "holdout_batch_path": "runtime/known_holdout.npz",
+  "holdout_batch_sha256": "efb7b21b365498cc3fbf4528534913f6abdc87a083c09e16ff8a06355d49b6b0",
+  "finite_center_md_rows": 0,
+  "elapsed_seconds": 2.4919985798187554
+}
