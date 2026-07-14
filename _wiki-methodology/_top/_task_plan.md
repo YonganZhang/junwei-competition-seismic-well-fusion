@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5 Stage 4已完成已见留出集确认] 六赛道已在隔离集成分支共存；
+> **🧭 当前: [P5直接基准调研完成，待协议修订实施] 六赛道已在隔离集成分支共存；
 >   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
 >   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
 >   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
@@ -19,6 +19,11 @@
 >   有真实指标和专属图，断层与甜点T5/T6/T7继续诚实阻塞。全部结果均为
 >   `previously_seen_reusable_holdout`，不是fresh-blind。master有未归属脏改动，因此仍不merge、不push。
 >   完整证据见`_wiki-methodology/_tests/P5_stage4_acceptance_evidence.md`。
+>   2026-07-14 六赛道又完成只纳入直接相关原始论文、官方基准和作者仓库的训练/测试协议复核，
+>   67项赛道级直接证据均经负责人独立验收。结论不是推翻公共工程框架，而是保留防火墙、group/spatial
+>   split、统一seed和产物合同，重做标签门、lane公平性、学习曲线、nested选择、专属可视化和fresh-blind。
+>   统一裁决见`_decisions/P5.1_direct_benchmark_protocol_revision.md`；六份报告仍在各自Stage-3研究分支，
+>   尚未引入集成分支或master。
 >   未 push。**
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
@@ -33,7 +38,7 @@
 | P2 数据 / 实现准备 | ✅ | 3/3 | Volve全套(含ST10010)+F3+Penobscot下载完成；③④赛道数据量核实足够(纠正见P2.2) |
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
 | P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
-| P5 合成 / 交付 | 🔄 | 0.95/1 | 调研、Stage-1/2/3及Stage-4全development refit+已见holdout确认已完成；集成回归178 passed。仍需真正未触碰的外部/赛事隐藏测试，断层与甜点T5/T6/T7数据门继续阻塞。 |
+| P5 合成 / 交付 | 🔄 | 0.95/1 | Stage-1/2/3、Stage-4已见holdout确认和六赛道直接基准复核已完成；协议修订决策已冻结。仍需R0/R1修复、学习曲线/正式CV和真正未触碰的外部或赛事隐藏测试。 |
 
 ## 协作与决策权边界
 
@@ -200,6 +205,13 @@
       `previously_seen_reusable_holdout`、`prior_test_consumed=true`、`fresh_blind=false`，不能称首次盲测。
       完整指标、图件目检和facies单次访问恢复记录见`_wiki-methodology/_tests/P5_stage4_acceptance_evidence.md`。
       master仍脏，未merge、未push；下一步必须获取新的外部/赛事隐藏测试集，或先补齐被阻塞的数据合同。
+- [x] 2026-07-14 P5 六赛道直接基准协议复核完成：六个赛道窗口只纳入同物理任务、同输入/标签语义的
+      原始论文、官方竞赛/数据页和作者仓库，分别形成13/10/10/10/14/10项直接证据报告；六份提交均由
+      负责人核对提交范围、工作树、来源可达性和科学边界后verify。统一结论见
+      `_decisions/P5.1_direct_benchmark_protocol_revision.md`：现有Pipeline工程骨架保留，但短预算pilot不得
+      冒充能力榜，已见holdout不得冒充fresh blind；断层先补审计负例，地震相补full-volume与学习曲线，
+      物性/岩相/甜点/重建按任务与模态分lane并修正各自split/标签/成对对照。本批只做报告和决策，
+      尚未引入六份报告提交、未改训练代码、未merge master、未push。
 
 ## 数据资产索引
 
@@ -212,6 +224,7 @@
 ## 决策入口
 
 - 关键决策放 `_decisions/`；这里只留当前阶段必须看的链接。
+- P5六赛道训练/测试协议统一裁决：`_decisions/P5.1_direct_benchmark_protocol_revision.md`。
 
 ## 证据入口
 
