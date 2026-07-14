@@ -4,6 +4,50 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P5.1 R0/R1 development-only mechanism audit
+
+`reconstruction_p5_r01.py` implements the zero-training R0 provenance and
+firewall audit plus one fixed-model R1 conditional-channel check.  It uses only
+the conditional development I-blocks 0–3 from physical `train.h5`; its narrow
+reader does not open physical `test.h5`, `well_log_seq`, known/frozen arrays,
+predictions or metrics.  P4 conditional fold 2 is reused as the pseudo-test
+block (K=4), with K=3/5 purged and K=0/1/2/6 retained for fitting.
+
+Pseudo-well locations are frozen by geometry-only farthest-point sampling
+before PORO values are read.  Their values are explicitly
+`synthetic/reference-revealed` Eclipse target samples, not independently
+measured PHIE.  One fixed `reconstruction_linear_sgd` model/checkpoint is used
+for all three inference conditions on one common mask:
+
+- `B0`: formal name `no_pseudo_test_PORO_condition`;
+- `B1`: correct pseudo-test PORO values;
+- `shuffled`: the same locations with a seed-2693 non-identity value rotation.
+
+B0 still retains the fixed project-level weak MD→TWT well tie used to sample
+the seismic volume.  It must never be described as containing no well-derived
+information.  Exact pseudo-well cells are excluded from every condition, and
+the report includes overall and pre-frozen distance-band RMSE/MAE/bias/R².  A
+degenerate condition set, shuffle, distance band or insensitive model fails
+closed.  R1 is `development_protocol_mechanism_only`, not HPO, model ranking,
+fresh-blind evidence or field generalization.
+
+Run the portable tests, then the bounded real-development entrypoint:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s _pipelines/02_task_datasets/reconstruction/_tests \
+  -p 'test_reconstruction_p5_r01.py' -v
+
+PYTHONDONTWRITEBYTECODE=1 python3 \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_r01.py run \
+  --data-dir _data/processed/reconstruction \
+  --output-dir _pipelines/02_task_datasets/reconstruction/p5_r01_evidence
+```
+
+Canonical portable evidence is `p5_r01_evidence/r0_manifest.json`,
+`r1_results.json`, `P5_R01_REPORT.md` and `artifact_manifest.json`.  No HDF5,
+prediction archive or checkpoint file is produced.
+
 ## P4 training/validation plugin
 
 `p4_reconstruction.py` adds the frozen P4 TaskSpec, continuous spatial test,

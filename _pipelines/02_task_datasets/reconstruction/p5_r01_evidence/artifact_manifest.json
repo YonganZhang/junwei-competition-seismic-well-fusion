@@ -1,0 +1,24 @@
+{
+  "artifacts": {
+    "P5_R01_REPORT.md": {
+      "bytes": 1846,
+      "metadata": {},
+      "role": "human-readable scientific boundary report",
+      "sha256": "8ca2ad8f824d94a0b6205eab0a45f246cf5bd866e1717c5a714dd0e21946eec7"
+    },
+    "r0_manifest.json": {
+      "bytes": 17103,
+      "metadata": {},
+      "role": "R0 provenance/split/firewall contract",
+      "sha256": "ca36296d754140603542ef23b3ce29bf0b7668c6ef2999c3e8f06b3e004e8cf1"
+    },
+    "r1_results.json": {
+      "bytes": 13010,
+      "metadata": {},
+      "role": "R1 development-only mechanism metrics",
+      "sha256": "6e5dc6d16b94ec1b664a5f079671c5fb428858d04ee74d3b1690ae000e1cfe97"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "reconstruction-p5.1-r01"
+}
