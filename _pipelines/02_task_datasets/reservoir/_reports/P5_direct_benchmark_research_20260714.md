@@ -14,7 +14,7 @@
 2. F-15 不是新鲜盲测。它已被历史 baseline、P4 和 Stage4 消费；Stage4 也已正确标成 `previously_seen_reusable_holdout`、`prior_test_consumed=true`、`fresh_blind=false`。它可以继续做回归确认和漂移诊断，但不能再为模型选择、HPO 或“外部泛化”提供独立证据。
 3. Stage4 的高分不能和论文数值横向排位。当前标签是 Volve 解释曲线，许多论文的标签是岩心、NMR 或 MICP 实验；标签来源、单位、深度相关性、测试盲性和井数均不一致。特别是 KLOGH，物理域长尾会让 RMSE 对极端值非常敏感。
 4. 必须补一份从未被任何 P4/P5 模型、阈值、HPO 或图表消费的外部验证：最低要求是一个新母井家族；可信的跨域结论还需要一个有明确许可和标签谱系的可比油田。若只能找到 PHIE、岩心 K 或 MICP-SW，必须作为独立 label version/case，不能与 PHIF/KLOGH/解释 SW 混值。
-5. 十模型不能排成一个总榜。八个 scratch tabular 模型可在同一 tabular lane 排名；TabICLv2 是预训练表格模型，许可证和权重门未解除前只能结构化 SKIP；MONAI DenseNet3D 属于 seismic-3D lane，单候选时只能记录 pilot、`not_rankable`。
+5. 十模型不能排成一个总榜。八个 scratch tabular 模型可在同一 tabular lane 排名；TabICLv2 使用官方发布且许可明确的回归 checkpoint，应在重新登记官方 source/version/hash 后进入独立 pretrained lane，而不是沿用本地旧许可 gate；MONAI DenseNet3D 属于 seismic-3D lane，单候选时只能记录 pilot、`not_rankable`。
 
 ## 检索与纳入规则
 
@@ -203,6 +203,17 @@ Stage4 显著优于 development LOGO OOF，但这不能自动解释为泛化能�
 
 当前 source lock 中的 10 个 model_id 都纳入“执行清单”，但排名必须按信息模态和预训练状态分 lane；不存在科学有效的全局 1–10 名。
 
+### TabICLv2 官方证据与本地 gate 纠正
+
+| 层次 | 一手证据与精确身份 | 审计结论 |
+|---|---|---|
+| 代码 | 官方 [`soda-inria/tabicl` README](https://github.com/soda-inria/tabicl/blob/46b91961db4f8873dd049ec09990698a435e1e29/README.md) 在 commit `46b91961db4f8873dd049ec09990698a435e1e29` 明确称项目为 permissive license；根 [`LICENSE`](https://github.com/soda-inria/tabicl/blob/46b91961db4f8873dd049ec09990698a435e1e29/LICENSE) 是 BSD-3-Clause（`src/tabicl/forecast` 的衍生代码另列 Apache-2.0，不影响本次 regressor） | TabICLv2 回归代码允许按 BSD-3-Clause 使用；不能再写“代码许可不清” |
+| 官方发布 checkpoint | README 的 Available models 表明确列出 `tabicl-regressor-v2-20260212.ckpt`；官方 [`TabICLRegressor` source](https://github.com/soda-inria/tabicl/blob/46b91961db4f8873dd049ec09990698a435e1e29/src/tabicl/_sklearn/regressor.py#L88-L101) 将默认来源锁为 Hugging Face `jingang/TabICL`。官方模型仓库快照 [`4dcd344ece2c00be9e831fdd35bed57b5ad83e19`](https://huggingface.co/jingang/TabICL/tree/4dcd344ece2c00be9e831fdd35bed57b5ad83e19) 中的[精确文件](https://huggingface.co/jingang/TabICL/blob/4dcd344ece2c00be9e831fdd35bed57b5ad83e19/tabicl-regressor-v2-20260212.ckpt)为 114,324,594 bytes，LFS SHA256 `0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a`；[官方 API 元数据](https://huggingface.co/api/models/jingang/TabICL?blobs=true)标记 `private=false`、`gated=false`、模型卡 `license=bsd-3-clause` | 这是可明确识别、公开、非 gated 且许可明确的官方回归权重；不存在需要用相反模型卡证据才能解除的许可阻塞 |
+| v2 回归预训练 | README 明确提供三阶段 regressor recipe：[stage 1](https://github.com/soda-inria/tabicl/blob/46b91961db4f8873dd049ec09990698a435e1e29/scripts/train_v2_reg_stage1.sh)、[stage 2](https://github.com/soda-inria/tabicl/blob/46b91961db4f8873dd049ec09990698a435e1e29/scripts/train_v2_reg_stage2.sh)、[stage 3](https://github.com/soda-inria/tabicl/blob/46b91961db4f8873dd049ec09990698a435e1e29/scripts/train_v2_reg_stage3.sh)，使用 quantile regression/pinball loss | 官方提供了回归预训练代码；但 README 同时声明迁移后的 v2 脚本尚未端到端重现原始预训练，故证据级别应区分“官方 checkpoint 可用”和“从零预训练已复现” |
+| 本地 source lock 与 cache | 当前 [`source_lock.json`](../../../../_models/property/source_lock.json) 仍登记 `tabicl==2.0.0`、code revision `f719c886…`，却把 weight source 写为 GitHub、`license_status=unconfirmed`、`sha256=null`；当前 [`tabiclv2_regressor.py`](../../../../_models/property/tabiclv2_regressor.py) 又要求显式 approved local checkpoint 且 `allow_auto_download=False`。本次审计机默认 Hugging Face cache 未发现 `jingang/TabICL` snapshot | 本地 gate 已过时，但本报告不能代替代码/source-lock 变更。后续应把 checkpoint 来源、HF snapshot、文件 SHA256 和 BSD-3-Clause 分层登记；本地文件缺失或哈希不符只能记为 `artifact_unavailable`/`integrity_mismatch`，不能再记 `license_unconfirmed` |
+
+因此，TabICLv2 的正确状态是：**官方代码和官方回归 checkpoint 许可已核实；本地 metadata/cache 尚未按官方身份重新登记。** 它应进入独立 `tabular-pretrained` lane，并在显式供应且哈希核验通过后运行正式 development cells；不得与 scratch tabular lane 跨 lane 排名。报告修改不改变当前 runner 的 fail-closed 行为，也不授权自动下载。
+
 | model_id | lane | 资格 | 同预算执行口径 | 排名状态 |
 |---|---|---|---|---|
 | `catboost_regressor` | tabular-scratch | 合法 | 同一 fold rows、特征、mask、seed；固定 32 estimator/update 配置并记录实际 wall time | 可排名 |
@@ -213,7 +224,7 @@ Stage4 显著优于 development LOGO OOF，但这不能自动解释为泛化能�
 | `hist_gradient_boosting_regressor` | tabular-scratch | 合法 | 同上 | 可排名 |
 | `realmlp_regressor` | tabular-scratch | 合法 | 同上 | 可排名 |
 | `ft_transformer_regressor` | tabular-scratch | 合法 | 同上 | 可排名 |
-| `tabiclv2_regressor` | tabular-pretrained | 权重/许可证 gate 未解除 | 只做 discover/build 或结构化 SKIP；不得下载权重、不得用未知许可输出排名 | `not_rankable`，直到 gate 有书面证据 |
+| `tabiclv2_regressor` | tabular-pretrained | 官方代码/checkpoint 许可已核实；本地 source lock 待按官方 snapshot/hash 重登记 | 使用显式本地 checkpoint，先核对 HF snapshot、文件名及 SHA256；固定相同 target/fold/seed，记录 `n_estimators`、forward 次数、wall time 和显存；不自动下载 | 可产生正式 pretrained-lane 指标；不与 scratch lane 跨 lane 排名 |
 | `monai_densenet3d_regressor` | seismic-3D-scratch | 合法但信息模态不同 | 使用相同目标/split/seed 和独立 GPU 时间/显存上限；输入真实 3D patch | 单候选 `not_rankable`；至少再有一个同 lane 候选才排名 |
 
 ### 公平预算的具体冻结项
@@ -221,7 +232,7 @@ Stage4 显著优于 development LOGO OOF，但这不能自动解释为泛化能�
 1. 固定目标、development 母井家族、4 个 LOGO folds、3 个 repeat seeds、训练行和输入白名单。
 2. 固定为每 cell 32 个注册的 estimator/update 单位，同时设置 lane 内相同 wall-time、CPU 线程、RAM 上限；报告真实更新数和耗时。`32 trees` 与 `32 optimizer steps` 不是等量计算，因此结论必须同时给“固定更新预算榜”和“固定资源预算敏感性”，不能只用一个数字宣称公平。
 3. tabular-scratch lane 的每个合法模型都跑 PHIF/KLOGH/SW：理论为 `8 models × 3 targets × 4 folds × 3 seeds = 288` 个合法 cells。
-4. TabICLv2 若未来解除 gate，单独产生 `1×3×4×3=36` 个 pretrained-lane cells；不能追加入 scratch 旧榜而不重跑同版本协议。
+4. TabICLv2 在完成官方 source/version/hash 的本地重登记并供应校验通过的 checkpoint 后，单独产生 `1×3×4×3=36` 个合法 pretrained-lane cells。若本地 artifact 缺失或哈希不符则结构化保留相应运行状态，但不得再使用 `license_unconfirmed`；也不能把 pretrained 结果追加入 scratch 旧榜形成跨 lane 排名。
 5. MONAI 产生 `1×3×4×3=36` 个 seismic-lane cells，但只有一模型时只报 pilot 完成率与指标，不授名次。
 6. 失败/超时/非有限输出原样保留；合法完成率 `<80%` 的 model-target 不排名。禁止用临时 20% 行切分补 cell。
 7. 目标内以 mean physical RMSE 为主排序；依次用 worst-family RMSE、seed 标准差、wall time、model_id 作预注册 tie-break。K 的 log 指标是诊断，不取代物理主榜。
@@ -231,7 +242,7 @@ Stage4 显著优于 development LOGO OOF，但这不能自动解释为泛化能�
 
 ### R0：合同与防火墙（秒级，无科学结论）
 
-- 验证 10 个 model_id 可动态发现；依赖/权重不合法者结构化 SKIP。
+- 验证 10 个 model_id 可动态发现；依赖缺失、checkpoint 未供应或哈希不符者按真实原因结构化 SKIP。TabICLv2 的官方许可已核实，不再把它归入“权重许可不合法”。
 - 构造每目标独立 mask，验证 PHIF/KLOGH/SW 的样本数可不同且不会互相填值。
 - 验证 KLOGH `x -> log1p(x) -> expm1(x)` round-trip，负 K fail-loud。
 - 验证代码无法解析或加载 F-15/fresh-test path；所有统计 fit-row hashes 只来自 fold-train。
@@ -248,7 +259,7 @@ Stage4 显著优于 development LOGO OOF，但这不能自动解释为泛化能�
 
 - 运行上述 288 个 tabular-scratch cells；固定 folds、3 seeds、32 更新预算和资源上限。
 - 输出每目标独立 OOF、逐家族指标、worst-family、完成率、耗时和便携图。
-- TabICLv2 与 MONAI 按各自 lane 规则处理；任何 SKIP 不伪造数值。
+- TabICLv2 在完成本地 source-lock/hash 重登记后运行独立 pretrained lane；MONAI 按 seismic lane 规则处理。任何 artifact 缺失、哈希失败或运行失败均保留真实状态，不伪造数值，也不跨 lane 排名。
 - 冻结每目标唯一赢家、配置和 artifact hashes 后停止模型开发。
 
 ### R3：外部验证 dry-run 与单次开启
