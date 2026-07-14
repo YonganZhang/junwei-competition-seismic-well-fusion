@@ -1,0 +1,131 @@
+{
+  "aggregate_sweetspot_board": null,
+  "aggregate_sweetspot_score": null,
+  "purpose": "R1 semantic and leakage mechanism validation; not final model ranking",
+  "results_canonical_sha256": "bbacbbf4193cdcc86c736f5b5bc4b8195865c657f35cab14027c689a9c3f0650",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5.1-r1-summary/v1",
+  "target_boards": {
+    "T1": {
+      "entries": [
+        {
+          "eligible_for_selection": false,
+          "metrics": {
+            "mae": 34189.00267624233,
+            "rmse": 1640501.5586847947,
+            "spearman": 0.6494073139218689
+          },
+          "model": "robust_linear"
+        }
+      ],
+      "head_name": "t1_rqi_proxy",
+      "status": "not_rankable_protocol_mechanism_only"
+    },
+    "T2": {
+      "entries": [
+        {
+          "eligible_for_selection": false,
+          "metrics": {
+            "average_precision": 0.9363725432132903,
+            "brier": 0.11399794916656417,
+            "f1_at_0.5": 0.8810476536922517
+          },
+          "model": "logistic_classifier"
+        }
+      ],
+      "head_name": "t2_sand_flag_proxy",
+      "status": "not_rankable_protocol_mechanism_only"
+    },
+    "T3": {
+      "entries": [
+        {
+          "eligible_for_selection": false,
+          "metrics": {
+            "mae": 1836.9150929306427,
+            "rmse": 14111.270891504591,
+            "spearman": 0.7899580628295594
+          },
+          "model": "robust_linear"
+        }
+      ],
+      "head_name": "t3_future_30d_mean_oil",
+      "status": "not_rankable_protocol_mechanism_only"
+    },
+    "T4": {
+      "entries": [
+        {
+          "eligible_for_selection": false,
+          "metrics": {
+            "average_precision": null,
+            "brier": 0.038845722089887125,
+            "f1_at_0.5": 1.0
+          },
+          "model": "logistic_classifier"
+        }
+      ],
+      "head_name": "t4_water_onset_30d_proxy",
+      "status": "not_rankable_protocol_mechanism_only"
+    },
+    "T5": {
+      "entries": [],
+      "head_name": "t5_remaining_oil",
+      "status": "not_rankable_protocol_mechanism_only"
+    },
+    "T6": {
+      "entries": [
+        {
+          "eligible_for_selection": false,
+          "metrics": {
+            "mae": 0.07345870716211976,
+            "rmse": 0.28353318875920097,
+            "spearman": 0.8554935134326881
+          },
+          "model": "robust_linear"
+        }
+      ],
+      "head_name": "t6_phif",
+      "status": "not_rankable_protocol_mechanism_only"
+    },
+    "T7": {
+      "entries": [
+        {
+          "eligible_for_selection": false,
+          "metrics": {
+            "mae": 7.700390682780108e+69,
+            "rmse": 8.853304429937807e+70,
+            "spearman": 0.6729101166413203
+          },
+          "model": "robust_linear"
+        }
+      ],
+      "head_name": "t7_klogh",
+      "status": "not_rankable_protocol_mechanism_only"
+    }
+  },
+  "target_order": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7"
+  ],
+  "target_status": {
+    "T1": "r1_completed",
+    "T2": "r1_completed",
+    "T3": "r1_completed",
+    "T4": "blocked_or_partial",
+    "T5": "not_feasible",
+    "T6": "blocked_or_partial",
+    "T7": "blocked_or_partial"
+  },
+  "ten_model_fair_comparison": "deferred_to_R2",
+  "test_firewall": {
+    "fresh_blind_claimed": false,
+    "frozen_test_metrics_accessed": false,
+    "historical_test_metrics_used": false,
+    "known_holdout_accessed": false,
+    "physical_test_h5_accessed": false
+  }
+}

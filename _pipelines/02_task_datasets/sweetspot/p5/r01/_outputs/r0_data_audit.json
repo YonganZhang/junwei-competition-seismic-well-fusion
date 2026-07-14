@@ -1,0 +1,89 @@
+{
+  "blocked_targets": {},
+  "dataset_sample_sha256": {
+    "T1": "bc6543bb462061cff4c015b209eadd050f7ee370dc5e542d63dfcb08b439b61c",
+    "T2": "2011b5c7a4ffb41605b6da4e7340a3291d1a5a980a253bf3cc41724fa95a6be7",
+    "T3": "b10851d2d30c11b486b1425e520edde92364d5a2ec9cba01fc202feaf21a4d65",
+    "T4": "312de35c95e591dc7a9d9bee347417bce96e6850f8f271524d8b865bea37fccb",
+    "T6": "ea18f7559cbd4d9383f7447440e7c0ea2094c32998e259fccf6a2394ea66f28c",
+    "T7": "6b73470f53de454c010aa933b77ad0d1bb561de404faa3018beff12c8d4836b2"
+  },
+  "dataset_split_sha256": {
+    "T1": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f",
+    "T2": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20",
+    "T3": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "T4": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+    "T6": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232",
+    "T7": "059eacdae735edc36347905218932fcd7693392f159572543d3420a2d0c4f447"
+  },
+  "petrophysical": {
+    "development_groups": [
+      "15/9-F-1",
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "field_roles": {
+      "KLOGH": "label_only_not_inference_input",
+      "PHIF": "label_only_not_inference_input",
+      "SAND_FLAG": "label_only_not_inference_input",
+      "SW": "label_only_not_inference_input",
+      "VSH": "label_only_not_inference_input"
+    },
+    "interpreted_label_fields_observed": [
+      "KLOGH",
+      "PHIF",
+      "SAND_FLAG",
+      "SW",
+      "VSH"
+    ],
+    "raw_input_fields": [
+      "GR",
+      "RHOB",
+      "NPHI",
+      "RT",
+      "DT",
+      "DTS",
+      "PEF",
+      "DRHO",
+      "CALI",
+      "BS",
+      "RD",
+      "RM",
+      "RACEHM",
+      "RACELM",
+      "RPCEHM",
+      "RPCELM"
+    ],
+    "table_count": 8
+  },
+  "production": {
+    "authorized_row_count": 8023,
+    "date_max": "2016-09-17",
+    "date_min": "2008-02-12",
+    "development_groups": [
+      "NO 15/9-F-1 C",
+      "NO 15/9-F-11 H",
+      "NO 15/9-F-12 H",
+      "NO 15/9-F-14 H"
+    ],
+    "fields": [
+      "DATEPRD",
+      "WELL_BORE_CODE",
+      "ON_STREAM_HRS",
+      "AVG_DOWNHOLE_PRESSURE",
+      "AVG_CHOKE_SIZE_P",
+      "AVG_WHP_P",
+      "BORE_OIL_VOL",
+      "BORE_GAS_VOL",
+      "BORE_WAT_VOL"
+    ]
+  },
+  "schema_version": "sweetspot-p5.1-r0-field-audit/v1",
+  "source_manifest_sha256": "f11142df5255898512d6132612031e713ce56273409ef54f7f500179534da5f6",
+  "test_firewall": {
+    "frozen_test_metrics_accessed": false,
+    "known_holdout_accessed": false,
+    "physical_test_h5_accessed": false,
+    "source_authorization": "development groups before value read"
+  }
+}
