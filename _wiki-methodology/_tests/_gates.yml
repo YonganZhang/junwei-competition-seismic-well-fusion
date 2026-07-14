@@ -83,3 +83,39 @@ gates:
     timeout: 300
     expect: exit0
     note: "Strict/conditional multiseed buffered-CV summaries, timeout retention and firewall."
+
+  - id: p5-r01-fault
+    cmd: "mkdir -p _tmp/p5-r01-gates && export TMPDIR=$PWD/_tmp/p5-r01-gates; for pattern in test_fault_p5_r01.py test_fault_p4.py test_fault_p5_stage2.py test_fault_p5_stage3.py test_fault_p5_stage4.py test_fault_pipeline.py; do PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/fault -p $pattern -q || exit 1; done"
+    timeout: 300
+    expect: exit0
+    note: "Fault R0/R1 lane gates plus historical track regressions; no formal ranking without audited negatives."
+
+  - id: p5-r01-facies
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest discover -s _pipelines/02_task_datasets/facies/tests -p 'test*.py' -q"
+    timeout: 900
+    expect: exit0
+    note: "F3/Penobscot spatial-vs-leaky mechanism tests; TMPDIR must be on the data filesystem because checkpoints exceed the root /tmp headroom."
+
+  - id: p5-r01-property
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_r01.py _pipelines/02_task_datasets/reservoir/tests/test_p5_stage1_contracts.py _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_stage2.py"
+    timeout: 300
+    expect: exit0
+    note: "PHIF/KLOGH/SW independent masks, LOGO4 zero-overlap and random-depth leakage diagnostic."
+
+  - id: p5-r01-lithofacies
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 LITHOFACIES_R01_TINY=1 ${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m unittest discover -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_lithofacies_p5_r01.py' -q && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest discover -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_p4_contract.py' -q"
+    timeout: 600
+    expect: exit0
+    note: "GM09 fixed-nine LOGO4 legality, overlap diagnostics and P/S lane boundaries."
+
+  - id: p5-r01-sweetspot
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m unittest _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_r01.py _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage2.py -q && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m pytest -q _pipelines/02_task_datasets/sweetspot/tests/test_validate_only.py"
+    timeout: 600
+    expect: exit0
+    note: "Seven independent target contracts, honest partial/not-feasible states and aggregate-score prohibition."
+
+  - id: p5-r01-reconstruction
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test*.py' -q"
+    timeout: 600
+    expect: exit0
+    note: "B0/B1/shuffled conditional-channel mechanism, common mask, distance bands and no-generalization boundary."

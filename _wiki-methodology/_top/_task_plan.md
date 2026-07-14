@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5直接基准调研完成，待协议修订实施] 六赛道已在隔离集成分支共存；
+> **🧭 当前: [P5.1 R0/R1已集成验收，进入P5.2学习曲线准备] 六赛道已在隔离集成分支共存；
 >   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
 >   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
 >   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
@@ -22,8 +22,11 @@
 >   2026-07-14 六赛道又完成只纳入直接相关原始论文、官方基准和作者仓库的训练/测试协议复核，
 >   67项赛道级直接证据均经负责人独立验收。结论不是推翻公共工程框架，而是保留防火墙、group/spatial
 >   split、统一seed和产物合同，重做标签门、lane公平性、学习曲线、nested选择、专属可视化和fresh-blind。
->   统一裁决见`_decisions/P5.1_direct_benchmark_protocol_revision.md`；六份报告仍在各自Stage-3研究分支，
->   尚未引入集成分支或master。
+>   统一裁决见`_decisions/P5.1_direct_benchmark_protocol_revision.md`；六份直接基准报告和六赛道R0/R1实现
+>   已按固定顺序进入干净分支`p5-r01-integration`，独立验收后联合回归为290 passed、6 expected skips。
+>   R0/R1只证明标签/split/窗口/预处理/指标语义与泄漏诊断成立，不是十模型性能榜；下一步P5.2先做
+>   短/中/长预算学习曲线和loss/output/context/modality消融，达到预注册停止线后才进入P5.3十候选正式CV。
+>   完整证据见`_wiki-methodology/_tests/P5.1_r01_integration_acceptance_evidence.md`；master仍未merge，
 >   未 push。**
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
@@ -38,7 +41,7 @@
 | P2 数据 / 实现准备 | ✅ | 3/3 | Volve全套(含ST10010)+F3+Penobscot下载完成；③④赛道数据量核实足够(纠正见P2.2) |
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
 | P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
-| P5 合成 / 交付 | 🔄 | 0.95/1 | Stage-1/2/3、Stage-4已见holdout确认和六赛道直接基准复核已完成；协议修订决策已冻结。仍需R0/R1修复、学习曲线/正式CV和真正未触碰的外部或赛事隐藏测试。 |
+| P5 合成 / 交付 | 🔄 | 0.96/1 | Stage-1/2/3、Stage-4已见holdout确认、直接基准复核及P5.1 R0/R1已完成；下一步P5.2学习曲线，随后P5.3十候选正式CV，最终仍需真正未触碰的外部或赛事隐藏测试。 |
 
 ## 协作与决策权边界
 
@@ -212,6 +215,14 @@
       冒充能力榜，已见holdout不得冒充fresh blind；断层先补审计负例，地震相补full-volume与学习曲线，
       物性/岩相/甜点/重建按任务与模态分lane并修正各自split/标签/成对对照。本批只做报告和决策，
       尚未引入六份报告提交、未改训练代码、未merge master、未push。
+- [x] 2026-07-14 P5.1 R0/R1实施与集成验收完成：六赛道从共同基线`d1bf52a`建立干净实现提交，按
+      ①断层→②地震相→③物性→④岩相→⑤甜点→⑥重建顺序集成到`p5-r01-integration@5d4a917`。
+      六个worker均已独立collect/verify；跨赛道联合回归290 passed、6个可解释数据门skip。首次联合跑的
+      facies失败复现为根分区`/tmp`仅余约71MB导致第二个57.4MB临时checkpoint写满；把`TMPDIR`切到
+      `/mnt/data`后原测试通过，未改算法或产物。全局seed=2693，frozen/physical test与known-holdout指标
+      均未访问，所有输出仍是protocol mechanism evidence而非性能榜。验收见
+      `_wiki-methodology/_tests/P5.1_r01_integration_acceptance_evidence.md`。下一步统一称P5.2/protocol R2学习曲线；达到停止线后
+      才启动P5.3/protocol R3每合法赛道/lane至少10候选正式grouped/spatial/temporal CV。master未merge、未push。
 
 ## 数据资产索引
 
