@@ -216,3 +216,20 @@ artifact manifest, exact OOF, and one-shot test lifecycle entry points live in
 load a model or select a threshold, and produces the required masked
 input/GT/probability/confusion, orthogonal, PR/threshold, and
 boundary/components figures with source hashes.
+
+## P5 Stage-4 confirmation gate
+
+The deterministic Stage-4 gate consumes only the frozen Stage-3 manifests and
+hash-verifies their existing readiness SVGs. Because fault has zero legal
+development folds, no audited negatives, and no frozen winner, it records a
+portable `blocked/not_rankable` confirmation without refitting a model or
+opening a holdout:
+
+```bash
+python3 _pipelines/02_task_datasets/fault/fault_p5_stage4.py
+python3 -m unittest discover -v -s _pipelines/02_task_datasets/fault -p 'test_fault_p5_stage4.py'
+```
+
+Tracked confirmation evidence lives under `_outputs/p5_stage4_confirmation/`.
+It references the Stage-3 data-gate visualization by path and SHA-256; it does
+not copy those figures or fabricate prediction artifacts.

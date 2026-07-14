@@ -1,0 +1,41 @@
+{
+  "figures": [
+    {
+      "bytes": 3324,
+      "path": "p5_stage3/figures/fault_readiness.svg",
+      "role": "stage3_data_readiness_evidence",
+      "sha256": "4e33c97a0bb7801c30db32f0196054ede573074d254433e1228860a6dd420d7b"
+    },
+    {
+      "bytes": 2210,
+      "path": "p5_stage3/figures/fault_negative_coverage.svg",
+      "role": "stage3_data_readiness_evidence",
+      "sha256": "4bdcda77826e8c9543b2efb9410aa058b8e67afbc3bdc44c237ed69336720230"
+    },
+    {
+      "bytes": 2837,
+      "path": "p5_stage3/figures/fault_unknown_coverage.svg",
+      "role": "stage3_data_readiness_evidence",
+      "sha256": "8459b8d75dcb8cf3a9dd84cbe28bed3bdfd42ec70adf42b230f9fde3cd9de5a4"
+    }
+  ],
+  "holdout_accessed": false,
+  "lane": "fault_3d_segmentation_data_gate",
+  "prediction_artifacts": [],
+  "prediction_fabricated": false,
+  "prediction_source": null,
+  "protocol": "fault-p5-stage4-visualization-reuse-v1",
+  "refit_executed": false,
+  "reuse_mode": "hash_reference_only",
+  "source_data_manifest": {
+    "path": "p5_stage3/p5_stage3_data_manifest.json",
+    "sha256": "66f7f922fad93dfb8adc218cfcbebd65cbc0b7e4f061dca99a1feb3e884083a1"
+  },
+  "source_visualization_manifest": {
+    "path": "p5_stage3/p5_stage3_visualization_manifest.json",
+    "sha256": "3fe7edbfb236b958d4ffde15521456766dfb49e7ff7817de99e3270f5744e1dd"
+  },
+  "status": "reused_readiness_only",
+  "task_id": "fault_stick_segmentation",
+  "track_id": "fault"
+}

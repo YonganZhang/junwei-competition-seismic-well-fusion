@@ -1,0 +1,27 @@
+{
+  "artifacts": [
+    {
+      "bytes": 4626,
+      "path": "p5_stage4_confirmation.json",
+      "role": "stage4_confirmation",
+      "sha256": "a7eb96b8734bad002621cae34e566660979556852a2b439cbc86eca2ce79cfdc"
+    },
+    {
+      "bytes": 1441,
+      "path": "p5_stage4_visualization_reuse.json",
+      "role": "stage3_visualization_hash_reuse",
+      "sha256": "dde5a8532aeae829d08963800430d4314a84739c9a41a373d87d83611a679138"
+    }
+  ],
+  "checkpoint_count": 0,
+  "holdout_accessed": false,
+  "lane": "fault_3d_segmentation_data_gate",
+  "prediction_payload_count": 0,
+  "protocol": "fault-p5-stage4-artifact-manifest-v1",
+  "refit_executed": false,
+  "runner_sha256": "8c13fe367e41eec7970e221c873289919ed9c13df414386db673d24176f4f85a",
+  "stage3_manifest_snapshot_sha256": "c4ff2d22517bc6766928f03460df9d9ddd10c4d806186f673939b278f6614445",
+  "status": "blocked",
+  "task_id": "fault_stick_segmentation",
+  "track_id": "fault"
+}

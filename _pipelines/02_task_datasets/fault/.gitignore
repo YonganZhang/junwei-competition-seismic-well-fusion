@@ -77,3 +77,10 @@ __pycache__/
 !/_outputs/p5_stage3/figures/fault_readiness.svg
 !/_outputs/p5_stage3/figures/fault_negative_coverage.svg
 !/_outputs/p5_stage3/figures/fault_unknown_coverage.svg
+
+# Portable fault-private P5 Stage-4 confirmation gate. No refit/test payloads.
+!/_outputs/p5_stage4_confirmation/
+/_outputs/p5_stage4_confirmation/*
+!/_outputs/p5_stage4_confirmation/p5_stage4_confirmation.json
+!/_outputs/p5_stage4_confirmation/p5_stage4_visualization_reuse.json
+!/_outputs/p5_stage4_confirmation/p5_stage4_artifact_manifest.json
