@@ -19,6 +19,55 @@ JSON remain unchanged. See `P4_SOP.md` for commands, data provisioning and the
 unit → contract → tiny → real-smoke → CV → refit → single-test order. Known
 scientific limits are machine-readable in `not_feasible.json`.
 
+## P5 known-holdout confirmation Stage 4
+
+`reconstruction_p5_stage4.py` is a track-private finalization path for the
+Stage-3 winner because the P4 runner does not support `pykrige_ok3d`. It does
+not alter or impersonate the P4 single-test lifecycle. Both physical holdout
+regions were scored by the historical Ridge baseline, so every Stage-4
+artifact is fail-closed labelled `prior_test_consumed=true`,
+`evidence_class=previously_seen_reusable_holdout`, and `fresh_blind=false`.
+These results are known-holdout confirmation evidence, never a new blind test.
+
+For each independent mode the runner verifies the Stage-3 leaderboard,
+winner, split hash, prior result and canonical HDF5 hashes. It fits
+preprocessing on every legal development cell, then applies the frozen
+traditional-CPU cap: deterministic 512-point model fit, one update and 300
+model-wall seconds. A timeout is retained as structured `budget_timeout`; no
+configuration is relaxed. Conditional inference includes test-region well
+constraints and excludes their exact 90 cells from metrics, while strict
+inference receives no guard/test porosity constraints.
+
+Use only the already-provisioned torch-common primary environment and
+tabular/geostat auxiliary site-packages:
+
+```bash
+export VOLVE_P5_AUX_SITE_PACKAGES=/path/to/tabular-cpu/site-packages
+export VOLVE_P5_AUX_DEPENDENCY_GROUP=tabular-cpu
+export PYTHONDONTWRITEBYTECODE=1
+
+timeout --signal=TERM 360s /path/to/torch-common/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage4.py \
+  run-mode --mode strict --data-dir /path/to/reconstruction \
+  --output-dir _pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation
+
+timeout --signal=TERM 360s /path/to/torch-common/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage4.py \
+  run-mode --mode conditional --data-dir /path/to/reconstruction \
+  --output-dir _pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation
+
+/path/to/torch-common/bin/python \
+  _pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage4.py \
+  collate \
+  --output-dir _pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation
+```
+
+Each mode persists its frozen config, refit audit/checkpoint, compact legal
+holdout predictions, metrics, artifact hashes and a truth/prediction/residual
+slice figure with ECDF and 3-D spectrum diagnostics. The ECDF is explicitly
+diagnostic-only and contributes no selection or final score. `summary.json`
+keeps strict and conditional metrics separate.
+
 ## P5 multiseed spatial-CV Stage 3
 
 `reconstruction_p5_stage3.py` confirms only the frozen Stage-2 top three in

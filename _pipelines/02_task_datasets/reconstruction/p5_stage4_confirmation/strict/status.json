@@ -1,0 +1,54 @@
+{
+  "config_hash": "77668137e447b33a4b2ba92086ae21eb668ae60b52d27dd5609ef6e793af5761",
+  "counts": {
+    "development_active_cells": 49323,
+    "development_patches": 70,
+    "excluded_exact_constraint_cells": 0,
+    "metric_voxels": 78949,
+    "model_fit_cells": 512,
+    "test_active_cells": 78949,
+    "test_patches": 105
+  },
+  "environment": {
+    "aux_dependency_group": "tabular-cpu",
+    "downloads_performed_bytes": 0,
+    "primary_environment": "torch-common",
+    "python": "3.11.15",
+    "python_executable": "python"
+  },
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "manifest": "manifest.json",
+  "manifest_sha256": "5e62d9e722a6321cf95147ace2ebe83c7da3a9eaf90494c8013eeddb8d8c6577",
+  "metrics": {
+    "evaluation_mode": "strict",
+    "pearson_r_defined": true,
+    "strict_bias": 0.01754357841298476,
+    "strict_mae": 0.027172838434594462,
+    "strict_out_of_range_rate": 0.0,
+    "strict_pearson_r": -0.12004558302147143,
+    "strict_r2": -0.3396787079619956,
+    "strict_rmse": 0.03562492535922522,
+    "strict_spectral_log_rmse": 1.4798489864025641,
+    "task_id": "volve_porosity_strict_spatial_reconstruction",
+    "voxel_count": 78949
+  },
+  "mode": "strict",
+  "model_id": "pykrige_ok3d",
+  "prior_test_consumed": true,
+  "reason": null,
+  "resources": {
+    "device": "cpu",
+    "max_wall_seconds": 300,
+    "peak_rss_kib": 288376,
+    "prediction_chunk_size": 2048,
+    "updates": 1
+  },
+  "result_hash": "b189b7c5342d1cab4813049093eff9f4507f9ffe78e37332c8df3ae295b62c8b",
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "split_hash": "1f73ab386a27c533cf631fba9ddd26e07b765b325a12ef8477e986886be07fea",
+  "status": "passed",
+  "task_id": "volve_porosity_strict_spatial_reconstruction",
+  "track_id": "reconstruction",
+  "wall_seconds": 28.5959363989532
+}

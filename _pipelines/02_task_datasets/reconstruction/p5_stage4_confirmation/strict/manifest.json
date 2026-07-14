@@ -1,0 +1,35 @@
+{
+  "artifacts": {
+    "confirmation.png": {
+      "bytes": 443395,
+      "sha256": "76d39942121ee56c2d264d1b5a4f976988f0c6a547307a72dffe46d53c81094a"
+    },
+    "frozen_config.json": {
+      "bytes": 3580,
+      "sha256": "b59220061302dd882652448401196b000a326de8fa8cbc20c1246261e0f552fc"
+    },
+    "metrics.json": {
+      "bytes": 1811,
+      "sha256": "190fab21e08ef716ae41192641c07129e5a177b5a4bd294f0d124d5de6cfc09b"
+    },
+    "predictions.npz": {
+      "bytes": 1617597,
+      "sha256": "cc595c073611dcbd952223800e28306d2aef6c6409c5168f8e2cb0f97625caed"
+    },
+    "refit.json": {
+      "bytes": 4297,
+      "sha256": "52cdaa52f75696cdfef86b1dcfc4c1b74e53374b4954c352f9b1c139e8c166a0"
+    },
+    "refit_checkpoint.npz": {
+      "bytes": 26025,
+      "sha256": "bfd011fa898e1f1356536392c3ed2f88f6f56c30f80b515c80291957d849766c"
+    }
+  },
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "mode": "strict",
+  "prior_test_consumed": true,
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "task_id": "volve_porosity_strict_spatial_reconstruction",
+  "track_id": "reconstruction"
+}

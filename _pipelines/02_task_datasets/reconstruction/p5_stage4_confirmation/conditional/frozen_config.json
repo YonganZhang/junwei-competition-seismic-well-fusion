@@ -1,0 +1,79 @@
+{
+  "budget": {
+    "max_updates": 1,
+    "max_wall_seconds": 300,
+    "model_class": "traditional_cpu"
+  },
+  "cdf_diagnostic_only": true,
+  "config_hash": "a5827599b46208d5bf6bb02507927668feb81c0c214ed4869f903107b459822a",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "mode": "conditional",
+  "model_config": {
+    "device": "cpu",
+    "learning_rate": 0.001,
+    "n_features": 7,
+    "n_training_samples": 512,
+    "nlags": 4,
+    "seed": 2693,
+    "variogram_model": "linear",
+    "weight_decay": 1e-05
+  },
+  "model_id": "pykrige_ok3d",
+  "prior_exposure": {
+    "canonical_input_sha256": {
+      "test.h5": "dc236785c50fb5a01984973bab67bbfd40db5f45f4676df54291e4192779a271",
+      "train.h5": "2e395d810feb067b24c2295d87e6b33e308cb21aba224c6d2ddd1e6fcd88de73"
+    },
+    "evidence_class": "previously_seen_reusable_holdout",
+    "formal_p4_test_consumed_artifact_present": false,
+    "fresh_blind": false,
+    "legacy_primary_baseline": "ridge_idw_seismic_coordinates",
+    "legacy_primary_metrics": {
+      "mae": 0.015949503207834958,
+      "rmse": 0.021589275815485132
+    },
+    "legacy_result": "_pipelines/02_task_datasets/reconstruction/results_conditional.json",
+    "legacy_result_sha256": "7cb2b53802f1a572b9dc55f43ba634e52ad4361a82965b74f3dae2d8301842eb",
+    "legacy_run_manifest": "_pipelines/02_task_datasets/reconstruction/run_manifest_conditional.json",
+    "legacy_run_manifest_sha256": "3155644fe7e777ac6efce41548d92bc8f887ba03ed9c6c9decd07d6ff32f4677",
+    "legacy_same_holdout_metrics_present": true,
+    "prior_test_consumed": true,
+    "test_i_blocks": [
+      4,
+      5
+    ]
+  },
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "selection_source": "P5 Stage-3 buffered-development OOF leaderboard only",
+  "source": {
+    "distribution": "pykrige",
+    "license": "BSD-3-Clause",
+    "revision": "5e896fb3398cc86acd735d170fb758a02528b70e",
+    "upstream_url": "https://github.com/GeoStat-Framework/PyKrige",
+    "version_constraint": "==1.7.3"
+  },
+  "split_hash": "ffe1fddbfd3ef8e2a9e0b3f3942133226610c872e7da37460f070782cba700a6",
+  "stage3_leaderboard": "_pipelines/02_task_datasets/reconstruction/p5_stage3_leaderboard_conditional.json",
+  "stage3_leaderboard_sha256": "bc900996d5d8a76238dcfd1504af000548ad8555d62e5a92964c716a0836cac3",
+  "stage3_passed_result_hashes": [
+    "c86e0fe245b477b20a79cbb128088e08ae2bc344bcaf9bdf10154e2b064cd57d",
+    "b64b5151f3c5a0c4407805e6ff3366d57029f1f10d2e128761c3c13cb9365aee",
+    "c3677db3fe53a5875af2b187e7ec6701020a8cdde0476fedc45bdff0725f36be",
+    "0733ce5b8cea7b61199a7a315040b4ae04bbd4f400e80e75149a7aad26cc7dad",
+    "14a23895a3f84703062523026086703656f0086e8adbe283c556cbf2ff55c867",
+    "3da16a4472b3b1d134b739ae37fcee45954b8de93aef807abe67f3ddab888888",
+    "96f2ca6db792105206f9c9cad31c420b4e64d1cfe06f9340662513b718a2272e",
+    "a0f64a54198cfcc86688d4e32f8bf2950f33f2ccfc7379ca3de8265a65e9e1cb",
+    "8d50d0ecea3398d5828aee545f7c9314d40d52ca1ba7508f852c5b95ce1102e9",
+    "2d5c7308713e6bf5c3301e06fdc884b524853ea1f5d5287fbd653ad5611e709a",
+    "e1941f7a8eeda2142de63baa1dc95723fddedce064c265a6649e9cb5f018e207",
+    "d8a384ef5957cf1da2e4680a493e053a84a9b075d7156a8c42b37f614221eed4",
+    "d1ac9b8884ff28b838ec51a0313ab70419385e1e56a5bf5445db305b52bfcb12",
+    "3a3331840887e3c2498baef7b1aa8ec994fe286632d2f33e4a1468395601476a"
+  ],
+  "task_id": "volve_porosity_conditional_reconstruction",
+  "track_id": "reconstruction"
+}

@@ -1,0 +1,16 @@
+{
+  "evidence": {
+    "fresh_blind": false,
+    "manifest_sha256": "5e62d9e722a6321cf95147ace2ebe83c7da3a9eaf90494c8013eeddb8d8c6577",
+    "prior_test_consumed": true,
+    "result_hash": "b189b7c5342d1cab4813049093eff9f4507f9ffe78e37332c8df3ae295b62c8b"
+  },
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "mode": "strict",
+  "prior_test_consumed": true,
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "state": "CONFIRMATION_COMPLETE",
+  "task_id": "volve_porosity_strict_spatial_reconstruction",
+  "track_id": "reconstruction"
+}
