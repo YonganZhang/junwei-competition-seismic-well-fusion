@@ -84,3 +84,12 @@ __pycache__/
 !/_outputs/p5_stage4_confirmation/p5_stage4_confirmation.json
 !/_outputs/p5_stage4_confirmation/p5_stage4_visualization_reuse.json
 !/_outputs/p5_stage4_confirmation/p5_stage4_artifact_manifest.json
+
+# Portable fault-private P5.1 R0/R1 gate and bounded diagnostic evidence.
+!/_outputs/p5_r01_protocol/
+/_outputs/p5_r01_protocol/*
+!/_outputs/p5_r01_protocol/r0_lane_gates.json
+!/_outputs/p5_r01_protocol/r1_mechanism.json
+!/_outputs/p5_r01_protocol/summary.json
+!/_outputs/p5_r01_protocol/artifact_manifest.json
+!/_outputs/p5_r01_protocol/README.md

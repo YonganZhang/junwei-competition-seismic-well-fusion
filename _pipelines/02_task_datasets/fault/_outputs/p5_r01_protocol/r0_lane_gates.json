@@ -1,0 +1,110 @@
+{
+  "lane_isolation": {
+    "cross_lane_ranking_forbidden": true,
+    "labels_and_negatives_never_promoted_between_lanes": true
+  },
+  "lanes": [
+    {
+      "data_ready": false,
+      "hashes": {
+        "config": "7ee6079cf11a78523ce48ab05f5de66943a8d5338d86bb180481fe0d29d069d0",
+        "label": "968b3a98e0691e72c1bac1adc86b6761123f162ffc857182d6464336f2bba2b2",
+        "source": "fa9e08defbed23b5d07a66a589a6dbb8c794378ef4ea3be45dcbcfbaf480562b",
+        "split": "3bfb04cca34bc544fd16c9e30c931c95f2475b124edbbf790ace808b916f4703"
+      },
+      "lane_id": "synthetic_only",
+      "rank_allowed": false,
+      "ranking_scope": null,
+      "reason_codes": [
+        "REGISTERED_DENSE_SYNTHETIC_DATASET_MISSING"
+      ],
+      "requirements": {
+        "contract_fixture_prohibited": true,
+        "dense_ground_truth": false,
+        "independent_generated_volume_split": false,
+        "label_hash_present": false,
+        "registered": false,
+        "source_hash_present": false
+      },
+      "seed": 2693,
+      "test_firewall": {
+        "frozen_test_accessed": false,
+        "historical_holdout_arrays_accessed": false,
+        "runner_accepts_test_inputs": false,
+        "selection_or_ranking_performed": false,
+        "test_labels_accessed": false,
+        "test_metrics_accessed": false,
+        "test_predictions_accessed": false
+      },
+      "train_allowed": false
+    },
+    {
+      "data_ready": true,
+      "hashes": {
+        "config": "210892bbbbd8299523c88646e64606cc03574801d4c4383c7cb64dd6c6349ed6",
+        "label": "f8dac17fda70e1cbd72d388eb9d475b5f11236398be7f5edcff3d17a34d92255",
+        "source": "0fc8b8a9757ff67d94332d9adb8d1a917dc6f50f4dd76a77905faa39f5eef7ce",
+        "split": "6b4db5e94325312082666c372cba53944fa8713cf586793a305ec45d923d233f"
+      },
+      "lane_id": "masked_weak_label",
+      "rank_allowed": false,
+      "ranking_scope": null,
+      "reason_codes": [
+        "MASKED_WEAK_OBJECTIVE_NOT_CONFIGURED",
+        "AUDITED_EVALUATION_NEGATIVES_MISSING"
+      ],
+      "requirements": {
+        "proxy_separate": true,
+        "stick": "positive",
+        "unlabelled": "unknown",
+        "valid_label_mask_for_unlabelled": false
+      },
+      "seed": 2693,
+      "test_firewall": {
+        "frozen_test_accessed": false,
+        "historical_holdout_arrays_accessed": false,
+        "runner_accepts_test_inputs": false,
+        "selection_or_ranking_performed": false,
+        "test_labels_accessed": false,
+        "test_metrics_accessed": false,
+        "test_predictions_accessed": false
+      },
+      "train_allowed": false
+    },
+    {
+      "data_ready": false,
+      "hashes": {
+        "config": "79d6636bc84d377253ac8afed32bab570e3e2eec55082b7214020cc3435bfa66",
+        "label": "66f7f922fad93dfb8adc218cfcbebd65cbc0b7e4f061dca99a1feb3e884083a1",
+        "source": "0fc8b8a9757ff67d94332d9adb8d1a917dc6f50f4dd76a77905faa39f5eef7ce",
+        "split": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9"
+      },
+      "lane_id": "formal_audited",
+      "rank_allowed": false,
+      "ranking_scope": null,
+      "reason_codes": [
+        "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+        "FEWER_THAN_TWO_LEGAL_BUFFERED_FOLDS"
+      ],
+      "requirements": {
+        "coverage_audited_verified_negative_count": 0,
+        "each_fold_train_and_validation_has_both_classes": false,
+        "effective_legal_buffered_folds": 0,
+        "minimum_legal_buffered_folds": 2
+      },
+      "seed": 2693,
+      "test_firewall": {
+        "frozen_test_accessed": false,
+        "historical_holdout_arrays_accessed": false,
+        "runner_accepts_test_inputs": false,
+        "selection_or_ranking_performed": false,
+        "test_labels_accessed": false,
+        "test_metrics_accessed": false,
+        "test_predictions_accessed": false
+      },
+      "train_allowed": false
+    }
+  ],
+  "protocol": "fault-p5-r0-lane-gates-v1",
+  "track_id": "fault"
+}

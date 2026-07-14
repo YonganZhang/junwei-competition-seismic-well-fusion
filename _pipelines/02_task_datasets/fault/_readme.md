@@ -233,3 +233,28 @@ python3 -m unittest discover -v -s _pipelines/02_task_datasets/fault -p 'test_fa
 Tracked confirmation evidence lives under `_outputs/p5_stage4_confirmation/`.
 It references the Stage-3 data-gate visualization by path and SHA-256; it does
 not copy those figures or fabricate prediction artifacts.
+
+## P5.1 R0/R1 protocol gate
+
+`fault_p5_r01.py` separates `synthetic_only`, `masked_weak_label`, and
+`formal_audited` lanes before training. The bounded R1 entry accepts only the
+three explicit SHA-256-locked development inputs in
+`p5_r01_development_lock.json`; it has no holdout argument. A/B use the same
+known-invalid complement labels to diagnose random versus buffered spatial
+splits with `fault_local_logistic`, four updates, seed 2693, and no HPO. Their
+numbers are diagnostic-only and not rankable. C preserves unlabelled voxels as
+unknown, keeps proxy separate, and stops before model construction while there
+are zero audited negatives and fewer than two legal buffered folds. Portable
+evidence is written only to `_outputs/p5_r01_protocol/`; the ten-model fair
+comparison remains an R2 task.
+
+Run it from the project root with an explicit development SEG-Y path:
+
+```bash
+python3 _pipelines/02_task_datasets/fault/fault_p5_r01.py \
+  --development-segy PATH/TO/DEVELOPMENT.segy \
+  --fault-points _pipelines/01_common_preprocess/outputs/fault_points.npz \
+  --seismic-index _pipelines/01_common_preprocess/outputs/seismic_index.npz \
+  --development-lock _pipelines/02_task_datasets/fault/p5_r01_development_lock.json \
+  --data-registry _meta/_data_registry.yml
+```
