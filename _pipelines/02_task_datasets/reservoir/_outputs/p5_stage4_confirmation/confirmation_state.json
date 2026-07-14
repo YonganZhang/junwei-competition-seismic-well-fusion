@@ -1,0 +1,36 @@
+{
+  "confirmation_consumed_at": "2026-07-14T02:13:41.406338+00:00",
+  "confirmation_kind": "previously_seen_reusable_holdout",
+  "confirmed_at": "2026-07-14T02:13:42.733074+00:00",
+  "contract_sha256": "c3b901d115bc52e03fb041ce7634df7483bc5c5ac366f8a9c30a3aef29ff9913",
+  "fresh_blind": false,
+  "known_holdout_accessed_by_stage4_model": true,
+  "prior_test_consumed": true,
+  "refit_checkpoint_sha256": {
+    "extra_trees_regressor": "d3bc23073395f9f37af74cb1ee16365b10ebd63cc723aa00274b66b7d7ad8f08",
+    "xgboost_regressor": "b7ca2f33f5885816c50db85f264dfa187e5edbd4a0a8ea61807d78e4a3451059"
+  },
+  "refit_completed_at": "2026-07-14T02:13:41.405930+00:00",
+  "schema_version": 1,
+  "stage": 4,
+  "stage3_split_hash": "2334f3cc301fc66d6b98c6edf3a4f9c920776469531003d62f5370e119426a18",
+  "state": "CONFIRMED",
+  "targets": {
+    "KLOGH": {
+      "metrics_sha256": "17c4023fb142950e1d85adfe80cc642a3abcaca70267fddd499dcb57ffd67049",
+      "model_id": "extra_trees_regressor",
+      "predictions_sha256": "1901fa1a01397d20ac70e631fa3e5caa76a4acf2df81ce53a757e4b164f2f493"
+    },
+    "PHIF": {
+      "metrics_sha256": "7eaadf9d1685293ae3fd361153451a6675ebf5b5a2bb76a77197b21c6b25e3a3",
+      "model_id": "extra_trees_regressor",
+      "predictions_sha256": "f1c605f6f303d6d2038e2c647e130b8e2ae101402b2b4fc381ed74c3ab04e2dc"
+    },
+    "SW": {
+      "metrics_sha256": "92bda583611c1cac221647cefd436d1f941d2259dd488bc0ac0b5425d4251a8b",
+      "model_id": "xgboost_regressor",
+      "predictions_sha256": "c0118d2be5ecb1fa03db55d31628e94a583fef3f7289e2c89ca0ec049ac5ec18"
+    }
+  },
+  "track_id": "property"
+}

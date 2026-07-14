@@ -1,0 +1,34 @@
+{
+  "budget": {
+    "n_estimators": 32,
+    "n_jobs": 1,
+    "update_steps": 32,
+    "update_unit": "trees_per_target"
+  },
+  "confirmation_kind": "previously_seen_reusable_holdout",
+  "feature_whitelist": [
+    "ST0202_seismic_patch",
+    "GR",
+    "RT",
+    "NPHI",
+    "RHOB",
+    "GR_observed_mask",
+    "RT_observed_mask",
+    "NPHI_observed_mask",
+    "RHOB_observed_mask"
+  ],
+  "hpo": false,
+  "model_config": {
+    "device": "cpu",
+    "n_estimators": 32,
+    "n_features": 153,
+    "n_jobs": 1,
+    "seed": 2693
+  },
+  "model_domain": "log1p(KLOGH_mD)",
+  "model_id": "extra_trees_regressor",
+  "prediction_transform": "expm1(clamp(log1p_prediction,0))",
+  "seed": 2693,
+  "target": "KLOGH",
+  "winner_reselection": false
+}

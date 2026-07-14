@@ -208,3 +208,40 @@ manifest、每目标每lane排行榜，以及每目标的分井深度真值-预�
 worst-family和fold×seed分布图。完整OOF数组、checkpoint和视觉质检contact sheet留在
 被忽略的`runtime/`。请求Times New Roman但当前环境未安装，图件manifest如实记录为
 Liberation Serif回退；不影响数据或指标。
+
+## P5 Stage-4 已知持有集确认
+
+Stage-4不是新的盲测。`15/9-F-15`已被历史三输出baseline及P4 PHIF/KLOGH
+消费，因此全部状态、指标和图件固定标注
+`previously_seen_reusable_holdout`、`prior_test_consumed=true`、
+`fresh_blind=false`。Stage-4不会覆盖P4或历史输出。
+
+冻结胜者保持Stage-3结论：PHIF与KLOGH使用`extra_trees_regressor`，SW使用
+`xgboost_regressor`；seed固定2693，每个target保持32 estimator/update预算。
+在任何fit前，runner会验证Stage-3三份leaderboard哈希、P4/Stage-3 split身份、
+输入白名单、真实数据哈希和既有F-15暴露证据。预处理只fit四个development母井
+家族的全部1,216行；single-use状态推进后才允许模型访问344行F-15。
+
+tabular环境不需要安装h5py。先用已有含h5py的解释器只做私有runtime prepare，
+再用冻结tabular环境执行唯一一次confirmation：
+
+```bash
+${H5PY_PYTHON:-python3} \
+  _pipelines/02_task_datasets/reservoir/reservoir_p5_stage4.py prepare \
+  --train-h5 /path/to/read-only/reservoir/train.h5 \
+  --test-h5 /path/to/read-only/reservoir/test.h5 \
+  --guard-npz /path/to/read-only/guard.npz
+
+${TABULAR_PYTHON:-python3} \
+  _pipelines/02_task_datasets/reservoir/reservoir_p5_stage4.py confirm
+
+${TABULAR_PYTHON:-python3} \
+  _pipelines/02_task_datasets/reservoir/reservoir_p5_stage4.py audit
+```
+
+`confirm`是单次命令；一旦`confirmation_state.json`存在就fail-closed，不允许重复
+refit或重复确认。当前真实结果均为物理域：PHIF MAE/RMSE/R² =
+0.006067/0.009319/0.980711；KLOGH = 145.640 mD/278.839 mD/0.889133；
+SW = 0.064412/0.080550/0.903155。完整target config、refit证据、344行预测、
+物理及模型域指标、OOF-q90区间诊断、9张图和artifact哈希位于
+`_outputs/p5_stage4_confirmation/`；私有NPZ、checkpoint和临时视觉复核继续忽略。

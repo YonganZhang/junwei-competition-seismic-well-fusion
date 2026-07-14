@@ -53,3 +53,33 @@ _outputs/p5_stage3/**
 _outputs/p5_stage3/figures/**
 !_outputs/p5_stage3/figures/*.png
 !_outputs/p5_stage3/figures/*.md
+
+# P5 Stage-4 known-holdout confirmation. Runtime HDF5 bridges, checkpoints,
+# contact sheets, and temporary external reviews remain ignored.
+!_outputs/p5_stage4_confirmation/
+_outputs/p5_stage4_confirmation/**
+!_outputs/p5_stage4_confirmation/*.json
+!_outputs/p5_stage4_confirmation/refit/
+_outputs/p5_stage4_confirmation/refit/**
+!_outputs/p5_stage4_confirmation/refit/*.json
+!_outputs/p5_stage4_confirmation/phif/
+_outputs/p5_stage4_confirmation/phif/**
+!_outputs/p5_stage4_confirmation/phif/*.json
+!_outputs/p5_stage4_confirmation/phif/*.csv
+!_outputs/p5_stage4_confirmation/phif/figures/
+!_outputs/p5_stage4_confirmation/phif/figures/*.png
+!_outputs/p5_stage4_confirmation/phif/figures/*.md
+!_outputs/p5_stage4_confirmation/klogh/
+_outputs/p5_stage4_confirmation/klogh/**
+!_outputs/p5_stage4_confirmation/klogh/*.json
+!_outputs/p5_stage4_confirmation/klogh/*.csv
+!_outputs/p5_stage4_confirmation/klogh/figures/
+!_outputs/p5_stage4_confirmation/klogh/figures/*.png
+!_outputs/p5_stage4_confirmation/klogh/figures/*.md
+!_outputs/p5_stage4_confirmation/sw/
+_outputs/p5_stage4_confirmation/sw/**
+!_outputs/p5_stage4_confirmation/sw/*.json
+!_outputs/p5_stage4_confirmation/sw/*.csv
+!_outputs/p5_stage4_confirmation/sw/figures/
+!_outputs/p5_stage4_confirmation/sw/figures/*.png
+!_outputs/p5_stage4_confirmation/sw/figures/*.md

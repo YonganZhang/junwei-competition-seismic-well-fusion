@@ -1,0 +1,89 @@
+{
+  "confirmation_kind": "previously_seen_reusable_holdout",
+  "dpi": 300,
+  "figure_mode": "A_square",
+  "figure_size_inches": [
+    3.5,
+    3.5
+  ],
+  "figures": [
+    {
+      "companion_md_sha256": "27b6b60258d080715d57faabaf4dfd365a11d1ba2341f14b4f1dc5ba9b2fd19c",
+      "kind": "predicted_vs_true",
+      "path": "phif/figures/phif_predicted_vs_true.png",
+      "sha256": "cdf5225d8f8e84954a998bdc577ede665b77cf828550d2564a4b15743e22a779",
+      "target": "PHIF"
+    },
+    {
+      "companion_md_sha256": "1cc82c2a18c5385914d184e5a7ab2a22427d92b83004e1166112ffddf6dba82d",
+      "kind": "residual",
+      "path": "phif/figures/phif_residual.png",
+      "sha256": "60fab71f5548b92e9b2979561160238798da7bea84a3e73065b2509e522256be",
+      "target": "PHIF"
+    },
+    {
+      "companion_md_sha256": "80a78a0f84e52ee37fa5b82b167a302922b546a27c9c16c15e7103c82861c05c",
+      "kind": "interval_diagnostic",
+      "path": "phif/figures/phif_interval_diagnostic.png",
+      "sha256": "da9d9113b474bd98705a295c68d6ce47479dd363bcf13dad5bf7bba7f0d56490",
+      "target": "PHIF"
+    },
+    {
+      "companion_md_sha256": "8630657347aee15e872573f1d5c4228337a1a90d3cfaecf02c1dfbb1388c440a",
+      "kind": "predicted_vs_true",
+      "path": "klogh/figures/klogh_predicted_vs_true.png",
+      "sha256": "310808160baf0b47eb29e48861eb2a232983d4bced8a050e605f35174924f184",
+      "target": "KLOGH"
+    },
+    {
+      "companion_md_sha256": "a05b8833d6b3843171602bae154d44f8a27c7b548e926447c00c8b689d6f34a1",
+      "kind": "residual",
+      "path": "klogh/figures/klogh_residual.png",
+      "sha256": "8f65b8839cd8f6c139a08914c82ab0d8ab892ab6ac59cea5f2a6e54db23ebfc6",
+      "target": "KLOGH"
+    },
+    {
+      "companion_md_sha256": "4168f0f54d0cd472929a6d8bd9d6438343890ae39f6de7f238b4a1df03b5547c",
+      "kind": "interval_diagnostic",
+      "path": "klogh/figures/klogh_interval_diagnostic.png",
+      "sha256": "e98e47337d55424ae17cb804a7b2bc8fde259c2d417f23d1246d7363327b82cb",
+      "target": "KLOGH"
+    },
+    {
+      "companion_md_sha256": "b2a36849e19db614b48a78ed58503d021080fda4e6162feed80d65474ed7aa8b",
+      "kind": "predicted_vs_true",
+      "path": "sw/figures/sw_predicted_vs_true.png",
+      "sha256": "62d810276b71bdb5167b1b572e191a19917099d296498795e3055c63ffcdb1be",
+      "target": "SW"
+    },
+    {
+      "companion_md_sha256": "0e9b6b676c9e9a6fc6cac5a45109e781b539f08ce18c2cbd976704917e32dd9f",
+      "kind": "residual",
+      "path": "sw/figures/sw_residual.png",
+      "sha256": "355411d943c1013d84285d22b7b038710214cef9e8999268b4ec3e272982f295",
+      "target": "SW"
+    },
+    {
+      "companion_md_sha256": "315ce66c419e8e222af261d82ae6b0610863205134996ff54f822b2cb79ed132",
+      "kind": "interval_diagnostic",
+      "path": "sw/figures/sw_interval_diagnostic.png",
+      "sha256": "10b49807b6629b5ca1340ac966b2c572f2e405ea1aa22e43f56192a23e7b35fd",
+      "target": "SW"
+    }
+  ],
+  "font_fallback_reason": "Times New Roman is unavailable; used metrically compatible Liberation Serif",
+  "fresh_blind": false,
+  "palette": {
+    "blue": "#376795",
+    "red": "#E76254",
+    "sky": "#72BCD5",
+    "yellow": "#FFD06F"
+  },
+  "prior_test_consumed": true,
+  "rebuild_command": "python3 _pipelines/02_task_datasets/reservoir/reservoir_p5_stage4.py render",
+  "requested_font": "Times New Roman",
+  "resolved_font": "Liberation Serif",
+  "schema_version": 1,
+  "stage": 4,
+  "track_id": "property"
+}

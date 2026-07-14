@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "track_id": "property",
+  "stage": 4,
+  "confirmation_kind": "previously_seen_reusable_holdout",
+  "baseline_head": "bcde22aa0fc4544f6978f0413f869732bac130a5",
+  "root_seed": 2693,
+  "fresh_blind": false,
+  "prior_test_consumed": true,
+  "development_families": [
+    "15/9-19",
+    "15/9-F-1",
+    "15/9-F-11",
+    "15/9-F-12"
+  ],
+  "known_holdout_family": "15/9-F-15",
+  "expected_counts": {
+    "development": 1216,
+    "known_holdout": 344
+  },
+  "source_data_sha256": {
+    "train_h5": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2",
+    "guard_npz": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+    "test_h5": "6d07a689b259d58f23c67de15998e7c2fd0648357588bab8af1a52c9e028a507"
+  },
+  "stage3_locks": {
+    "budget_sha256": "d7f36c0917d3ff68fc6c47fb2258ae2c86f802d5299ea0a5ff23c00e1b53e0a1",
+    "summary_sha256": "6f0482439f89dc87747505f34002c730fca5c4c4b78a4f658793e1068ee0aa7d",
+    "split_manifest_sha256": "17d3cd44a488cc3aaf90505d8e51d0c37e5da3e081d067083b5352d55f069d31",
+    "split_hash": "2334f3cc301fc66d6b98c6edf3a4f9c920776469531003d62f5370e119426a18",
+    "visualization_data_sha256": "c421df267f7c495530ee0ed3d80329c505937767e0fc53366dd73fd6a2f612eb",
+    "p5_contract_sha256": "066dc813296c6f883bc724c361aa37f839267bd9d3568631e5a2c325de2a200a",
+    "source_lock_sha256": "a25789166f0a9eae7bbfe6716009fa65aa45c2a1f93118e1e10ffb9711bb0db8"
+  },
+  "winners": {
+    "PHIF": {
+      "model_id": "extra_trees_regressor",
+      "leaderboard_sha256": "590ef021351b04264f0a6e889ac206ef1929aea9d54ca9d823a879f8265aa8bf",
+      "rank": 1,
+      "lane": "tabular_cpu",
+      "model_domain": "identity",
+      "physical_unit": "fraction",
+      "prediction_transform": "clip_identity_to_[0,1]",
+      "budget": {
+        "n_estimators": 32,
+        "n_jobs": 1,
+        "update_steps": 32,
+        "update_unit": "trees_per_target"
+      }
+    },
+    "KLOGH": {
+      "model_id": "extra_trees_regressor",
+      "leaderboard_sha256": "f80a05a039f56b9c9bd5bce9804d77ad811ba66d67e73315b0e6d1c251c5e539",
+      "rank": 1,
+      "lane": "tabular_cpu",
+      "model_domain": "log1p(KLOGH_mD)",
+      "physical_unit": "mD",
+      "prediction_transform": "expm1(clamp(log1p_prediction,0))",
+      "budget": {
+        "n_estimators": 32,
+        "n_jobs": 1,
+        "update_steps": 32,
+        "update_unit": "trees_per_target"
+      }
+    },
+    "SW": {
+      "model_id": "xgboost_regressor",
+      "leaderboard_sha256": "0d68817ee16e716a1b0ef18d52dc3e3988679b0f1f08a10e2f4cd3956c98c919",
+      "rank": 1,
+      "lane": "tabular_cpu",
+      "model_domain": "identity",
+      "physical_unit": "fraction",
+      "prediction_transform": "clip_identity_to_[0,1]",
+      "budget": {
+        "n_estimators": 32,
+        "n_jobs": 1,
+        "update_steps": 32,
+        "update_unit": "boosting_rounds_per_target"
+      }
+    }
+  },
+  "feature_contract": {
+    "input_modalities": [
+      "real_ST0202_seismic_patch",
+      "raw_well_log_sequence",
+      "tabular_flat_view"
+    ],
+    "input_whitelist": [
+      "ST0202_seismic_patch",
+      "GR",
+      "RT",
+      "NPHI",
+      "RHOB",
+      "GR_observed_mask",
+      "RT_observed_mask",
+      "NPHI_observed_mask",
+      "RHOB_observed_mask"
+    ],
+    "forbidden_inputs": [
+      "PHIF",
+      "PHIE",
+      "LFP_PHIE",
+      "KLOGH",
+      "KLOGH_NEW",
+      "KLOGV",
+      "SW",
+      "BVW",
+      "SWIRR",
+      "VSH",
+      "LFP_VSH"
+    ],
+    "tabular_features": 153,
+    "preprocessing_fit": "all_legal_development_rows_only",
+    "target_statistics_fitted": false
+  },
+  "metric_contract": {
+    "per_target_required": [
+      "physical_MAE",
+      "physical_RMSE",
+      "physical_R2",
+      "model_domain_MAE",
+      "model_domain_RMSE",
+      "model_domain_R2"
+    ],
+    "interval": "symmetric_stage3_development_OOF_absolute_residual_q90_in_model_domain",
+    "nominal_coverage": 0.9
+  },
+  "prior_exposure_evidence": {
+    "historical_split_manifest": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/split_manifest.json",
+      "sha256": "50063177c9e5bfb4994b855226ddc2a312aebdba8fbcb7afa5ddc45cfdae9ea1"
+    },
+    "historical_run_manifest": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/run_manifest.json",
+      "sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9"
+    },
+    "historical_metrics": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/metrics.json",
+      "sha256": "548d6036bd21327d5f5cae614667b7772a27e89a29f7052e88ea93cc1dba14d5"
+    },
+    "p4_phif_lifecycle": {
+      "path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/lifecycle.json",
+      "sha256": "d1b907cea5cf12d6e8efa2a7f9df1cd7868abdb308efd4f162363355368de064"
+    },
+    "p4_phif_metrics": {
+      "path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/frozen_test/metrics.json",
+      "sha256": "565c1779055f95e4723a8be42f1381c478b387fe00188c65dbb016282a0578d8"
+    },
+    "p4_klogh_lifecycle": {
+      "path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/lifecycle.json",
+      "sha256": "f845f0a5f3c8c2de8de98a31ba7f7407576e302094e514359be9c7d75e244d43"
+    },
+    "p4_klogh_metrics": {
+      "path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/frozen_test/metrics.json",
+      "sha256": "c41e6a5b8e29b78c5604718e9a41cf5101884d7eb478fbb4705c446040d73230"
+    }
+  },
+  "execution_policy": {
+    "hpo": false,
+    "winner_reselection": false,
+    "single_confirmation_per_output_dir": true,
+    "overwrite_prior_outputs": false,
+    "source_paths_persisted": false
+  }
+}

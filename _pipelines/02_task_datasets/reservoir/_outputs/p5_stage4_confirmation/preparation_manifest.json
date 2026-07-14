@@ -1,0 +1,130 @@
+{
+  "confirmation_kind": "previously_seen_reusable_holdout",
+  "contract_sha256": "c3b901d115bc52e03fb041ce7634df7483bc5c5ac366f8a9c30a3aef29ff9913",
+  "development_families": [
+    "15/9-19",
+    "15/9-F-1",
+    "15/9-F-11",
+    "15/9-F-12"
+  ],
+  "development_family_counts": {
+    "15/9-19": 147,
+    "15/9-F-1": 451,
+    "15/9-F-11": 537,
+    "15/9-F-12": 81
+  },
+  "development_rows": 1216,
+  "fresh_blind": false,
+  "independent_target_valid_counts": {
+    "development": {
+      "KLOGH": 1216,
+      "PHIF": 1216,
+      "SW": 1216
+    },
+    "known_holdout": {
+      "KLOGH": 344,
+      "PHIF": 344,
+      "SW": 344
+    }
+  },
+  "known_holdout_family": "15/9-F-15",
+  "known_holdout_rows": 344,
+  "preparation_wall_seconds": 0.9038123995997012,
+  "prior_test_consumed": true,
+  "runtime_archives": {
+    "development_sha256": "818ca900ba0dd1dd11df30720b2d0776aabde4a808fcd797f9e3a1e9fd3d053d",
+    "git_ignored": true,
+    "known_holdout_sha256": "8ae8feb028b5caf8f5abeb5a6e97ff01921dd32d7e5e5fe7b4b4ea50782d033f",
+    "paths_persisted": false
+  },
+  "schema_version": 1,
+  "source_data_sha256": {
+    "guard_npz": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+    "test_h5": "6d07a689b259d58f23c67de15998e7c2fd0648357588bab8af1a52c9e028a507",
+    "train_h5": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2"
+  },
+  "stage": 4,
+  "stage3_evidence": {
+    "contract_sha256": "c3b901d115bc52e03fb041ce7634df7483bc5c5ac366f8a9c30a3aef29ff9913",
+    "feature_whitelist_verified": true,
+    "forbidden_feature_overlap": [],
+    "p4_split_sha256": {
+      "KLOGH": "059eacdae735edc36347905218932fcd7693392f159572543d3420a2d0c4f447",
+      "PHIF": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232"
+    },
+    "prior_exposure": {
+      "evidence": {
+        "historical_metrics": {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/metrics.json",
+          "sha256": "548d6036bd21327d5f5cae614667b7772a27e89a29f7052e88ea93cc1dba14d5"
+        },
+        "historical_run_manifest": {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/run_manifest.json",
+          "sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9"
+        },
+        "historical_split_manifest": {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/split_manifest.json",
+          "sha256": "50063177c9e5bfb4994b855226ddc2a312aebdba8fbcb7afa5ddc45cfdae9ea1"
+        },
+        "p4_klogh_lifecycle": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/lifecycle.json",
+          "sha256": "f845f0a5f3c8c2de8de98a31ba7f7407576e302094e514359be9c7d75e244d43"
+        },
+        "p4_klogh_metrics": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/frozen_test/metrics.json",
+          "sha256": "c41e6a5b8e29b78c5604718e9a41cf5101884d7eb478fbb4705c446040d73230"
+        },
+        "p4_phif_lifecycle": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/lifecycle.json",
+          "sha256": "d1b907cea5cf12d6e8efa2a7f9df1cd7868abdb308efd4f162363355368de064"
+        },
+        "p4_phif_metrics": {
+          "path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/frozen_test/metrics.json",
+          "sha256": "565c1779055f95e4723a8be42f1381c478b387fe00188c65dbb016282a0578d8"
+        }
+      },
+      "fresh_blind": false,
+      "known_holdout_family": "15/9-F-15",
+      "prior_test_consumed": true,
+      "status": "verified_before_fitting"
+    },
+    "stage3_split_hash": "2334f3cc301fc66d6b98c6edf3a4f9c920776469531003d62f5370e119426a18",
+    "winners": {
+      "KLOGH": {
+        "budget": {
+          "n_estimators": 32,
+          "n_jobs": 1,
+          "update_steps": 32,
+          "update_unit": "trees_per_target"
+        },
+        "leaderboard_sha256": "f80a05a039f56b9c9bd5bce9804d77ad811ba66d67e73315b0e6d1c251c5e539",
+        "mean_physical_RMSE": 542.9025640937338,
+        "model_id": "extra_trees_regressor"
+      },
+      "PHIF": {
+        "budget": {
+          "n_estimators": 32,
+          "n_jobs": 1,
+          "update_steps": 32,
+          "update_unit": "trees_per_target"
+        },
+        "leaderboard_sha256": "590ef021351b04264f0a6e889ac206ef1929aea9d54ca9d823a879f8265aa8bf",
+        "mean_physical_RMSE": 0.027640540136260716,
+        "model_id": "extra_trees_regressor"
+      },
+      "SW": {
+        "budget": {
+          "n_estimators": 32,
+          "n_jobs": 1,
+          "update_steps": 32,
+          "update_unit": "boosting_rounds_per_target"
+        },
+        "leaderboard_sha256": "0d68817ee16e716a1b0ef18d52dc3e3988679b0f1f08a10e2f4cd3956c98c919",
+        "mean_physical_RMSE": 0.1704268882541439,
+        "model_id": "xgboost_regressor"
+      }
+    }
+  },
+  "status": "prepared",
+  "track_id": "property"
+}

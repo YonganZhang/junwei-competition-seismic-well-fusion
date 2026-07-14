@@ -1,0 +1,146 @@
+{
+  "confirmation_kind": "previously_seen_reusable_holdout",
+  "development_families": [
+    "15/9-19",
+    "15/9-F-1",
+    "15/9-F-11",
+    "15/9-F-12"
+  ],
+  "development_rows": 1216,
+  "fresh_blind": false,
+  "hpo": false,
+  "known_holdout_family": "15/9-F-15",
+  "known_holdout_rows": 344,
+  "portable": {
+    "absolute_paths_persisted": false,
+    "checkpoints_git_ignored": true,
+    "runtime_archives_persisted": false
+  },
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "runtime": {
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "scikit_learn": "1.7.2",
+    "xgboost": "3.2.0"
+  },
+  "schema_version": 1,
+  "single_use_state": "CONFIRMED",
+  "source_hashes": {
+    "contract_sha256": "c3b901d115bc52e03fb041ce7634df7483bc5c5ac366f8a9c30a3aef29ff9913",
+    "preparation_manifest_sha256": "3b34c8704e210e1569f63c639e309af9af9ecad4351ed8fdcfd7d7ba6dc4a96a",
+    "preprocessing_sha256": "62a81307e3a6e2e608d358a58ecf179bdadc1fb3a211361f2c10da69c1c3fd5f",
+    "source_data_sha256": {
+      "guard_npz": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+      "test_h5": "6d07a689b259d58f23c67de15998e7c2fd0648357588bab8af1a52c9e028a507",
+      "train_h5": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2"
+    },
+    "source_lock_sha256": "a25789166f0a9eae7bbfe6716009fa65aa45c2a1f93118e1e10ffb9711bb0db8",
+    "stage3_split_hash": "2334f3cc301fc66d6b98c6edf3a4f9c920776469531003d62f5370e119426a18"
+  },
+  "stage": 4,
+  "status": "confirmed",
+  "target_summaries": {
+    "KLOGH": {
+      "config_sha256": "b54aee90fd4327182156a94a680597f2f4fd29c24fbafb909e2e80a7366bf090",
+      "development_rows": 1216,
+      "interval": {
+        "absolute_residual_q90_model_domain": 1.8535998374347047,
+        "empirical_known_holdout_coverage": 1.0,
+        "mean_physical_interval_width": 2879.7465061724192,
+        "method": "symmetric Stage-3 development OOF absolute-residual q90 in model domain",
+        "nominal_coverage": 0.9
+      },
+      "known_holdout_rows": 344,
+      "metrics_sha256": "17c4023fb142950e1d85adfe80cc642a3abcaca70267fddd499dcb57ffd67049",
+      "model_domain": {
+        "MAE": 0.5928635231433683,
+        "R2": 0.9129654802552023,
+        "R2_reason": null,
+        "RMSE": 0.7040119703642701,
+        "bias": 0.5502400658089519
+      },
+      "model_id": "extra_trees_regressor",
+      "physical": {
+        "MAE": 145.63983557826103,
+        "R2": 0.8891329475044405,
+        "R2_reason": null,
+        "RMSE": 278.8387578492702,
+        "bias": 71.24847563963826
+      },
+      "predictions_sha256": "1901fa1a01397d20ac70e631fa3e5caa76a4acf2df81ce53a757e4b164f2f493",
+      "refit_sha256": "555ce334a32a3ab8125205154b98e5d17e0541edc458a40fe3b8ecb804778109"
+    },
+    "PHIF": {
+      "config_sha256": "e313ca378798f9db8dccaf28371b6ee9b9be5c400440dc59f29bcb1a75d49716",
+      "development_rows": 1216,
+      "interval": {
+        "absolute_residual_q90_model_domain": 0.03622613786160733,
+        "empirical_known_holdout_coverage": 0.9941860465116279,
+        "mean_physical_interval_width": 0.07191869772170204,
+        "method": "symmetric Stage-3 development OOF absolute-residual q90 in model domain",
+        "nominal_coverage": 0.9
+      },
+      "known_holdout_rows": 344,
+      "metrics_sha256": "7eaadf9d1685293ae3fd361153451a6675ebf5b5a2bb76a77197b21c6b25e3a3",
+      "model_domain": {
+        "MAE": 0.006066972288797317,
+        "R2": 0.9807112984749714,
+        "R2_reason": null,
+        "RMSE": 0.009319236454732018,
+        "bias": 0.0005860130211457108
+      },
+      "model_id": "extra_trees_regressor",
+      "physical": {
+        "MAE": 0.006066972288797317,
+        "R2": 0.9807112984749714,
+        "R2_reason": null,
+        "RMSE": 0.009319236454732018,
+        "bias": 0.0005860130211457108
+      },
+      "predictions_sha256": "f1c605f6f303d6d2038e2c647e130b8e2ae101402b2b4fc381ed74c3ab04e2dc",
+      "refit_sha256": "776f193102e729f1badff435ec764d935d31374ab053e87c428cebbc5a25441e"
+    },
+    "SW": {
+      "config_sha256": "680acc8df8e399898e09870f7a3977a5c13a212b88c89b53cebbf9b4e8a3b807",
+      "development_rows": 1216,
+      "interval": {
+        "absolute_residual_q90_model_domain": 0.2743194798628488,
+        "empirical_known_holdout_coverage": 0.9941860465116279,
+        "mean_physical_interval_width": 0.5131691063126158,
+        "method": "symmetric Stage-3 development OOF absolute-residual q90 in model domain",
+        "nominal_coverage": 0.9
+      },
+      "known_holdout_rows": 344,
+      "metrics_sha256": "92bda583611c1cac221647cefd436d1f941d2259dd488bc0ac0b5425d4251a8b",
+      "model_domain": {
+        "MAE": 0.0644116373407806,
+        "R2": 0.9031546148367193,
+        "R2_reason": null,
+        "RMSE": 0.08055030137324438,
+        "bias": 0.02396847042363397
+      },
+      "model_id": "xgboost_regressor",
+      "physical": {
+        "MAE": 0.0644116373407806,
+        "R2": 0.9031546148367193,
+        "R2_reason": null,
+        "RMSE": 0.08055030137324438,
+        "bias": 0.02396847042363397
+      },
+      "predictions_sha256": "c0118d2be5ecb1fa03db55d31628e94a583fef3f7289e2c89ca0ec049ac5ec18",
+      "refit_sha256": "430d02ae480325c37db5b19dc35a57c10d54707116584a99352f9d67185474de"
+    }
+  },
+  "timings": {
+    "confirmation_wall_seconds": 12.10190321598202,
+    "model_refit_wall_seconds": {
+      "extra_trees_regressor": 0.47902413411065936,
+      "xgboost_regressor": 1.1857311697676778
+    },
+    "preparation_wall_seconds": 0.9038123995997012
+  },
+  "track_id": "property",
+  "winner_reselection": false,
+  "winners_frozen_before_refit": true
+}
