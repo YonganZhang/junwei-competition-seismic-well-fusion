@@ -47,3 +47,9 @@ _outputs/p5_stage4_confirmation/**
 !_outputs/p5_stage4_confirmation/summary.json
 !_outputs/p5_stage4_confirmation/figures/
 !_outputs/p5_stage4_confirmation/figures/*.png
+!_outputs/p5_r01/
+_outputs/p5_r01/**
+!_outputs/p5_r01/r0_contract.json
+!_outputs/p5_r01/r1_results.jsonl
+!_outputs/p5_r01/r1_summary.json
+!_outputs/p5_r01/artifact_manifest.json

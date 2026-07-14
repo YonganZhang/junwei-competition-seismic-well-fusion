@@ -661,3 +661,65 @@ committed. The fixed-nine confusion, per-class precision/recall/F1/support and
 raw-softmax reliability figures are committed. F-5 contains no finite
 `center_md_m`, so the continuous depth track remains explicitly
 `not_feasible`; interval midpoints and row order are never substituted.
+
+## P5.1 R0/R1 split-mechanism audit
+
+`lithofacies_p5_r01.py` is a development-only runner. R0 performs no fitting:
+it freezes the original GM09 / `GENETIC FACIES` nine-class order, excludes
+`UNKNOWN`, `UNDEFINED`, LITH and samples outside an explicit interpretation
+interval, and records `fixed_schema_macro_f1` as the sole primary metric.
+Supported-class Macro-F1 is diagnostic only. Modality (`W` well log or `M`
+well log plus seismic) and task (`P` point/window classification or `S`
+continuous sequence labeling) are orthogonal axes. Both S lanes remain
+`not_rankable` because every development sample lacks finite `center_md_m`;
+TWT, row order and interval midpoint are forbidden depth substitutes.
+
+The sealed F-5 identity is recorded with `prior_test_consumed=true` and
+`fresh_blind=false`, but R0/R1 has no physical-test command or loader. Its only
+HDF5-facing command opens the explicit development `train.h5` and rejects any
+family roster other than the four frozen development mother families.
+
+R1 uses exactly one preregistered `SGDClassifier(loss="log_loss")`, seed 2693,
+and 64 fixed iterations without HPO. It evaluates the same model budget in W
+and M for four paired mechanisms: center-point random KFold4 versus LOGO4, and
+full 33-point-window random KFold4 versus LOGO4. Random splits are
+`diagnostic_only/not_rankable`; LOGO4 is a protocol result, not a model
+leaderboard. Each fold fits log/seismic normalization, missing-channel masks
+and square-root inverse class weights using fold-train only. Artifacts record
+fixed-nine Macro-F1, accuracy, nine-class support and confusion, OOF coverage,
+worst-family score, family/well/interval overlap and exact shifted-window
+overlap. Any failed fold is retained as structured evidence and makes its
+condition not rankable; no replacement split or label is allowed.
+
+Run from the project root with the existing development asset and approved
+interpreters. The first command needs HDF5 support; the second needs
+scikit-learn. The compressed development envelope is ignored and only the four
+portable JSON/JSONL evidence files are candidates for Git.
+
+```bash
+HDF5_PYTHON="${HDF5_PYTHON:?set an approved interpreter with h5py}"
+TABULAR_PYTHON="${TABULAR_PYTHON:?set the approved tabular interpreter}"
+DATASET_ROOT="${LITHOFACIES_P5_DATASET_ROOT:?point to the development dataset directory}"
+R01=_pipelines/02_task_datasets/lithofacies/lithofacies_p5_r01.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/p5_r01
+
+PYTHONDONTWRITEBYTECODE=1 "$HDF5_PYTHON" "$R01" prepare \
+  --dataset-root "$DATASET_ROOT" \
+  --batch-file "$OUT/runtime/development.npz" \
+  --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$R01" run \
+  --batch-file "$OUT/runtime/development.npz" \
+  --output-dir "$OUT"
+
+PYTHONDONTWRITEBYTECODE=1 LITHOFACIES_R01_TINY=1 "$TABULAR_PYTHON" \
+  -m unittest discover \
+  -s _pipelines/02_task_datasets/lithofacies/tests \
+  -p 'test_lithofacies_p5_r01.py' -v
+```
+
+Canonical portable evidence is `_outputs/p5_r01/r0_contract.json`,
+`r1_results.jsonl`, `r1_summary.json`, and `artifact_manifest.json`. R1 is a
+split-protocol mechanism audit only. Fair ranking of at least ten models is a
+later stage and must reuse the legal grouped protocol rather than its random
+diagnostic counterpart.

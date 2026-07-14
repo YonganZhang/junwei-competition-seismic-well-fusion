@@ -77,25 +77,25 @@ def lithofacies_task_spec() -> TaskSpec:
                 "test_refit_forbidden": True,
             }
         },
-        primary_metrics=("supported_class_macro_f1",),
+        primary_metrics=("fixed_schema_macro_f1",),
         secondary_metrics=(
-            "fixed_schema_macro_f1",
+            "supported_class_macro_f1",
             "balanced_accuracy",
             "negative_log_likelihood",
             "expected_calibration_error",
         ),
-        guardrail_metrics=("worst_family_supported_class_macro_f1",),
+        guardrail_metrics=("worst_family_fixed_schema_macro_f1",),
         metric_directions={
-            "supported_class_macro_f1": "maximize",
             "fixed_schema_macro_f1": "maximize",
+            "supported_class_macro_f1": "maximize",
             "balanced_accuracy": "maximize",
             "negative_log_likelihood": "minimize",
             "expected_calibration_error": "minimize",
-            "worst_family_supported_class_macro_f1": "maximize",
+            "worst_family_fixed_schema_macro_f1": "maximize",
         },
         hpo={
             "direction": "maximize",
-            "primary_metric": "supported_class_macro_f1",
+            "primary_metric": "fixed_schema_macro_f1",
             "sanity_trials": "8-12",
             "pilot_trials": "20-30",
             "sampler": "single_process_tpe_after_random_startup",
@@ -151,7 +151,8 @@ def lithofacies_hpo_plan() -> dict[str, Any]:
     )
     return {
         **asdict(plan),
-        "primary_metric": "supported_class_macro_f1",
+        "primary_metric": "fixed_schema_macro_f1",
+        "supported_class_metric_role": "diagnostic_only",
         "test_access": "forbidden",
         "effective_folds": EFFECTIVE_N_SPLITS,
         "search_space": {
@@ -176,9 +177,9 @@ def lithofacies_hpo_plan() -> dict[str, Any]:
             "fold-level pruning is stable; small/noisy runs stay on NopPruner"
         ),
         "selection": {
-            "first": "maximize fold-mean supported_class_macro_f1",
+            "first": "maximize fold-mean fixed_schema_macro_f1",
             "tie_breakers": (
-                "maximize worst fold",
+                "maximize worst-family fixed_schema_macro_f1",
                 "minimize fold std",
                 "minimize negative_log_likelihood",
                 "prefer simpler model",

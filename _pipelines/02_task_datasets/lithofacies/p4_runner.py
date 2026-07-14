@@ -481,7 +481,10 @@ def run_real_smoke(run_root: Path, *, dataset_root: Path | None = None) -> dict[
         "optimizer_step_loss": float(loss.detach()),
         "finite_logits": bool(np.isfinite(validation_logits).all()),
         "tiny_overfit": tiny,
-        "validation_supported_class_macro_f1": metrics["supported_class_macro_f1"],
+        "validation_fixed_schema_macro_f1": metrics["fixed_schema_macro_f1"],
+        "validation_supported_class_macro_f1_diagnostic": metrics[
+            "supported_class_macro_f1"
+        ],
     }
     atomic_write_json(run_root / "smoke" / "real_data_smoke.json", report)
     lifecycle.advance(ExperimentState.SMOKE_PASSED, {"report": "smoke/real_data_smoke.json"})
@@ -603,7 +606,7 @@ def _train_one_fold(
     atomic_write_json(fold_dir / "metrics.json", metrics)
     return {
         "validation_sample_ids": tuple(record["sample_id"] for record in records),
-        "metrics": {"supported_class_macro_f1": metrics["supported_class_macro_f1"]},
+        "metrics": {"fixed_schema_macro_f1": metrics["fixed_schema_macro_f1"]},
         "all_metrics": metrics,
         "valid_label_count": len(validation),
         "best_epoch": int(best["trainer_state"]["best_epoch"] + 1),
@@ -645,7 +648,7 @@ def run_cv(run_root: Path, *, dataset_root: Path | None = None) -> dict[str, Any
         manifest,
         fold_runner,
         output_dir=run_root,
-        primary_metric="supported_class_macro_f1",
+        primary_metric="fixed_schema_macro_f1",
         metric_direction="maximize",
     )
     records: list[dict[str, Any]] = []
@@ -690,7 +693,10 @@ def run_cv(run_root: Path, *, dataset_root: Path | None = None) -> dict[str, Any
     return {
         **summary,
         "calibration_temperature": calibration["temperature"],
-        "calibrated_supported_class_macro_f1": calibrated_metrics["supported_class_macro_f1"],
+        "calibrated_fixed_schema_macro_f1": calibrated_metrics["fixed_schema_macro_f1"],
+        "calibrated_supported_class_macro_f1_diagnostic": calibrated_metrics[
+            "supported_class_macro_f1"
+        ],
     }
 
 

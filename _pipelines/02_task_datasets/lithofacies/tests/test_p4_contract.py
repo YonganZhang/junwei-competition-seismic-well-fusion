@@ -149,6 +149,11 @@ class P4PureContractTests(unittest.TestCase):
         self.assertEqual(tuple(spec.metadata["class_names"]), CLASS_NAMES)
         self.assertEqual(spec.metadata["class_count"], 9)
         self.assertEqual(spec.inference_transform["genetic_facies"], "softmax_then_argmax")
+        self.assertEqual(tuple(spec.primary_metrics), ("fixed_schema_macro_f1",))
+        self.assertEqual(
+            tuple(spec.guardrail_metrics), ("worst_family_fixed_schema_macro_f1",)
+        )
+        self.assertIn("supported_class_macro_f1", spec.secondary_metrics)
         self.assertIn("Litho Class", spec.forbidden_inputs)
         self.assertNotIn("Litho Class", spec.input_whitelist)
 
@@ -215,7 +220,8 @@ class P4PureContractTests(unittest.TestCase):
     def test_hpo_plan_is_development_only_and_maximizes_macro_f1(self) -> None:
         plan = lithofacies_hpo_plan()
         self.assertEqual(plan["direction"], "maximize")
-        self.assertEqual(plan["primary_metric"], "supported_class_macro_f1")
+        self.assertEqual(plan["primary_metric"], "fixed_schema_macro_f1")
+        self.assertEqual(plan["supported_class_metric_role"], "diagnostic_only")
         self.assertEqual(plan["pruner"], "nop")
         self.assertEqual(plan["test_access"], "forbidden")
         self.assertEqual(plan["top_configs"], 3)
