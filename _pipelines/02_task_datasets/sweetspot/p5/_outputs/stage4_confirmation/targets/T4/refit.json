@@ -1,0 +1,46 @@
+{
+  "checkpoint_path": "targets/T4/refit/model.pkl.gz",
+  "checkpoint_roundtrip_max_abs_delta": 0.0,
+  "checkpoint_sha256": "9dc0af7dd2bc5067b8923c11be278a892f0c90776352031f7c3a0416d585c8ab",
+  "checkpoint_size_bytes": 10047,
+  "config_sha256": "47ad585d46a8fb819d5a9d54424b8987f85734272be3d178355a3462b67e84f1",
+  "development_features_sha256": "e07ed49574f64e29e3eb7772b3ef4dbcc72e07e16f37e45d791aa42bd2b67c18",
+  "development_groups": [
+    "NO 15/9-F-1 C",
+    "NO 15/9-F-11 H",
+    "NO 15/9-F-14 H"
+  ],
+  "development_ids_sha256": "bc3d8c3a113975fa4cf7367176e28ef8ff0ba8e670bcd2bbca31cd4c19b04f95",
+  "development_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Production_data.zip",
+    "authorized_groups": [
+      "NO 15/9-F-1 C",
+      "NO 15/9-F-11 H",
+      "NO 15/9-F-14 H"
+    ],
+    "authorized_rows": 4967,
+    "member_crc_manifest_sha256": "dd72ab7723672466ac9dab14a6dc79883139195cd49362f26fd01735be03de88",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+    "partition": "development",
+    "rejected_row_count": 10667,
+    "rejected_rows_values_accessed": 0,
+    "source_kind": "Volve production workbook with row-level development authorization",
+    "test_accessed": false,
+    "values_accessed": 32
+  },
+  "development_samples": 32,
+  "development_targets_sha256": "099fb8f22eeb48fe187611873b227fda4b072e7e5c7700de25c7ff06c12ce152",
+  "feature_count": 21,
+  "fit_scope": "all_legal_development",
+  "historical_test_metrics_read": false,
+  "known_holdout_accessed_during_refit": false,
+  "model_payload_bytes": 22097,
+  "model_payload_sha256": "03743f384f881e317bd77109092396ae57480ccef8ad3dae530726551f8df908",
+  "peak_rss_bytes": 690221056,
+  "schema_version": "sweetspot-p5-stage4-refit/v1",
+  "status": "REFIT_COMPLETE",
+  "task_id": "T4",
+  "train_only_imputation_sha256": "712f4b3195964f8d8e6d698c85eea8380453eadcf145c809e0ec434942a52e76",
+  "wall_seconds": 0.022494282107800245
+}

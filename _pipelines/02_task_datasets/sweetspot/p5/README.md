@@ -111,3 +111,45 @@ fail-closed 测试覆盖 seed、预算、P4 split、test firewall、重复 cell�
 PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest \
   _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage3.py -v
 ```
+
+## Stage-4：已见 holdout 确认（不是 fresh-blind final test）
+
+Stage-4 从 `p5-stage3-sweetspot@5a1fefe977efe20d2d7d12f1601143cdcb2d5678`
+冻结 T1 LightGBM、T2 CatBoost、T3 XGBoost、T4 CatBoost，均为 64 次 boosting update、
+`seed=2693`。runner 先逐哈希验证 Stage-3 summary/results/OOF/leaderboard、P4 split 和
+P4 `TEST_CONSUMED` lifecycle，再分两段执行：先用全部合法 development refit、封存并哈希
+config/checkpoint；随后才读取 P4 已经消费过的 holdout。分类阈值固定为 `0.5`，不得从
+holdout 拟合阈值、校准或模型选择。
+
+这批证据必须始终标记为
+`evidence_class=previously_seen_reusable_holdout`、`prior_test_consumed=true`、
+`fresh_blind=false`。T5 保持无标签 `not_feasible`；T6 PHIF、T7 KLOGH 因缺
+development-only 特征源且没有 Stage-3 winner，保持 `blocked`，不允许用 `test.h5` 回填。
+
+唯一执行命令必须显式确认 holdout 身份；不带确认旗标会退出 `2` 且不创建输出：
+
+```bash
+TABULAR_PYTHON="${VOLVE_P5_TABULAR_PYTHON:?shared tabular-cpu interpreter}"
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" \
+  -m _pipelines.02_task_datasets.sweetspot.p5.sweetspot_p5_stage4 \
+  --confirm-known-holdout
+```
+
+便携产物位于 `p5/_outputs/stage4_confirmation/`：T1–T4 独立config/refit、压缩预测、
+指标、紧凑checkpoint和目标专属图；T5–T7独立状态与数据门图；顶层JSONL、summary及
+逐文件 SHA-256 manifest。runner 拒绝覆盖已有目录，也不导入或调用P4 HPO。
+
+若已归档结果仅需按审计要求纠正T1/T2 provenance，使用显式维护模式。它先验证现有
+manifest全部文件，再只重跑T1/T2、字节保留T3–T7，并原子重建JSONL/summary/manifest；
+普通执行仍拒绝覆盖：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" \
+  -m _pipelines.02_task_datasets.sweetspot.p5.sweetspot_p5_stage4 \
+  --confirm-known-holdout --refresh-t1-t2
+```
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" -m unittest \
+  _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage4.py -v
+```

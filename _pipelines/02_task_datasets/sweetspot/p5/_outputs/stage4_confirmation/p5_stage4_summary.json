@@ -1,0 +1,208 @@
+{
+  "T6_T7_test_h5_fallback": false,
+  "baseline_commit": "5a1fefe977efe20d2d7d12f1601143cdcb2d5678",
+  "contract": {
+    "historical_test_metrics_read": false,
+    "prior_exposure": {
+      "T1": {
+        "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/lifecycle.json",
+        "lifecycle_sha256": "223ca2356e17370452f85278ebbbdd5ad68ed1ca597450f404f4f4d3fe87eac7",
+        "prior_test_consumed": true,
+        "test_consumed_at": "2026-07-13T17:09:01.565036+00:00",
+        "test_rows": 11936
+      },
+      "T2": {
+        "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/lifecycle.json",
+        "lifecycle_sha256": "7dc7080d006267cd6a1cbc7da667b3ad05bdc3db185024b56a863aeac868ec24",
+        "prior_test_consumed": true,
+        "test_consumed_at": "2026-07-13T17:09:15.610708+00:00",
+        "test_rows": 12081
+      },
+      "T3": {
+        "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/lifecycle.json",
+        "lifecycle_sha256": "84ed1f2c28296d0285507d0a1875ac370322bf0a8b363725b04b6b42e496763b",
+        "prior_test_consumed": true,
+        "test_consumed_at": "2026-07-13T17:09:23.414760+00:00",
+        "test_rows": 132
+      },
+      "T4": {
+        "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/lifecycle.json",
+        "lifecycle_sha256": "4bb592942d70e53e667caac964e2ebc41ce40b838196ad1b66a0238ad58a3bfc",
+        "prior_test_consumed": true,
+        "test_consumed_at": "2026-07-13T17:09:26.405607+00:00",
+        "test_rows": 37
+      },
+      "T6": {
+        "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/porosity/_outputs/phif/lifecycle.json",
+        "lifecycle_sha256": "d1b907cea5cf12d6e8efa2a7f9df1cd7868abdb308efd4f162363355368de064",
+        "prior_test_consumed": true,
+        "test_consumed_at": "2026-07-13T17:10:14.004549+00:00",
+        "test_rows": 344
+      },
+      "T7": {
+        "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/permeability/_outputs/klogh/lifecycle.json",
+        "lifecycle_sha256": "f845f0a5f3c8c2de8de98a31ba7f7407576e302094e514359be9c7d75e244d43",
+        "prior_test_consumed": true,
+        "test_consumed_at": "2026-07-13T17:10:31.925272+00:00",
+        "test_rows": 344
+      }
+    },
+    "splits": {
+      "T1": {
+        "development_groups": [
+          "15/9-F-1",
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "development_samples": 35810,
+        "known_holdout_groups": [
+          "15/9-F-15"
+        ],
+        "known_holdout_samples": 11936,
+        "path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/split_manifest.json",
+        "sha256": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f"
+      },
+      "T2": {
+        "development_groups": [
+          "15/9-F-1",
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "development_samples": 36122,
+        "known_holdout_groups": [
+          "15/9-F-15"
+        ],
+        "known_holdout_samples": 12081,
+        "path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/split_manifest.json",
+        "sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20"
+      },
+      "T3": {
+        "development_groups": [
+          "NO 15/9-F-1 C",
+          "NO 15/9-F-11 H",
+          "NO 15/9-F-12 H",
+          "NO 15/9-F-14 H"
+        ],
+        "development_samples": 1111,
+        "known_holdout_groups": [
+          "NO 15/9-F-15 D"
+        ],
+        "known_holdout_samples": 132,
+        "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+        "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+      },
+      "T4": {
+        "development_groups": [
+          "NO 15/9-F-1 C",
+          "NO 15/9-F-11 H",
+          "NO 15/9-F-14 H"
+        ],
+        "development_samples": 32,
+        "known_holdout_groups": [
+          "NO 15/9-F-15 D"
+        ],
+        "known_holdout_samples": 37,
+        "path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/split_manifest.json",
+        "sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402"
+      }
+    },
+    "stage3_commit": "5a1fefe977efe20d2d7d12f1601143cdcb2d5678",
+    "stage3_oof_sha256": "92907e7ba054ec1557864c9e2e1f78232e029cae8c6aab5aa538ebfe81268abd",
+    "stage3_results_sha256": "34443cf1afa8c1387c80333a3119a88215d79203db005da7af1a60cb674934b8",
+    "stage3_summary_sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
+    "winners": {
+      "T1": {
+        "leaderboard_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T1.json",
+        "leaderboard_sha256": "7c992062b83f12da7a6de244ce543c898477a1bcd28765943fb47022f2c12d8b",
+        "model_id": "lightgbm",
+        "updates": 64
+      },
+      "T2": {
+        "leaderboard_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T2.json",
+        "leaderboard_sha256": "69ed4d406b7d71b2bd65716c4e9afeb76b0b46eeeaa266bf3d9c27b83377ca9b",
+        "model_id": "catboost",
+        "updates": 64
+      },
+      "T3": {
+        "leaderboard_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
+        "leaderboard_sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+        "model_id": "xgboost",
+        "updates": 64
+      },
+      "T4": {
+        "leaderboard_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T4.json",
+        "leaderboard_sha256": "0749130e47b6c7645fc2a2b497531d14d2c2ce29827fd9354ab4401a1bb7d048",
+        "model_id": "catboost",
+        "updates": 64
+      }
+    }
+  },
+  "development_samples": {
+    "T1": 35810,
+    "T2": 36122,
+    "T3": 1111,
+    "T4": 32,
+    "T5": null,
+    "T6": null,
+    "T7": null
+  },
+  "evidence_class": "previously_seen_reusable_holdout",
+  "execution_scope": "targeted_T1_T2_provenance_refresh",
+  "fresh_blind": false,
+  "historical_p4_metrics_read": false,
+  "known_holdout_samples": {
+    "T1": 11936,
+    "T2": 12081,
+    "T3": 132,
+    "T4": 37,
+    "T5": null,
+    "T6": null,
+    "T7": null
+  },
+  "labels_generated": false,
+  "p4_hpo_called": false,
+  "prior_test_consumed": true,
+  "refresh": {
+    "metric_algorithm_changed": false,
+    "model_config_changed": false,
+    "preserved_target_ids": [
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7"
+    ],
+    "previous_manifest_sha256": "4199f691134207a0a5e9fdd285db5e5eda706da6f05c4701503d35cae08f4c4b",
+    "reason": "correct source_kind wording to match authorized known-holdout members",
+    "rerun_target_ids": [
+      "T1",
+      "T2"
+    ]
+  },
+  "results_sha256": "622f417091c8e4a5e612f748d86c92c26a88fca0ac31866fc0e3f20933c0b4b4",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-stage4-summary/v1",
+  "selection_feedback_allowed": false,
+  "stage": "known_holdout_confirmation",
+  "status_only_target_ids": [
+    "T5",
+    "T6",
+    "T7"
+  ],
+  "target_status": {
+    "T1": "confirmed_known_holdout",
+    "T2": "confirmed_known_holdout",
+    "T3": "confirmed_known_holdout",
+    "T4": "confirmed_known_holdout",
+    "T5": "not_feasible",
+    "T6": "blocked",
+    "T7": "blocked"
+  },
+  "wall_seconds": 6.528145855758339,
+  "winner_target_ids": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ]
+}

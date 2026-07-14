@@ -1,0 +1,60 @@
+{
+  "checkpoint_sha256": "b2157f292bcc6395facbc07329698ef5c913f911334e285712899c5c3b26a99b",
+  "config_sha256": "cd8e6a59fc60355631c3fd0ceb8a5171c1c2df3253bc3b92f36f713bf00897d4",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "historical_p4_metrics_read": false,
+  "holdout_features_sha256": "abbd1b4b3441d780e280eb52f94ae8caf2e9e7f2002f0f7e1a825be26ec7b3c5",
+  "holdout_groups": [
+    "NO 15/9-F-15 D"
+  ],
+  "holdout_ids_sha256": "c4f25729f05f56f256e3de6c043c8bed2feb1c893e074aba421f57b7ae554b82",
+  "holdout_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Production_data.zip",
+    "authorized_groups": [
+      "NO 15/9-F-15 D"
+    ],
+    "authorized_rows": 978,
+    "member_crc_manifest_sha256": "dd72ab7723672466ac9dab14a6dc79883139195cd49362f26fd01735be03de88",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "partition": "known_holdout",
+    "rejected_row_count": 14656,
+    "rejected_rows_values_accessed": 0,
+    "source_kind": "Volve production workbook with row-level development authorization",
+    "test_accessed": true,
+    "values_accessed": 132
+  },
+  "holdout_samples": 132,
+  "holdout_targets_sha256": "d5b8c525789562d986ed418325f8e1e7c84d7033e5eee7ae0ca1ed43cefd61a1",
+  "holdout_wall_seconds": 1.2832963950932026,
+  "metrics": {
+    "mae": 47.701963387379216,
+    "negative_prediction_fraction": 0.0,
+    "r2": -0.06357401265433871,
+    "r2_reason": null,
+    "rmse": 68.33528275833523,
+    "sample_count": 132,
+    "spearman": 0.6355692295523352,
+    "topk_diagnostic": {
+      "fraction": 0.1,
+      "hit_rate": 0.42857142857142855,
+      "k": 14,
+      "overlap_count": 6,
+      "selection_feedback": "diagnostic_only; never used for model or threshold selection"
+    }
+  },
+  "prediction_sha256": "60a29dbe9753be4ec4acbe19d6cfa03bec79886478484d24bca94b68a777c245",
+  "prior_exposure_evidence": {
+    "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/lifecycle.json",
+    "lifecycle_sha256": "84ed1f2c28296d0285507d0a1875ac370322bf0a8b363725b04b6b42e496763b",
+    "prior_test_consumed": true,
+    "test_consumed_at": "2026-07-13T17:09:23.414760+00:00",
+    "test_rows": 132
+  },
+  "prior_test_consumed": true,
+  "schema_version": "sweetspot-p5-stage4-known-holdout-metrics/v1",
+  "selection_feedback_allowed": false,
+  "status": "CONFIRMED_ON_KNOWN_HOLDOUT",
+  "task_id": "T3"
+}
