@@ -1,0 +1,244 @@
+{
+  "data_root": "provided_at_runtime_not_serialized",
+  "evidence_class": "development_protocol_mechanism_only",
+  "fresh_blind": false,
+  "hpo": false,
+  "known_holdout_predictions_or_metrics_read": false,
+  "model_ranking_published": false,
+  "physical_test_h5_opened": false,
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "schema_version": "facies-p5.1-r01-v1",
+  "stage": "R0",
+  "task_ids": [
+    "facies_f3",
+    "facies_penobscot"
+  ],
+  "tasks": {
+    "facies_f3": {
+      "bounded_real_sections": {
+        "nearest_inline_distance": 26,
+        "required_buffer_groups": 25,
+        "train": [
+          463
+        ],
+        "validation": [
+          489
+        ]
+      },
+      "data_root": "provided_at_runtime_not_serialized",
+      "development_range": [
+        100,
+        586
+      ],
+      "firewall": {
+        "allowed_scope": "raw_development_inlines_only",
+        "evidence_class": "development_protocol_mechanism_only",
+        "fresh_blind": false,
+        "outer_payloads_read": 0,
+        "outer_sample_index_built": false,
+        "physical_test_h5_opened": false,
+        "requested_inline_ids": [
+          463,
+          489
+        ],
+        "requested_payload_count": 2,
+        "test_archive_opened": false,
+        "test_labels_read": false,
+        "test_metrics_read": false,
+        "test_predictions_read": false
+      },
+      "full_section_coverage": [
+        {
+          "coverage_fraction": 1.0,
+          "covered_unique_voxels": 439362,
+          "duplicate_prediction_assignments": 1166270,
+          "inline": 489,
+          "max_predictions_per_voxel": 9,
+          "min_predictions_per_voxel": 1,
+          "scoring_rule": "uniform_mean_logits_then_one_global_confusion_entry_per_voxel",
+          "section_shape": [
+            462,
+            951
+          ],
+          "valid_voxels": 439362,
+          "window_count": 98
+        }
+      ],
+      "ignore_index": null,
+      "label_version": "f3-zenodo-1471548-ids-0-9-v1",
+      "legal_full_ranges": {
+        "guard": [
+          464,
+          488
+        ],
+        "train": [
+          100,
+          463
+        ],
+        "validation": [
+          489,
+          586
+        ]
+      },
+      "legal_overlap_audit": {
+        "exact_sample_id_overlap": 0,
+        "intersecting_rectangle_pairs": 0,
+        "section_overlap_count": 0,
+        "shared_inline_ids": [],
+        "train_window_count": 98,
+        "training_assignments_on_shared_voxels": 0,
+        "unique_shared_voxels": 0,
+        "validation_window_count": 98
+      },
+      "num_classes": 10,
+      "schema_version": "facies-p5.1-r01-v1",
+      "source_files": [
+        {
+          "bytes": 637187326,
+          "logical_path": "f3demo/inlines.zip",
+          "sha256": "2288ea261ccc2a5ae67972c0e93c556d21ceb67083d0b2b9fdd33329a5c56c01"
+        },
+        {
+          "bytes": 4800574,
+          "logical_path": "f3demo/masks.tar.gz",
+          "sha256": "f56bd426e29318ae6bcf64257daffc4772281745a142f63cc356f05ecad8b9ab"
+        }
+      ],
+      "split_hash": "d9574a06dcd0b08a097e1df17098d796130c1cd3d9cd2d4873189f36181ff762",
+      "stage": "R0_zero_training_contract",
+      "status": "completed",
+      "task_id": "facies_f3",
+      "valid_label_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "window_contract": {
+        "blend": "uniform_mean_raw_logits",
+        "edge_policy": "append_last_edge_aligned_origin",
+        "metric_rule": "one_global_confusion_entry_per_unique_voxel",
+        "stride": 64,
+        "window_size": 128
+      }
+    },
+    "facies_penobscot": {
+      "bounded_real_sections": {
+        "nearest_inline_distance": 24,
+        "required_buffer_groups": 23,
+        "train": [
+          1335
+        ],
+        "validation": [
+          1359
+        ]
+      },
+      "data_root": "provided_at_runtime_not_serialized",
+      "development_range": [
+        1000,
+        1448
+      ],
+      "firewall": {
+        "allowed_scope": "raw_development_inlines_only",
+        "evidence_class": "development_protocol_mechanism_only",
+        "fresh_blind": false,
+        "outer_payloads_read": 0,
+        "outer_sample_index_built": false,
+        "physical_test_h5_opened": false,
+        "requested_inline_ids": [
+          1335,
+          1359
+        ],
+        "requested_payload_count": 2,
+        "test_archive_opened": false,
+        "test_labels_read": false,
+        "test_metrics_read": false,
+        "test_predictions_read": false
+      },
+      "full_section_coverage": [
+        {
+          "coverage_fraction": 1.0,
+          "covered_unique_voxels": 721981,
+          "duplicate_prediction_assignments": 1915843,
+          "inline": 1359,
+          "max_predictions_per_voxel": 9,
+          "min_predictions_per_voxel": 1,
+          "scoring_rule": "uniform_mean_logits_then_one_global_confusion_entry_per_voxel",
+          "section_shape": [
+            1501,
+            481
+          ],
+          "valid_voxels": 721981,
+          "window_count": 161
+        }
+      ],
+      "ignore_index": null,
+      "label_version": "penobscot-dataset-log-v3-ids-0-7-v1",
+      "legal_full_ranges": {
+        "guard": [
+          1336,
+          1358
+        ],
+        "train": [
+          1000,
+          1335
+        ],
+        "validation": [
+          1359,
+          1448
+        ]
+      },
+      "legal_overlap_audit": {
+        "exact_sample_id_overlap": 0,
+        "intersecting_rectangle_pairs": 0,
+        "section_overlap_count": 0,
+        "shared_inline_ids": [],
+        "train_window_count": 161,
+        "training_assignments_on_shared_voxels": 0,
+        "unique_shared_voxels": 0,
+        "validation_window_count": 161
+      },
+      "num_classes": 8,
+      "schema_version": "facies-p5.1-r01-v1",
+      "source_files": [
+        {
+          "bytes": 2268562702,
+          "logical_path": "penobscot/dataset.h5",
+          "sha256": "c78a63d56949bbf9685eddc582c1269d1899bf9d032c4000bb5e8d920c235656"
+        }
+      ],
+      "split_hash": "1fee0cc966a6122ddaac116f4265f8d71dfbabb1345abb132f49492af95dce5f",
+      "stage": "R0_zero_training_contract",
+      "status": "completed",
+      "task_id": "facies_penobscot",
+      "valid_label_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "window_contract": {
+        "blend": "uniform_mean_raw_logits",
+        "edge_policy": "append_last_edge_aligned_origin",
+        "metric_rule": "one_global_confusion_entry_per_unique_voxel",
+        "stride": 64,
+        "window_size": 128
+      }
+    }
+  },
+  "tasks_are_independent": true,
+  "test_archive_opened": false,
+  "test_labels_read": false,
+  "track_id": "facies"
+}

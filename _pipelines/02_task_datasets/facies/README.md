@@ -637,3 +637,55 @@ opening data or a model:
 PYTHONDONTWRITEBYTECODE=1 "$P5_TORCH_PYTHON" \
   _pipelines/02_task_datasets/facies/facies_p5_stage4.py verify
 ```
+
+## P5.1 R0/R1 spatial-protocol check
+
+`facies_p5_r01.py` is a raw-data, development-only protocol runner. It has one
+required `--data-root` argument and deliberately has no processed-test,
+holdout, lifecycle, or prediction-archive argument. F3 and Penobscot retain
+independent TaskSpecs, label versions, class heads, results, and figures.
+
+R0 applies the existing internal development split before windowing: F3 uses
+train 100–463, guard 464–488, validation 489–586; Penobscot uses train
+1000–1335, guard 1336–1358, validation 1359–1448. A deterministic sliding
+window appends an edge-aligned final origin, uniformly averages raw logits in
+overlaps, and enters exactly one argmax per valid voxel into the global
+confusion matrix. Evidence includes full-section coverage, pre-blend duplicate
+assignments, Accuracy, mIoU, fixed Macro-F1, and per-class support/IoU/F1.
+
+R1 is a protocol-mechanism diagnostic, not a model ranking. Both lanes use the
+same scratch `facies_linear_pixel`, update budget, window geometry, seed 2693,
+and complete bounded development validation sections. The invalid lane first
+extracts overlapping patches and then randomly splits them; the legal lane
+first makes the section block split, leaves the frozen inline guard, and only
+then windows. Preprocessing and inverse-square-root class weights are fitted
+separately on each lane's training windows only. Both lanes are explicitly
+`diagnostic_only` and `not_rankable`; ten-model comparisons remain out of
+scope. All evidence states `test_archive_opened=false`,
+`test_labels_read=false`, and `fresh_blind=false` because the historical outer
+holdout is already reusable rather than fresh blind.
+
+Provision the raw layout documented above. This bounded real-development
+smoke uses one complete train section and one complete validation section per
+task with two fixed optimizer updates; it does not index the outer holdout:
+
+```bash
+python3 _pipelines/02_task_datasets/facies/facies_p5_r01.py run \
+  --data-root "$FACIES_DATA_ROOT" \
+  --train-sections 1 --validation-sections 1 --batch-size 2 --updates 2
+
+python3 _pipelines/02_task_datasets/facies/facies_p5_r01.py verify
+```
+
+Portable JSON, artifact hashes, and one protocol-comparison PNG per task are
+written under `_outputs/p5_r01/`; no HDF5, checkpoint, dense prediction array,
+cache, or absolute data path is serialized. The asset-free contract suite runs
+by default; the explicit real-data smoke is opt-in:
+
+```bash
+python3 -m unittest \
+  _pipelines.02_task_datasets.facies.tests.test_facies_p5_r01 -v
+
+FACIES_R01_DATA_ROOT="$FACIES_DATA_ROOT" python3 -m unittest \
+  _pipelines.02_task_datasets.facies.tests.test_facies_p5_r01.FaciesP51R01RealDevelopmentSmoke -v
+```

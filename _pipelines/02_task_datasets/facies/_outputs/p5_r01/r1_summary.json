@@ -1,0 +1,683 @@
+{
+  "data_root": "provided_at_runtime_not_serialized",
+  "evidence_class": "development_protocol_mechanism_only",
+  "fresh_blind": false,
+  "hpo": false,
+  "known_holdout_predictions_or_metrics_read": false,
+  "model_ranking_published": false,
+  "physical_test_h5_opened": false,
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "schema_version": "facies-p5.1-r01-v1",
+  "status": "completed",
+  "task_ids": [
+    "facies_f3",
+    "facies_penobscot"
+  ],
+  "tasks": {
+    "facies_f3": {
+      "leaky_metrics": {
+        "accuracy": 0.1521433351086348,
+        "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            16900,
+            218,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            10527,
+            8493,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            38407,
+            29412,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            0,
+            0,
+            13688,
+            11173,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            10,
+            0,
+            0,
+            0,
+            18950,
+            16432,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            0,
+            0,
+            34983,
+            26762,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            9,
+            0,
+            0,
+            0,
+            37561,
+            31863,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            84,
+            0,
+            0,
+            0,
+            20493,
+            19612,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            237,
+            0,
+            0,
+            0,
+            40401,
+            31403,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            437,
+            0,
+            0,
+            0,
+            17446,
+            13852,
+            0,
+            0,
+            0
+          ]
+        ],
+        "coverage_by_inline": [
+          {
+            "blend": "uniform_mean_raw_logits",
+            "covered_unique_voxels": 439362,
+            "duplicate_prediction_assignments": 1166270,
+            "inline": 489,
+            "max_predictions_per_voxel": 9,
+            "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+            "min_predictions_per_voxel": 1,
+            "unique_scored_voxels": 439362,
+            "valid_voxels": 439362
+          }
+        ],
+        "coverage_fraction": 1.0,
+        "duplicate_prediction_assignments_before_blend": 1166270,
+        "evaluated_pixels": 439362,
+        "fixed_macro_f1": 0.04712708283522492,
+        "full_volume_inline_count": 1,
+        "full_volume_valid_voxels": 439362,
+        "ignored_pixels": 0,
+        "macro_f1": 0.04712708283522492,
+        "miou": 0.026718915143037092,
+        "per_class_f1": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2248944089795761,
+          0.24637641937267304,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "per_class_iou": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.12669353874903574,
+          0.14049561268133515,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "per_class_support": [
+          17118,
+          19020,
+          67819,
+          24865,
+          35392,
+          61750,
+          69433,
+          40189,
+          72041,
+          31735
+        ],
+        "unique_scored_voxels": 439362
+      },
+      "legal_metrics": {
+        "accuracy": 0.1521888556588872,
+        "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            16905,
+            213,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            10548,
+            8472,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            38553,
+            29266,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            13715,
+            11147,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            18988,
+            16398,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            35099,
+            26650,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            0,
+            0,
+            0,
+            37658,
+            31767,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            74,
+            0,
+            0,
+            0,
+            20558,
+            19557,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            222,
+            0,
+            0,
+            0,
+            40581,
+            31238,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            410,
+            0,
+            0,
+            0,
+            17477,
+            13848,
+            0,
+            0,
+            0
+          ]
+        ],
+        "coverage_by_inline": [
+          {
+            "blend": "uniform_mean_raw_logits",
+            "covered_unique_voxels": 439362,
+            "duplicate_prediction_assignments": 1166270,
+            "inline": 489,
+            "max_predictions_per_voxel": 9,
+            "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+            "min_predictions_per_voxel": 1,
+            "unique_scored_voxels": 439362,
+            "valid_voxels": 439362
+          }
+        ],
+        "coverage_fraction": 1.0,
+        "duplicate_prediction_assignments_before_blend": 1166270,
+        "evaluated_pixels": 439362,
+        "fixed_macro_f1": 0.04713811190880808,
+        "full_volume_inline_count": 1,
+        "full_volume_valid_voxels": 439362,
+        "ignored_pixels": 0,
+        "macro_f1": 0.04713811190880808,
+        "miou": 0.026725745423199044,
+        "per_class_f1": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.22511480540804021,
+          0.24626631368004062,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "per_class_iou": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.12683344595693322,
+          0.14042400827505724,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "per_class_support": [
+          17118,
+          19020,
+          67819,
+          24865,
+          35392,
+          61750,
+          69433,
+          40189,
+          72041,
+          31735
+        ],
+        "unique_scored_voxels": 439362
+      },
+      "r0_status": "completed",
+      "r1_status": "completed",
+      "ranking_status": "not_rankable",
+      "reason": null
+    },
+    "facies_penobscot": {
+      "leaky_metrics": {
+        "accuracy": 0.2892763105954312,
+        "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+        "confusion_matrix": [
+          [
+            1426,
+            548,
+            0,
+            0,
+            0,
+            2531,
+            0,
+            24351
+          ],
+          [
+            10039,
+            1830,
+            0,
+            0,
+            0,
+            14784,
+            0,
+            10411
+          ],
+          [
+            12659,
+            423,
+            0,
+            0,
+            0,
+            17424,
+            0,
+            17867
+          ],
+          [
+            2715,
+            713,
+            0,
+            0,
+            0,
+            4503,
+            0,
+            1656
+          ],
+          [
+            3208,
+            49,
+            0,
+            0,
+            0,
+            5387,
+            0,
+            4512
+          ],
+          [
+            27379,
+            640,
+            0,
+            0,
+            0,
+            40792,
+            0,
+            38745
+          ],
+          [
+            16470,
+            407,
+            0,
+            0,
+            0,
+            24103,
+            0,
+            19864
+          ],
+          [
+            101008,
+            802,
+            0,
+            0,
+            0,
+            149931,
+            0,
+            164804
+          ]
+        ],
+        "coverage_by_inline": [
+          {
+            "blend": "uniform_mean_raw_logits",
+            "covered_unique_voxels": 721981,
+            "duplicate_prediction_assignments": 1915843,
+            "inline": 1359,
+            "max_predictions_per_voxel": 9,
+            "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+            "min_predictions_per_voxel": 1,
+            "unique_scored_voxels": 721981,
+            "valid_voxels": 721981
+          }
+        ],
+        "coverage_fraction": 1.0,
+        "duplicate_prediction_assignments_before_blend": 1915843,
+        "evaluated_pixels": 721981,
+        "fixed_macro_f1": 0.09927047081129589,
+        "full_volume_inline_count": 1,
+        "full_volume_valid_voxels": 721981,
+        "ignored_pixels": 0,
+        "macro_f1": 0.09927047081129589,
+        "miou": 0.060720688714880795,
+        "per_class_f1": [
+          0.013996859049862583,
+          0.0861663056785008,
+          0.0,
+          0.0,
+          0.0,
+          0.22229306478552413,
+          0.0,
+          0.4717075369764796
+        ],
+        "per_class_iou": [
+          0.007047752725691184,
+          0.04502288048024406,
+          0.0,
+          0.0,
+          0.0,
+          0.1250448318460911,
+          0.0,
+          0.30865004466702
+        ],
+        "per_class_support": [
+          28856,
+          37064,
+          48373,
+          9587,
+          13156,
+          107556,
+          60844,
+          416545
+        ],
+        "unique_scored_voxels": 721981
+      },
+      "legal_metrics": {
+        "accuracy": 0.29007134536781437,
+        "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+        "confusion_matrix": [
+          [
+            1424,
+            546,
+            0,
+            0,
+            0,
+            2530,
+            0,
+            24356
+          ],
+          [
+            10024,
+            1818,
+            0,
+            0,
+            0,
+            14776,
+            0,
+            10446
+          ],
+          [
+            12614,
+            413,
+            0,
+            0,
+            0,
+            17409,
+            0,
+            17937
+          ],
+          [
+            2726,
+            700,
+            0,
+            0,
+            0,
+            4501,
+            0,
+            1660
+          ],
+          [
+            3200,
+            47,
+            0,
+            0,
+            0,
+            5383,
+            0,
+            4526
+          ],
+          [
+            27283,
+            629,
+            0,
+            0,
+            0,
+            40761,
+            0,
+            38883
+          ],
+          [
+            16431,
+            391,
+            0,
+            0,
+            0,
+            24086,
+            0,
+            19936
+          ],
+          [
+            100560,
+            782,
+            0,
+            0,
+            0,
+            149780,
+            0,
+            165423
+          ]
+        ],
+        "coverage_by_inline": [
+          {
+            "blend": "uniform_mean_raw_logits",
+            "covered_unique_voxels": 721981,
+            "duplicate_prediction_assignments": 1915843,
+            "inline": 1359,
+            "max_predictions_per_voxel": 9,
+            "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+            "min_predictions_per_voxel": 1,
+            "unique_scored_voxels": 721981,
+            "valid_voxels": 721981
+          }
+        ],
+        "coverage_fraction": 1.0,
+        "duplicate_prediction_assignments_before_blend": 1915843,
+        "evaluated_pixels": 721981,
+        "fixed_macro_f1": 0.09936135600393534,
+        "full_volume_inline_count": 1,
+        "full_volume_valid_voxels": 721981,
+        "ignored_pixels": 0,
+        "macro_f1": 0.09936135600393534,
+        "miou": 0.060813556659486664,
+        "per_class_f1": [
+          0.014021406276154747,
+          0.08577494692144373,
+          0.0,
+          0.0,
+          0.0,
+          0.22226281551439275,
+          0.0,
+          0.47283167931949144
+        ],
+        "per_class_iou": [
+          0.00706020010510972,
+          0.04480922803904171,
+          0.0,
+          0.0,
+          0.0,
+          0.12502568852926652,
+          0.0,
+          0.3096133366024754
+        ],
+        "per_class_support": [
+          28856,
+          37064,
+          48373,
+          9587,
+          13156,
+          107556,
+          60844,
+          416545
+        ],
+        "unique_scored_voxels": 721981
+      },
+      "r0_status": "completed",
+      "r1_status": "completed",
+      "ranking_status": "not_rankable",
+      "reason": null
+    }
+  },
+  "tasks_are_independent": true,
+  "test_archive_opened": false,
+  "test_labels_read": false,
+  "track_id": "facies"
+}
