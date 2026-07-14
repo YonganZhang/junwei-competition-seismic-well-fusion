@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5 Stage 3多seed CV已完成验收] 六赛道已在隔离集成分支共存；
+> **🧭 当前: [P5 Stage 4已完成已见留出集确认] 六赛道已在隔离集成分支共存；
 >   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
 >   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
 >   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
@@ -15,9 +15,10 @@
 >   development pilot、87个结构化skip/blocked、0个失败/超时；断层因无审核负例不训练，甜点T6/T7
 >   因无development-only特征源不偷读`test.h5`。Stage-3已完成五个可运行赛道441个cell：437 pass、
 >   3个岩相CatBoost真实失败、1个重建PyKrige预算超时；断层零合法fold继续`not_rankable`。
->   下一步按任务/lane冻结唯一胜者；只有预注册理由充分时才在development CV内做小规模HPO，随后全development
->   refit并通过现有一次性门消费frozen test。master有未归属脏改动，因此仍不merge、不push。完整证据见
->   `_wiki-methodology/_tests/P5_stage3_acceptance_evidence.md`。
+>   Stage-4已按Stage-3冻结唯一胜者，在全development上refit并对历史已见holdout做确认；五个可运行赛道
+>   有真实指标和专属图，断层与甜点T5/T6/T7继续诚实阻塞。全部结果均为
+>   `previously_seen_reusable_holdout`，不是fresh-blind。master有未归属脏改动，因此仍不merge、不push。
+>   完整证据见`_wiki-methodology/_tests/P5_stage4_acceptance_evidence.md`。
 >   未 push。**
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
@@ -32,7 +33,7 @@
 | P2 数据 / 实现准备 | ✅ | 3/3 | Volve全套(含ST10010)+F3+Penobscot下载完成；③④赛道数据量核实足够(纠正见P2.2) |
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
 | P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
-| P5 合成 / 交付 | 🔄 | 0.85/1 | 调研、Stage-1/2、top-3×3-seed×全有效fold和赛道专属OOF可视化已完成；五个可运行赛道441 cell中437 pass、3 fail、1 timeout。待冻结唯一配置、可选小规模HPO、全development refit和最终单次frozen-test；断层数据门仍阻塞。 |
+| P5 合成 / 交付 | 🔄 | 0.95/1 | 调研、Stage-1/2/3及Stage-4全development refit+已见holdout确认已完成；集成回归178 passed。仍需真正未触碰的外部/赛事隐藏测试，断层与甜点T5/T6/T7数据门继续阻塞。 |
 
 ## 协作与决策权边界
 
@@ -192,6 +193,13 @@
       合计441个可运行cell、437 pass、3 fail、1 timeout；各赛道OOF manifest、专属图、bootstrap CI、
       worst-fold、seed稳定性、资源和test firewall均独立核验。集成HEAD为`9e5f501`，完整证据见
       `_wiki-methodology/_tests/P5_stage3_acceptance_evidence.md`。master仍脏，未merge、未push。
+- [x] 2026-07-14 P5 Stage-4执行与集成验收完成：严格冻结Stage-3唯一胜者、配置、预算和seed，在全部合法
+      development上refit；五个可运行赛道对历史已见holdout生成真实指标、预测、哈希manifest和赛道专属图，
+      ①断层继续`blocked/not_rankable`，⑤T5`not_feasible`、T6/T7`blocked`。六轨提交按①→⑥集成到
+      `5af968c`；集成后`178 passed`、`6 subtests passed`、`1 skipped`。所有结果明确为
+      `previously_seen_reusable_holdout`、`prior_test_consumed=true`、`fresh_blind=false`，不能称首次盲测。
+      完整指标、图件目检和facies单次访问恢复记录见`_wiki-methodology/_tests/P5_stage4_acceptance_evidence.md`。
+      master仍脏，未merge、未push；下一步必须获取新的外部/赛事隐藏测试集，或先补齐被阻塞的数据合同。
 
 ## 数据资产索引
 

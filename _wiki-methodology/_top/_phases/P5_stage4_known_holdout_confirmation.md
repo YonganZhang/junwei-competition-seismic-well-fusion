@@ -3,7 +3,8 @@
 > 冻结日期：2026-07-14  
 > 基线：`p5-model-benchmark-integration@3df7620`  
 > 根随机种子：`2693`  
-> 状态：执行中
+> 状态：已完成并集成验收
+> 验收证据：`../../_tests/P5_stage4_acceptance_evidence.md`
 
 ## 1. 目的与证据等级
 
@@ -62,3 +63,7 @@ development数据上refit，再对项目历史已经看过的空间/井族留出
 六个赛道在各自Stage-3隔离工作树内实现并执行，负责人逐一复核后按①至⑥固定顺序选择性集成到本分支。
 集成后统一运行共享回归、赛道Stage-3/Stage-4测试、hash审计和TOP doctor。Stage-4结果只能用于当前已见
 holdout上的确认；若需要新的模型选择循环，必须回到development CV并登记为下一阶段，不能回读本阶段指标。
+
+2026-07-14完成状态：六轨提交已按固定顺序集成到`p5-model-benchmark-integration@5af968c`；五个可运行
+赛道均完成真实refit与已见holdout确认，断层继续`blocked/not_rankable`。集成后回归为`178 passed`、
+`6 subtests passed`、`1 skipped`；完整指标、图件目检、facies单次访问恢复记录和fresh-blind边界见验收证据。
