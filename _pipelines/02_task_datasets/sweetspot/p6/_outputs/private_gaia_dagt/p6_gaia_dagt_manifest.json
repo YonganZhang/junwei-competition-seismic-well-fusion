@@ -3,8 +3,8 @@
   "artifacts": [
     {
       "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_conclusion.json",
-      "sha256": "5904d6294c09cb6c5380bd5dd7696ea30d2410df6999c56194e78c4506914cbd",
-      "size_bytes": 586
+      "sha256": "b1235f1b73e0f7dbd35661bee618786ae22dc77d3e3d4468f19b55e782ce12b2",
+      "size_bytes": 622
     },
     {
       "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_resource_log.json",
@@ -23,8 +23,8 @@
     },
     {
       "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/figures/proxy_only_qc.png",
-      "sha256": "b223613be11ad950e6157847b6b9d4e9099c65a2b8df7b9f55519f57ce416ef4",
-      "size_bytes": 106776
+      "sha256": "b544f3495f230a2eb2fed9e8f945da2f1c8a52bfce4d0ce08a80b8a831a7f945",
+      "size_bytes": 169312
     }
   ],
   "no_downloads": true,

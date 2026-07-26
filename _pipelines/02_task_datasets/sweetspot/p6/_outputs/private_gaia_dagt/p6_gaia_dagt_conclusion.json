@@ -6,6 +6,7 @@
     "NOT_FEASIBLE",
     "UNAVAILABLE"
   ],
+  "final_state": "blocked_by_data",
   "reason": "T1/T2 private Gaia/DAGT evidence packaging is complete; F0/F1 remain unavailable and T3-T7 stay locked/not_feasible/blocked.",
   "schema_version": "sweetspot-p6-gaia-dagt-conclusion/v1",
   "status": "PARTIAL_READY",

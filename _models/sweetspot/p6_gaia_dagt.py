@@ -276,6 +276,7 @@ def build_bundle() -> dict[str, Any]:
     conclusion = {
         "schema_version": "sweetspot-p6-gaia-dagt-conclusion/v1",
         "status": "PARTIAL_READY",
+        "final_state": "blocked_by_data",
         "approved_states": list(ALLOWED_STATES),
         "target_states": {
             "T1": "PARTIAL_READY",
@@ -315,43 +316,114 @@ def render_proxy_only_figure(bundle: Mapping[str, Any]) -> str:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 5), constrained_layout=True)
     stage4 = _stage4_summary()
     t1_metrics = _load_json(P5_STAGE4_DIR / "targets" / "T1" / "metrics.json")["metrics"]
     t2_metrics = _load_json(P5_STAGE4_DIR / "targets" / "T2" / "metrics.json")["metrics"]
+    fig = plt.figure(figsize=(11, 6), dpi=200)
+    gs = fig.add_gridspec(
+        2,
+        2,
+        left=0.06,
+        right=0.98,
+        top=0.88,
+        bottom=0.16,
+        hspace=0.58,
+        wspace=0.38,
+    )
+    ax_t1_err = fig.add_subplot(gs[0, 0])
+    ax_t1_rank = fig.add_subplot(gs[0, 1])
+    ax_t2_class = fig.add_subplot(gs[1, 0])
+    ax_t2_diag = fig.add_subplot(gs[1, 1])
 
-    axes[0].bar(["MAE", "RMSE", "Spearman"], [t1_metrics["mae"], t1_metrics["rmse"], t1_metrics["spearman"]], color=["#5B8FF9", "#61DDAA", "#65789B"])
-    axes[0].set_title("T1 proxy-only evidence")
-    axes[0].set_ylabel("value")
-    axes[0].text(
-        0.02,
-        0.95,
-        f"PARTIAL_READY\nsource_kind={bundle['targets']['T1']['track_spec']['provenance']['source_kind']}",
-        transform=axes[0].transAxes,
-        va="top",
-        fontsize=9,
-    )
-    axes[0].grid(axis="y", alpha=0.2)
+    def _annotate_bars(ax, bars, fmt="{:.3f}") -> None:
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate(
+                fmt.format(height),
+                xy=(bar.get_x() + bar.get_width() / 2, height),
+                xytext=(0, 3),
+                textcoords="offset points",
+                ha="center",
+                va="bottom",
+                fontsize=8,
+            )
 
-    axes[1].bar(
-        ["AP", "Brier", "F1", "Thickness MAE"],
-        [t2_metrics["average_precision"], t2_metrics["brier"], t2_metrics["f1_at_0_5"], t2_metrics["thickness_diagnostic"]["net_thickness_mae_m"]],
-        color=["#5AD8A6", "#F6BD16", "#E86452", "#6DC8EC"],
-    )
-    axes[1].set_title("T2 proxy-only evidence")
-    axes[1].set_ylabel("value")
-    axes[1].text(
+    t1_error_labels = ["MAE", "RMSE"]
+    t1_error_values = [t1_metrics["mae"], t1_metrics["rmse"]]
+    bars = ax_t1_err.bar(t1_error_labels, t1_error_values, color=["#5B8FF9", "#61DDAA"])
+    _annotate_bars(ax_t1_err, bars)
+    ax_t1_err.set_title("T1 error metrics")
+    ax_t1_err.set_ylabel("proxy units")
+    ax_t1_err.text(
         0.02,
-        0.95,
-        f"known-holdout confirmation\nprior_test_consumed={stage4['prior_test_consumed']}",
-        transform=axes[1].transAxes,
+        0.96,
+        f"source_kind={bundle['targets']['T1']['track_spec']['provenance']['source_kind']}",
+        transform=ax_t1_err.transAxes,
         va="top",
-        fontsize=9,
+        fontsize=8,
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "none", "pad": 2},
     )
-    axes[1].grid(axis="y", alpha=0.2)
+    ax_t1_err.grid(axis="y", alpha=0.2)
+
+    bars = ax_t1_rank.bar(["Spearman ρ"], [t1_metrics["spearman"]], color=["#65789B"])
+    _annotate_bars(ax_t1_rank, bars)
+    ax_t1_rank.set_title("T1 rank correlation")
+    ax_t1_rank.set_ylabel("ρ")
+    ax_t1_rank.set_ylim(0, 1.05)
+    ax_t1_rank.text(
+        0.02,
+        0.96,
+        "proxy-only / no field truth claim",
+        transform=ax_t1_rank.transAxes,
+        va="top",
+        fontsize=8,
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "none", "pad": 2},
+    )
+    ax_t1_rank.grid(axis="y", alpha=0.2)
+
+    t2_class_labels = ["AP", "Brier", "F1"]
+    t2_class_values = [t2_metrics["average_precision"], t2_metrics["brier"], t2_metrics["f1_at_0_5"]]
+    bars = ax_t2_class.bar(t2_class_labels, t2_class_values, color=["#5AD8A6", "#F6BD16", "#E86452"])
+    _annotate_bars(ax_t2_class, bars)
+    ax_t2_class.set_title("T2 classification scores")
+    ax_t2_class.set_ylabel("unitless score")
+    ax_t2_class.set_ylim(0, 1.05)
+    ax_t2_class.text(
+        0.02,
+        0.96,
+        f"known-holdout confirmation / prior_test_consumed={stage4['prior_test_consumed']}",
+        transform=ax_t2_class.transAxes,
+        va="top",
+        fontsize=8,
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "none", "pad": 2},
+    )
+    ax_t2_class.grid(axis="y", alpha=0.2)
+
+    thickness_mae = t2_metrics["thickness_diagnostic"]["net_thickness_mae_m"]
+    bars = ax_t2_diag.bar(["Thickness MAE"], [thickness_mae], color=["#6DC8EC"])
+    _annotate_bars(ax_t2_diag, bars, fmt="{:.2f}")
+    ax_t2_diag.set_title("T2 thickness diagnostic")
+    ax_t2_diag.set_ylabel("m")
+    ax_t2_diag.text(
+        0.02,
+        0.96,
+        "separated from classification scores",
+        transform=ax_t2_diag.transAxes,
+        va="top",
+        fontsize=8,
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "none", "pad": 2},
+    )
+    ax_t2_diag.grid(axis="y", alpha=0.2)
 
     fig.suptitle("Sweetspot P6 private Gaia/DAGT evidence package — proxy-only T1/T2")
-    fig.text(0.5, 0.01, "No predictive text agent, no test.h5, no F2/C1/C2, no new labels", ha="center", fontsize=9)
+    fig.text(
+        0.5,
+        0.045,
+        "No predictive text agent, no test.h5, no F2/C1/C2, no new labels, known-holdout only",
+        ha="center",
+        va="bottom",
+        fontsize=9,
+    )
     png_path = P6_OUTPUT_DIR / "figures" / "proxy_only_qc.png"
     png_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(png_path, dpi=200)

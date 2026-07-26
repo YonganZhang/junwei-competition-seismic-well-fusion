@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "3f23aa0f9344294bf5fb65ae2600b23bc5a245ac3f67cb2602c1ac53d33b4224",
+  "bundle_sha256": "43229758462a31a67816b471852ed4196d4e8208b29fdde0c95aaf723ee928e6",
   "conclusion": {
     "approved_states": [
       "READY",
@@ -8,6 +8,7 @@
       "NOT_FEASIBLE",
       "UNAVAILABLE"
     ],
+    "final_state": "blocked_by_data",
     "reason": "T1/T2 private Gaia/DAGT evidence packaging is complete; F0/F1 remain unavailable and T3-T7 stay locked/not_feasible/blocked.",
     "schema_version": "sweetspot-p6-gaia-dagt-conclusion/v1",
     "status": "PARTIAL_READY",
@@ -114,8 +115,8 @@
     "artifacts": [
       {
         "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_conclusion.json",
-        "sha256": "5904d6294c09cb6c5380bd5dd7696ea30d2410df6999c56194e78c4506914cbd",
-        "size_bytes": 586
+        "sha256": "b1235f1b73e0f7dbd35661bee618786ae22dc77d3e3d4468f19b55e782ce12b2",
+        "size_bytes": 622
       },
       {
         "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_resource_log.json",
@@ -134,8 +135,8 @@
       },
       {
         "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/figures/proxy_only_qc.png",
-        "sha256": "b223613be11ad950e6157847b6b9d4e9099c65a2b8df7b9f55519f57ce416ef4",
-        "size_bytes": 106776
+        "sha256": "b544f3495f230a2eb2fed9e8f945da2f1c8a52bfce4d0ce08a80b8a831a7f945",
+        "size_bytes": 169312
       }
     ],
     "no_downloads": true,
@@ -145,7 +146,7 @@
     "root_seed": 2693,
     "schema_version": "sweetspot-p6-gaia-dagt-artifact-manifest/v1"
   },
-  "manifest_sha256": "0e8cce51d116575116b227f5875fb6822a8b1d6804e1cd8be5748d4e6172cf9d",
+  "manifest_sha256": "e7973f5ed951c3e778a03bef13abefe87e562d63e070f4a9db906c82ba107bb9",
   "package": "sweetspot-p6-gaia-dagt-private",
   "proxy_evidence_index": {
     "B0": {

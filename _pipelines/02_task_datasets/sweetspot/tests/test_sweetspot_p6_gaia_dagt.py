@@ -6,6 +6,8 @@ import json
 import unittest
 from pathlib import Path
 
+from PIL import Image
+
 from _models.gaia_dagt.contracts import canonical_json
 
 private = importlib.import_module("_models.sweetspot.p6_gaia_dagt")
@@ -54,6 +56,7 @@ class SweetspotP6GaiaDAGTTests(unittest.TestCase):
 
     def test_lock_table_and_foundation_status(self) -> None:
         self.assertEqual(self.conclusion["status"], "PARTIAL_READY")
+        self.assertEqual(self.conclusion["final_state"], "blocked_by_data")
         self.assertEqual(self.conclusion["target_states"]["T1"], "PARTIAL_READY")
         self.assertEqual(self.conclusion["target_states"]["T2"], "PARTIAL_READY")
         self.assertEqual(self.conclusion["target_states"]["T5"], "NOT_FEASIBLE")
@@ -68,6 +71,8 @@ class SweetspotP6GaiaDAGTTests(unittest.TestCase):
         self.assertTrue(self.manifest["no_downloads"])
         self.assertTrue(self.manifest["no_test_access"])
         self.assertTrue(FIGURE_PATH.is_file())
+        with Image.open(FIGURE_PATH) as image:
+            self.assertEqual(image.size, (2200, 1200))
         for row in self.manifest["artifacts"]:
             path = Path(row["path"])
             self.assertFalse(path.is_absolute())
@@ -90,6 +95,7 @@ class SweetspotP6GaiaDAGTTests(unittest.TestCase):
 
     def test_bundle_hash_is_stable_and_state_is_allowed(self) -> None:
         self.assertIn(self.bundle["conclusion"]["status"], {"READY", "PARTIAL_READY", "BLOCKED", "NOT_FEASIBLE", "UNAVAILABLE"})
+        self.assertIn(self.bundle["conclusion"]["final_state"], {"verified_gain", "foundation_gain_only", "agent_signal_but_no_baseline_win", "no_verified_gain", "blocked_by_data"})
         payload = dict(self.bundle)
         payload.pop("bundle_sha256", None)
         self.assertEqual(
