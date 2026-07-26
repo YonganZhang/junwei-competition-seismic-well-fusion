@@ -1,0 +1,23 @@
+{
+  "approved_states": [
+    "READY",
+    "PARTIAL_READY",
+    "BLOCKED",
+    "NOT_FEASIBLE",
+    "UNAVAILABLE"
+  ],
+  "reason": "T1/T2 private Gaia/DAGT evidence packaging is complete; F0/F1 remain unavailable and T3-T7 stay locked/not_feasible/blocked.",
+  "schema_version": "sweetspot-p6-gaia-dagt-conclusion/v1",
+  "status": "PARTIAL_READY",
+  "target_states": {
+    "F0": "UNAVAILABLE",
+    "F1": "UNAVAILABLE",
+    "T1": "PARTIAL_READY",
+    "T2": "PARTIAL_READY",
+    "T3": "BLOCKED",
+    "T4": "BLOCKED",
+    "T5": "NOT_FEASIBLE",
+    "T6": "BLOCKED",
+    "T7": "BLOCKED"
+  }
+}

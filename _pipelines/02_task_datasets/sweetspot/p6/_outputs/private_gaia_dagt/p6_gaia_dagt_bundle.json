@@ -1,0 +1,815 @@
+{
+  "bundle_sha256": "3f23aa0f9344294bf5fb65ae2600b23bc5a245ac3f67cb2602c1ac53d33b4224",
+  "conclusion": {
+    "approved_states": [
+      "READY",
+      "PARTIAL_READY",
+      "BLOCKED",
+      "NOT_FEASIBLE",
+      "UNAVAILABLE"
+    ],
+    "reason": "T1/T2 private Gaia/DAGT evidence packaging is complete; F0/F1 remain unavailable and T3-T7 stay locked/not_feasible/blocked.",
+    "schema_version": "sweetspot-p6-gaia-dagt-conclusion/v1",
+    "status": "PARTIAL_READY",
+    "target_states": {
+      "F0": "UNAVAILABLE",
+      "F1": "UNAVAILABLE",
+      "T1": "PARTIAL_READY",
+      "T2": "PARTIAL_READY",
+      "T3": "BLOCKED",
+      "T4": "BLOCKED",
+      "T5": "NOT_FEASIBLE",
+      "T6": "BLOCKED",
+      "T7": "BLOCKED"
+    }
+  },
+  "failure_log": {
+    "blocked": {
+      "F0": {
+        "reason": "no approved foundation artifact",
+        "status": "UNAVAILABLE"
+      },
+      "F1": {
+        "reason": "no approved foundation artifact",
+        "status": "UNAVAILABLE"
+      },
+      "T3": {
+        "reason": "no P6 private evidence extension requested for T3",
+        "status": "BLOCKED"
+      },
+      "T4": {
+        "reason": "no P6 private evidence extension requested for T4",
+        "status": "BLOCKED"
+      },
+      "T5": {
+        "reason": "simulation proxy remains insufficient",
+        "status": "NOT_FEASIBLE"
+      },
+      "T6": {
+        "reason": "no development-only feature source; test.h5 fallback forbidden",
+        "status": "BLOCKED"
+      },
+      "T7": {
+        "reason": "no development-only feature source; test.h5 fallback forbidden",
+        "status": "BLOCKED"
+      }
+    },
+    "deny_list_proof": {
+      "mode": "supervisory_qc_agent",
+      "no_sample_level_text_available": true,
+      "no_test_or_holdout_inputs_used": true,
+      "predictive_mode_disabled": true
+    },
+    "package": "sweetspot-p6-gaia-dagt-private",
+    "schema_version": "sweetspot-p6-gaia-dagt-failure-log/v1"
+  },
+  "figure_manifest": {
+    "figures": [
+      {
+        "kind": "proxy-only_sci_figure",
+        "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/figures/proxy_only_qc.png",
+        "target_scope": [
+          "T1",
+          "T2"
+        ],
+        "title": "Sweetspot P6 proxy-only evidence package"
+      }
+    ],
+    "schema_version": "sweetspot-p6-gaia-dagt-figure-manifest/v1"
+  },
+  "foundation_status": {
+    "F0": {
+      "reason": "no approved foundation artifact",
+      "status": "UNAVAILABLE"
+    },
+    "F1": {
+      "reason": "no approved foundation artifact",
+      "status": "UNAVAILABLE"
+    }
+  },
+  "lock_table": {
+    "T3": {
+      "reason": "no P6 private evidence extension requested for T3",
+      "status": "BLOCKED"
+    },
+    "T4": {
+      "reason": "no P6 private evidence extension requested for T4",
+      "status": "BLOCKED"
+    },
+    "T5": {
+      "reason": "simulation proxy remains insufficient",
+      "status": "NOT_FEASIBLE"
+    },
+    "T6": {
+      "reason": "no development-only feature source; test.h5 fallback forbidden",
+      "status": "BLOCKED"
+    },
+    "T7": {
+      "reason": "no development-only feature source; test.h5 fallback forbidden",
+      "status": "BLOCKED"
+    }
+  },
+  "manifest": {
+    "all_paths_portable": true,
+    "artifacts": [
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_conclusion.json",
+        "sha256": "5904d6294c09cb6c5380bd5dd7696ea30d2410df6999c56194e78c4506914cbd",
+        "size_bytes": 586
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_resource_log.json",
+        "sha256": "b3826fa00c8efc9826591217ee163adb729702e6fd2b1f18ec8633312a389d80",
+        "size_bytes": 2181
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_failure_log.json",
+        "sha256": "5a6aeef4a9cd3edc563046998f364adaa9e72f8369bca1aac0b868948559e0d1",
+        "size_bytes": 1108
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_evidence_index.json",
+        "sha256": "0dcd6aee818cc9209d6d8a8c94aa4a00d0db0c272ac6adc6f13f1b63f7ec8168",
+        "size_bytes": 1689
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/figures/proxy_only_qc.png",
+        "sha256": "b223613be11ad950e6157847b6b9d4e9099c65a2b8df7b9f55519f57ce416ef4",
+        "size_bytes": 106776
+      }
+    ],
+    "no_downloads": true,
+    "no_test_access": true,
+    "no_training": true,
+    "package": "sweetspot-p6-gaia-dagt-private",
+    "root_seed": 2693,
+    "schema_version": "sweetspot-p6-gaia-dagt-artifact-manifest/v1"
+  },
+  "manifest_sha256": "0e8cce51d116575116b227f5875fb6822a8b1d6804e1cd8be5748d4e6172cf9d",
+  "package": "sweetspot-p6-gaia-dagt-private",
+  "proxy_evidence_index": {
+    "B0": {
+      "fresh_blind": false,
+      "prior_test_consumed": true,
+      "source": {
+        "metrics_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/metrics.json",
+        "refit_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/refit.json",
+        "summary_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json"
+      },
+      "source_hashes": {
+        "metrics": "eb793fab14537e35cae1106b4c99134fe42b06a6017b265793fae2170d579694",
+        "refit": "e230fe1830ebf85f73ac49fa947e982d462c91ebce2c34bed0e86a36dbe7472d",
+        "summary": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+      },
+      "source_kind": "authorized known-holdout members only",
+      "status": "PARTIAL_READY",
+      "target_id": "T1"
+    },
+    "B1": {
+      "fresh_blind": false,
+      "prior_test_consumed": true,
+      "source": {
+        "metrics_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/metrics.json",
+        "refit_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/refit.json",
+        "summary_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json"
+      },
+      "source_hashes": {
+        "metrics": "35201e05547cdbe95d53ffcde24faae2efb3a759a999d0542fef5c504482edd3",
+        "refit": "8d00a3481fa346aeac10209def5a28d249b465c9eaa16faff93acf356897d5aa",
+        "summary": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+      },
+      "source_kind": "authorized known-holdout members only",
+      "status": "PARTIAL_READY",
+      "target_id": "T2"
+    }
+  },
+  "resource_log": {
+    "frozen_test_accessed": false,
+    "no_api_calls": true,
+    "no_downloads": true,
+    "no_training": true,
+    "package": "sweetspot-p6-gaia-dagt-private",
+    "private_tests_ran": false,
+    "schema_version": "sweetspot-p6-gaia-dagt-resource-log/v1",
+    "shared_contract_tests_ran": true,
+    "shared_contract_tests_required": 14,
+    "used_source_files": [
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+        "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_manifest.json",
+        "sha256": "80673a5d8c3f7cf905036ffea14475aeb5697cb68ba70e080d285ba0e58595bb"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/metrics.json",
+        "sha256": "eb793fab14537e35cae1106b4c99134fe42b06a6017b265793fae2170d579694"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/refit.json",
+        "sha256": "e230fe1830ebf85f73ac49fa947e982d462c91ebce2c34bed0e86a36dbe7472d"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/metrics.json",
+        "sha256": "35201e05547cdbe95d53ffcde24faae2efb3a759a999d0542fef5c504482edd3"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/refit.json",
+        "sha256": "8d00a3481fa346aeac10209def5a28d249b465c9eaa16faff93acf356897d5aa"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_summary.json",
+        "sha256": "8d898c8e90077f27d5f9e464879d390d911c3695a32346d0a4ab2de7e80dbfe8"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_plateau_gate.json",
+        "sha256": "d850999a1036f741f552b570865c32683ba4e68697aea96204bfffceed76f71e"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+        "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167"
+      }
+    ]
+  },
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p6-gaia-dagt-bundle/v1",
+  "source_files": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_manifest.json",
+      "sha256": "80673a5d8c3f7cf905036ffea14475aeb5697cb68ba70e080d285ba0e58595bb"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/metrics.json",
+      "sha256": "eb793fab14537e35cae1106b4c99134fe42b06a6017b265793fae2170d579694"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/refit.json",
+      "sha256": "e230fe1830ebf85f73ac49fa947e982d462c91ebce2c34bed0e86a36dbe7472d"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/metrics.json",
+      "sha256": "35201e05547cdbe95d53ffcde24faae2efb3a759a999d0542fef5c504482edd3"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/refit.json",
+      "sha256": "8d00a3481fa346aeac10209def5a28d249b465c9eaa16faff93acf356897d5aa"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_summary.json",
+      "sha256": "8d898c8e90077f27d5f9e464879d390d911c3695a32346d0a4ab2de7e80dbfe8"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_plateau_gate.json",
+      "sha256": "d850999a1036f741f552b570865c32683ba4e68697aea96204bfffceed76f71e"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+      "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167"
+    }
+  ],
+  "source_manifest": {
+    "commit": "0987684d6ecb7409bade73a35555593b678d70e1",
+    "files": [
+      {
+        "path": "/mnt/data/yongan-admin-2/projects/自己-全球分辨率填充研究-9a20ac/dagt/agents/prompt_templates.py",
+        "sha256": "355513fb7dffb65f90566dee5bfc44d5115305bdd8ab175ff61c1d856d61e1c8"
+      },
+      {
+        "path": "/mnt/data/yongan-admin-2/projects/自己-全球分辨率填充研究-9a20ac/dagt/agents/agentize.py",
+        "sha256": "a68f716858d5e147a2ec9889cf0c43fe426ea500eaf0ff6861a5bd2575711296"
+      },
+      {
+        "path": "/mnt/data/yongan-admin-2/projects/自己-全球分辨率填充研究-9a20ac/scripts/finetune_chronos2.py",
+        "sha256": "90536b6c47abed5209f112fefcd21ed003a325fc936c776fb1f594fac4f661e6"
+      },
+      {
+        "path": "/mnt/data/yongan-admin-2/projects/自己-全球分辨率填充研究-9a20ac/_pipelines/_steps.yml",
+        "sha256": "d7454d75e2a97c5909ac26e30df963822eb4bddcbee899f19c4bb1e8623591d0"
+      },
+      {
+        "path": "/mnt/data/yongan-admin-2/projects/自己-全球分辨率填充研究-9a20ac/_pipelines/build_domain.yml",
+        "sha256": "365f57d473c92a73f60a9865e0e4b9ee7cdf77f490da2391c52bd392e509d149"
+      },
+      {
+        "path": "/mnt/data/yongan-admin-2/projects/自己-全球分辨率填充研究-9a20ac/_pipelines/predict.yml",
+        "sha256": "b80ffb0b67b4a314aa7d7958ed3f9cc825cf9e32d72db35dc16bf7513bd2c79b"
+      }
+    ],
+    "provenance": {},
+    "upstream_repo_root": "/mnt/data/yongan-admin-2/projects/自己-全球分辨率填充研究-9a20ac"
+  },
+  "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+  "targets": {
+    "T1": {
+      "agent_evidence": {
+        "agent_mode": "supervisory_qc_agent",
+        "cache_key": "da1568fd27ecbd3b7dd41c006b58d33093ee366e998a69f896914df399076a2d",
+        "confidence": 0.25,
+        "control_mode": "real",
+        "deny_list": [
+          "label",
+          "labels",
+          "target",
+          "targets",
+          "y",
+          "truth",
+          "ground_truth",
+          "groundtruth",
+          "test",
+          "test_label",
+          "test_labels",
+          "test_metric",
+          "test_metrics",
+          "metric",
+          "metrics",
+          "stat",
+          "stats",
+          "statistics",
+          "test_stat",
+          "test_statistics",
+          "score",
+          "path",
+          "paths",
+          "file",
+          "file_path",
+          "filepath",
+          "uri",
+          "url",
+          "checkpoint",
+          "holdout",
+          "frozen",
+          "split",
+          "prediction_error",
+          "error",
+          "residual",
+          "distance",
+          "offset",
+          "inferred_ac_offset"
+        ],
+        "evidence": [
+          "qc-summary"
+        ],
+        "prompt_version": "p6.gaia.dagt.v1",
+        "provenance": {
+          "report_kind": "dict"
+        },
+        "seed": 2693,
+        "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+        "source_text_hash": "135070ca67a3998c90e4e7ae519c96fe32753baecd04644602fe7d026848a2d1",
+        "structured_priors": {
+          "contains_qc_token": false,
+          "contains_warning_token": false,
+          "report_length": 1242
+        },
+        "warnings": []
+      },
+      "agent_evidence_sha256": "ee6964eabfeea65685cee28d5904f5b208f45bdfbc8f4fc7522e69976cb31f57",
+      "batch_roundtrip_equal": true,
+      "batch_roundtrip_sha256": "90051aa5a85ffb75feb7d997a1df2a7bb862917e564ddcdbfd1bf986a1f67621",
+      "model_batch": {
+        "agent_evidence": {
+          "agent_mode": "supervisory_qc_agent",
+          "cache_key": "da1568fd27ecbd3b7dd41c006b58d33093ee366e998a69f896914df399076a2d",
+          "confidence": 0.25,
+          "control_mode": "real",
+          "deny_list": [
+            "label",
+            "labels",
+            "target",
+            "targets",
+            "y",
+            "truth",
+            "ground_truth",
+            "groundtruth",
+            "test",
+            "test_label",
+            "test_labels",
+            "test_metric",
+            "test_metrics",
+            "metric",
+            "metrics",
+            "stat",
+            "stats",
+            "statistics",
+            "test_stat",
+            "test_statistics",
+            "score",
+            "path",
+            "paths",
+            "file",
+            "file_path",
+            "filepath",
+            "uri",
+            "url",
+            "checkpoint",
+            "holdout",
+            "frozen",
+            "split",
+            "prediction_error",
+            "error",
+            "residual",
+            "distance",
+            "offset",
+            "inferred_ac_offset"
+          ],
+          "evidence": [
+            "qc-summary"
+          ],
+          "prompt_version": "p6.gaia.dagt.v1",
+          "provenance": {
+            "report_kind": "dict"
+          },
+          "seed": 2693,
+          "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+          "source_text_hash": "135070ca67a3998c90e4e7ae519c96fe32753baecd04644602fe7d026848a2d1",
+          "structured_priors": {
+            "contains_qc_token": false,
+            "contains_warning_token": false,
+            "report_length": 1242
+          },
+          "warnings": []
+        },
+        "feasibility": {
+          "RQI": true
+        },
+        "features": [
+          [
+            0.2161617856064557,
+            0.27932989213623827,
+            0.9931289666595325,
+            11936.0,
+            35810.0
+          ]
+        ],
+        "mask": [
+          true
+        ],
+        "metadata": {
+          "package": "sweetspot-p6-gaia-dagt-private",
+          "proxy_only": true,
+          "source_kind": "P5 Stage-4 known-holdout confirmation",
+          "target_id": "T1"
+        },
+        "target": [
+          0.2161617856064557
+        ],
+        "task_masks": {
+          "RQI": [
+            true
+          ]
+        },
+        "task_metrics": {
+          "RQI": "mae"
+        },
+        "task_targets": {
+          "RQI": [
+            0.2161617856064557
+          ]
+        },
+        "track_spec": {
+          "allowed_paths": [
+            "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+            "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/metrics.json",
+            "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/refit.json"
+          ],
+          "base_seed": 2693,
+          "forbidden_paths": [
+            "test.h5",
+            "frozen_holdout",
+            "known_holdout_predictions",
+            "checkpoint",
+            "score"
+          ],
+          "input_fields": [
+            "mae",
+            "rmse",
+            "spearman",
+            "holdout_samples",
+            "development_samples"
+          ],
+          "metric_names": [
+            "mae",
+            "rmse",
+            "spearman"
+          ],
+          "modality": "proxy_qc_summary",
+          "prompt_version": "p6.gaia.dagt.v1",
+          "provenance": {
+            "package": "sweetspot-p6-gaia-dagt-private",
+            "proxy_only": true,
+            "source_kind": "P5 Stage-4 known-holdout confirmation",
+            "target_id": "T1"
+          },
+          "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+          "target_fields": [
+            "RQI"
+          ],
+          "task_type": "regression",
+          "track_id": "sweetspot.p6.t1.proxy_qc"
+        },
+        "voxel_index_map": null
+      },
+      "model_batch_sha256": "90051aa5a85ffb75feb7d997a1df2a7bb862917e564ddcdbfd1bf986a1f67621",
+      "track_spec": {
+        "allowed_paths": [
+          "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+          "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/metrics.json",
+          "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/refit.json"
+        ],
+        "base_seed": 2693,
+        "forbidden_paths": [
+          "test.h5",
+          "frozen_holdout",
+          "known_holdout_predictions",
+          "checkpoint",
+          "score"
+        ],
+        "input_fields": [
+          "mae",
+          "rmse",
+          "spearman",
+          "holdout_samples",
+          "development_samples"
+        ],
+        "metric_names": [
+          "mae",
+          "rmse",
+          "spearman"
+        ],
+        "modality": "proxy_qc_summary",
+        "prompt_version": "p6.gaia.dagt.v1",
+        "provenance": {
+          "package": "sweetspot-p6-gaia-dagt-private",
+          "proxy_only": true,
+          "source_kind": "P5 Stage-4 known-holdout confirmation",
+          "target_id": "T1"
+        },
+        "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+        "target_fields": [
+          "RQI"
+        ],
+        "task_type": "regression",
+        "track_id": "sweetspot.p6.t1.proxy_qc"
+      },
+      "track_spec_sha256": "70bbb3f2bde7b79928c9366fdde1ecfe5797a61b0b4a564d1d45b0a5e385c0b8"
+    },
+    "T2": {
+      "agent_evidence": {
+        "agent_mode": "supervisory_qc_agent",
+        "cache_key": "bd6cf9cf2ce2393550e03631580a839dd450ce4e13eb33b3f79a70ce6e83eb2c",
+        "confidence": 0.25,
+        "control_mode": "real",
+        "deny_list": [
+          "label",
+          "labels",
+          "target",
+          "targets",
+          "y",
+          "truth",
+          "ground_truth",
+          "groundtruth",
+          "test",
+          "test_label",
+          "test_labels",
+          "test_metric",
+          "test_metrics",
+          "metric",
+          "metrics",
+          "stat",
+          "stats",
+          "statistics",
+          "test_stat",
+          "test_statistics",
+          "score",
+          "path",
+          "paths",
+          "file",
+          "file_path",
+          "filepath",
+          "uri",
+          "url",
+          "checkpoint",
+          "holdout",
+          "frozen",
+          "split",
+          "prediction_error",
+          "error",
+          "residual",
+          "distance",
+          "offset",
+          "inferred_ac_offset"
+        ],
+        "evidence": [
+          "qc-summary"
+        ],
+        "prompt_version": "p6.gaia.dagt.v1",
+        "provenance": {
+          "report_kind": "dict"
+        },
+        "seed": 2693,
+        "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+        "source_text_hash": "9a01957be10d424f3e25a10863f86a8293659a7d0706ee815318bb1331698df3",
+        "structured_priors": {
+          "contains_qc_token": false,
+          "contains_warning_token": false,
+          "report_length": 1240
+        },
+        "warnings": []
+      },
+      "agent_evidence_sha256": "ffaa580fe6bcb3ec79bcd496cc154499b5bd5dc0bc3b81aae31bde0044c39d9d",
+      "batch_roundtrip_equal": true,
+      "batch_roundtrip_sha256": "308c2caa19e542aca472ab28833482261d39f71e0bf11fe9feefd4cda708b302",
+      "model_batch": {
+        "agent_evidence": {
+          "agent_mode": "supervisory_qc_agent",
+          "cache_key": "bd6cf9cf2ce2393550e03631580a839dd450ce4e13eb33b3f79a70ce6e83eb2c",
+          "confidence": 0.25,
+          "control_mode": "real",
+          "deny_list": [
+            "label",
+            "labels",
+            "target",
+            "targets",
+            "y",
+            "truth",
+            "ground_truth",
+            "groundtruth",
+            "test",
+            "test_label",
+            "test_labels",
+            "test_metric",
+            "test_metrics",
+            "metric",
+            "metrics",
+            "stat",
+            "stats",
+            "statistics",
+            "test_stat",
+            "test_statistics",
+            "score",
+            "path",
+            "paths",
+            "file",
+            "file_path",
+            "filepath",
+            "uri",
+            "url",
+            "checkpoint",
+            "holdout",
+            "frozen",
+            "split",
+            "prediction_error",
+            "error",
+            "residual",
+            "distance",
+            "offset",
+            "inferred_ac_offset"
+          ],
+          "evidence": [
+            "qc-summary"
+          ],
+          "prompt_version": "p6.gaia.dagt.v1",
+          "provenance": {
+            "report_kind": "dict"
+          },
+          "seed": 2693,
+          "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+          "source_text_hash": "9a01957be10d424f3e25a10863f86a8293659a7d0706ee815318bb1331698df3",
+          "structured_priors": {
+            "contains_qc_token": false,
+            "contains_warning_token": false,
+            "report_length": 1240
+          },
+          "warnings": []
+        },
+        "feasibility": {
+          "SAND_FLAG_PROXY": true
+        },
+        "features": [
+          [
+            0.9990776475633495,
+            0.02286081524589408,
+            0.9777260638297872,
+            26.19999999997617,
+            12081.0
+          ]
+        ],
+        "mask": [
+          true
+        ],
+        "metadata": {
+          "package": "sweetspot-p6-gaia-dagt-private",
+          "proxy_only": true,
+          "source_kind": "P5 Stage-4 known-holdout confirmation",
+          "target_id": "T2"
+        },
+        "target": [
+          1.0
+        ],
+        "task_masks": {
+          "SAND_FLAG_PROXY": [
+            true
+          ]
+        },
+        "task_metrics": {
+          "SAND_FLAG_PROXY": "average_precision"
+        },
+        "task_targets": {
+          "SAND_FLAG_PROXY": [
+            1.0
+          ]
+        },
+        "track_spec": {
+          "allowed_paths": [
+            "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+            "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/metrics.json",
+            "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/refit.json"
+          ],
+          "base_seed": 2693,
+          "forbidden_paths": [
+            "test.h5",
+            "frozen_holdout",
+            "known_holdout_predictions",
+            "checkpoint",
+            "score"
+          ],
+          "input_fields": [
+            "average_precision",
+            "brier",
+            "f1",
+            "thickness_mae_m",
+            "holdout_samples"
+          ],
+          "metric_names": [
+            "average_precision",
+            "brier",
+            "f1"
+          ],
+          "modality": "proxy_qc_summary",
+          "prompt_version": "p6.gaia.dagt.v1",
+          "provenance": {
+            "package": "sweetspot-p6-gaia-dagt-private",
+            "proxy_only": true,
+            "source_kind": "P5 Stage-4 known-holdout confirmation",
+            "target_id": "T2"
+          },
+          "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+          "target_fields": [
+            "SAND_FLAG_PROXY"
+          ],
+          "task_type": "classification",
+          "track_id": "sweetspot.p6.t2.proxy_qc"
+        },
+        "voxel_index_map": null
+      },
+      "model_batch_sha256": "308c2caa19e542aca472ab28833482261d39f71e0bf11fe9feefd4cda708b302",
+      "track_spec": {
+        "allowed_paths": [
+          "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+          "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/metrics.json",
+          "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/refit.json"
+        ],
+        "base_seed": 2693,
+        "forbidden_paths": [
+          "test.h5",
+          "frozen_holdout",
+          "known_holdout_predictions",
+          "checkpoint",
+          "score"
+        ],
+        "input_fields": [
+          "average_precision",
+          "brier",
+          "f1",
+          "thickness_mae_m",
+          "holdout_samples"
+        ],
+        "metric_names": [
+          "average_precision",
+          "brier",
+          "f1"
+        ],
+        "modality": "proxy_qc_summary",
+        "prompt_version": "p6.gaia.dagt.v1",
+        "provenance": {
+          "package": "sweetspot-p6-gaia-dagt-private",
+          "proxy_only": true,
+          "source_kind": "P5 Stage-4 known-holdout confirmation",
+          "target_id": "T2"
+        },
+        "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+        "target_fields": [
+          "SAND_FLAG_PROXY"
+        ],
+        "task_type": "classification",
+        "track_id": "sweetspot.p6.t2.proxy_qc"
+      },
+      "track_spec_sha256": "0a79a7ba2d3358b8bb9bc914e15eabc92b0b054fa423009971ad3d09cae15d52"
+    }
+  }
+}
