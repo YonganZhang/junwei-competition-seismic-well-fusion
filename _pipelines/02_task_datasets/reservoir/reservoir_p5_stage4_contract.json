@@ -30,7 +30,8 @@
     "split_hash": "2334f3cc301fc66d6b98c6edf3a4f9c920776469531003d62f5370e119426a18",
     "visualization_data_sha256": "c421df267f7c495530ee0ed3d80329c505937767e0fc53366dd73fd6a2f612eb",
     "p5_contract_sha256": "066dc813296c6f883bc724c361aa37f839267bd9d3568631e5a2c325de2a200a",
-    "source_lock_sha256": "a25789166f0a9eae7bbfe6716009fa65aa45c2a1f93118e1e10ffb9711bb0db8"
+    "source_lock_sha256": "9bcd0c1ca59fddb5c3c9ec82c072ed2aeef6d24d12502a8569118bb013572259",
+    "source_lock_refresh_note": "2026-07-29: re-pinned after commit 537b1f6 bumped an unrelated tabiclv2_regressor dependency version (2.0.0->2.1.1, tag field nulled) in the shared _models/property/source_lock.json during the cross-track P8 foundation-model routing work. Diffed old vs new source_lock.json: the only change is the tabiclv2_regressor entry; the extra_trees_regressor and xgboost_regressor entries actually frozen by this Stage-4 confirmation (see winners below) are byte-identical before and after. No Stage-4 winning-model config, split, or metric changed; this is a hash re-pin against an unrelated shared-file edit, not a re-selection or re-run."
   },
   "winners": {
     "PHIF": {
