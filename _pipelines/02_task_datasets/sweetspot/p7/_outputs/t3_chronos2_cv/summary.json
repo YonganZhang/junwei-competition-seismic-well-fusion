@@ -1,0 +1,459 @@
+{
+  "archived_p5_baseline": {
+    "fold_means": {
+      "0": 217.22661055209366,
+      "1": 408.9915808301043,
+      "2": 253.1467357375453,
+      "3": 189.10689229920933
+    },
+    "known_holdout_used_for_selection": false,
+    "leaderboard_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
+    "leaderboard_sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+    "model_id": "xgboost",
+    "primary_mean": 267.1179548547381,
+    "primary_metric": "mae"
+  },
+  "blend_weights": [
+    {
+      "chronos_weight": 0.7000000000000001,
+      "fold_id": 0,
+      "grid_step": 0.01,
+      "history_weight": 0.29999999999999993,
+      "train_selection_mae": 226.95367638806687,
+      "train_selection_metric": "mae",
+      "validation_labels_used_for_weight_selection": false
+    },
+    {
+      "chronos_weight": 0.63,
+      "fold_id": 1,
+      "grid_step": 0.01,
+      "history_weight": 0.37,
+      "train_selection_mae": 200.08904716405542,
+      "train_selection_metric": "mae",
+      "validation_labels_used_for_weight_selection": false
+    },
+    {
+      "chronos_weight": 0.64,
+      "fold_id": 2,
+      "grid_step": 0.01,
+      "history_weight": 0.36,
+      "train_selection_mae": 201.9042766960587,
+      "train_selection_metric": "mae",
+      "validation_labels_used_for_weight_selection": false
+    },
+    {
+      "chronos_weight": 0.65,
+      "fold_id": 3,
+      "grid_step": 0.01,
+      "history_weight": 0.35,
+      "train_selection_mae": 228.81525048569074,
+      "train_selection_metric": "mae",
+      "validation_labels_used_for_weight_selection": false
+    }
+  ],
+  "decision": {
+    "archived_xgboost_macro_fold_mae": 267.1179548547381,
+    "causal_history_mean_macro_fold_mae": 204.6370684329111,
+    "mae_reduction_vs_archived_xgboost_percent": 30.153883554551374,
+    "mae_reduction_vs_history_mean_percent": 8.828092963173232,
+    "non_temporal_tracks_status": "FOUNDATION_NOT_APPLICABLE",
+    "promotion_rule": "selected MAE must beat both archived XGBoost and causal history-mean control",
+    "promotion_status": "PROMOTE",
+    "selected_macro_fold_mae": 186.57151779454128,
+    "selected_method": "F1_chronos2_train_blend",
+    "t4_catboost_macro_fold_average_precision": 0.6540992322855067,
+    "t4_chronos_macro_fold_average_precision": 0.5091269841269841,
+    "t4_status": "REJECTED_NO_GAIN"
+  },
+  "evaluation": {
+    "folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "frozen_test_accessed": false,
+    "historical_holdout_metrics_used_for_selection": false,
+    "known_holdout_accessed": false,
+    "selection_scope": "fold-train labels choose one convex blend weight; fold-validation reports metrics",
+    "split_policy": "existing P4 held-well rolling-origin development folds",
+    "t4_folds": [
+      0,
+      1,
+      2
+    ],
+    "train_sample_limit": 1024,
+    "validation_labels_used_for_blend_selection": false,
+    "validation_sample_limit": 512
+  },
+  "foundation": {
+    "artifact": {
+      "config_sha256": "ef1143bfdc9c0376d9a056eefca46cb4b1ec3d0ffacd541ff56feb40fb708031",
+      "weights_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+      "weights_size_bytes": 477930472
+    },
+    "cross_learning": false,
+    "family": "Gaia time-series foundation lane",
+    "future_covariates_used": false,
+    "input_mode": "oil target plus six past-only production covariates",
+    "license": "Apache-2.0",
+    "model_id": "amazon/chronos-2",
+    "point_forecast": "mean of non-negative daily median forecasts",
+    "real_pretrained_weights_loaded": true,
+    "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+    "source_lock_path": "_pipelines/02_task_datasets/sweetspot/p7/source_lock.v1.json",
+    "source_lock_sha256": "af4fe966277fbf33fd2e23db9e31cddc638865b979cb19844953936e3269ba68"
+  },
+  "methods": {
+    "B1_history_mean": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "fold_id": 0,
+          "input_budget_sha256": "98d9d074b3da998a03e96f5550bce513666b93161cb55bd8d2322c73aae641d5",
+          "metrics": {
+            "mae": 97.19450168350166,
+            "rmse": 126.21624813706379,
+            "spearman": 0.4289151112923502
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "58d4c9637ebfc7b2eef2164ccadd6260a3ec8f2fa9bd6e74e12f7df47d4579b6",
+          "train_samples": 1012,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "f88bcf4866cd59ca75c2afebdc9cf7f87e9bae1cb6db32e4ddae3dcb90f83f75",
+          "validation_samples": 99
+        },
+        {
+          "fold_id": 1,
+          "input_budget_sha256": "d776467ea2ed7a366dbd036436b351d134c7adb272c51dc71f6d957e8017975c",
+          "metrics": {
+            "mae": 276.4311514441842,
+            "rmse": 465.7085644115091,
+            "spearman": 0.9373362898395429
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "e02b7fd5bf483f38536ee7daf94cd018b78a719b0c5dd2ad6afc2c03164a07c2",
+          "train_samples": 684,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "0237becb28422d7d542d3b3da74d2edebd6e645845c708f98c36ba352102be81",
+          "validation_samples": 427
+        },
+        {
+          "fold_id": 2,
+          "input_budget_sha256": "45b6f7a7de076bc622b3c721a3220ad609c20ee06b570c0b38d7db1da73785d6",
+          "metrics": {
+            "mae": 269.9898758782201,
+            "rmse": 509.37271730316496,
+            "spearman": 0.9304867161771073
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "6022cb89a34cd885f3b492d5f79f0735a99e4c94252b7c065815ff948235aacb",
+          "train_samples": 684,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "cc957000bf33291197800c73973cb5c9af9f62aaef59c2ed1effb24c71398a70",
+          "validation_samples": 427
+        },
+        {
+          "fold_id": 3,
+          "input_budget_sha256": "a30afa8fde367edd7bf221d89168a02eaf3bf3401de885c0d357c5356d83ac97",
+          "metrics": {
+            "mae": 174.93274472573842,
+            "rmse": 233.9038874399567,
+            "spearman": 0.6312608483340153
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "809773a71032945484516e9ad32df3cd7087393dfbcdffb496342bba0fcb5f0e",
+          "train_samples": 953,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "d1a19faa6357f0e1517b772ebee2f4e6c8ea9db296640c951258f9ec5f4ae0d3",
+          "validation_samples": 158
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 204.6370684329111,
+        "rmse": 333.8003543229236,
+        "spearman": 0.7319997414107539
+      },
+      "method_id": "B1_history_mean"
+    },
+    "F0_chronos2_past_covariates": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "daily_forecast_sha256": "c99f72204d825cdca03ec093b19d14b900546a2b4da3f34882070d2d0d346ee6",
+          "fold_id": 0,
+          "input_budget_sha256": "98d9d074b3da998a03e96f5550bce513666b93161cb55bd8d2322c73aae641d5",
+          "metrics": {
+            "mae": 145.9022375332097,
+            "rmse": 180.72341105924315,
+            "spearman": 0.20639092631048495
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "58d4c9637ebfc7b2eef2164ccadd6260a3ec8f2fa9bd6e74e12f7df47d4579b6",
+          "train_samples": 1012,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "f88bcf4866cd59ca75c2afebdc9cf7f87e9bae1cb6db32e4ddae3dcb90f83f75",
+          "validation_samples": 99
+        },
+        {
+          "daily_forecast_sha256": "1180e416247efb6bc8f66b11481b483314eaa88f1245752cbcfd4d52d379cb8c",
+          "fold_id": 1,
+          "input_budget_sha256": "d776467ea2ed7a366dbd036436b351d134c7adb272c51dc71f6d957e8017975c",
+          "metrics": {
+            "mae": 252.00031667154565,
+            "rmse": 460.6018056124382,
+            "spearman": 0.9357603524227199
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "e02b7fd5bf483f38536ee7daf94cd018b78a719b0c5dd2ad6afc2c03164a07c2",
+          "train_samples": 684,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "0237becb28422d7d542d3b3da74d2edebd6e645845c708f98c36ba352102be81",
+          "validation_samples": 427
+        },
+        {
+          "daily_forecast_sha256": "8a5cf4c0581273bf07f7271230a3907a6687d16457626d8f051b9ac61b7738e0",
+          "fold_id": 2,
+          "input_budget_sha256": "45b6f7a7de076bc622b3c721a3220ad609c20ee06b570c0b38d7db1da73785d6",
+          "metrics": {
+            "mae": 252.11178020288085,
+            "rmse": 494.7993060606235,
+            "spearman": 0.9241824948277839
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "6022cb89a34cd885f3b492d5f79f0735a99e4c94252b7c065815ff948235aacb",
+          "train_samples": 684,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "cc957000bf33291197800c73973cb5c9af9f62aaef59c2ed1effb24c71398a70",
+          "validation_samples": 427
+        },
+        {
+          "daily_forecast_sha256": "093df7a75dd18dcc2b01607e483989fa5fdc1d9d22b9c23494c53b95f3cc2444",
+          "fold_id": 3,
+          "input_budget_sha256": "a30afa8fde367edd7bf221d89168a02eaf3bf3401de885c0d357c5356d83ac97",
+          "metrics": {
+            "mae": 146.7503784282701,
+            "rmse": 205.86242534192516,
+            "spearman": 0.7497174290412683
+          },
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "809773a71032945484516e9ad32df3cd7087393dfbcdffb496342bba0fcb5f0e",
+          "train_samples": 953,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "d1a19faa6357f0e1517b772ebee2f4e6c8ea9db296640c951258f9ec5f4ae0d3",
+          "validation_samples": 158
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 199.19117820897657,
+        "rmse": 335.4967370185575,
+        "spearman": 0.7040128006505643
+      },
+      "method_id": "F0_chronos2_past_covariates"
+    },
+    "F1_chronos2_train_blend": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "fold_id": 0,
+          "input_budget_sha256": "98d9d074b3da998a03e96f5550bce513666b93161cb55bd8d2322c73aae641d5",
+          "metrics": {
+            "mae": 115.90263718549427,
+            "rmse": 147.9819028955536,
+            "spearman": 0.2774369503854812
+          },
+          "prediction_sha256": "33d2585bbac0c2f45a6424641ae61a2d1f087cc547a6c76fe37d57f249026fec",
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "58d4c9637ebfc7b2eef2164ccadd6260a3ec8f2fa9bd6e74e12f7df47d4579b6",
+          "train_samples": 1012,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "f88bcf4866cd59ca75c2afebdc9cf7f87e9bae1cb6db32e4ddae3dcb90f83f75",
+          "validation_samples": 99
+        },
+        {
+          "fold_id": 1,
+          "input_budget_sha256": "d776467ea2ed7a366dbd036436b351d134c7adb272c51dc71f6d957e8017975c",
+          "metrics": {
+            "mae": 244.08683359265223,
+            "rmse": 437.0894497678897,
+            "spearman": 0.9419020635225479
+          },
+          "prediction_sha256": "678e2af161903478803cffb8389ba3f56f38f2c773401025ee3f11fde4c7734e",
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "e02b7fd5bf483f38536ee7daf94cd018b78a719b0c5dd2ad6afc2c03164a07c2",
+          "train_samples": 684,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "0237becb28422d7d542d3b3da74d2edebd6e645845c708f98c36ba352102be81",
+          "validation_samples": 427
+        },
+        {
+          "fold_id": 2,
+          "input_budget_sha256": "45b6f7a7de076bc622b3c721a3220ad609c20ee06b570c0b38d7db1da73785d6",
+          "metrics": {
+            "mae": 241.07478975919582,
+            "rmse": 469.13362014521715,
+            "spearman": 0.9381808179832651
+          },
+          "prediction_sha256": "4dcd68b6840c00a387061eaf1cae50459dcee4d7810ef7d1065c828f7e8a0fa6",
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "6022cb89a34cd885f3b492d5f79f0735a99e4c94252b7c065815ff948235aacb",
+          "train_samples": 684,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "cc957000bf33291197800c73973cb5c9af9f62aaef59c2ed1effb24c71398a70",
+          "validation_samples": 427
+        },
+        {
+          "fold_id": 3,
+          "input_budget_sha256": "a30afa8fde367edd7bf221d89168a02eaf3bf3401de885c0d357c5356d83ac97",
+          "metrics": {
+            "mae": 145.2218106408228,
+            "rmse": 199.4165054816401,
+            "spearman": 0.7223039465497543
+          },
+          "prediction_sha256": "2e1827e1d525f8040780bf337632fee9ff5ac011a481081a8bfd76f9a2448e1e",
+          "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+          "train_sample_ids_sha256": "809773a71032945484516e9ad32df3cd7087393dfbcdffb496342bba0fcb5f0e",
+          "train_samples": 953,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "d1a19faa6357f0e1517b772ebee2f4e6c8ea9db296640c951258f9ec5f4ae0d3",
+          "validation_samples": 158
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 186.57151779454128,
+        "rmse": 313.4053695725751,
+        "spearman": 0.7199559446102621
+      },
+      "method_id": "F1_chronos2_train_blend"
+    }
+  },
+  "resource": {
+    "batch_size": 196,
+    "chronos_forecasting": "2.2.0",
+    "cuda_visible_devices": "0",
+    "device": "cuda",
+    "gpu_lock": {
+      "device": "cuda:0",
+      "mechanism": "flock",
+      "path": "gpu0.lock"
+    },
+    "python": "3.11.15",
+    "torch": "2.12.1+cu130",
+    "transformers": "4.50.0",
+    "wall_seconds": 19.83095711003989
+  },
+  "runtime_boundary": {
+    "checkpoint_written": false,
+    "external_api_calls": false,
+    "foundation_download_allowed": false,
+    "raw_predictions_persisted": false,
+    "root_seed": 2693
+  },
+  "schema_version": "sweetspot-p7-chronos2-t3-cv/v1",
+  "t4_experiment": {
+    "archived_p5_baseline": {
+      "fold_means": {
+        "0": 0.9499999999999998,
+        "1": 0.8694444444444445,
+        "2": 0.14285325241207594
+      },
+      "known_holdout_used_for_selection": false,
+      "leaderboard_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T4.json",
+      "leaderboard_sha256": "0749130e47b6c7645fc2a2b497531d14d2c2ce29827fd9354ab4401a1bb7d048",
+      "model_id": "catboost",
+      "primary_mean": 0.6540992322855067,
+      "primary_metric": "average_precision"
+    },
+    "folds": [
+      {
+        "fold_id": 0,
+        "input_budget_sha256": "97ea085a7c65f19e6600ad54982cf33bc869fdbed2a7f872dfe4eeedb7f69253",
+        "selected_quantile": 0.55,
+        "split_sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+        "train_samples": 27,
+        "train_selection_average_precision": 0.5300264550264551,
+        "validation_average_precision": 0.8041666666666667,
+        "validation_groups": [
+          "NO 15/9-F-11 H"
+        ],
+        "validation_labels_used_for_quantile_selection": false,
+        "validation_samples": 5,
+        "validation_score_sha256": "650bb07c8322ba22f5fe3fed5fc4e88b0a7bae4442cdf79a8fe05d55b3f07e6b"
+      },
+      {
+        "fold_id": 1,
+        "input_budget_sha256": "a5e9bd19622f11bd4bb841043e7dedf43fce9257f1f866268a9b3cf8a617c4dd",
+        "selected_quantile": 0.55,
+        "split_sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+        "train_samples": 26,
+        "train_selection_average_precision": 0.6903159340659341,
+        "validation_average_precision": 0.5666666666666667,
+        "validation_groups": [
+          "NO 15/9-F-1 C"
+        ],
+        "validation_labels_used_for_quantile_selection": false,
+        "validation_samples": 6,
+        "validation_score_sha256": "168433031ded24f92685b58d896b35f8e6ceb1c8e48cf48290466f8b609f72e4"
+      },
+      {
+        "fold_id": 2,
+        "input_budget_sha256": "e816eeab69396646d0836d1da553c1ba1b62af9cc5598a3bc8ae3120e149e873",
+        "selected_quantile": 0.75,
+        "split_sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+        "train_samples": 11,
+        "train_selection_average_precision": 0.7378336940836941,
+        "validation_average_precision": 0.15654761904761905,
+        "validation_groups": [
+          "NO 15/9-F-14 H"
+        ],
+        "validation_labels_used_for_quantile_selection": false,
+        "validation_samples": 21,
+        "validation_score_sha256": "3353809a0e42b4ed820de8638bb9e5041a67cbb3f78876a5c34a63a8c6fd91b2"
+      }
+    ],
+    "forecast_days": 30,
+    "frozen_test_accessed": false,
+    "history_days": 7,
+    "known_holdout_accessed": false,
+    "macro_fold_average_precision": 0.5091269841269841,
+    "method_id": "F0_chronos2_future_water_risk",
+    "promotion_status": "REJECT",
+    "reason": "seven-day context foundation score does not beat archived CatBoost",
+    "risk_score": "largest non-negative seven-day mean in the 30-day water forecast",
+    "target_id": "T4",
+    "train_selection": "choose forecast quantile by fold-train average precision"
+  },
+  "target": {
+    "definition": "mean BORE_OIL_VOL over the next 30 calendar days",
+    "direction": "minimize",
+    "forecast_days": 30,
+    "history_days": 30,
+    "lane": "productivity",
+    "primary_metric": "mae",
+    "target_id": "T3"
+  }
+}
