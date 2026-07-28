@@ -1,0 +1,65 @@
+{
+  "development_only": true,
+  "files": [
+    {
+      "path": "p6_private_evidence/strict/track_spec.json",
+      "sha256": "85633fd0c8ec6ed543669faea7fd9cbce94f17eff50ebf2c02cbd48958c450d6"
+    },
+    {
+      "path": "p6_private_evidence/conditional/track_spec.json",
+      "sha256": "9e68e8a00c83cb49b1c10b199c23e9a7f909220a77bb232bd46aed672a4417c8"
+    },
+    {
+      "path": "p6_private_evidence/strict/framework_task_spec.json",
+      "sha256": "01c07db352f7247b90a97853966d85a78c677c88f0d4d26168273aef2b489435"
+    },
+    {
+      "path": "p6_private_evidence/conditional/framework_task_spec.json",
+      "sha256": "6fec468db0308c7a952110a9ef7e0011987d85d5b4b4940584bd616ad00e3b7a"
+    },
+    {
+      "path": "p6_private_evidence/strict/model_batch.json",
+      "sha256": "2bddab94d088687375690e0b93a8f71b92420773c64c7384614dbe15161d758a"
+    },
+    {
+      "path": "p6_private_evidence/conditional/model_batch.json",
+      "sha256": "fd1bb2c8f16f6529c848e3236ef727038b48bfa702856b6c56bd7580c6ec3d9f"
+    },
+    {
+      "path": "p6_private_evidence/strict/qc_evidence.json",
+      "sha256": "dd376d91b50cb0e113360a625b75b46bb720a4a49d7b950a32b081ba47d6fe59"
+    },
+    {
+      "path": "p6_private_evidence/conditional/qc_evidence.json",
+      "sha256": "73ca890db14f34d34649f6224c8809a96e7565f99e2b4bfe247f05cab7ef60c8"
+    },
+    {
+      "path": "p6_private_evidence/strict/conclusion.json",
+      "sha256": "f947a1c08ca4c9ac357982a1c533534ffe2f13c560e16a092361787e3d5524f0"
+    },
+    {
+      "path": "p6_private_evidence/conditional/conclusion.json",
+      "sha256": "8d24cb0bdd8708cb654b1dca74ed71f97eff8fda08e37805b79ec74783bc426d"
+    },
+    {
+      "path": "p6_private_evidence/strict/lane_table.json",
+      "sha256": "b763c485bb7dc16c666d1bc110d9a2f4587206d4e1ad56c5d3f5caa33c9935f5"
+    },
+    {
+      "path": "p6_private_evidence/conditional/lane_table.json",
+      "sha256": "b43b8822a6636f15332751175f0b0ef856584349fe38e21ff4ab6d4d6fc87f72"
+    },
+    {
+      "path": "p6_private_evidence/strict/sci_manifest.json",
+      "sha256": "abd7a0707f3db2d65952d4386fc3ad636f22d49583e2d21db7e99b6de8cdcedf"
+    },
+    {
+      "path": "p6_private_evidence/conditional/sci_manifest.json",
+      "sha256": "b8233cd8dc3c256c03aafec7e2d4964f923d4602febd874f574303aa5fdcf3b1"
+    }
+  ],
+  "fresh_blind": false,
+  "root_seed": 2693,
+  "schema_version": "p6-reconstruction-private-evidence-v1",
+  "track_id": "reconstruction"
+}

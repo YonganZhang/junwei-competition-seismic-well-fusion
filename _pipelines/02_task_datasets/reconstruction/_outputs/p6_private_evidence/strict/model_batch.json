@@ -1,0 +1,22 @@
+{
+  "agent_mode": "supervisory_qc_agent",
+  "feature_shape": [
+    78949,
+    3
+  ],
+  "fresh_blind": false,
+  "metric_keys": [
+    "rmse",
+    "mae",
+    "r2",
+    "spectral_log_rmse"
+  ],
+  "mode": "strict",
+  "model_batch_digest": "45070bc6243237a77e108231d974869dfa3c065dca8a2652925caf0b3bfdcbe7",
+  "prior_test_consumed": true,
+  "sample_count": 78949,
+  "schema_version": "p6-reconstruction-private-evidence-v1",
+  "task_spec_cache_key": "a3f213a5b10e96b4840ae52d77ef106c2ae3a025276c3ca63b484ba99de73f42",
+  "track_id": "reconstruction",
+  "voxel_count": 78949
+}

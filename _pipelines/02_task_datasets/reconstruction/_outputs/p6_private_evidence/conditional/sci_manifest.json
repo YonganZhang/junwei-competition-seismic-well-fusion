@@ -1,0 +1,43 @@
+{
+  "development_only": true,
+  "figure_count": 6,
+  "figures": [
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/conditional/prediction_comparison.png",
+      "sha256": "ecf96e0de7baa1321f90a801f100ca78158832f74b6b8053a2edfaadb979f702"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/conditional/prediction_comparison.pdf",
+      "sha256": "e111a243a95b071747eb7ac685eae6c8d3d77797892a983162f57656c8d911a8"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/conditional/prediction_comparison.html",
+      "sha256": "cc2e4f7ceae98d35bbf18f242e99a00c3447d45c0314d01b24e53a26eb7d8877"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p5_stage3_reconstruction_conditional.png",
+      "sha256": "6deefd4eb0289fd5a238dedd0c0458b40618450fe6057083f347db9f865ad026"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/prediction_visualization_conditional.png",
+      "sha256": "1c9257c47c02a84f820e1ff0c2e8e32060f027eec8fdb40b11615bbd77add85a"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/conditional/confirmation.png",
+      "sha256": "5e084a5cf8cc84c9556e924fad7e2fd906ce7d326891729f06322f3c7189354c"
+    }
+  ],
+  "fresh_blind": false,
+  "mode": "conditional",
+  "prior_test_consumed": true,
+  "schema_version": "p6-reconstruction-private-evidence-v1",
+  "source_visualization_manifest_sha256": "cd9826ec14de57b34a760e9181a757d74fc572fc1077bca374a54ca67f2be174",
+  "stage4_confirmation_sha256": "b0b296682469e23b9d04d75c947beb70e58721b06016e606fba158e3234afc39",
+  "track_id": "reconstruction"
+}
