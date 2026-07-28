@@ -1,0 +1,44 @@
+{
+  "code_head": "db84205",
+  "code_path": "_pipelines/02_task_datasets/fault/visualize_3d_sci.py",
+  "code_sha256": "f95ca6b502935945ef830b4886d920abd9376f76820e9f0ad7099835cee72649",
+  "font_status": {
+    "limitation": "Times New Roman is not installed on this host.",
+    "requested": "Times New Roman",
+    "selected": "Liberation Serif",
+    "times_new_roman_available": false
+  },
+  "inputs": {
+    "checkpoint": {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/checkpoints/best.ckpt",
+      "sha256": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84"
+    },
+    "test_h5": {
+      "path": "_data/processed/fault/test.h5",
+      "sha256": "c7ada8f6483db352cc5484893ff1c12333316f2bffb8dfcf117139899197fa25"
+    },
+    "visualization_report": {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/visualization_report.json",
+      "sha256": "34301f49597edcf6a2267c177c2be51326f4990a2dc1aa352e360d2f3fd30925"
+    }
+  },
+  "outputs": {
+    "html": "_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/spatial_context.html",
+    "probability_pdf": "_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/probability_spatial_context.pdf",
+    "probability_png": "_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/probability_spatial_context.png",
+    "seismic_pdf": "_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/seismic_spatial_context.pdf",
+    "seismic_png": "_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/seismic_spatial_context.png",
+    "truth_pdf": "_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/truth_spatial_context.pdf",
+    "truth_png": "_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/truth_spatial_context.png"
+  },
+  "sampling": {
+    "deterministic": true,
+    "rule": "archived spatial-quantile selection from the audited_v2 visualization report",
+    "selected_sample_indices": [
+      5,
+      15,
+      40
+    ]
+  },
+  "schema_version": "fault-3d-sci-v1"
+}
