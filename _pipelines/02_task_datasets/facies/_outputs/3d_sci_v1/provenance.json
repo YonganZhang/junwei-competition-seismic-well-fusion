@@ -1,0 +1,51 @@
+{
+  "schema_version": "facies-3d-sci-v1",
+  "task": "facies",
+  "verdict": "not_feasible",
+  "code_head": "25edb40",
+  "input_root": "_pipelines/02_task_datasets/facies",
+  "output_root": "_pipelines/02_task_datasets/facies/_outputs/3d_sci_v1",
+  "inputs": [
+    {
+      "path": "_wiki-methodology/_top/_phases/P5_three_dimensional_sci_visualization_contract.md",
+      "sha256": "0db6554a8568f17d10397b1369391eb22b51731fd77cbefc717f3c97186fdf3b",
+      "role": "governing_contract"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/pipeline_contract.py",
+      "sha256": "063162e176d1530c7279ff883f5ef7296eb4c39a921cbd76bb97161ad3762fa1",
+      "role": "label_and_eval_schema"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/build_dataset.py",
+      "sha256": "bda8602b1d0c92fd8b59da2756840d44d428653902fced96bf34334b6e24e340",
+      "role": "sample_construction_reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/visualize_predictions.py",
+      "sha256": "10f913d917e58976303c7fde3912b9d8ec596c0ed6edaf0095e49b2599333eb4",
+      "role": "domain_visualization_reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/_outputs/leakage_fixed_v2/prediction_visualization_evidence.json",
+      "sha256": "b5319f262c2a9550e7ff904fe51b5bfc1eb9cd4f8d3d675ff44cec167d80eb20",
+      "role": "real_test_visualization_evidence"
+    }
+  ],
+  "sampling": {
+    "mode": "none",
+    "reason": "No 3D sampling was performed because the facies assets do not contain a verifiable 3D volume or spatial trajectory contract."
+  },
+  "limits": {
+    "no_retrain": true,
+    "no_label_change": true,
+    "no_split_change": true,
+    "no_fake_z_axis": true,
+    "no_stack_of_unordered_2d_samples": true,
+    "no_png_pdf_html_written": true
+  },
+  "notes": [
+    "The existing facies visualizer is a 2D patch diagnostic, not a 3D reconstruction.",
+    "The existing evidence file records test-patch selection metadata, not a volume ordering contract."
+  ]
+}
