@@ -20,6 +20,7 @@ from typing import Any, Iterator, Mapping, Sequence
 
 import numpy as np
 from scipy.stats import spearmanr
+from sklearn.ensemble import ExtraTreesRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 from _models.sweetspot.p7_chronos2 import (
@@ -85,6 +86,73 @@ def _history_mean(sequences: np.ndarray) -> np.ndarray:
     if not np.isfinite(prediction).all():
         raise ValueError("calendar history mean received an all-missing oil history")
     return prediction
+
+
+def _calendar_features(
+    sequences: np.ndarray,
+    *,
+    train_medians: np.ndarray | None = None,
+) -> tuple[np.ndarray, np.ndarray]:
+    values = np.asarray(sequences, dtype=np.float64)
+    if values.ndim != 3 or values.shape[1:] != (7, 30):
+        raise ValueError(f"unexpected calendar sequence shape: {values.shape}")
+    flat = values.reshape(len(values), -1)
+    missing = ~np.isfinite(flat)
+    if train_medians is None:
+        medians = np.nanmedian(flat, axis=0)
+        medians = np.where(np.isfinite(medians), medians, 0.0)
+    else:
+        medians = np.asarray(train_medians, dtype=np.float64)
+        if medians.shape != (flat.shape[1],) or not np.isfinite(medians).all():
+            raise ValueError("calendar tree medians must be finite and train-fitted")
+    filled = np.where(missing, medians[None, :], flat)
+    observed = (~missing).sum(axis=1, keepdims=True).astype(np.float64)
+    features = np.concatenate((filled, missing.astype(np.float64), observed), axis=1)
+    if not np.isfinite(features).all():
+        raise ValueError("calendar tree features are non-finite")
+    return features, medians
+
+
+def _fit_calendar_tree(
+    train_sequence: np.ndarray,
+    train_target: np.ndarray,
+    validation_sequence: np.ndarray,
+    *,
+    seed: int,
+    shuffle_target: bool = False,
+) -> np.ndarray:
+    train_x, medians = _calendar_features(train_sequence)
+    validation_x, _ = _calendar_features(
+        validation_sequence, train_medians=medians
+    )
+    target = np.asarray(train_target, dtype=np.float64).copy()
+    if shuffle_target:
+        target = np.random.default_rng(seed).permutation(target)
+    estimator = ExtraTreesRegressor(
+        n_estimators=500,
+        min_samples_leaf=2,
+        max_features=1.0,
+        n_jobs=-1,
+        random_state=seed,
+    )
+    estimator.fit(train_x, target)
+    prediction = np.asarray(estimator.predict(validation_x), dtype=np.float64)
+    if prediction.shape != (len(validation_x),) or not np.isfinite(prediction).all():
+        raise ValueError("calendar tree produced invalid predictions")
+    return prediction
+
+
+def _shuffle_history_order(
+    sequences: np.ndarray,
+    *,
+    fold_id: int,
+) -> np.ndarray:
+    values = np.asarray(sequences, dtype=np.float32).copy()
+    rng = np.random.default_rng(2693 + int(fold_id))
+    for sample in range(len(values)):
+        order = rng.permutation(values.shape[-1])
+        values[sample] = values[sample][:, order]
+    return values
 
 
 def _choose_weight(
@@ -164,7 +232,10 @@ def run(
     audit = labels_module.validate_label_mapping()
     rows: dict[str, list[dict[str, Any]]] = {
         "B1_calendar_history_mean": [],
+        "B2_calendar_extra_trees": [],
+        "C0_calendar_extra_trees_target_shuffle": [],
         "F0_chronos2_calendar": [],
+        "C1_chronos2_history_order_shuffle": [],
         "F1_chronos2_train_blend_calendar": [],
     }
     weights: list[dict[str, Any]] = []
@@ -190,8 +261,30 @@ def run(
                 data.validation_sample_ids,
                 batch_size=batch_size,
             )
+            _, validation_foundation_shuffled = forecast_oil_calendar(
+                pipeline,
+                _shuffle_history_order(
+                    data.validation_sequence, fold_id=fold_id
+                ),
+                data.validation_timestamps,
+                data.validation_sample_ids,
+                batch_size=batch_size,
+            )
             train_history = _history_mean(data.train_sequence)
             validation_history = _history_mean(data.validation_sequence)
+            validation_tree = _fit_calendar_tree(
+                data.train_sequence,
+                data.train_target,
+                data.validation_sequence,
+                seed=2693 + fold_id,
+            )
+            validation_tree_control = _fit_calendar_tree(
+                data.train_sequence,
+                data.train_target,
+                data.validation_sequence,
+                seed=2693 + fold_id,
+                shuffle_target=True,
+            )
             weight, train_selection_mae = _choose_weight(
                 train_foundation, train_history, data.train_target
             )
@@ -217,6 +310,18 @@ def run(
             rows["B1_calendar_history_mean"].append(
                 {**common, "metrics": _metrics(data.validation_target, validation_history)}
             )
+            rows["B2_calendar_extra_trees"].append(
+                {**common, "metrics": _metrics(data.validation_target, validation_tree)}
+            )
+            rows["C0_calendar_extra_trees_target_shuffle"].append(
+                {
+                    **common,
+                    "metrics": _metrics(
+                        data.validation_target, validation_tree_control
+                    ),
+                    "control": "train_targets_permuted_with_fixed_seed",
+                }
+            )
             rows["F0_chronos2_calendar"].append(
                 {
                     **common,
@@ -224,6 +329,18 @@ def run(
                     "daily_forecast_sha256": hashlib.sha256(
                         validation_daily.astype("<f8").tobytes()
                     ).hexdigest(),
+                }
+            )
+            rows["C1_chronos2_history_order_shuffle"].append(
+                {
+                    **common,
+                    "metrics": _metrics(
+                        data.validation_target, validation_foundation_shuffled
+                    ),
+                    "control": (
+                        "validation_history_days_permuted_per_sample_while_"
+                        "timestamps_and_values_are_preserved"
+                    ),
                 }
             )
             rows["F1_chronos2_train_blend_calendar"].append(
@@ -253,6 +370,21 @@ def run(
         }
         for method, fold_rows in rows.items()
     }
+    foundation_mae = methods["F0_chronos2_calendar"]["macro_fold_mean"]["mae"]
+    history_mae = methods["B1_calendar_history_mean"]["macro_fold_mean"]["mae"]
+    tree_mae = methods["B2_calendar_extra_trees"]["macro_fold_mean"]["mae"]
+    tree_control_mae = methods[
+        "C0_calendar_extra_trees_target_shuffle"
+    ]["macro_fold_mean"]["mae"]
+    foundation_control_mae = methods[
+        "C1_chronos2_history_order_shuffle"
+    ]["macro_fold_mean"]["mae"]
+    effect_supported = bool(
+        foundation_mae < history_mae
+        and foundation_mae < tree_mae
+        and foundation_mae < tree_control_mae
+        and foundation_mae < foundation_control_mae
+    )
     summary = {
         "schema_version": "sweetspot-p8-chronos-calendar/v1",
         "foundation": {
@@ -281,11 +413,19 @@ def run(
         "methods": methods,
         "train_only_blend_weights": weights,
         "decision": {
-            "state": "CONNECTED_UNVERIFIED",
+            "state": (
+                "EFFECT_SUPPORTED_NOT_PROMOTED"
+                if effect_supported
+                else "CONNECTED_NO_PROMOTION"
+            ),
             "default_enabled": False,
+            "effect_supported": effect_supported,
             "reason": (
-                "daily-grid diagnostic is not yet comparable to a same-grid XGBoost "
-                "baseline and random-init/causal-shuffle controls are not complete"
+                "Chronos beats the causal mean, same-grid ExtraTrees, target-shuffle, "
+                "and history-order-shuffle controls on the locked development folds; "
+                "default promotion still requires a same-architecture random-init control."
+                if effect_supported
+                else "The routed foundation model did not clear every registered control."
             ),
         },
         "runtime": {

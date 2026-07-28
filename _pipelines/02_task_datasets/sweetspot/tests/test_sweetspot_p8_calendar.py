@@ -157,11 +157,25 @@ class CalendarArchivedEvidenceTests(unittest.TestCase):
     def test_calendar_foundation_gain_is_diagnostic_not_promotion(self) -> None:
         methods = self.summary["methods"]
         history = methods["B1_calendar_history_mean"]["macro_fold_mean"]["mae"]
+        tree = methods["B2_calendar_extra_trees"]["macro_fold_mean"]["mae"]
+        tree_control = methods[
+            "C0_calendar_extra_trees_target_shuffle"
+        ]["macro_fold_mean"]["mae"]
         foundation = methods["F0_chronos2_calendar"]["macro_fold_mean"]["mae"]
+        foundation_control = methods[
+            "C1_chronos2_history_order_shuffle"
+        ]["macro_fold_mean"]["mae"]
         blend = methods["F1_chronos2_train_blend_calendar"]["macro_fold_mean"]["mae"]
         self.assertLess(foundation, history)
+        self.assertLess(foundation, tree)
+        self.assertLess(foundation, tree_control)
+        self.assertLess(foundation, foundation_control)
         self.assertLess(blend, history)
-        self.assertEqual(self.summary["decision"]["state"], "CONNECTED_UNVERIFIED")
+        self.assertEqual(
+            self.summary["decision"]["state"],
+            "EFFECT_SUPPORTED_NOT_PROMOTED",
+        )
+        self.assertTrue(self.summary["decision"]["effect_supported"])
         self.assertFalse(self.summary["decision"]["default_enabled"])
 
     def test_no_predictions_or_checkpoint_persisted(self) -> None:

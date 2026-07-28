@@ -17,7 +17,8 @@
       "adapter": "_models.fault.sam_med3d_semantic",
       "state": "CONNECTED_UNVERIFIED",
       "default_enabled": false,
-      "blocker": "no contiguous audited 3D development blocks or verified negatives",
+      "blocker": "real checkpoint and forward pass verified, but only isolated 2D slices exist; audited background/unknown masks and legal 3D development folds are missing",
+      "effect_evidence": "_pipelines/02_task_datasets/fault/_outputs/p9_sammed3d_gate/summary.json",
       "fallback": "scratch_monai_after_data_gate",
       "model": {
         "model_id": "blueyo0/SAM-Med3D:sam_med3d_turbo.pth",
@@ -31,7 +32,7 @@
         "artifact_state": "cached_verified",
         "weights_sha256": "899a46d04d3b70f723282ceb489149373558bf0aaba389a346f5ab57da5cdd3c",
         "weights_size_bytes": 402163626,
-        "parameter_count": 0,
+        "parameter_count": 93920641,
         "license_status": "review_required"
       }
     },
@@ -41,8 +42,10 @@
       "axis_kind": "image_xy",
       "conditioning_kind": "spatial_prompt",
       "adapter": "_models.facies.sam2_semantic",
-      "state": "CONNECTED_UNVERIFIED",
+      "state": "VERIFIED_NO_GAIN",
       "default_enabled": false,
+      "effect_evidence": "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect",
+      "blocker": "pretrained SAM2 semantic heads did not beat the locked small-model baselines on F3 or Penobscot",
       "fallback": "same_split_small_unet",
       "model": {
         "model_id": "facebook/sam2.1-hiera-base-plus",
@@ -68,6 +71,8 @@
       "adapter": "_models.property.tabiclv2_regressor",
       "state": "CONNECTED_UNVERIFIED",
       "default_enabled": false,
+      "effect_evidence": "_pipelines/02_task_datasets/reservoir/_outputs/p9_tabicl_effect/summary.json",
+      "blocker": "same-split gains and target-shuffle controls passed, but the preregistered same-architecture random-init control is not available",
       "fallback": "same_split_extra_trees_or_xgboost",
       "model": {
         "model_id": "jingang/TabICL:tabicl-regressor-v2-20260212.ckpt",
@@ -91,8 +96,10 @@
       "axis_kind": "measured_depth",
       "conditioning_kind": "depth_window",
       "adapter": "_models.lithofacies.moment_depth",
-      "state": "CONNECTED_UNVERIFIED",
+      "state": "VERIFIED_NO_GAIN",
       "default_enabled": false,
+      "effect_evidence": "_pipelines/02_task_datasets/lithofacies/_outputs/p9_moment_effect/summary.json",
+      "blocker": "pretraining beat the same-architecture random-init control but remained far below the locked XGBoost baseline",
       "fallback": "same_split_logistic_or_xgboost",
       "model": {
         "model_id": "AutonLab/MOMENT-1-base",
@@ -118,7 +125,8 @@
       "adapter": "_models.sweetspot.p7_chronos2",
       "state": "CONNECTED_UNVERIFIED",
       "default_enabled": false,
-      "blocker": "calendar-grid diagnostic passed; same-grid tree baseline and causal/randomized controls remain required",
+      "blocker": "same-grid baseline and causal controls passed; same-architecture random-init evidence remains required by the preregistered promotion gate",
+      "effect_evidence": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
       "fallback": "same_split_xgboost",
       "model": {
         "model_id": "amazon/chronos-2",
@@ -142,8 +150,10 @@
       "axis_kind": "volume_kji",
       "conditioning_kind": "masked_volume",
       "adapter": "_models.reconstruction.openmind_mae",
-      "state": "CONNECTED_UNVERIFIED",
+      "state": "VERIFIED_NO_GAIN",
       "default_enabled": false,
+      "effect_evidence": "_pipelines/02_task_datasets/reconstruction/_outputs/p9_openmind_effect/summary.json",
+      "blocker": "pretraining beat the same-architecture random-init control but remained far below the locked PyKrige baseline",
       "fallback": "strict_ridge_or_pykrige",
       "model": {
         "model_id": "MIC-DKFZ/ResEncL-OpenMind-MAE",
@@ -157,7 +167,7 @@
         "artifact_state": "cached_verified",
         "weights_sha256": "7a847af785635335c00e711d16ff4d225d86ecd5992b14c059df2b520e3ee933",
         "weights_size_bytes": 491198606,
-        "parameter_count": 0,
+        "parameter_count": 102348969,
         "license_status": "approved"
       }
     }
