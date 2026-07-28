@@ -58,20 +58,29 @@ class TabICLPropertyAdapter(IndependentTargetEstimatorAdapter):
 
 
 def build_model(task_spec: TaskSpec, **config: Any) -> TabICLPropertyAdapter:
+    seed = int(config.get("seed", 2693))
+    n_estimators = int(config.get("n_estimators", 2))
+    batch_size = int(config.get("batch_size", 1))
+    offload_mode = config.get("offload_mode", "auto")
+    if n_estimators <= 0 or batch_size <= 0:
+        raise ValueError("TabICL n_estimators and batch_size must be positive")
+    if offload_mode not in {True, False, "auto", "gpu", "cpu", "disk"}:
+        raise ValueError(
+            "TabICL offload_mode must be boolean or one of auto/gpu/cpu/disk"
+        )
     checkpoint = require_approved_weight(model_id, config)
     tabicl = require_model_dependencies(model_id)["tabicl"]
-    seed = int(config.get("seed", 2693))
 
     def factory(target: str) -> Any:
         target_offset = task_spec.targets.index(target)
         return tabicl.TabICLRegressor(
-            n_estimators=int(config.get("n_estimators", 2)),
-            batch_size=int(config.get("batch_size", 1)),
+            n_estimators=n_estimators,
+            batch_size=batch_size,
             model_path=str(checkpoint),
             allow_auto_download=False,
             checkpoint_version="tabicl-regressor-v2-20260212.ckpt",
             device=str(config.get("device", "cpu")),
-            offload_mode=str(config.get("offload_mode", "auto")),
+            offload_mode=offload_mode,
             random_state=seed + target_offset,
             verbose=False,
         )

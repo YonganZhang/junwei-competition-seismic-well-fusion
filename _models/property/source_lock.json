@@ -126,12 +126,12 @@
     "tabiclv2_regressor": {
       "family": "in_context_tabular_foundation_model",
       "source_url": "https://github.com/soda-inria/tabicl",
-      "tag": "v2.0.0",
+      "tag": null,
       "revision": "46b91961db4f8873dd049ec09990698a435e1e29",
       "license": "BSD-3-Clause",
       "dependency_group": "tabular-cpu",
       "dependencies": [
-        {"distribution": "tabicl", "import_name": "tabicl", "version": "2.0.0"}
+        {"distribution": "tabicl", "import_name": "tabicl", "version": "2.1.1"}
       ],
       "weights": {
         "required": true,

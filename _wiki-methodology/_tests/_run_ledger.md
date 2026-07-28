@@ -51,3 +51,20 @@
 - dependency policy: `torch-common` and `tabular-cpu` were not modified. The legacy lithofacies module that imports Torch plus HDF5/LAS/SEG-Y readers was rerun in a one-shot `uv run --isolated` group.
 - frozen test: no Stage-3 runner opened frozen arrays, labels, predictions or historical metrics.
 - results, winners, figures and boundaries: `P5_stage3_acceptance_evidence.md`.
+
+## 2026-07-28 P8 multimodal foundation-model routing acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p8-multimodal-foundation`
+- branch: `p8-multimodal-foundation`; base HEAD `1bb0595`.
+- six routes: fault/SAM-Med3D, facies/SAM 2.1 + semantic head, property/TabICLv2, lithofacies/MOMENT depth windows, sweetspot/Chronos-2 calendar windows, reconstruction/OpenMind ResEnc-L 3D MAE.
+- source and weights: every route pinned to an exact source commit and weight revision; all six local checkpoint sizes and SHA-256 values matched `foundation_routes.v1.json`.
+- real runtime evidence: all six adapters loaded their real pinned weights and returned finite outputs. Fault evidence remains synthetic-only because audited negatives and contiguous 3D development blocks are unavailable.
+- bugs caught by real forward passes: MOMENT default mask required float interpolation before restoring integer dtype; OpenMind ResEnc-L requires padding a 32-voxel input to at least 64 voxels before its fifth downsample. Both have regression coverage.
+- combined portable regression: `python3 -m pytest _code/ml_framework/tests _models/gaia_dagt/tests _pipelines/02_task_datasets/sweetspot/tests -q` -> `197 passed, 7 skipped, 24 subtests passed`.
+- explicit Torch adapter regression: `PYTHONPATH=. /mnt/data/yongan-admin-2/envs/volve-chronos2/bin/python -m pytest _models/gaia_dagt/tests/test_foundation_contract.py -q` -> `18 passed, 24 subtests passed`.
+- property source-lock regression: `python3 -m pytest _pipelines/02_task_datasets/reservoir/tests/test_p5_stage1_contracts.py -q` -> `6 passed, 1 skipped`.
+- Chronos-2 real development run: 4 group-isolated folds, 196 train / 84 validation rows per fold; history-mean MAE `184.6686`, Chronos MAE `172.3162`, train-only blend MAE `166.3343`. This is development evidence only, not frozen-test confirmation.
+- lifecycle: all six routes remain `CONNECTED_UNVERIFIED`, `default_enabled=false`; no route may be promoted without same-split baseline, random-init same-architecture control, leakage checks and material gain.
+- supervisory LLM: deterministic prompt template, provider-neutral client boundary and strict JSON response validation are tested with a stub. No external LLM API was invoked because provider/model/revision approval is absent.
+- frozen test: not accessed.
+- detailed evidence and blockers: `P8_multimodal_foundation_acceptance_evidence.md`.

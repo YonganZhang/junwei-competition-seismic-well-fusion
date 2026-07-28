@@ -119,3 +119,21 @@ gates:
     timeout: 600
     expect: exit0
     note: "B0/B1/shuffled conditional-channel mechanism, common mask, distance bands and no-generalization boundary."
+
+  - id: p8-foundation-contract
+    cmd: "python3 -m pytest -q _models/gaia_dagt/tests/test_foundation_contract.py"
+    timeout: 120
+    expect: exit0
+    note: "Portable six-route envelope, prompt/client boundary, source-lock and runtime-evidence consistency gate; torch-only shape guards explicitly skip when torch is absent."
+
+  - id: p8-foundation-torch-contract
+    cmd: "${P8_TORCH_PYTHON:?set P8_TORCH_PYTHON to a Python with torch} -m pytest -q _models/gaia_dagt/tests/test_foundation_contract.py"
+    timeout: 180
+    expect: exit0
+    note: "Runs the OpenMind padding and MOMENT mask regressions in addition to the portable P8 contract."
+
+  - id: p8-sweetspot-calendar
+    cmd: "python3 -m pytest -q _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p8_calendar.py"
+    timeout: 180
+    expect: exit0
+    note: "Exact daily timestamps, no zero-filled missing days, causal cutoffs, group isolation and calendar-forecast shape."

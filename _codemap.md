@@ -1,6 +1,6 @@
 # Code Map — 军伟的比赛（地震+测井多模态融合识别有利油气目标）
 
-更新: 2026-07-13
+更新: 2026-07-28
 
 本文只做 COL4 代码地图 / 注册路由。当前 phase、下一步、运行态、最近测试结果只写 `_wiki-methodology/_top/_task_plan.md`。
 
@@ -58,6 +58,19 @@
 ⑤七目标的机读状态与产物哈希汇总在
 `_pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json`。
 最新真实运行证据和科学性边界在 `_wiki-methodology/_tests/P4_acceptance_evidence.md`。
+
+## P8 多模态基础模型路由
+
+| 代码域 | 真源 / 入口 | 测试指针 |
+|---|---|---|
+| 统一条件/晋级合同 | `_models/gaia_dagt/foundation.py` | `_models/gaia_dagt/tests/test_foundation_contract.py` |
+| source/weights 运行门 | `_models/gaia_dagt/foundation_runtime.py`、`foundation_routes.v1.json` | `test_foundation_contract.py` |
+| 监督 LLM 模板/调用边界 | `_models/gaia_dagt/foundation_prompts.py` | `test_foundation_contract.py` |
+| 四条新非时序 adapter | `_models/{fault,facies,lithofacies,reconstruction}/` | `test_foundation_contract.py` |
+| TabICLv2 / Chronos-2 | `_models/property/tabiclv2_regressor.py`、`_models/sweetspot/p7_chronos2.py` | property Stage-1 + sweetspot P8 tests |
+| Chronos 日历 runner | `_pipelines/02_task_datasets/sweetspot/p8/runner.py` | `test_sweetspot_p8_calendar.py` |
+
+六条路线统一可发现，但保持任务专属张量、head、loss 与 metric；route 接通不自动成为默认。
 
 ## 注册维护
 

@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-07-14 (P5.1 R0/R1 integration acceptance)
+last_synced: 2026-07-28 (P8 multimodal foundation routing)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -89,6 +89,16 @@ code_domains:
       每个目标独立task_id/split/config/checkpoint/metrics/figure或not_feasible；
       _outputs/registry_targets_1_to_7.json汇总状态和哈希。
 
+  - id: foundation_model_routes
+    path: _models/gaia_dagt
+    type: shared_library
+    status: active
+    owner: project
+    description: >
+      P8 六赛道模态匹配基础模型路由：统一 FoundationTaskEnvelope、time/support/depth/spatial/
+      masked-volume 条件、可见性与晋级状态机；固定 source/weights revision、size/SHA、许可证状态，
+      运行时禁止自动下载。监督 LLM 仅做 schema/QC，严格 JSON，不读取标签、测试指标、路径或凭证。
+
 entrypoints:
   - id: project_plan
     path: _wiki-methodology/_top/_task_plan.md
@@ -146,6 +156,20 @@ entrypoints:
     owner: project
     description: "Seven independent target cases and their content hashes."
 
+  - id: p8_foundation_acceptance
+    path: _wiki-methodology/_tests/P8_multimodal_foundation_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Six real foundation-weight smoke runs, unified contracts, Chronos calendar diagnostic and honest promotion blockers."
+
+  - id: p8_foundation_decision
+    path: _wiki-methodology/_top/_decisions/P8_multimodal_foundation_routing.md
+    type: decision
+    status: active
+    owner: col2
+    description: "Modality-specific foundation routes, supervisory LLM boundary and connection-versus-promotion decision."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -165,6 +189,12 @@ cross_domain_edges:
   - from: sweetspot_targets
     to: canonical_models
     relation: discovers
+  - from: task_datasets
+    to: foundation_model_routes
+    relation: calls
+  - from: foundation_model_routes
+    to: canonical_models
+    relation: routes
 
 non_code_assets:
   registry: _meta/_data_registry.yml

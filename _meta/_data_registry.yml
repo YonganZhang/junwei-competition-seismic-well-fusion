@@ -1,7 +1,7 @@
 # _meta/_data_registry.yml — 数据资产注册表(单一真源)
 project: 军伟的比赛-地震测井多模态融合
 schema_version: v4.0
-last_synced: 2026-07-08
+last_synced: 2026-07-28
 
 assets:
   - id: volve-north-sea
@@ -67,3 +67,27 @@ assets:
       2026-07-10更正：zenodo编号之前登记反了，已核实 3924682 才是Penobscot（"Penobscot
       Interpretation Dataset"，采自加拿大新斯科舍近海Scotian shelf，超10万张标注图，7个地层分类）。
       下载中；用于多个开源下游分割任务测试（赛题要求项）。
+
+  - id: p8-foundation-runtime-smoke
+    name: P8 六赛道基础模型真实加载/计算证据
+    status: generated
+    location: _models/gaia_dagt/foundation_runtime_smoke.v1.json
+    source: >
+      foundation_routes.v1.json 固定的六条公开 source/weights revision；权重缓存不进入仓库，
+      机读证据只保存 SHA、shape、finite、参数量和科学状态。
+    license: mixed; see _models/gaia_dagt/foundation_routes.v1.json
+    note: >
+      fault/facies/property/lithofacies/reconstruction 为 synthetic contract smoke；
+      sweetspot 为真实 development group-CV。所有路线 default_enabled=false。
+
+  - id: p8-chronos-calendar-development
+    name: P8 Chronos-2 严格 30 日历天 development 诊断
+    status: generated
+    location: _pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json
+    source: >
+      Volve 生产历史的 development-only 四井 LOGO4；重复日聚合、缺日显式重建但不以零填补，
+      每样本严格 30 天历史预测未来 30 天。
+    license: project-derived metrics; raw data remains under Volve terms
+    note: >
+      Chronos MAE 172.3162，历史均值 184.6686，train-only blend 166.3343；
+      只属于 CONNECTED_UNVERIFIED 诊断，未访问 known holdout/frozen test。

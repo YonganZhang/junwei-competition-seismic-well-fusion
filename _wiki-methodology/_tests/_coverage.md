@@ -2,7 +2,8 @@
 
 > COL3 测试地图。长运行证据见 `_run_ledger.md`，P4与P5 Stage-1结果及科学性边界分别见
 > `P4_acceptance_evidence.md`、`P5_stage1_acceptance_evidence.md`、
-> `P5_stage2_acceptance_evidence.md`、`P5_stage3_acceptance_evidence.md`。
+> `P5_stage2_acceptance_evidence.md`、`P5_stage3_acceptance_evidence.md`、
+> `P8_multimodal_foundation_acceptance_evidence.md`。
 
 ## Audit-First / SSDO
 
@@ -11,6 +12,7 @@
 | P4 验收报告 | `sed -n '1,260p' _wiki-methodology/_tests/P4_acceptance_evidence.md` | 先区分“工程流程通过”、“模型精度达标”和 `not_feasible` |
 | P5 Stage-1 验收报告 | `sed -n '1,260p' _wiki-methodology/_tests/P5_stage1_acceptance_evidence.md` | 区分候选尝试、contract smoke、结构化skip与禁止排名的科学硬门 |
 | P5 Stage-3 验收报告 | `sed -n '1,300p' _wiki-methodology/_tests/P5_stage3_acceptance_evidence.md` | 核对top-3多seed全fold结果、worst-fold、OOF图、真实失败/超时和test firewall |
+| P8 多模态基础模型验收 | `sed -n '1,320p' _wiki-methodology/_tests/P8_multimodal_foundation_acceptance_evidence.md` | 核对六赛道真实权重/源码锁、typed conditioning、运行时证据、泄漏防火墙和“连接不等于晋级” |
 | 甜点七目标注册 | `python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json` | 重建独立目标注册并校验必需产物存在 |
 | TOP 结题检查 | `python3 /mnt/data/yongan-admin-2/.codex/skills/share-top/scripts/topic-closeout.py .` | 发现计划/codemap/registry/test map 漂移 |
 
@@ -33,6 +35,8 @@
 | `_pipelines/02_task_datasets/sweetspot/tests/test_p4_*.py` | 七目标独立性、代理标签泄漏防火墙、可行/`not_feasible` 分流 |
 | `_pipelines/02_task_datasets/reconstruction/_tests/test_p4_*.py` | strict/conditional 拆分、buffered block CV、约束审计、冻结测试 |
 | 六赛道 `*p5*` 测试 | 开源adapter/source lock、真实development小批次、确定性/shape/finite、结构化skip与test firewall |
+| `_models/gaia_dagt/tests/test_foundation_contract.py` | 六路基础模型注册、源码/权重锁、typed conditioning、晋级状态机、监督LLM响应schema及真实Torch adapter回归 |
+| `_pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p8_calendar.py` | Chronos-2严格日历时轴、30日因果窗口、同井隔离、缺日mask及未来标签防火墙 |
 
 ## Leaves
 
@@ -44,7 +48,9 @@
 
 ## Current Gaps
 
-- 断层只有 3998 个审核正例点，没有覆盖已核验负例；正式 blind test/CV 不可行，不允许用随机非断层 patch 伪造负例。
+- 六条基础模型路线均已真实加载并通过有限值/形状验证，但仍处于 `CONNECTED_UNVERIFIED`；除甜点时序已有development诊断外，其余路线尚缺同split基线、随机初始化同架构控制和消融，不能默认启用或宣称提升。
+- 断层只有 3998 个审核正例点，没有覆盖已核验负例与连续三维development块；SAM-Med3D只能作为合成体运行证据，正式 blind test/CV 不可行，也不允许用随机非断层patch或验证/测试真值提示点伪造结果。
+- 监督LLM已具备统一提示模板、provider-neutral调用边界和严格JSON响应校验；因尚未批准具体provider/model/revision，本轮没有真实外部API调用，也没有让LLM接触标签、原始预测或冻结测试指标。
 - 甜点目标5缺已验证 Eclipse cell-state parser 与冻结的时间/候选井/经济约束；只能是 simulation case，不是 field truth。
 - 精确 PHIE 缺独立真值；不用 LFP_PHIE 替代。
 - 岩相冻结预测未持久化真实 `center_md_m`，因此深度轨迹图 `not_feasible`；其他分类/校准图已可用。

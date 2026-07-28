@@ -1,33 +1,19 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P5.1 R0/R1已集成验收，进入P5.2学习曲线准备] 六赛道已在隔离集成分支共存；
->   公共训练合同、统一 seed/split/checkpoint/artifact/test firewall、规范 `_models/`、赛道插件与专属可视化入口已完成。
->   ⑤甜点已落地七个独立案例：1–4、6、7已有真实数据 baseline 与冻结测试，5诚实 `not_feasible`。
->   当前结果仅证明端到端训练/评价系统可用；多个简单模型精度很低，正式深度模型、长 HPO 与 top-3×3-seed 属 P5。
->   2026-07-14 已完成六赛道开源模型主源调研并独立验收：共127个去重候选、92个L2候选，
->   每赛道冻结首批10个模型；60个候选均已得到Stage-1可审计尝试记录，六赛道提交已按固定顺序
->   集成到 `p5-model-benchmark-integration`，并通过两套共享环境的跨赛道联合测试。
->   Stage-1不是性能排名：有真实标签/依赖的候选完成contract smoke，其余按许可证、标签或任务通道
->   硬门结构化skip；没有用代理标签或测试集补数。因master仍有未归属脏改动，暂不直接merge；
->   六个Stage-2赛道工作树已从验收提交`85727fd`创建并完成独立验收；六个干净提交已按固定顺序
->   集成到 `p5-model-benchmark-integration@d46a7b5`。Stage-2共有140个预注册cell：53个真实
->   development pilot、87个结构化skip/blocked、0个失败/超时；断层因无审核负例不训练，甜点T6/T7
->   因无development-only特征源不偷读`test.h5`。Stage-3已完成五个可运行赛道441个cell：437 pass、
->   3个岩相CatBoost真实失败、1个重建PyKrige预算超时；断层零合法fold继续`not_rankable`。
->   Stage-4已按Stage-3冻结唯一胜者，在全development上refit并对历史已见holdout做确认；五个可运行赛道
->   有真实指标和专属图，断层与甜点T5/T6/T7继续诚实阻塞。全部结果均为
->   `previously_seen_reusable_holdout`，不是fresh-blind。master有未归属脏改动，因此仍不merge、不push。
->   完整证据见`_wiki-methodology/_tests/P5_stage4_acceptance_evidence.md`。
->   2026-07-14 六赛道又完成只纳入直接相关原始论文、官方基准和作者仓库的训练/测试协议复核，
->   67项赛道级直接证据均经负责人独立验收。结论不是推翻公共工程框架，而是保留防火墙、group/spatial
->   split、统一seed和产物合同，重做标签门、lane公平性、学习曲线、nested选择、专属可视化和fresh-blind。
->   统一裁决见`_decisions/P5.1_direct_benchmark_protocol_revision.md`；六份直接基准报告和六赛道R0/R1实现
->   已按固定顺序进入干净分支`p5-r01-integration`，独立验收后联合回归为290 passed、6 expected skips。
->   R0/R1只证明标签/split/窗口/预处理/指标语义与泄漏诊断成立，不是十模型性能榜；下一步P5.2先做
->   短/中/长预算学习曲线和loss/output/context/modality消融，达到预注册停止线后才进入P5.3十候选正式CV。
->   完整证据见`_wiki-methodology/_tests/P5.1_r01_integration_acceptance_evidence.md`；master仍未merge，
->   未 push。**
+> **🧭 当前: [P8 六赛道多模态基础模型已真实接线，进入同 split 晋级验证]**
+>   2026-07-28 已修正旧 P6 Gaia/DAGT“只有合同/QC、没有大模型参与预测”的边界：
+>   断层 SAM-Med3D、地震相 SAM 2.1、物性 TabICLv2、岩相 MOMENT、甜点 Chronos-2、
+>   三维重建 OpenMind ResEnc-L MAE 均已固定 source/weights revision 与 SHA，并完成真实加载计算。
+>   统一 `FoundationTaskEnvelope` 覆盖 time/support/depth/spatial/masked-volume 条件；
+>   统一监督 LLM 模板与严格 JSON client boundary 已实现，但无批准 provider 时不发 API。
+>   六条当前都为 `CONNECTED_UNVERIFIED`、`default_enabled=false`：接线成功不等于提升成立。
+>   Chronos 严格 30 日历天真实 development 4 折诊断 MAE `172.3162`，优于历史均值 `184.6686`，
+>   但同网格树基线和随机/因果控制未完成，不能晋级。断层仍缺审核负例、连续 3D block，
+>   且 checkpoint 条款待确认。下一步按赛道完成 pretrained/random-init/强基线同 split 对照，
+>   只允许通过晋级门的路线成为默认。证据见
+>   `_wiki-methodology/_tests/P8_multimodal_foundation_acceptance_evidence.md`；
+>   当前工作位于隔离分支 `p8-multimodal-foundation`，未合并、未 push。
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
 >   ⑤七目标均有可审计状态；主仓集成策略待授权；正式高性能模型尚待P5。
@@ -42,6 +28,8 @@
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
 | P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
 | P5 合成 / 交付 | 🔄 | 0.96/1 | Stage-1/2/3、Stage-4已见holdout确认、直接基准复核及P5.1 R0/R1已完成；下一步P5.2学习曲线，随后P5.3十候选正式CV，最终仍需真正未触碰的外部或赛事隐藏测试。 |
+| P6/P7 Gaia+时序 | ✅ | 2/2 | 旧 Gaia/DAGT 边界已审计；Chronos-2 真实预训练权重与因果预测通路已建立。 |
+| P8 多模态基础模型 | 🔄 | 0.65/1 | 六赛道权重/接口/真实计算已通过；同 split 性能、random-init、shuffle/causal 控制与断层数据门待完成。 |
 
 ## 协作与决策权边界
 
