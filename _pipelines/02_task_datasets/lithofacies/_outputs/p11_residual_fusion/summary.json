@@ -1,0 +1,326 @@
+{
+  "comparison": {
+    "gate0_max_abs_logit_error": 0.0,
+    "gate0_minus_baseline": 0.0,
+    "paired_comparisons": 12,
+    "pretrained_minus_baseline": 0.0020400344835028728,
+    "pretrained_minus_direct": 0.14547308178450422,
+    "pretrained_minus_random": 0.0028574474665104543,
+    "pretrained_pair_win_fraction": 0.5,
+    "pretrained_pair_wins_over_baseline": 6
+  },
+  "decision": {
+    "default_enabled": false,
+    "minimum_absolute_macro_f1_delta": 0.005,
+    "minimum_pair_win_fraction": 0.75,
+    "promotion_checks": {
+      "baseline_delta_at_least_0_005": false,
+      "pair_win_fraction_at_least_0_75": false,
+      "random_control_delta_at_least_0_005": false
+    },
+    "state": "NON_BENEFICIAL_KEEP_BASELINE"
+  },
+  "evaluation": {
+    "ablation_order": [
+      "baseline",
+      "direct",
+      "pretrained",
+      "random",
+      "gate0"
+    ],
+    "batch_size": 32,
+    "completed_cells": 60,
+    "expected_cells": 60,
+    "fold_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "frozen_test_accessed": false,
+    "known_holdout_accessed": false,
+    "protocol": "strict_LOGO4_three_seed_development_only",
+    "repeat_ids": [
+      0,
+      1,
+      2
+    ],
+    "seeds": [
+      1867973658,
+      2137841944,
+      3902865753
+    ],
+    "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+    "updates_per_trainable_lane": 40
+  },
+  "inputs": {
+    "baseline_bundle_sha256": "753345ccb606e100155bec411c38d0820c5effbe6ebafca0552f31a2c10659db",
+    "development_batch_sha256": "b6817ae218dee12bc72a1551e76423a61eb4ff11faf70dcb0444b01ba422f51c",
+    "stage3_results_sha256": "8e14145117b8b44e3b9ee1131b9ade65e9f2b25151641d7b2b74f46898f966cb"
+  },
+  "model": {
+    "baseline_model": "xgboost_multisoftprob_window",
+    "foundation_model": "AutonLab/MOMENT-1-base",
+    "max_residual_logit": 2.0,
+    "moment_embeddings_cached": true,
+    "pretrained_random_same_architecture": true,
+    "real_pretrained_weights_loaded": true,
+    "residual_formula": "baseline_logits + sigmoid(per_class_gate_logits) * 2*tanh(linear(mean_reduced_cached_moment_embeddings))",
+    "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "duration_seconds_this_invocation": 0.0039749289862811565,
+    "raw_predictions_persisted": false,
+    "resumed_pairs": 12
+  },
+  "schema_version": "lithofacies-p11-residual-fusion/v1",
+  "status": "complete",
+  "variants": {
+    "baseline": {
+      "cells": 12,
+      "gate_mean": null,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5172413793103449,
+          "mean": 0.4926781284563429,
+          "minimum": 0.4409448818897638,
+          "std": 0.031560471946055144
+        },
+        "balanced_accuracy": {
+          "maximum": 0.310228166797797,
+          "mean": 0.27794574368578995,
+          "minimum": 0.2201412114455593,
+          "std": 0.036016238510038934
+        },
+        "expected_calibration_error": {
+          "maximum": 0.16341026354860919,
+          "mean": 0.1380629397813447,
+          "minimum": 0.10583577393978237,
+          "std": 0.021771410521281977
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.2135804514277343,
+          "mean": 0.19493770207563763,
+          "minimum": 0.18127577519230875,
+          "std": 0.013857794088969907
+        },
+        "multiclass_brier": {
+          "maximum": 0.7955661628470292,
+          "mean": 0.6770580401740833,
+          "minimum": 0.5811386014461116,
+          "std": 0.08613553464031641
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0168965261340803,
+          "mean": 1.5492749217386004,
+          "minimum": 1.2517693191937989,
+          "std": 0.2984265550630998
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.30198365231259966,
+          "mean": 0.25830527131650355,
+          "minimum": 0.18127577519230875,
+          "std": 0.047857109839882575
+        }
+      },
+      "residual_contribution_mean_abs": null
+    },
+    "direct": {
+      "cells": 12,
+      "gate_mean": null,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.3409090909090909,
+          "mean": 0.21332942926386037,
+          "minimum": 0.0,
+          "std": 0.10459008967220053
+        },
+        "balanced_accuracy": {
+          "maximum": 0.20840664711632453,
+          "mean": 0.133485252810801,
+          "minimum": 0.0,
+          "std": 0.049774291887717884
+        },
+        "expected_calibration_error": {
+          "maximum": 0.3681189876513409,
+          "mean": 0.16063463671374276,
+          "minimum": 0.02258480304360772,
+          "std": 0.0976891588750057
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.09702902892267251,
+          "mean": 0.05150465477463628,
+          "minimum": 0.0,
+          "std": 0.027385670162787423
+        },
+        "multiclass_brier": {
+          "maximum": 1.0005095558523078,
+          "mean": 0.8472854605758228,
+          "minimum": 0.7755105342706732,
+          "std": 0.06410911306698536
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.7587112408230747,
+          "mean": 1.9860097402967307,
+          "minimum": 1.6870432748516158,
+          "std": 0.33109001734320803
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.11737472149843282,
+          "mean": 0.06715127794292382,
+          "minimum": 0.0,
+          "std": 0.035400029288876825
+        }
+      },
+      "residual_contribution_mean_abs": null
+    },
+    "gate0": {
+      "cells": 12,
+      "gate_mean": 0.0,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5172413793103449,
+          "mean": 0.4926781284563429,
+          "minimum": 0.4409448818897638,
+          "std": 0.031560471946055144
+        },
+        "balanced_accuracy": {
+          "maximum": 0.310228166797797,
+          "mean": 0.27794574368578995,
+          "minimum": 0.2201412114455593,
+          "std": 0.036016238510038934
+        },
+        "expected_calibration_error": {
+          "maximum": 0.16341026354860919,
+          "mean": 0.1380629397813447,
+          "minimum": 0.10583577393978237,
+          "std": 0.021771410521281977
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.2135804514277343,
+          "mean": 0.19493770207563763,
+          "minimum": 0.18127577519230875,
+          "std": 0.013857794088969907
+        },
+        "multiclass_brier": {
+          "maximum": 0.7955661628470292,
+          "mean": 0.6770580401740833,
+          "minimum": 0.5811386014461116,
+          "std": 0.08613553464031641
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0168965261340803,
+          "mean": 1.5492749217386004,
+          "minimum": 1.2517693191937989,
+          "std": 0.2984265550630998
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.30198365231259966,
+          "mean": 0.25830527131650355,
+          "minimum": 0.18127577519230875,
+          "std": 0.047857109839882575
+        }
+      },
+      "residual_contribution_mean_abs": 0.0
+    },
+    "pretrained": {
+      "cells": 12,
+      "gate_mean": 0.01777278073132038,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5247524752475248,
+          "mean": 0.49704731537503477,
+          "minimum": 0.4409448818897638,
+          "std": 0.034625632840729344
+        },
+        "balanced_accuracy": {
+          "maximum": 0.3254043185593146,
+          "mean": 0.28127911730932337,
+          "minimum": 0.2201412114455593,
+          "std": 0.03883564309856891
+        },
+        "expected_calibration_error": {
+          "maximum": 0.17220592740005944,
+          "mean": 0.13800438525206168,
+          "minimum": 0.09240486108434051,
+          "std": 0.029470755222746073
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.21893805678533967,
+          "mean": 0.1969777365591405,
+          "minimum": 0.1809751837269724,
+          "std": 0.014963778115659847
+        },
+        "multiclass_brier": {
+          "maximum": 0.7966788279729184,
+          "mean": 0.6766889056926534,
+          "minimum": 0.5801947053264191,
+          "std": 0.08570340588335071
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0206296353110167,
+          "mean": 1.548196515968306,
+          "minimum": 1.2461121489797613,
+          "std": 0.29950297103033646
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.3045089048378522,
+          "mean": 0.26112812699108917,
+          "minimum": 0.18127577519230875,
+          "std": 0.04912970615845016
+        }
+      },
+      "residual_contribution_mean_abs": 0.022955981083214283
+    },
+    "random": {
+      "cells": 12,
+      "gate_mean": 0.017841139032195013,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5172413793103449,
+          "mean": 0.4900091115546527,
+          "minimum": 0.4409448818897638,
+          "std": 0.03185557555581193
+        },
+        "balanced_accuracy": {
+          "maximum": 0.310228166797797,
+          "mean": 0.2770420352737389,
+          "minimum": 0.2201412114455593,
+          "std": 0.03502800386051397
+        },
+        "expected_calibration_error": {
+          "maximum": 0.17227979381128833,
+          "mean": 0.13649412664188956,
+          "minimum": 0.10364803411574121,
+          "std": 0.02002574046985345
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.2176207913169211,
+          "mean": 0.19412028909263004,
+          "minimum": 0.1721925700004236,
+          "std": 0.015700059671964754
+        },
+        "multiclass_brier": {
+          "maximum": 0.7962036265242161,
+          "mean": 0.6763154651579008,
+          "minimum": 0.5794295116404033,
+          "std": 0.08551914533298022
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0291712342357546,
+          "mean": 1.5468346601495326,
+          "minimum": 1.2427465793084966,
+          "std": 0.29961472398724753
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.3045089048378522,
+          "mean": 0.2569924665199239,
+          "minimum": 0.18127577519230875,
+          "std": 0.047552977135852444
+        }
+      },
+      "residual_contribution_mean_abs": 0.034227018555005394
+    }
+  }
+}

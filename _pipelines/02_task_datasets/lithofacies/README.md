@@ -723,3 +723,66 @@ Canonical portable evidence is `_outputs/p5_r01/r0_contract.json`,
 split-protocol mechanism audit only. Fair ranking of at least ten models is a
 later stage and must reuse the legal grouped protocol rather than its random
 diagnostic counterpart.
+
+## P11 conservative MOMENT residual fusion
+
+`lithofacies_p11_residual_fusion.py` keeps the Stage-3 XGBoost logits as the
+main route and lets frozen MOMENT embeddings contribute only through a
+per-class bounded residual:
+
+```text
+fused_logits = baseline_logits
+             + sigmoid(gate_logits)
+             * 2 * tanh(linear(mean_MOMENT_embedding))
+```
+
+The runner evaluates the immutable LOGO4 folds and three frozen Stage-3 seeds.
+Every fold/seed pair contains all five preregistered variants: `baseline`,
+direct MOMENT, pretrained residual, same-architecture random residual, and
+exact `gate0` degeneration. It rejects every test/holdout/frozen-like input
+path before opening it and exposes no holdout command.
+
+The complete 60-cell development matrix retained the XGBoost default. The
+pretrained residual improved fixed-nine Macro-F1 by only `+0.002040` over the
+baseline and `+0.002857` over the random control, with wins in `6/12` paired
+cells. Those values miss all preregistered promotion thresholds, so the
+recorded decision is `NON_BENEFICIAL_KEEP_BASELINE`. `gate0` is bit-identical
+to the baseline logits.
+
+### Reproduce P11
+
+Run from the project root with the existing approved environments, cached
+MOMENT snapshot, and ignored Stage-3 development runtime:
+
+```bash
+TABULAR_PYTHON="${P5_TABULAR_PYTHON:?set the approved tabular-cpu interpreter}"
+TORCH_PYTHON="${P5_TORCH_PYTHON:?set the approved torch-common interpreter}"
+STAGE3_RUNTIME="${LITHOFACIES_STAGE3_RUNTIME:?point to the Stage-3 development runtime}"
+MOMENT_SNAPSHOT="${LITHOFACIES_MOMENT_SNAPSHOT:?point to the pinned local snapshot}"
+GPU_LOCK="${VOLVE_P5_GPU_LOCK:-$HOME/.cache/volve-p5/locks/gpu0.lock}"
+P11=_pipelines/02_task_datasets/lithofacies/lithofacies_p11_residual_fusion.py
+STAGE3_RESULTS=_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$P11" prepare-baseline \
+  --development-batch "$STAGE3_RUNTIME/development_logo4.npz" \
+  --stage3-results "$STAGE3_RESULTS" \
+  --checkpoint-dir "$STAGE3_RUNTIME/checkpoints" \
+  --prediction-dir "$STAGE3_RUNTIME/predictions" \
+  --output-bundle "$OUT/runtime/baseline_logits.npz"
+
+flock -w 900 "$GPU_LOCK" env PYTHONDONTWRITEBYTECODE=1 \
+  "$TORCH_PYTHON" "$P11" run \
+  --development-batch "$STAGE3_RUNTIME/development_logo4.npz" \
+  --baseline-bundle "$OUT/runtime/baseline_logits.npz" \
+  --snapshot "$MOMENT_SNAPSHOT" --output-dir "$OUT" --device cuda:0
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$P11" verify --output-dir "$OUT"
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" -m pytest -q \
+  _pipelines/02_task_datasets/lithofacies/tests/test_lithofacies_p11_residual_fusion.py
+```
+
+Canonical portable evidence is `_outputs/p11_residual_fusion/results.jsonl`,
+`summary.json`, `evidence.md`, `primary_metric.png`, and
+`artifact_manifest.json`. Runtime baseline logits, embedding caches, and
+partial resume state remain ignored.

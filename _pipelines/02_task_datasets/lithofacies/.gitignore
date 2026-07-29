@@ -25,6 +25,13 @@ _outputs/p10_model_results/**
 !_outputs/p10_model_results/tables_manifest.csv
 !_outputs/p10_model_results/audit_report.md
 !_outputs/p10_model_results/before_after_primary_metric.png
+!_outputs/p11_residual_fusion/
+_outputs/p11_residual_fusion/**
+!_outputs/p11_residual_fusion/summary.json
+!_outputs/p11_residual_fusion/results.jsonl
+!_outputs/p11_residual_fusion/evidence.md
+!_outputs/p11_residual_fusion/primary_metric.png
+!_outputs/p11_residual_fusion/artifact_manifest.json
 !_outputs/p5_stage2/
 _outputs/p5_stage2/**
 !_outputs/p5_stage2/p5_stage2_results.jsonl

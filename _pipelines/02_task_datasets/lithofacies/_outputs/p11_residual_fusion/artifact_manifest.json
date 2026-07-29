@@ -1,0 +1,31 @@
+{
+  "artifacts": [
+    {
+      "bytes": 86419,
+      "kind": "result_table",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion/results.jsonl",
+      "sha256": "9c73c5ead55a4ee3e472368dbfdadc811ce92da5a2ffa321601cc23b550e7e3c"
+    },
+    {
+      "bytes": 10272,
+      "kind": "summary",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion/summary.json",
+      "sha256": "86d1cda65a9e67e92dff1278fe6bed423fd5d4a8de918547d20eac1b60a75466"
+    },
+    {
+      "bytes": 2824,
+      "kind": "evidence_report",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion/evidence.md",
+      "sha256": "eac5c4e31c86dcd080993fc82fee5958b41402edc7dfee666f97b6c80bc2d1f6"
+    },
+    {
+      "bytes": 58082,
+      "kind": "figure",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion/primary_metric.png",
+      "sha256": "c3a82df5905027027078c9545dc6afe0c74c9dd6174775a59cbc72bc32c739db"
+    }
+  ],
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "schema_version": "lithofacies-p11-artifact-manifest/v1"
+}
