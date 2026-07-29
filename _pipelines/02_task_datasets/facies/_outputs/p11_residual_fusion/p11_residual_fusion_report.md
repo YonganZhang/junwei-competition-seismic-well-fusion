@@ -10,16 +10,16 @@ The gate sees only inference-time summaries of the main logits and frozen cached
 
 | Task | Variant | mIoU | Δ vs baseline | Accuracy | Macro F1 | Gate mean | Correction mean abs | Notes |
 |---|---|---:|---:|---:|---:|---:|---:|---|
-| F3 | strong_small_baseline | 0.138472 | +0.000000 | 0.320658 | 0.224004 | 0.000000 | 0.00000000 | trained |
-| F3 | direct_sam2 | 0.089779 | -0.048693 | 0.310900 | 0.143400 | 0.000000 | 0.00000000 | trained |
-| F3 | pretrained_residual | 0.138472 | +0.000000 | 0.320658 | 0.224004 | 0.016842 | 0.00000244 | non_beneficial |
-| F3 | random_sam2_residual | 0.138474 | +0.000001 | 0.320660 | 0.224006 | 0.016836 | 0.00001204 | trained |
-| F3 | gate_zero | 0.138472 | +0.000000 | 0.320658 | 0.224004 | 0.000000 | 0.00000000 | exact main-route control |
-| Penobscot | strong_small_baseline | 0.166713 | +0.000000 | 0.464989 | 0.224872 | 0.000000 | 0.00000000 | trained |
-| Penobscot | direct_sam2 | 0.064715 | -0.101998 | 0.476048 | 0.086316 | 0.000000 | 0.00000000 | trained |
-| Penobscot | pretrained_residual | 0.166714 | +0.000002 | 0.464996 | 0.224873 | 0.017736 | 0.00000588 | non_beneficial |
-| Penobscot | random_sam2_residual | 0.166714 | +0.000001 | 0.465012 | 0.224867 | 0.017710 | 0.00003861 | trained |
-| Penobscot | gate_zero | 0.166713 | +0.000000 | 0.464989 | 0.224872 | 0.000000 | 0.00000000 | exact main-route control |
+| F3 | strong_small_baseline | 0.137977 | +0.000000 | 0.318844 | 0.223113 | 0.000000 | 0.00000000 | trained |
+| F3 | direct_sam2 | 0.089780 | -0.048198 | 0.310902 | 0.143401 | 0.000000 | 0.00000000 | trained |
+| F3 | pretrained_residual | 0.137977 | -0.000000 | 0.318844 | 0.223113 | 0.016855 | 0.00000250 | non_beneficial |
+| F3 | random_sam2_residual | 0.137978 | +0.000001 | 0.318846 | 0.223114 | 0.016851 | 0.00001241 | trained |
+| F3 | gate_zero | 0.137977 | +0.000000 | 0.318844 | 0.223113 | 0.000000 | 0.00000000 | exact main-route control |
+| Penobscot | strong_small_baseline | 0.124216 | +0.000000 | 0.431519 | 0.170191 | 0.000000 | 0.00000000 | trained |
+| Penobscot | direct_sam2 | 0.064715 | -0.059501 | 0.476048 | 0.086316 | 0.000000 | 0.00000000 | trained |
+| Penobscot | pretrained_residual | 0.124217 | +0.000001 | 0.431524 | 0.170192 | 0.017725 | 0.00000568 | non_beneficial |
+| Penobscot | random_sam2_residual | 0.124219 | +0.000003 | 0.431540 | 0.170194 | 0.017694 | 0.00003712 | trained |
+| Penobscot | gate_zero | 0.124216 | +0.000000 | 0.431519 | 0.170191 | 0.000000 | 0.00000000 | exact main-route control |
 
 ## Conclusion
 
