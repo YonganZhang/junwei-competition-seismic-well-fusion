@@ -1,0 +1,394 @@
+{
+  "dpi": 300,
+  "figure_mode": "D_full",
+  "figure_size_inches": [
+    7.2,
+    7.2
+  ],
+  "figures": [
+    {
+      "axis_rules": {
+        "depth_axis": "inverted",
+        "interval_display_domain": "fraction",
+        "interval_display_transform": "identity",
+        "interval_limits_rule": "half-width and |residual| p1-p99 padded by 5 percent",
+        "parity_domain": "physical",
+        "parity_limits_rule": "p1-p99 padded by 5 percent",
+        "residual_limits_rule": "absolute residual p1-p99 padded by 8 percent"
+      },
+      "dimensions_png": [
+        2160,
+        2160
+      ],
+      "family_id": "15/9-F-15",
+      "kind": "heldout_summary",
+      "metrics": {
+        "empirical_interval_coverage": 0.9941860465116279,
+        "physical_mae": 0.006066972288797317,
+        "physical_rmse": 0.009319236454732018
+      },
+      "path_pdf": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.pdf",
+      "path_png": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.png",
+      "path_svg": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.svg",
+      "rows": 344,
+      "sha256_pdf": "98ebccdf7e96191fb6be718252a1bc0b8d23ebcf49ad795c9229b28abf5ac55a",
+      "sha256_png": "fc09b578c2aa87a7b2eab200b5bae61138863df218641be2fd20f0b6744826e8",
+      "sha256_svg": "29331b3f8457a79bed6908f612ab70230d5bc9784c4cc1b220610efce564ef31",
+      "target": "PHIF",
+      "well_id": "15/9-F-15 D"
+    },
+    {
+      "axis_rules": {
+        "depth_axis": "inverted",
+        "interval_display_domain": "log1p(mD)",
+        "interval_display_transform": "log1p(mD)",
+        "interval_limits_rule": "half-width and |residual| p1-p99 padded by 5 percent",
+        "parity_domain": "model_domain",
+        "parity_limits_rule": "p1-p99 padded by 5 percent",
+        "residual_limits_rule": "absolute residual p1-p99 padded by 8 percent"
+      },
+      "dimensions_png": [
+        2160,
+        2160
+      ],
+      "family_id": "15/9-F-15",
+      "kind": "heldout_summary",
+      "metrics": {
+        "empirical_interval_coverage": 1.0,
+        "physical_mae": 145.63983557826103,
+        "physical_rmse": 278.8387578492702
+      },
+      "path_pdf": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.pdf",
+      "path_png": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.png",
+      "path_svg": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.svg",
+      "rows": 344,
+      "sha256_pdf": "6ad2d5bd3fa4e2d96368c6e8fed470aa980ddfa743277c736662603dc06f7620",
+      "sha256_png": "295c45fc38b5203b8415735aa9b5b74784220a6e821f6d6553ddae68be5d315d",
+      "sha256_svg": "82002346de2826e163d40b3d2d9c86d0ec8c8047d8c2fd8f6314bdf23b13879b",
+      "target": "KLOGH",
+      "well_id": "15/9-F-15 D"
+    },
+    {
+      "axis_rules": {
+        "depth_axis": "inverted",
+        "interval_display_domain": "fraction",
+        "interval_display_transform": "identity",
+        "interval_limits_rule": "half-width and |residual| p1-p99 padded by 5 percent",
+        "parity_domain": "physical",
+        "parity_limits_rule": "p1-p99 padded by 5 percent",
+        "residual_limits_rule": "absolute residual p1-p99 padded by 8 percent"
+      },
+      "dimensions_png": [
+        2160,
+        2160
+      ],
+      "family_id": "15/9-F-15",
+      "kind": "heldout_summary",
+      "metrics": {
+        "empirical_interval_coverage": 0.9941860465116279,
+        "physical_mae": 0.0644116373407806,
+        "physical_rmse": 0.08055030137324438
+      },
+      "path_pdf": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.pdf",
+      "path_png": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.png",
+      "path_svg": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.svg",
+      "rows": 344,
+      "sha256_pdf": "d8cf51637224349d316b61efd78bde2ba14bd2df1aab8ba82b8c8a97de3975ae",
+      "sha256_png": "6a2e1cf2f3a85c2949311bc631c4e768fe598216238c4665c4c7d4a5510ed6bc",
+      "sha256_svg": "aeec1259d478dfc4da9ba7b2858659244c44370fcdd2c521633e74ebb142eaf6",
+      "target": "SW",
+      "well_id": "15/9-F-15 D"
+    }
+  ],
+  "generated_utc": "2026-07-29T19:14:47.969671+00:00",
+  "legacy_depth_figure_sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
+  "legacy_run_manifest_sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+  "lineage_notes": [
+    "legacy run_manifest.json and test_depth_gt_vs_pred.png are retained as the original lineage evidence",
+    "new figures are generated only from the stage4 confirmation prediction CSVs",
+    "KLOGH parity panel uses log1p(mD) because that is the validated model domain; physical metrics stay in mD elsewhere",
+    "no trajectory, interpolation, or volume rendering is used",
+    "no well-comparison panel is emitted because the holdout family contains a single well"
+  ],
+  "p12_contract": {
+    "generated_at": "2026-07-29T19:14:47.966762+00:00",
+    "inputs": [
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/run_manifest.json",
+        "scientific_role": "original_lineage_manifest",
+        "sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+        "shape_or_row_count": null,
+        "split_scope": "all lineage evidence; no split training relevance"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/test_depth_gt_vs_pred.png",
+        "scientific_role": "legacy_depth_visual_reference",
+        "sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
+        "shape_or_row_count": null,
+        "split_scope": "held-out family 15/9-F-15 only; reference lineage"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/summary.json",
+        "scientific_role": "stage4_confirmation_summary",
+        "sha256": "5d8e579031f395d6cb01ad212115ee269ac956107852dfef4fd3967285961aeb",
+        "shape_or_row_count": null,
+        "split_scope": "development-only confirmation; holdout excluded from modeling"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/preparation_manifest.json",
+        "scientific_role": "stage4_preparation_state",
+        "sha256": "3b34c8704e210e1569f63c639e309af9af9ecad4351ed8fdcfd7d7ba6dc4a96a",
+        "shape_or_row_count": null,
+        "split_scope": "development-only confirmation; holdout excluded from modeling"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/visualization_manifest.json",
+        "scientific_role": "stage4_visualization_state",
+        "sha256": "63f5a625a470f05771eae1fa5a42d6268bc8c3a0866feb05633a5980d5e89ecc",
+        "shape_or_row_count": null,
+        "split_scope": "development-only confirmation; holdout excluded from modeling"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/confirmation_state.json",
+        "scientific_role": "stage4_confirmation_state",
+        "sha256": "2fd004e22479bceedf2aa6a86105d502f468a60fe3d7ae968f35deb89f332acb",
+        "shape_or_row_count": null,
+        "split_scope": "development-only confirmation; holdout excluded from modeling"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/phif/predictions.csv",
+        "scientific_role": "heldout_prediction_csv:phif",
+        "sha256": "f1c605f6f303d6d2038e2c647e130b8e2ae101402b2b4fc381ed74c3ab04e2dc",
+        "shape_or_row_count": {
+          "columns": 11,
+          "rows": 344
+        },
+        "split_scope": "held-out family 15/9-F-15; 344-row confirmation predictions"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/klogh/predictions.csv",
+        "scientific_role": "heldout_prediction_csv:klogh",
+        "sha256": "1901fa1a01397d20ac70e631fa3e5caa76a4acf2df81ce53a757e4b164f2f493",
+        "shape_or_row_count": {
+          "columns": 11,
+          "rows": 344
+        },
+        "split_scope": "held-out family 15/9-F-15; 344-row confirmation predictions"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/sw/predictions.csv",
+        "scientific_role": "heldout_prediction_csv:sw",
+        "sha256": "c0118d2be5ecb1fa03db55d31628e94a583fef3f7289e2c89ca0ec049ac5ec18",
+        "shape_or_row_count": {
+          "columns": 11,
+          "rows": 344
+        },
+        "split_scope": "held-out family 15/9-F-15; 344-row confirmation predictions"
+      }
+    ],
+    "manual_review": {
+      "notes": null,
+      "reviewed": false,
+      "reviewed_at_utc": null,
+      "reviewer": null,
+      "status": "pending"
+    },
+    "outputs": [
+      {
+        "dpi": 300,
+        "height_px": 2160,
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.png",
+        "role": "heldout_summary_figure:phif",
+        "sha256": "fc09b578c2aa87a7b2eab200b5bae61138863df218641be2fd20f0b6744826e8",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.pdf",
+          "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.svg"
+        ],
+        "width_px": 2160
+      },
+      {
+        "dpi": 300,
+        "height_px": 2160,
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.png",
+        "role": "heldout_summary_figure:klogh",
+        "sha256": "295c45fc38b5203b8415735aa9b5b74784220a6e821f6d6553ddae68be5d315d",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.pdf",
+          "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.svg"
+        ],
+        "width_px": 2160
+      },
+      {
+        "dpi": 300,
+        "height_px": 2160,
+        "path": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.png",
+        "role": "heldout_summary_figure:sw",
+        "sha256": "6a2e1cf2f3a85c2949311bc631c4e768fe598216238c4665c4c7d4a5510ed6bc",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.pdf",
+          "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.svg"
+        ],
+        "width_px": 2160
+      }
+    ],
+    "profile": "p12_tracks_1_3_5",
+    "renderer": {
+      "path": "_pipelines/02_task_datasets/reservoir/p12_visualization.py",
+      "sha256": "188d9770c1c64c3870eaf7e3d3e0367550cb8ac337a15b20a864a601ccf9879c"
+    },
+    "schema_version": "scientific-visualization-contract/v1",
+    "scientific_caveat": "Held-out depth tracks are rendered only from stage4 confirmation predictions for family 15/9-F-15; no trajectory, interpolation, or volume rendering is introduced, and KLOGH interval diagnostics are shown in log1p(mD) domain.",
+    "source_commit": "635dfb9a0bf104641a49b1572f5c8bbf23d20179",
+    "track_id": "property"
+  },
+  "renderer": "p12_visualization",
+  "requested_font": "Times New Roman",
+  "resolved_font": "TeX Gyre Termes",
+  "schema_version": 1,
+  "script": {
+    "path": "_pipelines/02_task_datasets/reservoir/p12_visualization.py",
+    "sha256": "188d9770c1c64c3870eaf7e3d3e0367550cb8ac337a15b20a864a601ccf9879c"
+  },
+  "source_commit": "635dfb9a0bf104641a49b1572f5c8bbf23d20179",
+  "source_inputs": {
+    "legacy_depth_figure": {
+      "dimensions": [
+        2340,
+        1260
+      ],
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/test_depth_gt_vs_pred.png",
+      "sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
+      "size_bytes": 278212
+    },
+    "legacy_run_manifest": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/run_manifest.json",
+      "sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+      "size_bytes": 775
+    },
+    "stage4_confirmation_state": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/confirmation_state.json",
+      "sha256": "2fd004e22479bceedf2aa6a86105d502f468a60fe3d7ae968f35deb89f332acb",
+      "size_bytes": 1606
+    },
+    "stage4_preparation": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/preparation_manifest.json",
+      "sha256": "3b34c8704e210e1569f63c639e309af9af9ecad4351ed8fdcfd7d7ba6dc4a96a",
+      "size_bytes": 4892
+    },
+    "stage4_summary": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/summary.json",
+      "sha256": "5d8e579031f395d6cb01ad212115ee269ac956107852dfef4fd3967285961aeb",
+      "size_bytes": 5589
+    },
+    "stage4_visualization_manifest": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/visualization_manifest.json",
+      "sha256": "63f5a625a470f05771eae1fa5a42d6268bc8c3a0866feb05633a5980d5e89ecc",
+      "size_bytes": 3414
+    }
+  },
+  "split_scope": {
+    "confirmation_kind": "previously_seen_reusable_holdout",
+    "development_families": [
+      "15/9-19",
+      "15/9-F-1",
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "development_rows": 1216,
+    "fresh_blind": false,
+    "known_holdout_family": "15/9-F-15",
+    "known_holdout_rows": 344,
+    "prior_test_consumed": true,
+    "single_use_state": [
+      "15/9-F-15"
+    ]
+  },
+  "stage4_preparation_sha256": "3b34c8704e210e1569f63c639e309af9af9ecad4351ed8fdcfd7d7ba6dc4a96a",
+  "stage4_summary_sha256": "5d8e579031f395d6cb01ad212115ee269ac956107852dfef4fd3967285961aeb",
+  "stage4_visualization_manifest_sha256": "63f5a625a470f05771eae1fa5a42d6268bc8c3a0866feb05633a5980d5e89ecc",
+  "target_sources": {
+    "KLOGH": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/klogh/predictions.csv",
+      "sha256": "1901fa1a01397d20ac70e631fa3e5caa76a4acf2df81ce53a757e4b164f2f493",
+      "shape": [
+        344,
+        11
+      ],
+      "size_bytes": 63564
+    },
+    "PHIF": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/phif/predictions.csv",
+      "sha256": "f1c605f6f303d6d2038e2c647e130b8e2ae101402b2b4fc381ed74c3ab04e2dc",
+      "shape": [
+        344,
+        11
+      ],
+      "size_bytes": 66788
+    },
+    "SW": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/sw/predictions.csv",
+      "sha256": "c0118d2be5ecb1fa03db55d31628e94a583fef3f7289e2c89ca0ec049ac5ec18",
+      "shape": [
+        344,
+        11
+      ],
+      "size_bytes": 63178
+    }
+  },
+  "target_summaries": {
+    "KLOGH": {
+      "empirical_interval_coverage": 1.0,
+      "family_id": "15/9-F-15",
+      "model_domain_metrics": {
+        "MAE": 0.5928635231433683,
+        "RMSE": 0.7040119703642701
+      },
+      "physical_metrics": {
+        "MAE": 145.63983557826103,
+        "RMSE": 278.8387578492702
+      },
+      "sample_count": 344,
+      "well_id": "15/9-F-15 D"
+    },
+    "PHIF": {
+      "empirical_interval_coverage": 0.9941860465116279,
+      "family_id": "15/9-F-15",
+      "model_domain_metrics": {
+        "MAE": 0.006066972288797317,
+        "RMSE": 0.009319236454732018
+      },
+      "physical_metrics": {
+        "MAE": 0.006066972288797317,
+        "RMSE": 0.009319236454732018
+      },
+      "sample_count": 344,
+      "well_id": "15/9-F-15 D"
+    },
+    "SW": {
+      "empirical_interval_coverage": 0.9941860465116279,
+      "family_id": "15/9-F-15",
+      "model_domain_metrics": {
+        "MAE": 0.0644116373407806,
+        "RMSE": 0.08055030137324438
+      },
+      "physical_metrics": {
+        "MAE": 0.0644116373407806,
+        "RMSE": 0.08055030137324438
+      },
+      "sample_count": 344,
+      "well_id": "15/9-F-15 D"
+    }
+  },
+  "track_id": "property",
+  "visual_qa": {
+    "all_pngs_are_300dpi": true,
+    "fallback_data_used": false,
+    "fonts_normalized": true,
+    "klogh_interval_display_domain": "log1p(mD)",
+    "manual_review_pending": false,
+    "no_leakage": true,
+    "source_alignment_verified": true,
+    "titles_present": false,
+    "vector_outputs_present": true
+  }
+}
