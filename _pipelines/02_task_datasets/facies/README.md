@@ -689,3 +689,49 @@ python3 -m unittest \
 FACIES_R01_DATA_ROOT="$FACIES_DATA_ROOT" python3 -m unittest \
   _pipelines.02_task_datasets.facies.tests.test_facies_p5_r01.FaciesP51R01RealDevelopmentSmoke -v
 ```
+
+## P11 cached SAM2 residual-gate ablation
+
+`p11_residual_fusion.py` is a development-only diagnostic for the two
+independent facies tasks. F3 keeps scratch `smp_fpn_r18` logits as its main
+route; Penobscot keeps scratch `smp_deeplabv3plus_r18` logits. A frozen,
+checkpoint-verified SAM2.1 Hiera-B+ encoder is evaluated once per fold and
+encoder condition, and its three feature maps are cached as CPU float16. The
+candidate can only add
+`sigmoid(gate) × 0.05 × tanh(residual_logits)`, so every logit correction is
+bounded to `[-0.05, 0.05]`. Gate inputs contain only main-logit summaries and
+cached feature norms.
+
+The comparison grid is fixed to folds 0 and 4, seed `2693 + fold_id`, the
+accepted 40-update Stage-2 budget, and five variants: same-run strong baseline,
+direct SAM2 head, pretrained-SAM2 residual, random-SAM2 residual control, and
+exact gate=0. Promotion requires the pretrained residual to beat both the
+same-run baseline and random-SAM2 control by at least 0.005 mIoU. Smaller
+changes are recorded as non-beneficial ties. The CLI requires separate locked
+F3 and Penobscot manifests, resolves only each task's `train.h5`, rejects
+holdout-like paths before data access, and has no test/archive argument.
+
+Use the provisioned `torch-common` interpreter. The runner reuses the accepted
+SAM2 environment's pure-Python support packages without changing the frozen
+Torch/SMP runtime; override `FACIES_P11_SAM2_SITE_PACKAGES` only when that
+approved environment moves.
+
+```bash
+CUDA_VISIBLE_DEVICES=<free_gpu> PYTHONDONTWRITEBYTECODE=1 \
+  /mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/p11_residual_fusion.py run \
+  --f3-manifest "$F3_P4_SPLIT_MANIFEST" \
+  --penobscot-manifest "$PEN_P4_SPLIT_MANIFEST" \
+  --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cuda:0
+
+PYTHONDONTWRITEBYTECODE=1 \
+  /mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/p11_residual_fusion.py verify
+```
+
+Portable facies-local evidence lives under
+`_outputs/p11_residual_fusion/`: a 20-row per-fold JSONL, compact aggregate
+summary, honest Markdown report, two PNGs, and a SHA-256 artifact manifest.
+No checkpoint, dense prediction, cached feature tensor, train archive, or
+holdout artifact is persisted.
