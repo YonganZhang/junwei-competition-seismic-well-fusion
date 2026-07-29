@@ -163,7 +163,7 @@
     }
   },
   "p12_contract": {
-    "generated_at": "2026-07-29T19:47:58.695487+00:00",
+    "generated_at": "2026-07-29T19:49:19.418816+00:00",
     "inputs": [
       {
         "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/baseline.py",
@@ -374,15 +374,15 @@
     },
     "schema_version": "scientific-visualization-contract/v1",
     "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
-    "source_commit": "8594b26a7303b14954260c1f3bd5b3ebcc9c96f0",
+    "source_commit": "22da33f9264889ab84101973ccc62f006c521ed3",
     "track_id": "fault"
   },
   "provenance": {
-    "generated_at": "2026-07-29T19:47:58.695487+00:00",
+    "generated_at": "2026-07-29T19:49:19.418816+00:00",
     "renderer": "_pipelines/02_task_datasets/fault/p12_visualization.py",
     "renderer_sha256": "81dcf8aa986ec65fb88a5363ec70fea8db73c2c1a46b6c3bab83c0888b68e880",
     "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
-    "source_commit": "8594b26a7303b14954260c1f3bd5b3ebcc9c96f0"
+    "source_commit": "22da33f9264889ab84101973ccc62f006c521ed3"
   },
   "renderer": {
     "path": "_pipelines/02_task_datasets/fault/p12_visualization.py",
@@ -421,7 +421,7 @@
       40
     ]
   },
-  "source_commit": "8594b26a7303b14954260c1f3bd5b3ebcc9c96f0",
+  "source_commit": "22da33f9264889ab84101973ccc62f006c521ed3",
   "source_worktree": ".claude/worktrees/track-fault",
   "split_scope": {
     "notes": [
