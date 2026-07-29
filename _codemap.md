@@ -1,6 +1,6 @@
 # Code Map — 军伟的比赛（地震+测井多模态融合识别有利油气目标）
 
-更新: 2026-07-08
+更新: 2026-07-30
 
 本文只做 COL4 代码地图 / 注册路由。当前 phase、下一步、运行态、最近测试结果只写 `_wiki-methodology/_top/_task_plan.md`。
 
@@ -35,6 +35,7 @@
 | 代码域 | 入口 | 注册/测试 |
 |---|---|---|
 | 主流程 | `_pipelines/` | `_meta/_registry.yml` + `_wiki-methodology/_tests/` |
+| 领域图卡片交付 | `_pipelines/03_domain_visualization_delivery/` | `step_00_discover.py` 发现赛道 1/3/5；`step_04_stage_p12_review.py` 独立记录人工视觉验收；门禁见 `_meta/_registry.yml` id=`domain_visualization_delivery` 与 `_wiki-methodology/_tests/_gates.yml` id=`domain-visualization-delivery` |
 | 可复用代码 | `_code/` | `_meta/_registry.yml` |
 | 数据接口 | `_data/` | `_meta/_data_registry.yml` |
 | 输出/图/论文 | `_outputs/` / `_figures/` / `_paper/` | `_meta/_runs.yml` / `_meta/_data_registry.yml` |

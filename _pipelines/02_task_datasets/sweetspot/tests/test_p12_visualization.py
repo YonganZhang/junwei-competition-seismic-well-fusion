@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -8,6 +9,8 @@ from pathlib import Path
 from PIL import Image
 
 
+REPO_ROOT = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(REPO_ROOT))
 viz = importlib.import_module("_pipelines.02_task_datasets.sweetspot.p12_visualization")
 
 

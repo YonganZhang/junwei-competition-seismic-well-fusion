@@ -6,7 +6,12 @@
 # - CodeBook 节点的 owner_refs `test:<id>` 按这里的 gate id 解析(单一命名空间)
 #
 # 字段: id(唯一)/ cmd(项目根为 cwd)/ timeout(秒)/ expect(目前唯一语义 exit0)/ note(可选)
-gates: []
+gates:
+  - id: domain-visualization-delivery
+    cmd: "python3 -m unittest discover -s _pipelines/03_domain_visualization_delivery/tests -p 'test_*.py' -v"
+    timeout: 180
+    expect: exit0
+    note: "拒绝状态/协议/占位图；保留旧六赛道白名单，并验证P12赛道1/3/5的固定发现、合同、显式负责人视觉验收、哈希与稳定暂存；赛道2/4/6保持paused。"
 # 示例(删掉 [] 后启用):
 # gates:
 #   - id: unit

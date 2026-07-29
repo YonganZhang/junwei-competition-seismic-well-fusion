@@ -1,0 +1,688 @@
+{
+  "calendar_contract": {
+    "forecast_days": 30,
+    "frequency": "D",
+    "history_days": 30,
+    "legacy_p7_observation_index_evidence_promoted": false,
+    "missing_dates_reindexed_not_zero_filled": true
+  },
+  "decision": {
+    "default_enabled": false,
+    "effect_supported": true,
+    "reason": "Chronos beats the causal mean, same-grid ExtraTrees, target-shuffle, and history-order-shuffle controls on the locked development folds; default promotion still requires a same-architecture random-init control.",
+    "state": "EFFECT_SUPPORTED_NOT_PROMOTED"
+  },
+  "evaluation": {
+    "folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "frozen_test_accessed": false,
+    "known_holdout_accessed": false,
+    "validation_labels_used_for_blend_selection": false
+  },
+  "foundation": {
+    "artifact": {
+      "config_sha256": "ef1143bfdc9c0376d9a056eefca46cb4b1ec3d0ffacd541ff56feb40fb708031",
+      "weights_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+      "weights_size_bytes": 477930472
+    },
+    "license": "Apache-2.0",
+    "model_id": "amazon/chronos-2",
+    "real_pretrained_weights_loaded": true,
+    "source_lock_path": "_pipelines/02_task_datasets/sweetspot/p8/source_lock.v1.json",
+    "source_lock_sha256": "3b2326b8f6a126224f4c4a70d7bdd4f77f642d6801b6fd728553ab26929893ea",
+    "source_revision": "75a2dfe228e39d55283f477c01399b9e53d89661",
+    "weights_revision": "29ec3766d36d6f73f0696f85560a422f50e8498c"
+  },
+  "methods": {
+    "B1_calendar_history_mean": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "fold_id": 0,
+          "input_budget_sha256": "b4b27a1d63e55ba7a574c02e37073074024a1a38f5e67aec9ef6c5b548f4b685",
+          "metrics": {
+            "mae": 95.06426595033538,
+            "rmse": 123.80181402890966,
+            "spearman": 0.5060522760304762
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "0a2f635b243496d98e3b282d5428ada35f99a08a43618d1b142bf9c701d64d5f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "741e64989ec3389c4ff0ca2e41fac5a1f5fe6affcc608cdab7b49b934c639e25",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 1,
+          "input_budget_sha256": "c598286e4af884938340c3717244a60a6b7b8493860ee4191562ab33610787fe",
+          "metrics": {
+            "mae": 264.8373880114806,
+            "rmse": 414.53562359807273,
+            "spearman": 0.9402450136681179
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "330e960fbcd2726a22caa031f8dcd890b8edb91d7f377aa19bd8bdf06152a64f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "7c2e21af084dea436a9bc4ba5bcbfb8f5876c2d49da47b2036f437a8fd63e973",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 2,
+          "input_budget_sha256": "6532b780e78b8b54cfc0b3ad3a9c72a0a8330ff97eac4167af1e71da2afaef46",
+          "metrics": {
+            "mae": 194.21343904900866,
+            "rmse": 391.618927295361,
+            "spearman": 0.9637744254328238
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H"
+          ],
+          "train_sample_ids_sha256": "6fb4e5170491a8e56930dce4c397226b3727f7d6c8c5b3a5dd864bc37865b2f8",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "258b0d907b65a03aa395b0394b5470f98230ca64257d8e61871ff4518aa14acc",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 3,
+          "input_budget_sha256": "d3613c3c9db2f6302ffe057c378db55afc2a5569d0fa31082d9549e0e9cfa570",
+          "metrics": {
+            "mae": 184.55942263623712,
+            "rmse": 248.09107861742433,
+            "spearman": 0.6371570314872937
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "a46b6f6840418874973ba6e5c4acd193896e76a5d4b11b9cca997ae373c16dc7",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "cd819be93afbb6c0189ebe2a271dc792e788e66a83a52a23108368e4130838fc",
+          "validation_samples": 84
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 184.66862891176544,
+        "rmse": 294.51186088494194,
+        "spearman": 0.7618071866546778
+      }
+    },
+    "B2_calendar_extra_trees": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "fold_id": 0,
+          "input_budget_sha256": "b4b27a1d63e55ba7a574c02e37073074024a1a38f5e67aec9ef6c5b548f4b685",
+          "metrics": {
+            "mae": 113.65076036550884,
+            "rmse": 147.22588318791145,
+            "spearman": 0.5962427292789844
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "0a2f635b243496d98e3b282d5428ada35f99a08a43618d1b142bf9c701d64d5f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "741e64989ec3389c4ff0ca2e41fac5a1f5fe6affcc608cdab7b49b934c639e25",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 1,
+          "input_budget_sha256": "c598286e4af884938340c3717244a60a6b7b8493860ee4191562ab33610787fe",
+          "metrics": {
+            "mae": 358.03656576855343,
+            "rmse": 585.033092527071,
+            "spearman": 0.9469879518072288
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "330e960fbcd2726a22caa031f8dcd890b8edb91d7f377aa19bd8bdf06152a64f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "7c2e21af084dea436a9bc4ba5bcbfb8f5876c2d49da47b2036f437a8fd63e973",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 2,
+          "input_budget_sha256": "6532b780e78b8b54cfc0b3ad3a9c72a0a8330ff97eac4167af1e71da2afaef46",
+          "metrics": {
+            "mae": 186.26129064085274,
+            "rmse": 339.83198398468215,
+            "spearman": 0.9706186088893388
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H"
+          ],
+          "train_sample_ids_sha256": "6fb4e5170491a8e56930dce4c397226b3727f7d6c8c5b3a5dd864bc37865b2f8",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "258b0d907b65a03aa395b0394b5470f98230ca64257d8e61871ff4518aa14acc",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 3,
+          "input_budget_sha256": "d3613c3c9db2f6302ffe057c378db55afc2a5569d0fa31082d9549e0e9cfa570",
+          "metrics": {
+            "mae": 229.62555063157484,
+            "rmse": 308.54933075982547,
+            "spearman": 0.7760858560291587
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "a46b6f6840418874973ba6e5c4acd193896e76a5d4b11b9cca997ae373c16dc7",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "cd819be93afbb6c0189ebe2a271dc792e788e66a83a52a23108368e4130838fc",
+          "validation_samples": 84
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 221.89354185162247,
+        "rmse": 345.16007261487255,
+        "spearman": 0.8224837865011777
+      }
+    },
+    "C0_calendar_extra_trees_target_shuffle": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "control": "train_targets_permuted_with_fixed_seed",
+          "fold_id": 0,
+          "input_budget_sha256": "b4b27a1d63e55ba7a574c02e37073074024a1a38f5e67aec9ef6c5b548f4b685",
+          "metrics": {
+            "mae": 1460.4210681727743,
+            "rmse": 1656.653555212875,
+            "spearman": -0.22933425133126636
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "0a2f635b243496d98e3b282d5428ada35f99a08a43618d1b142bf9c701d64d5f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "741e64989ec3389c4ff0ca2e41fac5a1f5fe6affcc608cdab7b49b934c639e25",
+          "validation_samples": 84
+        },
+        {
+          "control": "train_targets_permuted_with_fixed_seed",
+          "fold_id": 1,
+          "input_budget_sha256": "c598286e4af884938340c3717244a60a6b7b8493860ee4191562ab33610787fe",
+          "metrics": {
+            "mae": 1507.8174669139667,
+            "rmse": 1807.1648907008168,
+            "spearman": -0.31622962437987245
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "330e960fbcd2726a22caa031f8dcd890b8edb91d7f377aa19bd8bdf06152a64f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "7c2e21af084dea436a9bc4ba5bcbfb8f5876c2d49da47b2036f437a8fd63e973",
+          "validation_samples": 84
+        },
+        {
+          "control": "train_targets_permuted_with_fixed_seed",
+          "fold_id": 2,
+          "input_budget_sha256": "6532b780e78b8b54cfc0b3ad3a9c72a0a8330ff97eac4167af1e71da2afaef46",
+          "metrics": {
+            "mae": 676.0256790766722,
+            "rmse": 958.0132323554847,
+            "spearman": 0.6186898855927914
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H"
+          ],
+          "train_sample_ids_sha256": "6fb4e5170491a8e56930dce4c397226b3727f7d6c8c5b3a5dd864bc37865b2f8",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "258b0d907b65a03aa395b0394b5470f98230ca64257d8e61871ff4518aa14acc",
+          "validation_samples": 84
+        },
+        {
+          "control": "train_targets_permuted_with_fixed_seed",
+          "fold_id": 3,
+          "input_budget_sha256": "d3613c3c9db2f6302ffe057c378db55afc2a5569d0fa31082d9549e0e9cfa570",
+          "metrics": {
+            "mae": 576.9042451804019,
+            "rmse": 686.3139607289525,
+            "spearman": 0.3595221221018528
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "a46b6f6840418874973ba6e5c4acd193896e76a5d4b11b9cca997ae373c16dc7",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "cd819be93afbb6c0189ebe2a271dc792e788e66a83a52a23108368e4130838fc",
+          "validation_samples": 84
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 1055.2921148359537,
+        "rmse": 1277.0364097495321,
+        "spearman": 0.10816203299587633
+      }
+    },
+    "C1_chronos2_history_order_shuffle": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "control": "validation_history_days_permuted_per_sample_while_timestamps_and_values_are_preserved",
+          "fold_id": 0,
+          "input_budget_sha256": "b4b27a1d63e55ba7a574c02e37073074024a1a38f5e67aec9ef6c5b548f4b685",
+          "metrics": {
+            "mae": 134.65033495585124,
+            "rmse": 157.3460861565872,
+            "spearman": 0.47806740008651866
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "0a2f635b243496d98e3b282d5428ada35f99a08a43618d1b142bf9c701d64d5f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "741e64989ec3389c4ff0ca2e41fac5a1f5fe6affcc608cdab7b49b934c639e25",
+          "validation_samples": 84
+        },
+        {
+          "control": "validation_history_days_permuted_per_sample_while_timestamps_and_values_are_preserved",
+          "fold_id": 1,
+          "input_budget_sha256": "c598286e4af884938340c3717244a60a6b7b8493860ee4191562ab33610787fe",
+          "metrics": {
+            "mae": 257.6440455973691,
+            "rmse": 409.8899617282791,
+            "spearman": 0.9236407816138504
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "330e960fbcd2726a22caa031f8dcd890b8edb91d7f377aa19bd8bdf06152a64f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "7c2e21af084dea436a9bc4ba5bcbfb8f5876c2d49da47b2036f437a8fd63e973",
+          "validation_samples": 84
+        },
+        {
+          "control": "validation_history_days_permuted_per_sample_while_timestamps_and_values_are_preserved",
+          "fold_id": 2,
+          "input_budget_sha256": "6532b780e78b8b54cfc0b3ad3a9c72a0a8330ff97eac4167af1e71da2afaef46",
+          "metrics": {
+            "mae": 214.96465949248244,
+            "rmse": 410.69741629208886,
+            "spearman": 0.937632884479093
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H"
+          ],
+          "train_sample_ids_sha256": "6fb4e5170491a8e56930dce4c397226b3727f7d6c8c5b3a5dd864bc37865b2f8",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "258b0d907b65a03aa395b0394b5470f98230ca64257d8e61871ff4518aa14acc",
+          "validation_samples": 84
+        },
+        {
+          "control": "validation_history_days_permuted_per_sample_while_timestamps_and_values_are_preserved",
+          "fold_id": 3,
+          "input_budget_sha256": "d3613c3c9db2f6302ffe057c378db55afc2a5569d0fa31082d9549e0e9cfa570",
+          "metrics": {
+            "mae": 174.63456331613102,
+            "rmse": 245.3501479763992,
+            "spearman": 0.7130505214133847
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "a46b6f6840418874973ba6e5c4acd193896e76a5d4b11b9cca997ae373c16dc7",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "cd819be93afbb6c0189ebe2a271dc792e788e66a83a52a23108368e4130838fc",
+          "validation_samples": 84
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 195.47340084045842,
+        "rmse": 305.8209030383386,
+        "spearman": 0.7630978968982116
+      }
+    },
+    "F0_chronos2_calendar": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "daily_forecast_sha256": "5e8fce37db7fc6b2b9decc8789e8c3984a13399d15dcec033dc4c3468253cd7f",
+          "fold_id": 0,
+          "input_budget_sha256": "b4b27a1d63e55ba7a574c02e37073074024a1a38f5e67aec9ef6c5b548f4b685",
+          "metrics": {
+            "mae": 142.96780326334633,
+            "rmse": 175.66958105683,
+            "spearman": 0.2865589737949243
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "0a2f635b243496d98e3b282d5428ada35f99a08a43618d1b142bf9c701d64d5f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "741e64989ec3389c4ff0ca2e41fac5a1f5fe6affcc608cdab7b49b934c639e25",
+          "validation_samples": 84
+        },
+        {
+          "daily_forecast_sha256": "aa962c176e05e063d9f93627d500ce2460394afb9f97948551d01ee3d2ecd730",
+          "fold_id": 1,
+          "input_budget_sha256": "c598286e4af884938340c3717244a60a6b7b8493860ee4191562ab33610787fe",
+          "metrics": {
+            "mae": 205.05595356769135,
+            "rmse": 342.1669769110635,
+            "spearman": 0.9550470790725929
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "330e960fbcd2726a22caa031f8dcd890b8edb91d7f377aa19bd8bdf06152a64f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "7c2e21af084dea436a9bc4ba5bcbfb8f5876c2d49da47b2036f437a8fd63e973",
+          "validation_samples": 84
+        },
+        {
+          "daily_forecast_sha256": "676a10edfaf337986c9eb7c820582f5df92a611440c2aee3db408a1779751f04",
+          "fold_id": 2,
+          "input_budget_sha256": "6532b780e78b8b54cfc0b3ad3a9c72a0a8330ff97eac4167af1e71da2afaef46",
+          "metrics": {
+            "mae": 172.21170015558542,
+            "rmse": 414.4273491520779,
+            "spearman": 0.9154601599676013
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H"
+          ],
+          "train_sample_ids_sha256": "6fb4e5170491a8e56930dce4c397226b3727f7d6c8c5b3a5dd864bc37865b2f8",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "258b0d907b65a03aa395b0394b5470f98230ca64257d8e61871ff4518aa14acc",
+          "validation_samples": 84
+        },
+        {
+          "daily_forecast_sha256": "8cef71df0a05ae3d358c99ab528a8e403378394ad2b2bc377de1b172ce5494aa",
+          "fold_id": 3,
+          "input_budget_sha256": "d3613c3c9db2f6302ffe057c378db55afc2a5569d0fa31082d9549e0e9cfa570",
+          "metrics": {
+            "mae": 169.02950502384866,
+            "rmse": 244.79281839355073,
+            "spearman": 0.7135806094077939
+          },
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "a46b6f6840418874973ba6e5c4acd193896e76a5d4b11b9cca997ae373c16dc7",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "cd819be93afbb6c0189ebe2a271dc792e788e66a83a52a23108368e4130838fc",
+          "validation_samples": 84
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 172.31624050261792,
+        "rmse": 294.2641813783805,
+        "spearman": 0.7176617055607282
+      }
+    },
+    "F1_chronos2_train_blend_calendar": {
+      "fold_count": 4,
+      "folds": [
+        {
+          "fold_id": 0,
+          "input_budget_sha256": "b4b27a1d63e55ba7a574c02e37073074024a1a38f5e67aec9ef6c5b548f4b685",
+          "metrics": {
+            "mae": 117.71840470552823,
+            "rmse": 148.19730299064238,
+            "spearman": 0.3511645919903599
+          },
+          "prediction_sha256": "2ffdeca31732190defb89c4e2228adacfb5725b3105cc3a438544c240d1cc5fa",
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "0a2f635b243496d98e3b282d5428ada35f99a08a43618d1b142bf9c701d64d5f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-1 C"
+          ],
+          "validation_sample_ids_sha256": "741e64989ec3389c4ff0ca2e41fac5a1f5fe6affcc608cdab7b49b934c639e25",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 1,
+          "input_budget_sha256": "c598286e4af884938340c3717244a60a6b7b8493860ee4191562ab33610787fe",
+          "metrics": {
+            "mae": 210.14164451133638,
+            "rmse": 330.2307369874728,
+            "spearman": 0.9615267793864535
+          },
+          "prediction_sha256": "a742d7b76efcb9a646be5edd180b760dd5c1d4254f4061a5e24a83ce58b6f424",
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "330e960fbcd2726a22caa031f8dcd890b8edb91d7f377aa19bd8bdf06152a64f",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-12 H"
+          ],
+          "validation_sample_ids_sha256": "7c2e21af084dea436a9bc4ba5bcbfb8f5876c2d49da47b2036f437a8fd63e973",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 2,
+          "input_budget_sha256": "6532b780e78b8b54cfc0b3ad3a9c72a0a8330ff97eac4167af1e71da2afaef46",
+          "metrics": {
+            "mae": 173.9554680938632,
+            "rmse": 394.6706039298853,
+            "spearman": 0.9444568188721272
+          },
+          "prediction_sha256": "fd0aae45f9d0529deb0ca1a54e86f28269e68630fdfeb91aa342914580049f3e",
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-11 H",
+            "NO 15/9-F-12 H"
+          ],
+          "train_sample_ids_sha256": "6fb4e5170491a8e56930dce4c397226b3727f7d6c8c5b3a5dd864bc37865b2f8",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-14 H"
+          ],
+          "validation_sample_ids_sha256": "258b0d907b65a03aa395b0394b5470f98230ca64257d8e61871ff4518aa14acc",
+          "validation_samples": 84
+        },
+        {
+          "fold_id": 3,
+          "input_budget_sha256": "d3613c3c9db2f6302ffe057c378db55afc2a5569d0fa31082d9549e0e9cfa570",
+          "metrics": {
+            "mae": 163.52187592389822,
+            "rmse": 235.8573407414728,
+            "spearman": 0.6955148324389997
+          },
+          "prediction_sha256": "30d005d3336f4ae6e39716769dcf43783de818bccdc577ab354a64758dd9041c",
+          "split_sha256": "f3da0d58c8597b8d4c9b122589bce1247270cd01937680d9dc8bd795f2db2cf2",
+          "train_groups": [
+            "NO 15/9-F-1 C",
+            "NO 15/9-F-12 H",
+            "NO 15/9-F-14 H"
+          ],
+          "train_sample_ids_sha256": "a46b6f6840418874973ba6e5c4acd193896e76a5d4b11b9cca997ae373c16dc7",
+          "train_samples": 196,
+          "validation_groups": [
+            "NO 15/9-F-11 H"
+          ],
+          "validation_sample_ids_sha256": "cd819be93afbb6c0189ebe2a271dc792e788e66a83a52a23108368e4130838fc",
+          "validation_samples": 84
+        }
+      ],
+      "macro_fold_mean": {
+        "mae": 166.3343483086565,
+        "rmse": 277.2389961623683,
+        "spearman": 0.7381657556719851
+      }
+    }
+  },
+  "runtime": {
+    "checkpoint_written": false,
+    "device": "cuda:0",
+    "duration_seconds": 18.005269755027257,
+    "gpu_lock": {
+      "device": "cuda:0",
+      "lock_name": "volve-p9-gpu3.lock",
+      "mechanism": "flock"
+    },
+    "raw_predictions_persisted": false
+  },
+  "schema_version": "sweetspot-p8-chronos-calendar/v1",
+  "train_only_blend_weights": [
+    {
+      "chronos_weight": 0.76,
+      "fold_id": 0,
+      "history_weight": 0.24,
+      "train_selection_mae": 194.97503597780872,
+      "validation_labels_used_for_weight_selection": false
+    },
+    {
+      "chronos_weight": 0.54,
+      "fold_id": 1,
+      "history_weight": 0.45999999999999996,
+      "train_selection_mae": 233.98824460632912,
+      "validation_labels_used_for_weight_selection": false
+    },
+    {
+      "chronos_weight": 0.63,
+      "fold_id": 2,
+      "history_weight": 0.37,
+      "train_selection_mae": 195.3904248525625,
+      "validation_labels_used_for_weight_selection": false
+    },
+    {
+      "chronos_weight": 0.73,
+      "fold_id": 3,
+      "history_weight": 0.27,
+      "train_selection_mae": 227.61880187241763,
+      "validation_labels_used_for_weight_selection": false
+    }
+  ]
+}

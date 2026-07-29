@@ -1,0 +1,58 @@
+name: domain_visualization_delivery
+version: "1.0.0"
+description: "六赛道真实领域图的白名单校验、稳定暂存与卡片渲染发布。"
+related_phase: P4
+related_method: _pipelines/03_domain_visualization_delivery/_readme.md
+steps:
+  - step_id: step_00_discover
+    file: _pipelines/03_domain_visualization_delivery/step_00_discover.py
+    depends_on: []
+    description: "列出 P12 赛道1/3/5的固定工作树、渲染器、测试和manifest入口，并显式冻结赛道2/4/6。"
+    input_artifacts:
+      - _meta/_visual_style_guide.yml
+    output_artifacts: []
+  - step_id: step_01_validate_manifest
+    file: _pipelines/03_domain_visualization_delivery/step_01_validate_manifest.py
+    depends_on:
+      - step_00_discover
+    description: "验证六赛道、文件、哈希、来源脚本、证据和人工复核。"
+    input_artifacts:
+      - _pipelines/03_domain_visualization_delivery/delivery_manifest.json
+    output_artifacts:
+      - _outputs/domain_visualization_delivery/v1/validated_manifest.json
+      - _outputs/domain_visualization_delivery/v1/validation_report.json
+  - step_id: step_02_stage_delivery
+    file: _pipelines/03_domain_visualization_delivery/step_02_stage_delivery.py
+    depends_on:
+      - step_01_validate_manifest
+    description: "复制通过审核的图并复核交付副本哈希。"
+    input_artifacts:
+      - _outputs/domain_visualization_delivery/v1/validated_manifest.json
+    output_artifacts:
+      - _outputs/domain_visualization_delivery/v1/staged_manifest.json
+      - _outputs/domain_visualization_delivery/v1/cards/*.png
+  - step_id: step_03_publish_cards
+    file: _pipelines/03_domain_visualization_delivery/step_03_publish_cards.py
+    depends_on:
+      - step_02_stage_delivery
+    description: "显式授权后发布永久公网URL，并逐项验证HTTP 200。"
+    input_artifacts:
+      - _outputs/domain_visualization_delivery/v1/staged_manifest.json
+    output_artifacts:
+      - _outputs/domain_visualization_delivery/v1/published_manifest.json
+  - step_id: step_04_stage_p12_review
+    file: _pipelines/03_domain_visualization_delivery/step_04_stage_p12_review.py
+    depends_on:
+      - step_00_discover
+    description: "在负责人逐图验收后，为赛道1/3/5生成独立复核证明并稳定暂存PNG/PDF/SVG；不得由renderer自称已复核。"
+    input_artifacts:
+      - _meta/_visual_style_guide.yml
+      - .claude/worktrees/p12-viz-fault/_pipelines/02_task_datasets/fault/_outputs/p12_visualization/manifest.json
+      - .claude/worktrees/p12-viz-property/_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/manifest.json
+      - .claude/worktrees/p12-viz-sweetspot/_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/manifest.json
+    output_artifacts:
+      - _outputs/domain_visualization_delivery/p12/review_attestation.json
+      - _outputs/domain_visualization_delivery/p12/fault/*
+      - _outputs/domain_visualization_delivery/p12/property/*
+      - _outputs/domain_visualization_delivery/p12/sweetspot/*
+notes: "状态图、协议图、门禁图、占位图和不存在的路径一律 fail closed。"

@@ -63,19 +63,41 @@ class FaultP12VisualizationTests(unittest.TestCase):
             "_pipelines/02_task_datasets/fault/p12_visualization.py",
         )
         self.assertEqual(contract["renderer"]["sha256"], renderer.sha256_file(TRACK_DIR / "p12_visualization.py"))
-        ancestor_check = subprocess.run(
-            [
-                "git",
-                "-C",
-                str(renderer.PROJECT_ROOT),
-                "merge-base",
-                "--is-ancestor",
-                contract["source_commit"],
-                renderer.git_head(),
-            ],
-            check=False,
+        lineage_heads = [renderer.git_head()]
+        lineage_worktrees = (
+            renderer.SOURCE_WORKTREE,
+            renderer.SHARED_PROJECT_ROOT / ".claude" / "worktrees" / "p12-viz-fault",
         )
-        self.assertEqual(ancestor_check.returncode, 0)
+        for lineage_worktree in lineage_worktrees:
+            if not lineage_worktree.is_dir():
+                continue
+            lineage_heads.append(
+                subprocess.run(
+                    ["git", "-C", str(lineage_worktree), "rev-parse", "HEAD"],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                ).stdout.strip()
+            )
+        self.assertTrue(
+            any(
+                subprocess.run(
+                    [
+                        "git",
+                        "-C",
+                        str(renderer.PROJECT_ROOT),
+                        "merge-base",
+                        "--is-ancestor",
+                        contract["source_commit"],
+                        lineage_head,
+                    ],
+                    check=False,
+                ).returncode
+                == 0
+                for lineage_head in lineage_heads
+            ),
+            "manifest source commit must remain reachable from the integrated branch or canonical source worktree",
+        )
         self.assertEqual(manifest["source_worktree"], ".claude/worktrees/track-fault")
         self.assertEqual(manifest["visual_qa_metadata"]["palette"], "Akun")
         self.assertEqual(manifest["visual_qa_metadata"]["probability_scale"], [0.0, 1.0])

@@ -1,0 +1,15 @@
+{
+  "development_feature_source_available": false,
+  "expected_training_cells": 0,
+  "is_proxy": false,
+  "label_generated": false,
+  "label_version": "target7-klogh-cpi-v1",
+  "lane": "permeability",
+  "proxy_semantics": "KLOGH CPI permeability target in the P4 log1p stored domain; independent from T6 porosity",
+  "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+  "schema_version": "sweetspot-p5-stage3-status-gate/v1",
+  "status": "blocked",
+  "target_name": "KLOGH",
+  "task_id": "T7",
+  "test_accessed": false
+}

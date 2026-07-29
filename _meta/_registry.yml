@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-07-10 (common_preprocess 4 steps 实测跑通)
+last_synced: 2026-07-30 (P12 固化赛道1/3/5出版级可视化；赛道2/4/6保持暂停)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -48,14 +48,29 @@ code_domains:
   - id: task_datasets
     path: _pipelines/02_task_datasets
     type: pipeline
-    status: active
+    status: wip
     owner: project
     description: >
-      Layer2每赛道样本构建器，子目录 fault/facies/reservoir/lithofacies/sweetspot/reconstruction，
-      各自build_dataset.py读Layer1产出+对应标签源，调用dataset_io.save_split()写出统一schema的train/test。
-      ①②⑥已用Codex worker(leader mode)跑通baseline:①fault逻辑回归+局部卷积特征，
-      ②facies_f3/facies_penobscot各自SmallUNet(F3/Penobscot标签空间不兼容,不强行统一),
-      ⑥reconstruction岭回归+IDW。当前均为验证管道用的简单baseline,非最终模型。
+      Layer2每赛道样本构建器，子目录 fault/facies/reservoir/lithofacies/sweetspot/reconstruction。
+      主仓(master)当前该路径下6个子目录为空占位骨架，git ls-files为空——具体build_dataset.py/
+      baseline.py/models等实现均只存在于对应git worktree分支(`.claude/worktrees/track-*`)，
+      各分支已有1个已验收commit(见下方SHA)，但尚未merge进master，主仓意义上的"active代码"
+      目前不存在，不要把worktree候选误当作已集成的主仓代码。
+      2026-07-13：六条赛道baseline pipeline候选均已在各自隔离worktree完成真实Volve/F3/Penobscot
+      数据端到端验收(独立verify通过)，随后完成合并前可移植性收口，当前每条赛道的Git候选文件数/
+      字节数为：①fault 21/377889B、②facies 23/533617B、③reservoir 19/465560B、
+      ④lithofacies 18/679284B、⑤sweetspot 10/147413B、⑥reconstruction 34/1071933B。
+      六个worktree分支各自已提交1个commit(ahead=1/behind=0 relative to master)，真实SHA：
+      ①fault `09abe70905f988f4585debbd2216a6a2542e5dfd`、②facies `5f70a33e23227f45bb401d077630ff594d477b14`、
+      ③reservoir `ea3b0f35c0dd05173b38be83834f87b82315f875`、④lithofacies `84839c2421143804e7c923c30500cf03eefc7078`、
+      ⑤sweetspot `b13d876349c55834abc36550864d6b6f19bda9cd`、⑥reconstruction `1a142f3787b18999123a9750fcd8bea30001d822`。
+      commit未合并进master，master的task_datasets路径仍是空骨架。
+      科学状态摘要(细节见对应finding，不在此重复指标表)：①逻辑回归局部特征baseline，召回高精度低；
+      ②facies_f3/facies_penobscot各自SmallUNet(标签空间不兼容,不强行统一)；③PHIF/log1p(KLOGH)/SW
+      三输出多模态回归；④9类GM09 GENETIC FACIES多模态分类；⑤仅fail-closed的label_spec合同与
+      validate-only审计基础设施，未生成任何标签/数据集/模型(标签定义待军伟批准)；⑥conditional/
+      strict双模式重建对比。均为验证管道用的简单baseline,非最终模型。各分支选择性commit已完成，
+      merge进master待军伟/负责人拍板后执行，见`_wiki-methodology/_top/_findings/P2.6`。
 
   - id: ml_framework
     path: _code/ml_framework
@@ -70,6 +85,22 @@ code_domains:
       各赛道应重构为调用这里而非各自重复实现预处理/训练循环。TODO(非本轮):接入开源社区已包装好的
       预训练/大模型，只需实现build_model()适配层。
 
+  - id: domain_visualization_delivery
+    path: _pipelines/03_domain_visualization_delivery
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      六赛道真实领域图唯一卡片渲染入口。清单必须绑定可达的来源commit、图片SHA-256、
+      来源脚本blob、Git跟踪策略、证据文件和人工复核哈希；允许工作树HEAD继续前进，
+      但来源commit不可分叉、图片和来源脚本不可漂移；状态/协议/门禁/占位图路径直接拒绝。
+      通过后复制到稳定交付目录并再次验哈希，只有显式--yes-public才调用pubfile，
+      每个永久URL还必须HTTP 200。测试入口见 `_wiki-methodology/_tests/_gates.yml`
+      中 id=`domain-visualization-delivery`。P12 扩展只处理赛道1/3/5：由
+      `step_00_discover.py` 固定发现渲染器/测试/manifest，由负责人逐图检查后再运行
+      `step_04_stage_p12_review.py`，把 13 张 PNG 及其 PDF/SVG 同伴复制到稳定目录并写入
+      独立 `review_attestation.json`；赛道2/4/6保持 paused。
+
 entrypoints:
   - id: project_plan
     path: _wiki-methodology/_top/_task_plan.md
@@ -78,6 +109,41 @@ entrypoints:
     owner: col2
     description: "Current phase, next action, blockers and pause list."
 
+  - id: domain_visualization_discover
+    path: _pipelines/03_domain_visualization_delivery/step_00_discover.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Discover the fixed P12 worktrees and renderer/test/manifest paths for tracks 1, 3 and 5 while keeping tracks 2, 4 and 6 paused."
+
+  - id: domain_visualization_validate
+    path: _pipelines/03_domain_visualization_delivery/step_01_validate_manifest.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Validate the exact six domain figures, provenance, hashes, source scripts and human-review attestations."
+
+  - id: domain_visualization_stage
+    path: _pipelines/03_domain_visualization_delivery/step_02_stage_delivery.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Copy only validated figures into the stable delivery directory and recheck their hashes."
+
+  - id: domain_visualization_publish
+    path: _pipelines/03_domain_visualization_delivery/step_03_publish_cards.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Publish only after explicit public authorization, then require permanent share.yongan.site URLs and HTTP 200."
+
+  - id: domain_visualization_p12_review
+    path: _pipelines/03_domain_visualization_delivery/step_04_stage_p12_review.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "After explicit leader visual QA, copy verified P12 PNG/PDF/SVG assets for tracks 1, 3 and 5 and write a separate review attestation without mutating renderer-owned manifests."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -85,6 +151,9 @@ cross_domain_edges:
   - from: task_datasets
     to: common_preprocess
     relation: depends_on
+  - from: domain_visualization_delivery
+    to: task_datasets
+    relation: validates_and_publishes_outputs
 
 non_code_assets:
   registry: _meta/_data_registry.yml

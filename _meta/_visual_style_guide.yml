@@ -1,0 +1,169 @@
+# Scientific visualization style contract
+schema_version: scientific-visual-style/v1
+profile: p12_tracks_1_3_5
+status: active
+scope:
+  included_tracks:
+    - fault
+    - property
+    - sweetspot
+  paused_tracks:
+    - facies
+    - lithofacies
+    - reconstruction
+  scientific_values_mutable: false
+  split_boundaries_mutable: false
+  synthetic_or_fallback_data_allowed: false
+
+typography:
+  primary_family: Times New Roman
+  allowed_metric_compatible_fallback: TeX Gyre Termes
+  require_explicit_fallback_record: true
+  figure_titles_allowed: false
+  panel_label:
+    form: "(a)"
+    lowercase: true
+    bold: true
+    location: axes_upper_left
+  normalize_all_text_artists_before_save: true
+
+palette:
+  name: Akun
+  categorical:
+    blue: "#376795"
+    cyan: "#72BCD5"
+    yellow: "#FFD06F"
+    red: "#E76254"
+  support:
+    dark: "#1E466E"
+    grid: "#D9E2E8"
+    light: "#EEF3F6"
+  continuous_policy: >
+    Use a perceptually ordered continuous map for probabilities and a
+    zero-centred diverging map for signed residuals. The same quantity must
+    keep the same limits and colour mapping within a figure set.
+
+layout:
+  background: white
+  grid: light_and_optional
+  legends:
+    stable_order: true
+    opaque_box: false
+    must_not_cover_data: true
+  colorbars:
+    shared_when_scales_match: true
+    label_with_quantity_and_unit: true
+  whitespace:
+    avoid_bbox_inches_tight_as_layout_fix: true
+    inspect_for_clipping_and_excess_margin: true
+
+outputs:
+  deterministic_rendering:
+    required: true
+    svg_hashsalt_is_fixed: true
+    volatile_pdf_and_svg_dates_are_suppressed: true
+    identical_inputs_produce_identical_output_hashes: true
+  raster:
+    format: png
+    dpi: 300
+    minimum_width_px: 1200
+    minimum_height_px: 700
+  vector:
+    required:
+      - svg
+      - pdf
+    embed_or_outline_fonts: true
+
+manifest:
+  common_contract_key: p12_contract
+  common_contract_schema: scientific-visualization-contract/v1
+  common_contract_fields:
+    - schema_version
+    - profile
+    - track_id
+    - source_commit
+    - renderer
+    - generated_at
+    - scientific_caveat
+    - inputs
+    - outputs
+    - manual_review
+  required_input_fields:
+    - path
+    - sha256
+    - shape_or_row_count
+    - scientific_role
+    - split_scope
+  required_output_fields:
+    - role
+    - path
+    - sha256
+    - width_px
+    - height_px
+    - dpi
+    - vector_companions
+  required_provenance_fields:
+    - source_commit
+    - renderer
+    - renderer_sha256
+    - generated_at
+    - scientific_caveat
+  required_visual_review_fields:
+    - reviewed
+    - reviewed_sha256
+    - reviewer
+    - no_clipping
+    - no_overlap
+    - labels_legible
+    - colors_consistent
+    - scientific_boundary_preserved
+  contract_notes:
+    - renderer_is_an_object_with_path_and_sha256
+    - inputs_and_outputs_are_lists_of_records
+    - vector_companions_are_project_relative_pdf_and_svg_paths
+    - manual_review_is_pending_at_generation_time
+    - only_the_leader_may_replace_pending_review_with_an_accepted_image_hash
+
+track_requirements:
+  fault:
+    required_roles:
+      - real_test_qualitative
+      - threshold_or_error_diagnostic
+    optional_roles:
+      - spatial_context_3d
+    constraints:
+      - probability_limits_are_0_to_1
+      - low_precision_baseline_remains_visible
+  property:
+    required_roles:
+      - heldout_depth_tracks
+      - aligned_residuals
+      - observed_vs_predicted
+    constraints:
+      - depth_increases_downward
+      - raw_scientific_values_are_not_clipped
+      - units_are_explicit
+  sweetspot:
+    required_roles:
+      - seven_target_overview
+      - supported_target_diagnostics
+    constraints:
+      - regression_and_classification_are_visibly_distinct
+      - blocked_and_non_beneficial_states_are_preserved
+      - metric_direction_is_explicit
+
+qa:
+  automated:
+    - renderer_compiles
+    - focused_tests_pass
+    - repeated_render_hashes_match
+    - manifests_validate
+    - input_and_output_hashes_match
+    - prohibited_title_calls_absent
+    - required_vector_companions_exist
+  manual:
+    - inspect_every_png_at_original_resolution
+    - inspect_vector_rendering
+    - verify_legends_colorbars_and_panel_labels
+    - verify_no_clipping_overlap_or_excess_margin
+    - verify_caption_matches_split_scope_and_scientific_caveat

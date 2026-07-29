@@ -1,0 +1,13 @@
+{
+  "schema_version": "domain-visualization-validation-report/v1",
+  "status": "passed",
+  "assertions": {
+    "exact_six_tracks": true,
+    "all_files_exist": true,
+    "all_hashes_match": true,
+    "all_sources_and_evidence_exist": true,
+    "no_protocol_status_or_placeholder_paths": true,
+    "all_human_reviews_match_current_hash": true
+  },
+  "validated_manifest_sha256": "9b39367ae305c49e520896ae3e4cd6a6391e1e2257eeae0337a8390dc4dcd417"
+}

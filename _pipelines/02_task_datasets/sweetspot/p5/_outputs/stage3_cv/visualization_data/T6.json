@@ -1,0 +1,15 @@
+{
+  "development_feature_source_available": false,
+  "expected_training_cells": 0,
+  "is_proxy": false,
+  "label_generated": false,
+  "label_version": "target6-phif-cpi-v1",
+  "lane": "porosity",
+  "proxy_semantics": "PHIF CPI physical porosity target; independent from T7 permeability",
+  "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+  "schema_version": "sweetspot-p5-stage3-status-gate/v1",
+  "status": "blocked",
+  "target_name": "PHIF",
+  "task_id": "T6",
+  "test_accessed": false
+}
