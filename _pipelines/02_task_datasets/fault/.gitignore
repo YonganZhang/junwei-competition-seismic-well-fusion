@@ -1,0 +1,114 @@
+# Local Python environments and caches.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Real processed datasets stay in the data registry / local data workspace.
+*.h5
+
+# Models and checkpoints are reproducible local artifacts, not merge payload.
+*.ckpt
+*.joblib
+
+# Historical duplicate reports at the track root are preserved locally only.
+/baseline_metrics.json
+/build_summary.json
+
+# Ignore all generated outputs, then allowlist portable canonical evidence.
+/_outputs/*
+!/_outputs/runs/
+/_outputs/runs/*
+!/_outputs/runs/audited_v2/
+/_outputs/runs/audited_v2/*
+!/_outputs/runs/audited_v2/baseline_metrics.json
+!/_outputs/runs/audited_v2/build_summary.json
+!/_outputs/runs/audited_v2/split_manifest.json
+!/_outputs/runs/audited_v2/loss_curve.png
+!/_outputs/runs/audited_v2/prediction_visualization.png
+!/_outputs/runs/audited_v2/visualization_report.json
+!/_outputs/runs/audited_v2/reproducibility_report.json
+
+# Portable P4 preflight contracts and fail-closed evidence (no predictions/models).
+!/_outputs/p4_preflight/
+/_outputs/p4_preflight/*
+!/_outputs/p4_preflight/blind_test_manifest.json
+!/_outputs/p4_preflight/blind_test_not_feasible.json
+!/_outputs/p4_preflight/buffered_cv_plan.json
+!/_outputs/p4_preflight/task_spec.json
+!/_outputs/p4_preflight/hpo_plan.json
+!/_outputs/p4_preflight/fixed_baselines.json
+!/_outputs/p4_preflight/tiny_baseline_smoke.json
+!/_outputs/p4_preflight/smoke_report.json
+!/_outputs/p4_preflight/manifest.json
+
+# Portable P5 Stage-1 gate/smoke evidence. Checkpoints remain excluded.
+!/_outputs/p5_stage1/
+/_outputs/p5_stage1/*
+!/_outputs/p5_stage1/models/
+/_outputs/p5_stage1/models/*
+!/_outputs/p5_stage1/models/*.json
+!/_outputs/p5_stage1/summary.json
+!/_outputs/p5_stage1/manifest.json
+
+# Portable fault-private P5 Stage-2 data-gate evidence; no models/checkpoints.
+!/_outputs/p5_stage2/
+/_outputs/p5_stage2/*
+!/_outputs/p5_stage2/p5_stage2_results.jsonl
+!/_outputs/p5_stage2/p5_stage2_summary.json
+
+# Portable fault-private P5 Stage-3 readiness evidence. Raw OOF/checkpoints stay ignored.
+!/_outputs/p5_stage3/
+/_outputs/p5_stage3/*
+!/_outputs/p5_stage3/p5_stage3_results.jsonl
+!/_outputs/p5_stage3/p5_stage3_summary.json
+!/_outputs/p5_stage3/p5_stage3_data_manifest.json
+!/_outputs/p5_stage3/p5_stage3_oof_manifest.json
+!/_outputs/p5_stage3/p5_stage3_visualization_manifest.json
+!/_outputs/p5_stage3/p5_stage3_artifact_manifest.json
+!/_outputs/p5_stage3/leaderboards/
+/_outputs/p5_stage3/leaderboards/*
+!/_outputs/p5_stage3/leaderboards/fault_stick_segmentation__fault_3d_segmentation_data_gate.json
+!/_outputs/p5_stage3/figures/
+/_outputs/p5_stage3/figures/*
+!/_outputs/p5_stage3/figures/fault_readiness.svg
+!/_outputs/p5_stage3/figures/fault_negative_coverage.svg
+!/_outputs/p5_stage3/figures/fault_unknown_coverage.svg
+
+# Portable fault-private P5 Stage-4 confirmation gate. No refit/test payloads.
+!/_outputs/p5_stage4_confirmation/
+/_outputs/p5_stage4_confirmation/*
+!/_outputs/p5_stage4_confirmation/p5_stage4_confirmation.json
+!/_outputs/p5_stage4_confirmation/p5_stage4_visualization_reuse.json
+!/_outputs/p5_stage4_confirmation/p5_stage4_artifact_manifest.json
+
+# Portable fault-private P10 model-results evidence.
+!/_outputs/p10_model_results/
+/_outputs/p10_model_results/*
+!/_outputs/p10_model_results/track_model_metrics.xlsx
+!/_outputs/p10_model_results/figures_manifest.csv
+!/_outputs/p10_model_results/tables_manifest.csv
+!/_outputs/p10_model_results/audit_report.md
+!/_outputs/p10_model_results/before_after_primary_metric.png
+
+# Portable fault-private P12 visualization evidence.
+!/_outputs/p12_visualization/
+/_outputs/p12_visualization/*
+!/_outputs/p12_visualization/manifest.json
+!/_outputs/p12_visualization/figures/
+/_outputs/p12_visualization/figures/*
+!/_outputs/p12_visualization/figures/*.png
+!/_outputs/p12_visualization/figures/*.pdf
+!/_outputs/p12_visualization/figures/*.svg
+
+# Portable fault-private P5.1 R0/R1 gate and bounded diagnostic evidence.
+!/_outputs/p5_r01_protocol/
+/_outputs/p5_r01_protocol/*
+!/_outputs/p5_r01_protocol/r0_lane_gates.json
+!/_outputs/p5_r01_protocol/r1_mechanism.json
+!/_outputs/p5_r01_protocol/summary.json
+!/_outputs/p5_r01_protocol/artifact_manifest.json
+!/_outputs/p5_r01_protocol/README.md

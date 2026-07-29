@@ -1,0 +1,478 @@
+{
+  "caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
+  "figures": [
+    {
+      "manual_review": {
+        "colors_consistent": null,
+        "labels_legible": null,
+        "no_clipping": null,
+        "no_overlap": null,
+        "reviewed": false,
+        "reviewed_sha256": null,
+        "reviewer": null,
+        "scientific_boundary_preserved": null
+      },
+      "outputs": [
+        {
+          "dpi": 300,
+          "height_px": 1065,
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.png",
+          "role": "real_test_qualitative",
+          "sha256": "10a70ef7e5d29e5a241bd546c2073c0c8bebe674731411cdaeb58cb5e71980ce",
+          "vector_companions": [
+            "svg",
+            "pdf"
+          ],
+          "width_px": 4080
+        },
+        {
+          "dpi": 300,
+          "height_px": 1065,
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.svg",
+          "role": "real_test_qualitative",
+          "sha256": "2d1bad90bdced084c82bbabde9063f9ae7812deae900e431f00c33d19f54142d",
+          "vector_companions": [
+            "png",
+            "pdf"
+          ],
+          "width_px": 4080
+        },
+        {
+          "dpi": 300,
+          "height_px": 1065,
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.pdf",
+          "role": "real_test_qualitative",
+          "sha256": "b4a8261bd933dc486622261556cb0f8ed72d9138c70ea8fe2325e7944049f02e",
+          "vector_companions": [
+            "png",
+            "svg"
+          ],
+          "width_px": 4080
+        }
+      ],
+      "role": "real_test_qualitative",
+      "scientific_role": "compact real-test panel with seismic, ground truth, probability and threshold diagnostics",
+      "split_scope": "audited_v2 test split only"
+    },
+    {
+      "manual_review": {
+        "colors_consistent": null,
+        "labels_legible": null,
+        "no_clipping": null,
+        "no_overlap": null,
+        "reviewed": false,
+        "reviewed_sha256": null,
+        "reviewer": null,
+        "scientific_boundary_preserved": null
+      },
+      "outputs": [
+        {
+          "dpi": 300,
+          "height_px": 1380,
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.png",
+          "role": "spatial_context_3d",
+          "sha256": "5eaedd876a55108bac0996a9fe984b61c32457963c2feafd00b022235070208c",
+          "vector_companions": [
+            "svg",
+            "pdf"
+          ],
+          "width_px": 4350
+        },
+        {
+          "dpi": 300,
+          "height_px": 1380,
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.svg",
+          "role": "spatial_context_3d",
+          "sha256": "c5569dd64ce994e932073cbcbeea837fe11a5c51de69a27ff0494f81bfe2dbcb",
+          "vector_companions": [
+            "png",
+            "pdf"
+          ],
+          "width_px": 4350
+        },
+        {
+          "dpi": 300,
+          "height_px": 1380,
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.pdf",
+          "role": "spatial_context_3d",
+          "sha256": "29a465db6d2ea2ad862cf429dcdef8191aa7ad754c0408b44b896cb30015a7e0",
+          "vector_companions": [
+            "png",
+            "svg"
+          ],
+          "width_px": 4350
+        }
+      ],
+      "role": "spatial_context_3d",
+      "scientific_role": "archived-coordinate spatial context figure",
+      "split_scope": "audited_v2 test split only"
+    }
+  ],
+  "inputs": {
+    "audited_baseline_metrics": {
+      "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
+      "scientific_role": "archived audited_v2 metric provenance",
+      "sha256": "0d0e3093da01eee7203c7afcd9b49667c25ebef49b40f6e7ef554c423768c631",
+      "shape_or_row_count": 1,
+      "split_scope": "audited_v2 test split only"
+    },
+    "audited_build_summary": {
+      "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/build_summary.json",
+      "scientific_role": "archived audited_v2 dataset provenance",
+      "sha256": "decd62f85296667e816d25a87ecb103a5385de8001557dac82c3c99ab189df64",
+      "shape_or_row_count": 1,
+      "split_scope": "audited_v2 test split only"
+    },
+    "audited_checkpoint": {
+      "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/checkpoints/best.ckpt",
+      "scientific_role": "archived audited_v2 persisted checkpoint",
+      "sha256": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+      "shape_or_row_count": {
+        "selected_patch_shape": [
+          1,
+          33,
+          65
+        ],
+        "test_patch_shape": [
+          1,
+          33,
+          65
+        ]
+      },
+      "split_scope": "audited_v2 test split only"
+    },
+    "audited_visualization_report": {
+      "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/visualization_report.json",
+      "scientific_role": "archived audited_v2 selection report",
+      "sha256": "34301f49597edcf6a2267c177c2be51326f4990a2dc1aa352e360d2f3fd30925",
+      "shape_or_row_count": {
+        "selected_sample_indices": 3,
+        "test_samples": 96
+      },
+      "split_scope": "audited_v2 test split only"
+    },
+    "lineage_visualization_png": {
+      "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/prediction_visualization.png",
+      "scientific_role": "archived audited_v2 regression evidence",
+      "sha256": "3f84494f880ab9da5b6b23c36a4f4b23679f92faaf09bdaae5ded468477dc47a",
+      "shape_or_row_count": {
+        "height_px": 1539,
+        "width_px": 1910
+      },
+      "split_scope": "audited_v2 test split only"
+    }
+  },
+  "p12_contract": {
+    "generated_at": "2026-07-29T19:47:58.695487+00:00",
+    "inputs": [
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/baseline.py",
+        "scientific_role": "canonical audited_v2 source baseline implementation",
+        "sha256": "d8cc9559b93c5ed67a4e479bb5f0db882a9d32a54e5a414134957632eed8f7b4",
+        "shape_or_row_count": 1,
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_code/dataset_io.py",
+        "scientific_role": "canonical audited_v2 shared data interface",
+        "sha256": "0da5e0eac71a8e33aa36e25c55bd49359db007959025f6269781702929e82751",
+        "shape_or_row_count": 1,
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/visualization_report.json",
+        "scientific_role": "archived audited_v2 selection report",
+        "sha256": "34301f49597edcf6a2267c177c2be51326f4990a2dc1aa352e360d2f3fd30925",
+        "shape_or_row_count": {
+          "selected_sample_indices": 3,
+          "test_samples": 96
+        },
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
+        "scientific_role": "archived audited_v2 metric provenance",
+        "sha256": "0d0e3093da01eee7203c7afcd9b49667c25ebef49b40f6e7ef554c423768c631",
+        "shape_or_row_count": 1,
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/build_summary.json",
+        "scientific_role": "archived audited_v2 dataset provenance",
+        "sha256": "decd62f85296667e816d25a87ecb103a5385de8001557dac82c3c99ab189df64",
+        "shape_or_row_count": 1,
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/split_manifest.json",
+        "scientific_role": "archived audited_v2 split manifest",
+        "sha256": "9821beee9fe197bd5dcf9eaae0035898bd9f1a6bfc75e1203211263196d6ca55",
+        "shape_or_row_count": 1,
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/checkpoints/best.ckpt",
+        "scientific_role": "archived audited_v2 persisted checkpoint",
+        "sha256": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+        "shape_or_row_count": {
+          "selected_patch_shape": [
+            1,
+            33,
+            65
+          ],
+          "test_patch_shape": [
+            1,
+            33,
+            65
+          ]
+        },
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_data/processed/fault/test.h5",
+        "scientific_role": "canonical audited_v2 test evidence source",
+        "sha256": "c7ada8f6483db352cc5484893ff1c12333316f2bffb8dfcf117139899197fa25",
+        "shape_or_row_count": 96,
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/prediction_visualization.png",
+        "scientific_role": "archived audited_v2 regression evidence",
+        "sha256": "3f84494f880ab9da5b6b23c36a4f4b23679f92faaf09bdaae5ded468477dc47a",
+        "shape_or_row_count": {
+          "height_px": 1539,
+          "width_px": 1910
+        },
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/seismic_spatial_context.png",
+        "scientific_role": "archived spatial-context seismic evidence",
+        "sha256": "e236db75ad83c46af99d6c414f49921870804b32a4919b8eb591c3e16ff95bb5",
+        "shape_or_row_count": {
+          "height_px": 2160,
+          "width_px": 2160
+        },
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/truth_spatial_context.png",
+        "scientific_role": "archived spatial-context truth evidence",
+        "sha256": "b80cd637ddb1482f3290cb4fe10ef7ac5a874e0e40386040004045094c491451",
+        "shape_or_row_count": {
+          "height_px": 2160,
+          "width_px": 2160
+        },
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/probability_spatial_context.png",
+        "scientific_role": "archived spatial-context probability evidence",
+        "sha256": "51da24a84aacbaa5a2f724e247c3e6ae81816c80c63164e5e13c47981d373ec6",
+        "shape_or_row_count": {
+          "height_px": 2160,
+          "width_px": 2160
+        },
+        "split_scope": "audited_v2 test split only"
+      },
+      {
+        "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/provenance.json",
+        "scientific_role": "archived spatial-context provenance",
+        "sha256": "f463671c8afc4f320d977d020cb69aee5f6f01eb4631ed0094755b36ba785278",
+        "shape_or_row_count": 1,
+        "split_scope": "audited_v2 test split only"
+      }
+    ],
+    "manual_review": {
+      "colors_consistent": null,
+      "labels_legible": null,
+      "no_clipping": null,
+      "no_overlap": null,
+      "reviewed": false,
+      "reviewed_sha256": null,
+      "reviewer": null,
+      "scientific_boundary_preserved": null
+    },
+    "outputs": [
+      {
+        "dpi": 300,
+        "height_px": 1065,
+        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.png",
+        "role": "real_test_qualitative",
+        "sha256": "10a70ef7e5d29e5a241bd546c2073c0c8bebe674731411cdaeb58cb5e71980ce",
+        "vector_companions": [
+          "svg",
+          "pdf"
+        ],
+        "width_px": 4080
+      },
+      {
+        "dpi": 300,
+        "height_px": 1065,
+        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.svg",
+        "role": "real_test_qualitative",
+        "sha256": "2d1bad90bdced084c82bbabde9063f9ae7812deae900e431f00c33d19f54142d",
+        "vector_companions": [
+          "png",
+          "pdf"
+        ],
+        "width_px": 4080
+      },
+      {
+        "dpi": 300,
+        "height_px": 1065,
+        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.pdf",
+        "role": "real_test_qualitative",
+        "sha256": "b4a8261bd933dc486622261556cb0f8ed72d9138c70ea8fe2325e7944049f02e",
+        "vector_companions": [
+          "png",
+          "svg"
+        ],
+        "width_px": 4080
+      },
+      {
+        "dpi": 300,
+        "height_px": 1380,
+        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.png",
+        "role": "spatial_context_3d",
+        "sha256": "5eaedd876a55108bac0996a9fe984b61c32457963c2feafd00b022235070208c",
+        "vector_companions": [
+          "svg",
+          "pdf"
+        ],
+        "width_px": 4350
+      },
+      {
+        "dpi": 300,
+        "height_px": 1380,
+        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.svg",
+        "role": "spatial_context_3d",
+        "sha256": "c5569dd64ce994e932073cbcbeea837fe11a5c51de69a27ff0494f81bfe2dbcb",
+        "vector_companions": [
+          "png",
+          "pdf"
+        ],
+        "width_px": 4350
+      },
+      {
+        "dpi": 300,
+        "height_px": 1380,
+        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.pdf",
+        "role": "spatial_context_3d",
+        "sha256": "29a465db6d2ea2ad862cf429dcdef8191aa7ad754c0408b44b896cb30015a7e0",
+        "vector_companions": [
+          "png",
+          "svg"
+        ],
+        "width_px": 4350
+      }
+    ],
+    "profile": "p12_tracks_1_3_5",
+    "renderer": {
+      "path": "_pipelines/02_task_datasets/fault/p12_visualization.py",
+      "sha256": "81dcf8aa986ec65fb88a5363ec70fea8db73c2c1a46b6c3bab83c0888b68e880"
+    },
+    "schema_version": "scientific-visualization-contract/v1",
+    "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
+    "source_commit": "8594b26a7303b14954260c1f3bd5b3ebcc9c96f0",
+    "track_id": "fault"
+  },
+  "provenance": {
+    "generated_at": "2026-07-29T19:47:58.695487+00:00",
+    "renderer": "_pipelines/02_task_datasets/fault/p12_visualization.py",
+    "renderer_sha256": "81dcf8aa986ec65fb88a5363ec70fea8db73c2c1a46b6c3bab83c0888b68e880",
+    "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
+    "source_commit": "8594b26a7303b14954260c1f3bd5b3ebcc9c96f0"
+  },
+  "renderer": {
+    "path": "_pipelines/02_task_datasets/fault/p12_visualization.py",
+    "sha256": "81dcf8aa986ec65fb88a5363ec70fea8db73c2c1a46b6c3bab83c0888b68e880"
+  },
+  "schema_version": "fault-p12-publication-v1",
+  "selection": {
+    "representative_sample_index": 15,
+    "selected_positions": [
+      {
+        "crossline": 2177,
+        "inline": 10293,
+        "time_index": 686,
+        "time_ms": 2744.0,
+        "well_name": null
+      },
+      {
+        "crossline": 2393,
+        "inline": 10322,
+        "time_index": 725,
+        "time_ms": 2900.0,
+        "well_name": null
+      },
+      {
+        "crossline": 2334,
+        "inline": 10358,
+        "time_index": 718,
+        "time_ms": 2872.0,
+        "well_name": null
+      }
+    ],
+    "selection_rule": "median of archived spatial-quantile selections",
+    "spatial_sample_indices": [
+      5,
+      15,
+      40
+    ]
+  },
+  "source_commit": "8594b26a7303b14954260c1f3bd5b3ebcc9c96f0",
+  "source_worktree": ".claude/worktrees/track-fault",
+  "split_scope": {
+    "notes": [
+      "No source data, predictions, metrics, or split boundaries are changed.",
+      "No holdout, frozen test or new split is consumed.",
+      "The spatial figure is contextual, not a reconstructed continuous volume."
+    ],
+    "scope": "audited_v2 test split only"
+  },
+  "track_id": "fault",
+  "visual_qa_metadata": {
+    "font_status": {
+      "available": true,
+      "coverage": {
+        "max_coverage_multiplicity": 2,
+        "patch_voxel_observations": 205920,
+        "repeated_physical_voxels": 10284,
+        "unique_physical_voxels": 195636
+      },
+      "fallback_order": [
+        "Times New Roman"
+      ],
+      "limitation": "Times New Roman is not installed on this host.",
+      "requested": "Times New Roman",
+      "selected": "TeX Gyre Termes",
+      "threshold": 0.4505760073661804
+    },
+    "manual_review": {
+      "colors_consistent": null,
+      "labels_legible": null,
+      "no_clipping": null,
+      "no_overlap": null,
+      "reviewed": false,
+      "reviewed_sha256": null,
+      "reviewer": null,
+      "scientific_boundary_preserved": null
+    },
+    "no_titles": true,
+    "palette": "Akun",
+    "panel_counts": {
+      "real_test_panel": 4,
+      "spatial_context": 3
+    },
+    "png_dpi": 300,
+    "probability_scale": [
+      0.0,
+      1.0
+    ],
+    "vector_outputs": [
+      "svg",
+      "pdf"
+    ]
+  }
+}
