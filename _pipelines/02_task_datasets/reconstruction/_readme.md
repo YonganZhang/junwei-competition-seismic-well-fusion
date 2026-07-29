@@ -4,6 +4,44 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P11 OpenMind residual-fusion diagnostics
+
+`p11_residual_fusion_diagnostics.py` preserves the committed P11 harness and
+tests the existing checkpoint's remaining adaptation space on the same 10,240
+conditional development OOF rows.  It compares stage0-only, stage5-only and
+six-stage mixed features; fixed three-channel input averaging and three
+independent encoder forwards with feature concatenation; and fixed Ridge10
+against an outer-train-only alpha grid.  Every feature route has a
+same-architecture OpenMind random-initialization control required by
+`foundation_effect_protocol.v1.json`; a dimension-matched random Gaussian
+negative control and the original structural control are also retained under
+both heads.
+
+No adapted route produced positive material gain.  The safest stage5 routes
+selected gate=0 in all five independent spatial folds.  The highest apparent
+win count was only 2/5 independent folds and was paired with 2/5 losses plus
+17.71% worse pooled RMSE.  The three seeds are paired pseudo-repeats within
+each fold, not 15 independent samples.  The route remains
+`VERIFIED_NO_PROMOTION`.  The full per-fold win/loss/tie table and the
+responsibility boundary for any future model replacement are recorded in
+`_outputs/p11_residual_fusion_diagnostics/evidence.md`; machine-readable
+alpha/gate/control details are in the adjacent `summary.json`.  The 95%
+uncertainty intervals bootstrap the five whole spatial folds while keeping the
+three seeds paired; the source per-voxel errors are retained in
+`prediction_errors.npz`.  Genuine pretrained and random-init feature caches
+remain hash-locked under `_tmp/` and are not committed.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p11_residual_fusion_diagnostics.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$P11_NNSSL_SOURCE" \
+  --checkpoint "$P11_OPENMIND_CHECKPOINT" \
+  --dependency-root "$P11_OPENMIND_DEPENDENCIES" \
+  --device cuda:0
+```
+
 ## P11 development-only residual fusion
 
 `p11_residual_fusion.py` implements a two-level OOF stack in the conditional
@@ -24,7 +62,8 @@ code.  `gate=0` is asserted bitwise equal to PyKrige.
 The real run used 10,240 OOF voxels, five outer folds and three fixed seeds.
 Pooled PyKrige RMSE was `0.0284497282`; gated OpenMind residual fusion was
 `0.0288029396` (1.24% worse), while the no-foundation control was
-`0.0285397612`.  OpenMind won only 3/15 fold-seed cells, so the route is
+`0.0285397612`.  OpenMind had three seed-level wins across the five spatial
+folds × three paired pseudo-repeats; these are not 15 independent samples, so the route is
 `VERIFIED_NO_PROMOTION` and remains disabled.  The archived direct OpenMind
 score is strict-lane evidence without row-aligned conditional predictions and
 is therefore recorded as `not_comparable`, not mixed into this table.
