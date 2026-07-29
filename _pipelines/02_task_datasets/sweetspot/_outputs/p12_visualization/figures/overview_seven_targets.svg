@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1022.4pt" height="561.6pt" viewBox="0 0 1022.4 561.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2000-01-01T00:00:00</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 561.6 
+L 1022.4 561.6 
+L 1022.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 131.853935 267.1916 
+L 308.015833 267.1916 
+Q 313.543926 267.1916 313.543926 261.1856 
+L 313.543926 73.7984 
+Q 313.543926 67.7924 308.015833 67.7924 
+L 131.853935 67.7924 
+Q 126.325842 67.7924 126.325842 73.7984 
+L 126.325842 261.1856 
+Q 126.325842 267.1916 131.853935 267.1916 
+z
+" style="fill: #ffffff; stroke: #c7d8f0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 140.698884 111.436 
+L 269.687721 111.436 
+Q 277.058512 111.436 277.058512 103.428 
+L 277.058512 89.414 
+Q 277.058512 81.406 269.687721 81.406 
+L 140.698884 81.406 
+Q 133.328093 81.406 133.328093 89.414 
+L 133.328093 103.428 
+Q 133.328093 111.436 140.698884 111.436 
+z
+" clip-path="url(#pbcc628646d)" style="fill: #3951a2"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="133.328093" y="80.833313" transform="rotate(-0 133.328093 80.833313)">(a)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8.3px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="142.541581" y="98.375391" transform="rotate(-0 142.541581 98.375391)">confirmed holdout</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="142.541581" y="133.781313" transform="rotate(-0 142.541581 133.781313)">T1  reservoir quality</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 152.519031)">regression</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 160.954858)">metric: ↓ MAE</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 169.383747)">evidence: reusable</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 177.812636)">holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 186.241525)">scope: known-holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 194.670414)">confirmation</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 334.550679 267.1916 
+L 510.712577 267.1916 
+Q 516.24067 267.1916 516.24067 261.1856 
+L 516.24067 73.7984 
+Q 516.24067 67.7924 510.712577 67.7924 
+L 334.550679 67.7924 
+Q 329.022586 67.7924 329.022586 73.7984 
+L 329.022586 261.1856 
+Q 329.022586 267.1916 334.550679 267.1916 
+z
+" style="fill: #ffffff; stroke: #c7d8f0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 343.395628 111.436 
+L 472.384465 111.436 
+Q 479.755256 111.436 479.755256 103.428 
+L 479.755256 89.414 
+Q 479.755256 81.406 472.384465 81.406 
+L 343.395628 81.406 
+Q 336.024837 81.406 336.024837 89.414 
+L 336.024837 103.428 
+Q 336.024837 111.436 343.395628 111.436 
+z
+" clip-path="url(#pd59a0b9e7d)" style="fill: #3951a2"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="336.024837" y="80.833313" transform="rotate(-0 336.024837 80.833313)">(b)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 8.3px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="345.238326" y="98.375391" transform="rotate(-0 345.238326 98.375391)">confirmed holdout</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="345.238326" y="133.781313" transform="rotate(-0 345.238326 133.781313)">T2  hydrocarbon pay</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 152.525969)">classification</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 160.954858)">metric: ↑ AP / ↓</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 169.383747)">Brier</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 177.812636)">evidence: reusable</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 186.241525)">holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 194.670414)">scope: known-holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 203.099303)">confirmation</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_6">
+    <path d="M 537.247423 267.1916 
+L 713.409321 267.1916 
+Q 718.937414 267.1916 718.937414 261.1856 
+L 718.937414 73.7984 
+Q 718.937414 67.7924 713.409321 67.7924 
+L 537.247423 67.7924 
+Q 531.71933 67.7924 531.71933 73.7984 
+L 531.71933 261.1856 
+Q 531.71933 267.1916 537.247423 267.1916 
+z
+" style="fill: #ffffff; stroke: #c7d8f0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 546.092372 111.436 
+L 675.081209 111.436 
+Q 682.452 111.436 682.452 103.428 
+L 682.452 89.414 
+Q 682.452 81.406 675.081209 81.406 
+L 546.092372 81.406 
+Q 538.721581 81.406 538.721581 89.414 
+L 538.721581 103.428 
+Q 538.721581 111.436 546.092372 111.436 
+z
+" clip-path="url(#pdba805e813)" style="fill: #3951a2"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="538.721581" y="80.833313" transform="rotate(-0 538.721581 80.833313)">(c)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 8.3px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="547.93507" y="98.375391" transform="rotate(-0 547.93507 98.375391)">confirmed holdout</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="547.93507" y="133.781313" transform="rotate(-0 547.93507 133.781313)">T3  productivity</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 152.519031)">regression</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 160.954858)">metric: ↓ MAE</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 169.383747)">evidence: reusable</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 177.812636)">holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 186.241525)">scope: known-holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 194.670414)">confirmation</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_8">
+    <path d="M 739.944167 267.1916 
+L 916.106065 267.1916 
+Q 921.634158 267.1916 921.634158 261.1856 
+L 921.634158 73.7984 
+Q 921.634158 67.7924 916.106065 67.7924 
+L 739.944167 67.7924 
+Q 734.416074 67.7924 734.416074 73.7984 
+L 734.416074 261.1856 
+Q 734.416074 267.1916 739.944167 267.1916 
+z
+" style="fill: #ffffff; stroke: #c7d8f0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 748.789116 111.436 
+L 877.777953 111.436 
+Q 885.148744 111.436 885.148744 103.428 
+L 885.148744 89.414 
+Q 885.148744 81.406 877.777953 81.406 
+L 748.789116 81.406 
+Q 741.418326 81.406 741.418326 89.414 
+L 741.418326 103.428 
+Q 741.418326 111.436 748.789116 111.436 
+z
+" clip-path="url(#pcf06d7b3e5)" style="fill: #3951a2"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="741.418326" y="80.833313" transform="rotate(-0 741.418326 80.833313)">(d)</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 8.3px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="750.631814" y="98.375391" transform="rotate(-0 750.631814 98.375391)">confirmed holdout</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="750.631814" y="133.781313" transform="rotate(-0 750.631814 133.781313)">T4  water breakthrough</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 152.525969)">classification</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 160.954858)">metric: ↑ AP / ↓</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 169.383747)">Brier</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 177.812636)">evidence: reusable</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 186.241525)">holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 194.670414)">scope: known-holdout</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 203.099303)">confirmation</text>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="patch_10">
+    <path d="M 131.853935 499.4236 
+L 308.015833 499.4236 
+Q 313.543926 499.4236 313.543926 493.4176 
+L 313.543926 306.0304 
+Q 313.543926 300.0244 308.015833 300.0244 
+L 131.853935 300.0244 
+Q 126.325842 300.0244 126.325842 306.0304 
+L 126.325842 493.4176 
+Q 126.325842 499.4236 131.853935 499.4236 
+z
+" style="fill: #ffffff; stroke: #f0dca1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 140.698884 343.668 
+L 247.575349 343.668 
+Q 254.94614 343.668 254.94614 335.66 
+L 254.94614 321.646 
+Q 254.94614 313.638 247.575349 313.638 
+L 140.698884 313.638 
+Q 133.328093 313.638 133.328093 321.646 
+L 133.328093 335.66 
+Q 133.328093 343.668 140.698884 343.668 
+z
+" clip-path="url(#p6dd5273217)" style="fill: #9a7b29"/>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="133.328093" y="313.065313" transform="rotate(-0 133.328093 313.065313)">(e)</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 8.3px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="142.541581" y="330.607391" transform="rotate(-0 142.541581 330.607391)">not feasible</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="142.541581" y="366.040625" transform="rotate(-0 142.541581 366.040625)">T5  remaining oil infill</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 384.757969)">status</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 393.186858)">metric: status only</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 401.622684)">evidence: blocked by</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 410.058511)">contract</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 418.4874)">scope: no valid label</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 426.916289)">contract</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(142.541581 435.345178)">reason: proxy only</text>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_12">
+    <path d="M 334.550679 499.4236 
+L 510.712577 499.4236 
+Q 516.24067 499.4236 516.24067 493.4176 
+L 516.24067 306.0304 
+Q 516.24067 300.0244 510.712577 300.0244 
+L 334.550679 300.0244 
+Q 329.022586 300.0244 329.022586 306.0304 
+L 329.022586 493.4176 
+Q 329.022586 499.4236 334.550679 499.4236 
+z
+" style="fill: #ffffff; stroke: #f3b4b0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 343.395628 343.668 
+L 435.530512 343.668 
+Q 442.901302 343.668 442.901302 335.66 
+L 442.901302 321.646 
+Q 442.901302 313.638 435.530512 313.638 
+L 343.395628 313.638 
+Q 336.024837 313.638 336.024837 321.646 
+L 336.024837 335.66 
+Q 336.024837 343.668 343.395628 343.668 
+z
+" clip-path="url(#p1aa6cb603a)" style="fill: #a80326"/>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="336.024837" y="313.065313" transform="rotate(-0 336.024837 313.065313)">(f)</text>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 700; font-size: 8.3px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="345.238326" y="330.607391" transform="rotate(-0 345.238326 330.607391)">blocked</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="345.238326" y="366.013312" transform="rotate(-0 345.238326 366.013312)">T6  porosity</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 384.757969)">status</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 393.186858)">metric: status only</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 401.622684)">evidence: blocked by</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 410.058511)">data</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 418.4874)">scope: no dev-only</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 426.923227)">feature source</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 435.352116)">reason: no dev-only</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(345.238326 443.787942)">source</text>
+   </g>
+  </g>
+  <g id="axes_7">
+   <g id="patch_14">
+    <path d="M 537.247423 499.4236 
+L 713.409321 499.4236 
+Q 718.937414 499.4236 718.937414 493.4176 
+L 718.937414 306.0304 
+Q 718.937414 300.0244 713.409321 300.0244 
+L 537.247423 300.0244 
+Q 531.71933 300.0244 531.71933 306.0304 
+L 531.71933 493.4176 
+Q 531.71933 499.4236 537.247423 499.4236 
+z
+" style="fill: #ffffff; stroke: #f3b4b0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 546.092372 343.668 
+L 638.227256 343.668 
+Q 645.598047 343.668 645.598047 335.66 
+L 645.598047 321.646 
+Q 645.598047 313.638 638.227256 313.638 
+L 546.092372 313.638 
+Q 538.721581 313.638 538.721581 321.646 
+L 538.721581 335.66 
+Q 538.721581 343.668 546.092372 343.668 
+z
+" clip-path="url(#p2cca98fd20)" style="fill: #a80326"/>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="538.721581" y="313.264688" transform="rotate(-0 538.721581 313.264688)">(g)</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 8.3px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="547.93507" y="330.607391" transform="rotate(-0 547.93507 330.607391)">blocked</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="547.93507" y="366.004688" transform="rotate(-0 547.93507 366.004688)">T7  permeability</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 384.757969)">status</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 393.186858)">metric: status only</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 401.622684)">evidence: blocked by</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 410.058511)">data</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 418.4874)">scope: no dev-only</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 426.923227)">feature source</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 435.352116)">reason: no dev-only</text>
+    <text style="font-size: 7.4px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(547.93507 443.787942)">source</text>
+   </g>
+  </g>
+  <g id="axes_8">
+   <g id="patch_16">
+    <path d="M 739.944167 499.4236 
+L 916.106065 499.4236 
+Q 921.634158 499.4236 921.634158 493.4176 
+L 921.634158 306.0304 
+Q 921.634158 300.0244 916.106065 300.0244 
+L 739.944167 300.0244 
+Q 734.416074 300.0244 734.416074 306.0304 
+L 734.416074 493.4176 
+Q 734.416074 499.4236 739.944167 499.4236 
+z
+" style="fill: #fbfbfc; stroke: #d0d0d0; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="741.418326" y="313.065313" transform="rotate(-0 741.418326 313.065313)">(h)</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 8.7px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start" x="750.631814" y="329.528656" transform="rotate(-0 750.631814 329.528656)">legend</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 352.589375)">regression: actual vs</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 360.0596)">prediction</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 367.523075)">classification: PR +</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 374.98655)">calibration</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 382.450025)">status: contract gate only</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 389.92025)">green = confirmed known</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 397.390475)">holdout</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 404.85395)">amber = not feasible</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 412.317425)">red = blocked by data</text>
+    <text style="font-size: 7.2px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(750.631814 419.78765)">no legacy rasters</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbcc628646d">
+   <rect x="127.8" y="67.392" width="184.269767" height="200.2"/>
+  </clipPath>
+  <clipPath id="pd59a0b9e7d">
+   <rect x="330.496744" y="67.392" width="184.269767" height="200.2"/>
+  </clipPath>
+  <clipPath id="pdba805e813">
+   <rect x="533.193488" y="67.392" width="184.269767" height="200.2"/>
+  </clipPath>
+  <clipPath id="pcf06d7b3e5">
+   <rect x="735.890233" y="67.392" width="184.269767" height="200.2"/>
+  </clipPath>
+  <clipPath id="p6dd5273217">
+   <rect x="127.8" y="299.624" width="184.269767" height="200.2"/>
+  </clipPath>
+  <clipPath id="p1aa6cb603a">
+   <rect x="330.496744" y="299.624" width="184.269767" height="200.2"/>
+  </clipPath>
+  <clipPath id="p2cca98fd20">
+   <rect x="533.193488" y="299.624" width="184.269767" height="200.2"/>
+  </clipPath>
+ </defs>
+</svg>
