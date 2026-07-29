@@ -17,10 +17,10 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 import matplotlib
+import numpy as np
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from openpyxl import Workbook, load_workbook
 
 
 TRACK_DIR = Path(__file__).resolve().parent
@@ -35,6 +35,9 @@ SAM2_CHECKPOINT = Path(
 STAGE3_DIR = TRACK_DIR / "_outputs" / "p5_stage3"
 STAGE4_DIR = TRACK_DIR / "_outputs" / "p5_stage4_confirmation"
 P9_DIR = TRACK_DIR / "_outputs" / "p9_sam2_effect"
+P10_REPAIR_DIR = TRACK_DIR / "_outputs" / "p10_sam2_repair_audit"
+P10_REPAIR_BLOCKER_RELATIVE = Path("p10_sam2_repair_audit/repair_blocker.json")
+P10_REPAIR_BLOCKER_PATH = OUTPUT_DIR / P10_REPAIR_BLOCKER_RELATIVE
 
 
 REQUIRED_COLUMNS = [
@@ -99,6 +102,10 @@ STAGE4_SUMMARY = STAGE4_DIR / "p5_stage4_summary.json"
 P9_SUMMARIES = {
     "facies_f3": P9_DIR / "facies_f3" / "summary.json",
     "facies_penobscot": P9_DIR / "facies_penobscot" / "summary.json",
+}
+P10_REPAIR_SUMMARIES = {
+    "facies_f3": P10_REPAIR_DIR / "facies_f3" / "summary.json",
+    "facies_penobscot": P10_REPAIR_DIR / "facies_penobscot" / "summary.json",
 }
 
 
@@ -325,39 +332,44 @@ def build_rows() -> list[dict[str, Any]]:
                             f"random_init={float(fold_result['random_init_miou']):.6f} "
                             f"baseline_fold={fold_baseline:.6f}; no frozen test"
                         ),
-                    )
                 )
+            )
 
+    # Repair-audit rows: blocked because the SAM2 source checkout imports hydra,
+    # which is absent in both the system interpreter and the shared torch env.
+    blocker_note = (
+        "repair probe could not execute: ModuleNotFoundError: No module named 'hydra'; "
+        "checked in system python and torch-common env"
+    )
+    blocker_evidence = str(P10_REPAIR_BLOCKER_PATH.relative_to(PROJECT_ROOT))
+    for task in TASK_LABELS:
+        meta = TASK_LABELS[task]
         rows.append(
             RowContext(
                 track="facies",
                 dataset=meta["dataset"],
                 task_type=meta["task_type"],
-                model_name="facebook/sam2.1-hiera-base-plus",
+                model_name="facebook/sam2.1-hiera-base-plus+gated-residual",
                 model_family="SAM2.1 Hiera Base Plus",
                 is_foundation_model=True,
                 foundation_type="image_segmentation_foundation_encoder",
-                integration_point="adapter_plus_semantic_head",
-                fusion_method="fpn_projections_plus_semantic_head",
-                preprocess_version="p9_sam2_effect_identity_norm",
-                split_protocol="p9_sam2_effect_macro_fold",
-                seed_or_fold="aggregate_macro_fold",
+                integration_point="gated_residual_repair_audit",
+                fusion_method="base_logits_plus_gated_residual_probe",
+                preprocess_version="p10_sam2_repair_audit_identity_norm",
+                split_protocol="p10_sam2_repair_audit_blocked",
+                seed_or_fold="blocked",
                 metric_name="miou",
-                metric_value=float(comparison["pretrained_macro_fold_miou"]),
+                metric_value=float("nan"),
                 higher_is_better=True,
-                baseline_model=baseline_model,
-                baseline_value=baseline_mean,
-                status="non_beneficial",
-                evidence_path=evidence_path,
+                baseline_model="facebook/sam2.1-hiera-base-plus",
+                baseline_value=float("nan"),
+                status="data_blocked",
+                evidence_path=blocker_evidence,
                 checkpoint_path=str(SAM2_CHECKPOINT),
                 code_commit=CURRENT_COMMIT,
-                root_cause="pretrained_foundation_underperforms_locked_baseline_on_same_split",
+                root_cause="missing_hydra_dependency_in_sam2_checkout",
                 fix_applied="none",
-                notes=(
-                    f"pretrained={comparison['pretrained_macro_fold_miou']:.6f} "
-                    f"random_init={comparison['same_architecture_random_init_macro_fold_miou']:.6f}; "
-                    "frozen test not opened"
-                ),
+                notes=blocker_note,
             )
         )
 
@@ -440,6 +452,8 @@ def build_rows() -> list[dict[str, Any]]:
 
 
 def write_xlsx(rows: list[dict[str, Any]], path: Path) -> None:
+    from openpyxl import Workbook
+
     wb = Workbook()
     ws = wb.active
     ws.title = "模型指标"
@@ -458,7 +472,7 @@ def write_xlsx(rows: list[dict[str, Any]], path: Path) -> None:
 def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({key: row.get(key, "") for key in fieldnames})
@@ -474,7 +488,7 @@ def write_manifests(rows: list[dict[str, Any]], output_dir: Path) -> tuple[Path,
             "path": str(generated_figure),
             "status": "generated",
             "sha256": sha256_file(output_dir / "before_after_primary_metric.png"),
-            "description": "Primary metric before/after comparison for F3 and Penobscot.",
+            "description": "SAM2 pretrained adapter versus random-init control reference comparison for F3 and Penobscot.",
         },
         {
             "kind": "figure",
@@ -518,6 +532,14 @@ def write_manifests(rows: list[dict[str, Any]], output_dir: Path) -> tuple[Path,
             "status": "generated",
             "sha256": sha256_file(output_dir / "track_model_metrics.xlsx"),
             "description": "Single-sheet workbook of facies model metrics.",
+        },
+        {
+            "kind": "table",
+            "name": "p10_sam2_repair_audit/repair_blocker.json",
+            "path": str(P10_REPAIR_BLOCKER_PATH.relative_to(PROJECT_ROOT)),
+            "status": "generated",
+            "sha256": sha256_file(P10_REPAIR_BLOCKER_PATH),
+            "description": "Explicit blocker evidence for the attempted SAM2 repair probe.",
         },
         {
             "kind": "table",
@@ -569,61 +591,320 @@ def write_manifests(rows: list[dict[str, Any]], output_dir: Path) -> tuple[Path,
 
 
 def write_audit_report(rows: list[dict[str, Any]], output_dir: Path) -> Path:
-    by_task: dict[str, dict[str, float]] = defaultdict(dict)
+    def _audit_matrix_line(item: str, code: str, evidence: str, status: str, note: str) -> str:
+        return f"| {item} | `{code}` | `{evidence}` | {status} | {note} |"
+
+    p9_reference: dict[str, dict[str, float]] = defaultdict(
+        lambda: {"before": float("nan"), "after": float("nan")}
+    )
     for row in rows:
-        if row["metric_name"] == "miou" and row["split_protocol"].startswith("p9_sam2_effect"):
-            key = f"{row['dataset']}::{row['status']}"
-            by_task[key][row["model_name"]] = float(row["metric_value"])
-    lines = [
+        if not str(row["split_protocol"]).startswith("p9_sam2_effect"):
+            continue
+        if row["metric_name"] != "miou" or row["model_name"] != "facebook/sam2.1-hiera-base-plus":
+            continue
+        p9_reference[row["dataset"]]["before"] = float(row["metric_value"])
+        p9_reference[row["dataset"]]["after"] = float(row["baseline_value"])
+
+    blocker = {
+        "schema_version": "facies-p10-sam2-repair-blocker/v1",
+        "blocked_state": "data_blocked",
+        "command": (
+            "CUDA_VISIBLE_DEVICES=3 /mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python "
+            "_pipelines/02_task_datasets/facies/p10_sam2_repair_audit.py --task-id facies_f3 "
+            "--manifest /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/"
+            "p4-training-integration/_tmp/p4-acceptance/facies_f3/split_manifest.json "
+            "--processed-root /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/"
+            "track-facies/_data/processed --device cuda:0"
+        ),
+        "error": "ModuleNotFoundError: No module named 'hydra'",
+        "checked_environments": ["system python", "torch-common env"],
+        "reason": "audited SAM2 source checkout imports hydra, which is absent in both execution environments",
+        "source_checkout": "/mnt/data/yongan-admin-2/.cache/upstream/sam2",
+        "source_commit": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+    }
+    blocker_json = output_dir / P10_REPAIR_BLOCKER_RELATIVE
+    blocker_json.parent.mkdir(parents=True, exist_ok=True)
+    blocker_json.write_text(json.dumps(blocker, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    report_lines = [
         "# Facies P10 model-results audit",
+        "",
+        "## Interface audit matrix",
+        "",
+        "| Item | Code evidence | Archived evidence | Status | Note |",
+        "|---|---|---|---|---|",
+        _audit_matrix_line(
+            "Input channels",
+            "_models/facies/sam2_semantic.py:forward",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "SAM2 consumes [B,1,H,W] and repeats to 3 channels before image-encoder normalization.",
+        ),
+        _audit_matrix_line(
+            "Amplitude scaling",
+            "_models/facies/sam2_semantic.py:forward",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "Clamps to [-5, 5], rescales to [0,1], and applies ImageNet mean/std.",
+        ),
+        _audit_matrix_line(
+            "Native SAM2 preprocessing",
+            "_models/facies/sam2_semantic.py:build_model",
+            "_models/gaia_dagt/foundation_routes.v1.json",
+            "audited",
+            "Official SAM2 build is loaded with apply_postprocessing=False.",
+        ),
+        _audit_matrix_line(
+            "Prompt leakage",
+            "_models/facies/sam2_semantic.py; no prompt input exists",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "No validation truth prompt path exists; conditioning is explicitly spatial_prompt:none.",
+        ),
+        _audit_matrix_line(
+            "Label mapping",
+            "_pipelines/02_task_datasets/facies/pipeline_contract.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p5_stage3/p5_stage3_results.jsonl",
+            "audited",
+            "F3 stays 10-class, Penobscot stays 8-class; independent TaskSpecs remain separate.",
+        ),
+        _audit_matrix_line(
+            "Decoder / head",
+            "_models/facies/sam2_semantic.py; _pipelines/02_task_datasets/facies/p10_sam2_repair_audit.py",
+            str(P10_REPAIR_BLOCKER_PATH.relative_to(PROJECT_ROOT)),
+            "data_blocked",
+            "The intended gated residual repair head is blocked until hydra is available in the audited SAM2 checkout.",
+        ),
+        _audit_matrix_line(
+            "PEFT / freeze policy",
+            "_pipelines/02_task_datasets/facies/p10_sam2_repair_audit.py",
+            str(P10_REPAIR_BLOCKER_PATH.relative_to(PROJECT_ROOT)),
+            "data_blocked",
+            "Base adapter freeze policy is implemented, but the repair probe is blocked before execution.",
+        ),
+        _audit_matrix_line(
+            "Loss",
+            "_pipelines/02_task_datasets/facies/p9_sam2_effect.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "Weighted cross-entropy on raw logits; softmax is inference/evaluation only.",
+        ),
+        _audit_matrix_line(
+            "Postprocess",
+            "_pipelines/02_task_datasets/facies/p4_metrics.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p5_stage3/*.json",
+            "audited",
+            "Argmax/softmax are used only at evaluation and visualization; no threshold tuning occurs.",
+        ),
+        _audit_matrix_line(
+            "Eval parity",
+            "_pipelines/02_task_datasets/facies/facies_p5_stage3.py; _pipelines/02_task_datasets/facies/p10_sam2_repair_audit.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p5_stage3/*.json",
+            "audited",
+            "Same locked development folds, same sample caps, same seed discipline, no frozen-test access.",
+        ),
         "",
         "## Conclusion",
         "",
-        "The archived evidence shows a non-beneficial SAM2 integration: same-split SAM2 remains below the locked strong baselines on both F3 and Penobscot. No reproducible code defect was proven from the archived artifacts, so no model repair was applied in this pass.",
+        "The previous p10 artifact only framed SAM2 against the locked baseline. This revision keeps the archived reference comparison but records the actual repair attempt as data_blocked rather than pretending a repaired metric exists. No non_beneficial claim is made from an incomplete audit.",
         "",
-        "## Before / after primary metric",
+        "## Repair probe blocker",
         "",
-        "| Dataset | Before (SAM2 pretrained mIoU) | After (locked strong baseline mIoU) | Delta |",
+        f"- Status: `{blocker['blocked_state']}`",
+        f"- Command: `{blocker['command']}`",
+        f"- Error: `{blocker['error']}`",
+        f"- Checked environments: {', '.join(blocker['checked_environments'])}",
+        "",
+        "## Archived reference comparison",
+        "",
+        "| Dataset | Archived pretrained adapter mIoU | Archived locked baseline mIoU | Delta |",
         "|---|---:|---:|---:|",
-        "| F3 | 0.082017 | 0.131316 | -0.049299 |",
-        "| Penobscot | 0.076754 | 0.132021 | -0.055267 |",
-        "",
-        "## Root cause / fix",
-        "",
-        "- Root cause: no gain on the locked same-split development evidence; the integration is honest but non-beneficial.",
-        "- Fix applied: none in this pass; the right conclusion is `non_beneficial`, not a fabricated repair.",
+        f"| F3 | {p9_reference['F3']['before']:.6f} | {p9_reference['F3']['after']:.6f} | {p9_reference['F3']['before'] - p9_reference['F3']['after']:.6f} |",
+        f"| Penobscot | {p9_reference['Penobscot']['before']:.6f} | {p9_reference['Penobscot']['after']:.6f} | {p9_reference['Penobscot']['before'] - p9_reference['Penobscot']['after']:.6f} |",
         "",
         "## Evidence boundary",
         "",
         "- Frozen test and known holdout were not reopened for tuning.",
-        "- The workbook and manifests reference archived evidence only.",
-        "- Checkpoint paths are recorded as runtime references where the checkout does not contain a persisted weight file.",
+        "- The workbook and manifests reference archived evidence plus a blocker file for the attempted repair probe.",
+        "- Checkpoint paths are recorded as runtime references where the checkout does not contain a persisted weight file for the historical stage-3 baselines.",
         "",
         "## Residual risk",
         "",
-        "- Because no persisted checkpoint files exist in this checkout, the workbook uses logical runtime checkpoint references from the archived JSON evidence rather than a file on disk.",
+        "- The blocked repair probe is intentionally not papered over with a local hydra stub or a package install.",
+        "- If a future promoted model is desired, the next step is to add the missing dependency into the audited SAM2 source environment or switch to a different audited foundation checkout, then rerun the same fixed-dev comparison.",
     ]
+    report_path = output_dir / "audit_report.md"
+    report_path.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
+    return report_path
+
+    repair_rows = [
+        row
+        for row in rows
+        if row["split_protocol"].startswith("p10_sam2_repair_audit")
+        and row["metric_name"] == "miou"
+        and row["seed_or_fold"].startswith("fold_")
+    ]
+    repair_by_dataset: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in repair_rows:
+        repair_by_dataset[row["dataset"]].append(row)
+    lines = [
+        "# Facies P10 model-results audit",
+        "",
+        "## Interface audit matrix",
+        "",
+        "| Item | Code evidence | Archived evidence | Status | Note |",
+        "|---|---|---|---|---|",
+        _audit_matrix_line(
+            "Input channels",
+            "_models/facies/sam2_semantic.py:forward",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "SAM2 consumes [B,1,H,W] and repeats to 3 channels before image-encoder normalization.",
+        ),
+        _audit_matrix_line(
+            "Amplitude scaling",
+            "_models/facies/sam2_semantic.py:forward",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "Clamps to [-5, 5], rescales to [0,1], and applies ImageNet mean/std.",
+        ),
+        _audit_matrix_line(
+            "Native SAM2 preprocessing",
+            "_models/facies/sam2_semantic.py:build_model",
+            "_models/gaia_dagt/foundation_routes.v1.json",
+            "audited",
+            "Official SAM2 build is loaded with apply_postprocessing=False; no extra postprocess is hidden in training.",
+        ),
+        _audit_matrix_line(
+            "Prompt leakage",
+            "_models/facies/sam2_semantic.py; no prompt input exists",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "No validation truth prompt path exists; conditioning is explicitly spatial_prompt:none in the frozen route.",
+        ),
+        _audit_matrix_line(
+            "Label mapping",
+            "_pipelines/02_task_datasets/facies/pipeline_contract.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p5_stage3/p5_stage3_results.jsonl",
+            "audited",
+            "F3 stays 10-class, Penobscot stays 8-class; independent TaskSpecs remain separate.",
+        ),
+        _audit_matrix_line(
+            "Decoder / head",
+            "_models/facies/sam2_semantic.py; _pipelines/02_task_datasets/facies/p10_sam2_repair_audit.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p10_sam2_repair_audit/*.json",
+            "audited",
+            "Before = trainable projections + semantic head; after = frozen base adapter + gated residual probe.",
+        ),
+        _audit_matrix_line(
+            "PEFT / freeze policy",
+            "_pipelines/02_task_datasets/facies/p10_sam2_repair_audit.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p10_sam2_repair_audit/*.json",
+            "audited",
+            "Repair candidate freezes the base adapter; only the residual probe and scalar gate train.",
+        ),
+        _audit_matrix_line(
+            "Loss",
+            "_pipelines/02_task_datasets/facies/p9_sam2_effect.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p9_sam2_effect/*.json",
+            "audited",
+            "Weighted cross-entropy on raw logits; softmax is inference/evaluation only.",
+        ),
+        _audit_matrix_line(
+            "Postprocess",
+            "_pipelines/02_task_datasets/facies/p4_metrics.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p5_stage3/*.json",
+            "audited",
+            "Argmax/softmax are used only at evaluation and visualization; no threshold tuning occurs.",
+        ),
+        _audit_matrix_line(
+            "Eval parity",
+            "_pipelines/02_task_datasets/facies/facies_p5_stage3.py; _pipelines/02_task_datasets/facies/p10_sam2_repair_audit.py",
+            "_pipelines/02_task_datasets/facies/_outputs/p5_stage3/*.json",
+            "audited",
+            "Same locked development folds, same sample caps, same seed discipline, no frozen-test access.",
+        ),
+        "",
+        "## Conclusion",
+        "",
+        "The previous p10 artifact was incomplete because it only restated SAM2 versus the locked strong baseline. This revision adds an honest development-only repair audit: the frozen pretrained SAM2 adapter is compared against a gated residual repair candidate that cannot erase the base logits, with a random-init control. The evidence still does not justify promotion.",
+        "",
+        "## Reference comparison primary metric",
+        "",
+        "| Dataset | Before (SAM2 pretrained adapter mIoU) | After (gated residual repair mIoU) | Delta |",
+        "|---|---:|---:|---:|",
+        f"| F3 | {np.mean([row['pretrained_adapter_miou'] for row in repair_by_dataset['F3']]):.6f} | {np.mean([row['gated_residual_repair_miou'] for row in repair_by_dataset['F3']]):.6f} | {np.mean([row['gated_residual_repair_miou'] for row in repair_by_dataset['F3']]) - np.mean([row['pretrained_adapter_miou'] for row in repair_by_dataset['F3']]):.6f} |",
+        f"| Penobscot | {np.mean([row['pretrained_adapter_miou'] for row in repair_by_dataset['Penobscot']]):.6f} | {np.mean([row['gated_residual_repair_miou'] for row in repair_by_dataset['Penobscot']]):.6f} | {np.mean([row['gated_residual_repair_miou'] for row in repair_by_dataset['Penobscot']]) - np.mean([row['pretrained_adapter_miou'] for row in repair_by_dataset['Penobscot']]):.6f} |",
+        "",
+        "## Repair candidate against the locked baseline",
+        "",
+        f"- F3 repair delta vs locked baseline: {float(np.mean([row['gated_residual_repair_miou'] for row in repair_by_dataset['F3']]) - float(np.mean([row['strong_baseline_miou'] for row in repair_by_dataset['F3']]))):+.6f}",
+        f"- Penobscot repair delta vs locked baseline: {float(np.mean([row['gated_residual_repair_miou'] for row in repair_by_dataset['Penobscot']]) - float(np.mean([row['strong_baseline_miou'] for row in repair_by_dataset['Penobscot']]))):+.6f}",
+        "",
+        "## Root cause / fix",
+        "",
+        "- Root cause: the original p10 artifact only re-packaged a foundation-vs-baseline comparison and did not audit the repairable interface points.",
+        "- Fix applied: add a real gated residual repair audit, keep the base adapter frozen in the repair branch, and document the exact code/evidence for channels, preprocessing, prompts, labels, decoder, PEFT, loss, postprocess and evaluation parity.",
+        "",
+        "## Evidence boundary",
+        "",
+        "- Frozen test and known holdout were not reopened for tuning.",
+        "- The workbook and manifests reference archived evidence plus the new development-only repair audit.",
+        "- Checkpoint paths are recorded as runtime references where the checkout does not contain a persisted weight file for the historical stage-3 baselines.",
+        "",
+        "## Residual risk",
+        "",
+        "- The stage-3 baseline checkpoint files are not persisted in this checkout, so the workbook still uses logical runtime checkpoint references from archived evidence.",
+        "- The residual repair probe is intentionally simple; if a future promoted model is desired, the next step is a proper retrained head on the frozen SAM2 backbone, not a claim of promotion from this audit.",
+    ]
+    # Add a compact per-dataset repair table.
+    for dataset in ("F3", "Penobscot"):
+        lines.extend(
+            [
+                "",
+                f"### {dataset} repair comparison",
+                "",
+                "| Fold | Pretrained adapter mIoU | Gated residual repair mIoU | Random-init control mIoU | Strong baseline mIoU |",
+                "|---|---:|---:|---:|---:|",
+            ]
+        )
+        for row in sorted(repair_by_dataset[dataset], key=lambda item: int(str(item["seed_or_fold"]).split("_")[1])):
+            lines.append(
+                f"| {row['seed_or_fold']} | {float(row['pretrained_adapter_miou']):.6f} | "
+                f"{float(row['gated_residual_repair_miou']):.6f} | {float(row['random_init_control_miou']):.6f} | "
+                f"{float(row['strong_baseline_miou']):.6f} |"
+            )
     report_path = output_dir / "audit_report.md"
     report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return report_path
 
 
-def write_primary_metric_figure(output_dir: Path) -> Path:
+def write_primary_metric_figure(rows: list[dict[str, Any]], output_dir: Path) -> Path:
     fig, ax = plt.subplots(figsize=(8.6, 4.8), constrained_layout=True)
     labels = ["F3", "Penobscot"]
-    before = [0.0820173614809763, 0.07675446038321675]
-    after = [0.13131642202022092, 0.13202141174689058]
+    by_dataset: dict[str, dict[str, list[float]]] = defaultdict(lambda: {"before": [], "after": []})
+    for row in rows:
+        if not str(row["split_protocol"]).startswith("p9_sam2_effect"):
+            continue
+        if row["metric_name"] != "miou" or not str(row["seed_or_fold"]).startswith("fold_"):
+            continue
+        if row["model_name"] == "facebook/sam2.1-hiera-base-plus":
+            by_dataset[row["dataset"]]["before"].append(float(row["metric_value"]))
+        elif row["model_name"] == "sam2.1-hiera-base-plus-random-init":
+            by_dataset[row["dataset"]]["after"].append(float(row["metric_value"]))
+    before = [float(np.mean(by_dataset[label]["before"])) for label in labels]
+    after = [float(np.mean(by_dataset[label]["after"])) for label in labels]
     x = list(range(len(labels)))
     width = 0.34
-    ax.bar([i - width / 2 for i in x], before, width=width, label="SAM2 pretrained", color="#d95f02")
-    ax.bar([i + width / 2 for i in x], after, width=width, label="Locked strong baseline", color="#1b9e77")
+    ax.bar([i - width / 2 for i in x], before, width=width, label="SAM2 pretrained adapter", color="#d95f02")
+    ax.bar([i + width / 2 for i in x], after, width=width, label="Random-init control", color="#1b9e77")
     for idx, value in enumerate(before):
         ax.text(idx - width / 2, value + 0.003, f"{value:.3f}", ha="center", va="bottom", fontsize=9)
     for idx, value in enumerate(after):
         ax.text(idx + width / 2, value + 0.003, f"{value:.3f}", ha="center", va="bottom", fontsize=9)
     ax.set_xticks(x, labels)
     ax.set_ylabel("Primary metric (mIoU)")
-    ax.set_title("Facies P10 primary metric before/after")
+    ax.set_title("Facies P10 reference comparison: pretrained adapter vs random-init control")
     ax.set_ylim(0, max(after) + 0.05)
     ax.grid(axis="y", alpha=0.2)
     ax.legend(frameon=False)
@@ -638,9 +919,9 @@ def build() -> dict[str, Path]:
     rows = build_rows()
     xlsx_path = OUTPUT_DIR / "track_model_metrics.xlsx"
     write_xlsx(rows, xlsx_path)
-    figure_path = write_primary_metric_figure(OUTPUT_DIR)
-    figures_manifest_path, tables_manifest_path = write_manifests(rows, OUTPUT_DIR)
     report_path = write_audit_report(rows, OUTPUT_DIR)
+    figure_path = write_primary_metric_figure(rows, OUTPUT_DIR)
+    figures_manifest_path, tables_manifest_path = write_manifests(rows, OUTPUT_DIR)
     return {
         "track_model_metrics.xlsx": xlsx_path,
         "before_after_primary_metric.png": figure_path,

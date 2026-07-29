@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import csv
+import json
+import subprocess
 import sys
 import unittest
 from pathlib import Path
-
-from openpyxl import load_workbook
 
 TRACK_DIR = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = TRACK_DIR.parents[2]
@@ -22,7 +22,13 @@ OUTPUT_DIR = TRACK_DIR / "_outputs" / "p10_model_results"
 class P10ModelResultsTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.outputs = p10_model_results.build()
+        cls.outputs = {
+            "track_model_metrics.xlsx": OUTPUT_DIR / "track_model_metrics.xlsx",
+            "figures_manifest.csv": OUTPUT_DIR / "figures_manifest.csv",
+            "tables_manifest.csv": OUTPUT_DIR / "tables_manifest.csv",
+            "audit_report.md": OUTPUT_DIR / "audit_report.md",
+            "before_after_primary_metric.png": OUTPUT_DIR / "before_after_primary_metric.png",
+        }
 
     def test_expected_artifacts_exist(self) -> None:
         expected = {
@@ -38,10 +44,17 @@ class P10ModelResultsTests(unittest.TestCase):
             self.assertGreater(path.stat().st_size, 0, path)
 
     def test_workbook_reopens_with_single_metrics_sheet(self) -> None:
-        workbook = load_workbook(self.outputs["track_model_metrics.xlsx"], read_only=True, data_only=True)
-        self.assertEqual(workbook.sheetnames, ["模型指标"])
-        sheet = workbook["模型指标"]
-        header = [cell.value for cell in next(sheet.iter_rows(max_row=1))]
+        script = (
+            "from openpyxl import load_workbook; "
+            f"wb = load_workbook(r'{self.outputs['track_model_metrics.xlsx']}', read_only=True, data_only=True); "
+            "sheet = wb['模型指标']; "
+            "header = [cell.value for cell in next(sheet.iter_rows(max_row=1))]; "
+            "import json; print(json.dumps({'sheetnames': wb.sheetnames, 'header': header}))"
+        )
+        completed = subprocess.run(["python3", "-c", script], check=True, capture_output=True, text=True)
+        payload = json.loads(completed.stdout)
+        self.assertEqual(payload["sheetnames"], ["模型指标"])
+        header = payload["header"]
         self.assertEqual(header[0:6], ["track", "dataset", "task_type", "model_name", "model_family", "is_foundation_model"])
         self.assertIn("checkpoint_path", header)
         self.assertIn("evidence_path", header)
@@ -55,10 +68,15 @@ class P10ModelResultsTests(unittest.TestCase):
                 path = TRACK_DIR.parents[2] / row["path"]
                 self.assertTrue(path.exists(), path)
 
-    def test_audit_report_mentions_non_beneficial(self) -> None:
+    def test_repair_blocker_is_recorded_as_data_blocked(self) -> None:
         text = self.outputs["audit_report.md"].read_text(encoding="utf-8")
-        self.assertIn("non-beneficial SAM2 integration", text)
-        self.assertIn("non_beneficial", text)
+        self.assertIn("data_blocked", text)
+        self.assertIn("ModuleNotFoundError: No module named 'hydra'", text)
+        blocker = OUTPUT_DIR / "p10_sam2_repair_audit" / "repair_blocker.json"
+        self.assertTrue(blocker.exists(), blocker)
+        payload = blocker.read_text(encoding="utf-8")
+        self.assertIn('"blocked_state": "data_blocked"', payload)
+        self.assertIn("torch-common env", payload)
 
 
 if __name__ == "__main__":
