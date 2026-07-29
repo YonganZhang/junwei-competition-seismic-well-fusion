@@ -735,3 +735,32 @@ Portable facies-local evidence lives under
 summary, honest Markdown report, two PNGs, and a SHA-256 artifact manifest.
 No checkpoint, dense prediction, cached feature tensor, train archive, or
 holdout artifact is persisted.
+
+## P12 native-input/top-block repair diagnostic
+
+`p12_repair_v1.py` reuses the P11 gated-residual harness without replacing its
+committed evidence. It sends the native 128×128 slices directly through SAM2
+after channel replication and ImageNet normalization, with no spatial
+interpolation. A real Hiera-B+ forward verifies the resulting three-level
+feature pyramid at 32×32, 16×16, and 8×8. Only image-encoder blocks 22 and 23
+are trained online at learning rate `1e-5`; the head/core stays at `1e-4`.
+
+The fixed folds, seeds, sample caps, 40-update budget, five variants, residual
+bound, gate inputs, promotion threshold, and development-only data boundary
+are unchanged. P12 writes a separate 20-cell package to
+`_outputs/p12_repair_v1/`, including `evidence.md`, summary/results JSON, and
+artifact hashes. The verifier also requires positive encoder gradients and
+parameter displacement for every trainable SAM2 variant.
+
+```bash
+CUDA_VISIBLE_DEVICES=<free_gpu> PYTHONDONTWRITEBYTECODE=1 \
+  /mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/p12_repair_v1.py run \
+  --f3-manifest "$F3_P4_SPLIT_MANIFEST" \
+  --penobscot-manifest "$PEN_P4_SPLIT_MANIFEST" \
+  --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cuda:0
+
+/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/p12_repair_v1.py verify
+```
