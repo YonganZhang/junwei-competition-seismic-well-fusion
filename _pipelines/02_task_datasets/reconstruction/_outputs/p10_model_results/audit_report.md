@@ -1,6 +1,6 @@
 # P10 reconstruction model-results audit
 
-- code_commit: `e08e05a8f6e4f46d3178de3fda5216def7112c07`
+- code_commit: `5685933c382b698c4cc4003780d66277f24f21a3`
 - workbook: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/_outputs/p10_model_results/track_model_metrics.xlsx`
 - figure: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/_outputs/p10_model_results/before_after_primary_metric.png`
 - row_count: `64`
@@ -21,8 +21,8 @@ No verified bug in the archived evidence justified a code fix that would close t
 
 - random-init macro RMSE: `1.05241248199`
 - pretrained macro RMSE: `0.541530160784`
-- foundation gain vs random-init: `-0.520323247326`
-- foundation gain vs random-init (%): `-2453.55482007`
+- foundation gain vs random-init: `0.510882321208`
+- foundation gain vs random-init (%): `48.5439245495`
 - PyKrige reference macro RMSE: `0.0212069134576`
 - end-to-end delta vs PyKrige: `-0.520323247326`
 - strict ridge_linear RMSE: `0.0320466299129`
