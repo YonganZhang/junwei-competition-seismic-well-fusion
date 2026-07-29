@@ -31,9 +31,9 @@
       "path_png": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.png",
       "path_svg": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/phif_heldout_summary.svg",
       "rows": 344,
-      "sha256_pdf": "98ebccdf7e96191fb6be718252a1bc0b8d23ebcf49ad795c9229b28abf5ac55a",
+      "sha256_pdf": "a7e7614d3264081803590f4feee3eb1fb961dab345a8ef516dba0cfd6a4f2fa0",
       "sha256_png": "fc09b578c2aa87a7b2eab200b5bae61138863df218641be2fd20f0b6744826e8",
-      "sha256_svg": "29331b3f8457a79bed6908f612ab70230d5bc9784c4cc1b220610efce564ef31",
+      "sha256_svg": "a3ac26021a8a80b4ad3ebd27a911afd236dc2682577a2b632544139bef99e67a",
       "target": "PHIF",
       "well_id": "15/9-F-15 D"
     },
@@ -62,9 +62,9 @@
       "path_png": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.png",
       "path_svg": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/klogh_heldout_summary.svg",
       "rows": 344,
-      "sha256_pdf": "6ad2d5bd3fa4e2d96368c6e8fed470aa980ddfa743277c736662603dc06f7620",
+      "sha256_pdf": "cbb1211b00bff998f2b2477e037ff5362065c1938b52ffd2d2fecdf5146522fe",
       "sha256_png": "295c45fc38b5203b8415735aa9b5b74784220a6e821f6d6553ddae68be5d315d",
-      "sha256_svg": "82002346de2826e163d40b3d2d9c86d0ec8c8047d8c2fd8f6314bdf23b13879b",
+      "sha256_svg": "85a1cb5021c4e5380d02cb8024ee873b1e06faa74ad723aecdf66a8e74b43a10",
       "target": "KLOGH",
       "well_id": "15/9-F-15 D"
     },
@@ -93,14 +93,14 @@
       "path_png": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.png",
       "path_svg": "_pipelines/02_task_datasets/reservoir/_outputs/p12_visualization/figures/sw_heldout_summary.svg",
       "rows": 344,
-      "sha256_pdf": "d8cf51637224349d316b61efd78bde2ba14bd2df1aab8ba82b8c8a97de3975ae",
+      "sha256_pdf": "719ad1f10f21806a3cd7676faac47552cd8d421af822294e9e469d7fdf34aa5b",
       "sha256_png": "6a2e1cf2f3a85c2949311bc631c4e768fe598216238c4665c4c7d4a5510ed6bc",
-      "sha256_svg": "aeec1259d478dfc4da9ba7b2858659244c44370fcdd2c521633e74ebb142eaf6",
+      "sha256_svg": "8d81bc54d0e9f14408ac8180685a83756e2c4da64fe6117effba29efcc7d546e",
       "target": "SW",
       "well_id": "15/9-F-15 D"
     }
   ],
-  "generated_utc": "2026-07-29T19:14:47.969671+00:00",
+  "generated_utc": "2026-07-29T19:17:24.234890+00:00",
   "legacy_depth_figure_sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
   "legacy_run_manifest_sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
   "lineage_notes": [
@@ -111,7 +111,7 @@
     "no well-comparison panel is emitted because the holdout family contains a single well"
   ],
   "p12_contract": {
-    "generated_at": "2026-07-29T19:14:47.966762+00:00",
+    "generated_at": "2026-07-29T19:17:24.231676+00:00",
     "inputs": [
       {
         "path": "_pipelines/02_task_datasets/reservoir/_outputs/run_manifest.json",
@@ -187,10 +187,16 @@
       }
     ],
     "manual_review": {
+      "colors_consistent": null,
+      "labels_legible": null,
+      "no_clipping": null,
+      "no_overlap": null,
       "notes": null,
       "reviewed": false,
       "reviewed_at_utc": null,
+      "reviewed_sha256": null,
       "reviewer": null,
+      "scientific_boundary_preserved": null,
       "status": "pending"
     },
     "outputs": [
@@ -234,11 +240,11 @@
     "profile": "p12_tracks_1_3_5",
     "renderer": {
       "path": "_pipelines/02_task_datasets/reservoir/p12_visualization.py",
-      "sha256": "188d9770c1c64c3870eaf7e3d3e0367550cb8ac337a15b20a864a601ccf9879c"
+      "sha256": "e09a39169ab72e48720a43deb119550afa9418bfa1e48c1d76e974d37b10d695"
     },
     "schema_version": "scientific-visualization-contract/v1",
     "scientific_caveat": "Held-out depth tracks are rendered only from stage4 confirmation predictions for family 15/9-F-15; no trajectory, interpolation, or volume rendering is introduced, and KLOGH interval diagnostics are shown in log1p(mD) domain.",
-    "source_commit": "635dfb9a0bf104641a49b1572f5c8bbf23d20179",
+    "source_commit": "04113ed0d256a695e3d48f74f69c2a8b9bf813e9",
     "track_id": "property"
   },
   "renderer": "p12_visualization",
@@ -247,9 +253,9 @@
   "schema_version": 1,
   "script": {
     "path": "_pipelines/02_task_datasets/reservoir/p12_visualization.py",
-    "sha256": "188d9770c1c64c3870eaf7e3d3e0367550cb8ac337a15b20a864a601ccf9879c"
+    "sha256": "e09a39169ab72e48720a43deb119550afa9418bfa1e48c1d76e974d37b10d695"
   },
-  "source_commit": "635dfb9a0bf104641a49b1572f5c8bbf23d20179",
+  "source_commit": "04113ed0d256a695e3d48f74f69c2a8b9bf813e9",
   "source_inputs": {
     "legacy_depth_figure": {
       "dimensions": [

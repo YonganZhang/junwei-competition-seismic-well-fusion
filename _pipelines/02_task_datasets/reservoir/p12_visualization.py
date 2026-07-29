@@ -550,6 +550,12 @@ def _build_p12_contract(figures: list[dict[str, object]], target_rows: dict[str,
             "reviewed_at_utc": None,
             "notes": None,
             "status": "pending",
+            "reviewed_sha256": None,
+            "no_clipping": None,
+            "no_overlap": None,
+            "labels_legible": None,
+            "colors_consistent": None,
+            "scientific_boundary_preserved": None,
         },
     }
 
