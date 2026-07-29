@@ -32,6 +32,13 @@ _outputs/p11_residual_fusion/**
 !_outputs/p11_residual_fusion/evidence.md
 !_outputs/p11_residual_fusion/primary_metric.png
 !_outputs/p11_residual_fusion/artifact_manifest.json
+!_outputs/p11_clean_well_native33/
+_outputs/p11_clean_well_native33/**
+!_outputs/p11_clean_well_native33/summary.json
+!_outputs/p11_clean_well_native33/results.jsonl
+!_outputs/p11_clean_well_native33/evidence.md
+!_outputs/p11_clean_well_native33/primary_metric.png
+!_outputs/p11_clean_well_native33/artifact_manifest.json
 !_outputs/p5_stage2/
 _outputs/p5_stage2/**
 !_outputs/p5_stage2/p5_stage2_results.jsonl

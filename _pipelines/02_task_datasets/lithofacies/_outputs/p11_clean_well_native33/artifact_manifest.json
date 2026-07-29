@@ -1,0 +1,31 @@
+{
+  "artifacts": [
+    {
+      "bytes": 102467,
+      "kind": "result_table",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_clean_well_native33/results.jsonl",
+      "sha256": "b239ed0841a1e09365d1c77deabe912ce8d55bb93904b9e1f27c75fb619b6a59"
+    },
+    {
+      "bytes": 11914,
+      "kind": "summary",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_clean_well_native33/summary.json",
+      "sha256": "d6058f791cf40f7597e0b820c5379df69e7f1e581f686b71cd497d547cce71ab"
+    },
+    {
+      "bytes": 3849,
+      "kind": "evidence_report",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_clean_well_native33/evidence.md",
+      "sha256": "420f778568a156b2d0f7c45cafc97d64ae75afeb4217cecb93becb57a1d24e5d"
+    },
+    {
+      "bytes": 60682,
+      "kind": "figure",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_clean_well_native33/primary_metric.png",
+      "sha256": "5710fad16b433d8a1e58974cb3d7adae361a648bab0b7a7907b25b70941519e1"
+    }
+  ],
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "schema_version": "lithofacies-p11-clean-well-artifacts/v1"
+}

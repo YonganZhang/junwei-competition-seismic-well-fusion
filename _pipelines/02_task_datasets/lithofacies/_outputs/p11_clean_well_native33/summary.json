@@ -1,0 +1,359 @@
+{
+  "comparison": {
+    "gate0_max_abs_logit_error": 0.0,
+    "gate0_minus_baseline": 0.0,
+    "paired_comparisons": 12,
+    "pretrained_minus_baseline": 0.0026338659114514273,
+    "pretrained_minus_direct": 0.12412698708004102,
+    "pretrained_minus_random": 0.002875897255644494,
+    "pretrained_pair_win_fraction": 0.5833333333333334,
+    "pretrained_pair_wins_over_baseline": 7
+  },
+  "decision": {
+    "default_enabled": false,
+    "minimum_absolute_macro_f1_delta": 0.005,
+    "minimum_pair_win_fraction": 0.75,
+    "promotion_checks": {
+      "baseline_delta_at_least_0_005": false,
+      "pair_win_fraction_at_least_0_75": false,
+      "random_control_delta_at_least_0_005": false
+    },
+    "state": "NON_BENEFICIAL_KEEP_BASELINE"
+  },
+  "evaluation": {
+    "ablation_order": [
+      "baseline",
+      "direct",
+      "pretrained",
+      "random",
+      "gate0"
+    ],
+    "batch_size": 32,
+    "completed_cells": 60,
+    "expected_cells": 60,
+    "fold_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "frozen_test_accessed": false,
+    "known_holdout_accessed": false,
+    "protocol": "strict_LOGO4_three_seed_development_only",
+    "repeat_ids": [
+      0,
+      1,
+      2
+    ],
+    "seeds": [
+      1867973658,
+      2137841944,
+      3902865753
+    ],
+    "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+    "updates_per_trainable_lane": 40
+  },
+  "inputs": {
+    "baseline_bundle_sha256": "753345ccb606e100155bec411c38d0820c5effbe6ebafca0552f31a2c10659db",
+    "development_batch_sha256": "b6817ae218dee12bc72a1551e76423a61eb4ff11faf70dcb0444b01ba422f51c",
+    "stage3_results_sha256": "8e14145117b8b44e3b9ee1131b9ade65e9f2b25151641d7b2b74f46898f966cb"
+  },
+  "model": {
+    "baseline_model": "xgboost_multisoftprob_window",
+    "foundation_model": "AutonLab/MOMENT-1-base",
+    "larger_moment_model_run": false,
+    "max_residual_logit": 2.0,
+    "moment_embeddings_cached": true,
+    "pretrained_random_same_architecture": true,
+    "real_pretrained_weights_loaded": true,
+    "residual_formula": "baseline_logits + sigmoid(per_class_gate_logits) * 2*tanh(linear(mean_reduced_cached_native_log_embeddings))",
+    "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+  },
+  "preserved_p11_artifacts": {
+    "artifact_manifest.json": "d81c3dc0647020186004c3630825d732e8ad8d18c975131c20ec14be0e97be14",
+    "evidence.md": "eac5c4e31c86dcd080993fc82fee5958b41402edc7dfee666f97b6c80bc2d1f6",
+    "primary_metric.png": "c3a82df5905027027078c9545dc6afe0c74c9dd6174775a59cbc72bc32c739db",
+    "results.jsonl": "9c73c5ead55a4ee3e472368dbfdadc811ce92da5a2ffa321601cc23b550e7e3c",
+    "summary.json": "86d1cda65a9e67e92dff1278fe6bed423fd5d4a8de918547d20eac1b60a75466"
+  },
+  "representation": {
+    "configured_context_length": 33,
+    "effective_context_steps": 32,
+    "larger_model_requires_explicit_user_decision": true,
+    "moment_input": "[B,13,33]",
+    "next_late_fusion_phase_run": false,
+    "observation_mask_channels": 0,
+    "patch_count": 4,
+    "patch_length": 8,
+    "patch_stride": 8,
+    "real_log_channels": 13,
+    "resampling": "none",
+    "seismic_channels": 0,
+    "trailing_unpatched_steps": 1
+  },
+  "representation_diagnostic": {
+    "absolute_materiality_threshold": 0.005,
+    "material_separation_detected": false,
+    "pretrained_gate_mean": 0.017799736621479195,
+    "pretrained_minus_random_fixed_schema_macro_f1": 0.002875897255644494,
+    "pretrained_minus_random_gate_mean": -4.7771104921896096e-05,
+    "question": "Does pretrained MOMENT separate from same-architecture random initialization after removing synthetic length expansion and non-log pseudo-channels?",
+    "random_gate_mean": 0.01784750772640109,
+    "state": "NO_MATERIAL_PRETRAINED_RANDOM_SEPARATION"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "duration_seconds_this_invocation": 43.56355229008477,
+    "raw_predictions_persisted": false,
+    "resumed_pairs": 0
+  },
+  "schema_version": "lithofacies-p11-clean-well-native33/v1",
+  "status": "complete",
+  "variants": {
+    "baseline": {
+      "cells": 12,
+      "gate_mean": null,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5172413793103449,
+          "mean": 0.4926781284563429,
+          "minimum": 0.4409448818897638,
+          "std": 0.031560471946055144
+        },
+        "balanced_accuracy": {
+          "maximum": 0.310228166797797,
+          "mean": 0.27794574368578995,
+          "minimum": 0.2201412114455593,
+          "std": 0.036016238510038934
+        },
+        "expected_calibration_error": {
+          "maximum": 0.16341026354860919,
+          "mean": 0.1380629397813447,
+          "minimum": 0.10583577393978237,
+          "std": 0.021771410521281977
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.2135804514277343,
+          "mean": 0.19493770207563763,
+          "minimum": 0.18127577519230875,
+          "std": 0.013857794088969907
+        },
+        "multiclass_brier": {
+          "maximum": 0.7955661628470292,
+          "mean": 0.6770580401740833,
+          "minimum": 0.5811386014461116,
+          "std": 0.08613553464031641
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0168965261340803,
+          "mean": 1.5492749217386004,
+          "minimum": 1.2517693191937989,
+          "std": 0.2984265550630998
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.30198365231259966,
+          "mean": 0.25830527131650355,
+          "minimum": 0.18127577519230875,
+          "std": 0.047857109839882575
+        }
+      },
+      "residual_contribution_mean_abs": null
+    },
+    "direct": {
+      "cells": 12,
+      "gate_mean": null,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.3333333333333333,
+          "mean": 0.2250466324123588,
+          "minimum": 0.10236220472440945,
+          "std": 0.06914413832525111
+        },
+        "balanced_accuracy": {
+          "maximum": 0.22931756590293176,
+          "mean": 0.14257598015230658,
+          "minimum": 0.09863433667781495,
+          "std": 0.04014851796902343
+        },
+        "expected_calibration_error": {
+          "maximum": 0.2652404094276896,
+          "mean": 0.11274499744781913,
+          "minimum": 0.009381633723681941,
+          "std": 0.09752467102262058
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.11805733846812154,
+          "mean": 0.07344458090704803,
+          "minimum": 0.04013727088723082,
+          "std": 0.021439639024700214
+        },
+        "multiclass_brier": {
+          "maximum": 0.9320115010553822,
+          "mean": 0.8497007138187421,
+          "minimum": 0.7849625772982779,
+          "std": 0.056906996999158556
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.5442220954214823,
+          "mean": 2.0084867618520548,
+          "minimum": 1.712154342636478,
+          "std": 0.30157844431183845
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.1770860077021823,
+          "mean": 0.09995909580807939,
+          "minimum": 0.04013727088723082,
+          "std": 0.04065044058221688
+        }
+      },
+      "residual_contribution_mean_abs": null
+    },
+    "gate0": {
+      "cells": 12,
+      "gate_mean": 0.0,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5172413793103449,
+          "mean": 0.4926781284563429,
+          "minimum": 0.4409448818897638,
+          "std": 0.031560471946055144
+        },
+        "balanced_accuracy": {
+          "maximum": 0.310228166797797,
+          "mean": 0.27794574368578995,
+          "minimum": 0.2201412114455593,
+          "std": 0.036016238510038934
+        },
+        "expected_calibration_error": {
+          "maximum": 0.16341026354860919,
+          "mean": 0.1380629397813447,
+          "minimum": 0.10583577393978237,
+          "std": 0.021771410521281977
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.2135804514277343,
+          "mean": 0.19493770207563763,
+          "minimum": 0.18127577519230875,
+          "std": 0.013857794088969907
+        },
+        "multiclass_brier": {
+          "maximum": 0.7955661628470292,
+          "mean": 0.6770580401740833,
+          "minimum": 0.5811386014461116,
+          "std": 0.08613553464031641
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0168965261340803,
+          "mean": 1.5492749217386004,
+          "minimum": 1.2517693191937989,
+          "std": 0.2984265550630998
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.30198365231259966,
+          "mean": 0.25830527131650355,
+          "minimum": 0.18127577519230875,
+          "std": 0.047857109839882575
+        }
+      },
+      "residual_contribution_mean_abs": 0.0
+    },
+    "pretrained": {
+      "cells": 12,
+      "gate_mean": 0.017799736621479195,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5247524752475248,
+          "mean": 0.49869748039153644,
+          "minimum": 0.4409448818897638,
+          "std": 0.034991686838293484
+        },
+        "balanced_accuracy": {
+          "maximum": 0.3254043185593146,
+          "mean": 0.2825437966227831,
+          "minimum": 0.2201412114455593,
+          "std": 0.039950752103393106
+        },
+        "expected_calibration_error": {
+          "maximum": 0.1663573781853528,
+          "mean": 0.13853022817525104,
+          "minimum": 0.09211425008156154,
+          "std": 0.029052218860990336
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.21893805678533967,
+          "mean": 0.19757156798708905,
+          "minimum": 0.18127577519230875,
+          "std": 0.014401835363523218
+        },
+        "multiclass_brier": {
+          "maximum": 0.796271097217329,
+          "mean": 0.6767111446568778,
+          "minimum": 0.5805467731991759,
+          "std": 0.08565646259132066
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0193039283953387,
+          "mean": 1.5482503159986944,
+          "minimum": 1.246560767936807,
+          "std": 0.299013097526776
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.3045089048378522,
+          "mean": 0.262018874133012,
+          "minimum": 0.18127577519230875,
+          "std": 0.04943009253700673
+        }
+      },
+      "residual_contribution_mean_abs": 0.023094701891144116
+    },
+    "random": {
+      "cells": 12,
+      "gate_mean": 0.01784750772640109,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5172413793103449,
+          "mean": 0.4916592765711543,
+          "minimum": 0.4409448818897638,
+          "std": 0.03264355158251628
+        },
+        "balanced_accuracy": {
+          "maximum": 0.3213392779089081,
+          "mean": 0.2783067145871987,
+          "minimum": 0.2201412114455593,
+          "std": 0.03642125553872835
+        },
+        "expected_calibration_error": {
+          "maximum": 0.16529838010080683,
+          "mean": 0.13798835119095484,
+          "minimum": 0.10365758021206141,
+          "std": 0.02006105702429291
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.2176207913169211,
+          "mean": 0.19469567073144456,
+          "minimum": 0.1721925700004236,
+          "std": 0.015304917573483831
+        },
+        "multiclass_brier": {
+          "maximum": 0.7966450702333704,
+          "mean": 0.6762938155554957,
+          "minimum": 0.5794169569433226,
+          "std": 0.08554118527657414
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0275591975871126,
+          "mean": 1.5473331543808957,
+          "minimum": 1.2426675596239882,
+          "std": 0.30044317848019475
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.3045089048378522,
+          "mean": 0.2578555389781456,
+          "minimum": 0.18127577519230875,
+          "std": 0.04793848440326642
+        }
+      },
+      "residual_contribution_mean_abs": 0.034373789094388485
+    }
+  }
+}

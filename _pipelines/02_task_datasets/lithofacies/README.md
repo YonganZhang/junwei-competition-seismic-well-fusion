@@ -786,3 +786,59 @@ Canonical portable evidence is `_outputs/p11_residual_fusion/results.jsonl`,
 `summary.json`, `evidence.md`, `primary_metric.png`, and
 `artifact_manifest.json`. Runtime baseline logits, embedding caches, and
 partial resume state remain ignored.
+
+## P11 clean well-log native-context diagnostic
+
+`lithofacies_p11_clean_well_native33.py` is an isolated diagnostic built on
+the committed gated-residual harness. It leaves the original P11 runner and
+60-cell artifacts unchanged. MOMENT now receives only the 13 real normalized
+well-log curves at their native 33-point measured-depth resolution. The pinned
+8-point patch length/stride yields four real tokens covering 32 samples; no
+interpolation or other synthetic resampling is used. The 13 observation-mask
+planes and 9 flattened seismic traces are deliberately excluded from both
+MOMENT and the residual head in this clean-input phase.
+
+The full strict LOGO4 four-fold by three-seed, five-variant matrix again keeps
+the Stage-3 XGBoost baseline. Mean fixed-nine Macro-F1 is `0.194938` for
+baseline, `0.073445` for direct native-context MOMENT, `0.197572` for the
+pretrained residual, `0.194696` for the same-architecture random-init
+residual, and `0.194938` for exact `gate0`. The diagnostic improvement over
+random init is only `+0.002876`, below the existing `0.005` materiality
+threshold and nearly unchanged from original P11's `+0.002857`. Pretrained
+and random gate means are likewise close (`0.017800` versus `0.017848`).
+The decision remains `NON_BENEFICIAL_KEEP_BASELINE`.
+
+This result does not select a larger MOMENT model. The proposed later phase
+that routes observation masks directly to the residual head and seismic
+patches through a separate spatial CNN remains unrun pending an explicit
+decision after this minimal representation diagnostic.
+
+### Reproduce the native-context diagnostic
+
+Run from the project root using the existing ignored P11 baseline-logit bundle:
+
+```bash
+TORCH_PYTHON="${P5_TORCH_PYTHON:?set the approved torch-common interpreter}"
+STAGE3_RUNTIME="${LITHOFACIES_STAGE3_RUNTIME:?point to the Stage-3 development runtime}"
+MOMENT_SNAPSHOT="${LITHOFACIES_MOMENT_SNAPSHOT:?point to the pinned local snapshot}"
+GPU_LOCK="${VOLVE_P5_GPU_LOCK:-$HOME/.cache/volve-p5/locks/gpu0.lock}"
+RUNNER=_pipelines/02_task_datasets/lithofacies/lithofacies_p11_clean_well_native33.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/p11_clean_well_native33
+BASELINE=_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion/runtime/baseline_logits.npz
+
+flock -w 900 "$GPU_LOCK" env PYTHONDONTWRITEBYTECODE=1 \
+  "$TORCH_PYTHON" "$RUNNER" run \
+  --development-batch "$STAGE3_RUNTIME/development_logo4.npz" \
+  --baseline-bundle "$BASELINE" --snapshot "$MOMENT_SNAPSHOT" \
+  --output-dir "$OUT" --device cuda:0
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$RUNNER" verify \
+  --output-dir "$OUT"
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" -m pytest -q \
+  _pipelines/02_task_datasets/lithofacies/tests/test_lithofacies_p11_clean_well_native33.py
+```
+
+Portable evidence is `_outputs/p11_clean_well_native33/results.jsonl`,
+`summary.json`, `evidence.md`, `primary_metric.png`, and
+`artifact_manifest.json`. Baseline logits, native embedding caches, resume
+state, and raw predictions remain ignored.
