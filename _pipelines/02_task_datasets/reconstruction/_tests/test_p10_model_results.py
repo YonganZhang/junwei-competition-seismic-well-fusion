@@ -72,6 +72,8 @@ class TestP10ModelResults(unittest.TestCase):
         report = p10.AUDIT_REPORT_PATH.read_text(encoding="utf-8")
         self.assertIn("foundation gain", report)
         self.assertIn("end-to-end non_beneficial", report)
+        self.assertIn("foundation gain vs random-init: `0.510882321208`", report)
+        self.assertIn("foundation gain vs random-init (%): `48.5439245495`", report)
         self.assertIn("PATCH_SHAPE = (9, 20, 18)", report)
         self.assertIn("coordinate_roundtrip", report)
         self.assertIn("evidence_only_boundary", report)
