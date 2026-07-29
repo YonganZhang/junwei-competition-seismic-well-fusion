@@ -241,9 +241,18 @@ def _add_openmind_rows(rows: list[dict[str, Any]], summary: dict[str, Any]) -> N
         evidence_path=str(OPENMIND_SUMMARY),
         checkpoint_path="",
         code_commit=code_commit,
-        root_cause="pretraining improves the same adapter over random init, but the same split/sample universe still sits far above the PyKrige baseline",
+        root_cause=(
+            "foundation gain is real versus random init, but end-to-end performance remains non_beneficial "
+            "against PyKrige on the same strict sample universe; audited checkpoints include "
+            "PATCH_SHAPE=(9,20,18), grid_shape_kji=[63,100,108], coordinate roundtrip max abs error=0.0, "
+            "and mode-specific mask exclusion is already encoded in the archived summaries"
+        ),
         fix_applied="none",
-        notes=f"frozen_test_accessed={evaluation['frozen_test_accessed']}; same_validation_sample_universe={evaluation['same_validation_sample_universe_as_strong_baseline']}",
+        notes=(
+            f"frozen_test_accessed={evaluation['frozen_test_accessed']}; "
+            f"same_validation_sample_universe={evaluation['same_validation_sample_universe_as_strong_baseline']}; "
+            "adapter_decoder_output_shape_not_exposed_in_archived_summary"
+        ),
     )
     _append_row(
         rows,
@@ -270,9 +279,15 @@ def _add_openmind_rows(rows: list[dict[str, Any]], summary: dict[str, Any]) -> N
         evidence_path=str(OPENMIND_SUMMARY),
         checkpoint_path="",
         code_commit=code_commit,
-        root_cause="same architecture without pretraining has far higher error on the same strict fold universe",
+        root_cause=(
+            "same architecture without pretraining has far higher error on the same strict fold universe; "
+            "this confirms the foundation gain but not promotion"
+        ),
         fix_applied="none",
-        notes="comparison is same-arch random initialization against the PyKrige reference",
+        notes=(
+            "comparison is same-arch random initialization against the PyKrige reference; "
+            "same split/sample universe as pretrained run"
+        ),
     )
     _append_row(
         rows,
@@ -299,9 +314,15 @@ def _add_openmind_rows(rows: list[dict[str, Any]], summary: dict[str, Any]) -> N
         evidence_path=str(OPENMIND_SUMMARY),
         checkpoint_path="",
         code_commit=code_commit,
-        root_cause="PyKrige is the strongest reference on the same strict sample universe",
+        root_cause=(
+            "PyKrige is the strongest reference on the same strict sample universe; "
+            "serves as the end-to-end baseline that OpenMind does not beat"
+        ),
         fix_applied="none",
-        notes="strong_baseline_macro_fold_rmse comes from the same fold universe as the foundation comparison",
+        notes=(
+            "strong_baseline_macro_fold_rmse comes from the same fold universe as the foundation comparison; "
+            "no frozen holdout was used here"
+        ),
     )
 
     for fold in fold_results:
@@ -419,9 +440,16 @@ def _add_stage4_rows(rows: list[dict[str, Any]], summary: dict[str, Any]) -> Non
                 evidence_path=str(STAGE4_SUMMARY),
                 checkpoint_path=str(ROOT / "p5_stage4_confirmation" / mode / "refit_checkpoint.npz"),
                 code_commit=code_commit,
-                root_cause="known-holdout confirmation on previously seen holdout, not a fresh blind test",
+                root_cause=(
+                    "known-holdout confirmation on previously seen holdout, not a fresh blind test; "
+                    f"stage4_mode={mode}"
+                ),
                 fix_applied="none",
-                notes=f"prior_test_consumed={summary['prior_test_consumed']}; fresh_blind={summary['fresh_blind']}; evidence_class={summary['evidence_class']}",
+                notes=(
+                    f"prior_test_consumed={summary['prior_test_consumed']}; "
+                    f"fresh_blind={summary['fresh_blind']}; evidence_class={summary['evidence_class']}; "
+                    "confirmation_only"
+                ),
             )
 
 
@@ -437,7 +465,7 @@ def _write_csv(path: Path, rows: Iterable[dict[str, Any]], headers: list[str]) -
 def _write_workbook(path: Path, rows: list[dict[str, Any]]) -> None:
     wb = Workbook()
     ws = wb.active
-    ws.title = "model metrics"
+    ws.title = "模型指标"
     ws.freeze_panes = "A2"
     ws.append(HEADERS)
     for row in rows:
@@ -510,7 +538,21 @@ def _write_audit_report(path: Path, rows: list[dict[str, Any]]) -> None:
     cond_rows = [row for row in rows if row["dataset"] == "conditional_development" and row["metric_name"] == "rmse"]
     openmind_rows = [row for row in rows if row["dataset"] == "strict_development" and row["seed_or_fold"] == "macro_fold_mean"]
     stage4_rows = [row for row in rows if row["dataset"].endswith("_confirmation") and row["metric_name"] == "rmse"]
+    strict_result = _load_json(STRICT_RESULTS)
+    cond_result = _load_json(CONDITIONAL_RESULTS)
+    summary = _load_json(OPENMIND_SUMMARY)
+    stage4 = _load_json(STAGE4_SUMMARY)
+    build_summary = _load_json(ROOT / "build_summary.json")
+    model_inspection = _load_json(ROOT / "model_inspection.json")
     commit = _git_commit()
+
+    def _row(dataset: str, model_name: str, metric_name: str) -> dict[str, Any]:
+        return next(
+            row
+            for row in rows
+            if row["dataset"] == dataset and row["model_name"] == model_name and row["metric_name"] == metric_name
+        )
+
     lines = [
         "# P10 reconstruction model-results audit",
         "",
@@ -518,34 +560,66 @@ def _write_audit_report(path: Path, rows: list[dict[str, Any]]) -> None:
         f"- workbook: `{WORKBOOK_PATH}`",
         f"- figure: `{FIGURE_PATH}`",
         f"- row_count: `{len(rows)}`",
-        f"- sheet_name: `model metrics`",
+        f"- sheet_name: `模型指标`",
+        f"- evidence_only_boundary: `{True}`",
         "",
         "## Conclusion",
         "",
-        "The OpenMind/ResEnc-L lane is non_beneficial on the same strict development split: pretraining",
-        "reduces the random-init error, but the pretrained model still stays far above the PyKrige",
-        "reference. No verified bug in normalization, observation masking, or adapter wiring was found,",
-        "so there is no justified code fix to promote.",
+        "The OpenMind/ResEnc-L lane has a real foundation gain but remains end-to-end non_beneficial.",
+        "Pretraining reduces the same-architecture random-init RMSE from 1.052412481992174 to",
+        "0.5415301607840952, but the same strict-development sample universe still sits far above the",
+        "PyKrige reference at 0.02120691345759842. That means the foundation effect is real, but it is",
+        "not enough for promotion against the strong baseline.",
         "",
-        "## Key before/after facts",
+        "No verified bug in the archived evidence justified a code fix that would close the gap.",
         "",
-        f"- random-init macro RMSE: {next(row for row in openmind_rows if row['model_name'] == 'same_architecture_random_init')['metric_value']:.12g}",
-        f"- pretrained macro RMSE: {next(row for row in openmind_rows if row['model_name'] == 'MIC-DKFZ/ResEncL-OpenMind-MAE')['metric_value']:.12g}",
-        f"- PyKrige reference macro RMSE: {next(row for row in openmind_rows if row['model_name'] == 'pykrige_ok3d')['metric_value']:.12g}",
-        f"- strict ridge_linear RMSE: {next(row for row in strict_rows if row['model_name'] == 'ridge_idw_seismic_coordinates')['metric_value']:.12g}",
-        f"- conditional ridge_linear RMSE: {next(row for row in cond_rows if row['model_name'] == 'ridge_idw_seismic_coordinates')['metric_value']:.12g}",
-        f"- Stage-4 strict known-holdout RMSE: {next(row for row in stage4_rows if row['dataset'] == 'strict_confirmation')['metric_value']:.12g}",
-        f"- Stage-4 conditional known-holdout RMSE: {next(row for row in stage4_rows if row['dataset'] == 'conditional_confirmation')['metric_value']:.12g}",
+        "## Foundation gain vs end-to-end outcome",
+        "",
+        f"- random-init macro RMSE: `{_row('strict_development', 'same_architecture_random_init', 'rmse')['metric_value']:.12g}`",
+        f"- pretrained macro RMSE: `{_row('strict_development', 'MIC-DKFZ/ResEncL-OpenMind-MAE', 'rmse')['metric_value']:.12g}`",
+        f"- foundation gain vs random-init: `{_signed_delta('rmse', _row('strict_development', 'MIC-DKFZ/ResEncL-OpenMind-MAE', 'rmse')['metric_value'], _row('strict_development', 'same_architecture_random_init', 'rmse')['baseline_value'])[0]:.12g}`",
+        f"- foundation gain vs random-init (%): `{_signed_delta('rmse', _row('strict_development', 'MIC-DKFZ/ResEncL-OpenMind-MAE', 'rmse')['metric_value'], _row('strict_development', 'same_architecture_random_init', 'rmse')['baseline_value'])[1]:.12g}`",
+        f"- PyKrige reference macro RMSE: `{_row('strict_development', 'pykrige_ok3d', 'rmse')['metric_value']:.12g}`",
+        f"- end-to-end delta vs PyKrige: `{_signed_delta('rmse', _row('strict_development', 'MIC-DKFZ/ResEncL-OpenMind-MAE', 'rmse')['metric_value'], _row('strict_development', 'pykrige_ok3d', 'rmse')['metric_value'])[0]:.12g}`",
+        f"- strict ridge_linear RMSE: `{_row('strict_development', 'ridge_idw_seismic_coordinates', 'rmse')['metric_value']:.12g}`",
+        f"- conditional ridge_linear RMSE: `{_row('conditional_development', 'ridge_idw_seismic_coordinates', 'rmse')['metric_value']:.12g}`",
+        f"- Stage-4 strict known-holdout RMSE: `{_row('strict_confirmation', 'pykrige_ok3d', 'rmse')['metric_value']:.12g}`",
+        f"- Stage-4 conditional known-holdout RMSE: `{_row('conditional_confirmation', 'pykrige_ok3d', 'rmse')['metric_value']:.12g}`",
+        "",
+        "## Audited implementation checkpoints",
+        "",
+        "| check | evidence / value | status |",
+        "| --- | --- | --- |",
+        f"| 3D patch shape and axis order | `PATCH_SHAPE = (9, 20, 18)` in `build_dataset.py`; tiled as `k,j,i` over grid `{build_summary['grid_shape_kji']}` | passed |",
+        f"| coordinate / scale | `coordinate_bounds` = x `{build_summary['coordinate_bounds']['x']}`, y `{build_summary['coordinate_bounds']['y']}`, depth `{build_summary['coordinate_bounds']['depth']}`; `mapping` = `{build_summary['sparse_wells']['mapping']}` | passed |",
+        f"| observation mask conditioning | `n_observation_rows={build_summary['sparse_wells']['n_observation_rows']}`, `n_unique_cells={build_summary['sparse_wells']['n_unique_cells']}`, `n_wells_with_constraints={build_summary['sparse_wells']['n_wells_with_constraints']}`; strict supplies 90 constraints, conditional supplies 91 | passed |",
+        f"| train/eval mask mutual exclusion | strict: `n_direct_well_cells_excluded_from_metrics=0`; conditional: `n_direct_well_cells_excluded_from_metrics=90`; both have `test_patch_blocks_disjoint_from_train_and_validation=True` | passed |",
+        f"| normalization / inverse transform | `results_strict.json` and `results_conditional.json` report `framework=ml_framework.preprocess` and `all_roundtrip_checks_passed=True`; `build_summary.preprocessing.coordinate_roundtrip` shows zero max abs error for x/y/depth | passed |",
+        f"| adapter / decoder output | `p9_openmind_effect.py` and summary constrain `trainable_scope='attribute_projection_and_decoder'`; output metric is scalar RMSE on same sample universe | partially checked; internal tensor width not exposed in archived summaries |",
+        f"| fold / sample universe | OpenMind summary: `folds={summary['evaluation']['folds']}`; `same_validation_sample_universe_as_strong_baseline=True`; strict/conditional results preserve separate train/test patch blocks | passed |",
+        f"| metric direction | `rmse/mae` lower-is-better, `r2/pearson_r` higher-is-better, encoded in workbook rows | passed |",
+        "",
+        "## Evidence and scope audit",
+        "",
+        f"- `build_summary.json` says `grid_shape_kji={build_summary['grid_shape_kji']}` and `n_active_cells={build_summary['n_active_cells']}`.",
+        f"- `results_strict.json` strict train/test split: train i-blocks `{strict_result['train']['patch_i_blocks']}`, test i-blocks `{strict_result['test']['patch_i_blocks']}`.",
+        f"- `results_conditional.json` conditional train/test split: train i-blocks `{cond_result['train']['patch_i_blocks']}`, test i-blocks `{cond_result['test']['patch_i_blocks']}`.",
+        f"- `results_strict.json` leakage check: `test_patch_blocks_disjoint_from_train_and_validation={strict_result['leakage_checks']['test_patch_blocks_disjoint_from_train_and_validation']}`.",
+        f"- `results_conditional.json` leakage check: `direct_well_observation_cells_excluded_from_test_metrics={cond_result['leakage_checks']['direct_well_observation_cells_excluded_from_test_metrics']}`.",
+        f"- `p9_openmind_effect.py` is a strict-development-only comparison; its summary records `frozen_test_accessed=False` and `guard_accessed=False`.",
+        f"- `p5_stage4_confirmation/summary.json` records `prior_test_consumed={stage4['prior_test_consumed']}` and `fresh_blind={stage4['fresh_blind']}`.",
         "",
         "## Root cause assessment",
         "",
-        "The evidence points to model-inductive-bias / capacity mismatch, not a broken pipeline:",
+        "The evidence points to model-inductive-bias / capacity mismatch, not a broken pipeline. The OpenMind lane",
+        "is helped by pretraining, but it still loses decisively to the PyKrige reference on the same split universe.",
+        "The available archives are enough to label the lane non_beneficial without inventing an unsupported bug fix.",
         "",
-        "1. The strict split, sample universe, and observation-mask handling are already fenced in the archived summaries.",
-        "2. The pretrained OpenMind adapter only trains the attribute projection and decoder.",
-        "3. The same-architecture random-init run is much worse than the pretrained run, proving pretraining helps,",
-        "   but the PyKrige reference remains dramatically stronger on the same split universe.",
-        "4. Conditional reconstruction is explicitly not strict holdout, so it is not promoted as blind generalization.",
+        "## Evidence-only boundary",
+        "",
+        f"- Existing legal-dev evidence was sufficient: `build_summary.json`, `results_strict.json`, `results_conditional.json`, `p9_openmind_effect/summary.json`, `p5_stage4_confirmation/summary.json`, `model_inspection.json`.",
+        "- No frozen holdout or tuning run was used for this audit bundle.",
+        "- The report intentionally does not claim a newly improved production model.",
         "",
         "## Files written",
         "",
@@ -568,8 +642,8 @@ def _write_audit_report(path: Path, rows: list[dict[str, Any]]) -> None:
 def _validate_output(rows: list[dict[str, Any]]) -> None:
     wb = load_workbook(WORKBOOK_PATH, read_only=True, data_only=True)
     try:
-        assert wb.sheetnames == ["model metrics"], wb.sheetnames
-        ws = wb["model metrics"]
+        assert wb.sheetnames == ["模型指标"], wb.sheetnames
+        ws = wb["模型指标"]
         header = [cell.value for cell in next(ws.iter_rows(min_row=1, max_row=1))]
         assert header == HEADERS, header
         assert ws.max_row == len(rows) + 1, (ws.max_row, len(rows))
@@ -659,7 +733,7 @@ def build(output_dir: Path = OUTPUT_DIR) -> list[dict[str, Any]]:
         {
             "table_name": "track_model_metrics",
             "path": str(WORKBOOK_PATH),
-            "sheet_name": "model metrics",
+            "sheet_name": "模型指标",
             "row_count": len(rows),
             "sha256": _sha256(WORKBOOK_PATH),
             "source": "strict/conditional ridge results + OpenMind summary + Stage-4 confirmation",

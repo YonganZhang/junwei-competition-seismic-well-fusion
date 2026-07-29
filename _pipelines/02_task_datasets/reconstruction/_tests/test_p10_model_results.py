@@ -25,8 +25,8 @@ class TestP10ModelResults(unittest.TestCase):
     def test_workbook_has_single_model_metrics_sheet(self) -> None:
         wb = load_workbook(p10.WORKBOOK_PATH, read_only=True, data_only=True)
         try:
-            self.assertEqual(wb.sheetnames, ["model metrics"])
-            ws = wb["model metrics"]
+            self.assertEqual(wb.sheetnames, ["模型指标"])
+            ws = wb["模型指标"]
             header = [cell.value for cell in next(ws.iter_rows(min_row=1, max_row=1))]
             self.assertEqual(header, p10.HEADERS)
             self.assertEqual(ws.max_row, len(self.rows) + 1)
@@ -47,6 +47,7 @@ class TestP10ModelResults(unittest.TestCase):
 
         self.assertGreaterEqual(len(figure_rows), 1)
         self.assertEqual(len(table_rows), 1)
+        self.assertEqual(table_rows[0]["sheet_name"], "模型指标")
         self.assertEqual(int(table_rows[0]["row_count"]), len(self.rows))
 
         for row in self.rows:
@@ -66,6 +67,14 @@ class TestP10ModelResults(unittest.TestCase):
         self.assertIn(("strict_development", "pykrige_ok3d", "rmse"), names)
         self.assertIn(("strict_confirmation", "pykrige_ok3d", "rmse"), names)
         self.assertIn(("conditional_confirmation", "pykrige_ok3d", "rmse"), names)
+
+    def test_audit_report_mentions_foundation_gain_and_non_beneficial(self) -> None:
+        report = p10.AUDIT_REPORT_PATH.read_text(encoding="utf-8")
+        self.assertIn("foundation gain", report)
+        self.assertIn("end-to-end non_beneficial", report)
+        self.assertIn("PATCH_SHAPE = (9, 20, 18)", report)
+        self.assertIn("coordinate_roundtrip", report)
+        self.assertIn("evidence_only_boundary", report)
 
 
 if __name__ == "__main__":
