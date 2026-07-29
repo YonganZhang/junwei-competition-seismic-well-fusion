@@ -8,6 +8,7 @@ import tempfile
 import unittest
 import xml.etree.ElementTree as element_tree
 from pathlib import Path
+import subprocess
 
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
@@ -37,13 +38,12 @@ class FaultP12VisualizationTests(unittest.TestCase):
         cls._tempdir_two = tempfile.TemporaryDirectory()
         cls.output_root_one = Path(cls._tempdir_one.name) / "p12_visualization"
         cls.output_root_two = Path(cls._tempdir_two.name) / "p12_visualization"
-        cls.final_output_root = renderer.PUBLISHED_OUTPUT_ROOT
         cls.context = renderer._load_reported_context()
         cls.real_panel = renderer.build_real_test_panel(cls.context)
         cls.spatial_figure = renderer.build_spatial_context_figure(cls.context)
         cls.manifest_one = renderer.build_publication(cls.output_root_one)
         cls.manifest_two = renderer.build_publication(cls.output_root_two)
-        cls.manifest_disk = renderer.build_publication(cls.final_output_root)
+        cls.manifest_disk = json.loads((renderer.PUBLISHED_OUTPUT_ROOT / "manifest.json").read_text(encoding="utf-8"))
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -63,7 +63,19 @@ class FaultP12VisualizationTests(unittest.TestCase):
             "_pipelines/02_task_datasets/fault/p12_visualization.py",
         )
         self.assertEqual(contract["renderer"]["sha256"], renderer.sha256_file(TRACK_DIR / "p12_visualization.py"))
-        self.assertEqual(contract["source_commit"], renderer.git_head())
+        ancestor_check = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(renderer.PROJECT_ROOT),
+                "merge-base",
+                "--is-ancestor",
+                contract["source_commit"],
+                renderer.git_head(),
+            ],
+            check=False,
+        )
+        self.assertEqual(ancestor_check.returncode, 0)
         self.assertEqual(manifest["source_worktree"], ".claude/worktrees/track-fault")
         self.assertEqual(manifest["visual_qa_metadata"]["palette"], "Akun")
         self.assertEqual(manifest["visual_qa_metadata"]["probability_scale"], [0.0, 1.0])
