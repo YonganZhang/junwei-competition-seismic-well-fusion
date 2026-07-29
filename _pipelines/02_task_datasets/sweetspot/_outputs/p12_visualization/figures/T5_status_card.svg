@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="590.4pt" height="345.6pt" viewBox="0 0 590.4 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="691.2pt" height="388.8pt" viewBox="0 0 691.2 388.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -21,43 +21,93 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 345.6 
-L 590.4 345.6 
-L 590.4 0 
-L 0 0 
+   <path d="M 0 388.8
+L 691.2 388.8
+L 691.2 0
+L 0 0
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 83.86632 307.051776 
-L 521.29368 307.051776 
-Q 535.02048 307.051776 535.02048 299.068416 
-L 535.02048 49.987584 
-Q 535.02048 42.004224 521.29368 42.004224 
-L 83.86632 42.004224 
-Q 70.13952 42.004224 70.13952 49.987584 
-L 70.13952 299.068416 
-Q 70.13952 307.051776 83.86632 307.051776 
+    <path d="M 98.18496 345.433248
+L 610.29504 345.433248
+Q 626.36544 345.433248 626.36544 336.451968
+L 626.36544 56.236032
+Q 626.36544 47.254752 610.29504 47.254752
+L 98.18496 47.254752
+Q 82.11456 47.254752 82.11456 56.236032
+L 82.11456 336.451968
+Q 82.11456 345.433248 98.18496 345.433248
 z
 " style="fill: #ffffff; stroke: #d4d4d4; stroke-linejoin: miter"/>
    </g>
+   <g id="patch_3">
+    <path d="M 161.3952 106.5312
+L 225.6768 106.5312
+Q 247.104 106.5312 247.104 94.55616
+L 247.104 73.59984
+Q 247.104 61.6248 225.6768 61.6248
+L 161.3952 61.6248
+Q 139.968 61.6248 139.968 73.59984
+L 139.968 94.55616
+Q 139.968 106.5312 161.3952 106.5312
+z
+" clip-path="url(#p1843339c5b)" style="fill: #3951a2"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 263.1744 106.5312
+L 423.8784 106.5312
+Q 445.3056 106.5312 445.3056 94.55616
+L 445.3056 73.59984
+Q 445.3056 61.6248 423.8784 61.6248
+L 263.1744 61.6248
+Q 241.7472 61.6248 241.7472 73.59984
+L 241.7472 94.55616
+Q 241.7472 106.5312 263.1744 106.5312
+z
+" clip-path="url(#p1843339c5b)" style="fill: #9a7b29"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 129.2544 124.49376
+L 579.2256 124.49376
+" clip-path="url(#p1843339c5b)" style="fill: none; stroke: #d6d6d6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 354.24 304.11936
+L 354.24 130.48128
+" clip-path="url(#p1843339c5b)" style="fill: none; stroke: #e4e4e4; stroke-linecap: square"/>
+   </g>
    <g id="text_1">
-    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="87.5268" y="56.890672" transform="rotate(-0 87.5268 56.890672)">(a)</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #111111" x="102.4704" y="63.072593" transform="rotate(-0 102.4704 63.072593)">(a)</text>
    </g>
    <g id="text_2">
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 78.86919)">T5</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 87.81759)">remaining oil infill</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 96.77349)">state: not feasible</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 105.72189)">cause: blocked by contract</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 114.67779)">label generated: no</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 123.63369)">expected cells: 0</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 132.58209)">scope: no valid label contract</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 141.53049)">commit: 59275587</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 150.47889)">simulation proxy is not</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 159.43479)">approved as field truth and</text>
-    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(110.4048 168.38319)">must remain non-usable.</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="161.3952" y="86.197219" transform="rotate(-0 161.3952 86.197219)">T5</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 8.7px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; text-anchor: start; fill: #ffffff" x="263.1744" y="86.126578" transform="rotate(-0 263.1744 86.126578)">not feasible</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(139.968 150.91383)">name: remaining oil infill</text>
+    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(139.968 159.65118)">state: not feasible</text>
+    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(139.968 168.38103)">cause: blocked by contract</text>
+    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(139.968 177.11838)">scope: no valid label</text>
+    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(139.968 185.84823)">contract</text>
+    <text style="font-size: 8px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(139.968 194.57808)">commit: 59275587</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.9px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(386.3808 150.845533)">label generated: no</text>
+    <text style="font-size: 7.9px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(386.3808 159.365757)">expected cells: 0</text>
+    <text style="font-size: 7.9px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(386.3808 167.878575)">simulation proxy is not</text>
+    <text style="font-size: 7.9px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(386.3808 176.398799)">approved as field truth</text>
+    <text style="font-size: 7.9px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(386.3808 184.911617)">and must remain</text>
+    <text style="font-size: 7.9px; font-family: 'TeX Gyre Termes', 'Times New Roman', serif; fill: #222222" transform="translate(386.3808 193.424435)">non-usable.</text>
    </g>
   </g>
  </g>
+ <defs>
+  <clipPath id="p1843339c5b">
+   <rect x="86.4" y="46.656" width="535.68" height="299.376"/>
+  </clipPath>
+ </defs>
 </svg>

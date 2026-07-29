@@ -284,6 +284,9 @@ def _save_bundle(fig: plt.Figure, stem: str, output_dir: Path) -> dict[str, Any]
         else:
             fig.savefig(path, dpi=300)
         paths[ext] = path
+    svg_text = paths["svg"].read_text(encoding="utf-8")
+    svg_text = "\n".join(line.rstrip() for line in svg_text.splitlines()) + "\n"
+    paths["svg"].write_text(svg_text, encoding="utf-8")
     plt.close(fig)
     with Image.open(paths["png"]) as image:
         width_px, height_px = image.size
@@ -412,6 +415,22 @@ def _state_chip(ax: plt.Axes, label: str, color: str) -> None:
         )
     )
     ax.text(0.08, 0.855, label, transform=ax.transAxes, ha="left", va="center", fontsize=8.3, fontweight="bold", color="white")
+
+
+def _pill(ax: plt.Axes, xy: tuple[float, float], width: float, label: str, color: str, fontsize: float = 8.3) -> None:
+    x, y = xy
+    ax.add_patch(
+        patches.FancyBboxPatch(
+            (x, y),
+            width,
+            0.11,
+            boxstyle="round,pad=0.02,rounding_size=0.04",
+            linewidth=0,
+            facecolor=color,
+            transform=ax.transAxes,
+        )
+    )
+    ax.text(x + 0.02, y + 0.055, label, transform=ax.transAxes, ha="left", va="center", fontsize=fontsize, fontweight="bold", color="white")
 
 
 def _target_card(ax: plt.Axes, letter: str, target_id: str, meta: dict[str, Any]) -> None:
@@ -623,18 +642,34 @@ def _classification_target(data: dict[str, Any], target_id: str, output_dir: Pat
 
 def _status_target(data: dict[str, Any], target_id: str, output_dir: Path) -> dict[str, Any]:
     meta = TARGET_META[target_id]
-    fig = plt.figure(figsize=(8.2, 4.8))
+    fig = plt.figure(figsize=(9.6, 5.4))
     ax = fig.add_subplot(111)
     _card_frame(ax, "#FFFFFF", "#D4D4D4")
     _panel(ax, "a")
-    lines = [target_id, meta["name"], f"state: {_human_status(meta['status'])}", f"cause: {_human_evidence_class(meta['evidence_class'])}", f"scope: {_human_split_scope(meta['split_scope'])}", f"commit: {_short_commit(_source_commit(meta['stage3_json']))}", meta["caveat"]]
+    state = _human_status(meta["status"])
+    badge_color = {"not feasible": "#9A7B29", "blocked": "#A80326"}.get(state, "#3951A2")
+    _pill(ax, (0.12, 0.82), 0.16, target_id, "#3951A2", fontsize=9.0)
+    _pill(ax, (0.31, 0.82), 0.34 if len(state) < 15 else 0.42, state, badge_color, fontsize=8.7)
+    ax.plot([0.08, 0.92], [0.74, 0.74], transform=ax.transAxes, color="#D6D6D6", linewidth=1.0, solid_capstyle="round")
+
+    left_lines = [
+        f"name: {meta['name']}",
+        f"state: {state}",
+        f"cause: {_human_evidence_class(meta['evidence_class'])}",
+        f"scope: {_human_split_scope(meta['split_scope'])}",
+        f"commit: {_short_commit(_source_commit(meta['stage3_json']))}",
+    ]
+    right_lines = [meta["caveat"]]
     if target_id in {"T6", "T7"}:
-        lines.insert(4, f"dev source: {'available' if data['development_feature_source_available'] else 'unavailable'}")
-        lines.insert(5, "test h5 fallback forbidden")
+        right_lines.insert(0, f"dev source: {'available' if data['development_feature_source_available'] else 'unavailable'}")
+        right_lines.insert(1, "test h5 fallback forbidden")
     if target_id == "T5":
-        lines.insert(4, f"label generated: {'yes' if data['label_generated'] else 'no'}")
-        lines.insert(5, f"expected cells: {data['expected_training_cells']}")
-    ax.text(0.08, 0.88, _compact_lines(lines, width=31), transform=ax.transAxes, va="top", ha="left", fontsize=8.0, linespacing=1.32, color="#222222")
+        right_lines.insert(0, f"label generated: {'yes' if data['label_generated'] else 'no'}")
+        right_lines.insert(1, f"expected cells: {data['expected_training_cells']}")
+
+    ax.text(0.10, 0.67, _compact_lines(left_lines, width=26), transform=ax.transAxes, va="top", ha="left", fontsize=8.0, linespacing=1.28, color="#222222")
+    ax.text(0.56, 0.67, _compact_lines(right_lines, width=24), transform=ax.transAxes, va="top", ha="left", fontsize=7.9, linespacing=1.26, color="#222222")
+    ax.plot([0.50, 0.50], [0.14, 0.72], transform=ax.transAxes, color="#E4E4E4", linewidth=1.0)
     return _save_bundle(fig, f"{target_id}_{meta['detail_kind']}_card", output_dir)
 
 
@@ -951,6 +986,12 @@ def build(output_dir: Path | None = None) -> dict[str, Any]:
                 "status": "pending",
                 "reviewer": None,
                 "reviewed_at": None,
+                "reviewed_sha256": None,
+                "colors_consistent": None,
+                "labels_legible": None,
+                "no_clipping": None,
+                "no_overlap": None,
+                "scientific_boundary_preserved": None,
                 "notes": None,
             },
         },

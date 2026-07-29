@@ -30,6 +30,9 @@ class SweetspotP12VisualizationTests(unittest.TestCase):
             self.assertTrue(contract["renderer"]["sha256"])
             self.assertFalse(contract["manual_review"]["reviewed"])
             self.assertEqual(contract["manual_review"]["status"], "pending")
+            for key in ("reviewer", "reviewed_at", "reviewed_sha256", "colors_consistent", "labels_legible", "no_clipping", "no_overlap", "scientific_boundary_preserved", "notes"):
+                self.assertIn(key, contract["manual_review"])
+                self.assertIsNone(contract["manual_review"][key])
             self.assertTrue(contract["inputs"])
             self.assertTrue(contract["outputs"])
             for record in contract["inputs"]:
