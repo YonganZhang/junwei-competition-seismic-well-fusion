@@ -1,0 +1,88 @@
+{
+  "audit": {
+    "channel_scaling": "clamp[-5,5]->rescale_to_[0,1]->repeat_to_3_channels->imagenet_normalize",
+    "decoder": "frozen base adapter logits plus gated residual probe",
+    "eval_parity": "same locked development folds and metrics as p9 evidence",
+    "fusion": "additive residual fusion with sigmoid gate",
+    "input_channels": "[B,1,H,W]",
+    "label_mapping": "task-specific independent class IDs from locked schemas",
+    "loss": "weighted_cross_entropy_on_raw_logits",
+    "native_preprocessing": "sam2.1_hiera_b+ official image encoder normalization",
+    "peft": "base adapter frozen; only residual head and scalar gate train",
+    "postprocess": "argmax only at evaluation; no threshold tuning",
+    "prompt_generation": "none_no_validation_truth_path_exists"
+  },
+  "comparison": {
+    "gated_residual_repair_macro_fold_miou": 0.03169134342434343,
+    "pretrained_adapter_macro_fold_miou": 0.08108722916287324,
+    "pretrained_minus_strong_baseline": -0.04095878105375944,
+    "random_init_control_macro_fold_miou": 0.020871443490972447,
+    "random_minus_pretrained": -0.06021578567190079,
+    "repair_minus_pretrained": -0.04939588573852981,
+    "repair_minus_strong_baseline": -0.09035466679228925,
+    "strong_baseline_macro_fold_miou": 0.12204601021663268
+  },
+  "decision": {
+    "default_enabled": false,
+    "state": "NON_BENEFICIAL"
+  },
+  "evaluation": {
+    "folds": [
+      0,
+      4
+    ],
+    "frozen_test_accessed": false,
+    "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+    "max_train_samples": 32,
+    "max_updates": 40,
+    "max_validation_samples": 16
+  },
+  "fold_results": [
+    {
+      "fold_id": 0,
+      "gated_residual_repair_last_train_loss": 2.2978293895721436,
+      "gated_residual_repair_miou": 0.019523003335872535,
+      "pretrained_adapter_last_train_loss": 1.9065881967544556,
+      "pretrained_adapter_miou": 0.06743936319273369,
+      "random_init_control_last_train_loss": 2.2358741760253906,
+      "random_init_control_miou": 0.017069627830036505,
+      "seed": 2693,
+      "strong_baseline_miou": 0.13103639435257178,
+      "train_samples": 32,
+      "validation_samples": 16
+    },
+    {
+      "fold_id": 4,
+      "gated_residual_repair_last_train_loss": 2.229929208755493,
+      "gated_residual_repair_miou": 0.04385968351281433,
+      "pretrained_adapter_last_train_loss": 1.8293553590774536,
+      "pretrained_adapter_miou": 0.09473509513301279,
+      "random_init_control_last_train_loss": 2.401759147644043,
+      "random_init_control_miou": 0.02467325915190839,
+      "seed": 2697,
+      "strong_baseline_miou": 0.11305562608069358,
+      "train_samples": 32,
+      "validation_samples": 16
+    }
+  ],
+  "model": {
+    "checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5",
+    "model_id": "facebook/sam2.1-hiera-base-plus",
+    "real_pretrained_weights_loaded": true,
+    "repair_gate_bounds": [
+      0.0,
+      1.0
+    ],
+    "residual_cannot_erase_base": true,
+    "source_root": "/mnt/data/yongan-admin-2/.cache/upstream/sam2",
+    "trainable_scope_after": "frozen_base_plus_gated_residual_probe",
+    "trainable_scope_before": "fpn_projections_and_semantic_head"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "duration_seconds": 31.365593044902198,
+    "raw_predictions_persisted": false
+  },
+  "schema_version": "facies-p10-sam2-repair-audit/v1",
+  "task_id": "facies_f3"
+}

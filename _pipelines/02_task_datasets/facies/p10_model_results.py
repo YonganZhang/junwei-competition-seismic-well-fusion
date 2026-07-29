@@ -335,43 +335,126 @@ def build_rows() -> list[dict[str, Any]]:
                 )
             )
 
-    # Repair-audit rows: blocked because the SAM2 source checkout imports hydra,
-    # which is absent in both the system interpreter and the shared torch env.
-    blocker_note = (
-        "repair probe could not execute: ModuleNotFoundError: No module named 'hydra'; "
-        "checked in system python and torch-common env"
-    )
-    blocker_evidence = str(P10_REPAIR_BLOCKER_PATH.relative_to(PROJECT_ROOT))
+    # Repair-audit rows. Prefer the completed development-only probe when present;
+    # retain a blocked row only for tasks without a materialized summary.
     for task in TASK_LABELS:
         meta = TASK_LABELS[task]
-        rows.append(
-            RowContext(
-                track="facies",
-                dataset=meta["dataset"],
-                task_type=meta["task_type"],
-                model_name="facebook/sam2.1-hiera-base-plus+gated-residual",
-                model_family="SAM2.1 Hiera Base Plus",
-                is_foundation_model=True,
-                foundation_type="image_segmentation_foundation_encoder",
-                integration_point="gated_residual_repair_audit",
-                fusion_method="base_logits_plus_gated_residual_probe",
-                preprocess_version="p10_sam2_repair_audit_identity_norm",
-                split_protocol="p10_sam2_repair_audit_blocked",
-                seed_or_fold="blocked",
-                metric_name="miou",
-                metric_value=float("nan"),
-                higher_is_better=True,
-                baseline_model="facebook/sam2.1-hiera-base-plus",
-                baseline_value=float("nan"),
-                status="data_blocked",
-                evidence_path=blocker_evidence,
-                checkpoint_path=str(SAM2_CHECKPOINT),
-                code_commit=CURRENT_COMMIT,
-                root_cause="missing_hydra_dependency_in_sam2_checkout",
-                fix_applied="none",
-                notes=blocker_note,
+        summary_path = P10_REPAIR_SUMMARIES[task]
+        if summary_path.exists():
+            summary = read_json(summary_path)
+            evidence_path = str(summary_path.relative_to(PROJECT_ROOT))
+            for fold in summary["fold_results"]:
+                fold_id = int(fold["fold_id"])
+                seed = int(fold["seed"])
+                comparisons = [
+                    (
+                        "facebook/sam2.1-hiera-base-plus",
+                        float(fold["pretrained_adapter_miou"]),
+                        "sam2.1-hiera-base-plus-random-init",
+                        float(fold["random_init_control_miou"]),
+                        "effect_supported_not_promoted",
+                        "none",
+                        "pretraining improves the same architecture, but the adapter remains below the locked strong baseline",
+                    ),
+                    (
+                        "facebook/sam2.1-hiera-base-plus+gated-residual",
+                        float(fold["gated_residual_repair_miou"]),
+                        "facebook/sam2.1-hiera-base-plus",
+                        float(fold["pretrained_adapter_miou"]),
+                        "non_beneficial",
+                        "gated_residual_probe_tested",
+                        "the gated residual repair underfits and degrades the pretrained adapter on the fixed development fold",
+                    ),
+                    (
+                        "sam2.1-hiera-base-plus-random-init",
+                        float(fold["random_init_control_miou"]),
+                        meta["baseline_model"],
+                        float(fold["strong_baseline_miou"]),
+                        "control",
+                        "none",
+                        "same-architecture random initialization control",
+                    ),
+                    (
+                        meta["baseline_model"],
+                        float(fold["strong_baseline_miou"]),
+                        meta["baseline_model"],
+                        float(fold["strong_baseline_miou"]),
+                        "reference",
+                        "none",
+                        "locked strong baseline on the same development samples",
+                    ),
+                ]
+                for (
+                    model_name,
+                    metric_value,
+                    baseline_model,
+                    baseline_value,
+                    status,
+                    fix_applied,
+                    root_cause,
+                ) in comparisons:
+                    rows.append(
+                        RowContext(
+                            track="facies",
+                            dataset=meta["dataset"],
+                            task_type=meta["task_type"],
+                            model_name=model_name,
+                            model_family="SAM2.1 Hiera Base Plus" if "sam2" in model_name.lower() else "locked strong baseline",
+                            is_foundation_model=model_name.startswith("facebook/"),
+                            foundation_type="image_segmentation_foundation_encoder" if "sam2" in model_name.lower() else "none",
+                            integration_point="gated_residual_repair_audit",
+                            fusion_method="base_logits_plus_gated_residual_probe" if "gated-residual" in model_name else "semantic_adapter",
+                            preprocess_version="p10_sam2_repair_audit_v1",
+                            split_protocol=f"p10_sam2_repair_audit_dev;manifest={summary['evaluation']['manifest_stable_hash']}",
+                            seed_or_fold=f"fold_{fold_id};seed_{seed}",
+                            metric_name="miou",
+                            metric_value=metric_value,
+                            higher_is_better=True,
+                            baseline_model=baseline_model,
+                            baseline_value=baseline_value,
+                            status=status,
+                            evidence_path=evidence_path,
+                            checkpoint_path=str(SAM2_CHECKPOINT) if "sam2" in model_name.lower() else "",
+                            code_commit=CURRENT_COMMIT,
+                            root_cause=root_cause,
+                            fix_applied=fix_applied,
+                            notes=(
+                                f"train_samples={fold['train_samples']}; validation_samples={fold['validation_samples']}; "
+                                f"frozen_test_accessed={summary['evaluation']['frozen_test_accessed']}; "
+                                f"real_pretrained_weights_loaded={summary['model']['real_pretrained_weights_loaded']}"
+                            ),
+                        )
+                    )
+        else:
+            blocker_evidence = str(P10_REPAIR_BLOCKER_PATH.relative_to(PROJECT_ROOT))
+            rows.append(
+                RowContext(
+                    track="facies",
+                    dataset=meta["dataset"],
+                    task_type=meta["task_type"],
+                    model_name="facebook/sam2.1-hiera-base-plus+gated-residual",
+                    model_family="SAM2.1 Hiera Base Plus",
+                    is_foundation_model=True,
+                    foundation_type="image_segmentation_foundation_encoder",
+                    integration_point="gated_residual_repair_audit",
+                    fusion_method="base_logits_plus_gated_residual_probe",
+                    preprocess_version="p10_sam2_repair_audit_v1",
+                    split_protocol="p10_sam2_repair_audit_blocked",
+                    seed_or_fold="blocked",
+                    metric_name="miou",
+                    metric_value=float("nan"),
+                    higher_is_better=True,
+                    baseline_model="facebook/sam2.1-hiera-base-plus",
+                    baseline_value=float("nan"),
+                    status="data_blocked",
+                    evidence_path=blocker_evidence,
+                    checkpoint_path=str(SAM2_CHECKPOINT),
+                    code_commit=CURRENT_COMMIT,
+                    root_cause="repair_summary_not_materialized",
+                    fix_applied="none",
+                    notes="development-only repair summary is absent",
+                )
             )
-        )
 
     # Holdout confirmation rows use the refit baseline; they are not a tuning source.
     for task, task_payload in stage4_summary["tasks"].items():
@@ -535,14 +618,6 @@ def write_manifests(rows: list[dict[str, Any]], output_dir: Path) -> tuple[Path,
         },
         {
             "kind": "table",
-            "name": "p10_sam2_repair_audit/repair_blocker.json",
-            "path": str(P10_REPAIR_BLOCKER_PATH.relative_to(PROJECT_ROOT)),
-            "status": "generated",
-            "sha256": sha256_file(P10_REPAIR_BLOCKER_PATH),
-            "description": "Explicit blocker evidence for the attempted SAM2 repair probe.",
-        },
-        {
-            "kind": "table",
             "name": "p5_stage3_results.jsonl",
             "path": str(STAGE3_SOURCE.relative_to(PROJECT_ROOT)),
             "status": "indexed",
@@ -582,6 +657,19 @@ def write_manifests(rows: list[dict[str, Any]], output_dir: Path) -> tuple[Path,
             "description": "SAM2 facies effect summary for Penobscot.",
         },
     ]
+    for task, summary_path in P10_REPAIR_SUMMARIES.items():
+        if not summary_path.exists():
+            continue
+        tables.append(
+            {
+                "kind": "table",
+                "name": f"p10_sam2_repair_audit/{task}/summary.json",
+                "path": str(summary_path.relative_to(PROJECT_ROOT)),
+                "status": "generated",
+                "sha256": sha256_file(summary_path),
+                "description": f"Development-only SAM2 repair audit summary for {task}.",
+            }
+        )
 
     figures_path = output_dir / "figures_manifest.csv"
     tables_path = output_dir / "tables_manifest.csv"
@@ -908,6 +996,158 @@ def write_primary_metric_figure(rows: list[dict[str, Any]], output_dir: Path) ->
     ax.set_ylim(0, max(after) + 0.05)
     ax.grid(axis="y", alpha=0.2)
     ax.legend(frameon=False)
+    path = output_dir / "before_after_primary_metric.png"
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def write_audit_report(rows: list[dict[str, Any]], output_dir: Path) -> Path:
+    summaries = {
+        task: read_json(path)
+        for task, path in P10_REPAIR_SUMMARIES.items()
+        if path.exists()
+    }
+    lines = [
+        "# Facies P10 model-results audit",
+        "",
+        "## Conclusion",
+        "",
+        "The corrected SAM2 environment ran the development-only repair audit for both facies datasets.",
+        "Real pretrained weights improve the same architecture over random initialization, so the foundation encoder is useful.",
+        "However, the pretrained adapter still trails the locked strong segmentation baselines, and the tested gated-residual fusion degrades the pretrained adapter.",
+        "The honest end-to-end decision therefore remains non_beneficial; no holdout was used for tuning.",
+        "",
+        "## Interface audit matrix",
+        "",
+        "| Item | Evidence | Result |",
+        "|---|---|---|",
+        "| Input channels | `_models/facies/sam2_semantic.py:forward`; summaries record `[B,1,H,W]` | one seismic channel is repeated to three channels before encoder normalization |",
+        "| Amplitude scaling | adapter forward path | clamp `[-5,5]`, rescale to `[0,1]`, then ImageNet mean/std |",
+        "| Native SAM2 preprocessing | audited source checkout and real checkpoint hash | official SAM2.1 Hiera-B+ encoder loaded with real pretrained weights |",
+        "| Prompt leakage | no prompt input in semantic adapter | no validation-label prompt path exists |",
+        "| Label mapping | `pipeline_contract.py` | F3 remains 10-class; Penobscot remains 8-class |",
+        "| Decoder / fusion | `p10_sam2_repair_audit.py` | frozen base logits plus a sigmoid-gated residual head was tested |",
+        "| PEFT / freeze policy | repair summaries | base adapter frozen; only residual head and scalar gate trained |",
+        "| Loss / postprocess | repair script and `p4_metrics.py` | weighted cross-entropy on raw logits; argmax only for evaluation |",
+        "| Evaluation parity | manifest hashes and fold rows | fixed development manifests, fixed sample caps/seeds, no frozen-test access |",
+        "",
+        "## Development-only comparison",
+        "",
+        "| Dataset | Strong baseline mIoU | Pretrained adapter mIoU | Random-init mIoU | Foundation gain | Gated repair mIoU | Repair vs pretrained |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for task, meta in TASK_LABELS.items():
+        summary = summaries[task]
+        comparison = summary["comparison"]
+        strong = float(comparison["strong_baseline_macro_fold_miou"])
+        pretrained = float(comparison["pretrained_adapter_macro_fold_miou"])
+        random_init = float(comparison["random_init_control_macro_fold_miou"])
+        repair = float(comparison["gated_residual_repair_macro_fold_miou"])
+        lines.append(
+            f"| {meta['dataset']} | {strong:.6f} | {pretrained:.6f} | {random_init:.6f} | "
+            f"{pretrained - random_init:+.6f} | {repair:.6f} | {repair - pretrained:+.6f} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Per-fold evidence",
+            "",
+        ]
+    )
+    for task, meta in TASK_LABELS.items():
+        summary = summaries[task]
+        lines.extend(
+            [
+                f"### {meta['dataset']}",
+                "",
+                "| Fold | Seed | Strong baseline | Pretrained adapter | Random-init | Gated repair |",
+                "|---|---:|---:|---:|---:|---:|",
+            ]
+        )
+        for fold in summary["fold_results"]:
+            lines.append(
+                f"| {fold['fold_id']} | {fold['seed']} | {float(fold['strong_baseline_miou']):.6f} | "
+                f"{float(fold['pretrained_adapter_miou']):.6f} | {float(fold['random_init_control_miou']):.6f} | "
+                f"{float(fold['gated_residual_repair_miou']):.6f} |"
+            )
+        lines.append("")
+    lines.extend(
+        [
+            "## Root cause and fix status",
+            "",
+            "- The earlier blocker was an environment-selection error: `atom-sam2-py310` already contained Hydra and the audited SAM2 dependencies.",
+            "- Fix applied: execute both repair probes in that environment and replace the false blocker with measured development evidence.",
+            "- The tested gated-residual fusion is not a successful repair; it underfits and reduces mIoU relative to the pretrained adapter.",
+            "- Pretraining itself is beneficial versus same-architecture random initialization, but the current semantic adapter/head is still not competitive with the strong task-specific baselines.",
+            "",
+            "## Evidence boundary",
+            "",
+            "- Both summaries record `frozen_test_accessed=false`.",
+            "- Each probe used two fixed development folds, fixed seeds, at most 32 train samples and 16 validation samples per fold.",
+            "- No threshold tuning, seed selection, label remapping, or holdout reuse was performed.",
+            "",
+            "## Residual risk",
+            "",
+            "- This was a bounded repair audit, not a full backbone/head retraining campaign.",
+            "- A future attempt should test a properly trained multi-scale decoder or parameter-efficient fine-tuning strategy on the frozen development protocol; the current gated residual head should not be promoted.",
+        ]
+    )
+    report_path = output_dir / "audit_report.md"
+    report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return report_path
+
+
+def write_primary_metric_figure(rows: list[dict[str, Any]], output_dir: Path) -> Path:
+    labels: list[str] = []
+    strong: list[float] = []
+    pretrained: list[float] = []
+    random_init: list[float] = []
+    repair: list[float] = []
+    for task, meta in TASK_LABELS.items():
+        summary = read_json(P10_REPAIR_SUMMARIES[task])
+        comparison = summary["comparison"]
+        labels.append(meta["dataset"])
+        strong.append(float(comparison["strong_baseline_macro_fold_miou"]))
+        pretrained.append(float(comparison["pretrained_adapter_macro_fold_miou"]))
+        random_init.append(float(comparison["random_init_control_macro_fold_miou"]))
+        repair.append(float(comparison["gated_residual_repair_macro_fold_miou"]))
+
+    fig, ax = plt.subplots(figsize=(9.2, 5.2), constrained_layout=True)
+    x = np.arange(len(labels), dtype=float)
+    width = 0.2
+    series = [
+        ("Strong baseline", strong, "#7f8c8d", -1.5),
+        ("SAM2 pretrained", pretrained, "#2e86de", -0.5),
+        ("SAM2 random-init", random_init, "#95a5a6", 0.5),
+        ("Gated repair", repair, "#e67e22", 1.5),
+    ]
+    for name, values, color, offset in series:
+        bars = ax.bar(x + offset * width, values, width=width, label=name, color=color)
+        for bar, value in zip(bars, values):
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                value + 0.003,
+                f"{value:.3f}",
+                ha="center",
+                va="bottom",
+                fontsize=8,
+            )
+    ax.set_xticks(x, labels)
+    ax.set_ylabel("Development mIoU (higher is better)")
+    ax.set_title("Facies SAM2 audit: foundation gain is real, repair remains non-beneficial")
+    ax.set_ylim(0, max(strong) * 1.3)
+    ax.grid(axis="y", alpha=0.2)
+    ax.legend(frameon=False, ncol=2)
+    ax.text(
+        0.01,
+        0.99,
+        "Fixed development folds; no frozen-test tuning",
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=9,
+    )
     path = output_dir / "before_after_primary_metric.png"
     fig.savefig(path, dpi=180)
     plt.close(fig)

@@ -68,15 +68,41 @@ class P10ModelResultsTests(unittest.TestCase):
                 path = TRACK_DIR.parents[2] / row["path"]
                 self.assertTrue(path.exists(), path)
 
-    def test_repair_blocker_is_recorded_as_data_blocked(self) -> None:
+    def test_real_repair_audits_replace_the_false_environment_blocker(self) -> None:
         text = self.outputs["audit_report.md"].read_text(encoding="utf-8")
-        self.assertIn("data_blocked", text)
-        self.assertIn("ModuleNotFoundError: No module named 'hydra'", text)
-        blocker = OUTPUT_DIR / "p10_sam2_repair_audit" / "repair_blocker.json"
-        self.assertTrue(blocker.exists(), blocker)
-        payload = blocker.read_text(encoding="utf-8")
-        self.assertIn('"blocked_state": "data_blocked"', payload)
-        self.assertIn("torch-common env", payload)
+        self.assertIn("atom-sam2-py310", text)
+        self.assertIn("Foundation gain", text)
+        self.assertIn("non_beneficial", text)
+
+        summary_paths = [
+            TRACK_DIR / "_outputs" / "p10_sam2_repair_audit" / task / "summary.json"
+            for task in ("facies_f3", "facies_penobscot")
+        ]
+        for summary_path in summary_paths:
+            self.assertTrue(summary_path.exists(), summary_path)
+            summary = json.loads(summary_path.read_text(encoding="utf-8"))
+            self.assertEqual(summary["decision"]["state"], "NON_BENEFICIAL")
+            self.assertFalse(summary["evaluation"]["frozen_test_accessed"])
+            self.assertTrue(summary["model"]["real_pretrained_weights_loaded"])
+            comparison = summary["comparison"]
+            self.assertGreater(
+                comparison["pretrained_adapter_macro_fold_miou"],
+                comparison["random_init_control_macro_fold_miou"],
+            )
+            self.assertLess(
+                comparison["gated_residual_repair_macro_fold_miou"],
+                comparison["pretrained_adapter_macro_fold_miou"],
+            )
+
+        with self.outputs["tables_manifest.csv"].open(newline="", encoding="utf-8") as handle:
+            paths = {row["path"] for row in csv.DictReader(handle)}
+        self.assertNotIn(
+            "_pipelines/02_task_datasets/facies/_outputs/p10_model_results/"
+            "p10_sam2_repair_audit/repair_blocker.json",
+            paths,
+        )
+        for summary_path in summary_paths:
+            self.assertIn(str(summary_path.relative_to(PROJECT_ROOT)), paths)
 
 
 if __name__ == "__main__":
