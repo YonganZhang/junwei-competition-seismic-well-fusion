@@ -105,13 +105,10 @@ class FaultP12VisualizationTests(unittest.TestCase):
         output_paths = {entry["path"] for entry in contract["outputs"]}
         expected_output_paths = {
             "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.png",
-            "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.svg",
-            "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.pdf",
             "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.png",
-            "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.svg",
-            "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.pdf",
         }
         self.assertEqual(output_paths, expected_output_paths)
+        self.assertEqual(len(contract["outputs"]), 2)
         for record in contract["outputs"]:
             for field in ("role", "path", "sha256", "width_px", "height_px", "dpi", "vector_companions"):
                 self.assertIn(field, record)
@@ -120,6 +117,7 @@ class FaultP12VisualizationTests(unittest.TestCase):
             self.assertGreater(record["height_px"], 0)
             self.assertEqual(len(record["sha256"]), 64)
             self.assertTrue((renderer.PROJECT_ROOT / record["path"]).exists())
+            self.assertEqual(sorted(record["vector_companions"]), ["pdf", "svg"])
 
     def test_deterministic_two_render_hashes_match(self) -> None:
         first = {Path(record["path"]).name: record["sha256"] for record in self.manifest_one["p12_contract"]["outputs"]}

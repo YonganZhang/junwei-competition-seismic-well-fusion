@@ -163,7 +163,7 @@
     }
   },
   "p12_contract": {
-    "generated_at": "2026-07-29T19:49:19.418816+00:00",
+    "generated_at": "2026-07-29T19:53:18.878226+00:00",
     "inputs": [
       {
         "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/baseline.py",
@@ -308,30 +308,6 @@
       },
       {
         "dpi": 300,
-        "height_px": 1065,
-        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.svg",
-        "role": "real_test_qualitative",
-        "sha256": "2d1bad90bdced084c82bbabde9063f9ae7812deae900e431f00c33d19f54142d",
-        "vector_companions": [
-          "png",
-          "pdf"
-        ],
-        "width_px": 4080
-      },
-      {
-        "dpi": 300,
-        "height_px": 1065,
-        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/real_test_panel.pdf",
-        "role": "real_test_qualitative",
-        "sha256": "b4a8261bd933dc486622261556cb0f8ed72d9138c70ea8fe2325e7944049f02e",
-        "vector_companions": [
-          "png",
-          "svg"
-        ],
-        "width_px": 4080
-      },
-      {
-        "dpi": 300,
         "height_px": 1380,
         "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.png",
         "role": "spatial_context_3d",
@@ -341,52 +317,28 @@
           "pdf"
         ],
         "width_px": 4350
-      },
-      {
-        "dpi": 300,
-        "height_px": 1380,
-        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.svg",
-        "role": "spatial_context_3d",
-        "sha256": "c5569dd64ce994e932073cbcbeea837fe11a5c51de69a27ff0494f81bfe2dbcb",
-        "vector_companions": [
-          "png",
-          "pdf"
-        ],
-        "width_px": 4350
-      },
-      {
-        "dpi": 300,
-        "height_px": 1380,
-        "path": "_pipelines/02_task_datasets/fault/_outputs/p12_visualization/figures/spatial_context.pdf",
-        "role": "spatial_context_3d",
-        "sha256": "29a465db6d2ea2ad862cf429dcdef8191aa7ad754c0408b44b896cb30015a7e0",
-        "vector_companions": [
-          "png",
-          "svg"
-        ],
-        "width_px": 4350
       }
     ],
     "profile": "p12_tracks_1_3_5",
     "renderer": {
       "path": "_pipelines/02_task_datasets/fault/p12_visualization.py",
-      "sha256": "81dcf8aa986ec65fb88a5363ec70fea8db73c2c1a46b6c3bab83c0888b68e880"
+      "sha256": "0a1542361644e104087dcf89b6fba3ab0e010c4bd0712ebecb5d4f748db1f22d"
     },
     "schema_version": "scientific-visualization-contract/v1",
     "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
-    "source_commit": "22da33f9264889ab84101973ccc62f006c521ed3",
+    "source_commit": "8d081ed8c43e22f6cc034909f71d7bc854d4f166",
     "track_id": "fault"
   },
   "provenance": {
-    "generated_at": "2026-07-29T19:49:19.418816+00:00",
+    "generated_at": "2026-07-29T19:53:18.878226+00:00",
     "renderer": "_pipelines/02_task_datasets/fault/p12_visualization.py",
-    "renderer_sha256": "81dcf8aa986ec65fb88a5363ec70fea8db73c2c1a46b6c3bab83c0888b68e880",
+    "renderer_sha256": "0a1542361644e104087dcf89b6fba3ab0e010c4bd0712ebecb5d4f748db1f22d",
     "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
-    "source_commit": "22da33f9264889ab84101973ccc62f006c521ed3"
+    "source_commit": "8d081ed8c43e22f6cc034909f71d7bc854d4f166"
   },
   "renderer": {
     "path": "_pipelines/02_task_datasets/fault/p12_visualization.py",
-    "sha256": "81dcf8aa986ec65fb88a5363ec70fea8db73c2c1a46b6c3bab83c0888b68e880"
+    "sha256": "0a1542361644e104087dcf89b6fba3ab0e010c4bd0712ebecb5d4f748db1f22d"
   },
   "schema_version": "fault-p12-publication-v1",
   "selection": {
@@ -421,7 +373,7 @@
       40
     ]
   },
-  "source_commit": "22da33f9264889ab84101973ccc62f006c521ed3",
+  "source_commit": "8d081ed8c43e22f6cc034909f71d7bc854d4f166",
   "source_worktree": ".claude/worktrees/track-fault",
   "split_scope": {
     "notes": [
