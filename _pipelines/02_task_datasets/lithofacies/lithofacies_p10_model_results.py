@@ -81,6 +81,7 @@ TASK_TYPE = "gm09_fixed_nine_logo4"
 TRACK_NAME = "lithofacies"
 DATASET_NAME = "development_logo4"
 MODEL_SHEET = "model_metrics"
+WORKBOOK_SHEET_NAME = "模型指标"
 OUTPUT_DIRNAME = "p10_model_results"
 WORKBOOK_NAME = "track_model_metrics.xlsx"
 FIGURES_MANIFEST = "figures_manifest.csv"
@@ -442,7 +443,7 @@ def _write_workbook(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     wb = Workbook()
     ws = wb.active
-    ws.title = MODEL_SHEET
+    ws.title = WORKBOOK_SHEET_NAME
     ws.freeze_panes = "A2"
     ws.auto_filter.ref = f"A1:{chr(ord('A') + len(EXPECTED_WORKBOOK_COLUMNS) - 1)}{len(rows) + 1}"
     ws.append(list(EXPECTED_WORKBOOK_COLUMNS))
@@ -456,7 +457,7 @@ def _write_workbook(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
 def _write_csv(path: Path, rows: Sequence[dict[str, Any]], columns: Sequence[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(columns))
+        writer = csv.DictWriter(handle, fieldnames=list(columns), lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({column: row.get(column, "") for column in columns})
@@ -611,7 +612,7 @@ def _write_manifests(
     table_rows = [
         {
             "kind": "workbook_sheet",
-            "name": f"{WORKBOOK_NAME}::{MODEL_SHEET}",
+            "name": f"{WORKBOOK_NAME}::{WORKBOOK_SHEET_NAME}",
             "path": _relative(workbook_path),
             "rows": len(baseline_rows) + len(foundation_rows),
             "source": "p10_audit_bundle",
@@ -713,28 +714,41 @@ def _write_report(
     rows.extend(
         [
             "",
-            "## Root cause and fix status",
-            "",
-            "- No reproducible integration defect was found in the development-only path.",
-            "- The frozen fixed-nine / LOGO4 / train-fold-only preprocessing contract held.",
-            "- MOMENT pretrained improved over random initialization but did not beat the strong XGBoost baseline.",
-            "- Therefore the honest outcome is non_beneficial, not a repaired win.",
-            "",
-            "## Evidence and hashes",
-            "",
-            f"- development batch: `{audit_meta['development_batch_path']}`",
-            f"- development batch sha256: `{audit_meta['development_batch_sha256']}`",
-            f"- MOMENT snapshot: `{audit_meta['snapshot_path']}`",
-            f"- MOMENT snapshot sha256: `{audit_meta['snapshot_sha256']}`",
-            f"- split hash: `{audit_meta['split_hash']}`",
-            f"- code commit: `{os.environ.get('GIT_COMMIT', 'e4fd5d8a6371c2b0db6ba2258a41349ec6cfb4f7')}`",
-            "",
-            "## Residual risk",
-            "",
-            "- The audit is limited to the cached MOMENT-1-base snapshot and the fixed development contract.",
-            "- No frozen-test / known-holdout evidence was consumed.",
-            "- No HPO or split changes were performed.",
-        ]
+        "## Root cause and fix status",
+        "",
+        "- No reproducible integration defect was found in the development-only path.",
+        "- The frozen fixed-nine / LOGO4 / train-fold-only preprocessing contract held.",
+        "- MOMENT pretrained improved over random initialization but did not beat the strong XGBoost baseline.",
+        "- Therefore the honest outcome is non_beneficial, not a repaired win.",
+        "",
+        "## Evidence and hashes",
+        "",
+        f"- development batch: `{audit_meta['development_batch_path']}`",
+        f"- development batch sha256: `{audit_meta['development_batch_sha256']}`",
+        f"- MOMENT snapshot: `{audit_meta['snapshot_path']}`",
+        f"- MOMENT snapshot sha256: `{audit_meta['snapshot_sha256']}`",
+        f"- split hash: `{audit_meta['split_hash']}`",
+        f"- code commit: `{os.environ.get('P10_CODE_COMMIT', os.environ.get('GIT_COMMIT', 'e4fd5d8a6371c2b0db6ba2258a41349ec6cfb4f7'))}`",
+        "",
+        "## Traceable contract evidence",
+        "",
+        "- Depth-window / stride / direction: `p9_moment_effect._inputs()` keeps the fixed 33-position LOGO4 window and reshapes the 26 well-log + 9 seismic channels to `[B,35,33]`; the audit uses the cached development batch from `_outputs/p5_stage3/runtime/development_logo4.npz`.",
+        "- Padding / mask: `p4_contract.apply_fold_preprocessor()` preserves the 26 physical channels, appends the 13-channel missing mask, and records `fit_scope = fold_train_mother_families_only`.",
+        "- Fold-train-only normalization: `p4_contract.fit_fold_preprocessor()` derives `log_stats`, `seismic_stats`, and `class_weights` only from the fold-train mother families; validation uses the immutable train statistics only.",
+        "- MOMENT embedding / input channels: `_models/lithofacies/moment_depth.py` requires `n_channels=35`, interpolates the 33-position input to 512 internally, and uses the cached `momentfm.MOMENTPipeline`.",
+        "- Frozen / PEFT / head / output classes: the MOMENT audit uses `freeze_encoder=True`, `freeze_embedder=True`, `freeze_head=False`; `build_model(..., num_class=9)` is a fixed-nine classifier head.",
+        "- Fixed-nine label mapping: `p4_contract.CLASS_NAMES` and `classification_metrics_from_logits()` operate on the frozen GM09 nine-class schema; `fixed_schema_macro_f1` is the primary metric and `supported_class_macro_f1` remains diagnostic only.",
+        "- Class imbalance: `fit_fold_preprocessor()` computes fold-train-only `class_weights` and the runner passes them into `torch.nn.functional.cross_entropy`; the stage3 baseline uses locked `sqrt_inverse_frequency_weighted_*` contracts.",
+        "- LOGO fold / sample universe: `build_lithofacies_split_manifest()` freezes the four development mother families plus the F-5 test family; the development batch reports `split_hash = a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555` and `frozen_test_accessed = False`.",
+        "- Seed / metric direction: the stage3 development audit uses seeds `1867973658`, `2137841944`, `3902865753`; the score direction is maximize for `fixed_schema_macro_f1` and minimize for calibration, NLL, and Brier only.",
+        "",
+        "## Residual risk",
+        "",
+        "- The audit is limited to the cached MOMENT-1-base snapshot and the fixed development contract.",
+        "- No frozen-test / known-holdout evidence was consumed.",
+        "- MOMENT pretrained showed a small foundation gain over random initialization (`0.046308` vs `0.041112`) but remained far below XGBoost (`0.194938`), so the end-to-end conclusion stays `non_beneficial`.",
+        "- No HPO or split changes were performed.",
+    ]
     )
     report_path.write_text("\n".join(rows) + "\n", encoding="utf-8")
     return report_path
@@ -825,9 +839,9 @@ def verify_bundle(output_dir: Path) -> dict[str, Any]:
 
     wb = load_workbook(workbook, read_only=True)
     try:
-        if wb.sheetnames != [MODEL_SHEET]:
+        if wb.sheetnames != [WORKBOOK_SHEET_NAME]:
             raise AssertionError(f"unexpected sheet names: {wb.sheetnames}")
-        ws = wb[MODEL_SHEET]
+        ws = wb[WORKBOOK_SHEET_NAME]
         header = [cell.value for cell in next(ws.iter_rows(min_row=1, max_row=1))]
         if tuple(header) != EXPECTED_WORKBOOK_COLUMNS:
             raise AssertionError("workbook columns do not match the contract")

@@ -1,0 +1,4 @@
+kind,name,path,rows,source,notes
+workbook_sheet,track_model_metrics.xlsx::模型指标,_pipelines/02_task_datasets/lithofacies/_outputs/p10_model_results/track_model_metrics.xlsx,264,p10_audit_bundle,"single-sheet long table with baseline, pretrained, and random-init rows"
+evidence_table,p5_stage3_results.jsonl,_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl,96,p5_stage3,development baseline reference rows used for the paired comparison
+evidence_table,p9_moment_effect/summary.json,_pipelines/02_task_datasets/lithofacies/_outputs/p9_moment_effect/summary.json,4,p9_moment_effect,exact frozen-fold MOMENT reproduction evidence used to cross-check the repair

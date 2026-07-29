@@ -1,0 +1,8 @@
+kind,name,path,source,status,notes
+figure,before_after_primary_metric,_pipelines/02_task_datasets/lithofacies/_outputs/p10_model_results/before_after_primary_metric.png,p10_audit_bundle,new,paired baseline vs MOMENT primary metric on LOGO4 development pairs
+figure,fixed9_confusion,_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/figures/fixed9_confusion.png,p5_stage3,existing,development confusion matrix for the fixed-nine contract
+figure,fixed9_per_class_pr_f1,_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/figures/fixed9_per_class_pr_f1.png,p5_stage3,existing,development per-class PR/F1 support for the fixed-nine contract
+figure,calibration_reliability,_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/figures/calibration_reliability.png,p5_stage3,existing,development reliability curve for the frozen contract
+figure,fold_seed_matrix,_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/figures/fold_seed_matrix.png,p5_stage3,existing,fold×seed primary-metric matrix from the stage-3 leaderboard
+figure,missing_modality_diagnostic,_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/figures/missing_modality_diagnostic.png,p5_stage3,existing,missing-modality diagnostic for the development contract
+figure,continuous_depth_track_not_feasible,_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/figures/continuous_depth_track_not_feasible.png,p5_stage3,existing,explicitly states that 3D continuous-depth track is not feasible

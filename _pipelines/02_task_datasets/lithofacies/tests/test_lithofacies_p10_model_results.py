@@ -7,10 +7,13 @@ import tempfile
 from pathlib import Path
 import unittest
 
+from PIL import Image
+
 
 TRACK_DIR = Path(__file__).resolve().parents[1]
 WORKTREE_ROOT = TRACK_DIR.parents[2]
 WORKTREE_PARENT = WORKTREE_ROOT.parent
+TORCH_PYTHON = Path("/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python")
 SCRIPT = TRACK_DIR / "lithofacies_p10_model_results.py"
 STAGE3_RESULTS = TRACK_DIR / "_outputs" / "p5_stage3" / "p5_stage3_results.jsonl"
 STAGE3_LEADERBOARD = TRACK_DIR / "_outputs" / "p5_stage3" / "p5_stage3_gm09_p_leaderboard.json"
@@ -38,6 +41,7 @@ class LithofaciesP10ModelResultsTest(unittest.TestCase):
         _bootstrap_openpyxl()
         from openpyxl import load_workbook
 
+        self.assertTrue(TORCH_PYTHON.exists())
         self.assertTrue(SCRIPT.exists())
         self.assertTrue(STAGE3_RESULTS.exists())
         self.assertTrue(STAGE3_LEADERBOARD.exists())
@@ -48,8 +52,9 @@ class LithofaciesP10ModelResultsTest(unittest.TestCase):
             output_dir = Path(tmp) / "p10_model_results"
             env = os.environ.copy()
             env["CUDA_VISIBLE_DEVICES"] = "5"
+            env["PYTHONNOUSERSITE"] = "1"
             build_cmd = [
-                sys.executable,
+                str(TORCH_PYTHON),
                 str(SCRIPT),
                 "build",
                 "--development-batch",
@@ -79,7 +84,7 @@ class LithofaciesP10ModelResultsTest(unittest.TestCase):
                 text=True,
             )
             verify_cmd = [
-                sys.executable,
+                str(TORCH_PYTHON),
                 str(SCRIPT),
                 "verify",
                 "--output-dir",
@@ -98,12 +103,19 @@ class LithofaciesP10ModelResultsTest(unittest.TestCase):
             workbook = output_dir / "track_model_metrics.xlsx"
             wb = load_workbook(workbook, read_only=True)
             try:
-                self.assertEqual(wb.sheetnames, ["model_metrics"])
+                self.assertEqual(wb.sheetnames, ["模型指标"])
+                ws = wb["模型指标"]
+                self.assertEqual(ws.max_column, 26)
+                self.assertGreater(ws.max_row, 1)
             finally:
                 wb.close()
 
-            self.assertTrue((output_dir / "audit_report.md").exists())
-            self.assertTrue((output_dir / "before_after_primary_metric.png").exists())
+            report = output_dir / "audit_report.md"
+            figure = output_dir / "before_after_primary_metric.png"
+            self.assertTrue(report.exists())
+            self.assertTrue(figure.exists())
+            with Image.open(figure) as img:
+                img.verify()
 
 
 if __name__ == "__main__":
