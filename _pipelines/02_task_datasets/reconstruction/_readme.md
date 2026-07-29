@@ -4,6 +4,48 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P11 development-only residual fusion
+
+`p11_residual_fusion.py` implements a two-level OOF stack in the conditional
+development lane.  The base is the hash-verified P5 Stage-3
+`pykrige_ok3d/repeat_0` OOF prediction.  Every outer-fold residual fit receives
+only PyKrige predictions that were already OOF; its confidence gate is
+calibrated from another inner cross-fit and clipped to `[0,1]`.
+
+The foundation route uses the pinned
+`MIC-DKFZ/ResEncL-OpenMind-MAE` checkpoint
+(`7a847af785635335c00e711d16ff4d225d86ecd5992b14c059df2b520e3ee933`)
+and nnssl source revision
+`7044864404315536e92e670ef2f0ca24f11e6175`.  It samples all six encoder
+stages at the OOF voxel coordinates.  The matched no-foundation control uses
+the six cached seismic/coordinate columns and the same residual/gate fitting
+code.  `gate=0` is asserted bitwise equal to PyKrige.
+
+The real run used 10,240 OOF voxels, five outer folds and three fixed seeds.
+Pooled PyKrige RMSE was `0.0284497282`; gated OpenMind residual fusion was
+`0.0288029396` (1.24% worse), while the no-foundation control was
+`0.0285397612`.  OpenMind won only 3/15 fold-seed cells, so the route is
+`VERIFIED_NO_PROMOTION` and remains disabled.  The archived direct OpenMind
+score is strict-lane evidence without row-aligned conditional predictions and
+is therefore recorded as `not_comparable`, not mixed into this table.
+
+The P11 CLI has no test path.  It accepts only `train.h5`, reads only
+`seismic_patch[0:3]` and the active mask, and obtains PORO targets from the
+development OOF archives.  The genuine feature cache stays under `_tmp/`;
+portable metrics, fold/seed gate statistics and provenance are in
+`_outputs/p11_residual_fusion/summary.json` and `evidence.md`.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p11_residual_fusion.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$P11_NNSSL_SOURCE" \
+  --checkpoint "$P11_OPENMIND_CHECKPOINT" \
+  --dependency-root "$P11_OPENMIND_DEPENDENCIES" \
+  --device cuda:0
+```
+
 ## P5.1 R0/R1 development-only mechanism audit
 
 `reconstruction_p5_r01.py` implements the zero-training R0 provenance and

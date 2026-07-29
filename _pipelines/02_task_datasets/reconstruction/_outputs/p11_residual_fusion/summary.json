@@ -1,0 +1,2522 @@
+{
+  "ablations": {
+    "original_direct_foundation_path": {
+      "archived_macro_fold_rmse": 0.5415301607840952,
+      "archived_mode": "strict",
+      "archived_split_hash": "1f73ab386a27c533cf631fba9ddd26e07b765b325a12ef8477e986886be07fea",
+      "reason": "the archived direct OpenMind path is strict-lane evidence and does not persist row-aligned conditional OOF predictions",
+      "state": "not_comparable",
+      "summary_sha256": "534909ebe3dd015d85ceba2828647569b34c1a9e5ba2cb4b2b56b96a92bcf3b6"
+    },
+    "required": [
+      "pykrige_oof",
+      "gate_zero_exact",
+      "pretrained_openmind_residual_ungated",
+      "pretrained_openmind_residual_gated",
+      "no_foundation_structural_residual_gated"
+    ]
+  },
+  "evidence_scope": "fixed conditional development OOF only",
+  "experiment": {
+    "aggregate_by_seed": [
+      {
+        "gate_zero_bitwise_equal_to_pykrige": true,
+        "gate_zero_exact": {
+          "bias": -0.0018579539930215106,
+          "mae": 0.021413486381061376,
+          "rmse": 0.028449728170183285,
+          "rows": 10240
+        },
+        "no_foundation_structural_residual_gated": {
+          "bias": -0.0018596390491172694,
+          "mae": 0.021537866983208195,
+          "rmse": 0.02853976118747879,
+          "rows": 10240
+        },
+        "pretrained_openmind_residual_gated": {
+          "bias": 0.00014390402322123595,
+          "mae": 0.022175258491025758,
+          "rmse": 0.029387200552085664,
+          "rows": 10240
+        },
+        "pretrained_openmind_residual_ungated": {
+          "bias": -0.021106808631640977,
+          "mae": 0.06250254965980259,
+          "rmse": 0.07937133035356993,
+          "rows": 10240
+        },
+        "pykrige_oof": {
+          "bias": -0.0018579539930215106,
+          "mae": 0.021413486381061376,
+          "rmse": 0.028449728170183285,
+          "rows": 10240
+        },
+        "seed": 1867973658
+      },
+      {
+        "gate_zero_bitwise_equal_to_pykrige": true,
+        "gate_zero_exact": {
+          "bias": -0.0018579539930215106,
+          "mae": 0.021413486381061376,
+          "rmse": 0.028449728170183285,
+          "rows": 10240
+        },
+        "no_foundation_structural_residual_gated": {
+          "bias": -0.0018596390491172694,
+          "mae": 0.021537866983208195,
+          "rmse": 0.02853976118747879,
+          "rows": 10240
+        },
+        "pretrained_openmind_residual_gated": {
+          "bias": -0.0018575081989676092,
+          "mae": 0.021413237533425097,
+          "rmse": 0.028449529448590746,
+          "rows": 10240
+        },
+        "pretrained_openmind_residual_ungated": {
+          "bias": 0.6528773474179446,
+          "mae": 0.6765387102134224,
+          "rmse": 1.579842900609895,
+          "rows": 10240
+        },
+        "pykrige_oof": {
+          "bias": -0.0018579539930215106,
+          "mae": 0.021413486381061376,
+          "rmse": 0.028449728170183285,
+          "rows": 10240
+        },
+        "seed": 2137841944
+      },
+      {
+        "gate_zero_bitwise_equal_to_pykrige": true,
+        "gate_zero_exact": {
+          "bias": -0.0018579539930215106,
+          "mae": 0.021413486381061376,
+          "rmse": 0.028449728170183285,
+          "rows": 10240
+        },
+        "no_foundation_structural_residual_gated": {
+          "bias": -0.0018596390491172694,
+          "mae": 0.021537866983208195,
+          "rmse": 0.02853976118747879,
+          "rows": 10240
+        },
+        "pretrained_openmind_residual_gated": {
+          "bias": -0.002757542703852288,
+          "mae": 0.021505356177253136,
+          "rmse": 0.02857208887387326,
+          "rows": 10240
+        },
+        "pretrained_openmind_residual_ungated": {
+          "bias": 0.24540459252166621,
+          "mae": 0.2847175028042687,
+          "rmse": 0.617065706887038,
+          "rows": 10240
+        },
+        "pykrige_oof": {
+          "bias": -0.0018579539930215106,
+          "mae": 0.021413486381061376,
+          "rmse": 0.028449728170183285,
+          "rows": 10240
+        },
+        "seed": 3902865753
+      }
+    ],
+    "comparison": {
+      "no_foundation_structural_residual_gated_mean_seed_rmse": 0.02853976118747879,
+      "pretrained_fold_seed_cells": 15,
+      "pretrained_fold_seed_wins_vs_pykrige": 3,
+      "pretrained_minus_structural_rmse": 0.00026317843737110047,
+      "pretrained_openmind_residual_gated_mean_seed_rmse": 0.02880293962484989,
+      "pretrained_relative_gain_vs_pykrige": -0.012415283989841142,
+      "pykrige_oof_mean_seed_rmse": 0.02844972817018328
+    },
+    "decision": {
+      "default_enabled": false,
+      "promotion_rule": "at least 1% pooled development RMSE gain vs PyKrige, better than no-foundation structural control, and wins >=80% of fold-seed cells",
+      "state": "VERIFIED_NO_PROMOTION"
+    },
+    "fixed_protocol": {
+      "base_model": "pykrige_ok3d",
+      "base_predictions_for_all_residual_training": "cross-fitted P5 Stage-3 development OOF",
+      "gate_bounds": [
+        0.0,
+        1.0
+      ],
+      "gate_model": "inner-OOF LogisticRegression benefit probability times train-only selected bounded scale",
+      "gate_scale_candidates": [
+        0.0,
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "latent_channel_budget_per_stage": 16,
+      "outer_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "repeat_seeds": [
+        1867973658,
+        2137841944,
+        3902865753
+      ],
+      "residual_model": "StandardScaler + Ridge(alpha=10.0, solver=lsqr)",
+      "test_or_holdout_tuning": false
+    },
+    "per_fold_seed": [
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.14208984375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028744310687035056,
+          "0.25": 0.028745200367892847,
+          "0.50": 0.028837590424616175,
+          "0.75": 0.029020606968077362,
+          "1.00": 0.029292551375450802
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 0,
+        "residual_prediction_stats": {
+          "max": 0.048287085852816415,
+          "mean": -0.11187507766277865,
+          "min": -0.2024723607130276,
+          "p05": -0.180688161032573,
+          "p95": -0.05224138813993796,
+          "std": 0.03963158854752813
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.12104796700856982,
+          "mae": 0.12174266955280225,
+          "rmse": 0.13163250534339396,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          0
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.3151467645268816,
+          "mean": 0.2230900169979808,
+          "min": 0.15102434958952157,
+          "one_rate": 0.0,
+          "p05": 0.1593690969198462,
+          "p95": 0.29578960660246223,
+          "std": 0.047112410058761656,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.012339903731740683,
+          "mae": 0.025460394825696897,
+          "rmse": 0.032179860744708105,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.2109375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028405084503227252,
+          "0.25": 0.02796278108280816,
+          "0.50": 0.027765721540520358,
+          "0.75": 0.027819117994240375,
+          "1.00": 0.028121543802222357
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 1,
+        "residual_prediction_stats": {
+          "max": 0.11840915678052949,
+          "mean": 0.05449836989733593,
+          "min": 0.006456179628788085,
+          "p05": 0.024930594532614724,
+          "p95": 0.09165853475038713,
+          "std": 0.019921903445463254
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 0.5,
+        "train_fold_ids": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.05486475903758981,
+          "mae": 0.05629556585689451,
+          "rmse": 0.06796276097120219,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          1
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.23193359375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.03041486955578204,
+          "0.25": 0.030473222300359492,
+          "0.50": 0.030599847760187374,
+          "0.75": 0.030793903728397097,
+          "1.00": 0.03105412611922223
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 2,
+        "residual_prediction_stats": {
+          "max": 0.0904760614943282,
+          "mean": 0.04292663847604082,
+          "min": -0.003404800275050086,
+          "p05": 0.015782098540003127,
+          "p95": 0.07461577104478717,
+          "std": 0.01771004891936836
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.030044763416065975,
+          "mae": 0.031116657736431526,
+          "rmse": 0.03676382990058098,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          2
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.5000819307702076,
+          "mean": 0.37318415922774506,
+          "min": 0.1448558627729379,
+          "one_rate": 0.0,
+          "p05": 0.2086222563448594,
+          "p95": 0.48612661143884245,
+          "std": 0.0918472476549483,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.002929679843544821,
+          "mae": 0.023824177347490996,
+          "rmse": 0.0302065362833148,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.257568359375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02841076504648473,
+          "0.25": 0.028135600634088525,
+          "0.50": 0.027990753944044332,
+          "0.75": 0.0279782490601519,
+          "1.00": 0.028098262675626318
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 3,
+        "residual_prediction_stats": {
+          "max": 0.04660840928059196,
+          "mean": -0.006357983592976658,
+          "min": -0.05344304456416123,
+          "p05": -0.04103802349123773,
+          "p95": 0.03013474008693275,
+          "std": 0.022615983737052134
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 0.75,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.008355673869743318,
+          "mae": 0.032435881161631194,
+          "rmse": 0.03956280023224134,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          3
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.1322616922366842,
+          "mean": 0.023367786957703807,
+          "min": 0.0006325954104848216,
+          "one_rate": 0.0,
+          "p05": 0.0011904414946897577,
+          "p95": 0.07568834442512781,
+          "std": 0.024999715264601676,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.013364060633676351,
+          "mae": 0.02515846699745534,
+          "rmse": 0.03579647926762402,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.2618408203125,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02610775903168495,
+          "0.25": 0.02604186228222062,
+          "0.50": 0.02607259235626892,
+          "0.75": 0.026199609249120667,
+          "1.00": 0.02642152435075341
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 4,
+        "residual_prediction_stats": {
+          "max": 0.002706974929813346,
+          "mean": -0.07543622031071875,
+          "min": -0.1483416511709534,
+          "p05": -0.13304899285595326,
+          "p95": -0.02486565407154144,
+          "std": 0.03339696782185536
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 0.25,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.0610399247335475,
+          "mae": 0.07092197399125344,
+          "rmse": 0.0814628302816393,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          4
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.4154522675564927,
+          "mean": 0.3114105061721941,
+          "min": 0.21657808636244197,
+          "one_rate": 0.0,
+          "p05": 0.24318980814145805,
+          "p95": 0.371324390451822,
+          "std": 0.03984051729041491,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.011061097820842138,
+          "mae": 0.02189857441158888,
+          "rmse": 0.027770138702764197,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.4888916015625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028744310687035056,
+          "0.25": 0.02841086036726055,
+          "0.50": 0.028166901394627714,
+          "0.75": 0.028014771799408082,
+          "1.00": 0.027955970761228553
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 0,
+        "residual_prediction_stats": {
+          "max": 0.0032941510602692457,
+          "mean": -0.006328173572880732,
+          "min": -0.017982183426302426,
+          "p05": -0.014627919758800307,
+          "p95": 0.0007292170616997265,
+          "std": 0.005022364876874933
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.015501062918671921,
+          "mae": 0.024316177760890158,
+          "rmse": 0.029682509367159337,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          0
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.7115581697776326,
+          "mean": 0.5660293244486736,
+          "min": 0.3713677465751785,
+          "one_rate": 0.0,
+          "p05": 0.4461566712071475,
+          "p95": 0.6846915656143022,
+          "std": 0.08774072592249926,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.007076391245761335,
+          "mae": 0.023856853231200008,
+          "rmse": 0.029575892684307353,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.5103759765625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028405084503227252,
+          "0.25": 0.02797893407766041,
+          "0.50": 0.02764985465171799,
+          "0.75": 0.02742134125189126,
+          "1.00": 0.027295919722491378
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 1,
+        "residual_prediction_stats": {
+          "max": 0.017437416732375997,
+          "mean": 0.012035825899709519,
+          "min": 0.0070963384691588045,
+          "p05": 0.008426835919487473,
+          "p95": 0.0160312504410944,
+          "std": 0.0023376046695410086
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.012402215039963405,
+          "mae": 0.02481661816761284,
+          "rmse": 0.030814487505264398,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          1
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.2020155019868909,
+          "mean": 0.17039531498300214,
+          "min": 0.1435242416146053,
+          "one_rate": 0.0,
+          "p05": 0.15390981402564555,
+          "p95": 0.1877967008315721,
+          "std": 0.009999149027788371,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.011227428142520994,
+          "mae": 0.01401231620560552,
+          "rmse": 0.01723110992778652,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3929443359375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.03041486955578204,
+          "0.25": 0.030349437474332774,
+          "0.50": 0.030341771385932973,
+          "0.75": 0.030391915003477436,
+          "1.00": 0.030499583197735047
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 2,
+        "residual_prediction_stats": {
+          "max": 0.03754962196844355,
+          "mean": 0.009172762347585444,
+          "min": -0.010380420714771401,
+          "p05": -0.007357018916846233,
+          "p95": 0.026416502132964585,
+          "std": 0.011944745305431617
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 0.5,
+        "train_fold_ids": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.0037091127123894006,
+          "mae": 0.01268589483977552,
+          "rmse": 0.016048358692777133,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          2
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.8690772046377087,
+          "mean": 0.6940390075893473,
+          "min": 0.5450310762122739,
+          "one_rate": 0.0,
+          "p05": 0.5709544243774105,
+          "p95": 0.8069876628552775,
+          "std": 0.07483555360337563,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.007596709772192026,
+          "mae": 0.022624868337733677,
+          "rmse": 0.02897733957898977,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3629150390625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02841076504648473,
+          "0.25": 0.02783256437543611,
+          "0.50": 0.027411080992849376,
+          "0.75": 0.027153613663338027,
+          "1.00": 0.027064843636285855
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 3,
+        "residual_prediction_stats": {
+          "max": 0.0071065876026792756,
+          "mean": -0.008523406753386335,
+          "min": -0.018682834472658453,
+          "p05": -0.017044956910725034,
+          "p95": 0.0024150454817645044,
+          "std": 0.0056313803887542
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.010521097030152997,
+          "mae": 0.023349459478419633,
+          "rmse": 0.02966919275249935,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          3
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.4623988030742663,
+          "mean": 0.39083243568603376,
+          "min": 0.2878742308269338,
+          "one_rate": 0.0,
+          "p05": 0.32239644296719405,
+          "p95": 0.44648825502443173,
+          "std": 0.041486337615332415,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.013510649244207473,
+          "mae": 0.025296722729912888,
+          "rmse": 0.03591766213337981,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3438720703125,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02610775903168495,
+          "0.25": 0.02603969478102427,
+          "0.50": 0.026026599449796836,
+          "0.75": 0.02606855587772967,
+          "1.00": 0.02616529923733627
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 4,
+        "residual_prediction_stats": {
+          "max": 0.010075434846198151,
+          "mean": -0.00271978690589276,
+          "min": -0.011759636608070686,
+          "p05": -0.009886620016828433,
+          "p95": 0.004432900637097667,
+          "std": 0.004704812580187626
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 1867973658,
+        "selected_gate_scale": 0.5,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.0116765086712785,
+          "mae": 0.025067923370085593,
+          "rmse": 0.035362750299269795,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          4
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.1383056640625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028744310687035056,
+          "0.25": 0.028894047574589642,
+          "0.50": 0.029123638330440734,
+          "0.75": 0.029431214211306324,
+          "1.00": 0.02981436174549268
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 0,
+        "residual_prediction_stats": {
+          "max": 0.0861504028036651,
+          "mean": 0.03069825130386509,
+          "min": -0.01872373701926776,
+          "p05": 0.004144800439197084,
+          "p95": 0.05652324746149982,
+          "std": 0.015879798888704645
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.0215253619580739,
+          "mae": 0.02809076280838873,
+          "rmse": 0.03680878207673142,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          0
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.114990234375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028405084503227252,
+          "0.25": 0.028556959832689636,
+          "0.50": 0.028774921354608726,
+          "0.75": 0.0290574819602402,
+          "1.00": 0.02940277931766233
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 1,
+        "residual_prediction_stats": {
+          "max": 0.05474216785549894,
+          "mean": -0.009143762282387734,
+          "min": -0.1361054384925878,
+          "p05": -0.07390169507166436,
+          "p95": 0.039208020599342204,
+          "std": 0.03275749707647399
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.008777373142133848,
+          "mae": 0.034986743381542756,
+          "rmse": 0.042685105419066005,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          1
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.207763671875,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.03041486955578204,
+          "0.25": 0.030515139524182274,
+          "0.50": 0.03072019992850729,
+          "0.75": 0.03102797319350204,
+          "1.00": 0.03143544258839021
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 2,
+        "residual_prediction_stats": {
+          "max": 0.0604221437797065,
+          "mean": -0.004326344318053641,
+          "min": -0.11230681230359306,
+          "p05": -0.078477525036786,
+          "p95": 0.047218988067002685,
+          "std": 0.042323795085753485
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.017208219378028487,
+          "mae": 0.03970137250022168,
+          "rmse": 0.04976456939574477,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          2
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.00020456433936319736,
+          "mean": 2.293930369001286e-06,
+          "min": 3.0345217610408114e-18,
+          "one_rate": 0.0,
+          "p05": 7.791830845946445e-15,
+          "p95": 1.0826862864895182e-05,
+          "std": 1.162608934322367e-05,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.0019954613064971545,
+          "mae": 0.02217363446984731,
+          "rmse": 0.028604061724253897,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.035400390625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02841076504648473,
+          "0.25": 0.027935568366640875,
+          "0.50": 0.02760858250177041,
+          "0.75": 0.027435107324301627,
+          "1.00": 0.027418056794454332
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 3,
+        "residual_prediction_stats": {
+          "max": 7.846975022071233,
+          "mean": 3.2306123756606695,
+          "min": 0.5453474079670823,
+          "p05": 1.2270529301697277,
+          "p95": 5.913531247712523,
+          "std": 1.420178609273939
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 3.228614685383903,
+          "mae": 3.228614685383903,
+          "rmse": 3.5310061291811285,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          3
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.1339111328125,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02610775903168495,
+          "0.25": 0.02667801075656565,
+          "0.50": 0.027482467339234123,
+          "0.75": 0.028501304198763264,
+          "1.00": 0.029712476299738853
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 4,
+        "residual_prediction_stats": {
+          "max": 0.44117052386211864,
+          "mean": 0.025835986690736813,
+          "min": -0.05781950524011791,
+          "p05": -0.0341088465955114,
+          "p95": 0.16650251596224033,
+          "std": 0.06327125632046426
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.040232282267908065,
+          "mae": 0.05129998699305546,
+          "rmse": 0.07655228078239532,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          4
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.4154522675564927,
+          "mean": 0.3114105061721941,
+          "min": 0.21657808636244197,
+          "one_rate": 0.0,
+          "p05": 0.24318980814145805,
+          "p95": 0.371324390451822,
+          "std": 0.03984051729041491,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.011061097820842138,
+          "mae": 0.02189857441158888,
+          "rmse": 0.027770138702764197,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.4888916015625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028744310687035056,
+          "0.25": 0.02841086036726055,
+          "0.50": 0.028166901394627714,
+          "0.75": 0.028014771799408082,
+          "1.00": 0.027955970761228553
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 0,
+        "residual_prediction_stats": {
+          "max": 0.0032941510602692457,
+          "mean": -0.006328173572880732,
+          "min": -0.017982183426302426,
+          "p05": -0.014627919758800307,
+          "p95": 0.0007292170616997265,
+          "std": 0.005022364876874933
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.015501062918671921,
+          "mae": 0.024316177760890158,
+          "rmse": 0.029682509367159337,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          0
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.7115581697776326,
+          "mean": 0.5660293244486736,
+          "min": 0.3713677465751785,
+          "one_rate": 0.0,
+          "p05": 0.4461566712071475,
+          "p95": 0.6846915656143022,
+          "std": 0.08774072592249926,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.007076391245761335,
+          "mae": 0.023856853231200008,
+          "rmse": 0.029575892684307353,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.5103759765625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028405084503227252,
+          "0.25": 0.02797893407766041,
+          "0.50": 0.02764985465171799,
+          "0.75": 0.02742134125189126,
+          "1.00": 0.027295919722491378
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 1,
+        "residual_prediction_stats": {
+          "max": 0.017437416732375997,
+          "mean": 0.012035825899709519,
+          "min": 0.0070963384691588045,
+          "p05": 0.008426835919487473,
+          "p95": 0.0160312504410944,
+          "std": 0.0023376046695410086
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.012402215039963405,
+          "mae": 0.02481661816761284,
+          "rmse": 0.030814487505264398,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          1
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.2020155019868909,
+          "mean": 0.17039531498300214,
+          "min": 0.1435242416146053,
+          "one_rate": 0.0,
+          "p05": 0.15390981402564555,
+          "p95": 0.1877967008315721,
+          "std": 0.009999149027788371,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.011227428142520994,
+          "mae": 0.01401231620560552,
+          "rmse": 0.01723110992778652,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3929443359375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.03041486955578204,
+          "0.25": 0.030349437474332774,
+          "0.50": 0.030341771385932973,
+          "0.75": 0.030391915003477436,
+          "1.00": 0.030499583197735047
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 2,
+        "residual_prediction_stats": {
+          "max": 0.03754962196844355,
+          "mean": 0.009172762347585444,
+          "min": -0.010380420714771401,
+          "p05": -0.007357018916846233,
+          "p95": 0.026416502132964585,
+          "std": 0.011944745305431617
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 0.5,
+        "train_fold_ids": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.0037091127123894006,
+          "mae": 0.01268589483977552,
+          "rmse": 0.016048358692777133,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          2
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.8690772046377087,
+          "mean": 0.6940390075893473,
+          "min": 0.5450310762122739,
+          "one_rate": 0.0,
+          "p05": 0.5709544243774105,
+          "p95": 0.8069876628552775,
+          "std": 0.07483555360337563,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.007596709772192026,
+          "mae": 0.022624868337733677,
+          "rmse": 0.02897733957898977,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3629150390625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02841076504648473,
+          "0.25": 0.02783256437543611,
+          "0.50": 0.027411080992849376,
+          "0.75": 0.027153613663338027,
+          "1.00": 0.027064843636285855
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 3,
+        "residual_prediction_stats": {
+          "max": 0.0071065876026792756,
+          "mean": -0.008523406753386335,
+          "min": -0.018682834472658453,
+          "p05": -0.017044956910725034,
+          "p95": 0.0024150454817645044,
+          "std": 0.0056313803887542
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.010521097030152997,
+          "mae": 0.023349459478419633,
+          "rmse": 0.02966919275249935,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          3
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.4623988030742663,
+          "mean": 0.39083243568603376,
+          "min": 0.2878742308269338,
+          "one_rate": 0.0,
+          "p05": 0.32239644296719405,
+          "p95": 0.44648825502443173,
+          "std": 0.041486337615332415,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.013510649244207473,
+          "mae": 0.025296722729912888,
+          "rmse": 0.03591766213337981,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3438720703125,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02610775903168495,
+          "0.25": 0.02603969478102427,
+          "0.50": 0.026026599449796836,
+          "0.75": 0.02606855587772967,
+          "1.00": 0.02616529923733627
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 4,
+        "residual_prediction_stats": {
+          "max": 0.010075434846198151,
+          "mean": -0.00271978690589276,
+          "min": -0.011759636608070686,
+          "p05": -0.009886620016828433,
+          "p95": 0.004432900637097667,
+          "std": 0.004704812580187626
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 2137841944,
+        "selected_gate_scale": 0.5,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.0116765086712785,
+          "mae": 0.025067923370085593,
+          "rmse": 0.035362750299269795,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          4
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.140380859375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028744310687035056,
+          "0.25": 0.028842919209001217,
+          "0.50": 0.02902431986466177,
+          "0.75": 0.029286974275272663,
+          "1.00": 0.02962872161062337
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 0,
+        "residual_prediction_stats": {
+          "max": 0.05535512495654225,
+          "mean": 0.012486879334649037,
+          "min": -0.062088359055188,
+          "p05": -0.025919250971420713,
+          "p95": 0.04203954935201446,
+          "std": 0.020653887168626036
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.0033139899888578457,
+          "mae": 0.025980573340291684,
+          "rmse": 0.03299892084576062,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          0
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.13916015625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028405084503227252,
+          "0.25": 0.02869382951978021,
+          "0.50": 0.029011845335762235,
+          "0.75": 0.029358180758749644,
+          "1.00": 0.029731846150918655
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 1,
+        "residual_prediction_stats": {
+          "max": 3.0300195615203016,
+          "mean": 1.2704068612021642,
+          "min": 0.27428098412748003,
+          "p05": 0.5452286877691852,
+          "p95": 2.2824560246189,
+          "std": 0.5245908147786188
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 1.270773250342418,
+          "mae": 1.270773250342418,
+          "rmse": 1.376370810471003,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          1
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.17392210238303132,
+          "mean": 0.12020279309526109,
+          "min": 0.05628927813307337,
+          "one_rate": 0.0,
+          "p05": 0.07575121784288694,
+          "p95": 0.16150676854294302,
+          "std": 0.027350086978702864,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.011780653946036421,
+          "mae": 0.014958135125614738,
+          "rmse": 0.01828492908085673,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.2496337890625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.03041486955578204,
+          "0.25": 0.030410028217319095,
+          "0.50": 0.03053727440058087,
+          "0.75": 0.030794970774623603,
+          "1.00": 0.031179883061980745
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 2,
+        "residual_prediction_stats": {
+          "max": 0.06863672745097875,
+          "mean": 0.012167956821198735,
+          "min": -0.0662173437479184,
+          "p05": -0.038906161329004964,
+          "p95": 0.052787112560974035,
+          "std": 0.028971288433388
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 0.25,
+        "train_fold_ids": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.0007139182387761109,
+          "mae": 0.02737917778050679,
+          "rmse": 0.03290615028743729,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          2
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.47371759483805076,
+          "mean": 0.1597635785070607,
+          "min": 0.004719412456043312,
+          "one_rate": 0.0,
+          "p05": 0.030773760103150513,
+          "p95": 0.4057354320314008,
+          "std": 0.11053276799082504,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.007596854944858974,
+          "mae": 0.022896065869020488,
+          "rmse": 0.02941894634228119,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.2374267578125,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02841076504648473,
+          "0.25": 0.028198473597995537,
+          "0.50": 0.028083839337716552,
+          "0.75": 0.02806805883198963,
+          "1.00": 0.028151298321834422
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 3,
+        "residual_prediction_stats": {
+          "max": 0.03316996365859851,
+          "mean": -0.05206688688525489,
+          "min": -0.1431717878552605,
+          "p05": -0.09391510873460036,
+          "p95": -0.006358321725878169,
+          "std": 0.025883532562511004
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 0.75,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.05406457716202155,
+          "mae": 0.058577323085520334,
+          "rmse": 0.06699065172603326,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          3
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "one_rate": 0.0,
+          "p05": 0.0,
+          "p95": 0.0,
+          "std": 0.0,
+          "zero_rate": 1.0
+        },
+        "gated_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.1444091796875,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02610775903168495,
+          "0.25": 0.026136519329205125,
+          "0.50": 0.026222411718792492,
+          "0.75": 0.026364877825781508,
+          "1.00": 0.026563007395652174
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 4,
+        "residual_prediction_stats": {
+          "max": 0.15792410469552143,
+          "mean": -0.006682077899317968,
+          "min": -0.08441489064259514,
+          "p05": -0.0593239362520864,
+          "p95": 0.04130154386272605,
+          "std": 0.03183252049670186
+        },
+        "route": "pretrained_openmind_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 0.0,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.00771421767785329,
+          "mae": 0.040877189472606976,
+          "rmse": 0.05286146272088316,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          4
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.4154522675564927,
+          "mean": 0.3114105061721941,
+          "min": 0.21657808636244197,
+          "one_rate": 0.0,
+          "p05": 0.24318980814145805,
+          "p95": 0.371324390451822,
+          "std": 0.03984051729041491,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.011061097820842138,
+          "mae": 0.02189857441158888,
+          "rmse": 0.027770138702764197,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.4888916015625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028744310687035056,
+          "0.25": 0.02841086036726055,
+          "0.50": 0.028166901394627714,
+          "0.75": 0.028014771799408082,
+          "1.00": 0.027955970761228553
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 0,
+        "residual_prediction_stats": {
+          "max": 0.0032941510602692457,
+          "mean": -0.006328173572880732,
+          "min": -0.017982183426302426,
+          "p05": -0.014627919758800307,
+          "p95": 0.0007292170616997265,
+          "std": 0.005022364876874933
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.015501062918671921,
+          "mae": 0.024316177760890158,
+          "rmse": 0.029682509367159337,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          0
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.7115581697776326,
+          "mean": 0.5660293244486736,
+          "min": 0.3713677465751785,
+          "one_rate": 0.0,
+          "p05": 0.4461566712071475,
+          "p95": 0.6846915656143022,
+          "std": 0.08774072592249926,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.007076391245761335,
+          "mae": 0.023856853231200008,
+          "rmse": 0.029575892684307353,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.5103759765625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.028405084503227252,
+          "0.25": 0.02797893407766041,
+          "0.50": 0.02764985465171799,
+          "0.75": 0.02742134125189126,
+          "1.00": 0.027295919722491378
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 1,
+        "residual_prediction_stats": {
+          "max": 0.017437416732375997,
+          "mean": 0.012035825899709519,
+          "min": 0.0070963384691588045,
+          "p05": 0.008426835919487473,
+          "p95": 0.0160312504410944,
+          "std": 0.0023376046695410086
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.012402215039963405,
+          "mae": 0.02481661816761284,
+          "rmse": 0.030814487505264398,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          1
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.2020155019868909,
+          "mean": 0.17039531498300214,
+          "min": 0.1435242416146053,
+          "one_rate": 0.0,
+          "p05": 0.15390981402564555,
+          "p95": 0.1877967008315721,
+          "std": 0.009999149027788371,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.011227428142520994,
+          "mae": 0.01401231620560552,
+          "rmse": 0.01723110992778652,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3929443359375,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.03041486955578204,
+          "0.25": 0.030349437474332774,
+          "0.50": 0.030341771385932973,
+          "0.75": 0.030391915003477436,
+          "1.00": 0.030499583197735047
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 2,
+        "residual_prediction_stats": {
+          "max": 0.03754962196844355,
+          "mean": 0.009172762347585444,
+          "min": -0.010380420714771401,
+          "p05": -0.007357018916846233,
+          "p95": 0.026416502132964585,
+          "std": 0.011944745305431617
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 0.5,
+        "train_fold_ids": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.0037091127123894006,
+          "mae": 0.01268589483977552,
+          "rmse": 0.016048358692777133,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          2
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.8690772046377087,
+          "mean": 0.6940390075893473,
+          "min": 0.5450310762122739,
+          "one_rate": 0.0,
+          "p05": 0.5709544243774105,
+          "p95": 0.8069876628552775,
+          "std": 0.07483555360337563,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": -0.007596709772192026,
+          "mae": 0.022624868337733677,
+          "rmse": 0.02897733957898977,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3629150390625,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02841076504648473,
+          "0.25": 0.02783256437543611,
+          "0.50": 0.027411080992849376,
+          "0.75": 0.027153613663338027,
+          "1.00": 0.027064843636285855
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 3,
+        "residual_prediction_stats": {
+          "max": 0.0071065876026792756,
+          "mean": -0.008523406753386335,
+          "min": -0.018682834472658453,
+          "p05": -0.017044956910725034,
+          "p95": 0.0024150454817645044,
+          "std": 0.0056313803887542
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 1.0,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": -0.010521097030152997,
+          "mae": 0.023349459478419633,
+          "rmse": 0.02966919275249935,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          3
+        ],
+        "validation_rows": 2048
+      },
+      {
+        "base_predictions_for_training": "P5 Stage-3 OOF only",
+        "baseline_metrics": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "gate_stats": {
+          "max": 0.4623988030742663,
+          "mean": 0.39083243568603376,
+          "min": 0.2878742308269338,
+          "one_rate": 0.0,
+          "p05": 0.32239644296719405,
+          "p95": 0.44648825502443173,
+          "std": 0.041486337615332415,
+          "zero_rate": 0.0
+        },
+        "gated_metrics": {
+          "bias": 0.013510649244207473,
+          "mae": 0.025296722729912888,
+          "rmse": 0.03591766213337981,
+          "rows": 2048
+        },
+        "inner_correction_benefit_rate": 0.3438720703125,
+        "inner_gate_candidate_rmse": {
+          "0.00": 0.02610775903168495,
+          "0.25": 0.02603969478102427,
+          "0.50": 0.026026599449796836,
+          "0.75": 0.02606855587772967,
+          "1.00": 0.02616529923733627
+        },
+        "inner_residual_predictions": "cross-fit by original OOF fold",
+        "outer_fold": 4,
+        "residual_prediction_stats": {
+          "max": 0.010075434846198151,
+          "mean": -0.00271978690589276,
+          "min": -0.011759636608070686,
+          "p05": -0.009886620016828433,
+          "p95": 0.004432900637097667,
+          "std": 0.004704812580187626
+        },
+        "route": "no_foundation_structural_residual",
+        "seed": 3902865753,
+        "selected_gate_scale": 0.5,
+        "train_fold_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "train_rows": 8192,
+        "ungated_metrics": {
+          "bias": 0.0116765086712785,
+          "mae": 0.025067923370085593,
+          "rmse": 0.035362750299269795,
+          "rows": 2048
+        },
+        "validation_fold_ids": [
+          4
+        ],
+        "validation_rows": 2048
+      }
+    ],
+    "selected_openmind_channels": {
+      "1867973658": [
+        2,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        16,
+        18,
+        19,
+        20,
+        21,
+        23,
+        27,
+        28,
+        29,
+        33,
+        40,
+        49,
+        50,
+        51,
+        53,
+        54,
+        61,
+        72,
+        80,
+        86,
+        87,
+        89,
+        91,
+        93,
+        94,
+        100,
+        111,
+        124,
+        126,
+        136,
+        137,
+        143,
+        145,
+        156,
+        162,
+        185,
+        197,
+        202,
+        208,
+        214,
+        216,
+        250,
+        261,
+        274,
+        285,
+        287,
+        307,
+        351,
+        360,
+        388,
+        398,
+        400,
+        422,
+        430,
+        446,
+        466,
+        477,
+        484,
+        486,
+        508,
+        526,
+        527,
+        552,
+        566,
+        575,
+        588,
+        657,
+        690,
+        693,
+        698,
+        731,
+        764,
+        776,
+        803,
+        821,
+        826,
+        841,
+        844,
+        894,
+        910,
+        923,
+        952,
+        1019,
+        1022,
+        1056,
+        1086,
+        1099,
+        1101,
+        1112
+      ],
+      "2137841944": [
+        0,
+        5,
+        7,
+        9,
+        10,
+        12,
+        14,
+        18,
+        19,
+        22,
+        23,
+        24,
+        25,
+        26,
+        29,
+        30,
+        33,
+        38,
+        43,
+        44,
+        45,
+        47,
+        58,
+        61,
+        66,
+        70,
+        74,
+        75,
+        81,
+        82,
+        88,
+        92,
+        109,
+        112,
+        125,
+        129,
+        143,
+        145,
+        164,
+        171,
+        172,
+        176,
+        185,
+        189,
+        200,
+        202,
+        219,
+        222,
+        233,
+        235,
+        243,
+        244,
+        291,
+        296,
+        331,
+        336,
+        348,
+        364,
+        423,
+        424,
+        442,
+        451,
+        459,
+        479,
+        485,
+        491,
+        495,
+        507,
+        524,
+        558,
+        612,
+        626,
+        650,
+        652,
+        655,
+        734,
+        757,
+        780,
+        788,
+        794,
+        804,
+        819,
+        825,
+        830,
+        835,
+        854,
+        893,
+        905,
+        916,
+        984,
+        1009,
+        1017,
+        1053,
+        1058,
+        1108,
+        1111
+      ],
+      "3902865753": [
+        0,
+        3,
+        5,
+        6,
+        9,
+        10,
+        11,
+        13,
+        17,
+        18,
+        20,
+        22,
+        23,
+        26,
+        28,
+        29,
+        35,
+        36,
+        41,
+        42,
+        48,
+        53,
+        57,
+        58,
+        59,
+        60,
+        67,
+        69,
+        72,
+        87,
+        94,
+        95,
+        98,
+        102,
+        104,
+        108,
+        130,
+        136,
+        150,
+        157,
+        164,
+        166,
+        179,
+        181,
+        182,
+        184,
+        200,
+        217,
+        226,
+        248,
+        250,
+        258,
+        264,
+        277,
+        285,
+        319,
+        325,
+        344,
+        358,
+        361,
+        396,
+        443,
+        447,
+        459,
+        523,
+        525,
+        529,
+        530,
+        563,
+        631,
+        637,
+        650,
+        654,
+        684,
+        691,
+        731,
+        746,
+        773,
+        784,
+        790,
+        834,
+        843,
+        854,
+        919,
+        924,
+        927,
+        929,
+        962,
+        970,
+        975,
+        981,
+        1048,
+        1051,
+        1060,
+        1083,
+        1113
+      ]
+    }
+  },
+  "holdout_firewall": {
+    "accepted_hdf5_basenames": [
+      "train.h5"
+    ],
+    "frozen_holdout_opened": false,
+    "hdf5_datasets_read": [
+      "seismic_patch[0:3]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_files_opened": [
+      "train.h5"
+    ],
+    "historical_test_metrics_read": false,
+    "label_dataset_read": false,
+    "test_h5_opened": false,
+    "test_path_argument_exists": false
+  },
+  "implementation": {
+    "numpy": "2.4.4",
+    "scikit_learn": "1.9.0",
+    "script": "_pipelines/02_task_datasets/reconstruction/p11_residual_fusion.py",
+    "script_sha256": "2dab3d68ab62e780a2f663e350dfa5a3e4febe3f36a4df18ee6224713e78f32b"
+  },
+  "openmind_feature_audit": {
+    "accessed_patch_count": 5,
+    "accessed_patch_keys_sha256": "6d3b70a85c95e191f0e142a4e72af1d5a56fd5bf8e1abfedd8b61f518e061fb5",
+    "cache_reused": true,
+    "checkpoint_bytes": 491198606,
+    "checkpoint_sha256": "7a847af785635335c00e711d16ff4d225d86ecd5992b14c059df2b520e3ee933",
+    "encoder_frozen": true,
+    "feature_cache_sha256": "ce81f00edbf5ca77133089f79a923117f4a0e0cb812b423836dc3fc3023bd946",
+    "feature_width": 1120,
+    "hdf5_datasets_read": [
+      "seismic_patch[0:3]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_files_opened": [
+      "train.h5"
+    ],
+    "input_projection": "per-patch active-cell zscore then fixed mean of 3 seismic channels",
+    "label_dataset_read": false,
+    "layer_channels": [
+      32,
+      64,
+      128,
+      256,
+      320,
+      320
+    ],
+    "layer_shapes_first_patch": [
+      [
+        1,
+        32,
+        64,
+        64,
+        64
+      ],
+      [
+        1,
+        64,
+        32,
+        32,
+        32
+      ],
+      [
+        1,
+        128,
+        16,
+        16,
+        16
+      ],
+      [
+        1,
+        256,
+        8,
+        8,
+        8
+      ],
+      [
+        1,
+        320,
+        4,
+        4,
+        4
+      ],
+      [
+        1,
+        320,
+        2,
+        2,
+        2
+      ]
+    ],
+    "model_id": "MIC-DKFZ/ResEncL-OpenMind-MAE",
+    "real_pretrained_weights_loaded": true,
+    "source_revision": "7044864404315536e92e670ef2f0ca24f11e6175",
+    "source_revision_verified": true,
+    "spatial_sampling": "trilinear voxel-centre sampling from all encoder stages"
+  },
+  "pykrige_oof_sources": {
+    "folds": [
+      {
+        "development_only": true,
+        "fold_hash": "400876beea22e96c5df30828b088fbffbfd6f8cba307349011597fc2a76ac101",
+        "fold_id": 0,
+        "oof_rows": 2048,
+        "oof_sha256": "13f3f6d7bfcde8c64777a6036d263a8558c8c0d413de1c6401f91b23c55097d5",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "df371a0d24a79301a91a2c70509ee95e037f748129c8d0aa0ee9cf313e69a902",
+        "fold_id": 1,
+        "oof_rows": 2048,
+        "oof_sha256": "57323bbc75262845a7ea5ab4ce46f54b32397ea253dd84b576492523f7c0d4db",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "e673775bdd92707713e1da2ba8d9e0c615d870f524fed648bcd3ddd05c9fe68e",
+        "fold_id": 2,
+        "oof_rows": 2048,
+        "oof_sha256": "1cbf7c27e490beabd8526d5489588eac75a1abe28231209f0d37c6d11e1c2d4d",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "d784de796e1593e8996b61db24f8b59b5ed1614de2cebaca8d52f5e5edfe1d18",
+        "fold_id": 3,
+        "oof_rows": 2048,
+        "oof_sha256": "fca531ac20d05090f44f793bea0735d59f0a549b9655b5f7e6aaae478bdee09b",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "4da20aa36f476df4d4bec85774afe7b36e11535231044fec87ff4a2299e4e796",
+        "fold_id": 4,
+        "oof_rows": 2048,
+        "oof_sha256": "20337b8855026f6d8d7d0e37fc681b1494683f15ac280b29bc2e4facfd84d911",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      }
+    ],
+    "lane": "conditional",
+    "model_id": "pykrige_ok3d",
+    "repeat_id": 0,
+    "rows": 10240,
+    "split_hash": "ffe1fddbfd3ef8e2a9e0b3f3942133226610c872e7da37460f070782cba700a6",
+    "training_use": "base predictions are OOF before residual stacking"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "downloads_performed_bytes": 0,
+    "duration_seconds": 4.252112045069225,
+    "feature_cache_reused": true
+  },
+  "schema_version": "reconstruction-p11-residual-fusion/v1",
+  "task_id": "volve_porosity_conditional_reconstruction",
+  "track_id": "reconstruction"
+}
