@@ -33,7 +33,7 @@ assets:
     access_note: >
       通过 Databricks CLI（本机 ~/.local/bin/databricks，配置存于 ~/.databrickscfg 600权限）
       + Files API 直连下载（不走本机mihomo代理，代理转发对大文件长连接不稳定）。
-      账号 yonganzhang27@gmail.com，workspace host 见 ~/.databrickscfg（不明文记录于此）。
+      账号见本机 ~/.databrickscfg（不明文记录于此，含workspace host）。
     extracted_subsets_for_layer1: >
       2026-07-10 为 _pipelines/01_common_preprocess 只解压了必要文件(不整包解压1.17TB地震压缩包)：
       _sandbox/volve_data/_extracted_seismic/(1.1G，ST0202/Stacks/..FULL_OFFSET_PP_TIME..segy，
