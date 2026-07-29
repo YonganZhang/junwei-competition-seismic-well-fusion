@@ -18,6 +18,13 @@ def _load_manifest(path: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _figure_hashes(manifest: dict[str, object]) -> dict[str, tuple[str, str, str]]:
+    hashes: dict[str, tuple[str, str, str]] = {}
+    for entry in manifest["figures"]:
+        hashes[entry["target"]] = (entry["sha256_png"], entry["sha256_pdf"], entry["sha256_svg"])
+    return hashes
+
+
 def test_render_p12_visualization_bundle(tmp_path: Path) -> None:
     manifest = viz.generate_artifacts(tmp_path / "p12_visualization")
     manifest_path = tmp_path / "p12_visualization" / "manifest.json"
@@ -99,6 +106,18 @@ def test_render_p12_visualization_bundle(tmp_path: Path) -> None:
         assert entry["sha256_pdf"]
         assert entry["sha256_svg"]
 
+    # Output hashes must be deterministic across two independent renders.
+    manifest_2 = viz.generate_artifacts(tmp_path / "p12_visualization_again")
+    assert _figure_hashes(loaded) == _figure_hashes(manifest_2)
+    for render_root in (tmp_path / "p12_visualization", tmp_path / "p12_visualization_again"):
+        for entry in _load_manifest(render_root / "manifest.json")["figures"]:
+            pdf_bytes = (render_root / entry["path_pdf"]).read_bytes()
+            svg_text = (render_root / entry["path_svg"]).read_text(encoding="utf-8")
+            assert b"CreationDate" not in pdf_bytes
+            assert b"ModDate" not in pdf_bytes
+            assert "dc:date" not in svg_text
+            assert "Date" not in svg_text.split("<metadata>", 1)[-1][:4000]
+
     # Quick sanity on record alignment and target-specific logging.
     target_rows = viz._load_all_targets()
     assert set(target_rows) == {"PHIF", "KLOGH", "SW"}
@@ -113,6 +132,10 @@ def test_source_has_no_titles_and_uses_vector_outputs() -> None:
     assert "suptitle" not in source
     assert "plt.title" not in source
     assert "bbox_inches" not in source
+    assert "svg.hashsalt" in source
+    assert "CreationDate" in source
+    assert "ModDate" in source
+    assert "_save_figure_bundle" in source
     for label in ("(a)", "(b)", "(c)", "(d)"):
         assert label in source
     assert "log1p(mD)" in source

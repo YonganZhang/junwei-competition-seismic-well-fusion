@@ -6,6 +6,7 @@ import hashlib
 import json
 import shutil
 import subprocess
+import tempfile
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -17,6 +18,9 @@ from matplotlib import font_manager
 from PIL import Image
 
 matplotlib.use("Agg")
+matplotlib.rcParams["svg.hashsalt"] = "p12_visualization_v1"
+matplotlib.rcParams["svg.fonttype"] = "path"
+matplotlib.rcParams["pdf.compression"] = 0
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -69,6 +73,24 @@ if RESOLVED_FONT is None:
     raise RuntimeError("Times New Roman or TeX Gyre Termes font is required for P12 visualization")
 
 
+def _apply_style() -> None:
+    plt.rcParams.update(
+        {
+            "font.family": RESOLVED_FONT,
+            "font.serif": [RESOLVED_FONT],
+            "axes.labelsize": 8.5,
+            "xtick.labelsize": 7.5,
+            "ytick.labelsize": 7.5,
+            "legend.fontsize": 7.5,
+            "pdf.fonttype": 42,
+            "ps.fonttype": 42,
+        }
+    )
+
+
+_apply_style()
+
+
 @dataclass(frozen=True)
 class TargetRow:
     sample_id: str
@@ -97,6 +119,34 @@ def _strip_svg_trailing_whitespace(path: Path) -> None:
     sanitized = "\n".join(line.rstrip() for line in text.splitlines()) + "\n"
     if sanitized != text:
         path.write_text(sanitized, encoding="utf-8")
+
+
+def _canonicalize_png(path: Path) -> None:
+    with Image.open(path) as image:
+        image.load()
+        mode = image.mode
+        payload = image.copy()
+    if mode not in {"RGB", "RGBA", "L", "LA"}:
+        payload = payload.convert("RGBA")
+    payload.save(path, format="PNG", optimize=False, compress_level=9, dpi=(DPI, DPI))
+
+
+def _save_figure_bundle(fig: matplotlib.figure.Figure, png_path: Path, pdf_path: Path, svg_path: Path) -> None:
+    stable_pdf_metadata = {
+        "Creator": "p12_visualization",
+        "Producer": "matplotlib",
+        "CreationDate": None,
+        "ModDate": None,
+    }
+    stable_svg_metadata = {
+        "Creator": "p12_visualization",
+        "Date": None,
+    }
+    fig.savefig(png_path, dpi=DPI, facecolor="white")
+    fig.savefig(pdf_path, facecolor="white", metadata=stable_pdf_metadata)
+    fig.savefig(svg_path, facecolor="white", metadata=stable_svg_metadata)
+    _canonicalize_png(png_path)
+    _strip_svg_trailing_whitespace(svg_path)
 
 
 def repo_rel(path: Path | str) -> str:
@@ -185,18 +235,6 @@ def _robust_limits(values: np.ndarray, pad_frac: float = 0.05) -> tuple[float, f
 
 
 def _set_font(fig: matplotlib.figure.Figure) -> None:
-    plt.rcParams.update(
-        {
-            "font.family": RESOLVED_FONT,
-            "font.serif": [RESOLVED_FONT],
-            "axes.labelsize": 8.5,
-            "xtick.labelsize": 7.5,
-            "ytick.labelsize": 7.5,
-            "legend.fontsize": 7.5,
-            "pdf.fonttype": 42,
-            "ps.fonttype": 42,
-        }
-    )
     for text in fig.findobj(matplotlib.text.Text):
         text.set_fontfamily(RESOLVED_FONT)
     for ax in fig.axes:
@@ -389,10 +427,7 @@ def _render_target_figure(rows: list[TargetRow], target: str, output_dir: Path) 
     png_path = output_dir / f"{stem}.png"
     pdf_path = output_dir / f"{stem}.pdf"
     svg_path = output_dir / f"{stem}.svg"
-    fig.savefig(png_path, dpi=DPI, facecolor="white")
-    fig.savefig(pdf_path, facecolor="white")
-    fig.savefig(svg_path, facecolor="white")
-    _strip_svg_trailing_whitespace(svg_path)
+    _save_figure_bundle(fig, png_path, pdf_path, svg_path)
     plt.close(fig)
 
     return {
@@ -651,6 +686,14 @@ def build_manifest(figures: list[dict[str, object]], target_rows: dict[str, list
     }
 
 
+def _warm_render_state(target_rows: dict[str, list[TargetRow]]) -> None:
+    with tempfile.TemporaryDirectory(prefix="p12_visualization_warmup_") as tmp_dir:
+        warm_root = Path(tmp_dir) / "figures"
+        warm_root.mkdir(parents=True, exist_ok=True)
+        for target in TARGET_ORDER:
+            _render_target_figure(target_rows[target], target, warm_root)
+
+
 def generate_artifacts(output_root: Path = OUTPUT_ROOT) -> dict[str, object]:
     if output_root.exists():
         shutil.rmtree(output_root)
@@ -659,6 +702,7 @@ def generate_artifacts(output_root: Path = OUTPUT_ROOT) -> dict[str, object]:
     figure_root.mkdir(parents=True, exist_ok=True)
 
     target_rows = _load_all_targets()
+    _warm_render_state(target_rows)
     figures: list[dict[str, object]] = []
     for target in TARGET_ORDER:
         figures.append(_render_target_figure(target_rows[target], target, figure_root))
