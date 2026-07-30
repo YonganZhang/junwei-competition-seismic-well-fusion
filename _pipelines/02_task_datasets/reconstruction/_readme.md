@@ -4,6 +4,43 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P14 geophysical foundation-model diagnostic
+
+`p14_geophysical_fm.py` replaces only the P11 encoder source with the
+Apache-2.0 `thinkonward/geophysical-foundation-model` ViT-MAE and keeps the
+same hash-verified PyKrige OOF baseline, five spatial folds, three paired
+seeds, Ridge heads, inner-OOF bounded gate and gate=0 check.  The local-only
+adapter is `_models/reconstruction/geophysical_fm.py`; it supports both genuine
+pretrained weights and seed-distinct same-architecture random initialization.
+
+The real tiled patch shape is `[K,J,I]=[9,20,18]`, assembling to
+`[63,100,72]`.  P14 uses a vertical `K×J` slice at fixed I because its 100
+neighboring traces require less horizontal expansion to the GFM width 160 than
+the orthogonal I width 72.  Each of the three seismic attributes is forwarded
+separately after per-slice active-cell z-scoring and resize to `400×160`; the
+nearest trace token plus slice CLS token supply six views with the same
+16-channels-per-view budget as P11.
+
+The domain-matched encoder did not improve the locked development metric.
+PyKrige RMSE is `0.028449728170`; the best pretrained GFM gated route is
+`0.028621657173` (0.6043% worse), same-architecture random-init is
+`0.028601027108`, and the structural control is `0.028539761187`.  Across five
+genuinely independent spatial units, pretrained GFM records 2 wins and 3
+losses; its whole-fold bootstrap RMSE-delta interval crosses zero.  The route
+is `VERIFIED_NO_PROMOTION`, and no gain is attributed to pretrained GFM
+weights.  Full provenance, fold evidence and row-aligned errors are under
+`_outputs/p14_geophysical_fm/`; feature caches remain under `_tmp/`.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p14_geophysical_fm.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$GFM_VENDOR_SOURCE" \
+  --snapshot-path "$GFM_HF_SNAPSHOT" \
+  --device cuda:0
+```
+
 ## P11 cross-attention fusion diagnostic
 
 `p11_cross_attention_fusion.py` keeps the P11 PyKrige OOF/gate harness but
