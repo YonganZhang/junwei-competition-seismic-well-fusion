@@ -1,0 +1,155 @@
+{
+  "evaluation": {
+    "budget": {
+      "batch_size": 2,
+      "learning_rate": 0.0001,
+      "loss_id": "cross_entropy",
+      "max_train_samples": 32,
+      "max_updates": 40,
+      "max_validation_samples": 16,
+      "max_wall_seconds": 180.0,
+      "profile_id": "facies-p5-stage2-fixed-v1",
+      "validation_interval": 10,
+      "weight_decay": 0.0
+    },
+    "candidate_updates": 160,
+    "evidence_class": "fixed_development_cross_attention_experiment",
+    "f3_manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+    "folds": [
+      0,
+      4
+    ],
+    "frozen_test_accessed": false,
+    "holdout_paths_accepted": false,
+    "metric_implementation": "_pipelines.02_task_datasets.facies.p4_metrics.evaluate_probabilities",
+    "penobscot_manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+    "raw_predictions_persisted": false,
+    "root_seed": 2693
+  },
+  "experiment": {
+    "architecture": "deepest_cnn_query_to_sam2_key_value_multihead_cross_attention",
+    "attention_dim": 128,
+    "attention_heads": 4,
+    "attribution_status": "large_model_contribution_pending_random_weight_ablation",
+    "baseline_updates": 40,
+    "candidate_updates": 160,
+    "optimization": {
+      "cnn_lr": 5e-05,
+      "dice_weight": 0.25,
+      "fusion_lr": 0.0002,
+      "horizontal_flip_probability": 0.5,
+      "noise_std": 0.03,
+      "sam2_lr": 1e-05,
+      "scheduler": "cosine",
+      "weight_decay": 0.0001
+    },
+    "sam2_checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5",
+    "sam2_dependency_site": "/mnt/data/yongan-admin-2/envs/atom-sam2-py310/lib/python3.10/site-packages",
+    "sam2_input_policy": "native_128_no_spatial_interpolation",
+    "sam2_source_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+    "sam2_trainable_hiera_blocks": [
+      22,
+      23
+    ],
+    "sam2_weight_mode": "pretrained",
+    "sam2_weight_mode_interface": [
+      "pretrained",
+      "random"
+    ]
+  },
+  "overall": {
+    "aggregation": "equal_mean_of_F3_and_Penobscot_mIoU",
+    "baseline_mean_miou": 0.13268214230901382,
+    "cross_attention_mean_miou": 0.24871161363079533,
+    "cross_attention_minus_baseline": 0.11602947132178151
+  },
+  "protected_evidence": {
+    "p11_manifest": "6e5bdd92906772db059086470559306d7314aaa4f0df4e019f5bd3c8a3a6161b",
+    "p12_manifest": "0e1f8409017e5bd00e69e164b83377b3e4f8022d8682a8b450175ae1ed51b04b"
+  },
+  "runtime": {
+    "command": "/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python _pipelines/02_task_datasets/facies/p13_cross_attention.py run --f3-manifest /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p4-training-integration/_tmp/p4-acceptance/facies_f3/split_manifest.json --penobscot-manifest /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p4-training-integration/_tmp/p4-acceptance/facies_penobscot/split_manifest.json --processed-root /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/track-facies/_data/processed --device cuda:0 --sam2-weight-mode pretrained",
+    "cuda": "13.0",
+    "device": "cuda:0",
+    "duration_seconds": 35.75111236202065,
+    "python": "3.11.15",
+    "torch": "2.12.1+cu130"
+  },
+  "schema_version": "facies-p13-cross-attention/v1",
+  "tasks": {
+    "F3": {
+      "comparison": {
+        "continued_cnn_minus_baseline": 0.07059832648507994,
+        "cross_attention_minus_baseline": 0.15588964091169816,
+        "cross_attention_minus_continued_cnn": 0.08529131442661822
+      },
+      "task_id": "facies_f3",
+      "variant_means": {
+        "continued_cnn_control": {
+          "accuracy": 0.43212318420410156,
+          "attention_entropy": 0.0,
+          "fusion_scale": 0.0,
+          "macro_f1": 0.3145263396502398,
+          "miou": 0.20686166950443383,
+          "nll": 1.7438589480908997,
+          "sam2_update_l2": 0.0
+        },
+        "cross_attention_fusion": {
+          "accuracy": 0.5324821472167969,
+          "attention_entropy": 0.8919123411178589,
+          "fusion_scale": 0.2004614770412445,
+          "macro_f1": 0.4163602787551978,
+          "miou": 0.29215298393105205,
+          "nll": 1.476849720080288,
+          "sam2_update_l2": 0.4195523869022729
+        },
+        "strong_small_baseline": {
+          "accuracy": 0.3134002685546875,
+          "attention_entropy": 0.0,
+          "fusion_scale": 0.0,
+          "macro_f1": 0.22151996333345453,
+          "miou": 0.1362633430193539,
+          "nll": 2.1908412895750855,
+          "sam2_update_l2": 0.0
+        }
+      }
+    },
+    "Penobscot": {
+      "comparison": {
+        "continued_cnn_minus_baseline": 0.06046273994430945,
+        "cross_attention_minus_baseline": 0.07616930173186487,
+        "cross_attention_minus_continued_cnn": 0.015706561787555418
+      },
+      "task_id": "facies_penobscot",
+      "variant_means": {
+        "continued_cnn_control": {
+          "accuracy": 0.5346851348876953,
+          "attention_entropy": 0.0,
+          "fusion_scale": 0.0,
+          "macro_f1": 0.2623966786702865,
+          "miou": 0.1895636815429832,
+          "nll": 1.6486643653811952,
+          "sam2_update_l2": 0.0
+        },
+        "cross_attention_fusion": {
+          "accuracy": 0.5391502380371094,
+          "attention_entropy": 0.9510561525821686,
+          "fusion_scale": 0.2005726471543312,
+          "macro_f1": 0.2826401808637814,
+          "miou": 0.20527024333053862,
+          "nll": 1.6363919110909824,
+          "sam2_update_l2": 0.23414110513718972
+        },
+        "strong_small_baseline": {
+          "accuracy": 0.45084190368652344,
+          "attention_entropy": 0.0,
+          "fusion_scale": 0.0,
+          "macro_f1": 0.1765632873614313,
+          "miou": 0.12910094159867375,
+          "nll": 2.192799988899902,
+          "sam2_update_l2": 0.0
+        }
+      }
+    }
+  }
+}

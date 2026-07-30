@@ -764,3 +764,37 @@ CUDA_VISIBLE_DEVICES=<free_gpu> PYTHONDONTWRITEBYTECODE=1 \
 /mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
   _pipelines/02_task_datasets/facies/p12_repair_v1.py verify
 ```
+
+## P13 CNN–SAM2 cross-attention fusion
+
+`p13_cross_attention.py` replaces the logit-only residual interaction with a
+feature-space module: the deepest baseline CNN feature map supplies query
+tokens, while the native-128 SAM2 feature map supplies key/value tokens.
+Four-head cross-attention writes a scaled residual back before the original CNN
+decoder. The run compares the accepted 40-update baseline, a continued-CNN
+control, and the complete cross-attention package on the same folds and mIoU
+implementation.
+
+The SAM2 initialization is selected by one argument:
+`--sam2-weight-mode pretrained|random`. The committed P13 evidence uses
+`pretrained`; changing that one value activates the deterministic random-weight
+path for the next ablation. P13 also records the 160-update continuation,
+train-only horizontal/intensity/noise augmentation, CE+Dice loss, optimizer,
+attention entropy, fusion scale, and actual SAM2 parameter displacement.
+
+```bash
+CUDA_VISIBLE_DEVICES=<free_gpu> PYTHONDONTWRITEBYTECODE=1 \
+  /mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/p13_cross_attention.py run \
+  --f3-manifest "$F3_P4_SPLIT_MANIFEST" \
+  --penobscot-manifest "$PEN_P4_SPLIT_MANIFEST" \
+  --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cuda:0 \
+  --sam2-weight-mode pretrained
+
+/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/p13_cross_attention.py verify
+```
+
+The independent 12-cell results, aggregate summary, attribution-safe
+`evidence.md`, and artifact hashes live in `_outputs/p13_cross_attention/`.
