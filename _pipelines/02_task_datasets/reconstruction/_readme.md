@@ -4,6 +4,41 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P11 cross-attention fusion diagnostic
+
+`p11_cross_attention_fusion.py` keeps the P11 PyKrige OOF/gate harness but
+replaces the linear residual head with a structured-query cross-attention
+module over three separately encoded OpenMind channel tokens.  Standardization
+and 16-component PCA are fitted inside each training split; AdamW, dropout,
+weight decay and residual clipping constrain the small-sample head.  Encoder
+weight loading is parameterized as `pretrained` or `random_init`, although this
+task ran only the pretrained mode and therefore makes no foundation-model
+contribution claim.
+
+On the same 10,240 development OOF voxels, ungated RMSE was `0.037156018008`
+and the ordinary adaptive gate reached `0.028881520098`, both worse than the
+PyKrige baseline `0.028449728170`.  A four-of-four inner-spatial-fold consensus
+guard rejected every unstable correction, so the safe route exactly tied the
+baseline: RMSE `0.028449728170`, 0/5 wins, 0/5 losses and 5/5 ties across the
+five genuinely independent spatial units.  The three seeds remain paired
+optimization pseudo-repeats, not independent samples.  大模型贡献占比待下一轮消融确认。
+Portable evidence, per-fold audits, whole-fold bootstrap uncertainty and
+row-aligned prediction errors are under
+`_outputs/p11_cross_attention_fusion/`.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p11_cross_attention_fusion.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$P11_NNSSL_SOURCE" \
+  --checkpoint "$P11_OPENMIND_CHECKPOINT" \
+  --dependency-root "$P11_OPENMIND_DEPENDENCIES" \
+  --encoder-weight-mode pretrained \
+  --device cuda:0 \
+  --head-device cuda:0
+```
+
 ## P11 OpenMind residual-fusion diagnostics
 
 `p11_residual_fusion_diagnostics.py` preserves the committed P11 harness and
