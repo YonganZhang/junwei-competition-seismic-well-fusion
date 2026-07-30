@@ -1,0 +1,290 @@
+{
+  "comparison": {
+    "cross_attention_minus_baseline": 0.006652686754176795,
+    "cross_attention_minus_prior_calibrated": -0.0005965868398769003,
+    "cross_attention_pair_win_fraction": 1.0,
+    "cross_attention_pair_wins_over_baseline": 12,
+    "paired_comparisons": 12,
+    "prior_calibrated_minus_baseline": 0.007249273594053696
+  },
+  "decision": {
+    "default_enabled": false,
+    "large_model_contribution_share": "pending_next_pretrained_vs_random_encoder_ablation",
+    "objective_improved": true,
+    "state": "DEVELOPMENT_IMPROVEMENT_ABLATION_PENDING"
+  },
+  "development_exploration": {
+    "cross_attention_freeze_point": {
+      "action": "froze_architecture_and_training_constants_before_full_matrix",
+      "baseline_fixed_schema_macro_f1": 0.2135804514277343,
+      "cross_attention_fixed_schema_macro_f1": 0.22821390298494457,
+      "fold_id": 0,
+      "prior_calibrated_fixed_schema_macro_f1": 0.22710616915935283,
+      "repeat_id": 0
+    },
+    "depth_logit_smoothing": {
+      "best_standalone_delta_from_baseline": 0.0038213484963086075,
+      "mix_candidates": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "radius_candidates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "reason": "unstable_when_combined_with_prior_calibration",
+      "retained": false
+    },
+    "scope": "development_LOGO_only_not_an_unbiased_holdout_estimate",
+    "train_prior_shrinkage_candidates": [
+      {
+        "fixed_schema_macro_f1": 0.20137523464754703,
+        "shrinkage": 0.2
+      },
+      {
+        "fixed_schema_macro_f1": 0.20218697566969132,
+        "shrinkage": 0.25
+      },
+      {
+        "fixed_schema_macro_f1": 0.20205804337061503,
+        "shrinkage": 0.3
+      }
+    ],
+    "xgboost_seed_logit_ensemble": {
+      "delta_from_baseline": 0.0,
+      "fixed_schema_macro_f1": 0.19493770207563763,
+      "retained": false
+    }
+  },
+  "evaluation": {
+    "completed_cells": 36,
+    "expected_cells": 36,
+    "fold_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "frozen_test_accessed": false,
+    "known_holdout_accessed": false,
+    "protocol": "strict_LOGO4_three_seed_development_only",
+    "repeat_ids": [
+      0,
+      1,
+      2
+    ],
+    "seeds": [
+      1867973658,
+      2137841944,
+      3902865753
+    ],
+    "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+    "variant_order": [
+      "baseline",
+      "prior_calibrated",
+      "cross_attention"
+    ]
+  },
+  "inputs": {
+    "baseline_bundle_sha256": "753345ccb606e100155bec411c38d0820c5effbe6ebafca0552f31a2c10659db",
+    "development_batch_sha256": "b6817ae218dee12bc72a1551e76423a61eb4ff11faf70dcb0444b01ba422f51c",
+    "representation_bundle_sha256": "c2453a6aa0cbfdd90941691a215db8e2591d446bf8db3fb1f59db6ed0420f22a",
+    "stage3_results_sha256": "8e14145117b8b44e3b9ee1131b9ade65e9f2b25151641d7b2b74f46898f966cb"
+  },
+  "model": {
+    "attention_key_value": "moment_native33_13_channels_x_4_patches",
+    "attention_query": "xgboost_leaf_indices_40_rounds_x_9_classes",
+    "baseline_model": "xgboost_multisoftprob_window",
+    "encoder_init": "pretrained",
+    "encoder_init_choices": [
+      "pretrained",
+      "random"
+    ],
+    "foundation_model": "AutonLab/MOMENT-1-base",
+    "random_init_ablation_run": false,
+    "resampling": "none",
+    "residual_formula": "prior_calibrated_xgboost_logits + sigmoid(per_class_gate)*bounded_cross_attention_residual",
+    "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+  },
+  "optimization": {
+    "calibration_fit_scope": "fold_train_class_counts_only",
+    "large_model_contribution_share": "pending_next_pretrained_vs_random_encoder_ablation",
+    "prior_shrinkage": 0.25
+  },
+  "preserved_outputs": {
+    "_outputs/p11_clean_well_native33/artifact_manifest.json": "5e1d5b024a78313acd2953edb5b78ccc87c0969d1b706dc7f34b6b1df6c7ca06",
+    "_outputs/p11_clean_well_native33/evidence.md": "420f778568a156b2d0f7c45cafc97d64ae75afeb4217cecb93becb57a1d24e5d",
+    "_outputs/p11_clean_well_native33/primary_metric.png": "5710fad16b433d8a1e58974cb3d7adae361a648bab0b7a7907b25b70941519e1",
+    "_outputs/p11_clean_well_native33/results.jsonl": "b239ed0841a1e09365d1c77deabe912ce8d55bb93904b9e1f27c75fb619b6a59",
+    "_outputs/p11_clean_well_native33/summary.json": "d6058f791cf40f7597e0b820c5379df69e7f1e581f686b71cd497d547cce71ab",
+    "_outputs/p11_residual_fusion/artifact_manifest.json": "d81c3dc0647020186004c3630825d732e8ad8d18c975131c20ec14be0e97be14",
+    "_outputs/p11_residual_fusion/evidence.md": "eac5c4e31c86dcd080993fc82fee5958b41402edc7dfee666f97b6c80bc2d1f6",
+    "_outputs/p11_residual_fusion/primary_metric.png": "c3a82df5905027027078c9545dc6afe0c74c9dd6174775a59cbc72bc32c739db",
+    "_outputs/p11_residual_fusion/results.jsonl": "9c73c5ead55a4ee3e472368dbfdadc811ce92da5a2ffa321601cc23b550e7e3c",
+    "_outputs/p11_residual_fusion/summary.json": "86d1cda65a9e67e92dff1278fe6bed423fd5d4a8de918547d20eac1b60a75466"
+  },
+  "report_note_zh": "大模型贡献占比待下一轮消融确认",
+  "runtime": {
+    "device": "cuda:0",
+    "duration_seconds_this_invocation": 0.0019816210260614753,
+    "raw_predictions_persisted": false,
+    "resumed_pairs": 12
+  },
+  "schema_version": "lithofacies-p11-cross-attention-fusion/v1",
+  "status": "complete",
+  "variants": {
+    "baseline": {
+      "cells": 12,
+      "gate_mean": null,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5172413793103449,
+          "mean": 0.4926781284563429,
+          "minimum": 0.4409448818897638,
+          "std": 0.031560471946055144
+        },
+        "balanced_accuracy": {
+          "maximum": 0.310228166797797,
+          "mean": 0.27794574368578995,
+          "minimum": 0.2201412114455593,
+          "std": 0.036016238510038934
+        },
+        "expected_calibration_error": {
+          "maximum": 0.16341026354860919,
+          "mean": 0.1380629397813447,
+          "minimum": 0.10583577393978237,
+          "std": 0.021771410521281977
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.2135804514277343,
+          "mean": 0.19493770207563763,
+          "minimum": 0.18127577519230875,
+          "std": 0.013857794088969907
+        },
+        "multiclass_brier": {
+          "maximum": 0.7955661628470292,
+          "mean": 0.6770580401740833,
+          "minimum": 0.5811386014461116,
+          "std": 0.08613553464031641
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.0168965261340803,
+          "mean": 1.5492749217386004,
+          "minimum": 1.2517693191937989,
+          "std": 0.2984265550630998
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.30198365231259966,
+          "mean": 0.25830527131650355,
+          "minimum": 0.18127577519230875,
+          "std": 0.047857109839882575
+        }
+      },
+      "residual_contribution_mean_abs": null
+    },
+    "cross_attention": {
+      "cells": 12,
+      "gate_mean": 0.021078547618041437,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5402298850574713,
+          "mean": 0.5084180526388234,
+          "minimum": 0.44881889763779526,
+          "std": 0.037020233600741165
+        },
+        "balanced_accuracy": {
+          "maximum": 0.3254043185593146,
+          "mean": 0.28849698252943745,
+          "minimum": 0.22497212931995542,
+          "std": 0.039409578149845574
+        },
+        "expected_calibration_error": {
+          "maximum": 0.22586061688773987,
+          "mean": 0.17955114744876913,
+          "minimum": 0.13149496090187776,
+          "std": 0.033914932500146974
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.22821390298494457,
+          "mean": 0.20159038882981442,
+          "minimum": 0.184640522875817,
+          "std": 0.017373276184536882
+        },
+        "multiclass_brier": {
+          "maximum": 0.8133206196639897,
+          "mean": 0.6752852885753641,
+          "minimum": 0.5652508873838814,
+          "std": 0.0970423069262333
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.166417518094656,
+          "mean": 1.5632287458610745,
+          "minimum": 1.1957608745080022,
+          "std": 0.3786634897402409
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.3084434893087881,
+          "mean": 0.2669254295293529,
+          "minimum": 0.18619176667957157,
+          "std": 0.04959429660178659
+        }
+      },
+      "residual_contribution_mean_abs": 0.0412217378616333
+    },
+    "prior_calibrated": {
+      "cells": 12,
+      "gate_mean": null,
+      "metrics": {
+        "accuracy": {
+          "maximum": 0.5402298850574713,
+          "mean": 0.5110260720614553,
+          "minimum": 0.44881889763779526,
+          "std": 0.037956711611887205
+        },
+        "balanced_accuracy": {
+          "maximum": 0.3254043185593146,
+          "mean": 0.28958176234108857,
+          "minimum": 0.22497212931995542,
+          "std": 0.040221764702389494
+        },
+        "expected_calibration_error": {
+          "maximum": 0.2024895598188575,
+          "mean": 0.17384441177905988,
+          "minimum": 0.1339590557406666,
+          "std": 0.02815313374702048
+        },
+        "fixed_schema_macro_f1": {
+          "maximum": 0.22710616915935283,
+          "mean": 0.20218697566969132,
+          "minimum": 0.18619176667957157,
+          "std": 0.01685428239626005
+        },
+        "multiclass_brier": {
+          "maximum": 0.8076489085350338,
+          "mean": 0.6720078370986666,
+          "minimum": 0.5632040059073491,
+          "std": 0.09634367723221897
+        },
+        "negative_log_likelihood": {
+          "maximum": 2.1460239549118727,
+          "mean": 1.5532060146643563,
+          "minimum": 1.1926805188132494,
+          "std": 0.37283957911422155
+        },
+        "supported_class_macro_f1": {
+          "maximum": 0.3084434893087881,
+          "mean": 0.2678400907503395,
+          "minimum": 0.18619176667957157,
+          "std": 0.05004669842759826
+        }
+      },
+      "residual_contribution_mean_abs": null
+    }
+  }
+}

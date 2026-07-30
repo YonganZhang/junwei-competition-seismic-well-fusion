@@ -842,3 +842,73 @@ Portable evidence is `_outputs/p11_clean_well_native33/results.jsonl`,
 `summary.json`, `evidence.md`, `primary_metric.png`, and
 `artifact_manifest.json`. Baseline logits, native embedding caches, resume
 state, and raw predictions remain ignored.
+
+## P11 XGBoost–MOMENT cross-attention fusion
+
+`lithofacies_p11_cross_attention_fusion.py` preserves both earlier P11
+experiments and uses an independent output directory. The archived XGBoost
+booster's true leaf-index representation (`40 rounds × 9 classes`) supplies
+cross-attention queries. Native-33 MOMENT tokens from only the 13 physical log
+curves (`13 channels × 4 patches`) supply keys and values. The final predictor
+is a bounded gated residual over the XGBoost logits.
+
+The runner also reports a separate deterministic calibration control. Because
+the Stage-3 XGBoost fit uses inverse-square-root class weights, calibration
+adds `0.25 × centered log(fold-train class count)` to its logits. This uses
+fold-train counts only. It is kept separate so an overall gain cannot be
+misreported as a MOMENT gain.
+
+On the full strict LOGO4 four-fold by three-seed matrix, mean fixed-nine
+Macro-F1 changed from `0.194938` for the strong XGBoost baseline to `0.202187`
+for prior calibration and `0.201590` for the complete cross-attention system.
+The requested system-level change is therefore `+0.006653`; it beat the raw
+baseline in `12/12` fold/seed cells. Cross-attention itself was `-0.000597`
+relative to the calibration-only control. These are development results:
+**large-model contribution share awaits the next pretrained-versus-random
+encoder ablation**（大模型贡献占比待下一轮消融确认）. The model is not
+enabled by default.
+
+Encoder initialization is a frozen run-contract/CLI parameter:
+`--encoder-init pretrained|random`. This experiment ran `pretrained` only;
+the random path is implemented and contract-tested but was not executed.
+
+### Reproduce cross-attention fusion
+
+Run from the project root with the existing Stage-3 runtime and approved
+tabular/Torch environments:
+
+```bash
+TABULAR_PYTHON="${P5_TABULAR_PYTHON:?set the approved tabular interpreter}"
+TORCH_PYTHON="${P5_TORCH_PYTHON:?set the approved torch interpreter}"
+STAGE3_RUNTIME="${LITHOFACIES_STAGE3_RUNTIME:?point to Stage-3 runtime}"
+MOMENT_SNAPSHOT="${LITHOFACIES_MOMENT_SNAPSHOT:?point to pinned snapshot}"
+RUNNER=_pipelines/02_task_datasets/lithofacies/lithofacies_p11_cross_attention_fusion.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/p11_cross_attention_fusion
+BASELINE=_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion/runtime/baseline_logits.npz
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$RUNNER" \
+  prepare-representations \
+  --development-batch "$STAGE3_RUNTIME/development_logo4.npz" \
+  --baseline-bundle "$BASELINE" \
+  --stage3-results \
+    _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl \
+  --checkpoint-dir "$STAGE3_RUNTIME/checkpoints" \
+  --output-bundle "$OUT/runtime/xgboost_leaf_representations.npz"
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$RUNNER" run \
+  --development-batch "$STAGE3_RUNTIME/development_logo4.npz" \
+  --baseline-bundle "$BASELINE" \
+  --representation-bundle "$OUT/runtime/xgboost_leaf_representations.npz" \
+  --snapshot "$MOMENT_SNAPSHOT" --output-dir "$OUT" \
+  --device cuda:0 --encoder-init pretrained
+
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" "$RUNNER" verify \
+  --output-dir "$OUT"
+PYTHONDONTWRITEBYTECODE=1 "$TORCH_PYTHON" -m pytest -q \
+  _pipelines/02_task_datasets/lithofacies/tests/test_lithofacies_p11_cross_attention_fusion.py
+```
+
+Portable evidence is `_outputs/p11_cross_attention_fusion/results.jsonl`,
+`summary.json`, `evidence.md`, `primary_metric.png`, and
+`artifact_manifest.json`. Leaf representations, MOMENT token caches, partial
+state, and raw predictions remain ignored.

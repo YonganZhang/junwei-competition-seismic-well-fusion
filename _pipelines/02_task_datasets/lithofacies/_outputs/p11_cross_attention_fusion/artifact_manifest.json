@@ -1,0 +1,31 @@
+{
+  "artifacts": [
+    {
+      "bytes": 46039,
+      "kind": "result_table",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_cross_attention_fusion/results.jsonl",
+      "sha256": "44e5dd5210c75ab04e8fa9b286d4c9d890a2a32c57ac2ddf21b9f9337d6c343c"
+    },
+    {
+      "bytes": 10086,
+      "kind": "summary",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_cross_attention_fusion/summary.json",
+      "sha256": "fa4049788c9bb60bd7ca91c4f3b08d9b97f0d1ec6e6130577192a0f4fde1beeb"
+    },
+    {
+      "bytes": 3705,
+      "kind": "evidence_report",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_cross_attention_fusion/evidence.md",
+      "sha256": "d7892d210451459ce25af42ccab1b98ec6a9d2f5c13360e3a36375bb7ca5e5d0"
+    },
+    {
+      "bytes": 57628,
+      "kind": "figure",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p11_cross_attention_fusion/primary_metric.png",
+      "sha256": "5b4e95cb7a7a4091e403f738621a0b7472641ac0a711aa2d9d43c529b762ae05"
+    }
+  ],
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "schema_version": "lithofacies-p11-cross-attention-artifacts/v1"
+}
