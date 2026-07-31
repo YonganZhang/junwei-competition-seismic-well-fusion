@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P12可视化固化完成] 赛道1/3/5出版级图组已统一入口、逐图验收并集成；赛道2/4/6按用户要求保持暂停。六赛道baseline pipeline候选已在各自隔离worktree完成真实数据端到端验收+可移植性收口；
+> **🧭 当前: [P13科研深度扩展完成] 六赛道已统一为“强科学基线 + 同架构随机初始化 + 预训练候选 + 受控融合”的研究合同，补齐真实空间诊断、领域结构指标和46页LaTeX技术报告；赛道1/3/5的P12出版级图组继续保留。六赛道baseline pipeline候选已在各自隔离worktree完成真实数据端到端验收+可移植性收口；
 >   ①②③④⑥又各新增2个已通过动态发现/小批次训练/检查点契约的简单备选模型（每条现有3个模型，SHA见下方），
 >   ⑤已由军伟拍板为一个赛道七个任务目标（储层品质、含油气/有效厚度、产能、见水风险、剩余油/加密井潜力、
 >   孔隙度、渗透率）；五窗口只读调研、统一训练/验证/复现/可视化SOP与分批实施Goal均已收敛；主仓集成（merge）仍未执行**
@@ -156,6 +156,18 @@
       `_outputs/domain_visualization_delivery/p12/review_attestation.json`，中央门禁7/7、
       fault 5/5、property 2/2、sweetspot 5/5通过；共享冷启动入口为
       `_pipelines/03_domain_visualization_delivery/step_00_discover.py --check`。
+- [x] 2026-07-31 P13 科研深度扩展：六赛道补齐统一基础模型实验合同与真实领域结构诊断，
+      包括断层 SEG-Y 解释叠合、F3 连续相切片、井深物性与岩相序列、生产预测残差诊断，
+      以及 Volve MAPAXES 三维体、正交切片和方向变差函数。12组静态图、3个交互 HTML、
+      输入输出 SHA-256 清单与4项自动测试均已落地；六张架构图使用 Nano Banana 2 绘制，
+      但只作为方法解释，不作为性能证据。46页 LaTeX 技术报告按六个固定四字节标题组织，
+      详见 `_phases/P13_six_track_research_depth_expansion.md`。
+- [x] 2026-07-31 P16.1 基础模型迁移诊断：复核赛道② SAM2、赛道④ MOMENT 与赛道⑥ GFM
+      的真实权重加载、训练配方和强基线对照，确认②、④在引入基础模型后的完整方案均取得开发指标
+      提升，具体来源留待后续消融。⑥只穷尽了当前 GFM、数据与三种直接桥接协议，下一步优先让
+      基础模型提供结构分区、各向异性、边界与不确定性，再与非平稳地质统计联合建模。详见
+      `_findings/P16.1_foundation_model_transfer_diagnosis_and_recovery.md` 与
+      `../../_reports/foundation_model_diagnosis/20260731_foundation_model_transfer_diagnosis_and_recovery.md`。
 
 ## 数据资产索引
 

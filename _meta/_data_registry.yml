@@ -1,13 +1,15 @@
 # _meta/_data_registry.yml — 数据资产注册表(单一真源)
 project: 军伟的比赛-地震测井多模态融合
 schema_version: v4.0
-last_synced: 2026-07-08
+last_synced: 2026-07-31
 
 assets:
   - id: volve-north-sea
     name: Volve 油田数据集（挪威北海，Equinor）
-    status: downloading
-    size_approx: ~7.7TB（全套）
+    status: complete
+    size_approx: >
+      压缩包实测4.566TB(du -sh=4.2T)，unzip -l汇总的包内标称未压缩大小约5.437TB。
+      2026-07-13 Codex审查更正：此前"~7.7TB"是历史遗留粗估，两个数字都不是7.7TB，以实测为准。
     location: _sandbox/volve_data/
     source: >
       官方唯一现行渠道 = Databricks Marketplace 自助注册
@@ -26,14 +28,22 @@ assets:
       - Volve_Reports.zip（162MB，作业报告PDF，已下载完成）
       - Volve_Well_technical_data.zip（212MB，井身结构，已下载完成）
       - Volve_Seismic_VSP.zip（96MB，垂直地震剖面测井，已下载完成）
-      - Volve_WITSML Realtime drilling data.zip（2.3GB，钻井实时数据，下载中）
-      - Volve_Seismic_ST0202.zip（1.17TB，一期3D地震体，下载中）
-      - Volve_Seismic_ST10010.zip（2.59TB，另一期3D地震体，下载中）
-      - Volve_Seismic_ST0202vsST10010_4D.zip（330GB，4D时移地震，下载中）
+      - Volve_WITSML Realtime drilling data.zip（2.3GB，钻井实时数据，已下载完成）
+      - Volve_Seismic_ST0202.zip（1.17TB，一期3D地震体，已下载完成）
+      - Volve_Seismic_ST10010.zip（2.59TB，另一期3D地震体，2026-07-11下载完成，目录结构校验
+        通过：474个文件真实可读，非截断假完成）
+      - Volve_Seismic_ST0202vsST10010_4D.zip（330GB，4D时移地震，已下载完成）
     access_note: >
       通过 Databricks CLI（本机 ~/.local/bin/databricks，配置存于 ~/.databrickscfg 600权限）
       + Files API 直连下载（不走本机mihomo代理，代理转发对大文件长连接不稳定）。
       账号 yonganzhang27@gmail.com，workspace host 见 ~/.databrickscfg（不明文记录于此）。
+    full_reference: >
+      2026-07-12：完整数据档案（Equinor官方11个文件夹类别→本项目归并9个业务组→14个ZIP的映射表、
+      24井×数据源覆盖矩阵、井名命名陷阱、内容级验证结果、③④⑤赛道可行性结论）已整合入
+      `_wiki-methodology/_wiki/_entities/volve-dataset.md`（权威查阅入口，取代散落的
+      P2.1~P2.4 findings逐个翻查）。2026-07-13 Codex+Claude Workflow联合审查（直连Databricks
+      远端字节级比对，见`P2.5`finding）确认14个ZIP与远端逐文件同名同字节数，无遗漏无新增；
+      算法源头盘点见`_wiki-methodology/_wiki/_entities/algorithm-baselines-6tracks.md`。
     extracted_subsets_for_layer1: >
       2026-07-10 为 _pipelines/01_common_preprocess 只解压了必要文件(不整包解压1.17TB地震压缩包)：
       _sandbox/volve_data/_extracted_seismic/(1.1G，ST0202/Stacks/..FULL_OFFSET_PP_TIME..segy，
@@ -53,8 +63,10 @@ assets:
     zenodo_ml_slice: https://zenodo.org/records/1471548
     note: >
       2026-07-10更正：zenodo编号之前登记反了，已核实 1471548 才是F3（IBM Research发布，
-      "Netherlands F3 Interpretation Dataset"，post-stack数据+8个层位+4口井测井+9类标注，
-      651个inline mask+951个crossline mask），3924682 是Penobscot。下载中。
+      "Netherlands F3 Interpretation Dataset"，post-stack数据+8个层位+4口井测井，
+      651个inline mask+951个crossline mask），3924682 是Penobscot。
+      2026-07-13 Codex审查更正：标注不是"9类"，是9个解释层位分隔出10个地震相区间/类别。
+      2026-07-13确认：8/8文件MD5全部匹配Zenodo当前版本，下载已完整（此前note末尾"下载中"是残留文字，已删除）。
 
   - id: penobscot-canada
     name: Penobscot（加拿大 Nova Scotia 海域）
@@ -65,5 +77,43 @@ assets:
     zenodo_ml_slice: https://zenodo.org/records/3924682
     note: >
       2026-07-10更正：zenodo编号之前登记反了，已核实 3924682 才是Penobscot（"Penobscot
-      Interpretation Dataset"，采自加拿大新斯科舍近海Scotian shelf，超10万张标注图，7个地层分类）。
-      下载中；用于多个开源下游分割任务测试（赛题要求项）。
+      Interpretation Dataset"，采自加拿大新斯科舍近海Scotian shelf，超10万张标注图）。
+      2026-07-13 Codex审查更正：官方页面文字写"7个地层分类"，但本地dataset-log.txt记录
+      num_classes=8、HDF5 label实读值域为0-7——建模时以数据文件的8个整数标签为准，不要用
+      页面文字的"7"。2026-07-13确认：5/5文件MD5全部匹配Zenodo当前版本，下载已完整（此前
+      note末尾"下载中"是残留文字，已删除）；用于多个开源下游分割任务测试（赛题要求项）。
+
+  - id: six-track-domain-visualization-delivery-v1
+    name: 六赛道真实领域可视化卡片交付 v1
+    status: published
+    location: _outputs/domain_visualization_delivery/v1/
+    source: _pipelines/03_domain_visualization_delivery/delivery_manifest.json
+    note: >
+      六张图片经工作树HEAD、图片SHA-256、来源脚本、证据文件、PNG尺寸和人工画面复核后，
+      复制到cards/并再次验哈希；公网永久URL及HTTP 200断言记录在published_manifest.json。
+      旧_outputs/p5_r2_visualization属于协议/模型性能汇总，不是本资产来源，也禁止作为领域图发布。
+
+  - id: six-track-research-visualization-expansion-v1
+    name: 六赛道科研深度扩展图件与基础模型实验合同 v1
+    status: published
+    location: _outputs/research_visualization_expansion/v1/
+    source: _pipelines/05_research_visualization_expansion/
+    note: >
+      统一生成12组静态科研图、3个交互式三维HTML及逐文件SHA-256清单；新增真实SEG-Y断层解释叠合、
+      F3连续切片、井深序列诊断、跨物性一致性、生产预测残差与Q-Q诊断、Volve MAPAXES三维体、
+      正交切片和方向变差函数。基础模型合同为六赛道分别固定科学基线、随机初始化对照、预训练初始化、
+      融合方式、划分、主指标与晋级规则；未完成对照不写成模型收益。报告真源与46页PDF位于
+      `_paper/technical_report/`；稳定下载地址为
+      https://share.yongan.site/junwei-six-track-report/junwei_six_track_technical_report.pdf。
+
+  - id: six-track-latex-source-package-v1
+    name: 六赛道技术报告 LaTeX 可编译源码包 v1
+    status: published
+    location: _outputs/technical_report_delivery/junwei_six_track_latex_source_latest.zip
+    source: _paper/technical_report/
+    sha256: 147723a128f5a4ae04f780b9e3bbbf2cecb53abeaa9e874da80b4fd8c9fec87c
+    note: >
+      128个归档条目，包含LaTeX章节、BibTeX参考文献、六张最终架构图、正文结果图、
+      Nano Banana 2提示词、构建脚本、最终PDF、基础模型实验合同和Claude交接说明。
+      unzip完整性与XeLaTeX no-pdf解析均已通过。稳定下载地址为
+      https://share.yongan.site/junwei-six-track-latex-source/junwei_six_track_latex_source_latest.zip。
