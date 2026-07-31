@@ -82,3 +82,19 @@
 - independent verifier: `p17_foundation_geostatistics.py verify` -> `PASSED`; 10,240 rows, per-fold metrics, prediction hash and summary hash matched.
 - lifecycle: `DEVELOPMENT_SIGNAL`, `default_enabled=false`; ablation deferred by user instruction; frozen holdout remains sealed.
 - detailed evidence: `P17_reconstruction_foundation_acceptance_evidence.md`.
+
+## 2026-07-31 P18 reconstruction anisotropic foundation-geostatistics acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-reconstruction`
+- branch: `p11-residual-reconstruction`; root seed `2693`.
+- external review: Claude completed a read-only audit and identified same-OOF winner's curse plus missing geological anisotropy; the accepted review is `_top/_external_reviews/P18_claude_p17_metric_review_20260731.md`.
+- P17 correction: the original 156-candidate family under nested LOFO top-3 gives RMSE `0.028534404074`, worse than PyKrige `0.028449728170`; the old same-OOF `-0.4563%` result is superseded.
+- P18 protocol: 1,215 bounded anisotropic candidates; each held-out spatial fold is predicted using top-3 candidates ranked only on the other four folds. Scaling/PCA remains fit on the current outer fold's 512 legal labels.
+- selected result: nested P18 RMSE `0.027752680679`, MAE `0.020830115995`, relative RMSE change `-2.4501%`, with 5 wins / 0 losses across spatial folds.
+- uncertainty: 20,000 whole-fold bootstrap draws; P(candidate better)=`1.0`, RMSE-delta CI95 `[-0.001140994782, -0.000353924655]`.
+- alternatives: PLS nested route RMSE `0.027811249487` was weaker; aggressive refinement RMSE `0.027732695244` had only 4/5 fold wins and was rejected.
+- regression: P17+P18 combined suite `16 tests`, `OK`; `git diff --check` passed.
+- independent verifier: `p18_anisotropic_foundation_geostatistics.py verify` -> `PASSED`; 10,240 rows, per-fold metrics, legacy correction, selection firewall and artifact hashes matched.
+- Claude final read-only review: `PASS`, no P0/P1; independently reproduced metrics and bootstrap bit-exactly. The P2 requests for nested top-1 parity and five-fold caveat were incorporated; grid-edge sensitivity remains documented for preregistered external validation.
+- firewall/lifecycle: 512 labels and 2,048 validation rows per fold; no frozen holdout path or HDF5 opened; `ROBUST_DEVELOPMENT_SIGNAL`, `default_enabled=false`, ablation deferred and no causal pretraining claim.
+- detailed evidence: `P18_reconstruction_anisotropic_acceptance_evidence.md`.

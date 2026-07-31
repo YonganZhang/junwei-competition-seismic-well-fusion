@@ -4,6 +4,35 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P18 anisotropic foundation geostatistics with nested selection
+
+`p18_anisotropic_foundation_geostatistics.py` corrects the P17 selection
+protocol and adds an explicit vertical anisotropy factor to the local metric.
+For each reported spatial fold, all 1,215 bounded candidates are ranked using
+only the other four folds; the top three predictions are averaged on the
+untouched fold. Feature scaling and PCA still use only the current outer
+fold's 512 legal training rows.
+
+The honest nested RMSE is `0.027752680679` versus PyKrige
+`0.028449728170`, a relative change of `-2.4501%`. All five spatial folds
+improve, and the 20,000-draw whole-fold bootstrap RMSE-delta interval is
+`[-0.001140994782, -0.000353924655]`. The route is a
+`ROBUST_DEVELOPMENT_SIGNAL`, but remains disabled: the frozen holdout is
+sealed and the user deferred causal ablation.
+
+```bash
+python3 \
+  _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT"
+
+python3 \
+  _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py verify
+```
+
+Portable results and independent recomputation are under
+`_outputs/p18_anisotropic_foundation_geostatistics/`.
+
 ## P17 foundation-informed nonstationary geostatistics
 
 `p17_foundation_geostatistics.py` changes the role of the frozen
@@ -22,9 +51,11 @@ OOF rows, PyKrige RMSE is `0.028449728170` and the selected route reaches
 `0.021413486381` to `0.021200329887`, with 3/5 spatial folds improving.
 Whole-fold bootstrap gives a 76.68% probability of improvement, but its 95%
 RMSE-delta interval `[-0.000589605334, +0.000128806422]` crosses zero.
-Therefore this is a `DEVELOPMENT_SIGNAL`, remains disabled by default, and is
-not a holdout or causal pretraining claim.  The no-foundation/random-init
-ablation is deliberately deferred.
+P18 later showed that this number was selection-biased: nested top-3 selection
+on the same P17 family gives RMSE `0.028534404074`, worse than PyKrige.
+Therefore the original `DEVELOPMENT_SIGNAL` is superseded and retained only as
+historical method evidence. The no-foundation/random-init ablation remains
+deliberately deferred.
 
 ```bash
 CUDA_VISIBLE_DEVICES=7 python3 \

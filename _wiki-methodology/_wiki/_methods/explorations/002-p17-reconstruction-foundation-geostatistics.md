@@ -31,20 +31,21 @@ P17 将预训练 GFM 从“目标预测器”改为“局部几何先验”：
 - 主指标：池化开发 OOF RMSE；不确定性按完整空间折 bootstrap；
 - 防火墙：CLI 无 test/holdout 参数，不打开 `test.h5`，编码器不读目标。
 
-## 结果
+## 原始结果与 P18 复核
 
-最佳候选为 `gfm_metric_f0.05_s0.10_k128_blend_0.75`。PyKrige RMSE 为
+P17 同 OOF 选出的最佳候选为 `gfm_metric_f0.05_s0.10_k128_blend_0.75`。PyKrige RMSE 为
 `0.028449728170`，P17 为 `0.028319907650`，相对变化 `-0.4563%`。MAE 从
 `0.021413486381` 降至 `0.021200329887`，偏差绝对值也降低。五个独立空间折
 为 3 胜 2 负；整折 bootstrap 中候选更优的概率为 `0.7668`，95% RMSE 差值
-区间为 `[-0.000589605334, +0.000128806422]`，仍跨 0。
+区间为 `[-0.000589605334, +0.000128806422]`，仍跨 0。P18 随后用嵌套
+留一空间折重评同一候选族，top-3 RMSE 为 `0.028534404074`，原 `-0.4563%`
+被确认包含选择后乐观偏差，已由 P18 结论取代。
 
 ## 解释边界
 
-该结果证明“基础模型参与非平稳邻域构建”已出现合法的开发集信号，但不证明
-它已稳定超过 PyKrige，也不能将改善因果归因于预训练权重。按用户要求，
-本阶段不做 no-foundation/random-init 消融；候选保持 `default_enabled=false`，冻结
-holdout 保持封存。
+该阶段保留为方法转换的历史探索，不再把同 OOF 选优数字作为提升证据。按用户
+要求，本阶段不做 no-foundation/random-init 消融；候选保持
+`default_enabled=false`，冻结 holdout 保持封存。当前稳健结果见 P18。
 
 ## 入口
 
@@ -52,3 +53,4 @@ holdout 保持封存。
 - test: `_pipelines/02_task_datasets/reconstruction/_tests/test_p17_foundation_geostatistics.py`
 - evidence: `_pipelines/02_task_datasets/reconstruction/_outputs/p17_foundation_geostatistics/`
 - acceptance: `_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md`
+- superseded by: `_wiki-methodology/_wiki/_methods/explorations/003-p18-reconstruction-anisotropic-foundation-geostatistics.md`

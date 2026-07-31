@@ -1,5 +1,9 @@
 # P17 三维重建基础模型验收证据
 
+> 2026-07-31 P18 复核：本页记录的 `-0.4563%` 是同一 OOF 选优后的历史结果。
+> 对同一候选族做嵌套留一空间折 top-3 后 RMSE 为 `0.028534404074`，原提升
+> 已被取代。当前结论见 `P18_reconstruction_anisotropic_acceptance_evidence.md`。
+
 日期：2026-07-31
 工作树：`p10-results-reconstruction`
 根种子：`2693`

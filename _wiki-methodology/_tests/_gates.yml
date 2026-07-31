@@ -143,3 +143,9 @@ gates:
     timeout: 180
     expect: exit0
     note: "Track-6 GFM nonstationary metric, exact train budget, no-test CLI, portable evidence hashes and independent recomputation."
+
+  - id: p18-reconstruction-anisotropic
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p18_anisotropic_foundation_geostatistics.py"
+    timeout: 180
+    expect: exit0
+    note: "Track-6 vertical anisotropy, nested LOFO selection firewall, P17 bias correction, portable evidence hashes and independent recomputation."

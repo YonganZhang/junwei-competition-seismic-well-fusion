@@ -1,10 +1,13 @@
 ---
 phase_id: P17
-status: accepted
+status: superseded
 severity: major
 owner_col: COL2
 source: runtime
 created_at: 2026-07-31
+closed_at: 2026-07-31
+superseded_by: P18_reconstruction_anisotropy_recovers_robust_signal
+closure_evidence: _wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md
 ---
 
 # 赛道⑥的基础模型问题主要是角色不匹配，而非接线失效
@@ -12,9 +15,9 @@ created_at: 2026-07-31
 ## Local Case
 
 P14 冻结特征直接回归、P15 局部微调和 P16 遮蔽重建都没有超过 PyKrige。
-P17 保留同一真实预训练 GFM，但将它的作用从直接目标拟合改为非平稳邻域
-构建，在相同 512 标签/折预算下将 OOF RMSE 从 `0.028449728170` 降至
-`0.028319907650`。
+P17 保留同一真实预训练 GFM，并将它从直接目标拟合改为非平稳邻域构建。
+它曾在同一 pooled OOF 上选出 `0.028319907650`，但 P18 的嵌套复核表明原
+候选族 RMSE 为 `0.028534404074`，没有超过 PyKrige。原改善已被取代。
 
 ## Class Pattern
 
@@ -31,8 +34,8 @@ P17 保留同一真实预训练 GFM，但将它的作用从直接目标拟合改
 
 ## Impact
 
-赛道⑥不再被简化为“大模型无用”。它已有一条不扩大标签预算、不触碰冻结
-holdout 的正向路线。但由于置信区间跨 0，当前仅记为开发信号，不启用默认。
+P17 仍证明“调整基础模型角色”是合理方向，但不能用其同 OOF 最优值证明提升。
+后续结论统一引用 P18 的嵌套选型与各向异性结果。
 
 ## Prevention Rule (candidate)
 
@@ -43,3 +46,4 @@ holdout 的正向路线。但由于置信区间跨 0，当前仅记为开发信�
 
 - task_plan: ../_task_plan.md
 - method: ../../_wiki/_methods/explorations/002-p17-reconstruction-foundation-geostatistics.md
+- superseding finding: P18_reconstruction_anisotropy_recovers_robust_signal.md

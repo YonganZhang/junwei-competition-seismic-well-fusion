@@ -110,6 +110,17 @@ code_domains:
       构建非平稳邻域并与 PyKrige 保守融合。只产生 DEVELOPMENT_SIGNAL，
       无 test/holdout 入口，默认不启用。
 
+  - id: reconstruction_anisotropic_foundation_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P18 赛道⑥稳健开发优化：复用哈希锁定的真实预训练 GFM 表征，显式搜索
+      垂向各向异性，并对每个报告空间折只用其余四折进行 top-3 候选选择。
+      保持 512 标签/折和冻结 holdout 防火墙，产出 ROBUST_DEVELOPMENT_SIGNAL；
+      消融后置，默认不启用。
+
 entrypoints:
   - id: project_plan
     path: _wiki-methodology/_top/_task_plan.md
@@ -188,6 +199,13 @@ entrypoints:
     owner: col3
     description: "Track-6 GFM nonstationary-metric result, 512-label budget, holdout firewall, fold uncertainty and independent hash/metric recomputation."
 
+  - id: p18_reconstruction_anisotropic_acceptance
+    path: _wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 anisotropic GFM geostatistics, nested leave-one-fold-out selection, P17 bias correction, 5/5 fold improvement and independent recomputation."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -214,6 +232,12 @@ cross_domain_edges:
     to: canonical_models
     relation: routes
   - from: reconstruction_foundation_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_anisotropic_foundation_geostatistics
+    to: reconstruction_foundation_geostatistics
+    relation: supersedes
+  - from: reconstruction_anisotropic_foundation_geostatistics
     to: foundation_model_routes
     relation: uses
 
