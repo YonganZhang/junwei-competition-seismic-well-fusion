@@ -73,6 +73,21 @@ class P21FixedFoundationEnsembleTest(unittest.TestCase):
         self.assertTrue(all(row["rmse_delta_vs_p19"] > 0.0 for row in rows))
         self.assertFalse(any("accept" in row["verdict"] for row in rows))
 
+    def test_delivery_default_freezes_p21_and_disables_peft_routes(self) -> None:
+        config = json.loads(
+            (ROOT / "_models" / "reconstruction" / "default_model.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(config["active_method"], "p21_fixed_foundation_ensemble")
+        self.assertTrue(config["default_enabled"])
+        self.assertTrue(config["foundation_model"]["backbone_frozen"])
+        self.assertFalse(config["fixed_inference"]["per_fold_model_selection"])
+        self.assertEqual(config["fixed_inference"]["seismic_weights"], [0.0, 0.1, 0.2])
+        self.assertEqual(config["fixed_inference"]["kernel_mean_weight"], 0.75)
+        self.assertIn("staged_lora_r4", config["disabled_training_routes"])
+        self.assertIn("staged_adapter", config["disabled_training_routes"])
+
     def test_independent_artifact_verification(self) -> None:
         verification = p21.verify_evidence(self.output)
         self.assertEqual(verification["status"], "PASSED")
