@@ -1,0 +1,8 @@
+{
+  "execution_code_git_commit": "4ee7a32e9e3b460a4236a4391a623391f227d334",
+  "historical_target_member_sha256": "86ae0cdc0619e0eb703f99f8badb256678d3878fd12add1666bbdf0809099044",
+  "hyperparameter_search_after_opening": false,
+  "preregistration_git_commit": "1a3a0566a043fb593a502d1410abfdcb909519cf",
+  "preregistration_sha256": "62a00bbd4893ee61fef4c9ee4e8b5407a485e73fd7c9946e037c370d6060757f",
+  "schema_version": "reconstruction-p24-opening-record/v1"
+}

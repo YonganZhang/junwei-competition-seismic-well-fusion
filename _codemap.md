@@ -72,7 +72,7 @@
 
 六条路线统一可发现，但保持任务专属张量、head、loss 与 metric；route 接通不自动成为默认。
 
-## P17–P23 赛道⑥基础模型与井震校准
+## P17–P24 赛道⑥基础模型、井震校准与迁移验证
 
 | 代码域 | 真源 / 入口 | 测试指针 |
 |---|---|---|
@@ -82,8 +82,11 @@
 | P18 便携结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p18_anisotropic_foundation_geostatistics/` | `_wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md` |
 | 元拟合坐标去重 runner | `_pipelines/02_task_datasets/reconstruction/p19_meta_purged_geostatistics.py` | `reconstruction/_tests/test_p19_training_diagnostics_artifacts.py` |
 | P19 诊断结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p19_training_diagnostics/` | `_wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md` |
+| P21 固定基础核默认模型 | `_pipelines/02_task_datasets/reconstruction/p21_fixed_foundation_ensemble.py` | `reconstruction/_tests/test_p21_fixed_foundation_ensemble.py` |
 | P23 Checkshot 独立校验 runner | `_pipelines/02_task_datasets/reconstruction/p23_checkshot_calibration.py` | `reconstruction/_tests/test_p23_checkshot_calibration.py` |
 | P23 标定结果与声明边界 | `_pipelines/02_task_datasets/reconstruction/_outputs/p23_checkshot_calibration/` | `_wiki-methodology/_tests/P23_reconstruction_checkshot_calibration_evidence.md` |
+| P24 历史版本迁移 runner | `_pipelines/02_task_datasets/reconstruction/p24_historical_transfer.py` | `reconstruction/_tests/test_p24_historical_transfer.py` |
+| P24 一次性结果与声明边界 | `_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/` | `_wiki-methodology/_tests/P24_reconstruction_historical_transfer_evidence.md` |
 
 P19 取代 P18：每个报告折不仅排除自身指标行，还会先从其余折的元选择训练
 子集中删除当前验证坐标，再重新拟合全部候选。严格结果保持 5/5 折改善；每折
@@ -92,6 +95,10 @@ P19 取代 P18：每个报告折不仅排除自身指标行，还会先从其余
 P23 使用 19A/19BT2/19SR 拟合时深关系，将 F11T2/F15A 保留为
 独立标定井。该入口只证明 checkshot 校准精度，不读孔隙度标签，
 也不把标定改善报告为下游模型改善。P21 仍是赛道⑥的默认模型。
+
+P24 在开指标前冻结来源、KJI 映射、PyKrige 与 P21 参数；一次性结果在
+同场区未使用历史目标版本上通过 1% RMSE/最多一折退步门槛。该入口只登记
+同场区版本迁移支持，外部场区或官方隐藏测试仍未完成。
 
 ## 注册维护
 

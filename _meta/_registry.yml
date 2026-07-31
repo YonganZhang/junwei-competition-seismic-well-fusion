@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-08-01 (P23 reconstruction checkshot calibration)
+last_synced: 2026-08-01 (P24 reconstruction historical transfer)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -134,6 +134,26 @@ code_domains:
       严格使用 512 条合法训练标签。无 test/holdout 入口，默认不启用，不作预训练
       因果归因。
 
+  - id: reconstruction_fixed_foundation_ensemble
+    path: _pipelines/02_task_datasets/reconstruction/p21_fixed_foundation_ensemble.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P21 赛道⑥当前默认：固定平均三个真实预训练 GFM 邻域核，去除逐折
+      元选择；保持每折 512 条标签并与 PyKrige 保守融合。开发 OOF RMSE
+      为 0.027734374378，不声称 LoRA 或预训练表征的因果消融结论。
+
+  - id: reconstruction_historical_transfer
+    path: _pipelines/02_task_datasets/reconstruction/p24_historical_transfer.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P24 赛道⑥预注册一次性迁移门：把未使用的 RMS 历史 pp04phif 属性
+      精确映射到现有 KJI 折，冻结 P21 与 PyKrige 对照。结果相对 RMSE
+      改善 1.4529%、4/5 折获胜；只支持同场区历史版本迁移，不是 fresh blind。
+
   - id: reconstruction_checkshot_calibration
     path: _pipelines/02_task_datasets/reconstruction/p23_checkshot_calibration.py
     type: pipeline
@@ -244,6 +264,13 @@ entrypoints:
     owner: col3
     description: "Track-6 three-fit/two-independent-well checkshot calibration result, source lock, target firewall and downstream claim boundary."
 
+  - id: p24_reconstruction_historical_transfer_evidence
+    path: _wiki-methodology/_tests/P24_reconstruction_historical_transfer_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 preregistration, one-time same-field historical target result, independent metric/hash recomputation and explicit non-blind claim boundary."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -284,6 +311,15 @@ cross_domain_edges:
   - from: reconstruction_meta_purged_geostatistics
     to: foundation_model_routes
     relation: uses
+  - from: reconstruction_fixed_foundation_ensemble
+    to: reconstruction_meta_purged_geostatistics
+    relation: supersedes
+  - from: reconstruction_fixed_foundation_ensemble
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_historical_transfer
+    to: reconstruction_fixed_foundation_ensemble
+    relation: validates
   - from: reconstruction_checkshot_calibration
     to: common_preprocess
     relation: depends_on

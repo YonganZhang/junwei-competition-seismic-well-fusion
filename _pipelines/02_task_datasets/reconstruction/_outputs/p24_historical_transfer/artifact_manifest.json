@@ -1,0 +1,40 @@
+{
+  "artifacts": [
+    {
+      "bytes": 27373,
+      "path": "_pipelines/02_task_datasets/reconstruction/p24_historical_transfer.py",
+      "sha256": "486ffc3f91c33d29cafa381d1551c9114a38e38348b31a69f0c85895b9c664e2"
+    },
+    {
+      "bytes": 4596,
+      "path": "_pipelines/02_task_datasets/reconstruction/p24_historical_transfer_preregistration.json",
+      "sha256": "62a00bbd4893ee61fef4c9ee4e8b5407a485e73fd7c9946e037c370d6060757f"
+    },
+    {
+      "bytes": 463,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/opening_record.json",
+      "sha256": "b099bd9fadb8d65aded1326b13351ad1b5557dc137a998863c78ed16630c79dc"
+    },
+    {
+      "bytes": 211964,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/predictions.npz",
+      "sha256": "d79e4a56cfc1f507d1927015c50eb5269dfe5a17489521196804e911f78e9bf9"
+    },
+    {
+      "bytes": 20160,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/summary.json",
+      "sha256": "5bb4b7d001fb0e4b97ca7ef488ab34932df1de825dade2bc2bb64366735e5ac9"
+    },
+    {
+      "bytes": 508,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/evidence.md",
+      "sha256": "ffc7349c327c857212672570511b4fc8b2b4fe39ead84ff5e6d49c9f0f4defc5"
+    },
+    {
+      "bytes": 3502,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/verification.json",
+      "sha256": "82e5f32af7bd6f5a1b58523c1d90fb057a5d537e0c4996426fd5b4c4ef41c5f1"
+    }
+  ],
+  "schema_version": "reconstruction-p24-artifact-manifest/v1"
+}

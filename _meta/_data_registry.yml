@@ -1,7 +1,7 @@
 # _meta/_data_registry.yml — 数据资产注册表(单一真源)
 project: 军伟的比赛-地震测井多模态融合
 schema_version: v4.0
-last_synced: 2026-08-01
+last_synced: 2026-08-01 (P24 reconstruction historical transfer)
 
 assets:
   - id: volve-north-sea
@@ -104,3 +104,16 @@ assets:
       19A/19BT2/19SR 作为拟合井，F11T2/F15A 作为独立校验井。
       目标储层 TWT MAE 从旧弱标定的 633.1867 ms 降至 8.7389 ms；
       该资产只证明时深标定改善，不声称孔隙度盲测或下游模型提升。
+
+  - id: p24-reconstruction-historical-transfer
+    name: P24 赛道⑥同场区历史属性版本迁移证据
+    status: generated
+    location: _pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/summary.json
+    source: data:volve-north-sea
+    license: project-derived metrics; raw data remains under Volve terms
+    note: >
+      使用 RMS 归档中未被现有管线使用、但与最终属性同网格的
+      pp04phif/realisation.1，预注册后一次性比较重新拟合 PyKrige 与冻结 P21。
+      P21 RMSE 0.027825182663，相对 PyKrige 0.028235410003 改善 1.4529%，
+      4/5 空间折获胜。证据仅为 same-field historical-version transfer，
+      fresh blind/cross-field 均为 false。

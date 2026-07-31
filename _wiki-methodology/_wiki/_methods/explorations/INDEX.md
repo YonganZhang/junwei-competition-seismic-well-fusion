@@ -15,3 +15,4 @@
 | 011 | P23 Checkshot 目标向井震标定 | L3_validated_keep_calibration | `011-p23-reconstruction-checkshot-target-tie.md` |
 | 012 | P23 Checkshot 对齐地震属性与 GFM 复测 | L3_validated_reject_full_replacement | `012-p23-reconstruction-checkshot-aligned-gfm.md` |
 | 013 | P23 Checkshot 观测支持门控 | L3_validated_reject | `013-p23-reconstruction-checkshot-support-gate.md` |
+| 014 | P24 同场区历史属性版本迁移 | L3_validated_keep_transfer | `014-p24-reconstruction-historical-version-transfer.md` |
