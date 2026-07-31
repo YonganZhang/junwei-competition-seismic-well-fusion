@@ -8,3 +8,7 @@
 | 004 | P19 三维重建元选择去重与训练动力学诊断 | L3_validated_keep | `004-p19-reconstruction-meta-purge-and-training-diagnostics.md` |
 | 005 | P20 三维重建 PEFT 与分阶段解冻 | verified_no_promotion | `005-p20-reconstruction-peft-staged-unfreeze.md` |
 | 006 | P21 多视图 LoRA 残差与固定基础模型核 | L3_validated_keep_simplification | `006-p21-reconstruction-contrastive-residual-and-fixed-ensemble.md` |
+| 007 | P22 官方层位约束的井震时深重对齐 | L3_validated_reject | `007-p22-reconstruction-horizon-time-depth-alignment.md` |
+| 008 | P22 扩大合法空间折训练标签预算 | L3_validated_reject | `008-p22-reconstruction-expanded-development-label-budget.md` |
+| 009 | P22 标签密度与空间支持尺度配平 | L3_validated_reject | `009-p22-reconstruction-density-matched-spatial-support.md` |
+| 010 | P22 稀疏平滑与密集监督等权共识 | L3_validated_reject | `010-p22-reconstruction-sparse-dense-consensus.md` |
