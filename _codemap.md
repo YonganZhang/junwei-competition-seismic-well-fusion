@@ -1,6 +1,6 @@
 # Code Map — 军伟的比赛（地震+测井多模态融合识别有利油气目标）
 
-更新: 2026-07-28
+更新: 2026-08-01
 
 本文只做 COL4 代码地图 / 注册路由。当前 phase、下一步、运行态、最近测试结果只写 `_wiki-methodology/_top/_task_plan.md`。
 
@@ -72,7 +72,7 @@
 
 六条路线统一可发现，但保持任务专属张量、head、loss 与 metric；route 接通不自动成为默认。
 
-## P17/P18/P19 赛道⑥基础模型地统计融合
+## P17–P23 赛道⑥基础模型与井震校准
 
 | 代码域 | 真源 / 入口 | 测试指针 |
 |---|---|---|
@@ -82,10 +82,16 @@
 | P18 便携结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p18_anisotropic_foundation_geostatistics/` | `_wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md` |
 | 元拟合坐标去重 runner | `_pipelines/02_task_datasets/reconstruction/p19_meta_purged_geostatistics.py` | `reconstruction/_tests/test_p19_training_diagnostics_artifacts.py` |
 | P19 诊断结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p19_training_diagnostics/` | `_wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md` |
+| P23 Checkshot 独立校验 runner | `_pipelines/02_task_datasets/reconstruction/p23_checkshot_calibration.py` | `reconstruction/_tests/test_p23_checkshot_calibration.py` |
+| P23 标定结果与声明边界 | `_pipelines/02_task_datasets/reconstruction/_outputs/p23_checkshot_calibration/` | `_wiki-methodology/_tests/P23_reconstruction_checkshot_calibration_evidence.md` |
 
 P19 取代 P18：每个报告折不仅排除自身指标行，还会先从其余折的元选择训练
 子集中删除当前验证坐标，再重新拟合全部候选。严格结果保持 5/5 折改善；每折
 最终预测仍只使用 512 条合法训练标签，CLI 无 test/holdout 入口，候选默认关闭。
+
+P23 使用 19A/19BT2/19SR 拟合时深关系，将 F11T2/F15A 保留为
+独立标定井。该入口只证明 checkshot 校准精度，不读孔隙度标签，
+也不把标定改善报告为下游模型改善。P21 仍是赛道⑥的默认模型。
 
 ## 注册维护
 

@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-07-28 (P8 multimodal foundation routing)
+last_synced: 2026-08-01 (P23 reconstruction checkshot calibration)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -41,9 +41,10 @@ code_domains:
       step_03_load_fault_horizon.py：定长文本解析Volve_Official_Faults.dat(3998点/66条断层)，
       通用CSV解析Horizons_TWT/Other_Horizons下BCU层位(225558点)，断层UTM反解最近il/xl，层位IL/XL
       本身已与ST0202体一致(实测验证过范围吻合)。
-      step_04_well_tie_weak.py：弱井震标定——用Well_picks_Volve_v1.dat同井分层点的MD/TWT/UTM做
-      分段线性插值+外推(非速度模型)，得到深度->TWT->最近(il,xl)的粗略轨迹，代码内注释明确标注
-      为弱标定局限。outputs/下产出可复用中间文件，产出清单见pipeline README。
+      step_04_well_tie_weak.py：用Well_picks_Volve_v1.dat同井分层点的MD/TWT/UTM做
+      分段线性插值+外推，仅作为早期弱标定产物保留。项目后续获取的
+      Volve VSP 归档含 5 口井 checkshot；新研究实验使用 P23 的 3 拟合井/
+      2 独立校验井口径。outputs/下产出可复用中间文件，产出清单见pipeline README。
 
   - id: task_datasets
     path: _pipelines/02_task_datasets
@@ -132,6 +133,17 @@ code_domains:
       删除当前验证坐标，再重新拟合缩放、PCA、近邻模型与全部候选；最终折预测仍
       严格使用 512 条合法训练标签。无 test/holdout 入口，默认不启用，不作预训练
       因果归因。
+
+  - id: reconstruction_checkshot_calibration
+    path: _pipelines/02_task_datasets/reconstruction/p23_checkshot_calibration.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P23 赛道⑥时深标定验证：用 19A/19BT2/19SR checkshot 和 TVDSS
+      轨迹拟合空间时深关系，F11T2/F15A 完全保留为独立校验井。
+      不读孔隙度标签、reconstruction HDF5、test 或 holdout；产物状态限定为
+      VALIDATED_CALIBRATION_ONLY，不替代 P21 默认模型。
 
 entrypoints:
   - id: project_plan
@@ -225,6 +237,13 @@ entrypoints:
     owner: col3
     description: "Track-6 meta-selection coordinate purge, strict 5/5-fold result, real GFM tensor/gradient probes, controlled route screens and independent recomputation."
 
+  - id: p23_reconstruction_checkshot_calibration_evidence
+    path: _wiki-methodology/_tests/P23_reconstruction_checkshot_calibration_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 three-fit/two-independent-well checkshot calibration result, source lock, target firewall and downstream claim boundary."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -265,6 +284,9 @@ cross_domain_edges:
   - from: reconstruction_meta_purged_geostatistics
     to: foundation_model_routes
     relation: uses
+  - from: reconstruction_checkshot_calibration
+    to: common_preprocess
+    relation: depends_on
 
 non_code_assets:
   registry: _meta/_data_registry.yml

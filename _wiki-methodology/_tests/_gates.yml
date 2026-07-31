@@ -155,3 +155,9 @@ gates:
     timeout: 120
     expect: exit0
     note: "Track-6 cross-fold meta-fit purge, tensor/activation/gradient diagnosis, strict rejected-route boundaries and holdout firewall."
+
+  - id: p23-reconstruction-checkshot-calibration
+    cmd: "python3 -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p23_checkshot_calibration.py"
+    timeout: 120
+    expect: exit0
+    note: "Track-6 three-fit/two-independent-well checkshot protocol, source lock, calibration gain and no-porosity-claim boundary."

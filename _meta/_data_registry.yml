@@ -1,7 +1,7 @@
 # _meta/_data_registry.yml — 数据资产注册表(单一真源)
 project: 军伟的比赛-地震测井多模态融合
 schema_version: v4.0
-last_synced: 2026-07-28
+last_synced: 2026-08-01
 
 assets:
   - id: volve-north-sea
@@ -25,7 +25,9 @@ assets:
       - Volve_Geophysical_Interpretations.zip（100MB，层位断层解释，已下载完成）
       - Volve_Reports.zip（162MB，作业报告PDF，已下载完成）
       - Volve_Well_technical_data.zip（212MB，井身结构，已下载完成）
-      - Volve_Seismic_VSP.zip（96MB，垂直地震剖面测井，已下载完成）
+      - Volve_Seismic_VSP.zip（96MB，垂直地震剖面测井，已下载完成；SHA-256
+        e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4；含 19A/19BT2/19SR/
+        F11T2/F15A 五口井 checkshot，P23 以前三口拟合、后两口独立校验）
       - Volve_WITSML Realtime drilling data.zip（2.3GB，钻井实时数据，下载中）
       - Volve_Seismic_ST0202.zip（1.17TB，一期3D地震体，下载中）
       - Volve_Seismic_ST10010.zip（2.59TB，另一期3D地震体，下载中）
@@ -91,3 +93,14 @@ assets:
     note: >
       Chronos MAE 172.3162，历史均值 184.6686，train-only blend 166.3343；
       只属于 CONNECTED_UNVERIFIED 诊断，未访问 known holdout/frozen test。
+
+  - id: p23-reconstruction-checkshot-calibration
+    name: P23 赛道⑥ Checkshot 独立井标定证据
+    status: generated
+    location: _pipelines/02_task_datasets/reconstruction/_outputs/p23_checkshot_calibration/summary.json
+    source: data:volve-north-sea
+    license: project-derived metrics; raw data remains under Volve terms
+    note: >
+      19A/19BT2/19SR 作为拟合井，F11T2/F15A 作为独立校验井。
+      目标储层 TWT MAE 从旧弱标定的 633.1867 ms 降至 8.7389 ms；
+      该资产只证明时深标定改善，不声称孔隙度盲测或下游模型提升。

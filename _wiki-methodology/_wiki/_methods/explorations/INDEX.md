@@ -12,3 +12,6 @@
 | 008 | P22 扩大合法空间折训练标签预算 | L3_validated_reject | `008-p22-reconstruction-expanded-development-label-budget.md` |
 | 009 | P22 标签密度与空间支持尺度配平 | L3_validated_reject | `009-p22-reconstruction-density-matched-spatial-support.md` |
 | 010 | P22 稀疏平滑与密集监督等权共识 | L3_validated_reject | `010-p22-reconstruction-sparse-dense-consensus.md` |
+| 011 | P23 Checkshot 目标向井震标定 | L3_validated_keep_calibration | `011-p23-reconstruction-checkshot-target-tie.md` |
+| 012 | P23 Checkshot 对齐地震属性与 GFM 复测 | L3_validated_reject_full_replacement | `012-p23-reconstruction-checkshot-aligned-gfm.md` |
+| 013 | P23 Checkshot 观测支持门控 | L3_validated_reject | `013-p23-reconstruction-checkshot-support-gate.md` |
