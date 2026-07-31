@@ -1,0 +1,21 @@
+{
+  "allowed_states": [
+    "verified_gain",
+    "foundation_gain_only",
+    "agent_signal_but_no_baseline_win",
+    "no_verified_gain",
+    "blocked_by_data"
+  ],
+  "conditional_r2": 0.013685620787833641,
+  "conditional_status": "passed",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "mode": "conditional",
+  "prior_test_consumed": true,
+  "reason": "strict lane is negative on R2 and conditional is a previously seen reusable holdout, so there is no fresh-blind verified gain",
+  "schema_version": "p6-reconstruction-private-evidence-v1",
+  "state": "no_verified_gain",
+  "strict_r2": null,
+  "strict_status": "not_applicable",
+  "track_id": "reconstruction"
+}

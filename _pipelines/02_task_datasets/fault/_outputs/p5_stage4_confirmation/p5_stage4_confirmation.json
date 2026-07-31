@@ -1,0 +1,97 @@
+{
+  "baseline_commit": "c9ac3cf8e18191c48cdb1ddfafa34355bf1548c7",
+  "effective_fold_count": 0,
+  "frozen_winner": null,
+  "holdout_accessed": false,
+  "lane": "fault_3d_segmentation_data_gate",
+  "minimum_unblock_data_contract": [
+    {
+      "contract_id": "coverage_manifest",
+      "minimum": "coordinate-aligned per-volume/per-block/per-slice annotation coverage manifest with source SHA-256 and annotation_status"
+    },
+    {
+      "contract_id": "verified_negative_mask",
+      "minimum": "non-empty coverage-audited verified_negative_mask disjoint from fault positives; count and provenance reported for every development block"
+    },
+    {
+      "contract_id": "unknown_and_proxy_masks",
+      "minimum": "explicit unknown_mask equals complement of valid_label_mask; proxy_mask remains separate and never enables formal loss or metrics"
+    },
+    {
+      "contract_id": "buffered_development_folds",
+      "minimum": "P4-regenerated buffered spatial plan with at least two independent valid folds; each train/validation side contains positives and audited negatives"
+    },
+    {
+      "contract_id": "fold_train_fit_provenance",
+      "minimum": "preprocessing, class weights, target transform, and calibration each carry a fold-train-only fit hash before any Stage-3 cell can run"
+    },
+    {
+      "contract_id": "test_firewall",
+      "minimum": "development coordinates and artifacts exclude frozen/regression-test material; test paths, labels, predictions, and metrics remain unavailable to selection"
+    }
+  ],
+  "operations": {
+    "checkpoint_written": false,
+    "holdout_accessed": false,
+    "holdout_loader_created": false,
+    "metric_computed": false,
+    "model_built": false,
+    "prediction_generated": false,
+    "refit_invoked": false,
+    "training_invoked": false
+  },
+  "prior_test_metadata_exposure": {
+    "blind_audit_used_for": "coverage/firewall status only",
+    "exposure_source": "frozen Stage-3 test_firewall declaration",
+    "historical_test_artifacts_read_by_stage4": false,
+    "historical_test_metrics_read_by_stage4": false,
+    "historical_test_role": "regression_evidence_only",
+    "independence_status": "blocked",
+    "metadata_exposure_present": true,
+    "prior_metric_values_re_emitted": false,
+    "scope_note": "Stage-4 records only the historical regression-evidence role declared by frozen Stage-3; it does not re-read P4 or audited historical artifacts."
+  },
+  "protocol": "fault-p5-stage4-confirmation-v1",
+  "ranking_status": "not_rankable",
+  "reason": "NO_VALID_FAULT_DEVELOPMENT_FOLDS",
+  "reason_detail": "Frozen Stage-3 has zero legal development folds and no frozen winner.",
+  "refit_executed": false,
+  "runner_sha256": "8c13fe367e41eec7970e221c873289919ed9c13df414386db673d24176f4f85a",
+  "stage3_source": {
+    "completed_training_cells": 0,
+    "expected_training_cells": 0,
+    "frozen_top_models": [],
+    "manifest_hashes": {
+      "leaderboards/fault_stick_segmentation__fault_3d_segmentation_data_gate.json": "e81823a5dc8786bc9b99c0de425480f8bb0a1e7d9c2cd29fafc2e6a4e36ea129",
+      "p5_stage3_artifact_manifest.json": "ae5e709a0ba3838ee0e3ad69c12d1ef32b1c3b6dca8e12e2e2d1e1a5756d5e5e",
+      "p5_stage3_data_manifest.json": "66f7f922fad93dfb8adc218cfcbebd65cbc0b7e4f061dca99a1feb3e884083a1",
+      "p5_stage3_oof_manifest.json": "5131ed9fe4a4096d756f121d41e878eb759bc868fd27d614db05056430aa0dfd",
+      "p5_stage3_results.jsonl": "03a2afa40d62004d097c57936841418735afd0770073bf603cf7a6c88515919d",
+      "p5_stage3_summary.json": "52351babd768dc89dcf86b753a15e9392193ca140ce4aedecd020506bc8f6985",
+      "p5_stage3_visualization_manifest.json": "3fe7edbfb236b958d4ffde15521456766dfb49e7ff7817de99e3270f5744e1dd"
+    },
+    "manifest_snapshot_sha256": "c4ff2d22517bc6766928f03460df9d9ddd10c4d806186f673939b278f6614445",
+    "reason_code": "NO_VALID_FAULT_DEVELOPMENT_FOLDS",
+    "stage3_source_snapshot_sha256": "fb022a52b2c9d405d91085c99f5d9e4453c6bdd6714b306f0d2f46a26c3b5fea",
+    "status": "not_rankable"
+  },
+  "status": "blocked",
+  "task_id": "fault_stick_segmentation",
+  "test_firewall": {
+    "historical_test_artifacts_accessed": false,
+    "holdout_accessed": false,
+    "holdout_loader_created": false,
+    "runner_accepts_test_inputs": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault",
+  "verified_negative_labels": 0,
+  "visualization_reuse": {
+    "figure_count": 3,
+    "path": "p5_stage4_visualization_reuse.json",
+    "prediction_count": 0,
+    "sha256": "dde5a8532aeae829d08963800430d4314a84739c9a41a373d87d83611a679138"
+  }
+}

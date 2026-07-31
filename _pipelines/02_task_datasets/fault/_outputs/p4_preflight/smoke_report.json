@@ -1,0 +1,67 @@
+{
+  "audited_v2_role": "regression_evidence_only",
+  "blind_test_audit_hash": "51161c657319eee95df9de85037e39b4085474fa5a09526e1f6bcd65e1be8055",
+  "blind_test_evidence": "blind_test_not_feasible.json",
+  "blind_test_status": "not_feasible",
+  "cv_downgrade_reason": "no audited verified-negative labels; proxy/unknown voxels cannot enable binary CV",
+  "cv_plan_hash": "e8f33c152b97ec47e96d5e6aef7272b001c57bd1152ed5cebdd862b25bcf06a5",
+  "cv_status": "not_feasible",
+  "effective_n_splits": 0,
+  "fault_source_sha256": {
+    "p4_contract.py": "9497d3106b9542c5b37a96cfc3c09f8b583c0f7e49b66cf03c3cc187733b5ba4",
+    "p4_smoke.py": "7bdac2f14c43eb4be4e0a75f79b2214138bd8cf764d1abaaabb36afb500b3c4b",
+    "p4_split.py": "a67f5a1c9eea37cdc4d92eb5f8c834c8386856ea8150a715153d599368a65f2d",
+    "p4_visualization.py": "d479261f83a4c8652d837f7402ce86c620720c07ede4a6fb9530324681ea7519",
+    "p4_workflow.py": "6a37824dcfc3ebb5bf95ba192c17dca352e6d099622a6414ccedf4a6deb41cac"
+  },
+  "fixed_io_contract": "ModelBatch/ModelOutput [B,D,H,W]",
+  "hpo_executed": false,
+  "label_semantics": {
+    "fault_stick": "positive",
+    "formal_negative": "requires complete annotation coverage audit",
+    "unlabelled": "unknown; valid_label_mask=false",
+    "weak_negative": "proxy only"
+  },
+  "long_training_performed": false,
+  "real_data_smoke": {
+    "active_hdf5_required": false,
+    "fault_points": 3998,
+    "seismic_inline_extent": [
+      9985,
+      10369
+    ],
+    "source_sha256": {
+      "_pipelines/01_common_preprocess/outputs/fault_points.npz": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+      "_pipelines/01_common_preprocess/outputs/seismic_index.npz": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+      "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/build_summary.json": "decd62f85296667e816d25a87ecb103a5385de8001557dac82c3c99ab189df64",
+      "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/split_manifest.json": "9821beee9fe197bd5dcf9eaae0035898bd9f1a6bfc75e1203211263196d6ca55"
+    },
+    "status": "passed",
+    "training_performed": false
+  },
+  "requested_n_splits": 5,
+  "root_seed": 2693,
+  "shared_contract_commit": "954e06c8d6d5454891c77aa370d244ae0b7453fc",
+  "smoke_version": "fault-p4-smoke-v1",
+  "status": "passed_with_scientific_block",
+  "task_spec_hash": "a64f3052d0fedc6e9d0953d37fd7a224f006badbedf5402d8fe41a60f7d177dc",
+  "task_spec_status": "validated",
+  "test_consumed": false,
+  "tiny_verified_label_smoke": {
+    "epochs": 12,
+    "first_loss": 2.801418860443227e-07,
+    "last_loss": 6.43730409599783e-07,
+    "model_id": "fault_raw_logistic",
+    "output_shape": [
+      10,
+      1,
+      3,
+      3
+    ],
+    "positive_probability_mean": 0.9999996423721313,
+    "seed": 2693,
+    "status": "passed",
+    "unknown_voxels_used_for_training": 0,
+    "verified_negative_probability_mean": 8.864124652063765e-07
+  }
+}

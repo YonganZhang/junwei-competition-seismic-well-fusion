@@ -1,0 +1,36 @@
+{
+  "artifacts": {
+    "facies_f3_r1_protocol_comparison.png": {
+      "bytes": 1779487,
+      "metadata": {},
+      "role": "protocol_figure",
+      "sha256": "17f004de476d6535ae266a71113bc5cfaf442a252817ab84ae88963995ac8927"
+    },
+    "facies_penobscot_r1_protocol_comparison.png": {
+      "bytes": 2059372,
+      "metadata": {},
+      "role": "protocol_figure",
+      "sha256": "ef433b0f4bfe0c690b330978035d2b44d0e8bfc89af8a244669fc8bffa9fe3ff"
+    },
+    "r0_contract.json": {
+      "bytes": 6757,
+      "metadata": {},
+      "role": "portable_protocol_evidence",
+      "sha256": "f69fe47b92b37eadd782878134bbd05911990160c7d38f37ad7f79bd00c37008"
+    },
+    "r1_results.json": {
+      "bytes": 39093,
+      "metadata": {},
+      "role": "portable_protocol_evidence",
+      "sha256": "3612f241f08e1d324903d317137ce2e0bb448922346257080d6fcc25b3b37482"
+    },
+    "r1_summary.json": {
+      "bytes": 14016,
+      "metadata": {},
+      "role": "portable_protocol_evidence",
+      "sha256": "86e196de3b846e7d7ffbb4c52e1175e4121a94143b18f634c35c7de03f940c30"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "facies-p5-r01"
+}

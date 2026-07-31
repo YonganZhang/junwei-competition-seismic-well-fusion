@@ -1,0 +1,17 @@
+[
+  {
+    "metric_direction": "maximize",
+    "model_id": "fault_local_logistic",
+    "supervision_mode": "official"
+  },
+  {
+    "metric_direction": "maximize",
+    "model_id": "fault_raw_logistic",
+    "supervision_mode": "official"
+  },
+  {
+    "metric_direction": "maximize",
+    "model_id": "fault_local_huber",
+    "supervision_mode": "official"
+  }
+]

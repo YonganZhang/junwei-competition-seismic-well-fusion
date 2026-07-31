@@ -1,0 +1,31 @@
+{
+  "archive": "_sandbox/volve_data/Volve_Production_data.zip",
+  "archive_size_bytes": 2011517,
+  "constructed_samples": 1243,
+  "date_max": "2016-09-17",
+  "date_min": "2008-02-12",
+  "downgrade_reason": "only 4 independent development groups are available",
+  "effective_n_splits": 4,
+  "member": {
+    "crc32": "29b3ad49",
+    "member": "Production_data/Volve production data.xlsx",
+    "size_bytes": 2342595
+  },
+  "requested_n_splits": 5,
+  "rows_selected": 9001,
+  "samples_by_group": {
+    "NO 15/9-F-1 C": 99,
+    "NO 15/9-F-11 H": 158,
+    "NO 15/9-F-12 H": 427,
+    "NO 15/9-F-14 H": 427,
+    "NO 15/9-F-15 D": 132
+  },
+  "status": "feasible",
+  "well_groups": [
+    "NO 15/9-F-1 C",
+    "NO 15/9-F-11 H",
+    "NO 15/9-F-12 H",
+    "NO 15/9-F-14 H",
+    "NO 15/9-F-15 D"
+  ]
+}

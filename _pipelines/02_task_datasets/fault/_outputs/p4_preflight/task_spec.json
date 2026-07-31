@@ -1,0 +1,117 @@
+{
+  "calibration_policy": {
+    "fault": "development_oof_only"
+  },
+  "forbidden_inputs": [
+    "fault",
+    "valid_label_mask",
+    "proxy_mask"
+  ],
+  "group_keys": [
+    "spatial_block_id"
+  ],
+  "guardrail_metrics": [
+    "boundary_f1",
+    "component_fragmentation"
+  ],
+  "hpo": {
+    "direction": "maximize",
+    "optional_backend": "optuna",
+    "pilot_trials": [
+      20,
+      30
+    ],
+    "sanity_trials": [
+      8,
+      12
+    ],
+    "test_loader_allowed": false
+  },
+  "inference_transform": {
+    "fault": "sigmoid"
+  },
+  "input_modalities": [
+    "seismic_amplitude"
+  ],
+  "input_whitelist": [
+    "seismic_amplitude"
+  ],
+  "inverse_transform": {
+    "fault": "identity"
+  },
+  "label_version": "volve-fault-stick-sparse-v1",
+  "metadata": {
+    "io_shape": "[batch,depth, crossline,time]",
+    "legacy_audited_v2_role": "regression_evidence_only",
+    "negative_semantics": "allowed only inside completely audited annotation coverage",
+    "positive_semantics": "rasterized interpreted fault-stick voxel",
+    "proxy_semantics": "weak negative; regression/proxy metrics only",
+    "unknown_semantics": "unlabelled voxel; never an automatic negative"
+  },
+  "metric_directions": {
+    "average_precision": "maximize",
+    "boundary_f1": "maximize",
+    "component_fragmentation": "minimize",
+    "dice": "maximize",
+    "iou": "maximize",
+    "precision": "maximize",
+    "recall": "maximize"
+  },
+  "primary_metrics": [
+    "average_precision"
+  ],
+  "required_figures": [
+    "input_gt_probability_confusion",
+    "orthogonal_views",
+    "pr_threshold",
+    "boundary_components"
+  ],
+  "secondary_metrics": [
+    "precision",
+    "recall",
+    "dice",
+    "iou"
+  ],
+  "spatial_buffer": {
+    "axes": [
+      "inline",
+      "crossline",
+      "time_index"
+    ],
+    "default_inline_radius": 8,
+    "rule": "global_gap_between_contiguous_cv_blocks"
+  },
+  "target_masks": {
+    "fault": "valid_label_mask"
+  },
+  "target_transform": {
+    "fault": "identity"
+  },
+  "targets": [
+    "fault"
+  ],
+  "task_id": "fault_stick_segmentation",
+  "task_type": "binary",
+  "threshold_policy": {
+    "fault": "pooled_oof_only",
+    "test_selection_forbidden": true
+  },
+  "time_cutoff": null,
+  "track_id": "fault",
+  "train_loss": {
+    "fault": {
+      "candidates": [
+        "bce_with_logits",
+        "bce_with_logits_plus_dice",
+        "focal",
+        "tversky"
+      ],
+      "default": "bce_with_logits",
+      "reduction": "valid_label_count_weighted"
+    }
+  },
+  "units": {
+    "fault": "binary_interpretation"
+  },
+  "visualizer_id": "fault_archived_volume"
+}

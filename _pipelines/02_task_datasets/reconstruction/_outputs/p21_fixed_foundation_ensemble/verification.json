@@ -1,0 +1,23 @@
+{
+  "candidate_metrics_recomputed": {
+    "bias": -0.000375729824806649,
+    "mae": 0.0207985238320136,
+    "rmse": 0.027734374378067677,
+    "valid_voxels": 10240
+  },
+  "firewall": {
+    "candidate_selection_uses_labels": false,
+    "holdout_opened": false,
+    "test_h5_opened": false
+  },
+  "fold_losses_vs_p19": 0,
+  "p19_metrics_recomputed": {
+    "bias": -0.0004171601270905864,
+    "mae": 0.02082576074455552,
+    "rmse": 0.027751397627827728,
+    "valid_voxels": 10240
+  },
+  "prediction_artifact_sha256": "7eb149021973362e8a9a788f2919a7775bffc702061f2e2ce44031f9ee835afb",
+  "status": "PASSED",
+  "summary_sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8"
+}

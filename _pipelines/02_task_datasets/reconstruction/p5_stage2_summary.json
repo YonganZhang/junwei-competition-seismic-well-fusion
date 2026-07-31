@@ -1,0 +1,36 @@
+{
+  "attempted_cells": 20,
+  "counts": {
+    "failed": 0,
+    "passed": 16,
+    "skipped": 4,
+    "timeout": 0
+  },
+  "development_only": true,
+  "expected_cells": 20,
+  "frozen_test_i_blocks_loaded": [],
+  "leaderboards": {
+    "conditional": {
+      "path": "p5_stage2_leaderboard_conditional.json",
+      "sha256": "8f16ed7310bd5841c0c7befafca297efb337144a0d392fb90c222d9732f27601"
+    },
+    "strict": {
+      "path": "p5_stage2_leaderboard_strict.json",
+      "sha256": "3ad6d140705c17cc00042c918b27c3d1edb2829c88e41450c00fdcfea489c71c"
+    }
+  },
+  "modes_are_independent": true,
+  "results": "p5_stage2_results.jsonl",
+  "results_sha256": "307b486e52aeca57c95a19036fa45622f157b9b43ee62b72406c2f6cfa99c1b0",
+  "root_seed": 2693,
+  "schema_version": "p5-stage2-reconstruction-summary-v1",
+  "scientific_note": "Fixed-fold development pilot only; scores are not CV confirmation or frozen-test evidence.",
+  "source_lock": "_models/reconstruction/source_lock.json",
+  "source_lock_sha256": "a3a910552687a9d2fd2a930b347f76f8280c2f91b03f89afc9bf00dc188a0743",
+  "split_hashes": {
+    "conditional": "ffe1fddbfd3ef8e2a9e0b3f3942133226610c872e7da37460f070782cba700a6",
+    "strict": "1f73ab386a27c533cf631fba9ddd26e07b765b325a12ef8477e986886be07fea"
+  },
+  "stage3_selection_performed": false,
+  "track_id": "reconstruction"
+}

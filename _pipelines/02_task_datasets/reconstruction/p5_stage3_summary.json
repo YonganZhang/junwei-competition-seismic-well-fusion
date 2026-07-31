@@ -1,0 +1,405 @@
+{
+  "attempted_cells": 90,
+  "baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+  "cache_contract_hashes": [
+    "05cf3862fe76dbf59bbcf14ff65a6bbe5c683acbaaee4d6303d7784f4abfa483"
+  ],
+  "counts": {
+    "failed": 0,
+    "passed": 89,
+    "skipped": 0,
+    "timeout": 1
+  },
+  "development_only": true,
+  "expected_cells": 90,
+  "fold_ids": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "frozen_test_i_blocks_loaded": [],
+  "historical_test_metrics_read": false,
+  "hpo_performed": false,
+  "leaderboards": {
+    "conditional": {
+      "path": "p5_stage3_leaderboard_conditional.json",
+      "rankable": true,
+      "sha256": "bc900996d5d8a76238dcfd1504af000548ad8555d62e5a92964c716a0836cac3"
+    },
+    "strict": {
+      "path": "p5_stage3_leaderboard_strict.json",
+      "rankable": true,
+      "sha256": "6caf9d8454fdf5b1c040113d0c003dfc3fd98ab22674cd44280c579897f6659c"
+    }
+  },
+  "legal_completion_rate": 0.9888888888888889,
+  "modes_are_independent": true,
+  "not_feasible_cells": [
+    {
+      "cell_id": "conditional/pykrige_ok3d/fold_00/repeat_2",
+      "reason": {
+        "code": "budget_timeout",
+        "message": "Stage-2 cell exceeded 300 model-wall seconds"
+      },
+      "status": "timeout"
+    }
+  ],
+  "oof_manifest": {
+    "archived_passed_cells": 89,
+    "path": "p5_stage3_oof_manifest.json",
+    "sha256": "7d809b03e0930ff96fdec82a54cb87df3bb06d6fe08774b02856b41588f4525c"
+  },
+  "rankable_by_lane": {
+    "conditional": true,
+    "strict": true
+  },
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "results": "p5_stage3_results.jsonl",
+  "results_sha256": "bb5025fbe7e90cef8fff2d29f9a2e4615e30792996163a40a29b7560bcb306ce",
+  "root_seed": 2693,
+  "schema_version": "p5-stage3-reconstruction-summary-v1",
+  "scientific_note": "Five-fold x three-seed buffered-development confirmation only; no frozen-test array, label, prediction, or historical test metric was read.",
+  "source_lock": "_models/reconstruction/source_lock.json",
+  "source_lock_sha256": "a3a910552687a9d2fd2a930b347f76f8280c2f91b03f89afc9bf00dc188a0743",
+  "source_sha256": {
+    "_pipelines/02_task_datasets/reconstruction/p5_stage1.py": "379fce270df594c3055a6b62a2ca11ec9d7244c3b88f68eab0b4401306d8df90",
+    "_pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage2.py": "68ac1a1720b1a90fceb2dfbf35ecfba80222029e4a3b4f42bd4f4d383930c97f",
+    "_pipelines/02_task_datasets/reconstruction/reconstruction_p5_stage3.py": "b17eb03f1f271529d4670929481934ce503d0f0f0ddba62375604e04d7ed5ec7"
+  },
+  "split_hashes": {
+    "conditional": "ffe1fddbfd3ef8e2a9e0b3f3942133226610c872e7da37460f070782cba700a6",
+    "strict": "1f73ab386a27c533cf631fba9ddd26e07b765b325a12ef8477e986886be07fea"
+  },
+  "stage2_configuration_reused": true,
+  "technical_retries": [
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_02/repeat_0",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "30f79084da2338beb2b9fc70cb5ada36b23c2397ec19a1d2f9bb8eabb6f79894",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_02/repeat_1",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "06fb1de23f5bcc0f53d1dee060438a1ca43c39102f006f963f46efeabefae7d5",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_02/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "5e59f818e474977a3785543f7afacbef81e65aee1429aa9a1e544294f05dd017",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_03/repeat_0",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "5c2c280af1348817c12675e576735f4391a3887edeaf2fec3806170ad2c7aa39",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_03/repeat_1",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "23f0211a7c57b7fd3afd4b6232f0fd00684e8ce25c2bec5be502967862696c4f",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_03/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "e2dd9e5b41b05c3a70ff1a136ff0ad809d3a706aabd8b8d32091e319adb80dbb",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_04/repeat_0",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "c64c994dfa9e66b5508054fa0ea778404194421204cddc8467caa9e40356b661",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_04/repeat_1",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "39b71d9fed88447f87d12e2a3baf0f76fc4f99ee6161b3e6b40f134b5c03e6aa",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "strict/gstools_krige_condsrf/fold_04/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "84b8bd61a3d841c50a2fac47b07d3adcaa63b56878e1d26e1326360a3f72b718",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_00/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "570256eaf8c07e74ab9b3c511e792a364cc2e187cac8cf1a1a654f60e877f638",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_01/repeat_0",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "b1a5f5bb604dbcbb59826c1f9f82c10deeee089b06c2a3f86d968dc4b34e84ce",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_01/repeat_1",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "02198862e0afeaa1cdc184d1387c6af2c13a2d1739519b97aa0b2a27f8f21d29",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_01/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "61d92b8a8a9fb6b4964f7dee520cd41d97c0d28ab012825a99bc80545b1f81a2",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_02/repeat_0",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "f087ab8a9d42320bdd59be25194279ab6c32fa68f12f1de12c3127068471924e",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_02/repeat_1",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "9277f9a4426e11164110b25163bfed4188919eb462e90de2f4ac133408494664",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_02/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "7d330b89352dcc57d60c4edcad76fee27d8ba108966f604116a37eb0ea433aef",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_03/repeat_0",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "95b5f08e49e2ad3cab84b0700f544deb05baec3b453def619d4ee81013ba783e",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_03/repeat_1",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "8ae44e73b4f0f3f3fecce56e6fb4e5f5560698ca44436c5f3edbae63ce52534b",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_03/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "686aac23dec94a219161a653ee0f905c0d9bb1c25168474df969f0258eed0b86",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_04/repeat_0",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "dac74383cc3b4dda794e58ace700927d1cfb50a5a84493b3c14862b1ff7ad54e",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_04/repeat_1",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "e769f4da7632c28708ebcff951335d10228e267af88fa3609ebfa291954ee39e",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    },
+    {
+      "attempt": 1,
+      "cell_id": "conditional/pykrige_ok3d/fold_04/repeat_2",
+      "prior_reason": {
+        "code": "wrong_primary_environment",
+        "details": {
+          "executable_name": "python"
+        },
+        "message": "Stage-3 reconstruction cells must use the shared torch-common interpreter"
+      },
+      "prior_result_hash": "472f229dd352506565353a3e99825768899d51f42319a47644b1652f86bf8068",
+      "prior_status": "skipped",
+      "same_model_config_budget_split_and_seed": true
+    }
+  ],
+  "track_id": "reconstruction",
+  "visualization_manifest": {
+    "figures": {
+      "conditional": {
+        "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p5_stage3_reconstruction_conditional.png",
+        "sha256": "6deefd4eb0289fd5a238dedd0c0458b40618450fe6057083f347db9f865ad026"
+      },
+      "strict": {
+        "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p5_stage3_reconstruction_strict.png",
+        "sha256": "4b2529557cbb97a587aae12059aa33ea70ec690245a6b8b93335f920b4c2e3b8"
+      }
+    },
+    "path": "p5_stage3_visualization_manifest.json",
+    "sha256": "cd9826ec14de57b34a760e9181a757d74fc572fc1077bca374a54ca67f2be174"
+  }
+}

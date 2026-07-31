@@ -1,0 +1,45 @@
+{
+  "checkpoint_path": "targets/T1/refit/model.pkl.gz",
+  "checkpoint_roundtrip_max_abs_delta": 0.0,
+  "checkpoint_sha256": "3eb4c6d93505df7efed4bd24b1002df1d68179942d0bac2dcff9152205f8ffa9",
+  "checkpoint_size_bytes": 19275,
+  "config_sha256": "e50e29546868d78eb2a20ee4303247c300cd9bd74aa82f208370d03ef5e4a5ce",
+  "development_features_sha256": "2a78dcfc2a4d22f453e946d13a540d4ce93c05a367b1402c2fac5de47549eb82",
+  "development_groups": [
+    "15/9-F-1",
+    "15/9-F-11",
+    "15/9-F-12"
+  ],
+  "development_ids_sha256": "3d0437a6066d74e35ee0de95d66074f5c791e6ae8ac8f5aff4e54cef39f236fb",
+  "development_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+    "authorized_groups": [
+      "15/9-F-1",
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "opened_member_count": 16,
+    "opened_member_crc_manifest_sha256": "405b76c034312b8006ba897a64033e58433f62e2ca40744f68972fe9815254cf",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f",
+    "partition": "development",
+    "source_kind": "Volve_Well_logs.zip authorized development members only",
+    "test_accessed": false,
+    "unauthorized_member_reads": 0,
+    "values_accessed": 35810
+  },
+  "development_samples": 35810,
+  "development_targets_sha256": "a0aa79b4bb8bf3cd00dd2d4b27e6b3889dc50bf74df9266aef6e17ae2a5ed93c",
+  "feature_count": 16,
+  "fit_scope": "all_legal_development",
+  "historical_test_metrics_read": false,
+  "known_holdout_accessed_during_refit": false,
+  "model_payload_bytes": 58087,
+  "model_payload_sha256": "92cbcc7c80299babf92be196af86c6c7b88735b70ad9c41bfdf5316798f35f40",
+  "peak_rss_bytes": 570929152,
+  "schema_version": "sweetspot-p5-stage4-refit/v1",
+  "status": "REFIT_COMPLETE",
+  "task_id": "T1",
+  "train_only_imputation_sha256": "85aff7a1b2029557cd1711b818263313f855f2cf8489b35281a3559ab3734f50",
+  "wall_seconds": 0.8422323609702289
+}

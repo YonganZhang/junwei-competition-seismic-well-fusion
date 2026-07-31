@@ -1,0 +1,160 @@
+{
+  "schema_version": "lithofacies-3d-sci-feasibility-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "verdict": "not_feasible",
+  "decision": "No verified third dimension is available for a genuine lithofacies 3D SCI plot.",
+  "checked_files": [
+    {
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl",
+      "sha256": "8e14145117b8b44e3b9ee1131b9ade65e9f2b25151641d7b2b74f46898f966cb",
+      "observed_fields": [
+        "backend",
+        "checkpoint",
+        "component_seeds",
+        "environment",
+        "fold_id",
+        "fold_partition_hash",
+        "frozen_test_accessed",
+        "gpu_lock",
+        "hpo",
+        "input_budget",
+        "lane",
+        "loss_contract",
+        "model_config",
+        "model_id",
+        "oof_prediction",
+        "parameter_updates",
+        "peak_resources",
+        "preprocessing",
+        "rank_eligible",
+        "reason",
+        "repeat_id",
+        "schema_version",
+        "seed",
+        "source_lock_sha256",
+        "source_revision",
+        "split_hash",
+        "status",
+        "task_id",
+        "technical_retry",
+        "test_metrics_used",
+        "tiny_gate",
+        "track_id",
+        "train_groups",
+        "training_loss",
+        "validation_groups",
+        "validation_metrics",
+        "wall_limit_seconds",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_visualization_manifest.json",
+      "sha256": "3b1538c2eef47462420dd9598094f5a66c241ca9ab4842f6584fc265f18982a2",
+      "observed_fields": [
+        "calibration_fit",
+        "development_only",
+        "figures",
+        "frozen_test_accessed",
+        "input_oof_manifest",
+        "input_prediction_entries",
+        "lane",
+        "renderer",
+        "rebuild_command",
+        "schema_version",
+        "selected_model",
+        "selection_source",
+        "task_id",
+        "track_id"
+      ]
+    },
+    {
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/predictions.json",
+      "sha256": "0ff2854a584d9494e04fd322d5be210538a61148c9ab15464c9d167349c2666f",
+      "observed_fields": [
+        "calibration_fit",
+        "checkpoint_sha256",
+        "config_hash",
+        "evidence_class",
+        "fresh_blind",
+        "holdout_family",
+        "lane",
+        "model_id",
+        "prior_test_consumed",
+        "records",
+        "schema_version",
+        "seed",
+        "task_id",
+        "track_id"
+      ],
+      "record_fields": [
+        "center_md_m",
+        "confidence",
+        "error",
+        "family_id",
+        "logits",
+        "predicted_class_id",
+        "predicted_class_name",
+        "probabilities",
+        "sample_id",
+        "seismic_available",
+        "twt_ms",
+        "true_class_id",
+        "true_class_name",
+        "well_id",
+        "well_log_missing_fraction"
+      ]
+    },
+    {
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/visualization_manifest.json",
+      "sha256": "c680d96028ef3de547536022f1af5db063537934af898c76bd23f601e47a7424",
+      "observed_fields": [
+        "evidence_class",
+        "figures",
+        "fresh_blind",
+        "prior_test_consumed",
+        "schema_version",
+        "task_id",
+        "track_id"
+      ]
+    }
+  ],
+  "verified_coordinate_evidence": {
+    "stage3_records": "No coordinate or trajectory fields were found in the stage-3 results JSONL keys.",
+    "stage4_records": "The stage-4 prediction archive contains 120 records and finite center_md_m count is 0.",
+    "stage4_sample": {
+      "center_md_m": null,
+      "twt_ms": 2664.1848235718453,
+      "well_id": "15/9-F-5",
+      "family_id": "15/9-F-5"
+    },
+    "missing_spatial_evidence": [
+      "real XYZ",
+      "inline/crossline",
+      "well trajectory",
+      "finite center_md_m",
+      "native 3D volume"
+    ]
+  },
+  "missing_items": [
+    "verified third spatial dimension",
+    "real XYZ or inline/crossline coordinates",
+    "well trajectory or equivalent path geometry",
+    "finite center_md_m for every sample",
+    "native volume or spatial context required for a true 3D SCI plot"
+  ],
+  "unlock_requirements": [
+    "Provide real X/Y/Z or verified well trajectories for the lithofacies predictions.",
+    "Persist those coordinates in a read-only archive with finite, sample-level spatial order.",
+    "Prove the coordinates come from actual acquisition or interpretation data, not interval midpoints, row order, z-offsets, or interpolation.",
+    "Only then may a real 3D visualization script be justified."
+  ],
+  "forbidden_fallbacks": [
+    "interval midpoint fabrication",
+    "row-order pseudo geometry",
+    "synthetic z offsets",
+    "interpolated point clouds",
+    "dummy fallback volumes"
+  ]
+}

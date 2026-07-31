@@ -1,0 +1,46 @@
+{
+  "adapter_targets_fit_independently": [
+    "PHIF",
+    "KLOGH",
+    "SW"
+  ],
+  "checkpoint_git_ignored": true,
+  "checkpoint_path_persisted": false,
+  "checkpoint_roundtrip": true,
+  "checkpoint_sha256": "b7ca2f33f5885816c50db85f264dfa187e5edbd4a0a8ea61807d78e4a3451059",
+  "config": {
+    "device": "cpu",
+    "n_estimators": 32,
+    "n_features": 153,
+    "n_jobs": 1,
+    "seed": 2693
+  },
+  "config_sha256": "b6c2fb1923fb32461ec6c5e6bcc84989b3b5ed32d1c2be1e69d00575e45ff4fc",
+  "development_family_counts": {
+    "15/9-19": 147,
+    "15/9-F-1": 451,
+    "15/9-F-11": 537,
+    "15/9-F-12": 81
+  },
+  "development_rows": 1216,
+  "fit_report": {
+    "loss": 0.17665187269071816,
+    "per_target": {
+      "KLOGH": 0.5226763028964602,
+      "PHIF": 0.00029391620029279697,
+      "SW": 0.006985398975401497
+    },
+    "valid_counts": {
+      "KLOGH": 1216,
+      "PHIF": 1216,
+      "SW": 1216
+    }
+  },
+  "fit_wall_seconds": 1.1857311697676778,
+  "known_holdout_rows_used_for_fit": 0,
+  "model_id": "xgboost_regressor",
+  "seed": 2693,
+  "selected_head_from_independent_multi-target_adapter": true,
+  "target": "SW",
+  "target_valid_development_rows": 1216
+}

@@ -1,0 +1,52 @@
+{
+  "evidence": {
+    "CONFIG_FROZEN": {
+      "config_hash": "73681616455c9326d71ccadd486b40256bea4d35e10d61886b61084bb072839e"
+    },
+    "CV_COMPLETE": {
+      "effective_folds": 4,
+      "oof_predictions_hash": "88bc925946d1fc6a536a51fc78810cb696fdea890f93a346d4e7b6c0dba34b6a",
+      "primary_metric": "physical_MAE",
+      "primary_score": 0.017832799725908198
+    },
+    "REFIT_COMPLETE": {
+      "checkpoint_hash": "5fbe02149fec1e64c0ea17b12d01f321c0177fde20fc570d1aa6413153812fe2",
+      "development_samples": 1216,
+      "test_loaded": false
+    },
+    "SMOKE_PASSED": {
+      "families": [
+        "15/9-19",
+        "15/9-F-1"
+      ],
+      "final_loss": 0.260129719915201,
+      "initial_loss": 0.9999997508248457,
+      "model": "reservoir_ridge",
+      "samples": 16,
+      "status": "passed"
+    },
+    "SPLIT_LOCKED": {
+      "selection_basis": "label_availability",
+      "split_hash": "7f2d65918c2a7c5a619a07b2aa62ef90da0934ff8c0363d4558d2cc1fc2677e0",
+      "test_family": "15/9-F-15"
+    },
+    "TEST_CONSUMED": {
+      "checkpoint_hash": "5fbe02149fec1e64c0ea17b12d01f321c0177fde20fc570d1aa6413153812fe2",
+      "config_hash": "73681616455c9326d71ccadd486b40256bea4d35e10d61886b61084bb072839e",
+      "split_hash": "7f2d65918c2a7c5a619a07b2aa62ef90da0934ff8c0363d4558d2cc1fc2677e0"
+    },
+    "VERIFIED": {
+      "metrics_hash": "565c1779055f95e4723a8be42f1381c478b387fe00188c65dbb016282a0578d8",
+      "prediction_hash": "c19fdd5573a62682f9b5cb6b3994e46d173906c498b41a17473b48d24d2ec89c",
+      "required_figures": [
+        "prediction_vs_truth.png",
+        "residuals.png",
+        "depth_curve.png",
+        "distribution_uncertainty.png"
+      ]
+    }
+  },
+  "experiment_id": "target6_porosity_phif-target6-phif-cpi-v1",
+  "state": "VERIFIED",
+  "test_consumed_at": "2026-07-13T17:10:14.004549+00:00"
+}

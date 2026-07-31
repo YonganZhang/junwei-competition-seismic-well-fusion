@@ -1,0 +1,179 @@
+{
+  "pipeline_version": "leakage_fixed_v2",
+  "tasks": {
+    "facies_f3": {
+      "train": {
+        "samples": 1948,
+        "unique_coordinates": 1948,
+        "inline_count": 487,
+        "inline_range": [
+          100,
+          586
+        ],
+        "label_histogram": [
+          100224,
+          389504,
+          3559139,
+          2246116,
+          3841977,
+          6860115,
+          5873717,
+          3495442,
+          4170463,
+          1379335
+        ],
+        "normalization_stats": {
+          "method": "zscore",
+          "mean": 0.9265275597572327,
+          "std": 2515.23779296875,
+          "vmin": null,
+          "vmax": null
+        },
+        "normalization_roundtrip_max_abs_error": 0.001953125,
+        "near_constant_retained": 0
+      },
+      "test": {
+        "samples": 445,
+        "unique_coordinates": 445,
+        "inline_count": 129,
+        "inline_range": [
+          620,
+          750
+        ],
+        "label_histogram": [
+          1357798,
+          72314,
+          771227,
+          453783,
+          619471,
+          1157955,
+          1379503,
+          716041,
+          674856,
+          87932
+        ],
+        "normalization_stats": {
+          "method": "zscore",
+          "mean": 0.9265275597572327,
+          "std": 2515.23779296875,
+          "vmin": null,
+          "vmax": null
+        },
+        "normalization_roundtrip_max_abs_error": 0.001953125,
+        "near_constant_retained": 0
+      },
+      "external_train_test_overlap": [],
+      "external_guard_inline_range": [
+        587,
+        619
+      ],
+      "internal_model_train_inline_range": [
+        100,
+        463
+      ],
+      "internal_validation_guard_inline_range": [
+        464,
+        488
+      ],
+      "internal_validation_inline_range": [
+        489,
+        586
+      ],
+      "internal_overlap": [],
+      "normalization_fit_inline_range": [
+        100,
+        463
+      ],
+      "near_constant_filtered": {
+        "rule": "filter if raw seismic patch peak-to-peak <= 1e-06 or one exact amplitude occupies >= 0.5 of pixels",
+        "train": 0,
+        "test": 79
+      }
+    },
+    "facies_penobscot": {
+      "train": {
+        "samples": 1766,
+        "unique_coordinates": 1766,
+        "inline_count": 449,
+        "inline_range": [
+          1000,
+          1448
+        ],
+        "label_histogram": [
+          298599,
+          1297702,
+          2232364,
+          434556,
+          530134,
+          4427360,
+          2501418,
+          17212011
+        ],
+        "normalization_stats": {
+          "method": "zscore",
+          "mean": -0.592728853225708,
+          "std": 1468.02001953125,
+          "vmin": null,
+          "vmax": null
+        },
+        "normalization_roundtrip_max_abs_error": 0.001953125,
+        "near_constant_retained": 0
+      },
+      "test": {
+        "samples": 474,
+        "unique_coordinates": 474,
+        "inline_count": 121,
+        "inline_range": [
+          1480,
+          1600
+        ],
+        "label_histogram": [
+          37883,
+          261794,
+          416785,
+          76619,
+          127822,
+          1239419,
+          778923,
+          4826771
+        ],
+        "normalization_stats": {
+          "method": "zscore",
+          "mean": -0.592728853225708,
+          "std": 1468.02001953125,
+          "vmin": null,
+          "vmax": null
+        },
+        "normalization_roundtrip_max_abs_error": 0.001953125,
+        "near_constant_retained": 0
+      },
+      "external_train_test_overlap": [],
+      "external_guard_inline_range": [
+        1449,
+        1479
+      ],
+      "internal_model_train_inline_range": [
+        1000,
+        1335
+      ],
+      "internal_validation_guard_inline_range": [
+        1336,
+        1358
+      ],
+      "internal_validation_inline_range": [
+        1359,
+        1448
+      ],
+      "internal_overlap": [],
+      "normalization_fit_inline_range": [
+        1000,
+        1335
+      ],
+      "near_constant_filtered": {
+        "rule": "filter if raw seismic patch peak-to-peak <= 1e-06 or one exact amplitude occupies >= 0.5 of pixels",
+        "train": 30,
+        "test": 10
+      }
+    }
+  }
+}

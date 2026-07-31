@@ -1,0 +1,119 @@
+{
+  "claim_boundary_preserved": true,
+  "comparison_recomputed": {
+    "candidate": {
+      "bias": 0.0005125115417103969,
+      "mae": 0.020826337774812152,
+      "rmse": 0.027825182662981594,
+      "valid_voxels": 10240
+    },
+    "gate_passed": true,
+    "outcomes_vs_pykrige": {
+      "loss": 1,
+      "tie": 0,
+      "win": 4
+    },
+    "per_fold": [
+      {
+        "candidate": {
+          "bias": -0.006282917950795507,
+          "mae": 0.020598649293849157,
+          "rmse": 0.026806033213467705,
+          "valid_voxels": 2048
+        },
+        "fold_id": 0,
+        "outcome": "win",
+        "pykrige": {
+          "bias": -0.008196973803530913,
+          "mae": 0.021610089043806888,
+          "rmse": 0.0274259473398508,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0006199141263830941
+      },
+      {
+        "candidate": {
+          "bias": 0.0038125066874487223,
+          "mae": 0.022789453072663512,
+          "rmse": 0.028652994346641463,
+          "valid_voxels": 2048
+        },
+        "fold_id": 1,
+        "outcome": "loss",
+        "pykrige": {
+          "bias": 0.0010684636648508527,
+          "mae": 0.022362177428596794,
+          "rmse": 0.028146965232676294,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": 0.0005060291139651688
+      },
+      {
+        "candidate": {
+          "bias": -0.00939440407998986,
+          "mae": 0.013219346639168409,
+          "rmse": 0.016492007530823836,
+          "valid_voxels": 2048
+        },
+        "fold_id": 2,
+        "outcome": "win",
+        "pykrige": {
+          "bias": -0.010769717111021492,
+          "mae": 0.014745053179706744,
+          "rmse": 0.018134117693269274,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0016421101624454378
+      },
+      {
+        "candidate": {
+          "bias": -0.000385024841626681,
+          "mae": 0.02203687377677477,
+          "rmse": 0.02781047137775384,
+          "valid_voxels": 2048
+        },
+        "fold_id": 3,
+        "outcome": "win",
+        "pykrige": {
+          "bias": -0.0020703095787502415,
+          "mae": 0.021947626877808907,
+          "rmse": 0.028005832745930912,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0001953613681770737
+      },
+      {
+        "candidate": {
+          "bias": 0.014812397893515314,
+          "mae": 0.025487366091604905,
+          "rmse": 0.03586415785741581,
+          "valid_voxels": 2048
+        },
+        "fold_id": 4,
+        "outcome": "win",
+        "pykrige": {
+          "bias": 0.014913607826780773,
+          "mae": 0.025802946432018276,
+          "rmse": 0.03644975663284381,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0005855987754279993
+      }
+    ],
+    "pykrige": {
+      "bias": -0.0010109858003342035,
+      "mae": 0.02129357859238752,
+      "rmse": 0.02823541000303589,
+      "valid_voxels": 10240
+    },
+    "relative_rmse_improvement_vs_pykrige": 0.014528825329973549,
+    "rmse_delta_candidate_minus_pykrige": -0.00041022734005429634,
+    "success_gate": {
+      "maximum_fold_losses_vs_pykrige": 1,
+      "minimum_relative_rmse_improvement_vs_pykrige": 0.01
+    }
+  },
+  "prediction_artifact_sha256": "d79e4a56cfc1f507d1927015c50eb5269dfe5a17489521196804e911f78e9bf9",
+  "status": "PASSED",
+  "summary_sha256": "5bb4b7d001fb0e4b97ca7ef488ab34932df1de825dade2bc2bb64366735e5ac9"
+}

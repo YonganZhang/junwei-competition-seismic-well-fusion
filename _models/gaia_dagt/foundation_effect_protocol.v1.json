@@ -1,0 +1,77 @@
+{
+  "schema_version": "gaia-foundation-effect-protocol/v1",
+  "registered_before_p9_model_comparisons": true,
+  "root_seed": 2693,
+  "objective": "Estimate whether each routed foundation model adds development-set value over the strongest legal same-split baseline without opening any frozen test or known holdout.",
+  "global_rules": {
+    "same_sample_universe_required": true,
+    "same_fold_required": true,
+    "same_metric_required": true,
+    "train_only_preprocessing_required": true,
+    "strong_baseline_required": true,
+    "negative_control_required": true,
+    "random_init_same_architecture_required_for_default_promotion": true,
+    "connection_is_not_promotion": true,
+    "frozen_test_access": false,
+    "known_holdout_access": false
+  },
+  "tracks": {
+    "fault": {
+      "status": "DATA_GATE_BLOCKED",
+      "primary_metric": "3d_iou",
+      "required_missing_evidence": [
+        "coverage_audited_verified_background",
+        "explicit_unknown_mask_provenance",
+        "contiguous_3d_development_blocks",
+        "group_isolated_development_split"
+      ]
+    },
+    "facies": {
+      "status": "ELIGIBLE",
+      "primary_metric": "miou",
+      "fold_policy": "locked_p4_spatial_five_fold",
+      "budget": {
+        "max_updates": 40,
+        "max_train_samples": 32,
+        "max_validation_samples": 16
+      }
+    },
+    "property": {
+      "status": "ELIGIBLE",
+      "primary_metric": "physical_rmse",
+      "fold_policy": "locked_p4_mother_well_logo4",
+      "targets": [
+        "PHIF",
+        "KLOGH",
+        "SW"
+      ]
+    },
+    "lithofacies": {
+      "status": "ELIGIBLE",
+      "primary_metric": "fixed_schema_macro_f1",
+      "fold_policy": "locked_p4_mother_well_logo4",
+      "frozen_test_family": "15/9-F-5"
+    },
+    "sweetspot": {
+      "status": "ELIGIBLE",
+      "primary_metric": "mae",
+      "fold_policy": "locked_group_logo4_exact_daily_grid",
+      "history_days": 30,
+      "forecast_days": 30,
+      "strong_baseline": "extra_trees_same_calendar_features",
+      "negative_controls": [
+        "tree_train_target_shuffle",
+        "chronos_history_order_shuffle"
+      ]
+    },
+    "reconstruction": {
+      "status": "ELIGIBLE",
+      "primary_metric": "development_rmse",
+      "fold_policy": "locked_p4_spatial_five_fold",
+      "lanes": [
+        "strict",
+        "conditional"
+      ]
+    }
+  }
+}

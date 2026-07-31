@@ -1,0 +1,46 @@
+{
+  "adapter_targets_fit_independently": [
+    "PHIF",
+    "KLOGH",
+    "SW"
+  ],
+  "checkpoint_git_ignored": true,
+  "checkpoint_path_persisted": false,
+  "checkpoint_roundtrip": true,
+  "checkpoint_sha256": "d3bc23073395f9f37af74cb1ee16365b10ebd63cc723aa00274b66b7d7ad8f08",
+  "config": {
+    "device": "cpu",
+    "n_estimators": 32,
+    "n_features": 153,
+    "n_jobs": 1,
+    "seed": 2693
+  },
+  "config_sha256": "b6c2fb1923fb32461ec6c5e6bcc84989b3b5ed32d1c2be1e69d00575e45ff4fc",
+  "development_family_counts": {
+    "15/9-19": 147,
+    "15/9-F-1": 451,
+    "15/9-F-11": 537,
+    "15/9-F-12": 81
+  },
+  "development_rows": 1216,
+  "fit_report": {
+    "loss": 0.04245395251150408,
+    "per_target": {
+      "KLOGH": 0.12051013538616673,
+      "PHIF": 7.226700783557864e-05,
+      "SW": 0.006779455140509914
+    },
+    "valid_counts": {
+      "KLOGH": 1216,
+      "PHIF": 1216,
+      "SW": 1216
+    }
+  },
+  "fit_wall_seconds": 0.47902413411065936,
+  "known_holdout_rows_used_for_fit": 0,
+  "model_id": "extra_trees_regressor",
+  "seed": 2693,
+  "selected_head_from_independent_multi-target_adapter": true,
+  "target": "PHIF",
+  "target_valid_development_rows": 1216
+}

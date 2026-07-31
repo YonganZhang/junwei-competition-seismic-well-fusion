@@ -1,0 +1,87 @@
+# 这是待决策的合同模板，不是标签定义。保持 approved=false 直到军伟/领域专家完成批准。
+schema_version: sweetspot-label-spec/v1
+spec_version: 0.1.0-draft
+status: draft
+
+# geological | engineering | production | joint
+target_semantics: geological
+
+output:
+  # binary | multiclass | continuous_score | probability
+  type: binary
+  classes:
+    - "<REQUIRED: negative class meaning>"
+    - "<REQUIRED: positive class meaning>"
+  units: null
+  probability_interpretation: "<REQUIRED: what a future probability would mean>"
+
+# 每个 source/field 必须出现在 audit/data_availability.json 的 field_catalog 中。
+allowed_source_fields:
+  - source: "<REQUIRED: audited source id>"
+    field: "<REQUIRED: exact audited field>"
+    # candidate_evidence | inference_input | label_only | join_key
+    role: candidate_evidence
+
+label_construction:
+  formula: "<REQUIRED: exact expert-approved rule; no implicit defaults>"
+  formula_field_refs:
+    - source: "<REQUIRED: audited source id>"
+      field: "<REQUIRED: exact audited field>"
+  thresholds: []
+  thresholds_not_applicable_reason: "<REQUIRED if thresholds is empty>"
+  weights: []
+  weights_not_applicable_reason: "<REQUIRED if weights is empty>"
+  fit_domain:
+    # train_only | domain_expert | external_fixed; test 永久禁止
+    statistics_scope: domain_expert
+    population: "<REQUIRED: wells/blocks/depth/time population used to set the rule>"
+    uses_test_statistics: false
+
+time_window:
+  definition: "<REQUIRED: static snapshot or exact production window>"
+  start: null
+  end: null
+  timezone: null
+  leakage_cutoff: "<REQUIRED: how future/test information is excluded>"
+
+spatial_scale:
+  # well_point | well_interval | 2d_slice | 3d_voxel
+  support: well_interval
+  coordinate_system: "<REQUIRED: MD/TVDSS/inline-crossline-TWT/UTM>"
+  vertical_domain: "<REQUIRED: depth or time domain>"
+  resolution: "<REQUIRED: exact sampling/support size>"
+  alignment_tolerance: "<REQUIRED: accepted spatial/time mismatch>"
+
+class_rules:
+  positive: "<REQUIRED: positive sample rule>"
+  negative: "<REQUIRED: negative sample rule; absence of positive is not enough>"
+  unlabeled: "<REQUIRED: exclude/ignore/review rule>"
+
+split_strategy:
+  # well_holdout | spatial_block | well_and_spatial
+  strategy: well_holdout
+  group_key: "<REQUIRED: well_name or spatial block id>"
+  train_rule: "<REQUIRED: deterministic train assignment>"
+  validation_rule: "<REQUIRED: deterministic validation assignment>"
+  test_rule: "<REQUIRED: deterministic held-out test assignment>"
+  fit_statistics_scope: train_only
+  leakage_guards:
+    - "<REQUIRED: at least one explicit leakage guard>"
+
+inference_allowed_inputs:
+  - source: "<REQUIRED: audited source id>"
+    field: "<REQUIRED: exact audited field>"
+
+metrics:
+  - name: "<REQUIRED: metric approved for the output type>"
+    aggregation: "<REQUIRED: per well/block/global and averaging rule>"
+    decision_threshold: null
+
+approval:
+  approved: false
+  approved_by: null
+  approved_role: null
+  approved_at: null
+  decision_record: null
+
+notes: "Draft only. This file must not be used to generate labels."

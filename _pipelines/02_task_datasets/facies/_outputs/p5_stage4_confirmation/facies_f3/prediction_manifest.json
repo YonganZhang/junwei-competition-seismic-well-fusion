@@ -1,0 +1,89 @@
+{
+  "arrays": {
+    "confidence": {
+      "dtype": "float16",
+      "shape": [
+        445,
+        128,
+        128
+      ]
+    },
+    "entropy": {
+      "dtype": "float16",
+      "shape": [
+        445,
+        128,
+        128
+      ]
+    },
+    "error": {
+      "dtype": "uint8",
+      "shape": [
+        445,
+        128,
+        128
+      ]
+    },
+    "inline": {
+      "dtype": "int64",
+      "shape": [
+        445
+      ]
+    },
+    "labels": {
+      "dtype": "uint8",
+      "shape": [
+        445,
+        128,
+        128
+      ]
+    },
+    "prediction": {
+      "dtype": "uint8",
+      "shape": [
+        445,
+        128,
+        128
+      ]
+    },
+    "probabilities": {
+      "dtype": "float16",
+      "shape": [
+        445,
+        10,
+        128,
+        128
+      ]
+    },
+    "sample_ids": {
+      "dtype": "<U29",
+      "shape": [
+        445
+      ]
+    },
+    "seismic": {
+      "dtype": "float16",
+      "shape": [
+        445,
+        128,
+        128
+      ]
+    }
+  },
+  "bytes": 161939102,
+  "checkpoint_sha256": "1171b9158833adb8397333c53bde23be76999e88d8e4360e3d079df9e487b700",
+  "configuration_hash": "08e95ded95007abb49e59122f019424d19bef6e08c3bc08a271b0d680780a428",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "leaderboard_sha256": "f79d1027a903eba4ba93ad8ec517bd7827098f9599ac526c5991184d56562242",
+  "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+  "prior_test_consumed": true,
+  "runtime_relative_path": "facies_f3/known_holdout_predictions.npz",
+  "sample_count": 445,
+  "sample_ids_hash": "dbfc72139c1e8fda450b748b978dbf6e0d5ba754e5ae4dfa2272db5ccbd8e3c6",
+  "schema_version": "facies-p5-stage4-known-holdout-v1",
+  "sha256": "ac5d3419d9361b8c8c562b672e988820a020c6850a6c74dbcfa7249463344a01",
+  "storage_boundary": "ignored_track_private_runtime_artifact",
+  "task_id": "facies_f3",
+  "test_groups_hash": "88993b32d2b8fa79c2627317baa1d0ab0a36273a83c3a93b188d213e05941f7d"
+}

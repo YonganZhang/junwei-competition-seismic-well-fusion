@@ -1,0 +1,32 @@
+{
+  "B0": {
+    "r2": -0.3396787079619956,
+    "rmse": 0.03562492535922522,
+    "status": "passed"
+  },
+  "B1": {
+    "reason": "strict lane forbids test-region well constraints",
+    "status": "not_applicable"
+  },
+  "F0": {
+    "reason": "no approved foundation artifact",
+    "status": "blocked"
+  },
+  "F1": {
+    "reason": "no approved foundation artifact",
+    "status": "blocked"
+  },
+  "fresh_blind": false,
+  "mode": "strict",
+  "prior_test_consumed": true,
+  "shared_k4_fold": 4,
+  "shared_k4_metric_mask_count": 78949,
+  "shuffled": {
+    "reason": "strict lane forbids test-region well constraints",
+    "status": "not_applicable"
+  },
+  "stage3_rankable": true,
+  "stage3_result_sha256": "bb5025fbe7e90cef8fff2d29f9a2e4615e30792996163a40a29b7560bcb306ce",
+  "stage4_result_hash": "b189b7c5342d1cab4813049093eff9f4507f9ffe78e37332c8df3ae295b62c8b",
+  "status": "no_verified_gain"
+}

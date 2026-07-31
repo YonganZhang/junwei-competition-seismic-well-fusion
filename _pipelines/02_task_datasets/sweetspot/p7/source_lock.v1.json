@@ -1,0 +1,27 @@
+{
+  "schema_version": "sweetspot-p7-foundation-source-lock/v1",
+  "model_id": "amazon/chronos-2",
+  "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+  "license": "Apache-2.0",
+  "parameter_count": 120000000,
+  "chronos_forecasting_version": "2.2.0",
+  "config_sha256": "ef1143bfdc9c0376d9a056eefca46cb4b1ec3d0ffacd541ff56feb40fb708031",
+  "weights_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+  "weights_size_bytes": 477930472,
+  "approved_scope": [
+    "T3 future-30-day oil-production forecasting from causal production history"
+  ],
+  "experimental_scope": [
+    "T4 future-30-day water-breakthrough risk scoring from causal seven-day history; promote only if frozen-development AP beats CatBoost"
+  ],
+  "excluded_scope": [
+    "T1 static reservoir-quality regression",
+    "T2 static hydrocarbon-pay classification",
+    "T5 simulation-only remaining-oil target",
+    "T6 porosity property volume",
+    "T7 permeability property volume",
+    "fault segmentation",
+    "facies image segmentation",
+    "3D reconstruction"
+  ]
+}

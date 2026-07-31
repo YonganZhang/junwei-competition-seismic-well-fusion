@@ -1,0 +1,38 @@
+{
+  "figures": [
+    {
+      "bytes": 3324,
+      "frozen_test_accessed": false,
+      "path": "figures/fault_readiness.svg",
+      "sha256": "4e33c97a0bb7801c30db32f0196054ede573074d254433e1228860a6dd420d7b",
+      "source": "p5_stage3_data_manifest.json"
+    },
+    {
+      "bytes": 2210,
+      "frozen_test_accessed": false,
+      "path": "figures/fault_negative_coverage.svg",
+      "sha256": "4bdcda77826e8c9543b2efb9410aa058b8e67afbc3bdc44c237ed69336720230",
+      "source": "p5_stage3_data_manifest.json"
+    },
+    {
+      "bytes": 2837,
+      "frozen_test_accessed": false,
+      "path": "figures/fault_unknown_coverage.svg",
+      "sha256": "8459b8d75dcb8cf3a9dd84cbe28bed3bdfd42ec70adf42b230f9fde3cd9de5a4",
+      "source": "p5_stage3_data_manifest.json"
+    }
+  ],
+  "frozen_test_accessed": false,
+  "historical_test_metrics_accessed": false,
+  "lane": "fault_3d_segmentation_data_gate",
+  "oof_prediction_count": 0,
+  "protocol": "fault-p5-stage3-visualization-manifest-v1",
+  "rebuild_entrypoint": "fault_p5_stage3_visualize.build_figures",
+  "source_artifact": {
+    "path": "p5_stage3_data_manifest.json",
+    "sha256": "66f7f922fad93dfb8adc218cfcbebd65cbc0b7e4f061dca99a1feb3e884083a1"
+  },
+  "status": "readiness_only",
+  "task_id": "fault_stick_segmentation",
+  "track_id": "fault"
+}

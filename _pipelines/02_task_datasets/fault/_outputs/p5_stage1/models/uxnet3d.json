@@ -1,0 +1,72 @@
+{
+  "detail": "exact clean upstream checkout is unavailable",
+  "evidence_state": "scouted",
+  "frozen_test_accessed": false,
+  "model_id": "uxnet3d",
+  "reason_code": "LOCKED_SOURCE_CHECKOUT_UNAVAILABLE",
+  "runtime_gate": {
+    "detail": "exact clean upstream checkout is unavailable",
+    "evidence": {
+      "code_license": "MIT",
+      "commercial_use": "allowed",
+      "model_id": "uxnet3d",
+      "source_checkout": {
+        "reason": "no locked source checkout supplied",
+        "status": "missing"
+      },
+      "source_revision": "14ea46b7b4c4980b46aba066aaaa24b1d9c1bb0d",
+      "source_tag": null,
+      "source_url": "https://github.com/MASILab/3DUX-Net",
+      "weights": {
+        "approved": false,
+        "required": false,
+        "sha256": null,
+        "source": null
+      }
+    },
+    "reason_code": "LOCKED_SOURCE_CHECKOUT_UNAVAILABLE",
+    "status": "skipped"
+  },
+  "source_lock": {
+    "adapter": {
+      "backend": "pytorch_locked_checkout",
+      "builder": "uxnet3d",
+      "minimum_shape": [
+        32,
+        32,
+        32
+      ],
+      "shape_multiple": [
+        32,
+        32,
+        32
+      ],
+      "source_mode": "locked_checkout",
+      "trainable": true
+    },
+    "dependencies": [
+      {
+        "distribution": "torch",
+        "import_name": "torch",
+        "specifier": ">=1.12"
+      }
+    ],
+    "family": "3D UX-Net large-kernel volumetric ConvNet",
+    "model_id": "uxnet3d",
+    "source": {
+      "commercial_use": "allowed",
+      "license_spdx": "MIT",
+      "license_url": "https://github.com/MASILab/3DUX-Net/tree/14ea46b7b4c4980b46aba066aaaa24b1d9c1bb0d",
+      "revision": "14ea46b7b4c4980b46aba066aaaa24b1d9c1bb0d",
+      "tag": null,
+      "url": "https://github.com/MASILab/3DUX-Net"
+    },
+    "weights": {
+      "approved": false,
+      "required": false,
+      "sha256": null,
+      "source": null
+    }
+  },
+  "status": "skipped"
+}

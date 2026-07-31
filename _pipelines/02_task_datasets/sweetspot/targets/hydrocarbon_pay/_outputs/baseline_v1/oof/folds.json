@@ -1,0 +1,41 @@
+[
+  {
+    "checkpoint_sha256": "5d023d83e7c10ed37287f59049ed42208a069a3d8dc40a8a75e5578d2b4de91a",
+    "fold_id": 0,
+    "train_groups": [
+      "15/9-F-1",
+      "15/9-F-12"
+    ],
+    "train_samples": 18572,
+    "validation_groups": [
+      "15/9-F-11"
+    ],
+    "validation_samples": 17550
+  },
+  {
+    "checkpoint_sha256": "7bc56cbfebbacf0e6cafdaac5a76a94ce08a5af54ca3df71c7d7059822309f26",
+    "fold_id": 1,
+    "train_groups": [
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "train_samples": 20200,
+    "validation_groups": [
+      "15/9-F-1"
+    ],
+    "validation_samples": 15922
+  },
+  {
+    "checkpoint_sha256": "261c793fc3b5fe0779099608737e1d34a3e88798fdbfaacf4491245a3c52c575",
+    "fold_id": 2,
+    "train_groups": [
+      "15/9-F-1",
+      "15/9-F-11"
+    ],
+    "train_samples": 33472,
+    "validation_groups": [
+      "15/9-F-12"
+    ],
+    "validation_samples": 2650
+  }
+]

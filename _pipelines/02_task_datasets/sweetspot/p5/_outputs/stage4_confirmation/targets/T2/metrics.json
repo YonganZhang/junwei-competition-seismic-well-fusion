@@ -1,0 +1,65 @@
+{
+  "checkpoint_sha256": "6af727bd2ca780d9c65bf36c58d0ea5b1c8025ec484d43e74af1235c4fe3429b",
+  "config_sha256": "c76f05b359d3977757e456604724e1a2e5cabe9f9fe3bfe8991be4fa4ae9fbca",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "historical_p4_metrics_read": false,
+  "holdout_features_sha256": "8eaf1bc5bab1db340ddd26a7af0e4751eb3f151b826a27963a9f8a773c69d77a",
+  "holdout_groups": [
+    "15/9-F-15"
+  ],
+  "holdout_ids_sha256": "6c568890b6e9811d287b64a48625161daf0a1ce460f8a75154a698618edc6450",
+  "holdout_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+    "authorized_groups": [
+      "15/9-F-15"
+    ],
+    "opened_member_count": 2,
+    "opened_member_crc_manifest_sha256": "3c56f9acd05e4815d8f13cd0e32f50b76aaadc7fb803300ffd881c5aa90b199f",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20",
+    "partition": "known_holdout",
+    "source_kind": "Volve_Well_logs.zip authorized known-holdout members only",
+    "test_accessed": true,
+    "unauthorized_member_reads": 0,
+    "values_accessed": 12081
+  },
+  "holdout_samples": 12081,
+  "holdout_targets_sha256": "c063f1d48723713cc8040770404df97476ae27e63cd1a5a036e08b1d7657e50f",
+  "holdout_wall_seconds": 0.41504532704129815,
+  "metrics": {
+    "average_precision": 0.9990776475633495,
+    "brier": 0.02286081524589408,
+    "f1_at_0_5": 0.9777260638297872,
+    "positive_rate": 0.7361145600529757,
+    "sample_count": 12081,
+    "thickness_diagnostic": {
+      "by_group": [
+        {
+          "absolute_error_m": 26.19999999997617,
+          "actual_net_thickness_m": 889.2999999991912,
+          "group": "15/9-F-15",
+          "median_sample_spacing_m": 0.09999999999990905,
+          "predicted_net_thickness_m": 915.4999999991674
+        }
+      ],
+      "definition": "median within-group sample spacing times positive sample count at frozen threshold 0.5",
+      "net_thickness_mae_m": 26.19999999997617
+    },
+    "threshold": 0.5,
+    "threshold_source": "frozen constant; not fit on known holdout"
+  },
+  "prediction_sha256": "13b5ca3ebcf40a6e6b7b3393f91c8fdec9ef0990afc287ca4ab85d69187953dd",
+  "prior_exposure_evidence": {
+    "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/lifecycle.json",
+    "lifecycle_sha256": "7dc7080d006267cd6a1cbc7da667b3ad05bdc3db185024b56a863aeac868ec24",
+    "prior_test_consumed": true,
+    "test_consumed_at": "2026-07-13T17:09:15.610708+00:00",
+    "test_rows": 12081
+  },
+  "prior_test_consumed": true,
+  "schema_version": "sweetspot-p5-stage4-known-holdout-metrics/v1",
+  "selection_feedback_allowed": false,
+  "status": "CONFIRMED_ON_KNOWN_HOLDOUT",
+  "task_id": "T2"
+}

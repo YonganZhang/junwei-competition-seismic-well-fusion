@@ -1,0 +1,11 @@
+{
+  "exact_phie_families": [],
+  "label_version": "target6-exact-phie-v1",
+  "lfp_phie_families_excluded": [
+    "15/9-19"
+  ],
+  "mixed_with_PHIF": false,
+  "reason": "exact PHIE has insufficient mother-well-family support; LFP_PHIE is not substituted",
+  "status": "not_feasible",
+  "target": "PHIE"
+}

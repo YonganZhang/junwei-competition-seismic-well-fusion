@@ -1,0 +1,45 @@
+{
+  "boundary": {
+    "conditional": "test-region constraints supplied; exact well cells excluded from metrics",
+    "strict": "no test-region well constraints used"
+  },
+  "coordinate_system": "native voxel K/J/I",
+  "coordinate_units": "voxel index",
+  "feasibility": "native_volume",
+  "field_names": [
+    "truth",
+    "prediction",
+    "residual"
+  ],
+  "limitations": [
+    "native voxel indices only",
+    "no physical XYZ coordinates were introduced",
+    "static figure uses a deterministic subsample for readability"
+  ],
+  "mode": "strict",
+  "native_axes": [
+    "K",
+    "J",
+    "I"
+  ],
+  "native_volume": true,
+  "render_sampling": {
+    "max_points": 12000,
+    "rule": "lexsort by K/J/I then evenly spaced sample indices",
+    "selected_points": 12000
+  },
+  "schema_version": "p5-three-d-sci-visualization-v1",
+  "source_paths": {
+    "manifest": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/manifest.json",
+    "metrics": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/metrics.json",
+    "predictions": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/predictions.npz",
+    "state": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/confirmation_state.json"
+  },
+  "spatial_context": false,
+  "track_id": "reconstruction",
+  "volume_shape_kji": [
+    63,
+    100,
+    54
+  ]
+}

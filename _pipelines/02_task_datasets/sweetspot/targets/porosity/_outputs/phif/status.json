@@ -1,0 +1,25 @@
+{
+  "development_samples": 1216,
+  "downgrade_reason": "only 4 independent development groups are available",
+  "effective_folds": 4,
+  "label_version": "target6-phif-cpi-v1",
+  "log1p_diagnostics": null,
+  "model": "reservoir_ridge",
+  "physical_metrics": {
+    "MAE": 0.01205574707408998,
+    "R2": 0.9341149216171467,
+    "R2_reason": null,
+    "RMSE": 0.017223538024520847
+  },
+  "requested_folds": 5,
+  "status": "complete",
+  "target": "PHIF",
+  "test_consumed_once": true,
+  "test_family": "15/9-F-15",
+  "test_samples": 344,
+  "unresolved": [
+    "only one frozen-test mother-well family is available",
+    "weak MD-to-TWT tie and existing Hugin-filtered samples are inherited from the reservoir build",
+    "uncertainty is an OOF residual interval, not a calibrated probabilistic model"
+  ]
+}

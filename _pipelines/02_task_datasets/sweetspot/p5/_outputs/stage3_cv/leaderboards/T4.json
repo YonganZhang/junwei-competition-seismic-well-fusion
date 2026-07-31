@@ -1,0 +1,132 @@
+{
+  "bootstrap": {
+    "iterations": 2000,
+    "root_seed": 2693,
+    "unit": "fold-repeat cell"
+  },
+  "completed_cells": 27,
+  "completion_rate": 1.0,
+  "direction": "maximize",
+  "entries": [
+    {
+      "completed_cells": 9,
+      "completion_rate": 1.0,
+      "eligible_for_ranking": true,
+      "expected_cells": 9,
+      "fold_means": {
+        "0": 0.9499999999999998,
+        "1": 0.8694444444444445,
+        "2": 0.14285325241207594
+      },
+      "model_id": "catboost",
+      "primary_bootstrap_95ci": [
+        0.39606157277725906,
+        0.8665197051042635
+      ],
+      "primary_mean": 0.6540992322855067,
+      "rank": 1,
+      "resource": {
+        "download_bytes": 0,
+        "max_peak_rss_bytes": 2216828928,
+        "max_peak_vram_bytes": 0,
+        "mean_wall_seconds": 0.029491217599974737
+      },
+      "seed_means": {
+        "1867973658": 0.6979808590102707,
+        "2137841944": 0.632703081232493,
+        "3902865753": 0.6316137566137566
+      },
+      "seed_std": 0.031032182542643106,
+      "tied": false,
+      "worst_fold": {
+        "fold_id": 2,
+        "value": 0.14285325241207594
+      }
+    },
+    {
+      "completed_cells": 9,
+      "completion_rate": 1.0,
+      "eligible_for_ranking": true,
+      "expected_cells": 9,
+      "fold_means": {
+        "0": 0.9499999999999998,
+        "1": 0.8000000000000002,
+        "2": 0.1439425770308123
+      },
+      "model_id": "inceptiontime",
+      "primary_bootstrap_95ci": [
+        0.39596171802054153,
+        0.85
+      ],
+      "primary_mean": 0.6313141923436042,
+      "rank": 2,
+      "resource": {
+        "download_bytes": 0,
+        "max_peak_rss_bytes": 2226266112,
+        "max_peak_vram_bytes": 68251136,
+        "mean_wall_seconds": 0.5962061527599063
+      },
+      "seed_means": {
+        "1867973658": 0.6313141923436041,
+        "2137841944": 0.6313141923436041,
+        "3902865753": 0.6313141923436041
+      },
+      "seed_std": 0.0,
+      "tied": false,
+      "worst_fold": {
+        "fold_id": 2,
+        "value": 0.1439425770308123
+      }
+    },
+    {
+      "completed_cells": 9,
+      "completion_rate": 1.0,
+      "eligible_for_ranking": true,
+      "expected_cells": 9,
+      "fold_means": {
+        "0": 0.9499999999999998,
+        "1": 0.6666666666666666,
+        "2": 0.15079365079365079
+      },
+      "model_id": "lightgbm",
+      "primary_bootstrap_95ci": [
+        0.35423280423280423,
+        0.7982363315696649
+      ],
+      "primary_mean": 0.5891534391534392,
+      "rank": 3,
+      "resource": {
+        "download_bytes": 0,
+        "max_peak_rss_bytes": 2216828928,
+        "max_peak_vram_bytes": 0,
+        "mean_wall_seconds": 0.0037869218116005263
+      },
+      "seed_means": {
+        "1867973658": 0.5891534391534391,
+        "2137841944": 0.5891534391534391,
+        "3902865753": 0.5891534391534391
+      },
+      "seed_std": 0.0,
+      "tied": false,
+      "worst_fold": {
+        "fold_id": 2,
+        "value": 0.15079365079365079
+      }
+    }
+  ],
+  "expected_cells": 27,
+  "lane": "water_breakthrough",
+  "not_rankable_reason": null,
+  "primary_metric": "average_precision",
+  "ranking_rule": [
+    "primary_mean",
+    "worst_fold",
+    "seed_std",
+    "mean_wall_seconds"
+  ],
+  "schema_version": "sweetspot-p5-stage3-leaderboard/v1",
+  "status": "rankable",
+  "task_id": "T4",
+  "test_accessed": false,
+  "tie_policy": "equal scientific keys remain tied; runtime order is not a tiebreaker"
+}

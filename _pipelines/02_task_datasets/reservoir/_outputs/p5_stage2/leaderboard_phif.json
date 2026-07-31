@@ -1,0 +1,338 @@
+{
+  "cross_lane_ranking": false,
+  "direction": "minimize",
+  "lane_isolation": "strict",
+  "lanes": {
+    "seismic_3d_gpu": {
+      "candidate_count": 1,
+      "cross_lane_ranking": false,
+      "direction": "minimize",
+      "eligibility": "same modality lane, same frozen fold, development_piloted, finite target metric",
+      "entries": [
+        {
+          "input_modalities": [
+            "seismic_patch"
+          ],
+          "model_domain_R2": -10.019112761943756,
+          "model_domain_RMSE": 0.2120965986774834,
+          "model_id": "monai_densenet3d_regressor",
+          "physical_MAE": 0.20263364619609933,
+          "physical_R2": -10.004905105763212,
+          "physical_RMSE": 0.2119598196289135,
+          "valid_count": 81,
+          "wall_seconds": 4.394045521970838,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.20307093262557446,
+              "R2": -10.019112761943756,
+              "R2_reason": null,
+              "RMSE": 0.2120965986774834,
+              "bias": -0.20307093262557446
+            },
+            "physical": {
+              "MAE": 0.20263364619609933,
+              "R2": -10.004905105763212,
+              "R2_reason": null,
+              "RMSE": 0.2119598196289135,
+              "bias": -0.20263364619609933
+            },
+            "valid_count": 81
+          }
+        }
+      ],
+      "modality_lane": "seismic_3d_gpu",
+      "primary_metric": "physical_RMSE",
+      "schema_version": 1,
+      "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+      "stage": 2,
+      "status": "not_rankable",
+      "target": "PHIF",
+      "task_id": "reservoir_property_stage2_phif_seismic_3d_gpu",
+      "test_access": false,
+      "track_id": "property"
+    },
+    "tabular_cpu": {
+      "candidate_count": 8,
+      "cross_lane_ranking": false,
+      "direction": "minimize",
+      "eligibility": "same modality lane, same frozen fold, development_piloted, finite target metric",
+      "entries": [
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.8805520216567383,
+          "model_domain_RMSE": 0.02208257896564209,
+          "model_id": "extra_trees_regressor",
+          "physical_MAE": 0.01764206012478545,
+          "physical_R2": 0.8805520216567383,
+          "physical_RMSE": 0.02208257896564209,
+          "rank": 1,
+          "valid_count": 81,
+          "wall_seconds": 1.909974802751094,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.01764206012478545,
+              "R2": 0.8805520216567383,
+              "R2_reason": null,
+              "RMSE": 0.02208257896564209,
+              "bias": -0.012685153821310762
+            },
+            "physical": {
+              "MAE": 0.01764206012478545,
+              "R2": 0.8805520216567383,
+              "R2_reason": null,
+              "RMSE": 0.02208257896564209,
+              "bias": -0.012685153821310762
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.8402600522635862,
+          "model_domain_RMSE": 0.02553684022476083,
+          "model_id": "lightgbm_regressor",
+          "physical_MAE": 0.021810273408563563,
+          "physical_R2": 0.8402600522635862,
+          "physical_RMSE": 0.02553684022476083,
+          "rank": 2,
+          "valid_count": 81,
+          "wall_seconds": 2.3426139019429684,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.021810273408563563,
+              "R2": 0.8402600522635862,
+              "R2_reason": null,
+              "RMSE": 0.02553684022476083,
+              "bias": -0.015398500046068925
+            },
+            "physical": {
+              "MAE": 0.021810273408563563,
+              "R2": 0.8402600522635862,
+              "R2_reason": null,
+              "RMSE": 0.02553684022476083,
+              "bias": -0.015398500046068925
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.8397238862692584,
+          "model_domain_RMSE": 0.025579661433555684,
+          "model_id": "hist_gradient_boosting_regressor",
+          "physical_MAE": 0.021375871561127576,
+          "physical_R2": 0.8397238862692584,
+          "physical_RMSE": 0.025579661433555684,
+          "rank": 3,
+          "valid_count": 81,
+          "wall_seconds": 1.70713995071128,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.021375871561127576,
+              "R2": 0.8397238862692584,
+              "R2_reason": null,
+              "RMSE": 0.025579661433555684,
+              "bias": -0.013880800838995351
+            },
+            "physical": {
+              "MAE": 0.021375871561127576,
+              "R2": 0.8397238862692584,
+              "R2_reason": null,
+              "RMSE": 0.025579661433555684,
+              "bias": -0.013880800838995351
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.6149693670809395,
+          "model_domain_RMSE": 0.039646790129446045,
+          "model_id": "catboost_regressor",
+          "physical_MAE": 0.03284854044969457,
+          "physical_R2": 0.6149693670809395,
+          "physical_RMSE": 0.039646790129446045,
+          "rank": 4,
+          "valid_count": 81,
+          "wall_seconds": 1.9746360420249403,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.03284854044969457,
+              "R2": 0.6149693670809395,
+              "R2_reason": null,
+              "RMSE": 0.039646790129446045,
+              "bias": -0.02059709634522207
+            },
+            "physical": {
+              "MAE": 0.03284854044969457,
+              "R2": 0.6149693670809395,
+              "R2_reason": null,
+              "RMSE": 0.039646790129446045,
+              "bias": -0.02059709634522207
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.43757556101906636,
+          "model_domain_RMSE": 0.047917315811452,
+          "model_id": "xgboost_regressor",
+          "physical_MAE": 0.03553207701555005,
+          "physical_R2": 0.43757556101906636,
+          "physical_RMSE": 0.047917315811452,
+          "rank": 5,
+          "valid_count": 81,
+          "wall_seconds": 0.6804993567056954,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.03553207701555005,
+              "R2": 0.43757556101906636,
+              "R2_reason": null,
+              "RMSE": 0.047917315811452,
+              "bias": -0.029677792969677184
+            },
+            "physical": {
+              "MAE": 0.03553207701555005,
+              "R2": 0.43757556101906636,
+              "R2_reason": null,
+              "RMSE": 0.047917315811452,
+              "bias": -0.029677792969677184
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -0.6598843920671156,
+          "model_domain_RMSE": 0.08231885307470853,
+          "model_id": "tabm_regressor",
+          "physical_MAE": 0.06853991420364675,
+          "physical_R2": -0.6598843920671156,
+          "physical_RMSE": 0.08231885307470853,
+          "rank": 6,
+          "valid_count": 81,
+          "wall_seconds": 4.828542402945459,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.06853991420364675,
+              "R2": -0.6598843920671156,
+              "R2_reason": null,
+              "RMSE": 0.08231885307470853,
+              "bias": -0.04861868996127152
+            },
+            "physical": {
+              "MAE": 0.06853991420364675,
+              "R2": -0.6598843920671156,
+              "R2_reason": null,
+              "RMSE": 0.08231885307470853,
+              "bias": -0.04861868996127152
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -1.4002655356624851,
+          "model_domain_RMSE": 0.09898970612046039,
+          "model_id": "realmlp_regressor",
+          "physical_MAE": 0.08745843512408527,
+          "physical_R2": -1.4002655356624851,
+          "physical_RMSE": 0.09898970612046039,
+          "rank": 7,
+          "valid_count": 81,
+          "wall_seconds": 44.05430252989754,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.08745843512408527,
+              "R2": -1.4002655356624851,
+              "R2_reason": null,
+              "RMSE": 0.09898970612046039,
+              "bias": -0.07355930122696323
+            },
+            "physical": {
+              "MAE": 0.08745843512408527,
+              "R2": -1.4002655356624851,
+              "R2_reason": null,
+              "RMSE": 0.09898970612046039,
+              "bias": -0.07355930122696323
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -65.07444862967299,
+          "model_domain_RMSE": 0.5193703635143913,
+          "model_id": "ft_transformer_regressor",
+          "physical_MAE": 0.20866172595156562,
+          "physical_R2": -10.66509701015441,
+          "physical_RMSE": 0.2182250329237681,
+          "rank": 8,
+          "valid_count": 81,
+          "wall_seconds": 5.076281358953565,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.5165857268888273,
+              "R2": -65.07444862967299,
+              "R2_reason": null,
+              "RMSE": 0.5193703635143913,
+              "bias": -0.5165857268888273
+            },
+            "physical": {
+              "MAE": 0.20866172595156562,
+              "R2": -10.66509701015441,
+              "R2_reason": null,
+              "RMSE": 0.2182250329237681,
+              "bias": -0.20866172595156562
+            },
+            "valid_count": 81
+          }
+        }
+      ],
+      "modality_lane": "tabular_cpu",
+      "primary_metric": "physical_RMSE",
+      "schema_version": 1,
+      "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+      "stage": 2,
+      "status": "rankable",
+      "target": "PHIF",
+      "task_id": "reservoir_property_stage2_phif_tabular_cpu",
+      "test_access": false,
+      "track_id": "property"
+    }
+  },
+  "primary_metric": "physical_RMSE",
+  "schema_version": 2,
+  "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+  "stage": 2,
+  "target": "PHIF",
+  "task_id": "reservoir_property_stage2_phif",
+  "test_access": false,
+  "track_id": "property"
+}

@@ -1,0 +1,34 @@
+{
+  "evidence": {
+    "CONFIG_FROZEN": {
+      "config_hash": "0870345c4abaa86a3bf12d7a6b484a03bb777f1d598967824b01de695c82c5bd"
+    },
+    "CV_COMPLETE": {
+      "oof_metrics_hash": "abed88f45fd92243012b4d5131e183b032f039bd323a63b10d333c6770c57839",
+      "sample_count": 36122
+    },
+    "REFIT_COMPLETE": {
+      "checkpoint_hash": "12f1b0c9464503d9b89cb33f6efa99f66d0141cceb1cba27a14b4ae9bbbfe4f6"
+    },
+    "SMOKE_PASSED": {
+      "finite_predictions": true,
+      "sample_count": 256
+    },
+    "SPLIT_LOCKED": {
+      "split_hash": "53cca51e20c0520fd4df7c762fa73fd6133798a672b0acf7ccb998a4eaacf91d"
+    },
+    "TEST_CONSUMED": {
+      "checkpoint_hash": "12f1b0c9464503d9b89cb33f6efa99f66d0141cceb1cba27a14b4ae9bbbfe4f6",
+      "config_hash": "0870345c4abaa86a3bf12d7a6b484a03bb777f1d598967824b01de695c82c5bd",
+      "split_hash": "53cca51e20c0520fd4df7c762fa73fd6133798a672b0acf7ccb998a4eaacf91d"
+    },
+    "VERIFIED": {
+      "metrics_hash": "1e15c16c18396d78f13f7d6704e482543dcc5036a9e8c35a39dab690e1087c5e",
+      "prediction_hash": "bb49502684c37fa13ea263af53e43e70bdb269eb88a454339fd177d764a38876",
+      "test_rows_accessed": 12081
+    }
+  },
+  "experiment_id": "sweetspot.hydrocarbon_pay.baseline_v1",
+  "state": "VERIFIED",
+  "test_consumed_at": "2026-07-13T17:09:15.610708+00:00"
+}

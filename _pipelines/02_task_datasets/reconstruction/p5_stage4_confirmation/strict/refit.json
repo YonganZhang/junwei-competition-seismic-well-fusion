@@ -1,0 +1,155 @@
+{
+  "checkpoint": "refit_checkpoint.npz",
+  "checkpoint_bytes": 26025,
+  "checkpoint_roundtrip_max_abs_error": 0.0,
+  "checkpoint_sha256": "bfd011fa898e1f1356536392c3ed2f88f6f56c30f80b515c80291957d849766c",
+  "constraint_audit": {
+    "constraints_supplied_to_model": 0,
+    "fit_constraint_count": 90,
+    "guard_constraints_used": 0,
+    "strict_reference_derived_well_values_excluded": true,
+    "test_constraints_used": 0,
+    "zero_constraint_fallback": null
+  },
+  "development_active_cells": 49323,
+  "development_patch_count": 70,
+  "mode": "strict",
+  "model_fit_cells": 512,
+  "model_fit_index_sha256": "b619a9521de4f4eaa4f0585c269083bbe5182e9414a683e1560061fbc241bc28",
+  "model_fit_selection": "deterministic linspace over all legal development active cells",
+  "model_id": "pykrige_ok3d",
+  "model_wall_seconds_including_known_holdout_inference": 28.5959363989532,
+  "preprocess_fit_scope": "all legal development active cells",
+  "preprocess_report": {
+    "denoise": "ml_framework.preprocess.denoise_identity",
+    "effective_train_sample_ids": [
+      "k00_j01_i04",
+      "k00_j02_i04",
+      "k00_j02_i05",
+      "k00_j03_i04",
+      "k00_j03_i05",
+      "k01_j01_i04",
+      "k01_j02_i04",
+      "k01_j02_i05",
+      "k01_j03_i04",
+      "k01_j03_i05",
+      "k02_j01_i04",
+      "k02_j02_i04",
+      "k02_j02_i05",
+      "k02_j03_i04",
+      "k02_j03_i05",
+      "k03_j01_i04",
+      "k03_j02_i04",
+      "k03_j02_i05",
+      "k03_j03_i04",
+      "k03_j03_i05",
+      "k04_j01_i04",
+      "k04_j02_i04",
+      "k04_j02_i05",
+      "k04_j03_i04",
+      "k04_j03_i05",
+      "k05_j01_i04",
+      "k05_j02_i04",
+      "k05_j02_i05",
+      "k05_j03_i04",
+      "k05_j03_i05",
+      "k06_j01_i04",
+      "k06_j02_i04",
+      "k06_j02_i05",
+      "k06_j03_i04",
+      "k06_j03_i05"
+    ],
+    "feature_names": [
+      "seismic_amplitude",
+      "seismic_local_rms",
+      "seismic_vertical_gradient",
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized"
+    ],
+    "fit_scope": "all development patches after CONFIG_FROZEN",
+    "purged_train_sample_ids": [],
+    "refit_loss_monitor_note": "development loss only; epoch count was frozen before refit",
+    "roundtrip_max_abs_error": 5.551115123125783e-17,
+    "stats": [
+      {
+        "mean": 5.163200080141685e-05,
+        "method": "zscore",
+        "std": 0.01699611528096195,
+        "vmax": null,
+        "vmin": null
+      },
+      {
+        "mean": 0.015290087006101967,
+        "method": "zscore",
+        "std": 0.007327311614064451,
+        "vmax": null,
+        "vmin": null
+      },
+      {
+        "mean": -0.0005292601073337386,
+        "method": "zscore",
+        "std": 0.023223354137110918,
+        "vmax": null,
+        "vmin": null
+      },
+      {
+        "mean": 0.7845627767839631,
+        "method": "zscore",
+        "std": 0.08044559682532557,
+        "vmax": null,
+        "vmin": null
+      },
+      {
+        "mean": 0.5942108029033979,
+        "method": "zscore",
+        "std": 0.20957771465450897,
+        "vmax": null,
+        "vmin": null
+      },
+      {
+        "mean": 0.5044899934256,
+        "method": "zscore",
+        "std": 0.2090647266608486,
+        "vmax": null,
+        "vmin": null
+      }
+    ],
+    "target_transform": "identity",
+    "validation_sample_ids": []
+  },
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "seed_report": {
+    "environment": {
+      "numpy": "2.4.4",
+      "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+      "python": "3.11.15"
+    },
+    "numpy_seeded": true,
+    "python_hash_seed_effective": false,
+    "python_seeded": true,
+    "root_seed": 2693,
+    "seed_tree": {
+      "derived": {
+        "augmentation": 758693542,
+        "cv": 2005692384,
+        "diagnostic": 3918561095,
+        "hpo_sampler": 963647711,
+        "loader": 4048176439,
+        "model": 3304793374,
+        "sampler": 2607916478,
+        "split": 3898470941
+      },
+      "root_seed": 2693
+    },
+    "strict_requested": true,
+    "torch_deterministic": false,
+    "torch_seeded": false,
+    "warnings": [
+      "PYTHONHASHSEED is fixed only at interpreter startup; launch through seeded_subprocess_env() with PYTHONHASHSEED=3304793374"
+    ]
+  },
+  "status": "passed",
+  "train_loss": 6.2116371504230825e-30,
+  "updates": 1
+}

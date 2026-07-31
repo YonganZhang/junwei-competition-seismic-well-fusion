@@ -1,0 +1,32 @@
+{
+  "coordinate_evidence": {
+    "depth_only_for_hover_and_caption": true,
+    "fields": [
+      "inline",
+      "crossline",
+      "time_ms"
+    ],
+    "uses_real_sample_points": true
+  },
+  "interpolation_used": false,
+  "mode": "spatial_context",
+  "sources": {
+    "test_h5": "_data/processed/reservoir/test.h5",
+    "test_predictions_csv": "_pipelines/02_task_datasets/reservoir/_outputs/test_predictions.csv"
+  },
+  "summary": {
+    "families": [
+      "15/9-F-15"
+    ],
+    "family_count": 1,
+    "record_count": 344,
+    "well_count": 1
+  },
+  "targets": [
+    "PHIF",
+    "KLOGH",
+    "SW"
+  ],
+  "trajectory_used": false,
+  "volume_used": false
+}

@@ -1,0 +1,15 @@
+{
+  "derivation": "frozen by P5 Stage-3 protocol",
+  "passed_directly_to_every_estimator_random_state": true,
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "root_seed": 2693,
+  "schema_version": 1,
+  "stage": 3,
+  "test_access": false,
+  "track_id": "property",
+  "traditional_deterministic_models_repeated": true
+}

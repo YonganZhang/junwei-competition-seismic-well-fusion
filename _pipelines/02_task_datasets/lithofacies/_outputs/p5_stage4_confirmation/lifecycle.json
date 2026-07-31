@@ -1,0 +1,59 @@
+{
+  "schema_version": "lithofacies-p5-stage4-lifecycle-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "state": "CONFIRMATION_COMPLETE",
+  "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b",
+  "development_batch_sha256": "a62008d780af30780f629e96c314134d85d663a938a7686d18ecefd4a31a675d",
+  "preprocessor_hash": "8fe650c3f379736c10b55ff53f7d043d09f96c4249cbbb6b5ed59f28bf8e79e2",
+  "prior_test_consumed": true,
+  "fresh_blind": false,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "p4_state_reset": false,
+  "known_holdout_consumed_at": "2026-07-14T02:10:41.822446+00:00",
+  "transitions": [
+    {
+      "state": "CONFIG_FROZEN",
+      "evidence": {
+        "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b",
+        "development_batch_sha256": "a62008d780af30780f629e96c314134d85d663a938a7686d18ecefd4a31a675d",
+        "holdout_accessed": false
+      }
+    },
+    {
+      "state": "REFIT_COMPLETE",
+      "evidence": {
+        "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b",
+        "checkpoint_sha256": "4ed736aa41e45d853c42f1df37da5ef8f3d42d9c7c997c822552b601c6d51423",
+        "holdout_accessed": false
+      }
+    },
+    {
+      "state": "KNOWN_HOLDOUT_CONSUMED",
+      "evidence": {
+        "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b",
+        "checkpoint_sha256": "4ed736aa41e45d853c42f1df37da5ef8f3d42d9c7c997c822552b601c6d51423",
+        "holdout_family": "15/9-F-5",
+        "prior_test_consumed": true,
+        "fresh_blind": false,
+        "evidence_class": "previously_seen_reusable_holdout",
+        "consumed_before_hdf5_open": true,
+        "consumed_at": "2026-07-14T02:10:41.822446+00:00",
+        "holdout_batch_sha256": "efb7b21b365498cc3fbf4528534913f6abdc87a083c09e16ff8a06355d49b6b0",
+        "holdout_samples": 120
+      }
+    },
+    {
+      "state": "CONFIRMATION_COMPLETE",
+      "evidence": {
+        "predictions_sha256": "0ff2854a584d9494e04fd322d5be210538a61148c9ab15464c9d167349c2666f",
+        "metrics_sha256": "6469dc300fc86b064e891773a55496cbcd1ff3cde1c7d7a0dcd534ae69b8def7",
+        "visualization_manifest_sha256": "c680d96028ef3de547536022f1af5db063537934af898c76bd23f601e47a7424",
+        "evaluated_samples": 120,
+        "fixed_schema_macro_f1": 0.18915285744785953
+      }
+    }
+  ],
+  "checkpoint_sha256": "4ed736aa41e45d853c42f1df37da5ef8f3d42d9c7c997c822552b601c6d51423",
+  "holdout_batch_sha256": "efb7b21b365498cc3fbf4528534913f6abdc87a083c09e16ff8a06355d49b6b0"
+}

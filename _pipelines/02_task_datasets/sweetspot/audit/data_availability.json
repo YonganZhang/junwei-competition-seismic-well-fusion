@@ -1,0 +1,3275 @@
+{
+  "artifacts": {
+    "las": {
+      "coverage_kind": "field presence across LAS tracks; value missingness uses cleaned Layer1 HDF5",
+      "field_presence_across_tracks": {
+        "DEPTH": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_AI": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_AI_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_AI_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_AI_LOG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_AI_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_AI_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_API": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_BADDATA": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_BS": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_BVWE": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_BVWT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_CALI": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_COAL": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DTCORFSFLAG": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DTLOGFLAG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_DTS": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DTSLOGFLAG": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_DTS_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DTS_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DTS_GC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DTS_LOG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_DTS_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DTS_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DT_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DT_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DT_LOG": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DT_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DT_SYNT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_DT_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_EI_HILT_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_EI_HILT_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_EI_HILT_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_EI_HILT_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_GAS": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_GOR": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_GR": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_GRMAX": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_GRMIN": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KFLG": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KFLMF": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KFLO": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KFLW": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KROCKV": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KRROCKV": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KSKEL": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_KVROCKV": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_MODEL": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_NPHI": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_NPHISH": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_OIL": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PHIE": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PHIEC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PHIEWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PHIT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PHITC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PHITWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PRESS": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_LOG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_PR_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_SH_SYNT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_SS_B_SYNT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_SS_G_SYNT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_SS_O_SYNT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_PR_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOB": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOBFAR_HILT_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOBFAR_HILT_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOBFAR_HILT_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOBFAR_HILT_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOBLOGFLAG": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOBSH": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOBSHNC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOB_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOB_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOB_LOG": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOB_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOB_SYNT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOB_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOFLE": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOFLEC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOFLEWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOFLT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOFLTC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOFLTWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOG": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOHA": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOHW": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOMA": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOMANC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOMF": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOO": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RHOW": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RSH": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RW": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_RXO": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SAL": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SAND": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SANDC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SANDWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_B_F": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_B_N": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_G_F": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_G_N": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_O_F": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_O_N": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_V_F": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SEIS_SYNT_R30_V_N": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_SGG_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SGG_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SGT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SGT_SUBST": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SI": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_SI_LOG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_SOT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SOT_SUBST": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SUBST": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SWE": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SWEC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SWECNC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SWT": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_SWTC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SWTCNC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOGT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMFE": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMFEC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMFEWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMFT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMFTC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMFTWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMIXE": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMIXEC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMIXT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOMIXTC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOOT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOWE": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOWEC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOWEWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOWT": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOWTC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_SXOWTWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_TEMP": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_TVD": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_TVDML": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_TVDSS": {
+          "coverage": 0.333333,
+          "tracks_present": 1,
+          "tracks_total": 3
+        },
+        "LFP_VCARB": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VCARBC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VCARBWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VP": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_VPG": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VPO": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VPVS": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VPVS_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VPVS_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VPVS_LOG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_VPVS_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VPVS_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VPW": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VP_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VP_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VP_LOG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_VP_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VP_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VQRTZ": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VQRTZC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VQRTZWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VS": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VSH": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VSHDN": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VSHDRY": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VSHDRYC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VSHDRYWC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VSHGR": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VS_B": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VS_G": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VS_GC": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VS_LOG": {
+          "coverage": 0.666667,
+          "tracks_present": 2,
+          "tracks_total": 3
+        },
+        "LFP_VS_O": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_VS_V": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        },
+        "LFP_WATER": {
+          "coverage": 1.0,
+          "tracks_present": 3,
+          "tracks_total": 3
+        }
+      },
+      "files": {
+        "159-19A_LFP.las": {
+          "fields": [
+            "DEPTH",
+            "LFP_AI",
+            "LFP_AI_B",
+            "LFP_AI_G",
+            "LFP_AI_LOG",
+            "LFP_AI_O",
+            "LFP_AI_V",
+            "LFP_API",
+            "LFP_BADDATA",
+            "LFP_BVWE",
+            "LFP_BVWT",
+            "LFP_CALI",
+            "LFP_COAL",
+            "LFP_DT",
+            "LFP_DT_B",
+            "LFP_DT_G",
+            "LFP_DT_LOG",
+            "LFP_DT_O",
+            "LFP_DT_SYNT",
+            "LFP_DT_V",
+            "LFP_DTCORFSFLAG",
+            "LFP_DTLOGFLAG",
+            "LFP_DTS",
+            "LFP_DTS_B",
+            "LFP_DTS_G",
+            "LFP_DTS_GC",
+            "LFP_DTS_LOG",
+            "LFP_DTS_O",
+            "LFP_DTS_V",
+            "LFP_EI_HILT_B",
+            "LFP_EI_HILT_G",
+            "LFP_EI_HILT_O",
+            "LFP_EI_HILT_V",
+            "LFP_GAS",
+            "LFP_GOR",
+            "LFP_GR",
+            "LFP_GRMAX",
+            "LFP_GRMIN",
+            "LFP_KFLG",
+            "LFP_KFLMF",
+            "LFP_KFLO",
+            "LFP_KFLW",
+            "LFP_KROCKV",
+            "LFP_KRROCKV",
+            "LFP_KSKEL",
+            "LFP_KVROCKV",
+            "LFP_MODEL",
+            "LFP_NPHI",
+            "LFP_NPHISH",
+            "LFP_OIL",
+            "LFP_PHIE",
+            "LFP_PHIEC",
+            "LFP_PHIEWC",
+            "LFP_PHIT",
+            "LFP_PHITC",
+            "LFP_PHITWC",
+            "LFP_PR",
+            "LFP_PR_B",
+            "LFP_PR_G",
+            "LFP_PR_LOG",
+            "LFP_PR_O",
+            "LFP_PR_SH_SYNT",
+            "LFP_PR_SS_B_SYNT",
+            "LFP_PR_SS_G_SYNT",
+            "LFP_PR_SS_O_SYNT",
+            "LFP_PR_V",
+            "LFP_PRESS",
+            "LFP_RHOB",
+            "LFP_RHOB_B",
+            "LFP_RHOB_G",
+            "LFP_RHOB_LOG",
+            "LFP_RHOB_O",
+            "LFP_RHOB_SYNT",
+            "LFP_RHOB_V",
+            "LFP_RHOBFAR_HILT_B",
+            "LFP_RHOBFAR_HILT_G",
+            "LFP_RHOBFAR_HILT_O",
+            "LFP_RHOBFAR_HILT_V",
+            "LFP_RHOBLOGFLAG",
+            "LFP_RHOBSH",
+            "LFP_RHOBSHNC",
+            "LFP_RHOFLE",
+            "LFP_RHOFLEC",
+            "LFP_RHOFLEWC",
+            "LFP_RHOFLT",
+            "LFP_RHOFLTC",
+            "LFP_RHOFLTWC",
+            "LFP_RHOG",
+            "LFP_RHOHA",
+            "LFP_RHOHW",
+            "LFP_RHOMA",
+            "LFP_RHOMANC",
+            "LFP_RHOMF",
+            "LFP_RHOO",
+            "LFP_RHOW",
+            "LFP_RSH",
+            "LFP_RT",
+            "LFP_RW",
+            "LFP_SAL",
+            "LFP_SAND",
+            "LFP_SANDC",
+            "LFP_SANDWC",
+            "LFP_SGG_G",
+            "LFP_SGG_O",
+            "LFP_SGT",
+            "LFP_SGT_SUBST",
+            "LFP_SI",
+            "LFP_SI_LOG",
+            "LFP_SOT",
+            "LFP_SOT_SUBST",
+            "LFP_SUBST",
+            "LFP_SWE",
+            "LFP_SWEC",
+            "LFP_SWECNC",
+            "LFP_SWT",
+            "LFP_SWTC",
+            "LFP_SWTCNC",
+            "LFP_SXOGT",
+            "LFP_SXOMFE",
+            "LFP_SXOMFEC",
+            "LFP_SXOMFEWC",
+            "LFP_SXOMFT",
+            "LFP_SXOMFTC",
+            "LFP_SXOMFTWC",
+            "LFP_SXOMIXE",
+            "LFP_SXOMIXEC",
+            "LFP_SXOMIXT",
+            "LFP_SXOMIXTC",
+            "LFP_SXOOT",
+            "LFP_SXOWE",
+            "LFP_SXOWEC",
+            "LFP_SXOWEWC",
+            "LFP_SXOWT",
+            "LFP_SXOWTC",
+            "LFP_SXOWTWC",
+            "LFP_TEMP",
+            "LFP_VCARB",
+            "LFP_VCARBC",
+            "LFP_VCARBWC",
+            "LFP_VP",
+            "LFP_VP_B",
+            "LFP_VP_G",
+            "LFP_VP_LOG",
+            "LFP_VP_O",
+            "LFP_VP_V",
+            "LFP_VPG",
+            "LFP_VPO",
+            "LFP_VPVS",
+            "LFP_VPVS_B",
+            "LFP_VPVS_G",
+            "LFP_VPVS_LOG",
+            "LFP_VPVS_O",
+            "LFP_VPVS_V",
+            "LFP_VPW",
+            "LFP_VQRTZ",
+            "LFP_VQRTZC",
+            "LFP_VQRTZWC",
+            "LFP_VS",
+            "LFP_VS_B",
+            "LFP_VS_G",
+            "LFP_VS_GC",
+            "LFP_VS_LOG",
+            "LFP_VS_O",
+            "LFP_VS_V",
+            "LFP_VSH",
+            "LFP_VSHDN",
+            "LFP_VSHDRY",
+            "LFP_VSHDRYC",
+            "LFP_VSHDRYWC",
+            "LFP_VSHGR",
+            "LFP_WATER"
+          ],
+          "n_curve_fields": 171,
+          "track": "15_9-19 A"
+        },
+        "159-19BT2_LFP.las": {
+          "fields": [
+            "DEPTH",
+            "LFP_AI",
+            "LFP_AI_B",
+            "LFP_AI_G",
+            "LFP_AI_LOG",
+            "LFP_AI_O",
+            "LFP_AI_V",
+            "LFP_API",
+            "LFP_BADDATA",
+            "LFP_BVWE",
+            "LFP_BVWT",
+            "LFP_COAL",
+            "LFP_DT",
+            "LFP_DT_B",
+            "LFP_DT_G",
+            "LFP_DT_LOG",
+            "LFP_DT_O",
+            "LFP_DT_SYNT",
+            "LFP_DT_V",
+            "LFP_DTCORFSFLAG",
+            "LFP_DTS",
+            "LFP_DTS_B",
+            "LFP_DTS_G",
+            "LFP_DTS_GC",
+            "LFP_DTS_LOG",
+            "LFP_DTS_O",
+            "LFP_DTS_V",
+            "LFP_EI_HILT_B",
+            "LFP_EI_HILT_G",
+            "LFP_EI_HILT_O",
+            "LFP_EI_HILT_V",
+            "LFP_GAS",
+            "LFP_GOR",
+            "LFP_GR",
+            "LFP_GRMAX",
+            "LFP_GRMIN",
+            "LFP_KFLG",
+            "LFP_KFLMF",
+            "LFP_KFLO",
+            "LFP_KFLW",
+            "LFP_KROCKV",
+            "LFP_KRROCKV",
+            "LFP_KSKEL",
+            "LFP_KVROCKV",
+            "LFP_MODEL",
+            "LFP_NPHI",
+            "LFP_NPHISH",
+            "LFP_OIL",
+            "LFP_PHIE",
+            "LFP_PHIEC",
+            "LFP_PHIEWC",
+            "LFP_PHIT",
+            "LFP_PHITC",
+            "LFP_PHITWC",
+            "LFP_PR",
+            "LFP_PR_B",
+            "LFP_PR_G",
+            "LFP_PR_LOG",
+            "LFP_PR_O",
+            "LFP_PR_SH_SYNT",
+            "LFP_PR_SS_B_SYNT",
+            "LFP_PR_SS_G_SYNT",
+            "LFP_PR_SS_O_SYNT",
+            "LFP_PR_V",
+            "LFP_PRESS",
+            "LFP_RHOB",
+            "LFP_RHOB_B",
+            "LFP_RHOB_G",
+            "LFP_RHOB_LOG",
+            "LFP_RHOB_O",
+            "LFP_RHOB_SYNT",
+            "LFP_RHOB_V",
+            "LFP_RHOBFAR_HILT_B",
+            "LFP_RHOBFAR_HILT_G",
+            "LFP_RHOBFAR_HILT_O",
+            "LFP_RHOBFAR_HILT_V",
+            "LFP_RHOBLOGFLAG",
+            "LFP_RHOBSH",
+            "LFP_RHOBSHNC",
+            "LFP_RHOFLE",
+            "LFP_RHOFLEC",
+            "LFP_RHOFLEWC",
+            "LFP_RHOFLT",
+            "LFP_RHOFLTC",
+            "LFP_RHOFLTWC",
+            "LFP_RHOG",
+            "LFP_RHOHA",
+            "LFP_RHOHW",
+            "LFP_RHOMA",
+            "LFP_RHOMANC",
+            "LFP_RHOMF",
+            "LFP_RHOO",
+            "LFP_RHOW",
+            "LFP_RSH",
+            "LFP_RT",
+            "LFP_RW",
+            "LFP_SAL",
+            "LFP_SAND",
+            "LFP_SANDC",
+            "LFP_SANDWC",
+            "LFP_SGG_G",
+            "LFP_SGG_O",
+            "LFP_SGT",
+            "LFP_SGT_SUBST",
+            "LFP_SI",
+            "LFP_SI_LOG",
+            "LFP_SOT",
+            "LFP_SOT_SUBST",
+            "LFP_SUBST",
+            "LFP_SWE",
+            "LFP_SWEC",
+            "LFP_SWECNC",
+            "LFP_SWT",
+            "LFP_SWTC",
+            "LFP_SWTCNC",
+            "LFP_SXOGT",
+            "LFP_SXOMFE",
+            "LFP_SXOMFEC",
+            "LFP_SXOMFEWC",
+            "LFP_SXOMFT",
+            "LFP_SXOMFTC",
+            "LFP_SXOMFTWC",
+            "LFP_SXOMIXE",
+            "LFP_SXOMIXEC",
+            "LFP_SXOMIXT",
+            "LFP_SXOMIXTC",
+            "LFP_SXOOT",
+            "LFP_SXOWE",
+            "LFP_SXOWEC",
+            "LFP_SXOWEWC",
+            "LFP_SXOWT",
+            "LFP_SXOWTC",
+            "LFP_SXOWTWC",
+            "LFP_TEMP",
+            "LFP_TVD",
+            "LFP_TVDML",
+            "LFP_TVDSS",
+            "LFP_VCARB",
+            "LFP_VCARBC",
+            "LFP_VCARBWC",
+            "LFP_VP",
+            "LFP_VP_B",
+            "LFP_VP_G",
+            "LFP_VP_LOG",
+            "LFP_VP_O",
+            "LFP_VP_V",
+            "LFP_VPG",
+            "LFP_VPO",
+            "LFP_VPVS",
+            "LFP_VPVS_B",
+            "LFP_VPVS_G",
+            "LFP_VPVS_LOG",
+            "LFP_VPVS_O",
+            "LFP_VPVS_V",
+            "LFP_VPW",
+            "LFP_VQRTZ",
+            "LFP_VQRTZC",
+            "LFP_VQRTZWC",
+            "LFP_VS",
+            "LFP_VS_B",
+            "LFP_VS_G",
+            "LFP_VS_GC",
+            "LFP_VS_LOG",
+            "LFP_VS_O",
+            "LFP_VS_V",
+            "LFP_VSH",
+            "LFP_VSHDN",
+            "LFP_VSHDRY",
+            "LFP_VSHDRYC",
+            "LFP_VSHDRYWC",
+            "LFP_VSHGR",
+            "LFP_WATER"
+          ],
+          "n_curve_fields": 172,
+          "track": "15_9-19 BT2"
+        },
+        "159-19SR_LFP.las": {
+          "fields": [
+            "DEPTH",
+            "LFP_AI_B",
+            "LFP_AI_G",
+            "LFP_AI_O",
+            "LFP_AI_V",
+            "LFP_API",
+            "LFP_BADDATA",
+            "LFP_BS",
+            "LFP_BVWE",
+            "LFP_BVWT",
+            "LFP_CALI",
+            "LFP_COAL",
+            "LFP_DT",
+            "LFP_DT_B",
+            "LFP_DT_G",
+            "LFP_DT_LOG",
+            "LFP_DT_O",
+            "LFP_DT_SYNT",
+            "LFP_DT_V",
+            "LFP_DTCORFSFLAG",
+            "LFP_DTLOGFLAG",
+            "LFP_DTS",
+            "LFP_DTS_B",
+            "LFP_DTS_G",
+            "LFP_DTS_GC",
+            "LFP_DTS_O",
+            "LFP_DTS_V",
+            "LFP_DTSLOGFLAG",
+            "LFP_EI_HILT_B",
+            "LFP_EI_HILT_G",
+            "LFP_EI_HILT_O",
+            "LFP_EI_HILT_V",
+            "LFP_GAS",
+            "LFP_GOR",
+            "LFP_GR",
+            "LFP_GRMAX",
+            "LFP_GRMIN",
+            "LFP_KFLG",
+            "LFP_KFLMF",
+            "LFP_KFLO",
+            "LFP_KFLW",
+            "LFP_KROCKV",
+            "LFP_KRROCKV",
+            "LFP_KSKEL",
+            "LFP_KVROCKV",
+            "LFP_MODEL",
+            "LFP_NPHI",
+            "LFP_NPHISH",
+            "LFP_OIL",
+            "LFP_PHIE",
+            "LFP_PHIEC",
+            "LFP_PHIEWC",
+            "LFP_PHIT",
+            "LFP_PHITC",
+            "LFP_PHITWC",
+            "LFP_PR",
+            "LFP_PR_B",
+            "LFP_PR_G",
+            "LFP_PR_O",
+            "LFP_PR_SH_SYNT",
+            "LFP_PR_SS_B_SYNT",
+            "LFP_PR_SS_G_SYNT",
+            "LFP_PR_SS_O_SYNT",
+            "LFP_PR_V",
+            "LFP_PRESS",
+            "LFP_RHOB",
+            "LFP_RHOB_B",
+            "LFP_RHOB_G",
+            "LFP_RHOB_LOG",
+            "LFP_RHOB_O",
+            "LFP_RHOB_SYNT",
+            "LFP_RHOB_V",
+            "LFP_RHOBFAR_HILT_B",
+            "LFP_RHOBFAR_HILT_G",
+            "LFP_RHOBFAR_HILT_O",
+            "LFP_RHOBFAR_HILT_V",
+            "LFP_RHOBLOGFLAG",
+            "LFP_RHOBSH",
+            "LFP_RHOBSHNC",
+            "LFP_RHOFLE",
+            "LFP_RHOFLEC",
+            "LFP_RHOFLEWC",
+            "LFP_RHOFLT",
+            "LFP_RHOFLTC",
+            "LFP_RHOFLTWC",
+            "LFP_RHOG",
+            "LFP_RHOHA",
+            "LFP_RHOHW",
+            "LFP_RHOMA",
+            "LFP_RHOMANC",
+            "LFP_RHOMF",
+            "LFP_RHOO",
+            "LFP_RHOW",
+            "LFP_RSH",
+            "LFP_RT",
+            "LFP_RW",
+            "LFP_RXO",
+            "LFP_SAL",
+            "LFP_SAND",
+            "LFP_SANDC",
+            "LFP_SANDWC",
+            "LFP_SEIS_SYNT_R30_B_F",
+            "LFP_SEIS_SYNT_R30_B_N",
+            "LFP_SEIS_SYNT_R30_G_F",
+            "LFP_SEIS_SYNT_R30_G_N",
+            "LFP_SEIS_SYNT_R30_O_F",
+            "LFP_SEIS_SYNT_R30_O_N",
+            "LFP_SEIS_SYNT_R30_V_F",
+            "LFP_SEIS_SYNT_R30_V_N",
+            "LFP_SGG_G",
+            "LFP_SGG_O",
+            "LFP_SGT",
+            "LFP_SGT_SUBST",
+            "LFP_SOT",
+            "LFP_SOT_SUBST",
+            "LFP_SUBST",
+            "LFP_SWE",
+            "LFP_SWEC",
+            "LFP_SWECNC",
+            "LFP_SWTC",
+            "LFP_SWTCNC",
+            "LFP_SXOGT",
+            "LFP_SXOMFE",
+            "LFP_SXOMFEC",
+            "LFP_SXOMFEWC",
+            "LFP_SXOMFT",
+            "LFP_SXOMFTC",
+            "LFP_SXOMFTWC",
+            "LFP_SXOMIXE",
+            "LFP_SXOMIXEC",
+            "LFP_SXOMIXT",
+            "LFP_SXOMIXTC",
+            "LFP_SXOOT",
+            "LFP_SXOWE",
+            "LFP_SXOWEC",
+            "LFP_SXOWEWC",
+            "LFP_SXOWT",
+            "LFP_SXOWTC",
+            "LFP_SXOWTWC",
+            "LFP_TEMP",
+            "LFP_VCARB",
+            "LFP_VCARBC",
+            "LFP_VCARBWC",
+            "LFP_VP_B",
+            "LFP_VP_G",
+            "LFP_VP_O",
+            "LFP_VP_V",
+            "LFP_VPG",
+            "LFP_VPO",
+            "LFP_VPVS",
+            "LFP_VPVS_B",
+            "LFP_VPVS_G",
+            "LFP_VPVS_O",
+            "LFP_VPVS_V",
+            "LFP_VPW",
+            "LFP_VQRTZ",
+            "LFP_VQRTZC",
+            "LFP_VQRTZWC",
+            "LFP_VS",
+            "LFP_VS_B",
+            "LFP_VS_G",
+            "LFP_VS_GC",
+            "LFP_VS_O",
+            "LFP_VS_V",
+            "LFP_VSH",
+            "LFP_VSHDN",
+            "LFP_VSHDRY",
+            "LFP_VSHDRYC",
+            "LFP_VSHDRYWC",
+            "LFP_VSHGR",
+            "LFP_WATER"
+          ],
+          "n_curve_fields": 171,
+          "track": "15_9-19 SR"
+        }
+      },
+      "n_files": 3,
+      "path": "_sandbox/volve_data/_extracted_welllogs/Well_logs/06.LFP/*/*.las",
+      "present": true
+    },
+    "layer1.fault_points": {
+      "fields": {
+        "crossline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 2517,
+          "min": 2066,
+          "n_missing": 0,
+          "n_present": 3998,
+          "n_values": 3998,
+          "shape": [
+            3998
+          ]
+        },
+        "fault_name": {
+          "coverage": 1.0,
+          "dtype": "object",
+          "n_missing": 0,
+          "n_present": 3998,
+          "n_values": 3998,
+          "shape": [
+            3998
+          ]
+        },
+        "inline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 10358,
+          "min": 9985,
+          "n_missing": 0,
+          "n_present": 3998,
+          "n_values": 3998,
+          "shape": [
+            3998
+          ]
+        },
+        "stick_no": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 3,
+          "min": 1,
+          "n_missing": 0,
+          "n_present": 3998,
+          "n_values": 3998,
+          "shape": [
+            3998
+          ]
+        },
+        "twt_ms": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 3324.894,
+          "min": 2486.02,
+          "n_missing": 0,
+          "n_present": 3998,
+          "n_values": 3998,
+          "shape": [
+            3998
+          ]
+        },
+        "utmx": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 437624.498,
+          "min": 431662.093,
+          "n_missing": 0,
+          "n_present": 3998,
+          "n_values": 3998,
+          "shape": [
+            3998
+          ]
+        },
+        "utmy": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 6481425.005,
+          "min": 6476147.755,
+          "n_missing": 0,
+          "n_present": 3998,
+          "n_values": 3998,
+          "shape": [
+            3998
+          ]
+        }
+      },
+      "path": "_pipelines/01_common_preprocess/outputs/fault_points.npz",
+      "present": true,
+      "size_bytes": 218014,
+      "source_id": "layer1.fault_points"
+    },
+    "layer1.horizon_bcu_points": {
+      "fields": {
+        "crossline": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 2536.0,
+          "min": 1932.0,
+          "n_missing": 0,
+          "n_present": 225558,
+          "n_values": 225558,
+          "shape": [
+            225558
+          ]
+        },
+        "inline": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 10369.0,
+          "min": 9985.0,
+          "n_missing": 0,
+          "n_present": 225558,
+          "n_values": 225558,
+          "shape": [
+            225558
+          ]
+        },
+        "twt_ms": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 2853.630127,
+          "min": 2458.5534668,
+          "n_missing": 0,
+          "n_present": 225558,
+          "n_values": 225558,
+          "shape": [
+            225558
+          ]
+        },
+        "utmx": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 439848.9179861,
+          "min": 431570.7286227,
+          "n_missing": 0,
+          "n_present": 225558,
+          "n_values": 225558,
+          "shape": [
+            225558
+          ]
+        },
+        "utmy": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 6481807.7394676,
+          "min": 6475644.3345139,
+          "n_missing": 0,
+          "n_present": 225558,
+          "n_values": 225558,
+          "shape": [
+            225558
+          ]
+        }
+      },
+      "path": "_pipelines/01_common_preprocess/outputs/horizon_bcu_points.npz",
+      "present": true,
+      "size_bytes": 9023560,
+      "source_id": "layer1.horizon_bcu_points"
+    },
+    "layer1.seismic_index": {
+      "fields": {
+        "affine_il_xl_to_xy": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 6348566.800326749,
+          "min": -12.128696475217623,
+          "n_missing": 0,
+          "n_present": 6,
+          "n_values": 6,
+          "shape": [
+            2,
+            3
+          ]
+        },
+        "il_max": {
+          "coverage": 1.0,
+          "dtype": "int64",
+          "max": 10369,
+          "min": 10369,
+          "n_missing": 0,
+          "n_present": 1,
+          "n_values": 1,
+          "shape": []
+        },
+        "il_min": {
+          "coverage": 1.0,
+          "dtype": "int64",
+          "max": 9985,
+          "min": 9985,
+          "n_missing": 0,
+          "n_present": 1,
+          "n_values": 1,
+          "shape": []
+        },
+        "n_il": {
+          "coverage": 1.0,
+          "dtype": "int64",
+          "max": 385,
+          "min": 385,
+          "n_missing": 0,
+          "n_present": 1,
+          "n_values": 1,
+          "shape": []
+        },
+        "n_traces": {
+          "coverage": 1.0,
+          "dtype": "int64",
+          "max": 232925,
+          "min": 232925,
+          "n_missing": 0,
+          "n_present": 1,
+          "n_values": 1,
+          "shape": []
+        },
+        "n_xl": {
+          "coverage": 1.0,
+          "dtype": "int64",
+          "max": 605,
+          "min": 605,
+          "n_missing": 0,
+          "n_present": 1,
+          "n_values": 1,
+          "shape": []
+        },
+        "samples_ms": {
+          "coverage": 1.0,
+          "dtype": "float64",
+          "max": 4500.0,
+          "min": 0.0,
+          "n_missing": 0,
+          "n_present": 1126,
+          "n_values": 1126,
+          "shape": [
+            1126
+          ]
+        },
+        "xl_max": {
+          "coverage": 1.0,
+          "dtype": "int64",
+          "max": 2536,
+          "min": 2536,
+          "n_missing": 0,
+          "n_present": 1,
+          "n_values": 1,
+          "shape": []
+        },
+        "xl_min": {
+          "coverage": 1.0,
+          "dtype": "int64",
+          "max": 1932,
+          "min": 1932,
+          "n_missing": 0,
+          "n_present": 1,
+          "n_values": 1,
+          "shape": []
+        }
+      },
+      "path": "_pipelines/01_common_preprocess/outputs/seismic_index.npz",
+      "present": true,
+      "size_bytes": 11358,
+      "source_id": "layer1.seismic_index"
+    },
+    "layer1.well_logs_clean": {
+      "field_presence_across_tracks": {
+        "clean": {
+          "LFP_CALI": {
+            "coverage": 0.666667,
+            "tracks_present": 2,
+            "tracks_total": 3
+          },
+          "LFP_DT": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_DTS": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_GR": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_NPHI": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_PHIE": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_RHOB": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_RT": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_VSH": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          }
+        },
+        "norm": {
+          "LFP_CALI": {
+            "coverage": 0.666667,
+            "tracks_present": 2,
+            "tracks_total": 3
+          },
+          "LFP_DT": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_DTS": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_GR": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_NPHI": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_PHIE": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_RHOB": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_RT": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          },
+          "LFP_VSH": {
+            "coverage": 1.0,
+            "tracks_present": 3,
+            "tracks_total": 3
+          }
+        }
+      },
+      "n_tracks": 3,
+      "path": "_pipelines/01_common_preprocess/outputs/well_logs_clean.h5",
+      "present": true,
+      "size_bytes": 1015136,
+      "tracks": {
+        "15_9-19 A": {
+          "attributes": {
+            "core_nine_missing": "[]",
+            "core_nine_present": "[\"LFP_GR\", \"LFP_RHOB\", \"LFP_NPHI\", \"LFP_DT\", \"LFP_DTS\", \"LFP_RT\", \"LFP_CALI\", \"LFP_VSH\", \"LFP_PHIE\"]",
+            "las_path": "_sandbox/volve_data/_extracted_welllogs/Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+            "native_depth_range": [
+              3500.0183,
+              4094.9878
+            ],
+            "well_name": "15/9-19"
+          },
+          "datasets": {
+            "clean/LFP_CALI": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 9.906999588012695,
+              "min": 7.869239807128906,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_DT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 127.69693756103516,
+              "min": 61.29336929321289,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_DTS": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 266.9084167480469,
+              "min": 116.37394714355469,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_GR": {
+              "coverage": 0.986543,
+              "dtype": "float32",
+              "max": 217.39962768554688,
+              "min": 4.938159942626953,
+              "n_missing": 16,
+              "n_present": 1173,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_NPHI": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 0.5286920070648193,
+              "min": 0.0772159993648529,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_PHIE": {
+              "coverage": 0.984861,
+              "dtype": "float32",
+              "max": 0.25631800293922424,
+              "min": 0.009999999776482582,
+              "n_missing": 18,
+              "n_present": 1171,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_RHOB": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 2.6949961185455322,
+              "min": 2.167009115219116,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_RT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 97.25647735595703,
+              "min": 0.48607999086380005,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "clean/LFP_VSH": {
+              "coverage": 0.986543,
+              "dtype": "float32",
+              "max": 0.9900000095367432,
+              "min": 0.0,
+              "n_missing": 16,
+              "n_present": 1173,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "depth_grid_m": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 4094.5,
+              "min": 3500.5,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_CALI": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 2.117999315261841,
+              "min": -1.7249916791915894,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_DT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 3.333843469619751,
+              "min": -1.3981244564056396,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_DTS": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 3.3450465202331543,
+              "min": -0.9821979999542236,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_GR": {
+              "coverage": 0.986543,
+              "dtype": "float32",
+              "max": 1.6793261766433716,
+              "min": -0.35085228085517883,
+              "n_missing": 16,
+              "n_present": 1173,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_NPHI": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 3.524508237838745,
+              "min": -1.333318829536438,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_PHIE": {
+              "coverage": 0.984861,
+              "dtype": "float32",
+              "max": 2.2596001625061035,
+              "min": -1.143758773803711,
+              "n_missing": 18,
+              "n_present": 1171,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_RHOB": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 2.010592460632324,
+              "min": -2.2937562465667725,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_RT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 6.439854145050049,
+              "min": -0.4106636941432953,
+              "n_missing": 0,
+              "n_present": 1189,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            },
+            "norm/LFP_VSH": {
+              "coverage": 0.986543,
+              "dtype": "float32",
+              "max": 2.0411441326141357,
+              "min": -0.8776751160621643,
+              "n_missing": 16,
+              "n_present": 1173,
+              "n_values": 1189,
+              "shape": [
+                1189
+              ]
+            }
+          }
+        },
+        "15_9-19 BT2": {
+          "attributes": {
+            "core_nine_missing": "[\"LFP_CALI\"]",
+            "core_nine_present": "[\"LFP_GR\", \"LFP_RHOB\", \"LFP_NPHI\", \"LFP_DT\", \"LFP_DTS\", \"LFP_RT\", \"LFP_VSH\", \"LFP_PHIE\"]",
+            "las_path": "_sandbox/volve_data/_extracted_welllogs/Well_logs/06.LFP/15_9-19 BT2/159-19BT2_LFP.las",
+            "native_depth_range": [
+              3170.0725,
+              4229.8623
+            ],
+            "well_name": "15/9-19"
+          },
+          "datasets": {
+            "clean/LFP_DT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 120.65404510498047,
+              "min": 57.2793083190918,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "clean/LFP_DTS": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 261.84698486328125,
+              "min": 115.51653289794922,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "clean/LFP_GR": {
+              "coverage": 0.991505,
+              "dtype": "float32",
+              "max": 176.3446807861328,
+              "min": 5.000956058502197,
+              "n_missing": 18,
+              "n_present": 2101,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "clean/LFP_NPHI": {
+              "coverage": 0.986314,
+              "dtype": "float32",
+              "max": 0.54612797498703,
+              "min": 0.03985400125384331,
+              "n_missing": 29,
+              "n_present": 2090,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "clean/LFP_PHIE": {
+              "coverage": 0.993865,
+              "dtype": "float32",
+              "max": 0.35079100728034973,
+              "min": 0.009999999776482582,
+              "n_missing": 13,
+              "n_present": 2106,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "clean/LFP_RHOB": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 2.718280076980591,
+              "min": 2.102816104888916,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "clean/LFP_RT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 16.690908432006836,
+              "min": 0.24400000274181366,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "clean/LFP_VSH": {
+              "coverage": 0.993865,
+              "dtype": "float32",
+              "max": 0.9900000095367432,
+              "min": 0.0,
+              "n_missing": 13,
+              "n_present": 2106,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "depth_grid_m": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 4229.5,
+              "min": 3170.5,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_DT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 2.387863874435425,
+              "min": -1.7351691722869873,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_DTS": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 2.9353244304656982,
+              "min": -1.296467900276184,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_GR": {
+              "coverage": 0.991505,
+              "dtype": "float32",
+              "max": 1.6788692474365234,
+              "min": -0.2473757266998291,
+              "n_missing": 18,
+              "n_present": 2101,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_NPHI": {
+              "coverage": 0.986314,
+              "dtype": "float32",
+              "max": 3.2085020542144775,
+              "min": -1.623685598373413,
+              "n_missing": 29,
+              "n_present": 2090,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_PHIE": {
+              "coverage": 0.993865,
+              "dtype": "float32",
+              "max": 2.2767114639282227,
+              "min": -0.9984183311462402,
+              "n_missing": 13,
+              "n_present": 2106,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_RHOB": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 1.9244134426116943,
+              "min": -2.120455741882324,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_RT": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 5.075018405914307,
+              "min": -0.8181451559066772,
+              "n_missing": 0,
+              "n_present": 2119,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            },
+            "norm/LFP_VSH": {
+              "coverage": 0.993865,
+              "dtype": "float32",
+              "max": 1.8881840705871582,
+              "min": -0.8482872843742371,
+              "n_missing": 13,
+              "n_present": 2106,
+              "n_values": 2119,
+              "shape": [
+                2119
+              ]
+            }
+          }
+        },
+        "15_9-19 SR": {
+          "attributes": {
+            "core_nine_missing": "[]",
+            "core_nine_present": "[\"LFP_GR\", \"LFP_RHOB\", \"LFP_NPHI\", \"LFP_DT\", \"LFP_DTS\", \"LFP_RT\", \"LFP_CALI\", \"LFP_VSH\", \"LFP_PHIE\"]",
+            "las_path": "_sandbox/volve_data/_extracted_welllogs/Well_logs/06.LFP/15_9-19 SR/159-19SR_LFP.las",
+            "native_depth_range": [
+              105.125,
+              5012.125
+            ],
+            "well_name": "15/9-19"
+          },
+          "datasets": {
+            "clean/LFP_CALI": {
+              "coverage": 0.213369,
+              "dtype": "float32",
+              "max": 12.635849952697754,
+              "min": 8.656929969787598,
+              "n_missing": 7720,
+              "n_present": 2094,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_DT": {
+              "coverage": 0.090381,
+              "dtype": "float32",
+              "max": 117.32151794433594,
+              "min": 40.0,
+              "n_missing": 8927,
+              "n_present": 887,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_DTS": {
+              "coverage": 0.084471,
+              "dtype": "float32",
+              "max": 267.4198913574219,
+              "min": 90.30571746826172,
+              "n_missing": 8985,
+              "n_present": 829,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_GR": {
+              "coverage": 0.914306,
+              "dtype": "float32",
+              "max": 141.42044067382812,
+              "min": 0.4101659953594208,
+              "n_missing": 841,
+              "n_present": 8973,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_NPHI": {
+              "coverage": 0.21235,
+              "dtype": "float32",
+              "max": 0.6707180142402649,
+              "min": 0.04136800020933151,
+              "n_missing": 7730,
+              "n_present": 2084,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_PHIE": {
+              "coverage": 0.084369,
+              "dtype": "float32",
+              "max": 0.2508760094642639,
+              "min": 0.009999999776482582,
+              "n_missing": 8986,
+              "n_present": 828,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_RHOB": {
+              "coverage": 0.213267,
+              "dtype": "float32",
+              "max": 2.667825937271118,
+              "min": 2.085170030593872,
+              "n_missing": 7721,
+              "n_present": 2093,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_RT": {
+              "coverage": 0.919707,
+              "dtype": "float32",
+              "max": 21.40831756591797,
+              "min": 0.2547619938850403,
+              "n_missing": 788,
+              "n_present": 9026,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "clean/LFP_VSH": {
+              "coverage": 0.084369,
+              "dtype": "float32",
+              "max": 0.9900000095367432,
+              "min": 0.003000000026077032,
+              "n_missing": 8986,
+              "n_present": 828,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "depth_grid_m": {
+              "coverage": 1.0,
+              "dtype": "float32",
+              "max": 5012.0,
+              "min": 105.5,
+              "n_missing": 0,
+              "n_present": 9814,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_CALI": {
+              "coverage": 0.213369,
+              "dtype": "float32",
+              "max": 4.205347537994385,
+              "min": -1.4238369464874268,
+              "n_missing": 7720,
+              "n_present": 2094,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_DT": {
+              "coverage": 0.090381,
+              "dtype": "float32",
+              "max": 3.556215524673462,
+              "min": -3.09497332572937,
+              "n_missing": 8927,
+              "n_present": 887,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_DTS": {
+              "coverage": 0.084471,
+              "dtype": "float32",
+              "max": 5.157497882843018,
+              "min": -1.7823511362075806,
+              "n_missing": 8985,
+              "n_present": 829,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_GR": {
+              "coverage": 0.089566,
+              "dtype": "float32",
+              "max": 1.4169169664382935,
+              "min": -0.02462337352335453,
+              "n_missing": 8935,
+              "n_present": 879,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_NPHI": {
+              "coverage": 0.21235,
+              "dtype": "float32",
+              "max": 3.6509623527526855,
+              "min": -1.1895078420639038,
+              "n_missing": 7730,
+              "n_present": 2084,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_PHIE": {
+              "coverage": 0.084369,
+              "dtype": "float32",
+              "max": 2.427460193634033,
+              "min": -1.1062734127044678,
+              "n_missing": 8986,
+              "n_present": 828,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_RHOB": {
+              "coverage": 0.213267,
+              "dtype": "float32",
+              "max": 1.333591103553772,
+              "min": -2.1731786727905273,
+              "n_missing": 7721,
+              "n_present": 2093,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_RT": {
+              "coverage": 0.919707,
+              "dtype": "float32",
+              "max": 5.470212459564209,
+              "min": -1.3747376203536987,
+              "n_missing": 788,
+              "n_present": 9026,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            },
+            "norm/LFP_VSH": {
+              "coverage": 0.084369,
+              "dtype": "float32",
+              "max": 3.123236656188965,
+              "min": -1.7191617488861084,
+              "n_missing": 8986,
+              "n_present": 828,
+              "n_values": 9814,
+              "shape": [
+                9814
+              ]
+            }
+          }
+        }
+      }
+    },
+    "layer1.well_tie_weak": {
+      "fields": {
+        "15_9-19_A__crossline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 2193,
+          "min": 2188,
+          "n_missing": 0,
+          "n_present": 1189,
+          "n_values": 1189,
+          "shape": [
+            1189
+          ]
+        },
+        "15_9-19_A__depth_m": {
+          "coverage": 1.0,
+          "dtype": "float32",
+          "max": 4094.5,
+          "min": 3500.5,
+          "n_missing": 0,
+          "n_present": 1189,
+          "n_values": 1189,
+          "shape": [
+            1189
+          ]
+        },
+        "15_9-19_A__inline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 10193,
+          "min": 10174,
+          "n_missing": 0,
+          "n_present": 1189,
+          "n_values": 1189,
+          "shape": [
+            1189
+          ]
+        },
+        "15_9-19_A__time_idx": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 694,
+          "min": 621,
+          "n_missing": 0,
+          "n_present": 1189,
+          "n_values": 1189,
+          "shape": [
+            1189
+          ]
+        },
+        "15_9-19_A__twt_est_ms": {
+          "coverage": 1.0,
+          "dtype": "float32",
+          "max": 2772.8837890625,
+          "min": 2481.470703125,
+          "n_missing": 0,
+          "n_present": 1189,
+          "n_values": 1189,
+          "shape": [
+            1189
+          ]
+        },
+        "15_9-19_BT2__crossline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 2172,
+          "min": 2146,
+          "n_missing": 0,
+          "n_present": 2119,
+          "n_values": 2119,
+          "shape": [
+            2119
+          ]
+        },
+        "15_9-19_BT2__depth_m": {
+          "coverage": 1.0,
+          "dtype": "float32",
+          "max": 4229.5,
+          "min": 3170.5,
+          "n_missing": 0,
+          "n_present": 2119,
+          "n_values": 2119,
+          "shape": [
+            2119
+          ]
+        },
+        "15_9-19_BT2__inline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 10123,
+          "min": 10092,
+          "n_missing": 0,
+          "n_present": 2119,
+          "n_values": 2119,
+          "shape": [
+            2119
+          ]
+        },
+        "15_9-19_BT2__time_idx": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 708,
+          "min": 580,
+          "n_missing": 0,
+          "n_present": 2119,
+          "n_values": 2119,
+          "shape": [
+            2119
+          ]
+        },
+        "15_9-19_BT2__twt_est_ms": {
+          "coverage": 1.0,
+          "dtype": "float32",
+          "max": 2829.22802734375,
+          "min": 2316.210693359375,
+          "n_missing": 0,
+          "n_present": 2119,
+          "n_values": 2119,
+          "shape": [
+            2119
+          ]
+        },
+        "15_9-19_SR__crossline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 2331,
+          "min": 2073,
+          "n_missing": 0,
+          "n_present": 9814,
+          "n_values": 9814,
+          "shape": [
+            9814
+          ]
+        },
+        "15_9-19_SR__depth_m": {
+          "coverage": 1.0,
+          "dtype": "float32",
+          "max": 5012.0,
+          "min": 105.5,
+          "n_missing": 0,
+          "n_present": 9814,
+          "n_values": 9814,
+          "shape": [
+            9814
+          ]
+        },
+        "15_9-19_SR__inline": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 10146,
+          "min": 10122,
+          "n_missing": 0,
+          "n_present": 9814,
+          "n_values": 9814,
+          "shape": [
+            9814
+          ]
+        },
+        "15_9-19_SR__time_idx": {
+          "coverage": 1.0,
+          "dtype": "int32",
+          "max": 708,
+          "min": 21,
+          "n_missing": 0,
+          "n_present": 9814,
+          "n_values": 9814,
+          "shape": [
+            9814
+          ]
+        },
+        "15_9-19_SR__twt_est_ms": {
+          "coverage": 1.0,
+          "dtype": "float32",
+          "max": 2828.961669921875,
+          "min": 80.6032485961914,
+          "n_missing": 0,
+          "n_present": 9814,
+          "n_values": 9814,
+          "shape": [
+            9814
+          ]
+        }
+      },
+      "path": "_pipelines/01_common_preprocess/outputs/well_tie_weak.npz",
+      "present": true,
+      "size_bytes": 266542,
+      "source_id": "layer1.well_tie_weak"
+    },
+    "production": {
+      "path": "_sandbox/volve_data/Volve_Production_data.zip::Production_data/Volve production data.xlsx",
+      "present": true,
+      "sheets": {
+        "Daily Production Data": {
+          "columns": {
+            "AVG_ANNULUS_PRESS": {
+              "coverage": 0.504669,
+              "n_missing": 7744,
+              "n_present": 7890
+            },
+            "AVG_CHOKE_SIZE_P": {
+              "coverage": 0.570487,
+              "n_missing": 6715,
+              "n_present": 8919
+            },
+            "AVG_CHOKE_UOM": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "AVG_DOWNHOLE_PRESSURE": {
+              "coverage": 0.574389,
+              "n_missing": 6654,
+              "n_present": 8980
+            },
+            "AVG_DOWNHOLE_TEMPERATURE": {
+              "coverage": 0.574389,
+              "n_missing": 6654,
+              "n_present": 8980
+            },
+            "AVG_DP_TUBING": {
+              "coverage": 0.574389,
+              "n_missing": 6654,
+              "n_present": 8980
+            },
+            "AVG_WHP_P": {
+              "coverage": 0.585583,
+              "n_missing": 6479,
+              "n_present": 9155
+            },
+            "AVG_WHT_P": {
+              "coverage": 0.585007,
+              "n_missing": 6488,
+              "n_present": 9146
+            },
+            "BORE_GAS_VOL": {
+              "coverage": 0.585966,
+              "n_missing": 6473,
+              "n_present": 9161
+            },
+            "BORE_OIL_VOL": {
+              "coverage": 0.585966,
+              "n_missing": 6473,
+              "n_present": 9161
+            },
+            "BORE_WAT_VOL": {
+              "coverage": 0.585966,
+              "n_missing": 6473,
+              "n_present": 9161
+            },
+            "BORE_WI_VOL": {
+              "coverage": 0.364974,
+              "n_missing": 9928,
+              "n_present": 5706
+            },
+            "DATEPRD": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "DP_CHOKE_SIZE": {
+              "coverage": 0.981195,
+              "n_missing": 294,
+              "n_present": 15340
+            },
+            "FLOW_KIND": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "NPD_FACILITY_CODE": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "NPD_FACILITY_NAME": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "NPD_FIELD_CODE": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "NPD_FIELD_NAME": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "NPD_WELL_BORE_CODE": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "NPD_WELL_BORE_NAME": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "ON_STREAM_HRS": {
+              "coverage": 0.981771,
+              "n_missing": 285,
+              "n_present": 15349
+            },
+            "WELL_BORE_CODE": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            },
+            "WELL_TYPE": {
+              "coverage": 1.0,
+              "n_missing": 0,
+              "n_present": 15634
+            }
+          },
+          "n_data_rows": 15634
+        },
+        "Monthly Production Data": {
+          "columns": {
+            "GI": {
+              "coverage": 0.001898,
+              "n_missing": 526,
+              "n_present": 1
+            },
+            "Gas": {
+              "coverage": 0.59203,
+              "n_missing": 215,
+              "n_present": 312
+            },
+            "Month": {
+              "coverage": 0.998102,
+              "n_missing": 1,
+              "n_present": 526
+            },
+            "NPDCode": {
+              "coverage": 0.998102,
+              "n_missing": 1,
+              "n_present": 526
+            },
+            "Oil": {
+              "coverage": 0.59203,
+              "n_missing": 215,
+              "n_present": 312
+            },
+            "On Stream": {
+              "coverage": 0.979127,
+              "n_missing": 11,
+              "n_present": 516
+            },
+            "WI": {
+              "coverage": 0.383302,
+              "n_missing": 325,
+              "n_present": 202
+            },
+            "Water": {
+              "coverage": 0.59203,
+              "n_missing": 215,
+              "n_present": 312
+            },
+            "Wellbore name": {
+              "coverage": 0.998102,
+              "n_missing": 1,
+              "n_present": 526
+            },
+            "Year": {
+              "coverage": 0.998102,
+              "n_missing": 1,
+              "n_present": 526
+            }
+          },
+          "n_data_rows": 527
+        }
+      },
+      "size_bytes": 2011517
+    }
+  },
+  "audit_schema_version": "sweetspot-data-availability/v1",
+  "coordinate_alignment": {
+    "datasets": {
+      "fault_points": {
+        "crossline_in_grid_fraction": 1.0,
+        "inline_in_grid_fraction": 1.0,
+        "present": true,
+        "twt_in_sample_range_fraction": 1.0
+      },
+      "horizon_bcu_points": {
+        "crossline_in_grid_fraction": 1.0,
+        "inline_in_grid_fraction": 1.0,
+        "present": true,
+        "twt_in_sample_range_fraction": 1.0
+      },
+      "well_tie_weak": {
+        "present": true,
+        "tracks": {
+          "15_9-19_A": {
+            "crossline_in_grid_fraction": 1.0,
+            "inline_in_grid_fraction": 1.0,
+            "twt_in_sample_range_fraction": 1.0
+          },
+          "15_9-19_BT2": {
+            "crossline_in_grid_fraction": 1.0,
+            "inline_in_grid_fraction": 1.0,
+            "twt_in_sample_range_fraction": 1.0
+          },
+          "15_9-19_SR": {
+            "crossline_in_grid_fraction": 1.0,
+            "inline_in_grid_fraction": 1.0,
+            "twt_in_sample_range_fraction": 1.0
+          }
+        }
+      }
+    },
+    "seismic_grid_bounds": {
+      "crossline": [
+        1932,
+        2536
+      ],
+      "inline": [
+        9985,
+        10369
+      ],
+      "twt_ms": [
+        0.0,
+        4500.0
+      ]
+    },
+    "status": "audited",
+    "warning": "well_tie_weak is an interpolation/extrapolation approximation, not exact well tie truth"
+  },
+  "field_catalog": {
+    "las": [
+      "DEPTH",
+      "LFP_AI",
+      "LFP_AI_B",
+      "LFP_AI_G",
+      "LFP_AI_LOG",
+      "LFP_AI_O",
+      "LFP_AI_V",
+      "LFP_API",
+      "LFP_BADDATA",
+      "LFP_BS",
+      "LFP_BVWE",
+      "LFP_BVWT",
+      "LFP_CALI",
+      "LFP_COAL",
+      "LFP_DT",
+      "LFP_DTCORFSFLAG",
+      "LFP_DTLOGFLAG",
+      "LFP_DTS",
+      "LFP_DTSLOGFLAG",
+      "LFP_DTS_B",
+      "LFP_DTS_G",
+      "LFP_DTS_GC",
+      "LFP_DTS_LOG",
+      "LFP_DTS_O",
+      "LFP_DTS_V",
+      "LFP_DT_B",
+      "LFP_DT_G",
+      "LFP_DT_LOG",
+      "LFP_DT_O",
+      "LFP_DT_SYNT",
+      "LFP_DT_V",
+      "LFP_EI_HILT_B",
+      "LFP_EI_HILT_G",
+      "LFP_EI_HILT_O",
+      "LFP_EI_HILT_V",
+      "LFP_GAS",
+      "LFP_GOR",
+      "LFP_GR",
+      "LFP_GRMAX",
+      "LFP_GRMIN",
+      "LFP_KFLG",
+      "LFP_KFLMF",
+      "LFP_KFLO",
+      "LFP_KFLW",
+      "LFP_KROCKV",
+      "LFP_KRROCKV",
+      "LFP_KSKEL",
+      "LFP_KVROCKV",
+      "LFP_MODEL",
+      "LFP_NPHI",
+      "LFP_NPHISH",
+      "LFP_OIL",
+      "LFP_PHIE",
+      "LFP_PHIEC",
+      "LFP_PHIEWC",
+      "LFP_PHIT",
+      "LFP_PHITC",
+      "LFP_PHITWC",
+      "LFP_PR",
+      "LFP_PRESS",
+      "LFP_PR_B",
+      "LFP_PR_G",
+      "LFP_PR_LOG",
+      "LFP_PR_O",
+      "LFP_PR_SH_SYNT",
+      "LFP_PR_SS_B_SYNT",
+      "LFP_PR_SS_G_SYNT",
+      "LFP_PR_SS_O_SYNT",
+      "LFP_PR_V",
+      "LFP_RHOB",
+      "LFP_RHOBFAR_HILT_B",
+      "LFP_RHOBFAR_HILT_G",
+      "LFP_RHOBFAR_HILT_O",
+      "LFP_RHOBFAR_HILT_V",
+      "LFP_RHOBLOGFLAG",
+      "LFP_RHOBSH",
+      "LFP_RHOBSHNC",
+      "LFP_RHOB_B",
+      "LFP_RHOB_G",
+      "LFP_RHOB_LOG",
+      "LFP_RHOB_O",
+      "LFP_RHOB_SYNT",
+      "LFP_RHOB_V",
+      "LFP_RHOFLE",
+      "LFP_RHOFLEC",
+      "LFP_RHOFLEWC",
+      "LFP_RHOFLT",
+      "LFP_RHOFLTC",
+      "LFP_RHOFLTWC",
+      "LFP_RHOG",
+      "LFP_RHOHA",
+      "LFP_RHOHW",
+      "LFP_RHOMA",
+      "LFP_RHOMANC",
+      "LFP_RHOMF",
+      "LFP_RHOO",
+      "LFP_RHOW",
+      "LFP_RSH",
+      "LFP_RT",
+      "LFP_RW",
+      "LFP_RXO",
+      "LFP_SAL",
+      "LFP_SAND",
+      "LFP_SANDC",
+      "LFP_SANDWC",
+      "LFP_SEIS_SYNT_R30_B_F",
+      "LFP_SEIS_SYNT_R30_B_N",
+      "LFP_SEIS_SYNT_R30_G_F",
+      "LFP_SEIS_SYNT_R30_G_N",
+      "LFP_SEIS_SYNT_R30_O_F",
+      "LFP_SEIS_SYNT_R30_O_N",
+      "LFP_SEIS_SYNT_R30_V_F",
+      "LFP_SEIS_SYNT_R30_V_N",
+      "LFP_SGG_G",
+      "LFP_SGG_O",
+      "LFP_SGT",
+      "LFP_SGT_SUBST",
+      "LFP_SI",
+      "LFP_SI_LOG",
+      "LFP_SOT",
+      "LFP_SOT_SUBST",
+      "LFP_SUBST",
+      "LFP_SWE",
+      "LFP_SWEC",
+      "LFP_SWECNC",
+      "LFP_SWT",
+      "LFP_SWTC",
+      "LFP_SWTCNC",
+      "LFP_SXOGT",
+      "LFP_SXOMFE",
+      "LFP_SXOMFEC",
+      "LFP_SXOMFEWC",
+      "LFP_SXOMFT",
+      "LFP_SXOMFTC",
+      "LFP_SXOMFTWC",
+      "LFP_SXOMIXE",
+      "LFP_SXOMIXEC",
+      "LFP_SXOMIXT",
+      "LFP_SXOMIXTC",
+      "LFP_SXOOT",
+      "LFP_SXOWE",
+      "LFP_SXOWEC",
+      "LFP_SXOWEWC",
+      "LFP_SXOWT",
+      "LFP_SXOWTC",
+      "LFP_SXOWTWC",
+      "LFP_TEMP",
+      "LFP_TVD",
+      "LFP_TVDML",
+      "LFP_TVDSS",
+      "LFP_VCARB",
+      "LFP_VCARBC",
+      "LFP_VCARBWC",
+      "LFP_VP",
+      "LFP_VPG",
+      "LFP_VPO",
+      "LFP_VPVS",
+      "LFP_VPVS_B",
+      "LFP_VPVS_G",
+      "LFP_VPVS_LOG",
+      "LFP_VPVS_O",
+      "LFP_VPVS_V",
+      "LFP_VPW",
+      "LFP_VP_B",
+      "LFP_VP_G",
+      "LFP_VP_LOG",
+      "LFP_VP_O",
+      "LFP_VP_V",
+      "LFP_VQRTZ",
+      "LFP_VQRTZC",
+      "LFP_VQRTZWC",
+      "LFP_VS",
+      "LFP_VSH",
+      "LFP_VSHDN",
+      "LFP_VSHDRY",
+      "LFP_VSHDRYC",
+      "LFP_VSHDRYWC",
+      "LFP_VSHGR",
+      "LFP_VS_B",
+      "LFP_VS_G",
+      "LFP_VS_GC",
+      "LFP_VS_LOG",
+      "LFP_VS_O",
+      "LFP_VS_V",
+      "LFP_WATER"
+    ],
+    "layer1.fault_points": [
+      "crossline",
+      "fault_name",
+      "inline",
+      "stick_no",
+      "twt_ms",
+      "utmx",
+      "utmy"
+    ],
+    "layer1.horizon_bcu_points": [
+      "crossline",
+      "inline",
+      "twt_ms",
+      "utmx",
+      "utmy"
+    ],
+    "layer1.seismic_index": [
+      "affine_il_xl_to_xy",
+      "il_max",
+      "il_min",
+      "n_il",
+      "n_traces",
+      "n_xl",
+      "samples_ms",
+      "xl_max",
+      "xl_min"
+    ],
+    "layer1.well_logs_clean": [
+      "depth_grid_m"
+    ],
+    "layer1.well_logs_clean.clean": [
+      "LFP_CALI",
+      "LFP_DT",
+      "LFP_DTS",
+      "LFP_GR",
+      "LFP_NPHI",
+      "LFP_PHIE",
+      "LFP_RHOB",
+      "LFP_RT",
+      "LFP_VSH"
+    ],
+    "layer1.well_logs_clean.norm": [
+      "LFP_CALI",
+      "LFP_DT",
+      "LFP_DTS",
+      "LFP_GR",
+      "LFP_NPHI",
+      "LFP_PHIE",
+      "LFP_RHOB",
+      "LFP_RT",
+      "LFP_VSH"
+    ],
+    "layer1.well_tie_weak": [
+      "crossline",
+      "depth_m",
+      "inline",
+      "time_idx",
+      "twt_est_ms"
+    ],
+    "production.daily": [
+      "AVG_ANNULUS_PRESS",
+      "AVG_CHOKE_SIZE_P",
+      "AVG_CHOKE_UOM",
+      "AVG_DOWNHOLE_PRESSURE",
+      "AVG_DOWNHOLE_TEMPERATURE",
+      "AVG_DP_TUBING",
+      "AVG_WHP_P",
+      "AVG_WHT_P",
+      "BORE_GAS_VOL",
+      "BORE_OIL_VOL",
+      "BORE_WAT_VOL",
+      "BORE_WI_VOL",
+      "DATEPRD",
+      "DP_CHOKE_SIZE",
+      "FLOW_KIND",
+      "NPD_FACILITY_CODE",
+      "NPD_FACILITY_NAME",
+      "NPD_FIELD_CODE",
+      "NPD_FIELD_NAME",
+      "NPD_WELL_BORE_CODE",
+      "NPD_WELL_BORE_NAME",
+      "ON_STREAM_HRS",
+      "WELL_BORE_CODE",
+      "WELL_TYPE"
+    ],
+    "production.monthly": [
+      "GI",
+      "Gas",
+      "Month",
+      "NPDCode",
+      "Oil",
+      "On Stream",
+      "WI",
+      "Water",
+      "Wellbore name",
+      "Year"
+    ]
+  },
+  "label_readiness": {
+    "candidate_evidence_only": [
+      "fault and BCU interpretation points",
+      "three-track weak well tie",
+      "LFP petrophysical interpretation curves",
+      "daily and monthly production tables"
+    ],
+    "decision_owner": "Junwei / designated domain expert",
+    "direct_label_fields": [],
+    "hard_blocker": "No approved sweetspot label contract; evidence fields must not be combined into labels.",
+    "sweetspot_truth_found": false
+  },
+  "mode": "field_inventory_only",
+  "outputs_created": {
+    "checkpoint": false,
+    "data_availability_report": true,
+    "labels": false,
+    "metrics": false,
+    "model": false,
+    "test_h5": false,
+    "train_h5": false
+  },
+  "source_root_kind": "git-shared-main"
+}

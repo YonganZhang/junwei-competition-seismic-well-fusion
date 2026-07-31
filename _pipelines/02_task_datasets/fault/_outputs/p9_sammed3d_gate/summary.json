@@ -1,0 +1,67 @@
+{
+  "data_gate": {
+    "blockers": [
+      "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+      "COVERAGE_AUDITED_UNKNOWN_MASK_MISSING",
+      "DEVELOPMENT_SPLIT_NOT_FEASIBLE",
+      "NO_FROZEN_STAGE3_TOP3"
+    ],
+    "effective_development_folds": 0,
+    "frozen_test_accessed": false,
+    "source_manifest_sha256": "66f7f922fad93dfb8adc218cfcbebd65cbc0b7e4f061dca99a1feb3e884083a1"
+  },
+  "decision": {
+    "default_enabled": false,
+    "reason": "The real SAM-Med3D checkpoint and forward path work, but the available development samples are isolated 2-D slices and their background labels rely on an unannotated-as-negative assumption. No legal 3-D development score can be produced.",
+    "state": "CONNECTED_DATA_GATE_BLOCKED"
+  },
+  "development_data_audit": {
+    "contiguous_3d_volume_count": 0,
+    "explicit_unknown_mask_present": false,
+    "h5_sha256": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221",
+    "input_shapes": [
+      [
+        1,
+        33,
+        65
+      ]
+    ],
+    "patch_axes": [
+      "crossline",
+      "time"
+    ],
+    "positive_voxels": 6215,
+    "sample_count": 256,
+    "sample_kind_counts": {
+      "fault": 128,
+      "non_fault": 128
+    },
+    "unannotated_patch_assumed_negative_samples": 128,
+    "verified_negative_voxels": 0,
+    "zero_voxels": 542905
+  },
+  "foundation_route": {
+    "adapter": "_models.fault.sam_med3d_semantic",
+    "input_shape": [
+      1,
+      1,
+      24,
+      32,
+      40
+    ],
+    "model_id": "blueyo0/SAM-Med3D:sam_med3d_turbo.pth",
+    "output_shape": [
+      1,
+      1,
+      24,
+      32,
+      40
+    ],
+    "parameter_count": 93920641,
+    "real_checkpoint_sha256": "899a46d04d3b70f723282ceb489149373558bf0aaba389a346f5ab57da5cdd3c",
+    "source_revision": "f3de1fa10da98e46f49f176773d2b1e306ba131f",
+    "synthetic_forward_passed": true
+  },
+  "schema_version": "fault-p9-sammed3d-gate/v1",
+  "track_id": "fault"
+}

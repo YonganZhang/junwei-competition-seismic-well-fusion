@@ -1,0 +1,126 @@
+{
+  "artifacts": {
+    "config.json": {
+      "bytes": 592,
+      "metadata": {},
+      "role": "frozen_config",
+      "sha256": "c6c1558dd635c895a70f3981523a867776faf8e82c2e081656288d5e041619b3"
+    },
+    "frozen_test/metrics.json": {
+      "bytes": 416,
+      "metadata": {},
+      "role": "frozen_test_metrics",
+      "sha256": "565c1779055f95e4723a8be42f1381c478b387fe00188c65dbb016282a0578d8"
+    },
+    "frozen_test/predictions.csv": {
+      "bytes": 65503,
+      "metadata": {},
+      "role": "frozen_test_predictions",
+      "sha256": "c19fdd5573a62682f9b5cb6b3994e46d173906c498b41a17473b48d24d2ec89c"
+    },
+    "hpo/plan.json": {
+      "bytes": 474,
+      "metadata": {},
+      "role": "hpo_plan",
+      "sha256": "5b3faec1ed7fa054fd1443b14eedbaa7773df17bff03fc81b392dc0a576bddfd"
+    },
+    "label_availability.json": {
+      "bytes": 1816,
+      "metadata": {},
+      "role": "label_availability",
+      "sha256": "a6337f55fd9bccaea4d0a4955f56e1860218fe8831258ad8f78b9b78418868d3"
+    },
+    "lifecycle.json": {
+      "bytes": 1833,
+      "metadata": {},
+      "role": "test_firewall",
+      "sha256": "d1b907cea5cf12d6e8efa2a7f9df1cd7868abdb308efd4f162363355368de064"
+    },
+    "oof/metrics.json": {
+      "bytes": 255,
+      "metadata": {},
+      "role": "oof_metrics",
+      "sha256": "d1bd0f2cc4bfecbf5a62469d22703a8dbc7a65177226c0b18a7b581d38553408"
+    },
+    "oof/predictions.csv": {
+      "bytes": 184467,
+      "metadata": {},
+      "role": "oof_predictions",
+      "sha256": "88bc925946d1fc6a536a51fc78810cb696fdea890f93a346d4e7b6c0dba34b6a"
+    },
+    "oof/summary.json": {
+      "bytes": 69159,
+      "metadata": {},
+      "role": "cv_summary",
+      "sha256": "897b05df48923b9f416e11e766fbbcf3e7fcfdecd45037f2962c311494de8aa8"
+    },
+    "refit/checkpoint_best.pkl": {
+      "bytes": 66330,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "5fbe02149fec1e64c0ea17b12d01f321c0177fde20fc570d1aa6413153812fe2"
+    },
+    "refit/history.json": {
+      "bytes": 1629,
+      "metadata": {},
+      "role": "refit_history",
+      "sha256": "4c1d19846a9ebedc91ce4c4e7e677e493bc7315661d12ebdb31c1957008c645e"
+    },
+    "refit/normalization.json": {
+      "bytes": 67200,
+      "metadata": {},
+      "role": "train_only_preprocessing",
+      "sha256": "d43e0c414279fb9326bb3094a237e26537b99e706cc39d7a0243ac6b31a581b7"
+    },
+    "split_manifest.json": {
+      "bytes": 342919,
+      "metadata": {},
+      "role": "split_manifest",
+      "sha256": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232"
+    },
+    "status.json": {
+      "bytes": 802,
+      "metadata": {},
+      "role": "status",
+      "sha256": "59083786df292bc19b5ebc0b553edd3089b19ed91299aecd8a599279d0638dda"
+    },
+    "task_spec.json": {
+      "bytes": 2232,
+      "metadata": {},
+      "role": "task_spec",
+      "sha256": "550f28fa9771095371f642f27e46d5586c71bfeaa0dec3ea678da5463602f0e2"
+    },
+    "tiny_smoke.json": {
+      "bytes": 196,
+      "metadata": {},
+      "role": "tiny_smoke",
+      "sha256": "bbd716c1d376c15592fc4bf1e7953db7aa8b6f6454aa0437a89eb5fde5667a30"
+    },
+    "visualizations/depth_curve.png": {
+      "bytes": 170467,
+      "metadata": {},
+      "role": "visualization",
+      "sha256": "d323a66de8afd001c27ab21fc2474fa0a6388cad7a4588d0127119e63cc79278"
+    },
+    "visualizations/distribution_uncertainty.png": {
+      "bytes": 61456,
+      "metadata": {},
+      "role": "visualization",
+      "sha256": "9f4afb8b15b95b46e349f72ace09671e070c06ddf3445791f1b8055a44b13818"
+    },
+    "visualizations/prediction_vs_truth.png": {
+      "bytes": 95575,
+      "metadata": {},
+      "role": "visualization",
+      "sha256": "68c27ad6669b3873111143eb8a10fbd7c74acff4482a15f829fc39510a8a7aea"
+    },
+    "visualizations/residuals.png": {
+      "bytes": 152824,
+      "metadata": {},
+      "role": "visualization",
+      "sha256": "261151869832b412ebb6a8ec555484e8bba66a155a31c0a56008e1886855a290"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "target6_porosity_phif-target6-phif-cpi-v1"
+}

@@ -1,0 +1,173 @@
+{
+  "schema_version": "lithofacies-p5.1-r0-v1",
+  "status": "PASS_WITH_STRUCTURED_S_STOP",
+  "task_id": "gm09_genetic_facies_9class",
+  "root_seed": 2693,
+  "label_contract": {
+    "source": "GM09",
+    "curve_type": "GENETIC FACIES",
+    "field": "Litho Class",
+    "class_names": [
+      "F-MARSH",
+      "F-MOUTHBAR",
+      "F-OFFSHORE",
+      "F-LOWER SHOREFACE",
+      "F-UPPER SHOREFACE",
+      "F-TIDAL BAR",
+      "F-TIDAL CHANNEL",
+      "F-TIDAL FLAT MUDDY",
+      "F-TIDAL FLAT SANDY"
+    ],
+    "class_count": 9,
+    "excluded": [
+      "LITH",
+      "UNKNOWN",
+      "UNDEFINED",
+      "out-of-interval"
+    ],
+    "target_transform": "identity_class_id"
+  },
+  "metric_contract": {
+    "primary_metric": "fixed_schema_macro_f1",
+    "primary_metric_count": 1,
+    "supported_class_macro_f1_role": "diagnostic_only",
+    "worst_family_metric": "worst_family_fixed_schema_macro_f1",
+    "zero_support_policy": "retain all nine classes as finite zeros"
+  },
+  "lane_contract": {
+    "axes": {
+      "modality": [
+        "W",
+        "M"
+      ],
+      "task": [
+        "P",
+        "S"
+      ]
+    },
+    "lanes": [
+      {
+        "modality_lane": "W",
+        "task_lane": "P",
+        "lane_id": "W-P",
+        "status": "available",
+        "rank_policy": "separate_lane_only"
+      },
+      {
+        "modality_lane": "W",
+        "task_lane": "S",
+        "lane_id": "W-S",
+        "status": "not_rankable",
+        "reason": "development archive has no finite center_md_m; TWT, row order, interval midpoint, and repeated center labels are forbidden substitutes",
+        "finite_center_md_count": 0
+      },
+      {
+        "modality_lane": "M",
+        "task_lane": "P",
+        "lane_id": "M-P",
+        "status": "available",
+        "rank_policy": "separate_lane_only"
+      },
+      {
+        "modality_lane": "M",
+        "task_lane": "S",
+        "lane_id": "M-S",
+        "status": "not_rankable",
+        "reason": "development archive has no finite center_md_m; TWT, row order, interval midpoint, and repeated center labels are forbidden substitutes",
+        "finite_center_md_count": 0
+      }
+    ],
+    "cross_lane_ranking": false
+  },
+  "split_contract": {
+    "splitter": "leave_one_mother_family_out",
+    "requested_n_splits": 5,
+    "effective_n_splits": 4,
+    "development_families": [
+      "15/9-19",
+      "15/9-F-14",
+      "15/9-F-15",
+      "15/9-F-4"
+    ],
+    "group_key": "mother_family",
+    "split_before": [
+      "normalization",
+      "missing_processing",
+      "class_weights",
+      "window_selection"
+    ]
+  },
+  "preprocessing_contract": {
+    "fit_scope": "fold_train_only",
+    "log_channels": [
+      "gamma_ray",
+      "acoustic_slowness",
+      "caliper",
+      "bulk_density",
+      "neutron_porosity",
+      "deep_resistivity",
+      "rate_of_penetration",
+      "weight_on_bit",
+      "rotary_speed",
+      "flow_rate",
+      "torque",
+      "standpipe_pressure",
+      "equivalent_circulating_density"
+    ],
+    "missing_contract": "13 normalized values plus 13 binary observed masks",
+    "class_weighting": "sqrt_inverse_frequency_fold_train_only",
+    "threshold": "none_closed_set_multiclass",
+    "calibration": "none_in_R0_R1"
+  },
+  "sealed_holdout": {
+    "identity": "15/9-F-5",
+    "identity_only": true,
+    "prior_test_consumed": true,
+    "fresh_blind": false,
+    "physical_test_accessed": false,
+    "known_holdout_artifacts_read": false
+  },
+  "completion_contract": {
+    "future_minimum_completion_rate": 0.8,
+    "full_fold_seed_axes_required": true,
+    "seventy_five_percent_rankable": false,
+    "r1_formal_ranking": false
+  },
+  "development_evidence": {
+    "data_basename": "train.h5",
+    "data_sha256": "4cd414adb4a76447a35599416b55b91d41c62da19d676fe2289e10c35361450c",
+    "sample_count": 447,
+    "family_counts": {
+      "15/9-19": 132,
+      "15/9-F-14": 101,
+      "15/9-F-15": 127,
+      "15/9-F-4": 87
+    },
+    "class_support": [
+      11,
+      104,
+      7,
+      40,
+      27,
+      124,
+      127,
+      6,
+      1
+    ],
+    "well_log_shape": [
+      13,
+      33
+    ],
+    "well_log_with_mask_shape": [
+      26,
+      33
+    ],
+    "seismic_shape": [
+      3,
+      3,
+      33
+    ],
+    "finite_center_md_count": 0
+  },
+  "contract_hash": "67696bb13bc68a20474f3ae9883e0aa1734d4da7c7586b6828700bcb06881e4b"
+}

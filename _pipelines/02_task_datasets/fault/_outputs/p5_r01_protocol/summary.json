@@ -1,0 +1,50 @@
+{
+  "protocol": "fault-p5-r01-summary-v1",
+  "r0": {
+    "formal_audited": {
+      "data_ready": false,
+      "rank_allowed": false,
+      "reason_codes": [
+        "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+        "FEWER_THAN_TWO_LEGAL_BUFFERED_FOLDS"
+      ],
+      "train_allowed": false
+    },
+    "masked_weak_label": {
+      "data_ready": true,
+      "rank_allowed": false,
+      "reason_codes": [
+        "MASKED_WEAK_OBJECTIVE_NOT_CONFIGURED",
+        "AUDITED_EVALUATION_NEGATIVES_MISSING"
+      ],
+      "train_allowed": false
+    },
+    "synthetic_only": {
+      "data_ready": false,
+      "rank_allowed": false,
+      "reason_codes": [
+        "REGISTERED_DENSE_SYNTHETIC_DATASET_MISSING"
+      ],
+      "train_allowed": false
+    }
+  },
+  "r1": {
+    "A": "completed_diagnostic",
+    "B": "completed_diagnostic",
+    "C": "blocked",
+    "official_metric_or_winner_produced": false
+  },
+  "ranking_status": "not_rankable",
+  "root_seed": 2693,
+  "status": "completed_with_formal_lane_blocked",
+  "test_firewall": {
+    "frozen_test_accessed": false,
+    "historical_holdout_arrays_accessed": false,
+    "runner_accepts_test_inputs": false,
+    "selection_or_ranking_performed": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault"
+}

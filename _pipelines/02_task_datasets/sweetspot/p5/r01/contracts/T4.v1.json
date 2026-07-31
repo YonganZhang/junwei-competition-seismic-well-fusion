@@ -1,0 +1,16 @@
+{
+  "schema_version": "sweetspot-p5.1-r0-target-contract/v1",
+  "contract_version": "1.0.0", "target_id": "T4", "task_id": "sweetspot.p5.1.r01.t4.water_onset_30d_proxy", "head_name": "t4_water_onset_30d_proxy",
+  "status": "runnable_if_development_audit_passes", "task_type": "binary", "semantic_name": "water_onset_30d_proxy", "truth_class": "proxy", "field_truth": false,
+  "label": {"version": "water-onset-30d-7-calendar-day-positive-proxy-v1", "formula": "any 7 consecutive observed calendar days with BORE_WAT_VOL>0 in t0+1..t0+30", "horizon_calendar_days": 30, "consecutive_calendar_days": 7, "explicit_zero_interrupts": true, "missing_can_censor": true, "right_boundary_incomplete": "censored", "model_transform": "identity"},
+  "units": "binary proxy", "source_fields": ["BORE_WAT_VOL"],
+  "support": {"sample": "pre-onset wellbore cutoff t0", "spatial_scale": "production wellbore", "time_scale": "30 calendar-day history ending t0 and exact future t0+1..t0+30"},
+  "censoring": "incomplete right boundary or missing calendar observations that prevent a determinate non-event are censored",
+  "input_fields": ["BORE_OIL_VOL", "BORE_GAS_VOL", "BORE_WAT_VOL", "ON_STREAM_HRS", "AVG_DOWNHOLE_PRESSURE", "AVG_CHOKE_SIZE_P", "AVG_WHP_P"],
+  "split": {"strategy": "held_well_rolling_origin_horizon_purge", "group_key": "WELL_BORE_CODE", "root_seed": 2693, "test_access": "forbidden", "time_cutoff": {"feature_end": "t0", "target_start": "t0+1d", "target_end": "t0+30d", "purge_days": 30}},
+  "metrics": {"primary": ["average_precision", "brier", "f1_at_0.5"], "directions": {"average_precision": "maximize", "brier": "minimize", "f1_at_0.5": "maximize"}},
+  "approval": {"approved": true, "basis": "explicit_user_goal_directive", "scope": "water_onset_30d_proxy only"},
+  "blocked_lanes": {"formal_failure_survival": "unapproved"},
+  "r1_lane": {"input_modality": "causal_production_history", "model": "logistic_classifier", "selection_status": "not_rankable"},
+  "warnings": ["This is a water-onset proxy, not formal failure or survival truth", "Missing calendar days can make the outcome censored"]
+}

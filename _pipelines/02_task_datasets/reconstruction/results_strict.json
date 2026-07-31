@@ -1,0 +1,236 @@
+{
+  "task": "reconstruction",
+  "target": "Volve Eclipse final PORO",
+  "evaluation_mode": "strict",
+  "evaluation_protocol": "strict spatial holdout: test prediction uses train-region well constraints only; one-well spatial extrapolation, NOT cross-well/cross-field generalization",
+  "primary_baseline": "ridge_idw_seismic_coordinates",
+  "registered_model": "ridge_linear",
+  "model_plugin": "models.ridge_linear",
+  "train": {
+    "n_samples": 70,
+    "n_active_cells": 49323,
+    "patch_i_blocks": [
+      4,
+      5
+    ],
+    "optimization_patch_i_blocks": [
+      4,
+      5
+    ],
+    "validation_patch_k_blocks": [
+      3
+    ],
+    "optimization_patch_k_blocks": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "n_optimization_cells": 42359,
+    "n_validation_cells": 6964,
+    "target_mean": 0.2279645949602127,
+    "target_min": 0.0010000000474974513,
+    "target_max": 0.2810821533203125
+  },
+  "test": {
+    "n_samples": 105,
+    "n_active_cells": 78949,
+    "patch_i_blocks": [
+      0,
+      1,
+      2
+    ],
+    "n_direct_well_cells_excluded_from_metrics": 0,
+    "n_evaluation_cells": 78949
+  },
+  "guard": {
+    "n_samples": 35,
+    "n_active_cells": 55273,
+    "patch_i_blocks": [
+      3
+    ],
+    "used_for_training_or_evaluation": false
+  },
+  "training": {
+    "framework": "ml_framework.train.train_loop",
+    "epochs_completed": 600,
+    "learning_rate": 0.01,
+    "ridge_alpha": 10.0,
+    "early_stopping": false,
+    "checkpoint_selection": "minimum validation loss",
+    "batch_factory": "zero-arg lambda returning a fresh one-batch list per epoch",
+    "pre_fix_batch_iterable_audit": "previous code passed reusable Python lists, not one-shot generators; the exhausted-generator bug did not affect the prior histories",
+    "structural": {
+      "best_epoch_1_based": 208,
+      "best_val_loss_normalized_mse": 0.003437916587709168,
+      "last_val_loss_normalized_mse": 0.0035568281552516567,
+      "train_loss_first": 0.6654477822917595,
+      "train_loss_at_best": 0.005652558086150783,
+      "train_loss_last": 0.005460039810923389,
+      "underfit_to_overfit_curve_visible": true,
+      "persistent_trend_check": {
+        "window_epochs": 50,
+        "window_start_epoch_1_based": 551,
+        "window_end_epoch_1_based": 600,
+        "required_val_elevation_vs_best_percent": 1.0,
+        "fraction_of_window_above_threshold": 1.0,
+        "minimum_val_loss_ratio_to_best_in_window": 1.0345882642899504,
+        "all_window_epochs_elevated": true,
+        "mean_train_loss_below_train_loss_at_best": true
+      },
+      "best_checkpoint": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/checkpoints/best.ckpt",
+      "last_checkpoint": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/checkpoints/last.ckpt",
+      "history": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/checkpoints/history.json",
+      "loss_curve": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/loss_curve.png",
+      "loss_curve_best_epoch_zoom": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/loss_curve_best_epoch_zoom.png"
+    },
+    "seismic": {
+      "best_epoch_1_based": 207,
+      "best_val_loss_normalized_mse": 0.003425781725928294,
+      "last_val_loss_normalized_mse": 0.0035482989550650046,
+      "train_loss_first": 0.6654477822917595,
+      "train_loss_at_best": 0.005595727358940493,
+      "train_loss_last": 0.005400943619046361,
+      "underfit_to_overfit_curve_visible": true,
+      "persistent_trend_check": {
+        "window_epochs": 50,
+        "window_start_epoch_1_based": 551,
+        "window_end_epoch_1_based": 600,
+        "required_val_elevation_vs_best_percent": 1.0,
+        "fraction_of_window_above_threshold": 1.0,
+        "minimum_val_loss_ratio_to_best_in_window": 1.0357632911079622,
+        "all_window_epochs_elevated": true,
+        "mean_train_loss_below_train_loss_at_best": true
+      },
+      "best_checkpoint": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/checkpoints/best.ckpt",
+      "last_checkpoint": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/checkpoints/last.ckpt",
+      "history": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/checkpoints/history.json",
+      "loss_curve": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/loss_curve.png",
+      "loss_curve_best_epoch_zoom": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/loss_curve_best_epoch_zoom.png"
+    }
+  },
+  "preprocessing": {
+    "framework": "ml_framework.preprocess",
+    "stats_file": "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/preprocess_stats.json",
+    "all_roundtrip_checks_passed": true
+  },
+  "n_sparse_well_observations": 90,
+  "n_intersecting_wells": 1,
+  "models": {
+    "train_mean": {
+      "rmse": 0.034891941763842305,
+      "mae": 0.02661611508901239,
+      "pearson_r": null,
+      "pearson_r_defined": false,
+      "pearson_r_reason": "Pearson correlation is undefined because target or prediction has zero variance",
+      "r2": -0.28511800045646085,
+      "r2_defined": true,
+      "r2_reason": null
+    },
+    "sparse_well_idw": {
+      "rmse": 0.03147031449831797,
+      "mae": 0.025443630512566394,
+      "pearson_r": 0.24891911809210907,
+      "pearson_r_defined": true,
+      "pearson_r_reason": null,
+      "r2": -0.045429846763794135,
+      "r2_defined": true,
+      "r2_reason": null
+    },
+    "ridge_idw_coordinates": {
+      "rmse": 0.03308984595530042,
+      "mae": 0.02535392959934223,
+      "pearson_r": -0.17986093727861258,
+      "pearson_r_defined": true,
+      "pearson_r_reason": null,
+      "r2": -0.1557987477097531,
+      "r2_defined": true,
+      "r2_reason": null
+    },
+    "ridge_idw_seismic_coordinates": {
+      "rmse": 0.03204662991292761,
+      "mae": 0.024731561687903702,
+      "pearson_r": -0.08243119966597147,
+      "pearson_r_defined": true,
+      "pearson_r_reason": null,
+      "r2": -0.08407033115521534,
+      "r2_defined": true,
+      "r2_reason": null
+    },
+    "ridge_with_test_seismic_shuffled": {
+      "rmse": 0.032471914947194876,
+      "mae": 0.025119914352714733,
+      "pearson_r": -0.13454414431581938,
+      "pearson_r_defined": true,
+      "pearson_r_reason": null,
+      "r2": -0.11303425473014417,
+      "r2_defined": true,
+      "r2_reason": null
+    }
+  },
+  "all_final_metrics_finite": true,
+  "undefined_metric_policy": "mathematically undefined Pearson/R2 values are null with an explicit defined flag and reason; they are never replaced by 0",
+  "seismic_rmse_delta_vs_structural_model": 0.0010432160423728132,
+  "primary_rmse_improvement_vs_train_mean_percent": 8.15463888531198,
+  "seismic_rmse_improvement_vs_structural_model_percent": 3.152677240571161,
+  "leakage_checks": {
+    "protocol": {
+      "evaluation_mode": "strict",
+      "train_i_blocks": [
+        4,
+        5
+      ],
+      "guard_i_blocks": [
+        3
+      ],
+      "test_i_blocks": [
+        0,
+        1,
+        2
+      ],
+      "spatial_regions_zero_overlap": true,
+      "n_global_well_constraints": 91,
+      "n_train_region_well_constraints": 90,
+      "n_guard_region_well_constraints": 1,
+      "n_test_region_well_constraints": 0,
+      "n_well_constraints_supplied_to_idw": 90,
+      "guard_well_constraints_supplied_to_idw": false,
+      "test_well_constraints_supplied_to_idw": false,
+      "strict_spatial_holdout_generalization": true,
+      "cross_well_generalization": false,
+      "cross_field_generalization": false
+    },
+    "test_patch_blocks_disjoint_from_train_and_validation": true,
+    "validation_depth_block_disjoint_from_optimization_train": true,
+    "normalization_fit_cell_count": 42359,
+    "normalization_fit_region": "mode train region excluding validation K-block 3",
+    "best_checkpoint_matches_minimum_validation_loss": true,
+    "dense_test_labels_role": "final metrics only",
+    "direct_well_observation_cells_excluded_from_test_metrics": true,
+    "n_direct_test_well_cells_excluded": 0,
+    "rms_reference_role": "ground-truth value multiset cross-check only",
+    "shuffled_test_seismic_sanity_check_metric": "ridge_with_test_seismic_shuffled"
+  },
+  "limitations": [
+    "Only 15/9-19 SR intersects the final active Eclipse grid; this is a one-well reconstruction.",
+    "Mode=strict: IDW receives 90 constraints; test region contains 0.",
+    "Sparse porosity constraints are Eclipse reference-cell values sampled along the weakly mapped well trajectory, not independent measured PHIE log values.",
+    "Layer-1 weak ties use MD against TVD-like model depth and are not checkshot/VSP ties.",
+    "Strict mode excludes guard/test porosity constraints, but seismic sampling still uses the project-wide Layer-1 weak time mapping as a fixed input geometry.",
+    "No mode establishes cross-well or cross-field generalisation.",
+    "Source HDF5 metadata still says 'blocked east holdout'; mode-specific results and runtime audits are authoritative because write scope forbids rebuilding shared HDF5."
+  ],
+  "seismic_rmse_delta_vs_structural_ridge": 0.0010432160423728132,
+  "seismic_rmse_improvement_vs_structural_ridge_percent": 3.152677240571161,
+  "ridge_standardized_coefficients": {
+    "idw_porosity": 0.006663157184331923,
+    "seismic_amplitude": -0.0007215837235426358,
+    "seismic_local_rms": -0.00782970315519431,
+    "seismic_vertical_gradient": 0.0014392815434297304,
+    "x_normalized": 0.0028500135073294577,
+    "y_normalized": 0.005363756073323153,
+    "depth_normalized": 0.016852711849347966
+  }
+}

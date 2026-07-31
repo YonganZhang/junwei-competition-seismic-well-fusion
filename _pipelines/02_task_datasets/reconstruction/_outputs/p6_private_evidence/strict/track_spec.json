@@ -1,0 +1,42 @@
+{
+  "allowed_paths": [
+    "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/",
+    "_pipelines/02_task_datasets/reconstruction/p5_stage3_visualization_manifest.json",
+    "_pipelines/02_task_datasets/reconstruction/results_strict.json",
+    "_pipelines/02_task_datasets/reconstruction/results_conditional.json"
+  ],
+  "base_seed": 2693,
+  "forbidden_paths": [
+    "_data/processed/reconstruction/test.h5",
+    "_data/processed/reconstruction/known_holdout",
+    "_tmp/"
+  ],
+  "input_fields": [
+    "coordinates",
+    "seismic_amplitude",
+    "seismic_local_rms",
+    "seismic_vertical_gradient"
+  ],
+  "metric_names": [
+    "rmse",
+    "mae",
+    "r2",
+    "spectral_log_rmse"
+  ],
+  "modality": "3d_volume",
+  "prompt_version": "p6.gaia.dagt.v1",
+  "provenance": {
+    "development_only": true,
+    "evaluation_mode": "strict",
+    "field_generalization": false,
+    "fresh_blind": false,
+    "mode": "strict",
+    "shared_k4_fold": 4
+  },
+  "source_manifest_digest": "e0bf3aab122351fbf0c909aa872b08573adb5ddd353baf75e8e054d65a728404",
+  "target_fields": [
+    "poro"
+  ],
+  "task_type": "volume_3d",
+  "track_id": "reconstruction"
+}

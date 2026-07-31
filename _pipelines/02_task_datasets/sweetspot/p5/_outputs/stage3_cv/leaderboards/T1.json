@@ -1,0 +1,132 @@
+{
+  "bootstrap": {
+    "iterations": 2000,
+    "root_seed": 2693,
+    "unit": "fold-repeat cell"
+  },
+  "completed_cells": 27,
+  "completion_rate": 1.0,
+  "direction": "minimize",
+  "entries": [
+    {
+      "completed_cells": 9,
+      "completion_rate": 1.0,
+      "eligible_for_ranking": true,
+      "expected_cells": 9,
+      "fold_means": {
+        "0": 0.16258668647708702,
+        "1": 0.1317177958276169,
+        "2": 0.18683390444311077
+      },
+      "model_id": "lightgbm",
+      "primary_bootstrap_95ci": [
+        0.14543730278293693,
+        0.17532162171560614
+      ],
+      "primary_mean": 0.16037946224927158,
+      "rank": 1,
+      "resource": {
+        "download_bytes": 0,
+        "max_peak_rss_bytes": 452263936,
+        "max_peak_vram_bytes": 0,
+        "mean_wall_seconds": 0.014391795214679506
+      },
+      "seed_means": {
+        "1867973658": 0.16037946224927155,
+        "2137841944": 0.16037946224927155,
+        "3902865753": 0.16037946224927155
+      },
+      "seed_std": 0.0,
+      "tied": false,
+      "worst_fold": {
+        "fold_id": 2,
+        "value": 0.18683390444311077
+      }
+    },
+    {
+      "completed_cells": 9,
+      "completion_rate": 1.0,
+      "eligible_for_ranking": true,
+      "expected_cells": 9,
+      "fold_means": {
+        "0": 0.19305988109943564,
+        "1": 0.15058020977061007,
+        "2": 0.19494063835939554
+      },
+      "model_id": "xgboost",
+      "primary_bootstrap_95ci": [
+        0.16290760368808596,
+        0.19555042351569824
+      ],
+      "primary_mean": 0.17952690974314708,
+      "rank": 2,
+      "resource": {
+        "download_bytes": 0,
+        "max_peak_rss_bytes": 502415360,
+        "max_peak_vram_bytes": 0,
+        "mean_wall_seconds": 0.05975748158784376
+      },
+      "seed_means": {
+        "1867973658": 0.16921126723519211,
+        "2137841944": 0.17728301684395317,
+        "3902865753": 0.19208644515029602
+      },
+      "seed_std": 0.009472582635135436,
+      "tied": false,
+      "worst_fold": {
+        "fold_id": 2,
+        "value": 0.19494063835939554
+      }
+    },
+    {
+      "completed_cells": 9,
+      "completion_rate": 1.0,
+      "eligible_for_ranking": true,
+      "expected_cells": 9,
+      "fold_means": {
+        "0": 0.214721214079462,
+        "1": 0.14021393979268662,
+        "2": 0.21129752864492615
+      },
+      "model_id": "catboost",
+      "primary_bootstrap_95ci": [
+        0.1638446786517853,
+        0.21247172937613906
+      ],
+      "primary_mean": 0.1887442275056916,
+      "rank": 3,
+      "resource": {
+        "download_bytes": 0,
+        "max_peak_rss_bytes": 452263936,
+        "max_peak_vram_bytes": 0,
+        "mean_wall_seconds": 0.05695214432974657
+      },
+      "seed_means": {
+        "1867973658": 0.20091011038964615,
+        "2137841944": 0.1873766276984499,
+        "3902865753": 0.17794594442897868
+      },
+      "seed_std": 0.009424824542729172,
+      "tied": false,
+      "worst_fold": {
+        "fold_id": 0,
+        "value": 0.214721214079462
+      }
+    }
+  ],
+  "expected_cells": 27,
+  "lane": "reservoir_quality",
+  "not_rankable_reason": null,
+  "primary_metric": "mae",
+  "ranking_rule": [
+    "primary_mean",
+    "worst_fold",
+    "seed_std",
+    "mean_wall_seconds"
+  ],
+  "schema_version": "sweetspot-p5-stage3-leaderboard/v1",
+  "status": "rankable",
+  "task_id": "T1",
+  "test_accessed": false,
+  "tie_policy": "equal scientific keys remain tied; runtime order is not a tiebreaker"
+}

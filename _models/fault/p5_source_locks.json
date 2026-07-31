@@ -1,0 +1,268 @@
+{
+  "models": [
+    {
+      "adapter": {
+        "backend": "monai",
+        "builder": "segresnet",
+        "minimum_shape": [8, 8, 8],
+        "shape_multiple": [4, 4, 4],
+        "source_mode": "installed_distribution",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=2.8"},
+        {"distribution": "monai", "import_name": "monai", "specifier": "==1.6.0"}
+      ],
+      "family": "MONAI SegResNet 3-D residual encoder-decoder",
+      "model_id": "monai_segresnet",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "Apache-2.0",
+        "license_url": "https://github.com/Project-MONAI/MONAI/blob/1.6.0/LICENSE",
+        "revision": "eccefc57550b111ed781d82249dfe77872a0e918",
+        "tag": "1.6.0",
+        "url": "https://github.com/Project-MONAI/MONAI"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    },
+    {
+      "adapter": {
+        "backend": "monai",
+        "builder": "dynunet",
+        "minimum_shape": [8, 8, 8],
+        "shape_multiple": [4, 4, 4],
+        "source_mode": "installed_distribution",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=2.8"},
+        {"distribution": "monai", "import_name": "monai", "specifier": "==1.6.0"}
+      ],
+      "family": "MONAI DynUNet configurable 3-D U-Net",
+      "model_id": "monai_dynunet",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "Apache-2.0",
+        "license_url": "https://github.com/Project-MONAI/MONAI/blob/1.6.0/LICENSE",
+        "revision": "eccefc57550b111ed781d82249dfe77872a0e918",
+        "tag": "1.6.0",
+        "url": "https://github.com/Project-MONAI/MONAI"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    },
+    {
+      "adapter": {
+        "backend": "nnunetv2",
+        "builder": "plain_conv_unet",
+        "minimum_shape": [16, 16, 16],
+        "shape_multiple": [8, 8, 8],
+        "source_mode": "installed_distribution",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=2.1.2"},
+        {"distribution": "nnunetv2", "import_name": "nnunetv2", "specifier": "==2.8.1"},
+        {"distribution": "dynamic-network-architectures", "import_name": "dynamic_network_architectures", "specifier": ">=0.4.2"}
+      ],
+      "family": "nnU-Net v2 3d_fullres PlainConvUNet architecture",
+      "model_id": "nnunet_v2_3d_fullres",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "Apache-2.0",
+        "license_url": "https://github.com/MIC-DKFZ/nnUNet/blob/v2.8.1/LICENSE",
+        "revision": "468cf803df9b267150ae2b6c0c59b8ac84f16227",
+        "tag": "v2.8.1",
+        "url": "https://github.com/MIC-DKFZ/nnUNet"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    },
+    {
+      "adapter": {
+        "backend": "pytorch3dunet",
+        "builder": "unet3d",
+        "minimum_shape": [16, 16, 16],
+        "shape_multiple": [8, 8, 8],
+        "source_mode": "installed_distribution",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=2"},
+        {"distribution": "pytorch3dunet", "import_name": "pytorch3dunet", "specifier": "==1.9.6"}
+      ],
+      "family": "pytorch-3dunet standard UNet3D",
+      "model_id": "pytorch3dunet_unet3d",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "MIT",
+        "license_url": "https://github.com/wolny/pytorch-3dunet/blob/1.9.6/LICENSE",
+        "revision": "0ce7c45890018df9ebd227909a615903d4bb25d5",
+        "tag": "1.9.6",
+        "url": "https://github.com/wolny/pytorch-3dunet"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    },
+    {
+      "adapter": {
+        "backend": "torchscript_probability",
+        "builder": "faultnet_torchscript",
+        "minimum_shape": [16, 16, 16],
+        "shape_multiple": [16, 16, 16],
+        "source_mode": "weight_only",
+        "trainable": false
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=1.12"}
+      ],
+      "family": "FaultNet 3-D seismic fault inference with MD-loss training provenance",
+      "model_id": "faultnet_md",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "Apache-2.0",
+        "license_url": "https://github.com/douyimin/FaultNet/blob/8b513733ed1461a0cd1c62cd012277193473c84a/LICENSE",
+        "revision": "8b513733ed1461a0cd1c62cd012277193473c84a",
+        "tag": null,
+        "url": "https://github.com/douyimin/FaultNet"
+      },
+      "weights": {
+        "approved": false,
+        "license_spdx": "UNSPECIFIED",
+        "required": true,
+        "sha256": null,
+        "source": "official repository TorchScript checkpoint; no P5 approval/hash"
+      }
+    },
+    {
+      "adapter": {
+        "backend": "tensorflow_keras",
+        "builder": "faultseg3d",
+        "minimum_shape": [64, 64, 64],
+        "shape_multiple": [8, 8, 8],
+        "source_mode": "locked_checkout",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "tensorflow", "import_name": "tensorflow", "specifier": ">=2,<3"},
+        {"distribution": "keras", "import_name": "keras", "specifier": ">=2,<4"}
+      ],
+      "family": "FaultSeg3D Keras 3-D U-Net",
+      "model_id": "faultseg3d_keras",
+      "source": {
+        "commercial_use": "restricted",
+        "license_spdx": "CC-BY-NC-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "revision": "0ab8ba1c10cb9e5748b0129bfe1a2fe3031b80fe",
+        "tag": null,
+        "url": "https://github.com/xinwucwp/faultSeg"
+      },
+      "weights": {
+        "approved": false,
+        "license_spdx": "CC-BY-NC-4.0",
+        "required": false,
+        "sha256": null,
+        "source": "official non-commercial checkpoint; not downloaded"
+      }
+    },
+    {
+      "adapter": {
+        "backend": "monai",
+        "builder": "vnet",
+        "minimum_shape": [16, 16, 16],
+        "shape_multiple": [16, 16, 16],
+        "source_mode": "installed_distribution",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=2.8"},
+        {"distribution": "monai", "import_name": "monai", "specifier": "==1.6.0"}
+      ],
+      "family": "MONAI VNet 3-D fully convolutional segmentation",
+      "model_id": "monai_vnet",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "Apache-2.0",
+        "license_url": "https://github.com/Project-MONAI/MONAI/blob/1.6.0/LICENSE",
+        "revision": "eccefc57550b111ed781d82249dfe77872a0e918",
+        "tag": "1.6.0",
+        "url": "https://github.com/Project-MONAI/MONAI"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    },
+    {
+      "adapter": {
+        "backend": "pytorch_locked_checkout",
+        "builder": "mednext_v1_s_k3",
+        "minimum_shape": [16, 16, 16],
+        "shape_multiple": [16, 16, 16],
+        "source_mode": "locked_checkout",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=1.10"}
+      ],
+      "family": "MedNeXt v1 Small K3 3-D ConvNeXt segmentation",
+      "model_id": "mednext_v1_s_k3",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "Apache-2.0",
+        "license_url": "https://github.com/MIC-DKFZ/MedNeXt/blob/0b78ed869fbd1cc2fd38754d2f8519f1b72d43ba/LICENSE",
+        "revision": "0b78ed869fbd1cc2fd38754d2f8519f1b72d43ba",
+        "tag": null,
+        "url": "https://github.com/MIC-DKFZ/MedNeXt"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    },
+    {
+      "adapter": {
+        "backend": "pytorch_locked_checkout",
+        "builder": "uxnet3d",
+        "minimum_shape": [32, 32, 32],
+        "shape_multiple": [32, 32, 32],
+        "source_mode": "locked_checkout",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=1.12"}
+      ],
+      "family": "3D UX-Net large-kernel volumetric ConvNet",
+      "model_id": "uxnet3d",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "MIT",
+        "license_url": "https://github.com/MASILab/3DUX-Net/tree/14ea46b7b4c4980b46aba066aaaa24b1d9c1bb0d",
+        "revision": "14ea46b7b4c4980b46aba066aaaa24b1d9c1bb0d",
+        "tag": null,
+        "url": "https://github.com/MASILab/3DUX-Net"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    },
+    {
+      "adapter": {
+        "backend": "monai",
+        "builder": "swinunetr",
+        "minimum_shape": [32, 32, 32],
+        "shape_multiple": [32, 32, 32],
+        "source_mode": "installed_distribution",
+        "trainable": true
+      },
+      "dependencies": [
+        {"distribution": "torch", "import_name": "torch", "specifier": ">=2.8"},
+        {"distribution": "monai", "import_name": "monai", "specifier": "==1.6.0"},
+        {"distribution": "einops", "import_name": "einops", "specifier": ">=0.6"}
+      ],
+      "family": "MONAI SwinUNETR hierarchical 3-D transformer",
+      "model_id": "monai_swinunetr",
+      "source": {
+        "commercial_use": "allowed",
+        "license_spdx": "Apache-2.0",
+        "license_url": "https://github.com/Project-MONAI/MONAI/blob/1.6.0/LICENSE",
+        "revision": "eccefc57550b111ed781d82249dfe77872a0e918",
+        "tag": "1.6.0",
+        "url": "https://github.com/Project-MONAI/MONAI"
+      },
+      "weights": {"approved": false, "required": false, "sha256": null, "source": null}
+    }
+  ],
+  "candidate_count": 10,
+  "protocol": "fault-p5-source-lock-v1",
+  "root_seed": 2693
+}

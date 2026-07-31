@@ -1,0 +1,72 @@
+{
+  "attempted_cells": 10,
+  "counts": {
+    "development_piloted": 9,
+    "failed": 0,
+    "skipped": 1,
+    "timeout": 0
+  },
+  "cross_lane_ranking": false,
+  "expected_cells": 10,
+  "leaderboard_sha256": {
+    "KLOGH": "ccf4930e05c60bce1b695869cc8e82c8905d509b4a0a4ff6a567fb9f90d6b2c7",
+    "PHIF": "0cae122ec0099f959746d453b76a1c7fd4c38bf0cf03ae7695d4a82b51611b1b",
+    "SW": "5d941c0b989bf835cf9c9cdd38ad53f7cd664b85fc364d3fd3f31f6c6001497e"
+  },
+  "missing_cells": [],
+  "modality_lanes": {
+    "seismic_3d_gpu": {
+      "attempted_cells": 1,
+      "counts": {
+        "development_piloted": 1,
+        "failed": 0,
+        "skipped": 0,
+        "timeout": 0
+      },
+      "cross_lane_ranking": false,
+      "expected_cells": 1,
+      "leaderboard_status_by_target": {
+        "KLOGH": "not_rankable",
+        "PHIF": "not_rankable",
+        "SW": "not_rankable"
+      }
+    },
+    "tabular_cpu": {
+      "attempted_cells": 9,
+      "counts": {
+        "development_piloted": 8,
+        "failed": 0,
+        "skipped": 1,
+        "timeout": 0
+      },
+      "cross_lane_ranking": false,
+      "expected_cells": 9,
+      "leaderboard_status_by_target": {
+        "KLOGH": "rankable",
+        "PHIF": "rankable",
+        "SW": "rankable"
+      }
+    }
+  },
+  "portable": {
+    "absolute_paths_persisted": false,
+    "raw_checkpoints_persisted": false,
+    "source_data_copied": false
+  },
+  "results_sha256": "035c9a911321fc7d75f5aa41d8f65d244772755232906a8fd710d41e43b6d4f5",
+  "root_seed": 2693,
+  "schema_version": 1,
+  "source_hashes": {
+    "budget_sha256": "b43e0e620a092531a873f561625907200ce11d9f73cd7aee03bdf8c6cf1bc169",
+    "runner_sha256": "00291a9c867b1471fae729aa64e49006b9bf2ba1bbdc8d02d4eaef7f58822e88",
+    "source_lock_sha256": "a25789166f0a9eae7bbfe6716009fa65aa45c2a1f93118e1e10ffb9711bb0db8"
+  },
+  "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+  "stage": 2,
+  "test_firewall": {
+    "test_access": false,
+    "test_loader_implemented": false,
+    "test_metrics": false
+  },
+  "track_id": "property"
+}

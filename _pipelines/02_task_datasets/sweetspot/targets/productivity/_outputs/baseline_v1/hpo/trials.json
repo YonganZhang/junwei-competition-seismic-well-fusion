@@ -1,0 +1,221 @@
+[
+  {
+    "cost": {
+      "wall_seconds": 0.027499651070684195
+    },
+    "failure_reason": null,
+    "fold_mean": 1255.7251299933064,
+    "fold_scores": [
+      137.4959622102732,
+      3856.044996532449,
+      474.1685878081939,
+      555.1909734223088
+    ],
+    "fold_std": 1509.443491253802,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 1e-06,
+      "estimator": "ridge"
+    },
+    "params_hash": "3d29802fdc7e3c9211ec47c10033b83d84975c59253f098c5a07f37b1b0fc3cf",
+    "seed": 749185299,
+    "state": "complete",
+    "trial_id": 0,
+    "worst_fold": 3856.044996532449
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.024822288192808628
+    },
+    "failure_reason": null,
+    "fold_mean": 1255.5868315086132,
+    "fold_scores": [
+      137.49603454495443,
+      3855.490776558486,
+      474.1691559819256,
+      555.1913589490865
+    ],
+    "fold_std": 1509.2046709565384,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 0.0001,
+      "estimator": "ridge"
+    },
+    "params_hash": "246926a7d0f872eb1cda1a3a9b02b1dbe2e85ee140912497c3c56918f045e4ca",
+    "seed": 265879392,
+    "state": "complete",
+    "trial_id": 1,
+    "worst_fold": 3855.490776558486
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.01054969197139144
+    },
+    "failure_reason": null,
+    "fold_mean": 1242.4205946902425,
+    "fold_scores": [
+      137.50798814583314,
+      3802.710105602763,
+      474.2379177369745,
+      555.2263672753987
+    ],
+    "fold_std": 1486.460122165476,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 0.01,
+      "estimator": "ridge"
+    },
+    "params_hash": "36d95a0680006ccde11587215f336183cb4c7c516a6316c73c25250bb883a42d",
+    "seed": 523093682,
+    "state": "complete",
+    "trial_id": 2,
+    "worst_fold": 3802.710105602763
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.010489006992429495
+    },
+    "failure_reason": null,
+    "fold_mean": 911.254516144845,
+    "fold_scores": [
+      144.97060171911656,
+      2454.444066859631,
+      490.4713818299482,
+      555.132014170684
+    ],
+    "fold_std": 904.5035529890313,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 1.0,
+      "estimator": "ridge"
+    },
+    "params_hash": "d6133602e979c90aaa1314f2cfc0c5badacd0437095bca9959b68c0eaa4432d9",
+    "seed": 1017415098,
+    "state": "complete",
+    "trial_id": 3,
+    "worst_fold": 2454.444066859631
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.010482596699148417
+    },
+    "failure_reason": null,
+    "fold_mean": 740.3690009656009,
+    "fold_scores": [
+      163.76623531486075,
+      1753.7039508696087,
+      502.1291842338794,
+      541.8766334440547
+    ],
+    "fold_std": 603.215529536026,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 10.0,
+      "estimator": "ridge"
+    },
+    "params_hash": "93261630531711b0578e0e0ba689fc3b23b5bac9e0aedd81faabee46f4f34e83",
+    "seed": 625444271,
+    "state": "complete",
+    "trial_id": 4,
+    "worst_fold": 1753.7039508696087
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.1855345880612731
+    },
+    "failure_reason": null,
+    "fold_mean": 1512.8794140369241,
+    "fold_scores": [
+      270.2383039085913,
+      5015.748962654745,
+      466.01614945913013,
+      299.5142401252299
+    ],
+    "fold_std": 2023.7607160432296,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 1e-06,
+      "epsilon": 1.2,
+      "estimator": "huber"
+    },
+    "params_hash": "f0952cf660b27e6f7354ce04afeac6ffb98d1e7bb09e485859399b250a4a0d3b",
+    "seed": 2228886575,
+    "state": "complete",
+    "trial_id": 5,
+    "worst_fold": 5015.748962654745
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.18686437560245395
+    },
+    "failure_reason": null,
+    "fold_mean": 1502.1542997474312,
+    "fold_scores": [
+      260.9770365763807,
+      4952.110029438599,
+      467.3266108935832,
+      328.2035220811626
+    ],
+    "fold_std": 1993.222535835094,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 0.0001,
+      "epsilon": 1.35,
+      "estimator": "huber"
+    },
+    "params_hash": "47fb86ec48f85feb83da3b51381e80c25746603e4b76f7ef5e7c301e0e317677",
+    "seed": 1560061846,
+    "state": "complete",
+    "trial_id": 6,
+    "worst_fold": 4952.110029438599
+  },
+  {
+    "cost": {
+      "wall_seconds": 0.17767696175724268
+    },
+    "failure_reason": null,
+    "fold_mean": 1455.6379103218499,
+    "fold_scores": [
+      246.69211203542594,
+      4734.258650108933,
+      470.3811803072798,
+      371.21969883576065
+    ],
+    "fold_std": 1894.5710319224038,
+    "guardrails": {
+      "test_rows_accessed": 0.0
+    },
+    "metric_direction": "minimize",
+    "params": {
+      "alpha": 0.01,
+      "epsilon": 1.6,
+      "estimator": "huber"
+    },
+    "params_hash": "37240fef9197450fccfc39d1b9f1e6db177cf6ab6b9b86fb24b57d5c4efdb753",
+    "seed": 3371339178,
+    "state": "complete",
+    "trial_id": 7,
+    "worst_fold": 4734.258650108933
+  }
+]

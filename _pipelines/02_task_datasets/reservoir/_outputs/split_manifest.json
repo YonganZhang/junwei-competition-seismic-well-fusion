@@ -1,0 +1,97 @@
+{
+  "algorithm": "sha256(parent_family), first train then guard then test",
+  "created_before_interpolation": true,
+  "family_partition": {
+    "15/9-F-11": "train",
+    "15/9-F-1": "train",
+    "15/9-19": "train",
+    "15/9-F-12": "guard",
+    "15/9-F-15": "test"
+  },
+  "wells": [
+    {
+      "well_id": "15/9-19 A",
+      "family_id": "15/9-19",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+      "input_member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las"
+    },
+    {
+      "well_id": "15/9-19 BT2",
+      "family_id": "15/9-19",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 BT2/CPI/15_9-19_BT2_CPI.las",
+      "input_member": "Well_logs/06.LFP/15_9-19 BT2/159-19BT2_LFP.las"
+    },
+    {
+      "well_id": "15/9-19 SR",
+      "family_id": "15/9-19",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 SR/CPI/15_9-19_SR_CPI.las",
+      "input_member": "Well_logs/06.LFP/15_9-19 SR/159-19SR_LFP.las"
+    },
+    {
+      "well_id": "15/9-F-1 A",
+      "family_id": "15/9-F-1",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 A/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-1 B",
+      "family_id": "15/9-F-1",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 B/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 B/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-1 C",
+      "family_id": "15/9-F-1",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 C/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 C/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-1",
+      "family_id": "15/9-F-1",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-11 A",
+      "family_id": "15/9-F-11",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 A/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-11 B",
+      "family_id": "15/9-F-11",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 B/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 B/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-11 T2",
+      "family_id": "15/9-F-11",
+      "partition": "train",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-12",
+      "family_id": "15/9-F-12",
+      "partition": "guard",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-12/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-12/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    },
+    {
+      "well_id": "15/9-F-15 D",
+      "family_id": "15/9-F-15",
+      "partition": "test",
+      "label_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 D/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "input_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 D/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+    }
+  ]
+}

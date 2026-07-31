@@ -1,0 +1,34 @@
+{
+  "evidence": {
+    "CONFIG_FROZEN": {
+      "config_hash": "cac2cbcb1ad5bb92b38e246abf46abe399b73b92aeb06dd5893565803199ac71"
+    },
+    "CV_COMPLETE": {
+      "oof_metrics_hash": "bb256e1ba989302c3f08b76593d70b246f7c1ab01b4b288f82442aad38df52a5",
+      "sample_count": 32
+    },
+    "REFIT_COMPLETE": {
+      "checkpoint_hash": "62763323253a189edbb86f94b0e831aa611caca0f426c3fcc85c76fb0889929a"
+    },
+    "SMOKE_PASSED": {
+      "finite_predictions": true,
+      "sample_count": 27
+    },
+    "SPLIT_LOCKED": {
+      "split_hash": "175de5bbd9ff1f47aa9007f4bb79e27ac57dd954f78c965205193c2c38a5788e"
+    },
+    "TEST_CONSUMED": {
+      "checkpoint_hash": "62763323253a189edbb86f94b0e831aa611caca0f426c3fcc85c76fb0889929a",
+      "config_hash": "cac2cbcb1ad5bb92b38e246abf46abe399b73b92aeb06dd5893565803199ac71",
+      "split_hash": "175de5bbd9ff1f47aa9007f4bb79e27ac57dd954f78c965205193c2c38a5788e"
+    },
+    "VERIFIED": {
+      "metrics_hash": "a5856f33ad5cc16120baa48eac82735049e37f46548f38ba9c67c5844faeb10d",
+      "prediction_hash": "3eff99b7b57e5a64c32b638e77c2abd363a953dc1c46a3e4720969cf7094908a",
+      "test_rows_accessed": 37
+    }
+  },
+  "experiment_id": "sweetspot.water_breakthrough.baseline_v1",
+  "state": "VERIFIED",
+  "test_consumed_at": "2026-07-13T17:09:26.405607+00:00"
+}

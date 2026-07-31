@@ -1,0 +1,30 @@
+{
+  "artifacts": [
+    {
+      "bytes": 16556,
+      "path": "_pipelines/02_task_datasets/reconstruction/p21_fixed_foundation_ensemble.py",
+      "sha256": "27d3bafbb149c32b26dcbc01785bc5341bd27c45163506213dccd13c2a62166e"
+    },
+    {
+      "bytes": 747,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/evidence.md",
+      "sha256": "b6926f709cdacb97ef3953794add29eb87f7b422031b071bdba0ea887aac89c1"
+    },
+    {
+      "bytes": 247046,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/predictions.npz",
+      "sha256": "7eb149021973362e8a9a788f2919a7775bffc702061f2e2ce44031f9ee835afb"
+    },
+    {
+      "bytes": 12717,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/summary.json",
+      "sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8"
+    },
+    {
+      "bytes": 694,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/verification.json",
+      "sha256": "0396daa24cf0fd91862c6547b18fc4838ba88e72caafd0e181e121e8de0a433e"
+    }
+  ],
+  "schema_version": "reconstruction-p21-artifact-manifest/v1"
+}

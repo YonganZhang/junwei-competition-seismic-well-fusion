@@ -1,0 +1,47 @@
+{
+  "output": "_pipelines/02_task_datasets/reconstruction/_outputs/prediction_visualization_conditional.png",
+  "output_sha256": "1c9257c47c02a84f820e1ff0c2e8e32060f027eec8fdb40b11615bbd77add85a",
+  "visualization_source_sha256": "4c3863d8b20413f6d6eacbcec872fb15651f36be407305beda0628b14db81de3",
+  "evaluation_mode": "conditional",
+  "source": "reconstruction HDF5 + mode-specific ridge_linear seismic best checkpoint",
+  "slice_k_index": 35,
+  "n_active_cells_on_slice": 811,
+  "n_test_well_cells_on_slice": 1,
+  "metrics_on_evaluated_test_cells": {
+    "rmse": 0.021589275815485132,
+    "mae": 0.015949503207834958,
+    "pearson_r": 0.006893391873210469,
+    "pearson_r_defined": true,
+    "pearson_r_reason": null,
+    "r2": -0.04116608333361493,
+    "r2_defined": true,
+    "r2_reason": null
+  },
+  "best_epoch_1_based": 203,
+  "constraint_audit": {
+    "evaluation_mode": "conditional",
+    "train_i_blocks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "guard_i_blocks": [],
+    "test_i_blocks": [
+      4,
+      5
+    ],
+    "spatial_regions_zero_overlap": true,
+    "n_global_well_constraints": 91,
+    "n_train_region_well_constraints": 1,
+    "n_guard_region_well_constraints": 0,
+    "n_test_region_well_constraints": 90,
+    "n_well_constraints_supplied_to_idw": 91,
+    "guard_well_constraints_supplied_to_idw": false,
+    "test_well_constraints_supplied_to_idw": true,
+    "strict_spatial_holdout_generalization": false,
+    "cross_well_generalization": false,
+    "cross_field_generalization": false
+  },
+  "caveat": "CONDITIONAL, NOT STRICT HOLDOUT: all 91 global constraints are supplied; 90 lie in the test region. Exact well cells are excluded from metrics, but IDW propagates their values."
+}

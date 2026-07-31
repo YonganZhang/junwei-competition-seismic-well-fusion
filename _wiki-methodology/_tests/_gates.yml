@@ -12,15 +12,165 @@ gates:
     timeout: 180
     expect: exit0
     note: "拒绝状态/协议/占位图；保留旧六赛道白名单，并验证P12赛道1/3/5的固定发现、合同、显式负责人视觉验收、哈希与稳定暂存；赛道2/4/6保持paused。"
-# 示例(删掉 [] 后启用):
-# gates:
-#   - id: unit
-#     cmd: "python3 -m pytest tests/ -q"
-#     timeout: 300
-#     expect: exit0
-#     note: "单元测试全绿"
-#   - id: pipeline-validate
-#     cmd: "python3 _code/run_pipeline.py <name> --validate"
-#     timeout: 120
-#     expect: exit0
-#     note: "流水线扣子/线一致性校验(不执行)"
+
+  - id: p4-shared
+    cmd: "${P4_TORCH_PYTHON:?set P4_TORCH_PYTHON to a Python with torch} -m unittest discover -s _code/ml_framework/tests -p 'test_*.py' -v"
+    timeout: 180
+    expect: exit0
+    note: "Shared contracts and canonical model discovery."
+
+  - id: p4-fault
+    cmd: "python3 -m unittest discover -s _pipelines/02_task_datasets/fault -p 'test_*.py' -v"
+    timeout: 300
+    expect: exit0
+    note: "Fault portable suite; unavailable optional real artifacts must report skip."
+
+  - id: p4-facies
+    cmd: "${P4_TORCH_PYTHON:?set P4_TORCH_PYTHON to a Python with torch} -m unittest discover -s _pipelines/02_task_datasets/facies/tests -p 'test_*.py' -v"
+    timeout: 600
+    expect: exit0
+    note: "F3 and Penobscot contracts, lifecycle, tiny models and portable smoke."
+
+  - id: p4-property
+    cmd: "python3 -m pytest _pipelines/02_task_datasets/reservoir/tests -q"
+    timeout: 300
+    expect: exit0
+    note: "PHIF/KLOGH/SW contracts; external data integrations are explicitly gated."
+
+  - id: p4-lithofacies
+    cmd: "${P4_TORCH_PYTHON:?set P4_TORCH_PYTHON to a Python with torch} -m unittest discover -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_*.py' -v"
+    timeout: 300
+    expect: exit0
+    note: "Nine-class family-split contracts and portable pipeline suite."
+
+  - id: p4-sweetspot
+    cmd: "python3 -m pytest _pipelines/02_task_datasets/sweetspot/tests -q"
+    timeout: 300
+    expect: exit0
+    note: "Seven independent targets, proxy boundaries and not-feasible gates."
+
+  - id: p4-reconstruction
+    cmd: "python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_*.py' -v"
+    timeout: 600
+    expect: exit0
+    note: "Strict/conditional reconstruction and direct project-root CLI regressions."
+
+  - id: p4-target-registry
+    cmd: "python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json"
+    timeout: 120
+    expect: exit0
+    note: "Rebuild the seven-target registry without overwriting the canonical evidence file."
+
+  - id: p5-stage3-fault
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m pytest -q _pipelines/02_task_datasets/fault/test_fault_p5_stage3.py"
+    timeout: 180
+    expect: exit0
+    note: "Fault Stage-3 zero-fold data gate and no-fake-performance contract."
+
+  - id: p5-stage3-facies
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m pytest -q _pipelines/02_task_datasets/facies/tests/test_facies_p5_stage3.py"
+    timeout: 300
+    expect: exit0
+    note: "F3/Penobscot separate top-3 multiseed OOF contracts."
+
+  - id: p5-stage3-property
+    cmd: "${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_stage3.py"
+    timeout: 180
+    expect: exit0
+    note: "PHIF/KLOGH/SW LOGO4 multiseed summaries and firewall."
+
+  - id: p5-stage3-lithofacies
+    cmd: "${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/lithofacies/tests/test_lithofacies_p5_stage3.py"
+    timeout: 180
+    expect: exit0
+    note: "Fixed-nine GM09 ranking, honest failed cells and OOF visualization contract."
+
+  - id: p5-stage3-sweetspot
+    cmd: "${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage3.py"
+    timeout: 300
+    expect: exit0
+    note: "Seven independent sweetspot cases; T1-T4 rank and T5-T7 stop gates."
+
+  - id: p5-stage3-reconstruction
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m pytest -q _pipelines/02_task_datasets/reconstruction/_tests/test_reconstruction_p5_stage3.py"
+    timeout: 300
+    expect: exit0
+    note: "Strict/conditional multiseed buffered-CV summaries, timeout retention and firewall."
+
+  - id: p5-r01-fault
+    cmd: "mkdir -p _tmp/p5-r01-gates && export TMPDIR=$PWD/_tmp/p5-r01-gates; for pattern in test_fault_p5_r01.py test_fault_p4.py test_fault_p5_stage2.py test_fault_p5_stage3.py test_fault_p5_stage4.py test_fault_pipeline.py; do PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/fault -p $pattern -q || exit 1; done"
+    timeout: 300
+    expect: exit0
+    note: "Fault R0/R1 lane gates plus historical track regressions; no formal ranking without audited negatives."
+
+  - id: p5-r01-facies
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest discover -s _pipelines/02_task_datasets/facies/tests -p 'test*.py' -q"
+    timeout: 900
+    expect: exit0
+    note: "F3/Penobscot spatial-vs-leaky mechanism tests; TMPDIR must be on the data filesystem because checkpoints exceed the root /tmp headroom."
+
+  - id: p5-r01-property
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_r01.py _pipelines/02_task_datasets/reservoir/tests/test_p5_stage1_contracts.py _pipelines/02_task_datasets/reservoir/tests/test_reservoir_p5_stage2.py"
+    timeout: 300
+    expect: exit0
+    note: "PHIF/KLOGH/SW independent masks, LOGO4 zero-overlap and random-depth leakage diagnostic."
+
+  - id: p5-r01-lithofacies
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 LITHOFACIES_R01_TINY=1 ${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m unittest discover -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_lithofacies_p5_r01.py' -q && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest discover -s _pipelines/02_task_datasets/lithofacies/tests -p 'test_p4_contract.py' -q"
+    timeout: 600
+    expect: exit0
+    note: "GM09 fixed-nine LOGO4 legality, overlap diagnostics and P/S lane boundaries."
+
+  - id: p5-r01-sweetspot
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 ${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m unittest _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_r01.py _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p5_stage2.py -q && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m pytest -q _pipelines/02_task_datasets/sweetspot/tests/test_validate_only.py"
+    timeout: 600
+    expect: exit0
+    note: "Seven independent target contracts, honest partial/not-feasible states and aggregate-score prohibition."
+
+  - id: p5-r01-reconstruction
+    cmd: "mkdir -p _tmp/p5-r01-gates && TMPDIR=$PWD/_tmp/p5-r01-gates PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test*.py' -q"
+    timeout: 600
+    expect: exit0
+    note: "B0/B1/shuffled conditional-channel mechanism, common mask, distance bands and no-generalization boundary."
+
+  - id: p8-foundation-contract
+    cmd: "python3 -m pytest -q _models/gaia_dagt/tests/test_foundation_contract.py"
+    timeout: 120
+    expect: exit0
+    note: "Portable six-route envelope, prompt/client boundary, source-lock and runtime-evidence consistency gate; torch-only shape guards explicitly skip when torch is absent."
+
+  - id: p8-foundation-torch-contract
+    cmd: "${P8_TORCH_PYTHON:?set P8_TORCH_PYTHON to a Python with torch} -m pytest -q _models/gaia_dagt/tests/test_foundation_contract.py"
+    timeout: 180
+    expect: exit0
+    note: "Runs the OpenMind padding and MOMENT mask regressions in addition to the portable P8 contract."
+
+  - id: p8-sweetspot-calendar
+    cmd: "python3 -m pytest -q _pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p8_calendar.py"
+    timeout: 180
+    expect: exit0
+    note: "Exact daily timestamps, no zero-filled missing days, causal cutoffs, group isolation and calendar-forecast shape."
+
+  - id: p17-reconstruction-foundation
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p17_foundation_geostatistics.py"
+    timeout: 180
+    expect: exit0
+    note: "Track-6 GFM nonstationary metric, exact train budget, no-test CLI, portable evidence hashes and independent recomputation."
+
+  - id: p18-reconstruction-anisotropic
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p18_anisotropic_foundation_geostatistics.py"
+    timeout: 180
+    expect: exit0
+    note: "Track-6 vertical anisotropy, nested LOFO selection firewall, P17 bias correction, portable evidence hashes and independent recomputation."
+
+  - id: p19-reconstruction-training-diagnostics
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p19_training_diagnostics_artifacts.py"
+    timeout: 120
+    expect: exit0
+    note: "Track-6 cross-fold meta-fit purge, tensor/activation/gradient diagnosis, strict rejected-route boundaries and holdout firewall."
+
+  - id: p23-reconstruction-checkshot-calibration
+    cmd: "python3 -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p23_checkshot_calibration.py"
+    timeout: 120
+    expect: exit0
+    note: "Track-6 three-fit/two-independent-well checkshot protocol, source lock, calibration gain and no-porosity-claim boundary."

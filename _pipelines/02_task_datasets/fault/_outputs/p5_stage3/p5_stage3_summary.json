@@ -1,0 +1,154 @@
+{
+  "budget_consumed": {
+    "parameter_updates": 0,
+    "train_samples": 0,
+    "validation_samples": 0,
+    "wall_seconds": 0.0
+  },
+  "completion": {
+    "completion_rate": null,
+    "minimum_rankable_rate": 0.8,
+    "reason": "no scientifically legal training cells exist",
+    "status": "not_rankable"
+  },
+  "counts": {
+    "attempted_training_cells": 0,
+    "blocked_training_cells": 0,
+    "completed_training_cells": 0,
+    "data_readiness_gate_records": 1,
+    "expected_training_cells": 0,
+    "failed_training_cells": 0,
+    "skip_training_cells": 0,
+    "timeout_training_cells": 0
+  },
+  "data_manifest": {
+    "path": "p5_stage3_data_manifest.json",
+    "sha256": "66f7f922fad93dfb8adc218cfcbebd65cbc0b7e4f061dca99a1feb3e884083a1"
+  },
+  "effective_fold_count": 0,
+  "expected_training_cells": 0,
+  "fixed_budget": {
+    "lane_type": "3d_neural_or_operator",
+    "max_parameter_updates": 80,
+    "max_wall_seconds": 900,
+    "sample_caps_status": "unavailable_until_valid_development_split",
+    "train_sample_cap": null,
+    "validation_sample_cap": null
+  },
+  "fold_fit_operations": {
+    "calibration": 0,
+    "class_weights": 0,
+    "fit_scope": "not_invoked_no_valid_fold",
+    "preprocessing": 0,
+    "target_transform": 0
+  },
+  "frozen_top_models": [],
+  "lane": "fault_3d_segmentation_data_gate",
+  "leaderboards": [
+    {
+      "path": "leaderboards/fault_stick_segmentation__fault_3d_segmentation_data_gate.json",
+      "sha256": "e81823a5dc8786bc9b99c0de425480f8bb0a1e7d9c2cd29fafc2e6a4e36ea129",
+      "status": "not_rankable"
+    }
+  ],
+  "oof_manifest": {
+    "path": "p5_stage3_oof_manifest.json",
+    "prediction_count": 0,
+    "sha256": "5131ed9fe4a4096d756f121d41e878eb759bc868fd27d614db05056430aa0dfd"
+  },
+  "prohibitions": {
+    "candidate_changed": false,
+    "frozen_test_accessed": false,
+    "hpo_performed": false,
+    "loss_changed": false,
+    "preprocessing_changed": false,
+    "temporary_split_created": false,
+    "training_performed": false,
+    "update_budget_changed": false
+  },
+  "protocol": "fault-p5-stage3-summary-v1",
+  "protocol_baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+  "reason_code": "NO_VALID_FAULT_DEVELOPMENT_FOLDS",
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "results_artifact": {
+    "bytes": 1565,
+    "path": "p5_stage3_results.jsonl",
+    "record_count": 1,
+    "sha256": "03a2afa40d62004d097c57936841418735afd0770073bf603cf7a6c88515919d",
+    "training_cell_count": 0
+  },
+  "root_seed": 2693,
+  "source_hashes": {
+    "P5_stage3_multiseed_cv.md": "5e01ae7993d3e9daa10c7b9b0f5e48c006bd6e170e6ebcf12614f9bfe286d3b7",
+    "fault_p5_stage2.py": "702374da5c614aa990a469fff474c06ac8971e00bca4ba76cccc96c072bdd726",
+    "fault_p5_stage3.py": "d8de2896b9237e7fbc875928e1c019ebcaa1ff484400569278ddd9ff971d87d7",
+    "fault_p5_stage3_visualize.py": "ef5af5b4db6323d746196326bfd4608740c12146a0cf1ecf1ba229e4155d0199",
+    "p4_preflight/blind_test_not_feasible.json": "46096d75e36d73bf8df7f510bb754675b17e887e8d411352dfe8c4ffa48a65f3",
+    "p4_preflight/buffered_cv_plan.json": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+    "p5_source_locks.json": "0e69a7a6ea12d059d0be97b1f19bf645e35ec360ae003a2d1033cadd12b0289f",
+    "p5_stage1/summary.json": "8d9958507fc57a82d8652313f5d3e699d78d831154651e8e68e38f0f5d068dc2",
+    "p5_stage2/p5_stage2_results.jsonl": "70f161c25c4bbdcdecc607b659b708f497f3271965104eefa3f1116e22dbe930",
+    "p5_stage2/p5_stage2_summary.json": "3d83d6f91c5ab6bd32628703a5d595bdf5f5cdccfd618260b04f277427421511"
+  },
+  "split": {
+    "effective_n_splits": 0,
+    "fold_count": 0,
+    "requested_n_splits": 5,
+    "source": "p4_preflight/buffered_cv_plan.json",
+    "split_hash": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+    "status": "not_feasible",
+    "temporary_fraction_split_allowed": false,
+    "temporary_split_created": false
+  },
+  "stage2_reuse": {
+    "candidate_configuration_sha256": "0e69a7a6ea12d059d0be97b1f19bf645e35ec360ae003a2d1033cadd12b0289f",
+    "candidate_model_ids": [
+      "monai_segresnet",
+      "monai_dynunet",
+      "nnunet_v2_3d_fullres",
+      "pytorch3dunet_unet3d",
+      "faultnet_md",
+      "faultseg3d_keras",
+      "monai_vnet",
+      "mednext_v1_s_k3",
+      "uxnet3d",
+      "monai_swinunetr"
+    ],
+    "configuration_changed": false,
+    "fixed_budget": {
+      "lane_type": "3d_neural_or_operator",
+      "max_parameter_updates": 80,
+      "max_wall_seconds": 900,
+      "sample_caps_status": "unavailable_until_valid_development_split",
+      "train_sample_cap": null,
+      "validation_sample_cap": null
+    },
+    "hpo_performed": false,
+    "loss_changed": false,
+    "preprocessing_changed": false,
+    "stage2_results_sha256": "70f161c25c4bbdcdecc607b659b708f497f3271965104eefa3f1116e22dbe930",
+    "stage2_status": "not_rankable",
+    "update_budget_changed": false
+  },
+  "status": "not_rankable",
+  "task_id": "fault_stick_segmentation",
+  "test_firewall": {
+    "blind_audit_used_for": "coverage/firewall status only",
+    "frozen_test_accessed": false,
+    "historical_test_role": "regression_evidence_only",
+    "runner_accepts_test_inputs": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault",
+  "visualization_manifest": {
+    "figure_count": 3,
+    "path": "p5_stage3_visualization_manifest.json",
+    "sha256": "3fe7edbfb236b958d4ffde15521456766dfb49e7ff7817de99e3270f5744e1dd"
+  }
+}

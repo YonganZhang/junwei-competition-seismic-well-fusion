@@ -1,0 +1,72 @@
+{
+  "detail": "exact clean upstream checkout is unavailable",
+  "evidence_state": "scouted",
+  "frozen_test_accessed": false,
+  "model_id": "mednext_v1_s_k3",
+  "reason_code": "LOCKED_SOURCE_CHECKOUT_UNAVAILABLE",
+  "runtime_gate": {
+    "detail": "exact clean upstream checkout is unavailable",
+    "evidence": {
+      "code_license": "Apache-2.0",
+      "commercial_use": "allowed",
+      "model_id": "mednext_v1_s_k3",
+      "source_checkout": {
+        "reason": "no locked source checkout supplied",
+        "status": "missing"
+      },
+      "source_revision": "0b78ed869fbd1cc2fd38754d2f8519f1b72d43ba",
+      "source_tag": null,
+      "source_url": "https://github.com/MIC-DKFZ/MedNeXt",
+      "weights": {
+        "approved": false,
+        "required": false,
+        "sha256": null,
+        "source": null
+      }
+    },
+    "reason_code": "LOCKED_SOURCE_CHECKOUT_UNAVAILABLE",
+    "status": "skipped"
+  },
+  "source_lock": {
+    "adapter": {
+      "backend": "pytorch_locked_checkout",
+      "builder": "mednext_v1_s_k3",
+      "minimum_shape": [
+        16,
+        16,
+        16
+      ],
+      "shape_multiple": [
+        16,
+        16,
+        16
+      ],
+      "source_mode": "locked_checkout",
+      "trainable": true
+    },
+    "dependencies": [
+      {
+        "distribution": "torch",
+        "import_name": "torch",
+        "specifier": ">=1.10"
+      }
+    ],
+    "family": "MedNeXt v1 Small K3 3-D ConvNeXt segmentation",
+    "model_id": "mednext_v1_s_k3",
+    "source": {
+      "commercial_use": "allowed",
+      "license_spdx": "Apache-2.0",
+      "license_url": "https://github.com/MIC-DKFZ/MedNeXt/blob/0b78ed869fbd1cc2fd38754d2f8519f1b72d43ba/LICENSE",
+      "revision": "0b78ed869fbd1cc2fd38754d2f8519f1b72d43ba",
+      "tag": null,
+      "url": "https://github.com/MIC-DKFZ/MedNeXt"
+    },
+    "weights": {
+      "approved": false,
+      "required": false,
+      "sha256": null,
+      "source": null
+    }
+  },
+  "status": "skipped"
+}

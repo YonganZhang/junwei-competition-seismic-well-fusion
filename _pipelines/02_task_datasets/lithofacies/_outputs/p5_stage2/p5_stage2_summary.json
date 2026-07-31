@@ -1,0 +1,73 @@
+{
+  "schema_version": "lithofacies-p5-stage2-summary-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "class_names": [
+    "F-MARSH",
+    "F-MOUTHBAR",
+    "F-OFFSHORE",
+    "F-LOWER SHOREFACE",
+    "F-UPPER SHOREFACE",
+    "F-TIDAL BAR",
+    "F-TIDAL CHANNEL",
+    "F-TIDAL FLAT MUDDY",
+    "F-TIDAL FLAT SANDY"
+  ],
+  "class_count": 9,
+  "root_seed": 2693,
+  "expected_cells": 10,
+  "recorded_cells": 10,
+  "attempted_cells": 9,
+  "passed_cells": 9,
+  "skipped_cells": 1,
+  "failed_cells": 0,
+  "timeout_cells": 0,
+  "status_counts": {
+    "pass": 9,
+    "skip": 1,
+    "fail": 0,
+    "timeout": 0
+  },
+  "source_lock_sha256": "b91749e023fa5162e65acf5fac13fa6e381e797d50ae27810d038d27a9bd0e61",
+  "batch_sha256": "4ac53f54ba2b8def9d7edc40d71d114e0c173308311f9524b58bad5c99afaab8",
+  "split_hash": "f40478d51c1278f950b5cc4bd42bb28e0af916fa8ae9468db47bbee344d1e86d",
+  "results_sha256": "1da38854c220325ca10f6bd970dd613c96ae087418041f3facec1921ed646987",
+  "p_leaderboard_sha256": "4ebaded657eae63e4cd04995a78e2d9c2da9e8074b51e4b0bddac01c3bc73688",
+  "fixed_fold": {
+    "fold_id": 0,
+    "train_groups": [
+      "15/9-F-14",
+      "15/9-F-15",
+      "15/9-F-4"
+    ],
+    "validation_groups": [
+      "15/9-19"
+    ]
+  },
+  "p_lane": {
+    "status": "ranked",
+    "eligible_models": 9,
+    "primary_metric": "fixed_schema_macro_f1",
+    "leaderboard_file": "p5_stage2_p_leaderboard.json"
+  },
+  "s_lane": {
+    "status": "not_rankable",
+    "model_id": "ms_tcn2_dense",
+    "reason": {
+      "code": "lane_not_rankable",
+      "message": "S-lane smoke requires at least two real MD-ordered centers in one well",
+      "lane": "S",
+      "policy": "do not fabricate MD order and do not place S cells on the P leaderboard"
+    },
+    "included_in_p_leaderboard": false
+  },
+  "artifacts": {
+    "results": "p5_stage2_results.jsonl",
+    "summary": "p5_stage2_summary.json",
+    "p_leaderboard": "p5_stage2_p_leaderboard.json",
+    "runtime_checkpoints_committed": false
+  },
+  "development_only": true,
+  "frozen_test_accessed": false,
+  "formal_test_ranking": false
+}

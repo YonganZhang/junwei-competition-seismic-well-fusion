@@ -1,0 +1,98 @@
+# Source-tree caches and local environments.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+
+# Runtime outputs are excluded by default.  Keep only the canonical portable
+# evidence explicitly unignored below.  The HDF5 files live under
+# ../../../_data/processed/reservoir/ and are already covered by the project
+# root rule `_data/processed/`.
+_outputs/**
+!_outputs/metrics.json
+!_outputs/normalization.json
+!_outputs/run_manifest.json
+!_outputs/split_manifest.json
+!_outputs/loss_curve.png
+!_outputs/real_seismic_input.png
+!_outputs/test_depth_gt_vs_pred.png
+
+# P5 Stage-2 portable evidence only; raw fold arrays and checkpoints stay ignored.
+!_outputs/p5_stage2/
+_outputs/p5_stage2/**
+!_outputs/p5_stage2/p5_stage2_budget.json
+!_outputs/p5_stage2/p5_stage2_split_manifest.json
+!_outputs/p5_stage2/p5_stage2_results.jsonl
+!_outputs/p5_stage2/p5_stage2_summary.json
+!_outputs/p5_stage2/leaderboard_phif.json
+!_outputs/p5_stage2/leaderboard_klogh.json
+!_outputs/p5_stage2/leaderboard_sw.json
+
+# P5 Stage-3 portable confirmation evidence only. Per-cell OOF arrays,
+# checkpoints, contact sheets, and external-review scratch stay under the
+# ignored runtime/ subtree.
+!_outputs/p5_stage3/
+_outputs/p5_stage3/**
+!_outputs/p5_stage3/p5_stage3_budget.json
+!_outputs/p5_stage3/p5_stage3_split_manifest.json
+!_outputs/p5_stage3/p5_stage3_seed_manifest.json
+!_outputs/p5_stage3/p5_stage3_results.jsonl
+!_outputs/p5_stage3/p5_stage3_summary.json
+!_outputs/p5_stage3/p5_stage3_oof_manifest.json
+!_outputs/p5_stage3/p5_stage3_visualization_data.json
+!_outputs/p5_stage3/p5_stage3_visualization_manifest.json
+!_outputs/p5_stage3/leaderboard_phif_tabular_cpu.json
+!_outputs/p5_stage3/leaderboard_phif_seismic_3d_gpu.json
+!_outputs/p5_stage3/leaderboard_klogh_tabular_cpu.json
+!_outputs/p5_stage3/leaderboard_klogh_seismic_3d_gpu.json
+!_outputs/p5_stage3/leaderboard_sw_tabular_cpu.json
+!_outputs/p5_stage3/leaderboard_sw_seismic_3d_gpu.json
+!_outputs/p5_stage3/figures/
+_outputs/p5_stage3/figures/**
+!_outputs/p5_stage3/figures/*.png
+!_outputs/p5_stage3/figures/*.md
+
+# P5 Stage-4 known-holdout confirmation. Runtime HDF5 bridges, checkpoints,
+# contact sheets, and temporary external reviews remain ignored.
+!_outputs/p5_stage4_confirmation/
+_outputs/p5_stage4_confirmation/**
+!_outputs/p5_stage4_confirmation/*.json
+!_outputs/p5_stage4_confirmation/refit/
+_outputs/p5_stage4_confirmation/refit/**
+!_outputs/p5_stage4_confirmation/refit/*.json
+!_outputs/p5_stage4_confirmation/phif/
+_outputs/p5_stage4_confirmation/phif/**
+!_outputs/p5_stage4_confirmation/phif/*.json
+!_outputs/p5_stage4_confirmation/phif/*.csv
+!_outputs/p5_stage4_confirmation/phif/figures/
+!_outputs/p5_stage4_confirmation/phif/figures/*.png
+!_outputs/p5_stage4_confirmation/phif/figures/*.md
+!_outputs/p5_stage4_confirmation/klogh/
+_outputs/p5_stage4_confirmation/klogh/**
+!_outputs/p5_stage4_confirmation/klogh/*.json
+!_outputs/p5_stage4_confirmation/klogh/*.csv
+!_outputs/p5_stage4_confirmation/klogh/figures/
+!_outputs/p5_stage4_confirmation/klogh/figures/*.png
+!_outputs/p5_stage4_confirmation/klogh/figures/*.md
+!_outputs/p5_stage4_confirmation/sw/
+_outputs/p5_stage4_confirmation/sw/**
+!_outputs/p5_stage4_confirmation/sw/*.json
+!_outputs/p5_stage4_confirmation/sw/*.csv
+!_outputs/p5_stage4_confirmation/sw/figures/
+!_outputs/p5_stage4_confirmation/sw/figures/*.png
+!_outputs/p5_stage4_confirmation/sw/figures/*.md
+
+# P5.1 R0/R1 portable contract and development-only OOF diagnostics. Source
+# HDF5/NPZ, checkpoints, caches, and any future runtime subtree remain ignored.
+!_outputs/p5_r01/
+_outputs/p5_r01/**
+!_outputs/p5_r01/*.json
+!_outputs/p5_r01/*.jsonl
+!_outputs/p5_r01/phif/
+!_outputs/p5_r01/phif/*.csv
+!_outputs/p5_r01/klogh/
+!_outputs/p5_r01/klogh/*.csv
+!_outputs/p5_r01/sw/
+!_outputs/p5_r01/sw/*.csv

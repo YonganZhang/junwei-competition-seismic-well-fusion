@@ -1,0 +1,40 @@
+{
+  "schema_version": "lithofacies-p5-stage4-visualization-manifest-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "prior_test_consumed": true,
+  "fresh_blind": false,
+  "figures": [
+    {
+      "figure_id": "fixed9_confusion",
+      "status": "PASS",
+      "path": "figures/fixed9_confusion.png",
+      "sha256": "391b8f70d2f98e46ec684af61d5ad1b071955b00003ff8246958356099618557",
+      "bytes": 139513
+    },
+    {
+      "figure_id": "fixed9_per_class_pr_f1_support",
+      "status": "PASS",
+      "path": "figures/fixed9_per_class_pr_f1_support.png",
+      "sha256": "4dc9b25718aa4dcc245823d57b578cd031d3ccdd10944356375ca0aeff0f950f",
+      "bytes": 133928
+    },
+    {
+      "figure_id": "calibration_reliability",
+      "status": "PASS",
+      "path": "figures/calibration_reliability.png",
+      "sha256": "46c77103210143bb80029754f8d5f212030a33df2672c9ea6f67e746464fecc8",
+      "bytes": 69532
+    },
+    {
+      "figure_id": "continuous_depth_facies_track",
+      "status": "not_feasible",
+      "reason": "known F-5 archive has no finite center_md_m; midpoint fabrication forbidden",
+      "finite_md_rows": 0,
+      "path": "figures/continuous_depth_track_not_feasible.png",
+      "sha256": "3fed4e40e0a47bc1867eb1442c644e4059715bc4e02518ba403228cccffcc5a3",
+      "bytes": 31348
+    }
+  ]
+}

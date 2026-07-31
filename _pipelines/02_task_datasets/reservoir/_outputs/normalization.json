@@ -1,0 +1,65 @@
+{
+  "fit_source": "train families only",
+  "seismic": {
+    "method": "zscore",
+    "mean": -0.00027243904508496004,
+    "std": 0.020903632097802848,
+    "vmin": null,
+    "vmax": null
+  },
+  "logs": {
+    "GR": {
+      "method": "zscore",
+      "mean": 33.9298387639498,
+      "std": 16.868502217448462,
+      "vmin": null,
+      "vmax": null
+    },
+    "RT": {
+      "method": "zscore",
+      "mean": 1772.624189937052,
+      "std": 10205.698947111843,
+      "vmin": null,
+      "vmax": null
+    },
+    "NPHI": {
+      "method": "zscore",
+      "mean": 0.18623910444741681,
+      "std": 0.049441306758056656,
+      "vmin": null,
+      "vmax": null
+    },
+    "RHOB": {
+      "method": "zscore",
+      "mean": 2.339688317167718,
+      "std": 0.1492297881863209,
+      "vmin": null,
+      "vmax": null
+    }
+  },
+  "targets": {
+    "PHIF": {
+      "method": "zscore",
+      "mean": 0.17471829947004186,
+      "std": 0.07159169807989034,
+      "vmin": null,
+      "vmax": null
+    },
+    "log1p(KLOGH)": {
+      "method": "zscore",
+      "mean": 3.6983380863959576,
+      "std": 2.7031797601801584,
+      "vmin": null,
+      "vmax": null
+    },
+    "SW": {
+      "method": "zscore",
+      "mean": 0.4904034360521165,
+      "std": 0.3491168503049017,
+      "vmin": null,
+      "vmax": null
+    }
+  },
+  "max_normalization_roundtrip_error": 4.440892098500626e-16,
+  "max_log1p_roundtrip_error": 5.551115123125783e-17
+}

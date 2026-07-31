@@ -1,0 +1,11 @@
+{
+  "completed_cells": 0,
+  "expected_cells": 0,
+  "label_version": null,
+  "lane": "remaining_oil_infill",
+  "reason": "no label is defined; simulation case must not be presented as field truth",
+  "schema_version": "sweetspot-p5-stage3-leaderboard/v1",
+  "status": "not_rankable",
+  "task_id": "T5",
+  "test_accessed": false
+}

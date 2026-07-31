@@ -1,0 +1,58 @@
+{
+  "baseline_metrics_recomputed": {
+    "bias": -0.0018579539930215106,
+    "mae": 0.021413486381061376,
+    "rmse": 0.028449728170183285,
+    "rows": 10240
+  },
+  "candidate_metrics_recomputed": {
+    "bias": -0.0008705982452247328,
+    "mae": 0.021200329887150992,
+    "rmse": 0.0283199076498783,
+    "rows": 10240
+  },
+  "firewall_checks": {
+    "default_enabled": false,
+    "test_h5_opened": false,
+    "train_labels_per_fold": 512,
+    "validation_rows_per_fold": 2048
+  },
+  "fold_checks": [
+    {
+      "baseline_rmse": 0.027239559051045796,
+      "candidate_rmse": 0.027482850938207484,
+      "fold_id": 0,
+      "rows": 2048
+    },
+    {
+      "baseline_rmse": 0.02862760664541619,
+      "candidate_rmse": 0.028573923959312835,
+      "fold_id": 1,
+      "rows": 2048
+    },
+    {
+      "baseline_rmse": 0.018619291189668125,
+      "candidate_rmse": 0.017360498367522004,
+      "fold_id": 2,
+      "rows": 2048
+    },
+    {
+      "baseline_rmse": 0.028605049950670727,
+      "candidate_rmse": 0.028426906063594885,
+      "fold_id": 3,
+      "rows": 2048
+    },
+    {
+      "baseline_rmse": 0.03633833840670887,
+      "candidate_rmse": 0.036453171719984405,
+      "fold_id": 4,
+      "rows": 2048
+    }
+  ],
+  "indices_kji_sha256": "e631b41655dfddbd0f8f91d817d9a5e9666897a00a5c33b27ab4787835d19f21",
+  "prediction_artifact_sha256": "aa3dfe5fd925adb968cd3f09680bf7c8d3af62ad450087f72bef0ad598cf4d00",
+  "rows": 10240,
+  "schema_version": "reconstruction-p17-independent-verification/v1",
+  "status": "PASSED",
+  "summary_sha256": "2bcc5a4f6f0d12c6d404c248688e5d2bb48062935fa25066ae628e3e4f188171"
+}

@@ -1,0 +1,165 @@
+{
+  "development": {
+    "families": [
+      "15/9-19",
+      "15/9-F-1",
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "group_key": "mother_well_family",
+    "logo_validation_order": [
+      "15/9-F-12",
+      "15/9-19",
+      "15/9-F-11",
+      "15/9-F-1"
+    ]
+  },
+  "forbidden_inputs": [
+    "PHIF",
+    "PHIE",
+    "LFP_PHIE",
+    "KLOGH",
+    "KLOGH_NEW",
+    "KLOGV",
+    "SW",
+    "BVW",
+    "SWIRR",
+    "VSH",
+    "LFP_VSH"
+  ],
+  "frozen_test": {
+    "access": false,
+    "family": "15/9-F-15",
+    "fresh_blind_claim_allowed": false,
+    "loader_implemented": false,
+    "metrics_allowed": false
+  },
+  "input_whitelist": [
+    "ST0202_seismic_patch",
+    "GR",
+    "RT",
+    "NPHI",
+    "RHOB",
+    "GR_observed_mask",
+    "RT_observed_mask",
+    "NPHI_observed_mask",
+    "RHOB_observed_mask"
+  ],
+  "label_version": "property-phif-klogh-sw-cpi-v1",
+  "lanes": {
+    "monai_seismic_3d_gpu": {
+      "interface_view": "3D_tensor",
+      "lane_id": "seismic_3d_gpu",
+      "rank_scope": "seismic_3d_only",
+      "scientific_modality": "real_ST0202_seismic_patch",
+      "training_paradigm": "scratch"
+    },
+    "scratch_flat_fusion": {
+      "interface_view": "153D_flat_fusion",
+      "lane_id": "tabular_cpu",
+      "rank_scope": "scratch_flat_fusion_only",
+      "scientific_modality": "real_ST0202_seismic_patch_plus_raw_well_log_sequence",
+      "training_paradigm": "scratch"
+    },
+    "tabiclv2_tabular_pretrained": {
+      "interface_view": "153D_flat_fusion",
+      "lane_id": "tabular_pretrained_cpu",
+      "rank_scope": "pretrained_only",
+      "scientific_modality": "real_ST0202_seismic_patch_plus_raw_well_log_sequence",
+      "training_paradigm": "pretrained"
+    }
+  },
+  "phase": "P5.1_R0",
+  "r1_final_model_ranking": false,
+  "r1_model_config": {
+    "hpo": false,
+    "l2_strength": 0.001,
+    "learning_rate": 0.002,
+    "model_id": "reservoir_ridge",
+    "n_features": 153,
+    "update_steps": 64,
+    "update_unit": "full_fold_train_batch"
+  },
+  "r1_purpose": "protocol_mechanism_diagnostic_only",
+  "root_seed": 2693,
+  "schema_version": 1,
+  "source_filter_note": "the existing real-data builder retained rows where PHIF, KLOGH and SW were all finite; R1 still trains and reports each target independently and does not claim recovered extra rows",
+  "source_joint_complete_case_filter": true,
+  "source_lock_sha256": "fa109524a662fdc23cb793580206b9ca9dbcf58cc18a2947db0d6d3bb68a8269",
+  "status": "contract_frozen",
+  "tabiclv2": {
+    "local_checkpoint_provisioned": false,
+    "local_status": "artifact_unavailable",
+    "official_checkpoint_available": true,
+    "official_code_available": true,
+    "source_lock_entry": {
+      "dependencies": [
+        {
+          "distribution": "tabicl",
+          "import_name": "tabicl",
+          "version": "2.0.0"
+        }
+      ],
+      "dependency_group": "tabular-cpu",
+      "family": "in_context_tabular_foundation_model",
+      "license": "BSD-3-Clause",
+      "revision": "46b91961db4f8873dd049ec09990698a435e1e29",
+      "source_url": "https://github.com/soda-inria/tabicl",
+      "tag": "v2.0.0",
+      "weights": {
+        "auto_download": false,
+        "checkpoint_name": "tabicl-regressor-v2-20260212.ckpt",
+        "gated": false,
+        "integrity_failure_status": "integrity_mismatch",
+        "license": "BSD-3-Clause",
+        "license_status": "approved",
+        "missing_local_status": "artifact_unavailable",
+        "official_release_available": true,
+        "private": false,
+        "repository": "jingang/TabICL",
+        "repository_snapshot": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+        "required": true,
+        "sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+        "size_bytes": 114324594,
+        "source_url": "https://huggingface.co/jingang/TabICL/blob/4dcd344ece2c00be9e831fdd35bed57b5ad83e19/tabicl-regressor-v2-20260212.ckpt"
+      }
+    }
+  },
+  "targets": {
+    "KLOGH": {
+      "independent_from_other_target_masks": true,
+      "inverse_transform": "KLOGH_mD=expm1(log1p_output)",
+      "label_field": "KLOGH",
+      "mask": "isfinite(KLOGH) and KLOGH>=0 before log1p",
+      "model_domain": "log1p(KLOGH_mD)",
+      "physical_transform": "expm1",
+      "stored_index": 1,
+      "target_transform": "log1p(KLOGH_mD)",
+      "unit": "mD"
+    },
+    "PHIF": {
+      "independent_from_other_target_masks": true,
+      "inverse_transform": "identity",
+      "label_field": "PHIF",
+      "mask": "isfinite(PHIF)",
+      "model_domain": "identity",
+      "physical_transform": "identity",
+      "stored_index": 0,
+      "target_transform": "identity",
+      "unit": "fraction"
+    },
+    "SW": {
+      "independent_from_other_target_masks": true,
+      "inverse_transform": "identity",
+      "label_field": "SW",
+      "mask": "isfinite(SW)",
+      "model_domain": "identity",
+      "physical_transform": "identity",
+      "stored_index": 2,
+      "target_transform": "identity",
+      "unit": "fraction"
+    }
+  },
+  "track_id": "property",
+  "zero_training": true
+}

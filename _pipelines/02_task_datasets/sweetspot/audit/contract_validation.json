@@ -1,0 +1,33 @@
+{
+  "dataset_write_attempted": false,
+  "errors": [
+    "approval.approved=false；必须由军伟/指定领域专家批准",
+    "status 必须为 approved",
+    "合同仍含未决定占位符: output.classes.0, output.classes.1, output.probability_interpretation, allowed_source_fields.0.source, allowed_source_fields.0.field, label_construction.formula, label_construction.formula_field_refs.0.source, label_construction.formula_field_refs.0.field, label_construction.thresholds_not_applicable_reason, label_construction.weights_not_applicable_reason, label_construction.fit_domain.population, time_window.definition, time_window.leakage_cutoff, spatial_scale.coordinate_system, spatial_scale.vertical_domain, spatial_scale.resolution, spatial_scale.alignment_tolerance, class_rules.positive, class_rules.negative, class_rules.unlabeled, split_strategy.group_key, split_strategy.train_rule, split_strategy.validation_rule, split_strategy.test_rule, split_strategy.leakage_guards.0, inference_allowed_inputs.0.source, inference_allowed_inputs.0.field, metrics.0.name, metrics.0.aggregation",
+    "thresholds 为空时必须给出明确的 not-applicable 理由",
+    "weights 为空时必须给出明确的 not-applicable 理由",
+    "负样本规则未定义；不得把“非正样本”默认当负样本",
+    "正样本或未标注样本规则未完整定义",
+    "空间尺度 spatial_scale.coordinate_system 未定义",
+    "空间尺度 spatial_scale.vertical_domain 未定义",
+    "空间尺度 spatial_scale.resolution 未定义",
+    "空间尺度 spatial_scale.alignment_tolerance 未定义",
+    "井/空间 split 规则不完整",
+    "allowed_source_fields: 未知或不存在的真实字段 <REQUIRED: audited source id>.<REQUIRED: exact audited field>",
+    "label_construction.formula_field_refs: 未知或不存在的真实字段 <REQUIRED: audited source id>.<REQUIRED: exact audited field>",
+    "inference_allowed_inputs: 未知或不存在的真实字段 <REQUIRED: audited source id>.<REQUIRED: exact audited field>"
+  ],
+  "forbidden_dataset_dir_existed_before": false,
+  "forbidden_dataset_dir_exists_after": false,
+  "outputs_created": {
+    "checkpoint": false,
+    "labels": false,
+    "metrics": false,
+    "model": false,
+    "test_h5": false,
+    "train_h5": false
+  },
+  "spec_version": "0.1.0-draft",
+  "valid": false,
+  "validation_schema_version": "sweetspot-contract-validation/v1"
+}

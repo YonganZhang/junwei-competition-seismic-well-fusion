@@ -1,0 +1,15 @@
+{
+  "schema_version": "sweetspot-p5.1-r0-target-contract/v1",
+  "contract_version": "1.0.0", "target_id": "T3", "task_id": "sweetspot.p5.1.r01.t3.future_oil_30d", "head_name": "t3_future_30d_mean_oil",
+  "status": "runnable_if_development_audit_passes", "task_type": "regression", "semantic_name": "future_30_calendar_day_mean_oil", "truth_class": "observed_outcome", "field_truth": true,
+  "label": {"version": "future-exact-30-calendar-day-mean-oil-min24-v1", "formula": "mean(BORE_OIL_VOL on observed days t0+1..t0+30)", "horizon_calendar_days": 30, "minimum_observed_days": 24, "explicit_zero_retained": true, "missing_is_zero": false, "right_boundary_incomplete": "censored", "model_transform": "log1p"},
+  "units": "Sm3/day", "source_fields": ["BORE_OIL_VOL"],
+  "support": {"sample": "wellbore cutoff t0", "spatial_scale": "production wellbore", "time_scale": "30 calendar-day history ending t0 and exact future t0+1..t0+30"},
+  "censoring": "fewer than 24 observed oil days, incomplete right boundary, or unusable history excludes point-regression scoring",
+  "input_fields": ["BORE_OIL_VOL", "BORE_GAS_VOL", "BORE_WAT_VOL", "ON_STREAM_HRS", "AVG_DOWNHOLE_PRESSURE", "AVG_CHOKE_SIZE_P", "AVG_WHP_P"],
+  "split": {"strategy": "held_well_rolling_origin_horizon_purge", "group_key": "WELL_BORE_CODE", "root_seed": 2693, "test_access": "forbidden", "time_cutoff": {"feature_end": "t0", "target_start": "t0+1d", "target_end": "t0+30d", "purge_days": 30}},
+  "metrics": {"primary": ["mae", "rmse", "spearman"], "directions": {"mae": "minimize", "rmse": "minimize", "spearman": "maximize"}},
+  "approval": {"approved": true, "basis": "explicit_user_goal_directive", "scope": "R0 contract and R1 development-only mechanism check"},
+  "r1_lane": {"input_modality": "causal_production_history", "model": "robust_linear", "selection_status": "not_rankable"},
+  "warnings": ["Censored samples are excluded from point-regression scoring", "Missing observations are never imputed as target zero"]
+}

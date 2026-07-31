@@ -1,0 +1,242 @@
+{
+  "development_only": true,
+  "entries": [
+    {
+      "bootstrap_unit": "fold mean RMSE; 10000 deterministic resamples",
+      "completion_rate": 0.9333333333333333,
+      "eligible": true,
+      "expected_cells": 15,
+      "fold_mean_rmse": {
+        "0": 0.027239559050532134,
+        "1": 0.028627606599661366,
+        "2": 0.01861929119285821,
+        "3": 0.028605049759509893,
+        "4": 0.0363383382477217
+      },
+      "metrics": {
+        "mae": {
+          "mean": 0.021427786796390385,
+          "std": 0.003539262662446337
+        },
+        "rmse": {
+          "mean": 0.027932141107165555,
+          "std": 0.005830637960710058
+        },
+        "spectral_log_rmse": {
+          "mean": 0.5132480019407809,
+          "std": 0.09228612243263185
+        }
+      },
+      "model_id": "pykrige_ok3d",
+      "passed_cells": 14,
+      "rank": 1,
+      "resources": {
+        "max_peak_cuda_bytes": 0,
+        "max_peak_rss_kib": 795968,
+        "mean_wall_seconds": 43.16235791702223
+      },
+      "result_hashes": [
+        "c86e0fe245b477b20a79cbb128088e08ae2bc344bcaf9bdf10154e2b064cd57d",
+        "b64b5151f3c5a0c4407805e6ff3366d57029f1f10d2e128761c3c13cb9365aee",
+        "c3677db3fe53a5875af2b187e7ec6701020a8cdde0476fedc45bdff0725f36be",
+        "0733ce5b8cea7b61199a7a315040b4ae04bbd4f400e80e75149a7aad26cc7dad",
+        "14a23895a3f84703062523026086703656f0086e8adbe283c556cbf2ff55c867",
+        "3da16a4472b3b1d134b739ae37fcee45954b8de93aef807abe67f3ddab888888",
+        "96f2ca6db792105206f9c9cad31c420b4e64d1cfe06f9340662513b718a2272e",
+        "a0f64a54198cfcc86688d4e32f8bf2950f33f2ccfc7379ca3de8265a65e9e1cb",
+        "8d50d0ecea3398d5828aee545f7c9314d40d52ca1ba7508f852c5b95ce1102e9",
+        "2d5c7308713e6bf5c3301e06fdc884b524853ea1f5d5287fbd653ad5611e709a",
+        "e1941f7a8eeda2142de63baa1dc95723fddedce064c265a6649e9cb5f018e207",
+        "d8a384ef5957cf1da2e4680a493e053a84a9b075d7156a8c42b37f614221eed4",
+        "d1ac9b8884ff28b838ec51a0313ab70419385e1e56a5bf5445db305b52bfcb12",
+        "3a3331840887e3c2498baef7b1aa8ec994fe286632d2f33e4a1468395601476a"
+      ],
+      "rmse_95pct_bootstrap_ci": [
+        0.022613594619518885,
+        0.03297643607867172
+      ],
+      "seed_mean_rmse": {
+        "0": 0.027885968970056664,
+        "1": 0.027885968970056664,
+        "2": 0.028047571449937796
+      },
+      "seed_std_rmse": 7.61801395870072e-05,
+      "status_counts": {
+        "failed": 0,
+        "passed": 14,
+        "skipped": 0,
+        "timeout": 1
+      },
+      "worst_fold_rmse": 0.0363383382477217
+    },
+    {
+      "bootstrap_unit": "fold mean RMSE; 10000 deterministic resamples",
+      "completion_rate": 1.0,
+      "eligible": true,
+      "expected_cells": 15,
+      "fold_mean_rmse": {
+        "0": 0.028185830453056546,
+        "1": 0.02913391913505961,
+        "2": 0.017126037811557197,
+        "3": 0.02866698312077697,
+        "4": 0.037354425004046884
+      },
+      "metrics": {
+        "mae": {
+          "mean": 0.02156979153272308,
+          "std": 0.004338946934150103
+        },
+        "rmse": {
+          "mean": 0.02809343910489944,
+          "std": 0.00645810043810354
+        },
+        "spectral_log_rmse": {
+          "mean": 0.45673866769855953,
+          "std": 0.1002099396841875
+        }
+      },
+      "model_id": "gpytorch_svgp",
+      "passed_cells": 15,
+      "rank": 2,
+      "resources": {
+        "max_peak_cuda_bytes": 67996160,
+        "max_peak_rss_kib": 1725296,
+        "mean_wall_seconds": 1.536859711073339
+      },
+      "result_hashes": [
+        "b7da09550403ba2adf0967b33f74460a503f99754266386fc5365487d5c77aa3",
+        "dcd6a37c6e16f347c6671d8f8cd432dbf4e54b06413ad8999f1a847e6b1966ac",
+        "0273c13ce3c0a9a9bbf7b4c4d354795840125739c5d73fab75c15624d03b3130",
+        "82a6a77fccd35351021b035620e6b93b1d46fec24ac3d8f535324103cbca674c",
+        "5f0b7c46165035ca8571a169f7426c0ae4ccc4f9beefc9f065aac13341eb1b34",
+        "2f71074ea1681fed7c807d27121f0373ece403e4e4bc371615b844c251cf2a35",
+        "704fbb875f0af5c6076900c623cb6c51a90ac0c0911c5b4683d497b0ed483b34",
+        "a764b452f58d8c2d94702cfae32076e140b29a49d2942b07395a8d72d4ee5887",
+        "00e9c90b43f3e27d82fa256b4cddf61c366f0ccd649e515bfa92bf4b68584896",
+        "75c134c0ed390c7abe409ee9eb70401ff32493cec717510c53d47a2a38d31840",
+        "e6e4f38a70eb7c6c1b133b543dc037fa186b6bb2c9083a0463d1d6107d228943",
+        "c87e390bf6bbb7e5bffab9db96fd2b00e5d2d380908898130968e3c7c7cb919a",
+        "26b98aa71f1a4c21dd26e2d0706e8951a27dbe147372e299c7387df422cd80df",
+        "4f20913eb6aa9c934017a27afe5a532957515e7c7d19a0dcf7d50fbfba306e35",
+        "06e3c760f2850082ea8cf5296712fc53265e630d857b15079ca1e4d638a2f5bd"
+      ],
+      "rmse_95pct_bootstrap_ci": [
+        0.02183580313810163,
+        0.03387660492005136
+      ],
+      "seed_mean_rmse": {
+        "0": 0.02809194416813627,
+        "1": 0.027788924147858673,
+        "2": 0.028399448998703385
+      },
+      "seed_std_rmse": 0.0002492479682320183,
+      "status_counts": {
+        "failed": 0,
+        "passed": 15,
+        "skipped": 0,
+        "timeout": 0
+      },
+      "worst_fold_rmse": 0.037354425004046884
+    },
+    {
+      "bootstrap_unit": "fold mean RMSE; 10000 deterministic resamples",
+      "completion_rate": 1.0,
+      "eligible": true,
+      "expected_cells": 15,
+      "fold_mean_rmse": {
+        "0": 0.028829333791597838,
+        "1": 0.03212619648913775,
+        "2": 0.030049618209439483,
+        "3": 0.03416633472352456,
+        "4": 0.035416576296378115
+      },
+      "metrics": {
+        "mae": {
+          "mean": 0.024963821765704622,
+          "std": 0.0017154835978152362
+        },
+        "rmse": {
+          "mean": 0.03211761190201554,
+          "std": 0.0024564151039173534
+        },
+        "spectral_log_rmse": {
+          "mean": 0.3735604273815761,
+          "std": 0.03941267216789689
+        }
+      },
+      "model_id": "scipy_rbf_neighbors",
+      "passed_cells": 15,
+      "rank": 3,
+      "resources": {
+        "max_peak_cuda_bytes": 0,
+        "max_peak_rss_kib": 723716,
+        "mean_wall_seconds": 0.5352776093408466
+      },
+      "result_hashes": [
+        "afd0e03126a7cbcda0e088cdc37f60aaf2e50182e7fe1f7614258dc31cda4fb1",
+        "e4f0720a7a4e9c697404dfc91fb6d40170d6af414a95155cf36f7ebb43da58fd",
+        "a24f5abfed7355151f981d6d23b2fab38cf27799ddecd2f7b25ff27477ebb988",
+        "405093806e1272050ef8b9cc391053b60b03b38530eb5eb10bed5becad2fccbd",
+        "07495e919e2d7ec6b5309ad933c3121e5c2d2d9f7ed3c5779ee30703993ae9c1",
+        "83973a04cafaa86072e84b9117ee76fd35756915ba47fa46f061dc0ff55ed35c",
+        "36aa5571bdf224c20817676dc287ab6f3fe1ca2a6cdf37e909bc20cd5d06e56a",
+        "acaff16f6ae7296bc60b2ccafd7d65a9d8694935cedd26663ca2ab177cdfccc4",
+        "36584e4fe9773c53eb238938e88266298594c95697eb59a7a8a301dc90a9dc15",
+        "01d5335fa8e38adc3bc952fef7217e6c2633a42f191e2f84a03fa58733e71fa8",
+        "d72f06b2ae10bd8eeccf4692545bc0ac548f7e167d01a7b50b2ceab164804f19",
+        "3f07ee0cf1635b15fbbc2d7c751a8231efa506315c64065b2a83508b85813437",
+        "cc4f9a31e98825534e0090320924231fd9830a3d2704959248b7f7d4bcab2c7e",
+        "a67326dba924cab1999d21eab1fa96354f917fea11b7a5e657e512a154e5bfca",
+        "9ba9752a29e168a77d4068a979a9ba4143cae7c57f63ad9a5091ebc174081c06"
+      ],
+      "rmse_95pct_bootstrap_ci": [
+        0.029976820098242478,
+        0.03425840370578862
+      ],
+      "seed_mean_rmse": {
+        "0": 0.03211761190201555,
+        "1": 0.03211761190201555,
+        "2": 0.03211761190201555
+      },
+      "seed_std_rmse": 0.0,
+      "status_counts": {
+        "failed": 0,
+        "passed": 15,
+        "skipped": 0,
+        "timeout": 0
+      },
+      "worst_fold_rmse": 0.035416576296378115
+    }
+  ],
+  "expected_cells": 45,
+  "fold_ids": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "frozen_test_i_blocks_loaded": [],
+  "lane": "conditional",
+  "legal_completion_rate": 0.9777777777777777,
+  "metric_direction": "minimize",
+  "not_rankable_reason": null,
+  "passed_cells": 44,
+  "rankable": true,
+  "ranking_metric": "mean development OOF RMSE",
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "schema_version": "p5-stage3-reconstruction-leaderboard-v1",
+  "split_hash": "ffe1fddbfd3ef8e2a9e0b3f3942133226610c872e7da37460f070782cba700a6",
+  "task_id": "volve_porosity_conditional_reconstruction",
+  "tie_breakers": [
+    "worst_fold_rmse",
+    "seed_std_rmse",
+    "mean_wall_seconds",
+    "model_id"
+  ],
+  "track_id": "reconstruction"
+}

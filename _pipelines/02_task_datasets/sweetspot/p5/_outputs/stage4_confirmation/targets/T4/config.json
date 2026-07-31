@@ -1,0 +1,145 @@
+{
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "lane": "water_breakthrough",
+  "model_config": {
+    "iterations": 64,
+    "random_seed": 2693,
+    "thread_count": 1
+  },
+  "model_id": "catboost",
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-stage4-config/v1",
+  "selection_scope": "frozen Stage-3 development CV rank-1",
+  "source_lock": {
+    "license": "Apache-2.0",
+    "revision": "d7731e594bc9532f417a0b968065fe04394dec08",
+    "runtime": {
+      "accepted_version_prefixes": [
+        "1.2."
+      ],
+      "available": true,
+      "module": "catboost",
+      "reason_code": null,
+      "version": "1.2.10",
+      "version_allowed": true
+    }
+  },
+  "task_id": "T4",
+  "task_spec": {
+    "calibration_policy": {
+      "fit_scope": "OOF_only",
+      "method_candidates": [
+        "none",
+        "isotonic"
+      ]
+    },
+    "forbidden_inputs": [
+      "future_BORE_WAT_VOL",
+      "event_date",
+      "days_to_event",
+      "WATER_EVENT_WITHIN_30D"
+    ],
+    "group_keys": [
+      "well_bore_code"
+    ],
+    "guardrail_metrics": [],
+    "hpo": {
+      "optimization": "forbidden",
+      "root_seed": 2693,
+      "stage": "P5 Stage-4 known-holdout confirmation",
+      "test_feedback": "forbidden",
+      "winner_source": "P5 Stage-3 rank-1 at commit 5a1fefe"
+    },
+    "inference_transform": {
+      "WATER_EVENT_WITHIN_30D": "sigmoid"
+    },
+    "input_modalities": [
+      "causal_production_history"
+    ],
+    "input_whitelist": [
+      "history_7d_bore_oil_vol",
+      "history_7d_bore_gas_vol",
+      "history_7d_bore_wat_vol",
+      "history_7d_on_stream_hrs",
+      "history_7d_avg_downhole_pressure",
+      "history_7d_avg_choke_size_p",
+      "history_7d_avg_whp_p"
+    ],
+    "inverse_transform": {
+      "WATER_EVENT_WITHIN_30D": "identity"
+    },
+    "label_version": "first-7-consecutive-positive-water-days-v1",
+    "metadata": {
+      "class_count": 2,
+      "evidence_class": "previously_seen_reusable_holdout",
+      "fit_scope": "all_legal_development",
+      "fresh_blind": false,
+      "is_proxy": true,
+      "label_generated_by_p5": false,
+      "p4_status": "proxy_feasible",
+      "p5_label_mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+      "p5_stage": "known_holdout_confirmation",
+      "prior_test_consumed": true,
+      "proxy_semantics": "reported sustained positive-water event proxy; not a domain-approved water-cut threshold",
+      "proxy_warning": "reported positive water event; not a domain-approved water-cut threshold",
+      "single_target_head": true,
+      "status": "proxy_feasible",
+      "test_access": "forbidden",
+      "test_feedback_for_selection": "forbidden",
+      "test_group": "NO 15/9-F-15 D"
+    },
+    "metric_directions": {
+      "average_precision": "maximize",
+      "brier": "minimize",
+      "f1": "maximize"
+    },
+    "primary_metrics": [
+      "average_precision",
+      "brier"
+    ],
+    "required_figures": [
+      "risk_timeline",
+      "pr_curve",
+      "calibration",
+      "confusion_by_well"
+    ],
+    "secondary_metrics": [
+      "f1"
+    ],
+    "spatial_buffer": null,
+    "target_masks": {
+      "WATER_EVENT_WITHIN_30D": "pre_event_history_available_and_not_left_truncated"
+    },
+    "target_transform": {
+      "WATER_EVENT_WITHIN_30D": "identity"
+    },
+    "targets": [
+      "WATER_EVENT_WITHIN_30D"
+    ],
+    "task_id": "sweetspot.p5.stage4.t4.water_breakthrough",
+    "task_type": "binary",
+    "threshold_policy": {
+      "selection": "OOF_only",
+      "smoke_default": 0.5
+    },
+    "time_cutoff": {
+      "event": "first run of 7 consecutive reported days with BORE_WAT_VOL > 0",
+      "history_days": 7,
+      "post_event_inputs_forbidden": true,
+      "risk_horizon_days": 30
+    },
+    "track_id": "sweetspot",
+    "train_loss": {
+      "WATER_EVENT_WITHIN_30D": "bce_with_logits"
+    },
+    "units": {
+      "WATER_EVENT_WITHIN_30D": "binary"
+    },
+    "visualizer_id": "sweetspot_water_breakthrough"
+  },
+  "threshold": 0.5,
+  "threshold_fit_scope": "fixed_0.5; no holdout fit",
+  "update_steps": 64
+}

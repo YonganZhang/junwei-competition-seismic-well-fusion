@@ -1,0 +1,125 @@
+{
+  "calibration_policy": {
+    "poro": {
+      "kind": "none"
+    }
+  },
+  "forbidden_inputs": [
+    "label",
+    "target",
+    "targets",
+    "truth",
+    "test",
+    "test_metric",
+    "test_metrics",
+    "checkpoint",
+    "holdout",
+    "frozen",
+    "split",
+    "residual",
+    "distance",
+    "offset"
+  ],
+  "group_keys": [
+    "mode",
+    "split_hash",
+    "sample_id"
+  ],
+  "guardrail_metrics": [
+    "out_of_range_rate"
+  ],
+  "hpo": {
+    "enabled": false,
+    "reason": "frozen_P5_confirmation_only"
+  },
+  "inference_transform": {
+    "poro": {
+      "kind": "identity"
+    }
+  },
+  "input_modalities": [
+    "coordinates",
+    "seismic",
+    "3d_volume"
+  ],
+  "input_whitelist": [
+    "coordinates",
+    "seismic_amplitude",
+    "seismic_local_rms",
+    "seismic_vertical_gradient"
+  ],
+  "inverse_transform": {
+    "poro": {
+      "kind": "identity"
+    }
+  },
+  "label_version": "p6.private.reconstruction.v1",
+  "metadata": {
+    "development_only": true,
+    "evaluation_mode": "strict",
+    "field_generalization": false,
+    "fresh_blind": false,
+    "stage4_summary_hash": "ec9f0abb786f35a474eebf973cb150895204bcdbc2790bc84856a0b8e9f50059"
+  },
+  "metric_directions": {
+    "mae": "minimize",
+    "out_of_range_rate": "minimize",
+    "r2": "maximize",
+    "rmse": "minimize",
+    "spectral_log_rmse": "minimize"
+  },
+  "primary_metrics": [
+    "rmse"
+  ],
+  "required_figures": [
+    "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/strict/prediction_comparison.png",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/strict/prediction_comparison.pdf",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/strict/prediction_comparison.html",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/p5_stage3_reconstruction_strict.png",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/prediction_visualization_strict.png",
+    "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/confirmation.png"
+  ],
+  "secondary_metrics": [
+    "mae",
+    "r2",
+    "spectral_log_rmse"
+  ],
+  "spatial_buffer": {
+    "k_blocks": 1,
+    "shared_k4_fold": 4
+  },
+  "target_masks": {
+    "poro": "evaluation_mask"
+  },
+  "target_transform": {
+    "poro": {
+      "kind": "identity"
+    }
+  },
+  "targets": [
+    "poro"
+  ],
+  "task_id": "volve_porosity_strict_private_evidence",
+  "task_type": "reconstruction",
+  "threshold_policy": {
+    "poro": {
+      "clip": [
+        0.0,
+        1.0
+      ],
+      "kind": "continuous"
+    }
+  },
+  "time_cutoff": null,
+  "track_id": "reconstruction",
+  "train_loss": {
+    "poro": {
+      "kind": "identity",
+      "loss": "none"
+    }
+  },
+  "units": {
+    "poro": "fraction"
+  },
+  "visualizer_id": "reconstruction_p6_private_visualizer"
+}

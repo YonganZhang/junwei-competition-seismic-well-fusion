@@ -1,0 +1,338 @@
+{
+  "cross_lane_ranking": false,
+  "direction": "minimize",
+  "lane_isolation": "strict",
+  "lanes": {
+    "seismic_3d_gpu": {
+      "candidate_count": 1,
+      "cross_lane_ranking": false,
+      "direction": "minimize",
+      "eligibility": "same modality lane, same frozen fold, development_piloted, finite target metric",
+      "entries": [
+        {
+          "input_modalities": [
+            "seismic_patch"
+          ],
+          "model_domain_R2": -0.891684040194922,
+          "model_domain_RMSE": 3.2248821108739194,
+          "model_id": "monai_densenet3d_regressor",
+          "physical_MAE": 120.3905647001317,
+          "physical_R2": -0.2304186500060348,
+          "physical_RMSE": 278.0854518216097,
+          "valid_count": 81,
+          "wall_seconds": 4.394045521970838,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 2.260670580079112,
+              "R2": -0.891684040194922,
+              "R2_reason": null,
+              "RMSE": 3.2248821108739194,
+              "bias": -2.2174898556916527
+            },
+            "physical": {
+              "MAE": 120.3905647001317,
+              "R2": -0.2304186500060348,
+              "R2_reason": null,
+              "RMSE": 278.0854518216097,
+              "bias": -120.34409529265453
+            },
+            "valid_count": 81
+          }
+        }
+      ],
+      "modality_lane": "seismic_3d_gpu",
+      "primary_metric": "physical_RMSE",
+      "schema_version": 1,
+      "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+      "stage": 2,
+      "status": "not_rankable",
+      "target": "KLOGH",
+      "task_id": "reservoir_property_stage2_klogh_seismic_3d_gpu",
+      "test_access": false,
+      "track_id": "property"
+    },
+    "tabular_cpu": {
+      "candidate_count": 8,
+      "cross_lane_ranking": false,
+      "direction": "minimize",
+      "eligibility": "same modality lane, same frozen fold, development_piloted, finite target metric",
+      "entries": [
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.7524820830042069,
+          "model_domain_RMSE": 1.1665218126296528,
+          "model_id": "lightgbm_regressor",
+          "physical_MAE": 93.9151222034918,
+          "physical_R2": 0.1737705700432065,
+          "physical_RMSE": 227.87786749494668,
+          "rank": 1,
+          "valid_count": 81,
+          "wall_seconds": 2.3426139019429684,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 1.0095475468052355,
+              "R2": 0.7524820830042069,
+              "R2_reason": null,
+              "RMSE": 1.1665218126296528,
+              "bias": -0.023378746162955145
+            },
+            "physical": {
+              "MAE": 93.9151222034918,
+              "R2": 0.1737705700432065,
+              "R2_reason": null,
+              "RMSE": 227.87786749494668,
+              "bias": -91.12609938612759
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.7770065361119978,
+          "model_domain_RMSE": 1.10722430390965,
+          "model_id": "extra_trees_regressor",
+          "physical_MAE": 94.77262362731352,
+          "physical_R2": 0.1533142656187323,
+          "physical_RMSE": 230.68159082434008,
+          "rank": 2,
+          "valid_count": 81,
+          "wall_seconds": 1.909974802751094,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 0.8934355621791188,
+              "R2": 0.7770065361119978,
+              "R2_reason": null,
+              "RMSE": 1.10722430390965,
+              "bias": -0.13245204917001693
+            },
+            "physical": {
+              "MAE": 94.77262362731352,
+              "R2": 0.1533142656187323,
+              "R2_reason": null,
+              "RMSE": 230.68159082434008,
+              "bias": -92.65375928376596
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.6017044495042907,
+          "model_domain_RMSE": 1.4797633632753766,
+          "model_id": "xgboost_regressor",
+          "physical_MAE": 97.18031404111039,
+          "physical_R2": 0.1402877271466365,
+          "physical_RMSE": 232.44937336859067,
+          "rank": 3,
+          "valid_count": 81,
+          "wall_seconds": 0.6804993567056954,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 1.2977438934411807,
+              "R2": 0.6017044495042907,
+              "R2_reason": null,
+              "RMSE": 1.4797633632753766,
+              "bias": 0.2201612162357771
+            },
+            "physical": {
+              "MAE": 97.18031404111039,
+              "R2": 0.1402877271466365,
+              "R2_reason": null,
+              "RMSE": 232.44937336859067,
+              "bias": -90.73051595991615
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.698167585029861,
+          "model_domain_RMSE": 1.2881679290582508,
+          "model_id": "hist_gradient_boosting_regressor",
+          "physical_MAE": 96.82362017078788,
+          "physical_R2": 0.12559089473308382,
+          "physical_RMSE": 234.42782170480416,
+          "rank": 4,
+          "valid_count": 81,
+          "wall_seconds": 1.70713995071128,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 1.1012653146583473,
+              "R2": 0.698167585029861,
+              "R2_reason": null,
+              "RMSE": 1.2881679290582508,
+              "bias": 0.036731134634598456
+            },
+            "physical": {
+              "MAE": 96.82362017078788,
+              "R2": 0.12559089473308382,
+              "R2_reason": null,
+              "RMSE": 234.42782170480416,
+              "bias": -93.28921733474044
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.6916198976087732,
+          "model_domain_RMSE": 1.3020651569262993,
+          "model_id": "tabm_regressor",
+          "physical_MAE": 96.63109603967239,
+          "physical_R2": 0.10923141981993256,
+          "physical_RMSE": 236.61063518654527,
+          "rank": 5,
+          "valid_count": 81,
+          "wall_seconds": 4.828542402945459,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 1.0369712110597318,
+              "R2": 0.6916198976087732,
+              "R2_reason": null,
+              "RMSE": 1.3020651569262993,
+              "bias": 0.07309724661280159
+            },
+            "physical": {
+              "MAE": 96.63109603967239,
+              "R2": 0.10923141981993256,
+              "R2_reason": null,
+              "RMSE": 236.61063518654527,
+              "bias": -90.16234989130011
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": 0.5298795040823601,
+          "model_domain_RMSE": 1.6076597400831425,
+          "model_id": "catboost_regressor",
+          "physical_MAE": 102.49370231253592,
+          "physical_R2": 0.07086367831139684,
+          "physical_RMSE": 241.6526351620706,
+          "rank": 6,
+          "valid_count": 81,
+          "wall_seconds": 1.9746360420249403,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 1.4452716496249587,
+              "R2": 0.5298795040823601,
+              "R2_reason": null,
+              "RMSE": 1.6076597400831425,
+              "bias": 0.3986746066212349
+            },
+            "physical": {
+              "MAE": 102.49370231253592,
+              "R2": 0.07086367831139684,
+              "R2_reason": null,
+              "RMSE": 241.6526351620706,
+              "bias": -93.90781363491332
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -0.46384612421265703,
+          "model_domain_RMSE": 2.8368557743763065,
+          "model_id": "ft_transformer_regressor",
+          "physical_MAE": 120.03408393095633,
+          "physical_R2": -0.2266713830781153,
+          "physical_RMSE": 277.6616712524258,
+          "rank": 7,
+          "valid_count": 81,
+          "wall_seconds": 5.076281358953565,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 2.026936412334764,
+              "R2": -0.46384612421265703,
+              "R2_reason": null,
+              "RMSE": 2.8368557743763065,
+              "bias": -1.6049603439787012
+            },
+            "physical": {
+              "MAE": 120.03408393095633,
+              "R2": -0.2266713830781153,
+              "R2_reason": null,
+              "RMSE": 277.6616712524258,
+              "bias": -119.37658317413963
+            },
+            "valid_count": 81
+          }
+        },
+        {
+          "input_modalities": [
+            "tabular"
+          ],
+          "model_domain_R2": -1.0124151409494186,
+          "model_domain_RMSE": 3.326199786538362,
+          "model_id": "realmlp_regressor",
+          "physical_MAE": 120.66280876801741,
+          "physical_R2": -0.2310077847635279,
+          "physical_RMSE": 278.15201867637217,
+          "rank": 8,
+          "valid_count": 81,
+          "wall_seconds": 44.05430252989754,
+          "worst_mother_family": {
+            "family_id": "15/9-F-12",
+            "model_domain": {
+              "MAE": 2.3677750597305502,
+              "R2": -1.0124151409494186,
+              "R2_reason": null,
+              "RMSE": 3.326199786538362,
+              "bias": -2.175093846079422
+            },
+            "physical": {
+              "MAE": 120.66280876801741,
+              "R2": -0.2310077847635279,
+              "R2_reason": null,
+              "RMSE": 278.15201867637217,
+              "bias": -120.06699891184633
+            },
+            "valid_count": 81
+          }
+        }
+      ],
+      "modality_lane": "tabular_cpu",
+      "primary_metric": "physical_RMSE",
+      "schema_version": 1,
+      "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+      "stage": 2,
+      "status": "rankable",
+      "target": "KLOGH",
+      "task_id": "reservoir_property_stage2_klogh_tabular_cpu",
+      "test_access": false,
+      "track_id": "property"
+    }
+  },
+  "primary_metric": "physical_RMSE",
+  "schema_version": 2,
+  "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+  "stage": 2,
+  "target": "KLOGH",
+  "task_id": "reservoir_property_stage2_klogh",
+  "test_access": false,
+  "track_id": "property"
+}

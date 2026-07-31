@@ -1,0 +1,201 @@
+{
+  "joint_fold_policy": {
+    "p4_split_manifest_sha256": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232",
+    "p4_task_spec_sha256": "550f28fa9771095371f642f27e46d5586c71bfeaa0dec3ea678da5463602f0e2",
+    "reason": "The joint three-output P5 adapter uses the first target in frozen TaskSpec order; the fold is P4 PHIF fold 0 and is never reselected by model evidence.",
+    "source_fold_id": 0,
+    "source_label_version": "target6-phif-cpi-v1",
+    "source_target": "PHIF"
+  },
+  "metric_policy": {
+    "cross_lane_ranking_forbidden": true,
+    "direction": "minimize",
+    "klogh_model_domain": "log1p(KLOGH_mD)",
+    "leaderboards_are_modality_lane_specific": true,
+    "leaderboards_are_target_specific": true,
+    "minimum_candidates_to_rank_per_lane": 2,
+    "primary_metric": "physical_RMSE",
+    "required": [
+      "physical_MAE",
+      "physical_RMSE",
+      "physical_R2",
+      "model_domain_MAE",
+      "model_domain_RMSE",
+      "model_domain_R2",
+      "worst_mother_family"
+    ],
+    "targets": [
+      "PHIF",
+      "KLOGH",
+      "SW"
+    ]
+  },
+  "model_budgets": {
+    "catboost_regressor": {
+      "batch_size": 192,
+      "config": {
+        "depth": 4,
+        "iterations": 32,
+        "thread_count": 1
+      },
+      "kind": "tree",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "boosting_rounds_per_target"
+    },
+    "extra_trees_regressor": {
+      "batch_size": 192,
+      "config": {
+        "n_estimators": 32,
+        "n_jobs": 1
+      },
+      "kind": "tree",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "trees_per_target"
+    },
+    "ft_transformer_regressor": {
+      "batch_size": 64,
+      "config": {
+        "attention_n_heads": 4,
+        "d_block": 32,
+        "n_blocks": 2
+      },
+      "kind": "neural_tabular",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 600,
+      "update_steps": 40,
+      "update_unit": "optimizer_steps"
+    },
+    "hist_gradient_boosting_regressor": {
+      "batch_size": 192,
+      "config": {
+        "max_iter": 32
+      },
+      "kind": "tree",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "boosting_rounds_per_target"
+    },
+    "lightgbm_regressor": {
+      "batch_size": 192,
+      "config": {
+        "n_estimators": 32,
+        "n_jobs": 1
+      },
+      "kind": "tree",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "boosting_rounds_per_target"
+    },
+    "monai_densenet3d_regressor": {
+      "batch_size": 32,
+      "config": {
+        "block_config": [
+          2,
+          2
+        ],
+        "growth_rate": 8,
+        "init_features": 8
+      },
+      "kind": "neural_3d",
+      "lane": "seismic_3d_gpu",
+      "max_wall_seconds": 900,
+      "update_steps": 12,
+      "update_unit": "optimizer_steps"
+    },
+    "realmlp_regressor": {
+      "batch_size": 64,
+      "config": {
+        "batch_size": 64,
+        "hidden_sizes": [
+          64,
+          64
+        ],
+        "n_epochs": 4,
+        "n_threads": 1
+      },
+      "kind": "neural_tabular",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 600,
+      "update_steps": 36,
+      "update_unit": "estimated_optimizer_steps_across_three_independent_targets"
+    },
+    "tabiclv2_regressor": {
+      "batch_size": 192,
+      "config": {
+        "allow_auto_download": false
+      },
+      "kind": "gated_weight",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 300,
+      "update_steps": 0,
+      "update_unit": "license_gate"
+    },
+    "tabm_regressor": {
+      "batch_size": 64,
+      "config": {
+        "d_block": 64,
+        "k": 4,
+        "n_blocks": 2
+      },
+      "kind": "neural_tabular",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 600,
+      "update_steps": 40,
+      "update_unit": "optimizer_steps"
+    },
+    "xgboost_regressor": {
+      "batch_size": 192,
+      "config": {
+        "n_estimators": 32,
+        "n_jobs": 1
+      },
+      "kind": "tree",
+      "lane": "tabular_cpu",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "boosting_rounds_per_target"
+    }
+  },
+  "model_order": [
+    "catboost_regressor",
+    "lightgbm_regressor",
+    "tabm_regressor",
+    "xgboost_regressor",
+    "extra_trees_regressor",
+    "hist_gradient_boosting_regressor",
+    "realmlp_regressor",
+    "ft_transformer_regressor",
+    "tabiclv2_regressor",
+    "monai_densenet3d_regressor"
+  ],
+  "protocol_sha256": "041521f3057c99b4cbac8bef5c28d1a368b9f47d6b08d4c6197cd95813151b66",
+  "root_seed": 2693,
+  "sample_budget": {
+    "max_train_samples": 192,
+    "max_validation_samples": 81,
+    "preprocessing_fit": "selected fold-train only",
+    "same_selected_ids_for_every_candidate": true,
+    "selection": "deterministic depth-spread within each frozen mother-well family"
+  },
+  "schema_version": 1,
+  "stage": 2,
+  "task_id": "reservoir_property_p5_three_independent_targets",
+  "test_firewall": {
+    "frozen_test_family": "15/9-F-15",
+    "runner_accepts_test_path": false,
+    "test_metrics_allowed": false
+  },
+  "tiny_gate": {
+    "checkpoint_roundtrip": true,
+    "included_in_pilot_update_budget": false,
+    "optimizer_steps": 2,
+    "samples": 24
+  },
+  "track_id": "property"
+}

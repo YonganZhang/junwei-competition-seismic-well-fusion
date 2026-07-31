@@ -1,0 +1,36 @@
+{
+  "all_paths_portable": true,
+  "artifacts": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_conclusion.json",
+      "sha256": "b1235f1b73e0f7dbd35661bee618786ae22dc77d3e3d4468f19b55e782ce12b2",
+      "size_bytes": 622
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_resource_log.json",
+      "sha256": "b3826fa00c8efc9826591217ee163adb729702e6fd2b1f18ec8633312a389d80",
+      "size_bytes": 2181
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_failure_log.json",
+      "sha256": "5a6aeef4a9cd3edc563046998f364adaa9e72f8369bca1aac0b868948559e0d1",
+      "size_bytes": 1108
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_evidence_index.json",
+      "sha256": "0dcd6aee818cc9209d6d8a8c94aa4a00d0db0c272ac6adc6f13f1b63f7ec8168",
+      "size_bytes": 1689
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/figures/proxy_only_qc.png",
+      "sha256": "b544f3495f230a2eb2fed9e8f945da2f1c8a52bfce4d0ce08a80b8a831a7f945",
+      "size_bytes": 169312
+    }
+  ],
+  "no_downloads": true,
+  "no_test_access": true,
+  "no_training": true,
+  "package": "sweetspot-p6-gaia-dagt-private",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p6-gaia-dagt-artifact-manifest/v1"
+}

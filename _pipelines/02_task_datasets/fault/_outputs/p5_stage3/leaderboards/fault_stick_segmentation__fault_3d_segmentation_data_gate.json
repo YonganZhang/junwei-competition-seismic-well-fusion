@@ -1,0 +1,25 @@
+{
+  "completed_training_cells": 0,
+  "completion_rate": null,
+  "entries": [],
+  "expected_training_cells": 0,
+  "frozen_top_models": [],
+  "lane": "fault_3d_segmentation_data_gate",
+  "minimum_rankable_rate": 0.8,
+  "protocol": "fault-p5-stage3-leaderboard-v1",
+  "ranking_metrics": null,
+  "reason": "no scientifically legal training cells exist",
+  "reason_code": "NO_VALID_FAULT_DEVELOPMENT_FOLDS",
+  "status": "not_rankable",
+  "task_id": "fault_stick_segmentation",
+  "test_firewall": {
+    "blind_audit_used_for": "coverage/firewall status only",
+    "frozen_test_accessed": false,
+    "historical_test_role": "regression_evidence_only",
+    "runner_accepts_test_inputs": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault"
+}

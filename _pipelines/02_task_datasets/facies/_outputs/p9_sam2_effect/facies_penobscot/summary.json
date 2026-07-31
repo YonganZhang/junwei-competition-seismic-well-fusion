@@ -1,0 +1,88 @@
+{
+  "comparison": {
+    "pretrained_macro_fold_miou": 0.07675446038321675,
+    "pretrained_minus_random_init": 0.00011160253276286392,
+    "pretrained_minus_strong_baseline": -0.055266951363673836,
+    "same_architecture_random_init_macro_fold_miou": 0.07664285785045388,
+    "strong_baseline_macro_fold_miou": 0.13202141174689058,
+    "strong_baseline_model_id": "smp_deeplabv3plus_r18"
+  },
+  "decision": {
+    "default_enabled": false,
+    "state": "CONNECTED_NO_PROMOTION"
+  },
+  "evaluation": {
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "frozen_test_accessed": false,
+    "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+    "max_train_samples": 32,
+    "max_updates": 40,
+    "max_validation_samples": 16
+  },
+  "fold_results": [
+    {
+      "fold_id": 0,
+      "pretrained_last_train_loss": 0.6015605330467224,
+      "pretrained_miou": 0.07287120819091797,
+      "random_init_last_train_loss": 0.5838400721549988,
+      "random_init_miou": 0.07287120819091797,
+      "train_samples": 32,
+      "validation_samples": 16
+    },
+    {
+      "fold_id": 1,
+      "pretrained_last_train_loss": 1.3225879669189453,
+      "pretrained_miou": 0.09067709110802034,
+      "random_init_last_train_loss": 1.4185588359832764,
+      "random_init_miou": 0.08899497985839844,
+      "train_samples": 32,
+      "validation_samples": 16
+    },
+    {
+      "fold_id": 2,
+      "pretrained_last_train_loss": 0.860985279083252,
+      "pretrained_miou": 0.09305820824458683,
+      "random_init_last_train_loss": 0.9864485859870911,
+      "random_init_miou": 0.09418230683039444,
+      "train_samples": 32,
+      "validation_samples": 16
+    },
+    {
+      "fold_id": 3,
+      "pretrained_last_train_loss": 1.8497107028961182,
+      "pretrained_miou": 0.0810251235961914,
+      "random_init_last_train_loss": 2.1231577396392822,
+      "random_init_miou": 0.0810251235961914,
+      "train_samples": 32,
+      "validation_samples": 16
+    },
+    {
+      "fold_id": 4,
+      "pretrained_last_train_loss": 1.674968957901001,
+      "pretrained_miou": 0.04614067077636719,
+      "random_init_last_train_loss": 1.6746865510940552,
+      "random_init_miou": 0.04614067077636719,
+      "train_samples": 32,
+      "validation_samples": 16
+    }
+  ],
+  "model": {
+    "checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5",
+    "model_id": "facebook/sam2.1-hiera-base-plus",
+    "real_pretrained_weights_loaded": true,
+    "trainable_scope": "fpn_projections_and_semantic_head"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "duration_seconds": 53.604861818952486,
+    "raw_predictions_persisted": false
+  },
+  "schema_version": "facies-p9-sam2-effect/v1",
+  "task_id": "facies_penobscot"
+}

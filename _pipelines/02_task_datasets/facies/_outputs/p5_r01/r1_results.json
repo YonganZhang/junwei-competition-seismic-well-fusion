@@ -1,0 +1,1292 @@
+{
+  "config": {
+    "batch_size": 2,
+    "learning_rate": 0.001,
+    "root_seed": 2693,
+    "stride": 64,
+    "train_sections": 1,
+    "updates": 2,
+    "validation_sections": 1,
+    "weight_decay": 0.0,
+    "window_size": 128
+  },
+  "data_root": "provided_at_runtime_not_serialized",
+  "evidence_class": "development_protocol_mechanism_only",
+  "fresh_blind": false,
+  "hpo": false,
+  "known_holdout_predictions_or_metrics_read": false,
+  "model_ranking_published": false,
+  "physical_test_h5_opened": false,
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "schema_version": "facies-p5.1-r01-v1",
+  "stage": "R1",
+  "task_ids": [
+    "facies_f3",
+    "facies_penobscot"
+  ],
+  "tasks": {
+    "facies_f3": {
+      "common_full_development_validation_inlines": [
+        489
+      ],
+      "comparison": {
+        "legal_minus_leaky": {
+          "accuracy": 4.55205502524203e-05,
+          "macro_f1": 1.1029073583163074e-05,
+          "miou": 6.8302801619520015e-06
+        },
+        "primary_observation": "quantify_metric_change_when_random_overlapping_windows_contaminate_a_common_development_evaluation_block",
+        "purpose": "protocol_mechanism_only_not_model_ranking"
+      },
+      "config": {
+        "batch_size": 2,
+        "learning_rate": 0.001,
+        "root_seed": 2693,
+        "stride": 64,
+        "train_sections": 1,
+        "updates": 2,
+        "validation_sections": 1,
+        "weight_decay": 0.0,
+        "window_size": 128
+      },
+      "config_hash": "08433a5d9d3f810ed57150fbe6a63d4d69c50337db75d864791b1689242dd7a6",
+      "evidence_class": "development_protocol_mechanism_only",
+      "figure": "facies_f3_r1_protocol_comparison.png",
+      "firewall": {
+        "allowed_scope": "raw_development_inlines_only",
+        "evidence_class": "development_protocol_mechanism_only",
+        "fresh_blind": false,
+        "outer_payloads_read": 0,
+        "outer_sample_index_built": false,
+        "physical_test_h5_opened": false,
+        "requested_inline_ids": [
+          463,
+          489
+        ],
+        "requested_payload_count": 2,
+        "test_archive_opened": false,
+        "test_labels_read": false,
+        "test_metrics_read": false,
+        "test_predictions_read": false
+      },
+      "fresh_blind": false,
+      "label_version": "f3-zenodo-1471548-ids-0-9-v1",
+      "lanes": {
+        "leaky_random_overlap": {
+          "diagnostic_only": true,
+          "evidence_class": "development_protocol_mechanism_only",
+          "fresh_blind": false,
+          "lane_id": "leaky_random_overlap",
+          "metrics": {
+            "accuracy": 0.1521433351086348,
+            "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                16900,
+                218,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                10527,
+                8493,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                38407,
+                29412,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                0,
+                0,
+                0,
+                13688,
+                11173,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                10,
+                0,
+                0,
+                0,
+                18950,
+                16432,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                5,
+                0,
+                0,
+                0,
+                34983,
+                26762,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                9,
+                0,
+                0,
+                0,
+                37561,
+                31863,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                84,
+                0,
+                0,
+                0,
+                20493,
+                19612,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                237,
+                0,
+                0,
+                0,
+                40401,
+                31403,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                437,
+                0,
+                0,
+                0,
+                17446,
+                13852,
+                0,
+                0,
+                0
+              ]
+            ],
+            "coverage_by_inline": [
+              {
+                "blend": "uniform_mean_raw_logits",
+                "covered_unique_voxels": 439362,
+                "duplicate_prediction_assignments": 1166270,
+                "inline": 489,
+                "max_predictions_per_voxel": 9,
+                "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+                "min_predictions_per_voxel": 1,
+                "unique_scored_voxels": 439362,
+                "valid_voxels": 439362
+              }
+            ],
+            "coverage_fraction": 1.0,
+            "duplicate_prediction_assignments_before_blend": 1166270,
+            "evaluated_pixels": 439362,
+            "fixed_macro_f1": 0.04712708283522492,
+            "full_volume_inline_count": 1,
+            "full_volume_valid_voxels": 439362,
+            "ignored_pixels": 0,
+            "macro_f1": 0.04712708283522492,
+            "miou": 0.026718915143037092,
+            "per_class_f1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.2248944089795761,
+              0.24637641937267304,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_class_iou": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.12669353874903574,
+              0.14049561268133515,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_class_support": [
+              17118,
+              19020,
+              67819,
+              24865,
+              35392,
+              61750,
+              69433,
+              40189,
+              72041,
+              31735
+            ],
+            "unique_scored_voxels": 439362
+          },
+          "native_random_patch_overlap": {
+            "exact_sample_id_overlap": 0,
+            "intersecting_rectangle_pairs": 404,
+            "section_overlap_count": 2,
+            "shared_inline_ids": [
+              463,
+              489
+            ],
+            "train_window_count": 98,
+            "training_assignments_on_shared_voxels": 1337856,
+            "unique_shared_voxels": 683648,
+            "validation_window_count": 98
+          },
+          "overlap_audit": {
+            "exact_sample_id_overlap": 48,
+            "intersecting_rectangle_pairs": 449,
+            "section_overlap_count": 1,
+            "shared_inline_ids": [
+              489
+            ],
+            "train_window_count": 98,
+            "training_assignments_on_shared_voxels": 786432,
+            "unique_shared_voxels": 383808,
+            "validation_window_count": 98
+          },
+          "preprocessing": {
+            "class_histogram": [
+              32256,
+              35840,
+              200132,
+              103350,
+              150698,
+              252041,
+              246280,
+              188218,
+              300927,
+              95890
+            ],
+            "class_weight_rule": "inverse_sqrt_train_only_clipped_0.2_5.0",
+            "class_weights": [
+              1.8475875854492188,
+              1.7527755498886108,
+              0.7417405843734741,
+              1.0321791172027588,
+              0.854784369468689,
+              0.6609593033790588,
+              0.6686452031135559,
+              0.7648561000823975,
+              0.6048946380615234,
+              1.0715776681900024
+            ],
+            "fit_sample_ids_hash": "cd2b479f9655d7565fe5faf027357b5d881321d98a648e5f0e37e8ad0d64c230",
+            "fit_scope": "lane_train_windows_only",
+            "fit_window_count": 98,
+            "normalization": {
+              "mean": 1.4076027870178223,
+              "method": "zscore",
+              "std": 2431.317138671875,
+              "vmax": null,
+              "vmin": null
+            },
+            "normalization_roundtrip_max_abs_error": 0.00048828125,
+            "target_transform": "identity_integer_ids",
+            "threshold_or_calibration_fit": "none"
+          },
+          "rankable": false,
+          "split_protocol": "overlapping_windows_then_random_patch_split_intentionally_invalid",
+          "status": "completed",
+          "test_archive_opened": false,
+          "test_labels_read": false,
+          "training": {
+            "activation": "none_training_argmax_of_mean_logits_inference",
+            "batch_size": 2,
+            "checkpoint_written": false,
+            "final_loss": 2.6830391883850098,
+            "hpo": false,
+            "initial_loss": 2.0391311645507812,
+            "learning_rate": 0.001,
+            "loss": "weighted_cross_entropy_on_raw_logits",
+            "loss_history": [
+              2.0391311645507812,
+              2.6830391883850098
+            ],
+            "model_id": "facies_linear_pixel",
+            "model_source": "_models/facies/facies_linear_pixel.py",
+            "optimizer": "AdamW",
+            "root_seed": 2693,
+            "schedule_hash": "bf121b8438f280c56410daf59d8f39e1d47af9d9b836d0383c5ff6fe2b4bf9bc",
+            "schedule_seed": 1498524746,
+            "seed_report": {
+              "environment": {
+                "cuda_available": true,
+                "numpy": "2.4.4",
+                "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+                "python": "3.11.15",
+                "torch": "2.12.1+cu130"
+              },
+              "numpy_seeded": true,
+              "python_hash_seed_effective": false,
+              "python_seeded": true,
+              "root_seed": 2693,
+              "seed_tree": {
+                "derived": {
+                  "augmentation": 758693542,
+                  "cv": 2005692384,
+                  "diagnostic": 3918561095,
+                  "hpo_sampler": 963647711,
+                  "loader": 4048176439,
+                  "model": 3304793374,
+                  "sampler": 2607916478,
+                  "split": 3898470941
+                },
+                "root_seed": 2693
+              },
+              "strict_requested": false,
+              "torch_deterministic": false,
+              "torch_seeded": true,
+              "warnings": [
+                "PYTHONHASHSEED is fixed only at interpreter startup; launch through seeded_subprocess_env() with PYTHONHASHSEED=3304793374"
+              ]
+            },
+            "updates": 2,
+            "wall_seconds": 0.007326988037675619,
+            "weight_decay": 0.0
+          }
+        },
+        "legal_block_guard": {
+          "diagnostic_only": true,
+          "evidence_class": "development_protocol_mechanism_only",
+          "fresh_blind": false,
+          "lane_id": "legal_block_guard",
+          "metrics": {
+            "accuracy": 0.1521888556588872,
+            "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+            "confusion_matrix": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                16905,
+                213,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                10548,
+                8472,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                38553,
+                29266,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                3,
+                0,
+                0,
+                0,
+                13715,
+                11147,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                0,
+                0,
+                18988,
+                16398,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                0,
+                0,
+                35099,
+                26650,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                8,
+                0,
+                0,
+                0,
+                37658,
+                31767,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                74,
+                0,
+                0,
+                0,
+                20558,
+                19557,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                222,
+                0,
+                0,
+                0,
+                40581,
+                31238,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                410,
+                0,
+                0,
+                0,
+                17477,
+                13848,
+                0,
+                0,
+                0
+              ]
+            ],
+            "coverage_by_inline": [
+              {
+                "blend": "uniform_mean_raw_logits",
+                "covered_unique_voxels": 439362,
+                "duplicate_prediction_assignments": 1166270,
+                "inline": 489,
+                "max_predictions_per_voxel": 9,
+                "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+                "min_predictions_per_voxel": 1,
+                "unique_scored_voxels": 439362,
+                "valid_voxels": 439362
+              }
+            ],
+            "coverage_fraction": 1.0,
+            "duplicate_prediction_assignments_before_blend": 1166270,
+            "evaluated_pixels": 439362,
+            "fixed_macro_f1": 0.04713811190880808,
+            "full_volume_inline_count": 1,
+            "full_volume_valid_voxels": 439362,
+            "ignored_pixels": 0,
+            "macro_f1": 0.04713811190880808,
+            "miou": 0.026725745423199044,
+            "per_class_f1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.22511480540804021,
+              0.24626631368004062,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_class_iou": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.12683344595693322,
+              0.14042400827505724,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "per_class_support": [
+              17118,
+              19020,
+              67819,
+              24865,
+              35392,
+              61750,
+              69433,
+              40189,
+              72041,
+              31735
+            ],
+            "unique_scored_voxels": 439362
+          },
+          "native_random_patch_overlap": null,
+          "overlap_audit": {
+            "exact_sample_id_overlap": 0,
+            "intersecting_rectangle_pairs": 0,
+            "section_overlap_count": 0,
+            "shared_inline_ids": [],
+            "train_window_count": 98,
+            "training_assignments_on_shared_voxels": 0,
+            "unique_shared_voxels": 0,
+            "validation_window_count": 98
+          },
+          "preprocessing": {
+            "class_histogram": [
+              32256,
+              35840,
+              205684,
+              93386,
+              132978,
+              237832,
+              250972,
+              168557,
+              326599,
+              121528
+            ],
+            "class_weight_rule": "inverse_sqrt_train_only_clipped_0.2_5.0",
+            "class_weights": [
+              1.8454952239990234,
+              1.7507904767990112,
+              0.7308326363563538,
+              1.084619164466858,
+              0.908925473690033,
+              0.6796464323997498,
+              0.6616153120994568,
+              0.8073182702064514,
+              0.5799769759178162,
+              0.950779914855957
+            ],
+            "fit_sample_ids_hash": "ac0221193e1a5efa1fe3fc65c1599dba1da62b016ab0a69775fe6e3954db2645",
+            "fit_scope": "lane_train_windows_only",
+            "fit_window_count": 98,
+            "normalization": {
+              "mean": -0.4127384126186371,
+              "method": "zscore",
+              "std": 2481.162109375,
+              "vmax": null,
+              "vmin": null
+            },
+            "normalization_roundtrip_max_abs_error": 0.00048828125,
+            "target_transform": "identity_integer_ids",
+            "threshold_or_calibration_fit": "none"
+          },
+          "rankable": false,
+          "split_protocol": "block_then_guard_then_window",
+          "status": "completed",
+          "test_archive_opened": false,
+          "test_labels_read": false,
+          "training": {
+            "activation": "none_training_argmax_of_mean_logits_inference",
+            "batch_size": 2,
+            "checkpoint_written": false,
+            "final_loss": 3.1083786487579346,
+            "hpo": false,
+            "initial_loss": 2.4115288257598877,
+            "learning_rate": 0.001,
+            "loss": "weighted_cross_entropy_on_raw_logits",
+            "loss_history": [
+              2.4115288257598877,
+              3.1083786487579346
+            ],
+            "model_id": "facies_linear_pixel",
+            "model_source": "_models/facies/facies_linear_pixel.py",
+            "optimizer": "AdamW",
+            "root_seed": 2693,
+            "schedule_hash": "bf121b8438f280c56410daf59d8f39e1d47af9d9b836d0383c5ff6fe2b4bf9bc",
+            "schedule_seed": 1498524746,
+            "seed_report": {
+              "environment": {
+                "cuda_available": true,
+                "numpy": "2.4.4",
+                "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+                "python": "3.11.15",
+                "torch": "2.12.1+cu130"
+              },
+              "numpy_seeded": true,
+              "python_hash_seed_effective": false,
+              "python_seeded": true,
+              "root_seed": 2693,
+              "seed_tree": {
+                "derived": {
+                  "augmentation": 758693542,
+                  "cv": 2005692384,
+                  "diagnostic": 3918561095,
+                  "hpo_sampler": 963647711,
+                  "loader": 4048176439,
+                  "model": 3304793374,
+                  "sampler": 2607916478,
+                  "split": 3898470941
+                },
+                "root_seed": 2693
+              },
+              "strict_requested": false,
+              "torch_deterministic": false,
+              "torch_seeded": true,
+              "warnings": [
+                "PYTHONHASHSEED is fixed only at interpreter startup; launch through seeded_subprocess_env() with PYTHONHASHSEED=3304793374"
+              ]
+            },
+            "updates": 2,
+            "wall_seconds": 0.014991139993071556,
+            "weight_decay": 0.0
+          }
+        }
+      },
+      "model_id": "facies_linear_pixel",
+      "num_classes": 10,
+      "ranking_status": "not_rankable",
+      "root_seed": 2693,
+      "schema_version": "facies-p5.1-r01-v1",
+      "split_hash": "d9574a06dcd0b08a097e1df17098d796130c1cd3d9cd2d4873189f36181ff762",
+      "stage": "R1_leakage_semantics_minimal_reproduction",
+      "status": "completed",
+      "task_id": "facies_f3",
+      "test_archive_opened": false,
+      "test_labels_read": false,
+      "training_window_count_per_lane": 98
+    },
+    "facies_penobscot": {
+      "common_full_development_validation_inlines": [
+        1359
+      ],
+      "comparison": {
+        "legal_minus_leaky": {
+          "accuracy": 0.0007950347723831852,
+          "macro_f1": 9.088519263944494e-05,
+          "miou": 9.286794460586917e-05
+        },
+        "primary_observation": "quantify_metric_change_when_random_overlapping_windows_contaminate_a_common_development_evaluation_block",
+        "purpose": "protocol_mechanism_only_not_model_ranking"
+      },
+      "config": {
+        "batch_size": 2,
+        "learning_rate": 0.001,
+        "root_seed": 2693,
+        "stride": 64,
+        "train_sections": 1,
+        "updates": 2,
+        "validation_sections": 1,
+        "weight_decay": 0.0,
+        "window_size": 128
+      },
+      "config_hash": "08433a5d9d3f810ed57150fbe6a63d4d69c50337db75d864791b1689242dd7a6",
+      "evidence_class": "development_protocol_mechanism_only",
+      "figure": "facies_penobscot_r1_protocol_comparison.png",
+      "firewall": {
+        "allowed_scope": "raw_development_inlines_only",
+        "evidence_class": "development_protocol_mechanism_only",
+        "fresh_blind": false,
+        "outer_payloads_read": 0,
+        "outer_sample_index_built": false,
+        "physical_test_h5_opened": false,
+        "requested_inline_ids": [
+          1335,
+          1359
+        ],
+        "requested_payload_count": 2,
+        "test_archive_opened": false,
+        "test_labels_read": false,
+        "test_metrics_read": false,
+        "test_predictions_read": false
+      },
+      "fresh_blind": false,
+      "label_version": "penobscot-dataset-log-v3-ids-0-7-v1",
+      "lanes": {
+        "leaky_random_overlap": {
+          "diagnostic_only": true,
+          "evidence_class": "development_protocol_mechanism_only",
+          "fresh_blind": false,
+          "lane_id": "leaky_random_overlap",
+          "metrics": {
+            "accuracy": 0.2892763105954312,
+            "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+            "confusion_matrix": [
+              [
+                1426,
+                548,
+                0,
+                0,
+                0,
+                2531,
+                0,
+                24351
+              ],
+              [
+                10039,
+                1830,
+                0,
+                0,
+                0,
+                14784,
+                0,
+                10411
+              ],
+              [
+                12659,
+                423,
+                0,
+                0,
+                0,
+                17424,
+                0,
+                17867
+              ],
+              [
+                2715,
+                713,
+                0,
+                0,
+                0,
+                4503,
+                0,
+                1656
+              ],
+              [
+                3208,
+                49,
+                0,
+                0,
+                0,
+                5387,
+                0,
+                4512
+              ],
+              [
+                27379,
+                640,
+                0,
+                0,
+                0,
+                40792,
+                0,
+                38745
+              ],
+              [
+                16470,
+                407,
+                0,
+                0,
+                0,
+                24103,
+                0,
+                19864
+              ],
+              [
+                101008,
+                802,
+                0,
+                0,
+                0,
+                149931,
+                0,
+                164804
+              ]
+            ],
+            "coverage_by_inline": [
+              {
+                "blend": "uniform_mean_raw_logits",
+                "covered_unique_voxels": 721981,
+                "duplicate_prediction_assignments": 1915843,
+                "inline": 1359,
+                "max_predictions_per_voxel": 9,
+                "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+                "min_predictions_per_voxel": 1,
+                "unique_scored_voxels": 721981,
+                "valid_voxels": 721981
+              }
+            ],
+            "coverage_fraction": 1.0,
+            "duplicate_prediction_assignments_before_blend": 1915843,
+            "evaluated_pixels": 721981,
+            "fixed_macro_f1": 0.09927047081129589,
+            "full_volume_inline_count": 1,
+            "full_volume_valid_voxels": 721981,
+            "ignored_pixels": 0,
+            "macro_f1": 0.09927047081129589,
+            "miou": 0.060720688714880795,
+            "per_class_f1": [
+              0.013996859049862583,
+              0.0861663056785008,
+              0.0,
+              0.0,
+              0.0,
+              0.22229306478552413,
+              0.0,
+              0.4717075369764796
+            ],
+            "per_class_iou": [
+              0.007047752725691184,
+              0.04502288048024406,
+              0.0,
+              0.0,
+              0.0,
+              0.1250448318460911,
+              0.0,
+              0.30865004466702
+            ],
+            "per_class_support": [
+              28856,
+              37064,
+              48373,
+              9587,
+              13156,
+              107556,
+              60844,
+              416545
+            ],
+            "unique_scored_voxels": 721981
+          },
+          "native_random_patch_overlap": {
+            "exact_sample_id_overlap": 0,
+            "intersecting_rectangle_pairs": 645,
+            "section_overlap_count": 2,
+            "shared_inline_ids": [
+              1335,
+              1359
+            ],
+            "train_window_count": 161,
+            "training_assignments_on_shared_voxels": 2225024,
+            "unique_shared_voxels": 1122176,
+            "validation_window_count": 161
+          },
+          "overlap_audit": {
+            "exact_sample_id_overlap": 77,
+            "intersecting_rectangle_pairs": 683,
+            "section_overlap_count": 1,
+            "shared_inline_ids": [
+              1359
+            ],
+            "train_window_count": 161,
+            "training_assignments_on_shared_voxels": 1261568,
+            "unique_shared_voxels": 652221,
+            "validation_window_count": 161
+          },
+          "preprocessing": {
+            "class_histogram": [
+              56436,
+              128497,
+              115627,
+              25665,
+              50238,
+              371596,
+              224143,
+              1665622
+            ],
+            "class_weight_rule": "inverse_sqrt_train_only_clipped_0.2_5.0",
+            "class_weights": [
+              1.337860107421875,
+              0.8866297602653503,
+              0.9346718788146973,
+              1.9838926792144775,
+              1.4179883003234863,
+              0.5213786959648132,
+              0.6713147759437561,
+              0.2462638020515442
+            ],
+            "fit_sample_ids_hash": "a4d2e30db46838cf31bf047546dab58350607a9fdb6bac6b9317988b4fd0d942",
+            "fit_scope": "lane_train_windows_only",
+            "fit_window_count": 161,
+            "normalization": {
+              "mean": -1.4896020889282227,
+              "method": "zscore",
+              "std": 1418.180908203125,
+              "vmax": null,
+              "vmin": null
+            },
+            "normalization_roundtrip_max_abs_error": 0.001953125,
+            "target_transform": "identity_integer_ids",
+            "threshold_or_calibration_fit": "none"
+          },
+          "rankable": false,
+          "split_protocol": "overlapping_windows_then_random_patch_split_intentionally_invalid",
+          "status": "completed",
+          "test_archive_opened": false,
+          "test_labels_read": false,
+          "training": {
+            "activation": "none_training_argmax_of_mean_logits_inference",
+            "batch_size": 2,
+            "checkpoint_written": false,
+            "final_loss": 1.5606839656829834,
+            "hpo": false,
+            "initial_loss": 2.4617722034454346,
+            "learning_rate": 0.001,
+            "loss": "weighted_cross_entropy_on_raw_logits",
+            "loss_history": [
+              2.4617722034454346,
+              1.5606839656829834
+            ],
+            "model_id": "facies_linear_pixel",
+            "model_source": "_models/facies/facies_linear_pixel.py",
+            "optimizer": "AdamW",
+            "root_seed": 2693,
+            "schedule_hash": "78a5eadc16460eaa5013f4f23bdff54253955daafc8a9daf9a7857bb13d4bb40",
+            "schedule_seed": 1045064023,
+            "seed_report": {
+              "environment": {
+                "cuda_available": true,
+                "numpy": "2.4.4",
+                "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+                "python": "3.11.15",
+                "torch": "2.12.1+cu130"
+              },
+              "numpy_seeded": true,
+              "python_hash_seed_effective": false,
+              "python_seeded": true,
+              "root_seed": 2693,
+              "seed_tree": {
+                "derived": {
+                  "augmentation": 758693542,
+                  "cv": 2005692384,
+                  "diagnostic": 3918561095,
+                  "hpo_sampler": 963647711,
+                  "loader": 4048176439,
+                  "model": 3304793374,
+                  "sampler": 2607916478,
+                  "split": 3898470941
+                },
+                "root_seed": 2693
+              },
+              "strict_requested": false,
+              "torch_deterministic": false,
+              "torch_seeded": true,
+              "warnings": [
+                "PYTHONHASHSEED is fixed only at interpreter startup; launch through seeded_subprocess_env() with PYTHONHASHSEED=3304793374"
+              ]
+            },
+            "updates": 2,
+            "wall_seconds": 0.006920333951711655,
+            "weight_decay": 0.0
+          }
+        },
+        "legal_block_guard": {
+          "diagnostic_only": true,
+          "evidence_class": "development_protocol_mechanism_only",
+          "fresh_blind": false,
+          "lane_id": "legal_block_guard",
+          "metrics": {
+            "accuracy": 0.29007134536781437,
+            "averaging": "global_confusion_all_configured_classes_one_entry_per_unique_voxel",
+            "confusion_matrix": [
+              [
+                1424,
+                546,
+                0,
+                0,
+                0,
+                2530,
+                0,
+                24356
+              ],
+              [
+                10024,
+                1818,
+                0,
+                0,
+                0,
+                14776,
+                0,
+                10446
+              ],
+              [
+                12614,
+                413,
+                0,
+                0,
+                0,
+                17409,
+                0,
+                17937
+              ],
+              [
+                2726,
+                700,
+                0,
+                0,
+                0,
+                4501,
+                0,
+                1660
+              ],
+              [
+                3200,
+                47,
+                0,
+                0,
+                0,
+                5383,
+                0,
+                4526
+              ],
+              [
+                27283,
+                629,
+                0,
+                0,
+                0,
+                40761,
+                0,
+                38883
+              ],
+              [
+                16431,
+                391,
+                0,
+                0,
+                0,
+                24086,
+                0,
+                19936
+              ],
+              [
+                100560,
+                782,
+                0,
+                0,
+                0,
+                149780,
+                0,
+                165423
+              ]
+            ],
+            "coverage_by_inline": [
+              {
+                "blend": "uniform_mean_raw_logits",
+                "covered_unique_voxels": 721981,
+                "duplicate_prediction_assignments": 1915843,
+                "inline": 1359,
+                "max_predictions_per_voxel": 9,
+                "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+                "min_predictions_per_voxel": 1,
+                "unique_scored_voxels": 721981,
+                "valid_voxels": 721981
+              }
+            ],
+            "coverage_fraction": 1.0,
+            "duplicate_prediction_assignments_before_blend": 1915843,
+            "evaluated_pixels": 721981,
+            "fixed_macro_f1": 0.09936135600393534,
+            "full_volume_inline_count": 1,
+            "full_volume_valid_voxels": 721981,
+            "ignored_pixels": 0,
+            "macro_f1": 0.09936135600393534,
+            "miou": 0.060813556659486664,
+            "per_class_f1": [
+              0.014021406276154747,
+              0.08577494692144373,
+              0.0,
+              0.0,
+              0.0,
+              0.22226281551439275,
+              0.0,
+              0.47283167931949144
+            ],
+            "per_class_iou": [
+              0.00706020010510972,
+              0.04480922803904171,
+              0.0,
+              0.0,
+              0.0,
+              0.12502568852926652,
+              0.0,
+              0.3096133366024754
+            ],
+            "per_class_support": [
+              28856,
+              37064,
+              48373,
+              9587,
+              13156,
+              107556,
+              60844,
+              416545
+            ],
+            "unique_scored_voxels": 721981
+          },
+          "native_random_patch_overlap": null,
+          "overlap_audit": {
+            "exact_sample_id_overlap": 0,
+            "intersecting_rectangle_pairs": 0,
+            "section_overlap_count": 0,
+            "shared_inline_ids": [],
+            "train_window_count": 161,
+            "training_assignments_on_shared_voxels": 0,
+            "unique_shared_voxels": 0,
+            "validation_window_count": 161
+          },
+          "preprocessing": {
+            "class_histogram": [
+              56635,
+              130767,
+              181898,
+              35474,
+              46824,
+              400956,
+              225470,
+              1559800
+            ],
+            "class_weight_rule": "inverse_sqrt_train_only_clipped_0.2_5.0",
+            "class_weights": [
+              1.416685700416565,
+              0.9323239922523499,
+              0.7905002236366272,
+              1.7900322675704956,
+              1.5580511093139648,
+              0.5324362516403198,
+              0.7100216150283813,
+              0.2699488699436188
+            ],
+            "fit_sample_ids_hash": "d45658cdd74ab4932508c1bbb5811319c289e23c09474df92a316355eca84363",
+            "fit_scope": "lane_train_windows_only",
+            "fit_window_count": 161,
+            "normalization": {
+              "mean": -1.0724949836730957,
+              "method": "zscore",
+              "std": 1425.5950927734375,
+              "vmax": null,
+              "vmin": null
+            },
+            "normalization_roundtrip_max_abs_error": 0.001953125,
+            "target_transform": "identity_integer_ids",
+            "threshold_or_calibration_fit": "none"
+          },
+          "rankable": false,
+          "split_protocol": "block_then_guard_then_window",
+          "status": "completed",
+          "test_archive_opened": false,
+          "test_labels_read": false,
+          "training": {
+            "activation": "none_training_argmax_of_mean_logits_inference",
+            "batch_size": 2,
+            "checkpoint_written": false,
+            "final_loss": 1.5228867530822754,
+            "hpo": false,
+            "initial_loss": 2.4597201347351074,
+            "learning_rate": 0.001,
+            "loss": "weighted_cross_entropy_on_raw_logits",
+            "loss_history": [
+              2.4597201347351074,
+              1.5228867530822754
+            ],
+            "model_id": "facies_linear_pixel",
+            "model_source": "_models/facies/facies_linear_pixel.py",
+            "optimizer": "AdamW",
+            "root_seed": 2693,
+            "schedule_hash": "78a5eadc16460eaa5013f4f23bdff54253955daafc8a9daf9a7857bb13d4bb40",
+            "schedule_seed": 1045064023,
+            "seed_report": {
+              "environment": {
+                "cuda_available": true,
+                "numpy": "2.4.4",
+                "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+                "python": "3.11.15",
+                "torch": "2.12.1+cu130"
+              },
+              "numpy_seeded": true,
+              "python_hash_seed_effective": false,
+              "python_seeded": true,
+              "root_seed": 2693,
+              "seed_tree": {
+                "derived": {
+                  "augmentation": 758693542,
+                  "cv": 2005692384,
+                  "diagnostic": 3918561095,
+                  "hpo_sampler": 963647711,
+                  "loader": 4048176439,
+                  "model": 3304793374,
+                  "sampler": 2607916478,
+                  "split": 3898470941
+                },
+                "root_seed": 2693
+              },
+              "strict_requested": false,
+              "torch_deterministic": false,
+              "torch_seeded": true,
+              "warnings": [
+                "PYTHONHASHSEED is fixed only at interpreter startup; launch through seeded_subprocess_env() with PYTHONHASHSEED=3304793374"
+              ]
+            },
+            "updates": 2,
+            "wall_seconds": 0.0071980613283813,
+            "weight_decay": 0.0
+          }
+        }
+      },
+      "model_id": "facies_linear_pixel",
+      "num_classes": 8,
+      "ranking_status": "not_rankable",
+      "root_seed": 2693,
+      "schema_version": "facies-p5.1-r01-v1",
+      "split_hash": "1fee0cc966a6122ddaac116f4265f8d71dfbabb1345abb132f49492af95dce5f",
+      "stage": "R1_leakage_semantics_minimal_reproduction",
+      "status": "completed",
+      "task_id": "facies_penobscot",
+      "test_archive_opened": false,
+      "test_labels_read": false,
+      "training_window_count_per_lane": 161
+    }
+  },
+  "tasks_are_independent": true,
+  "test_archive_opened": false,
+  "test_labels_read": false,
+  "track_id": "facies"
+}

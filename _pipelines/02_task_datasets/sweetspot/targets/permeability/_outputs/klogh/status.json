@@ -1,0 +1,30 @@
+{
+  "development_samples": 1216,
+  "downgrade_reason": "only 4 independent development groups are available",
+  "effective_folds": 4,
+  "label_version": "target7-klogh-cpi-v1",
+  "log1p_diagnostics": {
+    "MAE": 0.706676049995735,
+    "R2": 0.8687303530942981,
+    "R2_reason": null,
+    "RMSE": 0.864602393484708
+  },
+  "model": "reservoir_ridge",
+  "physical_metrics": {
+    "MAE": 226.47635404370868,
+    "R2": 0.5770877514946018,
+    "R2_reason": null,
+    "RMSE": 544.5992267513993
+  },
+  "requested_folds": 5,
+  "status": "complete",
+  "target": "KLOGH",
+  "test_consumed_once": true,
+  "test_family": "15/9-F-15",
+  "test_samples": 344,
+  "unresolved": [
+    "only one frozen-test mother-well family is available",
+    "weak MD-to-TWT tie and existing Hugin-filtered samples are inherited from the reservoir build",
+    "uncertainty is an OOF residual interval, not a calibrated probabilistic model"
+  ]
+}

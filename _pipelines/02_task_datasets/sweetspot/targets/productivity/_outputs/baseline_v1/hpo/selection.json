@@ -1,0 +1,18 @@
+{
+  "direction": "minimize",
+  "fold_mean": 713.5588999711293,
+  "fold_scores": [
+    171.18083521273138,
+    1653.487807704093,
+    499.7531875077163,
+    529.8137694599769
+  ],
+  "metric": "mae",
+  "model_config": {
+    "alpha": 31.622776601683793,
+    "estimator": "ridge"
+  },
+  "selection_scope": "development folds only",
+  "trial_id": 9,
+  "trial_stage": "pilot"
+}

@@ -1,0 +1,114 @@
+{
+  "calibration_policy": {
+    "uncertainty": "OOF_absolute_residual_q90_in_log1p_domain"
+  },
+  "forbidden_inputs": [
+    "PHIF",
+    "PHIE",
+    "LFP_PHIE",
+    "KLOGH",
+    "KLOGH_NEW",
+    "KLOGV",
+    "SW",
+    "BVW",
+    "SWIRR",
+    "VSH",
+    "LFP_VSH"
+  ],
+  "group_keys": [
+    "mother_well_family"
+  ],
+  "guardrail_metrics": [
+    "finite_nonnegative_physical_predictions"
+  ],
+  "hpo": {
+    "direction": "minimize",
+    "l2_strength": [
+      0.0,
+      0.01
+    ],
+    "learning_rate": [
+      0.001,
+      0.01
+    ],
+    "objective": "development_OOF_physical_MAE",
+    "test_access": "forbidden"
+  },
+  "inference_transform": {
+    "KLOGH": "expm1(clamp(log1p_prediction,0))"
+  },
+  "input_modalities": [
+    "real_ST0202_seismic_patch",
+    "raw_well_log_sequence"
+  ],
+  "input_whitelist": [
+    "ST0202_seismic_patch",
+    "GR",
+    "RT",
+    "NPHI",
+    "RHOB",
+    "GR_observed_mask",
+    "RT_observed_mask",
+    "NPHI_observed_mask",
+    "RHOB_observed_mask"
+  ],
+  "inverse_transform": {
+    "KLOGH": "KLOGH_mD=expm1(log1p_prediction)"
+  },
+  "label_version": "target7-klogh-cpi-v1",
+  "metadata": {
+    "KLOGH_NEW_excluded": true,
+    "model_plugin_family": "reservoir simple registered models",
+    "physical_unit": "millidarcy (mD)",
+    "preferred_frozen_test_family": "15/9-F-15",
+    "requested_development_folds": 5,
+    "reservoir_interval": "Hugin Top-Base inherited from reservoir real-data build"
+  },
+  "metric_directions": {
+    "finite_nonnegative_physical_predictions": "maximize",
+    "log1p_MAE": "minimize",
+    "log1p_R2": "maximize",
+    "log1p_RMSE": "minimize",
+    "physical_MAE": "minimize",
+    "physical_R2": "maximize",
+    "physical_RMSE": "minimize"
+  },
+  "primary_metrics": [
+    "physical_MAE"
+  ],
+  "required_figures": [
+    "prediction_vs_truth.png",
+    "residuals.png",
+    "depth_curve.png",
+    "distribution_uncertainty.png"
+  ],
+  "secondary_metrics": [
+    "physical_RMSE",
+    "physical_R2",
+    "log1p_MAE",
+    "log1p_RMSE",
+    "log1p_R2"
+  ],
+  "spatial_buffer": null,
+  "target_masks": {
+    "KLOGH": "isfinite(KLOGH) and KLOGH>=0"
+  },
+  "target_transform": {
+    "KLOGH": "log1p(KLOGH_mD)"
+  },
+  "targets": [
+    "KLOGH"
+  ],
+  "task_id": "target7_permeability_klogh",
+  "task_type": "regression",
+  "threshold_policy": {},
+  "time_cutoff": null,
+  "track_id": "sweetspot",
+  "train_loss": {
+    "KLOGH": "mean_squared_error_on_fold_train_zscore_of_log1p"
+  },
+  "units": {
+    "KLOGH": "mD"
+  },
+  "visualizer_id": "target7_permeability_regression"
+}

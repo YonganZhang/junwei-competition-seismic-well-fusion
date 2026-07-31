@@ -1,0 +1,49 @@
+{
+  "frozen_test_accessed": false,
+  "no_api_calls": true,
+  "no_downloads": true,
+  "no_training": true,
+  "package": "sweetspot-p6-gaia-dagt-private",
+  "private_tests_ran": false,
+  "schema_version": "sweetspot-p6-gaia-dagt-resource-log/v1",
+  "shared_contract_tests_ran": true,
+  "shared_contract_tests_required": 14,
+  "used_source_files": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_manifest.json",
+      "sha256": "80673a5d8c3f7cf905036ffea14475aeb5697cb68ba70e080d285ba0e58595bb"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/metrics.json",
+      "sha256": "eb793fab14537e35cae1106b4c99134fe42b06a6017b265793fae2170d579694"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/refit.json",
+      "sha256": "e230fe1830ebf85f73ac49fa947e982d462c91ebce2c34bed0e86a36dbe7472d"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/metrics.json",
+      "sha256": "35201e05547cdbe95d53ffcde24faae2efb3a759a999d0542fef5c504482edd3"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/refit.json",
+      "sha256": "8d00a3481fa346aeac10209def5a28d249b465c9eaa16faff93acf356897d5aa"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_summary.json",
+      "sha256": "8d898c8e90077f27d5f9e464879d390d911c3695a32346d0a4ab2de7e80dbfe8"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_plateau_gate.json",
+      "sha256": "d850999a1036f741f552b570865c32683ba4e68697aea96204bfffceed76f71e"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+      "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167"
+    }
+  ]
+}

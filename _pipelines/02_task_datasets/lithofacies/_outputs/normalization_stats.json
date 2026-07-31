@@ -1,0 +1,105 @@
+{
+  "fit_scope": "train_mother_well_families_only",
+  "denoise": "denoise_identity",
+  "logs": {
+    "gamma_ray": {
+      "method": "zscore",
+      "mean": 32.89362615304757,
+      "std": 24.299890097145187,
+      "vmin": null,
+      "vmax": null
+    },
+    "acoustic_slowness": {
+      "method": "zscore",
+      "mean": 80.93909402327104,
+      "std": 6.238224392342255,
+      "vmin": null,
+      "vmax": null
+    },
+    "caliper": {
+      "method": "zscore",
+      "mean": 8.41347442097292,
+      "std": 0.3728699134255846,
+      "vmin": null,
+      "vmax": null
+    },
+    "bulk_density": {
+      "method": "zscore",
+      "mean": 2.304485532945181,
+      "std": 0.10976885322391558,
+      "vmin": null,
+      "vmax": null
+    },
+    "neutron_porosity": {
+      "method": "zscore",
+      "mean": 1.7548719905333934,
+      "std": 5.701894224677585,
+      "vmin": null,
+      "vmax": null
+    },
+    "deep_resistivity": {
+      "method": "zscore",
+      "mean": 15.93428537138388,
+      "std": 62.37459099956996,
+      "vmin": null,
+      "vmax": null
+    },
+    "rate_of_penetration": {
+      "method": "zscore",
+      "mean": 23.80313382222892,
+      "std": 9.950346859354507,
+      "vmin": null,
+      "vmax": null
+    },
+    "weight_on_bit": {
+      "method": "zscore",
+      "mean": 7.006426766053325,
+      "std": 2.9191652516260826,
+      "vmin": null,
+      "vmax": null
+    },
+    "rotary_speed": {
+      "method": "zscore",
+      "mean": 166.06802159684062,
+      "std": 12.481109349099329,
+      "vmin": null,
+      "vmax": null
+    },
+    "flow_rate": {
+      "method": "zscore",
+      "mean": 1963.1979561561857,
+      "std": 194.42975783554823,
+      "vmin": null,
+      "vmax": null
+    },
+    "torque": {
+      "method": "zscore",
+      "mean": 19.015601330206536,
+      "std": 7.8936000822707575,
+      "vmin": null,
+      "vmax": null
+    },
+    "standpipe_pressure": {
+      "method": "zscore",
+      "mean": 171.75956506440133,
+      "std": 17.903548871255104,
+      "vmin": null,
+      "vmax": null
+    },
+    "equivalent_circulating_density": {
+      "method": "zscore",
+      "mean": 1.4455733378950044,
+      "std": 0.030207339427961204,
+      "vmin": null,
+      "vmax": null
+    }
+  },
+  "seismic": {
+    "method": "zscore",
+    "mean": 0.00015864014905138404,
+    "std": 0.04046726162657261,
+    "vmin": null,
+    "vmax": null
+  },
+  "max_round_trip_error": 2.842170943040401e-14
+}

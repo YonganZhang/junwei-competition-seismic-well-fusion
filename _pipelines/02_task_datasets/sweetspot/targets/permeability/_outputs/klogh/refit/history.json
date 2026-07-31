@@ -1,0 +1,37 @@
+{
+  "all_development_samples_used": true,
+  "epoch_budget_source": "median best epoch across development LOGO folds",
+  "history": [
+    {
+      "epoch": 0,
+      "refit_train_loss": 0.385822264580521,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 1,
+      "refit_train_loss": 0.1892860612083953,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 2,
+      "refit_train_loss": 0.1737630979626376,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 3,
+      "refit_train_loss": 0.1642990058592521,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 4,
+      "refit_train_loss": 0.1585338143367292,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 5,
+      "refit_train_loss": 0.1542971906914023,
+      "valid_count": 1216
+    }
+  ],
+  "validation_during_refit": false
+}

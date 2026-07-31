@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-07-30 (P12 固化赛道1/3/5出版级可视化；赛道2/4/6保持暂停)
+last_synced: 2026-08-01 (P12 visualization delivery + P24 reconstruction historical transfer)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -41,9 +41,10 @@ code_domains:
       step_03_load_fault_horizon.py：定长文本解析Volve_Official_Faults.dat(3998点/66条断层)，
       通用CSV解析Horizons_TWT/Other_Horizons下BCU层位(225558点)，断层UTM反解最近il/xl，层位IL/XL
       本身已与ST0202体一致(实测验证过范围吻合)。
-      step_04_well_tie_weak.py：弱井震标定——用Well_picks_Volve_v1.dat同井分层点的MD/TWT/UTM做
-      分段线性插值+外推(非速度模型)，得到深度->TWT->最近(il,xl)的粗略轨迹，代码内注释明确标注
-      为弱标定局限。outputs/下产出可复用中间文件，产出清单见pipeline README。
+      step_04_well_tie_weak.py：用Well_picks_Volve_v1.dat同井分层点的MD/TWT/UTM做
+      分段线性插值+外推，仅作为早期弱标定产物保留。项目后续获取的
+      Volve VSP 归档含 5 口井 checkshot；新研究实验使用 P23 的 3 拟合井/
+      2 独立校验井口径。outputs/下产出可复用中间文件，产出清单见pipeline README。
 
   - id: task_datasets
     path: _pipelines/02_task_datasets
@@ -78,12 +79,106 @@ code_domains:
     status: active
     owner: project
     description: >
-      2026-07-11军伟拍板的模块化训练骨架:preprocess.py(去噪骨架/归一化+反归一化配对/深度对齐指针)、
-      model_registry.py(register_model/get_model,换模型只加文件不改训练循环)、
-      train.py(train_loop统一训练循环,记录train/val loss,按最小val loss存best checkpoint,
-      不擅自早停,让人看得到欠拟合->过拟合的完整曲线)、visualize.py(plot_loss_curve标出best epoch)。
-      各赛道应重构为调用这里而非各自重复实现预处理/训练循环。TODO(非本轮):接入开源社区已包装好的
-      预训练/大模型，只需实现build_model()适配层。
+      P4共享训练/评价合同：ModelBatch/ModelOutput外层、TaskSpec、模型动态发现、
+      全局seed=2693与确定性报告、group/spatial split manifest、按样本或有效标签加权reducer、
+      checkpoint/resume包含优化器与RNG状态、可选HPO plan/backend、artifact manifest/hash、
+      SPLIT_LOCKED→CV_COMPLETE→CONFIG_FROZEN→REFIT_COMPLETE→TEST_CONSUMED一次性test firewall。
+      任务内部loss/activation/mask/metric由插件显式声明，不强迫六赛道共用一个head。
+
+  - id: canonical_models
+    path: _models
+    type: shared_library
+    status: active
+    owner: project
+    description: >
+      六赛道规范模型唯一真源：fault/facies/property/lithofacies/reconstruction/sweetspot。
+      每个可替换模型是独立<model_id>.py并导出build_model()；旧赛道models目录仅保留兼容shim。
+
+  - id: sweetspot_targets
+    path: _pipelines/02_task_datasets/sweetspot/targets
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      ⑤甜点一赛道七任务案例：储层品质代理、SAND_FLAG有效厚度代理、产能、
+      见水风险代理、剩余油/加密井simulation case、PHIF孔隙度、KLOGH渗透率。
+      每个目标独立task_id/split/config/checkpoint/metrics/figure或not_feasible；
+      _outputs/registry_targets_1_to_7.json汇总状态和哈希。
+
+  - id: foundation_model_routes
+    path: _models/gaia_dagt
+    type: shared_library
+    status: active
+    owner: project
+    description: >
+      P8 六赛道模态匹配基础模型路由：统一 FoundationTaskEnvelope、time/support/depth/spatial/
+      masked-volume 条件、可见性与晋级状态机；固定 source/weights revision、size/SHA、许可证状态，
+      运行时禁止自动下载。监督 LLM 仅做 schema/QC，严格 JSON，不读取标签、测试指标、路径或凭证。
+
+  - id: reconstruction_foundation_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P17 赛道⑥开发优化：冻结 ThinkOnward GFM 提供目标无关地震表征，
+      每个空间外折仅用 512 条合法训练标签拟合标准化/PCA，以弱加权表征
+      构建非平稳邻域并与 PyKrige 保守融合。只产生 DEVELOPMENT_SIGNAL，
+      无 test/holdout 入口，默认不启用。
+
+  - id: reconstruction_anisotropic_foundation_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py
+    type: pipeline
+    status: superseded
+    superseded_by: reconstruction_meta_purged_geostatistics
+    owner: project
+    description: >
+      P18 赛道⑥历史开发优化：复用哈希锁定的真实预训练 GFM 表征，显式搜索
+      垂向各向异性，并对每个报告空间折只用其余四折的指标行进行 top-3 候选选择。
+      P19 发现其余折训练子集与当前验证坐标存在间接重叠，因此 P18 已被更严格的
+      元拟合坐标去重协议取代；默认不启用。
+
+  - id: reconstruction_meta_purged_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p19_meta_purged_geostatistics.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P19 赛道⑥严格开发优化：对每个报告空间折，先从其余折的元选择训练子集中
+      删除当前验证坐标，再重新拟合缩放、PCA、近邻模型与全部候选；最终折预测仍
+      严格使用 512 条合法训练标签。无 test/holdout 入口，默认不启用，不作预训练
+      因果归因。
+
+  - id: reconstruction_fixed_foundation_ensemble
+    path: _pipelines/02_task_datasets/reconstruction/p21_fixed_foundation_ensemble.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P21 赛道⑥当前默认：固定平均三个真实预训练 GFM 邻域核，去除逐折
+      元选择；保持每折 512 条标签并与 PyKrige 保守融合。开发 OOF RMSE
+      为 0.027734374378，不声称 LoRA 或预训练表征的因果消融结论。
+
+  - id: reconstruction_historical_transfer
+    path: _pipelines/02_task_datasets/reconstruction/p24_historical_transfer.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P24 赛道⑥预注册一次性迁移门：把未使用的 RMS 历史 pp04phif 属性
+      精确映射到现有 KJI 折，冻结 P21 与 PyKrige 对照。结果相对 RMSE
+      改善 1.4529%、4/5 折获胜；只支持同场区历史版本迁移，不是 fresh blind。
+
+  - id: reconstruction_checkshot_calibration
+    path: _pipelines/02_task_datasets/reconstruction/p23_checkshot_calibration.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P23 赛道⑥时深标定验证：用 19A/19BT2/19SR checkshot 和 TVDSS
+      轨迹拟合空间时深关系，F11T2/F15A 完全保留为独立校验井。
+      不读孔隙度标签、reconstruction HDF5、test 或 holdout；产物状态限定为
+      VALIDATED_CALIBRATION_ONLY，不替代 P21 默认模型。
 
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
@@ -143,6 +238,103 @@ entrypoints:
     status: active
     owner: project
     description: "After explicit leader visual QA, copy verified P12 PNG/PDF/SVG assets for tracks 1, 3 and 5 and write a separate review attestation without mutating renderer-owned manifests."
+  - id: p4_acceptance
+    path: _wiki-methodology/_tests/P4_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P4 portable suites, real smoke, CV/refit/frozen-test metrics, artifact verification and honest blockers."
+
+  - id: p5_stage1_acceptance
+    path: _wiki-methodology/_tests/P5_stage1_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P5 first-batch open-model contract attempts, cross-track integration gates, structured skips and scientific stop lines."
+
+  - id: p5_stage2_acceptance
+    path: _wiki-methodology/_tests/P5_stage2_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P5 fixed-budget development pilots, per-lane rankings, GPU-lock evidence, structured scientific stops and cross-track integration gates."
+
+  - id: p5_stage3_protocol
+    path: _wiki-methodology/_top/_phases/P5_stage3_multiseed_cv.md
+    type: plan
+    status: active
+    owner: col2
+    description: "Frozen top-3 by task/lane, three derived seeds, all valid development folds, OOF visualization and final test-firewall contract."
+
+  - id: p5_stage3_acceptance
+    path: _wiki-methodology/_tests/P5_stage3_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P5 top-3 multiseed all-valid-fold results, per-task winners, OOF visualizations, honest failed/timeout cells, dependency-group regression and frozen-test firewall."
+
+  - id: p5_r01_acceptance
+    path: _wiki-methodology/_tests/P5.1_r01_integration_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "P5.1 six-track R0/R1 integration commits, 290-test cross-track regression, leakage/semantic mechanism findings, test-firewall evidence and P5.2/P5.3 stage boundary."
+
+  - id: sweetspot_target_registry
+    path: _pipelines/02_task_datasets/sweetspot/targets/_outputs/registry_targets_1_to_7.json
+    type: artifact_registry
+    status: active
+    owner: project
+    description: "Seven independent target cases and their content hashes."
+
+  - id: p8_foundation_acceptance
+    path: _wiki-methodology/_tests/P8_multimodal_foundation_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Six real foundation-weight smoke runs, unified contracts, Chronos calendar diagnostic and honest promotion blockers."
+
+  - id: p8_foundation_decision
+    path: _wiki-methodology/_top/_decisions/P8_multimodal_foundation_routing.md
+    type: decision
+    status: active
+    owner: col2
+    description: "Modality-specific foundation routes, supervisory LLM boundary and connection-versus-promotion decision."
+
+  - id: p17_reconstruction_foundation_acceptance
+    path: _wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 GFM nonstationary-metric result, 512-label budget, holdout firewall, fold uncertainty and independent hash/metric recomputation."
+
+  - id: p18_reconstruction_anisotropic_acceptance
+    path: _wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Historical Track-6 anisotropic GFM geostatistics result; metric-row-only LOFO selection later superseded by P19 meta-fit coordinate purge."
+
+  - id: p19_reconstruction_training_diagnostics_acceptance
+    path: _wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 meta-selection coordinate purge, strict 5/5-fold result, real GFM tensor/gradient probes, controlled route screens and independent recomputation."
+
+  - id: p23_reconstruction_checkshot_calibration_evidence
+    path: _wiki-methodology/_tests/P23_reconstruction_checkshot_calibration_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 three-fit/two-independent-well checkshot calibration result, source lock, target firewall and downstream claim boundary."
+
+  - id: p24_reconstruction_historical_transfer_evidence
+    path: _wiki-methodology/_tests/P24_reconstruction_historical_transfer_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 preregistration, one-time same-field historical target result, independent metric/hash recomputation and explicit non-blind claim boundary."
 
 cross_domain_edges:
   - from: task_datasets
@@ -154,6 +346,51 @@ cross_domain_edges:
   - from: domain_visualization_delivery
     to: task_datasets
     relation: validates_and_publishes_outputs
+  - from: task_datasets
+    to: ml_framework
+    relation: calls
+  - from: task_datasets
+    to: canonical_models
+    relation: discovers
+  - from: sweetspot_targets
+    to: ml_framework
+    relation: calls
+  - from: sweetspot_targets
+    to: canonical_models
+    relation: discovers
+  - from: task_datasets
+    to: foundation_model_routes
+    relation: calls
+  - from: foundation_model_routes
+    to: canonical_models
+    relation: routes
+  - from: reconstruction_foundation_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_anisotropic_foundation_geostatistics
+    to: reconstruction_foundation_geostatistics
+    relation: supersedes
+  - from: reconstruction_anisotropic_foundation_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_meta_purged_geostatistics
+    to: reconstruction_anisotropic_foundation_geostatistics
+    relation: supersedes
+  - from: reconstruction_meta_purged_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_fixed_foundation_ensemble
+    to: reconstruction_meta_purged_geostatistics
+    relation: supersedes
+  - from: reconstruction_fixed_foundation_ensemble
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_historical_transfer
+    to: reconstruction_fixed_foundation_ensemble
+    relation: validates
+  - from: reconstruction_checkshot_calibration
+    to: common_preprocess
+    relation: depends_on
 
 non_code_assets:
   registry: _meta/_data_registry.yml

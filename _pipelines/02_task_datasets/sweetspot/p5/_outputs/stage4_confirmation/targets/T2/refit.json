@@ -1,0 +1,45 @@
+{
+  "checkpoint_path": "targets/T2/refit/model.pkl.gz",
+  "checkpoint_roundtrip_max_abs_delta": 0.0,
+  "checkpoint_sha256": "6af727bd2ca780d9c65bf36c58d0ea5b1c8025ec484d43e74af1235c4fe3429b",
+  "checkpoint_size_bytes": 12596,
+  "config_sha256": "c76f05b359d3977757e456604724e1a2e5cabe9f9fe3bfe8991be4fa4ae9fbca",
+  "development_features_sha256": "628314fd96a692e39f0d8dbb5983cdbc0130d9565e0b346f721a68cb6bcc9210",
+  "development_groups": [
+    "15/9-F-1",
+    "15/9-F-11",
+    "15/9-F-12"
+  ],
+  "development_ids_sha256": "a8df38f1abf3c044901a52d2a55e230d81c0958005c13091e8a4e0dceb774040",
+  "development_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+    "authorized_groups": [
+      "15/9-F-1",
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "opened_member_count": 16,
+    "opened_member_crc_manifest_sha256": "405b76c034312b8006ba897a64033e58433f62e2ca40744f68972fe9815254cf",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20",
+    "partition": "development",
+    "source_kind": "Volve_Well_logs.zip authorized development members only",
+    "test_accessed": false,
+    "unauthorized_member_reads": 0,
+    "values_accessed": 36122
+  },
+  "development_samples": 36122,
+  "development_targets_sha256": "83428a4cebcfd988f40c4ae965ba84f1d7553ea9a338eaa3c090cdd9419efb29",
+  "feature_count": 16,
+  "fit_scope": "all_legal_development",
+  "historical_test_metrics_read": false,
+  "known_holdout_accessed_during_refit": false,
+  "model_payload_bytes": 22563,
+  "model_payload_sha256": "6725306c7b86228ed755d02be71498a0ddb1776364157e48495eead8e52efa1f",
+  "peak_rss_bytes": 692289536,
+  "schema_version": "sweetspot-p5-stage4-refit/v1",
+  "status": "REFIT_COMPLETE",
+  "task_id": "T2",
+  "train_only_imputation_sha256": "8895f7ed52f7fe8121360d81cadfb88edc7f7049afac5a9c850be4f8bad63754",
+  "wall_seconds": 0.33566288091242313
+}

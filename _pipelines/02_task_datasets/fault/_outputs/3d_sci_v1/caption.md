@@ -1,0 +1,1 @@
+Three real fault-test patches positioned at their archived Inline, Crossline and TWT coordinates. Each static figure shows the same registered planes colored by seismic amplitude, ground-truth fault label or persisted-checkpoint fault probability. This is spatial context only: the independent patches were neither stacked nor interpolated into a continuous volume.

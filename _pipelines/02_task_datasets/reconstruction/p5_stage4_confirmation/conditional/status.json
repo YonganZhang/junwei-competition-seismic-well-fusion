@@ -1,0 +1,54 @@
+{
+  "config_hash": "a5827599b46208d5bf6bb02507927668feb81c0c214ed4869f903107b459822a",
+  "counts": {
+    "development_active_cells": 134222,
+    "development_patches": 140,
+    "excluded_exact_constraint_cells": 90,
+    "metric_voxels": 49233,
+    "model_fit_cells": 512,
+    "test_active_cells": 49323,
+    "test_patches": 70
+  },
+  "environment": {
+    "aux_dependency_group": "tabular-cpu",
+    "downloads_performed_bytes": 0,
+    "primary_environment": "torch-common",
+    "python": "3.11.15",
+    "python_executable": "python"
+  },
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "manifest": "manifest.json",
+  "manifest_sha256": "0258f7e25a4a2df7c332bed3809e0999b62982fd906e66d3e5f495ba336805b1",
+  "metrics": {
+    "conditional_bias": 0.0004605375204281936,
+    "conditional_mae": 0.015087601675183084,
+    "conditional_out_of_range_rate": 0.0,
+    "conditional_pearson_r": 0.1393637594414108,
+    "conditional_r2": 0.013685620787833641,
+    "conditional_rmse": 0.021012888252387812,
+    "conditional_spectral_log_rmse": 1.1033902175256411,
+    "evaluation_mode": "conditional",
+    "pearson_r_defined": true,
+    "task_id": "volve_porosity_conditional_reconstruction",
+    "voxel_count": 49233
+  },
+  "mode": "conditional",
+  "model_id": "pykrige_ok3d",
+  "prior_test_consumed": true,
+  "reason": null,
+  "resources": {
+    "device": "cpu",
+    "max_wall_seconds": 300,
+    "peak_rss_kib": 303196,
+    "prediction_chunk_size": 2048,
+    "updates": 1
+  },
+  "result_hash": "a87804bd19ae531088d0cd14862f75a3243907fbd6e5e3c49af5d233bb75de40",
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "split_hash": "ffe1fddbfd3ef8e2a9e0b3f3942133226610c872e7da37460f070782cba700a6",
+  "status": "passed",
+  "task_id": "volve_porosity_conditional_reconstruction",
+  "track_id": "reconstruction",
+  "wall_seconds": 21.185239925980568
+}

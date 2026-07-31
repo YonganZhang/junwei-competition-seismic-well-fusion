@@ -1,0 +1,17 @@
+{
+  "epochs": 12,
+  "first_loss": 2.801418860443227e-07,
+  "last_loss": 6.43730409599783e-07,
+  "model_id": "fault_raw_logistic",
+  "output_shape": [
+    10,
+    1,
+    3,
+    3
+  ],
+  "positive_probability_mean": 0.9999996423721313,
+  "seed": 2693,
+  "status": "passed",
+  "unknown_voxels_used_for_training": 0,
+  "verified_negative_probability_mean": 8.864124652063765e-07
+}

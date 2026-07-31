@@ -1,0 +1,17 @@
+{
+  "schema_version": "reconstruction-p19-independent-verification/v1",
+  "status": "PASSED",
+  "rows": 10240,
+  "fold_rows": [2048, 2048, 2048, 2048, 2048],
+  "unique_kji_rows": 10240,
+  "baseline_rmse_recomputed": 0.028449728170183285,
+  "candidate_rmse_recomputed": 0.027751397627827728,
+  "fold_wins_recomputed": 5,
+  "meta_purge_checked": true,
+  "zero_head_first_step_gradient_checked": true,
+  "encoder_gradient_recovery_checked": true,
+  "trainable_encoder_parameter_count_checked": 17298000,
+  "strict_rejected_routes_checked": 4,
+  "same_oof_regression_kriging_non_promotable": true,
+  "firewall": {"test_h5_opened": false, "frozen_holdout_opened": false}
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": "p5-stage1-portable-evidence-v1",
+  "track_id": "reconstruction",
+  "run_date": "2026-07-14",
+  "evidence_scope": "real development one-step contract smoke; not CV, ranking, or frozen-test evaluation",
+  "data_policy": {
+    "evaluation_modes": ["strict", "conditional"],
+    "development_only": true,
+    "frozen_test_i_blocks_loaded": [],
+    "weights_downloaded_bytes": 0,
+    "strict_input_channels": 6,
+    "conditional_input_channels": 7
+  },
+  "evidence_hashes": {
+    "source_lock_sha256": "a3a910552687a9d2fd2a930b347f76f8280c2f91b03f89afc9bf00dc188a0743",
+    "development_batch_cache_manifest_sha256": "b154ee929f5c02df9fed81fa381d6ee84d590f66f279f2876d3929c5a76592dc",
+    "full_untracked_run_summary_sha256": "9f7c211e036094845101347fb867519858518a1d03ba54cfd37fb19c23db1c71"
+  },
+  "counts": {
+    "models_passed_both_modes": 8,
+    "models_skipped_both_modes": 2,
+    "models_failed": 0,
+    "mode_runs_passed": 16,
+    "mode_runs_skipped": 4,
+    "mode_runs_failed": 0
+  },
+  "models": {
+    "scipy_rbf_neighbors": {
+      "status": "passed_both_modes",
+      "device": "cpu",
+      "strict_validation_loss": 0.000595667772605001,
+      "conditional_validation_loss": 0.0007547518397238388,
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0
+    },
+    "pykrige_ok3d": {
+      "status": "passed_both_modes",
+      "device": "cpu",
+      "strict_validation_loss": 0.00039726519827254893,
+      "conditional_validation_loss": 0.0007652488185810515,
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0
+    },
+    "gstools_krige_condsrf": {
+      "status": "passed_both_modes",
+      "device": "cpu",
+      "strict_validation_loss": 0.0004937951638009302,
+      "conditional_validation_loss": 0.0006841669821463064,
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0
+    },
+    "mpslib_snesim3d": {
+      "status": "skipped_both_modes",
+      "skip_code": "missing_legal_training_image",
+      "note": "The frozen Eclipse reference/test volume is forbidden as an MPS training image."
+    },
+    "gpytorch_svgp": {
+      "status": "passed_both_modes",
+      "device": "cpu",
+      "strict_validation_loss": 0.04607883884407252,
+      "conditional_validation_loss": 0.04218321540462936,
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0
+    },
+    "monai_basicunet3d": {
+      "status": "passed_both_modes",
+      "device": "cpu",
+      "strict_validation_loss": 2.4836679742506926,
+      "conditional_validation_loss": 2.608081572837812,
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0,
+      "note": "Strict deterministic CUDA rejects MONAI BasicUNet max-pool backward, so the real smoke used the same shared Torch/MONAI environment on CPU."
+    },
+    "monai_segresnet3d": {
+      "status": "passed_both_modes",
+      "device": "cuda:0",
+      "strict_validation_loss": 0.4927820824581985,
+      "conditional_validation_loss": 0.18660999987898536,
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0
+    },
+    "neuralop_fno3d": {
+      "status": "passed_both_modes",
+      "device": "cuda:0",
+      "distribution": "neuraloperator==2.0.0",
+      "strict_validation_loss": 0.3589210701832763,
+      "conditional_validation_loss": 0.1360157752287496,
+      "backward_executed": true,
+      "finite_prediction": true,
+      "strict_prediction_shape": [1, 1, 9, 20, 18],
+      "conditional_prediction_shape": [1, 1, 9, 20, 18],
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0
+    },
+    "tcnn_hashgrid_inr": {
+      "status": "skipped_both_modes",
+      "skip_code": "dependency_missing",
+      "missing_import": "tinycudann",
+      "note": "Stage 1 did not compile or install the missing extension."
+    },
+    "siren_inr": {
+      "status": "passed_both_modes",
+      "device": "cuda:0",
+      "strict_validation_loss": 0.004258010102819649,
+      "conditional_validation_loss": 0.02769022028733878,
+      "checkpoint_roundtrip_max_abs_error": 0.0,
+      "same_seed_max_abs_error": 0.0
+    }
+  }
+}

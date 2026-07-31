@@ -1,0 +1,100 @@
+{
+  "lock_version": "p5-source-lock-v1",
+  "track_id": "reconstruction",
+  "frozen_at": "2026-07-14",
+  "weights_policy": "scratch_only_no_download",
+  "models": {
+    "scipy_rbf_neighbors": {
+      "upstream_url": "https://github.com/scipy/scipy",
+      "revision": "ba8b7d300e3afcd412bc9eb91b03d087c678161e",
+      "distribution": "scipy",
+      "version_constraint": ">=1.15.3,<2",
+      "import_modules": ["scipy.interpolate"],
+      "license": "BSD-3-Clause",
+      "weights": {"required": false, "sha256": null}
+    },
+    "pykrige_ok3d": {
+      "upstream_url": "https://github.com/GeoStat-Framework/PyKrige",
+      "revision": "5e896fb3398cc86acd735d170fb758a02528b70e",
+      "distribution": "pykrige",
+      "version_constraint": "==1.7.3",
+      "import_modules": ["pykrige.ok3d"],
+      "license": "BSD-3-Clause",
+      "weights": {"required": false, "sha256": null}
+    },
+    "gstools_krige_condsrf": {
+      "upstream_url": "https://github.com/GeoStat-Framework/GSTools",
+      "revision": "aefebdeab0a4861a88d334d02475ceedeb3f596f",
+      "distribution": "gstools",
+      "version_constraint": "==1.7.0",
+      "import_modules": ["gstools"],
+      "license": "LGPL-3.0",
+      "weights": {"required": false, "sha256": null}
+    },
+    "mpslib_snesim3d": {
+      "upstream_url": "https://github.com/ergosimulation/mpslib",
+      "revision": "a47718fc0e2c7c6f3411de429e51f1267b5d7f7c",
+      "distribution": "scikit-mps",
+      "version_constraint": "revision-locked",
+      "import_modules": ["mpslib"],
+      "license": "LGPL-3.0",
+      "weights": {"required": false, "sha256": null},
+      "science_gate": "requires_independently_licensed_training_image"
+    },
+    "gpytorch_svgp": {
+      "upstream_url": "https://github.com/cornellius-gp/gpytorch",
+      "revision": "6272eda426c7d4115b0911efcf053a37ab956af9",
+      "distribution": "gpytorch",
+      "version_constraint": "==1.15.2",
+      "import_modules": ["torch", "gpytorch"],
+      "license": "MIT",
+      "weights": {"required": false, "sha256": null}
+    },
+    "monai_basicunet3d": {
+      "upstream_url": "https://github.com/Project-MONAI/MONAI",
+      "revision": "fd12fdccb9d4057742a144543b8fa9a884c91087",
+      "distribution": "monai",
+      "version_constraint": "==1.6.0",
+      "import_modules": ["torch", "monai"],
+      "license": "Apache-2.0",
+      "weights": {"required": false, "sha256": null}
+    },
+    "monai_segresnet3d": {
+      "upstream_url": "https://github.com/Project-MONAI/MONAI",
+      "revision": "fd12fdccb9d4057742a144543b8fa9a884c91087",
+      "distribution": "monai",
+      "version_constraint": "==1.6.0",
+      "import_modules": ["torch", "monai"],
+      "license": "Apache-2.0",
+      "weights": {"required": false, "sha256": null}
+    },
+    "neuralop_fno3d": {
+      "upstream_url": "https://github.com/neuraloperator/neuraloperator",
+      "revision": "86a8bc7812a31b42c4f7895693cf4ac11521c066",
+      "distribution": "neuraloperator",
+      "version_constraint": "==2.0.0",
+      "import_modules": ["torch", "neuralop"],
+      "license": "MIT",
+      "weights": {"required": false, "sha256": null}
+    },
+    "tcnn_hashgrid_inr": {
+      "upstream_url": "https://github.com/NVlabs/tiny-cuda-nn",
+      "revision": "749dd70c5afc5a9dadb85e5652ed65d55e0ba187",
+      "distribution": "tiny-cuda-nn",
+      "version_constraint": "revision-locked",
+      "import_modules": ["torch", "tinycudann"],
+      "license": "BSD-3-Clause",
+      "weights": {"required": false, "sha256": null},
+      "build_policy": "do_not_compile_during_stage1"
+    },
+    "siren_inr": {
+      "upstream_url": "https://github.com/vsitzmann/siren",
+      "revision": "4df34baee3f0f9c8f351630992c1fe1f69114b5f",
+      "distribution": "local-thin-adapter-on-torch",
+      "version_constraint": "architecture-at-revision",
+      "import_modules": ["torch"],
+      "license": "MIT",
+      "weights": {"required": false, "sha256": null}
+    }
+  }
+}

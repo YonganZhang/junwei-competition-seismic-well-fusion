@@ -1,0 +1,22 @@
+{
+  "batch_size": 64,
+  "development_primary_score": 0.017832799725908198,
+  "hpo_performed": false,
+  "metric_direction": "minimize",
+  "model": {
+    "hidden_dim": 24,
+    "l2_strength": 0.001,
+    "learning_rate": 0.005,
+    "model_name": "reservoir_ridge",
+    "n_features": 153,
+    "n_outputs": 1,
+    "seed": 2693,
+    "weight_decay": 0.001
+  },
+  "primary_metric": "physical_MAE",
+  "refit_epoch_budget_source": "median fold best epoch",
+  "refit_epochs": 14,
+  "requested_cv_epochs": 48,
+  "root_seed": 2693,
+  "uncertainty_absolute_residual_q90_model_domain": 0.03789995096257464
+}

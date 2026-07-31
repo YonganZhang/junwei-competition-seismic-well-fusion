@@ -1,0 +1,375 @@
+{
+  "all_targets_independent": true,
+  "registry_version": "p4-sweetspot-seven-targets-v1",
+  "root_seed": 2693,
+  "target_count": 7,
+  "targets": [
+    {
+      "artifacts": {
+        "artifact_manifest": {
+          "bytes": 4727,
+          "path": "reservoir_quality/_outputs/baseline_v1/manifest.json",
+          "sha256": "91a001651d647cda9dda230173b9c3f7819d34c06f2171498e1efe72e3a1a968"
+        },
+        "checkpoint": {
+          "bytes": 10744,
+          "path": "reservoir_quality/_outputs/baseline_v1/refit/checkpoint_best.pkl",
+          "sha256": "3fe4afc9e1bc338a63dcf832dbf035573653e8120ca9f3dccdf4218bb550254e"
+        },
+        "config": {
+          "bytes": 2333,
+          "path": "reservoir_quality/_outputs/baseline_v1/config.json",
+          "sha256": "fc86cb2dff8146b43747ef2058eac2eac46c1f56c24a073975aed8d15a5b69d7"
+        },
+        "metrics": {
+          "bytes": 169,
+          "path": "reservoir_quality/_outputs/baseline_v1/frozen_test/metrics.json",
+          "sha256": "b234c51d8dfd666064981e00dafc1cf80801d1c2a6a83211dcabf7b5c96b9539"
+        },
+        "predictions": {
+          "bytes": 977720,
+          "path": "reservoir_quality/_outputs/baseline_v1/frozen_test/predictions.csv",
+          "sha256": "385f84d8ad52162ca815bf500dab2aef93b8c9f6fefbf3628d38c4145bd9dce1"
+        },
+        "split_manifest": {
+          "bytes": 5453090,
+          "path": "reservoir_quality/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f"
+        },
+        "task_spec": {
+          "bytes": 1894,
+          "path": "reservoir_quality/_outputs/baseline_v1/task_spec.json",
+          "sha256": "a3bb3b079b89fa03a525eb19a16fc22e3d36e95cdb5769ca856ae6412f844830"
+        },
+        "visualization_manifest": {
+          "bytes": 745,
+          "path": "reservoir_quality/_outputs/baseline_v1/visualizations/visualization_manifest.json",
+          "sha256": "967e5d0d05422b11c107e59ee33ce5306981c5f71125acd443b1a7a4b96fe61a"
+        }
+      },
+      "development_samples": 35810,
+      "effective_folds": 3,
+      "independent_case": true,
+      "label_version": "rqi-0.0314-sqrt-klogh-over-phif-v1",
+      "model_id": "robust_linear",
+      "requested_folds": 5,
+      "run_root": "reservoir_quality/_outputs/baseline_v1",
+      "status": "proxy_feasible",
+      "target_id": "reservoir_quality",
+      "target_number": 1,
+      "task_id": "sweetspot.reservoir_quality.rqi_v1",
+      "test_consumed_once": true,
+      "test_samples": 11936
+    },
+    {
+      "artifacts": {
+        "artifact_manifest": {
+          "bytes": 4736,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/manifest.json",
+          "sha256": "8e087125f49edc10114e786fa04cfa46d3ab75ec20987eadbd9d5905fb93c539"
+        },
+        "checkpoint": {
+          "bytes": 11045,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/refit/checkpoint_best.pkl",
+          "sha256": "12f1b0c9464503d9b89cb33f6efa99f66d0141cceb1cba27a14b4ae9bbbfe4f6"
+        },
+        "config": {
+          "bytes": 2563,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/config.json",
+          "sha256": "fcb1100e94cc86c72e0448a2e247a72b1c91be36917e08ac324f9b386b8d4987"
+        },
+        "metrics": {
+          "bytes": 250,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/frozen_test/metrics.json",
+          "sha256": "cb1edbde3569f76faacf129721b209e365e990ef03b16100211ecbaa5795dbad"
+        },
+        "predictions": {
+          "bytes": 895398,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/frozen_test/predictions.csv",
+          "sha256": "bb49502684c37fa13ea263af53e43e70bdb269eb88a454339fd177d764a38876"
+        },
+        "split_manifest": {
+          "bytes": 6441157,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20"
+        },
+        "task_spec": {
+          "bytes": 2074,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/task_spec.json",
+          "sha256": "45e8bca171a3d854076aaa1316737bf21288966c3fa93884039d76a7bc420e14"
+        },
+        "visualization_manifest": {
+          "bytes": 770,
+          "path": "hydrocarbon_pay/_outputs/baseline_v1/visualizations/visualization_manifest.json",
+          "sha256": "9072eb11fc59bc677aa4298bcf9d479c7f27d6ce28f4d343319c25491c3a80cd"
+        }
+      },
+      "development_samples": 36122,
+      "effective_folds": 3,
+      "independent_case": true,
+      "label_version": "cpi-sand-flag-near-binary-v1",
+      "model_id": "logistic_classifier",
+      "requested_folds": 5,
+      "run_root": "hydrocarbon_pay/_outputs/baseline_v1",
+      "status": "proxy_feasible",
+      "target_id": "hydrocarbon_pay",
+      "target_number": 2,
+      "task_id": "sweetspot.hydrocarbon_pay.sand_flag_proxy_v1",
+      "test_consumed_once": true,
+      "test_samples": 12081
+    },
+    {
+      "artifacts": {
+        "artifact_manifest": {
+          "bytes": 4933,
+          "path": "productivity/_outputs/baseline_v1/manifest.json",
+          "sha256": "df18fa2028b30fe0e78bc2e8704ada75d9af3e45c374334e62863ad90a4103b3"
+        },
+        "checkpoint": {
+          "bytes": 11061,
+          "path": "productivity/_outputs/baseline_v1/refit/checkpoint_best.pkl",
+          "sha256": "f039f8e1249aee3005cd9b9b69901c9a08209cc14b88c36c05bf7567a27f8bb0"
+        },
+        "config": {
+          "bytes": 2540,
+          "path": "productivity/_outputs/baseline_v1/config.json",
+          "sha256": "2e678aaf35ff637b631ca4f4677cc050f1115a8c8a97bfa0bf833445f9e040df"
+        },
+        "metrics": {
+          "bytes": 203,
+          "path": "productivity/_outputs/baseline_v1/frozen_test/metrics.json",
+          "sha256": "a4dfe428db853e0bf50763ff43ec2e5e3016051f4b5a2970ea377bc45dec4327"
+        },
+        "predictions": {
+          "bytes": 13224,
+          "path": "productivity/_outputs/baseline_v1/frozen_test/predictions.csv",
+          "sha256": "174144ff1db952241232915f036b8f437a03cd38dc9c46d256aded5b43f39f6f"
+        },
+        "split_manifest": {
+          "bytes": 280746,
+          "path": "productivity/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+        },
+        "task_spec": {
+          "bytes": 2102,
+          "path": "productivity/_outputs/baseline_v1/task_spec.json",
+          "sha256": "726b4553db55d187fbfd58da5a0ec36e472d4796b12e013aa37f50bfd19b6b9b"
+        },
+        "visualization_manifest": {
+          "bytes": 749,
+          "path": "productivity/_outputs/baseline_v1/visualizations/visualization_manifest.json",
+          "sha256": "c54e00f0387fda523e7ee4228fd9599d6c7c26930c201bebac7ac23f86c85892"
+        }
+      },
+      "development_samples": 1111,
+      "effective_folds": 4,
+      "independent_case": true,
+      "label_version": "future-30-calendar-row-mean-oil-v1",
+      "model_id": "robust_linear",
+      "requested_folds": 5,
+      "run_root": "productivity/_outputs/baseline_v1",
+      "status": "feasible",
+      "target_id": "productivity",
+      "target_number": 3,
+      "task_id": "sweetspot.productivity.future_30d_oil_v1",
+      "test_consumed_once": true,
+      "test_samples": 132
+    },
+    {
+      "artifacts": {
+        "artifact_manifest": {
+          "bytes": 4712,
+          "path": "water_breakthrough/_outputs/baseline_v1/manifest.json",
+          "sha256": "9f229c76385b99fcc560c6bfd3d40840dcb864fb002849fb066138faea3ecfcd"
+        },
+        "checkpoint": {
+          "bytes": 11506,
+          "path": "water_breakthrough/_outputs/baseline_v1/refit/checkpoint_best.pkl",
+          "sha256": "62763323253a189edbb86f94b0e831aa611caca0f426c3fcc85c76fb0889929a"
+        },
+        "config": {
+          "bytes": 2766,
+          "path": "water_breakthrough/_outputs/baseline_v1/config.json",
+          "sha256": "ed0e0ba22de2489a0767fbba94d95f64f3386db3b3bd5923b672bb3cf6384e84"
+        },
+        "metrics": {
+          "bytes": 188,
+          "path": "water_breakthrough/_outputs/baseline_v1/frozen_test/metrics.json",
+          "sha256": "865007381a6a715dd50e4ab1c43d7de18f5f2dec5ce8816c411a33451824ee04"
+        },
+        "predictions": {
+          "bytes": 3228,
+          "path": "water_breakthrough/_outputs/baseline_v1/frozen_test/predictions.csv",
+          "sha256": "3eff99b7b57e5a64c32b638e77c2abd363a953dc1c46a3e4720969cf7094908a"
+        },
+        "split_manifest": {
+          "bytes": 9075,
+          "path": "water_breakthrough/_outputs/baseline_v1/split_manifest.json",
+          "sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402"
+        },
+        "task_spec": {
+          "bytes": 2305,
+          "path": "water_breakthrough/_outputs/baseline_v1/task_spec.json",
+          "sha256": "9210aaab8b8ac35b5acf7b4285e292d4cca262bdec4b0a6de79fb059998a858d"
+        },
+        "visualization_manifest": {
+          "bytes": 738,
+          "path": "water_breakthrough/_outputs/baseline_v1/visualizations/visualization_manifest.json",
+          "sha256": "2421bc2265aa92a6a7ffe3d9adaf33db0dee935695c95d02a2af5c1707185483"
+        }
+      },
+      "development_samples": 32,
+      "effective_folds": 3,
+      "independent_case": true,
+      "label_version": "first-7-consecutive-positive-water-days-v1",
+      "model_id": "logistic_classifier",
+      "requested_folds": 5,
+      "run_root": "water_breakthrough/_outputs/baseline_v1",
+      "status": "proxy_feasible",
+      "target_id": "water_breakthrough",
+      "target_number": 4,
+      "task_id": "sweetspot.water_breakthrough.7day_event_30day_risk_v1",
+      "test_consumed_once": true,
+      "test_samples": 37
+    },
+    {
+      "artifacts": {
+        "not_feasible": {
+          "bytes": 1519,
+          "path": "remaining_oil_infill/_outputs/not_feasible.json",
+          "sha256": "0dd4b03149880f2edab912c68a81b28dbdbed1dc19f74ca64aa6f4631f77ac13"
+        }
+      },
+      "independent_case": true,
+      "reason": "dynamic state/cutoff/candidate/economic labels are not frozen",
+      "status": "not_feasible",
+      "target_id": "remaining_oil_infill",
+      "target_number": 5,
+      "task_id": "sweetspot.remaining_oil_infill.simulation_case_v1"
+    },
+    {
+      "additional_independent_case": {
+        "case_id": "phie",
+        "label_availability": {
+          "bytes": 966,
+          "path": "porosity/_outputs/phie/label_availability.json",
+          "sha256": "c332e2ed5671a0c58d93725d817cf64a28a5d0a599c72bd6828511c20b9b8462"
+        },
+        "reason": "exact PHIE has insufficient mother-well-family support; LFP_PHIE is not substituted",
+        "status": "not_feasible",
+        "status_artifact": {
+          "bytes": 304,
+          "path": "porosity/_outputs/phie/status.json",
+          "sha256": "ada9bf64772545961d35bb2b6a1f176474fba711334ec05bfe6c77ecb876a23d"
+        },
+        "task_spec": {
+          "bytes": 2066,
+          "path": "porosity/_outputs/phie/task_spec.json",
+          "sha256": "f6c27c356f02caead1908b43b7fc3fa3d9550f894355dac07f345f549a1c147e"
+        }
+      },
+      "artifacts": {
+        "artifact_manifest": {
+          "bytes": 4036,
+          "path": "porosity/_outputs/phif/manifest.json",
+          "sha256": "1f7d5770572e29626d3723fb48239c04a9c1edb995767b70fff7d8465e22127c"
+        },
+        "checkpoint": {
+          "bytes": 66330,
+          "path": "porosity/_outputs/phif/refit/checkpoint_best.pkl",
+          "sha256": "5fbe02149fec1e64c0ea17b12d01f321c0177fde20fc570d1aa6413153812fe2"
+        },
+        "config": {
+          "bytes": 592,
+          "path": "porosity/_outputs/phif/config.json",
+          "sha256": "c6c1558dd635c895a70f3981523a867776faf8e82c2e081656288d5e041619b3"
+        },
+        "metrics": {
+          "bytes": 416,
+          "path": "porosity/_outputs/phif/frozen_test/metrics.json",
+          "sha256": "565c1779055f95e4723a8be42f1381c478b387fe00188c65dbb016282a0578d8"
+        },
+        "predictions": {
+          "bytes": 65503,
+          "path": "porosity/_outputs/phif/frozen_test/predictions.csv",
+          "sha256": "c19fdd5573a62682f9b5cb6b3994e46d173906c498b41a17473b48d24d2ec89c"
+        },
+        "split_manifest": {
+          "bytes": 342919,
+          "path": "porosity/_outputs/phif/split_manifest.json",
+          "sha256": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232"
+        },
+        "task_spec": {
+          "bytes": 2232,
+          "path": "porosity/_outputs/phif/task_spec.json",
+          "sha256": "550f28fa9771095371f642f27e46d5586c71bfeaa0dec3ea678da5463602f0e2"
+        }
+      },
+      "development_samples": 1216,
+      "effective_folds": 4,
+      "independent_case": true,
+      "label_version": "target6-phif-cpi-v1",
+      "model_id": "reservoir_ridge",
+      "requested_folds": 5,
+      "run_root": "porosity/_outputs/phif",
+      "status": "complete",
+      "target_id": "porosity",
+      "target_number": 6,
+      "task_id": "target6_porosity_phif",
+      "test_consumed_once": true,
+      "test_samples": 344
+    },
+    {
+      "artifacts": {
+        "artifact_manifest": {
+          "bytes": 4040,
+          "path": "permeability/_outputs/klogh/manifest.json",
+          "sha256": "8623b053eedbbb8f5faad2d07a42c233118451421a77646a0d6cb007a9103358"
+        },
+        "checkpoint": {
+          "bytes": 72193,
+          "path": "permeability/_outputs/klogh/refit/checkpoint_best.pkl",
+          "sha256": "6936ccc1aa4ab1b8dabebaf6fe0569f8e5137fc39e2ac58f2260d36654c38d29"
+        },
+        "config": {
+          "bytes": 588,
+          "path": "permeability/_outputs/klogh/config.json",
+          "sha256": "d9410516196f3dcf07b0e551624a740c1eb19177ad9f7923d9c5d162b61abdd3"
+        },
+        "metrics": {
+          "bytes": 626,
+          "path": "permeability/_outputs/klogh/frozen_test/metrics.json",
+          "sha256": "c41e6a5b8e29b78c5604718e9a41cf5101884d7eb478fbb4705c446040d73230"
+        },
+        "predictions": {
+          "bytes": 63448,
+          "path": "permeability/_outputs/klogh/frozen_test/predictions.csv",
+          "sha256": "af3809acdd9f6fabc7173957380cc27bbd6de06648989a5f9b8d5f3a0b584c43"
+        },
+        "split_manifest": {
+          "bytes": 375041,
+          "path": "permeability/_outputs/klogh/split_manifest.json",
+          "sha256": "059eacdae735edc36347905218932fcd7693392f159572543d3420a2d0c4f447"
+        },
+        "task_spec": {
+          "bytes": 2529,
+          "path": "permeability/_outputs/klogh/task_spec.json",
+          "sha256": "82d1240f9137bc2546a1d87f7dd14d5cf5ef0838617079e014240e432bf684d0"
+        }
+      },
+      "development_samples": 1216,
+      "effective_folds": 4,
+      "independent_case": true,
+      "label_version": "target7-klogh-cpi-v1",
+      "model_id": "reservoir_ridge",
+      "requested_folds": 5,
+      "run_root": "permeability/_outputs/klogh",
+      "status": "complete",
+      "target_id": "permeability",
+      "target_number": 7,
+      "task_id": "target7_permeability_klogh",
+      "test_consumed_once": true,
+      "test_samples": 344
+    }
+  ]
+}

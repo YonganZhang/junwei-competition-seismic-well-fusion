@@ -1,0 +1,62 @@
+{
+  "agent_mode": "supervisory_qc_agent",
+  "cache_key": "a5a89f3ac27f51980976154680297dc4e2d79205debafeb12dcd42b1c7fcaf25",
+  "confidence": 0.25,
+  "control_mode": "p6-private-evidence",
+  "deny_list": [
+    "label",
+    "labels",
+    "target",
+    "targets",
+    "y",
+    "truth",
+    "ground_truth",
+    "groundtruth",
+    "test",
+    "test_label",
+    "test_labels",
+    "test_metric",
+    "test_metrics",
+    "metric",
+    "metrics",
+    "stat",
+    "stats",
+    "statistics",
+    "test_stat",
+    "test_statistics",
+    "score",
+    "path",
+    "paths",
+    "file",
+    "file_path",
+    "filepath",
+    "uri",
+    "url",
+    "checkpoint",
+    "holdout",
+    "frozen",
+    "split",
+    "prediction_error",
+    "error",
+    "residual",
+    "distance",
+    "offset",
+    "inferred_ac_offset"
+  ],
+  "evidence": [
+    "qc-summary"
+  ],
+  "prompt_version": "p6.gaia.dagt.v1",
+  "provenance": {
+    "report_kind": "str"
+  },
+  "seed": 2693,
+  "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+  "source_text_hash": "ef64bac2c56f5e35d3ad355d4a3f3beb9ccbb6e027271f125ca8390c6672d51b",
+  "structured_priors": {
+    "contains_qc_token": true,
+    "contains_warning_token": false,
+    "report_length": 160
+  },
+  "warnings": []
+}

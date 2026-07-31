@@ -1,0 +1,24 @@
+{
+  "figures": [
+    {
+      "name": "depth_track.png",
+      "sha256": "34c38c5d8b1fc1e27d994e239772dc6fe0269acfc330a2263cc9375db5ad53c9"
+    },
+    {
+      "name": "observed_predicted.png",
+      "sha256": "6fd1ce3a485f74707c02c17aecdf890e96ca68c0a0a4f7748eaee5a430cf198d"
+    },
+    {
+      "name": "residual_by_well.png",
+      "sha256": "7887ec84de6bbf49f548e9482b351bf3d438674a350dbb7f846338fdda3b22a1"
+    },
+    {
+      "name": "rank_by_well.png",
+      "sha256": "99425df146169da364e6b4558fd89a2d388742db99252a53ef3beda1de9a470d"
+    }
+  ],
+  "frozen_threshold": 0.5,
+  "prediction_path": "predictions.csv",
+  "prediction_sha256": "385f84d8ad52162ca815bf500dab2aef93b8c9f6fefbf3628d38c4145bd9dce1",
+  "target_id": "reservoir_quality"
+}

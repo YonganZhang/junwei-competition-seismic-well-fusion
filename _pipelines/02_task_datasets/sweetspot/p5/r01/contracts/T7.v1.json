@@ -1,0 +1,15 @@
+{
+  "schema_version": "sweetspot-p5.1-r0-target-contract/v1",
+  "contract_version": "1.0.0", "target_id": "T7", "task_id": "sweetspot.p5.1.r01.t7.klogh", "head_name": "t7_klogh",
+  "status": "runnable_if_development_audit_passes", "task_type": "regression", "semantic_name": "horizontal_permeability_klogh", "truth_class": "interpreted_petrophysical_target", "field_truth": false,
+  "label": {"version": "target7-klogh-cpi-v1", "formula": "KLOGH", "validity": "finite KLOGH>=0", "model_transform": "log1p"},
+  "units": "mD", "source_fields": ["KLOGH"],
+  "support": {"sample": "joined raw/CPI LAS depth row", "spatial_scale": "wellbore depth point", "time_scale": "not_applicable"},
+  "censoring": "non-finite or negative KLOGH, or no finite raw input, is unlabeled and excluded",
+  "input_fields": ["GR", "RHOB", "NPHI", "RT", "DT", "DTS", "PEF", "DRHO", "CALI", "BS", "RD", "RM", "RACEHM", "RACELM", "RPCEHM", "RPCELM"],
+  "split": {"strategy": "mother_well_logo", "group_key": "well_family", "root_seed": 2693, "test_access": "forbidden"},
+  "metrics": {"primary": ["mae", "rmse", "spearman"], "directions": {"mae": "minimize", "rmse": "minimize", "spearman": "maximize"}},
+  "approval": {"approved": true, "basis": "explicit_user_goal_directive", "scope": "track-private development-only raw well-log R1 lane"},
+  "r1_lane": {"input_modality": "well_logs", "model": "robust_linear", "selection_status": "not_rankable", "production_multimodal_lane": "blocked_no_portable_development_seismic_features"},
+  "warnings": ["KLOGH is an interpreted CPI property", "R1 well-log-only mechanism result is not a replacement for the historical multimodal lane", "test.h5 and known holdout backfill are forbidden"]
+}

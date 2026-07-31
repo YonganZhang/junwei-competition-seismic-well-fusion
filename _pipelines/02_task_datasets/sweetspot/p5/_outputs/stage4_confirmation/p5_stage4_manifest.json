@@ -1,0 +1,167 @@
+{
+  "all_paths_portable": true,
+  "artifact_count": 32,
+  "artifacts": [
+    {
+      "path": "p5_stage4_results.jsonl",
+      "sha256": "622f417091c8e4a5e612f748d86c92c26a88fca0ac31866fc0e3f20933c0b4b4",
+      "size_bytes": 6117
+    },
+    {
+      "path": "p5_stage4_summary.json",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+      "size_bytes": 7591
+    },
+    {
+      "path": "targets/T1/config.json",
+      "sha256": "42df406717c13f8232c1e693c27a1c9e940628d1d7dd5233c57ae9233a1ac2a2",
+      "size_bytes": 3709
+    },
+    {
+      "path": "targets/T1/figure.png",
+      "sha256": "d7b648267fc7292d16a7a396e2c1ca81916faecd9dead39ce1fee8a428bded16",
+      "size_bytes": 111658
+    },
+    {
+      "path": "targets/T1/metrics.json",
+      "sha256": "eb793fab14537e35cae1106b4c99134fe42b06a6017b265793fae2170d579694",
+      "size_bytes": 2344
+    },
+    {
+      "path": "targets/T1/predictions.csv.gz",
+      "sha256": "e3c689970e0058970539a4715f18561a265191222db6f26beaaff9aa83bf885e",
+      "size_bytes": 240581
+    },
+    {
+      "path": "targets/T1/refit/model.pkl.gz",
+      "sha256": "3eb4c6d93505df7efed4bd24b1002df1d68179942d0bac2dcff9152205f8ffa9",
+      "size_bytes": 19275
+    },
+    {
+      "path": "targets/T1/refit.json",
+      "sha256": "e230fe1830ebf85f73ac49fa947e982d462c91ebce2c34bed0e86a36dbe7472d",
+      "size_bytes": 2036
+    },
+    {
+      "path": "targets/T2/config.json",
+      "sha256": "0f52832e2b255c485eeedbeaeb7b2352c5abcdc5e3172358eb7decbdcc930093",
+      "size_bytes": 3900
+    },
+    {
+      "path": "targets/T2/figure.png",
+      "sha256": "15a138158da92f1df4b0aa3d996501530a0689542780364184ad88eb7eb735e1",
+      "size_bytes": 86696
+    },
+    {
+      "path": "targets/T2/metrics.json",
+      "sha256": "35201e05547cdbe95d53ffcde24faae2efb3a759a999d0542fef5c504482edd3",
+      "size_bytes": 2870
+    },
+    {
+      "path": "targets/T2/predictions.csv.gz",
+      "sha256": "13b5ca3ebcf40a6e6b7b3393f91c8fdec9ef0990afc287ca4ab85d69187953dd",
+      "size_bytes": 109924
+    },
+    {
+      "path": "targets/T2/refit/model.pkl.gz",
+      "sha256": "6af727bd2ca780d9c65bf36c58d0ea5b1c8025ec484d43e74af1235c4fe3429b",
+      "size_bytes": 12596
+    },
+    {
+      "path": "targets/T2/refit.json",
+      "sha256": "8d00a3481fa346aeac10209def5a28d249b465c9eaa16faff93acf356897d5aa",
+      "size_bytes": 2035
+    },
+    {
+      "path": "targets/T3/config.json",
+      "sha256": "114dee8fbbe1424ad326717479848a6492f619c253f204c891c8bcdfea096f9b",
+      "size_bytes": 3926
+    },
+    {
+      "path": "targets/T3/figure.png",
+      "sha256": "11870a1d15f33bb663869947145693cda61f8c80139aa606c778a6c18b3ec3fb",
+      "size_bytes": 125437
+    },
+    {
+      "path": "targets/T3/metrics.json",
+      "sha256": "3ea222fc0126a0ea0a8fbf2ec68f52b50538d6a7263404334dbd5f3e2cd30c22",
+      "size_bytes": 2586
+    },
+    {
+      "path": "targets/T3/predictions.csv.gz",
+      "sha256": "60a29dbe9753be4ec4acbe19d6cfa03bec79886478484d24bca94b68a777c245",
+      "size_bytes": 2963
+    },
+    {
+      "path": "targets/T3/refit/model.pkl.gz",
+      "sha256": "b2157f292bcc6395facbc07329698ef5c913f911334e285712899c5c3b26a99b",
+      "size_bytes": 14553
+    },
+    {
+      "path": "targets/T3/refit.json",
+      "sha256": "7c7f8e75081da3a34d1826fd7c5552c8877b70b47c7ff84902df7bee4a8a2c9d",
+      "size_bytes": 2149
+    },
+    {
+      "path": "targets/T4/config.json",
+      "sha256": "e1b6ebeadfd8149e74e2a49876dbeda945e5765b075d4f017ba50771f9cf556f",
+      "size_bytes": 4130
+    },
+    {
+      "path": "targets/T4/figure.png",
+      "sha256": "83763b5ff8f3d62c64f2ab8a672aeda2953e357f63d5cc2407b2b9563318e342",
+      "size_bytes": 69364
+    },
+    {
+      "path": "targets/T4/metrics.json",
+      "sha256": "5f06967501406f3dbdeeec390bb4346e34d346fa946207fd67c42412e55bc792",
+      "size_bytes": 2422
+    },
+    {
+      "path": "targets/T4/predictions.csv.gz",
+      "sha256": "39bbaa34829f11b16d665f40619245bb8a16a1e7a61927d6779878b640dd3022",
+      "size_bytes": 646
+    },
+    {
+      "path": "targets/T4/refit/model.pkl.gz",
+      "sha256": "9dc0af7dd2bc5067b8923c11be278a892f0c90776352031f7c3a0416d585c8ab",
+      "size_bytes": 10047
+    },
+    {
+      "path": "targets/T4/refit.json",
+      "sha256": "26fbe265a8a949d6db493f3e2d4571cea2dac4244871f6a45bc876042bdf40cb",
+      "size_bytes": 2108
+    },
+    {
+      "path": "targets/T5/figure.png",
+      "sha256": "ccef2d6e05c2e9d94e8be85e5383045253f266ffb4e281c75afb16a0077be4da",
+      "size_bytes": 23033
+    },
+    {
+      "path": "targets/T5/status.json",
+      "sha256": "62b857d2fabc71395f2319b8be542fe2180572da775f4f1dc901fa385d72377a",
+      "size_bytes": 552
+    },
+    {
+      "path": "targets/T6/figure.png",
+      "sha256": "6261f7ee511367ec0d696440f50605b0e9957c4419d5aa5fb055f60eb2fdaf81",
+      "size_bytes": 25786
+    },
+    {
+      "path": "targets/T6/status.json",
+      "sha256": "ddbb5890d63f0d908fd0e71ccf7982985e94d6556f7f3d14b885f23e04c5cd74",
+      "size_bytes": 581
+    },
+    {
+      "path": "targets/T7/figure.png",
+      "sha256": "9bbb1c51b517ab72afa559dc78382208e84ed9f3d64dcab4f6baa9fa429a9cf2",
+      "size_bytes": 25336
+    },
+    {
+      "path": "targets/T7/status.json",
+      "sha256": "b179c2dd7a9f24225a327cbed2e77ad813f51053fbe6f225e28074ce2bf4a0db",
+      "size_bytes": 587
+    }
+  ],
+  "schema_version": "sweetspot-p5-stage4-artifact-manifest/v1"
+}

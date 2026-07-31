@@ -1,0 +1,41 @@
+{
+  "task": "reconstruction",
+  "evaluation_mode": "strict",
+  "command": "python3 _pipelines/02_task_datasets/reconstruction/baseline.py --model ridge_linear --evaluation-mode strict --epochs 600",
+  "git_head": "60fc6393944901014770c8d48de8b91f09d5cb96",
+  "note": "reconstruction sources are currently untracked; source SHA-256 values below, not git_head alone, identify the executed code",
+  "python": "3.10.12",
+  "packages": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.9",
+    "h5py": "3.16.0"
+  },
+  "source_sha256": {
+    "_pipelines/02_task_datasets/reconstruction/baseline.py": "de1b0a5403f59977a7d2913359cd1d746087cd9a1ee5cc3ed6141b106d48a6f2",
+    "_pipelines/02_task_datasets/reconstruction/models/ridge_linear.py": "d469231e292951136f142df47d5f20313cbbd7bf8333c2635ad785b8e6cdafc6",
+    "_code/ml_framework/preprocess.py": "9ec2b992db430586c79dba9f67d3ed912a23dfc6ab97750ed69cabebe9c54c5e",
+    "_code/ml_framework/model_registry.py": "955e04c2f10a5304fa22737dab679679754fb6210aefb7bf1b1bf59daedb7f5a",
+    "_code/ml_framework/train.py": "fb25143b5bb94b6e622a73a9aee6343afce6b4057365416f2ed4ca754e1e4c4f",
+    "_code/ml_framework/visualize.py": "a6e28f5c59d53af6c0b1f74e79fc1012ad3b60b80720a4f6dda6065adfd4e358",
+    "_code/dataset_io.py": "0da5e0eac71a8e33aa36e25c55bd49359db007959025f6269781702929e82751"
+  },
+  "input_data_sha256": {
+    "_data/processed/reconstruction/train.h5": "2e395d810feb067b24c2295d87e6b33e308cb21aba224c6d2ddd1e6fcd88de73",
+    "_data/processed/reconstruction/test.h5": "dc236785c50fb5a01984973bab67bbfd40db5f45f4676df54291e4192779a271"
+  },
+  "artifact_sha256": {
+    "_pipelines/02_task_datasets/reconstruction/results_strict.json": "923d1cc214bf9a86efee1fc46578d525b7f82d9a8678fc11d7a9ef0b36d33ff8",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/preprocess_stats.json": "d0b80fb0edcfec572bdda7f50fcd725129970a784feae52e7972944ef08f3911",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/checkpoints/best.ckpt": "a9a88a7ef672a632ffc509844e911baa18b47059f9a10aee61a80258539c8302",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/checkpoints/last.ckpt": "1350ee044f1d08a5e641d860fcce1abe5b4a5f622209b394dcc0370f163f717f",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/checkpoints/history.json": "d17bddf30bad5ccffb5873d27a3ea037835ee299616f185b90407aabc6b15cc6",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/loss_curve.png": "97e311758f766103b82a6ec1d1c985b98cc0a73b04bcdc7542ac8296c4444226",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/structural/loss_curve_best_epoch_zoom.png": "cdb46c8a3bcddddda990197b8735b91a0fed607a20c81b964558a9379fbf9a78",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/checkpoints/best.ckpt": "c4fd3b9003b9079c07a7d3fdea61d76ef3c1bec809519d3f9adad744a5952d43",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/checkpoints/last.ckpt": "b89b0a74d717ac60f6b75b47cf0bf69f0d0d97cded2bd2d6577da72155aa6cf7",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/checkpoints/history.json": "f64c020772a8884b114b3b93d81fc9c3a448a4ffaa9577cad321764ee639067b",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/loss_curve.png": "a9f0ec45b84a4d6114386eb0eb76d9f9d17394910683113cfba214a9d557db7b",
+    "_pipelines/02_task_datasets/reconstruction/_outputs/ridge_linear/strict/seismic/loss_curve_best_epoch_zoom.png": "fc083c5b9e1209ad5f6928da6bcfe4ee0e2a0c92fe18bcdc32487bcf1eb110df"
+  }
+}

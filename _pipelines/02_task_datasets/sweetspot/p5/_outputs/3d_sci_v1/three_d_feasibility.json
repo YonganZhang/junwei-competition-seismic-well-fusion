@@ -1,0 +1,154 @@
+{
+  "schema_version": "sweetspot-p5-3d-sci-feasibility/v1",
+  "verdict": "not_feasible",
+  "analysis_date": "2026-07-25",
+  "repo": "p5-r2-sweetspot",
+  "branch": "p5-r2-sweetspot",
+  "code_head": "5f80b5c6fb6fbf80b2af9781809ab48def6b932d",
+  "contract": {
+    "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/_wiki-methodology/_top/_phases/P5_three_dimensional_sci_visualization_contract.md",
+    "sha256": "0db6554a8568f17d10397b1369391eb22b51731fd77cbefc717f3c97186fdf3b"
+  },
+  "checked_files": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_oof_manifest.json",
+      "sha256": "92907e7ba054ec1557864c9e2e1f78232e029cae8c6aab5aa538ebfe81268abd",
+      "observed_fields": [
+        "cell_key",
+        "contains_test",
+        "fold_id",
+        "lane",
+        "model_id",
+        "prediction_path",
+        "prediction_sha256",
+        "repeat_id",
+        "sample_count",
+        "seed",
+        "status",
+        "task_id",
+        "tracked"
+      ],
+      "coordinate_fields_found": []
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_visualization_manifest.json",
+      "sha256": "f3d3b923a6dec774622defd60bd9f91764a0c5d9f2b32b4fc11cede1bfd0de51",
+      "observed_fields": [
+        "entries",
+        "figure_path",
+        "figure_sha256",
+        "portable_input_path",
+        "portable_input_sha256",
+        "reads_raw_predictions",
+        "reads_test",
+        "task_id"
+      ],
+      "coordinate_fields_found": []
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_manifest.json",
+      "sha256": "80673a5d8c3f7cf905036ffea14475aeb5697cb68ba70e080d285ba0e58595bb",
+      "observed_fields": [
+        "all_paths_portable",
+        "artifact_count",
+        "artifacts"
+      ],
+      "coordinate_fields_found": []
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+      "observed_fields": [
+        "counts",
+        "stage",
+        "target_status"
+      ],
+      "coordinate_fields_found": []
+    }
+  ],
+  "prediction_archives": [
+    {
+      "task_id": "T1",
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/predictions.csv.gz",
+      "sha256": "e3c689970e0058970539a4715f18561a265191222db6f26beaaff9aa83bf885e",
+      "columns": [
+        "sample_id",
+        "group",
+        "depth_m",
+        "actual",
+        "prediction"
+      ],
+      "coordinate_fields_found": [
+        "depth_m"
+      ]
+    },
+    {
+      "task_id": "T2",
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/predictions.csv.gz",
+      "sha256": "13b5ca3ebcf40a6e6b7b3393f91c8fdec9ef0990afc287ca4ab85d69187953dd",
+      "columns": [
+        "sample_id",
+        "group",
+        "depth_m",
+        "actual",
+        "prediction"
+      ],
+      "coordinate_fields_found": [
+        "depth_m"
+      ]
+    },
+    {
+      "task_id": "T3",
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T3/predictions.csv.gz",
+      "sha256": "60a29dbe9753be4ec4acbe19d6cfa03bec79886478484d24bca94b68a777c245",
+      "columns": [
+        "sample_id",
+        "group",
+        "cutoff_date",
+        "actual",
+        "prediction"
+      ],
+      "coordinate_fields_found": [
+        "cutoff_date"
+      ]
+    },
+    {
+      "task_id": "T4",
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T4/predictions.csv.gz",
+      "sha256": "39bbaa34829f11b16d665f40619245bb8a16a1e7a61927d6779878b640dd3022",
+      "columns": [
+        "sample_id",
+        "group",
+        "cutoff_date",
+        "actual",
+        "prediction"
+      ],
+      "coordinate_fields_found": [
+        "cutoff_date"
+      ]
+    }
+  ],
+  "missing_items": [
+    "registered 3D grid prediction",
+    "real X coordinate",
+    "real Y coordinate",
+    "real Z coordinate",
+    "inline",
+    "crossline",
+    "UTM easting",
+    "UTM northing",
+    "TVDSS",
+    "well trajectory"
+  ],
+  "unlock_requirements": [
+    "a registered 3D grid prediction with provenance and hash",
+    "or archived predictions that expose verified X/Y/Z or trajectory coordinates",
+    "and an explicit interpolation/volume contract before any 3D rendering is attempted"
+  ],
+  "forbidden_actions": [
+    "grid interpolation without a registered contract",
+    "random point cloud generation",
+    "z-offset fabrication",
+    "dummy 3D volume rendering"
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "task": "reconstruction",
+  "target": "Volve final Eclipse PORO on active cells",
+  "grid_shape_kji": [
+    63,
+    100,
+    108
+  ],
+  "n_active_cells": 183545,
+  "input_channels": [
+    "seismic_amplitude",
+    "seismic_local_rms",
+    "seismic_vertical_gradient",
+    "x_normalized",
+    "y_normalized",
+    "depth_normalized",
+    "sparse_well_porosity",
+    "sparse_well_mask",
+    "eclipse_active_mask"
+  ],
+  "coordinate_bounds": {
+    "x": [
+      432851.25,
+      437175.25
+    ],
+    "y": [
+      6477478.5,
+      6480275.0
+    ],
+    "depth": [
+      2800.718505859375,
+      3543.77587890625
+    ]
+  },
+  "preprocessing": {
+    "denoise": "ml_framework.preprocess.denoise_identity",
+    "denoise_reason": "sharp seismic/well-log features may be real geology",
+    "coordinate_normalization": "ml_framework.preprocess.fit_minmax + normalize",
+    "coordinate_roundtrip": {
+      "x": {
+        "stats": {
+          "method": "minmax",
+          "mean": null,
+          "std": null,
+          "vmin": 432851.25,
+          "vmax": 437175.25
+        },
+        "roundtrip_max_abs_error": 0.0,
+        "roundtrip_tolerance": 0.20861972868442535
+      },
+      "y": {
+        "stats": {
+          "method": "minmax",
+          "mean": null,
+          "std": null,
+          "vmin": 6477478.5,
+          "vmax": 6480275.0
+        },
+        "roundtrip_max_abs_error": 0.0,
+        "roundtrip_tolerance": 3.090585708618164
+      },
+      "depth": {
+        "stats": {
+          "method": "minmax",
+          "mean": null,
+          "std": null,
+          "vmin": 2800.718505859375,
+          "vmax": 3543.77587890625
+        },
+        "roundtrip_max_abs_error": 0.0,
+        "roundtrip_tolerance": 0.0016898040194064379
+      }
+    }
+  },
+  "weak_tie": {
+    "method": "depth-wise inverse-horizontal-distance blend of Layer-1 weak well ties",
+    "depth_coordinate_warning": "Layer-1 tie depth is MD while Eclipse centre depth is TVD-like; alignment is weak.",
+    "well_ranges": {
+      "15_9-19_A": {
+        "depth_m": [
+          3500.5,
+          4094.5
+        ],
+        "twt_ms": [
+          2481.470703125,
+          2772.8837890625
+        ]
+      },
+      "15_9-19_BT2": {
+        "depth_m": [
+          3170.5,
+          4229.5
+        ],
+        "twt_ms": [
+          2316.210693359375,
+          2829.22802734375
+        ]
+      },
+      "15_9-19_SR": {
+        "depth_m": [
+          105.5,
+          5012.0
+        ],
+        "twt_ms": [
+          80.6032485961914,
+          2828.961669921875
+        ]
+      }
+    }
+  },
+  "seismic": {
+    "segy": "ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME.MIG_FIN.POST_STACK.3D.JS-017534.segy",
+    "n_unique_traces_read": 16646,
+    "twt_ms_range": [
+      1882.8172607421875,
+      2403.076416015625
+    ],
+    "time_index_range": [
+      471,
+      601
+    ],
+    "attribute_definitions": {
+      "amplitude": "nearest 4-ms sample",
+      "local_rms": "RMS over +/-2 samples",
+      "vertical_gradient": "sample[t+1] - sample[t-1]"
+    }
+  },
+  "sparse_wells": {
+    "n_observation_rows": 91,
+    "n_unique_cells": 91,
+    "n_wells_with_constraints": 1,
+    "coverage_warning": "Only wells that genuinely intersect the final active simulator cells are retained; the current data leave one intersecting LFP well.",
+    "columns": [
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized",
+      "porosity",
+      "seismic_amplitude",
+      "seismic_local_rms",
+      "seismic_vertical_gradient",
+      "well_id"
+    ],
+    "mapping": "nearest active Eclipse cell in anisotropic (50m,50m,2m) coordinates",
+    "per_well": {
+      "15_9-19_A": {
+        "n_constraints": 0,
+        "min_scaled_nearest_cell_distance": 31.54202332855832,
+        "max_scaled_nearest_cell_distance": null
+      },
+      "15_9-19_BT2": {
+        "n_constraints": 0,
+        "min_scaled_nearest_cell_distance": 10.569732104875468,
+        "max_scaled_nearest_cell_distance": null
+      },
+      "15_9-19_SR": {
+        "n_constraints": 91,
+        "min_scaled_nearest_cell_distance": 0.30034869586849333,
+        "max_scaled_nearest_cell_distance": 5.917743922088104
+      }
+    }
+  },
+  "split": {
+    "strategy": "blocked east label split with global cross-boundary well constraints",
+    "evaluation_protocol": "conditional reconstruction given test-region well constraints, NOT strict spatial holdout generalization",
+    "train_patch_i_blocks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "test_patch_i_blocks": [
+      4,
+      5
+    ],
+    "n_train_samples": 140,
+    "n_test_samples": 70,
+    "active_cells": {
+      "train": 134222,
+      "test": 49323
+    }
+  },
+  "train_path": "_data/processed/reconstruction/train.h5",
+  "test_path": "_data/processed/reconstruction/test.h5",
+  "inspection_path": "_pipelines/02_task_datasets/reconstruction/model_inspection.json"
+}
