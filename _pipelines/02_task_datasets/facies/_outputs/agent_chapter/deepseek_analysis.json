@@ -1,0 +1,327 @@
+{
+  "api_key_persisted": false,
+  "context": {
+    "data_boundary": {
+      "folds": [
+        0,
+        4
+      ],
+      "frozen_test_accessed": false,
+      "holdout_paths_accepted": false,
+      "train_samples_per_fold": 32,
+      "validation_samples_per_fold": 16
+    },
+    "evaluation": {
+      "budget": {
+        "batch_size": 2,
+        "learning_rate": 0.0001,
+        "loss_id": "cross_entropy",
+        "max_train_samples": 32,
+        "max_updates": 40,
+        "max_validation_samples": 16,
+        "max_wall_seconds": 180.0,
+        "profile_id": "facies-p5-stage2-fixed-v1",
+        "validation_interval": 10,
+        "weight_decay": 0.0
+      },
+      "candidate_updates": 160,
+      "evidence_class": "fixed_development_cross_attention_experiment",
+      "f3_manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+      "folds": [
+        0,
+        4
+      ],
+      "frozen_test_accessed": false,
+      "holdout_paths_accepted": false,
+      "metric_implementation": "_pipelines.02_task_datasets.facies.p4_metrics.evaluate_probabilities",
+      "penobscot_manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+      "raw_predictions_persisted": false,
+      "root_seed": 2693
+    },
+    "experiment": {
+      "architecture": "deepest_cnn_query_to_sam2_key_value_multihead_cross_attention",
+      "attention_dim": 128,
+      "attention_heads": 4,
+      "attribution_status": "large_model_contribution_pending_random_weight_ablation",
+      "baseline_updates": 40,
+      "candidate_updates": 160,
+      "optimization": {
+        "cnn_lr": 5e-05,
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "horizontal_flip_probability": 0.5,
+        "noise_std": 0.03,
+        "sam2_lr": 1e-05,
+        "scheduler": "cosine",
+        "weight_decay": 0.0001
+      },
+      "sam2_checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5",
+      "sam2_dependency_site": "/mnt/data/yongan-admin-2/envs/atom-sam2-py310/lib/python3.10/site-packages",
+      "sam2_input_policy": "native_128_no_spatial_interpolation",
+      "sam2_source_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "sam2_trainable_hiera_blocks": [
+        22,
+        23
+      ],
+      "sam2_weight_mode": "pretrained",
+      "sam2_weight_mode_interface": [
+        "pretrained",
+        "random"
+      ]
+    },
+    "overall": {
+      "aggregation": "equal_mean_of_F3_and_Penobscot_mIoU",
+      "baseline_mean_miou": 0.13268214230901382,
+      "cross_attention_mean_miou": 0.24871161363079533,
+      "cross_attention_minus_baseline": 0.11602947132178151
+    },
+    "p13_verified": {
+      "artifacts": 3,
+      "folds": [
+        0,
+        4
+      ],
+      "frozen_test_accessed": false,
+      "overall_delta_miou": 0.11602947132178151,
+      "rows": 12,
+      "sam2_weight_mode": "pretrained",
+      "schema_version": "facies-p13-cross-attention/v1"
+    },
+    "sources": {
+      "p13_results_path": "_pipelines/02_task_datasets/facies/_outputs/p13_cross_attention/p13_cross_attention_results.jsonl",
+      "p13_results_sha256": "dd323032675ea0498deaf0422320d34797228350625aa976e5683537ba0dbc7b",
+      "p13_summary_path": "_pipelines/02_task_datasets/facies/_outputs/p13_cross_attention/p13_cross_attention_summary.json",
+      "p13_summary_sha256": "580c673592c6f2378692a3acb214a461ac6b5d199de6edd0fb597a3b21c433c6"
+    },
+    "task": "single-channel 128x128 seismic facies segmentation",
+    "tasks": {
+      "F3": {
+        "development_groups": 387,
+        "development_samples": 1548,
+        "folds": [
+          {
+            "fold_id": 0,
+            "full_train_samples": 1236,
+            "full_validation_samples": 312,
+            "max_to_min_positive_class_ratio": 82.67374773002422,
+            "train_pixel_percent": [
+              0.2610487459546926,
+              1.0599969660194175,
+              10.37821353060528,
+              6.710973449509506,
+              11.640905485184062,
+              21.581878168297433,
+              19.49643131984476,
+              11.46040240537773,
+              13.334705142913126,
+              4.075444786293993
+            ],
+            "train_pixel_support": [
+              52864,
+              214656,
+              2101653,
+              1359014,
+              2357356,
+              4370465,
+              3948149,
+              2320803,
+              2700361,
+              825303
+            ]
+          },
+          {
+            "fold_id": 4,
+            "full_train_samples": 1240,
+            "full_validation_samples": 308,
+            "max_to_min_positive_class_ratio": 72.29090822301426,
+            "train_pixel_percent": [
+              0.30934979838709675,
+              1.2077872983870968,
+              10.741060318485383,
+              6.890047134891633,
+              12.481615620274697,
+              22.363177884009577,
+              17.098900579637096,
+              10.033180482925907,
+              13.471571399319556,
+              5.403309483681956
+            ],
+            "train_pixel_support": [
+              62848,
+              245376,
+              2182171,
+              1399793,
+              2535785,
+              4543339,
+              3473840,
+              2038357,
+              2736906,
+              1097745
+            ]
+          }
+        ],
+        "manifest_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p4-training-integration/_tmp/p4-acceptance/facies_f3/split_manifest.json",
+        "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+        "num_classes": 10,
+        "p13": {
+          "comparison": {
+            "continued_cnn_minus_baseline": 0.07059832648507994,
+            "cross_attention_minus_baseline": 0.15588964091169816,
+            "cross_attention_minus_continued_cnn": 0.08529131442661822
+          },
+          "task_id": "facies_f3",
+          "variant_means": {
+            "continued_cnn_control": {
+              "accuracy": 0.43212318420410156,
+              "attention_entropy": 0.0,
+              "fusion_scale": 0.0,
+              "macro_f1": 0.3145263396502398,
+              "miou": 0.20686166950443383,
+              "nll": 1.7438589480908997,
+              "sam2_update_l2": 0.0
+            },
+            "cross_attention_fusion": {
+              "accuracy": 0.5324821472167969,
+              "attention_entropy": 0.8919123411178589,
+              "fusion_scale": 0.2004614770412445,
+              "macro_f1": 0.4163602787551978,
+              "miou": 0.29215298393105205,
+              "nll": 1.476849720080288,
+              "sam2_update_l2": 0.4195523869022729
+            },
+            "strong_small_baseline": {
+              "accuracy": 0.3134002685546875,
+              "attention_entropy": 0.0,
+              "fusion_scale": 0.0,
+              "macro_f1": 0.22151996333345453,
+              "miou": 0.1362633430193539,
+              "nll": 2.1908412895750855,
+              "sam2_update_l2": 0.0
+            }
+          }
+        },
+        "task_id": "facies_f3"
+      },
+      "Penobscot": {
+        "development_groups": 357,
+        "development_samples": 1398,
+        "folds": [
+          {
+            "fold_id": 0,
+            "full_train_samples": 1140,
+            "full_validation_samples": 258,
+            "max_to_min_positive_class_ratio": 54.47752037314773,
+            "train_pixel_percent": [
+              1.1030819541529606,
+              4.752250805235746,
+              7.673420153166118,
+              1.446715237801535,
+              1.7069552237527412,
+              14.964856599506579,
+              8.259550395764803,
+              60.09316963061952
+            ],
+            "train_pixel_support": [
+              206031,
+              887614,
+              1433223,
+              270214,
+              318821,
+              2795100,
+              1542699,
+              11224058
+            ]
+          },
+          {
+            "fold_id": 4,
+            "full_train_samples": 1114,
+            "full_validation_samples": 284,
+            "max_to_min_positive_class_ratio": 58.72613787596487,
+            "train_pixel_percent": [
+              1.0292149103736534,
+              4.4670447412898335,
+              7.213199416867706,
+              1.368951711877244,
+              1.7094281674287477,
+              15.11823287772105,
+              8.652111443839766,
+              60.441816730602
+            ],
+            "train_pixel_support": [
+              187850,
+              815315,
+              1316537,
+              249858,
+              312001,
+              2759346,
+              1579164,
+              11031705
+            ]
+          }
+        ],
+        "manifest_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p4-training-integration/_tmp/p4-acceptance/facies_penobscot/split_manifest.json",
+        "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+        "num_classes": 8,
+        "p13": {
+          "comparison": {
+            "continued_cnn_minus_baseline": 0.06046273994430945,
+            "cross_attention_minus_baseline": 0.07616930173186487,
+            "cross_attention_minus_continued_cnn": 0.015706561787555418
+          },
+          "task_id": "facies_penobscot",
+          "variant_means": {
+            "continued_cnn_control": {
+              "accuracy": 0.5346851348876953,
+              "attention_entropy": 0.0,
+              "fusion_scale": 0.0,
+              "macro_f1": 0.2623966786702865,
+              "miou": 0.1895636815429832,
+              "nll": 1.6486643653811952,
+              "sam2_update_l2": 0.0
+            },
+            "cross_attention_fusion": {
+              "accuracy": 0.5391502380371094,
+              "attention_entropy": 0.9510561525821686,
+              "fusion_scale": 0.2005726471543312,
+              "macro_f1": 0.2826401808637814,
+              "miou": 0.20527024333053862,
+              "nll": 1.6363919110909824,
+              "sam2_update_l2": 0.23414110513718972
+            },
+            "strong_small_baseline": {
+              "accuracy": 0.45084190368652344,
+              "attention_entropy": 0.0,
+              "fusion_scale": 0.0,
+              "macro_f1": 0.1765632873614313,
+              "miou": 0.12910094159867375,
+              "nll": 2.192799988899902,
+              "sam2_update_l2": 0.0
+            }
+          }
+        },
+        "task_id": "facies_penobscot"
+      }
+    }
+  },
+  "credential_transport": "ephemeral_process_environment",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "provider": "DeepSeek",
+  "response": {
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "raw_text": "# 地震相分类P13模型诊断与建议\n\n## 1. 最可能的技术瓶颈（按可能性排序）\n\n### 瓶颈1：门控机制失效——fusion_scale钳制在初始化值\n**依据（观察事实）**：训练后fusion_scale均值F3为0.200461、Penobscot为0.200573，与初始化0.2几乎无差异。这表明sigmoid(logit)门控在训练中几乎没有更新，融合路径可能被有效关闭或仅以固定比例叠加。\n\n**技术假设**：门控梯度可能因以下原因消失：(a) logit初始化值对应sigmoid输出0.2，若logit初始为负较大值，梯度饱和；(b) 融合特征与CNN decoder特征尺度不匹配，导致门控梯度被主路径梯度淹没；(c) 学习率1e-5对SAM2侧过低，但fusion层本身lr=2e-4，若门控参数在fusion层内，则更可能是初始化或梯度流问题。\n\n**注意**：这是相关性观察，不能断定门控失效是性能瓶颈的唯一原因，但门控值几乎不动是明确的异常信号。\n\n---\n\n### 瓶颈2：注意力熵过高——Penobscot注意力接近均匀分布\n**依据（观察事实）**：归一化attention entropy F3为0.891912、Penobscot为0.951056（接近最大值1.0）。Penobscot的注意力几乎均匀，意味着cross-attention没有有效聚焦到判别性空间位置。\n\n**技术假设**：可能原因包括：(a) key/value特征（SAM2 Hiera blocks 22/23）与query特征（CNN最深特征）域差异过大，导致相似度分布平坦；(b) 训练样本极少（每折32 patch），注意力机制难以学到锐利分布；(c) 4 heads、dim=128的配置可能容量不足或过大，导致退化到均匀分布。\n\n**注意**：高熵是观察事实，但“高熵导致性能受限”是假设——需要验证降低熵是否带来提升。\n\n---\n\n### 瓶颈3：训练样本极度稀缺与类别极端不均衡\n**依据（观察事实）**：每折仅32个训练patch（batch=2，即16次更新/epoch），F3最大/最小正类比约82.67倍，Penobscot约54.48倍。P13的continued CNN仅160 updates，cross-attention模型总训练量也极小。\n\n**技术假设**：在如此少的数据下，模型可能欠拟合（而非过拟合），尤其对尾部类别。CE+0.25 Dice的损失组合可能不足以应对极端不均衡——Dice权重偏低，且Dice对极小类梯度不稳定。\n\n**注意**：样本少是事实，但“欠拟合”是假设——需观察训练/验证曲线确认。\n\n---\n\n### 瓶颈4：SAM2特征贡献未验证——可能仅提供有限增量\n**依据（观察事实）**：cross-attention相比continued CNN在F3提升+0.085291，Penobscot仅+0.015707。Penobscot提升微弱，且attention熵接近均匀，提示SAM2特征可能未提供有效判别信息。\n\n**技术假设**：SAM2的Hiera特征可能对地震相判别不够敏感（预训练于自然图像/视频），或blocks 22/23特征过于高层、空间分辨率不足。Penobscot提升微弱可能反映特征不匹配。\n\n**注意**：这是假设，必须通过random-weight消融验证。当前不能归因于SAM2。\n\n---\n\n### 瓶颈5：训练策略可能不匹配——cosine调度与极短训练周期\n**依据（观察事实）**：continued CNN仅160 updates，cross-attention模型总训练量未明确但推测类似量级。cosine调度在极短周期内可能未充分降低学习率，导致后期震荡。\n\n**技术假设**：在<200 updates的规模下，cosine可能不如固定小学习率或线性衰减稳定。但这是推测，无直接证据。\n\n---\n\n## 2. 按优先级排序的建议\n\n### 建议A：修正fusion_scale初始化与门控梯度流 [LOW_COST]\n- **改动**：将fusion_scale的sigmoid logit初始化从对应0.2改为对应0.5（即logit=0），或直接移除门控（固定为1.0）作为对照。\n- **精确参数**：若保留门控，初始化logit=0.0（sigmoid输出0.5）；若移除，删除fusion_scale乘法，直接相加。\n- **预期观察信号**：训练后fusion_scale均值应偏离0.5（若保留门控），或模型mIoU变化。\n- **失败判据**：若fusion_scale仍钳制在0.5附近且mIoU无变化，说明门控不是瓶颈，应转向其他因素。\n\n---\n\n### 建议B：降低attention熵——温度缩放或更少heads [LOW_COST]\n- **改动**：在attention softmax前除以温度T，初始T=0.5（即logits除以0.5，使分布更锐利）；或将heads从4减至2。\n- **精确参数**：T=0.5，或heads=2，dim保持128。\n- **预期观察信号**：attention entropy应下降（例如Penobscot从0.95降至<0.8），mIoU可能变化。\n- **失败判据**：若entropy下降但mIoU无提升或下降，说明均匀注意力并非主要瓶颈。\n\n---\n\n### 建议C：调整损失权重——提高Dice权重或改用Focal [MEDIUM]\n- **改动**：将CE+0.25 Dice改为CE+0.5 Dice，或替换为CE+0.5 Focal（gamma=2.0）。\n- **精确参数**：Dice权重0.5；若用Focal，alpha按类别频率倒数设置，gamma=2.0。\n- **预期观察信号**：尾部类别（如F3的class 0/1）的IoU应提升，整体mIoU可能变化。\n- **失败判据**：若尾部类别IoU无改善且整体mIoU下降，说明损失权重不是主要瓶颈。\n\n---\n\n### 建议D：延长训练周期并调整调度 [MEDIUM]\n- **改动**：将总updates从~200增至400-600，cosine周期相应延长；或改用固定lr=1e-4（CNN）无调度。\n- **精确参数**：总updates=400，cosine T_max=400；或固定lr=1e-4，无decay。\n- **预期观察信号**：训练loss应持续下降，验证mIoU应随训练上升（若欠拟合）。\n- **失败判据**：若验证mIoU在200 updates后不再上升，说明延长训练无益，可能已过拟合。\n\n---\n\n### 建议E：特征对齐——对SAM2特征做投影或归一化 [MEDIUM]\n- **改动**：在cross-attention前对SAM2 key/value特征加一层LayerNorm+线性投影（dim=128），或对CNN query特征做L2归一化。\n- **精确参数**：key/value投影层：Linear(128→128)+LayerNorm；query L2归一化。\n- **预期观察信号**：attention entropy应下降，Penobscot mIoU可能提升。\n- **失败判据**：若entropy无变化且mIoU无提升，说明域差异不是主因。\n\n---\n\n### 建议F：数据增强强化——针对空间不变性 [LOW_COST]\n- **改动**：在现有增强基础上增加随机旋转90°（概率0.5）和垂直翻转（概率0.5）。\n- **精确参数**：rotation 90° p=0.5，vertical flip p=0.5。\n- **预期观察信号**：训练loss下降更平稳，验证mIoU可能提升（若增强有效）。\n- **失败判据**：若mIoU无变化或下降，说明增强过度或与任务不匹配。\n\n---\n\n## 3. 立即可验证的低成本实验（一次只改一个因素）\n\n**实验：调整fusion_scale初始化（针对门控不动问题）**\n\n- **改动**：将fusion_scale的logit初始化从当前值改为0.0（sigmoid输出0.5），其余完全不变（lr、损失、增强、训练周期均同P13）。\n- **成本**：[LOW_COST]——仅改一行初始化代码，训练时间同P13。\n- **预期观察信号**：\n  - 训练后fusion_scale均值应偏离0.5（若门控可学习），或仍钳制在0.5附近（若梯度问题依旧）。\n  - 若mIoU相比P13的cross-attention结果（F3 0.292153, Penobscot 0.205270）有变化，说明门控初始化是瓶颈之一。\n- **失败判据**：若fusion_scale仍不动且mIoU无变化，则门控初始化不是主因，应转向建议B或E。\n\n---\n\n## 4. 未验证建议与归因提醒\n\n**未验证建议**（需后续实验确认）：\n- 温度缩放降低attention熵（建议B）——未测试，可能有效也可能无效。\n- 损失权重调整（建议C）——未测试，对尾部类别影响未知。\n- 延长训练周期（建议D）——未测试，可能欠拟合也可能过拟合。\n- 特征投影对齐（建议E）——未测试，域差异假设未验证。\n- 增强强化（建议F）——未测试，可能引入噪声。\n\n**归因提醒**：\n- **当前所有cross-attention相比continued CNN的提升（F3 +0.085291, Penobscot +0.015707）不能归因于SAM2**，因为未执行pretrained/random权重消融。\n- 必须运行random-weight SAM2（冻结或解冻）对照实验，才能区分提升来自SAM2预训练特征还是融合架构本身。\n- 在消融完成前，任何关于“SAM2带来提升”的表述均为未验证假设。\n\n---\n\n## 5. 假设方向（不承诺提升）\n\n- 若门控初始化修正后mIoU提升，则门控是瓶颈之一。\n- 若温度缩放降低熵后Penobscot mIoU提升，则注意力均匀性限制性能。\n- 若Dice权重提高后尾部类别IoU改善，则损失权重需调整。\n- 若random-weight SAM2消融显示与pretrained结果无显著差异，则SAM2预训练贡献可忽略，应聚焦融合架构本身。\n\n以上所有方向均为假设，需实验验证，不提供虚构数字。",
+    "usage": {
+      "completion_tokens": 2330,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1082,
+      "prompt_tokens": 1082,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3412
+    }
+  },
+  "schema_version": "facies-deepseek-analysis/v1",
+  "system_prompt": "你是一名独立的地震解释与小样本语义分割顾问。只能基于给出的development证据做常识性诊断；区分已观察事实、技术假设与待验证建议；禁止声称SAM2造成了提升，因为随机权重消融尚未执行。建议须尽量给出可执行参数，并标注LOW_COST/MEDIUM/HIGH成本。",
+  "user_prompt": "# 任务\n②地震相分类赛道：输入单通道128×128地震振幅patch，逐像素预测facies。F3为10类，Penobscot为8类。主指标是固定实现的mIoU，另看macro-F1/accuracy/NLL；类别权重只由各fold训练集拟合。\n\n# 数据与评测边界\n- F3 development：1548个patch、387个inline组；Penobscot development：1398个patch、357个inline组。\n- 锁定空间隔离5折中的fold 0和4；实际固定开发预算每折仅32个训练patch、16个验证patch，batch=2。不得使用frozen holdout或test.h5。\n- F3 full fold-train像素占比在fold 0/4中约为：[0.26/0.31, 1.06/1.21, 10.38/10.74, 6.71/6.89, 11.64/12.48, 21.58/22.36, 19.50/17.10, 11.46/10.03, 13.33/13.47, 4.08/5.40]%，最大类/最小正类约82.67/72.29倍。\n- Penobscot full fold-train像素占比约：[1.10/1.03, 4.75/4.47, 7.67/7.21, 1.45/1.37, 1.71/1.71, 14.96/15.12, 8.26/8.65, 60.09/60.44]%，最大类/最小类约54.48/58.73倍。\n\n# 当前模型（P13）\n- strong_small_baseline：40 updates的小CNN。\n- continued_cnn_control：从同一baseline继续160 updates，只训练CNN decoder/head；AdamW，CNN lr=5e-5，weight_decay=1e-4，cosine，CE+0.25 Dice，水平翻转p=0.5、强度缩放和Gaussian noise std=0.03。\n- cross_attention_fusion：CNN最深层特征作query，SAM2 native-128特征作key/value，4 heads、dim=128，feature residual写回CNN decoder；SAM2最后Hiera blocks 22/23解冻。lr：CNN 5e-5、fusion 2e-4、SAM2 1e-5；其余训练口径同continued control。当前用pretrained权重，但贡献占比待random-weight消融。\n\n# 固定development结果（fold 0/4等权均值）\n- F3：baseline mIoU 0.136263，continued CNN 0.206862，cross-attention 0.292153；cross比continued +0.085291。cross macro-F1 0.416360。\n- Penobscot：baseline 0.129101，continued CNN 0.189564，cross-attention 0.205270；cross比continued +0.015707。cross macro-F1 0.282640。\n- 两任务等权：baseline 0.132682 → cross 0.248712（整体+0.116029），但不能归因于SAM2。\n\n# 已知限制/诊断\n- fusion_scale=sigmoid(logit)，初始化0.2；训练后F3均值0.200461、Penobscot 0.200573，几乎钳在初始化附近，门控学习可能不充分。\n- 归一化attention entropy偏高：F3 0.891912、Penobscot 0.951056，尤其Penobscot注意力接近均匀。\n- 训练样本极少、类别极不均衡；P13只跑两个固定fold，尚无随机SAM2消融，不能做来源归因。\n\n# 请分析并回答\n1. 先列3–6条最可能的技术瓶颈，逐条说明依据，不要把相关性写成因果。\n2. 给出按优先级排序的参数调整、特征设计、训练策略建议；每条标注[LOW_COST]/[MEDIUM]/[HIGH]、精确改动值或范围、预期观察信号与失败判据。\n3. 至少给出一个可在上述相同development口径下立刻验证、只改学习率/正则/损失权重之一的低成本实验，最好针对fusion_scale不动或高attention entropy；一次只改一个主要因素。\n4. 明确列出“未验证建议”，并提醒大模型贡献需后续pretrained/random对照确认。\n5. 不得给出虚构提升数字；可以给假设方向，但不要承诺提升。"
+}

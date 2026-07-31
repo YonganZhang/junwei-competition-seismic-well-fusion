@@ -1,0 +1,98 @@
+{
+  "deepseek": {
+    "analysis_sha256": "9f5a0f001e9d1bd37414c1a7c1b21ce026c072f4b5c613eec01ff4a2b79a0cd2",
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "unverified_suggestions_retained_in_evidence": true
+  },
+  "diagnostic": {
+    "gate_moved_materially_from_new_initialization": false,
+    "task_direction_consistent": false
+  },
+  "evaluation": {
+    "comparison_design": "same_invocation_fresh_gate_0.2_control_vs_gate_0.5_repair",
+    "cudnn_benchmark": false,
+    "deterministic_algorithms_requested": true,
+    "deterministic_algorithms_warn_only": true,
+    "folds": [
+      0,
+      4
+    ],
+    "frozen_test_accessed": false,
+    "holdout_paths_accepted": false,
+    "metric_implementation": "_pipelines.02_task_datasets.facies.p4_metrics.evaluate_probabilities",
+    "root_seed": 2693,
+    "train_samples_per_fold": 32,
+    "validation_samples_per_fold": 16
+  },
+  "overall": {
+    "after_mean_miou": 0.2706469990987228,
+    "aggregation": "equal_mean_of_F3_and_Penobscot_mIoU",
+    "before_mean_miou": 0.24977483511936366,
+    "delta_mean_miou": 0.02087216397935915
+  },
+  "protected_evidence": {
+    "p11_manifest": "6e5bdd92906772db059086470559306d7314aaa4f0df4e019f5bd3c8a3a6161b",
+    "p12_manifest": "0e1f8409017e5bd00e69e164b83377b3e4f8022d8682a8b450175ae1ed51b04b",
+    "p13_manifest": "976578ef227a5faa0f8166f325c966b749208c66005a48f46f87e98004c8ed77"
+  },
+  "runtime": {
+    "command": "/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python _pipelines/02_task_datasets/facies/agent_analysis_chapter.py run --f3-manifest /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p4-training-integration/_tmp/p4-acceptance/facies_f3/split_manifest.json --penobscot-manifest /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p4-training-integration/_tmp/p4-acceptance/facies_penobscot/split_manifest.json --processed-root /mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/track-facies/_data/processed --device cuda:0",
+    "cuda": "13.0",
+    "device": "cuda:0",
+    "duration_seconds": 75.53107741300482,
+    "python": "3.11.15",
+    "runner_sha256": "9c08c53d2c7cc287bd892172cb642b06bfe85b67f9feaab494957e460ea0e0a9",
+    "sam2_checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5",
+    "sam2_dependency_site": "/mnt/data/yongan-admin-2/envs/atom-sam2-py310/lib/python3.10/site-packages",
+    "sam2_source_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+    "torch": "2.12.1+cu130"
+  },
+  "schema_version": "facies-agent-analysis-chapter/v1",
+  "selected_experiment": {
+    "after": 0.5,
+    "before": 0.2,
+    "existing_grad_clip_max_norm": 1.0,
+    "name": "fusion_scale_initialization_0.5",
+    "single_changed_factor": "fusion_scale_initialization",
+    "source": "DeepSeek raw analysis",
+    "unchanged": {
+      "candidate_updates": 160,
+      "cnn_lr": 5e-05,
+      "dice_weight": 0.25,
+      "fusion_lr": 0.0002,
+      "sam2_lr": 1e-05,
+      "sam2_trainable_blocks": [
+        22,
+        23
+      ],
+      "sam2_weight_mode": "pretrained",
+      "weight_decay": 0.0001
+    }
+  },
+  "tasks": {
+    "F3": {
+      "after_attention_entropy": 0.9057163596153259,
+      "after_fusion_scale_final": 0.49965254962444305,
+      "after_macro_f1": 0.4548988554144304,
+      "after_miou": 0.3305000029587086,
+      "before_attention_entropy": 0.8910230398178101,
+      "before_fusion_scale_final": 0.2005404755473137,
+      "before_macro_f1": 0.40818662180789556,
+      "before_miou": 0.2862617735272741,
+      "delta_miou": 0.04423822943143452
+    },
+    "Penobscot": {
+      "after_attention_entropy": 0.9330753982067108,
+      "after_fusion_scale_final": 0.4998053163290024,
+      "after_macro_f1": 0.2919547677358255,
+      "after_miou": 0.210793995238737,
+      "before_attention_entropy": 0.9428983926773071,
+      "before_fusion_scale_final": 0.20061220228672028,
+      "before_macro_f1": 0.291376090463663,
+      "before_miou": 0.21328789671145318,
+      "delta_miou": -0.0024939014727161923
+    }
+  },
+  "verdict": "MIXED_TASK_RESULT"
+}

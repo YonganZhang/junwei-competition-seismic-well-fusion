@@ -798,3 +798,41 @@ CUDA_VISIBLE_DEVICES=<free_gpu> PYTHONDONTWRITEBYTECODE=1 \
 
 The independent 12-cell results, aggregate summary, attribution-safe
 `evidence.md`, and artifact hashes live in `_outputs/p13_cross_attention/`.
+
+## Pipeline tail: DeepSeek agent analysis chapter
+
+`agent_analysis_chapter.py` closes the facies pipeline with a source-backed
+diagnostic chapter. The `analyze` phase derives sample counts, class imbalance,
+P13 metrics, and known fusion limitations from locked development artifacts,
+then records the structured prompt and raw DeepSeek response without persisting
+the credential. The `run` phase tests the selected low-cost suggestion as a
+fresh paired gate=0.2 control versus gate=0.5 repair on folds 0/4. It never
+accepts a frozen-holdout or `test.h5` argument.
+
+```bash
+export DEEPSEEK_KEY=$(bash \
+  ~/.claude/skills/share-docs/scripts/get-credential.sh DEEPSEEK_API_KEY)
+
+/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/agent_analysis_chapter.py analyze \
+  --f3-manifest "$F3_P4_SPLIT_MANIFEST" \
+  --penobscot-manifest "$PEN_P4_SPLIT_MANIFEST" \
+  --processed-root "$FACIES_PROCESSED_ROOT"
+
+unset DEEPSEEK_KEY
+
+CUDA_VISIBLE_DEVICES=<free_gpu> PYTHONDONTWRITEBYTECODE=1 \
+  /mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/agent_analysis_chapter.py run \
+  --f3-manifest "$F3_P4_SPLIT_MANIFEST" \
+  --penobscot-manifest "$PEN_P4_SPLIT_MANIFEST" \
+  --processed-root "$FACIES_PROCESSED_ROOT" \
+  --device cuda:0
+
+/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python \
+  _pipelines/02_task_datasets/facies/agent_analysis_chapter.py verify
+```
+
+The raw analysis, paired results, summary, `evidence.md`, and artifact hashes
+live only under `_outputs/agent_chapter/`. P11/P12/P13 manifests are checked
+before and after the run and remain protected from overwrite.
