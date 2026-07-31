@@ -1,0 +1,865 @@
+{
+  "created_unix": 1785503493.3236268,
+  "experiment": {
+    "baseline": {
+      "pykrige_ok3d_repeat_0": {
+        "bias": -0.0018579539930215106,
+        "mae": 0.021413486381061376,
+        "rmse": 0.028449728170183285,
+        "rows": 10240
+      }
+    },
+    "decision": {
+      "ablation_deferred": true,
+      "default_enabled": false,
+      "frozen_holdout_remains_sealed": true,
+      "pretrained_contribution_claimed": false,
+      "pretrained_foundation_used": true,
+      "reason": "all five outer folds improve and the whole-fold bootstrap interval is below zero; frozen holdout and causal ablation remain deferred",
+      "state": "ROBUST_DEVELOPMENT_SIGNAL"
+    },
+    "independent_fold_outcome_counts": {
+      "loss": 0,
+      "tie": 0,
+      "win": 5
+    },
+    "limitations": [
+      "several selected hyperparameters lie on the bounded grid edge; nested LOFO corrects candidate ranking inside the grid but not researcher choices made while designing that grid",
+      "only five coarse spatial folds support whole-fold bootstrap; probability 1.0 must not be read as large-sample significance",
+      "any expanded grid must be preregistered and checked once on fresh external or still-sealed evaluation data, not tuned on it"
+    ],
+    "nested_selection": {
+      "ensemble_size": 3,
+      "held_out_labels_used_for_candidate_ranking": false,
+      "protocol": "for each held-out fold, rank candidates on the other four folds and average the top three predictions",
+      "selections": [
+        {
+          "held_out_fold": 0,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z4_f0.1_s0.2_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0.1_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0_k64_p1.5_b0.75"
+          ],
+          "selection_folds": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.027945505234154202,
+            0.02796592218390347,
+            0.02797851909347132
+          ]
+        },
+        {
+          "held_out_fold": 1,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z4_f0.1_s0.2_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0.1_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0_k64_p1.5_b0.75"
+          ],
+          "selection_folds": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.027500215376909894,
+            0.02752413081978561,
+            0.02753657578587123
+          ]
+        },
+        {
+          "held_out_fold": 2,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z4_f0.05_s0.1_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0.2_k64_p1.5_b0.75",
+            "pca_z4_f0.05_s0.2_k64_p1.5_b0.75"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.02986919725332443,
+            0.029869355390970333,
+            0.02987021960383486
+          ]
+        },
+        {
+          "held_out_fold": 3,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z4_f0.1_s0.2_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0.1_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0_k64_p1.5_b0.75"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.02772079478354841,
+            0.02774544627348314,
+            0.027756461557158534
+          ]
+        },
+        {
+          "held_out_fold": 4,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z4_f0.1_s0.2_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0.1_k64_p1.5_b0.75",
+            "pca_z4_f0.1_s0_k64_p1.5_b0.75"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.02538289094435399,
+            0.025402411339720963,
+            0.025414766657815495
+          ]
+        }
+      ]
+    },
+    "p17_selection_bias_audit": {
+      "conclusion": "P17's same-OOF selected improvement is superseded because the same candidate bank is worse under nested selection",
+      "honest_nested_selections": [
+        {
+          "held_out_fold": 0,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.05_s0.2_k128_p2_b1",
+            "pca_z1_f0.05_s0.1_k128_p2_b0.75",
+            "pca_z1_f0.05_s0.1_k128_p2_b1"
+          ],
+          "selection_folds": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.028523590556365934,
+            0.028525334138255264,
+            0.0285324276558967
+          ]
+        },
+        {
+          "held_out_fold": 1,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.15_s0.4_k128_p2_b1",
+            "pca_z1_f0.15_s0.4_k128_p2_b0.75",
+            "pca_z1_f0.1_s0.2_k128_p2_b1"
+          ],
+          "selection_folds": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.028209822684569258,
+            0.028223551574429493,
+            0.028231910843273467
+          ]
+        },
+        {
+          "held_out_fold": 2,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.05_s0_k64_p2_b0.25",
+            "pca_z1_f0.15_s0.4_k64_p2_b0.25",
+            "pca_z1_f0.05_s0.1_k32_p2_b0.25"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.030397728367545007,
+            0.03039900915083641,
+            0.03039991836851509
+          ]
+        },
+        {
+          "held_out_fold": 3,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.15_s0.4_k64_p2_b0.75",
+            "pca_z1_f0.15_s0.4_k64_p2_b0.5",
+            "pca_z1_f0.1_s0.2_k128_p2_b0.75"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.028274513338141374,
+            0.028276145130963097,
+            0.028285695036789953
+          ]
+        },
+        {
+          "held_out_fold": 4,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.15_s0.4_k64_p2_b0.75",
+            "pca_z1_f0.15_s0.4_k64_p2_b0.5",
+            "pca_z1_f0.05_s0.2_k128_p2_b1"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.025870596114092467,
+            0.025878023730121897,
+            0.025887949107561162
+          ]
+        }
+      ],
+      "honest_nested_top1_metrics": {
+        "bias": -0.00047797696512029696,
+        "mae": 0.021486839991214007,
+        "rmse": 0.028599146194883036,
+        "rows": 10240
+      },
+      "honest_nested_top1_rmse_delta_vs_pykrige": 0.00014941802469975105,
+      "honest_nested_top1_selections": [
+        {
+          "held_out_fold": 0,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.05_s0.2_k128_p2_b1"
+          ],
+          "selection_folds": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.028523590556365934
+          ]
+        },
+        {
+          "held_out_fold": 1,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.15_s0.4_k128_p2_b1"
+          ],
+          "selection_folds": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.028209822684569258
+          ]
+        },
+        {
+          "held_out_fold": 2,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.05_s0_k64_p2_b0.25"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.030397728367545007
+          ]
+        },
+        {
+          "held_out_fold": 3,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.15_s0.4_k64_p2_b0.75"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.028274513338141374
+          ]
+        },
+        {
+          "held_out_fold": 4,
+          "held_out_fold_used_for_selection": false,
+          "selected_candidates": [
+            "pca_z1_f0.15_s0.4_k64_p2_b0.75"
+          ],
+          "selection_folds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "selection_rmse_on_other_four_folds": [
+            0.025870596114092467
+          ]
+        }
+      ],
+      "honest_nested_top3_metrics": {
+        "bias": -0.0008070337455565374,
+        "mae": 0.02144215559098692,
+        "rmse": 0.028534404074229944,
+        "rows": 10240
+      },
+      "honest_nested_top3_outcome_counts": {
+        "loss": 3,
+        "tie": 0,
+        "win": 2
+      },
+      "honest_nested_top3_per_fold": [
+        {
+          "baseline": {
+            "bias": -0.00917288934579119,
+            "mae": 0.021213279978837818,
+            "rmse": 0.027239559051045796,
+            "rows": 2048
+          },
+          "candidate": {
+            "bias": -0.009790909543754917,
+            "mae": 0.021423071924752547,
+            "rmse": 0.02753800594661485,
+            "rows": 2048
+          },
+          "fold_id": 0,
+          "outcome": "loss",
+          "rmse_delta_candidate_minus_baseline": 0.00029844689556905377
+        },
+        {
+          "baseline": {
+            "bias": 0.0003663891402538866,
+            "mae": 0.02288246850366704,
+            "rmse": 0.02862760664541619,
+            "rows": 2048
+          },
+          "candidate": {
+            "bias": 0.001219823051237581,
+            "mae": 0.02314672806939579,
+            "rmse": 0.02892940833838225,
+            "rows": 2048
+          },
+          "fold_id": 1,
+          "outcome": "loss",
+          "rmse_delta_candidate_minus_baseline": 0.0003018016929660604
+        },
+        {
+          "baseline": {
+            "bias": -0.012881875059974845,
+            "mae": 0.015219973305647727,
+            "rmse": 0.018619291189668125,
+            "rows": 2048
+          },
+          "candidate": {
+            "bias": -0.01213245404928482,
+            "mae": 0.014765634475988231,
+            "rmse": 0.018123511737486046,
+            "rows": 2048
+          },
+          "fold_id": 2,
+          "outcome": "win",
+          "rmse_delta_candidate_minus_baseline": -0.0004957794521820783
+        },
+        {
+          "baseline": {
+            "bias": -0.0019976902767666616,
+            "mae": 0.0221748787080287,
+            "rmse": 0.028605049950670727,
+            "rows": 2048
+          },
+          "candidate": {
+            "bias": 0.0011329122296818792,
+            "mae": 0.02209536974297758,
+            "rmse": 0.02851643046125748,
+            "rows": 2048
+          },
+          "fold_id": 3,
+          "outcome": "win",
+          "rmse_delta_candidate_minus_baseline": -8.861948941324763e-05
+        },
+        {
+          "baseline": {
+            "bias": 0.014396295577171259,
+            "mae": 0.02557683140912559,
+            "rmse": 0.03633833840670887,
+            "rows": 2048
+          },
+          "candidate": {
+            "bias": 0.01553545958433759,
+            "mae": 0.025779973741820443,
+            "rmse": 0.03652615716280551,
+            "rows": 2048
+          },
+          "fold_id": 4,
+          "outcome": "loss",
+          "rmse_delta_candidate_minus_baseline": 0.000187818756096636
+        }
+      ],
+      "honest_nested_top3_rmse_delta_vs_pykrige": 8.467590404665978e-05,
+      "legacy_candidate_count": 156,
+      "same_oof_reported_metrics": {
+        "bias": -0.0008705982452247328,
+        "mae": 0.021200329887150992,
+        "rmse": 0.0283199076498783,
+        "rows": 10240
+      },
+      "same_oof_reported_rmse_delta_vs_pykrige": -0.00012982052030498584,
+      "same_oof_selected_candidate": "gfm_metric_f0.05_s0.10_k128_blend_0.75",
+      "source_schema_version": "reconstruction-p17-foundation-geostatistics/v1"
+    },
+    "per_fold": [
+      {
+        "baseline": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "candidate": {
+          "bias": -0.007129292054579206,
+          "mae": 0.020675758142029255,
+          "rmse": 0.026804535898329696,
+          "rows": 2048
+        },
+        "fold_id": 0,
+        "outcome": "win",
+        "rmse_delta_candidate_minus_baseline": -0.00043502315271609984
+      },
+      {
+        "baseline": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "candidate": {
+          "bias": 0.0032769604612885787,
+          "mae": 0.022797521933632846,
+          "rmse": 0.02857967878401642,
+          "rows": 2048
+        },
+        "fold_id": 1,
+        "outcome": "win",
+        "rmse_delta_candidate_minus_baseline": -4.792786139977065e-05
+      },
+      {
+        "baseline": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "candidate": {
+          "bias": -0.010508882802848186,
+          "mae": 0.013541241156361504,
+          "rmse": 0.016797773235141984,
+          "rows": 2048
+        },
+        "fold_id": 2,
+        "outcome": "win",
+        "rmse_delta_candidate_minus_baseline": -0.0018215179545261403
+      },
+      {
+        "baseline": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "candidate": {
+          "bias": -0.0015840828483876463,
+          "mae": 0.021880997660983795,
+          "rmse": 0.027712695506303554,
+          "rows": 2048
+        },
+        "fold_id": 3,
+        "outcome": "win",
+        "rmse_delta_candidate_minus_baseline": -0.000892354444367173
+      },
+      {
+        "baseline": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "candidate": {
+          "bias": 0.013782954390111183,
+          "mae": 0.025255061081579266,
+          "rmse": 0.03557550508835037,
+          "rows": 2048
+        },
+        "fold_id": 4,
+        "outcome": "win",
+        "rmse_delta_candidate_minus_baseline": -0.0007628333183585037
+      }
+    ],
+    "primary_metric": "nested leave-one-spatial-fold-out development OOF RMSE",
+    "rejected_followups": [
+      {
+        "name": "target_aware_pls_metric",
+        "nested_rmse": 0.027811249486863306,
+        "reason": "did not exceed the stable anisotropic PCA result"
+      },
+      {
+        "fold_wins": 4,
+        "name": "aggressive_anisotropy_refinement",
+        "nested_rmse": 0.027732695244254025,
+        "reason": "better pooled RMSE but one spatial fold regressed"
+      }
+    ],
+    "relative_rmse_change_vs_pykrige": -0.024501024656922173,
+    "rmse_delta_vs_pykrige": -0.000697047491380394,
+    "search_space": {
+      "blend_weights": [
+        0.25,
+        0.5,
+        0.75
+      ],
+      "bounded_before_final_reporting": true,
+      "candidate_count": 1215,
+      "distance_powers": [
+        1.5,
+        2.0,
+        3.0
+      ],
+      "foundation_weights": [
+        0.025,
+        0.05,
+        0.1
+      ],
+      "neighbour_counts": [
+        64,
+        128,
+        256
+      ],
+      "same_oof_top_candidates_descriptive_only": [
+        {
+          "candidate": "pca_z4_f0.1_s0.2_k64_p1.5_b0.75",
+          "rmse": 0.027720480212886763
+        },
+        {
+          "candidate": "pca_z4_f0.1_s0.1_k64_p1.5_b0.75",
+          "rmse": 0.027738356954526894
+        },
+        {
+          "candidate": "pca_z4_f0.1_s0_k64_p1.5_b0.75",
+          "rmse": 0.02774784734203021
+        },
+        {
+          "candidate": "pca_z4_f0.05_s0.2_k64_p1.5_b0.75",
+          "rmse": 0.027759444838465163
+        },
+        {
+          "candidate": "pca_z4_f0.05_s0.1_k64_p1.5_b0.75",
+          "rmse": 0.027780862658674965
+        },
+        {
+          "candidate": "pca_z4_f0.025_s0.2_k64_p1.5_b0.75",
+          "rmse": 0.027788058337779253
+        },
+        {
+          "candidate": "pca_z4_f0.1_s0.2_k64_p2_b0.75",
+          "rmse": 0.02779409564884799
+        },
+        {
+          "candidate": "pca_z4_f0.05_s0_k64_p1.5_b0.75",
+          "rmse": 0.0278019694481451
+        },
+        {
+          "candidate": "pca_z4_f0.025_s0.1_k64_p1.5_b0.75",
+          "rmse": 0.02782367742535297
+        },
+        {
+          "candidate": "pca_z4_f0.1_s0.1_k64_p2_b0.75",
+          "rmse": 0.0278260548274289
+        }
+      ],
+      "seismic_weights": [
+        0.0,
+        0.1,
+        0.2
+      ],
+      "selection_unit": "outer spatial fold",
+      "top_n": 3,
+      "vertical_weights": [
+        0.5,
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ]
+    },
+    "selected_metrics": {
+      "bias": -0.00043246857088305516,
+      "mae": 0.020830115994917332,
+      "rmse": 0.02775268067880289,
+      "rows": 10240
+    },
+    "transform_audits": [
+      {
+        "all_transforms_fit_on_outer_train_only": true,
+        "fit_rows": 512,
+        "fold_id": 0,
+        "pca_components": 16,
+        "pca_explained_variance_ratio_sum": 0.7330338897297444,
+        "target_used_for_metric_fit": false
+      },
+      {
+        "all_transforms_fit_on_outer_train_only": true,
+        "fit_rows": 512,
+        "fold_id": 1,
+        "pca_components": 16,
+        "pca_explained_variance_ratio_sum": 0.7325216381912769,
+        "target_used_for_metric_fit": false
+      },
+      {
+        "all_transforms_fit_on_outer_train_only": true,
+        "fit_rows": 512,
+        "fold_id": 2,
+        "pca_components": 16,
+        "pca_explained_variance_ratio_sum": 0.7355729602507628,
+        "target_used_for_metric_fit": false
+      },
+      {
+        "all_transforms_fit_on_outer_train_only": true,
+        "fit_rows": 512,
+        "fold_id": 3,
+        "pca_components": 16,
+        "pca_explained_variance_ratio_sum": 0.7351163698506751,
+        "target_used_for_metric_fit": false
+      },
+      {
+        "all_transforms_fit_on_outer_train_only": true,
+        "fit_rows": 512,
+        "fold_id": 4,
+        "pca_components": 16,
+        "pca_explained_variance_ratio_sum": 0.7414366277824971,
+        "target_used_for_metric_fit": false
+      }
+    ],
+    "whole_fold_bootstrap": {
+      "draws": 20000,
+      "independent_units": 5,
+      "interpretation_caveat": "only five coarse spatial folds are available; the interval mainly summarises the observed 5/5 fold direction and is not a large-sample significance claim",
+      "rmse_delta_candidate_minus_baseline": {
+        "ci95": [
+          -0.0011409947818764588,
+          -0.00035392465450558366
+        ],
+        "mean": -0.0007096714068247911,
+        "probability_candidate_better": 1.0
+      },
+      "seed": 2693,
+      "unit": "whole spatial fold"
+    }
+  },
+  "foundation_feature_audit": {
+    "cache_reused": true,
+    "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
+    "encoder_weight_mode": "pretrained",
+    "feature_cache_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.npz",
+    "feature_cache_sha256": "0e6233be85c8bc9f013d29b9ef07038132233befcaff23e84a5418935cfc82d8",
+    "feature_shape": [
+      3,
+      12583,
+      96
+    ],
+    "manifest_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.json",
+    "manifest_sha256": "d4faf445438a93a5a6d460c0c0f5a453c73315901dbb4cdeb3efc1adcb96b3e6",
+    "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+    "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
+    "target_used_for_feature_extraction": false,
+    "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+  },
+  "holdout_firewall": {
+    "frozen_holdout_opened": false,
+    "hdf5_datasets_read": [
+      "seismic_patch[3:6]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_files_opened": [
+      "train.h5"
+    ],
+    "test_h5_opened": false,
+    "test_path_argument_exists": false
+  },
+  "implementation": {
+    "numpy": "2.4.4",
+    "python": "3.11.15",
+    "script": "_pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py",
+    "script_sha256": "e8df7a4e58c58663a2b315a517a28d6d3d159d37d3fc87912998290797663874"
+  },
+  "model": {
+    "encoder_weight_mode": "pretrained",
+    "frozen": true,
+    "id": "thinkonward/geophysical-foundation-model",
+    "role": "anisotropic nonstationary neighbourhood metric",
+    "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2"
+  },
+  "p17_source_audit": {
+    "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p17_foundation_geostatistics/summary.json",
+    "sha256": "2bcc5a4f6f0d12c6d404c248688e5d2bb48062935fa25066ae628e3e4f188171"
+  },
+  "prediction_error_artifact": {
+    "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p18_anisotropic_foundation_geostatistics/prediction_errors.npz",
+    "rows": 10240,
+    "sha256": "c38da3c804f1afef7160f5210be7a221df6be5875c7bf63362bad40dedf203f8"
+  },
+  "runtime": {
+    "elapsed_seconds": 26.69453525543213,
+    "feature_cache_reused": true
+  },
+  "sample_audit": {
+    "active_coordinate_rows": 134222,
+    "coordinate_match_tolerance": 1e-08,
+    "folds": [
+      {
+        "fold_id": 0,
+        "source_hashes": {
+          "point_train_npz": "f7baf0a42dfe734fe7110e9421d412b8fcde5445a0beffa188802472a4c2ae37",
+          "point_validation_npz": "bfb429990a737c1dcc35a84a6ae40508a3ef1fc8002f528b3744eab85e6c467c",
+          "preprocess_stats": "7ed8e3dc64331e511dd25d8cfb4538c0133ef22941c90d4c3a73cc6a56b04ad6"
+        },
+        "train_indices_sha256": "0c8061f87414845531c17039d027fe8e6d257765b7865d88547459c9c909d949",
+        "validation_indices_sha256": "47e3ee4c7f5e6c0c4eeb0a3542cfb5df6101282233e664fbfc5bde9cb2b79a5e"
+      },
+      {
+        "fold_id": 1,
+        "source_hashes": {
+          "point_train_npz": "ce725e1e9f97c97ed201d4c0b1bac6dff5e333ff36edc5a1c48968d3a4ef5d8a",
+          "point_validation_npz": "facd02b8fc6fb987a144226f93ce79ec577d2cb7b0a8c02be7a26f77c340c0a1",
+          "preprocess_stats": "1ef6e4920fc7155d46f005f4c1e9cfb084fe374b21cb6905ab781dde0835e772"
+        },
+        "train_indices_sha256": "dedece511a4e6a9f7a297be74a1507f0506dc7c87d8e02196cf543c3a6326eba",
+        "validation_indices_sha256": "765ca27700aa91be7b7a2df35870a98cc88617e07de6ebf3274c129c94361e56"
+      },
+      {
+        "fold_id": 2,
+        "source_hashes": {
+          "point_train_npz": "e14448da99b7108624585179553d422754575d3469118a1d195ccc602a2d4ceb",
+          "point_validation_npz": "ce9d166ebc03ca371aea5d0d3e1e38e669a5c2aec627ebf0016f1f4b32f66229",
+          "preprocess_stats": "30f8c6c5d594dcb6640b1beabf3213c50dc1f2d6a04a6705a7b9eb382008d620"
+        },
+        "train_indices_sha256": "36792e7114a63a06a8dd0e21cca5e85d6eae51bee29807f1ad68313cc90e21a1",
+        "validation_indices_sha256": "95ad41f26f144743281f7dd7c52c0ab73cbefd0de9f2912c225a0707d949e726"
+      },
+      {
+        "fold_id": 3,
+        "source_hashes": {
+          "point_train_npz": "77d5eba47ab0b87948372bd7a27fb005c9ea7fdc01a180aa74bc17e9fb5ccb7b",
+          "point_validation_npz": "cfa3e8575d1c30bd1b5b76bad61011c93ef96451f069a492e58174e1c86160bb",
+          "preprocess_stats": "f72f766dfb16652e60ca605c51c4f82aeb4c9b9da998707ca636889cc2d3a1d8"
+        },
+        "train_indices_sha256": "a0ac593fa2cf72aaf5590b600f4ffb5aac5b573a80e4506846bfa2e948018d1e",
+        "validation_indices_sha256": "ceedcefde798e34a96a0512301f308c3fde98912f35011874cfb27604a8ccda9"
+      },
+      {
+        "fold_id": 4,
+        "source_hashes": {
+          "point_train_npz": "e6b2f88100405455018e5faf948d8d50a24984d9cdb6b59754e5c4cdf5d271d6",
+          "point_validation_npz": "03561799010609a0143cbc18de16e6f78eae70b01de8bab3cb9e39e210b23d57",
+          "preprocess_stats": "0b6dd3cc7e64409ae000c1284bd97137d05429b4d91e767096438e553d6ff5fb"
+        },
+        "train_indices_sha256": "559cb936992f0420fc1c7ef5a1bdd0406d70a8b8f3bf24598de29949c0de8d98",
+        "validation_indices_sha256": "04f9027ccc136273612bb8c33a473bbb796b6b0877018da694509767faefeb5b"
+      }
+    ],
+    "hdf5_datasets_read": [
+      "seismic_patch[3:6]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_files_opened": [
+      "train.h5"
+    ],
+    "label_dataset_read": false,
+    "maximum_coordinate_match_distance": 6.206335383118183e-17,
+    "patch_count": 140,
+    "patch_keys_sha256": "8c6a7a989ad7ebee7499df855202f0a5128f32778c56ee491c29822d80a45518",
+    "train_labels_per_fold": 512,
+    "validation_rows_per_fold": 2048
+  },
+  "schema_version": "reconstruction-p18-anisotropic-foundation-geostatistics/v1",
+  "source_oof": {
+    "indices_kji_sha256": "e631b41655dfddbd0f8f91d817d9a5e9666897a00a5c33b27ab4787835d19f21",
+    "records": [
+      {
+        "development_only": true,
+        "fold_hash": "400876beea22e96c5df30828b088fbffbfd6f8cba307349011597fc2a76ac101",
+        "fold_id": 0,
+        "oof_rows": 2048,
+        "oof_sha256": "13f3f6d7bfcde8c64777a6036d263a8558c8c0d413de1c6401f91b23c55097d5",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "df371a0d24a79301a91a2c70509ee95e037f748129c8d0aa0ee9cf313e69a902",
+        "fold_id": 1,
+        "oof_rows": 2048,
+        "oof_sha256": "57323bbc75262845a7ea5ab4ce46f54b32397ea253dd84b576492523f7c0d4db",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "e673775bdd92707713e1da2ba8d9e0c615d870f524fed648bcd3ddd05c9fe68e",
+        "fold_id": 2,
+        "oof_rows": 2048,
+        "oof_sha256": "1cbf7c27e490beabd8526d5489588eac75a1abe28231209f0d37c6d11e1c2d4d",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "d784de796e1593e8996b61db24f8b59b5ed1614de2cebaca8d52f5e5edfe1d18",
+        "fold_id": 3,
+        "oof_rows": 2048,
+        "oof_sha256": "fca531ac20d05090f44f793bea0735d59f0a549b9655b5f7e6aaae478bdee09b",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "4da20aa36f476df4d4bec85774afe7b36e11535231044fec87ff4a2299e4e796",
+        "fold_id": 4,
+        "oof_rows": 2048,
+        "oof_sha256": "20337b8855026f6d8d7d0e37fc681b1494683f15ac280b29bc2e4facfd84d911",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      }
+    ],
+    "rows": 10240
+  }
+}

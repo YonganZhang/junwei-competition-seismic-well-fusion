@@ -1,0 +1,130 @@
+{
+  "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+  "archive_size_bytes": 7449415582,
+  "cpi_only_excluded": [
+    "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+    "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 BT2/CPI/15_9-19_BT2_CPI.las",
+    "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 SR/CPI/15_9-19_SR_CPI.las"
+  ],
+  "downgrade_reason": "only 3 independent development groups are available",
+  "effective_n_splits": 3,
+  "members": [
+    {
+      "crc32": "2b04206b",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+      "size_bytes": 1100423
+    },
+    {
+      "crc32": "4277bb49",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 BT2/CPI/15_9-19_BT2_CPI.las",
+      "size_bytes": 666161
+    },
+    {
+      "crc32": "855ee629",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 SR/CPI/15_9-19_SR_CPI.las",
+      "size_bytes": 948421
+    },
+    {
+      "crc32": "88dd9fce",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 A/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 11354958
+    },
+    {
+      "crc32": "c6fda861",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 472730
+    },
+    {
+      "crc32": "a8a06baf",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 B/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 12251855
+    },
+    {
+      "crc32": "1b265dd1",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 B/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 423193
+    },
+    {
+      "crc32": "6dacad87",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 C/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 13309433
+    },
+    {
+      "crc32": "e7c22eda",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 C/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 1434236
+    },
+    {
+      "crc32": "354c92cb",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 11752331
+    },
+    {
+      "crc32": "61de9ff1",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 526414
+    },
+    {
+      "crc32": "7783b1fc",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 A/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 8687815
+    },
+    {
+      "crc32": "9feef0b6",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 189896
+    },
+    {
+      "crc32": "451dd6df",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 B/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 10129811
+    },
+    {
+      "crc32": "b4320194",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 B/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 1410696
+    },
+    {
+      "crc32": "13ec5054",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 10631197
+    },
+    {
+      "crc32": "a99a5dc8",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 229964
+    },
+    {
+      "crc32": "d35801ca",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-12/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 3447460
+    },
+    {
+      "crc32": "5ac2bfc3",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-12/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 179900
+    },
+    {
+      "crc32": "c47e5431",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 D/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+      "size_bytes": 15301179
+    },
+    {
+      "crc32": "3490853f",
+      "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 D/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+      "size_bytes": 1771868
+    }
+  ],
+  "paired_families": [
+    "15/9-F-1",
+    "15/9-F-11",
+    "15/9-F-12",
+    "15/9-F-15"
+  ],
+  "paired_wellbores": 9,
+  "positive_samples": 31240,
+  "proxy_warning": "SAND_FLAG is a net-reservoir/sand proxy, not direct hydrocarbon-pay truth",
+  "requested_n_splits": 5,
+  "status": "proxy_feasible",
+  "valid_samples": 48203
+}

@@ -1,0 +1,154 @@
+{
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "lane": "hydrocarbon_pay",
+  "model_config": {
+    "iterations": 64,
+    "random_seed": 2693,
+    "thread_count": 1
+  },
+  "model_id": "catboost",
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-stage4-config/v1",
+  "selection_scope": "frozen Stage-3 development CV rank-1",
+  "source_lock": {
+    "license": "Apache-2.0",
+    "revision": "d7731e594bc9532f417a0b968065fe04394dec08",
+    "runtime": {
+      "accepted_version_prefixes": [
+        "1.2."
+      ],
+      "available": true,
+      "module": "catboost",
+      "reason_code": null,
+      "version": "1.2.10",
+      "version_allowed": true
+    }
+  },
+  "task_id": "T2",
+  "task_spec": {
+    "calibration_policy": {
+      "fit_scope": "OOF_only",
+      "method_candidates": [
+        "none",
+        "isotonic"
+      ]
+    },
+    "forbidden_inputs": [
+      "SAND_FLAG",
+      "SAND_FLAG_PROXY",
+      "PERF_FLAG",
+      "PHIF",
+      "KLOGH",
+      "SW",
+      "VSH"
+    ],
+    "group_keys": [
+      "well_family"
+    ],
+    "guardrail_metrics": [],
+    "hpo": {
+      "optimization": "forbidden",
+      "root_seed": 2693,
+      "stage": "P5 Stage-4 known-holdout confirmation",
+      "test_feedback": "forbidden",
+      "winner_source": "P5 Stage-3 rank-1 at commit 5a1fefe"
+    },
+    "inference_transform": {
+      "SAND_FLAG_PROXY": "sigmoid"
+    },
+    "input_modalities": [
+      "well_logs"
+    ],
+    "input_whitelist": [
+      "GR",
+      "RHOB",
+      "NPHI",
+      "RT",
+      "DT",
+      "DTS",
+      "PEF",
+      "DRHO",
+      "CALI",
+      "BS",
+      "RD",
+      "RM",
+      "RACEHM",
+      "RACELM",
+      "RPCEHM",
+      "RPCELM"
+    ],
+    "inverse_transform": {
+      "SAND_FLAG_PROXY": "identity"
+    },
+    "label_version": "cpi-sand-flag-near-binary-v1",
+    "metadata": {
+      "class_count": 2,
+      "evidence_class": "previously_seen_reusable_holdout",
+      "fit_scope": "all_legal_development",
+      "fresh_blind": false,
+      "is_proxy": true,
+      "label_generated_by_p5": false,
+      "p4_status": "proxy_feasible",
+      "p5_label_mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+      "p5_stage": "known_holdout_confirmation",
+      "prior_test_consumed": true,
+      "proxy_semantics": "SAND_FLAG net-reservoir/sand proxy, not direct hydrocarbon-pay truth",
+      "proxy_warning": "SAND_FLAG is a net-reservoir/sand proxy, not direct hydrocarbon-pay truth",
+      "single_target_head": true,
+      "status": "proxy_feasible",
+      "test_access": "forbidden",
+      "test_family": "15/9-F-15",
+      "test_feedback_for_selection": "forbidden"
+    },
+    "metric_directions": {
+      "average_precision": "maximize",
+      "brier": "minimize",
+      "f1": "maximize",
+      "net_thickness_mae_m": "minimize"
+    },
+    "primary_metrics": [
+      "average_precision"
+    ],
+    "required_figures": [
+      "depth_probability_track",
+      "pr_curve",
+      "confusion_matrix",
+      "net_thickness_by_well"
+    ],
+    "secondary_metrics": [
+      "f1",
+      "net_thickness_mae_m",
+      "brier"
+    ],
+    "spatial_buffer": null,
+    "target_masks": {
+      "SAND_FLAG_PROXY": "finite_and_within_0.01_of_0_or_1"
+    },
+    "target_transform": {
+      "SAND_FLAG_PROXY": "identity"
+    },
+    "targets": [
+      "SAND_FLAG_PROXY"
+    ],
+    "task_id": "sweetspot.p5.stage4.t2.hydrocarbon_pay",
+    "task_type": "binary",
+    "threshold_policy": {
+      "selection": "OOF_only",
+      "smoke_default": 0.5
+    },
+    "time_cutoff": null,
+    "track_id": "sweetspot",
+    "train_loss": {
+      "SAND_FLAG_PROXY": "bce_with_logits"
+    },
+    "units": {
+      "SAND_FLAG_PROXY": "binary"
+    },
+    "visualizer_id": "sweetspot_hydrocarbon_pay_proxy"
+  },
+  "threshold": 0.5,
+  "threshold_fit_scope": "fixed_0.5; no holdout fit",
+  "update_steps": 64
+}

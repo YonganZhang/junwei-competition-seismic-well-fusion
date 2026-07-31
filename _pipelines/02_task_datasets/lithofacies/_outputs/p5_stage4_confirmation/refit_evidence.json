@@ -1,0 +1,73 @@
+{
+  "schema_version": "lithofacies-p5-stage4-refit-evidence-v1",
+  "status": "REFIT_COMPLETE",
+  "model_id": "xgboost_multisoftprob_window",
+  "seed": 2693,
+  "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b",
+  "budget_hash": "8e37c0396444cae4e73995b68db4ce1da2239b3eedeb218a1016afdc94965036",
+  "loss_contract": "sqrt_inverse_frequency_weighted_multi_softprob",
+  "development_families": [
+    "15/9-19",
+    "15/9-F-14",
+    "15/9-F-15",
+    "15/9-F-4"
+  ],
+  "preprocessor_fit_scope": "all_four_development_mother_families_only",
+  "class_weight_fit_scope": "all_four_development_mother_families_only",
+  "preprocessor_fit_samples": 447,
+  "selected_training_samples": 320,
+  "full_class_support": [
+    11,
+    104,
+    7,
+    40,
+    27,
+    124,
+    127,
+    6,
+    1
+  ],
+  "selected_class_support": [
+    11,
+    76,
+    7,
+    40,
+    27,
+    76,
+    76,
+    6,
+    1
+  ],
+  "fit_loss": 0.40647983989631314,
+  "estimator_fit_calls": 1,
+  "boost_rounds": 40,
+  "checkpoint": {
+    "path": "runtime/refit_checkpoint.pkl",
+    "sha256": "4ed736aa41e45d853c42f1df37da5ef8f3d42d9c7c997c822552b601c6d51423",
+    "bytes": 300930,
+    "roundtrip": "PASS",
+    "roundtrip_max_abs": 0.0,
+    "retained_in_commit": false
+  },
+  "environment": {
+    "python": "3.11.15",
+    "platform_system": "Linux",
+    "platform_machine": "x86_64",
+    "packages": {
+      "numpy": "2.4.6",
+      "torch": "2.13.0",
+      "xgboost": "3.2.0",
+      "catboost": "1.2.10",
+      "sktime": "1.0.1",
+      "scikit-learn": "1.7.2",
+      "tsai": "1.0.1"
+    },
+    "device_type": "cpu"
+  },
+  "holdout_accessed": false,
+  "prior_test_consumed": true,
+  "fresh_blind": false,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "wall_limit_seconds": 300.0,
+  "elapsed_seconds": 30.640746917109936
+}

@@ -1,0 +1,40 @@
+{
+  "blocked": {
+    "F0": {
+      "reason": "no approved foundation artifact",
+      "status": "UNAVAILABLE"
+    },
+    "F1": {
+      "reason": "no approved foundation artifact",
+      "status": "UNAVAILABLE"
+    },
+    "T3": {
+      "reason": "no P6 private evidence extension requested for T3",
+      "status": "BLOCKED"
+    },
+    "T4": {
+      "reason": "no P6 private evidence extension requested for T4",
+      "status": "BLOCKED"
+    },
+    "T5": {
+      "reason": "simulation proxy remains insufficient",
+      "status": "NOT_FEASIBLE"
+    },
+    "T6": {
+      "reason": "no development-only feature source; test.h5 fallback forbidden",
+      "status": "BLOCKED"
+    },
+    "T7": {
+      "reason": "no development-only feature source; test.h5 fallback forbidden",
+      "status": "BLOCKED"
+    }
+  },
+  "deny_list_proof": {
+    "mode": "supervisory_qc_agent",
+    "no_sample_level_text_available": true,
+    "no_test_or_holdout_inputs_used": true,
+    "predictive_mode_disabled": true
+  },
+  "package": "sweetspot-p6-gaia-dagt-private",
+  "schema_version": "sweetspot-p6-gaia-dagt-failure-log/v1"
+}

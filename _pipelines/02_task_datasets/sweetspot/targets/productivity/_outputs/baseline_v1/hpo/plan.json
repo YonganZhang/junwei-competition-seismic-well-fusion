@@ -1,0 +1,13 @@
+{
+  "confirm_seeds": 3,
+  "direction": "minimize",
+  "executed_stage": "sanity_8_then_pilot_20",
+  "pilot_status": "scheduled",
+  "pilot_trials": 20,
+  "pruner": "nop",
+  "sampler": "fixed_grid_dependency_light",
+  "sanity_trials": 8,
+  "test_access": "forbidden",
+  "top_configs": 3,
+  "train_limit_per_fold_for_regression_sanity": 4000
+}

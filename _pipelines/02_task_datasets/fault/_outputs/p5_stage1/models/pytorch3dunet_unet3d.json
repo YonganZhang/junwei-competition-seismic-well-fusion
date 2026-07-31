@@ -1,0 +1,183 @@
+{
+  "detail": "real development forward passed, but official masked loss/backward/checkpoint was skipped: positive=32, verified_negative=0",
+  "development": {
+    "batch_shape": [
+      1,
+      1,
+      32,
+      64
+    ],
+    "forward": {
+      "frozen_test_accessed": false,
+      "loss_backward_checkpoint": "not_run_until_binary_supervision_gate",
+      "output": {
+        "probability_range": [
+          0.33835896849632263,
+          0.8308830857276917
+        ],
+        "probability_shape": [
+          1,
+          1,
+          32,
+          64
+        ],
+        "raw_finite": true,
+        "raw_shape": [
+          1,
+          1,
+          32,
+          64
+        ],
+        "sigmoid_applied_only_by_adapter": true
+      },
+      "status": "passed",
+      "wall_seconds": 0.008348996751010418
+    },
+    "loss_backward_checkpoint": "skipped",
+    "positive_labels": 32,
+    "sample_keys": [
+      "sample_0000001"
+    ],
+    "source_bytes": 3580480,
+    "source_role": "audited_v2_train_development",
+    "source_sha256": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221",
+    "status": "skipped",
+    "stored_zero_policy": "unknown unless covered by audited verified_negative_mask",
+    "unknown_labels": 2016,
+    "valid_labels": 32,
+    "verified_negative_audit_sha256": null,
+    "verified_negative_audit_status": "absent",
+    "verified_negative_labels": 0
+  },
+  "evidence_state": "synthetic_contract_smoked",
+  "frozen_test_accessed": false,
+  "model_id": "pytorch3dunet_unet3d",
+  "reason_code": "NO_AUDITED_VERIFIED_NEGATIVES",
+  "runtime_gate": {
+    "detail": null,
+    "evidence": {
+      "code_license": "MIT",
+      "commercial_use": "allowed",
+      "dependencies": [
+        {
+          "distribution": "torch",
+          "import_name": "torch",
+          "importable": true,
+          "installed_version": "2.12.1+cu130",
+          "required": ">=2",
+          "version_ok": true
+        },
+        {
+          "distribution": "pytorch3dunet",
+          "import_name": "pytorch3dunet",
+          "importable": true,
+          "installed_version": "1.9.6",
+          "required": "==1.9.6",
+          "version_ok": true
+        }
+      ],
+      "model_id": "pytorch3dunet_unet3d",
+      "source_revision": "0ce7c45890018df9ebd227909a615903d4bb25d5",
+      "source_tag": "1.9.6",
+      "source_url": "https://github.com/wolny/pytorch-3dunet",
+      "weights": {
+        "approved": false,
+        "required": false,
+        "sha256": null,
+        "source": null
+      }
+    },
+    "reason_code": null,
+    "status": "ready"
+  },
+  "source_lock": {
+    "adapter": {
+      "backend": "pytorch3dunet",
+      "builder": "unet3d",
+      "minimum_shape": [
+        16,
+        16,
+        16
+      ],
+      "shape_multiple": [
+        8,
+        8,
+        8
+      ],
+      "source_mode": "installed_distribution",
+      "trainable": true
+    },
+    "dependencies": [
+      {
+        "distribution": "torch",
+        "import_name": "torch",
+        "specifier": ">=2"
+      },
+      {
+        "distribution": "pytorch3dunet",
+        "import_name": "pytorch3dunet",
+        "specifier": "==1.9.6"
+      }
+    ],
+    "family": "pytorch-3dunet standard UNet3D",
+    "model_id": "pytorch3dunet_unet3d",
+    "source": {
+      "commercial_use": "allowed",
+      "license_spdx": "MIT",
+      "license_url": "https://github.com/wolny/pytorch-3dunet/blob/1.9.6/LICENSE",
+      "revision": "0ce7c45890018df9ebd227909a615903d4bb25d5",
+      "tag": "1.9.6",
+      "url": "https://github.com/wolny/pytorch-3dunet"
+    },
+    "weights": {
+      "approved": false,
+      "required": false,
+      "sha256": null,
+      "source": null
+    }
+  },
+  "status": "skipped",
+  "synthetic_contract": {
+    "backward_finite": true,
+    "checkpoint": {
+      "bytes": 12322198,
+      "persisted": false,
+      "prediction_max_abs_diff": 0.0,
+      "sha256": "fa1be2ca982222aa6ee007d52d2de9ea0a0184c017adec3402acdb2f062e12e0",
+      "trainer_state_restored": true
+    },
+    "device": "cuda:0",
+    "downloaded_bytes": 0,
+    "frozen_test_accessed": false,
+    "masked_loss": 0.636207103729248,
+    "model_id": "pytorch3dunet_unet3d",
+    "output": {
+      "probability_range": [
+        0.3028401732444763,
+        0.8546022176742554
+      ],
+      "probability_shape": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "raw_finite": true,
+      "raw_shape": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "sigmoid_applied_only_by_adapter": true
+    },
+    "peak_vram_bytes": 60487680,
+    "process_max_rss_kib_after": 2162256,
+    "process_max_rss_kib_before": 2149968,
+    "same_seed_max_abs_diff": 0.0,
+    "seed": 2693,
+    "status": "passed",
+    "vram_telemetry_error": null,
+    "wall_seconds": 0.9588236920535564
+  }
+}

@@ -1,0 +1,513 @@
+{
+  "candidate_names": [
+    "pca_z4_f0.1_s0_k64_p1.5_b0.75",
+    "pca_z4_f0.1_s0.1_k64_p1.5_b0.75",
+    "pca_z4_f0.1_s0.2_k64_p1.5_b0.75"
+  ],
+  "comparison": {
+    "candidate": {
+      "bias": 0.0005125115417103969,
+      "mae": 0.020826337774812152,
+      "rmse": 0.027825182662981594,
+      "valid_voxels": 10240
+    },
+    "gate_passed": true,
+    "outcomes_vs_pykrige": {
+      "loss": 1,
+      "tie": 0,
+      "win": 4
+    },
+    "per_fold": [
+      {
+        "candidate": {
+          "bias": -0.006282917950795507,
+          "mae": 0.020598649293849157,
+          "rmse": 0.026806033213467705,
+          "valid_voxels": 2048
+        },
+        "fold_id": 0,
+        "outcome": "win",
+        "pykrige": {
+          "bias": -0.008196973803530913,
+          "mae": 0.021610089043806888,
+          "rmse": 0.0274259473398508,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0006199141263830941
+      },
+      {
+        "candidate": {
+          "bias": 0.0038125066874487223,
+          "mae": 0.022789453072663512,
+          "rmse": 0.028652994346641463,
+          "valid_voxels": 2048
+        },
+        "fold_id": 1,
+        "outcome": "loss",
+        "pykrige": {
+          "bias": 0.0010684636648508527,
+          "mae": 0.022362177428596794,
+          "rmse": 0.028146965232676294,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": 0.0005060291139651688
+      },
+      {
+        "candidate": {
+          "bias": -0.00939440407998986,
+          "mae": 0.013219346639168409,
+          "rmse": 0.016492007530823836,
+          "valid_voxels": 2048
+        },
+        "fold_id": 2,
+        "outcome": "win",
+        "pykrige": {
+          "bias": -0.010769717111021492,
+          "mae": 0.014745053179706744,
+          "rmse": 0.018134117693269274,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0016421101624454378
+      },
+      {
+        "candidate": {
+          "bias": -0.000385024841626681,
+          "mae": 0.02203687377677477,
+          "rmse": 0.02781047137775384,
+          "valid_voxels": 2048
+        },
+        "fold_id": 3,
+        "outcome": "win",
+        "pykrige": {
+          "bias": -0.0020703095787502415,
+          "mae": 0.021947626877808907,
+          "rmse": 0.028005832745930912,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0001953613681770737
+      },
+      {
+        "candidate": {
+          "bias": 0.014812397893515314,
+          "mae": 0.025487366091604905,
+          "rmse": 0.03586415785741581,
+          "valid_voxels": 2048
+        },
+        "fold_id": 4,
+        "outcome": "win",
+        "pykrige": {
+          "bias": 0.014913607826780773,
+          "mae": 0.025802946432018276,
+          "rmse": 0.03644975663284381,
+          "valid_voxels": 2048
+        },
+        "rmse_delta_candidate_minus_pykrige": -0.0005855987754279993
+      }
+    ],
+    "pykrige": {
+      "bias": -0.0010109858003342035,
+      "mae": 0.02129357859238752,
+      "rmse": 0.02823541000303589,
+      "valid_voxels": 10240
+    },
+    "relative_rmse_improvement_vs_pykrige": 0.014528825329973549,
+    "rmse_delta_candidate_minus_pykrige": -0.00041022734005429634,
+    "success_gate": {
+      "maximum_fold_losses_vs_pykrige": 1,
+      "minimum_relative_rmse_improvement_vs_pykrige": 0.01
+    },
+    "whole_fold_bootstrap": {
+      "draws": 20000,
+      "independent_units": 5,
+      "rmse_delta_candidate_minus_baseline": {
+        "ci95": [
+          -0.0009158514504419742,
+          8.813574002320204e-05
+        ],
+        "mean": -0.00042259328864838056,
+        "probability_candidate_better": 0.94595
+      },
+      "seed": 2693,
+      "unit": "whole spatial fold"
+    }
+  },
+  "decision": {
+    "claim_boundary": "same-field historical-version transfer stress test",
+    "external_blind_validation_still_required": true,
+    "gate_passed": true,
+    "post_opening_tuning_performed": false,
+    "state": "same_field_transfer_supported"
+  },
+  "evidence_class": {
+    "allowed_claim": "same-field historical-version transfer stress test",
+    "competition_hidden_test": false,
+    "cross_field": false,
+    "forbidden_claims": [
+      "fresh blind holdout",
+      "independent field validation",
+      "competition test confirmation"
+    ],
+    "fresh_blind": false,
+    "name": "unseen_same_field_historical_version_transfer"
+  },
+  "feature_loading_audit": {
+    "cache_reused": true,
+    "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
+    "encoder_weight_mode": "pretrained",
+    "feature_cache_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.npz",
+    "feature_cache_sha256": "0e6233be85c8bc9f013d29b9ef07038132233befcaff23e84a5418935cfc82d8",
+    "feature_shape": [
+      3,
+      12583,
+      96
+    ],
+    "manifest_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.json",
+    "manifest_sha256": "d4faf445438a93a5a6d460c0c0f5a453c73315901dbb4cdeb3efc1adcb96b3e6",
+    "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+    "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
+    "target_used_for_feature_extraction": false,
+    "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+  },
+  "fold_loading_audit": {
+    "active_coordinate_rows": 134222,
+    "coordinate_match_tolerance": 1e-08,
+    "folds": [
+      {
+        "fold_id": 0,
+        "source_hashes": {
+          "point_train_npz": "f7baf0a42dfe734fe7110e9421d412b8fcde5445a0beffa188802472a4c2ae37",
+          "point_validation_npz": "bfb429990a737c1dcc35a84a6ae40508a3ef1fc8002f528b3744eab85e6c467c",
+          "preprocess_stats": "7ed8e3dc64331e511dd25d8cfb4538c0133ef22941c90d4c3a73cc6a56b04ad6"
+        },
+        "train_indices_sha256": "0c8061f87414845531c17039d027fe8e6d257765b7865d88547459c9c909d949",
+        "validation_indices_sha256": "47e3ee4c7f5e6c0c4eeb0a3542cfb5df6101282233e664fbfc5bde9cb2b79a5e"
+      },
+      {
+        "fold_id": 1,
+        "source_hashes": {
+          "point_train_npz": "ce725e1e9f97c97ed201d4c0b1bac6dff5e333ff36edc5a1c48968d3a4ef5d8a",
+          "point_validation_npz": "facd02b8fc6fb987a144226f93ce79ec577d2cb7b0a8c02be7a26f77c340c0a1",
+          "preprocess_stats": "1ef6e4920fc7155d46f005f4c1e9cfb084fe374b21cb6905ab781dde0835e772"
+        },
+        "train_indices_sha256": "dedece511a4e6a9f7a297be74a1507f0506dc7c87d8e02196cf543c3a6326eba",
+        "validation_indices_sha256": "765ca27700aa91be7b7a2df35870a98cc88617e07de6ebf3274c129c94361e56"
+      },
+      {
+        "fold_id": 2,
+        "source_hashes": {
+          "point_train_npz": "e14448da99b7108624585179553d422754575d3469118a1d195ccc602a2d4ceb",
+          "point_validation_npz": "ce9d166ebc03ca371aea5d0d3e1e38e669a5c2aec627ebf0016f1f4b32f66229",
+          "preprocess_stats": "30f8c6c5d594dcb6640b1beabf3213c50dc1f2d6a04a6705a7b9eb382008d620"
+        },
+        "train_indices_sha256": "36792e7114a63a06a8dd0e21cca5e85d6eae51bee29807f1ad68313cc90e21a1",
+        "validation_indices_sha256": "95ad41f26f144743281f7dd7c52c0ab73cbefd0de9f2912c225a0707d949e726"
+      },
+      {
+        "fold_id": 3,
+        "source_hashes": {
+          "point_train_npz": "77d5eba47ab0b87948372bd7a27fb005c9ea7fdc01a180aa74bc17e9fb5ccb7b",
+          "point_validation_npz": "cfa3e8575d1c30bd1b5b76bad61011c93ef96451f069a492e58174e1c86160bb",
+          "preprocess_stats": "f72f766dfb16652e60ca605c51c4f82aeb4c9b9da998707ca636889cc2d3a1d8"
+        },
+        "train_indices_sha256": "a0ac593fa2cf72aaf5590b600f4ffb5aac5b573a80e4506846bfa2e948018d1e",
+        "validation_indices_sha256": "ceedcefde798e34a96a0512301f308c3fde98912f35011874cfb27604a8ccda9"
+      },
+      {
+        "fold_id": 4,
+        "source_hashes": {
+          "point_train_npz": "e6b2f88100405455018e5faf948d8d50a24984d9cdb6b59754e5c4cdf5d271d6",
+          "point_validation_npz": "03561799010609a0143cbc18de16e6f78eae70b01de8bab3cb9e39e210b23d57",
+          "preprocess_stats": "0b6dd3cc7e64409ae000c1284bd97137d05429b4d91e767096438e553d6ff5fb"
+        },
+        "train_indices_sha256": "559cb936992f0420fc1c7ef5a1bdd0406d70a8b8f3bf24598de29949c0de8d98",
+        "validation_indices_sha256": "04f9027ccc136273612bb8c33a473bbb796b6b0877018da694509767faefeb5b"
+      }
+    ],
+    "hdf5_datasets_read": [
+      "seismic_patch[3:6]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_files_opened": [
+      "train.h5"
+    ],
+    "label_dataset_read": false,
+    "maximum_coordinate_match_distance": 6.206335383118183e-17,
+    "patch_count": 140,
+    "patch_keys_sha256": "8c6a7a989ad7ebee7499df855202f0a5128f32778c56ee491c29822d80a45518",
+    "train_labels_per_fold": 512,
+    "validation_rows_per_fold": 2048
+  },
+  "mapping_audit": {
+    "current_reference_exact_elementwise_match": true,
+    "grid_shape_kji": [
+      63,
+      100,
+      108
+    ],
+    "mapped_points": 508622,
+    "mapping": "Eclipse KJI -> IJK/C-order -> positive mask -> RMS payload"
+  },
+  "objective": "Test whether the frozen P21 foundation-informed kernel ensemble transfers to an unused historical porosity-property version on the same Volve grid.",
+  "opening_record": {
+    "execution_code_git_commit": "4ee7a32e9e3b460a4236a4391a623391f227d334",
+    "historical_target_member_sha256": "86ae0cdc0619e0eb703f99f8badb256678d3878fd12add1666bbdf0809099044",
+    "hyperparameter_search_after_opening": false,
+    "preregistration_git_commit": "1a3a0566a043fb593a502d1410abfdcb909519cf",
+    "preregistration_sha256": "62a00bbd4893ee61fef4c9ee4e8b5407a485e73fd7c9946e037c370d6060757f",
+    "schema_version": "reconstruction-p24-opening-record/v1"
+  },
+  "prediction_artifact": {
+    "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/predictions.npz",
+    "sha256": "d79e4a56cfc1f507d1927015c50eb5269dfe5a17489521196804e911f78e9bf9"
+  },
+  "preflight": {
+    "baseline_reproduction_maximum_absolute_delta": 7.450331213076922e-09,
+    "baseline_reproduction_tolerance": 1e-07,
+    "feature_loading_audit": {
+      "cache_reused": true,
+      "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
+      "encoder_weight_mode": "pretrained",
+      "feature_cache_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.npz",
+      "feature_cache_sha256": "0e6233be85c8bc9f013d29b9ef07038132233befcaff23e84a5418935cfc82d8",
+      "feature_shape": [
+        3,
+        12583,
+        96
+      ],
+      "manifest_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.json",
+      "manifest_sha256": "d4faf445438a93a5a6d460c0c0f5a453c73315901dbb4cdeb3efc1adcb96b3e6",
+      "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+      "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
+      "target_used_for_feature_extraction": false,
+      "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+    },
+    "final_reference_member": {
+      "compressed_bytes": 1342933,
+      "member_sha256": "1448f82b32241ca17a873ce2d34743251f5e2c6e69d56d9f41b3d6f07f761e0d",
+      "path": "Reservoir_Model-RMS_model/Volve_Full_Field_Geomodel_2014 (pp04xg03gf01sf01.rms2012.0)/gridmodels/pp04bxg03postf11a/mergepp04bphifnw/realisation",
+      "payload_dtype": ">f4",
+      "payload_sha256": "440bffd21b3044d9764294db0d362657ba89fcea0392155fafdb9a7bd71d5c43",
+      "points": 508622,
+      "uncompressed_bytes": 2039635,
+      "zip_crc32": "0f30db13"
+    },
+    "fold_loading_audit": {
+      "active_coordinate_rows": 134222,
+      "coordinate_match_tolerance": 1e-08,
+      "folds": [
+        {
+          "fold_id": 0,
+          "source_hashes": {
+            "point_train_npz": "f7baf0a42dfe734fe7110e9421d412b8fcde5445a0beffa188802472a4c2ae37",
+            "point_validation_npz": "bfb429990a737c1dcc35a84a6ae40508a3ef1fc8002f528b3744eab85e6c467c",
+            "preprocess_stats": "7ed8e3dc64331e511dd25d8cfb4538c0133ef22941c90d4c3a73cc6a56b04ad6"
+          },
+          "train_indices_sha256": "0c8061f87414845531c17039d027fe8e6d257765b7865d88547459c9c909d949",
+          "validation_indices_sha256": "47e3ee4c7f5e6c0c4eeb0a3542cfb5df6101282233e664fbfc5bde9cb2b79a5e"
+        },
+        {
+          "fold_id": 1,
+          "source_hashes": {
+            "point_train_npz": "ce725e1e9f97c97ed201d4c0b1bac6dff5e333ff36edc5a1c48968d3a4ef5d8a",
+            "point_validation_npz": "facd02b8fc6fb987a144226f93ce79ec577d2cb7b0a8c02be7a26f77c340c0a1",
+            "preprocess_stats": "1ef6e4920fc7155d46f005f4c1e9cfb084fe374b21cb6905ab781dde0835e772"
+          },
+          "train_indices_sha256": "dedece511a4e6a9f7a297be74a1507f0506dc7c87d8e02196cf543c3a6326eba",
+          "validation_indices_sha256": "765ca27700aa91be7b7a2df35870a98cc88617e07de6ebf3274c129c94361e56"
+        },
+        {
+          "fold_id": 2,
+          "source_hashes": {
+            "point_train_npz": "e14448da99b7108624585179553d422754575d3469118a1d195ccc602a2d4ceb",
+            "point_validation_npz": "ce9d166ebc03ca371aea5d0d3e1e38e669a5c2aec627ebf0016f1f4b32f66229",
+            "preprocess_stats": "30f8c6c5d594dcb6640b1beabf3213c50dc1f2d6a04a6705a7b9eb382008d620"
+          },
+          "train_indices_sha256": "36792e7114a63a06a8dd0e21cca5e85d6eae51bee29807f1ad68313cc90e21a1",
+          "validation_indices_sha256": "95ad41f26f144743281f7dd7c52c0ab73cbefd0de9f2912c225a0707d949e726"
+        },
+        {
+          "fold_id": 3,
+          "source_hashes": {
+            "point_train_npz": "77d5eba47ab0b87948372bd7a27fb005c9ea7fdc01a180aa74bc17e9fb5ccb7b",
+            "point_validation_npz": "cfa3e8575d1c30bd1b5b76bad61011c93ef96451f069a492e58174e1c86160bb",
+            "preprocess_stats": "f72f766dfb16652e60ca605c51c4f82aeb4c9b9da998707ca636889cc2d3a1d8"
+          },
+          "train_indices_sha256": "a0ac593fa2cf72aaf5590b600f4ffb5aac5b573a80e4506846bfa2e948018d1e",
+          "validation_indices_sha256": "ceedcefde798e34a96a0512301f308c3fde98912f35011874cfb27604a8ccda9"
+        },
+        {
+          "fold_id": 4,
+          "source_hashes": {
+            "point_train_npz": "e6b2f88100405455018e5faf948d8d50a24984d9cdb6b59754e5c4cdf5d271d6",
+            "point_validation_npz": "03561799010609a0143cbc18de16e6f78eae70b01de8bab3cb9e39e210b23d57",
+            "preprocess_stats": "0b6dd3cc7e64409ae000c1284bd97137d05429b4d91e767096438e553d6ff5fb"
+          },
+          "train_indices_sha256": "559cb936992f0420fc1c7ef5a1bdd0406d70a8b8f3bf24598de29949c0de8d98",
+          "validation_indices_sha256": "04f9027ccc136273612bb8c33a473bbb796b6b0877018da694509767faefeb5b"
+        }
+      ],
+      "hdf5_datasets_read": [
+        "seismic_patch[3:6]",
+        "seismic_patch[8]"
+      ],
+      "hdf5_files_opened": [
+        "train.h5"
+      ],
+      "label_dataset_read": false,
+      "maximum_coordinate_match_distance": 6.206335383118183e-17,
+      "patch_count": 140,
+      "patch_keys_sha256": "8c6a7a989ad7ebee7499df855202f0a5128f32778c56ee491c29822d80a45518",
+      "train_labels_per_fold": 512,
+      "validation_rows_per_fold": 2048
+    },
+    "folds": [
+      {
+        "fold_id": 0,
+        "maximum_absolute_delta": 7.450331213076922e-09
+      },
+      {
+        "fold_id": 1,
+        "maximum_absolute_delta": 7.449671934889324e-09
+      },
+      {
+        "fold_id": 2,
+        "maximum_absolute_delta": 7.44779848904642e-09
+      },
+      {
+        "fold_id": 3,
+        "maximum_absolute_delta": 7.4478692102530886e-09
+      },
+      {
+        "fold_id": 4,
+        "maximum_absolute_delta": 7.449706851403448e-09
+      }
+    ],
+    "historical_target_member_metadata": {
+      "compressed_bytes": 1584169,
+      "path": "Reservoir_Model-RMS_model/Volve_Full_Field_Geomodel_2014 (pp04xg03gf01sf01.rms2012.0)/gridmodels/pp04bxg03postf11a/pp04phif/realisation.1",
+      "uncompressed_bytes": 2039728,
+      "zip_crc32": "b27c0e38"
+    },
+    "historical_target_values_opened": false,
+    "preregistration_sha256": "62a00bbd4893ee61fef4c9ee4e8b5407a485e73fd7c9946e037c370d6060757f",
+    "pykrige_version": "1.7.3",
+    "status": "PASSED"
+  },
+  "protocol": {
+    "baseline": {
+      "coordinate_space": "original fold-standardized coordinates",
+      "model": "PyKrige OrdinaryKriging3D 1.7.3",
+      "nlags": 4,
+      "variogram_model": "linear"
+    },
+    "baseline_reproduction_gate": {
+      "maximum_absolute_prediction_delta": 1e-07,
+      "reference": "existing final-target P5 Stage-3 conditional OOF predictions"
+    },
+    "candidate": {
+      "blend_weight": 0.75,
+      "candidate_selection_uses_historical_labels": false,
+      "distance_power": 1.5,
+      "foundation_weight": 0.1,
+      "model": "frozen P21 fixed foundation-kernel ensemble",
+      "neighbours": 64,
+      "seismic_weights": [
+        0.0,
+        0.1,
+        0.2
+      ],
+      "vertical_weight": 4.0
+    },
+    "fold_train_and_validation_kji": "exact P21/P5 Stage-3 conditional indices",
+    "hyperparameter_search_after_target_open": false,
+    "outer_spatial_folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "primary_metric": "pooled RMSE",
+    "raw_inputs": "unchanged P21 seismic attributes, coordinates, sparse-support feature and frozen GFM representations",
+    "secondary_metrics": [
+      "pooled MAE",
+      "pooled bias",
+      "per-fold RMSE"
+    ],
+    "single_opening": true,
+    "success_gate": {
+      "maximum_fold_losses_vs_pykrige": 1,
+      "minimum_relative_rmse_improvement_vs_pykrige": 0.01
+    },
+    "train_labels_per_fold": 512,
+    "validation_rows_per_fold": 2048
+  },
+  "pykrige_version": "1.7.3",
+  "schema_version": "reconstruction-p24-historical-transfer/v1",
+  "source_records": {
+    "current_reference": {
+      "compressed_bytes": 1342933,
+      "member_sha256": "1448f82b32241ca17a873ce2d34743251f5e2c6e69d56d9f41b3d6f07f761e0d",
+      "path": "Reservoir_Model-RMS_model/Volve_Full_Field_Geomodel_2014 (pp04xg03gf01sf01.rms2012.0)/gridmodels/pp04bxg03postf11a/mergepp04bphifnw/realisation",
+      "payload_dtype": ">f4",
+      "payload_sha256": "440bffd21b3044d9764294db0d362657ba89fcea0392155fafdb9a7bd71d5c43",
+      "points": 508622,
+      "uncompressed_bytes": 2039635,
+      "zip_crc32": "0f30db13"
+    },
+    "eclipse_zip_sha256": "29b74f003327c91a8295677c43547ba25c43546e62116a0578ca4c9565e6a3f3",
+    "historical_target": {
+      "compressed_bytes": 1584169,
+      "member_sha256": "86ae0cdc0619e0eb703f99f8badb256678d3878fd12add1666bbdf0809099044",
+      "path": "Reservoir_Model-RMS_model/Volve_Full_Field_Geomodel_2014 (pp04xg03gf01sf01.rms2012.0)/gridmodels/pp04bxg03postf11a/pp04phif/realisation.1",
+      "payload_dtype": ">f4",
+      "payload_sha256": "1950a9fd751e6a8122d8adb69980676a8af3b77e04615f041aa1c38481a3aeaf",
+      "points": 508622,
+      "uncompressed_bytes": 2039728,
+      "zip_crc32": "b27c0e38"
+    },
+    "rms_zip_sha256": "e09d62cf5a33408234503621cafbe7b8b63c7011bbc8ba6be31ab97712adbe9e"
+  },
+  "transform_audits": [
+    {
+      "all_transforms_fit_on_outer_train_only": true,
+      "fit_rows": 512,
+      "fold_id": 0,
+      "pca_components": 16,
+      "pca_explained_variance_ratio_sum": 0.7330338897297444,
+      "target_used_for_metric_fit": false
+    },
+    {
+      "all_transforms_fit_on_outer_train_only": true,
+      "fit_rows": 512,
+      "fold_id": 1,
+      "pca_components": 16,
+      "pca_explained_variance_ratio_sum": 0.7325216381912769,
+      "target_used_for_metric_fit": false
+    },
+    {
+      "all_transforms_fit_on_outer_train_only": true,
+      "fit_rows": 512,
+      "fold_id": 2,
+      "pca_components": 16,
+      "pca_explained_variance_ratio_sum": 0.7355729602507628,
+      "target_used_for_metric_fit": false
+    },
+    {
+      "all_transforms_fit_on_outer_train_only": true,
+      "fit_rows": 512,
+      "fold_id": 3,
+      "pca_components": 16,
+      "pca_explained_variance_ratio_sum": 0.7351163698506751,
+      "target_used_for_metric_fit": false
+    },
+    {
+      "all_transforms_fit_on_outer_train_only": true,
+      "fit_rows": 512,
+      "fold_id": 4,
+      "pca_components": 16,
+      "pca_explained_variance_ratio_sum": 0.7414366277824971,
+      "target_used_for_metric_fit": false
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "entries": [
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_fold_seed.png",
+      "figure_sha256": "1d405eab1d23843bac4e1559cfd3b33dba6ec3d3969acd342490e3ccd02ecb59",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T1.json",
+      "portable_input_sha256": "968098322f5d8acd6ea89f0157717396433d1ed294be2cba0270e68b7b041b52",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T1"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_regression_scatter.png",
+      "figure_sha256": "25671ea544d3473026099e626610c4123f89419fea178e7bfdfa03bc2b8d9507",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T1.json",
+      "portable_input_sha256": "968098322f5d8acd6ea89f0157717396433d1ed294be2cba0270e68b7b041b52",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T1"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_well_group_error.png",
+      "figure_sha256": "deb0b3c710c5b95c27e1f7fa5e8b53d61e5e35256592b05da66d7dc87eda3e9a",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T1.json",
+      "portable_input_sha256": "968098322f5d8acd6ea89f0157717396433d1ed294be2cba0270e68b7b041b52",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T1"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_fold_seed.png",
+      "figure_sha256": "c6fdde3ad615ba16a4767e23ae73b0dba277108e01cf8fb2c15b5b82de720170",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T2.json",
+      "portable_input_sha256": "a2687717417490047fa2033e6b2b25366d12c5bd6f5d0229b087e2ea1fd383c8",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T2"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+      "figure_sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T2.json",
+      "portable_input_sha256": "a2687717417490047fa2033e6b2b25366d12c5bd6f5d0229b087e2ea1fd383c8",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T2"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_well_group_error.png",
+      "figure_sha256": "a16643fa5444243eb80c6af0b028c40bb5c57e0216db7e6a5f0e90753daf908f",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T2.json",
+      "portable_input_sha256": "a2687717417490047fa2033e6b2b25366d12c5bd6f5d0229b087e2ea1fd383c8",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T2"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_fold_seed.png",
+      "figure_sha256": "3bd42fcfd236e0542487ca4950c4d88d9e0ac456c921f5d67c46e2f1ff11a830",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T3.json",
+      "portable_input_sha256": "8649b7c74e22d56a21f5d6a47e6b7fa943d6c2d1479781122aa73558382588ee",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T3"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_regression_scatter.png",
+      "figure_sha256": "88d7114f0d0b443bc583c2bdc929f9bc54bb27f6d0078025cf98f155c9a62082",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T3.json",
+      "portable_input_sha256": "8649b7c74e22d56a21f5d6a47e6b7fa943d6c2d1479781122aa73558382588ee",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T3"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_well_group_error.png",
+      "figure_sha256": "b1631a91ca2ecdd5769714b83d6893579ab2030d572ab10df065723d0f453a07",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T3.json",
+      "portable_input_sha256": "8649b7c74e22d56a21f5d6a47e6b7fa943d6c2d1479781122aa73558382588ee",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T3"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_fold_seed.png",
+      "figure_sha256": "c4339f7200674e59fe761d2165d4252511c6be0684b4523906f13916f3fe3a6a",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T4.json",
+      "portable_input_sha256": "83af3bfb514f9ad082341e294efd322e142762827c5715fe6df9f729170eb932",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T4"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_pr_calibration.png",
+      "figure_sha256": "093791f6c739ec47b047ba1e2fb53f2656389b41a94501768816fe20260dae46",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T4.json",
+      "portable_input_sha256": "83af3bfb514f9ad082341e294efd322e142762827c5715fe6df9f729170eb932",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T4"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_well_group_error.png",
+      "figure_sha256": "a61f20b11b8d679f7b8c10455cd20868c6bb704c06b90860df7e4a897f928434",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T4.json",
+      "portable_input_sha256": "83af3bfb514f9ad082341e294efd322e142762827c5715fe6df9f729170eb932",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T4"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T5_status_gate.png",
+      "figure_sha256": "fc89459be8b1272233f630a65abe724b1707a5217a887ee0cefc3dd98abc2a2c",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T5.json",
+      "portable_input_sha256": "8d0283b3e34ff0dc890aefbdd0037cebd736f8b5a997766ed208f126277f8234",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T5"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T6_data_gate.png",
+      "figure_sha256": "1295214ffc687a6f635d7077c82b9dcdddadcdba72b191ea5c419aa965ac30eb",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T6.json",
+      "portable_input_sha256": "15fe65812cd79e7da53d4b60fcfdf0855076e604cfa8cbf9f24744439f18bc2a",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T6"
+    },
+    {
+      "figure_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T7_data_gate.png",
+      "figure_sha256": "acb676321dfee9ee5b49e3072b20d605fcc8abead85ecb0ee4ec0e5bc4823973",
+      "portable_input_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T7.json",
+      "portable_input_sha256": "4a0657cf0bc912530f40219b879b843d89425a949186ca3e9762d057f3c46ab6",
+      "reads_raw_predictions": false,
+      "reads_test": false,
+      "task_id": "T7"
+    }
+  ],
+  "historical_test_metrics_used": false,
+  "rebuild_arguments": [
+    "--rebuild-figures-only",
+    "--output-dir",
+    "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv"
+  ],
+  "rebuild_module": "_pipelines.02_task_datasets.sweetspot.p5.sweetspot_p5_stage3",
+  "schema_version": "sweetspot-p5-stage3-visualization-manifest/v1",
+  "test_accessed": false
+}

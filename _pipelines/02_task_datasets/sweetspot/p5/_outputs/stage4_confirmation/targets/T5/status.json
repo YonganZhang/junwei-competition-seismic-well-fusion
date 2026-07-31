@@ -1,0 +1,18 @@
+{
+  "checkpoint_created": false,
+  "development_feature_source_available": false,
+  "fresh_blind": false,
+  "historical_p4_metrics_read": false,
+  "label_version": null,
+  "labels_generated": false,
+  "lane": "remaining_oil_infill",
+  "predictions_created": false,
+  "prior_test_consumed": false,
+  "reason": "no approved label; no proxy or synthetic label is permitted",
+  "schema_version": "sweetspot-p5-stage4-status-gate/v1",
+  "stage3_winner": null,
+  "status": "not_feasible",
+  "target_name": null,
+  "task_id": "T5",
+  "test_accessed": false
+}

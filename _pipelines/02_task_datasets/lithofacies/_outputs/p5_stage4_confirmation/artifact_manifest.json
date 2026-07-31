@@ -1,0 +1,90 @@
+{
+  "schema_version": "lithofacies-p5-stage4-artifact-manifest-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "prior_test_consumed": true,
+  "fresh_blind": false,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "runtime_checkpoint_committed": false,
+  "runtime_batches_committed": false,
+  "artifacts": [
+    {
+      "role": "configuration",
+      "path": "frozen_config.json",
+      "sha256": "3ccbb6990b63f89a2563b4e8fcd4e823af653cf24e984a8d0deed473d91521d1",
+      "bytes": 5012
+    },
+    {
+      "role": "preprocessing",
+      "path": "preprocessor.json",
+      "sha256": "ebdfdecd0eb6028aed822f40fae39b04e4f397a5181d1f2de0b5c212e5f04a6d",
+      "bytes": 56823
+    },
+    {
+      "role": "development_data",
+      "path": "development_evidence.json",
+      "sha256": "07e424cb6fba27fe1451fc9a4d7711e4b356fb6d17f55ef2de9a13c1180eca05",
+      "bytes": 1609
+    },
+    {
+      "role": "refit",
+      "path": "refit_evidence.json",
+      "sha256": "3743af800d4a5df94b225fcbc7b576901fe860a4a05153b01a613e4aa7d73535",
+      "bytes": 1816
+    },
+    {
+      "role": "known_holdout_data",
+      "path": "holdout_data_evidence.json",
+      "sha256": "4402ff2df5d5e9bf80088ef6080146c0b6116c42f383cf5f6c97a81036fed727",
+      "bytes": 1099
+    },
+    {
+      "role": "prediction",
+      "path": "predictions.json",
+      "sha256": "0ff2854a584d9494e04fd322d5be210538a61148c9ab15464c9d167349c2666f",
+      "bytes": 138020
+    },
+    {
+      "role": "metric",
+      "path": "metrics.json",
+      "sha256": "6469dc300fc86b064e891773a55496cbcd1ff3cde1c7d7a0dcd534ae69b8def7",
+      "bytes": 7238
+    },
+    {
+      "role": "visualization_manifest",
+      "path": "visualization_manifest.json",
+      "sha256": "c680d96028ef3de547536022f1af5db063537934af898c76bd23f601e47a7424",
+      "bytes": 1390
+    },
+    {
+      "role": "lifecycle",
+      "path": "lifecycle.json",
+      "sha256": "13c23c7a9f9501799b03b1bcfd973fd9e7dda6a1c78707094e6047791fa45c46",
+      "bytes": 2593
+    },
+    {
+      "role": "visualization",
+      "path": "figures/fixed9_confusion.png",
+      "sha256": "391b8f70d2f98e46ec684af61d5ad1b071955b00003ff8246958356099618557",
+      "bytes": 139513
+    },
+    {
+      "role": "visualization",
+      "path": "figures/fixed9_per_class_pr_f1_support.png",
+      "sha256": "4dc9b25718aa4dcc245823d57b578cd031d3ccdd10944356375ca0aeff0f950f",
+      "bytes": 133928
+    },
+    {
+      "role": "visualization",
+      "path": "figures/calibration_reliability.png",
+      "sha256": "46c77103210143bb80029754f8d5f212030a33df2672c9ea6f67e746464fecc8",
+      "bytes": 69532
+    },
+    {
+      "role": "visualization",
+      "path": "figures/continuous_depth_track_not_feasible.png",
+      "sha256": "3fed4e40e0a47bc1867eb1442c644e4059715bc4e02518ba403228cccffcc5a3",
+      "bytes": 31348
+    }
+  ]
+}

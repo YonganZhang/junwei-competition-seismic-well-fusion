@@ -1,0 +1,42 @@
+{
+  "confirmation_kind": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "interval": {
+    "absolute_residual_q90_model_domain": 0.2743194798628488,
+    "empirical_known_holdout_coverage": 0.9941860465116279,
+    "mean_physical_interval_width": 0.5131691063126158,
+    "method": "symmetric Stage-3 development OOF absolute-residual q90 in model domain",
+    "nominal_coverage": 0.9
+  },
+  "interval_source": {
+    "absolute_residual_q90_model_domain": 0.2743194798628488,
+    "development_oof_rows": 324,
+    "method": "symmetric Stage-3 development OOF mean-over-seeds absolute-residual q90",
+    "nominal_coverage": 0.9,
+    "source_sha256": "c421df267f7c495530ee0ed3d80329c505937767e0fc53366dd73fd6a2f612eb"
+  },
+  "known_holdout_family": "15/9-F-15",
+  "model_domain": {
+    "MAE": 0.0644116373407806,
+    "R2": 0.9031546148367193,
+    "R2_reason": null,
+    "RMSE": 0.08055030137324438,
+    "bias": 0.02396847042363397
+  },
+  "model_domain_name": "identity",
+  "model_id": "xgboost_regressor",
+  "physical": {
+    "MAE": 0.0644116373407806,
+    "R2": 0.9031546148367193,
+    "R2_reason": null,
+    "RMSE": 0.08055030137324438,
+    "bias": 0.02396847042363397
+  },
+  "prior_test_consumed": true,
+  "raw_out_of_physical_range_rate": 0.0,
+  "seed": 2693,
+  "stage3_leaderboard_sha256": "0d68817ee16e716a1b0ef18d52dc3e3988679b0f1f08a10e2f4cd3956c98c919",
+  "target": "SW",
+  "unit": "fraction",
+  "valid_count": 344
+}

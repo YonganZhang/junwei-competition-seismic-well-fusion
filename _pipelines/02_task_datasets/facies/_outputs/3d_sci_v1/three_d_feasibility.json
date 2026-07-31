@@ -1,0 +1,65 @@
+{
+  "schema_version": "facies-3d-sci-v1",
+  "task": "facies",
+  "verdict": "not_feasible",
+  "reason": "The facies assets expose independent 2D patches with inline/crossline metadata, but no verifiable continuous 3D volume, voxel lattice, or ordered spatial traversal that would justify a native_volume or spatial_context 3D rendering.",
+  "contract_status": {
+    "stack_unordered_2d_samples": false,
+    "fake_z_axis": false,
+    "random_interpolation": false,
+    "z_offset_only": false
+  },
+  "checked_files": [
+    {
+      "path": "_wiki-methodology/_top/_phases/P5_three_dimensional_sci_visualization_contract.md",
+      "sha256": "0db6554a8568f17d10397b1369391eb22b51731fd77cbefc717f3c97186fdf3b",
+      "facts": [
+        "2D patches must not be stacked into a fake 3D volume",
+        "not_feasible is required when no verifiable third dimension exists"
+      ]
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/pipeline_contract.py",
+      "sha256": "063162e176d1530c7279ff883f5ef7296eb4c39a921cbd76bb97161ad3762fa1",
+      "facts": [
+        "facies_f3 has 10 valid labels (0..9)",
+        "facies_penobscot has 8 valid labels (0..7)"
+      ]
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/build_dataset.py",
+      "sha256": "bda8602b1d0c92fd8b59da2756840d44d428653902fced96bf34334b6e24e340",
+      "facts": [
+        "dataset construction produces independent 2D patches",
+        "metadata stores inline/crossline/time_ms but not a dense 3D volume"
+      ]
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/visualize_predictions.py",
+      "sha256": "10f913d917e58976303c7fde3912b9d8ec596c0ed6edaf0095e49b2599333eb4",
+      "facts": [
+        "visualization stacks 2D test patches as rows",
+        "selection uses deterministic test-patch quantiles, not volumetric ordering"
+      ]
+    },
+    {
+      "path": "_pipelines/02_task_datasets/facies/_outputs/leakage_fixed_v2/prediction_visualization_evidence.json",
+      "sha256": "b5319f262c2a9550e7ff904fe51b5bfc1eb9cd4f8d3d675ff44cec167d80eb20",
+      "facts": [
+        "evidence records test indices and inline numbers for 2D patches",
+        "prediction quality is not used for selection"
+      ]
+    }
+  ],
+  "missing_contract": [
+    "No native_volume: no confirmed 3D voxel grid or continuous volume.",
+    "No spatial_context: no verified ordered 3D trajectory or Z-aligned sample sequence.",
+    "No safe 3D renderer contract: existing outputs are 2D patch diagnostics only.",
+    "No HTML/PDF/PNG 3D artifact is permitted without a real volume or spatial trajectory."
+  ],
+  "unlock_required_data": [
+    "A real dense 3D voxel lattice with a documented axis convention and slice ordering.",
+    "Or a verified spatial trajectory / point cloud with continuous X/Y/Z coordinates.",
+    "Or a proven sample ordering contract that guarantees a legitimate third dimension."
+  ]
+}

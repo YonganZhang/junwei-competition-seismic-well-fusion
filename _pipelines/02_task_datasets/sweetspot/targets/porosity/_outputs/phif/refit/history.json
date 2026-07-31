@@ -1,0 +1,77 @@
+{
+  "all_development_samples_used": true,
+  "epoch_budget_source": "median best epoch across development LOGO folds",
+  "history": [
+    {
+      "epoch": 0,
+      "refit_train_loss": 0.4519070519141404,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 1,
+      "refit_train_loss": 0.1823718705477416,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 2,
+      "refit_train_loss": 0.15328984470944992,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 3,
+      "refit_train_loss": 0.14089558211198952,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 4,
+      "refit_train_loss": 0.13514014005490815,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 5,
+      "refit_train_loss": 0.12928571888555795,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 6,
+      "refit_train_loss": 0.1255425399261526,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 7,
+      "refit_train_loss": 0.12241133760468696,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 8,
+      "refit_train_loss": 0.11935764322207315,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 9,
+      "refit_train_loss": 0.1148510457664595,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 10,
+      "refit_train_loss": 0.11300467456595413,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 11,
+      "refit_train_loss": 0.11080931988161127,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 12,
+      "refit_train_loss": 0.10899011888967532,
+      "valid_count": 1216
+    },
+    {
+      "epoch": 13,
+      "refit_train_loss": 0.1066741589809079,
+      "valid_count": 1216
+    }
+  ],
+  "validation_during_refit": false
+}

@@ -1,0 +1,14 @@
+{
+  "development_inline_range": [
+    9985,
+    10284
+  ],
+  "input_sha256": {
+    "fault_points": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+    "seismic_amplitude": "b79602a1c371c2abdd3c018c9ce71cbec3738a6f09a5ab77594161fd38721a3e",
+    "seismic_index": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905"
+  },
+  "protocol": "fault-p5-r01-development-lock-v1",
+  "role": "development_only",
+  "source_note": "Hash-locked Volve development inputs; no holdout path, array, prediction, or metric is part of this lock."
+}

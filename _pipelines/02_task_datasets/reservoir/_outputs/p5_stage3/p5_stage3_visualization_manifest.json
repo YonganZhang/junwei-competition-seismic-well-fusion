@@ -1,0 +1,158 @@
+{
+  "dpi": 300,
+  "figure_count": 15,
+  "figures": [
+    {
+      "companion_path": "figures/phif_per_well_depth.md",
+      "companion_sha256": "20c2ac536b91e0bcdb3d0cc80b19ac96082ae6a656040f29f8afc389f5e27a44",
+      "kind": "per_well_depth",
+      "mode": "D",
+      "path": "figures/phif_per_well_depth.png",
+      "sha256": "29ab2e33adddcfdda002bcb054f14b3da9e40104a026eab56b319f84f69dd844",
+      "target": "PHIF"
+    },
+    {
+      "companion_path": "figures/phif_truth_prediction.md",
+      "companion_sha256": "4af0b890b44f98c34e401ad0e7d3d9ae19b63027bb5a9a9ea3ca07deb2681643",
+      "kind": "truth_prediction",
+      "mode": "A",
+      "path": "figures/phif_truth_prediction.png",
+      "sha256": "78eb32e272a3ae8525a6761634e485c1aa1ed5561782ed27c15d178b89f64edd",
+      "target": "PHIF"
+    },
+    {
+      "companion_path": "figures/phif_residual.md",
+      "companion_sha256": "8cb52ddbccf56b5bcd22fff565b4e32cefcaaea67f848ef7abcc826d160fdd7c",
+      "kind": "residual",
+      "mode": "A",
+      "path": "figures/phif_residual.png",
+      "sha256": "f874f137ece555d246a37d3ff31d4cdbf10016ccf262a3d0e3b1857092c59806",
+      "target": "PHIF"
+    },
+    {
+      "companion_path": "figures/phif_worst_family.md",
+      "companion_sha256": "d23829c6d315c554a129da8ea99ae258acf59fe3adad11217b066599e416a9e9",
+      "kind": "worst_family",
+      "mode": "B",
+      "path": "figures/phif_worst_family.png",
+      "sha256": "29192740325b5fbd5b93dcbf38371936eec730622e7e201c15c9559cd1e452fb",
+      "target": "PHIF"
+    },
+    {
+      "companion_path": "figures/phif_fold_seed_distribution.md",
+      "companion_sha256": "e755c90b038ac273e4f4ad995819788dc37e2c2febdcd93176dcd7bb083d5631",
+      "kind": "fold_seed_distribution",
+      "mode": "B",
+      "path": "figures/phif_fold_seed_distribution.png",
+      "sha256": "019f2f35f08087ed5a3d8e3f20bc9f46f1a38635aef76cb35b7ada2b5483280c",
+      "target": "PHIF"
+    },
+    {
+      "companion_path": "figures/klogh_per_well_depth.md",
+      "companion_sha256": "24825d4bec18ac6a3061499ba2e7aa4764ae16a636856f4c8fb29e6b21f34db3",
+      "kind": "per_well_depth",
+      "mode": "D",
+      "path": "figures/klogh_per_well_depth.png",
+      "sha256": "4580a4e1a957d45594e3e71fd9e21a4ddbefdb62c3ced3952c2dcd6ccada7ad4",
+      "target": "KLOGH"
+    },
+    {
+      "companion_path": "figures/klogh_truth_prediction.md",
+      "companion_sha256": "4da4b644a011fe313ca4481f459927fc361a184768d62f8cd0d35bdd71128885",
+      "kind": "truth_prediction",
+      "mode": "A",
+      "path": "figures/klogh_truth_prediction.png",
+      "sha256": "61f0743b8cf4ca15ab77fb0d993d5db1294ffeb73a9dd878d644ff24016e655f",
+      "target": "KLOGH"
+    },
+    {
+      "companion_path": "figures/klogh_residual.md",
+      "companion_sha256": "2fd63be89f16cbf713e7fe5e307f086c3c8c075e5ecb5828156ff319516e760b",
+      "kind": "residual",
+      "mode": "A",
+      "path": "figures/klogh_residual.png",
+      "sha256": "ecb374477d3b2051ccc83e20ae732c22317322868867e1e2a6058d8bfdee3249",
+      "target": "KLOGH"
+    },
+    {
+      "companion_path": "figures/klogh_worst_family.md",
+      "companion_sha256": "1424412d202bf13940a1a5492e0adbe6ec7d240ae1ae2ce648f54f41d203280d",
+      "kind": "worst_family",
+      "mode": "B",
+      "path": "figures/klogh_worst_family.png",
+      "sha256": "72734a348349c1da089c0cbf1980ca317031460ee5e3ddf86bcf3aeeb478fe38",
+      "target": "KLOGH"
+    },
+    {
+      "companion_path": "figures/klogh_fold_seed_distribution.md",
+      "companion_sha256": "44c4032136d374d8eef0065e35e5bc8edfb32a617f11f376243e11ee1b6e1fb8",
+      "kind": "fold_seed_distribution",
+      "mode": "B",
+      "path": "figures/klogh_fold_seed_distribution.png",
+      "sha256": "841655cda844c05c73615b305f777a4423a69ef46a55183b2d0c016c044f01e1",
+      "target": "KLOGH"
+    },
+    {
+      "companion_path": "figures/sw_per_well_depth.md",
+      "companion_sha256": "b6522dd5c104f4ced8c89f374e23492e10e5d53cde84c70ae185cf5c4a417776",
+      "kind": "per_well_depth",
+      "mode": "D",
+      "path": "figures/sw_per_well_depth.png",
+      "sha256": "11ac5e02c825b70d322f6ff2072c781d61837cffb57483d4af548fe9625792f8",
+      "target": "SW"
+    },
+    {
+      "companion_path": "figures/sw_truth_prediction.md",
+      "companion_sha256": "e3794aff18b4e0c8d46c5772f1f20e29ebbce00526f5cdbb176a98152bcb79df",
+      "kind": "truth_prediction",
+      "mode": "A",
+      "path": "figures/sw_truth_prediction.png",
+      "sha256": "fe403a50a14c77872f9d94d42b1fa1713690f2d9445aca814db80d8011eead07",
+      "target": "SW"
+    },
+    {
+      "companion_path": "figures/sw_residual.md",
+      "companion_sha256": "23a166e731c24e9a1b755baa6dd8b373adf3af751553745ab6a78f9906873f15",
+      "kind": "residual",
+      "mode": "A",
+      "path": "figures/sw_residual.png",
+      "sha256": "0efab1f7dc44dc48003d3b9a0d61b67eeff6693677b0f5fddf42578c85484d8f",
+      "target": "SW"
+    },
+    {
+      "companion_path": "figures/sw_worst_family.md",
+      "companion_sha256": "cd82ca7b89019c83e68b9bf60fd9728f7b8984c40829b1ccdef657a4cf10937d",
+      "kind": "worst_family",
+      "mode": "B",
+      "path": "figures/sw_worst_family.png",
+      "sha256": "f1d9f0631ce092ac137ce0686f58fbe1373829c8326c8349a0b4d90e44ac690c",
+      "target": "SW"
+    },
+    {
+      "companion_path": "figures/sw_fold_seed_distribution.md",
+      "companion_sha256": "4f6fe46f6a4947810371d2d65a1e70e1b1397aca3894bafc102d1b1b67ddaf50",
+      "kind": "fold_seed_distribution",
+      "mode": "B",
+      "path": "figures/sw_fold_seed_distribution.png",
+      "sha256": "ed6189938e5c54287c9d4bd4ec76f098475b6a8cdd289e8259f4837ded5fc0d4",
+      "target": "SW"
+    }
+  ],
+  "font_fallback_reason": "Times New Roman is unavailable on the execution host; Liberation Serif is the metric-compatible local fallback",
+  "inputs": [
+    "p5_stage3_visualization_data.json",
+    "leaderboard_<target>_tabular_cpu.json"
+  ],
+  "palette": "Ukiyo-e",
+  "rebuild_command": "python3 _pipelines/02_task_datasets/reservoir/reservoir_p5_stage3.py render",
+  "requested_font": "Times New Roman",
+  "resolved_font": "Liberation Serif",
+  "schema_version": 1,
+  "source_visualization_data_sha256": "c421df267f7c495530ee0ed3d80329c505937767e0fc53366dd73fd6a2f612eb",
+  "stage": 3,
+  "test_firewall": {
+    "test_access": false,
+    "test_metrics": false
+  },
+  "track_id": "property"
+}

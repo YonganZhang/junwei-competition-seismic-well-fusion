@@ -1,0 +1,24 @@
+{
+  "figures": [
+    {
+      "name": "depth_probability_track.png",
+      "sha256": "dce8df2a632ea3e8f412b8e54e7e84a6e746d0f32b2b42927a469d3119c454d0"
+    },
+    {
+      "name": "pr_curve.png",
+      "sha256": "4c09ae6ad6e90baa6a2472c154d0d2470dd6f1556f3aaf840001bd9bf71dba21"
+    },
+    {
+      "name": "confusion_matrix.png",
+      "sha256": "a0247eb5256bdb32fbd50066761a391df7e07efc724c1272ca83b4d4c456e3bc"
+    },
+    {
+      "name": "net_thickness_by_well.png",
+      "sha256": "53a0a3abc5931f1ddb4828f93277ae52656df685c1a179c2d482d81abb119611"
+    }
+  ],
+  "frozen_threshold": 0.45000000000000007,
+  "prediction_path": "predictions.csv",
+  "prediction_sha256": "bb49502684c37fa13ea263af53e43e70bdb269eb88a454339fd177d764a38876",
+  "target_id": "hydrocarbon_pay"
+}

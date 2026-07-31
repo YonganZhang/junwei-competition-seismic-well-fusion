@@ -1,0 +1,107 @@
+{
+  "calibration_policy": {
+    "uncertainty": "OOF_absolute_residual_q90"
+  },
+  "forbidden_inputs": [
+    "PHIF",
+    "PHIE",
+    "LFP_PHIE",
+    "KLOGH",
+    "KLOGH_NEW",
+    "KLOGV",
+    "SW",
+    "BVW",
+    "SWIRR",
+    "VSH",
+    "LFP_VSH"
+  ],
+  "group_keys": [
+    "mother_well_family"
+  ],
+  "guardrail_metrics": [
+    "finite_predictions"
+  ],
+  "hpo": {
+    "direction": "minimize",
+    "l2_strength": [
+      0.0,
+      0.01
+    ],
+    "learning_rate": [
+      0.001,
+      0.01
+    ],
+    "objective": "development_OOF_physical_MAE",
+    "test_access": "forbidden"
+  },
+  "inference_transform": {
+    "PHIF": "clip_identity_prediction_to_[0,1]"
+  },
+  "input_modalities": [
+    "real_ST0202_seismic_patch",
+    "raw_well_log_sequence"
+  ],
+  "input_whitelist": [
+    "ST0202_seismic_patch",
+    "GR",
+    "RT",
+    "NPHI",
+    "RHOB",
+    "GR_observed_mask",
+    "RT_observed_mask",
+    "NPHI_observed_mask",
+    "RHOB_observed_mask"
+  ],
+  "inverse_transform": {
+    "PHIF": "identity"
+  },
+  "label_version": "target6-phif-cpi-v1",
+  "metadata": {
+    "model_plugin_family": "reservoir simple registered models",
+    "preferred_frozen_test_family": "15/9-F-15",
+    "primary_label_version": true,
+    "requested_development_folds": 5,
+    "reservoir_interval": "Hugin Top-Base inherited from reservoir real-data build"
+  },
+  "metric_directions": {
+    "finite_predictions": "maximize",
+    "physical_MAE": "minimize",
+    "physical_R2": "maximize",
+    "physical_RMSE": "minimize"
+  },
+  "primary_metrics": [
+    "physical_MAE"
+  ],
+  "required_figures": [
+    "prediction_vs_truth.png",
+    "residuals.png",
+    "depth_curve.png",
+    "distribution_uncertainty.png"
+  ],
+  "secondary_metrics": [
+    "physical_RMSE",
+    "physical_R2"
+  ],
+  "spatial_buffer": null,
+  "target_masks": {
+    "PHIF": "isfinite(PHIF)"
+  },
+  "target_transform": {
+    "PHIF": "identity"
+  },
+  "targets": [
+    "PHIF"
+  ],
+  "task_id": "target6_porosity_phif",
+  "task_type": "regression",
+  "threshold_policy": {},
+  "time_cutoff": null,
+  "track_id": "sweetspot",
+  "train_loss": {
+    "PHIF": "mean_squared_error_on_fold_train_zscore"
+  },
+  "units": {
+    "PHIF": "fraction"
+  },
+  "visualizer_id": "target6_porosity_regression"
+}

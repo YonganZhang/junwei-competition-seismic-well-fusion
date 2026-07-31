@@ -1,0 +1,2013 @@
+{
+  "schema_version": "lithofacies-p5.1-r1-v1",
+  "status": "PASS",
+  "task_id": "gm09_genetic_facies_9class",
+  "root_seed": 2693,
+  "classifier": {
+    "estimator": "sklearn.linear_model.SGDClassifier",
+    "loss": "log_loss",
+    "penalty": "l2",
+    "alpha": 0.0001,
+    "max_iter": 64,
+    "tol": null,
+    "shuffle": true,
+    "random_state": 2693,
+    "early_stopping": false,
+    "average": false,
+    "inference": "stable_softmax_over_decision_function"
+  },
+  "classifier_config_hash": "5006b53f42c68e76d6d9a10caeb99b231896e403c3b87202bff3a967ed703958",
+  "primary_metric": "fixed_schema_macro_f1",
+  "supported_class_metric_role": "diagnostic_only",
+  "formal_model_ranking": false,
+  "hpo": false,
+  "expected_conditions": 8,
+  "expected_cells": 32,
+  "completed_cells": 32,
+  "completion_rate": 1.0,
+  "conditions": [
+    {
+      "condition_id": "W-P-center-random_depth_kfold4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "W",
+      "representation": "center",
+      "split_name": "random_depth_kfold4",
+      "split_role": "diagnostic_only",
+      "rank_eligible": false,
+      "rank_status": "not_rankable",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.43847874720357943,
+        "fixed_schema_macro_f1": 0.26692520340051373,
+        "supported_class_macro_f1": 0.26692520340051373,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.14285714285714285,
+            "recall": 0.18181818181818182,
+            "f1": 0.16,
+            "iou": 0.08695652173913043,
+            "support": 11,
+            "predicted": 14
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.35877862595419846,
+            "recall": 0.4519230769230769,
+            "f1": 0.39999999999999997,
+            "iou": 0.25,
+            "support": 104,
+            "predicted": 131
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 7,
+            "predicted": 7
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.2222222222222222,
+            "recall": 0.15,
+            "f1": 0.1791044776119403,
+            "iou": 0.09836065573770492,
+            "support": 40,
+            "predicted": 27
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.3181818181818182,
+            "recall": 0.25925925925925924,
+            "f1": 0.2857142857142857,
+            "iou": 0.16666666666666666,
+            "support": 27,
+            "predicted": 22
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.4881889763779528,
+            "recall": 0.5,
+            "f1": 0.4940239043824701,
+            "iou": 0.328042328042328,
+            "support": 124,
+            "predicted": 127
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.7446808510638298,
+            "recall": 0.5511811023622047,
+            "f1": 0.6334841628959276,
+            "iou": 0.46357615894039733,
+            "support": 127,
+            "predicted": 94
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.2,
+            "recall": 0.3333333333333333,
+            "f1": 0.25,
+            "iou": 0.14285714285714285,
+            "support": 6,
+            "predicted": 10
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 15
+          }
+        ],
+        "confusion_matrix": [
+          [
+            2,
+            1,
+            0,
+            1,
+            0,
+            6,
+            0,
+            1,
+            0
+          ],
+          [
+            4,
+            47,
+            3,
+            7,
+            2,
+            27,
+            12,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            7,
+            2,
+            6,
+            3,
+            17,
+            2,
+            3,
+            0
+          ],
+          [
+            0,
+            8,
+            0,
+            0,
+            7,
+            3,
+            5,
+            0,
+            4
+          ],
+          [
+            5,
+            41,
+            2,
+            5,
+            3,
+            62,
+            4,
+            2,
+            0
+          ],
+          [
+            2,
+            24,
+            0,
+            8,
+            6,
+            7,
+            70,
+            0,
+            10
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.22872103590335455,
+        "15/9-F-14": 0.14386185554557163,
+        "15/9-F-15": 0.23170272289462693,
+        "15/9-F-4": 0.21258583811775303
+      },
+      "worst_family": "15/9-F-14",
+      "worst_family_fixed_schema_macro_f1": 0.14386185554557163,
+      "leakage_totals": {
+        "family_overlap_count": 16,
+        "well_overlap_count": 35,
+        "source_interval_overlap_count": 205,
+        "exact_shifted_window_pair_count": 1470
+      }
+    },
+    {
+      "condition_id": "M-P-center-random_depth_kfold4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "M",
+      "representation": "center",
+      "split_name": "random_depth_kfold4",
+      "split_role": "diagnostic_only",
+      "rank_eligible": false,
+      "rank_status": "not_rankable",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.4451901565995526,
+        "fixed_schema_macro_f1": 0.25059940270334535,
+        "supported_class_macro_f1": 0.25059940270334535,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.18181818181818182,
+            "recall": 0.18181818181818182,
+            "f1": 0.18181818181818182,
+            "iou": 0.1,
+            "support": 11,
+            "predicted": 11
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.42,
+            "recall": 0.40384615384615385,
+            "f1": 0.4117647058823529,
+            "iou": 0.25925925925925924,
+            "support": 104,
+            "predicted": 100
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 7,
+            "predicted": 13
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.21212121212121213,
+            "recall": 0.175,
+            "f1": 0.1917808219178082,
+            "iou": 0.10606060606060606,
+            "support": 40,
+            "predicted": 33
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.25,
+            "recall": 0.18518518518518517,
+            "f1": 0.2127659574468085,
+            "iou": 0.11904761904761904,
+            "support": 27,
+            "predicted": 20
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.45394736842105265,
+            "recall": 0.5564516129032258,
+            "f1": 0.5,
+            "iou": 0.3333333333333333,
+            "support": 124,
+            "predicted": 152
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.6822429906542056,
+            "recall": 0.5748031496062992,
+            "f1": 0.6239316239316238,
+            "iou": 0.453416149068323,
+            "support": 127,
+            "predicted": 107
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.1111111111111111,
+            "recall": 0.16666666666666666,
+            "f1": 0.13333333333333333,
+            "iou": 0.07142857142857142,
+            "support": 6,
+            "predicted": 9
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 2
+          }
+        ],
+        "confusion_matrix": [
+          [
+            2,
+            0,
+            0,
+            1,
+            1,
+            7,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            42,
+            2,
+            6,
+            2,
+            34,
+            13,
+            3,
+            0
+          ],
+          [
+            1,
+            3,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            5,
+            2,
+            7,
+            3,
+            19,
+            1,
+            3,
+            0
+          ],
+          [
+            1,
+            6,
+            1,
+            1,
+            5,
+            5,
+            8,
+            0,
+            0
+          ],
+          [
+            4,
+            19,
+            6,
+            14,
+            1,
+            69,
+            10,
+            1,
+            0
+          ],
+          [
+            1,
+            25,
+            0,
+            4,
+            8,
+            14,
+            73,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.20740930993569454,
+        "15/9-F-14": 0.20551240493269476,
+        "15/9-F-15": 0.19504167330254288,
+        "15/9-F-4": 0.2752034070683956
+      },
+      "worst_family": "15/9-F-15",
+      "worst_family_fixed_schema_macro_f1": 0.19504167330254288,
+      "leakage_totals": {
+        "family_overlap_count": 16,
+        "well_overlap_count": 35,
+        "source_interval_overlap_count": 205,
+        "exact_shifted_window_pair_count": 1470
+      }
+    },
+    {
+      "condition_id": "W-P-center-logo4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "W",
+      "representation": "center",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "rank_eligible": false,
+      "rank_status": "not_ranked_R1_mechanism_only",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.174496644295302,
+        "fixed_schema_macro_f1": 0.10270267073545762,
+        "supported_class_macro_f1": 0.10270267073545762,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.037037037037037035,
+            "recall": 0.18181818181818182,
+            "f1": 0.061538461538461535,
+            "iou": 0.031746031746031744,
+            "support": 11,
+            "predicted": 54
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.25,
+            "recall": 0.17307692307692307,
+            "f1": 0.20454545454545453,
+            "iou": 0.11392405063291139,
+            "support": 104,
+            "predicted": 72
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.125,
+            "recall": 0.14285714285714285,
+            "f1": 0.13333333333333333,
+            "iou": 0.07142857142857142,
+            "support": 7,
+            "predicted": 8
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.1048951048951049,
+            "recall": 0.375,
+            "f1": 0.16393442622950818,
+            "iou": 0.08928571428571429,
+            "support": 40,
+            "predicted": 143
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 27,
+            "predicted": 2
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.22818791946308725,
+            "recall": 0.27419354838709675,
+            "f1": 0.2490842490842491,
+            "iou": 0.14225941422594143,
+            "support": 124,
+            "predicted": 149
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.5,
+            "recall": 0.06299212598425197,
+            "f1": 0.11188811188811189,
+            "iou": 0.05925925925925926,
+            "support": 127,
+            "predicted": 16
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 6,
+            "predicted": 2
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 1
+          }
+        ],
+        "confusion_matrix": [
+          [
+            2,
+            1,
+            0,
+            2,
+            0,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            12,
+            18,
+            1,
+            41,
+            1,
+            28,
+            3,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            7,
+            4,
+            3,
+            15,
+            0,
+            10,
+            1,
+            0,
+            0
+          ],
+          [
+            4,
+            3,
+            0,
+            4,
+            0,
+            16,
+            0,
+            0,
+            0
+          ],
+          [
+            7,
+            12,
+            3,
+            61,
+            0,
+            34,
+            4,
+            2,
+            1
+          ],
+          [
+            15,
+            34,
+            0,
+            17,
+            1,
+            52,
+            8,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.12033153573030225,
+        "15/9-F-14": 0.026255365878007385,
+        "15/9-F-15": 0.05338045115226381,
+        "15/9-F-4": 0.051130776794493606
+      },
+      "worst_family": "15/9-F-14",
+      "worst_family_fixed_schema_macro_f1": 0.026255365878007385,
+      "leakage_totals": {
+        "family_overlap_count": 0,
+        "well_overlap_count": 0,
+        "source_interval_overlap_count": 0,
+        "exact_shifted_window_pair_count": 0
+      }
+    },
+    {
+      "condition_id": "M-P-center-logo4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "M",
+      "representation": "center",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "rank_eligible": false,
+      "rank_status": "not_ranked_R1_mechanism_only",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.18344519015659955,
+        "fixed_schema_macro_f1": 0.09059398156743288,
+        "supported_class_macro_f1": 0.09059398156743288,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.045454545454545456,
+            "recall": 0.09090909090909091,
+            "f1": 0.060606060606060615,
+            "iou": 0.03125,
+            "support": 11,
+            "predicted": 22
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.23076923076923078,
+            "recall": 0.28846153846153844,
+            "f1": 0.25641025641025644,
+            "iou": 0.14705882352941177,
+            "support": 104,
+            "predicted": 130
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 7,
+            "predicted": 0
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.1095890410958904,
+            "recall": 0.2,
+            "f1": 0.1415929203539823,
+            "iou": 0.0761904761904762,
+            "support": 40,
+            "predicted": 73
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 27,
+            "predicted": 37
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.2781456953642384,
+            "recall": 0.3387096774193548,
+            "f1": 0.3054545454545454,
+            "iou": 0.18025751072961374,
+            "support": 124,
+            "predicted": 151
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 127,
+            "predicted": 0
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.030303030303030304,
+            "recall": 0.16666666666666666,
+            "f1": 0.05128205128205128,
+            "iou": 0.02631578947368421,
+            "support": 6,
+            "predicted": 33
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 1
+          }
+        ],
+        "confusion_matrix": [
+          [
+            1,
+            3,
+            0,
+            0,
+            0,
+            5,
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            30,
+            0,
+            17,
+            16,
+            34,
+            0,
+            6,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            2,
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          [
+            10,
+            7,
+            0,
+            8,
+            3,
+            12,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            7,
+            0,
+            4,
+            0,
+            10,
+            0,
+            2,
+            0
+          ],
+          [
+            2,
+            37,
+            0,
+            25,
+            14,
+            42,
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            45,
+            0,
+            15,
+            4,
+            47,
+            0,
+            16,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.039573820395738195,
+        "15/9-F-14": 0.03703703703703704,
+        "15/9-F-15": 0.08954220631543734,
+        "15/9-F-4": 0.051130776794493606
+      },
+      "worst_family": "15/9-F-14",
+      "worst_family_fixed_schema_macro_f1": 0.03703703703703704,
+      "leakage_totals": {
+        "family_overlap_count": 0,
+        "well_overlap_count": 0,
+        "source_interval_overlap_count": 0,
+        "exact_shifted_window_pair_count": 0
+      }
+    },
+    {
+      "condition_id": "W-P-window-random_window_kfold4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "W",
+      "representation": "window",
+      "split_name": "random_window_kfold4",
+      "split_role": "diagnostic_only",
+      "rank_eligible": false,
+      "rank_status": "not_rankable",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.41387024608501116,
+        "fixed_schema_macro_f1": 0.2446318657884018,
+        "supported_class_macro_f1": 0.2446318657884018,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.25,
+            "recall": 0.18181818181818182,
+            "f1": 0.2105263157894737,
+            "iou": 0.11764705882352941,
+            "support": 11,
+            "predicted": 8
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.3089430894308943,
+            "recall": 0.36538461538461536,
+            "f1": 0.33480176211453744,
+            "iou": 0.20105820105820105,
+            "support": 104,
+            "predicted": 123
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 7,
+            "predicted": 1
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.08571428571428572,
+            "recall": 0.075,
+            "f1": 0.08,
+            "iou": 0.041666666666666664,
+            "support": 40,
+            "predicted": 35
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.22580645161290322,
+            "recall": 0.25925925925925924,
+            "f1": 0.24137931034482757,
+            "iou": 0.13725490196078433,
+            "support": 27,
+            "predicted": 31
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.44029850746268656,
+            "recall": 0.47580645161290325,
+            "f1": 0.4573643410852713,
+            "iou": 0.2964824120603015,
+            "support": 124,
+            "predicted": 134
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.6696428571428571,
+            "recall": 0.5905511811023622,
+            "f1": 0.6276150627615062,
+            "iou": 0.4573170731707317,
+            "support": 127,
+            "predicted": 112
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.5,
+            "recall": 0.16666666666666666,
+            "f1": 0.25,
+            "iou": 0.14285714285714285,
+            "support": 6,
+            "predicted": 2
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 1
+          }
+        ],
+        "confusion_matrix": [
+          [
+            2,
+            1,
+            0,
+            1,
+            0,
+            6,
+            1,
+            0,
+            0
+          ],
+          [
+            3,
+            38,
+            0,
+            13,
+            1,
+            33,
+            16,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            9,
+            0,
+            3,
+            3,
+            23,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            7,
+            4,
+            10,
+            0,
+            0
+          ],
+          [
+            2,
+            40,
+            1,
+            10,
+            3,
+            59,
+            8,
+            1,
+            0
+          ],
+          [
+            0,
+            26,
+            0,
+            5,
+            15,
+            6,
+            75,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            0,
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.1832303317810564,
+        "15/9-F-14": 0.1540144708942663,
+        "15/9-F-15": 0.19003365373363046,
+        "15/9-F-4": 0.25621468926553675
+      },
+      "worst_family": "15/9-F-14",
+      "worst_family_fixed_schema_macro_f1": 0.1540144708942663,
+      "leakage_totals": {
+        "family_overlap_count": 16,
+        "well_overlap_count": 35,
+        "source_interval_overlap_count": 205,
+        "exact_shifted_window_pair_count": 1470
+      }
+    },
+    {
+      "condition_id": "M-P-window-random_window_kfold4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "M",
+      "representation": "window",
+      "split_name": "random_window_kfold4",
+      "split_role": "diagnostic_only",
+      "rank_eligible": false,
+      "rank_status": "not_rankable",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.6241610738255033,
+        "fixed_schema_macro_f1": 0.36345008127002454,
+        "supported_class_macro_f1": 0.36345008127002454,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.5,
+            "recall": 0.18181818181818182,
+            "f1": 0.26666666666666666,
+            "iou": 0.15384615384615385,
+            "support": 11,
+            "predicted": 4
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.5669291338582677,
+            "recall": 0.6923076923076923,
+            "f1": 0.6233766233766234,
+            "iou": 0.4528301886792453,
+            "support": 104,
+            "predicted": 127
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 7,
+            "predicted": 5
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.4722222222222222,
+            "recall": 0.425,
+            "f1": 0.4473684210526316,
+            "iou": 0.288135593220339,
+            "support": 40,
+            "predicted": 36
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.5185185185185185,
+            "recall": 0.5185185185185185,
+            "f1": 0.5185185185185185,
+            "iou": 0.35,
+            "support": 27,
+            "predicted": 27
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.6470588235294118,
+            "recall": 0.7096774193548387,
+            "f1": 0.6769230769230768,
+            "iou": 0.5116279069767442,
+            "support": 124,
+            "predicted": 136
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.8113207547169812,
+            "recall": 0.6771653543307087,
+            "f1": 0.7381974248927038,
+            "iou": 0.5850340136054422,
+            "support": 127,
+            "predicted": 106
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 6,
+            "predicted": 2
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 4
+          }
+        ],
+        "confusion_matrix": [
+          [
+            2,
+            3,
+            0,
+            2,
+            0,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            72,
+            1,
+            3,
+            1,
+            15,
+            10,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            1,
+            0,
+            2,
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            6,
+            0,
+            17,
+            2,
+            13,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            2,
+            14,
+            4,
+            5,
+            0,
+            1
+          ],
+          [
+            0,
+            22,
+            2,
+            6,
+            3,
+            88,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            21,
+            0,
+            3,
+            6,
+            9,
+            86,
+            0,
+            2
+          ],
+          [
+            0,
+            1,
+            2,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.30409516088950655,
+        "15/9-F-14": 0.2726979063821169,
+        "15/9-F-15": 0.3318919971937715,
+        "15/9-F-4": 0.3687394141823307
+      },
+      "worst_family": "15/9-F-14",
+      "worst_family_fixed_schema_macro_f1": 0.2726979063821169,
+      "leakage_totals": {
+        "family_overlap_count": 16,
+        "well_overlap_count": 35,
+        "source_interval_overlap_count": 205,
+        "exact_shifted_window_pair_count": 1470
+      }
+    },
+    {
+      "condition_id": "W-P-window-logo4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "W",
+      "representation": "window",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "rank_eligible": false,
+      "rank_status": "not_ranked_R1_mechanism_only",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.2751677852348993,
+        "fixed_schema_macro_f1": 0.13110898040863694,
+        "supported_class_macro_f1": 0.13110898040863694,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 11,
+            "predicted": 0
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.2289156626506024,
+            "recall": 0.18269230769230768,
+            "f1": 0.20320855614973263,
+            "iou": 0.1130952380952381,
+            "support": 104,
+            "predicted": 83
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.08333333333333333,
+            "recall": 0.14285714285714285,
+            "f1": 0.10526315789473685,
+            "iou": 0.05555555555555555,
+            "support": 7,
+            "predicted": 12
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.10256410256410256,
+            "recall": 0.1,
+            "f1": 0.10126582278481013,
+            "iou": 0.05333333333333334,
+            "support": 40,
+            "predicted": 39
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 27,
+            "predicted": 61
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.2897196261682243,
+            "recall": 0.25,
+            "f1": 0.2683982683982684,
+            "iou": 0.155,
+            "support": 124,
+            "predicted": 107
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.4722222222222222,
+            "recall": 0.5354330708661418,
+            "f1": 0.5018450184501845,
+            "iou": 0.33497536945812806,
+            "support": 127,
+            "predicted": 144
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 6,
+            "predicted": 1
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 0
+          }
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            3,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            2,
+            9,
+            20,
+            26,
+            28,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            1,
+            0,
+            0,
+            2,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            15,
+            0,
+            4,
+            7,
+            8,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            7,
+            0,
+            0,
+            0,
+            4,
+            16,
+            0,
+            0
+          ],
+          [
+            0,
+            23,
+            7,
+            14,
+            31,
+            31,
+            17,
+            1,
+            0
+          ],
+          [
+            0,
+            11,
+            2,
+            11,
+            2,
+            33,
+            68,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.14302420928027498,
+        "15/9-F-14": 0.0344973544973545,
+        "15/9-F-15": 0.08249546917264694,
+        "15/9-F-4": 0.051130776794493606
+      },
+      "worst_family": "15/9-F-14",
+      "worst_family_fixed_schema_macro_f1": 0.0344973544973545,
+      "leakage_totals": {
+        "family_overlap_count": 0,
+        "well_overlap_count": 0,
+        "source_interval_overlap_count": 0,
+        "exact_shifted_window_pair_count": 0
+      }
+    },
+    {
+      "condition_id": "M-P-window-logo4",
+      "status": "PASS",
+      "task_lane": "P",
+      "modality_lane": "M",
+      "representation": "window",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "rank_eligible": false,
+      "rank_status": "not_ranked_R1_mechanism_only",
+      "oof_coverage": {
+        "expected": 447,
+        "covered_once": 447,
+        "missing": 0,
+        "duplicates": 0
+      },
+      "metrics": {
+        "accuracy": 0.2975391498881432,
+        "fixed_schema_macro_f1": 0.17116481396103342,
+        "supported_class_macro_f1": 0.17116481396103342,
+        "supported_class_metric_role": "diagnostic_only",
+        "per_class": [
+          {
+            "class_id": 0,
+            "class_name": "F-MARSH",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 11,
+            "predicted": 1
+          },
+          {
+            "class_id": 1,
+            "class_name": "F-MOUTHBAR",
+            "precision": 0.2361111111111111,
+            "recall": 0.16346153846153846,
+            "f1": 0.19318181818181818,
+            "iou": 0.1069182389937107,
+            "support": 104,
+            "predicted": 72
+          },
+          {
+            "class_id": 2,
+            "class_name": "F-OFFSHORE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 7,
+            "predicted": 4
+          },
+          {
+            "class_id": 3,
+            "class_name": "F-LOWER SHOREFACE",
+            "precision": 0.125,
+            "recall": 0.1,
+            "f1": 0.11111111111111112,
+            "iou": 0.058823529411764705,
+            "support": 40,
+            "predicted": 32
+          },
+          {
+            "class_id": 4,
+            "class_name": "F-UPPER SHOREFACE",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 27,
+            "predicted": 45
+          },
+          {
+            "class_id": 5,
+            "class_name": "F-TIDAL BAR",
+            "precision": 0.2832369942196532,
+            "recall": 0.3951612903225806,
+            "f1": 0.32996632996632996,
+            "iou": 0.1975806451612903,
+            "support": 124,
+            "predicted": 173
+          },
+          {
+            "class_id": 6,
+            "class_name": "F-TIDAL CHANNEL",
+            "precision": 0.5350877192982456,
+            "recall": 0.48031496062992124,
+            "f1": 0.5062240663900415,
+            "iou": 0.3388888888888889,
+            "support": 127,
+            "predicted": 114
+          },
+          {
+            "class_id": 7,
+            "class_name": "F-TIDAL FLAT MUDDY",
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4,
+            "iou": 0.25,
+            "support": 6,
+            "predicted": 4
+          },
+          {
+            "class_id": 8,
+            "class_name": "F-TIDAL FLAT SANDY",
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "iou": 0.0,
+            "support": 1,
+            "predicted": 2
+          }
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            6,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            17,
+            0,
+            8,
+            17,
+            35,
+            24,
+            2,
+            1
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0,
+            4,
+            3,
+            16,
+            5,
+            0,
+            0
+          ],
+          [
+            0,
+            7,
+            0,
+            4,
+            0,
+            12,
+            4,
+            0,
+            0
+          ],
+          [
+            1,
+            19,
+            3,
+            11,
+            22,
+            49,
+            18,
+            0,
+            1
+          ],
+          [
+            0,
+            11,
+            1,
+            3,
+            3,
+            48,
+            61,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "evaluated_samples": 447
+      },
+      "per_family_fixed_schema_macro_f1": {
+        "15/9-19": 0.09443734922662125,
+        "15/9-F-14": 0.15865215865215865,
+        "15/9-F-15": 0.1672263986841992,
+        "15/9-F-4": 0.051130776794493606
+      },
+      "worst_family": "15/9-F-4",
+      "worst_family_fixed_schema_macro_f1": 0.051130776794493606,
+      "leakage_totals": {
+        "family_overlap_count": 0,
+        "well_overlap_count": 0,
+        "source_interval_overlap_count": 0,
+        "exact_shifted_window_pair_count": 0
+      }
+    }
+  ],
+  "leakage_matrix": [
+    {
+      "condition_id": "W-P-center-random_depth_kfold4",
+      "modality_lane": "W",
+      "representation": "center",
+      "split_name": "random_depth_kfold4",
+      "split_role": "diagnostic_only",
+      "family_overlap_count": 16,
+      "well_overlap_count": 35,
+      "source_interval_overlap_count": 205,
+      "exact_shifted_window_pair_count": 1470
+    },
+    {
+      "condition_id": "M-P-center-random_depth_kfold4",
+      "modality_lane": "M",
+      "representation": "center",
+      "split_name": "random_depth_kfold4",
+      "split_role": "diagnostic_only",
+      "family_overlap_count": 16,
+      "well_overlap_count": 35,
+      "source_interval_overlap_count": 205,
+      "exact_shifted_window_pair_count": 1470
+    },
+    {
+      "condition_id": "W-P-center-logo4",
+      "modality_lane": "W",
+      "representation": "center",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "family_overlap_count": 0,
+      "well_overlap_count": 0,
+      "source_interval_overlap_count": 0,
+      "exact_shifted_window_pair_count": 0
+    },
+    {
+      "condition_id": "M-P-center-logo4",
+      "modality_lane": "M",
+      "representation": "center",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "family_overlap_count": 0,
+      "well_overlap_count": 0,
+      "source_interval_overlap_count": 0,
+      "exact_shifted_window_pair_count": 0
+    },
+    {
+      "condition_id": "W-P-window-random_window_kfold4",
+      "modality_lane": "W",
+      "representation": "window",
+      "split_name": "random_window_kfold4",
+      "split_role": "diagnostic_only",
+      "family_overlap_count": 16,
+      "well_overlap_count": 35,
+      "source_interval_overlap_count": 205,
+      "exact_shifted_window_pair_count": 1470
+    },
+    {
+      "condition_id": "M-P-window-random_window_kfold4",
+      "modality_lane": "M",
+      "representation": "window",
+      "split_name": "random_window_kfold4",
+      "split_role": "diagnostic_only",
+      "family_overlap_count": 16,
+      "well_overlap_count": 35,
+      "source_interval_overlap_count": 205,
+      "exact_shifted_window_pair_count": 1470
+    },
+    {
+      "condition_id": "W-P-window-logo4",
+      "modality_lane": "W",
+      "representation": "window",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "family_overlap_count": 0,
+      "well_overlap_count": 0,
+      "source_interval_overlap_count": 0,
+      "exact_shifted_window_pair_count": 0
+    },
+    {
+      "condition_id": "M-P-window-logo4",
+      "modality_lane": "M",
+      "representation": "window",
+      "split_name": "logo4",
+      "split_role": "legal_grouped",
+      "family_overlap_count": 0,
+      "well_overlap_count": 0,
+      "source_interval_overlap_count": 0,
+      "exact_shifted_window_pair_count": 0
+    }
+  ],
+  "paired_protocol_deltas": [
+    {
+      "modality_lane": "W",
+      "representation": "center",
+      "random_split": "random_depth_kfold4",
+      "legal_split": "logo4",
+      "random_minus_logo_fixed_schema_macro_f1": 0.1642225326650561,
+      "interpretation": "protocol_mechanism_diagnostic_only_not_a_model_rank"
+    },
+    {
+      "modality_lane": "M",
+      "representation": "center",
+      "random_split": "random_depth_kfold4",
+      "legal_split": "logo4",
+      "random_minus_logo_fixed_schema_macro_f1": 0.16000542113591248,
+      "interpretation": "protocol_mechanism_diagnostic_only_not_a_model_rank"
+    },
+    {
+      "modality_lane": "W",
+      "representation": "window",
+      "random_split": "random_window_kfold4",
+      "legal_split": "logo4",
+      "random_minus_logo_fixed_schema_macro_f1": 0.11352288537976485,
+      "interpretation": "protocol_mechanism_diagnostic_only_not_a_model_rank"
+    },
+    {
+      "modality_lane": "M",
+      "representation": "window",
+      "random_split": "random_window_kfold4",
+      "legal_split": "logo4",
+      "random_minus_logo_fixed_schema_macro_f1": 0.19228526730899112,
+      "interpretation": "protocol_mechanism_diagnostic_only_not_a_model_rank"
+    }
+  ],
+  "s_lane": {
+    "status": "not_rankable",
+    "finite_center_md_count": 0,
+    "reason": "no real finite center_md_m; sequence fabrication is forbidden"
+  },
+  "sealed_holdout": {
+    "identity": "15/9-F-5",
+    "fresh_blind": false,
+    "physical_test_accessed": false,
+    "known_holdout_artifacts_read": false
+  }
+}

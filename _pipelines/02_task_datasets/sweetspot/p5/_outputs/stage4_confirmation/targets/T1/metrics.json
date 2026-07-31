@@ -1,0 +1,52 @@
+{
+  "checkpoint_sha256": "3eb4c6d93505df7efed4bd24b1002df1d68179942d0bac2dcff9152205f8ffa9",
+  "config_sha256": "e50e29546868d78eb2a20ee4303247c300cd9bd74aa82f208370d03ef5e4a5ce",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "historical_p4_metrics_read": false,
+  "holdout_features_sha256": "c9cdbdce36cd3e528c1dd194efac193f855cde910116c0910ebed231d0953743",
+  "holdout_groups": [
+    "15/9-F-15"
+  ],
+  "holdout_ids_sha256": "0fdf659fe6daf279ba581b0cdd8d330b09823fc4174151370e5be4b5ada89ecd",
+  "holdout_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Well_logs.zip",
+    "authorized_groups": [
+      "15/9-F-15"
+    ],
+    "opened_member_count": 2,
+    "opened_member_crc_manifest_sha256": "3c56f9acd05e4815d8f13cd0e32f50b76aaadc7fb803300ffd881c5aa90b199f",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "089df46d6e39331be833d2a647d85b494baf88e3d19b686fcf400b530eace34f",
+    "partition": "known_holdout",
+    "source_kind": "Volve_Well_logs.zip authorized known-holdout members only",
+    "test_accessed": true,
+    "unauthorized_member_reads": 0,
+    "values_accessed": 11936
+  },
+  "holdout_samples": 11936,
+  "holdout_targets_sha256": "5d85d0e58fff98a1cd567756cf4f2bf3bb7a4cf6aa25d3f0bbacd288a6c4cfea",
+  "holdout_wall_seconds": 0.40204280288890004,
+  "metrics": {
+    "mae": 0.2161617856064557,
+    "negative_prediction_fraction": 0.0023458445040214475,
+    "r2": 0.8968235105019936,
+    "r2_reason": null,
+    "rmse": 0.27932989213623827,
+    "sample_count": 11936,
+    "spearman": 0.9931289666595325
+  },
+  "prediction_sha256": "e3c689970e0058970539a4715f18561a265191222db6f26beaaff9aa83bf885e",
+  "prior_exposure_evidence": {
+    "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/lifecycle.json",
+    "lifecycle_sha256": "223ca2356e17370452f85278ebbbdd5ad68ed1ca597450f404f4f4d3fe87eac7",
+    "prior_test_consumed": true,
+    "test_consumed_at": "2026-07-13T17:09:01.565036+00:00",
+    "test_rows": 11936
+  },
+  "prior_test_consumed": true,
+  "schema_version": "sweetspot-p5-stage4-known-holdout-metrics/v1",
+  "selection_feedback_allowed": false,
+  "status": "CONFIRMED_ON_KNOWN_HOLDOUT",
+  "task_id": "T1"
+}

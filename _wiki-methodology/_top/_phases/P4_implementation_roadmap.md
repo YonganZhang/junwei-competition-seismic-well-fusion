@@ -1,7 +1,8 @@
 # P4 实施路线图
 
-> 状态：待用户启动 `/goal`  
-> 前置：五窗口调研已验收；架构决策与 SOP 已冻结  
+> 状态：A–E 工程基线已实施验收，后续已扩展至 P24 并授权合并至 `master`。
+> 历史实施位置：隔离分支 `p4-training-integration`；本地尚未 push。
+> 证据：`../../_tests/P4_acceptance_evidence.md`
 > 原则：先安全集成和公共合同，再赛道插件，再正式 CV/test；不得在脏 master 上直接叠加。
 
 ## 实施批次

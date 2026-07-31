@@ -12,7 +12,24 @@ from pathlib import Path
 from typing import Any
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+def _main_project_root(anchor: Path) -> Path:
+    """Return the shared repository root from either the main or a linked worktree."""
+
+    result = subprocess.run(
+        ["git", "-C", str(anchor), "rev-parse", "--git-common-dir"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    common_dir = Path(result.stdout.strip())
+    if not common_dir.is_absolute():
+        common_dir = (anchor / common_dir).resolve()
+    if common_dir.name != ".git":
+        raise RuntimeError(f"unexpected Git common directory: {common_dir}")
+    return common_dir.parent
+
+
+PROJECT_ROOT = _main_project_root(Path(__file__).resolve().parents[2])
 STYLE_GUIDE = Path("_meta/_visual_style_guide.yml")
 PROFILE_ID = "p12_tracks_1_3_5"
 PAUSED_TRACKS = ("facies", "lithofacies", "reconstruction")

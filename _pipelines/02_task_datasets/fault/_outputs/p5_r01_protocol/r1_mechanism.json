@@ -1,0 +1,367 @@
+{
+  "diagnostic_delta_random_minus_spatial": {
+    "formal_performance_claim": false,
+    "role": "scientifically_invalid_protocol_mechanism_only",
+    "values": {
+      "validation_average_precision": -0.009128600041219605,
+      "validation_f1_at_train_threshold": -0.010278276026307515
+    },
+    "winner_selected": false
+  },
+  "experiments": [
+    {
+      "diagnostic_metrics": {
+        "role": "invalid_protocol_mechanism_only",
+        "train_loss_last": 0.7808583121452206,
+        "validation_average_precision": 0.04654167574555336,
+        "validation_f1_at_train_threshold": 0.09236007661204512,
+        "validation_loss": 1.026180054325853
+      },
+      "diagnostic_only": true,
+      "experiment_id": "A_illegal_complement_random_split",
+      "fixed_budget": {
+        "hpo_performed": false,
+        "model_selection_performed": false,
+        "parameter_updates": 4
+      },
+      "fold_train_fit": {
+        "calibration": {
+          "fit_scope": "not_invoked",
+          "performed": false
+        },
+        "class_weights": {
+          "fit_scope": "fold_train_only",
+          "negative_count": 19214,
+          "negative_weight": 0.5255542833350682,
+          "positive_count": 982,
+          "positive_weight": 10.283095723014256
+        },
+        "preprocessing": {
+          "fit_sample_ids_sha256": "c3b2cd79d3aa0a36339cf907c520906c6c939258586f02c32e5d74b473bc4c52",
+          "fit_scope": "fold_train_only",
+          "mean": -0.0002892059274017811,
+          "method": "zscore",
+          "std": 0.026946844533085823,
+          "vmax": null,
+          "vmin": null
+        },
+        "target_transform": {
+          "fit_scope": "none",
+          "name": "identity"
+        },
+        "threshold": {
+          "fit_scope": "fold_train_only",
+          "train_diagnostic_f1": 0.09883198562443846,
+          "value": 0.6
+        }
+      },
+      "hashes": {
+        "config": "19e36ba0e60d875d6be89a85b652d32418193f6305d1e09c93a014eb41c9bc40",
+        "label": "e3e39f451b0b90df0ac6b042a3968d8b46784e922453c0f14e6a8e0879f528af",
+        "source": "0fc8b8a9757ff67d94332d9adb8d1a917dc6f50f4dd76a77905faa39f5eef7ce",
+        "split": "92cedd0c8935eecdb49450720a3e75a7f9516bcac23fdd58fcf368da81a1e787"
+      },
+      "label_support": {
+        "train_illegal_complement_voxels": 19214,
+        "train_positive_voxels": 982,
+        "validation_illegal_complement_voxels": 6441,
+        "validation_positive_voxels": 291,
+        "verified_negative_voxels": 0
+      },
+      "model_id": "fault_local_logistic",
+      "operations": {
+        "checkpoint_written": false,
+        "development_prediction_computed_in_memory": true,
+        "hpo_invoked": false,
+        "model_built": true,
+        "prediction_artifact_written": false,
+        "training_invoked": true
+      },
+      "protocol": "fault-p5-r1-invalid-diagnostic-v1",
+      "ranking_status": "not_rankable",
+      "reason_codes": [
+        "UNLABELLED_COMPLEMENT_USED_AS_NEGATIVE",
+        "PROTOCOL_MECHANISM_DIAGNOSTIC_ONLY"
+      ],
+      "root_seed": 2693,
+      "scientifically_invalid": true,
+      "split": {
+        "excluded_buffer_samples": 0,
+        "inline_overlap_count": 0,
+        "minimum_train_validation_inline_distance": 6,
+        "sample_id_overlap_count": 0,
+        "split_hash": "92cedd0c8935eecdb49450720a3e75a7f9516bcac23fdd58fcf368da81a1e787",
+        "train_inline_extent": [
+          9985,
+          10284
+        ],
+        "train_samples": 36,
+        "validation_inline_extent": [
+          10030,
+          10271
+        ],
+        "validation_samples": 12
+      },
+      "status": "completed_diagnostic",
+      "test_firewall": {
+        "frozen_test_accessed": false,
+        "historical_holdout_arrays_accessed": false,
+        "runner_accepts_test_inputs": false,
+        "selection_or_ranking_performed": false,
+        "test_labels_accessed": false,
+        "test_metrics_accessed": false,
+        "test_predictions_accessed": false
+      }
+    },
+    {
+      "diagnostic_metrics": {
+        "role": "invalid_protocol_mechanism_only",
+        "train_loss_last": 0.7879898471265272,
+        "validation_average_precision": 0.055670275786772964,
+        "validation_f1_at_train_threshold": 0.10263835263835264,
+        "validation_loss": 1.097011452372162
+      },
+      "diagnostic_only": true,
+      "experiment_id": "B_illegal_complement_buffered_spatial_split",
+      "fixed_budget": {
+        "hpo_performed": false,
+        "model_selection_performed": false,
+        "parameter_updates": 4
+      },
+      "fold_train_fit": {
+        "calibration": {
+          "fit_scope": "not_invoked",
+          "performed": false
+        },
+        "class_weights": {
+          "fit_scope": "fold_train_only",
+          "negative_count": 18724,
+          "negative_weight": 0.5243270668660542,
+          "positive_count": 911,
+          "positive_weight": 10.776619099890231
+        },
+        "preprocessing": {
+          "fit_sample_ids_sha256": "32d5d34a9439922c49a88d718a16476a3599645e0ded07726c0e0c601d5df43e",
+          "fit_scope": "fold_train_only",
+          "mean": -9.983175004890654e-06,
+          "method": "zscore",
+          "std": 0.028138194233179092,
+          "vmax": null,
+          "vmin": null
+        },
+        "target_transform": {
+          "fit_scope": "none",
+          "name": "identity"
+        },
+        "threshold": {
+          "fit_scope": "fold_train_only",
+          "train_diagnostic_f1": 0.09398496240601503,
+          "value": 0.49999999999999994
+        }
+      },
+      "hashes": {
+        "config": "19e36ba0e60d875d6be89a85b652d32418193f6305d1e09c93a014eb41c9bc40",
+        "label": "e3e39f451b0b90df0ac6b042a3968d8b46784e922453c0f14e6a8e0879f528af",
+        "source": "0fc8b8a9757ff67d94332d9adb8d1a917dc6f50f4dd76a77905faa39f5eef7ce",
+        "split": "5a8c738c6ebcd9dcbcb6d00fdf38014fc104b25d129d043dab373761f6ed3a93"
+      },
+      "label_support": {
+        "train_illegal_complement_voxels": 18724,
+        "train_positive_voxels": 911,
+        "validation_illegal_complement_voxels": 6383,
+        "validation_positive_voxels": 349,
+        "verified_negative_voxels": 0
+      },
+      "model_id": "fault_local_logistic",
+      "operations": {
+        "checkpoint_written": false,
+        "development_prediction_computed_in_memory": true,
+        "hpo_invoked": false,
+        "model_built": true,
+        "prediction_artifact_written": false,
+        "training_invoked": true
+      },
+      "protocol": "fault-p5-r1-invalid-diagnostic-v1",
+      "ranking_status": "not_rankable",
+      "reason_codes": [
+        "UNLABELLED_COMPLEMENT_USED_AS_NEGATIVE",
+        "PROTOCOL_MECHANISM_DIAGNOSTIC_ONLY"
+      ],
+      "root_seed": 2693,
+      "scientifically_invalid": true,
+      "split": {
+        "excluded_buffer_samples": 1,
+        "inline_overlap_count": 0,
+        "minimum_train_validation_inline_distance": 13,
+        "sample_id_overlap_count": 0,
+        "split_hash": "5a8c738c6ebcd9dcbcb6d00fdf38014fc104b25d129d043dab373761f6ed3a93",
+        "train_inline_extent": [
+          9985,
+          10201
+        ],
+        "train_samples": 35,
+        "validation_inline_extent": [
+          10214,
+          10284
+        ],
+        "validation_samples": 12
+      },
+      "status": "completed_diagnostic",
+      "test_firewall": {
+        "frozen_test_accessed": false,
+        "historical_holdout_arrays_accessed": false,
+        "runner_accepts_test_inputs": false,
+        "selection_or_ranking_performed": false,
+        "test_labels_accessed": false,
+        "test_metrics_accessed": false,
+        "test_predictions_accessed": false
+      }
+    },
+    {
+      "experiment_id": "C_legal_mask_buffered_spatial",
+      "hashes": {
+        "config": "5c31020126427c1695b17f896e6b7cc077b779ec0ec9e77311e5d0629f8a5be9",
+        "label": "2b4808e1427a388e21df371fd53467b16b0bbb33fe5a0e879786d1cb78789c4a",
+        "source": "0fc8b8a9757ff67d94332d9adb8d1a917dc6f50f4dd76a77905faa39f5eef7ce",
+        "split": "a100fc97dbe9851cd1f2fa40bb18debc4b0f937d8e9319a357f11464f851c79a"
+      },
+      "mask_counts": {
+        "positive": 1273,
+        "proxy": 0,
+        "unknown": 25655,
+        "valid_label": 1273,
+        "verified_negative": 0
+      },
+      "mask_invariants": {
+        "proxy_is_separate_from_valid_label": true,
+        "stick_is_positive": true,
+        "unknown_valid_label_is_false": true,
+        "unlabelled_is_unknown": true
+      },
+      "operations": {
+        "metric_computed": false,
+        "model_built": false,
+        "prediction_generated": false,
+        "training_invoked": false
+      },
+      "protocol": "fault-p5-r1-formal-gate-v1",
+      "ranking_status": "not_rankable",
+      "reason_codes": [
+        "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+        "FEWER_THAN_TWO_LEGAL_BUFFERED_FOLDS",
+        "STOPPED_BEFORE_MODEL_BUILD"
+      ],
+      "split": {
+        "buffer_inlines": 8,
+        "effective_folds": 0,
+        "reason": "no audited verified-negative labels; proxy/unknown voxels cannot enable binary CV",
+        "requested_folds": 5,
+        "split_hash": "a100fc97dbe9851cd1f2fa40bb18debc4b0f937d8e9319a357f11464f851c79a",
+        "status": "not_feasible"
+      },
+      "status": "blocked",
+      "test_firewall": {
+        "frozen_test_accessed": false,
+        "historical_holdout_arrays_accessed": false,
+        "runner_accepts_test_inputs": false,
+        "selection_or_ranking_performed": false,
+        "test_labels_accessed": false,
+        "test_metrics_accessed": false,
+        "test_predictions_accessed": false
+      }
+    }
+  ],
+  "future_boundary": "ten-or-more-model fair comparison is deferred to R2",
+  "hashes": {
+    "config": "19e36ba0e60d875d6be89a85b652d32418193f6305d1e09c93a014eb41c9bc40",
+    "label": "e3e39f451b0b90df0ac6b042a3968d8b46784e922453c0f14e6a8e0879f528af",
+    "source": "0fc8b8a9757ff67d94332d9adb8d1a917dc6f50f4dd76a77905faa39f5eef7ce",
+    "split": "8b264235ba804bd56c75a47526096f52edf284d7ffd9fc4f713c9d52c1e670db"
+  },
+  "input_lock": {
+    "development_inline_range": [
+      9985,
+      10284
+    ],
+    "input_sha256": {
+      "fault_points": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+      "seismic_amplitude": "b79602a1c371c2abdd3c018c9ce71cbec3738a6f09a5ab77594161fd38721a3e",
+      "seismic_index": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905"
+    },
+    "lock_sha256": "de38abf4ab16ee64f84bdd06535cef83408692f990716f1bbc2791f32cb99d7e"
+  },
+  "model_id": "fault_local_logistic",
+  "protocol": "fault-p5-r1-mechanism-v1",
+  "ranking_status": "not_rankable",
+  "root_seed": 2693,
+  "sampling": {
+    "eligible_development_inlines": 299,
+    "positive_patch_count": 48,
+    "proxy_patch_count": 0,
+    "random_or_annotation_free_negative_centres_generated": false,
+    "rasterized_positive_voxels_in_development": 71037,
+    "sample_count": 48,
+    "sampling_role": "observed_fault_voxel_centres_only",
+    "selected_fault_centre_inlines": [
+      9985,
+      9991,
+      9997,
+      10005,
+      10011,
+      10017,
+      10024,
+      10030,
+      10036,
+      10043,
+      10049,
+      10055,
+      10062,
+      10068,
+      10074,
+      10081,
+      10087,
+      10093,
+      10100,
+      10106,
+      10112,
+      10119,
+      10125,
+      10131,
+      10138,
+      10144,
+      10150,
+      10157,
+      10163,
+      10169,
+      10176,
+      10182,
+      10188,
+      10195,
+      10201,
+      10207,
+      10214,
+      10220,
+      10226,
+      10233,
+      10239,
+      10245,
+      10252,
+      10258,
+      10264,
+      10271,
+      10277,
+      10284
+    ],
+    "selection_seed": 2693
+  },
+  "test_firewall": {
+    "frozen_test_accessed": false,
+    "historical_holdout_arrays_accessed": false,
+    "runner_accepts_test_inputs": false,
+    "selection_or_ranking_performed": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault"
+}

@@ -1,0 +1,42 @@
+{
+  "artifacts": {
+    "README.md": {
+      "bytes": 477,
+      "sha256": "005ded7a78c6697ed829adca88f155dd50a3e8eee88bd6ed63b24345153d981d"
+    },
+    "r0_lane_gates.json": {
+      "bytes": 3930,
+      "sha256": "1819f16d563dd3c411e87fbd42493ce546d5516a03888f2292a82d039a74169e"
+    },
+    "r1_mechanism.json": {
+      "bytes": 11970,
+      "sha256": "a5eb5d5489fa06b3481f3406b5feb601717c0a2ceb017aa4cf7e9b0ccd6f084f"
+    },
+    "summary.json": {
+      "bytes": 1340,
+      "sha256": "ca3628ac6440ba80814b4009b72107a50e7e9fc73ade44ae414a9b19f07a2ce2"
+    }
+  },
+  "config_hash": "bd476882a5e45fce958354d3ebf08b92dd764ebb0b660b566e6bc2aa6ce8c790",
+  "input_hashes": {
+    "fault_points": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+    "seismic_amplitude": "b79602a1c371c2abdd3c018c9ce71cbec3738a6f09a5ab77594161fd38721a3e",
+    "seismic_index": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905"
+  },
+  "protocol": "fault-p5-r01-artifact-manifest-v1",
+  "source_code_hashes": {
+    "fault_p5_r01.py": "30766a13dcafb132d14c5ce8c7d9dd0bea3c9171f59115d343c26786fe820c4d",
+    "p4_contract.py": "9497d3106b9542c5b37a96cfc3c09f8b583c0f7e49b66cf03c3cc187733b5ba4",
+    "p4_split.py": "a67f5a1c9eea37cdc4d92eb5f8c834c8386856ea8150a715153d599368a65f2d",
+    "p5_r01_development_lock.json": "de38abf4ab16ee64f84bdd06535cef83408692f990716f1bbc2791f32cb99d7e"
+  },
+  "test_firewall": {
+    "frozen_test_accessed": false,
+    "historical_holdout_arrays_accessed": false,
+    "runner_accepts_test_inputs": false,
+    "selection_or_ranking_performed": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  }
+}

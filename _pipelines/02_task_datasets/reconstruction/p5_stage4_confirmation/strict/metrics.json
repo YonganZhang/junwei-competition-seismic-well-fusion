@@ -1,0 +1,51 @@
+{
+  "cdf": {
+    "definition": "unweighted empirical CDF over unique legal holdout metric voxels",
+    "numeric_score_reported": false,
+    "status": "diagnostic_only",
+    "used_for_selection": false
+  },
+  "constraint_audit": {
+    "conditional_reconstruction_not_strict_holdout": false,
+    "development_constraints": 90,
+    "development_constraints_used": 0,
+    "evaluation_mode": "strict",
+    "exact_constraint_cells_excluded_from_metrics": 0,
+    "guard_constraints_used": 0,
+    "strict_reference_derived_well_value_used": false,
+    "strict_test_target_or_future_feature_used": false,
+    "test_constraints_present": 0,
+    "test_constraints_used": 0
+  },
+  "evaluation_scope": "historically seen mode-specific spatial holdout",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "excluded_exact_constraint_cells": 0,
+  "fresh_blind": false,
+  "metric_voxels": 78949,
+  "metrics": {
+    "evaluation_mode": "strict",
+    "pearson_r_defined": true,
+    "strict_bias": 0.01754357841298476,
+    "strict_mae": 0.027172838434594462,
+    "strict_out_of_range_rate": 0.0,
+    "strict_pearson_r": -0.12004558302147143,
+    "strict_r2": -0.3396787079619956,
+    "strict_rmse": 0.03562492535922522,
+    "strict_spectral_log_rmse": 1.4798489864025641,
+    "task_id": "volve_porosity_strict_spatial_reconstruction",
+    "voxel_count": 78949
+  },
+  "mode": "strict",
+  "model_id": "pykrige_ok3d",
+  "prior_test_consumed": true,
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "spectral_metric": {
+    "definition": "3-D mean-filled log1p(abs(rfftn)) voxel-spectrum RMSE",
+    "name": "strict_spectral_log_rmse"
+  },
+  "status": "passed",
+  "task_id": "volve_porosity_strict_spatial_reconstruction",
+  "test_active_cells": 78949,
+  "test_patch_count": 105,
+  "track_id": "reconstruction"
+}

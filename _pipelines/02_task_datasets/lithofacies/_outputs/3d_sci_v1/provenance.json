@@ -1,0 +1,34 @@
+{
+  "schema_version": "lithofacies-3d-sci-provenance-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "code_head": "af8c066de0c3fc24fce024abb350b4f2c9e82d9b",
+  "decision": "not_feasible",
+  "contract_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/_wiki-methodology/_top/_phases/P5_three_dimensional_sci_visualization_contract.md",
+  "contract_sha256": "0db6554a8568f17d10397b1369391eb22b51731fd77cbefc717f3c97186fdf3b",
+  "audit_scope": [
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl",
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_visualization_manifest.json",
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/predictions.json",
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/visualization_manifest.json"
+  ],
+  "audit_hashes": {
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl": "8e14145117b8b44e3b9ee1131b9ade65e9f2b25151641d7b2b74f46898f966cb",
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_visualization_manifest.json": "3b1538c2eef47462420dd9598094f5a66c241ca9ab4842f6584fc265f18982a2",
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/predictions.json": "0ff2854a584d9494e04fd322d5be210538a61148c9ab15464c9d167349c2666f",
+    "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/visualization_manifest.json": "c680d96028ef3de547536022f1af5db063537934af898c76bd23f601e47a7424"
+  },
+  "evidence_summary": {
+    "stage3_coordinate_fields_found": false,
+    "stage4_coordinate_fields_found": false,
+    "stage4_record_count": 120,
+    "stage4_finite_center_md_rows": 0,
+    "stage4_first_record_center_md_m": null,
+    "stage4_first_record_twt_ms": 2664.1848235718453
+  },
+  "limitations": [
+    "No verified XYZ or trajectory geometry is present in the inspected artifacts.",
+    "Existing not_feasible PNGs are status evidence only and do not constitute a 3D deliverable.",
+    "This audit does not create or require visualize_3d_sci.py, PNG, PDF, or HTML outputs."
+  ]
+}

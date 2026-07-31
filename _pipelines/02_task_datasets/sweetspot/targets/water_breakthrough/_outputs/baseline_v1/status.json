@@ -1,0 +1,39 @@
+{
+  "development_samples": 32,
+  "downgrade_reason": "only 3 independent development groups are available",
+  "effective_folds": 3,
+  "frozen_test_metrics": {
+    "average_precision": 0.15540242763772175,
+    "brier": 0.263500118379443,
+    "f1": 0.24390243902439024,
+    "positive_rate": 0.13513513513513514,
+    "sample_count": 37,
+    "threshold": 0.5
+  },
+  "hpo_pilot_status": "complete",
+  "hpo_pilot_trials": 20,
+  "hpo_sanity_trials": 8,
+  "label_version": "first-7-consecutive-positive-water-days-v1",
+  "model_config": {
+    "c": 0.001,
+    "class_weight": "balanced",
+    "max_iter": 750
+  },
+  "model_id": "logistic_classifier",
+  "oof_metrics": {
+    "average_precision": 0.7654914529914529,
+    "brier": 0.23039899086300547,
+    "f1": 0.6666666666666666,
+    "positive_rate": 0.375,
+    "sample_count": 32,
+    "threshold": 0.5
+  },
+  "proxy_warning": "reported positive water event; not a domain-approved water-cut threshold",
+  "requested_folds": 5,
+  "status": "proxy_feasible",
+  "target_id": "water_breakthrough",
+  "target_number": 4,
+  "task_id": "sweetspot.water_breakthrough.7day_event_30day_risk_v1",
+  "test_consumed_once": true,
+  "test_samples": 37
+}

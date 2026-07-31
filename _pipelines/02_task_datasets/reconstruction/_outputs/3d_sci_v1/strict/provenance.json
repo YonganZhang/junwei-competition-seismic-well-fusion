@@ -1,0 +1,62 @@
+{
+  "array_hashes": {
+    "indices_kji": "926ab928ee5436f87253c6ecbc5f72286f1f128f0d8572402f2d34f432695b49",
+    "prediction": "36c8e8635e74006c6f5b02a89b737eac315822f6c01c735f40da82d5d48917e9",
+    "residual": "4075c7b21b906b95590395c57aa091e2e47b0a7739b5e543bfec122d21a4ad93",
+    "truth": "fadcd569163e96f9097a04adc06a073f1b4064880b6eb159e85619be384aabc8"
+  },
+  "code_path": "_pipelines/02_task_datasets/reconstruction/visualize_3d_sci.py",
+  "code_sha256": "b9fd122337583f0c9418294fb0895a72ded36a611a59229004bb2f1a2a167642",
+  "font_status": {
+    "limitation": "Times New Roman is not installed on this host.",
+    "requested": "Times New Roman",
+    "selected": "Liberation Serif",
+    "times_new_roman_available": false
+  },
+  "inputs": {
+    "confirmation_state": {
+      "path": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/confirmation_state.json",
+      "sha256": "fade03d6bec5f962c83b45ddbad5e23a2388fe3cc6f25212e5e2902fba7b2a8d"
+    },
+    "manifest": {
+      "path": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/manifest.json",
+      "sha256": "5e62d9e722a6321cf95147ace2ebe83c7da3a9eaf90494c8013eeddb8d8c6577"
+    },
+    "metrics": {
+      "path": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/metrics.json",
+      "sha256": "190fab21e08ef716ae41192641c07129e5a177b5a4bd294f0d124d5de6cfc09b"
+    },
+    "predictions_archive": {
+      "path": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/predictions.npz",
+      "sha256": "cc595c073611dcbd952223800e28306d2aef6c6409c5168f8e2cb0f97625caed"
+    }
+  },
+  "mode": "strict",
+  "native_volume": {
+    "axes": [
+      "K",
+      "J",
+      "I"
+    ],
+    "coordinates": "native voxel K/J/I only",
+    "present": true,
+    "shape_kji": [
+      63,
+      100,
+      54
+    ]
+  },
+  "render_engine": {
+    "interactive_html": true,
+    "matplotlib": "3.10.9",
+    "plotly": "6.8.0"
+  },
+  "root_seed": 2693,
+  "sampling": {
+    "max_points": 12000,
+    "rule": "lexsort by K/J/I then evenly spaced indices",
+    "selected_points": 12000
+  },
+  "schema_version": "p5-three-d-sci-visualization-v1",
+  "track_id": "reconstruction"
+}

@@ -1,0 +1,70 @@
+{
+  "detail": "required upstream weight has no approved license/hash/local path",
+  "evidence_state": "scouted",
+  "frozen_test_accessed": false,
+  "model_id": "faultnet_md",
+  "reason_code": "PRETRAINED_WEIGHT_NOT_APPROVED",
+  "runtime_gate": {
+    "detail": "required upstream weight has no approved license/hash/local path",
+    "evidence": {
+      "code_license": "Apache-2.0",
+      "commercial_use": "allowed",
+      "model_id": "faultnet_md",
+      "source_revision": "8b513733ed1461a0cd1c62cd012277193473c84a",
+      "source_tag": null,
+      "source_url": "https://github.com/douyimin/FaultNet",
+      "weights": {
+        "approved": false,
+        "license_spdx": "UNSPECIFIED",
+        "required": true,
+        "sha256": null,
+        "source": "official repository TorchScript checkpoint; no P5 approval/hash"
+      }
+    },
+    "reason_code": "PRETRAINED_WEIGHT_NOT_APPROVED",
+    "status": "skipped"
+  },
+  "source_lock": {
+    "adapter": {
+      "backend": "torchscript_probability",
+      "builder": "faultnet_torchscript",
+      "minimum_shape": [
+        16,
+        16,
+        16
+      ],
+      "shape_multiple": [
+        16,
+        16,
+        16
+      ],
+      "source_mode": "weight_only",
+      "trainable": false
+    },
+    "dependencies": [
+      {
+        "distribution": "torch",
+        "import_name": "torch",
+        "specifier": ">=1.12"
+      }
+    ],
+    "family": "FaultNet 3-D seismic fault inference with MD-loss training provenance",
+    "model_id": "faultnet_md",
+    "source": {
+      "commercial_use": "allowed",
+      "license_spdx": "Apache-2.0",
+      "license_url": "https://github.com/douyimin/FaultNet/blob/8b513733ed1461a0cd1c62cd012277193473c84a/LICENSE",
+      "revision": "8b513733ed1461a0cd1c62cd012277193473c84a",
+      "tag": null,
+      "url": "https://github.com/douyimin/FaultNet"
+    },
+    "weights": {
+      "approved": false,
+      "license_spdx": "UNSPECIFIED",
+      "required": true,
+      "sha256": null,
+      "source": "official repository TorchScript checkpoint; no P5 approval/hash"
+    }
+  },
+  "status": "skipped"
+}

@@ -1,0 +1,89 @@
+{
+  "arrays": {
+    "confidence": {
+      "dtype": "float16",
+      "shape": [
+        474,
+        128,
+        128
+      ]
+    },
+    "entropy": {
+      "dtype": "float16",
+      "shape": [
+        474,
+        128,
+        128
+      ]
+    },
+    "error": {
+      "dtype": "uint8",
+      "shape": [
+        474,
+        128,
+        128
+      ]
+    },
+    "inline": {
+      "dtype": "int64",
+      "shape": [
+        474
+      ]
+    },
+    "labels": {
+      "dtype": "uint8",
+      "shape": [
+        474,
+        128,
+        128
+      ]
+    },
+    "prediction": {
+      "dtype": "uint8",
+      "shape": [
+        474,
+        128,
+        128
+      ]
+    },
+    "probabilities": {
+      "dtype": "float16",
+      "shape": [
+        474,
+        8,
+        128,
+        128
+      ]
+    },
+    "sample_ids": {
+      "dtype": "<U36",
+      "shape": [
+        474
+      ]
+    },
+    "seismic": {
+      "dtype": "float16",
+      "shape": [
+        474,
+        128,
+        128
+      ]
+    }
+  },
+  "bytes": 119246981,
+  "checkpoint_sha256": "75d57a72ee39e2105355b108ed1fd2fbbc3c0a74ae770650975829ec096133f0",
+  "configuration_hash": "f2161f0c1e7a78bf567e7cd0eb3b39d9539b90b7b24da9c419d51b687013bdbe",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "leaderboard_sha256": "8904769dc0b4b806785ce304d449ecf18a132b2ca8f320b61475c3f9c2f74b21",
+  "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+  "prior_test_consumed": true,
+  "runtime_relative_path": "facies_penobscot/known_holdout_predictions.npz",
+  "sample_count": 474,
+  "sample_ids_hash": "4d9ab472720cb4805cc0831e5692bda0f20975ee8094f13b8b33854e8172739b",
+  "schema_version": "facies-p5-stage4-known-holdout-v1",
+  "sha256": "afd724ab133c138290cb5bd5a8b0ee4cacdbb82b241e35f8eaef6ed7f13e8663",
+  "storage_boundary": "ignored_track_private_runtime_artifact",
+  "task_id": "facies_penobscot",
+  "test_groups_hash": "d509366f2e22c6ac8ccffa745c5ad94171d5dfc691105b09da644814322dffc3"
+}

@@ -1,0 +1,72 @@
+{
+  "artifacts": {
+    "models/faultnet_md.json": {
+      "bytes": 2091,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "2d024dde796a2b97b15977e62edb7ed41a3e71e0f19d22310ba26544668235df"
+    },
+    "models/faultseg3d_keras.json": {
+      "bytes": 2113,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "33a0490dd19e39e8953faffc7fc5a06035491f487ab1a82175e3b10ce02087a1"
+    },
+    "models/mednext_v1_s_k3.json": {
+      "bytes": 1966,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "2e32b1bea5ed0656f7da16e2d71112e73f9216e05ab98e22ddab7ca3478d0114"
+    },
+    "models/monai_dynunet.json": {
+      "bytes": 4725,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "4c7cb7a963607af6ac6cb4f20087c4d054fc2a7707467306e79d5b957449fc12"
+    },
+    "models/monai_segresnet.json": {
+      "bytes": 4740,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "402e76e3947c675052ef93315d304ca8c23bd854c5b9f2d8fc0d73af8fc32860"
+    },
+    "models/monai_swinunetr.json": {
+      "bytes": 5090,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "a570977624d2fd355ef380886ac5f3229122276ac70dba1f752b29fa2ca3ab5e"
+    },
+    "models/monai_vnet.json": {
+      "bytes": 4729,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "df3ef216f4b9577e9de13632dc24f26ae562c88fc78ffef098009e07d776f502"
+    },
+    "models/nnunet_v2_3d_fullres.json": {
+      "bytes": 2996,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "6b3221eee650cf8659de184e32dbf0df73061d563dbe47e544bd9af2433a5892"
+    },
+    "models/pytorch3dunet_unet3d.json": {
+      "bytes": 4774,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "2451f3c8af1345854a2701d4127298487b6817fb593129f6f83a0f62717d26b5"
+    },
+    "models/uxnet3d.json": {
+      "bytes": 1908,
+      "metadata": {},
+      "role": "stage1_model_evidence",
+      "sha256": "4206be47145eabcc75914a4ecfafec869a83afdde905de2f50bfa78ae4d5f29f"
+    },
+    "summary.json": {
+      "bytes": 4350,
+      "metadata": {},
+      "role": "stage1_summary",
+      "sha256": "8d9958507fc57a82d8652313f5d3e699d78d831154651e8e68e38f0f5d068dc2"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "fault-p5-stage1"
+}

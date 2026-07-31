@@ -1,0 +1,159 @@
+{
+  "run_name": "audited_v2",
+  "seed": 2693,
+  "arguments": {
+    "patch_crosslines": 33,
+    "patch_times": 65,
+    "train_per_class": 128,
+    "test_per_class": 48,
+    "test_fraction": 0.2,
+    "guard_inlines": 8,
+    "val_fraction": 0.2,
+    "val_guard_inlines": 2,
+    "seed": 2693,
+    "run_name": "audited_v2"
+  },
+  "segy": "_sandbox/volve_data/_extracted_seismic/ST0202/Stacks/ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME.MIG_FIN.POST_STACK.3D.JS-017534.segy",
+  "input_sha256": {
+    "fault_points.npz": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+    "seismic_index.npz": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "segy": "b79602a1c371c2abdd3c018c9ce71cbec3738a6f09a5ab77594161fd38721a3e"
+  },
+  "software_versions": {
+    "python": "3.10.12",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "h5py": "3.16.0",
+    "joblib": "1.5.3",
+    "segyio": "1.9.14",
+    "matplotlib": "3.10.9"
+  },
+  "source_sha256": {
+    "build_dataset.py": "8bcd71e41f5ae1ee66050f6f207dc2992e2e218a3d070947e5901934563794cd",
+    "audit_utils.py": "ab0817af307f82651b5ceeed408e10ae71312682c5f242a8f5178ad595d76b2b",
+    "split_utils.py": "2a6ec6b51e577a12096ff0553fb647abe61921c315271a03ff73f59fb871805a"
+  },
+  "patch_shape": [
+    1,
+    33,
+    65
+  ],
+  "rasterization": {
+    "source_points": 3998,
+    "complete_sticks": 1356,
+    "fault_names": 66,
+    "method": "max-axis 3D linear interpolation, nearest integer voxel, unique union",
+    "label_dilation_radius": {
+      "inline": 0,
+      "crossline": 0,
+      "time": 0
+    },
+    "scientific_label_contract": "raw interpreted stick skeleton; no surface interpolation between sticks",
+    "rasterized_unique_voxels": 77569,
+    "time_snap_abs_error_ms": {
+      "max": 2.0,
+      "mean": 1.008598299149573
+    },
+    "sticks_spanning_train_to_test_across_guard": 16,
+    "fault_names_spanning_train_to_test_across_guard": [
+      "Volve_F24_2011",
+      "Volve_F42_2011",
+      "Volve_F44_2011",
+      "Volve_F4_2011",
+      "Volve_F52_2011",
+      "Volve_F6_2011"
+    ],
+    "residual_risk": "Named geological faults can span both spatial blocks; the guard prevents shared/adjacent sample inlines but does not redefine fault entities."
+  },
+  "split_plan": {
+    "train": [
+      9985,
+      10284
+    ],
+    "guard": [
+      10285,
+      10292
+    ],
+    "test": [
+      10293,
+      10369
+    ]
+  },
+  "guard_inline_count": 8,
+  "normalization": {
+    "fit_split": "train_fit",
+    "stats": {
+      "method": "zscore",
+      "mean": -3.027221509910305e-06,
+      "std": 0.027938051149249077,
+      "vmin": null,
+      "vmax": null
+    },
+    "validation_plan": {
+      "fit_rule": "inline < 10223",
+      "guard_range": [
+        10223,
+        10224
+      ],
+      "guard_sampled_inlines": [
+        10223,
+        10224
+      ],
+      "validation_rule": "inline >= 10225",
+      "validation_start_inline": 10225
+    },
+    "validation_refit": false,
+    "test_refit": false
+  },
+  "train_path": "_data/processed/fault/train.h5",
+  "test_path": "_data/processed/fault/test.h5",
+  "dataset_sha256": {
+    "train": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221",
+    "test": "c7ada8f6483db352cc5484893ff1c12333316f2bffb8dfcf117139899197fa25"
+  },
+  "split_manifest": "_outputs/runs/audited_v2/split_manifest.json",
+  "train": {
+    "n_samples": 256,
+    "fault_centred": 128,
+    "non_fault": 128,
+    "positive_voxels": 6215,
+    "total_voxels": 549120,
+    "positive_fraction": 0.011318108974358974,
+    "inline_min": 9987,
+    "inline_max": 10284,
+    "n_unique_inlines": 177,
+    "normalization": "train-fit-only ml_framework.fit_zscore reused for validation/test",
+    "normalization_roundtrip_max_abs_error": 1.4901161193847656e-08
+  },
+  "test": {
+    "n_samples": 96,
+    "fault_centred": 48,
+    "non_fault": 48,
+    "positive_voxels": 1785,
+    "total_voxels": 205920,
+    "positive_fraction": 0.008668414918414918,
+    "inline_min": 10293,
+    "inline_max": 10367,
+    "n_unique_inlines": 46,
+    "normalization": "train-fit-only ml_framework.fit_zscore reused for validation/test",
+    "normalization_roundtrip_max_abs_error": 7.450580596923828e-09
+  },
+  "leakage_checks": {
+    "train_guard_test_inline_overlap": [],
+    "train_test_sample_centre_overlap": [],
+    "train_test_exact_patch_sha256_overlap": [],
+    "train_test_physical_voxel_overlap": [],
+    "guard_inlines_sampled": []
+  },
+  "historical_artifacts_verified": {
+    "baseline_metrics.json": "7f4537111e48e47123ec369400de7fb579cc4e5e340fdfdae0c01ee16fcdf520",
+    "baseline_model.joblib": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "build_summary.json": "8989a7664dc975a72e5b6ad6910953ba686f17086faba7163d9b144a1d33590d",
+    "_outputs/checkpoints/best.ckpt": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "_outputs/checkpoints/history.json": "0ec3592da34d3418391ac57df74729da31115b38308bc3a7a99f4e330d01228a",
+    "_outputs/checkpoints/last.ckpt": "bdc2d01e8a068a802091c098b635efda4d3e09aa325e73afa6a27171f95a07ef",
+    "_outputs/loss_curve.png": "ea59f1d6ec8c8a5eb95a487b5bb8aa68963b24716f505a74ff469fa66091d28a",
+    "_outputs/prediction_visualization.png": "abc5016cf67a600536130fc72d1fb00f63f51452e7c91f33c0014e83f64d7e4c"
+  }
+}

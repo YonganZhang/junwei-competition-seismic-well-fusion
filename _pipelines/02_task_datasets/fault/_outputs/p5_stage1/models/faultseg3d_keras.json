@@ -1,0 +1,75 @@
+{
+  "detail": "code license CC-BY-NC-4.0 is not approved for this execution",
+  "evidence_state": "scouted",
+  "frozen_test_accessed": false,
+  "model_id": "faultseg3d_keras",
+  "reason_code": "NONCOMMERCIAL_LICENSE_NOT_APPROVED",
+  "runtime_gate": {
+    "detail": "code license CC-BY-NC-4.0 is not approved for this execution",
+    "evidence": {
+      "code_license": "CC-BY-NC-4.0",
+      "commercial_use": "restricted",
+      "model_id": "faultseg3d_keras",
+      "source_revision": "0ab8ba1c10cb9e5748b0129bfe1a2fe3031b80fe",
+      "source_tag": null,
+      "source_url": "https://github.com/xinwucwp/faultSeg",
+      "weights": {
+        "approved": false,
+        "license_spdx": "CC-BY-NC-4.0",
+        "required": false,
+        "sha256": null,
+        "source": "official non-commercial checkpoint; not downloaded"
+      }
+    },
+    "reason_code": "NONCOMMERCIAL_LICENSE_NOT_APPROVED",
+    "status": "skipped"
+  },
+  "source_lock": {
+    "adapter": {
+      "backend": "tensorflow_keras",
+      "builder": "faultseg3d",
+      "minimum_shape": [
+        64,
+        64,
+        64
+      ],
+      "shape_multiple": [
+        8,
+        8,
+        8
+      ],
+      "source_mode": "locked_checkout",
+      "trainable": true
+    },
+    "dependencies": [
+      {
+        "distribution": "tensorflow",
+        "import_name": "tensorflow",
+        "specifier": ">=2,<3"
+      },
+      {
+        "distribution": "keras",
+        "import_name": "keras",
+        "specifier": ">=2,<4"
+      }
+    ],
+    "family": "FaultSeg3D Keras 3-D U-Net",
+    "model_id": "faultseg3d_keras",
+    "source": {
+      "commercial_use": "restricted",
+      "license_spdx": "CC-BY-NC-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "revision": "0ab8ba1c10cb9e5748b0129bfe1a2fe3031b80fe",
+      "tag": null,
+      "url": "https://github.com/xinwucwp/faultSeg"
+    },
+    "weights": {
+      "approved": false,
+      "license_spdx": "CC-BY-NC-4.0",
+      "required": false,
+      "sha256": null,
+      "source": "official non-commercial checkpoint; not downloaded"
+    }
+  },
+  "status": "skipped"
+}

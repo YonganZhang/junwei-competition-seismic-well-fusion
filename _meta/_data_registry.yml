@@ -1,7 +1,7 @@
 # _meta/_data_registry.yml — 数据资产注册表(单一真源)
 project: 军伟的比赛-地震测井多模态融合
 schema_version: v4.0
-last_synced: 2026-07-31
+last_synced: 2026-08-01 (P24 reconstruction historical transfer)
 
 assets:
   - id: volve-north-sea
@@ -27,7 +27,9 @@ assets:
       - Volve_Geophysical_Interpretations.zip（100MB，层位断层解释，已下载完成）
       - Volve_Reports.zip（162MB，作业报告PDF，已下载完成）
       - Volve_Well_technical_data.zip（212MB，井身结构，已下载完成）
-      - Volve_Seismic_VSP.zip（96MB，垂直地震剖面测井，已下载完成）
+      - Volve_Seismic_VSP.zip（96MB，垂直地震剖面测井，已下载完成；SHA-256
+        e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4；含 19A/19BT2/19SR/
+        F11T2/F15A 五口井 checkshot，P23 以前三口拟合、后两口独立校验）
       - Volve_WITSML Realtime drilling data.zip（2.3GB，钻井实时数据，已下载完成）
       - Volve_Seismic_ST0202.zip（1.17TB，一期3D地震体，已下载完成）
       - Volve_Seismic_ST10010.zip（2.59TB，另一期3D地震体，2026-07-11下载完成，目录结构校验
@@ -117,3 +119,51 @@ assets:
       Nano Banana 2提示词、构建脚本、最终PDF、基础模型实验合同和Claude交接说明。
       unzip完整性与XeLaTeX no-pdf解析均已通过。稳定下载地址为
       https://share.yongan.site/junwei-six-track-latex-source/junwei_six_track_latex_source_latest.zip。
+
+  - id: p8-foundation-runtime-smoke
+    name: P8 六赛道基础模型真实加载/计算证据
+    status: generated
+    location: _models/gaia_dagt/foundation_runtime_smoke.v1.json
+    source: >
+      foundation_routes.v1.json 固定的六条公开 source/weights revision；权重缓存不进入仓库，
+      机读证据只保存 SHA、shape、finite、参数量和科学状态。
+    license: mixed; see _models/gaia_dagt/foundation_routes.v1.json
+    note: >
+      fault/facies/property/lithofacies/reconstruction 为 synthetic contract smoke；
+      sweetspot 为真实 development group-CV。所有路线 default_enabled=false。
+
+  - id: p8-chronos-calendar-development
+    name: P8 Chronos-2 严格 30 日历天 development 诊断
+    status: generated
+    location: _pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json
+    source: >
+      Volve 生产历史的 development-only 四井 LOGO4；重复日聚合、缺日显式重建但不以零填补，
+      每样本严格 30 天历史预测未来 30 天。
+    license: project-derived metrics; raw data remains under Volve terms
+    note: >
+      Chronos MAE 172.3162，历史均值 184.6686，train-only blend 166.3343；
+      只属于 CONNECTED_UNVERIFIED 诊断，未访问 known holdout/frozen test。
+
+  - id: p23-reconstruction-checkshot-calibration
+    name: P23 赛道⑥ Checkshot 独立井标定证据
+    status: generated
+    location: _pipelines/02_task_datasets/reconstruction/_outputs/p23_checkshot_calibration/summary.json
+    source: data:volve-north-sea
+    license: project-derived metrics; raw data remains under Volve terms
+    note: >
+      19A/19BT2/19SR 作为拟合井，F11T2/F15A 作为独立校验井。
+      目标储层 TWT MAE 从旧弱标定的 633.1867 ms 降至 8.7389 ms；
+      该资产只证明时深标定改善，不声称孔隙度盲测或下游模型提升。
+
+  - id: p24-reconstruction-historical-transfer
+    name: P24 赛道⑥同场区历史属性版本迁移证据
+    status: generated
+    location: _pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/summary.json
+    source: data:volve-north-sea
+    license: project-derived metrics; raw data remains under Volve terms
+    note: >
+      使用 RMS 归档中未被现有管线使用、但与最终属性同网格的
+      pp04phif/realisation.1，预注册后一次性比较重新拟合 PyKrige 与冻结 P21。
+      P21 RMSE 0.027825182663，相对 PyKrige 0.028235410003 改善 1.4529%，
+      4/5 空间折获胜。证据仅为 same-field historical-version transfer，
+      fresh blind/cross-field 均为 false。

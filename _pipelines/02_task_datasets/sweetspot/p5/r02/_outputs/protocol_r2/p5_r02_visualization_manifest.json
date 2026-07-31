@@ -1,0 +1,37 @@
+{
+  "figures": [
+    {
+      "path": "figures/t1_budget_curve.png",
+      "sha256": "b80598de4e30a610092537232838cd14dfe4c81e0ce687a8d121fe880d87477c",
+      "size_bytes": 48512
+    },
+    {
+      "path": "figures/t2_budget_curve.png",
+      "sha256": "6feec96ed81104a2a4e348ec805e1ae91ad7d0cf28375eec47ca2eca9d6c471d",
+      "size_bytes": 54554
+    },
+    {
+      "path": "figures/t3_budget_curve.png",
+      "sha256": "082ea492666c6b4c9ba791bf0f878021eca8f95927a25a538d3328ca284fe08c",
+      "size_bytes": 55045
+    },
+    {
+      "path": "figures/ablation_comparison.png",
+      "sha256": "bb3ceba41cbf6f052ec03dc3281210e0622755df2e455f82cd281fec0b16aea1",
+      "size_bytes": 43657
+    },
+    {
+      "path": "figures/status_gate.png",
+      "sha256": "30dda63453a82251bdfb54a6706e202351dd29f9c561cf2f642f9ffcee9aa6a3",
+      "size_bytes": 20226
+    },
+    {
+      "path": "figures/plateau_gate.png",
+      "sha256": "c9da036ab767c2627e28ddb98ef9033b3e7c4ee1f5fe9026e5da14c139705714",
+      "size_bytes": 23269
+    }
+  ],
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-r02-visualization-manifest/v1",
+  "test_accessed": false
+}

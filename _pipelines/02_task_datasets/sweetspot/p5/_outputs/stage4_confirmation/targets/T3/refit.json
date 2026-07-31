@@ -1,0 +1,48 @@
+{
+  "checkpoint_path": "targets/T3/refit/model.pkl.gz",
+  "checkpoint_roundtrip_max_abs_delta": 0.0,
+  "checkpoint_sha256": "b2157f292bcc6395facbc07329698ef5c913f911334e285712899c5c3b26a99b",
+  "checkpoint_size_bytes": 14553,
+  "config_sha256": "cd8e6a59fc60355631c3fd0ceb8a5171c1c2df3253bc3b92f36f713bf00897d4",
+  "development_features_sha256": "827e4eb21b11bf70bbe716e9ec3656c98176cd409bcfd7529d148dadae3050d7",
+  "development_groups": [
+    "NO 15/9-F-1 C",
+    "NO 15/9-F-11 H",
+    "NO 15/9-F-12 H",
+    "NO 15/9-F-14 H"
+  ],
+  "development_ids_sha256": "c24fb015b77461b525b05c132fc2dbc6c1fc3f7832ea2752cfc5c65f5495cdbc",
+  "development_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Production_data.zip",
+    "authorized_groups": [
+      "NO 15/9-F-1 C",
+      "NO 15/9-F-11 H",
+      "NO 15/9-F-12 H",
+      "NO 15/9-F-14 H"
+    ],
+    "authorized_rows": 8023,
+    "member_crc_manifest_sha256": "dd72ab7723672466ac9dab14a6dc79883139195cd49362f26fd01735be03de88",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "partition": "development",
+    "rejected_row_count": 7611,
+    "rejected_rows_values_accessed": 0,
+    "source_kind": "Volve production workbook with row-level development authorization",
+    "test_accessed": false,
+    "values_accessed": 1111
+  },
+  "development_samples": 1111,
+  "development_targets_sha256": "ed7c0253b5354cdd62b61dfd08fa802d04c2eb380cd497ba631a9eef3c9ffc6d",
+  "feature_count": 21,
+  "fit_scope": "all_legal_development",
+  "historical_test_metrics_read": false,
+  "known_holdout_accessed_during_refit": false,
+  "model_payload_bytes": 80168,
+  "model_payload_sha256": "827ec76470dda2871144e9c4caa5c134209d6900de2d34aec7f0b518fc37d701",
+  "peak_rss_bytes": 690221056,
+  "schema_version": "sweetspot-p5-stage4-refit/v1",
+  "status": "REFIT_COMPLETE",
+  "task_id": "T3",
+  "train_only_imputation_sha256": "ba6945fe0a17a9bb044bb0aa84bacc04837718ebfab2fbf523ed3b83071e3a73",
+  "wall_seconds": 0.5006365301087499
+}

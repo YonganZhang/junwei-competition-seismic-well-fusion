@@ -1,0 +1,51 @@
+{
+  "overall_pass": false,
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-r02-plateau-gate/v1",
+  "targets": {
+    "T1": {
+      "budgets": {
+        "1024": 0.49135594339488975,
+        "256": 0.4824755221050552,
+        "64": 0.5085557855571632
+      },
+      "direction": "minimize",
+      "gain_256_to_1024": -0.018405951976773926,
+      "gain_64_to_1024": 0.0338209546538334,
+      "n_pass_cells": 12,
+      "primary_metric": "mae",
+      "status": "pass"
+    },
+    "T2": {
+      "budgets": {
+        "1024": 0.9878430249198806,
+        "256": 0.9910081554264367,
+        "64": 0.9967927119684092
+      },
+      "direction": "maximize",
+      "gain_256_to_1024": -0.0031938491012660905,
+      "gain_64_to_1024": -0.008978483631622144,
+      "n_pass_cells": 12,
+      "primary_metric": "average_precision",
+      "status": "pass"
+    },
+    "T3": {
+      "budgets": {
+        "1024": 367.90043841857414,
+        "256": 365.96439401708994,
+        "64": 339.42656269782924
+      },
+      "direction": "minimize",
+      "gain_256_to_1024": -0.005290253459449353,
+      "gain_64_to_1024": -0.08388817744383033,
+      "n_pass_cells": 12,
+      "primary_metric": "mae",
+      "status": "blocked"
+    }
+  },
+  "test_accessed": false,
+  "thresholds": {
+    "gain_256_to_1024_max": 0.01,
+    "gain_64_to_1024_min": -0.02
+  }
+}

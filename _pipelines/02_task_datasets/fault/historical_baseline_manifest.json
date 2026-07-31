@@ -1,0 +1,36 @@
+{
+  "purpose": "Immutable record of the pre-enhancement real-data baseline; paths under artifacts must not be overwritten by audited reruns, while source hashes document the code that produced them.",
+  "recorded_before_enhancement": true,
+  "git_head": "60fc6393944901014770c8d48de8b91f09d5cb96",
+  "dataset": {
+    "train_h5_sha256": "68b46bc9db5f3700c265f4ebe39ae3b2ebfb2f24729c4a35a3b8739d139d083c",
+    "test_h5_sha256": "8af659617b10eb0886028b493ebd25b440ca30acacbf3d3e71ddacd5bf6682ff",
+    "fault_points_npz_sha256": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+    "seismic_index_npz_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905"
+  },
+  "reported_test_metrics": {
+    "precision": 0.009736454873073636,
+    "recall": 0.6260623229461756,
+    "f1": 0.019174706739779276,
+    "dice": 0.019174706739779272,
+    "iou": 0.009680160489176618
+  },
+  "artifacts": {
+    "baseline_metrics.json": "7f4537111e48e47123ec369400de7fb579cc4e5e340fdfdae0c01ee16fcdf520",
+    "baseline_model.joblib": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "build_summary.json": "8989a7664dc975a72e5b6ad6910953ba686f17086faba7163d9b144a1d33590d",
+    "_outputs/checkpoints/best.ckpt": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "_outputs/checkpoints/history.json": "0ec3592da34d3418391ac57df74729da31115b38308bc3a7a99f4e330d01228a",
+    "_outputs/checkpoints/last.ckpt": "bdc2d01e8a068a802091c098b635efda4d3e09aa325e73afa6a27171f95a07ef",
+    "_outputs/loss_curve.png": "ea59f1d6ec8c8a5eb95a487b5bb8aa68963b24716f505a74ff469fa66091d28a",
+    "_outputs/prediction_visualization.png": "abc5016cf67a600536130fc72d1fb00f63f51452e7c91f33c0014e83f64d7e4c"
+  },
+  "source_files_before_enhancement": {
+    "_readme.md": "78f5472e49d4a05fe82c18eea245a239a8f8255322db80e066c7952636889bd9",
+    "baseline.py": "de70190f5c12a74a884b94f80a4fd9ab835710359d0c4a26dcacba9c1fb6d417",
+    "build_dataset.py": "15c1bf6cda6e808c1ed390808ebefe2ca37e701be25867687bcb42a6a99adb35",
+    "models/fault_local_logistic.py": "8a8bdc887d1af8b2ecb4bbd1cea4016d835dde6268f98da8f4f43d10ff5790b4",
+    "test_fault_pipeline.py": "e1c4f8ffefc276e613184e367bd9de3d34f99b7076dfd108c2f712e628df5bb0",
+    "visualize_predictions.py": "17a1c8eb0a171fbff02ad8d97ded78e47014b6f9e3f302ccc4994a381dbc23e1"
+  }
+}

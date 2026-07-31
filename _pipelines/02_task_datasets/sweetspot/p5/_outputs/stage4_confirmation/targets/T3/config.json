@@ -1,0 +1,143 @@
+{
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "lane": "productivity",
+  "model_config": {
+    "n_estimators": 64,
+    "n_jobs": 1,
+    "random_state": 2693
+  },
+  "model_id": "xgboost",
+  "prior_test_consumed": true,
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5-stage4-config/v1",
+  "selection_scope": "frozen Stage-3 development CV rank-1",
+  "source_lock": {
+    "license": "Apache-2.0",
+    "revision": "5b0ba2fa54ee622e8abe38551e420cec75145e5d",
+    "runtime": {
+      "accepted_version_prefixes": [
+        "3.2."
+      ],
+      "available": true,
+      "module": "xgboost",
+      "reason_code": null,
+      "version": "3.2.0",
+      "version_allowed": true
+    }
+  },
+  "task_id": "T3",
+  "task_spec": {
+    "calibration_policy": {},
+    "forbidden_inputs": [
+      "future_BORE_OIL_VOL",
+      "future_BORE_GAS_VOL",
+      "future_BORE_WAT_VOL",
+      "FUTURE_30D_MEAN_OIL"
+    ],
+    "group_keys": [
+      "well_bore_code"
+    ],
+    "guardrail_metrics": [],
+    "hpo": {
+      "optimization": "forbidden",
+      "root_seed": 2693,
+      "stage": "P5 Stage-4 known-holdout confirmation",
+      "test_feedback": "forbidden",
+      "winner_source": "P5 Stage-3 rank-1 at commit 5a1fefe"
+    },
+    "inference_transform": {
+      "FUTURE_30D_MEAN_OIL": "nonnegative_after_expm1"
+    },
+    "input_modalities": [
+      "causal_production_history"
+    ],
+    "input_whitelist": [
+      "history_30d_bore_oil_vol",
+      "history_30d_bore_gas_vol",
+      "history_30d_bore_wat_vol",
+      "history_30d_on_stream_hrs",
+      "history_30d_avg_downhole_pressure",
+      "history_30d_avg_choke_size_p",
+      "history_30d_avg_whp_p"
+    ],
+    "inverse_transform": {
+      "FUTURE_30D_MEAN_OIL": "expm1"
+    },
+    "label_version": "future-30-calendar-row-mean-oil-v1",
+    "metadata": {
+      "class_count": 0,
+      "evidence_class": "previously_seen_reusable_holdout",
+      "fit_scope": "all_legal_development",
+      "fresh_blind": false,
+      "is_proxy": false,
+      "label_generated_by_p5": false,
+      "p4_status": "feasible",
+      "p5_label_mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+      "p5_stage": "known_holdout_confirmation",
+      "prior_test_consumed": true,
+      "proxy_semantics": "future 30-calendar-row mean oil production; an operational production target, not unified sweetspot truth",
+      "sample_stride_days": 7,
+      "single_target_head": true,
+      "status": "feasible",
+      "test_access": "forbidden",
+      "test_feedback_for_selection": "forbidden",
+      "test_group": "NO 15/9-F-15 D"
+    },
+    "metric_directions": {
+      "mae": "minimize",
+      "rmse": "minimize",
+      "spearman": "maximize",
+      "topk_hit": "maximize"
+    },
+    "primary_metrics": [
+      "mae",
+      "spearman"
+    ],
+    "required_figures": [
+      "time_series_forecast",
+      "observed_predicted",
+      "residual_by_well",
+      "topk_ranking"
+    ],
+    "secondary_metrics": [
+      "rmse",
+      "topk_hit"
+    ],
+    "spatial_buffer": null,
+    "target_masks": {
+      "FUTURE_30D_MEAN_OIL": "at_least_21_finite_future_days"
+    },
+    "target_transform": {
+      "FUTURE_30D_MEAN_OIL": "log1p"
+    },
+    "targets": [
+      "FUTURE_30D_MEAN_OIL"
+    ],
+    "task_id": "sweetspot.p5.stage4.t3.productivity",
+    "task_type": "regression",
+    "threshold_policy": {},
+    "time_cutoff": {
+      "features_end_before_cutoff": true,
+      "forecast_days": 30,
+      "history_days": 30
+    },
+    "track_id": "sweetspot",
+    "train_loss": {
+      "FUTURE_30D_MEAN_OIL": {
+        "candidates": [
+          "huber",
+          "squared_error"
+        ],
+        "selection": "development_oof_only"
+      }
+    },
+    "units": {
+      "FUTURE_30D_MEAN_OIL": "Sm3/day"
+    },
+    "visualizer_id": "sweetspot_productivity"
+  },
+  "threshold": null,
+  "threshold_fit_scope": "not_applicable",
+  "update_steps": 64
+}

@@ -1,0 +1,77 @@
+{
+  "comparison": {
+    "pretrained_macro_fold_f1": 0.055876299239556164,
+    "pretrained_minus_random_init": 0.023672428231337334,
+    "pretrained_minus_strong_baseline": -0.13906140283608145,
+    "same_architecture_random_init_macro_fold_f1": 0.03220387100821883,
+    "strong_baseline_macro_f1": 0.19493770207563763,
+    "strong_baseline_model_id": "xgboost_multisoftprob_window"
+  },
+  "decision": {
+    "default_enabled": false,
+    "state": "CONNECTED_NO_PROMOTION"
+  },
+  "evaluation": {
+    "batch_size": 32,
+    "folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "frozen_test_accessed": false,
+    "frozen_test_family": "15/9-F-5",
+    "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+    "updates_per_fold": 40
+  },
+  "fold_results": [
+    {
+      "fold_id": 0,
+      "pretrained_fixed_schema_macro_f1": 0.05555555555555555,
+      "pretrained_last_train_loss": 1.6564637422561646,
+      "random_init_fixed_schema_macro_f1": 0.04002760524499655,
+      "random_init_last_train_loss": 3.0925049781799316,
+      "train_samples": 315,
+      "validation_samples": 132
+    },
+    {
+      "fold_id": 1,
+      "pretrained_fixed_schema_macro_f1": 0.028874163705624383,
+      "pretrained_last_train_loss": 2.2063217163085938,
+      "random_init_fixed_schema_macro_f1": 0.05218855218855219,
+      "random_init_last_train_loss": 12.117992401123047,
+      "train_samples": 320,
+      "validation_samples": 101
+    },
+    {
+      "fold_id": 2,
+      "pretrained_fixed_schema_macro_f1": 0.030234315948601667,
+      "pretrained_last_train_loss": 1.4048144817352295,
+      "random_init_fixed_schema_macro_f1": 0.03407407407407407,
+      "random_init_last_train_loss": 7.612171173095703,
+      "train_samples": 320,
+      "validation_samples": 127
+    },
+    {
+      "fold_id": 3,
+      "pretrained_fixed_schema_macro_f1": 0.10884116174844305,
+      "pretrained_last_train_loss": 2.0002691745758057,
+      "random_init_fixed_schema_macro_f1": 0.002525252525252525,
+      "random_init_last_train_loss": 6.929477214813232,
+      "train_samples": 320,
+      "validation_samples": 87
+    }
+  ],
+  "model": {
+    "model_id": "AutonLab/MOMENT-1-base",
+    "real_pretrained_weights_loaded": true,
+    "trainable_scope": "classification_head_only",
+    "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "duration_seconds": 272.9781677449355,
+    "raw_predictions_persisted": false
+  },
+  "schema_version": "lithofacies-p9-moment-effect/v1"
+}

@@ -1,0 +1,41 @@
+{
+  "development_samples": 36122,
+  "downgrade_reason": "only 3 independent development groups are available",
+  "effective_folds": 3,
+  "frozen_test_metrics": {
+    "average_precision": 0.9989115187061909,
+    "brier": 0.031195485444873234,
+    "f1": 0.9728219178082191,
+    "net_thickness_mae_m": 46.3999999999578,
+    "positive_rate": 0.7361145600529757,
+    "sample_count": 12081,
+    "threshold": 0.45000000000000007
+  },
+  "hpo_pilot_status": "complete",
+  "hpo_pilot_trials": 20,
+  "hpo_sanity_trials": 8,
+  "label_version": "cpi-sand-flag-near-binary-v1",
+  "model_config": {
+    "c": 0.001,
+    "class_weight": null,
+    "max_iter": 750
+  },
+  "model_id": "logistic_classifier",
+  "oof_metrics": {
+    "average_precision": 0.982234555710287,
+    "brier": 0.06556179950562352,
+    "f1": 0.9410562785945898,
+    "net_thickness_mae_m": 15.806849999989197,
+    "positive_rate": 0.6186534521898013,
+    "sample_count": 36122,
+    "threshold": 0.45000000000000007
+  },
+  "proxy_warning": "SAND_FLAG is a net-reservoir/sand proxy, not direct hydrocarbon-pay truth",
+  "requested_folds": 5,
+  "status": "proxy_feasible",
+  "target_id": "hydrocarbon_pay",
+  "target_number": 2,
+  "task_id": "sweetspot.hydrocarbon_pay.sand_flag_proxy_v1",
+  "test_consumed_once": true,
+  "test_samples": 12081
+}

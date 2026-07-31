@@ -1,0 +1,48 @@
+{
+  "coordinate_system": {
+    "x": "Inline",
+    "y": "Crossline",
+    "z": "TWT (ms)"
+  },
+  "limitations": [
+    "Three independent real test patches are shown at their archived coordinates.",
+    "The planes are not interpolated or presented as a continuous seismic volume."
+  ],
+  "native_volume": false,
+  "patch_shape_crossline_time": [
+    33,
+    65
+  ],
+  "schema_version": "fault-3d-sci-v1",
+  "selected_positions": [
+    {
+      "crossline": 2177,
+      "inline": 10293,
+      "time_index": 686,
+      "time_ms": 2744.0,
+      "well_name": null
+    },
+    {
+      "crossline": 2393,
+      "inline": 10322,
+      "time_index": 725,
+      "time_ms": 2900.0,
+      "well_name": null
+    },
+    {
+      "crossline": 2334,
+      "inline": 10358,
+      "time_index": 718,
+      "time_ms": 2872.0,
+      "well_name": null
+    }
+  ],
+  "selected_sample_indices": [
+    5,
+    15,
+    40
+  ],
+  "time_step_ms": 4.0,
+  "track_id": "fault",
+  "verdict": "spatial_context"
+}

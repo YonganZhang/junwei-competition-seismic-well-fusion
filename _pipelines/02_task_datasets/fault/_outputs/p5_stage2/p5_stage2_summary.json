@@ -1,0 +1,133 @@
+{
+  "budget_consumed": {
+    "parameter_updates": 0,
+    "train_samples": 0,
+    "validation_samples": 0,
+    "wall_seconds": 0.0
+  },
+  "candidate_count": 10,
+  "counts": {
+    "attempted": 0,
+    "blocked": 10,
+    "data_gate_evaluated": 10,
+    "eligible": 0,
+    "expected": 10,
+    "failed": 0,
+    "passed": 0,
+    "skip": 0,
+    "timeout": 0
+  },
+  "data_gate": {
+    "blind_test_audit": {
+      "complete_candidate_block_count": 0,
+      "historical_test_role": "regression_evidence_only",
+      "reason_code": "NO_UNCONSUMED_COMPLETE_ANNOTATION_BLOCK",
+      "status": "not_feasible"
+    },
+    "blockers": [
+      {
+        "code": "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+        "detail": "no covered, audit-proven formal negative voxels are available"
+      },
+      {
+        "code": "COVERAGE_AUDITED_UNKNOWN_MASK_MISSING",
+        "detail": "P4 represents unlabelled voxels as unknown in memory, but the source evidence has no explicit coverage-audited unknown mask/provenance"
+      },
+      {
+        "code": "DEVELOPMENT_SPLIT_NOT_FEASIBLE",
+        "detail": "the frozen buffered development CV plan has fewer than two valid folds"
+      }
+    ],
+    "development_split": {
+      "downgrade_reason": "no audited verified-negative labels; proxy/unknown voxels cannot enable binary CV",
+      "effective_n_splits": 0,
+      "fold_count": 0,
+      "plan_status": "not_feasible",
+      "requested_n_splits": 5,
+      "status": "blocked"
+    },
+    "formal_training_allowed": false,
+    "random_negative_generation": {
+      "allowed": false,
+      "generated_voxels": 0,
+      "performed": false
+    },
+    "status": "blocked",
+    "unknown_mask": {
+      "in_memory_unknown_semantics_available": true,
+      "observed_unknown_labels": 2016,
+      "required": "explicit coverage_audited_source_mask with complete audit and SHA-256",
+      "source_mask_audit_sha256": null,
+      "source_mask_audit_status": "absent",
+      "source_mask_kind": "absent",
+      "status": "blocked"
+    },
+    "verified_negative_coverage": {
+      "audit_sha256": null,
+      "audit_status": "absent",
+      "observed_labels": 0,
+      "required": "positive count plus complete coverage audit and SHA-256 provenance",
+      "status": "blocked"
+    }
+  },
+  "data_snapshot_hash": "9947847b05cc4aa909e347de4a4e989f9ff896a7e3daba41ae0d8cfe68b4c0c6",
+  "fixed_budget": {
+    "lane_type": "3d_neural_or_operator",
+    "max_parameter_updates": 80,
+    "max_wall_seconds": 900,
+    "sample_caps_status": "unavailable_until_valid_development_split",
+    "train_sample_cap": null,
+    "validation_sample_cap": null
+  },
+  "lane": "fault_3d_segmentation_data_gate",
+  "leaderboard": {
+    "generated": false,
+    "reason": "no candidate may consume development training/validation data while the gate is blocked",
+    "status": "not_rankable",
+    "valid_validation_metric_count": 0
+  },
+  "model_ids": [
+    "monai_segresnet",
+    "monai_dynunet",
+    "nnunet_v2_3d_fullres",
+    "pytorch3dunet_unet3d",
+    "faultnet_md",
+    "faultseg3d_keras",
+    "monai_vnet",
+    "mednext_v1_s_k3",
+    "uxnet3d",
+    "monai_swinunetr"
+  ],
+  "prohibitions": {
+    "frozen_test_accessed": false,
+    "proxy_promoted_to_formal_negative": false,
+    "random_negatives_generated": false,
+    "training_performed": false
+  },
+  "protocol": "fault-p5-stage2-summary-v1",
+  "reason_code": "FAULT_DATA_GATE_BLOCKED",
+  "results_artifact": {
+    "bytes": 31973,
+    "line_count": 10,
+    "path": "p5_stage2_results.jsonl",
+    "sha256": "70f161c25c4bbdcdecc607b659b708f497f3271965104eefa3f1116e22dbe930"
+  },
+  "root_seed": 2693,
+  "source_hashes": {
+    "p4_preflight/blind_test_not_feasible.json": "46096d75e36d73bf8df7f510bb754675b17e887e8d411352dfe8c4ffa48a65f3",
+    "p4_preflight/buffered_cv_plan.json": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+    "p5_source_locks.json": "0e69a7a6ea12d059d0be97b1f19bf645e35ec360ae003a2d1033cadd12b0289f",
+    "p5_stage1/summary.json": "8d9958507fc57a82d8652313f5d3e699d78d831154651e8e68e38f0f5d068dc2"
+  },
+  "split_hash": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+  "status": "not_rankable",
+  "task_id": "fault_stick_segmentation",
+  "test_firewall": {
+    "blind_audit_status": "not_feasible",
+    "frozen_test_accessed": false,
+    "historical_test_role": "regression_evidence_only",
+    "runner_accepts_test_inputs": false,
+    "test_metrics_computed": false
+  },
+  "track_id": "fault"
+}

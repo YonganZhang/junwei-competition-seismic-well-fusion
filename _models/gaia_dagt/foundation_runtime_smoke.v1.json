@@ -1,0 +1,79 @@
+{
+  "schema_version": "gaia-foundation-runtime-smoke/v1",
+  "executed_at": "2026-07-28T15:31:10+08:00",
+  "branch": "p8-multimodal-foundation",
+  "policy": {
+    "synthetic_smoke_is_not_performance_evidence": true,
+    "connection_is_not_promotion": true,
+    "frozen_test_accessed": false
+  },
+  "tracks": {
+    "fault": {
+      "adapter": "_models.fault.sam_med3d_semantic",
+      "evidence_kind": "synthetic_forward_only",
+      "checkpoint_sha256": "899a46d04d3b70f723282ceb489149373558bf0aaba389a346f5ab57da5cdd3c",
+      "source_revision": "f3de1fa10da98e46f49f176773d2b1e306ba131f",
+      "input_shape": [1, 1, 24, 32, 40],
+      "output_shape": [1, 1, 24, 32, 40],
+      "finite": true,
+      "parameter_count": 93920641,
+      "status": "smoke_passed_data_gate_blocked"
+    },
+    "facies": {
+      "adapter": "_models.facies.sam2_semantic",
+      "evidence_kind": "synthetic_forward_only",
+      "checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5",
+      "source_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "input_shape": [1, 1, 64, 64],
+      "output_shape": [1, 10, 64, 64],
+      "finite": true,
+      "parameter_count": 81098764,
+      "status": "smoke_passed"
+    },
+    "property": {
+      "adapter": "_models.property.tabiclv2_regressor",
+      "evidence_kind": "synthetic_fit_predict",
+      "checkpoint_sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+      "source_revision": "46b91961db4f8873dd049ec09990698a435e1e29",
+      "train_samples": 24,
+      "output_shape": [24, 3],
+      "finite": true,
+      "status": "smoke_passed"
+    },
+    "lithofacies": {
+      "adapter": "_models.lithofacies.moment_depth",
+      "evidence_kind": "synthetic_forward_only",
+      "checkpoint_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825",
+      "source_revision": "38f7310ad594100747ca2a8357e9c7ca7d323e0e",
+      "input_shape": [1, 35, 33],
+      "output_shape": [1, 9],
+      "finite": true,
+      "parameter_count": 109877385,
+      "status": "smoke_passed_finetune_required"
+    },
+    "sweetspot": {
+      "adapter": "_models.sweetspot.p7_chronos2",
+      "evidence_kind": "real_development_group_cv",
+      "checkpoint_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+      "source_revision": "75a2dfe228e39d55283f477c01399b9e53d89661",
+      "fold_count": 4,
+      "history_calendar_days": 30,
+      "forecast_calendar_days": 30,
+      "macro_mae": 172.31624050261792,
+      "baseline_macro_mae": 184.66862891176544,
+      "finite": true,
+      "status": "diagnostic_passed_controls_pending"
+    },
+    "reconstruction": {
+      "adapter": "_models.reconstruction.openmind_mae",
+      "evidence_kind": "synthetic_forward_only",
+      "checkpoint_sha256": "7a847af785635335c00e711d16ff4d225d86ecd5992b14c059df2b520e3ee933",
+      "source_revision": "7044864404315536e92e670ef2f0ca24f11e6175",
+      "input_shape": [1, 3, 32, 32, 32],
+      "output_shape": [1, 1, 32, 32, 32],
+      "finite": true,
+      "parameter_count": 102348969,
+      "status": "smoke_passed"
+    }
+  }
+}

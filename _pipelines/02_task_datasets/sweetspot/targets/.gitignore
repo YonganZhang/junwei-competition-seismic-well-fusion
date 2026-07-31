@@ -1,0 +1,4 @@
+# Canonical P4 evidence keeps the small, trusted sklearn checkpoints.  Raw
+# archives and ad-hoc runs remain ignored by the parent sweetspot rules.
+!*/_outputs/baseline_v1/folds/*/checkpoint_best.pkl
+!*/_outputs/baseline_v1/refit/checkpoint_best.pkl

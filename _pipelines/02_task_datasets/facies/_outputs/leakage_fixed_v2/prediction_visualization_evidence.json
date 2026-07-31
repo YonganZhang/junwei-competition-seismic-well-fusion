@@ -1,0 +1,60 @@
+{
+  "pipeline_version": "leakage_fixed_v2",
+  "output": "_pipelines/02_task_datasets/facies/_outputs/prediction_visualization.png",
+  "selection_policy": "interior quantiles among real test patches with at least 2 ground-truth classes; predictions not used",
+  "evidence": {
+    "facies_f3": {
+      "checkpoint": "_pipelines/02_task_datasets/facies/_outputs/leakage_fixed_v2/facies_f3/small_unet/best.ckpt",
+      "test_indices": [
+        156,
+        298
+      ],
+      "inline_numbers": [
+        649,
+        626
+      ],
+      "ground_truth_class_ids": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "accuracy": 0.5914543923367275,
+      "miou": 0.43679525196991253,
+      "macro_f1": 0.5761848849194415
+    },
+    "facies_penobscot": {
+      "checkpoint": "_pipelines/02_task_datasets/facies/_outputs/leakage_fixed_v2/facies_penobscot/small_unet/best.ckpt",
+      "test_indices": [
+        168,
+        323
+      ],
+      "inline_numbers": [
+        1522,
+        1562
+      ],
+      "ground_truth_class_ids": [
+        [
+          4,
+          5
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "accuracy": 0.9132170214431699,
+      "miou": 0.6901885302559202,
+      "macro_f1": 0.8090016584868562
+    }
+  }
+}

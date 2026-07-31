@@ -1,0 +1,53 @@
+{
+  "checkpoint_sha256": "9dc0af7dd2bc5067b8923c11be278a892f0c90776352031f7c3a0416d585c8ab",
+  "config_sha256": "47ad585d46a8fb819d5a9d54424b8987f85734272be3d178355a3462b67e84f1",
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "historical_p4_metrics_read": false,
+  "holdout_features_sha256": "f618a2c8549fd8eaedfd7c268b966e2df9266524c731dba753d2ebfd55785950",
+  "holdout_groups": [
+    "NO 15/9-F-15 D"
+  ],
+  "holdout_ids_sha256": "14864625f39940fb14553aa8c3705e42f93e6f018a7f7b1bd229b682d26c96d9",
+  "holdout_provenance": {
+    "archive": "_sandbox/volve_data/Volve_Production_data.zip",
+    "authorized_groups": [
+      "NO 15/9-F-15 D"
+    ],
+    "authorized_rows": 978,
+    "member_crc_manifest_sha256": "dd72ab7723672466ac9dab14a6dc79883139195cd49362f26fd01735be03de88",
+    "p4_split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/split_manifest.json",
+    "p4_split_manifest_sha256": "2b1a18fe0b70a3e7da35179356ff3277b4959b35a9905ebe981f5c12f511a402",
+    "partition": "known_holdout",
+    "rejected_row_count": 14656,
+    "rejected_rows_values_accessed": 0,
+    "source_kind": "Volve production workbook with row-level development authorization",
+    "test_accessed": true,
+    "values_accessed": 37
+  },
+  "holdout_samples": 37,
+  "holdout_targets_sha256": "a488beb537defcdd176775f4265400b222acb7e462bc15382a565fbb8f281804",
+  "holdout_wall_seconds": 1.0494556459598243,
+  "metrics": {
+    "average_precision": 0.13146311725259094,
+    "brier": 0.745222265148662,
+    "f1_at_0_5": 0.1951219512195122,
+    "positive_rate": 0.13513513513513514,
+    "sample_count": 37,
+    "threshold": 0.5,
+    "threshold_source": "frozen constant; not fit on known holdout"
+  },
+  "prediction_sha256": "39bbaa34829f11b16d665f40619245bb8a16a1e7a61927d6779878b640dd3022",
+  "prior_exposure_evidence": {
+    "lifecycle_path": "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/lifecycle.json",
+    "lifecycle_sha256": "4bb592942d70e53e667caac964e2ebc41ce40b838196ad1b66a0238ad58a3bfc",
+    "prior_test_consumed": true,
+    "test_consumed_at": "2026-07-13T17:09:26.405607+00:00",
+    "test_rows": 37
+  },
+  "prior_test_consumed": true,
+  "schema_version": "sweetspot-p5-stage4-known-holdout-metrics/v1",
+  "selection_feedback_allowed": false,
+  "status": "CONFIRMED_ON_KNOWN_HOLDOUT",
+  "task_id": "T4"
+}

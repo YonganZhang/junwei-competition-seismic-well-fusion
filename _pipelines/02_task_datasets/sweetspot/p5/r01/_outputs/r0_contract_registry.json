@@ -1,0 +1,271 @@
+{
+  "aggregate_sweetspot_score": null,
+  "independent_heads": true,
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p5.1-r0-contract-registry/v1",
+  "target_order": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7"
+  ],
+  "targets": {
+    "T1": {
+      "censoring": "invalid PHIF/KLOGH or no finite raw input is unlabeled and excluded",
+      "contract_path": "_pipelines/02_task_datasets/sweetspot/p5/r01/contracts/T1.v1.json",
+      "contract_sha256": "6b89f1519ed0e5d9439cef1325cc98d34994b3f370685f4ab9ca8e4bc40bfbe6",
+      "field_truth": false,
+      "head_name": "t1_rqi_proxy",
+      "label": {
+        "formula": "0.0314*sqrt(KLOGH/PHIF)",
+        "model_transform": "log1p",
+        "threshold": null,
+        "validity": "finite PHIF>0 and finite KLOGH>=0",
+        "version": "rqi-0.0314-sqrt-klogh-over-phif-v1"
+      },
+      "semantic_name": "reservoir_quality_rqi_proxy",
+      "split": {
+        "group_key": "well_family",
+        "root_seed": 2693,
+        "strategy": "mother_well_logo",
+        "test_access": "forbidden"
+      },
+      "status": "runnable_if_development_audit_passes",
+      "support": {
+        "sample": "joined raw/CPI LAS depth row",
+        "spatial_scale": "wellbore depth point",
+        "time_scale": "not_applicable"
+      },
+      "task_id": "sweetspot.p5.1.r01.t1.rqi_proxy",
+      "truth_class": "proxy",
+      "units": "sqrt(mD/fraction)",
+      "warnings": [
+        "RQI proxy is not field sweetspot truth",
+        "No threshold or composite weighting is approved"
+      ]
+    },
+    "T2": {
+      "censoring": "values not within 0.01 of binary 0/1 or no finite raw input are unlabeled and excluded",
+      "contract_path": "_pipelines/02_task_datasets/sweetspot/p5/r01/contracts/T2.v1.json",
+      "contract_sha256": "a671b73c544576f864bd8ea223ad009568e05d66b37b65bf28ed3b4381cd815c",
+      "field_truth": false,
+      "head_name": "t2_sand_flag_proxy",
+      "label": {
+        "formula": "near_binary(SAND_FLAG)",
+        "model_transform": "identity",
+        "validity": "within 0.01 of 0 or 1",
+        "version": "cpi-sand-flag-near-binary-v1"
+      },
+      "semantic_name": "net_reservoir_sand_proxy",
+      "split": {
+        "group_key": "well_family",
+        "root_seed": 2693,
+        "strategy": "mother_well_logo",
+        "test_access": "forbidden"
+      },
+      "status": "runnable_if_development_audit_passes",
+      "support": {
+        "sample": "joined raw/CPI LAS depth row",
+        "spatial_scale": "wellbore depth point",
+        "time_scale": "not_applicable"
+      },
+      "task_id": "sweetspot.p5.1.r01.t2.sand_flag_proxy",
+      "truth_class": "proxy",
+      "units": "binary proxy",
+      "warnings": [
+        "SAND_FLAG is a net-reservoir/sand proxy",
+        "It is not hydrocarbon pay or field sweetspot truth"
+      ]
+    },
+    "T3": {
+      "censoring": "fewer than 24 observed oil days, incomplete right boundary, or unusable history excludes point-regression scoring",
+      "contract_path": "_pipelines/02_task_datasets/sweetspot/p5/r01/contracts/T3.v1.json",
+      "contract_sha256": "11d9366a69c0791fb190ab7669e84d7179d6ec41cfaf32e7b630853c9ad2a04b",
+      "field_truth": true,
+      "head_name": "t3_future_30d_mean_oil",
+      "label": {
+        "explicit_zero_retained": true,
+        "formula": "mean(BORE_OIL_VOL on observed days t0+1..t0+30)",
+        "horizon_calendar_days": 30,
+        "minimum_observed_days": 24,
+        "missing_is_zero": false,
+        "model_transform": "log1p",
+        "right_boundary_incomplete": "censored",
+        "version": "future-exact-30-calendar-day-mean-oil-min24-v1"
+      },
+      "semantic_name": "future_30_calendar_day_mean_oil",
+      "split": {
+        "group_key": "WELL_BORE_CODE",
+        "root_seed": 2693,
+        "strategy": "held_well_rolling_origin_horizon_purge",
+        "test_access": "forbidden",
+        "time_cutoff": {
+          "feature_end": "t0",
+          "purge_days": 30,
+          "target_end": "t0+30d",
+          "target_start": "t0+1d"
+        }
+      },
+      "status": "runnable_if_development_audit_passes",
+      "support": {
+        "sample": "wellbore cutoff t0",
+        "spatial_scale": "production wellbore",
+        "time_scale": "30 calendar-day history ending t0 and exact future t0+1..t0+30"
+      },
+      "task_id": "sweetspot.p5.1.r01.t3.future_oil_30d",
+      "truth_class": "observed_outcome",
+      "units": "Sm3/day",
+      "warnings": [
+        "Censored samples are excluded from point-regression scoring",
+        "Missing observations are never imputed as target zero"
+      ]
+    },
+    "T4": {
+      "censoring": "incomplete right boundary or missing calendar observations that prevent a determinate non-event are censored",
+      "contract_path": "_pipelines/02_task_datasets/sweetspot/p5/r01/contracts/T4.v1.json",
+      "contract_sha256": "3d81459798af071600d8cefb7fbe55c5d6cd9661019361cf0d9de97e57c649db",
+      "field_truth": false,
+      "head_name": "t4_water_onset_30d_proxy",
+      "label": {
+        "consecutive_calendar_days": 7,
+        "explicit_zero_interrupts": true,
+        "formula": "any 7 consecutive observed calendar days with BORE_WAT_VOL>0 in t0+1..t0+30",
+        "horizon_calendar_days": 30,
+        "missing_can_censor": true,
+        "model_transform": "identity",
+        "right_boundary_incomplete": "censored",
+        "version": "water-onset-30d-7-calendar-day-positive-proxy-v1"
+      },
+      "semantic_name": "water_onset_30d_proxy",
+      "split": {
+        "group_key": "WELL_BORE_CODE",
+        "root_seed": 2693,
+        "strategy": "held_well_rolling_origin_horizon_purge",
+        "test_access": "forbidden",
+        "time_cutoff": {
+          "feature_end": "t0",
+          "purge_days": 30,
+          "target_end": "t0+30d",
+          "target_start": "t0+1d"
+        }
+      },
+      "status": "runnable_if_development_audit_passes",
+      "support": {
+        "sample": "pre-onset wellbore cutoff t0",
+        "spatial_scale": "production wellbore",
+        "time_scale": "30 calendar-day history ending t0 and exact future t0+1..t0+30"
+      },
+      "task_id": "sweetspot.p5.1.r01.t4.water_onset_30d_proxy",
+      "truth_class": "proxy",
+      "units": "binary proxy",
+      "warnings": [
+        "This is a water-onset proxy, not formal failure or survival truth",
+        "Missing calendar days can make the outcome censored"
+      ]
+    },
+    "T5": {
+      "censoring": "not applicable because no approved field label exists",
+      "contract_path": "_pipelines/02_task_datasets/sweetspot/p5/r01/contracts/T5.v1.json",
+      "contract_sha256": "312fdd37a9963c06a5a65d548ea74c927937e1bfc0495cc14e6681f12975a3dd",
+      "field_truth": false,
+      "head_name": "t5_remaining_oil",
+      "label": {
+        "formula": "none",
+        "model_transform": "identity",
+        "version": "unapproved-no-field-truth-v1"
+      },
+      "semantic_name": "remaining_oil_infill_potential",
+      "split": {
+        "group_key": "field_region",
+        "root_seed": 2693,
+        "strategy": "undefined",
+        "test_access": "forbidden"
+      },
+      "status": "not_feasible",
+      "support": {
+        "sample": "undefined",
+        "spatial_scale": "undefined_without_field_truth",
+        "time_scale": "undefined_without_field_truth"
+      },
+      "task_id": "sweetspot.p5.1.r01.t5.remaining_oil",
+      "truth_class": "unavailable",
+      "units": "undefined",
+      "warnings": [
+        "No audited field truth is available",
+        "Simulation-only proxies may not be substituted"
+      ]
+    },
+    "T6": {
+      "censoring": "non-finite PHIF or no finite raw input is unlabeled and excluded",
+      "contract_path": "_pipelines/02_task_datasets/sweetspot/p5/r01/contracts/T6.v1.json",
+      "contract_sha256": "275ff9fc2fd2fb4a071bfbcaae89347000afb3618a23afc9d891a77633db936c",
+      "field_truth": false,
+      "head_name": "t6_phif",
+      "label": {
+        "formula": "PHIF",
+        "model_transform": "identity",
+        "validity": "finite PHIF",
+        "version": "target6-phif-cpi-v1"
+      },
+      "semantic_name": "total_porosity_phif",
+      "split": {
+        "group_key": "well_family",
+        "root_seed": 2693,
+        "strategy": "mother_well_logo",
+        "test_access": "forbidden"
+      },
+      "status": "runnable_if_development_audit_passes",
+      "support": {
+        "sample": "joined raw/CPI LAS depth row",
+        "spatial_scale": "wellbore depth point",
+        "time_scale": "not_applicable"
+      },
+      "task_id": "sweetspot.p5.1.r01.t6.phif",
+      "truth_class": "interpreted_petrophysical_target",
+      "units": "fraction",
+      "warnings": [
+        "PHIF is an interpreted CPI property",
+        "R1 well-log-only mechanism result is not a replacement for the historical multimodal lane",
+        "test.h5 and known holdout backfill are forbidden"
+      ]
+    },
+    "T7": {
+      "censoring": "non-finite or negative KLOGH, or no finite raw input, is unlabeled and excluded",
+      "contract_path": "_pipelines/02_task_datasets/sweetspot/p5/r01/contracts/T7.v1.json",
+      "contract_sha256": "f3b35d1c532e9ca68b8d33dbeab0ed73cdc915f2289c6a5730594c90b14ad824",
+      "field_truth": false,
+      "head_name": "t7_klogh",
+      "label": {
+        "formula": "KLOGH",
+        "model_transform": "log1p",
+        "validity": "finite KLOGH>=0",
+        "version": "target7-klogh-cpi-v1"
+      },
+      "semantic_name": "horizontal_permeability_klogh",
+      "split": {
+        "group_key": "well_family",
+        "root_seed": 2693,
+        "strategy": "mother_well_logo",
+        "test_access": "forbidden"
+      },
+      "status": "runnable_if_development_audit_passes",
+      "support": {
+        "sample": "joined raw/CPI LAS depth row",
+        "spatial_scale": "wellbore depth point",
+        "time_scale": "not_applicable"
+      },
+      "task_id": "sweetspot.p5.1.r01.t7.klogh",
+      "truth_class": "interpreted_petrophysical_target",
+      "units": "mD",
+      "warnings": [
+        "KLOGH is an interpreted CPI property",
+        "R1 well-log-only mechanism result is not a replacement for the historical multimodal lane",
+        "test.h5 and known holdout backfill are forbidden"
+      ]
+    }
+  },
+  "test_access": "forbidden"
+}

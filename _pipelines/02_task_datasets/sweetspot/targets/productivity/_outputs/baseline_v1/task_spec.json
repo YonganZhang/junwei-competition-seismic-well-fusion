@@ -1,0 +1,95 @@
+{
+  "calibration_policy": {},
+  "forbidden_inputs": [
+    "future_BORE_OIL_VOL",
+    "future_BORE_GAS_VOL",
+    "future_BORE_WAT_VOL",
+    "FUTURE_30D_MEAN_OIL"
+  ],
+  "group_keys": [
+    "well_bore_code"
+  ],
+  "guardrail_metrics": [],
+  "hpo": {
+    "model_ids": [
+      "robust_linear"
+    ],
+    "selection_scope": "development_oof_only"
+  },
+  "inference_transform": {
+    "FUTURE_30D_MEAN_OIL": "nonnegative_after_expm1"
+  },
+  "input_modalities": [
+    "causal_production_history"
+  ],
+  "input_whitelist": [
+    "history_30d_bore_oil_vol",
+    "history_30d_bore_gas_vol",
+    "history_30d_bore_wat_vol",
+    "history_30d_on_stream_hrs",
+    "history_30d_avg_downhole_pressure",
+    "history_30d_avg_choke_size_p",
+    "history_30d_avg_whp_p"
+  ],
+  "inverse_transform": {
+    "FUTURE_30D_MEAN_OIL": "expm1"
+  },
+  "label_version": "future-30-calendar-row-mean-oil-v1",
+  "metadata": {
+    "sample_stride_days": 7,
+    "status": "feasible",
+    "test_group": "NO 15/9-F-15 D"
+  },
+  "metric_directions": {
+    "mae": "minimize",
+    "rmse": "minimize",
+    "spearman": "maximize",
+    "topk_hit": "maximize"
+  },
+  "primary_metrics": [
+    "mae",
+    "spearman"
+  ],
+  "required_figures": [
+    "time_series_forecast",
+    "observed_predicted",
+    "residual_by_well",
+    "topk_ranking"
+  ],
+  "secondary_metrics": [
+    "rmse",
+    "topk_hit"
+  ],
+  "spatial_buffer": null,
+  "target_masks": {
+    "FUTURE_30D_MEAN_OIL": "at_least_21_finite_future_days"
+  },
+  "target_transform": {
+    "FUTURE_30D_MEAN_OIL": "log1p"
+  },
+  "targets": [
+    "FUTURE_30D_MEAN_OIL"
+  ],
+  "task_id": "sweetspot.productivity.future_30d_oil_v1",
+  "task_type": "regression",
+  "threshold_policy": {},
+  "time_cutoff": {
+    "features_end_before_cutoff": true,
+    "forecast_days": 30,
+    "history_days": 30
+  },
+  "track_id": "sweetspot",
+  "train_loss": {
+    "FUTURE_30D_MEAN_OIL": {
+      "candidates": [
+        "huber",
+        "squared_error"
+      ],
+      "selection": "development_oof_only"
+    }
+  },
+  "units": {
+    "FUTURE_30D_MEAN_OIL": "Sm3/day"
+  },
+  "visualizer_id": "sweetspot_productivity"
+}

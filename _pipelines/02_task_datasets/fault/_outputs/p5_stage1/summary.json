@@ -1,0 +1,143 @@
+{
+  "candidate_count": 10,
+  "counts": {
+    "contract_smoked": 0,
+    "failed": 0,
+    "skipped": 10
+  },
+  "development_source": {
+    "batch_shape": [
+      1,
+      1,
+      32,
+      64
+    ],
+    "positive_labels": 32,
+    "sample_keys": [
+      "sample_0000001"
+    ],
+    "source_bytes": 3580480,
+    "source_role": "audited_v2_train_development",
+    "source_sha256": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221",
+    "stored_zero_policy": "unknown unless covered by audited verified_negative_mask",
+    "unknown_labels": 2016,
+    "valid_labels": 32,
+    "verified_negative_audit_sha256": null,
+    "verified_negative_audit_status": "absent",
+    "verified_negative_labels": 0
+  },
+  "downloads_performed": false,
+  "environment": {
+    "cuda_available": true,
+    "cuda_runtime": "13.0",
+    "device": "cuda:0",
+    "executable_role": "caller-selected shared torch-common environment",
+    "gpu_name": "NVIDIA GeForce RTX 5080",
+    "monai": "1.6.0",
+    "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15",
+    "torch": "2.12.1+cu130"
+  },
+  "installed_packages_changed": false,
+  "model_ids": [
+    "monai_segresnet",
+    "monai_dynunet",
+    "nnunet_v2_3d_fullres",
+    "pytorch3dunet_unet3d",
+    "faultnet_md",
+    "faultseg3d_keras",
+    "monai_vnet",
+    "mednext_v1_s_k3",
+    "uxnet3d",
+    "monai_swinunetr"
+  ],
+  "p4_evidence": {
+    "blind_audit_sha256": "46096d75e36d73bf8df7f510bb754675b17e887e8d411352dfe8c4ffa48a65f3",
+    "blind_test_status": "not_feasible",
+    "cv_plan_sha256": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+    "cv_status": "not_feasible",
+    "effective_n_splits": 0,
+    "frozen_test_accessed": false
+  },
+  "protocol": "fault-p5-stage1-v1",
+  "results": [
+    {
+      "evidence": "models/monai_segresnet.json",
+      "evidence_state": "synthetic_contract_smoked",
+      "model_id": "monai_segresnet",
+      "reason_code": "NO_AUDITED_VERIFIED_NEGATIVES",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/monai_dynunet.json",
+      "evidence_state": "synthetic_contract_smoked",
+      "model_id": "monai_dynunet",
+      "reason_code": "NO_AUDITED_VERIFIED_NEGATIVES",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/nnunet_v2_3d_fullres.json",
+      "evidence_state": "scouted",
+      "model_id": "nnunet_v2_3d_fullres",
+      "reason_code": "DEPENDENCY_UNAVAILABLE",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/pytorch3dunet_unet3d.json",
+      "evidence_state": "synthetic_contract_smoked",
+      "model_id": "pytorch3dunet_unet3d",
+      "reason_code": "NO_AUDITED_VERIFIED_NEGATIVES",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/faultnet_md.json",
+      "evidence_state": "scouted",
+      "model_id": "faultnet_md",
+      "reason_code": "PRETRAINED_WEIGHT_NOT_APPROVED",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/faultseg3d_keras.json",
+      "evidence_state": "scouted",
+      "model_id": "faultseg3d_keras",
+      "reason_code": "NONCOMMERCIAL_LICENSE_NOT_APPROVED",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/monai_vnet.json",
+      "evidence_state": "synthetic_contract_smoked",
+      "model_id": "monai_vnet",
+      "reason_code": "NO_AUDITED_VERIFIED_NEGATIVES",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/mednext_v1_s_k3.json",
+      "evidence_state": "scouted",
+      "model_id": "mednext_v1_s_k3",
+      "reason_code": "LOCKED_SOURCE_CHECKOUT_UNAVAILABLE",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/uxnet3d.json",
+      "evidence_state": "scouted",
+      "model_id": "uxnet3d",
+      "reason_code": "LOCKED_SOURCE_CHECKOUT_UNAVAILABLE",
+      "status": "skipped"
+    },
+    {
+      "evidence": "models/monai_swinunetr.json",
+      "evidence_state": "synthetic_contract_smoked",
+      "model_id": "monai_swinunetr",
+      "reason_code": "NO_AUDITED_VERIFIED_NEGATIVES",
+      "status": "skipped"
+    }
+  ],
+  "root_seed": 2693,
+  "source_lock": {
+    "path": "_models/fault/p5_source_locks.json",
+    "sha256": "0e69a7a6ea12d059d0be97b1f19bf645e35ec360ae003a2d1033cadd12b0289f"
+  },
+  "status": "completed_with_structured_skips",
+  "track_id": "fault",
+  "training_scope": "single Stage-1 contract step only; no pilot, HPO, CV, refit, or test"
+}

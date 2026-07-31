@@ -1,0 +1,55 @@
+{
+  "schema_version": "lithofacies-p5-stage4-development-batch-v1",
+  "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b",
+  "preprocessor_hash": "8fe650c3f379736c10b55ff53f7d043d09f96c4249cbbb6b5ed59f28bf8e79e2",
+  "development_families": [
+    "15/9-19",
+    "15/9-F-14",
+    "15/9-F-15",
+    "15/9-F-4"
+  ],
+  "full_development_samples": 447,
+  "selected_training_samples": 320,
+  "selected_training_families": [
+    "15/9-19",
+    "15/9-F-14",
+    "15/9-F-15",
+    "15/9-F-4"
+  ],
+  "full_class_support": [
+    11,
+    104,
+    7,
+    40,
+    27,
+    124,
+    127,
+    6,
+    1
+  ],
+  "selected_class_support": [
+    11,
+    76,
+    7,
+    40,
+    27,
+    76,
+    76,
+    6,
+    1
+  ],
+  "budget_hash": "8e37c0396444cae4e73995b68db4ce1da2239b3eedeb218a1016afdc94965036",
+  "prior_test_consumed": true,
+  "fresh_blind": false,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "holdout_accessed": false,
+  "train_hdf5_basename": "train.h5",
+  "train_hdf5_sha256": "4cd414adb4a76447a35599416b55b91d41c62da19d676fe2289e10c35361450c",
+  "development_batch_path": "runtime/development_refit.npz",
+  "development_batch_sha256": "a62008d780af30780f629e96c314134d85d663a938a7686d18ecefd4a31a675d",
+  "preprocessor_path": "preprocessor.json",
+  "preprocessor_sha256": "ebdfdecd0eb6028aed822f40fae39b04e4f397a5181d1f2de0b5c212e5f04a6d",
+  "preprocessor_fit_sample_ids_hash": "77881e849465579e879a379a0c54793b73a15d6f759741bd9b42e45418b3d001",
+  "selection_ids_hash": "d2055ef22086c1d8f7310c54ed56804580d814a13f8ec24347baf55172d70240",
+  "elapsed_seconds": 2.3390277200378478
+}

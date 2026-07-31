@@ -1,0 +1,31 @@
+{
+  "reference": "audited_v2",
+  "candidate": "audited_v2_repro",
+  "all_checks_passed": true,
+  "checks": {
+    "input_sha256": true,
+    "dataset_sha256": true,
+    "split_plan": true,
+    "sample_manifest": true,
+    "normalization": true,
+    "rasterization": true,
+    "test_metrics": true,
+    "probability_metrics": true,
+    "selected_threshold": true,
+    "best_epoch_and_loss": true,
+    "model_and_checkpoint_sha256": true,
+    "loss_curve_sha256": true,
+    "prediction_visualization_sha256": true
+  },
+  "failed_checks": [],
+  "historical_artifacts_verified": {
+    "baseline_metrics.json": "7f4537111e48e47123ec369400de7fb579cc4e5e340fdfdae0c01ee16fcdf520",
+    "baseline_model.joblib": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "build_summary.json": "8989a7664dc975a72e5b6ad6910953ba686f17086faba7163d9b144a1d33590d",
+    "_outputs/checkpoints/best.ckpt": "64d33e13e5ab7c843e0249bee911b7c29cde0159012933ad8ac09159435a6a33",
+    "_outputs/checkpoints/history.json": "0ec3592da34d3418391ac57df74729da31115b38308bc3a7a99f4e330d01228a",
+    "_outputs/checkpoints/last.ckpt": "bdc2d01e8a068a802091c098b635efda4d3e09aa325e73afa6a27171f95a07ef",
+    "_outputs/loss_curve.png": "ea59f1d6ec8c8a5eb95a487b5bb8aa68963b24716f505a74ff469fa66091d28a",
+    "_outputs/prediction_visualization.png": "abc5016cf67a600536130fc72d1fb00f63f51452e7c91f33c0014e83f64d7e4c"
+  }
+}

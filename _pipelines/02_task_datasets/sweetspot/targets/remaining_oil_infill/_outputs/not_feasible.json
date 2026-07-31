@@ -1,0 +1,41 @@
+{
+  "archive": "_sandbox/volve_data/Volve_Reservoir_Model-Eclipse_model.zip",
+  "archive_size_bytes": 409380233,
+  "baseline": null,
+  "blockers": [
+    "no tested Eclipse cell-state parser is installed",
+    "prediction time and evaluation time are not domain-approved",
+    "candidate infill locations and economic/spacing constraints are not frozen"
+  ],
+  "dynamic_members": [
+    {
+      "crc32": "2baaed6d",
+      "member": "Reservoir_Model-Eclipse_model/Volve_sim_model_PPA-Eclipse Res Model/VOLVE_2016.GRID",
+      "size_bytes": 128150508
+    },
+    {
+      "crc32": "24186420",
+      "member": "Reservoir_Model-Eclipse_model/Volve_sim_model_PPA-Eclipse Res Model/VOLVE_2016.UNRST",
+      "size_bytes": 811620080
+    }
+  ],
+  "figures": null,
+  "metrics": null,
+  "no_synthetic_fallback": true,
+  "parser_availability": {
+    "ecl": false,
+    "opm": false,
+    "resdata": false,
+    "xtgeo": false
+  },
+  "static_property_member_count": 3,
+  "status": "not_feasible",
+  "task_id": "sweetspot.remaining_oil_infill.simulation_case_v1",
+  "truth_scope": "simulation case only; must never be presented as field truth",
+  "unblock_acceptance": [
+    "install and validate one Eclipse cell-state parser against known cells/timesteps",
+    "freeze realization, prediction date, evaluation date and visible history",
+    "freeze candidate cells, spacing/economic screen, target transform and frozen test realization/time",
+    "generate split manifest before training and keep test time/realization outside HPO"
+  ]
+}

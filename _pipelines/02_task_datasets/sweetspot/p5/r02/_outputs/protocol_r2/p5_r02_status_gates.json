@@ -1,0 +1,36 @@
+{
+  "historical_test_metrics_read": false,
+  "label_generated": false,
+  "schema_version": "sweetspot-p5-r02-status-gate-records/v1",
+  "targets": [
+    {
+      "fresh_blind": false,
+      "reason": "kept outside the T1-T3 budget sweep; stage4 known-holdout confirmation remains the boundary record",
+      "status": "boundary",
+      "target_name": "WATER_EVENT_WITHIN_30D",
+      "task_id": "T4"
+    },
+    {
+      "fresh_blind": false,
+      "reason": "no approved sweetspot field truth; proxy-only labels remain forbidden",
+      "status": "not_feasible",
+      "target_name": null,
+      "task_id": "T5"
+    },
+    {
+      "fresh_blind": false,
+      "reason": "no development-only feature source; test.h5 fallback is forbidden",
+      "status": "blocked",
+      "target_name": "PHIF",
+      "task_id": "T6"
+    },
+    {
+      "fresh_blind": false,
+      "reason": "no development-only feature source; test.h5 fallback is forbidden",
+      "status": "blocked",
+      "target_name": "KLOGH",
+      "task_id": "T7"
+    }
+  ],
+  "test_accessed": false
+}

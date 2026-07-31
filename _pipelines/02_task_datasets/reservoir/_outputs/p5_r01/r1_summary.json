@@ -1,0 +1,2195 @@
+{
+  "final_model_ranking": false,
+  "hpo": false,
+  "model_config": {
+    "hpo": false,
+    "l2_strength": 0.001,
+    "learning_rate": 0.002,
+    "model_id": "reservoir_ridge",
+    "n_features": 153,
+    "update_steps": 64,
+    "update_unit": "full_fold_train_batch"
+  },
+  "phase": "P5.1_R0_R1",
+  "protocol_diagnostic_only": true,
+  "r0_status": "contract_frozen",
+  "r1_status": "protocol_diagnostic_complete",
+  "results_sha256": "795bf446fe7bb5ff98e4e67a8c7ab992d54e2b90cd68e82c2a285092360cd3b3",
+  "root_seed": 2693,
+  "run_wall_seconds": 1.5850359508767724,
+  "schema_version": 1,
+  "split_manifest_sha256": "059c7d66bd91a3eb8058a6e828af03939f56222b36dbdc4f5ee073672ea4c7fe",
+  "targets": {
+    "KLOGH": {
+      "diagnostic_gap_logo_minus_random_physical_RMSE": -37.17667660681673,
+      "eligible_count": 1216,
+      "final_model_ranking": false,
+      "independent_target_mask": true,
+      "interpretation": "random depth-point performance is an intentionally leakage-prone diagnostic; only LOGO reflects legal development generalization",
+      "model_domain": "log1p(KLOGH_mD)",
+      "protocols": {
+        "mother_family_logo4": {
+          "eligible_count": 1216,
+          "folds": [
+            {
+              "fold_id": 0,
+              "model": {
+                "final_train_loss": 1.3289288045570848,
+                "first_train_loss": 20.984885363070983,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+                "fit_validation_overlap": false,
+                "stats_sha256": "f25b0aff79d86c5e9e9ef9b0b598ad4e6214530c04b3adb13d3b0b21d7107991",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 1135,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11"
+              ],
+              "train_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+              "validation_count": 81,
+              "validation_groups": [
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 92.0863244831098,
+                "Pearson": 0.7977920679934215,
+                "Pearson_reason": null,
+                "R2": 0.17488406660553701,
+                "R2_reason": null,
+                "RMSE": 227.72426199427397,
+                "count": 81
+              },
+              "validation_sample_ids_sha256": "2bc634beac51f3edefdf21ee5cb07b65d196e29d22efe15925118f8d0d85a2d7",
+              "wall_seconds": 0.010704582091420889
+            },
+            {
+              "fold_id": 1,
+              "model": {
+                "final_train_loss": 1.0373291840188295,
+                "first_train_loss": 20.344354779016342,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+                "fit_validation_overlap": false,
+                "stats_sha256": "ea9d3787598019660c4b51e68f50f96e488a7267239b43633e9183b80a420341",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 1069,
+              "train_groups": [
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+              "validation_count": 147,
+              "validation_groups": [
+                "15/9-19"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 325.6034713314881,
+                "Pearson": 0.7079071167323978,
+                "Pearson_reason": null,
+                "R2": 0.24374205319262598,
+                "R2_reason": null,
+                "RMSE": 910.0348265583876,
+                "count": 147
+              },
+              "validation_sample_ids_sha256": "364ba19d5235760ce1bf34d82be8c96c1080fc8f9ee45adb257cc81ccd802ba3",
+              "wall_seconds": 0.010521744843572378
+            },
+            {
+              "fold_id": 2,
+              "model": {
+                "final_train_loss": 1.776034102585409,
+                "first_train_loss": 17.48053835370228,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+                "fit_validation_overlap": false,
+                "stats_sha256": "88793d276cb06998f3c8ea02371b34ff15428fc058a18b57ec1c2d4f2c5ee40f",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 679,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+              "validation_count": 537,
+              "validation_groups": [
+                "15/9-F-11"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 165.24610760549004,
+                "Pearson": 0.8025048755429596,
+                "Pearson_reason": null,
+                "R2": 0.6128826772756175,
+                "R2_reason": null,
+                "RMSE": 351.69063475269496,
+                "count": 537
+              },
+              "validation_sample_ids_sha256": "10e7c5da340ac15b05dc47f4a0dcaa7c205ea308f3fdef6f18b97b9d36353877",
+              "wall_seconds": 0.008180556818842888
+            },
+            {
+              "fold_id": 3,
+              "model": {
+                "final_train_loss": 1.4212577518219767,
+                "first_train_loss": 21.82894821105984,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+                "fit_validation_overlap": false,
+                "stats_sha256": "20af7411c4cb4e135943bb37d37b093d01625c5e09f6e22670d545bba164ee19",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 765,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+              "validation_count": 451,
+              "validation_groups": [
+                "15/9-F-1"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 254.9145547546543,
+                "Pearson": 0.8275504403918127,
+                "Pearson_reason": null,
+                "R2": 0.47431144662020486,
+                "R2_reason": null,
+                "RMSE": 705.2429687544322,
+                "count": 451
+              },
+              "validation_sample_ids_sha256": "9b98ad64d508cbfc31a2530044f2777edb8f5cc5f388cd78f9c0d41f70d36543",
+              "wall_seconds": 0.011249388102442026
+            }
+          ],
+          "metrics": {
+            "log1p_diagnostic": {
+              "MAE": 1.002670791593526,
+              "Pearson": 0.8865412973559117,
+              "Pearson_reason": null,
+              "R2": 0.7724710481660917,
+              "R2_reason": null,
+              "RMSE": 1.2887165002829855,
+              "count": 1216
+            },
+            "model_domain": {
+              "MAE": 1.002670791593526,
+              "Pearson": 0.8865412973559117,
+              "Pearson_reason": null,
+              "R2": 0.7724710481660917,
+              "R2_reason": null,
+              "RMSE": 1.2887165002829855,
+              "count": 1216
+            },
+            "per_mother_family_physical_unclipped": {
+              "15/9-19": {
+                "MAE": 325.6034713314881,
+                "Pearson": 0.7079071167323978,
+                "Pearson_reason": null,
+                "R2": 0.24374205319262598,
+                "R2_reason": null,
+                "RMSE": 910.0348265583876,
+                "count": 147
+              },
+              "15/9-F-1": {
+                "MAE": 254.9145547546543,
+                "Pearson": 0.8275504403918127,
+                "Pearson_reason": null,
+                "R2": 0.47431144662020486,
+                "R2_reason": null,
+                "RMSE": 705.2429687544322,
+                "count": 451
+              },
+              "15/9-F-11": {
+                "MAE": 165.24610760549004,
+                "Pearson": 0.8025048755429596,
+                "Pearson_reason": null,
+                "R2": 0.6128826772756175,
+                "R2_reason": null,
+                "RMSE": 351.69063475269496,
+                "count": 537
+              },
+              "15/9-F-12": {
+                "MAE": 92.0863244831098,
+                "Pearson": 0.7977920679934215,
+                "Pearson_reason": null,
+                "R2": 0.17488406660553701,
+                "R2_reason": null,
+                "RMSE": 227.72426199427397,
+                "count": 81
+              }
+            },
+            "physical_bounded_diagnostic": {
+              "MAE": 212.986661262536,
+              "Pearson": 0.7543986716344131,
+              "Pearson_reason": null,
+              "R2": 0.459916956380494,
+              "R2_reason": null,
+              "RMSE": 585.3704187971852,
+              "count": 1216
+            },
+            "physical_unclipped": {
+              "MAE": 213.01507117381405,
+              "Pearson": 0.7544008175028218,
+              "Pearson_reason": null,
+              "R2": 0.459916792461449,
+              "R2_reason": null,
+              "RMSE": 585.3705076292212,
+              "count": 1216
+            },
+            "physical_unit": "mD",
+            "raw_prediction_boundary": {
+              "invalid_count": 61,
+              "invalid_fraction": 0.05016447368421053,
+              "raw_max": 2318.7945129883774,
+              "raw_min": -0.9787543062898619,
+              "rule": "prediction_mD<0"
+            },
+            "worst_mother_family": {
+              "MAE": 325.6034713314881,
+              "Pearson": 0.7079071167323978,
+              "Pearson_reason": null,
+              "R2": 0.24374205319262598,
+              "R2_reason": null,
+              "RMSE": 910.0348265583876,
+              "count": 147,
+              "family_id": "15/9-19"
+            }
+          },
+          "oof_artifact": "klogh/mother_family_logo4_oof.csv",
+          "oof_sha256": "9a2fe26b475e742bab35050a78a13529fad4011188c8e48dae2cf398ce5f05e4",
+          "split_legality": "legal",
+          "status": "protocol_diagnostic_complete",
+          "support_by_family": {
+            "15/9-19": 147,
+            "15/9-F-1": 451,
+            "15/9-F-11": 537,
+            "15/9-F-12": 81
+          },
+          "test_access": false
+        },
+        "random_depth_kfold4": {
+          "eligible_count": 1216,
+          "folds": [
+            {
+              "fold_id": 0,
+              "model": {
+                "final_train_loss": 1.3833544454247422,
+                "first_train_loss": 20.620148325722624,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+                "fit_validation_overlap": false,
+                "stats_sha256": "a3e8f373c426a548b5ed7d1f3bc674a0b0a36279115efd906572d6e616d18419",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 236.91405985553396,
+                "Pearson": 0.7295152494687545,
+                "Pearson_reason": null,
+                "R2": 0.30478783131948284,
+                "R2_reason": null,
+                "RMSE": 689.4432518032712,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "cffac4397878d9b95a91f7e3f3c76084548ad69a0a031df1ed4b76723a78c0ad",
+              "wall_seconds": 0.007417028769850731
+            },
+            {
+              "fold_id": 1,
+              "model": {
+                "final_train_loss": 1.3249565266826335,
+                "first_train_loss": 20.53993585457126,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+                "fit_validation_overlap": false,
+                "stats_sha256": "e646e1156961ddec42c068889c56de5517d9491d18b69a1ea68781a54d67746e",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 198.1897230876952,
+                "Pearson": 0.7588858531604838,
+                "Pearson_reason": null,
+                "R2": 0.4145293603627709,
+                "R2_reason": null,
+                "RMSE": 543.645110227759,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "ae506ea03f04a40c1e8967ea8d598a2e4e11927f501dce5f0bc1326ef40ce372",
+              "wall_seconds": 0.007748167961835861
+            },
+            {
+              "fold_id": 2,
+              "model": {
+                "final_train_loss": 1.3706597719242806,
+                "first_train_loss": 20.134753071004923,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+                "fit_validation_overlap": false,
+                "stats_sha256": "eebdb836e8972820f591e9e09f849d856832b318ff0d32fd808ea97e289851ea",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 233.94447629524726,
+                "Pearson": 0.7799232150559517,
+                "Pearson_reason": null,
+                "R2": 0.41980718291798635,
+                "R2_reason": null,
+                "RMSE": 598.7463920672741,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "3f2ff93a1c4fff8d0103e5a463e50e1409cc5b0a5fdf3a1563961826793956ce",
+              "wall_seconds": 0.00719101307913661
+            },
+            {
+              "fold_id": 3,
+              "model": {
+                "final_train_loss": 1.3865934096688686,
+                "first_train_loss": 19.992872254708487,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+                "fit_validation_overlap": false,
+                "stats_sha256": "7bbb17b6727c29a6b116d1b2b75de9eee5a985d180164f2f0b5f9d7d6df3f2c7",
+                "target_statistics_fitted": false,
+                "target_transform": "log1p(KLOGH_mD)",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "KLOGH",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 241.8709638222527,
+                "Pearson": 0.7926413772876588,
+                "Pearson_reason": null,
+                "R2": 0.4225206026275905,
+                "R2_reason": null,
+                "RMSE": 648.7532204588103,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "0dad934821b5c08a57841e6e513c62d9a6a85c921d3e89ddd9c1899bc0b2afe3",
+              "wall_seconds": 0.009636614006012678
+            }
+          ],
+          "metrics": {
+            "log1p_diagnostic": {
+              "MAE": 0.9054345353704476,
+              "Pearson": 0.9000408555612279,
+              "Pearson_reason": null,
+              "R2": 0.806647513859134,
+              "R2_reason": null,
+              "RMSE": 1.1879931496130953,
+              "count": 1216
+            },
+            "model_domain": {
+              "MAE": 0.9054345353704476,
+              "Pearson": 0.9000408555612279,
+              "Pearson_reason": null,
+              "R2": 0.806647513859134,
+              "R2_reason": null,
+              "RMSE": 1.1879931496130953,
+              "count": 1216
+            },
+            "per_mother_family_physical_unclipped": {
+              "15/9-19": {
+                "MAE": 343.09193838875416,
+                "Pearson": 0.7002638960789231,
+                "Pearson_reason": null,
+                "R2": 0.1935579558364917,
+                "R2_reason": null,
+                "RMSE": 939.7441224214642,
+                "count": 147
+              },
+              "15/9-F-1": {
+                "MAE": 279.2448093124882,
+                "Pearson": 0.850869035899805,
+                "Pearson_reason": null,
+                "R2": 0.3841656541449898,
+                "R2_reason": null,
+                "RMSE": 763.3196770201879,
+                "count": 451
+              },
+              "15/9-F-11": {
+                "MAE": 173.36543490390278,
+                "Pearson": 0.8208729290195274,
+                "Pearson_reason": null,
+                "R2": 0.5658023935250546,
+                "R2_reason": null,
+                "RMSE": 372.4630654656861,
+                "count": 537
+              },
+              "15/9-F-12": {
+                "MAE": 91.95409041959012,
+                "Pearson": 0.7994583374004571,
+                "Pearson_reason": null,
+                "R2": 0.1779465972397889,
+                "R2_reason": null,
+                "RMSE": 227.30125424498556,
+                "count": 81
+              }
+            },
+            "physical_bounded_diagnostic": {
+              "MAE": 227.69519576992732,
+              "Pearson": 0.7625597124373288,
+              "Pearson_reason": null,
+              "R2": 0.3891375565013284,
+              "R2_reason": null,
+              "RMSE": 622.5470983544017,
+              "count": 1216
+            },
+            "physical_unclipped": {
+              "MAE": 227.7298057651823,
+              "Pearson": 0.7625626962533396,
+              "Pearson_reason": null,
+              "R2": 0.38913738796188835,
+              "R2_reason": null,
+              "RMSE": 622.5471842360379,
+              "count": 1216
+            },
+            "physical_unit": "mD",
+            "raw_prediction_boundary": {
+              "invalid_count": 85,
+              "invalid_fraction": 0.06990131578947369,
+              "raw_max": 1987.6858329319782,
+              "raw_min": -0.9676388871031445,
+              "rule": "prediction_mD<0"
+            },
+            "worst_mother_family": {
+              "MAE": 343.09193838875416,
+              "Pearson": 0.7002638960789231,
+              "Pearson_reason": null,
+              "R2": 0.1935579558364917,
+              "R2_reason": null,
+              "RMSE": 939.7441224214642,
+              "count": 147,
+              "family_id": "15/9-19"
+            }
+          },
+          "oof_artifact": "klogh/random_depth_kfold4_oof.csv",
+          "oof_sha256": "1ca9f7dac4200f6b9c392e8b4ce5b73759dbcb8fbac94cffd3a4f9fcf5ee4aa3",
+          "split_legality": "invalid_diagnostic",
+          "status": "protocol_diagnostic_complete",
+          "support_by_family": {
+            "15/9-19": 147,
+            "15/9-F-1": 451,
+            "15/9-F-11": 537,
+            "15/9-F-12": 81
+          },
+          "test_access": false
+        }
+      },
+      "sample_ids_sha256": "48b8ea9558f92ee751aa0a776b8daf5427c9ab973aa6550c6c67cba2e6e1a742",
+      "status": "protocol_diagnostic_complete",
+      "support_by_family": {
+        "15/9-19": 147,
+        "15/9-F-1": 451,
+        "15/9-F-11": 537,
+        "15/9-F-12": 81
+      },
+      "target": "KLOGH",
+      "test_access": false,
+      "unit": "mD"
+    },
+    "PHIF": {
+      "diagnostic_gap_logo_minus_random_physical_RMSE": 0.003536380697122945,
+      "eligible_count": 1216,
+      "final_model_ranking": false,
+      "independent_target_mask": true,
+      "interpretation": "random depth-point performance is an intentionally leakage-prone diagnostic; only LOGO reflects legal development generalization",
+      "model_domain": "identity",
+      "protocols": {
+        "mother_family_logo4": {
+          "eligible_count": 1216,
+          "folds": [
+            {
+              "fold_id": 0,
+              "model": {
+                "final_train_loss": 0.0009660932988204535,
+                "first_train_loss": 0.035651853971831536,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+                "fit_validation_overlap": false,
+                "stats_sha256": "f25b0aff79d86c5e9e9ef9b0b598ad4e6214530c04b3adb13d3b0b21d7107991",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 1135,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11"
+              ],
+              "train_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+              "validation_count": 81,
+              "validation_groups": [
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.03249786655876604,
+                "Pearson": 0.9133388150822161,
+                "Pearson_reason": null,
+                "R2": 0.6456547966160975,
+                "R2_reason": null,
+                "RMSE": 0.03803414601174357,
+                "count": 81
+              },
+              "validation_sample_ids_sha256": "2bc634beac51f3edefdf21ee5cb07b65d196e29d22efe15925118f8d0d85a2d7",
+              "wall_seconds": 0.010521864984184504
+            },
+            {
+              "fold_id": 1,
+              "model": {
+                "final_train_loss": 0.0007437979940692837,
+                "first_train_loss": 0.03720641670677872,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+                "fit_validation_overlap": false,
+                "stats_sha256": "ea9d3787598019660c4b51e68f50f96e488a7267239b43633e9183b80a420341",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 1069,
+              "train_groups": [
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+              "validation_count": 147,
+              "validation_groups": [
+                "15/9-19"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.035491819666584386,
+                "Pearson": 0.8151705378114378,
+                "Pearson_reason": null,
+                "R2": 0.5584274625426808,
+                "R2_reason": null,
+                "RMSE": 0.05256749352299217,
+                "count": 147
+              },
+              "validation_sample_ids_sha256": "364ba19d5235760ce1bf34d82be8c96c1080fc8f9ee45adb257cc81ccd802ba3",
+              "wall_seconds": 0.008196413051337004
+            },
+            {
+              "fold_id": 2,
+              "model": {
+                "final_train_loss": 0.0010709832566356274,
+                "first_train_loss": 0.03611286399404965,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+                "fit_validation_overlap": false,
+                "stats_sha256": "88793d276cb06998f3c8ea02371b34ff15428fc058a18b57ec1c2d4f2c5ee40f",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 679,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+              "validation_count": 537,
+              "validation_groups": [
+                "15/9-F-11"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.020239928672921473,
+                "Pearson": 0.9378395064305992,
+                "Pearson_reason": null,
+                "R2": 0.8353999460502886,
+                "R2_reason": null,
+                "RMSE": 0.029517098826087072,
+                "count": 537
+              },
+              "validation_sample_ids_sha256": "10e7c5da340ac15b05dc47f4a0dcaa7c205ea308f3fdef6f18b97b9d36353877",
+              "wall_seconds": 0.010849940124899149
+            },
+            {
+              "fold_id": 3,
+              "model": {
+                "final_train_loss": 0.0010589258934219905,
+                "first_train_loss": 0.03687268038984874,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+                "fit_validation_overlap": false,
+                "stats_sha256": "20af7411c4cb4e135943bb37d37b093d01625c5e09f6e22670d545bba164ee19",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 765,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+              "validation_count": 451,
+              "validation_groups": [
+                "15/9-F-1"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.025948013962351118,
+                "Pearson": 0.8990370651002147,
+                "Pearson_reason": null,
+                "R2": 0.7616117626705129,
+                "R2_reason": null,
+                "RMSE": 0.032533683290679564,
+                "count": 451
+              },
+              "validation_sample_ids_sha256": "9b98ad64d508cbfc31a2530044f2777edb8f5cc5f388cd78f9c0d41f70d36543",
+              "wall_seconds": 0.01139352424070239
+            }
+          ],
+          "metrics": {
+            "model_domain": {
+              "MAE": 0.02501728674064732,
+              "Pearson": 0.8864585543201079,
+              "Pearson_reason": null,
+              "R2": 0.764460435729984,
+              "R2_reason": null,
+              "RMSE": 0.03475251216688633,
+              "count": 1216
+            },
+            "per_mother_family_physical_unclipped": {
+              "15/9-19": {
+                "MAE": 0.035491819666584386,
+                "Pearson": 0.8151705378114378,
+                "Pearson_reason": null,
+                "R2": 0.5584274625426808,
+                "R2_reason": null,
+                "RMSE": 0.05256749352299217,
+                "count": 147
+              },
+              "15/9-F-1": {
+                "MAE": 0.025948013962351118,
+                "Pearson": 0.8990370651002147,
+                "Pearson_reason": null,
+                "R2": 0.7616117626705129,
+                "R2_reason": null,
+                "RMSE": 0.032533683290679564,
+                "count": 451
+              },
+              "15/9-F-11": {
+                "MAE": 0.020239928672921473,
+                "Pearson": 0.9378395064305992,
+                "Pearson_reason": null,
+                "R2": 0.8353999460502886,
+                "R2_reason": null,
+                "RMSE": 0.029517098826087072,
+                "count": 537
+              },
+              "15/9-F-12": {
+                "MAE": 0.03249786655876604,
+                "Pearson": 0.9133388150822161,
+                "Pearson_reason": null,
+                "R2": 0.6456547966160975,
+                "R2_reason": null,
+                "RMSE": 0.03803414601174357,
+                "count": 81
+              }
+            },
+            "physical_bounded_diagnostic": {
+              "MAE": 0.025007605037746274,
+              "Pearson": 0.8865796026555052,
+              "Pearson_reason": null,
+              "R2": 0.7645034351049766,
+              "R2_reason": null,
+              "RMSE": 0.034749339866483604,
+              "count": 1216
+            },
+            "physical_unclipped": {
+              "MAE": 0.02501728674064732,
+              "Pearson": 0.8864585543201079,
+              "Pearson_reason": null,
+              "R2": 0.764460435729984,
+              "R2_reason": null,
+              "RMSE": 0.03475251216688633,
+              "count": 1216
+            },
+            "physical_unit": "fraction",
+            "raw_prediction_boundary": {
+              "invalid_count": 1,
+              "invalid_fraction": 0.0008223684210526315,
+              "raw_max": 0.27296138310785145,
+              "raw_min": -0.01177295072767073,
+              "rule": "prediction<0_or_prediction>1"
+            },
+            "worst_mother_family": {
+              "MAE": 0.035491819666584386,
+              "Pearson": 0.8151705378114378,
+              "Pearson_reason": null,
+              "R2": 0.5584274625426808,
+              "R2_reason": null,
+              "RMSE": 0.05256749352299217,
+              "count": 147,
+              "family_id": "15/9-19"
+            }
+          },
+          "oof_artifact": "phif/mother_family_logo4_oof.csv",
+          "oof_sha256": "fbf575fb1abb1f8e8e3d684d2d262faddedb40aa99a1845e9a16e0f826ce34d9",
+          "split_legality": "legal",
+          "status": "protocol_diagnostic_complete",
+          "support_by_family": {
+            "15/9-19": 147,
+            "15/9-F-1": 451,
+            "15/9-F-11": 537,
+            "15/9-F-12": 81
+          },
+          "test_access": false
+        },
+        "random_depth_kfold4": {
+          "eligible_count": 1216,
+          "folds": [
+            {
+              "fold_id": 0,
+              "model": {
+                "final_train_loss": 0.0009325510664582988,
+                "first_train_loss": 0.03705678017755094,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+                "fit_validation_overlap": false,
+                "stats_sha256": "a3e8f373c426a548b5ed7d1f3bc674a0b0a36279115efd906572d6e616d18419",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.022119846753106416,
+                "Pearson": 0.9074650316486,
+                "Pearson_reason": null,
+                "R2": 0.8016602941728603,
+                "R2_reason": null,
+                "RMSE": 0.03143012558510431,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "cffac4397878d9b95a91f7e3f3c76084548ad69a0a031df1ed4b76723a78c0ad",
+              "wall_seconds": 0.009275577962398529
+            },
+            {
+              "fold_id": 1,
+              "model": {
+                "final_train_loss": 0.0009063523313544979,
+                "first_train_loss": 0.03631986828867379,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+                "fit_validation_overlap": false,
+                "stats_sha256": "e646e1156961ddec42c068889c56de5517d9491d18b69a1ea68781a54d67746e",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.024691497310882844,
+                "Pearson": 0.8899771425914489,
+                "Pearson_reason": null,
+                "R2": 0.7788705365096719,
+                "R2_reason": null,
+                "RMSE": 0.03365593927218897,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "ae506ea03f04a40c1e8967ea8d598a2e4e11927f501dce5f0bc1326ef40ce372",
+              "wall_seconds": 0.009277801029384136
+            },
+            {
+              "fold_id": 2,
+              "model": {
+                "final_train_loss": 0.0009153382871941949,
+                "first_train_loss": 0.03647125615437973,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+                "fit_validation_overlap": false,
+                "stats_sha256": "eebdb836e8972820f591e9e09f849d856832b318ff0d32fd808ea97e289851ea",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.022467221402453046,
+                "Pearson": 0.9089564230377191,
+                "Pearson_reason": null,
+                "R2": 0.806991293394377,
+                "R2_reason": null,
+                "RMSE": 0.032271078377194735,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "3f2ff93a1c4fff8d0103e5a463e50e1409cc5b0a5fdf3a1563961826793956ce",
+              "wall_seconds": 0.009195582009851933
+            },
+            {
+              "fold_id": 3,
+              "model": {
+                "final_train_loss": 0.0010034388291852365,
+                "first_train_loss": 0.03594896913791445,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+                "fit_validation_overlap": false,
+                "stats_sha256": "7bbb17b6727c29a6b116d1b2b75de9eee5a985d180164f2f0b5f9d7d6df3f2c7",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "PHIF",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.020421579539045238,
+                "Pearson": 0.931280914159582,
+                "Pearson_reason": null,
+                "R2": 0.8517950550443008,
+                "R2_reason": null,
+                "RMSE": 0.02712544771122611,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "0dad934821b5c08a57841e6e513c62d9a6a85c921d3e89ddd9c1899bc0b2afe3",
+              "wall_seconds": 0.009282539132982492
+            }
+          ],
+          "metrics": {
+            "model_domain": {
+              "MAE": 0.022425036251371887,
+              "Pearson": 0.9092055970407095,
+              "Pearson_reason": null,
+              "R2": 0.8099579872364328,
+              "R2_reason": null,
+              "RMSE": 0.031216131469763386,
+              "count": 1216
+            },
+            "per_mother_family_physical_unclipped": {
+              "15/9-19": {
+                "MAE": 0.033462770227671725,
+                "Pearson": 0.8250602034391608,
+                "Pearson_reason": null,
+                "R2": 0.6224532339953617,
+                "R2_reason": null,
+                "RMSE": 0.04860731358794206,
+                "count": 147
+              },
+              "15/9-F-1": {
+                "MAE": 0.021974109729122306,
+                "Pearson": 0.9132069232165569,
+                "Pearson_reason": null,
+                "R2": 0.814936437575406,
+                "R2_reason": null,
+                "RMSE": 0.0286649561893817,
+                "count": 451
+              },
+              "15/9-F-11": {
+                "MAE": 0.019074247386119902,
+                "Pearson": 0.9391925086319337,
+                "Pearson_reason": null,
+                "R2": 0.8654236292506747,
+                "R2_reason": null,
+                "RMSE": 0.026689662915822303,
+                "count": 537
+              },
+              "15/9-F-12": {
+                "MAE": 0.02711879659283853,
+                "Pearson": 0.9166643412263398,
+                "Pearson_reason": null,
+                "R2": 0.7444294796185122,
+                "R2_reason": null,
+                "RMSE": 0.032300985207710485,
+                "count": 81
+              }
+            },
+            "physical_bounded_diagnostic": {
+              "MAE": 0.022421899222422666,
+              "Pearson": 0.9092346990104019,
+              "Pearson_reason": null,
+              "R2": 0.80996705082406,
+              "R2_reason": null,
+              "RMSE": 0.031215387072478964,
+              "count": 1216
+            },
+            "physical_unclipped": {
+              "MAE": 0.022425036251371887,
+              "Pearson": 0.9092055970407095,
+              "Pearson_reason": null,
+              "R2": 0.8099579872364328,
+              "R2_reason": null,
+              "RMSE": 0.031216131469763386,
+              "count": 1216
+            },
+            "physical_unit": "fraction",
+            "raw_prediction_boundary": {
+              "invalid_count": 1,
+              "invalid_fraction": 0.0008223684210526315,
+              "raw_max": 0.26575612951455446,
+              "raw_min": -0.0038146272022489052,
+              "rule": "prediction<0_or_prediction>1"
+            },
+            "worst_mother_family": {
+              "MAE": 0.033462770227671725,
+              "Pearson": 0.8250602034391608,
+              "Pearson_reason": null,
+              "R2": 0.6224532339953617,
+              "R2_reason": null,
+              "RMSE": 0.04860731358794206,
+              "count": 147,
+              "family_id": "15/9-19"
+            }
+          },
+          "oof_artifact": "phif/random_depth_kfold4_oof.csv",
+          "oof_sha256": "6650bf99588d53fe40968c435c3a4877cfceae02eed2bf45e1fcfb950faa7ac9",
+          "split_legality": "invalid_diagnostic",
+          "status": "protocol_diagnostic_complete",
+          "support_by_family": {
+            "15/9-19": 147,
+            "15/9-F-1": 451,
+            "15/9-F-11": 537,
+            "15/9-F-12": 81
+          },
+          "test_access": false
+        }
+      },
+      "sample_ids_sha256": "48b8ea9558f92ee751aa0a776b8daf5427c9ab973aa6550c6c67cba2e6e1a742",
+      "status": "protocol_diagnostic_complete",
+      "support_by_family": {
+        "15/9-19": 147,
+        "15/9-F-1": 451,
+        "15/9-F-11": 537,
+        "15/9-F-12": 81
+      },
+      "target": "PHIF",
+      "test_access": false,
+      "unit": "fraction"
+    },
+    "SW": {
+      "diagnostic_gap_logo_minus_random_physical_RMSE": 0.04506327016747699,
+      "eligible_count": 1216,
+      "final_model_ranking": false,
+      "independent_target_mask": true,
+      "interpretation": "random depth-point performance is an intentionally leakage-prone diagnostic; only LOGO reflects legal development generalization",
+      "model_domain": "identity",
+      "protocols": {
+        "mother_family_logo4": {
+          "eligible_count": 1216,
+          "folds": [
+            {
+              "fold_id": 0,
+              "model": {
+                "final_train_loss": 0.05590622873088067,
+                "first_train_loss": 0.3623780982762006,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+                "fit_validation_overlap": false,
+                "stats_sha256": "f25b0aff79d86c5e9e9ef9b0b598ad4e6214530c04b3adb13d3b0b21d7107991",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 1135,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11"
+              ],
+              "train_sample_ids_sha256": "a0c3ef54a8ccd813b55bca58f35dbeb7261a47aaf846727cbf704fbb4bc0ddf5",
+              "validation_count": 81,
+              "validation_groups": [
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.3198024634214735,
+                "Pearson": 0.8993118447401554,
+                "Pearson_reason": null,
+                "R2": -0.547047793344088,
+                "R2_reason": null,
+                "RMSE": 0.34527308800100803,
+                "count": 81
+              },
+              "validation_sample_ids_sha256": "2bc634beac51f3edefdf21ee5cb07b65d196e29d22efe15925118f8d0d85a2d7",
+              "wall_seconds": 0.01098384102806449
+            },
+            {
+              "fold_id": 1,
+              "model": {
+                "final_train_loss": 0.04070530848417277,
+                "first_train_loss": 0.2986846823164794,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+                "fit_validation_overlap": false,
+                "stats_sha256": "ea9d3787598019660c4b51e68f50f96e488a7267239b43633e9183b80a420341",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 1069,
+              "train_groups": [
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "0be4c6da56849b61841294f3db48dfd5ac0b13e29123f10e936374aa0dabc923",
+              "validation_count": 147,
+              "validation_groups": [
+                "15/9-19"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.3720325856974937,
+                "Pearson": 0.371570813839085,
+                "Pearson_reason": null,
+                "R2": -0.916813315542655,
+                "R2_reason": null,
+                "RMSE": 0.4579778635040745,
+                "count": 147
+              },
+              "validation_sample_ids_sha256": "364ba19d5235760ce1bf34d82be8c96c1080fc8f9ee45adb257cc81ccd802ba3",
+              "wall_seconds": 0.010639009065926075
+            },
+            {
+              "fold_id": 2,
+              "model": {
+                "final_train_loss": 0.06885680426316443,
+                "first_train_loss": 0.40352393961639493,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+                "fit_validation_overlap": false,
+                "stats_sha256": "88793d276cb06998f3c8ea02371b34ff15428fc058a18b57ec1c2d4f2c5ee40f",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 679,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "e894722389d7202ad07fa80d830ba30b36b7258f86a936751471aaa24aedfca4",
+              "validation_count": 537,
+              "validation_groups": [
+                "15/9-F-11"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.1901528924060735,
+                "Pearson": 0.7898842142277473,
+                "Pearson_reason": null,
+                "R2": 0.5735942064492016,
+                "R2_reason": null,
+                "RMSE": 0.22251431233237945,
+                "count": 537
+              },
+              "validation_sample_ids_sha256": "10e7c5da340ac15b05dc47f4a0dcaa7c205ea308f3fdef6f18b97b9d36353877",
+              "wall_seconds": 0.008106362074613571
+            },
+            {
+              "fold_id": 3,
+              "model": {
+                "final_train_loss": 0.06071912548934412,
+                "first_train_loss": 0.3469415354780251,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+                "fit_validation_overlap": false,
+                "stats_sha256": "20af7411c4cb4e135943bb37d37b093d01625c5e09f6e22670d545bba164ee19",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "mother_family_logo4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 765,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ad8e42c3dcdb8c27a69fb444c2b2f80a188936f6c723fa6b0b072a3f4f924c1d",
+              "validation_count": 451,
+              "validation_groups": [
+                "15/9-F-1"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.23797709115810778,
+                "Pearson": 0.714461127252908,
+                "Pearson_reason": null,
+                "R2": 0.21873568304173718,
+                "R2_reason": null,
+                "RMSE": 0.27574656376308526,
+                "count": 451
+              },
+              "validation_sample_ids_sha256": "9b98ad64d508cbfc31a2530044f2777edb8f5cc5f388cd78f9c0d41f70d36543",
+              "wall_seconds": 0.008855618070811033
+            }
+          ],
+          "metrics": {
+            "model_domain": {
+              "MAE": 0.23851361921795972,
+              "Pearson": 0.6080927535443033,
+              "Pearson_reason": null,
+              "R2": 0.3166371525638415,
+              "R2_reason": null,
+              "RMSE": 0.2887262312127884,
+              "count": 1216
+            },
+            "per_mother_family_physical_unclipped": {
+              "15/9-19": {
+                "MAE": 0.3720325856974937,
+                "Pearson": 0.371570813839085,
+                "Pearson_reason": null,
+                "R2": -0.916813315542655,
+                "R2_reason": null,
+                "RMSE": 0.4579778635040745,
+                "count": 147
+              },
+              "15/9-F-1": {
+                "MAE": 0.23797709115810778,
+                "Pearson": 0.714461127252908,
+                "Pearson_reason": null,
+                "R2": 0.21873568304173718,
+                "R2_reason": null,
+                "RMSE": 0.27574656376308526,
+                "count": 451
+              },
+              "15/9-F-11": {
+                "MAE": 0.1901528924060735,
+                "Pearson": 0.7898842142277473,
+                "Pearson_reason": null,
+                "R2": 0.5735942064492016,
+                "R2_reason": null,
+                "RMSE": 0.22251431233237945,
+                "count": 537
+              },
+              "15/9-F-12": {
+                "MAE": 0.3198024634214735,
+                "Pearson": 0.8993118447401554,
+                "Pearson_reason": null,
+                "R2": -0.547047793344088,
+                "R2_reason": null,
+                "RMSE": 0.34527308800100803,
+                "count": 81
+              }
+            },
+            "physical_bounded_diagnostic": {
+              "MAE": 0.23318644231414515,
+              "Pearson": 0.6067315268365822,
+              "Pearson_reason": null,
+              "R2": 0.32559839678826286,
+              "R2_reason": null,
+              "RMSE": 0.28682688548729357,
+              "count": 1216
+            },
+            "physical_unclipped": {
+              "MAE": 0.23851361921795972,
+              "Pearson": 0.6080927535443033,
+              "Pearson_reason": null,
+              "R2": 0.3166371525638415,
+              "R2_reason": null,
+              "RMSE": 0.2887262312127884,
+              "count": 1216
+            },
+            "physical_unit": "fraction",
+            "raw_prediction_boundary": {
+              "invalid_count": 66,
+              "invalid_fraction": 0.054276315789473686,
+              "raw_max": 1.4427673609804423,
+              "raw_min": -0.0683914593873316,
+              "rule": "prediction<0_or_prediction>1"
+            },
+            "worst_mother_family": {
+              "MAE": 0.3720325856974937,
+              "Pearson": 0.371570813839085,
+              "Pearson_reason": null,
+              "R2": -0.916813315542655,
+              "R2_reason": null,
+              "RMSE": 0.4579778635040745,
+              "count": 147,
+              "family_id": "15/9-19"
+            }
+          },
+          "oof_artifact": "sw/mother_family_logo4_oof.csv",
+          "oof_sha256": "57a03670f89c3e38eee71ce7f74428b156c33e88e6b4e76ecc9dbbe45a864527",
+          "split_legality": "legal",
+          "status": "protocol_diagnostic_complete",
+          "support_by_family": {
+            "15/9-19": 147,
+            "15/9-F-1": 451,
+            "15/9-F-11": 537,
+            "15/9-F-12": 81
+          },
+          "test_access": false
+        },
+        "random_depth_kfold4": {
+          "eligible_count": 1216,
+          "folds": [
+            {
+              "fold_id": 0,
+              "model": {
+                "final_train_loss": 0.05684006923734108,
+                "first_train_loss": 0.33966861468848514,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+                "fit_validation_overlap": false,
+                "stats_sha256": "a3e8f373c426a548b5ed7d1f3bc674a0b0a36279115efd906572d6e616d18419",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "fe10e386ac7a8079c889fffc47b4a5c42b9248ae97cc340b2df08a3c86fa647e",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.19727805021222058,
+                "Pearson": 0.7256242101400535,
+                "Pearson_reason": null,
+                "R2": 0.509954477684866,
+                "R2_reason": null,
+                "RMSE": 0.24768935823403748,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "cffac4397878d9b95a91f7e3f3c76084548ad69a0a031df1ed4b76723a78c0ad",
+              "wall_seconds": 0.00621820567175746
+            },
+            {
+              "fold_id": 1,
+              "model": {
+                "final_train_loss": 0.05494755228761911,
+                "first_train_loss": 0.3490989542656353,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+                "fit_validation_overlap": false,
+                "stats_sha256": "e646e1156961ddec42c068889c56de5517d9491d18b69a1ea68781a54d67746e",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "24aad2e8f1aa58121ca92691b9dc2e2bafb0c06ab9a62b6a7a204b68424e35aa",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.19591037149293677,
+                "Pearson": 0.682682392150442,
+                "Pearson_reason": null,
+                "R2": 0.46583794558338654,
+                "R2_reason": null,
+                "RMSE": 0.25590511906298313,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "ae506ea03f04a40c1e8967ea8d598a2e4e11927f501dce5f0bc1326ef40ce372",
+              "wall_seconds": 0.006285381969064474
+            },
+            {
+              "fold_id": 2,
+              "model": {
+                "final_train_loss": 0.05880524343002222,
+                "first_train_loss": 0.35083528454868856,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+                "fit_validation_overlap": false,
+                "stats_sha256": "eebdb836e8972820f591e9e09f849d856832b318ff0d32fd808ea97e289851ea",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "ba55f1a1cd37a5f676c2f990db1e3302b9137d647eda5c99bb8fdfc29aec061d",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.18683693046793973,
+                "Pearson": 0.7349258104573102,
+                "Pearson_reason": null,
+                "R2": 0.5324552627378407,
+                "R2_reason": null,
+                "RMSE": 0.23458979088647944,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "3f2ff93a1c4fff8d0103e5a463e50e1409cc5b0a5fdf3a1563961826793956ce",
+              "wall_seconds": 0.01062530791386962
+            },
+            {
+              "fold_id": 3,
+              "model": {
+                "final_train_loss": 0.05831790897367164,
+                "first_train_loss": 0.3529367260805522,
+                "hpo": false,
+                "l2_strength": 0.001,
+                "learning_rate": 0.002,
+                "model_id": "reservoir_ridge",
+                "n_features": 153,
+                "seed": 2693,
+                "update_steps": 64,
+                "update_unit": "full_fold_train_batch"
+              },
+              "mother_family_overlap": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "preprocessing": {
+                "calibration": "none",
+                "class_weights": "not_applicable_regression",
+                "fit": "fold_train_only",
+                "fit_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+                "fit_validation_overlap": false,
+                "stats_sha256": "7bbb17b6727c29a6b116d1b2b75de9eee5a985d180164f2f0b5f9d7d6df3f2c7",
+                "target_statistics_fitted": false,
+                "target_transform": "identity",
+                "target_transform_fitted": false,
+                "threshold": "none"
+              },
+              "protocol": "random_depth_kfold4",
+              "target": "SW",
+              "test_firewall": {
+                "frozen_test_family_seen": false,
+                "test_access": false,
+                "test_metrics": false
+              },
+              "train_count": 912,
+              "train_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "train_sample_ids_sha256": "3a9706c15f401294d9b7397f2a42c2755689db691afdcf256ad84fc74e14de83",
+              "validation_count": 304,
+              "validation_groups": [
+                "15/9-19",
+                "15/9-F-1",
+                "15/9-F-11",
+                "15/9-F-12"
+              ],
+              "validation_metrics_physical_unclipped": {
+                "MAE": 0.1835952587736313,
+                "Pearson": 0.7410797639378784,
+                "Pearson_reason": null,
+                "R2": 0.5429423809422491,
+                "R2_reason": null,
+                "RMSE": 0.23583200844729424,
+                "count": 304
+              },
+              "validation_sample_ids_sha256": "0dad934821b5c08a57841e6e513c62d9a6a85c921d3e89ddd9c1899bc0b2afe3",
+              "wall_seconds": 0.014151005074381828
+            }
+          ],
+          "metrics": {
+            "model_domain": {
+              "MAE": 0.19090515273668207,
+              "Pearson": 0.7196832817165282,
+              "Pearson_reason": null,
+              "R2": 0.5133038454530057,
+              "R2_reason": null,
+              "RMSE": 0.2436629610453114,
+              "count": 1216
+            },
+            "per_mother_family_physical_unclipped": {
+              "15/9-19": {
+                "MAE": 0.3486144597079188,
+                "Pearson": 0.351985072294037,
+                "Pearson_reason": null,
+                "R2": -0.5926294385187338,
+                "R2_reason": null,
+                "RMSE": 0.41745719194389425,
+                "count": 147
+              },
+              "15/9-F-1": {
+                "MAE": 0.17668417730525912,
+                "Pearson": 0.7739512569681885,
+                "Pearson_reason": null,
+                "R2": 0.556079088534646,
+                "R2_reason": null,
+                "RMSE": 0.2078566465795747,
+                "count": 451
+              },
+              "15/9-F-11": {
+                "MAE": 0.151183384133226,
+                "Pearson": 0.8207019023033383,
+                "Pearson_reason": null,
+                "R2": 0.6589866235733872,
+                "R2_reason": null,
+                "RMSE": 0.1989903928592106,
+                "count": 537
+              },
+              "15/9-F-12": {
+                "MAE": 0.24721356674724873,
+                "Pearson": 0.909202731410209,
+                "Pearson_reason": null,
+                "R2": 0.06608222070761738,
+                "R2_reason": null,
+                "RMSE": 0.2682657229906441,
+                "count": 81
+              }
+            },
+            "physical_bounded_diagnostic": {
+              "MAE": 0.1891958387300108,
+              "Pearson": 0.7227432283280104,
+              "Pearson_reason": null,
+              "R2": 0.5152398252970452,
+              "R2_reason": null,
+              "RMSE": 0.24317785691954746,
+              "count": 1216
+            },
+            "physical_unclipped": {
+              "MAE": 0.19090515273668207,
+              "Pearson": 0.7196832817165282,
+              "Pearson_reason": null,
+              "R2": 0.5133038454530057,
+              "R2_reason": null,
+              "RMSE": 0.2436629610453114,
+              "count": 1216
+            },
+            "physical_unit": "fraction",
+            "raw_prediction_boundary": {
+              "invalid_count": 29,
+              "invalid_fraction": 0.023848684210526317,
+              "raw_max": 1.2767137911235698,
+              "raw_min": -0.0019048202950194791,
+              "rule": "prediction<0_or_prediction>1"
+            },
+            "worst_mother_family": {
+              "MAE": 0.3486144597079188,
+              "Pearson": 0.351985072294037,
+              "Pearson_reason": null,
+              "R2": -0.5926294385187338,
+              "R2_reason": null,
+              "RMSE": 0.41745719194389425,
+              "count": 147,
+              "family_id": "15/9-19"
+            }
+          },
+          "oof_artifact": "sw/random_depth_kfold4_oof.csv",
+          "oof_sha256": "257841f4f451a1f894382ecc453e92672e3934eb1af4466a8b19aabad14d752e",
+          "split_legality": "invalid_diagnostic",
+          "status": "protocol_diagnostic_complete",
+          "support_by_family": {
+            "15/9-19": 147,
+            "15/9-F-1": 451,
+            "15/9-F-11": 537,
+            "15/9-F-12": 81
+          },
+          "test_access": false
+        }
+      },
+      "sample_ids_sha256": "48b8ea9558f92ee751aa0a776b8daf5427c9ab973aa6550c6c67cba2e6e1a742",
+      "status": "protocol_diagnostic_complete",
+      "support_by_family": {
+        "15/9-19": 147,
+        "15/9-F-1": 451,
+        "15/9-F-11": 537,
+        "15/9-F-12": 81
+      },
+      "target": "SW",
+      "test_access": false,
+      "unit": "fraction"
+    }
+  },
+  "test_firewall": {
+    "fresh_blind_claim": false,
+    "frozen_test_family_seen": false,
+    "test_access": false,
+    "test_loader_implemented": false,
+    "test_metrics": false
+  },
+  "track_id": "property"
+}

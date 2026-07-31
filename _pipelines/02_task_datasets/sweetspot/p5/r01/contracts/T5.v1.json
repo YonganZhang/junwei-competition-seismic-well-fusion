@@ -1,0 +1,14 @@
+{
+  "schema_version": "sweetspot-p5.1-r0-target-contract/v1",
+  "contract_version": "1.0.0", "target_id": "T5", "task_id": "sweetspot.p5.1.r01.t5.remaining_oil", "head_name": "t5_remaining_oil",
+  "status": "not_feasible", "task_type": "regression", "semantic_name": "remaining_oil_infill_potential", "truth_class": "unavailable", "field_truth": false,
+  "label": {"version": "unapproved-no-field-truth-v1", "formula": "none", "model_transform": "identity"},
+  "units": "undefined", "source_fields": [], "input_fields": [],
+  "support": {"sample": "undefined", "spatial_scale": "undefined_without_field_truth", "time_scale": "undefined_without_field_truth"},
+  "censoring": "not applicable because no approved field label exists",
+  "split": {"strategy": "undefined", "group_key": "field_region", "root_seed": 2693, "test_access": "forbidden"},
+  "metrics": {"primary": ["mae"], "directions": {"mae": "minimize"}},
+  "approval": {"approved": false, "basis": "explicit_user_goal_directive", "scope": "simulation proxy is insufficient"},
+  "r1_lane": {"input_modality": "tabular", "model": "none", "selection_status": "not_rankable"},
+  "warnings": ["No audited field truth is available", "Simulation-only proxies may not be substituted"]
+}

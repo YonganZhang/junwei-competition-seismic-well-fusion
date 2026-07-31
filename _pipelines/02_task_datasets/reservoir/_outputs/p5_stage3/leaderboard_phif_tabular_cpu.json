@@ -1,0 +1,129 @@
+{
+  "completed_cells": 36,
+  "cross_lane_ranking": false,
+  "direction": "minimize",
+  "entries": [
+    {
+      "completed_cells": 12,
+      "completion_rate": 1.0,
+      "expected_cells": 12,
+      "fold_mean_physical_RMSE": {
+        "0": 0.020527183400306417,
+        "1": 0.04979029079355759,
+        "2": 0.0235657516703551,
+        "3": 0.016678934680823772
+      },
+      "input_modalities": [
+        "tabular"
+      ],
+      "max_wall_seconds": 10.865300359204412,
+      "mean_model_domain_RMSE": 0.027640540136260716,
+      "mean_physical_MAE": 0.017652641869560608,
+      "mean_physical_R2": 0.8382560159606053,
+      "mean_physical_RMSE": 0.027640540136260716,
+      "mean_physical_RMSE_bootstrap_95_CI": [
+        0.020942564510670614,
+        0.0352824792814938
+      ],
+      "mean_wall_seconds": 1.0684266097766038,
+      "model_id": "extra_trees_regressor",
+      "rank": 1,
+      "seed_mean_RMSE_std": 0.0004934088171208016,
+      "seed_mean_physical_RMSE": {
+        "1867973658": 0.027635110367988082,
+        "2137841944": 0.027038973397781225,
+        "3902865753": 0.028247536643012855
+      },
+      "worst_fold": "1",
+      "worst_fold_physical_RMSE": 0.04979029079355759
+    },
+    {
+      "completed_cells": 12,
+      "completion_rate": 1.0,
+      "expected_cells": 12,
+      "fold_mean_physical_RMSE": {
+        "0": 0.025579661433555684,
+        "1": 0.049962798750210806,
+        "2": 0.027195307130991563,
+        "3": 0.01666163691206739
+      },
+      "input_modalities": [
+        "tabular"
+      ],
+      "max_wall_seconds": 209.920151385013,
+      "mean_model_domain_RMSE": 0.029849851056706362,
+      "mean_physical_MAE": 0.020036476238627445,
+      "mean_physical_R2": 0.8156433538651999,
+      "mean_physical_RMSE": 0.029849851056706362,
+      "mean_physical_RMSE_bootstrap_95_CI": [
+        0.02341161956633274,
+        0.03743197280611819
+      ],
+      "mean_wall_seconds": 35.55548559513409,
+      "model_id": "hist_gradient_boosting_regressor",
+      "rank": 2,
+      "seed_mean_RMSE_std": 0.0,
+      "seed_mean_physical_RMSE": {
+        "1867973658": 0.029849851056706362,
+        "2137841944": 0.029849851056706362,
+        "3902865753": 0.029849851056706362
+      },
+      "worst_fold": "1",
+      "worst_fold_physical_RMSE": 0.049962798750210806
+    },
+    {
+      "completed_cells": 12,
+      "completion_rate": 1.0,
+      "expected_cells": 12,
+      "fold_mean_physical_RMSE": {
+        "0": 0.02553684022476083,
+        "1": 0.04974128761589345,
+        "2": 0.028089627732763356,
+        "3": 0.018147596870711585
+      },
+      "input_modalities": [
+        "tabular"
+      ],
+      "max_wall_seconds": 1.0988545869477093,
+      "mean_model_domain_RMSE": 0.03037883811103231,
+      "mean_physical_MAE": 0.020435394177623366,
+      "mean_physical_R2": 0.8110591869145621,
+      "mean_physical_RMSE": 0.03037883811103231,
+      "mean_physical_RMSE_bootstrap_95_CI": [
+        0.02435015286074568,
+        0.03725845253065311
+      ],
+      "mean_wall_seconds": 0.18357112697170427,
+      "model_id": "lightgbm_regressor",
+      "rank": 3,
+      "seed_mean_RMSE_std": 3.469446951953614e-18,
+      "seed_mean_physical_RMSE": {
+        "1867973658": 0.030378838111032307,
+        "2137841944": 0.030378838111032307,
+        "3902865753": 0.030378838111032307
+      },
+      "worst_fold": "1",
+      "worst_fold_physical_RMSE": 0.04974128761589345
+    }
+  ],
+  "expected_cells": 36,
+  "lane": "tabular_cpu",
+  "legal_completion_rate": 1.0,
+  "minimum_legal_completion_rate": 0.8,
+  "primary_metric": "mean_physical_RMSE",
+  "ranking_tiebreakers": [
+    "mean_physical_RMSE",
+    "worst_fold_physical_RMSE",
+    "seed_mean_RMSE_std",
+    "mean_wall_seconds",
+    "model_id"
+  ],
+  "schema_version": 1,
+  "split_hash": "2334f3cc301fc66d6b98c6edf3a4f9c920776469531003d62f5370e119426a18",
+  "stage": 3,
+  "status": "rankable",
+  "target": "PHIF",
+  "task_id": "reservoir_property_stage3_phif",
+  "test_access": false,
+  "track_id": "property"
+}

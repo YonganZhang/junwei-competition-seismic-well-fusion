@@ -1,0 +1,104 @@
+{
+  "detail": "nnunetv2==2.8.1 (installed=None, importable=False); dynamic-network-architectures>=0.4.2 (installed=None, importable=False)",
+  "evidence_state": "scouted",
+  "frozen_test_accessed": false,
+  "model_id": "nnunet_v2_3d_fullres",
+  "reason_code": "DEPENDENCY_UNAVAILABLE",
+  "runtime_gate": {
+    "detail": "nnunetv2==2.8.1 (installed=None, importable=False); dynamic-network-architectures>=0.4.2 (installed=None, importable=False)",
+    "evidence": {
+      "code_license": "Apache-2.0",
+      "commercial_use": "allowed",
+      "dependencies": [
+        {
+          "distribution": "torch",
+          "import_name": "torch",
+          "importable": true,
+          "installed_version": "2.12.1+cu130",
+          "required": ">=2.1.2",
+          "version_ok": true
+        },
+        {
+          "distribution": "nnunetv2",
+          "import_name": "nnunetv2",
+          "importable": false,
+          "installed_version": null,
+          "required": "==2.8.1",
+          "version_ok": false
+        },
+        {
+          "distribution": "dynamic-network-architectures",
+          "import_name": "dynamic_network_architectures",
+          "importable": false,
+          "installed_version": null,
+          "required": ">=0.4.2",
+          "version_ok": false
+        }
+      ],
+      "model_id": "nnunet_v2_3d_fullres",
+      "source_revision": "468cf803df9b267150ae2b6c0c59b8ac84f16227",
+      "source_tag": "v2.8.1",
+      "source_url": "https://github.com/MIC-DKFZ/nnUNet",
+      "weights": {
+        "approved": false,
+        "required": false,
+        "sha256": null,
+        "source": null
+      }
+    },
+    "reason_code": "DEPENDENCY_UNAVAILABLE",
+    "status": "skipped"
+  },
+  "source_lock": {
+    "adapter": {
+      "backend": "nnunetv2",
+      "builder": "plain_conv_unet",
+      "minimum_shape": [
+        16,
+        16,
+        16
+      ],
+      "shape_multiple": [
+        8,
+        8,
+        8
+      ],
+      "source_mode": "installed_distribution",
+      "trainable": true
+    },
+    "dependencies": [
+      {
+        "distribution": "torch",
+        "import_name": "torch",
+        "specifier": ">=2.1.2"
+      },
+      {
+        "distribution": "nnunetv2",
+        "import_name": "nnunetv2",
+        "specifier": "==2.8.1"
+      },
+      {
+        "distribution": "dynamic-network-architectures",
+        "import_name": "dynamic_network_architectures",
+        "specifier": ">=0.4.2"
+      }
+    ],
+    "family": "nnU-Net v2 3d_fullres PlainConvUNet architecture",
+    "model_id": "nnunet_v2_3d_fullres",
+    "source": {
+      "commercial_use": "allowed",
+      "license_spdx": "Apache-2.0",
+      "license_url": "https://github.com/MIC-DKFZ/nnUNet/blob/v2.8.1/LICENSE",
+      "revision": "468cf803df9b267150ae2b6c0c59b8ac84f16227",
+      "tag": "v2.8.1",
+      "url": "https://github.com/MIC-DKFZ/nnUNet"
+    },
+    "weights": {
+      "approved": false,
+      "required": false,
+      "sha256": null,
+      "source": null
+    }
+  },
+  "status": "skipped"
+}

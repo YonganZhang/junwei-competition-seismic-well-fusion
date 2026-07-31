@@ -1,0 +1,280 @@
+{
+  "accuracy": 0.5285719215618407,
+  "all_classes_supported": true,
+  "artifact_context": {
+    "checkpoint_sha256": "75d57a72ee39e2105355b108ed1fd2fbbc3c0a74ae770650975829ec096133f0",
+    "configuration_hash": "f2161f0c1e7a78bf567e7cd0eb3b39d9539b90b7b24da9c419d51b687013bdbe",
+    "label_version": "penobscot-dataset-log-v3-ids-0-7-v1",
+    "lane": "scratch",
+    "leaderboard_sha256": "8904769dc0b4b806785ce304d449ecf18a132b2ca8f320b61475c3f9c2f74b21",
+    "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+    "task_id": "facies_penobscot",
+    "track_id": "facies",
+    "winner_model_id": "smp_deeplabv3plus_r18"
+  },
+  "averaging": "all_configured_classes_and_valid_pixels",
+  "brier": 0.7475083526250967,
+  "calibration_fit": "none_identity_no_test_fit",
+  "calibration_pixels": 7766016,
+  "classwise_ece": [
+    0.09280436429688331,
+    0.06059684171878941,
+    0.07448787739679696,
+    0.1270382903065631,
+    0.07201932779866661,
+    0.04926335192399155,
+    0.07417485208836641,
+    0.43147784788209553
+  ],
+  "confusion_matrix": [
+    [
+      0,
+      29,
+      653,
+      3519,
+      0,
+      292,
+      33302,
+      88
+    ],
+    [
+      456,
+      496,
+      22616,
+      1978,
+      0,
+      4465,
+      231783,
+      0
+    ],
+    [
+      252,
+      1003,
+      95434,
+      25921,
+      0,
+      6395,
+      287780,
+      0
+    ],
+    [
+      0,
+      59,
+      5696,
+      14783,
+      0,
+      555,
+      55526,
+      0
+    ],
+    [
+      91,
+      398,
+      21967,
+      10266,
+      0,
+      1589,
+      83361,
+      10150
+    ],
+    [
+      17881,
+      982,
+      137562,
+      307860,
+      85,
+      51858,
+      611753,
+      111438
+    ],
+    [
+      7021,
+      512,
+      111619,
+      127057,
+      57,
+      24983,
+      347179,
+      160495
+    ],
+    [
+      17117,
+      2286,
+      169313,
+      541936,
+      69,
+      57842,
+      443060,
+      3595148
+    ]
+  ],
+  "cuda_peak_allocated_bytes": 173018624,
+  "ece": 0.29393358615840925,
+  "evaluated_pixels": 7766016,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "finite_logits": true,
+  "fresh_blind": false,
+  "ignore_index": null,
+  "ignored_pixels": 0,
+  "inference_wall_seconds": 2.8483369341120124,
+  "macro_classwise_ece": 0.12273284417651911,
+  "macro_f1": 0.17091652116031972,
+  "miou": 0.125379989161776,
+  "n_bins": 15,
+  "nll": 1.8792659546693524,
+  "per_class_f1": [
+    0.0,
+    0.0037075934653665174,
+    0.19443688909941986,
+    0.02663749989864308,
+    0.0,
+    0.07475576582927178,
+    0.24171197009608145,
+    0.8260824508937752
+  ],
+  "per_class_iou": [
+    0.0,
+    0.0018572396775292722,
+    0.10768767257459003,
+    0.013498533542253341,
+    0.0,
+    0.03882923761175255,
+    0.13747006519136104,
+    0.7036971646967219
+  ],
+  "per_class_support": [
+    37883,
+    261794,
+    416785,
+    76619,
+    127822,
+    1239419,
+    778923,
+    4826771
+  ],
+  "prediction_rule": "argmax_of_raw_logit_softmax",
+  "prior_test_consumed": true,
+  "reliability_bins": [
+    {
+      "accuracy": null,
+      "count": 0,
+      "lower": 0.0,
+      "mean_confidence": null,
+      "upper": 0.06666666666666667
+    },
+    {
+      "accuracy": 0.12,
+      "count": 75,
+      "lower": 0.06666666666666667,
+      "mean_confidence": 0.13228316009044647,
+      "upper": 0.13333333333333333
+    },
+    {
+      "accuracy": 0.2324204388435382,
+      "count": 2329623,
+      "lower": 0.13333333333333333,
+      "mean_confidence": 0.1742830814173443,
+      "upper": 0.2
+    },
+    {
+      "accuracy": 0.47296583014878724,
+      "count": 1827576,
+      "lower": 0.2,
+      "mean_confidence": 0.23011787044005402,
+      "upper": 0.26666666666666666
+    },
+    {
+      "accuracy": 0.7028295639450548,
+      "count": 1268464,
+      "lower": 0.26666666666666666,
+      "mean_confidence": 0.2994051326938994,
+      "upper": 0.3333333333333333
+    },
+    {
+      "accuracy": 0.8724739756122444,
+      "count": 1264487,
+      "lower": 0.3333333333333333,
+      "mean_confidence": 0.3666710138173571,
+      "upper": 0.4
+    },
+    {
+      "accuracy": 0.8936285507852607,
+      "count": 736316,
+      "lower": 0.4,
+      "mean_confidence": 0.42430794492769247,
+      "upper": 0.4666666666666667
+    },
+    {
+      "accuracy": 0.3864451000950964,
+      "count": 82022,
+      "lower": 0.4666666666666667,
+      "mean_confidence": 0.49176071580663916,
+      "upper": 0.5333333333333333
+    },
+    {
+      "accuracy": 0.12408517088652567,
+      "count": 42221,
+      "lower": 0.5333333333333333,
+      "mean_confidence": 0.5643127066707745,
+      "upper": 0.6
+    },
+    {
+      "accuracy": 0.09155158114881189,
+      "count": 27733,
+      "lower": 0.6,
+      "mean_confidence": 0.6315406883218116,
+      "upper": 0.6666666666666666
+    },
+    {
+      "accuracy": 0.0976346250629089,
+      "count": 19870,
+      "lower": 0.6666666666666666,
+      "mean_confidence": 0.6989227713624256,
+      "upper": 0.7333333333333333
+    },
+    {
+      "accuracy": 0.09804376850293145,
+      "count": 17227,
+      "lower": 0.7333333333333333,
+      "mean_confidence": 0.7666755791063918,
+      "upper": 0.8
+    },
+    {
+      "accuracy": 0.07350821562409916,
+      "count": 17345,
+      "lower": 0.8,
+      "mean_confidence": 0.8340766797013501,
+      "upper": 0.8666666666666667
+    },
+    {
+      "accuracy": 0.049326949137230104,
+      "count": 22138,
+      "lower": 0.8666666666666667,
+      "mean_confidence": 0.901487838471848,
+      "upper": 0.9333333333333333
+    },
+    {
+      "accuracy": 0.00762718740702675,
+      "count": 110919,
+      "lower": 0.9333333333333333,
+      "mean_confidence": 0.9887755899630771,
+      "upper": 1.0
+    }
+  ],
+  "schema_version": "facies-p5-stage4-known-holdout-v1",
+  "test_archive_opened": true,
+  "test_group_count": 121,
+  "test_labels_read": true,
+  "test_metrics_computed": true,
+  "test_sample_count": 474,
+  "valid_label_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ]
+}

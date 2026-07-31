@@ -1,0 +1,16 @@
+{
+  "evidence": {
+    "fresh_blind": false,
+    "manifest_sha256": "0258f7e25a4a2df7c332bed3809e0999b62982fd906e66d3e5f495ba336805b1",
+    "prior_test_consumed": true,
+    "result_hash": "a87804bd19ae531088d0cd14862f75a3243907fbd6e5e3c49af5d233bb75de40"
+  },
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "mode": "conditional",
+  "prior_test_consumed": true,
+  "schema_version": "p5-stage4-reconstruction-confirmation-v1",
+  "state": "CONFIRMATION_COMPLETE",
+  "task_id": "volve_porosity_conditional_reconstruction",
+  "track_id": "reconstruction"
+}

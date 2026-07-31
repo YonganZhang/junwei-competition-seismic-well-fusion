@@ -1,0 +1,176 @@
+{
+  "curve_ranges": {
+    "19A": {
+      "depth_msl_m": [
+        0.0,
+        3246.9
+      ],
+      "rows": 185,
+      "twt_ms": [
+        0.0,
+        2767.6001
+      ]
+    },
+    "19BT2": {
+      "depth_msl_m": [
+        0.0,
+        3301.0
+      ],
+      "rows": 133,
+      "twt_ms": [
+        0.0,
+        2820.0
+      ]
+    },
+    "19SR": {
+      "depth_msl_m": [
+        0.0,
+        3064.5
+      ],
+      "rows": 167,
+      "twt_ms": [
+        0.0,
+        2657.8
+      ]
+    },
+    "F11T2": {
+      "depth_msl_m": [
+        634.43,
+        3312.36
+      ],
+      "rows": 249,
+      "twt_ms": [
+        717.474,
+        2823.12
+      ]
+    },
+    "F15A": {
+      "depth_msl_m": [
+        1052.0,
+        3079.8
+      ],
+      "rows": 191,
+      "twt_ms": [
+        1096.2,
+        2671.3
+      ]
+    }
+  },
+  "decision": {
+    "eligible_for_downstream_alignment_evaluation": true,
+    "porosity_blind_test_claimed": false,
+    "strict_pooled_mae_improvement": true,
+    "validation_well_wins": 2
+  },
+  "inputs": {
+    "build_summary_sha256": "950ef2405e3d98fe4dbdaf235f4f12bb22dd66f4f3560444e296b857ac905dea",
+    "seismic_index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "vsp_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4",
+    "weak_tie_sha256": "cbe33360639fe7f807975e0264bd3a9222bed6372b7aa17a232aa261c339dcf0",
+    "well_picks_sha256": "1c132bba09555915b62e23dc4475f790a304856d369d9d26cc76466cf7b77d3a"
+  },
+  "per_validation_well": {
+    "F11T2": {
+      "candidate_contributors_range": [
+        1,
+        3
+      ],
+      "candidate_mae_delta_ms": -625.7516453348915,
+      "checkshot_candidate": {
+        "bias_ms": -5.392702555723131,
+        "equivalent_4ms_sample_mae": 2.42177220384715,
+        "mae_ms": 9.6870888153886,
+        "median_absolute_error_ms": 7.514454396196925,
+        "rmse_ms": 13.044354001965155,
+        "rows": 39
+      },
+      "depth_range_msl_m": [
+        2805.31,
+        3282.84
+      ],
+      "weak": {
+        "bias_ms": -635.4387341502801,
+        "equivalent_4ms_sample_mae": 158.85968353757002,
+        "mae_ms": 635.4387341502801,
+        "median_absolute_error_ms": 636.0770068359375,
+        "rmse_ms": 636.1491264508285,
+        "rows": 39
+      },
+      "weak_contributors_range": [
+        1,
+        2
+      ]
+    },
+    "F15A": {
+      "candidate_contributors_range": [
+        3,
+        3
+      ],
+      "candidate_mae_delta_ms": -623.207561938754,
+      "checkshot_candidate": {
+        "bias_ms": 5.566499232210812,
+        "equivalent_4ms_sample_mae": 1.9592533439128696,
+        "mae_ms": 7.837013375651479,
+        "median_absolute_error_ms": 7.286174458887217,
+        "rmse_ms": 9.07602436582284,
+        "rows": 41
+      },
+      "depth_range_msl_m": [
+        2802.5,
+        3003.9
+      ],
+      "weak": {
+        "bias_ms": -631.0445753144055,
+        "equivalent_4ms_sample_mae": 157.76114382860138,
+        "mae_ms": 631.0445753144055,
+        "median_absolute_error_ms": 631.0353759765626,
+        "rmse_ms": 631.0532355708102,
+        "rows": 41
+      },
+      "weak_contributors_range": [
+        1,
+        1
+      ]
+    }
+  },
+  "pooled": {
+    "candidate_mae_delta_ms": -624.4478025943711,
+    "checkshot_candidate": {
+      "bias_ms": 0.22388836059301412,
+      "equivalent_4ms_sample_mae": 2.1847312881308314,
+      "mae_ms": 8.738925152523326,
+      "median_absolute_error_ms": 7.400314427542071,
+      "rmse_ms": 11.187825208493493,
+      "rows": 80
+    },
+    "weak": {
+      "bias_ms": -633.1867277468943,
+      "equivalent_4ms_sample_mae": 158.2966819367236,
+      "mae_ms": 633.1867277468943,
+      "median_absolute_error_ms": 633.4968969726563,
+      "rmse_ms": 633.5426027839591,
+      "rows": 80
+    }
+  },
+  "protocol": {
+    "fit_wells": [
+      "19A",
+      "19BT2",
+      "19SR"
+    ],
+    "holdout_opened": false,
+    "independent_validation_wells": [
+      "F11T2",
+      "F15A"
+    ],
+    "porosity_labels_used": false,
+    "primary_metric": "pooled independent-well TWT MAE",
+    "reconstruction_hdf5_opened": [],
+    "target_depth_range_msl_m": [
+      2800.718505859375,
+      3543.77587890625
+    ]
+  },
+  "schema_version": "reconstruction-p23-checkshot-calibration/v1",
+  "status": "VALIDATED_CALIBRATION_ONLY"
+}

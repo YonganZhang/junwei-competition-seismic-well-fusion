@@ -1,0 +1,120 @@
+{
+  "schema_version": "lithofacies-p5-stage3-gm09-p-leaderboard-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "lane": "P",
+  "status": "ranked",
+  "reason": null,
+  "expected_cells": 36,
+  "legal_cells": 33,
+  "completion_rate": 0.9166666666666666,
+  "minimum_completion_rate": 0.8,
+  "primary_metric": "fixed_schema_macro_f1_mean",
+  "supported_class_metric_role": "diagnostic_only",
+  "bootstrap": {
+    "method": "nonparametric_cell_bootstrap",
+    "samples": 10000,
+    "confidence": 0.95,
+    "seed_derivation": "sha256(root_seed,stage3-bootstrap,model_id)"
+  },
+  "tie_breakers": [
+    "worst_fold_fixed_schema_macro_f1_desc",
+    "seed_mean_std_asc",
+    "wall_seconds_mean_asc",
+    "model_id_asc"
+  ],
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "entries": [
+    {
+      "rank": 1,
+      "model_id": "xgboost_multisoftprob_window",
+      "status": "eligible",
+      "legal_cells": 12,
+      "expected_cells": 12,
+      "completion_rate": 1.0,
+      "fixed_schema_macro_f1_mean": 0.19493770207563763,
+      "fixed_schema_macro_f1_ci95": [
+        0.1878080737057791,
+        0.20244003525114362
+      ],
+      "worst_fold_fixed_schema_macro_f1": 0.18127577519230875,
+      "seed_mean_std": 3.3993498887762956e-17,
+      "supported_class_macro_f1_mean_diagnostic": 0.25830527131650355,
+      "fold_means": {
+        "0": 0.2135804514277343,
+        "1": 0.18357214680744094,
+        "2": 0.18127577519230875,
+        "3": 0.20132243487506649
+      },
+      "seed_means": {
+        "1867973658": 0.1949377020756376,
+        "2137841944": 0.1949377020756376,
+        "3902865753": 0.1949377020756376
+      },
+      "wall_seconds_mean": 3.728414443321526,
+      "wall_seconds_max": 35.388728006742895,
+      "peak_vram_bytes_max": 0
+    },
+    {
+      "rank": 2,
+      "model_id": "inceptiontime_window",
+      "status": "eligible",
+      "legal_cells": 12,
+      "expected_cells": 12,
+      "completion_rate": 1.0,
+      "fixed_schema_macro_f1_mean": 0.07846714510477248,
+      "fixed_schema_macro_f1_ci95": [
+        0.05643515413587593,
+        0.09964738279873003
+      ],
+      "worst_fold_fixed_schema_macro_f1": 0.05508472159740694,
+      "seed_mean_std": 0.007953806638198101,
+      "supported_class_macro_f1_mean_diagnostic": 0.10477886286164347,
+      "fold_means": {
+        "0": 0.09411116042650636,
+        "1": 0.1016312144995573,
+        "2": 0.06304148389561935,
+        "3": 0.05508472159740694
+      },
+      "seed_means": {
+        "1867973658": 0.07014238500256331,
+        "2137841944": 0.07926993932301851,
+        "3902865753": 0.08598911098873563
+      },
+      "wall_seconds_mean": 1.0034357471158728,
+      "wall_seconds_max": 6.735021349042654,
+      "peak_vram_bytes_max": 72715776
+    },
+    {
+      "rank": null,
+      "model_id": "catboost_multiclass_window",
+      "status": "not_rankable",
+      "legal_cells": 9,
+      "expected_cells": 12,
+      "completion_rate": 0.75,
+      "fixed_schema_macro_f1_mean": 0.181182548375207,
+      "fixed_schema_macro_f1_ci95": [
+        0.1625521004219888,
+        0.2022281474810584
+      ],
+      "worst_fold_fixed_schema_macro_f1": null,
+      "seed_mean_std": 0.01005824156209652,
+      "supported_class_macro_f1_mean_diagnostic": 0.2588643110562604,
+      "fold_means": {
+        "0": 0.18073316109170132,
+        "1": 0.16511837477933006,
+        "3": 0.19769610925458958
+      },
+      "seed_means": {
+        "1867973658": 0.188479611390968,
+        "2137841944": 0.18535916075287232,
+        "3902865753": 0.16970887298178064
+      },
+      "wall_seconds_mean": 3.2947533323119083,
+      "wall_seconds_max": 3.6597603079862893,
+      "peak_vram_bytes_max": 0
+    }
+  ],
+  "development_only": true,
+  "frozen_test_accessed": false
+}

@@ -1,0 +1,36 @@
+{
+  "B0": {
+    "fresh_blind": false,
+    "prior_test_consumed": true,
+    "source": {
+      "metrics_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/metrics.json",
+      "refit_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T1/refit.json",
+      "summary_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json"
+    },
+    "source_hashes": {
+      "metrics": "eb793fab14537e35cae1106b4c99134fe42b06a6017b265793fae2170d579694",
+      "refit": "e230fe1830ebf85f73ac49fa947e982d462c91ebce2c34bed0e86a36dbe7472d",
+      "summary": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+    },
+    "source_kind": "authorized known-holdout members only",
+    "status": "PARTIAL_READY",
+    "target_id": "T1"
+  },
+  "B1": {
+    "fresh_blind": false,
+    "prior_test_consumed": true,
+    "source": {
+      "metrics_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/metrics.json",
+      "refit_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T2/refit.json",
+      "summary_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json"
+    },
+    "source_hashes": {
+      "metrics": "35201e05547cdbe95d53ffcde24faae2efb3a759a999d0542fef5c504482edd3",
+      "refit": "8d00a3481fa346aeac10209def5a28d249b465c9eaa16faff93acf356897d5aa",
+      "summary": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+    },
+    "source_kind": "authorized known-holdout members only",
+    "status": "PARTIAL_READY",
+    "target_id": "T2"
+  }
+}

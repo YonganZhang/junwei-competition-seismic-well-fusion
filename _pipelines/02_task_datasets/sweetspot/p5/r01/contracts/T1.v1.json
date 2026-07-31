@@ -1,0 +1,15 @@
+{
+  "schema_version": "sweetspot-p5.1-r0-target-contract/v1",
+  "contract_version": "1.0.0", "target_id": "T1", "task_id": "sweetspot.p5.1.r01.t1.rqi_proxy", "head_name": "t1_rqi_proxy",
+  "status": "runnable_if_development_audit_passes", "task_type": "regression", "semantic_name": "reservoir_quality_rqi_proxy", "truth_class": "proxy", "field_truth": false,
+  "label": {"version": "rqi-0.0314-sqrt-klogh-over-phif-v1", "formula": "0.0314*sqrt(KLOGH/PHIF)", "validity": "finite PHIF>0 and finite KLOGH>=0", "threshold": null, "model_transform": "log1p"},
+  "units": "sqrt(mD/fraction)", "source_fields": ["PHIF", "KLOGH"],
+  "support": {"sample": "joined raw/CPI LAS depth row", "spatial_scale": "wellbore depth point", "time_scale": "not_applicable"},
+  "censoring": "invalid PHIF/KLOGH or no finite raw input is unlabeled and excluded",
+  "input_fields": ["GR", "RHOB", "NPHI", "RT", "DT", "DTS", "PEF", "DRHO", "CALI", "BS", "RD", "RM", "RACEHM", "RACELM", "RPCEHM", "RPCELM"],
+  "split": {"strategy": "mother_well_logo", "group_key": "well_family", "root_seed": 2693, "test_access": "forbidden"},
+  "metrics": {"primary": ["mae", "rmse", "spearman"], "directions": {"mae": "minimize", "rmse": "minimize", "spearman": "maximize"}},
+  "approval": {"approved": true, "basis": "explicit_user_goal_directive", "scope": "R0 contract and R1 development-only mechanism check"},
+  "r1_lane": {"input_modality": "well_logs", "model": "robust_linear", "selection_status": "not_rankable"},
+  "warnings": ["RQI proxy is not field sweetspot truth", "No threshold or composite weighting is approved"]
+}

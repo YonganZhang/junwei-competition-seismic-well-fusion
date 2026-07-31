@@ -1,0 +1,88 @@
+{
+  "claim": "known-holdout confirmation only; not an independent blind test",
+  "conditional_reconstruction_not_strict_holdout": true,
+  "evidence_class": "previously_seen_reusable_holdout",
+  "fresh_blind": false,
+  "modes_are_independent": true,
+  "prior_test_consumed": true,
+  "results": {
+    "conditional": {
+      "config_hash": "a5827599b46208d5bf6bb02507927668feb81c0c214ed4869f903107b459822a",
+      "counts": {
+        "development_active_cells": 134222,
+        "development_patches": 140,
+        "excluded_exact_constraint_cells": 90,
+        "metric_voxels": 49233,
+        "model_fit_cells": 512,
+        "test_active_cells": 49323,
+        "test_patches": 70
+      },
+      "figure": "conditional/confirmation.png",
+      "figure_sha256": "5e084a5cf8cc84c9556e924fad7e2fd906ce7d326891729f06322f3c7189354c",
+      "manifest": "conditional/manifest.json",
+      "manifest_sha256": "0258f7e25a4a2df7c332bed3809e0999b62982fd906e66d3e5f495ba336805b1",
+      "metrics": {
+        "conditional_bias": 0.0004605375204281936,
+        "conditional_mae": 0.015087601675183084,
+        "conditional_out_of_range_rate": 0.0,
+        "conditional_pearson_r": 0.1393637594414108,
+        "conditional_r2": 0.013685620787833641,
+        "conditional_rmse": 0.021012888252387812,
+        "conditional_spectral_log_rmse": 1.1033902175256411,
+        "evaluation_mode": "conditional",
+        "pearson_r_defined": true,
+        "task_id": "volve_porosity_conditional_reconstruction",
+        "voxel_count": 49233
+      },
+      "predictions": "conditional/predictions.npz",
+      "predictions_sha256": "1902247f3337df3372fd4b711ba496f4f9272d97e4182bc5b8170b20ad88bc08",
+      "result_hash": "a87804bd19ae531088d0cd14862f75a3243907fbd6e5e3c49af5d233bb75de40",
+      "split_hash": "ffe1fddbfd3ef8e2a9e0b3f3942133226610c872e7da37460f070782cba700a6",
+      "status": "passed",
+      "wall_seconds": 21.185239925980568
+    },
+    "strict": {
+      "config_hash": "77668137e447b33a4b2ba92086ae21eb668ae60b52d27dd5609ef6e793af5761",
+      "counts": {
+        "development_active_cells": 49323,
+        "development_patches": 70,
+        "excluded_exact_constraint_cells": 0,
+        "metric_voxels": 78949,
+        "model_fit_cells": 512,
+        "test_active_cells": 78949,
+        "test_patches": 105
+      },
+      "figure": "strict/confirmation.png",
+      "figure_sha256": "76d39942121ee56c2d264d1b5a4f976988f0c6a547307a72dffe46d53c81094a",
+      "manifest": "strict/manifest.json",
+      "manifest_sha256": "5e62d9e722a6321cf95147ace2ebe83c7da3a9eaf90494c8013eeddb8d8c6577",
+      "metrics": {
+        "evaluation_mode": "strict",
+        "pearson_r_defined": true,
+        "strict_bias": 0.01754357841298476,
+        "strict_mae": 0.027172838434594462,
+        "strict_out_of_range_rate": 0.0,
+        "strict_pearson_r": -0.12004558302147143,
+        "strict_r2": -0.3396787079619956,
+        "strict_rmse": 0.03562492535922522,
+        "strict_spectral_log_rmse": 1.4798489864025641,
+        "task_id": "volve_porosity_strict_spatial_reconstruction",
+        "voxel_count": 78949
+      },
+      "predictions": "strict/predictions.npz",
+      "predictions_sha256": "cc595c073611dcbd952223800e28306d2aef6c6409c5168f8e2cb0f97625caed",
+      "result_hash": "b189b7c5342d1cab4813049093eff9f4507f9ffe78e37332c8df3ae295b62c8b",
+      "split_hash": "1f73ab386a27c533cf631fba9ddd26e07b765b325a12ef8477e986886be07fea",
+      "status": "passed",
+      "wall_seconds": 28.5959363989532
+    }
+  },
+  "root_seed": 2693,
+  "schema_version": "p5-stage4-reconstruction-summary-v1",
+  "summary_hash": "ec9f0abb786f35a474eebf973cb150895204bcdbc2790bc84856a0b8e9f50059",
+  "track_id": "reconstruction",
+  "winner": {
+    "conditional": "pykrige_ok3d",
+    "strict": "pykrige_ok3d"
+  }
+}

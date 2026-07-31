@@ -1,0 +1,39 @@
+{
+  "schema_version": "lithofacies-p5.1-r01-artifacts-v1",
+  "status": "PASS",
+  "development_data": {
+    "basename": "train.h5",
+    "sha256": "4cd414adb4a76447a35599416b55b91d41c62da19d676fe2289e10c35361450c"
+  },
+  "development_batch": {
+    "basename": "development.npz",
+    "sha256": "ed2e3c9e38d38132874548ecf2c46bc8b1050db55ab54f1cd821fb1db70116a2"
+  },
+  "config_hash": "5006b53f42c68e76d6d9a10caeb99b231896e403c3b87202bff3a967ed703958",
+  "r0_contract": {
+    "path": "r0_contract.json",
+    "sha256": "7fcca52e1114719695a0c2e9fd5cce3c22278e424795000c0ce31f07f000ee38"
+  },
+  "r1_results": {
+    "path": "r1_results.jsonl",
+    "sha256": "fe72d99d7dbb0f4a2e97ea3608b4e8675dbef20d7bb02fde100367c47f1ff59e"
+  },
+  "r1_summary": {
+    "path": "r1_summary.json",
+    "sha256": "704aefa45d0b7a55cc3973a84252523600c33299ef847e439fb06ba19095c041"
+  },
+  "split_hashes": [
+    "2403e61939cd19670b0dceb0bc4cced40cb6e03003bbae0044ab29f1eb301d15",
+    "297f164c1f6267ad2d759532fe523bad8728df9c2917afd7bb25b96d3bde29b5",
+    "551e14f1b53ad5e9de83799b555d022c325fc175675bf9abf99bd8f9959fc063",
+    "7777587a5d31e9e9fa632ae1796d1f77e2aa627c8f6f80782ed77266ef00f8f7",
+    "883abad25bf411b57d1343face643d372e5052d94cfc41960257d8e2daa150c2",
+    "883b550d68cd9ed85b3514f46b107dd811d1fa71d24cb3502e506788b2e37a1e",
+    "93f28741052800df1b18a10ae944b31ea727a33e908738d4ad6b83ba48ce1fa0",
+    "ea95fe24e6e60e941195527d72d7019e072c4b547ba99ad42082d459e213165c"
+  ],
+  "physical_test_accessed": false,
+  "known_holdout_artifacts_read": false,
+  "absolute_paths_serialized": false,
+  "checkpoints_written": false
+}

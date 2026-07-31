@@ -1,0 +1,13 @@
+{
+  "expected_training_cells": 0,
+  "frozen_test_accessed": false,
+  "lane": "fault_3d_segmentation_data_gate",
+  "large_prediction_policy": "track-private ignored directory only after data gate unblocks",
+  "prediction_artifacts": [],
+  "prediction_count": 0,
+  "protocol": "fault-p5-stage3-oof-manifest-v1",
+  "reason_code": "NO_VALID_FAULT_DEVELOPMENT_FOLDS",
+  "status": "not_generated",
+  "task_id": "fault_stick_segmentation",
+  "track_id": "fault"
+}

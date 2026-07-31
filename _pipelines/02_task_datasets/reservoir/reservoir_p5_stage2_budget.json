@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "track_id": "property",
+  "stage": 2,
+  "protocol_sha256": "041521f3057c99b4cbac8bef5c28d1a368b9f47d6b08d4c6197cd95813151b66",
+  "root_seed": 2693,
+  "task_id": "reservoir_property_p5_three_independent_targets",
+  "joint_fold_policy": {
+    "source_target": "PHIF",
+    "source_label_version": "target6-phif-cpi-v1",
+    "source_fold_id": 0,
+    "reason": "The joint three-output P5 adapter uses the first target in frozen TaskSpec order; the fold is P4 PHIF fold 0 and is never reselected by model evidence.",
+    "p4_split_manifest_sha256": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232",
+    "p4_task_spec_sha256": "550f28fa9771095371f642f27e46d5586c71bfeaa0dec3ea678da5463602f0e2"
+  },
+  "sample_budget": {
+    "max_train_samples": 192,
+    "max_validation_samples": 81,
+    "selection": "deterministic depth-spread within each frozen mother-well family",
+    "same_selected_ids_for_every_candidate": true,
+    "preprocessing_fit": "selected fold-train only"
+  },
+  "metric_policy": {
+    "targets": ["PHIF", "KLOGH", "SW"],
+    "primary_metric": "physical_RMSE",
+    "direction": "minimize",
+    "required": ["physical_MAE", "physical_RMSE", "physical_R2", "model_domain_MAE", "model_domain_RMSE", "model_domain_R2", "worst_mother_family"],
+    "klogh_model_domain": "log1p(KLOGH_mD)",
+    "leaderboards_are_target_specific": true,
+    "leaderboards_are_modality_lane_specific": true,
+    "minimum_candidates_to_rank_per_lane": 2,
+    "cross_lane_ranking_forbidden": true
+  },
+  "model_order": [
+    "catboost_regressor",
+    "lightgbm_regressor",
+    "tabm_regressor",
+    "xgboost_regressor",
+    "extra_trees_regressor",
+    "hist_gradient_boosting_regressor",
+    "realmlp_regressor",
+    "ft_transformer_regressor",
+    "tabiclv2_regressor",
+    "monai_densenet3d_regressor"
+  ],
+  "model_budgets": {
+    "catboost_regressor": {"lane": "tabular_cpu", "kind": "tree", "max_wall_seconds": 300, "update_steps": 32, "update_unit": "boosting_rounds_per_target", "batch_size": 192, "config": {"iterations": 32, "depth": 4, "thread_count": 1}},
+    "lightgbm_regressor": {"lane": "tabular_cpu", "kind": "tree", "max_wall_seconds": 300, "update_steps": 32, "update_unit": "boosting_rounds_per_target", "batch_size": 192, "config": {"n_estimators": 32, "n_jobs": 1}},
+    "tabm_regressor": {"lane": "tabular_cpu", "kind": "neural_tabular", "max_wall_seconds": 600, "update_steps": 40, "update_unit": "optimizer_steps", "batch_size": 64, "config": {"k": 4, "n_blocks": 2, "d_block": 64}},
+    "xgboost_regressor": {"lane": "tabular_cpu", "kind": "tree", "max_wall_seconds": 300, "update_steps": 32, "update_unit": "boosting_rounds_per_target", "batch_size": 192, "config": {"n_estimators": 32, "n_jobs": 1}},
+    "extra_trees_regressor": {"lane": "tabular_cpu", "kind": "tree", "max_wall_seconds": 300, "update_steps": 32, "update_unit": "trees_per_target", "batch_size": 192, "config": {"n_estimators": 32, "n_jobs": 1}},
+    "hist_gradient_boosting_regressor": {"lane": "tabular_cpu", "kind": "tree", "max_wall_seconds": 300, "update_steps": 32, "update_unit": "boosting_rounds_per_target", "batch_size": 192, "config": {"max_iter": 32}},
+    "realmlp_regressor": {"lane": "tabular_cpu", "kind": "neural_tabular", "max_wall_seconds": 600, "update_steps": 36, "update_unit": "estimated_optimizer_steps_across_three_independent_targets", "batch_size": 64, "config": {"n_epochs": 4, "batch_size": 64, "hidden_sizes": [64, 64], "n_threads": 1}},
+    "ft_transformer_regressor": {"lane": "tabular_cpu", "kind": "neural_tabular", "max_wall_seconds": 600, "update_steps": 40, "update_unit": "optimizer_steps", "batch_size": 64, "config": {"n_blocks": 2, "d_block": 32, "attention_n_heads": 4}},
+    "tabiclv2_regressor": {"lane": "tabular_cpu", "kind": "gated_weight", "max_wall_seconds": 300, "update_steps": 0, "update_unit": "license_gate", "batch_size": 192, "config": {"allow_auto_download": false}},
+    "monai_densenet3d_regressor": {"lane": "seismic_3d_gpu", "kind": "neural_3d", "max_wall_seconds": 900, "update_steps": 12, "update_unit": "optimizer_steps", "batch_size": 32, "config": {"init_features": 8, "growth_rate": 8, "block_config": [2, 2]}}
+  },
+  "tiny_gate": {
+    "samples": 24,
+    "optimizer_steps": 2,
+    "checkpoint_roundtrip": true,
+    "included_in_pilot_update_budget": false
+  },
+  "test_firewall": {
+    "frozen_test_family": "15/9-F-15",
+    "runner_accepts_test_path": false,
+    "test_metrics_allowed": false
+  }
+}

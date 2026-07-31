@@ -1,0 +1,887 @@
+{
+  "access_audit": {
+    "datasets_read": [
+      "group.attrs.meta",
+      "seismic_patch[0:6]",
+      "seismic_patch[7:9]"
+    ],
+    "known_or_frozen_metrics_read": false,
+    "known_or_frozen_predictions_read": false,
+    "physical_containers_opened": [
+      "train.h5"
+    ],
+    "physical_test_h5_opened": false,
+    "reference_sparse_poro_channel_6_read": false,
+    "well_log_seq_read": false
+  },
+  "conditions": {
+    "B0": {
+      "fixed_weak_tie_seismic_sampling_retained": true,
+      "formal_name": "no_pseudo_test_PORO_condition",
+      "pseudo_test_poro_supplied": false
+    },
+    "B1": {
+      "formal_name": "correct_synthetic_reference_revealed_pseudo_wells",
+      "pseudo_test_poro_supplied": true
+    },
+    "shuffled": {
+      "formal_name": "seed2693_shuffled_pseudo_well_values_fixed_locations",
+      "pseudo_test_poro_supplied": true
+    }
+  },
+  "config": {
+    "distance_band_rule": "pseudo-test non-condition-cell distance quantiles 0/25/50/75/100%",
+    "feature_names": [
+      "conditional_idw_porosity",
+      "seismic_amplitude",
+      "seismic_local_rms",
+      "seismic_vertical_gradient",
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized"
+    ],
+    "hpo": false,
+    "learning_rate": 0.01,
+    "loss": "mse_valid_label_mean",
+    "model_id": "reconstruction_linear_sgd",
+    "output_transform": "identity",
+    "pseudo_test_wells": 32,
+    "pseudo_well_rule": "geometry_only_anisotropic_farthest_point_sampling",
+    "ridge_alpha": 0.1,
+    "root_seed": 2693,
+    "shuffle_rule": "seeded_nonzero_cyclic_value_rotation_at_fixed_locations",
+    "target_transform": "identity",
+    "train_pseudo_wells": 64,
+    "updates": 100
+  },
+  "coordinates": {
+    "bounds": {
+      "depth": [
+        2800.718505859375,
+        3543.77587890625
+      ],
+      "x": [
+        432851.25,
+        437175.25
+      ],
+      "y": [
+        6477478.5,
+        6480275.0
+      ]
+    },
+    "channels": [
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized"
+    ],
+    "fold_train_statistical_preprocessing_required": true,
+    "normalization": "fixed full-grid minmax geometry transform from build_dataset",
+    "source": "Eclipse active-cell centres"
+  },
+  "distance_bands": {
+    "boundary_rule": "quantiles computed from geometry before target values are read",
+    "edges": [
+      0.0,
+      0.0695262413827972,
+      0.10272720933271288,
+      0.13319372733190252,
+      null
+    ],
+    "minimum_support": 32,
+    "space": "normalized_xyz_with_depth_anisotropy_3"
+  },
+  "evidence_scope": "development_protocol_mechanism_only",
+  "existing_sparse_poro": {
+    "columns": [
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized",
+      "porosity",
+      "seismic_amplitude",
+      "seismic_local_rms",
+      "seismic_vertical_gradient",
+      "well_id"
+    ],
+    "coverage_warning": "Only wells that genuinely intersect the final active simulator cells are retained; the current data leave one intersecting LFP well.",
+    "independent_measured_phie": false,
+    "mapping": "nearest active Eclipse cell in anisotropic (50m,50m,2m) coordinates",
+    "n_observation_rows": 91,
+    "n_unique_cells": 91,
+    "n_wells_with_constraints": 1,
+    "per_well": {
+      "15_9-19_A": {
+        "max_scaled_nearest_cell_distance": null,
+        "min_scaled_nearest_cell_distance": 31.54202332855832,
+        "n_constraints": 0
+      },
+      "15_9-19_BT2": {
+        "max_scaled_nearest_cell_distance": null,
+        "min_scaled_nearest_cell_distance": 10.569732104875468,
+        "n_constraints": 0
+      },
+      "15_9-19_SR": {
+        "max_scaled_nearest_cell_distance": 5.917743922088104,
+        "min_scaled_nearest_cell_distance": 0.30034869586849333,
+        "n_constraints": 91
+      }
+    },
+    "synthetic_reference_revealed": true,
+    "used_by_r1": false,
+    "value_source": "Eclipse reference PORO sampled at mapped cells"
+  },
+  "field_generalization": false,
+  "formal_lane_status": "blocked",
+  "fresh_blind": false,
+  "hashes": {
+    "block_split_hash": "f6a9ce60c4e47bc3d961ca3ce3e7b6de38de923462fce695a8d98292c27aaaa7",
+    "common_metric_mask_hash": "f1a5fef8b48b1fd3dd7e9db496fbd9bca76d6361c2e593f5ef1be72d89355ef1",
+    "config_hash": "a62f39f93b59b463a1945fda864c2a3033dba4529397226e057c2f1daafb65a2",
+    "feature_hash": "46377f4d758d40c94fb966686fd9655f11807f672d000b11b98dce90d3f64fed",
+    "geometry_input_hash": "c54551c10c4d27efb4364d771e1e5d9950e5c48968dab5b352908ca43ff5763d",
+    "label_source_hash": "eaa3154b51ffa493bc2243d3a3a635950ad1c65cfe8e2f312851e1f16dab1582",
+    "sample_hash": "e370a03760b51bf1235e8d5b247769641586ac2ab3b0eb1e73a249e863e05687",
+    "sparse_condition_source_hash": "3f63318ce012370143fccd4e8733197f3f9f1407b2f9850833c6e435f4f2f765"
+  },
+  "known_holdout_status": "not_read_not_consumed",
+  "label": {
+    "independent_measured_phie": false,
+    "label_version": "volve-eclipse-poro-conditional-v1",
+    "name": "Volve final Eclipse PORO on active cells",
+    "rms_role": "independent value-multiset cross-check only",
+    "source": "Eclipse VOLVE_2016.INIT PORO mapped through VOLVE_2016.GRID",
+    "units": "fraction"
+  },
+  "mode": "conditional",
+  "pseudo_well_selection": {
+    "anisotropy_xyz": [
+      1.0,
+      1.0,
+      3.0
+    ],
+    "pseudo_test_count": 32,
+    "pseudo_test_indices_kji": [
+      [
+        44,
+        46,
+        48
+      ],
+      [
+        44,
+        68,
+        64
+      ],
+      [
+        36,
+        46,
+        63
+      ],
+      [
+        41,
+        66,
+        29
+      ],
+      [
+        36,
+        19,
+        67
+      ],
+      [
+        41,
+        63,
+        71
+      ],
+      [
+        41,
+        54,
+        71
+      ],
+      [
+        37,
+        60,
+        63
+      ],
+      [
+        44,
+        46,
+        20
+      ],
+      [
+        36,
+        26,
+        30
+      ],
+      [
+        36,
+        35,
+        43
+      ],
+      [
+        39,
+        30,
+        19
+      ],
+      [
+        43,
+        58,
+        71
+      ],
+      [
+        44,
+        74,
+        46
+      ],
+      [
+        36,
+        41,
+        48
+      ],
+      [
+        44,
+        60,
+        64
+      ],
+      [
+        44,
+        61,
+        35
+      ],
+      [
+        40,
+        68,
+        55
+      ],
+      [
+        43,
+        39,
+        71
+      ],
+      [
+        38,
+        60,
+        47
+      ],
+      [
+        36,
+        43,
+        33
+      ],
+      [
+        36,
+        36,
+        33
+      ],
+      [
+        36,
+        20,
+        55
+      ],
+      [
+        40,
+        51,
+        57
+      ],
+      [
+        44,
+        66,
+        52
+      ],
+      [
+        38,
+        29,
+        40
+      ],
+      [
+        36,
+        35,
+        56
+      ],
+      [
+        43,
+        35,
+        66
+      ],
+      [
+        44,
+        72,
+        71
+      ],
+      [
+        43,
+        52,
+        37
+      ],
+      [
+        44,
+        54,
+        53
+      ],
+      [
+        39,
+        47,
+        42
+      ]
+    ],
+    "pseudo_test_selection_hash": "9035cc1b1bd8855d85ed106c3100de632d3e9f1e20ce54688b7fa90b6e6bdef1",
+    "rule": "geometry_only_anisotropic_farthest_point_sampling",
+    "selection_frozen_before_target_values_read": true,
+    "selection_inputs": [
+      "normalized_xyz",
+      "global_kji",
+      "split_membership"
+    ],
+    "target_is_not_function_argument": true,
+    "train_count": 64,
+    "train_indices_kji": [
+      [
+        62,
+        47,
+        48
+      ],
+      [
+        62,
+        68,
+        64
+      ],
+      [
+        0,
+        45,
+        64
+      ],
+      [
+        14,
+        75,
+        36
+      ],
+      [
+        17,
+        18,
+        70
+      ],
+      [
+        19,
+        55,
+        71
+      ],
+      [
+        58,
+        56,
+        70
+      ],
+      [
+        62,
+        46,
+        22
+      ],
+      [
+        60,
+        62,
+        71
+      ],
+      [
+        2,
+        26,
+        28
+      ],
+      [
+        60,
+        28,
+        42
+      ],
+      [
+        0,
+        71,
+        37
+      ],
+      [
+        3,
+        33,
+        13
+      ],
+      [
+        5,
+        64,
+        66
+      ],
+      [
+        14,
+        40,
+        46
+      ],
+      [
+        62,
+        74,
+        38
+      ],
+      [
+        26,
+        38,
+        71
+      ],
+      [
+        57,
+        57,
+        43
+      ],
+      [
+        1,
+        60,
+        63
+      ],
+      [
+        26,
+        57,
+        68
+      ],
+      [
+        62,
+        25,
+        71
+      ],
+      [
+        62,
+        68,
+        55
+      ],
+      [
+        7,
+        54,
+        32
+      ],
+      [
+        4,
+        49,
+        41
+      ],
+      [
+        5,
+        23,
+        38
+      ],
+      [
+        8,
+        38,
+        30
+      ],
+      [
+        0,
+        74,
+        57
+      ],
+      [
+        7,
+        52,
+        56
+      ],
+      [
+        62,
+        36,
+        68
+      ],
+      [
+        0,
+        21,
+        65
+      ],
+      [
+        62,
+        61,
+        26
+      ],
+      [
+        20,
+        61,
+        25
+      ],
+      [
+        23,
+        72,
+        40
+      ],
+      [
+        12,
+        35,
+        58
+      ],
+      [
+        62,
+        60,
+        53
+      ],
+      [
+        14,
+        41,
+        24
+      ],
+      [
+        21,
+        73,
+        70
+      ],
+      [
+        1,
+        49,
+        71
+      ],
+      [
+        58,
+        52,
+        52
+      ],
+      [
+        1,
+        61,
+        49
+      ],
+      [
+        56,
+        32,
+        60
+      ],
+      [
+        61,
+        72,
+        70
+      ],
+      [
+        26,
+        68,
+        55
+      ],
+      [
+        54,
+        64,
+        59
+      ],
+      [
+        62,
+        55,
+        68
+      ],
+      [
+        6,
+        44,
+        32
+      ],
+      [
+        55,
+        37,
+        37
+      ],
+      [
+        62,
+        40,
+        52
+      ],
+      [
+        62,
+        50,
+        38
+      ],
+      [
+        62,
+        67,
+        31
+      ],
+      [
+        12,
+        67,
+        71
+      ],
+      [
+        6,
+        33,
+        39
+      ],
+      [
+        62,
+        53,
+        24
+      ],
+      [
+        5,
+        54,
+        52
+      ],
+      [
+        61,
+        41,
+        52
+      ],
+      [
+        62,
+        27,
+        26
+      ],
+      [
+        22,
+        42,
+        54
+      ],
+      [
+        61,
+        59,
+        47
+      ],
+      [
+        54,
+        46,
+        57
+      ],
+      [
+        21,
+        66,
+        28
+      ],
+      [
+        0,
+        73,
+        71
+      ],
+      [
+        61,
+        50,
+        71
+      ],
+      [
+        6,
+        59,
+        64
+      ],
+      [
+        62,
+        26,
+        65
+      ]
+    ],
+    "train_selection_hash": "cfc505a1505009055a546f3349afe139c0fd397e8ba29185c50df3c624a881ab"
+  },
+  "r0_manifest_hash": "9b4ce463b9f65346a819b8a50f84e7e43fcd94a687a2b5200cb55be7a1ff9abb",
+  "rms_cross_check": {
+    "exact_nonzero_porosity_multiset_match": true,
+    "format": "RMS GEOMATIC header + big-endian float32 payload",
+    "member": "Reservoir_Model-RMS_model/Volve_Full_Field_Geomodel_2014 (pp04xg03gf01sf01.rms2012.0)/gridmodels/pp04bxg03postf11a/mergepp04bphifnw/realisation",
+    "role": "value-multiset cross-check only; no RMS spatial mapping is claimed",
+    "spatial_mapping": "Internal RMS project ordering is proprietary/not reconstructed; the payload is used only for multiset cross-validation."
+  },
+  "root_seed": 2693,
+  "schema_version": "p5.1-r01-reconstruction-v1",
+  "seismic": {
+    "attribute_definitions": {
+      "amplitude": "nearest 4-ms sample",
+      "local_rms": "RMS over +/-2 samples",
+      "vertical_gradient": "sample[t+1] - sample[t-1]"
+    },
+    "fixed_project_weak_well_tie_retained": true,
+    "n_unique_traces_read": 16646,
+    "segy": "ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME.MIG_FIN.POST_STACK.3D.JS-017534.segy",
+    "source": "ST0202 post-stack time SEG-Y sampled at Eclipse cells",
+    "time_index_range": [
+      471,
+      601
+    ],
+    "twt_ms_range": [
+      1882.8172607421875,
+      2403.076416015625
+    ]
+  },
+  "sources": [
+    {
+      "bytes": 36793,
+      "path": "_pipelines/02_task_datasets/reconstruction/build_dataset.py",
+      "sha256": "8b5d2e33b729136e71bef518fa155310d3601e9e194480798e3def288310d2ff"
+    },
+    {
+      "bytes": 4833,
+      "path": "_pipelines/02_task_datasets/reconstruction/build_summary.json",
+      "sha256": "950ef2405e3d98fe4dbdaf235f4f12bb22dd66f4f3560444e296b857ac905dea"
+    },
+    {
+      "bytes": 7126,
+      "path": "_pipelines/02_task_datasets/reconstruction/model_inspection.json",
+      "sha256": "9bcf7763b77c04e2b9fb1aa005f334b1ba7586eb10c8e3c901e8da149c85cfb2"
+    },
+    {
+      "bytes": 73246,
+      "path": "_pipelines/02_task_datasets/reconstruction/p4_reconstruction.py",
+      "sha256": "6607297645f728acf1764c877064c1e6b6e2e9ced707978deab420ecae4451e6"
+    },
+    {
+      "bytes": 4195,
+      "path": "_models/reconstruction/reconstruction_linear_sgd.py",
+      "sha256": "d27e674a846807aa78364ca0155a090b231b6be2607165ef901de0f2c35384f9"
+    }
+  ],
+  "split": {
+    "axis": "k_block",
+    "buffer_blocks": 1,
+    "contract": "p4_reconstruction.build_spatial_manifest conditional development fold",
+    "development_i_blocks": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "effective_n_splits": 5,
+    "effective_train_k_blocks": [
+      0,
+      1,
+      2,
+      6
+    ],
+    "effective_train_sample_ids": [
+      "k00_j00_i03",
+      "k00_j01_i00",
+      "k00_j01_i01",
+      "k00_j01_i02",
+      "k00_j01_i03",
+      "k00_j02_i00",
+      "k00_j02_i01",
+      "k00_j02_i02",
+      "k00_j02_i03",
+      "k00_j03_i01",
+      "k00_j03_i02",
+      "k00_j03_i03",
+      "k01_j00_i03",
+      "k01_j01_i00",
+      "k01_j01_i01",
+      "k01_j01_i02",
+      "k01_j01_i03",
+      "k01_j02_i00",
+      "k01_j02_i01",
+      "k01_j02_i02",
+      "k01_j02_i03",
+      "k01_j03_i01",
+      "k01_j03_i02",
+      "k01_j03_i03",
+      "k02_j00_i03",
+      "k02_j01_i00",
+      "k02_j01_i01",
+      "k02_j01_i02",
+      "k02_j01_i03",
+      "k02_j02_i00",
+      "k02_j02_i01",
+      "k02_j02_i02",
+      "k02_j02_i03",
+      "k02_j03_i01",
+      "k02_j03_i02",
+      "k02_j03_i03",
+      "k06_j00_i03",
+      "k06_j01_i00",
+      "k06_j01_i01",
+      "k06_j01_i02",
+      "k06_j01_i03",
+      "k06_j02_i00",
+      "k06_j02_i01",
+      "k06_j02_i02",
+      "k06_j02_i03",
+      "k06_j03_i01",
+      "k06_j03_i02",
+      "k06_j03_i03"
+    ],
+    "fold_id": 2,
+    "known_or_frozen_test_sample_ids_read": false,
+    "pseudo_test_k_blocks": [
+      4
+    ],
+    "pseudo_test_sample_ids": [
+      "k04_j00_i03",
+      "k04_j01_i00",
+      "k04_j01_i01",
+      "k04_j01_i02",
+      "k04_j01_i03",
+      "k04_j02_i00",
+      "k04_j02_i01",
+      "k04_j02_i02",
+      "k04_j02_i03",
+      "k04_j03_i01",
+      "k04_j03_i02",
+      "k04_j03_i03"
+    ],
+    "purged_k_blocks": [
+      3,
+      5
+    ],
+    "purged_sample_ids": [
+      "k03_j00_i03",
+      "k03_j01_i00",
+      "k03_j01_i01",
+      "k03_j01_i02",
+      "k03_j01_i03",
+      "k03_j02_i00",
+      "k03_j02_i01",
+      "k03_j02_i02",
+      "k03_j02_i03",
+      "k03_j03_i01",
+      "k03_j03_i02",
+      "k03_j03_i03",
+      "k05_j00_i03",
+      "k05_j01_i00",
+      "k05_j01_i01",
+      "k05_j01_i02",
+      "k05_j01_i03",
+      "k05_j02_i00",
+      "k05_j02_i01",
+      "k05_j02_i02",
+      "k05_j02_i03",
+      "k05_j03_i01",
+      "k05_j03_i02",
+      "k05_j03_i03"
+    ],
+    "requested_n_splits": 5,
+    "split_hash": "f6a9ce60c4e47bc3d961ca3ce3e7b6de38de923462fce695a8d98292c27aaaa7"
+  },
+  "stage": "R0_zero_training_contract",
+  "support": {
+    "common_metric_cells": 21352,
+    "development_cells": 134222,
+    "effective_train_cells": 71675,
+    "exact_pseudo_test_cells_excluded_from_all_conditions": 32,
+    "pseudo_test_cells": 21384
+  },
+  "test_firewall": {
+    "global_well_log_seq_read": false,
+    "known_or_frozen_arrays_read": false,
+    "known_or_frozen_metrics_read": false,
+    "known_or_frozen_predictions_read": false,
+    "only_physical_train_h5_development_channels": true,
+    "physical_test_h5_opened": false
+  },
+  "track_id": "reconstruction",
+  "weak_tie": {
+    "depth_coordinate_warning": "Layer-1 tie depth is MD while Eclipse centre depth is TVD-like; alignment is weak.",
+    "disclosure": "B0 retains the fixed project-level weak well tie/time sampling and is not a claim of zero well-derived information.",
+    "method": "depth-wise inverse-horizontal-distance blend of Layer-1 weak well ties",
+    "well_ranges": {
+      "15_9-19_A": {
+        "depth_m": [
+          3500.5,
+          4094.5
+        ],
+        "twt_ms": [
+          2481.470703125,
+          2772.8837890625
+        ]
+      },
+      "15_9-19_BT2": {
+        "depth_m": [
+          3170.5,
+          4229.5
+        ],
+        "twt_ms": [
+          2316.210693359375,
+          2829.22802734375
+        ]
+      },
+      "15_9-19_SR": {
+        "depth_m": [
+          105.5,
+          5012.0
+        ],
+        "twt_ms": [
+          80.6032485961914,
+          2828.961669921875
+        ]
+      }
+    }
+  }
+}

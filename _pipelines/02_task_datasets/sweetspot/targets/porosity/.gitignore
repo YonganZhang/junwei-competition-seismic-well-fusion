@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Keep the canonical small P4 evidence despite the parent sweetspot runtime rules.
+!_outputs/phif/refit/checkpoint_best.pkl
+!_outputs/phif/visualizations/prediction_vs_truth.png

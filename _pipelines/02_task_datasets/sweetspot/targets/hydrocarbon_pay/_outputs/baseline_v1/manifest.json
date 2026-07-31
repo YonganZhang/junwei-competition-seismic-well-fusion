@@ -1,0 +1,150 @@
+{
+  "artifacts": {
+    "config.json": {
+      "bytes": 2563,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "fcb1100e94cc86c72e0448a2e247a72b1c91be36917e08ac324f9b386b8d4987"
+    },
+    "data_evidence.json": {
+      "bytes": 4402,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "d37161eff0467334d2f3c1d574c313cc61a465f7e994fa9380d5df4ade714204"
+    },
+    "folds/fold_0/checkpoint_best.pkl": {
+      "bytes": 11010,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "5d023d83e7c10ed37287f59049ed42208a069a3d8dc40a8a75e5578d2b4de91a"
+    },
+    "folds/fold_1/checkpoint_best.pkl": {
+      "bytes": 11010,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "7bc56cbfebbacf0e6cafdaac5a76a94ce08a5af54ca3df71c7d7059822309f26"
+    },
+    "folds/fold_2/checkpoint_best.pkl": {
+      "bytes": 11010,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "261c793fc3b5fe0779099608737e1d34a3e88798fdbfaacf4491245a3c52c575"
+    },
+    "frozen_test/metrics.json": {
+      "bytes": 250,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "cb1edbde3569f76faacf129721b209e365e990ef03b16100211ecbaa5795dbad"
+    },
+    "frozen_test/predictions.csv": {
+      "bytes": 895398,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "bb49502684c37fa13ea263af53e43e70bdb269eb88a454339fd177d764a38876"
+    },
+    "hpo/pilot/trials.json": {
+      "bytes": 13411,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "883343d97cfba709c18e22b83cb90db67583399635f1e2e864189498ccdd597b"
+    },
+    "hpo/plan.json": {
+      "bytes": 340,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "abba1f5fd77f371ddd7f06034557e7c45f1669757e8e81ee9c9b0611ed276692"
+    },
+    "hpo/selection.json": {
+      "bytes": 371,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "c9b3d7b1f154772fce3fe13d136b8b7adabc0be11bcb8875e711979b113201d8"
+    },
+    "hpo/trials.json": {
+      "bytes": 5262,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "bf4d636c4e3999206e89a51471d80639ea3239fb169e6acca5d06ed8a6b8c25a"
+    },
+    "lifecycle.json": {
+      "bytes": 1301,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "7dc7080d006267cd6a1cbc7da667b3ad05bdc3db185024b56a863aeac868ec24"
+    },
+    "oof/folds.json": {
+      "bytes": 893,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "2cdd132c65bd36f48a13f8035ff7c8fdf756cc7ed6cded006c139fd45c8a2da4"
+    },
+    "oof/metrics.json": {
+      "bytes": 250,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "4c3b018e004437aa2f043e41d361faae5652953b21db5eb1c542e4401af1f455"
+    },
+    "oof/predictions.csv": {
+      "bytes": 2638946,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "2188e30793ddcce02d17ed590a54987ef64b856be1bb82fd51db759f68a1fff0"
+    },
+    "refit/checkpoint_best.pkl": {
+      "bytes": 11045,
+      "metadata": {},
+      "role": "checkpoint",
+      "sha256": "12f1b0c9464503d9b89cb33f6efa99f66d0141cceb1cba27a14b4ae9bbbfe4f6"
+    },
+    "split_manifest.json": {
+      "bytes": 6441157,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "4cbf21a8da9f55384cbd4575fd02ea53cbe1442a63a20d881999e177e0d29b20"
+    },
+    "status.json": {
+      "bytes": 1295,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "be0f27fd479747e90f2fdafa9b1374149f570470736bad04ace0f62a020a536d"
+    },
+    "task_spec.json": {
+      "bytes": 2074,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "45e8bca171a3d854076aaa1316737bf21288966c3fa93884039d76a7bc420e14"
+    },
+    "visualizations/confusion_matrix.png": {
+      "bytes": 22849,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "a0247eb5256bdb32fbd50066761a391df7e07efc724c1272ca83b4d4c456e3bc"
+    },
+    "visualizations/depth_probability_track.png": {
+      "bytes": 93243,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "dce8df2a632ea3e8f412b8e54e7e84a6e746d0f32b2b42927a469d3119c454d0"
+    },
+    "visualizations/net_thickness_by_well.png": {
+      "bytes": 35796,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "53a0a3abc5931f1ddb4828f93277ae52656df685c1a179c2d482d81abb119611"
+    },
+    "visualizations/pr_curve.png": {
+      "bytes": 28314,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "4c09ae6ad6e90baa6a2472c154d0d2470dd6f1556f3aaf840001bd9bf71dba21"
+    },
+    "visualizations/visualization_manifest.json": {
+      "bytes": 770,
+      "metadata": {},
+      "role": "evidence",
+      "sha256": "9072eb11fc59bc677aa4298bcf9d479c7f27d6ce28f4d343319c25491c3a80cd"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "sweetspot.hydrocarbon_pay.baseline_v1"
+}

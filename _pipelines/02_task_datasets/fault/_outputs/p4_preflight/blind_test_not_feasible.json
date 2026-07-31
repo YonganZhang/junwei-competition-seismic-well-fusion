@@ -1,0 +1,62 @@
+{
+  "annotation_coverage_evidence": null,
+  "audit_hash": "51161c657319eee95df9de85037e39b4085474fa5a09526e1f6bcd65e1be8055",
+  "audit_version": "fault-blind-test-v1",
+  "complete_candidate_blocks": [],
+  "consumed_regression_blocks": [
+    {
+      "inline_range": [
+        9985,
+        10284
+      ],
+      "model_training_already_observed": true,
+      "role": "historical_development_exposure",
+      "run_id": "audited_v2"
+    },
+    {
+      "build_dataset_sha256": {
+        "test": "c7ada8f6483db352cc5484893ff1c12333316f2bffb8dfcf117139899197fa25",
+        "train": "9c130a89c258b15780b4737c21c5518baa9e2b787c135d081121cc078df60221"
+      },
+      "inline_range": [
+        10293,
+        10369
+      ],
+      "role": "regression_evidence_only",
+      "run_id": "audited_v2",
+      "test_metrics_already_observed": true
+    }
+  ],
+  "fault_point_count": 3998,
+  "label_semantics": {
+    "fault_stick": "positive",
+    "formal_negative": "requires complete annotation coverage audit",
+    "unlabelled": "unknown; valid_label_mask=false",
+    "weak_negative": "proxy only"
+  },
+  "prohibited_fallbacks": [
+    "treat unlabelled voxels as background",
+    "rename audited_v2 as blind test",
+    "use proxy negatives for formal test metrics"
+  ],
+  "reason": "No continuous block has evidence of complete positive and verified-negative annotation coverage outside the already observed audited_v2 test range.",
+  "reason_code": "NO_UNCONSUMED_COMPLETE_ANNOTATION_BLOCK",
+  "required_to_unblock": [
+    "a contiguous block with annotation_status=complete",
+    "audited positive and verified-negative label counts",
+    "coordinates disjoint from consumed regression blocks"
+  ],
+  "searched_seismic_inline_extent": [
+    9985,
+    10369
+  ],
+  "source_sha256": {
+    "_pipelines/01_common_preprocess/outputs/fault_points.npz": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+    "_pipelines/01_common_preprocess/outputs/seismic_index.npz": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/build_summary.json": "decd62f85296667e816d25a87ecb103a5385de8001557dac82c3c99ab189df64",
+    "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/split_manifest.json": "9821beee9fe197bd5dcf9eaae0035898bd9f1a6bfc75e1203211263196d6ca55"
+  },
+  "status": "not_feasible",
+  "task_id": "fault_stick_segmentation",
+  "track_id": "fault"
+}

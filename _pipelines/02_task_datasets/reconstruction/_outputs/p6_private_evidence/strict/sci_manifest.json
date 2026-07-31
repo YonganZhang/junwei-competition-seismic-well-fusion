@@ -1,0 +1,43 @@
+{
+  "development_only": true,
+  "figure_count": 6,
+  "figures": [
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/strict/prediction_comparison.png",
+      "sha256": "220f6ece4253a01734e9779265162d2d6be9ad11742f1d166b6d7ab0db6e4c45"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/strict/prediction_comparison.pdf",
+      "sha256": "dd9fa84654ffbdcc1da233a31e784e14ed1433b6953369d09faa690b3a1af2e3"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/3d_sci_v1/strict/prediction_comparison.html",
+      "sha256": "f1405f61949bc68b09e786c4f5f8decc35565f4208919f3effdb87c6984a3d27"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p5_stage3_reconstruction_strict.png",
+      "sha256": "4b2529557cbb97a587aae12059aa33ea70ec690245a6b8b93335f920b4c2e3b8"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/prediction_visualization_strict.png",
+      "sha256": "cf59b8e7ad70dbede4aa26443c54b79e108656201636f1246226c40615c2336e"
+    },
+    {
+      "exists": true,
+      "path": "_pipelines/02_task_datasets/reconstruction/p5_stage4_confirmation/strict/confirmation.png",
+      "sha256": "76d39942121ee56c2d264d1b5a4f976988f0c6a547307a72dffe46d53c81094a"
+    }
+  ],
+  "fresh_blind": false,
+  "mode": "strict",
+  "prior_test_consumed": true,
+  "schema_version": "p6-reconstruction-private-evidence-v1",
+  "source_visualization_manifest_sha256": "cd9826ec14de57b34a760e9181a757d74fc572fc1077bca374a54ca67f2be174",
+  "stage4_confirmation_sha256": "b0b296682469e23b9d04d75c947beb70e58721b06016e606fba158e3234afc39",
+  "track_id": "reconstruction"
+}

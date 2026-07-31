@@ -1,0 +1,61 @@
+{
+  "schema_version": "lithofacies-p5-stage3-visualization-manifest-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "lane": "P",
+  "selected_model": "xgboost_multisoftprob_window",
+  "selection_source": "p5_stage3_gm09_p_leaderboard.json",
+  "input_oof_manifest": "p5_stage3_oof_manifest.json",
+  "input_prediction_entries": 12,
+  "calibration_fit": "not_applied_locked_stage2_configuration",
+  "figures": [
+    {
+      "figure_id": "fixed9_confusion",
+      "status": "PASS",
+      "path": "figures/fixed9_confusion.png",
+      "sha256": "2c54394562002a5044b877397473be8c4e6ebc985dad53e69c82a283230e5f02",
+      "bytes": 136993
+    },
+    {
+      "figure_id": "fixed9_per_class_pr_f1",
+      "status": "PASS",
+      "path": "figures/fixed9_per_class_pr_f1.png",
+      "sha256": "f154d1fcab22edd689657ae50cefa8eea04de271f525a9fd3cdc3e21dd6b1ca9",
+      "bytes": 81699
+    },
+    {
+      "figure_id": "calibration_reliability",
+      "status": "PASS",
+      "path": "figures/calibration_reliability.png",
+      "sha256": "ec2d1ea98a85be99c4a13a1270d98a9de9cc82ae14b43b55dbf40f680db704e1",
+      "bytes": 71455
+    },
+    {
+      "figure_id": "fold_seed_matrix",
+      "status": "PASS",
+      "path": "figures/fold_seed_matrix.png",
+      "sha256": "e82ded48570d27eb397678b277008dc7c75625a8dc421ac681b5bf93f8969fb5",
+      "bytes": 136072
+    },
+    {
+      "figure_id": "missing_modality_diagnostic",
+      "status": "PASS",
+      "path": "figures/missing_modality_diagnostic.png",
+      "sha256": "cedf2d8c5ea2d5c1d7142231bc5ca26cb1ca26018bb651ec772cad6c16d46685",
+      "bytes": 42639
+    },
+    {
+      "figure_id": "continuous_depth_facies_track",
+      "status": "not_feasible",
+      "reason": "development OOF archives have no finite center_md_m; midpoint fabrication forbidden",
+      "finite_md_rows": 0,
+      "path": "figures/continuous_depth_track_not_feasible.png",
+      "sha256": "fae62b15ef3d052d7d0705d97bdc3411e38c57691ef7b6152d0f7dfcfb19bb67",
+      "bytes": 34568
+    }
+  ],
+  "renderer": "lithofacies_p5_stage3.py render",
+  "rebuild_command": "python3 _pipelines/02_task_datasets/lithofacies/lithofacies_p5_stage3.py render --results _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl --leaderboard _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_gm09_p_leaderboard.json --oof-manifest _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_oof_manifest.json --output-dir _pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3",
+  "development_only": true,
+  "frozen_test_accessed": false
+}

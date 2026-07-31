@@ -1,0 +1,128 @@
+{
+  "comparison": {
+    "pretrained_macro_fold_rmse": 0.5415301607840952,
+    "pretrained_minus_random_init_rmse": -0.5108823212080789,
+    "pretrained_minus_strong_baseline_rmse": 0.5203232473264968,
+    "same_architecture_random_init_macro_fold_rmse": 1.052412481992174,
+    "strong_baseline_macro_fold_rmse": 0.02120691345759842,
+    "strong_baseline_model_id": "pykrige_ok3d"
+  },
+  "decision": {
+    "default_enabled": false,
+    "state": "CONNECTED_NO_PROMOTION"
+  },
+  "evaluation": {
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "frozen_test_accessed": false,
+    "guard_accessed": false,
+    "mode": "strict",
+    "same_validation_sample_universe_as_strong_baseline": true,
+    "split_hash": "1f73ab386a27c533cf631fba9ddd26e07b765b325a12ef8477e986886be07fea",
+    "train_target_voxels_per_fold": 512,
+    "train_volume_patches_per_fold": 4,
+    "updates_per_fold": 20,
+    "validation_voxels_per_fold": 2048
+  },
+  "fold_results": [
+    {
+      "effective_train_patches": 40,
+      "fold_id": 0,
+      "pretrained": {
+        "last_train_loss": 0.020431850105524063,
+        "mae": 0.3510568268793577,
+        "rmse": 0.4598756823435295
+      },
+      "same_architecture_random_init": {
+        "last_train_loss": 0.5402512550354004,
+        "mae": 0.7699611916359572,
+        "rmse": 1.018193241665598
+      },
+      "strong_baseline_rmse": 0.0248418111659976,
+      "validation_patch_count": 20
+    },
+    {
+      "effective_train_patches": 30,
+      "fold_id": 1,
+      "pretrained": {
+        "last_train_loss": 0.03335089981555939,
+        "mae": 0.38132134619081626,
+        "rmse": 0.49707279966366436
+      },
+      "same_architecture_random_init": {
+        "last_train_loss": 0.4637647569179535,
+        "mae": 0.8393500369493267,
+        "rmse": 1.1369267783376433
+      },
+      "strong_baseline_rmse": 0.024617030876965717,
+      "validation_patch_count": 20
+    },
+    {
+      "effective_train_patches": 40,
+      "fold_id": 2,
+      "pretrained": {
+        "last_train_loss": 0.01989494264125824,
+        "mae": 0.427593790449464,
+        "rmse": 0.5718698308381924
+      },
+      "same_architecture_random_init": {
+        "last_train_loss": 0.43593937158584595,
+        "mae": 0.767471524184657,
+        "rmse": 0.99702802702974
+      },
+      "strong_baseline_rmse": 0.023295397476068944,
+      "validation_patch_count": 10
+    },
+    {
+      "effective_train_patches": 40,
+      "fold_id": 3,
+      "pretrained": {
+        "last_train_loss": 0.015474549494683743,
+        "mae": 0.4902371898133424,
+        "rmse": 0.656488257727973
+      },
+      "same_architecture_random_init": {
+        "last_train_loss": 0.9711388349533081,
+        "mae": 1.048096020524099,
+        "rmse": 1.349767585515666
+      },
+      "strong_baseline_rmse": 0.015704668313254077,
+      "validation_patch_count": 10
+    },
+    {
+      "effective_train_patches": 50,
+      "fold_id": 4,
+      "pretrained": {
+        "last_train_loss": 0.012701565399765968,
+        "mae": 0.3845709228044143,
+        "rmse": 0.5223442333471164
+      },
+      "same_architecture_random_init": {
+        "last_train_loss": 0.21044766902923584,
+        "mae": 0.5817383255489403,
+        "rmse": 0.7601467774122237
+      },
+      "strong_baseline_rmse": 0.017575659455705786,
+      "validation_patch_count": 10
+    }
+  ],
+  "model": {
+    "checkpoint_sha256": "7a847af785635335c00e711d16ff4d225d86ecd5992b14c059df2b520e3ee933",
+    "model_id": "MIC-DKFZ/ResEncL-OpenMind-MAE",
+    "real_pretrained_weights_loaded": true,
+    "trainable_scope": "attribute_projection_and_decoder"
+  },
+  "runtime": {
+    "checkpoint_written": false,
+    "device": "cuda:0",
+    "duration_seconds": 29.651544973021373,
+    "raw_predictions_persisted": false
+  },
+  "schema_version": "reconstruction-p9-openmind-effect/v1",
+  "task_id": "volve_porosity_strict_spatial_reconstruction"
+}

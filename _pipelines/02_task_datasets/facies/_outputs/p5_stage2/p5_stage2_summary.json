@@ -1,0 +1,91 @@
+{
+  "budget": {
+    "batch_size": 2,
+    "fold_id": 0,
+    "learning_rate": 0.0001,
+    "loss_id": "cross_entropy",
+    "max_train_samples": 32,
+    "max_updates": 40,
+    "max_validation_samples": 16,
+    "max_wall_seconds": 180.0,
+    "profile_id": "facies-p5-stage2-fixed-v1",
+    "validation_interval": 10,
+    "weight_decay": 0.0
+  },
+  "cross_task_ranking_forbidden": true,
+  "environment": {
+    "cuda_runtime": "13.0",
+    "device": "cuda",
+    "download_bytes": 0,
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "gpu_name": "NVIDIA GeForce RTX 5080",
+    "numpy": "2.4.4",
+    "offline_weights": true,
+    "python": "3.11.15",
+    "torch": "2.12.1+cu130"
+  },
+  "lane": "scratch",
+  "model_ids": [
+    "smp_unet_r18",
+    "smp_deeplabv3plus_r18",
+    "smp_unetpp_r18",
+    "smp_fpn_r18",
+    "torchvision_lraspp_mbv3",
+    "deepseismic_patch_skip",
+    "deepseismic_seresnet_unet",
+    "hf_segformer_b0",
+    "sfm_base_facies",
+    "monai_unet3d"
+  ],
+  "result_count": 20,
+  "results_file": "p5_stage2_results.jsonl",
+  "results_sha256": "15f9696358f0a005989685da52cc67357c493756a80dd531d5c83189b56576e3",
+  "root_seed": 2693,
+  "schema_version": "facies-p5-stage2-v1",
+  "stage1_eligible_model_ids": [
+    "hf_segformer_b0",
+    "smp_deeplabv3plus_r18",
+    "smp_fpn_r18",
+    "smp_unet_r18",
+    "smp_unetpp_r18",
+    "torchvision_lraspp_mbv3"
+  ],
+  "tasks": {
+    "facies_f3": {
+      "head_num_classes": 10,
+      "label_version": "f3-zenodo-1471548-ids-0-9-v1",
+      "leaderboard": "facies_f3_scratch_leaderboard.json",
+      "leaderboard_sha256": "e2940ada6622ed609824fe855bd422d78c5cad2fdcd11c2e7caa428d0805ce34",
+      "ranked_models": 6,
+      "status_counts": {
+        "blocked": 0,
+        "development_piloted": 6,
+        "failed": 0,
+        "skipped": 4,
+        "timeout": 0
+      }
+    },
+    "facies_penobscot": {
+      "head_num_classes": 8,
+      "label_version": "penobscot-dataset-log-v3-ids-0-7-v1",
+      "leaderboard": "facies_penobscot_scratch_leaderboard.json",
+      "leaderboard_sha256": "fc5ea2b5e49ea45f63fb4a7a599fa892c78862df172e0d484ef4744aa61f33e7",
+      "ranked_models": 6,
+      "status_counts": {
+        "blocked": 0,
+        "development_piloted": 6,
+        "failed": 0,
+        "skipped": 4,
+        "timeout": 0
+      }
+    }
+  },
+  "tasks_are_independent": true,
+  "test_archive_opened": false,
+  "test_labels_read": false,
+  "test_metrics_computed": false,
+  "track_id": "facies"
+}

@@ -1,0 +1,182 @@
+{
+  "baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+  "calibration_policy": "none",
+  "class_weight_policy": "not_applicable_regression",
+  "expected_cells": 108,
+  "fold_policy": {
+    "development_groups": [
+      "15/9-19",
+      "15/9-F-1",
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "fold_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "group_key": "mother_well_family",
+    "kind": "mother_well_family_LOGO4",
+    "p4_klogh_split_manifest_sha256": "059eacdae735edc36347905218932fcd7693392f159572543d3420a2d0c4f447",
+    "p4_phif_split_manifest_sha256": "447f349f2d9229e6ba0e44607d60ace1a4321f8e3dc721ba107b09e7ba29e232",
+    "source_manifest": "P4_PHIF_split_manifest",
+    "temporary_fractional_split_forbidden": true
+  },
+  "hpo": false,
+  "inverse_transform": {
+    "KLOGH": "expm1(clamp(model_output,0))",
+    "PHIF": "identity_then_physical_clip_[0,1]",
+    "SW": "identity_then_physical_clip_[0,1]"
+  },
+  "lane": "tabular_cpu",
+  "metric_policy": {
+    "bootstrap_confidence": 0.95,
+    "bootstrap_replicates": 2000,
+    "cross_target_or_lane_ranking_forbidden": true,
+    "direction": "minimize",
+    "klogh_model_domain": "log1p(KLOGH_mD)",
+    "minimum_legal_completion_rate": 0.8,
+    "primary": "physical_RMSE",
+    "ranking_tiebreakers": [
+      "mean_physical_RMSE",
+      "worst_fold_physical_RMSE",
+      "seed_mean_RMSE_std",
+      "mean_wall_seconds",
+      "model_id"
+    ],
+    "required": [
+      "physical_MAE",
+      "physical_RMSE",
+      "physical_R2",
+      "model_domain_MAE",
+      "model_domain_RMSE",
+      "model_domain_R2"
+    ]
+  },
+  "model_budgets": {
+    "extra_trees_regressor": {
+      "batch_size": 192,
+      "config": {
+        "n_estimators": 32,
+        "n_jobs": 1
+      },
+      "kind": "tree",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "trees_per_target"
+    },
+    "hist_gradient_boosting_regressor": {
+      "batch_size": 192,
+      "config": {
+        "max_iter": 32
+      },
+      "kind": "tree",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "boosting_rounds_per_target"
+    },
+    "lightgbm_regressor": {
+      "batch_size": 192,
+      "config": {
+        "n_estimators": 32,
+        "n_jobs": 1
+      },
+      "kind": "tree",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "boosting_rounds_per_target"
+    },
+    "xgboost_regressor": {
+      "batch_size": 192,
+      "config": {
+        "n_estimators": 32,
+        "n_jobs": 1
+      },
+      "kind": "tree",
+      "max_wall_seconds": 300,
+      "update_steps": 32,
+      "update_unit": "boosting_rounds_per_target"
+    }
+  },
+  "monai_lane": {
+    "lane": "seismic_3d_gpu",
+    "model_id": "monai_densenet3d_regressor",
+    "reason": "single Stage-2 candidate; no top-3 can be formed and cross-lane ranking is forbidden",
+    "stage3_cells": 0,
+    "status": "not_rankable"
+  },
+  "protocol_sha256": "5e01ae7993d3e9daa10c7b9b0f5e48c006bd6e170e6ebcf12614f9bfe286d3b7",
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "root_seed": 2693,
+  "sample_budget": {
+    "max_train_samples_per_fold": 192,
+    "max_validation_samples_per_fold": 81,
+    "preprocessing_fit": "selected fold-train only",
+    "same_selected_ids_for_every_target_model_and_seed": true,
+    "selection": "deterministic depth-spread within each frozen mother-well family"
+  },
+  "schema_version": 1,
+  "stage": 3,
+  "stage2_source": {
+    "budget_sha256": "b43e0e620a092531a873f561625907200ce11d9f73cd7aee03bdf8c6cf1bc169",
+    "leaderboard_sha256": {
+      "KLOGH": "ccf4930e05c60bce1b695869cc8e82c8905d509b4a0a4ff6a567fb9f90d6b2c7",
+      "PHIF": "0cae122ec0099f959746d453b76a1c7fd4c38bf0cf03ae7695d4a82b51611b1b",
+      "SW": "5d941c0b989bf835cf9c9cdd38ad53f7cd664b85fc364d3fd3f31f6c6001497e"
+    },
+    "results_sha256": "035c9a911321fc7d75f5aa41d8f65d244772755232906a8fd710d41e43b6d4f5",
+    "runner_sha256": "00291a9c867b1471fae729aa64e49006b9bf2ba1bbdc8d02d4eaef7f58822e88"
+  },
+  "target_transform": {
+    "KLOGH": "log1p(KLOGH_mD)",
+    "PHIF": "identity",
+    "SW": "identity"
+  },
+  "targets": {
+    "KLOGH": [
+      "lightgbm_regressor",
+      "extra_trees_regressor",
+      "xgboost_regressor"
+    ],
+    "PHIF": [
+      "extra_trees_regressor",
+      "lightgbm_regressor",
+      "hist_gradient_boosting_regressor"
+    ],
+    "SW": [
+      "lightgbm_regressor",
+      "hist_gradient_boosting_regressor",
+      "xgboost_regressor"
+    ]
+  },
+  "test_firewall": {
+    "frozen_test_family": "15/9-F-15",
+    "runner_accepts_test_path": false,
+    "test_loader_implemented": false,
+    "test_metrics_allowed": false
+  },
+  "track_id": "property",
+  "train_loss": "three independently masked per-target mean-squared errors averaged exactly as Stage-2",
+  "visualization": {
+    "complete_predictions_git_ignored": true,
+    "dpi": 300,
+    "figures_per_target": [
+      "per_well_depth",
+      "truth_prediction",
+      "residual",
+      "worst_family",
+      "fold_seed_distribution"
+    ],
+    "source": "portable mean-over-repeat OOF aggregate plus cell metrics",
+    "targets": [
+      "PHIF",
+      "KLOGH",
+      "SW"
+    ]
+  }
+}

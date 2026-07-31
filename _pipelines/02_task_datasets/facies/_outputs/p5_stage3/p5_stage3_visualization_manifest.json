@@ -1,0 +1,82 @@
+{
+  "figures": [
+    {
+      "contains": [
+        "oof_seismic_gt_prediction",
+        "error_entropy_confidence",
+        "aggregate_confusion",
+        "per_class_iou_f1",
+        "fold_seed_distribution"
+      ],
+      "figure": "facies_f3_stage3_oof_diagnostics.png",
+      "figure_bytes": 366625,
+      "figure_sha256": "fd5b7038d317a01a78ba6c58aac103336b6dc86da909c69a61740d9503f34778",
+      "frozen_test_consumed": false,
+      "model_id": "smp_fpn_r18",
+      "no_model_or_dataset_loaded": true,
+      "representative_cell_key": "facies_f3/scratch/smp_fpn_r18/fold-0/repeat-0",
+      "representative_oof_runtime_relative_path": "facies_f3/scratch/smp_fpn_r18/fold_0/repeat_0/oof_predictions.npz",
+      "representative_oof_sha256": "d33bde46cc1ec0810d457f1065093efe9efff2f3dcf6e3d0cd91dde0eb3876eb",
+      "selection": "seeded_candidate_if_eligible_else_global_max_gt_diversity_then_correct_error_balance_then_sample_and_cell_id",
+      "selection_outcome": "seeded_candidate_eligible",
+      "selection_rule": "seeded_candidate_if_eligible_else_global_max_gt_diversity_then_correct_error_balance_then_sample_and_cell_id",
+      "selection_sample_id": "facies_f3:train:sample_0000034",
+      "selection_statistics": {
+        "correct_pixels": 9903,
+        "eligible": true,
+        "error_fraction": 0.39556884765625,
+        "error_pixels": 6481,
+        "gt_class_count": 3,
+        "has_at_least_two_gt_classes": true,
+        "has_correct_and_error_pixels": true,
+        "sample_id": "facies_f3:train:sample_0000034",
+        "total_pixels": 16384
+      },
+      "status": "generated",
+      "task_id": "facies_f3"
+    },
+    {
+      "contains": [
+        "oof_seismic_gt_prediction",
+        "error_entropy_confidence",
+        "aggregate_confusion",
+        "per_class_iou_f1",
+        "fold_seed_distribution"
+      ],
+      "figure": "facies_penobscot_stage3_oof_diagnostics.png",
+      "figure_bytes": 317413,
+      "figure_sha256": "477db4a9cb330fe632d91bb09f3791f5d80063840cb547371f9442788d332b98",
+      "frozen_test_consumed": false,
+      "model_id": "smp_deeplabv3plus_r18",
+      "no_model_or_dataset_loaded": true,
+      "representative_cell_key": "facies_penobscot/scratch/smp_deeplabv3plus_r18/fold-0/repeat-2",
+      "representative_oof_runtime_relative_path": "facies_penobscot/scratch/smp_deeplabv3plus_r18/fold_0/repeat_2/oof_predictions.npz",
+      "representative_oof_sha256": "d114345a182f016979aee49a4883a52c511103ec5c1442f29de7db86dee3943a",
+      "selection": "seeded_candidate_if_eligible_else_global_max_gt_diversity_then_correct_error_balance_then_sample_and_cell_id",
+      "selection_outcome": "global_informative_candidate",
+      "selection_rule": "seeded_candidate_if_eligible_else_global_max_gt_diversity_then_correct_error_balance_then_sample_and_cell_id",
+      "selection_sample_id": "facies_penobscot:train:sample_0000247",
+      "selection_statistics": {
+        "correct_pixels": 3149,
+        "eligible": true,
+        "error_fraction": 0.80780029296875,
+        "error_pixels": 13235,
+        "gt_class_count": 4,
+        "has_at_least_two_gt_classes": true,
+        "has_correct_and_error_pixels": true,
+        "sample_id": "facies_penobscot:train:sample_0000247",
+        "total_pixels": 16384
+      },
+      "status": "generated",
+      "task_id": "facies_penobscot"
+    }
+  ],
+  "frozen_test_consumed": false,
+  "rebuild_requires": "portable JSON plus archived private OOF NPZ; no model/dataset/test",
+  "runtime_root": "provided_at_rebuild_time_not_serialized",
+  "schema_version": "facies-p5-stage3-v1",
+  "source_oof_manifest_sha256": "9cad6c33a9799ecefdd4c07fa3a7f8cd38fa1eeb76e01eb89cc624fc37347d6a",
+  "source_results_sha256": "dd0730da873a9f6d3d44b8a77708a585a9ed2ee89621137ffacd786a1f79cb58",
+  "track_id": "facies",
+  "visualizer": "facies_p5_stage3.render_visualizations"
+}

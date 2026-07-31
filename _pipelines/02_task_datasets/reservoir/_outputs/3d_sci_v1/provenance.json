@@ -1,0 +1,34 @@
+{
+  "fields": {
+    "depth_field": "depth_m",
+    "gt_fields": [
+      "PHIF_gt",
+      "log1p_KLOGH_gt",
+      "SW_gt"
+    ],
+    "pred_fields": [
+      "PHIF_pred",
+      "log1p_KLOGH_pred",
+      "SW_pred"
+    ],
+    "sample_coordinates": [
+      "inline",
+      "crossline",
+      "time_ms"
+    ]
+  },
+  "generated_utc": "2026-07-25T09:56:46.797102+00:00",
+  "inputs": {
+    "test_h5": {
+      "path": "_data/processed/reservoir/test.h5",
+      "sha256": "6d07a689b259d58f23c67de15998e7c2fd0648357588bab8af1a52c9e028a507"
+    },
+    "test_predictions_csv": {
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/test_predictions.csv",
+      "sha256": "6a574630eda91c115057b39a795df011577160db951ab39011a0f5cc2a858475"
+    }
+  },
+  "output_dir": "_pipelines/02_task_datasets/reservoir/_outputs/3d_sci_v1",
+  "records": 344,
+  "script": "_pipelines/02_task_datasets/reservoir/visualize_3d_sci.py"
+}

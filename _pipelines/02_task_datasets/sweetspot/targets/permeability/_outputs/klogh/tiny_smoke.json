@@ -1,0 +1,11 @@
+{
+  "families": [
+    "15/9-19",
+    "15/9-F-1"
+  ],
+  "final_loss": 0.3743733692601835,
+  "initial_loss": 0.9999999917794001,
+  "model": "reservoir_ridge",
+  "samples": 16,
+  "status": "passed"
+}

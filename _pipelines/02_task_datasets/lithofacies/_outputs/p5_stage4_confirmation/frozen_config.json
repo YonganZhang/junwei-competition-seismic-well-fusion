@@ -1,0 +1,152 @@
+{
+  "schema_version": "lithofacies-p5-stage4-frozen-config-v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "lane": "P",
+  "model_id": "xgboost_multisoftprob_window",
+  "seed": 2693,
+  "class_names": [
+    "F-MARSH",
+    "F-MOUTHBAR",
+    "F-OFFSHORE",
+    "F-LOWER SHOREFACE",
+    "F-UPPER SHOREFACE",
+    "F-TIDAL BAR",
+    "F-TIDAL CHANNEL",
+    "F-TIDAL FLAT MUDDY",
+    "F-TIDAL FLAT SANDY"
+  ],
+  "class_count": 9,
+  "model_config": {
+    "num_classes": 9,
+    "well_log_shape": [
+      26,
+      33
+    ],
+    "seismic_shape": [
+      3,
+      3,
+      33
+    ],
+    "rounds": 40,
+    "max_depth": 2,
+    "seed": 2693
+  },
+  "loss_contract": "sqrt_inverse_frequency_weighted_multi_softprob",
+  "budget": {
+    "well_shape": [
+      26,
+      33
+    ],
+    "seismic_shape": [
+      3,
+      3,
+      33
+    ],
+    "fold_train_sample_limit": 320,
+    "fold_validation_sample_limit": 160,
+    "batch_size": 32,
+    "neural_parameter_updates": 40,
+    "tiny_gate_updates_included": 3,
+    "neural_wall_limit_seconds": 600.0,
+    "estimator_wall_limit_seconds": 300.0,
+    "optimizer": "AdamW(lr=0.001,weight_decay=0.0001)",
+    "xgboost": {
+      "rounds": 40,
+      "max_depth": 2
+    },
+    "catboost": {
+      "iterations": 40,
+      "depth": 3
+    },
+    "inceptiontime": {
+      "nf": 8,
+      "kernel_size": 31
+    },
+    "pretrained_weights": false,
+    "hpo": false,
+    "budget_hash": "8e37c0396444cae4e73995b68db4ce1da2239b3eedeb218a1016afdc94965036"
+  },
+  "refit_policy": {
+    "preprocessor_fit_scope": "all_four_development_mother_families_only",
+    "class_weight_fit_scope": "all_four_development_mother_families_only",
+    "preprocessor_fit_samples": 447,
+    "training_sample_selection": "stage2_balanced_take_after_preprocessing",
+    "training_sample_limit": 320,
+    "holdout_sample_limit": 160,
+    "calibration": "none_locked_stage3_raw_softmax_diagnostics_only",
+    "target_transform": "identity_class_id",
+    "hpo": false
+  },
+  "stage3_winner_evidence": {
+    "winner_model_id": "xgboost_multisoftprob_window",
+    "winner_rank": 1,
+    "fixed_schema_macro_f1_mean": 0.19493770207563763,
+    "fixed_schema_macro_f1_ci95": [
+      0.1878080737057791,
+      0.20244003525114362
+    ],
+    "worst_fold_fixed_schema_macro_f1": 0.18127577519230875,
+    "legal_cells": 12,
+    "primary_metric": "fixed_schema_macro_f1_mean",
+    "supported_class_metric_role": "diagnostic_only",
+    "stage3_split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+    "stage3_budget_hash": "8e37c0396444cae4e73995b68db4ce1da2239b3eedeb218a1016afdc94965036",
+    "summary_path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_summary.json",
+    "summary_sha256": "b0a840c50a47949727c0747888f748a992a3aee61333e7df8ece62cb55828d7c",
+    "leaderboard_path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_gm09_p_leaderboard.json",
+    "leaderboard_sha256": "b63a2ad5b71d6727031e398a72824b3da0a695a1d199f5c289ee9af414c5c4e8",
+    "results_path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage3/p5_stage3_results.jsonl",
+    "results_sha256": "8e14145117b8b44e3b9ee1131b9ade65e9f2b25151641d7b2b74f46898f966cb"
+  },
+  "data_contract": {
+    "path": "_pipelines/02_task_datasets/lithofacies/_outputs/split_manifest.json",
+    "sha256": "c895e411b10df6b57d4e76713cbf9bd1e96f4c14c22d1e9d13e8917285b1a785",
+    "split_unit": "mother well family including sidetracks",
+    "assignment_before": [
+      "resampling",
+      "windowing",
+      "normalization"
+    ],
+    "development_families": [
+      "15/9-19",
+      "15/9-F-14",
+      "15/9-F-15",
+      "15/9-F-4"
+    ],
+    "holdout_family": "15/9-F-5",
+    "development_samples": 447,
+    "holdout_samples": 120,
+    "holdout_class_support": [
+      2,
+      31,
+      2,
+      17,
+      3,
+      24,
+      41,
+      0,
+      0
+    ]
+  },
+  "prior_holdout_evidence": {
+    "prior_test_consumed": true,
+    "fresh_blind": false,
+    "evidence_class": "previously_seen_reusable_holdout",
+    "historical_metrics_path": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/metrics.json",
+    "historical_metrics_sha256": "6b8c8019477af1ae17d45dfbde9ee619dc99467f7d03bd49a4ce1822feec8a40",
+    "historical_run_manifest_path": "_pipelines/02_task_datasets/lithofacies/_outputs/multimodal_mlp/run_manifest.json",
+    "historical_run_manifest_sha256": "83768540cf37c2d343790d57c1b21c5fd3d9a8d5e0812bdf3f4f8cd60b0c11a4",
+    "historical_f5_accuracy": 0.35,
+    "historical_f5_fixed_schema_macro_f1": 0.10152098222466556
+  },
+  "source_lock": {
+    "path": "_pipelines/02_task_datasets/lithofacies/p5_source_lock.json",
+    "sha256": "b91749e023fa5162e65acf5fac13fa6e381e797d50ae27810d038d27a9bd0e61",
+    "revision": "5b0ba2fa54ee622e8abe38551e420cec75145e5d",
+    "license": "Apache-2.0",
+    "pretrained_weights_used": false
+  },
+  "p4_state_reset": false,
+  "config_hash": "b0430dababa4610f1ecdda2b42d91907f26c1cae3b973360077dbf8421131b7b"
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": "reconstruction-p24-historical-transfer-preregistration/v1",
+  "registered_before_target_evaluation": true,
+  "objective": "Test whether the frozen P21 foundation-informed kernel ensemble transfers to an unused historical porosity-property version on the same Volve grid.",
+  "evidence_class": {
+    "name": "unseen_same_field_historical_version_transfer",
+    "fresh_blind": false,
+    "cross_field": false,
+    "competition_hidden_test": false,
+    "allowed_claim": "same-field historical-version transfer stress test",
+    "forbidden_claims": [
+      "fresh blind holdout",
+      "independent field validation",
+      "competition test confirmation"
+    ]
+  },
+  "selection_audit": {
+    "candidate_selected_from": [
+      "archive member metadata",
+      "grid identity",
+      "point count",
+      "file and payload hashes"
+    ],
+    "candidate_target_distribution_used_for_selection": false,
+    "candidate_metrics_computed_before_registration": false,
+    "candidate_predictions_computed_before_registration": false
+  },
+  "source_lock": {
+    "rms_zip": {
+      "basename": "Volve_Reservoir_Model-RMS_model.zip",
+      "sha256": "e09d62cf5a33408234503621cafbe7b8b63c7011bbc8ba6be31ab97712adbe9e"
+    },
+    "eclipse_zip": {
+      "basename": "Volve_Reservoir_Model-Eclipse_model.zip",
+      "sha256": "29b74f003327c91a8295677c43547ba25c43546e62116a0578ca4c9565e6a3f3"
+    },
+    "historical_target_member": {
+      "path": "Reservoir_Model-RMS_model/Volve_Full_Field_Geomodel_2014 (pp04xg03gf01sf01.rms2012.0)/gridmodels/pp04bxg03postf11a/pp04phif/realisation.1",
+      "zip_crc32": "b27c0e38",
+      "member_sha256": "86ae0cdc0619e0eb703f99f8badb256678d3878fd12add1666bbdf0809099044",
+      "payload_sha256": "1950a9fd751e6a8122d8adb69980676a8af3b77e04615f041aa1c38481a3aeaf",
+      "points": 508622,
+      "payload_dtype": ">f4"
+    },
+    "final_reference_member": {
+      "path": "Reservoir_Model-RMS_model/Volve_Full_Field_Geomodel_2014 (pp04xg03gf01sf01.rms2012.0)/gridmodels/pp04bxg03postf11a/mergepp04bphifnw/realisation",
+      "zip_crc32": "0f30db13",
+      "member_sha256": "1448f82b32241ca17a873ce2d34743251f5e2c6e69d56d9f41b3d6f07f761e0d",
+      "payload_sha256": "440bffd21b3044d9764294db0d362657ba89fcea0392155fafdb9a7bd71d5c43",
+      "points": 508622,
+      "payload_dtype": ">f4"
+    },
+    "grid_shape_kji": [
+      63,
+      100,
+      108
+    ]
+  },
+  "mapping_lock": {
+    "rule": "Transpose Eclipse KJI to IJK, flatten in C order, retain final PHIF_NW values greater than zero, and require exact equality with the final RMS payload. Assign the historical payload to those same IJK positions, then transpose back to KJI.",
+    "reference_equality": "exact elementwise equality",
+    "mapping_may_change_after_target_open": false
+  },
+  "evaluation_lock": {
+    "outer_spatial_folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "train_labels_per_fold": 512,
+    "validation_rows_per_fold": 2048,
+    "fold_train_and_validation_kji": "exact P21/P5 Stage-3 conditional indices",
+    "raw_inputs": "unchanged P21 seismic attributes, coordinates, sparse-support feature and frozen GFM representations",
+    "baseline": {
+      "model": "PyKrige OrdinaryKriging3D 1.7.3",
+      "variogram_model": "linear",
+      "nlags": 4,
+      "coordinate_space": "original fold-standardized coordinates"
+    },
+    "candidate": {
+      "model": "frozen P21 fixed foundation-kernel ensemble",
+      "vertical_weight": 4.0,
+      "foundation_weight": 0.1,
+      "seismic_weights": [
+        0.0,
+        0.1,
+        0.2
+      ],
+      "neighbours": 64,
+      "distance_power": 1.5,
+      "blend_weight": 0.75,
+      "candidate_selection_uses_historical_labels": false
+    },
+    "primary_metric": "pooled RMSE",
+    "secondary_metrics": [
+      "pooled MAE",
+      "pooled bias",
+      "per-fold RMSE"
+    ],
+    "success_gate": {
+      "minimum_relative_rmse_improvement_vs_pykrige": 0.01,
+      "maximum_fold_losses_vs_pykrige": 1
+    },
+    "baseline_reproduction_gate": {
+      "reference": "existing final-target P5 Stage-3 conditional OOF predictions",
+      "maximum_absolute_prediction_delta": 1e-07
+    },
+    "hyperparameter_search_after_target_open": false,
+    "single_opening": true
+  },
+  "decision_rule": {
+    "on_pass": "Record P21 as development-supported and same-field historical-version-transfer-supported; continue to seek a truly external field or hidden test.",
+    "on_fail": "Keep P21 as development-only, archive the failure without tuning on P24, and require a new preregistered route for further method changes."
+  }
+}

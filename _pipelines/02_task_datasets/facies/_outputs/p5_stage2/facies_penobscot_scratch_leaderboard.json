@@ -1,0 +1,73 @@
+{
+  "frozen_test_consumed": false,
+  "label_version": "penobscot-dataset-log-v3-ids-0-7-v1",
+  "lane": "scratch",
+  "primary_metric": "miou",
+  "ranking_scope": "locked_development_fold0_validation_only",
+  "rows": [
+    {
+      "accuracy": 0.6568222045898438,
+      "all_classes_supported": false,
+      "macro_f1": 0.18265727397490208,
+      "miou": 0.14719424286454708,
+      "model_id": "smp_deeplabv3plus_r18",
+      "rank": 1,
+      "updates": 40,
+      "wall_seconds": 10.484257680829614
+    },
+    {
+      "accuracy": 0.6160812377929688,
+      "all_classes_supported": false,
+      "macro_f1": 0.20138132673243414,
+      "miou": 0.1458557284873748,
+      "model_id": "smp_fpn_r18",
+      "rank": 2,
+      "updates": 40,
+      "wall_seconds": 5.487127976957709
+    },
+    {
+      "accuracy": 0.390289306640625,
+      "all_classes_supported": false,
+      "macro_f1": 0.14421131302999726,
+      "miou": 0.099015882621325,
+      "model_id": "smp_unet_r18",
+      "rank": 3,
+      "updates": 40,
+      "wall_seconds": 10.155311565846205
+    },
+    {
+      "accuracy": 0.3631019592285156,
+      "all_classes_supported": false,
+      "macro_f1": 0.14032779282236757,
+      "miou": 0.09277108679385722,
+      "model_id": "smp_unetpp_r18",
+      "rank": 4,
+      "updates": 40,
+      "wall_seconds": 6.809452403802425
+    },
+    {
+      "accuracy": 0.4888458251953125,
+      "all_classes_supported": false,
+      "macro_f1": 0.11032436929336036,
+      "miou": 0.07833376243670387,
+      "model_id": "hf_segformer_b0",
+      "rank": 5,
+      "updates": 40,
+      "wall_seconds": 9.098705276846886
+    },
+    {
+      "accuracy": 0.5829696655273438,
+      "all_classes_supported": false,
+      "macro_f1": 0.09206898878462332,
+      "miou": 0.07287120819091797,
+      "model_id": "torchvision_lraspp_mbv3",
+      "rank": 6,
+      "updates": 40,
+      "wall_seconds": 4.263766617979854
+    }
+  ],
+  "schema_version": "facies-p5-stage2-v1",
+  "secondary_metric": "macro_f1",
+  "task_id": "facies_penobscot",
+  "track_id": "facies"
+}

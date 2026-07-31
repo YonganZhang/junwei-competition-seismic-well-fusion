@@ -1,0 +1,30 @@
+{
+  "space": "PHIF, log1p(KLOGH), SW",
+  "per_target": {
+    "PHIF": {
+      "RMSE": 0.020900944868432036,
+      "MAE": 0.015648417414317217,
+      "R2": 0.9029771182086087,
+      "R2_reason": null,
+      "Pearson": 0.9590147489015269,
+      "Pearson_reason": null
+    },
+    "log1p(KLOGH)": {
+      "RMSE": 1.128879382159456,
+      "MAE": 0.8932959697611352,
+      "R2": 0.7762172881275564,
+      "R2_reason": null,
+      "Pearson": 0.9330526367782634,
+      "Pearson_reason": null
+    },
+    "SW": {
+      "RMSE": 0.23263274302747222,
+      "MAE": 0.185149644883243,
+      "R2": 0.1922326878837205,
+      "R2_reason": null,
+      "Pearson": 0.718124802322107,
+      "Pearson_reason": null
+    }
+  },
+  "composite_mean_train_std_normalized_RMSE": 0.4586348362016451
+}

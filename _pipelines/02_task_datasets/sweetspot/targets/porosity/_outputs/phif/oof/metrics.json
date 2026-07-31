@@ -1,0 +1,11 @@
+{
+  "absolute_residual_q90_model_domain": 0.03789995096257464,
+  "physical": {
+    "MAE": 0.017832799725908198,
+    "R2": 0.8599702412283866,
+    "R2_reason": null,
+    "RMSE": 0.026795658900226824
+  },
+  "physical_unit": "fraction",
+  "target": "PHIF"
+}

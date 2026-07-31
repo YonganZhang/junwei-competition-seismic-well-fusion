@@ -1,0 +1,9 @@
+{
+  "confirm_seeds": 3,
+  "direction": "maximize",
+  "pilot_trials": 20,
+  "pruner": "nop",
+  "sampler": "random_then_tpe",
+  "sanity_trials": 8,
+  "top_configs": 3
+}

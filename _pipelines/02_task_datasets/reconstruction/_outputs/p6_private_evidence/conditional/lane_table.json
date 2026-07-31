@@ -1,0 +1,34 @@
+{
+  "B0": {
+    "r2": 0.013685620787833641,
+    "rmse": 0.021012888252387812,
+    "status": "passed"
+  },
+  "B1": {
+    "r2": 0.013685620787833641,
+    "rmse": 0.021012888252387812,
+    "status": "passed"
+  },
+  "F0": {
+    "reason": "no approved foundation artifact",
+    "status": "blocked"
+  },
+  "F1": {
+    "reason": "no approved foundation artifact",
+    "status": "blocked"
+  },
+  "fresh_blind": false,
+  "mode": "conditional",
+  "prior_test_consumed": true,
+  "shared_k4_fold": 4,
+  "shared_k4_metric_mask_count": 49233,
+  "shuffled": {
+    "r2": 0.013685620787833641,
+    "rmse": 0.021012888252387812,
+    "status": "passed"
+  },
+  "stage3_rankable": true,
+  "stage3_result_sha256": "bb5025fbe7e90cef8fff2d29f9a2e4615e30792996163a40a29b7560bcb306ce",
+  "stage4_result_hash": "a87804bd19ae531088d0cd14862f75a3243907fbd6e5e3c49af5d233bb75de40",
+  "status": "no_verified_gain"
+}
