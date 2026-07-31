@@ -6,7 +6,9 @@
 > `P8_multimodal_foundation_acceptance_evidence.md`、
 > `P17_reconstruction_foundation_acceptance_evidence.md`、
 > `P18_reconstruction_anisotropic_acceptance_evidence.md`、
-> `P19_reconstruction_training_diagnostics_acceptance_evidence.md`。
+> `P19_reconstruction_training_diagnostics_acceptance_evidence.md`、
+> `P23_reconstruction_checkshot_calibration_evidence.md`、
+> `P24_reconstruction_historical_transfer_evidence.md`。
 
 ## Audit-First / SSDO
 
@@ -21,6 +23,8 @@
 | P17 重建基础模型验收 | `sed -n '1,300p' _wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md` | 核对 512 标签/折、5 空间折、holdout 防火墙、整折不确定性与独立复算 |
 | P18 各向异性重建验收 | `sed -n '1,300p' _wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md` | 核对 P17 选择偏差修正、嵌套 LOFO、各向异性、5/5 折改善、整折区间与独立复算 |
 | P19 重建训练诊断验收 | `sed -n '1,320p' _wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md` | 核对元选择训练坐标去重、逐层张量/激活/梯度、五条替代路线和 holdout 防火墙 |
+| P23 Checkshot 标定验收 | `sed -n '1,240p' _wiki-methodology/_tests/P23_reconstruction_checkshot_calibration_evidence.md` | 核对三口拟合井、两口独立校验井、标定改进和下游模型不晋级边界 |
+| P24 历史版本迁移验收 | `sed -n '1,240p' _wiki-methodology/_tests/P24_reconstruction_historical_transfer_evidence.md` | 核对预注册、冻结 P21、一次性目标开放、4/5 折改善和非跨场区声明 |
 | 甜点七目标注册 | `python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json` | 重建独立目标注册并校验必需产物存在 |
 | TOP 结题检查 | `python3 /mnt/data/yongan-admin-2/.codex/skills/share-top/scripts/topic-closeout.py .` | 发现计划/codemap/registry/test map 漂移 |
 
@@ -50,6 +54,8 @@
 | `_pipelines/02_task_datasets/reconstruction/_tests/test_p17_foundation_geostatistics.py` | GFM 非平稳邻域、座标反映射、训练内标准化/PCA、无 test CLI、真实证据与独立复算 |
 | `_pipelines/02_task_datasets/reconstruction/_tests/test_p18_anisotropic_foundation_geostatistics.py` | 垂向各向异性、有界 1,215 候选、嵌套选型防泄漏、P17 偏差修正、真实证据与独立复算 |
 | `_pipelines/02_task_datasets/reconstruction/_tests/test_p19_training_diagnostics_artifacts.py` | 元选择坐标重叠修正、训练动力学量级、严格失败路线、持久化 verifier 与冻结 holdout 边界 |
+| `_pipelines/02_task_datasets/reconstruction/_tests/test_p21_fixed_foundation_ensemble.py` | 固定三基础核平均、产物哈希、拒绝残差路线和默认模型边界 |
+| `_pipelines/02_task_datasets/reconstruction/_tests/test_p24_historical_transfer.py` | 历史 RMS 映射、冻结成功门、目标开放防火墙和声明边界 |
 
 ## Leaves
 
@@ -65,7 +71,7 @@
 ## Current Gaps
 
 - 卡片公网内容本身没有视觉像素回归；当前以源图SHA-256、确定性双渲染测试与发布前人工逐张预览锁定内容。
-- 赛道⑥ P17 的同 OOF `-0.4563%` 已由嵌套复核取代；P18 又因元选择训练坐标未去重被 P19 取代。P19 修正后相对 PyKrige RMSE `-2.4546%`，5/5 空间折改善，整折 bootstrap 区间完全低于零，状态为 `ROBUST_DEVELOPMENT_SIGNAL`。P15 的全尾块微调已定位为首步零梯度、编码器相对更新比头部小约 470 倍；下一步是参数高效适配器和分阶段解冻。用户要求将消融后置，因此默认仍关闭、不归因预训练贡献；冻结 holdout 仍未消费。其他赛道的同 split 控制门仍需分别验证。
+- 赛道⑥的全尾块微调、LoRA、Adapter、分阶段解冻和残差路线均已完成严格复核；最终默认模型为 P21 固定三基础核平均。P24 在未使用的同场区历史版本上通过预注册门，用户已接受该证据等级并停止跨场区扩展；不再把 PEFT 或外部盲测列为当前下一步。其他赛道的同 split 基础模型控制门仍需分别按数据条件验证。
 - 断层只有 3998 个审核正例点，没有覆盖已核验负例与连续三维development块；SAM-Med3D只能作为合成体运行证据，正式 blind test/CV 不可行，也不允许用随机非断层patch或验证/测试真值提示点伪造结果。
 - 监督LLM已具备统一提示模板、provider-neutral调用边界和严格JSON响应校验；因尚未批准具体provider/model/revision，本轮没有真实外部API调用，也没有让LLM接触标签、原始预测或冻结测试指标。
 - 甜点目标5缺已验证 Eclipse cell-state parser 与冻结的时间/候选井/经济约束；只能是 simulation case，不是 field truth。

@@ -174,3 +174,9 @@ gates:
     timeout: 120
     expect: exit0
     note: "Track-6 three-fit/two-independent-well checkshot protocol, source lock, calibration gain and no-porosity-claim boundary."
+
+  - id: p24-reconstruction-historical-transfer
+    cmd: "python3 -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p24_historical_transfer.py _pipelines/02_task_datasets/reconstruction/_tests/test_p21_fixed_foundation_ensemble.py"
+    timeout: 120
+    expect: exit0
+    note: "Track-6 preregistration, frozen P21 transfer result, artifact hashes, one-time target opening and explicit same-field/non-blind claim boundary."

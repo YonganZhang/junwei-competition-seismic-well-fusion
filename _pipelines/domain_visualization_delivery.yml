@@ -11,5 +11,5 @@ steps:
     ref: code:domain_visualization_stage
   - id: publish_cards
     ref: code:domain_visualization_publish
-verified_steps_hash: 3164d9b57828b4e1e70a08ebb2c2de349390dd9a204facf2819293c3bfb88aed
-verified_at_commit: 60fc6393944901014770c8d48de8b91f09d5cb96
+verified_steps_hash: 3a7dd1c829f38a83c839efccc5c0de2e588355b4ba5baa5659e5f609c8dd783b
+verified_at_commit: 707cff2dfc441345fd1c9efd1bda5119133750ff
