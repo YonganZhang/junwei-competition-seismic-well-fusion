@@ -238,6 +238,12 @@
       `_wiki-methodology/_tests/P5.1_r01_integration_acceptance_evidence.md`。下一步统一称P5.2/protocol R2学习曲线；达到停止线后
       才启动P5.3/protocol R3每合法赛道/lane至少10候选正式grouped/spatial/temporal CV。master未merge、未push。
 
+- [x] 2026-07-31 赛道⑥ P20 完成非零初始化、LoRA r4、Adapter 和分阶段解冻的严格五折复测。
+      四路线均为 5/5 折优于 PyKrige，最佳 staged-LoRA RMSE=`0.027789615700`，但仍差于 P19 的
+      `0.027751397628`；80 步扩展降为 `0.027791517166`，P19/P20 误差相关=`0.9992037`，固定融合
+      最优 P20 权重为 0。梯度、参数更新、原生窗口和 holdout firewall 均独立复核通过，结论为
+      `VERIFIED_NO_PROMOTION`、默认关闭。见 `_findings/P20_reconstruction_peft_staged_unfreeze.md`。
+
 ## 数据资产索引
 
 详见 `_meta/_data_registry.yml`（单一真源，本文件不重复数据字段细节）。

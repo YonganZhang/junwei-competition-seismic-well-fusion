@@ -1,0 +1,492 @@
+{
+  "baseline": {
+    "bias": -0.0018579539930215106,
+    "mae": 0.021413486381061376,
+    "rmse": 0.028449728170183285,
+    "rows": 10240
+  },
+  "decision": {
+    "best_p20_rmse": 0.02778961569974537,
+    "best_p20_route": "staged_lora_r4",
+    "default_enabled": false,
+    "reason": "PEFT gradients and parameter updates are real, but the best strict five-fold P20 result remains worse than P19 and has near-redundant errors; longer training does not repair outer-fold generalization.",
+    "rmse_delta_vs_p19": 3.8218071917641566e-05,
+    "state": "VERIFIED_NO_PROMOTION"
+  },
+  "extended_80_update_check": {
+    "calibration_last_update_is_best_by_fold": [
+      true,
+      true,
+      true,
+      false,
+      true
+    ],
+    "maximum_updates": 80,
+    "metrics": {
+      "bias": -0.0004079897756145867,
+      "mae": 0.020866483719902056,
+      "rmse": 0.0277915171664157,
+      "rows": 10240
+    },
+    "selected_updates": [
+      80,
+      80,
+      80,
+      72,
+      80
+    ]
+  },
+  "firewall": {
+    "frozen_holdout_opened": false,
+    "outer_spatial_folds": 5,
+    "test_h5_opened": false,
+    "train_labels_per_fold": 512
+  },
+  "implementation": {
+    "training_script_sha256": "2c4027da4b09e782b15581effc0cb19202c7b3be9c408af8a90f3d52faab0b73",
+    "verification_script_sha256": "790a71c29c14dea139c018e1b12c5f9e192a54913912f42b77c8753edded5d00"
+  },
+  "optimization_checks": {
+    "adapter_gradient_nonzero": true,
+    "full_tail_gradient_nonzero": true,
+    "lora_gradient_nonzero": true,
+    "nonzero_output_head_initialization_recorded": true,
+    "terminal_norm_gradient_nonzero": true
+  },
+  "p19_complementarity": {
+    "best_fixed_blend": {
+      "rmse": 0.027751397627827728,
+      "staged_lora_weight": 0.0
+    },
+    "error_correlation": 0.9992036727355113,
+    "fixed_blend_grid": [
+      {
+        "rmse": 0.027751397627827728,
+        "staged_lora_weight": 0.0
+      },
+      {
+        "rmse": 0.027752242068340958,
+        "staged_lora_weight": 0.05
+      },
+      {
+        "rmse": 0.027753198872518897,
+        "staged_lora_weight": 0.1
+      },
+      {
+        "rmse": 0.02775426802874063,
+        "staged_lora_weight": 0.15000000000000002
+      },
+      {
+        "rmse": 0.027755449524022556,
+        "staged_lora_weight": 0.2
+      },
+      {
+        "rmse": 0.02775674334401918,
+        "staged_lora_weight": 0.25
+      },
+      {
+        "rmse": 0.027758149473023987,
+        "staged_lora_weight": 0.30000000000000004
+      },
+      {
+        "rmse": 0.027759667893970382,
+        "staged_lora_weight": 0.35000000000000003
+      },
+      {
+        "rmse": 0.027761298588432747,
+        "staged_lora_weight": 0.4
+      },
+      {
+        "rmse": 0.027763041536627526,
+        "staged_lora_weight": 0.45
+      },
+      {
+        "rmse": 0.027764896717414455,
+        "staged_lora_weight": 0.5
+      },
+      {
+        "rmse": 0.027766864108297835,
+        "staged_lora_weight": 0.55
+      },
+      {
+        "rmse": 0.027768943685427868,
+        "staged_lora_weight": 0.6000000000000001
+      },
+      {
+        "rmse": 0.02777113542360214,
+        "staged_lora_weight": 0.65
+      },
+      {
+        "rmse": 0.02777343929626712,
+        "staged_lora_weight": 0.7000000000000001
+      },
+      {
+        "rmse": 0.027775855275519762,
+        "staged_lora_weight": 0.75
+      },
+      {
+        "rmse": 0.027778383332109212,
+        "staged_lora_weight": 0.8
+      },
+      {
+        "rmse": 0.02778102343543856,
+        "staged_lora_weight": 0.8500000000000001
+      },
+      {
+        "rmse": 0.027783775553566682,
+        "staged_lora_weight": 0.9
+      },
+      {
+        "rmse": 0.027786639653210175,
+        "staged_lora_weight": 0.9500000000000001
+      },
+      {
+        "rmse": 0.02778961569974537,
+        "staged_lora_weight": 1.0
+      }
+    ],
+    "fixed_blend_improves_p19": false
+  },
+  "p19_reference": {
+    "bias": -0.0004171601270905864,
+    "mae": 0.02082576074455552,
+    "rmse": 0.027751397627827728,
+    "rows": 10240
+  },
+  "routes_recomputed": {
+    "lora_r4": {
+      "fold_wins_vs_pykrige": 5,
+      "metrics": {
+        "bias": -0.0005531682101559173,
+        "mae": 0.02087076207729411,
+        "rmse": 0.027789635296497726,
+        "rows": 10240
+      },
+      "nonzero_gradient_steps_across_refits": {
+        "base_tail": 0,
+        "head": 160,
+        "peft": 160,
+        "terminal_norm": 0
+      },
+      "parameter_update_l2_by_fold": [
+        {
+          "base_tail": 0.0,
+          "head": 0.6702746193719502,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.0742878084778564
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.7349791557134986,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.09717546172340978
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.6770771865452463,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.06532585778366745
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.7387577784407733,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.10028925387830126
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.7324913568185408,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.07321693779906396
+        }
+      ],
+      "selected_updates": [
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "tensor_shapes": {
+        "local_section_ids": [
+          13
+        ],
+        "prediction": [
+          13
+        ],
+        "prefix_batch": [
+          8,
+          3,
+          161,
+          1200
+        ],
+        "query_batch": [
+          13,
+          7
+        ],
+        "target": [
+          13
+        ],
+        "trace_token_ids": [
+          13
+        ]
+      }
+    },
+    "nonzero_head": {
+      "fold_wins_vs_pykrige": 5,
+      "metrics": {
+        "bias": -0.0006004692330237267,
+        "mae": 0.020918651046137365,
+        "rmse": 0.027814382567190387,
+        "rows": 10240
+      },
+      "nonzero_gradient_steps_across_refits": {
+        "base_tail": 0,
+        "head": 160,
+        "peft": 0,
+        "terminal_norm": 0
+      },
+      "parameter_update_l2_by_fold": [
+        {
+          "base_tail": 0.0,
+          "head": 0.6894870869621232,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.0
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.750944558605725,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.0
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.6622567797962379,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.0
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.7703630037516412,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.0
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.7453665365995301,
+          "inactive": 0.0,
+          "norm": 0.0,
+          "peft": 0.0
+        }
+      ],
+      "selected_updates": [
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "tensor_shapes": {
+        "local_section_ids": [
+          13
+        ],
+        "prediction": [
+          13
+        ],
+        "prefix_batch": [
+          8,
+          3,
+          161,
+          1200
+        ],
+        "query_batch": [
+          13,
+          7
+        ],
+        "target": [
+          13
+        ],
+        "trace_token_ids": [
+          13
+        ]
+      }
+    },
+    "staged_adapter": {
+      "fold_wins_vs_pykrige": 5,
+      "metrics": {
+        "bias": -0.0006004757842324379,
+        "mae": 0.02091868551559793,
+        "rmse": 0.027814441628425134,
+        "rows": 10240
+      },
+      "nonzero_gradient_steps_across_refits": {
+        "base_tail": 0,
+        "head": 160,
+        "peft": 120,
+        "terminal_norm": 80
+      },
+      "parameter_update_l2_by_fold": [
+        {
+          "base_tail": 0.0,
+          "head": 0.6894246701218062,
+          "inactive": 0.0,
+          "norm": 0.002024491827675933,
+          "peft": 0.14928993108559463
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.7507483181303857,
+          "inactive": 0.0,
+          "norm": 0.002072295915105265,
+          "peft": 0.15461695653606308
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.6622300058292365,
+          "inactive": 0.0,
+          "norm": 0.002454853231990893,
+          "peft": 0.14014282590262192
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.770281180349868,
+          "inactive": 0.0,
+          "norm": 0.0024445150278081126,
+          "peft": 0.13866399046128003
+        },
+        {
+          "base_tail": 0.0,
+          "head": 0.7453193780287777,
+          "inactive": 0.0,
+          "norm": 0.0022917248728916598,
+          "peft": 0.13338807359560373
+        }
+      ],
+      "selected_updates": [
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "tensor_shapes": {
+        "local_section_ids": [
+          13
+        ],
+        "prediction": [
+          13
+        ],
+        "prefix_batch": [
+          8,
+          3,
+          161,
+          1200
+        ],
+        "query_batch": [
+          13,
+          7
+        ],
+        "target": [
+          13
+        ],
+        "trace_token_ids": [
+          13
+        ]
+      }
+    },
+    "staged_lora_r4": {
+      "fold_wins_vs_pykrige": 5,
+      "metrics": {
+        "bias": -0.0005531896373822377,
+        "mae": 0.0208707569285287,
+        "rmse": 0.02778961569974537,
+        "rows": 10240
+      },
+      "nonzero_gradient_steps_across_refits": {
+        "base_tail": 40,
+        "head": 160,
+        "peft": 120,
+        "terminal_norm": 80
+      },
+      "parameter_update_l2_by_fold": [
+        {
+          "base_tail": 0.003993204080116304,
+          "head": 0.6702716560880303,
+          "inactive": 0.0,
+          "norm": 0.0018814081560278762,
+          "peft": 0.06287143926267794
+        },
+        {
+          "base_tail": 0.004216056142302648,
+          "head": 0.7350054212144866,
+          "inactive": 0.0,
+          "norm": 0.0019682369667194718,
+          "peft": 0.07481549763196227
+        },
+        {
+          "base_tail": 0.0038983234244692215,
+          "head": 0.6770788119548192,
+          "inactive": 0.0,
+          "norm": 0.002526792721124759,
+          "peft": 0.06611622196947955
+        },
+        {
+          "base_tail": 0.004063054984125678,
+          "head": 0.7387732281228355,
+          "inactive": 0.0,
+          "norm": 0.002786559204049314,
+          "peft": 0.08390466733759935
+        },
+        {
+          "base_tail": 0.004151621675455352,
+          "head": 0.7325054063233096,
+          "inactive": 0.0,
+          "norm": 0.002223648427353666,
+          "peft": 0.06452820502307736
+        }
+      ],
+      "selected_updates": [
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "tensor_shapes": {
+        "local_section_ids": [
+          13
+        ],
+        "prediction": [
+          13
+        ],
+        "prefix_batch": [
+          8,
+          3,
+          161,
+          1200
+        ],
+        "query_batch": [
+          13,
+          7
+        ],
+        "target": [
+          13
+        ],
+        "trace_token_ids": [
+          13
+        ]
+      }
+    }
+  },
+  "schema_version": "reconstruction-p20-peft-verification/v1",
+  "status": "PASSED"
+}
