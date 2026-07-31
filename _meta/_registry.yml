@@ -99,6 +99,17 @@ code_domains:
       masked-volume 条件、可见性与晋级状态机；固定 source/weights revision、size/SHA、许可证状态，
       运行时禁止自动下载。监督 LLM 仅做 schema/QC，严格 JSON，不读取标签、测试指标、路径或凭证。
 
+  - id: reconstruction_foundation_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P17 赛道⑥开发优化：冻结 ThinkOnward GFM 提供目标无关地震表征，
+      每个空间外折仅用 512 条合法训练标签拟合标准化/PCA，以弱加权表征
+      构建非平稳邻域并与 PyKrige 保守融合。只产生 DEVELOPMENT_SIGNAL，
+      无 test/holdout 入口，默认不启用。
+
 entrypoints:
   - id: project_plan
     path: _wiki-methodology/_top/_task_plan.md
@@ -170,6 +181,13 @@ entrypoints:
     owner: col2
     description: "Modality-specific foundation routes, supervisory LLM boundary and connection-versus-promotion decision."
 
+  - id: p17_reconstruction_foundation_acceptance
+    path: _wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 GFM nonstationary-metric result, 512-label budget, holdout firewall, fold uncertainty and independent hash/metric recomputation."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -195,6 +213,9 @@ cross_domain_edges:
   - from: foundation_model_routes
     to: canonical_models
     relation: routes
+  - from: reconstruction_foundation_geostatistics
+    to: foundation_model_routes
+    relation: uses
 
 non_code_assets:
   registry: _meta/_data_registry.yml

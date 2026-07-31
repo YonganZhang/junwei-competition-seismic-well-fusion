@@ -4,6 +4,45 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P17 foundation-informed nonstationary geostatistics
+
+`p17_foundation_geostatistics.py` changes the role of the frozen
+`thinkonward/geophysical-foundation-model`: it is no longer used as a direct
+porosity regressor.  Instead, target-free seismic representations deform the
+local neighbourhood metric of an inverse-distance interpolator.  Physical
+coordinates remain dominant, while local seismic attributes and reduced GFM
+coordinates provide weak nonstationary corrections.  Scaling and PCA are fit
+inside each outer fold using exactly its 512 legal training labels.
+
+The bounded development search contains 156 positive-foundation candidates
+(13 metric-weight pairs, three neighbourhood sizes and four PyKrige blends).
+The selected route is `gfm_metric_f0.05_s0.10_k128_blend_0.75`.  On 10,240
+OOF rows, PyKrige RMSE is `0.028449728170` and the selected route reaches
+`0.028319907650` (relative change `-0.4563%`); MAE improves from
+`0.021413486381` to `0.021200329887`, with 3/5 spatial folds improving.
+Whole-fold bootstrap gives a 76.68% probability of improvement, but its 95%
+RMSE-delta interval `[-0.000589605334, +0.000128806422]` crosses zero.
+Therefore this is a `DEVELOPMENT_SIGNAL`, remains disabled by default, and is
+not a holdout or causal pretraining claim.  The no-foundation/random-init
+ablation is deliberately deferred.
+
+```bash
+CUDA_VISIBLE_DEVICES=7 python3 \
+  _pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$GFM_VENDOR_SOURCE" \
+  --snapshot-path "$GFM_HF_SNAPSHOT" \
+  --device cuda:0
+
+python3 \
+  _pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py verify
+```
+
+Portable evidence, row-aligned errors and independent recomputation are under
+`_outputs/p17_foundation_geostatistics/`; the frozen GFM feature cache remains
+under `_tmp/`.
+
 ## P14 geophysical foundation-model diagnostic
 
 `p14_geophysical_fm.py` replaces only the P11 encoder source with the

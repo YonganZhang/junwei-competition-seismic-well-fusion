@@ -137,3 +137,9 @@ gates:
     timeout: 180
     expect: exit0
     note: "Exact daily timestamps, no zero-filled missing days, causal cutoffs, group isolation and calendar-forecast shape."
+
+  - id: p17-reconstruction-foundation
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p17_foundation_geostatistics.py"
+    timeout: 180
+    expect: exit0
+    note: "Track-6 GFM nonstationary metric, exact train budget, no-test CLI, portable evidence hashes and independent recomputation."

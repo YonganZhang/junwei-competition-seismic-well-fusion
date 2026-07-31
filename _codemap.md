@@ -72,6 +72,16 @@
 
 六条路线统一可发现，但保持任务专属张量、head、loss 与 metric；route 接通不自动成为默认。
 
+## P17 赛道⑥基础模型地统计融合
+
+| 代码域 | 真源 / 入口 | 测试指针 |
+|---|---|---|
+| GFM 非平稳邻域 runner | `_pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py` | `reconstruction/_tests/test_p17_foundation_geostatistics.py` |
+| 便携结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p17_foundation_geostatistics/` | `_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md` |
+
+P17 仅在锁定开发 OOF 上搜索正的基础模型权重；每折标准化/PCA 只用 512
+条训练标签拟合，CLI 无 test/holdout 入口，候选默认关闭。
+
 ## 注册维护
 
 - 新增主流程代码:先查 `_meta/_registry.yml`,复用已有条目;确实新增再注册。

@@ -1,7 +1,15 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P8 六赛道多模态基础模型已真实接线，进入同 split 晋级验证]**
+> **🧭 当前: [P17 赛道⑥基础模型已获得合法开发信号，默认仍关闭]**
+>   2026-07-31 将 ThinkOnward GFM 从直接孔隙度回归改为非平稳邻域几何先验；
+>   在不扩大每折 512 条训练标签、不打开冻结 holdout 的条件下，
+>   10,240 条 OOF 的 RMSE 从 `0.028449728170` 降至 `0.028319907650`（-0.4563%），
+>   5 个独立空间折为 3 胜 2 负。整折 bootstrap 改善概率 0.7668，但 95% 区间跨 0，
+>   因此状态仅为 `DEVELOPMENT_SIGNAL`、`default_enabled=false`。本阶段按用户要求
+>   不做消融，不声称预训练的因果贡献。下一步保留为后续消融与外部验证，
+>   当前不消费冻结 holdout。证据见
+>   `_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md`。
 >   2026-07-28 已修正旧 P6 Gaia/DAGT“只有合同/QC、没有大模型参与预测”的边界：
 >   断层 SAM-Med3D、地震相 SAM 2.1、物性 TabICLv2、岩相 MOMENT、甜点 Chronos-2、
 >   三维重建 OpenMind ResEnc-L MAE 均已固定 source/weights revision 与 SHA，并完成真实加载计算。
@@ -30,6 +38,7 @@
 | P5 合成 / 交付 | 🔄 | 0.96/1 | Stage-1/2/3、Stage-4已见holdout确认、直接基准复核及P5.1 R0/R1已完成；下一步P5.2学习曲线，随后P5.3十候选正式CV，最终仍需真正未触碰的外部或赛事隐藏测试。 |
 | P6/P7 Gaia+时序 | ✅ | 2/2 | 旧 Gaia/DAGT 边界已审计；Chronos-2 真实预训练权重与因果预测通路已建立。 |
 | P8 多模态基础模型 | 🔄 | 0.65/1 | 六赛道权重/接口/真实计算已通过；同 split 性能、random-init、shuffle/causal 控制与断层数据门待完成。 |
+| P17 重建基础模型 | 🔄 | 0.8/1 | GFM 非平稳邻域路线在锁定开发 OOF 上 RMSE -0.4563%，3/5 折改善；置信区间跨 0，默认关闭，消融与 holdout 后置。 |
 
 ## 协作与决策权边界
 

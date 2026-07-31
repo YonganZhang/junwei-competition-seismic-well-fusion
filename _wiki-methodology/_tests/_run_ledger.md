@@ -68,3 +68,17 @@
 - supervisory LLM: deterministic prompt template, provider-neutral client boundary and strict JSON response validation are tested with a stub. No external LLM API was invoked because provider/model/revision approval is absent.
 - frozen test: not accessed.
 - detailed evidence and blockers: `P8_multimodal_foundation_acceptance_evidence.md`.
+
+## 2026-07-31 P17 reconstruction foundation-geostatistics acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-reconstruction`
+- branch: `p11-residual-reconstruction`; root seed `2693`.
+- model: frozen genuine `thinkonward/geophysical-foundation-model`; cached seismic representations were reused only after source/snapshot/cache hashes were verified.
+- data budget: five locked spatial folds; exactly 512 `point_train` labels and 2,048 validation rows per fold; no frozen-test path or HDF5 was opened.
+- bounded search: 13 positive-foundation metric pairs × 3 neighbour counts × 4 PyKrige blends = 156 candidates.
+- selected result: `gfm_metric_f0.05_s0.10_k128_blend_0.75`; pooled OOF RMSE `0.028319907650` versus PyKrige `0.028449728170`; 3 wins / 2 losses across the five folds.
+- uncertainty: 20,000 whole-fold bootstrap draws; P(candidate better)=`0.7668`, RMSE-delta CI95 `[-0.000589605334, +0.000128806422]`.
+- regression: P14–P17 combined suite `39 tests`, `OK`; P17 portable suite `8 tests`, `OK`.
+- independent verifier: `p17_foundation_geostatistics.py verify` -> `PASSED`; 10,240 rows, per-fold metrics, prediction hash and summary hash matched.
+- lifecycle: `DEVELOPMENT_SIGNAL`, `default_enabled=false`; ablation deferred by user instruction; frozen holdout remains sealed.
+- detailed evidence: `P17_reconstruction_foundation_acceptance_evidence.md`.
