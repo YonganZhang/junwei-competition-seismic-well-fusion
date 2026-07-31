@@ -113,13 +113,25 @@ code_domains:
   - id: reconstruction_anisotropic_foundation_geostatistics
     path: _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py
     type: pipeline
+    status: superseded
+    superseded_by: reconstruction_meta_purged_geostatistics
+    owner: project
+    description: >
+      P18 赛道⑥历史开发优化：复用哈希锁定的真实预训练 GFM 表征，显式搜索
+      垂向各向异性，并对每个报告空间折只用其余四折的指标行进行 top-3 候选选择。
+      P19 发现其余折训练子集与当前验证坐标存在间接重叠，因此 P18 已被更严格的
+      元拟合坐标去重协议取代；默认不启用。
+
+  - id: reconstruction_meta_purged_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p19_meta_purged_geostatistics.py
+    type: pipeline
     status: active
     owner: project
     description: >
-      P18 赛道⑥稳健开发优化：复用哈希锁定的真实预训练 GFM 表征，显式搜索
-      垂向各向异性，并对每个报告空间折只用其余四折进行 top-3 候选选择。
-      保持 512 标签/折和冻结 holdout 防火墙，产出 ROBUST_DEVELOPMENT_SIGNAL；
-      消融后置，默认不启用。
+      P19 赛道⑥严格开发优化：对每个报告空间折，先从其余折的元选择训练子集中
+      删除当前验证坐标，再重新拟合缩放、PCA、近邻模型与全部候选；最终折预测仍
+      严格使用 512 条合法训练标签。无 test/holdout 入口，默认不启用，不作预训练
+      因果归因。
 
 entrypoints:
   - id: project_plan
@@ -204,7 +216,14 @@ entrypoints:
     type: test_evidence
     status: active
     owner: col3
-    description: "Track-6 anisotropic GFM geostatistics, nested leave-one-fold-out selection, P17 bias correction, 5/5 fold improvement and independent recomputation."
+    description: "Historical Track-6 anisotropic GFM geostatistics result; metric-row-only LOFO selection later superseded by P19 meta-fit coordinate purge."
+
+  - id: p19_reconstruction_training_diagnostics_acceptance
+    path: _wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 meta-selection coordinate purge, strict 5/5-fold result, real GFM tensor/gradient probes, controlled route screens and independent recomputation."
 
 cross_domain_edges:
   - from: task_datasets
@@ -238,6 +257,12 @@ cross_domain_edges:
     to: reconstruction_foundation_geostatistics
     relation: supersedes
   - from: reconstruction_anisotropic_foundation_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_meta_purged_geostatistics
+    to: reconstruction_anisotropic_foundation_geostatistics
+    relation: supersedes
+  - from: reconstruction_meta_purged_geostatistics
     to: foundation_model_routes
     relation: uses
 

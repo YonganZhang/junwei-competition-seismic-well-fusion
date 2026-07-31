@@ -53,7 +53,7 @@ class P18AnisotropicFoundationContractTest(unittest.TestCase):
             "pca_z4_f0.1_s0.2_k64_p1.5_b0.75",
         )
 
-    def test_nested_selection_excludes_held_out_fold_labels(self) -> None:
+    def test_nested_selection_excludes_held_fold_metric_rows_only(self) -> None:
         fold_ids = np.repeat(np.asarray(p18.p17.base.FOLD_IDS), 3)
         target = np.zeros(len(fold_ids), dtype=np.float64)
         candidates = {
@@ -82,6 +82,7 @@ class P18AnisotropicFoundationContractTest(unittest.TestCase):
         )
         self.assertNotIn(0, original_fold_zero["selection_folds"])
         self.assertFalse(original_fold_zero["held_out_fold_used_for_selection"])
+        self.assertIn("does not remove held-fold coordinates", p18._nested_lofo_select.__doc__)
 
     def test_cli_exposes_no_test_or_holdout_argument(self) -> None:
         parser = p18._parser()  # noqa: SLF001

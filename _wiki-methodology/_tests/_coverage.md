@@ -5,7 +5,8 @@
 > `P5_stage2_acceptance_evidence.md`、`P5_stage3_acceptance_evidence.md`、
 > `P8_multimodal_foundation_acceptance_evidence.md`、
 > `P17_reconstruction_foundation_acceptance_evidence.md`、
-> `P18_reconstruction_anisotropic_acceptance_evidence.md`。
+> `P18_reconstruction_anisotropic_acceptance_evidence.md`、
+> `P19_reconstruction_training_diagnostics_acceptance_evidence.md`。
 
 ## Audit-First / SSDO
 
@@ -17,6 +18,7 @@
 | P8 多模态基础模型验收 | `sed -n '1,320p' _wiki-methodology/_tests/P8_multimodal_foundation_acceptance_evidence.md` | 核对六赛道真实权重/源码锁、typed conditioning、运行时证据、泄漏防火墙和“连接不等于晋级” |
 | P17 重建基础模型验收 | `sed -n '1,300p' _wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md` | 核对 512 标签/折、5 空间折、holdout 防火墙、整折不确定性与独立复算 |
 | P18 各向异性重建验收 | `sed -n '1,300p' _wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md` | 核对 P17 选择偏差修正、嵌套 LOFO、各向异性、5/5 折改善、整折区间与独立复算 |
+| P19 重建训练诊断验收 | `sed -n '1,320p' _wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md` | 核对元选择训练坐标去重、逐层张量/激活/梯度、五条替代路线和 holdout 防火墙 |
 | 甜点七目标注册 | `python3 -m _pipelines.02_task_datasets.sweetspot.targets.registry --output _tmp/p4-target-registry-audit.json` | 重建独立目标注册并校验必需产物存在 |
 | TOP 结题检查 | `python3 /mnt/data/yongan-admin-2/.codex/skills/share-top/scripts/topic-closeout.py .` | 发现计划/codemap/registry/test map 漂移 |
 
@@ -43,6 +45,7 @@
 | `_pipelines/02_task_datasets/sweetspot/tests/test_sweetspot_p8_calendar.py` | Chronos-2严格日历时轴、30日因果窗口、同井隔离、缺日mask及未来标签防火墙 |
 | `_pipelines/02_task_datasets/reconstruction/_tests/test_p17_foundation_geostatistics.py` | GFM 非平稳邻域、座标反映射、训练内标准化/PCA、无 test CLI、真实证据与独立复算 |
 | `_pipelines/02_task_datasets/reconstruction/_tests/test_p18_anisotropic_foundation_geostatistics.py` | 垂向各向异性、有界 1,215 候选、嵌套选型防泄漏、P17 偏差修正、真实证据与独立复算 |
+| `_pipelines/02_task_datasets/reconstruction/_tests/test_p19_training_diagnostics_artifacts.py` | 元选择坐标重叠修正、训练动力学量级、严格失败路线、持久化 verifier 与冻结 holdout 边界 |
 
 ## Leaves
 
@@ -54,7 +57,7 @@
 
 ## Current Gaps
 
-- 赛道⑥ P17 的同 OOF `-0.4563%` 已由嵌套复核取代。P18 各向异性 + 嵌套 top-3 相对 PyKrige RMSE `-2.4501%`，5/5 空间折改善，整折 bootstrap 区间完全低于零，状态为 `ROBUST_DEVELOPMENT_SIGNAL`。用户要求将消融后置，因此默认仍关闭、不归因预训练贡献；冻结 holdout 仍未消费。其他赛道的同 split 控制门仍需分别验证。
+- 赛道⑥ P17 的同 OOF `-0.4563%` 已由嵌套复核取代；P18 又因元选择训练坐标未去重被 P19 取代。P19 修正后相对 PyKrige RMSE `-2.4546%`，5/5 空间折改善，整折 bootstrap 区间完全低于零，状态为 `ROBUST_DEVELOPMENT_SIGNAL`。P15 的全尾块微调已定位为首步零梯度、编码器相对更新比头部小约 470 倍；下一步是参数高效适配器和分阶段解冻。用户要求将消融后置，因此默认仍关闭、不归因预训练贡献；冻结 holdout 仍未消费。其他赛道的同 split 控制门仍需分别验证。
 - 断层只有 3998 个审核正例点，没有覆盖已核验负例与连续三维development块；SAM-Med3D只能作为合成体运行证据，正式 blind test/CV 不可行，也不允许用随机非断层patch或验证/测试真值提示点伪造结果。
 - 监督LLM已具备统一提示模板、provider-neutral调用边界和严格JSON响应校验；因尚未批准具体provider/model/revision，本轮没有真实外部API调用，也没有让LLM接触标签、原始预测或冻结测试指标。
 - 甜点目标5缺已验证 Eclipse cell-state parser 与冻结的时间/候选井/经济约束；只能是 simulation case，不是 field truth。

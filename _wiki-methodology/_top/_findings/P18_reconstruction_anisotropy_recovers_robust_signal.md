@@ -1,13 +1,19 @@
 ---
 phase_id: P18
-status: accepted
+status: superseded
 severity: major
 owner_col: COL2
 source: runtime
 created_at: 2026-07-31
+closed_at: 2026-07-31
+closure_evidence: _wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md
+superseded_by: P19_reconstruction_meta_purge_and_gradient_diagnosis
 ---
 
 # 赛道⑥通过各向异性与嵌套选型获得稳健开发改善
+
+> P19 发现其余折训练标签与当前验证折存在坐标重叠，已用元选择去重协议完整
+> 复算并取代本 finding；P18 的方向性结论保留，原协议表述不再作为当前真源。
 
 ## Local Case
 

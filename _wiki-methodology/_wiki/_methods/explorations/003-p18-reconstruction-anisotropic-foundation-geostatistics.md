@@ -19,7 +19,16 @@ P18 保留真实冻结 ThinkOnward GFM 和每折 512 条标签预算，但同时
    潜坐标组成局部距离；
 3. 在该距离下进行不同邻域、距离幂次的反距离插值，并与 PyKrige 保守融合；
 4. 对每个待报告空间折，只在其余四折上排名 1,215 个预先限定候选，平均 top-3
-   后预测该折。被报告折的标签不参与该折选型。
+   后预测该折。
+
+## P19 口径修正
+
+P19 进一步检查发现：虽然每折自身 512 个训练点与 2,048 个验证点完全分离，
+五组验证点也互不重叠，但其余折的训练子集中仍有 24--58 个坐标落在当前被
+报告折的验证集合。因而“被报告折标签不参与选型”的原表述过强：标签没有直接
+进入排名指标，却可能通过其余折的模型拟合间接影响候选排名。P19 已在每次元
+选择时从其余四折训练子集中删除这些坐标后完整复算，P18 数值与协议由 P19
+取代。修正后的 RMSE 为 `0.027751397628`，没有推翻主结论。
 
 ## 结果
 
@@ -51,3 +60,4 @@ P18 证明完整的“预训练 GFM + 地震 + 各向异性地统计”方案在
 - evidence: `_pipelines/02_task_datasets/reconstruction/_outputs/p18_anisotropic_foundation_geostatistics/`
 - acceptance: `_wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md`
 - review: `_wiki-methodology/_top/_external_reviews/P18_claude_p17_metric_review_20260731.md`
+- correction: `_wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md`

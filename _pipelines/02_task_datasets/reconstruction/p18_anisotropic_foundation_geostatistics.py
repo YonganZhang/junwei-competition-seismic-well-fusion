@@ -262,7 +262,12 @@ def _nested_lofo_select(
     fold_ids: np.ndarray,
     top_n: int,
 ) -> tuple[np.ndarray, list[dict[str, Any]], dict[str, Any]]:
-    """Select each held-out fold's candidates using the other folds only."""
+    """Exclude held-fold metric rows when ranking candidates.
+
+    This historical P18 helper does not remove held-fold coordinates from the
+    training subsets used to produce the other folds' predictions. P19 adds
+    that stricter meta-fit purge and supersedes P18 for current reporting.
+    """
 
     names = list(candidates)
     matrix = np.stack([np.asarray(candidates[name]) for name in names])
@@ -456,11 +461,15 @@ def _evaluate(
         "nested_selection": {
             "protocol": (
                 "for each held-out fold, rank candidates on the other four "
-                "folds and average the top three predictions"
+                "fold metric rows and average the top three predictions; "
+                "held-coordinate purge inside other-fold fits is not applied "
+                "in P18 and is superseded by P19"
             ),
             "ensemble_size": NESTED_ENSEMBLE_SIZE,
             "selections": selections,
-            "held_out_labels_used_for_candidate_ranking": False,
+            "held_out_fold_metric_rows_used_for_candidate_ranking": False,
+            "held_out_coordinates_removed_from_other_fold_meta_fits": False,
+            "superseded_by": "P19 meta-fit coordinate purge",
         },
         "search_space": {
             "vertical_weights": list(VERTICAL_WEIGHTS),
@@ -824,7 +833,8 @@ def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
             "held_out_fold_count": len(
                 experiment["nested_selection"]["selections"]
             ),
-            "held_out_labels_used_for_candidate_ranking": False,
+            "held_out_fold_metric_rows_used_for_candidate_ranking": False,
+            "held_out_coordinates_removed_from_other_fold_meta_fits": False,
         },
         "firewall_checks": {
             "train_labels_per_fold": 512,

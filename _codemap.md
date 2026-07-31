@@ -72,7 +72,7 @@
 
 六条路线统一可发现，但保持任务专属张量、head、loss 与 metric；route 接通不自动成为默认。
 
-## P17/P18 赛道⑥基础模型地统计融合
+## P17/P18/P19 赛道⑥基础模型地统计融合
 
 | 代码域 | 真源 / 入口 | 测试指针 |
 |---|---|---|
@@ -80,10 +80,12 @@
 | 便携结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p17_foundation_geostatistics/` | `_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md` |
 | 各向异性 + 嵌套选型 runner | `_pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py` | `reconstruction/_tests/test_p18_anisotropic_foundation_geostatistics.py` |
 | P18 便携结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p18_anisotropic_foundation_geostatistics/` | `_wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md` |
+| 元拟合坐标去重 runner | `_pipelines/02_task_datasets/reconstruction/p19_meta_purged_geostatistics.py` | `reconstruction/_tests/test_p19_training_diagnostics_artifacts.py` |
+| P19 诊断结果与独立复算 | `_pipelines/02_task_datasets/reconstruction/_outputs/p19_training_diagnostics/` | `_wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md` |
 
-P18 取代 P17 的同 OOF 选优结论：每个报告折只用其余四折排名候选，并显式
-搜索垂向各向异性。每折标准化/PCA 仍只用 512 条训练标签拟合，CLI 无
-test/holdout 入口，候选默认关闭。
+P19 取代 P18：每个报告折不仅排除自身指标行，还会先从其余折的元选择训练
+子集中删除当前验证坐标，再重新拟合全部候选。严格结果保持 5/5 折改善；每折
+最终预测仍只使用 512 条合法训练标签，CLI 无 test/holdout 入口，候选默认关闭。
 
 ## 注册维护
 

@@ -149,3 +149,9 @@ gates:
     timeout: 180
     expect: exit0
     note: "Track-6 vertical anisotropy, nested LOFO selection firewall, P17 bias correction, portable evidence hashes and independent recomputation."
+
+  - id: p19-reconstruction-training-diagnostics
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p19_training_diagnostics_artifacts.py"
+    timeout: 120
+    expect: exit0
+    note: "Track-6 cross-fold meta-fit purge, tensor/activation/gradient diagnosis, strict rejected-route boundaries and holdout firewall."
