@@ -19,6 +19,7 @@ P5 的十候选模型接入骨架位于 [`p5/`](p5/README.md)。它只增加 sou
 | `audit/data_availability.json` | 机器可读的真实字段、覆盖率、缺失和坐标对齐证据 |
 | `audit/data_readiness.md` | 人工审阅摘要 |
 | `audit/contract_validation.json` | 最近一次合同闸门结果；当前记录草案被 fail closed |
+| `_outputs/agent_chapter/evidence.md` | 赛道末尾的智能体分析章节；仅汇总真实结果与 DeepSeek 常识性建议 |
 | `tests/test_validate_only.py` | 合同闸门和“绝不创建 sweetspot 数据集”回归测试 |
 
 ## 重跑真实数据审计
