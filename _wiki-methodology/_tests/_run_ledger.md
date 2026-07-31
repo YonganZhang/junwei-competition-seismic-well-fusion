@@ -137,6 +137,7 @@
 
 - integration target: `final-integration`; merge commit `707cff2` contains the local `master` line, the cumulative P4--P24 research line and the public-repository redaction commit.
 - reconstruction gate: `python3 -m unittest -v ...test_p24_historical_transfer.py ...test_p21_fixed_foundation_ensemble.py` -> 10/10 passed with system Python.
+- test hygiene: P21 verification/manifest generation now runs against a temporary copied bundle, so changing Python/NumPy float formatting cannot rewrite the tracked scientific evidence during a read-only gate.
 - read-only verifier: P24 recomputed RMSE `0.027825182663` versus PyKrige `0.028235410003`, relative improvement `1.4529%`, 4 wins / 1 loss, and preserved the same-field/non-blind claim boundary.
 - integration portability fix: domain-visualization steps now resolve the shared Git common directory, so a linked worktree no longer constructs a nested `.claude/worktrees/<integration>/.claude/worktrees/...` path.
 - P12 central gate: 6/7 tests passed. The remaining fail-closed assertion detected a real uncommitted hash drift in `track-fault` (`3d_sci_v1/provenance.json` plus its generator/test); those user-owned changes were not overwritten, staged or committed.

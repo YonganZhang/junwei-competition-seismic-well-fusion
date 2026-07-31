@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import shutil
 import sys
+import tempfile
 import unittest
 
 import numpy as np
@@ -18,10 +20,19 @@ import p21_fixed_foundation_ensemble as p21  # noqa: E402
 class P21FixedFoundationEnsembleTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.output = TRACK / "_outputs" / "p21_fixed_foundation_ensemble"
+        source = TRACK / "_outputs" / "p21_fixed_foundation_ensemble"
+        cls._temporary_output = tempfile.TemporaryDirectory(
+            prefix="p21-verification-", dir=TRACK / "_outputs"
+        )
+        cls.output = Path(cls._temporary_output.name)
+        shutil.copytree(source, cls.output, dirs_exist_ok=True)
         cls.summary = json.loads(
             (cls.output / "summary.json").read_text(encoding="utf-8")
         )
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        cls._temporary_output.cleanup()
 
     def test_protocol_and_fixed_candidates(self) -> None:
         protocol = self.summary["protocol"]
