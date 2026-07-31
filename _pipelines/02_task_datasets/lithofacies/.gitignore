@@ -46,6 +46,12 @@ _outputs/p11_cross_attention_fusion/**
 !_outputs/p11_cross_attention_fusion/evidence.md
 !_outputs/p11_cross_attention_fusion/primary_metric.png
 !_outputs/p11_cross_attention_fusion/artifact_manifest.json
+!_outputs/agent_chapter/
+_outputs/agent_chapter/**
+!_outputs/agent_chapter/results.jsonl
+!_outputs/agent_chapter/summary.json
+!_outputs/agent_chapter/evidence.md
+!_outputs/agent_chapter/artifact_manifest.json
 !_outputs/p5_stage2/
 _outputs/p5_stage2/**
 !_outputs/p5_stage2/p5_stage2_results.jsonl

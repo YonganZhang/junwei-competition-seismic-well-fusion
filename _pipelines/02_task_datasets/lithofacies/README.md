@@ -912,3 +912,73 @@ Portable evidence is `_outputs/p11_cross_attention_fusion/results.jsonl`,
 `summary.json`, `evidence.md`, `primary_metric.png`, and
 `artifact_manifest.json`. Leaf representations, MOMENT token caches, partial
 state, and raw predictions remain ignored.
+
+## 智能体分析章节（DeepSeek development consultation）
+
+`lithofacies_agent_chapter.py` is the final analysis-only chapter of the
+lithofacies pipeline. It constructs a structured prompt from the committed
+P11 evidence and the immutable development LOGO4 batch, calls the
+OpenAI-compatible DeepSeek endpoint, and stores the response without any API
+credential. Its independent output directory preserves every earlier P11
+artifact byte-for-byte.
+
+The prompt records the real task boundary: 447 development samples, strict
+four-family LOGO, fixed-nine Macro-F1, class support
+`[11, 104, 7, 40, 27, 124, 127, 6, 1]`, the archived XGBoost baseline, the P11
+calibration/cross-attention results, and the prohibition on frozen-holdout
+access. DeepSeek was requested as `deepseek-chat`; the provider returned
+`deepseek-v4-flash` under response id
+`0e28a5de-d51e-4f92-858e-30e498500088`.
+
+The three low-cost priorities in that response were tested on the same
+LOGO4 × 3-seed matrix. The archived baseline reproduced exactly at `0.194938`.
+Using raw `count^-0.75` weights was essentially flat (`0.194817`), while raw
+`count^-1.0` weights collapsed to `0.005187`. Removing seismic and keeping
+only the 26 well-log/mask channels (`858` features) reached `0.212508`
+(`+0.017571`) but had high fold variance. The clearest candidate changed
+XGBoost from depth 2 / eta 0.2 / 40 rounds to depth 3 / eta 0.1 / 60 rounds:
+`0.213349`, or `+0.018411` over the baseline and `+0.011162` over the earlier
+P11 calibration-only result. Applying the old 0.25 prior correction to that
+new candidate reduced it to `0.208138`.
+
+These are adaptive development findings, not an unbiased holdout estimate.
+Because all estimator variants use `subsample=1` and
+`colsample_bytree=1`, the three nominal seeds are identical: `12/12` cell wins
+for the depth-3 candidate represent four distinct held-out family outcomes,
+each repeated three times. The candidate remains disabled by default. No
+result in this chapter measures a MOMENT contribution; 大模型贡献占比待下一轮消融确认。
+
+### Reproduce the agent chapter
+
+Run from the project root with the approved tabular environment and existing
+ignored development runtime. The credential is process-local; the committed
+artifacts contain only the prompt, response, metrics, and hashes.
+
+```bash
+TABULAR_PYTHON="${P5_TABULAR_PYTHON:?set the approved tabular interpreter}"
+DEVELOPMENT_BATCH="${LITHOFACIES_STAGE3_DEVELOPMENT:?set development LOGO4 npz}"
+RUNNER=_pipelines/02_task_datasets/lithofacies/lithofacies_agent_chapter.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/agent_chapter
+P11_SUMMARY=_pipelines/02_task_datasets/lithofacies/_outputs/p11_cross_attention_fusion/summary.json
+BASELINE=_pipelines/02_task_datasets/lithofacies/_outputs/p11_residual_fusion/runtime/baseline_logits.npz
+
+export DEEPSEEK_KEY=$(bash \
+  ~/.claude/skills/share-docs/scripts/get-credential.sh DEEPSEEK_API_KEY)
+"$TABULAR_PYTHON" "$RUNNER" consult \
+  --development-batch "$DEVELOPMENT_BATCH" --p11-summary "$P11_SUMMARY" \
+  --output "$OUT/runtime/deepseek_consultation.json"
+unset DEEPSEEK_KEY
+
+"$TABULAR_PYTHON" "$RUNNER" run \
+  --development-batch "$DEVELOPMENT_BATCH" --baseline-bundle "$BASELINE" \
+  --p11-summary "$P11_SUMMARY" \
+  --consultation "$OUT/runtime/deepseek_consultation.json" \
+  --output-dir "$OUT"
+"$TABULAR_PYTHON" "$RUNNER" verify --output-dir "$OUT"
+```
+
+Portable evidence is `_outputs/agent_chapter/evidence.md`, `summary.json`,
+`results.jsonl`, and `artifact_manifest.json`. The raw consultation record is
+ignored runtime state. SMOTE/ADASYN, three-point input smoothing, larger
+MOMENT variants, alternative losses, and any frozen-holdout effect are marked
+`未验证` rather than assigned invented scores.
