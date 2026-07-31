@@ -2,6 +2,26 @@
 
 > Historical run evidence. Do not rewrite old command contexts to look cleaner; append new runs with cwd and exact command shape.
 
+## 2026-07-25 — six-track domain-visualization delivery v1
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5`
+- command: `python3 -m unittest discover -s _pipelines/03_domain_visualization_delivery/tests -p 'test_*.py' -v`
+- result: PASS, 3/3 tests (reject status/protocol/placeholder-like paths; validate the exact six live figures; preserve hashes during staging).
+- validation: `step_01_validate_manifest.py` passed all six source/provenance/hash/human-review gates.
+- staging: `step_02_stage_delivery.py` copied all six figures to `_outputs/domain_visualization_delivery/v1/cards/` with unchanged SHA-256.
+- publication: `step_03_publish_cards.py --yes-public` published six permanent `share.yongan.site` URLs; every URL returned HTTP 200.
+
+## 2026-07-30 — P12 visualization standardization for tracks 1 / 3 / 5
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5`
+- scope: fault / property / sweetspot only; facies / lithofacies / reconstruction remained paused.
+- discovery: `python3 _pipelines/03_domain_visualization_delivery/step_00_discover.py --check` → all three `ready`.
+- central tests: `python3 -m unittest discover -s _pipelines/03_domain_visualization_delivery/tests -p 'test_*.py' -v` → PASS, 7/7.
+- track tests: fault 5/5, property 2/2, sweetspot 5/5; deterministic rendering and manifest hash checks passed.
+- visual QA: 13 PNGs opened at original resolution; clipping, overlap, labels, units, split scope and scientific caveats checked.
+- staging: `step_04_stage_p12_review.py --reviewer codex-leader --accept-visual-qa` copied 39 PNG/PDF/SVG files with unchanged SHA-256.
+- evidence: `_outputs/domain_visualization_delivery/p12/review_attestation.json`; source heads fault `5d22c9a`, property `c914bd6`, sweetspot `39e0e97`.
+
 ## 2026-07-13 P4 integration acceptance
 
 - cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p4-training-integration`
@@ -68,3 +88,47 @@
 - supervisory LLM: deterministic prompt template, provider-neutral client boundary and strict JSON response validation are tested with a stub. No external LLM API was invoked because provider/model/revision approval is absent.
 - frozen test: not accessed.
 - detailed evidence and blockers: `P8_multimodal_foundation_acceptance_evidence.md`.
+
+## 2026-07-31 P17 reconstruction foundation-geostatistics acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-reconstruction`
+- branch: `p11-residual-reconstruction`; root seed `2693`.
+- model: frozen genuine `thinkonward/geophysical-foundation-model`; cached seismic representations were reused only after source/snapshot/cache hashes were verified.
+- data budget: five locked spatial folds; exactly 512 `point_train` labels and 2,048 validation rows per fold; no frozen-test path or HDF5 was opened.
+- bounded search: 13 positive-foundation metric pairs × 3 neighbour counts × 4 PyKrige blends = 156 candidates.
+- selected result: `gfm_metric_f0.05_s0.10_k128_blend_0.75`; pooled OOF RMSE `0.028319907650` versus PyKrige `0.028449728170`; 3 wins / 2 losses across the five folds.
+- uncertainty: 20,000 whole-fold bootstrap draws; P(candidate better)=`0.7668`, RMSE-delta CI95 `[-0.000589605334, +0.000128806422]`.
+- regression: P14–P17 combined suite `39 tests`, `OK`; P17 portable suite `8 tests`, `OK`.
+- independent verifier: `p17_foundation_geostatistics.py verify` -> `PASSED`; 10,240 rows, per-fold metrics, prediction hash and summary hash matched.
+- lifecycle: `DEVELOPMENT_SIGNAL`, `default_enabled=false`; ablation deferred by user instruction; frozen holdout remains sealed.
+- detailed evidence: `P17_reconstruction_foundation_acceptance_evidence.md`.
+
+## 2026-07-31 P18 reconstruction anisotropic foundation-geostatistics acceptance
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-reconstruction`
+- branch: `p11-residual-reconstruction`; root seed `2693`.
+- external review: Claude completed a read-only audit and identified same-OOF winner's curse plus missing geological anisotropy; the accepted review is `_top/_external_reviews/P18_claude_p17_metric_review_20260731.md`.
+- P17 correction: the original 156-candidate family under nested LOFO top-3 gives RMSE `0.028534404074`, worse than PyKrige `0.028449728170`; the old same-OOF `-0.4563%` result is superseded.
+- P18 protocol: 1,215 bounded anisotropic candidates; each held-out spatial fold is predicted using top-3 candidates ranked only on the other four folds' metric rows. This did not purge the held fold's coordinates from other-fold meta-fits and was later superseded by P19. Scaling/PCA remains fit on the current outer fold's 512 legal labels.
+- selected result: nested P18 RMSE `0.027752680679`, MAE `0.020830115995`, relative RMSE change `-2.4501%`, with 5 wins / 0 losses across spatial folds.
+- uncertainty: 20,000 whole-fold bootstrap draws; P(candidate better)=`1.0`, RMSE-delta CI95 `[-0.001140994782, -0.000353924655]`.
+- alternatives: PLS nested route RMSE `0.027811249487` was weaker; aggressive refinement RMSE `0.027732695244` had only 4/5 fold wins and was rejected.
+- regression: P17+P18 combined suite `16 tests`, `OK`; `git diff --check` passed.
+- independent verifier: `p18_anisotropic_foundation_geostatistics.py verify` -> `PASSED`; 10,240 rows, per-fold metrics, legacy correction, selection firewall and artifact hashes matched.
+- Claude final read-only review: `PASS`, no P0/P1; independently reproduced metrics and bootstrap bit-exactly. The P2 requests for nested top-1 parity and five-fold caveat were incorporated; grid-edge sensitivity remains documented for preregistered external validation.
+- firewall/lifecycle: 512 labels and 2,048 validation rows per fold; no frozen holdout path or HDF5 opened; `ROBUST_DEVELOPMENT_SIGNAL`, `default_enabled=false`, ablation deferred and no causal pretraining claim.
+- detailed evidence: `P18_reconstruction_anisotropic_acceptance_evidence.md`.
+
+## 2026-07-31 P19 reconstruction meta-purge and training-dynamics diagnosis
+
+- cwd: `/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-reconstruction`
+- branch: `p11-residual-reconstruction`; root seed `2693`.
+- protocol audit: every fold's own 512 training labels remain disjoint from its 2,048 validation rows, but the current validation coordinates occurred in other-fold training subsets for folds 0--4 at `58/44/24/27/45` row occurrences. P19 removes those coordinates before every meta-selection refit.
+- selected result: meta-purged nested top-3 RMSE `0.027751397628`, MAE `0.020825760745`, bias `-0.000417160127`, relative RMSE change `-2.4546%`, with 5 wins / 0 losses against PyKrige.
+- uncertainty: 20,000 whole-fold bootstrap draws; P(candidate better)=`1.0`, RMSE-delta CI95 `[-0.001143968280, -0.000353924655]`.
+- real-tail probe: prefix `[4,3,161,1200]`, tail `[12,161,1200]`, query `[150,12]`, output `[150]`; 17,298,000 trainable encoder parameters and 122,553 head parameters. Zero-initialized final output makes encoder gradient exactly zero at step 1; by step 3 encoder relative update is about `1.9e-5` versus head update about `9.4e-3`.
+- activation/route screens: GELU, SiLU and ReLU were probed; frozen-GFM MLP, extended anisotropy, strictly nested regression kriging, and K/J/I hybrid metrics did not beat P19. Same-OOF regression-kriging RMSE `0.027720062019` was rejected because strict nesting regressed to `0.027830073069`.
+- independent verifier: recomputed all 10,240 predictions, five fold metrics, purge declarations, gradient invariants and rejected-route gates; status `PASSED`.
+- regression: P17+P18+P19 focused suites passed; Python compile, JSON/YAML parse and `git diff --check` passed.
+- firewall/lifecycle: no frozen holdout path or `test.h5` opened; no random-init/no-foundation ablation; `L3_VALIDATED_KEEP`, `default_enabled=false`, no causal pretraining claim.
+- detailed evidence: `P19_reconstruction_training_diagnostics_acceptance_evidence.md`.

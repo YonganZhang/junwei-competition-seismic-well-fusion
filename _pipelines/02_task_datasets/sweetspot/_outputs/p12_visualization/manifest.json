@@ -1,0 +1,991 @@
+{
+  "branch": "p12-viz-sweetspot",
+  "figure_count": 8,
+  "figures": [
+    {
+      "caveat": "overview is a compact guide; use target-specific figures for detailed evidence.",
+      "dimensions_px": {
+        "height_px": 2340,
+        "width_px": 4260
+      },
+      "figure_name": "overview_seven_targets",
+      "figure_paths": {
+        "height_px": 2340,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/overview_seven_targets.pdf",
+        "pdf_sha256": "4402490311600c7780b21e1150e99fc40effbcd2881687c3fe81a84bbbd0bcae",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/overview_seven_targets.png",
+        "png_sha256": "ee87ec6ea561b8938b7ac053d50a5f9f4db8b978f335b0f8b386eaab2b1bf4bb",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/overview_seven_targets.svg",
+        "svg_sha256": "e3b3463287ae21f88a5e6dc288178f171fb4b86b91c51cea41cd7d39f504ad82",
+        "width_px": 4260
+      },
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_regression_scatter.png",
+          "role": "thumbnail_source",
+          "scientific_role": "archived target plot",
+          "sha256": "25671ea544d3473026099e626610c4123f89419fea178e7bfdfa03bc2b8d9507",
+          "shape_or_row_count": {
+            "height_px": 555,
+            "width_px": 1790
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+          "role": "thumbnail_source",
+          "scientific_role": "archived target plot",
+          "sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+          "shape_or_row_count": {
+            "height_px": 544,
+            "width_px": 1243
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_regression_scatter.png",
+          "role": "thumbnail_source",
+          "scientific_role": "archived target plot",
+          "sha256": "88d7114f0d0b443bc583c2bdc929f9bc54bb27f6d0078025cf98f155c9a62082",
+          "shape_or_row_count": {
+            "height_px": 555,
+            "width_px": 1788
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_pr_calibration.png",
+          "role": "thumbnail_source",
+          "scientific_role": "archived target plot",
+          "sha256": "093791f6c739ec47b047ba1e2fb53f2656389b41a94501768816fe20260dae46",
+          "shape_or_row_count": {
+            "height_px": 544,
+            "width_px": 1244
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T5_status_gate.png",
+          "role": "thumbnail_source",
+          "scientific_role": "archived target plot",
+          "sha256": "fc89459be8b1272233f630a65abe724b1707a5217a887ee0cefc3dd98abc2a2c",
+          "shape_or_row_count": {
+            "height_px": 377,
+            "width_px": 994
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no valid label contract"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T6_data_gate.png",
+          "role": "thumbnail_source",
+          "scientific_role": "archived target plot",
+          "sha256": "1295214ffc687a6f635d7077c82b9dcdddadcdba72b191ea5c419aa965ac30eb",
+          "shape_or_row_count": {
+            "height_px": 377,
+            "width_px": 959
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no development-only feature source"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T7_data_gate.png",
+          "role": "thumbnail_source",
+          "scientific_role": "archived target plot",
+          "sha256": "acb676321dfee9ee5b49e3072b20d605fcc8abead85ecb0ee4ec0e5bc4823973",
+          "shape_or_row_count": {
+            "height_px": 377,
+            "width_px": 959
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no development-only feature source"
+        }
+      ],
+      "split_scope": "mixed seven-target overview",
+      "target_ids": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7"
+      ],
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    },
+    {
+      "caveat": "known holdout already consumed in stage 4; no fresh blind test is claimed.",
+      "dimensions_px": {
+        "height_px": 2160,
+        "width_px": 3780
+      },
+      "evidence_class": "previously_seen_reusable_holdout",
+      "figure_name": "T1_regression_diagnostics",
+      "figure_paths": {
+        "height_px": 2160,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T1_regression_diagnostics.pdf",
+        "pdf_sha256": "9c45821e31ded7c747a1ca7a844ee05a7fd288d38531de341c2e388a1d3766ad",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T1_regression_diagnostics.png",
+        "png_sha256": "252a99379d9a0968be42033317450847d1eebef7d4aba7045d1a711ac7104a31",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T1_regression_diagnostics.svg",
+        "svg_sha256": "4b7ce6b1ff650c2f7ba034e01e609b641113259c6a6d6c4b88c02f4bdf42ad7b",
+        "width_px": 3780
+      },
+      "metric_direction": "↓ MAE",
+      "primary_metric": "mae",
+      "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T1.json",
+          "role": "archived_visualization_data",
+          "scientific_role": "archived stage3 evidence data",
+          "sha256": "968098322f5d8acd6ea89f0157717396433d1ed294be2cba0270e68b7b041b52",
+          "shape_or_row_count": {
+            "cell_metrics": 27,
+            "folds": 3,
+            "models": 3,
+            "scatter_points": 1800
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_regression_scatter.png",
+          "role": "original_target_plot",
+          "scientific_role": "original archived plot",
+          "sha256": "25671ea544d3473026099e626610c4123f89419fea178e7bfdfa03bc2b8d9507",
+          "shape_or_row_count": {
+            "height_px": 555,
+            "width_px": 1790
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+          "role": "stage4_confirmation_summary",
+          "scientific_role": "stage 4 confirmation summary",
+          "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+          "shape_or_row_count": {
+            "keys": 22
+          },
+          "source_commit": "5e4f19ad779d188b70b76480981cfefcb0ad86dc",
+          "split_scope": "known-holdout confirmation"
+        }
+      ],
+      "split_scope": "known-holdout confirmation",
+      "status": "confirmed_known_holdout",
+      "target_id": "T1",
+      "target_name": "reservoir quality",
+      "task_type": "regression",
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    },
+    {
+      "caveat": "classification evidence comes from archived PR / calibration curves and is not a field truth claim.",
+      "dimensions_px": {
+        "height_px": 2160,
+        "width_px": 3660
+      },
+      "evidence_class": "previously_seen_reusable_holdout",
+      "figure_name": "T2_classification_diagnostics",
+      "figure_paths": {
+        "height_px": 2160,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T2_classification_diagnostics.pdf",
+        "pdf_sha256": "11d7710ed71aa45e0b542bb77aa312ee93dd97345d70edc86f92aadc6ee81068",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T2_classification_diagnostics.png",
+        "png_sha256": "cc409ed5e46e33cdf02dfe24fe2cd1adf20eacb1c66115b4b2203099b5a23b22",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T2_classification_diagnostics.svg",
+        "svg_sha256": "365ca076c8be14939fac97a8dc99a3d28d5feadc65b20dc5b558c93580849d98",
+        "width_px": 3660
+      },
+      "metric_direction": "↑ AP / ↓ Brier",
+      "primary_metric": "average_precision",
+      "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T2.json",
+          "role": "archived_visualization_data",
+          "scientific_role": "archived stage3 evidence data",
+          "sha256": "a2687717417490047fa2033e6b2b25366d12c5bd6f5d0229b087e2ea1fd383c8",
+          "shape_or_row_count": {
+            "cell_metrics": 27,
+            "folds": 3,
+            "models": 3,
+            "scatter_points": 1800
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+          "role": "original_target_plot",
+          "scientific_role": "original archived plot",
+          "sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+          "shape_or_row_count": {
+            "height_px": 544,
+            "width_px": 1243
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+          "role": "stage4_confirmation_summary",
+          "scientific_role": "stage 4 confirmation summary",
+          "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+          "shape_or_row_count": {
+            "keys": 22
+          },
+          "source_commit": "5e4f19ad779d188b70b76480981cfefcb0ad86dc",
+          "split_scope": "known-holdout confirmation"
+        }
+      ],
+      "split_scope": "known-holdout confirmation",
+      "status": "confirmed_known_holdout",
+      "target_id": "T2",
+      "target_name": "hydrocarbon pay",
+      "task_type": "binary",
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    },
+    {
+      "caveat": "foundation comparison is informative but default promotion remains governed by the archived decision gates.",
+      "dimensions_px": {
+        "height_px": 2160,
+        "width_px": 3780
+      },
+      "evidence_class": "previously_seen_reusable_holdout",
+      "figure_name": "T3_regression_diagnostics",
+      "figure_paths": {
+        "height_px": 2160,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T3_regression_diagnostics.pdf",
+        "pdf_sha256": "1b9e8b1e804313e684fe46c7e74b330d34de14e5e0c3fe3c010bc6dcad167bc3",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T3_regression_diagnostics.png",
+        "png_sha256": "4308bd6e30a1a8b807f90f3839c9b0d60c0383515ef863e042ffb601427beb15",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T3_regression_diagnostics.svg",
+        "svg_sha256": "09b68da00b983e804bcb4f345d104faf3304b7551e0e8e6c0faa2d494d4f7984",
+        "width_px": 3780
+      },
+      "foundation_context": {
+        "p7_summary": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+        "p8_summary": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json"
+      },
+      "metric_direction": "↓ MAE",
+      "primary_metric": "mae",
+      "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T3.json",
+          "role": "archived_visualization_data",
+          "scientific_role": "archived stage3 evidence data",
+          "sha256": "8649b7c74e22d56a21f5d6a47e6b7fa943d6c2d1479781122aa73558382588ee",
+          "shape_or_row_count": {
+            "cell_metrics": 36,
+            "folds": 4,
+            "models": 3,
+            "scatter_points": 1800
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_regression_scatter.png",
+          "role": "original_target_plot",
+          "scientific_role": "original archived plot",
+          "sha256": "88d7114f0d0b443bc583c2bdc929f9bc54bb27f6d0078025cf98f155c9a62082",
+          "shape_or_row_count": {
+            "height_px": 555,
+            "width_px": 1788
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+          "role": "stage4_confirmation_summary",
+          "scientific_role": "stage 4 confirmation summary",
+          "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+          "shape_or_row_count": {
+            "keys": 22
+          },
+          "source_commit": "5e4f19ad779d188b70b76480981cfefcb0ad86dc",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+          "role": "foundation_evidence_summary_p7",
+          "scientific_role": "foundation evidence summary p7",
+          "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
+          "shape_or_row_count": {
+            "methods": 3
+          },
+          "source_commit": "1bb0595fb9401b8a935fb89725ff2c32d64fe6c7",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
+          "role": "foundation_evidence_summary_p8",
+          "scientific_role": "foundation evidence summary p8",
+          "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
+          "shape_or_row_count": {
+            "methods": 6
+          },
+          "source_commit": "e229aa49d54300e478af9949f55553e35395d211",
+          "split_scope": "known-holdout confirmation"
+        }
+      ],
+      "split_scope": "known-holdout confirmation",
+      "status": "confirmed_known_holdout",
+      "target_id": "T3",
+      "target_name": "productivity",
+      "task_type": "regression",
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    },
+    {
+      "caveat": "Chronos risk evidence remains rejected/no-gain in the archived foundation summaries.",
+      "dimensions_px": {
+        "height_px": 2160,
+        "width_px": 3660
+      },
+      "evidence_class": "previously_seen_reusable_holdout",
+      "figure_name": "T4_classification_diagnostics",
+      "figure_paths": {
+        "height_px": 2160,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T4_classification_diagnostics.pdf",
+        "pdf_sha256": "162c20b1ea053912a45125ff72ec79371e2e8c316e8265e254dae3162cd807d9",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T4_classification_diagnostics.png",
+        "png_sha256": "3698eec98bd434cc30e688ea91513532a8050186f82a4f17f561a76505083608",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T4_classification_diagnostics.svg",
+        "svg_sha256": "fbb039462c55990d29222e7ed533a7d6f808fb3a781464f28bcef70eedea55f5",
+        "width_px": 3660
+      },
+      "foundation_context": {
+        "p7_summary": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+        "p8_summary": null
+      },
+      "metric_direction": "↑ AP / ↓ Brier",
+      "primary_metric": "average_precision",
+      "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T4.json",
+          "role": "archived_visualization_data",
+          "scientific_role": "archived stage3 evidence data",
+          "sha256": "83af3bfb514f9ad082341e294efd322e142762827c5715fe6df9f729170eb932",
+          "shape_or_row_count": {
+            "cell_metrics": 27,
+            "folds": 3,
+            "models": 3,
+            "scatter_points": 288
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_pr_calibration.png",
+          "role": "original_target_plot",
+          "scientific_role": "original archived plot",
+          "sha256": "093791f6c739ec47b047ba1e2fb53f2656389b41a94501768816fe20260dae46",
+          "shape_or_row_count": {
+            "height_px": 544,
+            "width_px": 1244
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+          "role": "stage4_confirmation_summary",
+          "scientific_role": "stage 4 confirmation summary",
+          "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+          "shape_or_row_count": {
+            "keys": 22
+          },
+          "source_commit": "5e4f19ad779d188b70b76480981cfefcb0ad86dc",
+          "split_scope": "known-holdout confirmation"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+          "role": "foundation_evidence_summary_p7",
+          "scientific_role": "foundation evidence summary p7",
+          "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
+          "shape_or_row_count": {
+            "methods": 3
+          },
+          "source_commit": "1bb0595fb9401b8a935fb89725ff2c32d64fe6c7",
+          "split_scope": "known-holdout confirmation"
+        }
+      ],
+      "split_scope": "known-holdout confirmation",
+      "status": "confirmed_known_holdout",
+      "target_id": "T4",
+      "target_name": "water breakthrough",
+      "task_type": "binary",
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    },
+    {
+      "caveat": "simulation proxy is not approved as field truth and must remain non-usable.",
+      "dimensions_px": {
+        "height_px": 1620,
+        "width_px": 2880
+      },
+      "evidence_class": "blocked_by_contract",
+      "figure_name": "T5_status_diagnostics",
+      "figure_paths": {
+        "height_px": 1620,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T5_status_card.pdf",
+        "pdf_sha256": "db90403ef2d913bb4aea9e299fcb77226e5483add1d9f33e40b0c0ea5d2841a8",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T5_status_card.png",
+        "png_sha256": "97f12aa4063659127d6a35cbfbe1dceea5ea5b5eaca39a7233fd53db2e856f55",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T5_status_card.svg",
+        "svg_sha256": "b5fb7ca9da15be70680ff0ff3e2da3477bebdc8093c2373fdab67d2477084132",
+        "width_px": 2880
+      },
+      "metric_direction": "status only",
+      "primary_metric": null,
+      "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T5.json",
+          "role": "archived_visualization_data",
+          "scientific_role": "archived stage3 evidence data",
+          "sha256": "8d0283b3e34ff0dc890aefbdd0037cebd736f8b5a997766ed208f126277f8234",
+          "shape_or_row_count": {
+            "status_rows": 13
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no valid label contract"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T5_status_gate.png",
+          "role": "original_target_plot",
+          "scientific_role": "original archived plot",
+          "sha256": "fc89459be8b1272233f630a65abe724b1707a5217a887ee0cefc3dd98abc2a2c",
+          "shape_or_row_count": {
+            "height_px": 377,
+            "width_px": 994
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no valid label contract"
+        }
+      ],
+      "split_scope": "no valid label contract",
+      "status": "not_feasible",
+      "target_id": "T5",
+      "target_name": "remaining oil infill",
+      "task_type": "status",
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    },
+    {
+      "caveat": "test.h5 fallback is forbidden; this target stays blocked without a dev-only reconstruction source.",
+      "dimensions_px": {
+        "height_px": 1620,
+        "width_px": 2880
+      },
+      "evidence_class": "blocked_by_data",
+      "figure_name": "T6_status_diagnostics",
+      "figure_paths": {
+        "height_px": 1620,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T6_status_card.pdf",
+        "pdf_sha256": "33d80e145dbe9fcb859fe6bd5d5812ea188278b7cd9f610573d6984fc2cdcafb",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T6_status_card.png",
+        "png_sha256": "62572ea0684050a706e8bf4629019362d713aed98151fa079938fef73d33731b",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T6_status_card.svg",
+        "svg_sha256": "c1cf635e53523c7d7a263124959c3194b59aa857ef1ff29098b821904e743b92",
+        "width_px": 2880
+      },
+      "metric_direction": "status only",
+      "primary_metric": null,
+      "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T6.json",
+          "role": "archived_visualization_data",
+          "scientific_role": "archived stage3 evidence data",
+          "sha256": "15fe65812cd79e7da53d4b60fcfdf0855076e604cfa8cbf9f24744439f18bc2a",
+          "shape_or_row_count": {
+            "status_rows": 13
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no development-only feature source"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T6_data_gate.png",
+          "role": "original_target_plot",
+          "scientific_role": "original archived plot",
+          "sha256": "1295214ffc687a6f635d7077c82b9dcdddadcdba72b191ea5c419aa965ac30eb",
+          "shape_or_row_count": {
+            "height_px": 377,
+            "width_px": 959
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no development-only feature source"
+        }
+      ],
+      "split_scope": "no development-only feature source",
+      "status": "blocked",
+      "target_id": "T6",
+      "target_name": "porosity",
+      "task_type": "status",
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    },
+    {
+      "caveat": "test.h5 fallback is forbidden; this target stays blocked without a dev-only reconstruction source.",
+      "dimensions_px": {
+        "height_px": 1620,
+        "width_px": 2880
+      },
+      "evidence_class": "blocked_by_data",
+      "figure_name": "T7_status_diagnostics",
+      "figure_paths": {
+        "height_px": 1620,
+        "pdf": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T7_status_card.pdf",
+        "pdf_sha256": "f6d6a4b75b01a2239bb2682ee2ce7ccb95e852ddeac96bbae1b0cc68328590d1",
+        "png": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T7_status_card.png",
+        "png_sha256": "af33b806a8d710ac33cee6282a0d3650c31d53f7bd06e6e851833571b3179147",
+        "svg": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T7_status_card.svg",
+        "svg_sha256": "6d757a35bb749706e440da1b556ef778a01524bdd37b8fb5bd200611a854a1f8",
+        "width_px": 2880
+      },
+      "metric_direction": "status only",
+      "primary_metric": null,
+      "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+      "source_inputs": [
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T7.json",
+          "role": "archived_visualization_data",
+          "scientific_role": "archived stage3 evidence data",
+          "sha256": "4a0657cf0bc912530f40219b879b843d89425a949186ca3e9762d057f3c46ab6",
+          "shape_or_row_count": {
+            "status_rows": 13
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no development-only feature source"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T7_data_gate.png",
+          "role": "original_target_plot",
+          "scientific_role": "original archived plot",
+          "sha256": "acb676321dfee9ee5b49e3072b20d605fcc8abead85ecb0ee4ec0e5bc4823973",
+          "shape_or_row_count": {
+            "height_px": 377,
+            "width_px": 959
+          },
+          "source_commit": "59275587e1e1d9c88c139346f7dc14d42f1a4bf3",
+          "split_scope": "no development-only feature source"
+        }
+      ],
+      "split_scope": "no development-only feature source",
+      "status": "blocked",
+      "target_id": "T7",
+      "target_name": "permeability",
+      "task_type": "status",
+      "visual_qa": {
+        "fonts_normalized": true,
+        "manual_review_pending": true,
+        "no_titles": true,
+        "original_figure_reused": false,
+        "palette": "Akun_UKIYOE_4",
+        "vector_outputs": [
+          "svg",
+          "pdf"
+        ]
+      }
+    }
+  ],
+  "font_family": "TeX Gyre Termes",
+  "generated_at": "2026-07-29T19:40:57.081253+00:00",
+  "generator_commit": "9d9b482f2df92c66f5d9e76c1911625623df4781",
+  "head": "9d9b482f2df92c66f5d9e76c1911625623df4781",
+  "manifest_path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/manifest.json",
+  "output_dir": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization",
+  "p12_contract": {
+    "generated_at": "2026-07-29T19:40:57.081448+00:00",
+    "inputs": [
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T1_regression_scatter.png",
+        "scientific_role": "archived target plot",
+        "sha256": "25671ea544d3473026099e626610c4123f89419fea178e7bfdfa03bc2b8d9507",
+        "shape_or_row_count": {
+          "height_px": 555,
+          "width_px": 1790
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+        "scientific_role": "archived target plot",
+        "sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+        "shape_or_row_count": {
+          "height_px": 544,
+          "width_px": 1243
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T3_regression_scatter.png",
+        "scientific_role": "archived target plot",
+        "sha256": "88d7114f0d0b443bc583c2bdc929f9bc54bb27f6d0078025cf98f155c9a62082",
+        "shape_or_row_count": {
+          "height_px": 555,
+          "width_px": 1788
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T4_pr_calibration.png",
+        "scientific_role": "archived target plot",
+        "sha256": "093791f6c739ec47b047ba1e2fb53f2656389b41a94501768816fe20260dae46",
+        "shape_or_row_count": {
+          "height_px": 544,
+          "width_px": 1244
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T5_status_gate.png",
+        "scientific_role": "archived target plot",
+        "sha256": "fc89459be8b1272233f630a65abe724b1707a5217a887ee0cefc3dd98abc2a2c",
+        "shape_or_row_count": {
+          "height_px": 377,
+          "width_px": 994
+        },
+        "split_scope": "no valid label contract"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T6_data_gate.png",
+        "scientific_role": "archived target plot",
+        "sha256": "1295214ffc687a6f635d7077c82b9dcdddadcdba72b191ea5c419aa965ac30eb",
+        "shape_or_row_count": {
+          "height_px": 377,
+          "width_px": 959
+        },
+        "split_scope": "no development-only feature source"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T7_data_gate.png",
+        "scientific_role": "archived target plot",
+        "sha256": "acb676321dfee9ee5b49e3072b20d605fcc8abead85ecb0ee4ec0e5bc4823973",
+        "shape_or_row_count": {
+          "height_px": 377,
+          "width_px": 959
+        },
+        "split_scope": "no development-only feature source"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T1.json",
+        "scientific_role": "archived stage3 evidence data",
+        "sha256": "968098322f5d8acd6ea89f0157717396433d1ed294be2cba0270e68b7b041b52",
+        "shape_or_row_count": {
+          "cell_metrics": 27,
+          "folds": 3,
+          "models": 3,
+          "scatter_points": 1800
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+        "scientific_role": "stage 4 confirmation summary",
+        "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+        "shape_or_row_count": {
+          "keys": 22
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T2.json",
+        "scientific_role": "archived stage3 evidence data",
+        "sha256": "a2687717417490047fa2033e6b2b25366d12c5bd6f5d0229b087e2ea1fd383c8",
+        "shape_or_row_count": {
+          "cell_metrics": 27,
+          "folds": 3,
+          "models": 3,
+          "scatter_points": 1800
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T3.json",
+        "scientific_role": "archived stage3 evidence data",
+        "sha256": "8649b7c74e22d56a21f5d6a47e6b7fa943d6c2d1479781122aa73558382588ee",
+        "shape_or_row_count": {
+          "cell_metrics": 36,
+          "folds": 4,
+          "models": 3,
+          "scatter_points": 1800
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+        "scientific_role": "foundation evidence summary p7",
+        "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
+        "shape_or_row_count": {
+          "methods": 3
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
+        "scientific_role": "foundation evidence summary p8",
+        "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
+        "shape_or_row_count": {
+          "methods": 6
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T4.json",
+        "scientific_role": "archived stage3 evidence data",
+        "sha256": "83af3bfb514f9ad082341e294efd322e142762827c5715fe6df9f729170eb932",
+        "shape_or_row_count": {
+          "cell_metrics": 27,
+          "folds": 3,
+          "models": 3,
+          "scatter_points": 288
+        },
+        "split_scope": "known-holdout confirmation"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T5.json",
+        "scientific_role": "archived stage3 evidence data",
+        "sha256": "8d0283b3e34ff0dc890aefbdd0037cebd736f8b5a997766ed208f126277f8234",
+        "shape_or_row_count": {
+          "status_rows": 13
+        },
+        "split_scope": "no valid label contract"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T6.json",
+        "scientific_role": "archived stage3 evidence data",
+        "sha256": "15fe65812cd79e7da53d4b60fcfdf0855076e604cfa8cbf9f24744439f18bc2a",
+        "shape_or_row_count": {
+          "status_rows": 13
+        },
+        "split_scope": "no development-only feature source"
+      },
+      {
+        "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data/T7.json",
+        "scientific_role": "archived stage3 evidence data",
+        "sha256": "4a0657cf0bc912530f40219b879b843d89425a949186ca3e9762d057f3c46ab6",
+        "shape_or_row_count": {
+          "status_rows": 13
+        },
+        "split_scope": "no development-only feature source"
+      }
+    ],
+    "manual_review": {
+      "colors_consistent": null,
+      "labels_legible": null,
+      "no_clipping": null,
+      "no_overlap": null,
+      "notes": null,
+      "reviewed": false,
+      "reviewed_at": null,
+      "reviewed_sha256": null,
+      "reviewer": null,
+      "scientific_boundary_preserved": null,
+      "status": "pending"
+    },
+    "outputs": [
+      {
+        "dpi": 300,
+        "height_px": 2340,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/overview_seven_targets.png",
+        "role": "overview_seven_targets",
+        "sha256": "ee87ec6ea561b8938b7ac053d50a5f9f4db8b978f335b0f8b386eaab2b1bf4bb",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/overview_seven_targets.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/overview_seven_targets.pdf"
+        ],
+        "width_px": 4260
+      },
+      {
+        "dpi": 300,
+        "height_px": 2160,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T1_regression_diagnostics.png",
+        "role": "T1_regression_diagnostics",
+        "sha256": "252a99379d9a0968be42033317450847d1eebef7d4aba7045d1a711ac7104a31",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T1_regression_diagnostics.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T1_regression_diagnostics.pdf"
+        ],
+        "width_px": 3780
+      },
+      {
+        "dpi": 300,
+        "height_px": 2160,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T2_classification_diagnostics.png",
+        "role": "T2_classification_diagnostics",
+        "sha256": "cc409ed5e46e33cdf02dfe24fe2cd1adf20eacb1c66115b4b2203099b5a23b22",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T2_classification_diagnostics.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T2_classification_diagnostics.pdf"
+        ],
+        "width_px": 3660
+      },
+      {
+        "dpi": 300,
+        "height_px": 2160,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T3_regression_diagnostics.png",
+        "role": "T3_regression_diagnostics",
+        "sha256": "4308bd6e30a1a8b807f90f3839c9b0d60c0383515ef863e042ffb601427beb15",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T3_regression_diagnostics.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T3_regression_diagnostics.pdf"
+        ],
+        "width_px": 3780
+      },
+      {
+        "dpi": 300,
+        "height_px": 2160,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T4_classification_diagnostics.png",
+        "role": "T4_classification_diagnostics",
+        "sha256": "3698eec98bd434cc30e688ea91513532a8050186f82a4f17f561a76505083608",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T4_classification_diagnostics.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T4_classification_diagnostics.pdf"
+        ],
+        "width_px": 3660
+      },
+      {
+        "dpi": 300,
+        "height_px": 1620,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T5_status_card.png",
+        "role": "T5_status_diagnostics",
+        "sha256": "97f12aa4063659127d6a35cbfbe1dceea5ea5b5eaca39a7233fd53db2e856f55",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T5_status_card.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T5_status_card.pdf"
+        ],
+        "width_px": 2880
+      },
+      {
+        "dpi": 300,
+        "height_px": 1620,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T6_status_card.png",
+        "role": "T6_status_diagnostics",
+        "sha256": "62572ea0684050a706e8bf4629019362d713aed98151fa079938fef73d33731b",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T6_status_card.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T6_status_card.pdf"
+        ],
+        "width_px": 2880
+      },
+      {
+        "dpi": 300,
+        "height_px": 1620,
+        "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T7_status_card.png",
+        "role": "T7_status_diagnostics",
+        "sha256": "af33b806a8d710ac33cee6282a0d3650c31d53f7bd06e6e851833571b3179147",
+        "vector_companions": [
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T7_status_card.svg",
+          "_pipelines/02_task_datasets/sweetspot/_outputs/p12_visualization/figures/T7_status_card.pdf"
+        ],
+        "width_px": 2880
+      }
+    ],
+    "profile": "p12_tracks_1_3_5",
+    "renderer": {
+      "path": "_pipelines/02_task_datasets/sweetspot/p12_visualization.py",
+      "sha256": "87b4b3568a435e0db4ffd3107bdf30f298c99d2c6e8ce28734ff7a98cc1e61b9"
+    },
+    "schema_version": "scientific-visualization-contract/v1",
+    "scientific_caveat": "Visualization only; no label, split, or metric definitions were changed.",
+    "source_commit": "9d9b482f2df92c66f5d9e76c1911625623df4781",
+    "track_id": "sweetspot"
+  },
+  "palette_name": "Akun_UKIYOE_4",
+  "renderer": {
+    "path": "_pipelines/02_task_datasets/sweetspot/p12_visualization.py",
+    "sha256": "87b4b3568a435e0db4ffd3107bdf30f298c99d2c6e8ce28734ff7a98cc1e61b9"
+  },
+  "schema_version": "sweetspot-p12-visualization-manifest/v1",
+  "scientific_caveat": "This deliverable is a visualization contract only; it does not alter labels, splits, or target semantics.",
+  "script_path": "_pipelines/02_task_datasets/sweetspot/p12_visualization.py",
+  "script_sha256": "87b4b3568a435e0db4ffd3107bdf30f298c99d2c6e8ce28734ff7a98cc1e61b9",
+  "source_commit": "9d9b482f2df92c66f5d9e76c1911625623df4781",
+  "source_registry": {
+    "p5_stage3_data": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/visualization_data",
+    "p5_stage3_figures": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures",
+    "p5_stage4_summary": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+    "p7_t3_summary": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+    "p8_t3_summary": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json"
+  },
+  "track": "sweetspot",
+  "track_id": "sweetspot"
+}

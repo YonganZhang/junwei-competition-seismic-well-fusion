@@ -3,8 +3,10 @@
 ⚠️ 这是弱标定，不是精确井震标定:
     真正的井震标定需要声波(DT)+密度(RHOB)合成一条反射系数序列，再跟子波褶积生成
     合成地震记录，用互相关去对齐真实地震道，此外还需要VSP/checkshot时深表校正
-    速度模型误差。这些在本项目里都没有做(比赛本身也不提供VSP/合成记录/时深表，
-    见 _pipelines/01_common_preprocess/_readme.md)。
+    速度模型误差。本级步骤仍是早期弱标定，但项目后续获取的 Volve VSP 归档
+    实际包含 5 口井的 checkshot；P23 已完成独立井验证，见
+    `_wiki-methodology/_wiki/_methods/explorations/011-p23-reconstruction-checkshot-target-tie.md`。
+    本文件只保留旧产物的可复现性，不再代表当前最佳时深关系。
     本step做的只是:
       1. 井轨迹的(Easting,Northing) —— 用官方 Well_picks_Volve_v1.dat 里同一口井
          不同深度的地层分界点位置，线性插值/外推出连续深度上的井轨迹平面坐标

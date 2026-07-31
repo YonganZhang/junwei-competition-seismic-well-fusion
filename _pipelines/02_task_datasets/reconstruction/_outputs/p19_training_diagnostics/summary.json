@@ -1,0 +1,61 @@
+{
+  "schema_version": "reconstruction-p19-training-diagnostics-summary/v1",
+  "created_date": "2026-07-31",
+  "primary_metric": "held-label-purged nested leave-one-spatial-fold-out development RMSE",
+  "baseline": {"rmse": 0.028449728170183285, "mae": 0.021413486381061376},
+  "p18_reported": {"rmse": 0.02775268067880289, "relative_rmse_change": -0.024501024656922173},
+  "p19_meta_purged": {
+    "rmse": 0.027751397627827728,
+    "mae": 0.02082576074455552,
+    "bias": -0.0004171601270905864,
+    "relative_rmse_change": -0.02454612354038031,
+    "fold_wins": 5,
+    "fold_losses": 0,
+    "bootstrap_ci95": [-0.0011439682799397818, -0.00035392465450558366],
+    "bootstrap_probability_better": 1.0
+  },
+  "cross_fold_meta_overlap": [
+    {"held_fold": 0, "unique_coordinates": 58, "removed_occurrences": 58},
+    {"held_fold": 1, "unique_coordinates": 42, "removed_occurrences": 44},
+    {"held_fold": 2, "unique_coordinates": 24, "removed_occurrences": 24},
+    {"held_fold": 3, "unique_coordinates": 27, "removed_occurrences": 27},
+    {"held_fold": 4, "unique_coordinates": 45, "removed_occurrences": 45}
+  ],
+  "gradient_diagnosis": {
+    "prefix_batch_shape": [4, 3, 161, 1200],
+    "tail_input_shape": [12, 161, 1200],
+    "query_shape": [150, 12],
+    "output_shape": [150],
+    "trainable_encoder_parameters": 17298000,
+    "trainable_head_parameters": 122553,
+    "zero_initialized_output_layer": true,
+    "encoder_gradient_step1": {"gelu": 0.0, "silu": 0.0, "relu": 0.0},
+    "encoder_gradient_step3": {
+      "gelu": 1.5043329774448529e-05,
+      "silu": 1.3368013513990694e-05,
+      "relu": 1.5726638689178956e-05
+    },
+    "encoder_relative_update_three_steps": [1.9003566448030636e-05, 2.0107493585621e-05],
+    "head_relative_update_three_steps": [0.009363803625143574, 0.00943606969651021]
+  },
+  "route_screens": {
+    "frozen_mlp_best_relu_rmse": 0.02796496615400426,
+    "extended_metric_nested_rmse": 0.027771692820886866,
+    "same_oof_regression_kriging_rmse_non_promotable": 0.027720062019049713,
+    "nested_regression_kriging_rmse": 0.027830073069069747,
+    "stratigraphic_metric_nested_rmse": 0.02776973976503238
+  },
+  "decision": {
+    "state": "ROBUST_DEVELOPMENT_SIGNAL",
+    "default_enabled": false,
+    "pretrained_contribution_claimed": false,
+    "ablation_deferred": true,
+    "next_training_route": "parameter-efficient adapter with nonzero small output initialization and staged unfreezing"
+  },
+  "firewall": {
+    "labels_per_outer_fold": 512,
+    "validation_rows_per_outer_fold": 2048,
+    "test_h5_opened": false,
+    "frozen_holdout_opened": false
+  }
+}

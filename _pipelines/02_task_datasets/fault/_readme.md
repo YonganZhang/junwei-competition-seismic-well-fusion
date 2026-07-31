@@ -173,6 +173,23 @@ new training run.
 Architecture upgrades such as FaultSeg3D/3-D U-Net, focal loss, or semi-supervised
 learning are intentionally out of scope until the owner chooses a model route.
 
+## Publication renderer for audited_v2
+
+`p12_visualization.py` is the track-local publication renderer that reuses the
+archived `audited_v2` evidence and writes a discoverable publication bundle
+under `_outputs/p12_visualization/`:
+
+```bash
+python3 _pipelines/02_task_datasets/fault/p12_visualization.py \
+  --output-root _pipelines/02_task_datasets/fault/_outputs/p12_visualization
+```
+
+The bundle contains `manifest.json` and a `figures/` directory with the compact
+real-test panel and the spatial-context figure in PNG/PDF/SVG form. The manifest
+records input hashes, selected sample indices, split scope, figure dimensions,
+vector companions, font fallback, and the manual-review status. It does not
+change any data, predictions, metrics or split boundaries.
+
 ## P4 sparse-label adapter
 
 The P4 adapter is implemented in `p4_contract.py`, `p4_split.py`,

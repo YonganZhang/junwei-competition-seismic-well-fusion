@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-07-28 (P8 multimodal foundation routing)
+last_synced: 2026-08-01 (P12 visualization delivery + P24 reconstruction historical transfer)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -41,21 +41,37 @@ code_domains:
       step_03_load_fault_horizon.py：定长文本解析Volve_Official_Faults.dat(3998点/66条断层)，
       通用CSV解析Horizons_TWT/Other_Horizons下BCU层位(225558点)，断层UTM反解最近il/xl，层位IL/XL
       本身已与ST0202体一致(实测验证过范围吻合)。
-      step_04_well_tie_weak.py：弱井震标定——用Well_picks_Volve_v1.dat同井分层点的MD/TWT/UTM做
-      分段线性插值+外推(非速度模型)，得到深度->TWT->最近(il,xl)的粗略轨迹，代码内注释明确标注
-      为弱标定局限。outputs/下产出可复用中间文件，产出清单见pipeline README。
+      step_04_well_tie_weak.py：用Well_picks_Volve_v1.dat同井分层点的MD/TWT/UTM做
+      分段线性插值+外推，仅作为早期弱标定产物保留。项目后续获取的
+      Volve VSP 归档含 5 口井 checkshot；新研究实验使用 P23 的 3 拟合井/
+      2 独立校验井口径。outputs/下产出可复用中间文件，产出清单见pipeline README。
 
   - id: task_datasets
     path: _pipelines/02_task_datasets
     type: pipeline
-    status: active
+    status: wip
     owner: project
     description: >
-      Layer2每赛道样本构建器，子目录 fault/facies/reservoir/lithofacies/sweetspot/reconstruction，
-      各自build_dataset.py读Layer1产出+对应标签源，调用dataset_io.save_split()写出统一schema的train/test。
-      ①②⑥已用Codex worker(leader mode)跑通baseline:①fault逻辑回归+局部卷积特征，
-      ②facies_f3/facies_penobscot各自SmallUNet(F3/Penobscot标签空间不兼容,不强行统一),
-      ⑥reconstruction岭回归+IDW。当前均为验证管道用的简单baseline,非最终模型。
+      Layer2每赛道样本构建器，子目录 fault/facies/reservoir/lithofacies/sweetspot/reconstruction。
+      主仓(master)当前该路径下6个子目录为空占位骨架，git ls-files为空——具体build_dataset.py/
+      baseline.py/models等实现均只存在于对应git worktree分支(`.claude/worktrees/track-*`)，
+      各分支已有1个已验收commit(见下方SHA)，但尚未merge进master，主仓意义上的"active代码"
+      目前不存在，不要把worktree候选误当作已集成的主仓代码。
+      2026-07-13：六条赛道baseline pipeline候选均已在各自隔离worktree完成真实Volve/F3/Penobscot
+      数据端到端验收(独立verify通过)，随后完成合并前可移植性收口，当前每条赛道的Git候选文件数/
+      字节数为：①fault 21/377889B、②facies 23/533617B、③reservoir 19/465560B、
+      ④lithofacies 18/679284B、⑤sweetspot 10/147413B、⑥reconstruction 34/1071933B。
+      六个worktree分支各自已提交1个commit(ahead=1/behind=0 relative to master)，真实SHA：
+      ①fault `09abe70905f988f4585debbd2216a6a2542e5dfd`、②facies `5f70a33e23227f45bb401d077630ff594d477b14`、
+      ③reservoir `ea3b0f35c0dd05173b38be83834f87b82315f875`、④lithofacies `84839c2421143804e7c923c30500cf03eefc7078`、
+      ⑤sweetspot `b13d876349c55834abc36550864d6b6f19bda9cd`、⑥reconstruction `1a142f3787b18999123a9750fcd8bea30001d822`。
+      commit未合并进master，master的task_datasets路径仍是空骨架。
+      科学状态摘要(细节见对应finding，不在此重复指标表)：①逻辑回归局部特征baseline，召回高精度低；
+      ②facies_f3/facies_penobscot各自SmallUNet(标签空间不兼容,不强行统一)；③PHIF/log1p(KLOGH)/SW
+      三输出多模态回归；④9类GM09 GENETIC FACIES多模态分类；⑤仅fail-closed的label_spec合同与
+      validate-only审计基础设施，未生成任何标签/数据集/模型(标签定义待军伟批准)；⑥conditional/
+      strict双模式重建对比。均为验证管道用的简单baseline,非最终模型。各分支选择性commit已完成，
+      merge进master待军伟/负责人拍板后执行，见`_wiki-methodology/_top/_findings/P2.6`。
 
   - id: ml_framework
     path: _code/ml_framework
@@ -99,6 +115,87 @@ code_domains:
       masked-volume 条件、可见性与晋级状态机；固定 source/weights revision、size/SHA、许可证状态，
       运行时禁止自动下载。监督 LLM 仅做 schema/QC，严格 JSON，不读取标签、测试指标、路径或凭证。
 
+  - id: reconstruction_foundation_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P17 赛道⑥开发优化：冻结 ThinkOnward GFM 提供目标无关地震表征，
+      每个空间外折仅用 512 条合法训练标签拟合标准化/PCA，以弱加权表征
+      构建非平稳邻域并与 PyKrige 保守融合。只产生 DEVELOPMENT_SIGNAL，
+      无 test/holdout 入口，默认不启用。
+
+  - id: reconstruction_anisotropic_foundation_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py
+    type: pipeline
+    status: superseded
+    superseded_by: reconstruction_meta_purged_geostatistics
+    owner: project
+    description: >
+      P18 赛道⑥历史开发优化：复用哈希锁定的真实预训练 GFM 表征，显式搜索
+      垂向各向异性，并对每个报告空间折只用其余四折的指标行进行 top-3 候选选择。
+      P19 发现其余折训练子集与当前验证坐标存在间接重叠，因此 P18 已被更严格的
+      元拟合坐标去重协议取代；默认不启用。
+
+  - id: reconstruction_meta_purged_geostatistics
+    path: _pipelines/02_task_datasets/reconstruction/p19_meta_purged_geostatistics.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P19 赛道⑥严格开发优化：对每个报告空间折，先从其余折的元选择训练子集中
+      删除当前验证坐标，再重新拟合缩放、PCA、近邻模型与全部候选；最终折预测仍
+      严格使用 512 条合法训练标签。无 test/holdout 入口，默认不启用，不作预训练
+      因果归因。
+
+  - id: reconstruction_fixed_foundation_ensemble
+    path: _pipelines/02_task_datasets/reconstruction/p21_fixed_foundation_ensemble.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P21 赛道⑥当前默认：固定平均三个真实预训练 GFM 邻域核，去除逐折
+      元选择；保持每折 512 条标签并与 PyKrige 保守融合。开发 OOF RMSE
+      为 0.027734374378，不声称 LoRA 或预训练表征的因果消融结论。
+
+  - id: reconstruction_historical_transfer
+    path: _pipelines/02_task_datasets/reconstruction/p24_historical_transfer.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P24 赛道⑥预注册一次性迁移门：把未使用的 RMS 历史 pp04phif 属性
+      精确映射到现有 KJI 折，冻结 P21 与 PyKrige 对照。结果相对 RMSE
+      改善 1.4529%、4/5 折获胜；只支持同场区历史版本迁移，不是 fresh blind。
+
+  - id: reconstruction_checkshot_calibration
+    path: _pipelines/02_task_datasets/reconstruction/p23_checkshot_calibration.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P23 赛道⑥时深标定验证：用 19A/19BT2/19SR checkshot 和 TVDSS
+      轨迹拟合空间时深关系，F11T2/F15A 完全保留为独立校验井。
+      不读孔隙度标签、reconstruction HDF5、test 或 holdout；产物状态限定为
+      VALIDATED_CALIBRATION_ONLY，不替代 P21 默认模型。
+
+  - id: domain_visualization_delivery
+    path: _pipelines/03_domain_visualization_delivery
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      六赛道真实领域图唯一卡片渲染入口。清单必须绑定可达的来源commit、图片SHA-256、
+      来源脚本blob、Git跟踪策略、证据文件和人工复核哈希；允许工作树HEAD继续前进，
+      但来源commit不可分叉、图片和来源脚本不可漂移；状态/协议/门禁/占位图路径直接拒绝。
+      通过后复制到稳定交付目录并再次验哈希，只有显式--yes-public才调用pubfile，
+      每个永久URL还必须HTTP 200。测试入口见 `_wiki-methodology/_tests/_gates.yml`
+      中 id=`domain-visualization-delivery`。P12 扩展只处理赛道1/3/5：由
+      `step_00_discover.py` 固定发现渲染器/测试/manifest，由负责人逐图检查后再运行
+      `step_04_stage_p12_review.py`，把 13 张 PNG 及其 PDF/SVG 同伴复制到稳定目录并写入
+      独立 `review_attestation.json`；赛道2/4/6保持 paused。
+
 entrypoints:
   - id: project_plan
     path: _wiki-methodology/_top/_task_plan.md
@@ -107,6 +204,40 @@ entrypoints:
     owner: col2
     description: "Current phase, next action, blockers and pause list."
 
+  - id: domain_visualization_discover
+    path: _pipelines/03_domain_visualization_delivery/step_00_discover.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Discover the fixed P12 worktrees and renderer/test/manifest paths for tracks 1, 3 and 5 while keeping tracks 2, 4 and 6 paused."
+
+  - id: domain_visualization_validate
+    path: _pipelines/03_domain_visualization_delivery/step_01_validate_manifest.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Validate the exact six domain figures, provenance, hashes, source scripts and human-review attestations."
+
+  - id: domain_visualization_stage
+    path: _pipelines/03_domain_visualization_delivery/step_02_stage_delivery.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Copy only validated figures into the stable delivery directory and recheck their hashes."
+
+  - id: domain_visualization_publish
+    path: _pipelines/03_domain_visualization_delivery/step_03_publish_cards.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Publish only after explicit public authorization, then require permanent share.yongan.site URLs and HTTP 200."
+
+  - id: domain_visualization_p12_review
+    path: _pipelines/03_domain_visualization_delivery/step_04_stage_p12_review.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "After explicit leader visual QA, copy verified P12 PNG/PDF/SVG assets for tracks 1, 3 and 5 and write a separate review attestation without mutating renderer-owned manifests."
   - id: p4_acceptance
     path: _wiki-methodology/_tests/P4_acceptance_evidence.md
     type: test_evidence
@@ -170,6 +301,41 @@ entrypoints:
     owner: col2
     description: "Modality-specific foundation routes, supervisory LLM boundary and connection-versus-promotion decision."
 
+  - id: p17_reconstruction_foundation_acceptance
+    path: _wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 GFM nonstationary-metric result, 512-label budget, holdout firewall, fold uncertainty and independent hash/metric recomputation."
+
+  - id: p18_reconstruction_anisotropic_acceptance
+    path: _wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Historical Track-6 anisotropic GFM geostatistics result; metric-row-only LOFO selection later superseded by P19 meta-fit coordinate purge."
+
+  - id: p19_reconstruction_training_diagnostics_acceptance
+    path: _wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 meta-selection coordinate purge, strict 5/5-fold result, real GFM tensor/gradient probes, controlled route screens and independent recomputation."
+
+  - id: p23_reconstruction_checkshot_calibration_evidence
+    path: _wiki-methodology/_tests/P23_reconstruction_checkshot_calibration_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 three-fit/two-independent-well checkshot calibration result, source lock, target firewall and downstream claim boundary."
+
+  - id: p24_reconstruction_historical_transfer_evidence
+    path: _wiki-methodology/_tests/P24_reconstruction_historical_transfer_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Track-6 preregistration, one-time same-field historical target result, independent metric/hash recomputation and explicit non-blind claim boundary."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -177,6 +343,9 @@ cross_domain_edges:
   - from: task_datasets
     to: common_preprocess
     relation: depends_on
+  - from: domain_visualization_delivery
+    to: task_datasets
+    relation: validates_and_publishes_outputs
   - from: task_datasets
     to: ml_framework
     relation: calls
@@ -195,6 +364,33 @@ cross_domain_edges:
   - from: foundation_model_routes
     to: canonical_models
     relation: routes
+  - from: reconstruction_foundation_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_anisotropic_foundation_geostatistics
+    to: reconstruction_foundation_geostatistics
+    relation: supersedes
+  - from: reconstruction_anisotropic_foundation_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_meta_purged_geostatistics
+    to: reconstruction_anisotropic_foundation_geostatistics
+    relation: supersedes
+  - from: reconstruction_meta_purged_geostatistics
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_fixed_foundation_ensemble
+    to: reconstruction_meta_purged_geostatistics
+    relation: supersedes
+  - from: reconstruction_fixed_foundation_ensemble
+    to: foundation_model_routes
+    relation: uses
+  - from: reconstruction_historical_transfer
+    to: reconstruction_fixed_foundation_ensemble
+    relation: validates
+  - from: reconstruction_checkshot_calibration
+    to: common_preprocess
+    relation: depends_on
 
 non_code_assets:
   registry: _meta/_data_registry.yml

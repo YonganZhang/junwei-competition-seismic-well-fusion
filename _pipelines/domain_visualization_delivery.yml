@@ -1,0 +1,15 @@
+pipeline: domain_visualization_delivery
+description: "TOP hash-trust entrypoint for the six-track domain-visualization card-delivery pipeline."
+status: active
+spec: _pipelines/03_domain_visualization_delivery/pipeline.yml
+steps:
+  - id: discover_profiles
+    ref: code:domain_visualization_discover
+  - id: validate_manifest
+    ref: code:domain_visualization_validate
+  - id: stage_delivery
+    ref: code:domain_visualization_stage
+  - id: publish_cards
+    ref: code:domain_visualization_publish
+verified_steps_hash: 3164d9b57828b4e1e70a08ebb2c2de349390dd9a204facf2819293c3bfb88aed
+verified_at_commit: 60fc6393944901014770c8d48de8b91f09d5cb96

@@ -1,7 +1,56 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P8 六赛道多模态基础模型已真实接线，进入同 split 晋级验证]**
+> **🧭 当前: [P25 累计研究主线已合并至安全集成分支，P21 仍为赛道⑥默认模型]**
+>   2026-08-01 P24 在读取指标前预注册并冻结 P21，在未被现有管线使用的
+>   同场区历史 `pp04phif/realisation.1` 上完成一次性迁移测试。保持 5 个空间折、
+>   每折 512/2,048 标签预算和 PyKrige 1.7.3 不变后，RMSE 从
+>   `0.028235410003` 降至 `0.027825182663`（相对改善 `1.4529%`），MAE 从
+>   `0.021293578592` 降至 `0.020826337775`，4 折胜/1 折负，通过预注册门槛。
+>   该证据只属于同场区历史版本迁移，不是跨场区或首次盲测；整折 bootstrap
+>   95% 区间仍跨 0。用户已明确接受该证据等级作为本轮闭环，不再追加跨场区测试。
+>   P4--P24 累计研究线已与 P12 可视化线合并到 `p25-reconstruction-integration`；
+>   原 `master` 工作树含用户未提交报告/可视化改动，暂不移动其分支指针。
+>   证据见 `_findings/P24_reconstruction_historical_transfer.md`。
+>   2026-08-01 P23 复核发现本地 Volve VSP 归档含 5 口井
+>   checkshot，改正了“项目没有 VSP/时深表”的旧判断。使用
+>   19A/19BT2/19SR 拟合、F11T2/F15A 独立校验后，目标储层
+>   TWT MAE 从 `633.1867 ms` 降至 `8.7389 ms`，2/2 独立井均改善。
+>   但全体积替换和直接观测支持门控的下游 RMSE 分别为
+>   `0.027768546911` 和 `0.027790989240`，均未超过 P21 的
+>   `0.027734374378`。因此标定资产保留，模型候选拒绝；不声称
+>   孔隙度提升。证据见 `_findings/P23_reconstruction_checkshot_calibration.md`。
+>   2026-08-01 P21 将学习信号改为无标签多视图地震一致性适配，再学习 512 标签
+>   内部五折 P19 同构基准的样本外残差。LoRA 与头部梯度均真实非零，但神经头、
+>   单次校准 Ridge、完整五折 Ridge 的 RMSE 分别为 `0.028278976997`、
+>   `0.029618418227`、`0.028080039761`，均未超过 P19。去掉逐折元选择、统一平均
+>   三个固定 foundation 核后 RMSE 为 `0.027734374378`，相对 P19 的
+>   `0.027751397628` 小幅改善，外折 1 胜/4 平/0 负。该路线按简化胜出启用，
+>   不声称广泛统计效应或 LoRA 因果贡献；后续应增加独立地质监督，而不是继续扩大
+>   PEFT 容量。证据见 `_findings/P21_reconstruction_contrastive_residual.md`。
+>   2026-07-31 P19 发现：P18 每折自身训练/验证虽零重叠，但其余折的 512 点
+>   训练子集与当前验证折仍有 24--58 个标签坐标重叠，可能间接影响元选择。
+>   删除这些坐标、重新拟合全部候选后，10,240 条 OOF RMSE 为
+>   `0.027751397628`，相对 PyKrige `0.028449728170` 改善 `2.4546%`，仍为
+>   5/5 折改善；整折 bootstrap 95% 区间
+>   `[-0.001143968280, -0.000353924655]`。P18 主信号没有由该漏洞制造，但
+>   协议和数值已由 P19 取代。真实 P15 动力学探针同时确认：17,298,000 个
+>   可训练尾块参数因零初始化输出层首步梯度为零，三步相对更新约 `2e-5`，
+>   比头部约 `9.4e-3` 小约 470 倍。GELU/SiLU/ReLU、冻结小 MLP、扩展网格、
+>   回归克里金和 K/J/I 层序距离均未在严格口径下超过 P19。下一步应预注册
+>   参数高效适配器与分阶段解冻；按用户要求，消融仍后置，默认仍关闭。证据见
+>   `_wiki-methodology/_tests/P19_reconstruction_training_diagnostics_acceptance_evidence.md`。
+>   P18 历史记录（已由上方 P19 取代）：2026-07-31 Claude 独立审查发现 P17
+>   在同一 OOF 上从 156 个候选中选优；
+>   对原候选族改用嵌套留一空间折后 RMSE 为 `0.028534404074`，原 `-0.4563%`
+>   已被取代。P18 增加垂向各向异性，并对每个报告折只用其余四折选择 top-3。
+>   在不扩大每折 512 条训练标签、不打开冻结 holdout 的条件下，10,240 条 OOF
+>   RMSE 从 `0.028449728170` 降至 `0.027752680679`（-2.4501%），5/5 空间折
+>   全部改善；完整空间折 bootstrap 95% 区间
+>   `[-0.001140994782, -0.000353924655]`。状态为
+>   `ROBUST_DEVELOPMENT_SIGNAL`、`default_enabled=false`。本阶段按用户要求不做
+>   消融，只报告含真实预训练 GFM 的完整方案，不声称具体因果来源。证据见
+>   `_wiki-methodology/_tests/P18_reconstruction_anisotropic_acceptance_evidence.md`。
 >   2026-07-28 已修正旧 P6 Gaia/DAGT“只有合同/QC、没有大模型参与预测”的边界：
 >   断层 SAM-Med3D、地震相 SAM 2.1、物性 TabICLv2、岩相 MOMENT、甜点 Chronos-2、
 >   三维重建 OpenMind ResEnc-L MAE 均已固定 source/weights revision 与 SHA，并完成真实加载计算。
@@ -13,10 +62,10 @@
 >   且 checkpoint 条款待确认。下一步按赛道完成 pretrained/random-init/强基线同 split 对照，
 >   只允许通过晋级门的路线成为默认。证据见
 >   `_wiki-methodology/_tests/P8_multimodal_foundation_acceptance_evidence.md`；
->   当前工作位于隔离分支 `p8-multimodal-foundation`，未合并、未 push。
+>   相关实现和证据已进入本次累计研究线集成，未 push。
 > Done Criteria: Volve/F3-Demo/Penobscot 三批数据下载完整校验通过(已达成)；六赛道baseline pipeline候选
 >   各自端到端验收通过(已达成，见下方P3/P4)；③④标签/目标定义已落地；
->   ⑤七目标均有可审计状态；主仓集成策略待授权；正式高性能模型尚待P5。
+>   ⑤七目标均有可审计状态；累计研究线已在安全集成分支完成合并；正式交付仍需同步主工作树与报告。
 > 目标交付物: 模型 + 模型参数 + 数据预处理代码 + 模型运行代码（无文字报告要求）
 > 距交付: TBD（官方未给最终截止时间，待军伟电话确认）
 
@@ -27,9 +76,18 @@
 | P2 数据 / 实现准备 | ✅ | 3/3 | Volve全套(含ST10010)+F3+Penobscot下载完成；③④赛道数据量核实足够(纠正见P2.2) |
 | P3 探索 / 实现 | ✅ | 6/6 | 六赛道baseline pipeline候选在各自隔离worktree端到端验收通过+可移植性收口完成(独立verify)；⑤分支1个已验收commit，①②③④⑥分支各2个已验收commit（第二个commit各含2个简单备选模型），尚未合并进主仓master，见P2.6与下方SHA登记 |
 | P4 验证 | ✅ | 2/2 | 公共合同+五赛道插件+⑤七目标已在隔离集成分支实施；便携测试、真实 smoke、可行任务 CV/refit/frozen-test 与产物哈希已验收，证据见 `_tests/P4_acceptance_evidence.md` |
-| P5 合成 / 交付 | 🔄 | 0.96/1 | Stage-1/2/3、Stage-4已见holdout确认、直接基准复核及P5.1 R0/R1已完成；下一步P5.2学习曲线，随后P5.3十候选正式CV，最终仍需真正未触碰的外部或赛事隐藏测试。 |
+| P5 合成 / 交付 | 🔄 | 0.98/1 | Stage-1/2/3、Stage-4、直接基准复核及P5.1 R0/R1已完成；本轮不再追加跨场区测试，下一步转为模型默认配置、复现入口与技术报告同步。 |
 | P6/P7 Gaia+时序 | ✅ | 2/2 | 旧 Gaia/DAGT 边界已审计；Chronos-2 真实预训练权重与因果预测通路已建立。 |
 | P8 多模态基础模型 | 🔄 | 0.65/1 | 六赛道权重/接口/真实计算已通过；同 split 性能、random-init、shuffle/causal 控制与断层数据门待完成。 |
+| P12 可视化标准化 | ✅ | 1/1 | 赛道1/3/5出版级图组、确定性渲染、人工复核和稳定交付入口保留。 |
+| P13 科研报告 | ✅ | 1/1 | 六赛道统一研究合同、结构诊断、架构图和46页 LaTeX 技术报告已完成。 |
+| P17 重建基础模型 | ⏭️ | 1/1 | 同 OOF 选优的 -0.4563% 已由 P18 嵌套复核取代；保留为方法角色转换历史。 |
+| P18 各向异性重建 | ⏭️ | 1/1 | 历史方向有效，但元选择训练坐标未去重；协议和数值已由 P19 取代。 |
+| P19 重建训练诊断 | ✅ | 1/1 | 元选择训练坐标去重后 RMSE -2.4546%、5/5 折改善；定位 P15 全尾块微调梯度失配，五条替代路线严格复核未晋级。 |
+| P21 固定基础核 | ✅ | 1/1 | 固定三核平均 RMSE `0.027734374378`，简化胜出；LoRA 残差路线未超过强基线。 |
+| P23 Checkshot 标定 | ✅ | 1/1 | 3 拟合井/2 独立校验井将 TWT MAE 降至 `8.7389 ms`；下游候选未超过 P21，仅保留标定结论。 |
+| P24 历史版本迁移 | ✅ | 1/1 | 冻结 P21 在未使用的同场区历史属性版本上相对 PyKrige RMSE 改善 `1.4529%`、4/5 折获胜；用户接受同场区迁移证据，本轮停止跨场区扩展。 |
+| P25 安全集成 | ✅ | 1/1 | P4--P24 累计研究线与 `master` 的 P12 可视化线已合并到 `p25-reconstruction-integration`；原主工作树保持不动。 |
 
 ## 协作与决策权边界
 
@@ -46,7 +104,7 @@
 ### 输入
 1. **地震数据**：三维叠后地震体/图像（SEG-Y / numpy / inline-crossline-time 切片等格式）
 2. **测井数据**：LAS格式，常规九线（岩性：SP/GR/CAL；三孔隙度：AC/CNL/DEN；电阻率：MSFL/LLS/LLD）
-3. **井位与井轨迹**：井口坐标、井轨迹、MD/TVD/TVDSS、补心海拔、地面海拔（单独文件）——**不含**时深表/校验炮/VSP/合成记录/速度模型
+3. **井位与井轨迹**：井口坐标、井轨迹、MD/TVD/TVDSS、补心海拔、地面海拔（单独文件）。比赛输入本身不含时深表/校验炮/VSP/合成记录/速度模型；但项目后续下载的 Volve VSP 归档已确认包含 5 口井 checkshot，可作为研究阶段的外部标定资料，不应与比赛可用输入混为一谈。
 4. **专家标签**：断层/有利储层等目标标签，三维网格对齐优先，允许二维切片/井点/弱标签
 
 ### 可选辅助数据（仅可用于训练增强，推理阶段不可强依赖）
@@ -144,6 +202,29 @@
       `_decisions/P4.1_training_validation_reproducibility_architecture.md`，统一SOP见
       `../_wiki/_methods/training-evaluation-reproducibility-contract.md`，实施路线见
       `_phases/P4_implementation_roadmap.md`，最终可复制 `/goal` 见 `_phases/P4_goal_prompt.md`。本轮只做调研与文档，未实施模型/CV/HPO代码。
+- [x] 2026-07-25 可视化交付纠错与门禁固化：确认旧 `_outputs/p5_r2_visualization/track_*.png`
+      实际来自R2汇总JSON，属于协议覆盖率/预算/性能图，不是领域图；已明确禁止把它们用于领域图卡片渲染。
+      新增 `_pipelines/03_domain_visualization_delivery/`，以六赛道白名单锁定真实图的worktree HEAD、
+      图片SHA-256、来源脚本、证据文件、PNG尺寸和逐张人工复核；复制后再次验哈希，公开发布必须显式
+      `--yes-public`且每个永久URL返回HTTP 200。当前6张真实领域图已通过3/3回归测试并发布，
+      证据见 `_outputs/domain_visualization_delivery/v1/published_manifest.json`。科学边界继续保留：
+      ①低精度baseline、④known F-5确认、⑤development OOF、⑥conditional development-only。
+- [x] 2026-07-25 六赛道真实三维成像与 SCI Plot：逐赛道先审计 `native_volume / spatial_context /
+      not_feasible`，只对有真实三维网格、空间坐标或井轨迹的结果生成三维静态出版图和交互 HTML；
+      禁止堆叠无序二维样本、任意插值或示意点云冒充三维成果。共同合同见
+      `_phases/P5_three_dimensional_sci_visualization_contract.md`，由六个可见赛道窗口各自在隔离写域实施，
+      主控逐图、逐 HTML、逐血缘独立验收后再进入卡片渲染。最终判定：
+      ①③=`spatial_context`、⑥=`native_volume`，②④⑤=`not_feasible`；可行赛道共交付12张
+      2160×2160/300 DPI静态图、12份PDF、4个交互HTML，测试、Chromium拖拽、Gemini视觉二审及
+      16个永久URL HTTP 200均通过。六赛道本地验收commit与公共链接见合同“完成记录”。
+- [x] 2026-07-30 P12 可视化标准化：按用户要求只处理赛道1/3/5，赛道2/4/6继续暂停。
+      三条线均建立固定 `p12_visualization.py`、赛道测试、`manifest.json` 与 `figures/`，共交付
+      13张PNG及其PDF/SVG同伴（39个稳定文件）；统一 TNR/TGT 字体、Akun配色、无图内总标题、
+      `(a)` panel label、确定性输出和输入/输出哈希，但保留各赛道不同的科学诊断结构与真实负面结果。
+      负责人逐张原分辨率验收后由 `step_04_stage_p12_review.py` 写入独立
+      `_outputs/domain_visualization_delivery/p12/review_attestation.json`，中央门禁7/7、
+      fault 5/5、property 2/2、sweetspot 5/5通过；共享冷启动入口为
+      `_pipelines/03_domain_visualization_delivery/step_00_discover.py --check`。
 - [x] 2026-07-13 P4 Goal 已在隔离 `p4-training-integration` 分支实施：安全集成五赛道候选，
       完成 `_code/ml_framework` 公共合同、`_models/<track>/` 唯一模型真源、全局 seed=2693、
       group/spatial split、加权 reducer、checkpoint/resume、HPO 接口、artifact manifest 与一次性冻结测试门。
@@ -211,6 +292,20 @@
       均未访问，所有输出仍是protocol mechanism evidence而非性能榜。验收见
       `_wiki-methodology/_tests/P5.1_r01_integration_acceptance_evidence.md`。下一步统一称P5.2/protocol R2学习曲线；达到停止线后
       才启动P5.3/protocol R3每合法赛道/lane至少10候选正式grouped/spatial/temporal CV。master未merge、未push。
+
+- [x] 2026-07-31 赛道⑥ P20 完成非零初始化、LoRA r4、Adapter 和分阶段解冻的严格五折复测。
+      四路线均为 5/5 折优于 PyKrige，最佳 staged-LoRA RMSE=`0.027789615700`，但仍差于 P19 的
+      `0.027751397628`；80 步扩展降为 `0.027791517166`，P19/P20 误差相关=`0.9992037`，固定融合
+      最优 P20 权重为 0。梯度、参数更新、原生窗口和 holdout firewall 均独立复核通过，结论为
+      `VERIFIED_NO_PROMOTION`、默认关闭。见 `_findings/P20_reconstruction_peft_staged_unfreeze.md`。
+- [x] 2026-08-01 赛道⑥ P21 完成多视图无标签 LoRA 与交叉拟合残差复测。三条神经残差路线均未
+      超过 P19；固定 `z4_f0.1_s{0,0.1,0.2}_k64_p1.5_b0.75` foundation 三核平均达到
+      RMSE=`0.027734374378`，相对 P19 为 1 胜/4 平/0 负，验收为
+      `ACCEPTED_SIMPLICITY_WIN`。见 `_findings/P21_reconstruction_contrastive_residual.md`。
+- [x] 2026-08-01 赛道⑥ P24 完成预注册的同场区历史属性版本迁移测试。冻结 P21 相对重新拟合的
+      PyKrige 将 RMSE 从 `0.028235410003` 降至 `0.027825182663`（`1.4529%`），4/5 折改善；
+      开目标后未调参。证据等级不等于 fresh blind/cross-field；用户已明确本轮不再追加跨场区测试。
+      见 `_findings/P24_reconstruction_historical_transfer.md`。
 
 ## 数据资产索引
 

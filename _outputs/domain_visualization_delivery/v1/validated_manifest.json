@@ -1,0 +1,269 @@
+{
+  "schema_version": "domain-visualization-validation/v1",
+  "validation_status": "passed",
+  "input_manifest": "_pipelines/03_domain_visualization_delivery/delivery_manifest.json",
+  "input_manifest_sha256": "01adf8ce5337e0838703b5022a07ca28c4e72272e0a43dae4c460ec69f0b2d43",
+  "required_tracks": [
+    "fault",
+    "facies",
+    "property",
+    "lithofacies",
+    "sweetspot",
+    "reconstruction"
+  ],
+  "validated_track_count": 6,
+  "tracks": [
+    {
+      "track": "fault",
+      "display_name": "① 断层检测",
+      "worktree": "track-fault",
+      "source_commit": "db84205163e2954060cf6905fe88fe56ecbc0657",
+      "image_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/prediction_visualization.png",
+      "image_sha256": "3f84494f880ab9da5b6b23c36a4f4b23679f92faaf09bdaae5ded468477dc47a",
+      "image_tracked": true,
+      "artifact_policy": "git_tracked",
+      "source_script": "_pipelines/02_task_datasets/fault/visualize_predictions.py",
+      "evidence_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/visualization_report.json",
+      "artifact_class": "real_model_prediction",
+      "scientific_scope": "Real Volve physical-voxel-deduplicated test baseline; precision is low and must remain visible.",
+      "delivery_filename": "01_fault_real_test_prediction.png",
+      "caption": "① 断层检测：真实地震输入、断层真值与预测概率；这是当前低精度 baseline。",
+      "review": {
+        "approved": true,
+        "reviewed_sha256": "3f84494f880ab9da5b6b23c36a4f4b23679f92faaf09bdaae5ded468477dc47a",
+        "reviewer": "Codex leader visual inspection",
+        "checks": {
+          "domain_content_visible": true,
+          "real_data_or_model_output": true,
+          "not_protocol_or_status": true,
+          "not_placeholder": true,
+          "scientific_boundary_visible_or_captioned": true
+        }
+      },
+      "resolved": {
+        "worktree_path": ".claude/worktrees/track-fault",
+        "image_path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/prediction_visualization.png",
+        "source_script": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/visualize_predictions.py",
+        "evidence_path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/visualization_report.json",
+        "image_sha256": "3f84494f880ab9da5b6b23c36a4f4b23679f92faaf09bdaae5ded468477dc47a",
+        "source_script_sha256": "49dfe2758b2ae429cb478fb7327e865990dfcd44c2046af6b830cd7804f76162",
+        "evidence_sha256": "34301f49597edcf6a2267c177c2be51326f4990a2dc1aa352e360d2f3fd30925",
+        "png_width": 1910,
+        "png_height": 1539,
+        "image_git_tracked": true,
+        "worktree_head": "db84205163e2954060cf6905fe88fe56ecbc0657"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "track": "facies",
+      "display_name": "② 地震相识别",
+      "worktree": "track-facies",
+      "source_commit": "25edb4097fab36bd10663dda93791c606a510de0",
+      "image_path": "_pipelines/02_task_datasets/facies/_outputs/prediction_visualization.png",
+      "image_sha256": "55529895cbb1747e4daaa2b80db70806da25d37331dadc026713c343c6205e27",
+      "image_tracked": true,
+      "artifact_policy": "git_tracked",
+      "source_script": "_pipelines/02_task_datasets/facies/visualize_predictions.py",
+      "evidence_path": "_pipelines/02_task_datasets/facies/_outputs/leakage_fixed_v2/prediction_visualization_evidence.json",
+      "artifact_class": "real_model_prediction",
+      "scientific_scope": "F3 and Penobscot real test examples with dataset-specific label spaces.",
+      "delivery_filename": "02_facies_ground_truth_prediction.png",
+      "caption": "② 地震相识别：F3 与 Penobscot 的地震输入、真实标签和模型预测。",
+      "review": {
+        "approved": true,
+        "reviewed_sha256": "55529895cbb1747e4daaa2b80db70806da25d37331dadc026713c343c6205e27",
+        "reviewer": "Codex leader visual inspection",
+        "checks": {
+          "domain_content_visible": true,
+          "real_data_or_model_output": true,
+          "not_protocol_or_status": true,
+          "not_placeholder": true,
+          "scientific_boundary_visible_or_captioned": true
+        }
+      },
+      "resolved": {
+        "worktree_path": ".claude/worktrees/track-facies",
+        "image_path": ".claude/worktrees/track-facies/_pipelines/02_task_datasets/facies/_outputs/prediction_visualization.png",
+        "source_script": ".claude/worktrees/track-facies/_pipelines/02_task_datasets/facies/visualize_predictions.py",
+        "evidence_path": ".claude/worktrees/track-facies/_pipelines/02_task_datasets/facies/_outputs/leakage_fixed_v2/prediction_visualization_evidence.json",
+        "image_sha256": "55529895cbb1747e4daaa2b80db70806da25d37331dadc026713c343c6205e27",
+        "source_script_sha256": "10f913d917e58976303c7fde3912b9d8ec596c0ed6edaf0095e49b2599333eb4",
+        "evidence_sha256": "b5319f262c2a9550e7ff904fe51b5bfc1eb9cd4f8d3d675ff44cec167d80eb20",
+        "png_width": 2150,
+        "png_height": 2045,
+        "image_git_tracked": true,
+        "worktree_head": "25edb4097fab36bd10663dda93791c606a510de0"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "track": "property",
+      "display_name": "③ 储层物性",
+      "worktree": "track-property",
+      "source_commit": "d35bbf0b4b85a1cc88149c5515d5f3322c959fb2",
+      "image_path": "_pipelines/02_task_datasets/reservoir/_outputs/test_depth_gt_vs_pred.png",
+      "image_sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
+      "image_tracked": true,
+      "artifact_policy": "git_tracked",
+      "source_script": "_pipelines/02_task_datasets/reservoir/train_baseline.py",
+      "evidence_path": "_pipelines/02_task_datasets/reservoir/_outputs/run_manifest.json",
+      "artifact_class": "real_model_prediction",
+      "scientific_scope": "Held-out mother-well family 15/9-F-15; raw PHIF, KLOGH and SW predictions are not clipped.",
+      "delivery_filename": "03_property_heldout_depth_prediction.png",
+      "caption": "③ 储层物性：留出母井家族沿深度的 PHIF、KLOGH、SW 真值与预测。",
+      "review": {
+        "approved": true,
+        "reviewed_sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
+        "reviewer": "Codex leader visual inspection",
+        "checks": {
+          "domain_content_visible": true,
+          "real_data_or_model_output": true,
+          "not_protocol_or_status": true,
+          "not_placeholder": true,
+          "scientific_boundary_visible_or_captioned": true
+        }
+      },
+      "resolved": {
+        "worktree_path": ".claude/worktrees/track-property",
+        "image_path": ".claude/worktrees/track-property/_pipelines/02_task_datasets/reservoir/_outputs/test_depth_gt_vs_pred.png",
+        "source_script": ".claude/worktrees/track-property/_pipelines/02_task_datasets/reservoir/train_baseline.py",
+        "evidence_path": ".claude/worktrees/track-property/_pipelines/02_task_datasets/reservoir/_outputs/run_manifest.json",
+        "image_sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
+        "source_script_sha256": "ccdba957d9a6013c364171eda7d268379d16fa3d83f36493447aecac76549994",
+        "evidence_sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+        "png_width": 2340,
+        "png_height": 1260,
+        "image_git_tracked": true,
+        "worktree_head": "d35bbf0b4b85a1cc88149c5515d5f3322c959fb2"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "track": "lithofacies",
+      "display_name": "④ 岩相预测",
+      "worktree": "track-lithofacies",
+      "source_commit": "af8c066de0c3fc24fce024abb350b4f2c9e82d9b",
+      "image_path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/figures/fixed9_confusion.png",
+      "image_sha256": "391b8f70d2f98e46ec684af61d5ad1b071955b00003ff8246958356099618557",
+      "image_tracked": true,
+      "artifact_policy": "git_tracked",
+      "source_script": "_pipelines/02_task_datasets/lithofacies/lithofacies_p5_stage4.py",
+      "evidence_path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/visualization_manifest.json",
+      "artifact_class": "real_domain_evaluation",
+      "scientific_scope": "Known F-5 confirmation confusion matrix; not a fresh-blind holdout claim.",
+      "delivery_filename": "04_lithofacies_known_holdout_confusion.png",
+      "caption": "④ 岩相预测：Known F-5 的九类混淆矩阵；属于确认结果，不是 fresh-blind 结论。",
+      "review": {
+        "approved": true,
+        "reviewed_sha256": "391b8f70d2f98e46ec684af61d5ad1b071955b00003ff8246958356099618557",
+        "reviewer": "Codex leader visual inspection",
+        "checks": {
+          "domain_content_visible": true,
+          "real_data_or_model_output": true,
+          "not_protocol_or_status": true,
+          "not_placeholder": true,
+          "scientific_boundary_visible_or_captioned": true
+        }
+      },
+      "resolved": {
+        "worktree_path": ".claude/worktrees/track-lithofacies",
+        "image_path": ".claude/worktrees/track-lithofacies/_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/figures/fixed9_confusion.png",
+        "source_script": ".claude/worktrees/track-lithofacies/_pipelines/02_task_datasets/lithofacies/lithofacies_p5_stage4.py",
+        "evidence_path": ".claude/worktrees/track-lithofacies/_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/visualization_manifest.json",
+        "image_sha256": "391b8f70d2f98e46ec684af61d5ad1b071955b00003ff8246958356099618557",
+        "source_script_sha256": "573cd4a38d2fda8a73d2d9344d4d4cdfa96f0192f538e5c8c67e4db7d8e89531",
+        "evidence_sha256": "c680d96028ef3de547536022f1af5db063537934af898c76bd23f601e47a7424",
+        "png_width": 2111,
+        "png_height": 936,
+        "image_git_tracked": true,
+        "worktree_head": "af8c066de0c3fc24fce024abb350b4f2c9e82d9b"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "track": "sweetspot",
+      "display_name": "⑤ 甜点区评价",
+      "worktree": "p5-r2-sweetspot",
+      "source_commit": "5f80b5c6fb6fbf80b2af9781809ab48def6b932d",
+      "image_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+      "image_sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+      "image_tracked": true,
+      "artifact_policy": "git_tracked",
+      "source_script": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_stage3.py",
+      "evidence_path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_visualization_manifest.json",
+      "artifact_class": "real_domain_evaluation",
+      "scientific_scope": "T2 development OOF precision-recall and probability calibration; no frozen test claim.",
+      "delivery_filename": "05_sweetspot_development_pr_calibration.png",
+      "caption": "⑤ 甜点区评价：T2 开发集 OOF 的 PR 曲线与概率校准。",
+      "review": {
+        "approved": true,
+        "reviewed_sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+        "reviewer": "Codex leader visual inspection",
+        "checks": {
+          "domain_content_visible": true,
+          "real_data_or_model_output": true,
+          "not_protocol_or_status": true,
+          "not_placeholder": true,
+          "scientific_boundary_visible_or_captioned": true
+        }
+      },
+      "resolved": {
+        "worktree_path": ".claude/worktrees/p5-r2-sweetspot",
+        "image_path": ".claude/worktrees/p5-r2-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+        "source_script": ".claude/worktrees/p5-r2-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_stage3.py",
+        "evidence_path": ".claude/worktrees/p5-r2-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_visualization_manifest.json",
+        "image_sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+        "source_script_sha256": "e03e6b2a7a1b23188ad7f7eb3795f853fb5c192f1b309b1267d0523116c8efa0",
+        "evidence_sha256": "f3d3b923a6dec774622defd60bd9f91764a0c5d9f2b32b4fc11cede1bfd0de51",
+        "png_width": 1243,
+        "png_height": 544,
+        "image_git_tracked": true,
+        "worktree_head": "5f80b5c6fb6fbf80b2af9781809ab48def6b932d"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "track": "reconstruction",
+      "display_name": "⑥ 三维重构",
+      "worktree": "p5-r2-reconstruction-v2",
+      "source_commit": "f6e6efbac1663c3fe6f768ea79c2f1189c45b751",
+      "image_path": "_pipelines/02_task_datasets/reconstruction/p5_r2_evidence/conditional/prediction_visualization.png",
+      "image_sha256": "0d598910011ce21ed147ae135c99555da2ae1153000f4f31ad8e9741a204b5d8",
+      "image_tracked": false,
+      "artifact_policy": "generated_ignored",
+      "source_script": "_pipelines/02_task_datasets/reconstruction/reconstruction_p5_r2.py",
+      "evidence_path": "_pipelines/02_task_datasets/reconstruction/p5_r2_evidence/conditional/visualization_manifest.json",
+      "artifact_class": "real_model_prediction",
+      "scientific_scope": "Conditional development-only porosity reconstruction with pseudo-test well constraints; not strict holdout generalization.",
+      "delivery_filename": "06_reconstruction_conditional_development.png",
+      "caption": "⑥ 三维重构：conditional development-only 孔隙度重构、残差与学习曲线；不代表 strict holdout 泛化。",
+      "review": {
+        "approved": true,
+        "reviewed_sha256": "0d598910011ce21ed147ae135c99555da2ae1153000f4f31ad8e9741a204b5d8",
+        "reviewer": "Codex leader visual inspection",
+        "checks": {
+          "domain_content_visible": true,
+          "real_data_or_model_output": true,
+          "not_protocol_or_status": true,
+          "not_placeholder": true,
+          "scientific_boundary_visible_or_captioned": true
+        }
+      },
+      "resolved": {
+        "worktree_path": ".claude/worktrees/p5-r2-reconstruction-v2",
+        "image_path": ".claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/p5_r2_evidence/conditional/prediction_visualization.png",
+        "source_script": ".claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/reconstruction_p5_r2.py",
+        "evidence_path": ".claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/p5_r2_evidence/conditional/visualization_manifest.json",
+        "image_sha256": "0d598910011ce21ed147ae135c99555da2ae1153000f4f31ad8e9741a204b5d8",
+        "source_script_sha256": "39a4241ef3aff91c46a644d81835fe13e1fe6e78c326d6b3fc8c43b6f83269c2",
+        "evidence_sha256": "b05ff5a104342a6c0058cb5afe1abd1707f866a8b5e69b78d4b56a858012ffa4",
+        "png_width": 2653,
+        "png_height": 2707,
+        "image_git_tracked": false,
+        "worktree_head": "f6e6efbac1663c3fe6f768ea79c2f1189c45b751"
+      },
+      "validation_status": "passed"
+    }
+  ]
+}

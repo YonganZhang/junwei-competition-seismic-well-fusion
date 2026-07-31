@@ -1,0 +1,159 @@
+{
+  "schema_version": "domain-visualization-published/v1",
+  "status": "passed",
+  "staged_manifest": "_outputs/domain_visualization_delivery/v1/staged_manifest.json",
+  "staged_manifest_sha256": "3bffb8215cbd9addc296af7e98f045e0cd39cf853e78c5073417d9acfbdef9e0",
+  "published_track_count": 6,
+  "tracks": [
+    {
+      "track": "fault",
+      "display_name": "① 断层检测",
+      "caption": "① 断层检测：真实地震输入、断层真值与预测概率；这是当前低精度 baseline。",
+      "scientific_scope": "Real Volve physical-voxel-deduplicated test baseline; precision is low and must remain visible.",
+      "artifact_class": "real_model_prediction",
+      "source_commit": "db84205163e2954060cf6905fe88fe56ecbc0657",
+      "source_image": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/prediction_visualization.png",
+      "staged_image": "_outputs/domain_visualization_delivery/v1/cards/01_fault_real_test_prediction.png",
+      "sha256": "3f84494f880ab9da5b6b23c36a4f4b23679f92faaf09bdaae5ded468477dc47a",
+      "bytes": 198395,
+      "png_width": 1910,
+      "png_height": 1539,
+      "stage_assertions": {
+        "source_hash_rechecked": true,
+        "copy_hash_matches": true,
+        "came_from_validated_manifest": true
+      },
+      "url": "https://share.yongan.site/junwei-six-track-domain-viz-fault/01_fault_real_test_prediction.png",
+      "publish_assertions": {
+        "staged_hash_rechecked": true,
+        "permanent_share_url": true,
+        "http_200": true
+      }
+    },
+    {
+      "track": "facies",
+      "display_name": "② 地震相识别",
+      "caption": "② 地震相识别：F3 与 Penobscot 的地震输入、真实标签和模型预测。",
+      "scientific_scope": "F3 and Penobscot real test examples with dataset-specific label spaces.",
+      "artifact_class": "real_model_prediction",
+      "source_commit": "25edb4097fab36bd10663dda93791c606a510de0",
+      "source_image": ".claude/worktrees/track-facies/_pipelines/02_task_datasets/facies/_outputs/prediction_visualization.png",
+      "staged_image": "_outputs/domain_visualization_delivery/v1/cards/02_facies_ground_truth_prediction.png",
+      "sha256": "55529895cbb1747e4daaa2b80db70806da25d37331dadc026713c343c6205e27",
+      "bytes": 320151,
+      "png_width": 2150,
+      "png_height": 2045,
+      "stage_assertions": {
+        "source_hash_rechecked": true,
+        "copy_hash_matches": true,
+        "came_from_validated_manifest": true
+      },
+      "url": "https://share.yongan.site/junwei-six-track-domain-viz-facies/02_facies_ground_truth_prediction.png",
+      "publish_assertions": {
+        "staged_hash_rechecked": true,
+        "permanent_share_url": true,
+        "http_200": true
+      }
+    },
+    {
+      "track": "property",
+      "display_name": "③ 储层物性",
+      "caption": "③ 储层物性：留出母井家族沿深度的 PHIF、KLOGH、SW 真值与预测。",
+      "scientific_scope": "Held-out mother-well family 15/9-F-15; raw PHIF, KLOGH and SW predictions are not clipped.",
+      "artifact_class": "real_model_prediction",
+      "source_commit": "d35bbf0b4b85a1cc88149c5515d5f3322c959fb2",
+      "source_image": ".claude/worktrees/track-property/_pipelines/02_task_datasets/reservoir/_outputs/test_depth_gt_vs_pred.png",
+      "staged_image": "_outputs/domain_visualization_delivery/v1/cards/03_property_heldout_depth_prediction.png",
+      "sha256": "d19dde530decd423dda8001b83a79d9dd9f9fc6a5910e17335611693de01c353",
+      "bytes": 278212,
+      "png_width": 2340,
+      "png_height": 1260,
+      "stage_assertions": {
+        "source_hash_rechecked": true,
+        "copy_hash_matches": true,
+        "came_from_validated_manifest": true
+      },
+      "url": "https://share.yongan.site/junwei-six-track-domain-viz-property/03_property_heldout_depth_prediction.png",
+      "publish_assertions": {
+        "staged_hash_rechecked": true,
+        "permanent_share_url": true,
+        "http_200": true
+      }
+    },
+    {
+      "track": "lithofacies",
+      "display_name": "④ 岩相预测",
+      "caption": "④ 岩相预测：Known F-5 的九类混淆矩阵；属于确认结果，不是 fresh-blind 结论。",
+      "scientific_scope": "Known F-5 confirmation confusion matrix; not a fresh-blind holdout claim.",
+      "artifact_class": "real_domain_evaluation",
+      "source_commit": "af8c066de0c3fc24fce024abb350b4f2c9e82d9b",
+      "source_image": ".claude/worktrees/track-lithofacies/_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/figures/fixed9_confusion.png",
+      "staged_image": "_outputs/domain_visualization_delivery/v1/cards/04_lithofacies_known_holdout_confusion.png",
+      "sha256": "391b8f70d2f98e46ec684af61d5ad1b071955b00003ff8246958356099618557",
+      "bytes": 139513,
+      "png_width": 2111,
+      "png_height": 936,
+      "stage_assertions": {
+        "source_hash_rechecked": true,
+        "copy_hash_matches": true,
+        "came_from_validated_manifest": true
+      },
+      "url": "https://share.yongan.site/junwei-six-track-domain-viz-lithofacies/04_lithofacies_known_holdout_confusion.png",
+      "publish_assertions": {
+        "staged_hash_rechecked": true,
+        "permanent_share_url": true,
+        "http_200": true
+      }
+    },
+    {
+      "track": "sweetspot",
+      "display_name": "⑤ 甜点区评价",
+      "caption": "⑤ 甜点区评价：T2 开发集 OOF 的 PR 曲线与概率校准。",
+      "scientific_scope": "T2 development OOF precision-recall and probability calibration; no frozen test claim.",
+      "artifact_class": "real_domain_evaluation",
+      "source_commit": "5f80b5c6fb6fbf80b2af9781809ab48def6b932d",
+      "source_image": ".claude/worktrees/p5-r2-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/figures/T2_pr_calibration.png",
+      "staged_image": "_outputs/domain_visualization_delivery/v1/cards/05_sweetspot_development_pr_calibration.png",
+      "sha256": "492bef956b28eed73dcde6d189764f668085e5609a04e9fa5d29dbaca7da797a",
+      "bytes": 107756,
+      "png_width": 1243,
+      "png_height": 544,
+      "stage_assertions": {
+        "source_hash_rechecked": true,
+        "copy_hash_matches": true,
+        "came_from_validated_manifest": true
+      },
+      "url": "https://share.yongan.site/junwei-six-track-domain-viz-sweetspot/05_sweetspot_development_pr_calibration.png",
+      "publish_assertions": {
+        "staged_hash_rechecked": true,
+        "permanent_share_url": true,
+        "http_200": true
+      }
+    },
+    {
+      "track": "reconstruction",
+      "display_name": "⑥ 三维重构",
+      "caption": "⑥ 三维重构：conditional development-only 孔隙度重构、残差与学习曲线；不代表 strict holdout 泛化。",
+      "scientific_scope": "Conditional development-only porosity reconstruction with pseudo-test well constraints; not strict holdout generalization.",
+      "artifact_class": "real_model_prediction",
+      "source_commit": "f6e6efbac1663c3fe6f768ea79c2f1189c45b751",
+      "source_image": ".claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/p5_r2_evidence/conditional/prediction_visualization.png",
+      "staged_image": "_outputs/domain_visualization_delivery/v1/cards/06_reconstruction_conditional_development.png",
+      "sha256": "0d598910011ce21ed147ae135c99555da2ae1153000f4f31ad8e9741a204b5d8",
+      "bytes": 399026,
+      "png_width": 2653,
+      "png_height": 2707,
+      "stage_assertions": {
+        "source_hash_rechecked": true,
+        "copy_hash_matches": true,
+        "came_from_validated_manifest": true
+      },
+      "url": "https://share.yongan.site/junwei-six-track-domain-viz-reconstruction/06_reconstruction_conditional_development.png",
+      "publish_assertions": {
+        "staged_hash_rechecked": true,
+        "permanent_share_url": true,
+        "http_200": true
+      }
+    }
+  ]
+}

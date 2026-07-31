@@ -4,6 +4,229 @@ This track builds a real-data porosity reconstruction task from the Volve
 reservoir models.  It does not synthesize a reference volume when a proprietary
 format cannot be decoded.
 
+## P18 anisotropic foundation geostatistics with nested selection
+
+`p18_anisotropic_foundation_geostatistics.py` corrects the P17 selection
+protocol and adds an explicit vertical anisotropy factor to the local metric.
+For each reported spatial fold, all 1,215 bounded candidates are ranked using
+only the other four folds; the top three predictions are averaged on the
+untouched fold. Feature scaling and PCA still use only the current outer
+fold's 512 legal training rows.
+
+The honest nested RMSE is `0.027752680679` versus PyKrige
+`0.028449728170`, a relative change of `-2.4501%`. All five spatial folds
+improve, and the 20,000-draw whole-fold bootstrap RMSE-delta interval is
+`[-0.001140994782, -0.000353924655]`. The route is a
+`ROBUST_DEVELOPMENT_SIGNAL`, but remains disabled: the frozen holdout is
+sealed and the user deferred causal ablation.
+
+```bash
+python3 \
+  _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT"
+
+python3 \
+  _pipelines/02_task_datasets/reconstruction/p18_anisotropic_foundation_geostatistics.py verify
+```
+
+Portable results and independent recomputation are under
+`_outputs/p18_anisotropic_foundation_geostatistics/`.
+
+## P17 foundation-informed nonstationary geostatistics
+
+`p17_foundation_geostatistics.py` changes the role of the frozen
+`thinkonward/geophysical-foundation-model`: it is no longer used as a direct
+porosity regressor.  Instead, target-free seismic representations deform the
+local neighbourhood metric of an inverse-distance interpolator.  Physical
+coordinates remain dominant, while local seismic attributes and reduced GFM
+coordinates provide weak nonstationary corrections.  Scaling and PCA are fit
+inside each outer fold using exactly its 512 legal training labels.
+
+The bounded development search contains 156 positive-foundation candidates
+(13 metric-weight pairs, three neighbourhood sizes and four PyKrige blends).
+The selected route is `gfm_metric_f0.05_s0.10_k128_blend_0.75`.  On 10,240
+OOF rows, PyKrige RMSE is `0.028449728170` and the selected route reaches
+`0.028319907650` (relative change `-0.4563%`); MAE improves from
+`0.021413486381` to `0.021200329887`, with 3/5 spatial folds improving.
+Whole-fold bootstrap gives a 76.68% probability of improvement, but its 95%
+RMSE-delta interval `[-0.000589605334, +0.000128806422]` crosses zero.
+P18 later showed that this number was selection-biased: nested top-3 selection
+on the same P17 family gives RMSE `0.028534404074`, worse than PyKrige.
+Therefore the original `DEVELOPMENT_SIGNAL` is superseded and retained only as
+historical method evidence. The no-foundation/random-init ablation remains
+deliberately deferred.
+
+```bash
+CUDA_VISIBLE_DEVICES=7 python3 \
+  _pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$GFM_VENDOR_SOURCE" \
+  --snapshot-path "$GFM_HF_SNAPSHOT" \
+  --device cuda:0
+
+python3 \
+  _pipelines/02_task_datasets/reconstruction/p17_foundation_geostatistics.py verify
+```
+
+Portable evidence, row-aligned errors and independent recomputation are under
+`_outputs/p17_foundation_geostatistics/`; the frozen GFM feature cache remains
+under `_tmp/`.
+
+## P14 geophysical foundation-model diagnostic
+
+`p14_geophysical_fm.py` replaces only the P11 encoder source with the
+Apache-2.0 `thinkonward/geophysical-foundation-model` ViT-MAE and keeps the
+same hash-verified PyKrige OOF baseline, five spatial folds, three paired
+seeds, Ridge heads, inner-OOF bounded gate and gate=0 check.  The local-only
+adapter is `_models/reconstruction/geophysical_fm.py`; it supports both genuine
+pretrained weights and seed-distinct same-architecture random initialization.
+
+The real tiled patch shape is `[K,J,I]=[9,20,18]`, assembling to
+`[63,100,72]`.  P14 uses a vertical `K×J` slice at fixed I because its 100
+neighboring traces require less horizontal expansion to the GFM width 160 than
+the orthogonal I width 72.  Each of the three seismic attributes is forwarded
+separately after per-slice active-cell z-scoring and resize to `400×160`; the
+nearest trace token plus slice CLS token supply six views with the same
+16-channels-per-view budget as P11.
+
+The domain-matched encoder did not improve the locked development metric.
+PyKrige RMSE is `0.028449728170`; the best pretrained GFM gated route is
+`0.028621657173` (0.6043% worse), same-architecture random-init is
+`0.028601027108`, and the structural control is `0.028539761187`.  Across five
+genuinely independent spatial units, pretrained GFM records 2 wins and 3
+losses; its whole-fold bootstrap RMSE-delta interval crosses zero.  The route
+is `VERIFIED_NO_PROMOTION`, and no gain is attributed to pretrained GFM
+weights.  Full provenance, fold evidence and row-aligned errors are under
+`_outputs/p14_geophysical_fm/`; feature caches remain under `_tmp/`.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p14_geophysical_fm.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$GFM_VENDOR_SOURCE" \
+  --snapshot-path "$GFM_HF_SNAPSHOT" \
+  --device cuda:0
+```
+
+## P11 cross-attention fusion diagnostic
+
+`p11_cross_attention_fusion.py` keeps the P11 PyKrige OOF/gate harness but
+replaces the linear residual head with a structured-query cross-attention
+module over three separately encoded OpenMind channel tokens.  Standardization
+and 16-component PCA are fitted inside each training split; AdamW, dropout,
+weight decay and residual clipping constrain the small-sample head.  Encoder
+weight loading is parameterized as `pretrained` or `random_init`, although this
+task ran only the pretrained mode and therefore makes no foundation-model
+contribution claim.
+
+On the same 10,240 development OOF voxels, ungated RMSE was `0.037156018008`
+and the ordinary adaptive gate reached `0.028881520098`, both worse than the
+PyKrige baseline `0.028449728170`.  A four-of-four inner-spatial-fold consensus
+guard rejected every unstable correction, so the safe route exactly tied the
+baseline: RMSE `0.028449728170`, 0/5 wins, 0/5 losses and 5/5 ties across the
+five genuinely independent spatial units.  The three seeds remain paired
+optimization pseudo-repeats, not independent samples.  大模型贡献占比待下一轮消融确认。
+Portable evidence, per-fold audits, whole-fold bootstrap uncertainty and
+row-aligned prediction errors are under
+`_outputs/p11_cross_attention_fusion/`.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p11_cross_attention_fusion.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$P11_NNSSL_SOURCE" \
+  --checkpoint "$P11_OPENMIND_CHECKPOINT" \
+  --dependency-root "$P11_OPENMIND_DEPENDENCIES" \
+  --encoder-weight-mode pretrained \
+  --device cuda:0 \
+  --head-device cuda:0
+```
+
+## P11 OpenMind residual-fusion diagnostics
+
+`p11_residual_fusion_diagnostics.py` preserves the committed P11 harness and
+tests the existing checkpoint's remaining adaptation space on the same 10,240
+conditional development OOF rows.  It compares stage0-only, stage5-only and
+six-stage mixed features; fixed three-channel input averaging and three
+independent encoder forwards with feature concatenation; and fixed Ridge10
+against an outer-train-only alpha grid.  Every feature route has a
+same-architecture OpenMind random-initialization control required by
+`foundation_effect_protocol.v1.json`; a dimension-matched random Gaussian
+negative control and the original structural control are also retained under
+both heads.
+
+No adapted route produced positive material gain.  The safest stage5 routes
+selected gate=0 in all five independent spatial folds.  The highest apparent
+win count was only 2/5 independent folds and was paired with 2/5 losses plus
+17.71% worse pooled RMSE.  The three seeds are paired pseudo-repeats within
+each fold, not 15 independent samples.  The route remains
+`VERIFIED_NO_PROMOTION`.  The full per-fold win/loss/tie table and the
+responsibility boundary for any future model replacement are recorded in
+`_outputs/p11_residual_fusion_diagnostics/evidence.md`; machine-readable
+alpha/gate/control details are in the adjacent `summary.json`.  The 95%
+uncertainty intervals bootstrap the five whole spatial folds while keeping the
+three seeds paired; the source per-voxel errors are retained in
+`prediction_errors.npz`.  Genuine pretrained and random-init feature caches
+remain hash-locked under `_tmp/` and are not committed.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p11_residual_fusion_diagnostics.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$P11_NNSSL_SOURCE" \
+  --checkpoint "$P11_OPENMIND_CHECKPOINT" \
+  --dependency-root "$P11_OPENMIND_DEPENDENCIES" \
+  --device cuda:0
+```
+
+## P11 development-only residual fusion
+
+`p11_residual_fusion.py` implements a two-level OOF stack in the conditional
+development lane.  The base is the hash-verified P5 Stage-3
+`pykrige_ok3d/repeat_0` OOF prediction.  Every outer-fold residual fit receives
+only PyKrige predictions that were already OOF; its confidence gate is
+calibrated from another inner cross-fit and clipped to `[0,1]`.
+
+The foundation route uses the pinned
+`MIC-DKFZ/ResEncL-OpenMind-MAE` checkpoint
+(`7a847af785635335c00e711d16ff4d225d86ecd5992b14c059df2b520e3ee933`)
+and nnssl source revision
+`7044864404315536e92e670ef2f0ca24f11e6175`.  It samples all six encoder
+stages at the OOF voxel coordinates.  The matched no-foundation control uses
+the six cached seismic/coordinate columns and the same residual/gate fitting
+code.  `gate=0` is asserted bitwise equal to PyKrige.
+
+The real run used 10,240 OOF voxels, five outer folds and three fixed seeds.
+Pooled PyKrige RMSE was `0.0284497282`; gated OpenMind residual fusion was
+`0.0288029396` (1.24% worse), while the no-foundation control was
+`0.0285397612`.  OpenMind had three seed-level wins across the five spatial
+folds × three paired pseudo-repeats; these are not 15 independent samples, so the route is
+`VERIFIED_NO_PROMOTION` and remains disabled.  The archived direct OpenMind
+score is strict-lane evidence without row-aligned conditional predictions and
+is therefore recorded as `not_comparable`, not mixed into this table.
+
+The P11 CLI has no test path.  It accepts only `train.h5`, reads only
+`seismic_patch[0:3]` and the active mask, and obtains PORO targets from the
+development OOF archives.  The genuine feature cache stays under `_tmp/`;
+portable metrics, fold/seed gate statistics and provenance are in
+`_outputs/p11_residual_fusion/summary.json` and `evidence.md`.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python3 \
+  _pipelines/02_task_datasets/reconstruction/p11_residual_fusion.py run \
+  --data-dir "$P11_DATA_DIR" \
+  --stage3-root "$P11_STAGE3_ROOT" \
+  --source-root "$P11_NNSSL_SOURCE" \
+  --checkpoint "$P11_OPENMIND_CHECKPOINT" \
+  --dependency-root "$P11_OPENMIND_DEPENDENCIES" \
+  --device cuda:0
+```
+
 ## P5.1 R0/R1 development-only mechanism audit
 
 `reconstruction_p5_r01.py` implements the zero-training R0 provenance and
