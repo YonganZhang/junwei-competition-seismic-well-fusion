@@ -7,3 +7,4 @@
 | 003 | P18 三维重建各向异性与嵌套选型 | superseded_meta_overlap_audit | `003-p18-reconstruction-anisotropic-foundation-geostatistics.md` |
 | 004 | P19 三维重建元选择去重与训练动力学诊断 | L3_validated_keep | `004-p19-reconstruction-meta-purge-and-training-diagnostics.md` |
 | 005 | P20 三维重建 PEFT 与分阶段解冻 | verified_no_promotion | `005-p20-reconstruction-peft-staged-unfreeze.md` |
+| 006 | P21 多视图 LoRA 残差与固定基础模型核 | L3_validated_keep_simplification | `006-p21-reconstruction-contrastive-residual-and-fixed-ensemble.md` |
