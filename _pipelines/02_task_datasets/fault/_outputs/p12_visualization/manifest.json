@@ -163,7 +163,7 @@
     }
   },
   "p12_contract": {
-    "generated_at": "2026-07-29T19:53:18.878226+00:00",
+    "generated_at": "2026-07-31T19:34:45.900583+00:00",
     "inputs": [
       {
         "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/baseline.py",
@@ -278,7 +278,7 @@
       {
         "path": ".claude/worktrees/track-fault/_pipelines/02_task_datasets/fault/_outputs/3d_sci_v1/provenance.json",
         "scientific_role": "archived spatial-context provenance",
-        "sha256": "f463671c8afc4f320d977d020cb69aee5f6f01eb4631ed0094755b36ba785278",
+        "sha256": "009eb634de3420d0c5b19b8c875c98c6acddf17b8686b799acb5d0c9b7501ee1",
         "shape_or_row_count": 1,
         "split_scope": "audited_v2 test split only"
       }
@@ -326,15 +326,15 @@
     },
     "schema_version": "scientific-visualization-contract/v1",
     "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
-    "source_commit": "8d081ed8c43e22f6cc034909f71d7bc854d4f166",
+    "source_commit": "b7bbae5c9eed208d20efb353323c33602dbfa87b",
     "track_id": "fault"
   },
   "provenance": {
-    "generated_at": "2026-07-29T19:53:18.878226+00:00",
+    "generated_at": "2026-07-31T19:34:45.900583+00:00",
     "renderer": "_pipelines/02_task_datasets/fault/p12_visualization.py",
     "renderer_sha256": "0a1542361644e104087dcf89b6fba3ab0e010c4bd0712ebecb5d4f748db1f22d",
     "scientific_caveat": "Spatial-context support exists from archived coordinates, but the figure does not claim native 3-D volume reconstruction.",
-    "source_commit": "8d081ed8c43e22f6cc034909f71d7bc854d4f166"
+    "source_commit": "b7bbae5c9eed208d20efb353323c33602dbfa87b"
   },
   "renderer": {
     "path": "_pipelines/02_task_datasets/fault/p12_visualization.py",
@@ -373,7 +373,7 @@
       40
     ]
   },
-  "source_commit": "8d081ed8c43e22f6cc034909f71d7bc854d4f166",
+  "source_commit": "b7bbae5c9eed208d20efb353323c33602dbfa87b",
   "source_worktree": ".claude/worktrees/track-fault",
   "split_scope": {
     "notes": [
