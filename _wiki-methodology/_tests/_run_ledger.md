@@ -142,3 +142,10 @@
 - integration portability fix: domain-visualization steps now resolve the shared Git common directory, so a linked worktree no longer constructs a nested `.claude/worktrees/<integration>/.claude/worktrees/...` path.
 - P12 central gate: 6/7 tests passed. The remaining fail-closed assertion detected a real uncommitted hash drift in `track-fault` (`3d_sci_v1/provenance.json` plus its generator/test); those user-owned changes were not overwritten, staged or committed.
 - lifecycle: user accepted P24 as the final transfer-evidence tier for this round; no cross-field test is scheduled. No push was performed.
+
+## 2026-08-01 P26 master merge and report delivery
+
+- Command gate: P12 central visualization `7/7`, P21/P24 reconstruction `11/11`, and research-visualization expansion `4/4` all passed.
+- Live/user journey: the 45-page A4 PDF and 140-entry LaTeX source package were published through stable `share.yongan.site` topics; both latest URLs returned HTTP 200 with the expected content types and sizes.
+- Trace/SSDO audit: full hashes, version URLs, merge-preservation sequence and scientific claim boundaries are recorded in `P26_master_merge_and_report_delivery_evidence.md`.
+- integration: cumulative research line merged to `master@8375b97`; P21 remains the delivery default, P20 PEFT routes remain disabled, and no remote push was performed.

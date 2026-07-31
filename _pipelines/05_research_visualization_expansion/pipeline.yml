@@ -1,0 +1,36 @@
+pipeline_id: research_visualization_expansion
+version: 1
+status: active
+purpose: >
+  Expand the six-track report with real-data spatial scenes, along-well
+  diagnostics, foundation-model evidence boundaries, and reproducible
+  publication figures.
+scientific_contract:
+  evidence_modes: [native_volume, spatial_context, section_only]
+  no_synthetic_geology: true
+  no_unregistered_cross_field_fusion: true
+  prediction_and_reference_must_be_visibly_distinguished: true
+  foundation_model_requires_baseline_and_random_init_or_explicit_pending_state: true
+inputs:
+  fault:
+    - _pipelines/01_common_preprocess/outputs/fault_points.npz
+    - _pipelines/01_common_preprocess/outputs/horizon_bcu_points.npz
+  facies:
+    - _sandbox/f3_penobscot/f3demo/inlines.zip
+    - _sandbox/f3_penobscot/f3demo/masks.tar.gz
+    - _sandbox/f3_penobscot/penobscot/dataset.h5
+  property:
+    - _pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation
+  lithofacies:
+    - .claude/worktrees/p10-results-lithofacies/_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/predictions.json
+  sweetspot:
+    - .claude/worktrees/p10-results-sweetspot/_pipelines/02_task_datasets/sweetspot/targets
+  reconstruction:
+    - .claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/_outputs/3d_property_volume_v2
+outputs:
+  root: _outputs/research_visualization_expansion/v1
+  manifest: _outputs/research_visualization_expansion/v1/artifact_manifest.json
+  figures: _outputs/research_visualization_expansion/v1/figures
+  interactive: _outputs/research_visualization_expansion/v1/interactive
+entrypoint: _pipelines/05_research_visualization_expansion/render_research_figures.py
+tests: _pipelines/05_research_visualization_expansion/tests/test_research_visualization_expansion.py

@@ -13,6 +13,12 @@ gates:
     expect: exit0
     note: "拒绝状态/协议/占位图；保留旧六赛道白名单，并验证P12赛道1/3/5的固定发现、合同、显式负责人视觉验收、哈希与稳定暂存；赛道2/4/6保持paused。"
 
+  - id: research-visualization-expansion
+    cmd: "python3 -m unittest -v _pipelines.05_research_visualization_expansion.tests.test_research_visualization_expansion"
+    timeout: 180
+    expect: exit0
+    note: "验证六赛道科研图件的真实数据来源、文件哈希、科学声明边界与基础模型对照合同。"
+
   - id: p4-shared
     cmd: "${P4_TORCH_PYTHON:?set P4_TORCH_PYTHON to a Python with torch} -m unittest discover -s _code/ml_framework/tests -p 'test_*.py' -v"
     timeout: 180
@@ -176,7 +182,7 @@ gates:
     note: "Track-6 three-fit/two-independent-well checkshot protocol, source lock, calibration gain and no-porosity-claim boundary."
 
   - id: p24-reconstruction-historical-transfer
-    cmd: "python3 -m unittest -v _pipelines/02_task_datasets/reconstruction/_tests/test_p24_historical_transfer.py _pipelines/02_task_datasets/reconstruction/_tests/test_p21_fixed_foundation_ensemble.py"
+    cmd: "cd _pipelines/02_task_datasets/reconstruction && PYTHONPATH=. python3 -m unittest -v _tests.test_p24_historical_transfer _tests.test_p21_fixed_foundation_ensemble"
     timeout: 120
     expect: exit0
     note: "Track-6 preregistration, frozen P21 transfer result, artifact hashes, one-time target opening and explicit same-field/non-blind claim boundary."

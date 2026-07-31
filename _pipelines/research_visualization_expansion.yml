@@ -1,0 +1,11 @@
+pipeline: research_visualization_expansion
+description: "Six-track real-data spatial and foundation-model research visualization pipeline."
+status: active
+spec: _pipelines/05_research_visualization_expansion/pipeline.yml
+steps:
+  - id: render_all
+    ref: code:research_visualization_render
+  - id: validate_outputs
+    ref: code:research_visualization_validate
+verified_steps_hash: bf5c7daf2a1bd6947cb9278bc0325e493665b3d6c278babe26098976e2ad43b8
+verified_at_commit: 8375b97cfd3447ab44082bd69f27b105df85feab

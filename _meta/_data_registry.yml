@@ -1,7 +1,7 @@
 # _meta/_data_registry.yml — 数据资产注册表(单一真源)
 project: 军伟的比赛-地震测井多模态融合
 schema_version: v4.0
-last_synced: 2026-08-01 (P24 reconstruction historical transfer)
+last_synced: 2026-08-01 (P26 master merge and report v1.3 delivery)
 
 assets:
   - id: volve-north-sea
@@ -104,7 +104,7 @@ assets:
       统一生成12组静态科研图、3个交互式三维HTML及逐文件SHA-256清单；新增真实SEG-Y断层解释叠合、
       F3连续切片、井深序列诊断、跨物性一致性、生产预测残差与Q-Q诊断、Volve MAPAXES三维体、
       正交切片和方向变差函数。基础模型合同为六赛道分别固定科学基线、随机初始化对照、预训练初始化、
-      融合方式、划分、主指标与晋级规则；未完成对照不写成模型收益。报告真源与46页PDF位于
+      融合方式、划分、主指标与晋级规则；未完成对照不写成模型收益。报告真源与45页PDF位于
       `_paper/technical_report/`；稳定下载地址为
       https://share.yongan.site/junwei-six-track-report/junwei_six_track_technical_report.pdf。
 
@@ -113,11 +113,11 @@ assets:
     status: published
     location: _outputs/technical_report_delivery/junwei_six_track_latex_source_latest.zip
     source: _paper/technical_report/
-    sha256: 147723a128f5a4ae04f780b9e3bbbf2cecb53abeaa9e874da80b4fd8c9fec87c
+    sha256: 5678a5c9a1f7ed913ed29f306a4d65b2f9a00bac00fb8cfcaf3acc8ab8a2ea0a
     note: >
-      128个归档条目，包含LaTeX章节、BibTeX参考文献、六张最终架构图、正文结果图、
-      Nano Banana 2提示词、构建脚本、最终PDF、基础模型实验合同和Claude交接说明。
-      unzip完整性与XeLaTeX no-pdf解析均已通过。稳定下载地址为
+      140个归档条目，包含LaTeX章节、BibTeX参考文献、六张最终架构图、正文结果图、
+      Nano Banana 2提示词、构建脚本、最终PDF、P21/P24证据和默认模型配置。
+      unzip完整性、XeLaTeX编译与公网HTTP 200均已通过。稳定下载地址为
       https://share.yongan.site/junwei-six-track-latex-source/junwei_six_track_latex_source_latest.zip。
 
   - id: p8-foundation-runtime-smoke

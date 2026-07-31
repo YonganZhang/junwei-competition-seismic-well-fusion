@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-08-01 (P12 visualization delivery + P24 reconstruction historical transfer)
+last_synced: 2026-08-01 (P26 master merge + report delivery)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -49,11 +49,13 @@ code_domains:
   - id: task_datasets
     path: _pipelines/02_task_datasets
     type: pipeline
-    status: wip
+    status: active
     owner: project
     description: >
-      Layer2每赛道样本构建器，子目录 fault/facies/reservoir/lithofacies/sweetspot/reconstruction。
-      主仓(master)当前该路径下6个子目录为空占位骨架，git ls-files为空——具体build_dataset.py/
+      Layer2六赛道样本、训练、评价与结果管线，子目录为
+      fault/facies/reservoir/lithofacies/sweetspot/reconstruction。P4--P24累计研究线已于
+      2026-08-01合并到`master@8375b97`；赛道⑥默认为P21，P20 PEFT路线默认关闭。
+      以下为2026-07-13合并前历史快照：当时主仓该路径下6个子目录为空占位骨架，具体build_dataset.py/
       baseline.py/models等实现均只存在于对应git worktree分支(`.claude/worktrees/track-*`)，
       各分支已有1个已验收commit(见下方SHA)，但尚未merge进master，主仓意义上的"active代码"
       目前不存在，不要把worktree候选误当作已集成的主仓代码。
@@ -65,13 +67,24 @@ code_domains:
       ①fault `09abe70905f988f4585debbd2216a6a2542e5dfd`、②facies `5f70a33e23227f45bb401d077630ff594d477b14`、
       ③reservoir `ea3b0f35c0dd05173b38be83834f87b82315f875`、④lithofacies `84839c2421143804e7c923c30500cf03eefc7078`、
       ⑤sweetspot `b13d876349c55834abc36550864d6b6f19bda9cd`、⑥reconstruction `1a142f3787b18999123a9750fcd8bea30001d822`。
-      commit未合并进master，master的task_datasets路径仍是空骨架。
+      当时commit未合并进master，task_datasets路径仍是空骨架；该状态已由P26取代。
       科学状态摘要(细节见对应finding，不在此重复指标表)：①逻辑回归局部特征baseline，召回高精度低；
       ②facies_f3/facies_penobscot各自SmallUNet(标签空间不兼容,不强行统一)；③PHIF/log1p(KLOGH)/SW
       三输出多模态回归；④9类GM09 GENETIC FACIES多模态分类；⑤仅fail-closed的label_spec合同与
       validate-only审计基础设施，未生成任何标签/数据集/模型(标签定义待军伟批准)；⑥conditional/
       strict双模式重建对比。均为验证管道用的简单baseline,非最终模型。各分支选择性commit已完成，
-      merge进master待军伟/负责人拍板后执行，见`_wiki-methodology/_top/_findings/P2.6`。
+      当时的merge待授权状态已由P26关闭，历史证据见`_wiki-methodology/_top/_findings/P2.6`。
+
+  - id: research_visualization
+    path: _pipelines/05_research_visualization_expansion
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      六赛道真实数据科研图件与三维视图入口；统一使用
+      `_code/visualization/geo3d_viz.py` 的出版样式、哈希和provenance辅助函数。
+      主脚本只读已归档观测/预测，不训练、不选模、不生成地质伪数据；
+      产物由`research_visualization_expansion`流水线的机器哈希门禁验证。
 
   - id: ml_framework
     path: _code/ml_framework
@@ -238,6 +251,21 @@ entrypoints:
     status: active
     owner: project
     description: "After explicit leader visual QA, copy verified P12 PNG/PDF/SVG assets for tracks 1, 3 and 5 and write a separate review attestation without mutating renderer-owned manifests."
+
+  - id: research_visualization_render
+    path: _pipelines/05_research_visualization_expansion/render_research_figures.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Render the six-track real-data spatial diagnostics, research figures and optional interactive views under the frozen scientific contract."
+
+  - id: research_visualization_validate
+    path: _pipelines/05_research_visualization_expansion/render_research_figures.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Validate the research-visualization artifact manifest, scientific roles, source hashes and output metadata before delivery."
+
   - id: p4_acceptance
     path: _wiki-methodology/_tests/P4_acceptance_evidence.md
     type: test_evidence
@@ -336,6 +364,13 @@ entrypoints:
     owner: col3
     description: "Track-6 preregistration, one-time same-field historical target result, independent metric/hash recomputation and explicit non-blind claim boundary."
 
+  - id: p26_master_merge_and_report_delivery_evidence
+    path: _wiki-methodology/_tests/P26_master_merge_and_report_delivery_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Master merge preservation, P21/P24 regression gates, report build, stable publication links and TOP health evidence."
+
 cross_domain_edges:
   - from: task_datasets
     to: dataset_io
@@ -346,6 +381,9 @@ cross_domain_edges:
   - from: domain_visualization_delivery
     to: task_datasets
     relation: validates_and_publishes_outputs
+  - from: research_visualization
+    to: task_datasets
+    relation: renders_archived_outputs
   - from: task_datasets
     to: ml_framework
     relation: calls

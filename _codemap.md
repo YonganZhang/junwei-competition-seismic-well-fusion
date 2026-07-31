@@ -36,6 +36,7 @@
 |---|---|---|
 | 主流程 | `_pipelines/` | `_meta/_registry.yml` + `_wiki-methodology/_tests/` |
 | 领域图卡片交付 | `_pipelines/03_domain_visualization_delivery/` | `step_00_discover.py` 发现赛道 1/3/5；`step_04_stage_p12_review.py` 独立记录人工视觉验收；门禁见 `_meta/_registry.yml` id=`domain_visualization_delivery` 与 `_wiki-methodology/_tests/_gates.yml` id=`domain-visualization-delivery` |
+| 科研可视化扩展 | `_pipelines/05_research_visualization_expansion/` | `render_research_figures.py` 统一渲染/验证，`_code/visualization/geo3d_viz.py` 提供三维出版辅助；门禁 id=`research-visualization-expansion` |
 | 可复用代码 | `_code/` | `_meta/_registry.yml` |
 | 数据接口 | `_data/` | `_meta/_data_registry.yml` |
 | 输出/图/论文 | `_outputs/` / `_figures/` / `_paper/` | `_meta/_runs.yml` / `_meta/_data_registry.yml` |
