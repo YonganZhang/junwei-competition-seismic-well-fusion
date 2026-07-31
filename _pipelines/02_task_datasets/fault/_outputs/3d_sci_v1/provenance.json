@@ -1,7 +1,7 @@
 {
   "code_head": "db84205",
   "code_path": "_pipelines/02_task_datasets/fault/visualize_3d_sci.py",
-  "code_sha256": "f95ca6b502935945ef830b4886d920abd9376f76820e9f0ad7099835cee72649",
+  "code_sha256": "13ddf567aa07fb0834bfd06b5e88c1b6e8814a1510d92b7cf52f14ebc3e1cd09",
   "font_status": {
     "limitation": "Times New Roman is not installed on this host.",
     "requested": "Times New Roman",

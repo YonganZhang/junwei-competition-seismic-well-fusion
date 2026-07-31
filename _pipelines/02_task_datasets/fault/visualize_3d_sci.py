@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -267,7 +268,8 @@ def render_html(context: dict[str, Any], output_root: Path) -> Path:
     output_root.mkdir(parents=True, exist_ok=True)
     html = output_root / "spatial_context.html"
     body = fig.to_html(full_html=True, include_plotlyjs=True, config={"displaylogo": False, "responsive": True})
-    body = body.replace("<head>", "<head><link rel=\"icon\" href=\"data:,\">", 1)
+    body = body.replace("<head>", "<head><link rel=\"icon\" href=\"data:,\"><meta name=\"description\" content=\"spatial context only; no native volume reconstruction\">", 1)
+    body = re.sub(r"<title>.*?</title>", "", body, flags=re.IGNORECASE | re.DOTALL)
     html.write_text(body, encoding="utf-8")
     return html
 
