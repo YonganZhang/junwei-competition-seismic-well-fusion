@@ -1,0 +1,57 @@
+{
+  "a0_prediction_hash": "43110d0d819b8f067a4a98771ea6aeb53492f0200fa6de8b10054ad71281f2ea",
+  "primary_metric": "composite_mean_train_std_normalized_RMSE",
+  "routes": [
+    {
+      "blocked": false,
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "promotion_primary_delta_note": "unavailable_before_promotion",
+      "promotion_primary_delta_rel": null,
+      "route_id": "route_1",
+      "selection_primary_delta_rel": 1.638762,
+      "semantics": "tiny_mlp: A0-compatible tiny MLP with frozen default regularization"
+    },
+    {
+      "blocked": false,
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "promotion_primary_delta_note": "unavailable_before_promotion",
+      "promotion_primary_delta_rel": null,
+      "route_id": "route_2",
+      "selection_primary_delta_rel": 1.639564,
+      "semantics": "tiny_mlp: Same architecture with stronger L2"
+    },
+    {
+      "blocked": false,
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "promotion_primary_delta_note": "unavailable_before_promotion",
+      "promotion_primary_delta_rel": null,
+      "route_id": "route_3",
+      "selection_primary_delta_rel": 1.118139,
+      "semantics": "reservoir_ridge: Closed-form family not used; SGD ridge baseline"
+    },
+    {
+      "blocked": false,
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "promotion_primary_delta_note": "unavailable_before_promotion",
+      "promotion_primary_delta_rel": null,
+      "route_id": "route_4",
+      "selection_primary_delta_rel": 1.118138,
+      "semantics": "reservoir_linear: Plain multi-output linear SGD baseline"
+    }
+  ],
+  "rules": [
+    "Use only route semantics, safe normalized deltas, and improved|flat|worse feedback.",
+    "Do not use raw labels, test data, or frozen holdout signals.",
+    "Return strict JSON only with action select|stop and route_id route_1..route_N or null."
+  ],
+  "schema": {
+    "action": "select|stop",
+    "reason": "string",
+    "route_id": "route_1|route_2|route_3|route_4|null"
+  },
+  "task": "P29 action effect repair route selection"
+}

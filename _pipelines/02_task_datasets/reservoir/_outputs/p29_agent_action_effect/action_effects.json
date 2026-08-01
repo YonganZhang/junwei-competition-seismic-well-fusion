@@ -1,0 +1,71 @@
+{
+  "gate_excludes": [
+    "A0",
+    "A1"
+  ],
+  "rows": [
+    {
+      "config_hash": "24f72dab62b886aac0d6e74f2d9587df4b9dbbd4f0c15d711b1c77ed7df45ab1",
+      "kind": "A0",
+      "prediction_hash": "43110d0d819b8f067a4a98771ea6aeb53492f0200fa6de8b10054ad71281f2ea",
+      "primary_delta_rel": 0.0,
+      "route_id": "A0",
+      "visible_to_llm": false
+    },
+    {
+      "config_hash": "24f72dab62b886aac0d6e74f2d9587df4b9dbbd4f0c15d711b1c77ed7df45ab1",
+      "kind": "A1",
+      "no_op": true,
+      "prediction_hash": "43110d0d819b8f067a4a98771ea6aeb53492f0200fa6de8b10054ad71281f2ea",
+      "primary_delta_rel": 0.0,
+      "route_id": "A1_identity",
+      "visible_to_llm": false
+    },
+    {
+      "config_hash": null,
+      "kind": "A2L",
+      "lane": null,
+      "prediction_hash": null,
+      "primary_delta_rel": null,
+      "promotion_primary_delta_rel": null,
+      "route_id": null,
+      "semantics": null,
+      "status": "blocked",
+      "visible_to_llm": true
+    },
+    {
+      "config_hash": "87d34e352ee5db8f112818b7c81b48f73da67bfc26e3ae79f72a0d8676a40d18",
+      "kind": "A2D",
+      "lane": "tabular-cpu",
+      "prediction_hash": "d74f23f021c39d36a22f8b7e8385a67186f0518e56b785d60e431a786f4ce977",
+      "primary_delta_rel": 1.119505,
+      "promotion_primary_delta_rel": 1.206583,
+      "route_id": "reservoir_linear",
+      "semantics": "reservoir_linear: Plain multi-output linear SGD baseline",
+      "status": "ok",
+      "visible_to_llm": true
+    },
+    {
+      "config_hash": "926df4670152b80cb2fd7a7298f519b5a99ea21fa79f324051a81a9ca544bf81",
+      "kind": "A3",
+      "lane": "tabular-cpu",
+      "prediction_hash": "6d3af756a496b28460270ea3ada00fabc8a832b7058dd989403bd0ad28d8b897",
+      "primary_delta_rel": 1.638762,
+      "promotion_primary_delta_rel": 1.584229,
+      "route_id": "tiny_mlp_default",
+      "semantics": "tiny_mlp: A0-compatible tiny MLP with frozen default regularization",
+      "status": "ok",
+      "visible_to_llm": true
+    },
+    {
+      "config_hash": "87d34e352ee5db8f112818b7c81b48f73da67bfc26e3ae79f72a0d8676a40d18",
+      "kind": "oracle_ceiling",
+      "prediction_hash": "087eb61a0fb6285437ed917e272e66239076bc329d270b05ee54fb29b39a392e",
+      "primary_delta_rel": 1.119505,
+      "promotion_primary_delta_rel": 1.206583,
+      "route_id": "reservoir_linear",
+      "visible_to_llm": false
+    }
+  ],
+  "schema_version": "p29_agent_action_effect/v1"
+}

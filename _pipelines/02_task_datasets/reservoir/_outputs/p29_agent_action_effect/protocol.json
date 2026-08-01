@@ -1,0 +1,358 @@
+{
+  "a0": {
+    "checkpoint_path": "_outputs/checkpoints/best.ckpt",
+    "checkpoint_sha256": "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5",
+    "config_hash": "24f72dab62b886aac0d6e74f2d9587df4b9dbbd4f0c15d711b1c77ed7df45ab1",
+    "model": "tiny_mlp",
+    "promotion_composite_mean_train_std_normalized_RMSE": 0.4264657257103058,
+    "promotion_prediction_hash": "fcb8da8791d6617db183e714ddb5946f516814bb82a4b4846a2f11df1c69252f",
+    "run_manifest_path": "_outputs/run_manifest.json",
+    "run_manifest_sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+    "selection_composite_mean_train_std_normalized_RMSE": 0.44972923014140176,
+    "selection_prediction_hash": "43110d0d819b8f067a4a98771ea6aeb53492f0200fa6de8b10054ad71281f2ea"
+  },
+  "a1": {
+    "config_hash": "24f72dab62b886aac0d6e74f2d9587df4b9dbbd4f0c15d711b1c77ed7df45ab1",
+    "executor": "a0_frozen_tiny_mlp",
+    "kind": "identity_replay",
+    "promotion_hash_matches_a0": true,
+    "selection_hash_matches_a0": true
+  },
+  "baseline_metrics_sha256": "548d6036bd21327d5f5cae614667b7772a27e89a29f7052e88ea93cc1dba14d5",
+  "baseline_run_manifest_sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+  "candidate_gate_names": [
+    "A2L",
+    "A2D",
+    "A3"
+  ],
+  "guard_npz_sha256": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+  "oracle_ceiling": {
+    "config_hash": "87d34e352ee5db8f112818b7c81b48f73da67bfc26e3ae79f72a0d8676a40d18",
+    "prediction_hash": "087eb61a0fb6285437ed917e272e66239076bc329d270b05ee54fb29b39a392e",
+    "promotion_primary_delta_rel": 1.206583,
+    "route_id": "reservoir_linear",
+    "selection_primary_delta_rel": 1.119505,
+    "strategy": "A2D"
+  },
+  "primary_metric": "composite_mean_train_std_normalized_RMSE",
+  "promotion_gate": {
+    "a0_a1_excluded": true,
+    "candidate_strategies": [
+      "A2L",
+      "A2D",
+      "A3"
+    ],
+    "primary_metric": "composite_mean_train_std_normalized_RMSE",
+    "primary_threshold_rel_improvement": 0.01,
+    "worst_group_rmse_max_worsening": 0.02
+  },
+  "root_seed": 2693,
+  "route_catalog": [
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "hidden_dim": 24,
+        "learning_rate": 0.002,
+        "weight_decay": 1e-05
+      },
+      "model_name": "tiny_mlp",
+      "notes": "A0-compatible tiny MLP with frozen default regularization",
+      "route_id": "tiny_mlp_default"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "hidden_dim": 24,
+        "learning_rate": 0.002,
+        "weight_decay": 0.001
+      },
+      "model_name": "tiny_mlp",
+      "notes": "Same architecture with stronger L2",
+      "route_id": "tiny_mlp_l2"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "l2_strength": 0.001,
+        "learning_rate": 0.002
+      },
+      "model_name": "reservoir_ridge",
+      "notes": "Closed-form family not used; SGD ridge baseline",
+      "route_id": "reservoir_ridge"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "l2_strength": 0.0,
+        "learning_rate": 0.002
+      },
+      "model_name": "reservoir_linear",
+      "notes": "Plain multi-output linear SGD baseline",
+      "route_id": "reservoir_linear"
+    }
+  ],
+  "route_pilots": [
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "config_hash": "926df4670152b80cb2fd7a7298f519b5a99ea21fa79f324051a81a9ca544bf81",
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "model_name": "tiny_mlp",
+      "prediction_hash": "6d3af756a496b28460270ea3ada00fabc8a832b7058dd989403bd0ad28d8b897",
+      "route_id": "tiny_mlp_default",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 1.1867283833015048,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.08889319849354045,
+            "Pearson": 0.47611902314425164,
+            "Pearson_reason": null,
+            "R2": -1.6609045577627328,
+            "R2_reason": null,
+            "RMSE": 0.10559286109675155
+          },
+          "SW": {
+            "MAE": 0.3817284406860211,
+            "Pearson": -0.2907153761113859,
+            "Pearson_reason": null,
+            "R2": -1.4195649919448226,
+            "R2_reason": null,
+            "RMSE": 0.44048518377702023
+          },
+          "log1p(KLOGH)": {
+            "MAE": 1.5977753409217075,
+            "Pearson": 0.5569865746211293,
+            "Pearson_reason": null,
+            "R2": 0.12387267331134744,
+            "R2_reason": null,
+            "RMSE": 2.2261786779268005
+          }
+        },
+        "physical_MAE_macro": 61.61483193143993,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 448.35854850186485,
+          "PHIF": 0.10559286109675155,
+          "SW": 0.44048518377702023
+        }
+      },
+      "semantics": "tiny_mlp: A0-compatible tiny MLP with frozen default regularization"
+    },
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "config_hash": "17d4ab2c640d141974763a9ce07327e906132e0baf667c2958e7ae188193d498",
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "model_name": "tiny_mlp",
+      "prediction_hash": "cf3dc81e5cf02aa2174a50c9bca06d55e2d14f3eaddadbdd72008bba30709641",
+      "route_id": "tiny_mlp_l2",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 1.1870889717282769,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.08881938083420515,
+            "Pearson": 0.47645550263829417,
+            "Pearson_reason": null,
+            "R2": -1.656759142850718,
+            "R2_reason": null,
+            "RMSE": 0.10551057764248016
+          },
+          "SW": {
+            "MAE": 0.3825598653760544,
+            "Pearson": -0.2941405460015899,
+            "Pearson_reason": null,
+            "R2": -1.4273063499628256,
+            "R2_reason": null,
+            "RMSE": 0.44118928355379905
+          },
+          "log1p(KLOGH)": {
+            "MAE": 1.5968915828998334,
+            "Pearson": 0.5555317321489818,
+            "Pearson_reason": null,
+            "R2": 0.12341663288952787,
+            "R2_reason": null,
+            "RMSE": 2.226757986068223
+          }
+        },
+        "physical_MAE_macro": 60.26953495019854,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 435.27335812784366,
+          "PHIF": 0.10551057764248016,
+          "SW": 0.44118928355379905
+        }
+      },
+      "semantics": "tiny_mlp: Same architecture with stronger L2"
+    },
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "config_hash": "39cb5bb8835a2bf0702bfc498789a96f0dd0a9a0d8ca29414e8d3545acefd72a",
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "model_name": "reservoir_ridge",
+      "prediction_hash": "65542355afb1470499ddff4e5d9336fc035492ecfb49368ff2a4506291f460e3",
+      "route_id": "reservoir_ridge",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 0.9525888193796748,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.06220257021365866,
+            "Pearson": 0.7305087684043702,
+            "Pearson_reason": null,
+            "R2": -0.16610860652600867,
+            "R2_reason": null,
+            "RMSE": 0.06990196899965007
+          },
+          "SW": {
+            "MAE": 0.3391972214590653,
+            "Pearson": 0.7839816405360646,
+            "Pearson_reason": null,
+            "R2": -0.5287829459967364,
+            "R2_reason": null,
+            "RMSE": 0.35013503867318546
+          },
+          "log1p(KLOGH)": {
+            "MAE": 2.1870180484065482,
+            "Pearson": 0.7613081585817941,
+            "Pearson_reason": null,
+            "R2": 0.0031417542003030485,
+            "R2_reason": null,
+            "RMSE": 2.374614462095488
+          }
+        },
+        "physical_MAE_macro": 41.908664919015415,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 266.3391036968314,
+          "PHIF": 0.06990196899965007,
+          "SW": 0.35013503867318546
+        }
+      },
+      "semantics": "reservoir_ridge: Closed-form family not used; SGD ridge baseline"
+    },
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "config_hash": "87d34e352ee5db8f112818b7c81b48f73da67bfc26e3ae79f72a0d8676a40d18",
+      "feedback": "worse",
+      "lane": "tabular-cpu",
+      "model_name": "reservoir_linear",
+      "prediction_hash": "d74f23f021c39d36a22f8b7e8385a67186f0518e56b785d60e431a786f4ce977",
+      "route_id": "reservoir_linear",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 0.9525884428939105,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.06220256010136748,
+            "Pearson": 0.7305087913283094,
+            "Pearson_reason": null,
+            "R2": -0.16610809169655982,
+            "R2_reason": null,
+            "RMSE": 0.06990195356901352
+          },
+          "SW": {
+            "MAE": 0.3391972247282026,
+            "Pearson": 0.783981608710877,
+            "Pearson_reason": null,
+            "R2": -0.5287827882657188,
+            "R2_reason": null,
+            "RMSE": 0.3501350206107269
+          },
+          "log1p(KLOGH)": {
+            "MAE": 2.187015711372191,
+            "Pearson": 0.7613082257402759,
+            "Pearson_reason": null,
+            "R2": 0.003143710991494686,
+            "R2_reason": null,
+            "RMSE": 2.3746121314597315
+          }
+        },
+        "physical_MAE_macro": 41.90864490026026,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 266.339087642526,
+          "PHIF": 0.06990195356901352,
+          "SW": 0.3501350206107269
+        }
+      },
+      "semantics": "reservoir_linear: Plain multi-output linear SGD baseline"
+    }
+  ],
+  "schema_version": "p29_agent_action_effect/v1",
+  "split": {
+    "promotion_dev": {
+      "count": 40,
+      "families": [
+        "15/9-F-12"
+      ],
+      "wells": [
+        "15/9-F-12"
+      ]
+    },
+    "selection_dev": {
+      "count": 41,
+      "families": [
+        "15/9-F-12"
+      ],
+      "wells": [
+        "15/9-F-12"
+      ]
+    },
+    "train": {
+      "count": 1135,
+      "families": [
+        "15/9-19",
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "wells": [
+        "15/9-19 A",
+        "15/9-19 BT2",
+        "15/9-19 SR",
+        "15/9-F-1",
+        "15/9-F-1 A",
+        "15/9-F-1 B",
+        "15/9-F-1 C",
+        "15/9-F-11 A",
+        "15/9-F-11 B",
+        "15/9-F-11 T2"
+      ]
+    }
+  },
+  "strategy_choice": {
+    "A1": {
+      "chosen_route_id": "A1_identity",
+      "selected_by": "identity_replay"
+    },
+    "A2D": {
+      "chosen_route_id": "reservoir_linear",
+      "selected_by": "deterministic_primary_metric_rank"
+    },
+    "A2L": {
+      "chosen_route_id": null,
+      "deepseek": {
+        "action": "stop",
+        "reason": "All routes show worse feedback and positive selection deltas, indicating no improvement over baseline; stopping to avoid further degradation.",
+        "route_id": null
+      },
+      "selected_by": "blocked"
+    },
+    "A3": {
+      "chosen_route_id": "tiny_mlp_default",
+      "selected_by": "pcg64_no_replacement"
+    }
+  },
+  "track_id": "property",
+  "train_h5_sha256": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2"
+}
