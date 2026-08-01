@@ -1,0 +1,167 @@
+{
+  "action_registry": [
+    {
+      "action_id": "foundation_weight_0.00",
+      "changed_factor": "foundation_weight",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.0,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 0.0
+    },
+    {
+      "action_id": "foundation_weight_0.25",
+      "changed_factor": "foundation_weight",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.25,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 0.25
+    },
+    {
+      "action_id": "foundation_weight_0.50",
+      "changed_factor": "foundation_weight",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.5,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 0.5
+    },
+    {
+      "action_id": "vertical_weight_2.0",
+      "changed_factor": "vertical_weight",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 2.0
+      },
+      "value": 2.0
+    },
+    {
+      "action_id": "vertical_weight_8.0",
+      "changed_factor": "vertical_weight",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 8.0
+      },
+      "value": 8.0
+    },
+    {
+      "action_id": "seismic_mix_low",
+      "changed_factor": "seismic_weights",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.05,
+          0.1
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": [
+        0.0,
+        0.05,
+        0.1
+      ]
+    },
+    {
+      "action_id": "seismic_mix_high",
+      "changed_factor": "seismic_weights",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.2,
+          0.4
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": [
+        0.0,
+        0.2,
+        0.4
+      ]
+    }
+  ],
+  "different_action_count": 3,
+  "held_fold_purge_reused": true,
+  "prediction_hashes": {
+    "A0": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
+    "foundation_weight_0.00": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
+    "foundation_weight_0.25": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
+    "foundation_weight_0.50": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
+    "seismic_mix_high": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
+    "seismic_mix_low": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
+    "vertical_weight_2.0": "50f688b9247aa91a606e7d758fd64953399e0d74c54ef38f0ea86146cca8225e",
+    "vertical_weight_8.0": "6f8cedcc09aa5b47caeaa32046ef0767d046459b59cebb11827352684f93b1ba"
+  },
+  "probe": true,
+  "promotion_threshold": {
+    "max_fold_relative_regression": 0.01,
+    "minimum_relative_gain": 0.005
+  },
+  "prompt_modes": [
+    "categorical",
+    "safe_quantitative"
+  ],
+  "schema_version": "reconstruction-p29-agent-action-effect-repair/v1"
+}
