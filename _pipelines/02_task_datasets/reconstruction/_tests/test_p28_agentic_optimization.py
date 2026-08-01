@@ -187,6 +187,11 @@ class P28AgenticOptimizationArtifactTest(unittest.TestCase):
         with np.load(artifact, allow_pickle=False) as payload:
             a0 = payload["a0_prediction"]
             a1 = payload["a1_prediction"]
+        np.testing.assert_array_equal(a0, a1)
+        self.assertEqual(
+            p17._array_sha256(a0),  # noqa: SLF001
+            self.summary["a1"]["replay"]["fresh_a0_array_sha256"],
+        )
         self.assertEqual(
             p17._array_sha256(a1),  # noqa: SLF001
             self.summary["a1"]["replay"]["replay_array_sha256"],
@@ -196,18 +201,22 @@ class P28AgenticOptimizationArtifactTest(unittest.TestCase):
         self.assertEqual(self.summary["a1"]["replay"]["seed"], p28.ROOT_SEED)
         self.assertEqual(
             self.summary["a1"]["replay"]["replay_array_sha256"],
-            self.summary["a1"]["replay"]["reference_array_sha256"],
+            self.summary["a1"]["replay"]["fresh_a0_array_sha256"],
         )
-        self.assertLessEqual(
-            self.summary["a1"]["replay"]["max_abs_difference_vs_p21_canonical"],
-            1e-12,
+        self.assertGreater(
+            self.summary["a1"]["replay"]["historical_p21_canonical_max_abs_difference"],
+            0.0,
         )
         self.assertEqual(
             p17._array_sha256(a0),  # noqa: SLF001
-            p28.EXPECTED_A0_ARRAY_SHA256,
+            self.summary["a0"]["fresh_reference"]["prediction_array_sha256"],
         )
         self.assertEqual(
             self.summary["a0"]["metrics"]["rmse"], p28.EXPECTED_A0_RMSE
+        )
+        self.assertEqual(
+            self.summary["a0"]["historical_p21_provenance"]["prediction_array_sha256"],
+            p28.EXPECTED_A0_ARRAY_SHA256,
         )
 
     def test_equal_four_trial_budgets_and_real_provider(self) -> None:
@@ -249,15 +258,22 @@ class P28AgenticOptimizationArtifactTest(unittest.TestCase):
         )
 
     def test_independent_verification_and_manifest(self) -> None:
-        verification = p28.verify_evidence(self.output)
+        import shutil
+        import tempfile
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_output = Path(temp_dir) / "p28_artifacts"
+            shutil.copytree(self.output, temp_output)
+            verification = p28.verify_evidence(temp_output)
+            manifest = p28.write_artifact_manifest(temp_output)
+            for row in manifest["artifacts"]:
+                path = Path(row["path"])
+                if not path.is_absolute():
+                    path = ROOT / path
+                self.assertTrue(path.is_file())
+                self.assertEqual(p28._sha256(path), row["sha256"])  # noqa: SLF001
+                self.assertEqual(path.stat().st_size, row["bytes"])
         self.assertEqual(verification["status"], "PASSED")
-        manifest = p28.write_artifact_manifest(self.output)
         self.assertEqual(len(manifest["artifacts"]), 9)
-        for row in manifest["artifacts"]:
-            path = ROOT / row["path"]
-            self.assertTrue(path.is_file())
-            self.assertEqual(p28._sha256(path), row["sha256"])  # noqa: SLF001
-            self.assertEqual(path.stat().st_size, row["bytes"])
 
 
 if __name__ == "__main__":

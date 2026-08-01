@@ -39,7 +39,7 @@
     "model_returned": "deepseek-v4-flash",
     "provider": "deepseek",
     "request_sha256": "3ff470fe5d567c8c72582ff9ab76b5f897b9a39d64d89873dd24224400dcf1e0",
-    "response_id": "f866e008-9365-4ed7-8a50-14d3567f660c",
+    "response_id": "72717706-6834-4e45-9b6e-a6081203375b",
     "response_sha256": "1db4a21281086492e2fab41b5896f1a5a6ca1541ebc3e0d0446f6d6a10d9a8d4",
     "usage": {
       "completion_tokens": 56,

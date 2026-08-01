@@ -1,14 +1,14 @@
 {
   "artifacts": [
     {
-      "bytes": 57628,
+      "bytes": 58830,
       "path": "_pipelines/02_task_datasets/reconstruction/p28_agentic_optimization.py",
-      "sha256": "5d289558a7b554939e563569bb9c71b2ccec6f6ad6e58e9648a7333eaea4bc29"
+      "sha256": "e155655c844985988c2dc6ccb6c92872996be61bcfdc9b099400a862a3b64ffd"
     },
     {
-      "bytes": 10386,
+      "bytes": 11115,
       "path": "_pipelines/02_task_datasets/reconstruction/_tests/test_p28_agentic_optimization.py",
-      "sha256": "019ee9ea6e9d38896a4739f73bb2b37811c8726b7fe9e56571e7938f74534a02"
+      "sha256": "57f6f5e53f11bc2f54e945b929cb21c3e619db0a5d8f55de3cb909d1ad6aba30"
     },
     {
       "bytes": 6250,
@@ -18,32 +18,32 @@
     {
       "bytes": 2031,
       "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/route_gate.json",
-      "sha256": "b82972faa9dbd2e4564fbec29b17f606b252a6c4a9b5772143666e9889937e79"
+      "sha256": "6ff0ad35fee5174434d1bd8bb34f3d5c767cbef37a0627bdebd02bf964a430cc"
     },
     {
-      "bytes": 35049,
+      "bytes": 34971,
       "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/trials.jsonl",
-      "sha256": "f42bc0e736e89fda2df9ca36afa2fd0f542d348151e7f254f5b280da419c8e4b"
+      "sha256": "b9f1004b8887d9cb86dfb825aed19e3a5b87479b4311c5b3114580f93c0165b1"
     },
     {
-      "bytes": 431861,
+      "bytes": 431902,
       "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/predictions.npz",
-      "sha256": "c7af58cb61c7c3130b94b995b4fb84d959ca7674297923dac194059926707b5d"
+      "sha256": "f1923d35af132775c390765db9c16d93e3052e2935d2b712f7ce8531e5a8c0c1"
     },
     {
-      "bytes": 41698,
+      "bytes": 42094,
       "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/summary.json",
-      "sha256": "bb1ec2a9cc195bafbc90a2d841f89b7a5b52c8c9fc3738408329c3e4b7dbeb60"
+      "sha256": "b71411450ecfed7feb38f7fb7733bd4c0b4fde02872d4d1526b9ef467785432d"
     },
     {
-      "bytes": 3372,
+      "bytes": 3559,
       "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/evidence.md",
-      "sha256": "e453732d11c96c144d0d712c73157924eca1ca802bb7e956b595cb4a53c692d2"
+      "sha256": "004b90ca1d373bc8b5074a001f4f150c2fd2be190985e1614d322948f31c14b4"
     },
     {
-      "bytes": 5781,
+      "bytes": 5783,
       "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/verification.json",
-      "sha256": "3b358b325bb75f5f8a337e14a56b28ad77fad4d8c29400fe33b6d356ac347d48"
+      "sha256": "3400e1d9f3b5b4d0043ac7fe3c38dab5b3c36267ded60b2adb93e3ba4c29a070"
     }
   ],
   "schema_version": "reconstruction-p28-artifact-manifest/v1"

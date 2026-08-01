@@ -1,30 +1,44 @@
 {
   "a0": {
+    "fresh_reference": {
+      "action_id": "A0",
+      "entrypoint": "_build_action_bank",
+      "prediction_array_sha256": "494618d465bcb80ce6b7f3e5f34a0264c28695707e0c3ab5aa458531f6069ecd",
+      "seed": 2693
+    },
+    "historical_p21_provenance": {
+      "metrics": {
+        "bias": -0.000375729824806649,
+        "mae": 0.0207985238320136,
+        "rmse": 0.027734374378067677,
+        "valid_voxels": 10240
+      },
+      "prediction_array_sha256": "f0151248f30587465b54154b2eee6a8d724525a8640094838675feb56cb02e9f",
+      "predictions_sha256": "7eb149021973362e8a9a788f2919a7775bffc702061f2e2ce44031f9ee835afb",
+      "summary_sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8"
+    },
     "metrics": {
-      "bias": -0.000375729824806649,
+      "bias": -0.00037572982480664935,
       "mae": 0.0207985238320136,
       "rmse": 0.027734374378067677,
       "valid_voxels": 10240
-    },
-    "prediction_array_sha256": "f0151248f30587465b54154b2eee6a8d724525a8640094838675feb56cb02e9f",
-    "predictions_sha256": "7eb149021973362e8a9a788f2919a7775bffc702061f2e2ce44031f9ee835afb",
-    "summary_sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8"
+    }
   },
   "a0_reproduction_max_abs": 8.326672684688674e-17,
   "a1": {
     "equal_to_replayed_reference": true,
+    "historical_p21_canonical_max_abs_difference": 8.326672684688674e-17,
     "prediction_array_sha256": "494618d465bcb80ce6b7f3e5f34a0264c28695707e0c3ab5aa458531f6069ecd",
     "replay": {
       "action_id": "A0",
       "entrypoint": "_build_action_bank",
-      "max_abs_difference_vs_p21_canonical": 8.326672684688674e-17,
-      "reference_array_sha256": "494618d465bcb80ce6b7f3e5f34a0264c28695707e0c3ab5aa458531f6069ecd",
+      "fresh_a0_array_sha256": "494618d465bcb80ce6b7f3e5f34a0264c28695707e0c3ab5aa458531f6069ecd",
+      "historical_p21_canonical_max_abs_difference": 8.326672684688674e-17,
       "replay_array_sha256": "494618d465bcb80ce6b7f3e5f34a0264c28695707e0c3ab5aa458531f6069ecd",
       "replayed_independently": true,
       "same_fold_inputs": true,
       "seed": 2693
-    },
-    "within_p21_canonical_tolerance": true
+    }
   },
   "a2l_promotion_gate": {
     "auc_superiority_pass": false,
@@ -38,35 +52,35 @@
         {
           "action_id": "kernel_matern32",
           "held_fold": 0,
-          "rationale": "Initial exploration of kernel choice",
+          "rationale": "Initial exploration of kernel family",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
           "action_id": "kernel_gaussian",
           "held_fold": 1,
-          "rationale": "Initial exploration of kernel choice",
+          "rationale": "Initial exploration of kernel family",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
           "action_id": "kernel_rational_quadratic",
           "held_fold": 2,
-          "rationale": "Initial exploration of kernel choice",
+          "rationale": "Initial exploration of kernel family",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
           "action_id": "neighbours_48",
           "held_fold": 3,
-          "rationale": "Initial exploration of neighbour count",
+          "rationale": "Initial exploration of neighbourhood size",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
           "action_id": "neighbours_80",
           "held_fold": 4,
-          "rationale": "Initial exploration of neighbour count",
+          "rationale": "Initial exploration of neighbourhood size",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         }
@@ -79,8 +93,8 @@
         "model_returned": "deepseek-v4-flash",
         "provider": "deepseek",
         "request_sha256": "299ac83c142de9892f31cae6179c579d5db41ea4431fd4b28e06ca157b18a457",
-        "response_id": "acae60d4-f7db-412f-a2bd-5c1a054d5e9d",
-        "response_sha256": "7e3a000eaee9ac1cd073577bb3c30c38c045e4fe57da15d8cb14bb45641fa637",
+        "response_id": "dc67b839-7c62-4644-88fd-172a791c5b7c",
+        "response_sha256": "6e87c2ee531294548b9e6588fe1abe004d5a94a10ffe536f2761c723dba38df1",
         "usage": {
           "completion_tokens": 129,
           "prompt_cache_hit_tokens": 896,
@@ -113,21 +127,21 @@
         {
           "action_id": "neighbours_48",
           "held_fold": 2,
-          "rationale": "kernel_rational_quadratic worse, switch factor",
+          "rationale": "kernel_rational_quadratic worse, try neighbours",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
-          "action_id": "neighbours_80",
+          "action_id": "distance_power_1.25",
           "held_fold": 3,
-          "rationale": "neighbours_48 worse, try larger neighbours",
+          "rationale": "neighbours_48 worse, try distance_power",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
-          "action_id": "neighbours_48",
+          "action_id": "distance_power_1.75",
           "held_fold": 4,
-          "rationale": "neighbours_80 worse, try smaller neighbours",
+          "rationale": "neighbours_80 worse, try distance_power",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         }
@@ -140,17 +154,17 @@
         "model_returned": "deepseek-v4-flash",
         "provider": "deepseek",
         "request_sha256": "b805e7b9044508263be3a0a7e3fab09754671fe192de0894e3a1a03dc1d3e0f8",
-        "response_id": "0e76d699-fc08-4ed7-930e-e44fb35e6c62",
-        "response_sha256": "9c4ac35857bd5ab5a1bac635c01280284b12c68c9866f68fba4731f0e57292b1",
+        "response_id": "d9cee878-85d3-49ec-abbb-7e1dbefac9ea",
+        "response_sha256": "71e3e828db856cfeb7b14d613e316f8bc96af2a3a18be0e6f2917cf8fcd29834",
         "usage": {
-          "completion_tokens": 176,
+          "completion_tokens": 182,
           "prompt_cache_hit_tokens": 1024,
           "prompt_cache_miss_tokens": 80,
           "prompt_tokens": 1104,
           "prompt_tokens_details": {
             "cached_tokens": 1024
           },
-          "total_tokens": 1280
+          "total_tokens": 1286
         }
       },
       "round": 2
@@ -160,58 +174,58 @@
         {
           "action_id": "kernel_rational_quadratic",
           "held_fold": 0,
-          "rationale": "Kernels improved; try rational quadratic next.",
+          "rationale": "Kernels improved; try new kernel.",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
           "action_id": "kernel_rational_quadratic",
           "held_fold": 1,
-          "rationale": "Kernels improved; try rational quadratic next.",
+          "rationale": "Kernels improved; try new kernel.",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
           "action_id": "kernel_matern32",
           "held_fold": 2,
-          "rationale": "Kernel untried; neighbours flat/worse.",
+          "rationale": "Rational quadratic worse, neighbours flat; try kernel.",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
-          "action_id": "distance_power_1.25",
+          "action_id": "neighbours_80",
           "held_fold": 3,
-          "rationale": "Neighbours worse; try distance power.",
+          "rationale": "Neighbours worse, distance improved; try neighbours.",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
-          "action_id": "distance_power_1.25",
+          "action_id": "kernel_matern32",
           "held_fold": 4,
-          "rationale": "Neighbours worse; try distance power.",
+          "rationale": "Neighbours and distance worse; try kernel.",
           "stop_after_trial": false,
           "stop_source": "frozen_fixed_budget_protocol"
         }
       ],
-      "observation_sha256": "1d3c76e7ca8470be12f1f1a58e12ea95e2af7ee1802c0efa77035ddcdf2ac0b6",
+      "observation_sha256": "db6f3b3e4171ea0b5b4f6d76d323947feaf82a7a6fbe0e11b6e291071a498e24",
       "provider_audit": {
         "credential_persisted": false,
         "endpoint": "https://api.deepseek.com/chat/completions",
         "model_requested": "deepseek-chat",
         "model_returned": "deepseek-v4-flash",
         "provider": "deepseek",
-        "request_sha256": "b18b32cee2ba1267754725796c96262e817cdaa2616395e82401ba89c43eea4e",
-        "response_id": "6e25c15c-07cc-431a-a526-8fb24a657002",
-        "response_sha256": "249ba866566f733dd16f71c3150dca1d8290dccbbd23cb828342521da15b39bc",
+        "request_sha256": "bea16cb5165f33346ab83955bd73a45c5997595a0db0a2e0f3740fabb0e62cb1",
+        "response_id": "cebbe4c4-6740-4c17-a504-abd720e30913",
+        "response_sha256": "1e0dbac89597f6123cae764e9f70fb55844261e6e947bc86281d1913462c2396",
         "usage": {
-          "completion_tokens": 184,
-          "prompt_cache_hit_tokens": 1152,
-          "prompt_cache_miss_tokens": 36,
+          "completion_tokens": 180,
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 548,
           "prompt_tokens": 1188,
           "prompt_tokens_details": {
-            "cached_tokens": 1152
+            "cached_tokens": 640
           },
-          "total_tokens": 1372
+          "total_tokens": 1368
         }
       },
       "round": 3
@@ -221,58 +235,58 @@
         {
           "action_id": "neighbours_48",
           "held_fold": 0,
-          "rationale": "All kernels improved; try increasing neighbours to 48 for potential further gain.",
+          "rationale": "All kernels improved; try neighbours to explore new factor.",
           "stop_after_trial": true,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
           "action_id": "neighbours_48",
           "held_fold": 1,
-          "rationale": "Kernels improved; explore neighbour count to see if it helps.",
+          "rationale": "Kernels improved; try neighbours to explore new factor.",
           "stop_after_trial": true,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
-          "action_id": "neighbours_80",
+          "action_id": "kernel_gaussian",
           "held_fold": 2,
-          "rationale": "Kernels were worse/flat; try a different factor, neighbours_80 is untried.",
+          "rationale": "Kernels worse/flat; try untried kernel.",
           "stop_after_trial": true,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
-          "action_id": "kernel_matern32",
+          "action_id": "distance_power_1.75",
           "held_fold": 3,
-          "rationale": "Distance power improved; try a kernel to see if it complements.",
+          "rationale": "Distance power 1.25 improved; try higher power.",
           "stop_after_trial": true,
           "stop_source": "frozen_fixed_budget_protocol"
         },
         {
-          "action_id": "kernel_matern32",
+          "action_id": "kernel_gaussian",
           "held_fold": 4,
-          "rationale": "Distance power improved; try a kernel to see if it complements.",
+          "rationale": "Kernel matern32 improved; try another kernel.",
           "stop_after_trial": true,
           "stop_source": "frozen_fixed_budget_protocol"
         }
       ],
-      "observation_sha256": "cafe0c608070b5331961080d88a4eb4aab52e66f7cd6a2fbcff1530c0a901fcc",
+      "observation_sha256": "62ad87f31fc36d54ffbfbe0ef96378335f9b357ff06a03e0731b401636edc85e",
       "provider_audit": {
         "credential_persisted": false,
         "endpoint": "https://api.deepseek.com/chat/completions",
         "model_requested": "deepseek-chat",
         "model_returned": "deepseek-v4-flash",
         "provider": "deepseek",
-        "request_sha256": "4feb536a1d5b723a3299488b722e8e1ae196b10a0ae65ab2894cf5d83bc9363c",
-        "response_id": "3966e145-c725-48e2-906f-6a9f4af6a561",
-        "response_sha256": "77e101514ea979e0f45865cc5a52ecfd8c8df3a3967a2140c83cae7cda80d68b",
+        "request_sha256": "01bd2a8a11cfbe9db305ba32593e94a3b284eaa240755628a29af9abd0ea7e95",
+        "response_id": "0b517e1a-14b0-4e36-931a-aaa188447d1f",
+        "response_sha256": "3a89379f9d13ae44e99b8aaa370803304eb3acb0011f49b02e2f91da2918b685",
         "usage": {
-          "completion_tokens": 204,
-          "prompt_cache_hit_tokens": 1152,
-          "prompt_cache_miss_tokens": 121,
+          "completion_tokens": 186,
+          "prompt_cache_hit_tokens": 768,
+          "prompt_cache_miss_tokens": 505,
           "prompt_tokens": 1273,
           "prompt_tokens_details": {
-            "cached_tokens": 1152
+            "cached_tokens": 768
           },
-          "total_tokens": 1477
+          "total_tokens": 1459
         }
       },
       "round": 4
@@ -529,7 +543,7 @@
       "model_returned": "deepseek-v4-flash",
       "provider": "deepseek",
       "request_sha256": "3ff470fe5d567c8c72582ff9ab76b5f897b9a39d64d89873dd24224400dcf1e0",
-      "response_id": "f866e008-9365-4ed7-8a50-14d3567f660c",
+      "response_id": "72717706-6834-4e45-9b6e-a6081203375b",
       "response_sha256": "1db4a21281086492e2fab41b5896f1a5a6ca1541ebc3e0d0446f6d6a10d9a8d4",
       "usage": {
         "completion_tokens": 56,
@@ -560,7 +574,7 @@
   "prediction_artifact": {
     "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/predictions.npz",
     "rows": 10240,
-    "sha256": "c7af58cb61c7c3130b94b995b4fb84d959ca7674297923dac194059926707b5d"
+    "sha256": "f1923d35af132775c390765db9c16d93e3052e2935d2b712f7ce8531e5a8c0c1"
   },
   "protocol_sha256": "c0716e479c5162e08e769f6f83e140ec7b5b0306f71bfd90d2b16307be97d922",
   "purge_audits": [
@@ -888,11 +902,11 @@
         },
         "per_fold": [
           {
-            "a0_rmse": 0.026804535898329696,
+            "a0_rmse": 0.0268045358983297,
             "candidate_rmse": 0.02682117728141159,
             "fold_id": 0,
             "outcome": "loss",
-            "relative_rmse_change_candidate_minus_a0": 0.0006208420524427306
+            "relative_rmse_change_candidate_minus_a0": 0.0006208420524426012
           },
           {
             "a0_rmse": 0.02857967878401642,
@@ -975,18 +989,18 @@
         },
         "maximum_fold_relative_regression": 0.0022445572783923932,
         "metrics": {
-          "bias": -0.0003089093794333499,
-          "mae": 0.02079401938172738,
-          "rmse": 0.027761334798820803,
+          "bias": -0.00036270661160280537,
+          "mae": 0.020804592955404703,
+          "rmse": 0.027759842173392304,
           "valid_voxels": 10240
         },
         "per_fold": [
           {
-            "a0_rmse": 0.026804535898329696,
+            "a0_rmse": 0.0268045358983297,
             "candidate_rmse": 0.02682117728141159,
             "fold_id": 0,
             "outcome": "loss",
-            "relative_rmse_change_candidate_minus_a0": 0.0006208420524427306
+            "relative_rmse_change_candidate_minus_a0": 0.0006208420524426012
           },
           {
             "a0_rmse": 0.02857967878401642,
@@ -1004,10 +1018,10 @@
           },
           {
             "a0_rmse": 0.02771269550630355,
-            "candidate_rmse": 0.027712556692356272,
+            "candidate_rmse": 0.027705079621329665,
             "fold_id": 3,
             "outcome": "win",
-            "relative_rmse_change_candidate_minus_a0": -5.009038086759917e-06
+            "relative_rmse_change_candidate_minus_a0": -0.00027481574183761865
           },
           {
             "a0_rmse": 0.03557550508835037,
@@ -1017,7 +1031,7 @@
             "relative_rmse_change_candidate_minus_a0": 0.0022445572783923932
           }
         ],
-        "relative_gain_vs_a0": -0.0009720940658552063
+        "relative_gain_vs_a0": -0.0009182754576489295
       },
       "promotion_selections": [
         {
@@ -1044,8 +1058,8 @@
         {
           "held_fold": 3,
           "promotion_metric_fed_back": false,
-          "selected_action_id": "kernel_matern32",
-          "selected_fold_train_relative_gain": 0.00331148029628967,
+          "selected_action_id": "distance_power_1.25",
+          "selected_fold_train_relative_gain": 0.0013088568051438621,
           "selection_based_only_on_purged_other_four_folds": true
         },
         {
@@ -1056,7 +1070,7 @@
           "selection_based_only_on_purged_other_four_folds": true
         }
       ],
-      "search_auc": 0.0010368820408555455,
+      "search_auc": 0.0010466034311708366,
       "trials": 20,
       "trials_per_held_fold": 4
     },
@@ -1076,11 +1090,11 @@
         },
         "per_fold": [
           {
-            "a0_rmse": 0.026804535898329696,
+            "a0_rmse": 0.0268045358983297,
             "candidate_rmse": 0.02682117728141159,
             "fold_id": 0,
             "outcome": "loss",
-            "relative_rmse_change_candidate_minus_a0": 0.0006208420524427306
+            "relative_rmse_change_candidate_minus_a0": 0.0006208420524426012
           },
           {
             "a0_rmse": 0.02857967878401642,
@@ -1200,6 +1214,6 @@
   "trial_artifact": {
     "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p28_agentic_optimization/trials.jsonl",
     "rows": 60,
-    "sha256": "f42bc0e736e89fda2df9ca36afa2fd0f542d348151e7f254f5b280da419c8e4b"
+    "sha256": "b9f1004b8887d9cb86dfb825aed19e3a5b87479b4311c5b3114580f93c0165b1"
   }
 }

@@ -201,9 +201,9 @@ def _validate_registry() -> None:
         raise RuntimeError("deterministic sequence contains duplicates")
 
 
-def _validate_output_dir(output_dir: Path) -> Path:
+def _validate_output_dir(output_dir: Path, *, strict_owner: bool = True) -> Path:
     resolved = Path(output_dir).expanduser().resolve()
-    if resolved != DEFAULT_OUTPUT_DIR.resolve():
+    if strict_owner and resolved != DEFAULT_OUTPUT_DIR.resolve():
         raise ValueError("P28 may write only its declared reconstruction output")
     return resolved
 
@@ -889,7 +889,7 @@ def run(
 
     inputs = base.resolve_dev_inputs(Path(data_dir).expanduser().resolve())
     oof = base.load_oof_development(Path(stage3_root).expanduser().resolve())
-    a0_prediction, a0_audit = _load_a0(oof)
+    historical_a0_prediction, historical_a0_audit = _load_a0(oof)
     folds, fold_loading_audit = p17.load_fold_samples(
         stage3_root=stage3_root,
         train_h5=inputs.train_h5,
@@ -912,6 +912,7 @@ def run(
     original_bank, original_bandwidth_audit = _build_action_bank(
         oof=oof, prepared=prepared
     )
+    fresh_a0_prediction = np.asarray(original_bank["A0"], dtype=np.float64)
     a1_replay_bank, _ = _build_action_bank(
         oof=oof,
         prepared=prepared,
@@ -919,19 +920,18 @@ def run(
         seed=ROOT_SEED,
     )
     a1_prediction = np.asarray(a1_replay_bank["A0"], dtype=np.float64)
-    if p17._array_sha256(a1_prediction) != p17._array_sha256(  # noqa: SLF001
-        original_bank["A0"]
-    ):
-        raise RuntimeError("A1 same-entrypoint/action/seed replay diverged")
-    a1_reference_prediction = np.asarray(original_bank["A0"], dtype=np.float64)
+    np.testing.assert_array_equal(fresh_a0_prediction, a1_prediction)
+    if p17._array_sha256(a1_prediction) != p17._array_sha256(fresh_a0_prediction):
+        raise RuntimeError("fresh A0/A1 prediction hashes diverged")
     a0_reproduction_max_abs = float(
-        np.max(np.abs(original_bank["A0"] - a0_prediction))
+        np.max(np.abs(fresh_a0_prediction - historical_a0_prediction))
     )
     if a0_reproduction_max_abs > 1e-12:
         raise RuntimeError(
             f"P28 failed to reproduce P21 A0: max abs {a0_reproduction_max_abs}"
         )
-    original_bank["A0"] = a0_prediction
+    a0_prediction = fresh_a0_prediction
+    original_bank["A0"] = fresh_a0_prediction
 
     purged_banks: dict[int, dict[str, np.ndarray]] = {}
     purge_audits: list[dict[str, Any]] = []
@@ -1130,7 +1130,16 @@ def run(
         "schema_version": SCHEMA_VERSION,
         "objective": "bounded agentic kernel-parameter search over frozen P21 features",
         "protocol_sha256": _sha256(output_dir / "protocol.json"),
-        "a0": a0_audit,
+        "a0": {
+            "metrics": _metrics(oof.target, a0_prediction),
+            "fresh_reference": {
+                "entrypoint": "_build_action_bank",
+                "action_id": "A0",
+                "seed": ROOT_SEED,
+                "prediction_array_sha256": p17._array_sha256(a0_prediction),
+            },
+            "historical_p21_provenance": historical_a0_audit,
+        },
         "a1": {
             "replay": {
                 "entrypoint": "_build_action_bank",
@@ -1138,14 +1147,14 @@ def run(
                 "seed": ROOT_SEED,
                 "same_fold_inputs": True,
                 "replayed_independently": True,
-                "reference_array_sha256": p17._array_sha256(  # noqa: SLF001
-                    a1_reference_prediction
+                "fresh_a0_array_sha256": p17._array_sha256(  # noqa: SLF001
+                    fresh_a0_prediction
                 ),
                 "replay_array_sha256": p17._array_sha256(  # noqa: SLF001
                     a1_prediction
                 ),
-                "max_abs_difference_vs_p21_canonical": float(
-                    np.max(np.abs(a1_prediction - a0_prediction))
+                "historical_p21_canonical_max_abs_difference": float(
+                    np.max(np.abs(a1_prediction - historical_a0_prediction))
                 ),
             },
             "prediction_array_sha256": p17._array_sha256(  # noqa: SLF001
@@ -1153,10 +1162,10 @@ def run(
             ),
             "equal_to_replayed_reference": bool(
                 p17._array_sha256(a1_prediction)
-                == p17._array_sha256(a1_reference_prediction)
+                == p17._array_sha256(fresh_a0_prediction)
             ),
-            "within_p21_canonical_tolerance": bool(
-                np.max(np.abs(a1_prediction - a0_prediction)) <= 1e-12
+            "historical_p21_canonical_max_abs_difference": float(
+                np.max(np.abs(a1_prediction - historical_a0_prediction))
             ),
         },
         "independent_route_gate": route_gate,
@@ -1252,7 +1261,10 @@ def _write_evidence(output_dir: Path, result: Mapping[str, Any]) -> None:
             "- A2D and A3 each used the same four-trial budget per held fold. A3 "
             "is PCG64 random kernel search; it is not a random-init foundation arm.",
             "- A1 replays the same action entrypoint, fold inputs and frozen seed, "
-            "then compares the independently recomputed prediction hash to A0.",
+            "then requires exact fresh-A0/fresh-A1 array and prediction-hash equality.",
+            f"- Historical P21 A0 remains read-only provenance; fresh replay differs "
+            f"from it by {result['a1']['replay']['historical_p21_canonical_max_abs_difference']:.17g} "
+            "at maximum absolute error and this difference is not used as the A1 gate.",
             "",
             "## Selection firewall",
             "",
@@ -1292,7 +1304,7 @@ def _write_evidence(output_dir: Path, result: Mapping[str, Any]) -> None:
 
 
 def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
-    output_dir = _validate_output_dir(output_dir)
+    output_dir = _validate_output_dir(output_dir, strict_owner=False)
     protocol_path = output_dir / "protocol.json"
     summary_path = output_dir / "summary.json"
     trial_path = output_dir / "trials.jsonl"
@@ -1318,15 +1330,19 @@ def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
             strategy: np.asarray(payload[f"{strategy.lower()}_prediction"], dtype=np.float64)
             for strategy in ("A2L", "A2D", "A3")
         }
-    if p17._array_sha256(a0) != EXPECTED_A0_ARRAY_SHA256:  # noqa: SLF001
-        raise RuntimeError("P28 A0/A1 identity drift")
+    if p17._array_sha256(a0) != summary["a0"]["fresh_reference"]["prediction_array_sha256"]:
+        raise RuntimeError("P28 fresh A0 hash drift")
+    historical = summary["a0"]["historical_p21_provenance"]
+    if historical["prediction_array_sha256"] != EXPECTED_A0_ARRAY_SHA256:
+        raise RuntimeError("P21 historical provenance hash drift")
     replay = summary["a1"]["replay"]
+    np.testing.assert_array_equal(a0, a1)
+    if p17._array_sha256(a0) != p17._array_sha256(a1):  # noqa: SLF001
+        raise RuntimeError("fresh A0/A1 hash identity drift")
     if p17._array_sha256(a1) != replay["replay_array_sha256"]:
         raise RuntimeError("P28 A1 replay hash drift")
-    if replay["replay_array_sha256"] != replay["reference_array_sha256"]:
-        raise RuntimeError("P28 A1 replay is not equal to its independent reference")
-    if float(replay["max_abs_difference_vs_p21_canonical"]) > 1e-12:
-        raise RuntimeError("P28 A1 replay diverged beyond P21 tolerance")
+    if replay["replay_array_sha256"] != replay["fresh_a0_array_sha256"]:
+        raise RuntimeError("P28 A1 replay is not equal to fresh A0")
     np.testing.assert_allclose(
         _metrics(target, a0)["rmse"], EXPECTED_A0_RMSE, rtol=0.0, atol=1e-15
     )
@@ -1377,7 +1393,7 @@ def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
         "protocol_sha256": _sha256(protocol_path),
         "prediction_artifact_sha256": _sha256(prediction_path),
         "trial_artifact_sha256": _sha256(trial_path),
-        "a0_a1_replay_identity": True,
+        "fresh_a0_a1_array_identity": True,
         "strategy_metrics_recomputed": checks,
         "trial_rows": len(trial_rows),
         "deepseek_route_gate_passed": bool(
@@ -1391,7 +1407,7 @@ def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
 
 
 def write_artifact_manifest(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
-    output_dir = _validate_output_dir(output_dir)
+    output_dir = _validate_output_dir(output_dir, strict_owner=False)
     test_path = HERE / "_tests" / "test_p28_agentic_optimization.py"
     paths = [
         Path(__file__).resolve(),
@@ -1408,7 +1424,9 @@ def write_artifact_manifest(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, 
         "schema_version": "reconstruction-p28-artifact-manifest/v1",
         "artifacts": [
             {
-                "path": str(path.relative_to(PROJECT_ROOT)),
+                "path": str(path.relative_to(PROJECT_ROOT))
+                if path.is_relative_to(PROJECT_ROOT)
+                else str(path),
                 "sha256": _sha256(path),
                 "bytes": path.stat().st_size,
             }
