@@ -8,4 +8,4 @@ steps:
   - id: validate_outputs
     ref: code:research_visualization_validate
 verified_steps_hash: 15cf4f2df18730fcba06e0bccf5797529eff848ee7781a3d4d2ed23ce18a9508
-verified_at_commit: 16d523d4936c66d6f594e6b58e8fbc018494d307
+verified_at_commit: 0b8866d9910bb19cc03e26b64e94f36ab66f537f
