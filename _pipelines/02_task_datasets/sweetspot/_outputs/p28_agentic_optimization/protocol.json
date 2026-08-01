@@ -8,7 +8,7 @@
     ]
   },
   "audit": {
-    "label_mapping_id": "p5/sweetspot_p5_label_mapping.v1.json",
+    "label_mapping_id": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
     "label_version": "future-30-calendar-row-mean-oil-v1",
     "mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
     "p4_status": "feasible",
@@ -41,64 +41,64 @@
   },
   "inputs": [
     {
-      "scientific_role": "p5 label mapping",
-      "scientific_source_id": "p5 label mapping",
+      "scientific_role": "sweetspot_p5_label_mapping.v1.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
       "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
       "shape_or_row_count": 9056,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "scientific_role": "p5 split manifest",
-      "scientific_source_id": "p5 split manifest",
+      "scientific_role": "split_manifest.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
       "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
       "shape_or_row_count": 280746,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "scientific_role": "p5 stage-3 T3 leaderboard",
-      "scientific_source_id": "p5 stage-3 T3 leaderboard",
+      "scientific_role": "T3.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
       "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
       "shape_or_row_count": 3512,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "scientific_role": "p5 stage-3 summary",
-      "scientific_source_id": "p5 stage-3 summary",
+      "scientific_role": "p5_stage3_summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json",
       "sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
       "shape_or_row_count": 20090,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "scientific_role": "p5 stage-4 confirmation summary",
-      "scientific_source_id": "p5 stage-4 confirmation summary",
+      "scientific_role": "p5_stage4_summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
       "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
       "shape_or_row_count": 7591,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "scientific_role": "p7 Chronos summary",
-      "scientific_source_id": "p7 Chronos summary",
+      "scientific_role": "summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
       "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
       "shape_or_row_count": 18587,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "scientific_role": "p8 calendar Chronos summary",
-      "scientific_source_id": "p8 calendar Chronos summary",
+      "scientific_role": "summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
       "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
       "shape_or_row_count": 26803,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "scientific_role": "P17 acceptance evidence",
-      "scientific_source_id": "P17 acceptance evidence",
+      "scientific_role": "P17_reconstruction_foundation_acceptance_evidence.md",
+      "scientific_source_id": "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md",
       "sha256": "b7e78d08f231165a873a6d5d4ceeabaf060b0237ebb199ee666b9c6a5bddf6b4",
       "shape_or_row_count": 3806,
       "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",

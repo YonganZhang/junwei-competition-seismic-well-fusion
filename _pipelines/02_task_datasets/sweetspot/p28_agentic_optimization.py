@@ -48,6 +48,14 @@ STAGE4_SUMMARY_PATH = REFERENCE_SWEETSPOT / "p5/_outputs/stage4_confirmation/p5_
 P7_SUMMARY_PATH = REFERENCE_SWEETSPOT / "p7/_outputs/t3_chronos2_cv/summary.json"
 P8_SUMMARY_PATH = REFERENCE_SWEETSPOT / "p8/_outputs/t3_chronos2_calendar_cv/summary.json"
 P17_EVIDENCE_PATH = PROJECT_ROOT / "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md"
+P5_LABEL_MAPPING_ID = "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json"
+P5_T3_SPLIT_MANIFEST_ID = "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json"
+P5_STAGE3_T3_LEADERBOARD_ID = "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json"
+P5_STAGE3_SUMMARY_ID = "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json"
+P5_STAGE4_SUMMARY_ID = "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json"
+P7_SUMMARY_ID = "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json"
+P8_SUMMARY_ID = "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json"
+P17_EVIDENCE_ID = "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md"
 
 
 def _sha256_bytes(data: bytes) -> str:
@@ -120,26 +128,26 @@ class DeepSeekDecision:
 
 def _reference_inputs() -> list[dict[str, Any]]:
     items = [
-        ("p5 label mapping", P5_LABEL_MAPPING_PATH),
-        ("p5 split manifest", P5_T3_SPLIT_MANIFEST_PATH),
-        ("p5 stage-3 T3 leaderboard", STAGE3_T3_PATH),
-        ("p5 stage-3 summary", STAGE3_SUMMARY_PATH),
-        ("p5 stage-4 confirmation summary", STAGE4_SUMMARY_PATH),
-        ("p7 Chronos summary", P7_SUMMARY_PATH),
-        ("p8 calendar Chronos summary", P8_SUMMARY_PATH),
-        ("P17 acceptance evidence", P17_EVIDENCE_PATH),
+        (P5_LABEL_MAPPING_ID, P5_LABEL_MAPPING_PATH),
+        (P5_T3_SPLIT_MANIFEST_ID, P5_T3_SPLIT_MANIFEST_PATH),
+        (P5_STAGE3_T3_LEADERBOARD_ID, STAGE3_T3_PATH),
+        (P5_STAGE3_SUMMARY_ID, STAGE3_SUMMARY_PATH),
+        (P5_STAGE4_SUMMARY_ID, STAGE4_SUMMARY_PATH),
+        (P7_SUMMARY_ID, P7_SUMMARY_PATH),
+        (P8_SUMMARY_ID, P8_SUMMARY_PATH),
+        (P17_EVIDENCE_ID, P17_EVIDENCE_PATH),
     ]
     source_commit = _git_commit(REFERENCE_ROOT)
     return [
         {
-            "scientific_source_id": role,
+            "scientific_source_id": source_id,
             "sha256": _sha256_file(path),
             "shape_or_row_count": path.stat().st_size,
-            "scientific_role": role,
+            "scientific_role": source_id.rsplit("/", 1)[-1],
             "split_scope": "immutable reference",
             "source_commit": source_commit,
         }
-        for role, path in items
+        for source_id, path in items
     ]
 
 
@@ -659,7 +667,7 @@ def _load_task_contract() -> tuple[PilotAudit, PilotTaskSpec, dict[str, Any]]:
         label_version=str(target["label_version"]),
         proxy_semantics=str(target["proxy_semantics"]),
         split_manifest_id=str(target["split_manifest"]["path"]),
-        label_mapping_id="p5/sweetspot_p5_label_mapping.v1.json",
+        label_mapping_id=P5_LABEL_MAPPING_ID,
     )
     task_spec = PilotTaskSpec(
         target_id="T3",

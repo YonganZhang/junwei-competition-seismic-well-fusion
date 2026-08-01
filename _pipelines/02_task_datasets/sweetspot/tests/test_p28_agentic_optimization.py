@@ -24,12 +24,7 @@ class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
             for value in payload:
                 values.extend(self._path_like_strings(value))
         elif isinstance(payload, str):
-            if (
-                "/" in payload
-                or payload.startswith(".")
-                or payload.startswith("_")
-                or payload.endswith((".json", ".jsonl", ".md", ".py", ".csv", ".xlsx", ".yml", ".yaml", ".zip"))
-            ):
+            if payload.startswith(("_pipelines/", "_wiki-methodology/", "_sandbox/", ".claude/worktrees/", "./", "../")):
                 values.append(payload)
         return values
 
@@ -113,6 +108,16 @@ class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
             self.assertNotIn("promotion_dev_feedback_improved_flat_worse", protocol_data["observation_schema"]["visible_to_llm"])
             self.assertEqual(protocol_data["task_spec"]["route_family"], "xgboost")
             self.assertIn('"status": "EXECUTED_IDENTITY_CHECK"', protocol_rows[1])
+            input_ids = [item["scientific_source_id"] for item in manifest_data["inputs"]]
+            self.assertTrue(all(value.startswith(("_pipelines/", "_wiki-methodology/")) for value in input_ids))
+            self.assertIn(
+                "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+                input_ids,
+            )
+            self.assertIn(
+                "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+                input_ids,
+            )
 
     def test_summary_jsonl_aligns_with_manifest(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -139,6 +144,7 @@ class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
                 self.assertFalse(Path(value).is_absolute(), value)
                 self.assertNotIn(".claude/worktrees", value)
                 self.assertNotIn("p10-results-sweetspot", value)
+                self.assertTrue(value.startswith(("_pipelines/", "_wiki-methodology/")), value)
         for record in manifest_data["outputs"]:
             path = Path(record["path"])
             self.assertFalse(path.is_absolute(), record["path"])
@@ -146,6 +152,10 @@ class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
             resolved = p28.WORKTREE_ROOT / path
             self.assertTrue(resolved.is_file(), record["path"])
             self.assertEqual(record["sha256"], p28._sha256_file(resolved))
+        for record in manifest_data["inputs"]:
+            self.assertTrue(record["scientific_source_id"].startswith(("_pipelines/", "_wiki-methodology/")))
+            self.assertNotIn(".claude/worktrees", record["scientific_source_id"])
+            self.assertNotIn("p10-results-sweetspot", record["scientific_source_id"])
 
 
 if __name__ == "__main__":

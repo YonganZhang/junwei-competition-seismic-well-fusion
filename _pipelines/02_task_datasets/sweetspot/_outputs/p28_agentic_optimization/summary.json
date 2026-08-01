@@ -494,12 +494,12 @@
     },
     "confidence": 0.2,
     "promotion_mae": null,
-    "rationale": "All four configs show worse selection feedback; no improvement signal to justify further trials.",
+    "rationale": "All four configs show worse selection feedback; no improvement signal to justify further trials. Stop to conserve budget.",
     "raw": {
       "_model": "deepseek-v4-flash",
       "_provider": "deepseek",
       "confidence": 0.2,
-      "rationale": "All four configs show worse selection feedback; no improvement signal to justify further trials.",
+      "rationale": "All four configs show worse selection feedback; no improvement signal to justify further trials. Stop to conserve budget.",
       "selected_action_id": "A0_static_baseline",
       "selected_route": "xgboost",
       "stop_requested": true
@@ -1004,7 +1004,7 @@
     "T6": "blocked",
     "T7": "blocked"
   },
-  "generation_base_commit": "a0d3a9aee301b3cd8d99f115fcf85882bba55012",
+  "generation_base_commit": "002afed9ce654c96e28e8d65ffb496e1f8d9a2a5",
   "hybrid": "A2L decision executed when available",
   "llm_prompt_contract": {
     "no_labels": true,
@@ -1017,7 +1017,7 @@
     3
   ],
   "protocol_jsonl_sha256": "6fc65978f58bc4439c17858fb77014f49b4e565a1e65df9fd804beb7f5f52e27",
-  "protocol_sha256": "d67738a662a48adf8c20e16325063479278ab29749a7965e23de07775602d5a6",
+  "protocol_sha256": "be6f88487c27d661d57ca7a2cc75d1337f1d36bf1fd1b85455e29e36125fd0e6",
   "reject": "A2L stop, A2D/A3/A4 promotion failure, or data blocks",
   "retain_llm": false,
   "retention": "no retain",
