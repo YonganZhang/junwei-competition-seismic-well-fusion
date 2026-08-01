@@ -43,7 +43,9 @@ def build_prompt_observation(*, mode: str, round_id: int,
                 feedback["relative_rmse_change"] = float(row["feedback"]["relative_rmse_change"])
                 feedback["fold_outcomes"] = dict(row["feedback"].get("fold_outcomes", {}))
                 feedback["uncertainty"] = dict(row["feedback"].get("uncertainty", {}))
-            rows.append({"round": int(row["round"]), "action_id": row["action_id"], "feedback": feedback})
+            rendered = {"round": int(row["round"]), "action_id": row["action_id"], "feedback": feedback}
+            if "selection_fold_ids" in row: rendered["selection_fold_ids"] = list(row["selection_fold_ids"])
+            rows.append(rendered)
         contexts.append({"fold": int(fold), "prior_trials": rows})
     result = {"schema_version": "p29-prompt-observation/v2", "mode": mode,
             "round": int(round_id), "fold_contexts": contexts,
@@ -85,16 +87,20 @@ def run_real_probe(*, data_dir: Path, stage3_root: Path, output_dir: Path) -> di
         purged_prepared, _ = p28.p18._prepare_fold_metrics(folds=tuple(purged_folds), requested_indices=cache_indices, foundation_features=foundation)  # noqa: SLF001
         bank = build_real_action_bank(oof=oof, prepared=purged_prepared, registry=registry); purged_banks[int(held_fold)] = bank
         purge_audits.append({"held_fold": int(held_fold), "forbidden_unique_coordinates": len(forbidden), "removed_train_labels_by_fold": removed, "removed_occurrences": sum(removed.values()), "p19_rows_called": True, "p19_without_coordinates_called": True})
-        base_fold = _fold_metrics(oof.target, bank["A0"], oof.fold_ids)["per_fold"][held_fold]
+        selection_folds = [int(f) for f in p28.base.FOLD_IDS if int(f) != int(held_fold)]
+        base_rows = {r["fold"]: r for r in _fold_metrics(oof.target, bank["A0"], oof.fold_ids)["per_fold"]}
         for action in registry:
-            row = _fold_metrics(oof.target, bank[action["action_id"]], oof.fold_ids)["per_fold"][held_fold]
-            delta = float((row["rmse"] - base_fold["rmse"]) / base_fold["rmse"])
-            histories[int(held_fold)].append({"round": 1, "action_id": action["action_id"], "feedback": {"classification": "improved" if delta < -p28.FLAT_RELATIVE_TOLERANCE else "worse" if delta > p28.FLAT_RELATIVE_TOLERANCE else "flat", "relative_rmse_change": delta, "fold_outcomes": {"win": int(delta < 0), "loss": int(delta > 0), "tie": int(delta == 0)}, "uncertainty": {"stderr": float(abs(delta) / np.sqrt(max(row["n"], 1)))}}})
+            rows = {r["fold"]: r for r in _fold_metrics(oof.target, bank[action["action_id"]], oof.fold_ids)["per_fold"]}
+            deltas = np.asarray([(rows[f]["rmse"] - base_rows[f]["rmse"]) / base_rows[f]["rmse"] for f in selection_folds], float)
+            delta = float(np.mean(deltas)); se = float(np.std(deltas, ddof=1) / np.sqrt(len(deltas)))
+            histories[int(held_fold)].append({"round": 1, "action_id": action["action_id"], "selection_fold_ids": selection_folds, "feedback": {"classification": "improved" if delta < -p28.FLAT_RELATIVE_TOLERANCE else "worse" if delta > p28.FLAT_RELATIVE_TOLERANCE else "flat", "relative_rmse_change": delta, "fold_outcomes": {"win": int(np.sum(deltas < 0)), "loss": int(np.sum(deltas > 0)), "tie": int(np.sum(deltas == 0))}, "uncertainty": {"stderr": se}}})
     chosen_id = "vertical_weight_8.0"; saved = json.loads(json.dumps(configs[chosen_id])); chosen_params = saved["parameters"]
     chosen_spec = {"action_id": chosen_id, "changed_factor": "vertical_weight", "value": chosen_params["vertical_weight"], "parameters": chosen_params}
     replay_bank = build_real_action_bank(oof=oof, prepared=prepared, registry=(chosen_spec,)); replay = replay_bank[chosen_id]; fold = int(p28.base.FOLD_IDS[0]); mask = oof.fold_ids == fold; expected = full_bank[chosen_id][mask]; np.testing.assert_array_equal(replay[mask], expected)
     observations = {mode: build_prompt_observation(mode=mode, round_id=2, histories=histories) for mode in ("categorical", "safe_quantitative")}
-    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "metrics": metrics, "purge_audits": purge_audits, "replay": {"fold": fold, "chosen_action_id": chosen_id, "config": saved, "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "prompt_observations": observations, "held_fold_purge_reused": {"entrypoint": "p19._rows + p19._without_coordinates", "all_held_folds": True}, "frozen_holdout_opened": False}
+    for held, rows in histories.items():
+        if any(int(held) in row["selection_fold_ids"] for row in rows): raise RuntimeError("held promotion fold leaked into prompt")
+    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "metrics": metrics, "purge_audits": purge_audits, "replay": {"fold": fold, "chosen_action_id": chosen_id, "config": saved, "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "outer_fold_observations": {str(f): histories[f] for f in histories}, "prompt_observations": observations, "held_fold_purge_reused": {"entrypoint": "p19._rows + p19._without_coordinates", "all_held_folds": True}, "frozen_holdout_opened": False}
     output_dir.mkdir(parents=True, exist_ok=True); (output_dir / "summary.json").write_text(json.dumps(result, indent=2, sort_keys=True, default=float) + "\n"); return result
 
 

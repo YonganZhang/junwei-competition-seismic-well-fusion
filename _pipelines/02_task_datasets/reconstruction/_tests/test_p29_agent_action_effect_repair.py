@@ -33,6 +33,12 @@ class P29Test(unittest.TestCase):
         a0 = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 4., "seismic_weights":[0.,.1,.2], "foundation_weight":.1}), coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
         changed = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8., "seismic_weights":[0.,.1,.2], "foundation_weight":.1}), coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
         self.assertFalse(np.array_equal(a0, changed))
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "config.json"; path.write_text(json.dumps(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8., "seismic_weights":[0.,.1,.2], "foundation_weight":.1})))
+            loaded = json.loads(path.read_text())
+            replay = p29.replay_predictor(loaded, coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
+            mutated = json.loads(path.read_text()); mutated["parameters"]["vertical_weight"] = 2.
+            self.assertFalse(np.array_equal(replay, p29.replay_predictor(mutated, coordinates=c, values=v, query=q, seismic=seismic, latent=latent)))
 
     def test_probe_writes_owned_output(self):
         with tempfile.TemporaryDirectory() as td:
@@ -45,6 +51,16 @@ class P29Test(unittest.TestCase):
         with self.assertRaises(ValueError):
             p29.build_prompt_observation(mode="safe_quantitative", round_id=2, histories=histories)
         self.assertIn("p19", p29.p19._without_coordinates.__module__)
+
+    def test_real_summary_purge_calls_and_no_held_fold_prompt_leak(self):
+        path = TRACK / "_outputs" / "p29_agent_action_effect_repair" / "summary.json"
+        if not path.is_file(): self.skipTest("real probe not run")
+        summary = json.loads(path.read_text())
+        self.assertEqual(len(summary["purge_audits"]), 5)
+        self.assertTrue(all(a["p19_rows_called"] and a["p19_without_coordinates_called"] for a in summary["purge_audits"]))
+        for held, rows in summary["outer_fold_observations"].items():
+            self.assertTrue(rows)
+            self.assertTrue(all(int(held) not in row["selection_fold_ids"] for row in rows))
 
 
 if __name__ == "__main__":
