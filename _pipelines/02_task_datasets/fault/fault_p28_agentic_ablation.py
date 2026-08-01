@@ -823,6 +823,7 @@ def _validate_a2l_response(scenario: Scenario, payload: dict[str, Any]) -> dict[
 
 
 def run_ablation(output_root: Path = OUTPUT_ROOT) -> dict[str, Any]:
+    output_root = output_root.resolve()
     output_root.mkdir(parents=True, exist_ok=True)
     source_hashes = build_source_hashes()
     scenarios = build_scenarios(source_hashes)

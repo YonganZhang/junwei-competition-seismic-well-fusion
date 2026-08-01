@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 import os
 import sys
-import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -18,6 +17,7 @@ from fault_p28_agentic_ablation import (  # noqa: E402
     advice_only_policy,
     build_scenarios,
     conservative_policy,
+    PROJECT_ROOT,
     git_head,
     random_policy,
     run_ablation,
@@ -184,56 +184,50 @@ class FaultP28AgenticAblationTests(unittest.TestCase):
         self.assertEqual(reject_policy, "A2L_llm_agent_execute")
 
     def test_run_ablation_writes_protocol_results_summary_evidence_and_manifest(self) -> None:
-        with tempfile.TemporaryDirectory() as tmpdir:
-            with patch.dict(
-                os.environ,
-                {"DEEPSEEK_KEY": "present"},
-                clear=True,
-            ), patch(
-                "fault_p28_agentic_ablation._deepseek_chat_completion",
-                side_effect=[
-                    {
-                        "action_id": "STOP_DATA_GATE",
-                        "necessary_evidence": [
-                            "contiguous_3d_development_blocks_missing",
-                            "coverage_audited_verified_background_missing",
-                            "explicit_unknown_mask_provenance_missing",
-                            "group_isolated_development_split_missing",
-                        ],
-                        "stop_requested": True,
-                        "confidence": 0.99,
-                        "rationale": "stop",
-                    },
-                    {
-                        "action_id": "REQUEST_EVIDENCE",
-                        "necessary_evidence": [
-                            "hash:_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
-                            "hash:_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/build_summary.json",
-                        ],
-                        "stop_requested": True,
-                        "confidence": 0.91,
-                        "rationale": "request",
-                    },
-                    {
-                        "action_id": "VERIFY_HASHES",
-                        "necessary_evidence": [
-                            "verify:_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
-                        ],
-                        "stop_requested": True,
-                        "confidence": 0.93,
-                        "rationale": "verify",
-                    },
-                    {
-                        "action_id": "PROCEED",
-                        "necessary_evidence": [],
-                        "stop_requested": False,
-                        "confidence": 0.95,
-                        "rationale": "proceed",
-                    },
-                ],
-            ):
-                result = run_ablation(Path(tmpdir))
-            output_root = Path(tmpdir)
+        output_root = Path("_outputs") / "p28_agentic_ablation_test"
+        if output_root.exists():
+            for child in output_root.iterdir():
+                if child.is_file():
+                    child.unlink()
+            output_root.rmdir()
+        with patch.dict(
+            os.environ,
+            {"DEEPSEEK_KEY": "present"},
+            clear=True,
+        ), patch(
+            "fault_p28_agentic_ablation._deepseek_chat_completion",
+            side_effect=[
+                {
+                    "action_id": "STOP_DATA_GATE",
+                    "necessary_evidence": [],
+                    "stop_requested": True,
+                    "confidence": 0.99,
+                    "rationale": "stop",
+                },
+                {
+                    "action_id": "REQUEST_EVIDENCE",
+                    "necessary_evidence": [],
+                    "stop_requested": True,
+                    "confidence": 0.91,
+                    "rationale": "request",
+                },
+                {
+                    "action_id": "VERIFY_HASHES",
+                    "necessary_evidence": [],
+                    "stop_requested": True,
+                    "confidence": 0.93,
+                    "rationale": "verify",
+                },
+                {
+                    "action_id": "PROCEED",
+                    "necessary_evidence": [],
+                    "stop_requested": False,
+                    "confidence": 0.95,
+                    "rationale": "proceed",
+                },
+            ],
+        ):
+            result = run_ablation(output_root)
             protocol_path = output_root / "protocol.jsonl"
             results_path = output_root / "results.jsonl"
             summary_path = output_root / "summary.json"
@@ -258,9 +252,16 @@ class FaultP28AgenticAblationTests(unittest.TestCase):
                 ["observed_blocked_current", "packet_hash_missing"],
             )
             self.assertIn("Retain:", evidence_path.read_text(encoding="utf-8"))
-            for entry in manifest["outputs"]:
-                self.assertEqual(entry["sha256"], sha256_file(Path(entry["path"])))
+            for entry in manifest["inputs"] + manifest["outputs"]:
+                resolved = PROJECT_ROOT / entry["path"]
+                self.assertTrue(resolved.is_file(), resolved)
+                self.assertEqual(entry["sha256"], sha256_file(resolved))
             self.assertEqual(git_head(), manifest["source_commit"])
+        if output_root.exists():
+            for child in output_root.iterdir():
+                if child.is_file():
+                    child.unlink()
+            output_root.rmdir()
 
     def test_git_head_helper_returns_current_commit(self) -> None:
         self.assertRegex(git_head(), r"^[0-9a-f]{40}$|^unknown$")
