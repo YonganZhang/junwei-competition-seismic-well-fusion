@@ -494,12 +494,12 @@
     },
     "confidence": 0.2,
     "promotion_mae": null,
-    "rationale": "All four configs show worse selection feedback; no improvement to justify further trials. Stop to conserve budget.",
+    "rationale": "All four configs show worse selection feedback; no config stands out. Stop to avoid further budget waste.",
     "raw": {
       "_model": "deepseek-v4-flash",
       "_provider": "deepseek",
       "confidence": 0.2,
-      "rationale": "All four configs show worse selection feedback; no improvement to justify further trials. Stop to conserve budget.",
+      "rationale": "All four configs show worse selection feedback; no config stands out. Stop to avoid further budget waste.",
       "selected_action_id": "A0_static_baseline",
       "selected_route": "xgboost",
       "stop_requested": true
@@ -1018,7 +1018,7 @@
   "protocol_jsonl_sha256": "6fc65978f58bc4439c17858fb77014f49b4e565a1e65df9fd804beb7f5f52e27",
   "protocol_sha256": "3db359eaab0b0df9371e167c6eb95157ef34ec4959fa3365903ee5bdbbd1ba6c",
   "reference_commits": {
-    "current_worktree": "00dd5f9d136fdcfa6db1ba0ee4a0b3aa9d3404db",
+    "current_worktree": "92a4aeb063c8442ed39527f5bf93b0554d29059f",
     "p10_results_sweetspot": "1c81a030ddbd2ec16a7175423448012a17147236"
   },
   "reject": "A2L stop, A2D/A3/A4 promotion failure, or data blocks",

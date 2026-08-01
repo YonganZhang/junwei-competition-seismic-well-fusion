@@ -103,7 +103,7 @@
       "height_px": null,
       "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/summary.json",
       "role": "summary",
-      "sha256": "41c91da484571873f008f89a45ccdc0986b8c5ce80aac69c0a630d41aed74fff",
+      "sha256": "09178648ff0da7e33064e9a772ffa92cd8f9ce49f546972d293c35966e864fc6",
       "vector_companions": [],
       "width_px": null
     },
@@ -122,6 +122,6 @@
     "sha256": "185a8fb24450169dd4745f298d79a1dfb5e6450bcbaf5bf49e2b01a8ddea2043"
   },
   "schema_version": "sweetspot-p28-agentic-optimization/v1",
-  "source_commit": "00dd5f9d136fdcfa6db1ba0ee4a0b3aa9d3404db",
+  "source_commit": "92a4aeb063c8442ed39527f5bf93b0554d29059f",
   "track_id": "sweetspot"
 }
