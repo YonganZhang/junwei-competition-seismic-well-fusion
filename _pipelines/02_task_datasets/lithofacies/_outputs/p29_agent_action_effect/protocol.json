@@ -1,0 +1,162 @@
+{
+  "a0": {
+    "config": {
+      "action_id": "A0_DEPTH3_ETA01_ROUNDS60",
+      "colsample_bytree": 1.0,
+      "description": "frozen depth-3 eta-0.1 60-round full-feature XGBoost",
+      "eta": 0.1,
+      "features": "all_1155",
+      "max_depth": 3,
+      "model_seed_mode": "single_deterministic_seed_no_pseudo_replicates",
+      "model_seeds": [
+        1867973658
+      ],
+      "normalize_weight": false,
+      "prior_shrinkage": 0.0,
+      "rounds": 60,
+      "subsample": 1.0,
+      "weight_exponent": 0.5
+    },
+    "config_sha256": "ad2cb468496446fc3b1d3c8dc01bf6edbf5c767bd44b35ef6e6e9f1a6088aa4d",
+    "expected_mean": 0.2133487970485067
+  },
+  "action_table_sha256": "037c4a2ab3a3a277f88c8903fa81002eee282496c310138906222a1a641e34a9",
+  "deepseek": {
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "missing_or_invalid_provider": "fail_closed",
+    "model": "deepseek-chat",
+    "strict_json": true
+  },
+  "effect_unit_primary_delta": 0.005,
+  "fixed_class_schema": [
+    "F-MARSH",
+    "F-MOUTHBAR",
+    "F-OFFSHORE",
+    "F-LOWER SHOREFACE",
+    "F-UPPER SHOREFACE",
+    "F-TIDAL BAR",
+    "F-TIDAL CHANNEL",
+    "F-TIDAL FLAT MUDDY",
+    "F-TIDAL FLAT SANDY"
+  ],
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "model_repeat_mode": "single_deterministic_seed_no_pseudo_replicates",
+  "model_seeds": [
+    1867973658
+  ],
+  "nested_batch_sha256": "eb1f7692352a2d8eb96a4806f24ab8b82977798e077c272d746348744bc44e86",
+  "observation": {
+    "allowed": [
+      "bounded_normalized_inner_delta",
+      "bounded_inner_fold_uncertainty",
+      "anonymous_per_class_train_support_share",
+      "inner_fold_win_flat_loss",
+      "remaining_budget",
+      "advance_threshold_in_normalized_units"
+    ],
+    "denied": [
+      "raw",
+      "metric",
+      "score",
+      "label",
+      "residual",
+      "path",
+      "family",
+      "sample",
+      "promotion",
+      "validation"
+    ],
+    "outer_result_exposed": false,
+    "schema": "p29_safe_normalized_v1"
+  },
+  "outer_transfer_diagnostic": {
+    "computed_after_all_policy_calls": true,
+    "used_for_legal_promotion_selection": false,
+    "used_for_policy_feedback": false
+  },
+  "pilot_action_count": 4,
+  "pilot_actions": [
+    {
+      "action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+      "colsample_bytree": 1.0,
+      "description": "depth 4, eta 0.075, 80 rounds; all 1155 features",
+      "eta": 0.075,
+      "features": "all_1155",
+      "max_depth": 4,
+      "model_seed_mode": "single_deterministic_seed_no_pseudo_replicates",
+      "model_seeds": [
+        1867973658
+      ],
+      "normalize_weight": false,
+      "prior_shrinkage": 0.0,
+      "rounds": 80,
+      "subsample": 1.0,
+      "weight_exponent": 0.5
+    },
+    {
+      "action_id": "ACT_WEIGHT_EXP075_MEAN1",
+      "colsample_bytree": 1.0,
+      "description": "class-weight exponent 0.75 normalized to supported-class mean one",
+      "eta": 0.1,
+      "features": "all_1155",
+      "max_depth": 3,
+      "model_seed_mode": "single_deterministic_seed_no_pseudo_replicates",
+      "model_seeds": [
+        1867973658
+      ],
+      "normalize_weight": true,
+      "prior_shrinkage": 0.0,
+      "rounds": 60,
+      "subsample": 1.0,
+      "weight_exponent": 0.75
+    },
+    {
+      "action_id": "ACT_WELL_MASK_ONLY_858",
+      "colsample_bytree": 1.0,
+      "description": "use only 13 logs plus 13 missing masks, flattened to 858 features",
+      "eta": 0.1,
+      "features": "well_mask_858",
+      "max_depth": 3,
+      "model_seed_mode": "single_deterministic_seed_no_pseudo_replicates",
+      "model_seeds": [
+        1867973658
+      ],
+      "normalize_weight": false,
+      "prior_shrinkage": 0.0,
+      "rounds": 60,
+      "subsample": 1.0,
+      "weight_exponent": 0.5
+    },
+    {
+      "action_id": "ACT_PRIOR_SHRINK010",
+      "colsample_bytree": 1.0,
+      "description": "apply fold-train prior shrinkage 0.10 to frozen A0 logits",
+      "eta": 0.1,
+      "features": "all_1155",
+      "max_depth": 3,
+      "model_seed_mode": "single_deterministic_seed_no_pseudo_replicates",
+      "model_seeds": [
+        1867973658
+      ],
+      "normalize_weight": false,
+      "prior_shrinkage": 0.1,
+      "rounds": 60,
+      "subsample": 1.0,
+      "weight_exponent": 0.5
+    }
+  ],
+  "primary_metric": "fixed_schema_macro_f1",
+  "promotion_rule": "mean_delta_ge_0.005_and_at_least_2_of_3_inner_folds_improved",
+  "prompt_information_ablation": {
+    "arm": "A2L_CATEGORICAL_ABLATION",
+    "difference": "remove_normalized_effect_support_and_uncertainty",
+    "same_actions": true,
+    "same_model_seed": true,
+    "same_trial_budget": true
+  },
+  "schema_version": "lithofacies-p29-protocol/v1",
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "trial_budget_per_outer_rollout": 3,
+  "uncertainty_unit": "three_disjoint_inner_logo_folds"
+}

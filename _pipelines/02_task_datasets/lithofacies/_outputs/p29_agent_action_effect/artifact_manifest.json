@@ -1,0 +1,42 @@
+{
+  "artifacts": {
+    "action_effects.json": {
+      "bytes": 51473,
+      "sha256": "49de0075939d5a2fda357544b0c655805756d7240b5f5857ea955a2a9102575b"
+    },
+    "evidence.md": {
+      "bytes": 2806,
+      "sha256": "d3c8854ce6449fe44249821f29664693119da7211e3fe15016f569554934ae2b"
+    },
+    "protocol.json": {
+      "bytes": 4858,
+      "sha256": "cf2205b938d951dea463a2544b0d2db85de6452a169e854061a365c6b5c6f51f"
+    },
+    "results.jsonl": {
+      "bytes": 350094,
+      "sha256": "d00dabf3d0a49cd66b3538710f8fccef8fd179dac74aacb6721d46cee703a6b7"
+    },
+    "root_cause.md": {
+      "bytes": 1826,
+      "sha256": "cb4446b991eff8a754628c8303940af4f79698a378eacda8fa8904f5b79858e3"
+    },
+    "summary.json": {
+      "bytes": 740938,
+      "sha256": "b69a803af06bec0fe5ca1630ebcbae614bca06b69a65086c9acf10f758627e8a"
+    }
+  },
+  "credential_persisted": false,
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "primary_metric": "fixed_schema_macro_f1",
+  "schema_version": "lithofacies-p29-artifact-manifest/v1",
+  "sources": {
+    "lithofacies_p28_agentic_optimization.py": "9e05ca08a7fbe21a2e02922999a7866e2524f0b535b68e0db188dc94ec5abea9",
+    "lithofacies_p29_agent_action_effect.py": "7e7665a7d83b4fa80a9336a9af118fea3c6fea89859477f03ddf9e9eb09a9926",
+    "nested_development.npz": "eb1f7692352a2d8eb96a4806f24ab8b82977798e077c272d746348744bc44e86",
+    "p28_summary.json": "21dbfc7ea61782f40af4f4b12fc16a292f08f656ec58406e85d4e959797068bc",
+    "tests/test_p29_agent_action_effect.py": "072191489ed33a6024163fc8fd373990c1314d1d177aece94901b38090c64fa1"
+  },
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "verdict": "REJECT_AGENT"
+}
