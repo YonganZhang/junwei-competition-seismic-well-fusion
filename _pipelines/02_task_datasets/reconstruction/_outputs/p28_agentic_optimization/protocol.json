@@ -1,0 +1,244 @@
+{
+  "a0_parameters": {
+    "blend_weight": 0.75,
+    "distance_power": 1.5,
+    "foundation_weight": 0.1,
+    "kernel": "inverse_distance",
+    "neighbours": 64,
+    "pca_components": 16,
+    "seismic_weights": [
+      0.0,
+      0.1,
+      0.2
+    ],
+    "vertical_weight": 4.0
+  },
+  "action_registry": [
+    {
+      "action_id": "kernel_matern32",
+      "changed_factor": "kernel",
+      "description": "Matérn-3/2 weights",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "matern32",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": "matern32"
+    },
+    {
+      "action_id": "kernel_gaussian",
+      "changed_factor": "kernel",
+      "description": "Gaussian weights",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "gaussian",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": "gaussian"
+    },
+    {
+      "action_id": "kernel_rational_quadratic",
+      "changed_factor": "kernel",
+      "description": "rational-quadratic weights with alpha=1",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "rational_quadratic",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": "rational_quadratic"
+    },
+    {
+      "action_id": "neighbours_48",
+      "changed_factor": "neighbours",
+      "description": "48 nearest neighbours",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 48,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 48
+    },
+    {
+      "action_id": "neighbours_80",
+      "changed_factor": "neighbours",
+      "description": "80 nearest neighbours",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 80,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 80
+    },
+    {
+      "action_id": "distance_power_1.25",
+      "changed_factor": "distance_power",
+      "description": "inverse-distance power 1.25",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.25,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 1.25
+    },
+    {
+      "action_id": "distance_power_1.75",
+      "changed_factor": "distance_power",
+      "description": "inverse-distance power 1.75",
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.75,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 1.75
+    },
+    {
+      "action_id": "blend_0.70",
+      "changed_factor": "blend_weight",
+      "description": "kernel blend weight 0.70",
+      "parameters": {
+        "blend_weight": 0.7,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 0.7
+    },
+    {
+      "action_id": "blend_0.80",
+      "changed_factor": "blend_weight",
+      "description": "kernel blend weight 0.80",
+      "parameters": {
+        "blend_weight": 0.8,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "value": 0.8
+    }
+  ],
+  "action_registry_sha256": "978f970904e7347604558cc153cdba6b082412036ba1f3d10897a4ee133a8f71",
+  "deterministic_sequence": [
+    "kernel_matern32",
+    "neighbours_48",
+    "distance_power_1.25",
+    "blend_0.70"
+  ],
+  "feedback": {
+    "flat_relative_tolerance": 0.0005,
+    "only_purged_fold_train_aggregates_visible_to_a2l": true,
+    "vocabulary": [
+      "improved",
+      "flat",
+      "worse"
+    ]
+  },
+  "firewall": {
+    "frozen_holdout_opened": false,
+    "p19_coordinate_purge_reused": true,
+    "promotion_not_fed_back_to_strategies": true,
+    "random_init_foundation_in_main_registry": false,
+    "test_h5_opened": false
+  },
+  "independent_spatial_units": 5,
+  "outer_spatial_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "primary_metric": "pooled development nested-OOF RMSE",
+  "promotion_gate": {
+    "a2l_auc_must_strictly_exceed_a2d_and_a3": true,
+    "maximum_any_fold_relative_regression": 0.01,
+    "minimum_a2l_relative_gain": 0.005
+  },
+  "root_seed": 2693,
+  "schema_version": "reconstruction-p28-protocol/v1",
+  "search_auc": "mean cumulative-best relative fold-train RMSE gain over 5x4 cells",
+  "strategies": {
+    "A2D": "deterministic registered search",
+    "A2L": "real DeepSeek constrained search",
+    "A3": "PCG64 random search; not random-init foundation"
+  },
+  "trials_per_strategy_per_held_fold": 4
+}

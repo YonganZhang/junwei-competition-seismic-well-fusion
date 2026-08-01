@@ -1,0 +1,53 @@
+{
+  "decision": {
+    "decision": "reject",
+    "reason_code": "pooled_rmse_worse_and_losses_exceed_wins",
+    "route_id": "rgt_ked",
+    "schema_version": "p28-route-gate/v1",
+    "stop": true
+  },
+  "observation": {
+    "decision_rule": "reject a route when pooled RMSE is worse and losses exceed wins; return the exact response schema",
+    "response_schema": {
+      "decision": "accept|reject",
+      "reason_code": "short_snake_case",
+      "route_id": "rgt_ked",
+      "schema_version": "p28-route-gate/v1",
+      "stop": "boolean"
+    },
+    "route": {
+      "baseline_rmse": 0.028449728170183285,
+      "candidate_rmse": 0.028632416369011617,
+      "fold_outcomes": {
+        "loss": 3,
+        "tie": 0,
+        "win": 2
+      },
+      "relative_rmse_change_candidate_minus_baseline": 0.006421439169313357,
+      "route_id": "rgt_ked"
+    },
+    "schema_version": "p28-route-gate-observation/v1"
+  },
+  "passed": true,
+  "provider_audit": {
+    "credential_persisted": false,
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "provider": "deepseek",
+    "request_sha256": "e9a5a480fe74322c6d88b7432c3f09562c025e14c88c9c10a3c55be39831c5c7",
+    "response_id": "b6e2472f-d217-4d91-afb6-9d0843a0e5c2",
+    "response_sha256": "1db4a21281086492e2fab41b5896f1a5a6ca1541ebc3e0d0446f6d6a10d9a8d4",
+    "usage": {
+      "completion_tokens": 56,
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 122,
+      "prompt_tokens": 250,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "total_tokens": 306
+    }
+  },
+  "source_summary_sha256": "b3ab1d6090791373a65a98ff937acd4d78faef7e802c85afb916cf90fa024107"
+}
