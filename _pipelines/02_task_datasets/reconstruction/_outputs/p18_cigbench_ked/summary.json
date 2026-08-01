@@ -1,0 +1,639 @@
+{
+  "data": {
+    "sample_audit": {
+      "active_coordinate_rows": 134222,
+      "coordinate_match_tolerance": 1e-08,
+      "folds": [
+        {
+          "fold_id": 0,
+          "source_hashes": {
+            "point_train_npz": "f7baf0a42dfe734fe7110e9421d412b8fcde5445a0beffa188802472a4c2ae37",
+            "point_validation_npz": "bfb429990a737c1dcc35a84a6ae40508a3ef1fc8002f528b3744eab85e6c467c",
+            "preprocess_stats": "7ed8e3dc64331e511dd25d8cfb4538c0133ef22941c90d4c3a73cc6a56b04ad6"
+          },
+          "train_indices_sha256": "0c8061f87414845531c17039d027fe8e6d257765b7865d88547459c9c909d949",
+          "validation_indices_sha256": "47e3ee4c7f5e6c0c4eeb0a3542cfb5df6101282233e664fbfc5bde9cb2b79a5e"
+        },
+        {
+          "fold_id": 1,
+          "source_hashes": {
+            "point_train_npz": "ce725e1e9f97c97ed201d4c0b1bac6dff5e333ff36edc5a1c48968d3a4ef5d8a",
+            "point_validation_npz": "facd02b8fc6fb987a144226f93ce79ec577d2cb7b0a8c02be7a26f77c340c0a1",
+            "preprocess_stats": "1ef6e4920fc7155d46f005f4c1e9cfb084fe374b21cb6905ab781dde0835e772"
+          },
+          "train_indices_sha256": "dedece511a4e6a9f7a297be74a1507f0506dc7c87d8e02196cf543c3a6326eba",
+          "validation_indices_sha256": "765ca27700aa91be7b7a2df35870a98cc88617e07de6ebf3274c129c94361e56"
+        },
+        {
+          "fold_id": 2,
+          "source_hashes": {
+            "point_train_npz": "e14448da99b7108624585179553d422754575d3469118a1d195ccc602a2d4ceb",
+            "point_validation_npz": "ce9d166ebc03ca371aea5d0d3e1e38e669a5c2aec627ebf0016f1f4b32f66229",
+            "preprocess_stats": "30f8c6c5d594dcb6640b1beabf3213c50dc1f2d6a04a6705a7b9eb382008d620"
+          },
+          "train_indices_sha256": "36792e7114a63a06a8dd0e21cca5e85d6eae51bee29807f1ad68313cc90e21a1",
+          "validation_indices_sha256": "95ad41f26f144743281f7dd7c52c0ab73cbefd0de9f2912c225a0707d949e726"
+        },
+        {
+          "fold_id": 3,
+          "source_hashes": {
+            "point_train_npz": "77d5eba47ab0b87948372bd7a27fb005c9ea7fdc01a180aa74bc17e9fb5ccb7b",
+            "point_validation_npz": "cfa3e8575d1c30bd1b5b76bad61011c93ef96451f069a492e58174e1c86160bb",
+            "preprocess_stats": "f72f766dfb16652e60ca605c51c4f82aeb4c9b9da998707ca636889cc2d3a1d8"
+          },
+          "train_indices_sha256": "a0ac593fa2cf72aaf5590b600f4ffb5aac5b573a80e4506846bfa2e948018d1e",
+          "validation_indices_sha256": "ceedcefde798e34a96a0512301f308c3fde98912f35011874cfb27604a8ccda9"
+        },
+        {
+          "fold_id": 4,
+          "source_hashes": {
+            "point_train_npz": "e6b2f88100405455018e5faf948d8d50a24984d9cdb6b59754e5c4cdf5d271d6",
+            "point_validation_npz": "03561799010609a0143cbc18de16e6f78eae70b01de8bab3cb9e39e210b23d57",
+            "preprocess_stats": "0b6dd3cc7e64409ae000c1284bd97137d05429b4d91e767096438e553d6ff5fb"
+          },
+          "train_indices_sha256": "559cb936992f0420fc1c7ef5a1bdd0406d70a8b8f3bf24598de29949c0de8d98",
+          "validation_indices_sha256": "04f9027ccc136273612bb8c33a473bbb796b6b0877018da694509767faefeb5b"
+        }
+      ],
+      "hdf5_datasets_read": [
+        "seismic_patch[3:6]",
+        "seismic_patch[8]"
+      ],
+      "hdf5_files_opened": [
+        "train.h5"
+      ],
+      "label_dataset_read": false,
+      "maximum_coordinate_match_distance": 6.206335383118183e-17,
+      "patch_count": 140,
+      "patch_keys_sha256": "8c6a7a989ad7ebee7499df855202f0a5128f32778c56ee491c29822d80a45518",
+      "train_labels_per_fold": 512,
+      "validation_rows_per_fold": 2048
+    },
+    "source_oof_records": [
+      {
+        "development_only": true,
+        "fold_hash": "400876beea22e96c5df30828b088fbffbfd6f8cba307349011597fc2a76ac101",
+        "fold_id": 0,
+        "oof_rows": 2048,
+        "oof_sha256": "13f3f6d7bfcde8c64777a6036d263a8558c8c0d413de1c6401f91b23c55097d5",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "df371a0d24a79301a91a2c70509ee95e037f748129c8d0aa0ee9cf313e69a902",
+        "fold_id": 1,
+        "oof_rows": 2048,
+        "oof_sha256": "57323bbc75262845a7ea5ab4ce46f54b32397ea253dd84b576492523f7c0d4db",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "e673775bdd92707713e1da2ba8d9e0c615d870f524fed648bcd3ddd05c9fe68e",
+        "fold_id": 2,
+        "oof_rows": 2048,
+        "oof_sha256": "1cbf7c27e490beabd8526d5489588eac75a1abe28231209f0d37c6d11e1c2d4d",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "d784de796e1593e8996b61db24f8b59b5ed1614de2cebaca8d52f5e5edfe1d18",
+        "fold_id": 3,
+        "oof_rows": 2048,
+        "oof_sha256": "fca531ac20d05090f44f793bea0735d59f0a549b9655b5f7e6aaae478bdee09b",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      },
+      {
+        "development_only": true,
+        "fold_hash": "4da20aa36f476df4d4bec85774afe7b36e11535231044fec87ff4a2299e4e796",
+        "fold_id": 4,
+        "oof_rows": 2048,
+        "oof_sha256": "20337b8855026f6d8d7d0e37fc681b1494683f15ac280b29bc2e4facfd84d911",
+        "repeat_id": 0,
+        "repeat_seed": 1867973658
+      }
+    ],
+    "source_oof_rows": 10240,
+    "train_h5_sha256": "2e395d810feb067b24c2295d87e6b33e308cb21aba224c6d2ddd1e6fcd88de73",
+    "volume_audit": {
+      "accessed_patch_keys_sha256": "1048b73b581f4c9e7c398beb973e57577b7fc2adbbf3cf547718517e2f49c22c",
+      "active_voxels": 134222,
+      "assembled_volume_shape_kji": [
+        63,
+        100,
+        72
+      ],
+      "coverage_max": 1,
+      "coverage_min": 1,
+      "hdf5_datasets_read": [
+        "seismic_patch[0:3]",
+        "seismic_patch[8]"
+      ],
+      "hdf5_files_opened": [
+        "train.h5"
+      ],
+      "label_dataset_read": false,
+      "patch_count": 140,
+      "real_patch_shape_kji": [
+        [
+          9,
+          20,
+          18
+        ]
+      ],
+      "seismic_shape": [
+        3,
+        63,
+        100,
+        72
+      ]
+    }
+  },
+  "development_only": true,
+  "experiment": {
+    "baseline": {
+      "pykrige_ok3d_repeat_0": {
+        "bias": -0.0018579539930215106,
+        "mae": 0.021413486381061376,
+        "rmse": 0.028449728170183285,
+        "rows": 10240
+      }
+    },
+    "baseline_recomputation": {
+      "max_abs_prediction_difference_vs_committed_oof": 7.450331213076922e-09,
+      "metrics": {
+        "bias": -0.001857953994872191,
+        "mae": 0.021413486340653674,
+        "rmse": 0.0284497280822391,
+        "rows": 10240
+      },
+      "rmse_difference_vs_committed_oof": -8.794418318580632e-11,
+      "same_model_and_protocol": true,
+      "within_numerical_tolerance_1e_9": false
+    },
+    "decision": {
+      "default_enabled": false,
+      "frozen_holdout_remains_sealed": true,
+      "promotion_rule": "at least 1% pooled RMSE gain and wins in >=4/5 folds",
+      "promotion_rule_passed": false,
+      "state": "NO_ROBUST_DEVELOPMENT_GAIN"
+    },
+    "independent_fold_outcome_counts": {
+      "loss": 3,
+      "tie": 0,
+      "win": 2
+    },
+    "independent_fold_win_rate": 0.4,
+    "ked_metrics": {
+      "bias": -0.0013530568786673878,
+      "mae": 0.021418979020008343,
+      "rmse": 0.028632416369011617,
+      "rows": 10240
+    },
+    "per_fold": [
+      {
+        "baseline_model": {
+          "nlags": 4,
+          "variance_max": 0.0006711462497005957,
+          "variance_min": 0.0006497862743526782,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            3.9020974929372885e-05,
+            0.0006312396158044029
+          ]
+        },
+        "baseline_runtime_seconds": 8.593051433563232,
+        "fold_id": 0,
+        "independent_spatial_unit": true,
+        "ked": {
+          "bias": -0.00757794796331202,
+          "mae": 0.020676728785949595,
+          "rmse": 0.02677597127006616,
+          "rows": 2048
+        },
+        "ked_model": {
+          "drift_terms": [
+            "specified:RGT"
+          ],
+          "kriging": "UniversalKriging3D with specified external drift",
+          "nlags": 4,
+          "train_rgt_max": 0.7034182548522949,
+          "train_rgt_min": 0.20776818692684174,
+          "train_rgt_std": 0.07856111705847225,
+          "variance_max": 0.000695424550924881,
+          "variance_min": 0.000659892826408938,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            3.9020974929372885e-05,
+            0.0006312396158044029
+          ]
+        },
+        "ked_runtime_seconds": 8.402587413787842,
+        "outcome": "win",
+        "pykrige_committed": {
+          "bias": -0.00917288934579119,
+          "mae": 0.021213279978837818,
+          "rmse": 0.027239559051045796,
+          "rows": 2048
+        },
+        "pykrige_recomputed": {
+          "bias": -0.00917288952096107,
+          "mae": 0.02121327996033974,
+          "rmse": 0.027239559050532134,
+          "rows": 2048
+        },
+        "rmse_delta_ked_minus_pykrige": -0.00046358778097963654,
+        "source_hashes": {
+          "point_train_npz_sha256": "f7baf0a42dfe734fe7110e9421d412b8fcde5445a0beffa188802472a4c2ae37",
+          "point_validation_npz_sha256": "bfb429990a737c1dcc35a84a6ae40508a3ef1fc8002f528b3744eab85e6c467c"
+        },
+        "train_labels": 512,
+        "validation_rows": 2048
+      },
+      {
+        "baseline_model": {
+          "nlags": 4,
+          "variance_max": 0.0009088559831976937,
+          "variance_min": 0.0008903581288480432,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            3.2336200787032004e-05,
+            0.0008717924538375192
+          ]
+        },
+        "baseline_runtime_seconds": 8.61221170425415,
+        "fold_id": 1,
+        "independent_spatial_unit": true,
+        "ked": {
+          "bias": -0.000763811780469764,
+          "mae": 0.02294570035119211,
+          "rmse": 0.02872693866798531,
+          "rows": 2048
+        },
+        "ked_model": {
+          "drift_terms": [
+            "specified:RGT"
+          ],
+          "kriging": "UniversalKriging3D with specified external drift",
+          "nlags": 4,
+          "train_rgt_max": 0.662326455116272,
+          "train_rgt_min": 0.06186794862151146,
+          "train_rgt_std": 0.1453119078263235,
+          "variance_max": 0.0009104778990597804,
+          "variance_min": 0.0008907862090936154,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            3.2336200787032004e-05,
+            0.0008717924538375192
+          ]
+        },
+        "ked_runtime_seconds": 10.16610074043274,
+        "outcome": "loss",
+        "pykrige_committed": {
+          "bias": 0.0003663891402538866,
+          "mae": 0.02288246850366704,
+          "rmse": 0.02862760664541619,
+          "rows": 2048
+        },
+        "pykrige_recomputed": {
+          "bias": 0.0003663892626866597,
+          "mae": 0.02288246846323232,
+          "rmse": 0.02862760659966137,
+          "rows": 2048
+        },
+        "rmse_delta_ked_minus_pykrige": 9.933202256912077e-05,
+        "source_hashes": {
+          "point_train_npz_sha256": "ce725e1e9f97c97ed201d4c0b1bac6dff5e333ff36edc5a1c48968d3a4ef5d8a",
+          "point_validation_npz_sha256": "facd02b8fc6fb987a144226f93ce79ec577d2cb7b0a8c02be7a26f77c340c0a1"
+        },
+        "train_labels": 512,
+        "validation_rows": 2048
+      },
+      {
+        "baseline_model": {
+          "nlags": 4,
+          "variance_max": 0.0009636850469435362,
+          "variance_min": 0.0009573433194496612,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            5.443622892517641e-06,
+            0.0009504505830790019
+          ]
+        },
+        "baseline_runtime_seconds": 10.186017751693726,
+        "fold_id": 2,
+        "independent_spatial_unit": true,
+        "ked": {
+          "bias": -0.012029712119325811,
+          "mae": 0.0146381769696554,
+          "rmse": 0.018090217367881016,
+          "rows": 2048
+        },
+        "ked_model": {
+          "drift_terms": [
+            "specified:RGT"
+          ],
+          "kriging": "UniversalKriging3D with specified external drift",
+          "nlags": 4,
+          "train_rgt_max": 0.6544609665870667,
+          "train_rgt_min": 0.06319720298051834,
+          "train_rgt_std": 0.13701903899092152,
+          "variance_max": 0.0009657701228500762,
+          "variance_min": 0.0009575453492738636,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            5.443622892517641e-06,
+            0.0009504505830790019
+          ]
+        },
+        "ked_runtime_seconds": 10.230654001235962,
+        "outcome": "win",
+        "pykrige_committed": {
+          "bias": -0.012881875059974845,
+          "mae": 0.015219973305647727,
+          "rmse": 0.018619291189668125,
+          "rows": 2048
+        },
+        "pykrige_recomputed": {
+          "bias": -0.012881875045201975,
+          "mae": 0.01521997325615455,
+          "rmse": 0.01861929119285821,
+          "rows": 2048
+        },
+        "rmse_delta_ked_minus_pykrige": -0.0005290738217871085,
+        "source_hashes": {
+          "point_train_npz_sha256": "e14448da99b7108624585179553d422754575d3469118a1d195ccc602a2d4ceb",
+          "point_validation_npz_sha256": "ce9d166ebc03ca371aea5d0d3e1e38e669a5c2aec627ebf0016f1f4b32f66229"
+        },
+        "train_labels": 512,
+        "validation_rows": 2048
+      },
+      {
+        "baseline_model": {
+          "nlags": 4,
+          "variance_max": 0.000936640469569882,
+          "variance_min": 0.000912398259370066,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            2.547943550633243e-05,
+            0.000896995885189507
+          ]
+        },
+        "baseline_runtime_seconds": 10.269394397735596,
+        "fold_id": 3,
+        "independent_spatial_unit": true,
+        "ked": {
+          "bias": -0.0036913689654751803,
+          "mae": 0.02225837292925801,
+          "rmse": 0.028669189321419673,
+          "rows": 2048
+        },
+        "ked_model": {
+          "drift_terms": [
+            "specified:RGT"
+          ],
+          "kriging": "UniversalKriging3D with specified external drift",
+          "nlags": 4,
+          "train_rgt_max": 0.3965310752391815,
+          "train_rgt_min": 0.058197278529405594,
+          "train_rgt_std": 0.07538994830041777,
+          "variance_max": 0.0009647079267087128,
+          "variance_min": 0.0009171852295516003,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            2.547943550633243e-05,
+            0.000896995885189507
+          ]
+        },
+        "ked_runtime_seconds": 10.377803802490234,
+        "outcome": "loss",
+        "pykrige_committed": {
+          "bias": -0.0019976902767666616,
+          "mae": 0.0221748787080287,
+          "rmse": 0.028605049950670727,
+          "rows": 2048
+        },
+        "pykrige_recomputed": {
+          "bias": -0.001997690209964282,
+          "mae": 0.022174878560919424,
+          "rmse": 0.028605049759509893,
+          "rows": 2048
+        },
+        "rmse_delta_ked_minus_pykrige": 6.413937074894668e-05,
+        "source_hashes": {
+          "point_train_npz_sha256": "77d5eba47ab0b87948372bd7a27fb005c9ea7fdc01a180aa74bc17e9fb5ccb7b",
+          "point_validation_npz_sha256": "cfa3e8575d1c30bd1b5b76bad61011c93ef96451f069a492e58174e1c86160bb"
+        },
+        "train_labels": 512,
+        "validation_rows": 2048
+      },
+      {
+        "baseline_model": {
+          "nlags": 4,
+          "variance_max": 0.0008635533523199909,
+          "variance_min": 0.0008379797702153669,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            2.5336393346426234e-05,
+            0.0008224182690040626
+          ]
+        },
+        "baseline_runtime_seconds": 8.309856176376343,
+        "fold_id": 4,
+        "independent_spatial_unit": true,
+        "ked": {
+          "bias": 0.017297556435245835,
+          "mae": 0.026575916063986606,
+          "rmse": 0.03751943912411321,
+          "rows": 2048
+        },
+        "ked_model": {
+          "drift_terms": [
+            "specified:RGT"
+          ],
+          "kriging": "UniversalKriging3D with specified external drift",
+          "nlags": 4,
+          "train_rgt_max": 0.5279249548912048,
+          "train_rgt_min": 0.049945440143346786,
+          "train_rgt_std": 0.08502995101629825,
+          "variance_max": 0.0008913912879213676,
+          "variance_min": 0.000843486284743337,
+          "variogram_model": "linear",
+          "variogram_parameters": [
+            2.5336393346426234e-05,
+            0.0008224182690040626
+          ]
+        },
+        "ked_runtime_seconds": 8.173180341720581,
+        "outcome": "loss",
+        "pykrige_committed": {
+          "bias": 0.014396295577171259,
+          "mae": 0.02557683140912559,
+          "rmse": 0.03633833840670887,
+          "rows": 2048
+        },
+        "pykrige_recomputed": {
+          "bias": 0.014396295539079711,
+          "mae": 0.02557683146262235,
+          "rmse": 0.0363383382477217,
+          "rows": 2048
+        },
+        "rmse_delta_ked_minus_pykrige": 0.0011811007174043348,
+        "source_hashes": {
+          "point_train_npz_sha256": "e6b2f88100405455018e5faf948d8d50a24984d9cdb6b59754e5c4cdf5d271d6",
+          "point_validation_npz_sha256": "03561799010609a0143cbc18de16e6f78eae70b01de8bab3cb9e39e210b23d57"
+        },
+        "train_labels": 512,
+        "validation_rows": 2048
+      }
+    ],
+    "primary_comparison": "CIG-Bench RGT KED vs committed PyKrige OOF",
+    "relative_rmse_change": 0.006421439169313357,
+    "rmse_delta_ked_minus_pykrige": 0.00018268819882833257,
+    "whole_fold_bootstrap": {
+      "caveat": "Only five coarse spatial units exist; this descriptive interval is not a large-sample significance claim.",
+      "draws": 20000,
+      "independent_units": 5,
+      "rmse_delta_ked_minus_pykrige": {
+        "ci95": [
+          -0.000351312161206329,
+          0.0007652036280040783
+        ],
+        "estimate": 0.00018268819882833257,
+        "probability_below_zero": 0.3292
+      },
+      "seed": 2693,
+      "unit": "whole locked spatial fold",
+      "voxel_independent_resampling": false
+    }
+  },
+  "holdout_firewall": {
+    "frozen_holdout_opened": false,
+    "hdf5_datasets_read": [
+      "seismic_patch[0:3]",
+      "seismic_patch[3:6]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_files_opened": [
+      "train.h5"
+    ],
+    "label_dataset_read_by_rgt": false,
+    "test_path_argument_exists": false
+  },
+  "prediction_artifact": {
+    "bytes": 402041,
+    "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p18_cigbench_ked/predictions.npz",
+    "rows": 10240,
+    "sha256": "aca9d9ed0029bd3ebebd080766532493aee18f2f4b132e7deb738eb7dd10c5db"
+  },
+  "property_predictor": {
+    "executed": false,
+    "reason": "documented predictor requires a sparse property/well volume; a standalone zero-shot comparison would be out of interface"
+  },
+  "rgt_inference": {
+    "artifact": {
+      "bytes": 2225070,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p18_cigbench_ked/rgt_volume.npz",
+      "sha256": "2eda8d74d9be37cc89a39d597bc21e6d10d95f5fdb3714e0e0fcdb8021456ffa"
+    },
+    "canonical_feasibility_probe": {
+      "development_only": true,
+      "device": "cuda:0",
+      "elapsed_seconds": 10.142399311065674,
+      "error_message": "CUDA out of memory. Tried to allocate 2.59 GiB. GPU 0 has a total capacity of 15.47 GiB of which 1.85 GiB is free. Including non-PyTorch memory, this process has 13.60 GiB memory in use. Of the allocated memory 8.93 GiB is allocated by PyTorch, and 4.36 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)",
+      "error_type": "OutOfMemoryError",
+      "frozen_holdout_opened": false,
+      "infer_shape": [
+        400,
+        512,
+        512
+      ],
+      "input_volume_shape": [
+        63,
+        100,
+        72
+      ],
+      "schema_version": "reconstruction-p18-cigbench-canonical-probe/v1",
+      "status": "CUDA_OUT_OF_MEMORY",
+      "weight_sha256": "e328f5534bc90e53d4dbd8e5eeb75e43a03c072db17a2a60f3347b4f6ef8b3ec"
+    },
+    "clp_s": 2.0,
+    "elapsed_seconds": 3.9554667472839355,
+    "horizon_constraints": false,
+    "infer_shape": [
+      128,
+      256,
+      256
+    ],
+    "input_channel": "seismic_amplitude (seismic_patch[0])",
+    "matches_upstream_recommended_shape": false,
+    "normalize_output": true,
+    "peak_cuda_bytes": 2590581248,
+    "quality": {
+      "finite": true,
+      "maximum": 0.9999998211860657,
+      "mean": 0.42171888332744106,
+      "minimum": 0.0,
+      "negative_vertical_difference_fraction": 0.002849462365591398,
+      "pearson_with_depth_index": 0.6873590107453963,
+      "pearson_with_seismic_amplitude": 0.03156172421028379,
+      "positive_vertical_difference_fraction": 0.9970766129032258,
+      "rgt_sha256": "756ea7829691a7bbd7836f9c8240078ff93f2820eaa78cbf7cc3ffabdc95e31c",
+      "shape_kji": [
+        63,
+        100,
+        72
+      ],
+      "standard_deviation": 0.1891294729170629
+    },
+    "resize_back": true,
+    "upstream_recommended_shape": [
+      400,
+      512,
+      512
+    ]
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "elapsed_seconds": 105.0296049118042,
+    "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15 (main, Jun 23 2026, 15:19:43) [Clang 22.1.3 ]"
+  },
+  "schema_version": "reconstruction-p18-cigbench-ked/v1",
+  "source": {
+    "cig_bench": {
+      "distribution": "cig-bench",
+      "installed_metadata_homepage_is_placeholder": true,
+      "license": "MIT",
+      "modelscope_model_id": "douyimin/CIG-Bench",
+      "package_root": "/mnt/data/yongan-admin-2/envs/volve-chronos2/lib/python3.11/site-packages/cig_bench",
+      "source_sha256": {
+        "networks/hrnet.py": "c19d5e3570c4d2a91f1cc456284688b1f9c42b849e692ca9cd7a8c3eba3abd2f",
+        "predictor/_download.py": "e682b557315e7ca168c093fe9f0b0eed18256f55b0dbdd304abbb94774d11b0b",
+        "predictor/rgt.py": "d99643bd1efb3017879d24723d81744358619adc349de6847cb0f300e44e10e9"
+      },
+      "upstream_url": "https://github.com/douyimin/CIG-bench",
+      "version": "0.2.0",
+      "weight_file": "CIG-Bench-RGT.pth"
+    },
+    "pykrige": {
+      "distribution": "pykrige",
+      "license": "BSD-3-Clause",
+      "upstream_url": "https://github.com/GeoStat-Framework/PyKrige",
+      "version": "1.7.3"
+    },
+    "weight": {
+      "bytes": 307554279,
+      "download_provider": "ModelScope",
+      "file_path": "CIG-Bench-RGT.pth",
+      "model_id": "douyimin/CIG-Bench",
+      "path": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p18_cigbench_ked/modelscope/models/douyimin--CIG-Bench/snapshots/master/CIG-Bench-RGT.pth",
+      "requested_revision": null,
+      "sha256": "e328f5534bc90e53d4dbd8e5eeb75e43a03c072db17a2a60f3347b4f6ef8b3ec"
+    }
+  },
+  "status": "PASSED"
+}

@@ -1,0 +1,60 @@
+{
+  "baseline_control_metrics_recomputed": {
+    "bias": -0.001857953994872191,
+    "mae": 0.021413486340653674,
+    "rmse": 0.0284497280822391,
+    "rows": 10240
+  },
+  "baseline_metrics_recomputed": {
+    "bias": -0.0018579539930215106,
+    "mae": 0.021413486381061376,
+    "rmse": 0.028449728170183285,
+    "rows": 10240
+  },
+  "firewall_checks": {
+    "default_enabled": false,
+    "frozen_holdout_opened": false,
+    "independent_spatial_folds": 5,
+    "train_labels_per_fold": 512
+  },
+  "fold_checks": [
+    {
+      "fold_id": 0,
+      "outcome": "win",
+      "rows": 2048
+    },
+    {
+      "fold_id": 1,
+      "outcome": "loss",
+      "rows": 2048
+    },
+    {
+      "fold_id": 2,
+      "outcome": "win",
+      "rows": 2048
+    },
+    {
+      "fold_id": 3,
+      "outcome": "loss",
+      "rows": 2048
+    },
+    {
+      "fold_id": 4,
+      "outcome": "loss",
+      "rows": 2048
+    }
+  ],
+  "indices_kji_sha256": "e631b41655dfddbd0f8f91d817d9a5e9666897a00a5c33b27ab4787835d19f21",
+  "ked_metrics_recomputed": {
+    "bias": -0.0013530568786673878,
+    "mae": 0.021418979020008343,
+    "rmse": 0.028632416369011617,
+    "rows": 10240
+  },
+  "prediction_sha256": "aca9d9ed0029bd3ebebd080766532493aee18f2f4b132e7deb738eb7dd10c5db",
+  "rgt_sha256": "2eda8d74d9be37cc89a39d597bc21e6d10d95f5fdb3714e0e0fcdb8021456ffa",
+  "rows": 10240,
+  "schema_version": "reconstruction-p18-cigbench-ked-verification/v1",
+  "status": "PASSED",
+  "summary_sha256": "b3ab1d6090791373a65a98ff937acd4d78faef7e802c85afb916cf90fa024107"
+}
