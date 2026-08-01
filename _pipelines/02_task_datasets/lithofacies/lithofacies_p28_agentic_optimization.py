@@ -69,11 +69,12 @@ from p5_stage1 import (  # noqa: E402
 )
 
 
-SCHEMA_VERSION = "lithofacies-p28-agentic-optimization/v1"
+SCHEMA_VERSION = "lithofacies-p28-agentic-optimization/v2"
 BATCH_SCHEMA = "lithofacies-p28-nested-development/v1"
-PROTOCOL_SCHEMA = "lithofacies-p28-protocol/v1"
-RESULT_SCHEMA = "lithofacies-p28-result/v1"
-MANIFEST_SCHEMA = "lithofacies-p28-artifact-manifest/v1"
+PROTOCOL_SCHEMA = "lithofacies-p28-protocol/v2"
+RESULT_SCHEMA = "lithofacies-p28-result/v2"
+MANIFEST_SCHEMA = "lithofacies-p28-artifact-manifest/v2"
+PRE_CORRECTION_SCHEMA = "lithofacies-p28-agentic-optimization/v1"
 EXPECTED_SPLIT_HASH = (
     "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555"
 )
@@ -91,6 +92,7 @@ OUTER_FOLDS = (0, 1, 2, 3)
 POLICY_SEEDS = (2693, 2694, 2695)
 FEEDBACK_THRESHOLD = 0.005
 PROMOTION_THRESHOLD = 0.005
+INNER_CEILING_MATERIALITY = 0.005
 DEEPSEEK_ENDPOINT = "https://api.deepseek.com/chat/completions"
 DEEPSEEK_MODEL = "deepseek-chat"
 DEFAULT_OUTPUT_DIR = TRACK_DIR / "_outputs" / "p28_agentic_optimization"
@@ -174,6 +176,11 @@ MOMENT_PAIRED_LANE = {
     "encoder_weight_switch": ("pretrained", "random_init"),
     "status": "frozen_external_paired_evidence_not_rerun",
 }
+CLAUDE_AUDIT = {
+    "job_id": "20260801T162948__claude__1249571",
+    "result_sha256": "c1ddcc0e8c506cae69234919c87bd3680135b10f38b71ecbbbaea24a77ae4581",
+    "completion_status": "COMPLETE",
+}
 
 
 class CredentialUnavailable(RuntimeError):
@@ -232,6 +239,13 @@ def _write_jsonl(path: Path, rows: Sequence[Mapping[str, Any]]) -> None:
         ),
         encoding="utf-8",
     )
+    os.replace(temporary, path)
+
+
+def _write_text(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(content, encoding="utf-8")
     os.replace(temporary, path)
 
 
@@ -945,6 +959,24 @@ def _protocol_payload(batch_sha256: str) -> dict[str, Any]:
             "missing_credential": "fail_closed",
             "invalid_or_unavailable_provider": "fail_closed_no_replay",
         },
+        "diagnostic_controls": {
+            "a1_identity": {
+                "implementation": "actual_same_entrypoint_action_seed_replay",
+                "executor_entrypoint": "_evaluate_promotion_action",
+                "action_id": A0.action_id,
+                "repeat_seeds": list(REPEAT_SEEDS),
+                "required_cell_count": len(OUTER_FOLDS) * len(REPEAT_SEEDS),
+            },
+            "inner_action_space_ceiling": {
+                "implementation": "exhaustive_all_five_allowlisted_actions",
+                "layer": "inner_selection_only",
+                "materiality": INNER_CEILING_MATERIALITY,
+                "used_for_policy_feedback": False,
+                "used_for_promotion_selection": False,
+                "promotion_metrics_computed": False,
+            },
+        },
+        "claude_correction_audit": dict(CLAUDE_AUDIT),
         "moment_attribution_lane": dict(MOMENT_PAIRED_LANE),
         "nested_batch_sha256": batch_sha256,
         "frozen_test_accessed": False,
@@ -1083,6 +1115,271 @@ class _ActionEvaluator:
         return self.inner(outer_id, action_id)
 
 
+def _actual_a1_replay(
+    arrays: Mapping[str, np.ndarray],
+    a0_by_outer: Mapping[int, Sequence[Mapping[str, Any]]],
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Re-execute A0 through its real entrypoint for the A1 identity probe."""
+    a1_by_outer = {
+        outer_id: _evaluate_promotion_action(arrays, outer_id, A0)
+        for outer_id in OUTER_FOLDS
+    }
+    comparisons: list[dict[str, Any]] = []
+    a1_cells: list[dict[str, Any]] = []
+    for outer_id in OUTER_FOLDS:
+        a0_cells = sorted(
+            a0_by_outer[outer_id], key=lambda row: int(row["repeat_id"])
+        )
+        replay_cells = sorted(
+            a1_by_outer[outer_id], key=lambda row: int(row["repeat_id"])
+        )
+        if len(a0_cells) != len(REPEAT_SEEDS) or len(replay_cells) != len(REPEAT_SEEDS):
+            raise RuntimeError("A0/A1 replay cell roster changed")
+        for expected, observed in zip(a0_cells, replay_cells):
+            roster_equal = (
+                int(expected["outer_rollout_id"])
+                == int(observed["outer_rollout_id"])
+                == outer_id
+                and int(expected["repeat_id"]) == int(observed["repeat_id"])
+                and int(expected["seed"]) == int(observed["seed"])
+            )
+            prediction_equal = (
+                expected["prediction_sha256"] == observed["prediction_sha256"]
+            )
+            metric_equal = _stable_hash(expected["metrics"]) == _stable_hash(
+                observed["metrics"]
+            )
+            comparisons.append(
+                {
+                    "outer_rollout_id": outer_id,
+                    "repeat_id": int(observed["repeat_id"]),
+                    "seed": int(observed["seed"]),
+                    "roster_equal": roster_equal,
+                    "prediction_hash_equal": prediction_equal,
+                    "metric_hash_equal": metric_equal,
+                }
+            )
+            a1_cells.append(observed)
+    if not all(
+        item["roster_equal"]
+        and item["prediction_hash_equal"]
+        and item["metric_hash_equal"]
+        for item in comparisons
+    ):
+        raise RuntimeError("actual A1 replay diverged from A0")
+    a0_cells_flat = [
+        row for outer_id in OUTER_FOLDS for row in a0_by_outer[outer_id]
+    ]
+    a0_prediction_hash = _stable_hash(
+        [row["prediction_sha256"] for row in a0_cells_flat]
+    )
+    a1_prediction_hash = _stable_hash(
+        [row["prediction_sha256"] for row in a1_cells]
+    )
+    a0_metric_hash = _stable_hash([row["metrics"] for row in a0_cells_flat])
+    a1_metric_hash = _stable_hash([row["metrics"] for row in a1_cells])
+    control = {
+        "role": "advice_only_actual_identity_replay",
+        "actual_replay_executed": True,
+        "executor_entrypoint": "_evaluate_promotion_action",
+        "action_id": A0.action_id,
+        "action_config_sha256": _stable_hash(asdict(A0)),
+        "repeat_seeds": list(REPEAT_SEEDS),
+        "outer_rollout_ids": list(OUTER_FOLDS),
+        "cell_count": len(a1_cells),
+        "cell_comparisons": comparisons,
+        "all_rosters_equal": all(item["roster_equal"] for item in comparisons),
+        "all_prediction_hashes_equal": all(
+            item["prediction_hash_equal"] for item in comparisons
+        ),
+        "all_metric_hashes_equal": all(
+            item["metric_hash_equal"] for item in comparisons
+        ),
+        "prediction_sha256": a1_prediction_hash,
+        "metric_sha256": a1_metric_hash,
+        "a0_prediction_sha256": a0_prediction_hash,
+        "a0_metric_sha256": a0_metric_hash,
+        "shares_a2l_initial_advice_but_executes_a0": True,
+    }
+    return control, a1_cells
+
+
+def _exhaustive_inner_ceiling(
+    *,
+    evaluator: _ActionEvaluator,
+    a0_inner: Mapping[int, Mapping[str, Any]],
+    a2l_rollouts: Sequence[Mapping[str, Any]],
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Evaluate every allowlisted action on inner folds, never on promotion."""
+    rollout_by_outer = {
+        int(rollout["outer_rollout_id"]): rollout for rollout in a2l_rollouts
+    }
+    outer_summaries: list[dict[str, Any]] = []
+    records: list[dict[str, Any]] = []
+    for outer_id in OUTER_FOLDS:
+        baseline_mean = float(a0_inner[outer_id]["selection_mean"])
+        candidates: list[dict[str, Any]] = []
+        for action_id in ACTION_IDS:
+            result = evaluator.inner(outer_id, action_id)
+            candidate = {
+                "action_id": action_id,
+                "selection_mean": float(result["selection_mean"]),
+                "delta_from_a0_inner": float(
+                    result["selection_mean"] - baseline_mean
+                ),
+                "per_class_selection_mean": result[
+                    "per_class_selection_mean"
+                ],
+            }
+            candidates.append(candidate)
+            records.append(
+                {
+                    "outer_rollout_id": outer_id,
+                    **candidate,
+                    "selection_cells": result["cells"],
+                    "evaluated_at_inner_layer_only": True,
+                    "used_for_promotion_selection": False,
+                    "promotion_metrics_computed": False,
+                }
+            )
+        best_candidate = max(
+            candidates,
+            key=lambda item: (
+                float(item["selection_mean"]),
+                -ACTION_IDS.index(str(item["action_id"])),
+            ),
+        )
+        if float(best_candidate["selection_mean"]) > baseline_mean:
+            best_reachable_action = str(best_candidate["action_id"])
+            best_reachable_mean = float(best_candidate["selection_mean"])
+        else:
+            best_reachable_action = A0.action_id
+            best_reachable_mean = baseline_mean
+        policy_mean = float(
+            rollout_by_outer[outer_id]["selected_inner_mean_local_evaluator_only"]
+        )
+        outer_summaries.append(
+            {
+                "outer_rollout_id": outer_id,
+                "a0_inner_mean": baseline_mean,
+                "all_five_actions": candidates,
+                "best_candidate_action_id": str(best_candidate["action_id"]),
+                "best_candidate_inner_mean": float(best_candidate["selection_mean"]),
+                "best_candidate_delta_from_a0": float(
+                    best_candidate["selection_mean"] - baseline_mean
+                ),
+                "best_reachable_including_a0_action_id": best_reachable_action,
+                "best_reachable_including_a0_inner_mean": best_reachable_mean,
+                "ceiling_delta_from_a0": best_reachable_mean - baseline_mean,
+                "a2l_selected_action_id": str(
+                    rollout_by_outer[outer_id]["selected_for_promotion"]
+                ),
+                "a2l_selected_inner_mean": policy_mean,
+                "a2l_regret_to_inner_ceiling": best_reachable_mean - policy_mean,
+            }
+        )
+    ceiling_delta = float(
+        np.mean([item["ceiling_delta_from_a0"] for item in outer_summaries])
+    )
+    policy_delta = float(
+        np.mean(
+            [
+                item["a2l_selected_inner_mean"] - item["a0_inner_mean"]
+                for item in outer_summaries
+            ]
+        )
+    )
+    policy_regret = float(
+        np.mean([item["a2l_regret_to_inner_ceiling"] for item in outer_summaries])
+    )
+    if ceiling_delta < INNER_CEILING_MATERIALITY:
+        diagnosis = "ACTION_SPACE_INNER_CEILING"
+        interpretation = (
+            "The exhaustive allowlist has less than 0.005 mean inner headroom; "
+            "the bounded action space, not policy search, is the primary ceiling."
+        )
+    elif policy_regret >= INNER_CEILING_MATERIALITY:
+        diagnosis = "POLICY_SEARCH_LIMIT"
+        interpretation = (
+            "The allowlist has material inner headroom that A2L misses by at "
+            "least 0.005 on average; policy search is the primary limitation."
+        )
+    else:
+        diagnosis = "INNER_TO_PROMOTION_TRANSFER_LIMIT"
+        interpretation = (
+            "A2L reaches the material inner ceiling within 0.005, so its failed "
+            "promotion is not explained by policy search; transfer from the "
+            "bounded inner action space to the disjoint outer folds is the limit."
+        )
+    control = {
+        "control_id": "INNER_EXHAUSTIVE_ORACLE_CEILING",
+        "layer": "inner_selection_only",
+        "action_ids": list(ACTION_IDS),
+        "actions_per_outer_rollout": len(ACTION_IDS),
+        "outer_rollout_count": len(OUTER_FOLDS),
+        "model_seed_roster": list(REPEAT_SEEDS),
+        "used_for_policy_feedback": False,
+        "used_for_promotion_selection": False,
+        "promotion_metrics_computed": False,
+        "materiality": INNER_CEILING_MATERIALITY,
+        "outer_rollouts": outer_summaries,
+        "mean_inner_ceiling_delta_from_a0": ceiling_delta,
+        "mean_a2l_inner_delta_from_a0": policy_delta,
+        "mean_a2l_regret_to_inner_ceiling": policy_regret,
+        "failure_diagnosis": diagnosis,
+        "interpretation": interpretation,
+    }
+    return control, records
+
+
+def _trajectory_comparison(
+    a2l_rollouts: Sequence[Mapping[str, Any]],
+    a2d_rollouts: Sequence[Mapping[str, Any]],
+    a2l_promotion: Mapping[str, Any],
+    a2d_promotion: Mapping[str, Any],
+) -> dict[str, Any]:
+    by_l = {int(item["outer_rollout_id"]): item for item in a2l_rollouts}
+    by_d = {int(item["outer_rollout_id"]): item for item in a2d_rollouts}
+    folds = []
+    for outer_id in OUTER_FOLDS:
+        l_sequence = [str(item["action_id"]) for item in by_l[outer_id]["trials"]]
+        d_sequence = [str(item["action_id"]) for item in by_d[outer_id]["trials"]]
+        folds.append(
+            {
+                "outer_rollout_id": outer_id,
+                "a2l_action_sequence": l_sequence,
+                "a2d_action_sequence": d_sequence,
+                "trajectory_identical": l_sequence == d_sequence,
+                "promotion_action_identical": by_l[outer_id][
+                    "selected_for_promotion"
+                ]
+                == by_d[outer_id]["selected_for_promotion"],
+            }
+        )
+    differing = [
+        item["outer_rollout_id"] for item in folds if not item["trajectory_identical"]
+    ]
+    endpoint_equal = (
+        a2l_promotion["fixed_schema_macro_f1_mean"]
+        == a2d_promotion["fixed_schema_macro_f1_mean"]
+        and a2l_promotion["outer_fold_deltas"]
+        == a2d_promotion["outer_fold_deltas"]
+        and all(item["promotion_action_identical"] for item in folds)
+    )
+    return {
+        "outer_folds": folds,
+        "differing_trajectory_outer_folds": differing,
+        "differing_trajectory_count": len(differing),
+        "total_outer_folds": len(OUTER_FOLDS),
+        "promotion_endpoint_identical": endpoint_equal,
+        "interpretation": (
+            "A2L and A2D take different action trajectories in "
+            f"{len(differing)}/{len(OUTER_FOLDS)} outer folds, while converging "
+            "to the same promoted actions and endpoint metrics."
+        ),
+    }
+
+
 def _promotion_summary(
     rollouts: Sequence[Mapping[str, Any]],
     evaluator: _ActionEvaluator,
@@ -1136,13 +1433,18 @@ def _moment_lane_payload() -> dict[str, Any]:
 def _make_evidence(summary: Mapping[str, Any]) -> str:
     gates = summary["gates"]
     verdict = summary["verdict"]
+    previous_verdict = summary.get("correction", {}).get("previous_verdict", verdict)
+    a1 = summary["arms"]["A1"]
+    ceiling = summary["controls"]["inner_action_space_ceiling"]
+    trajectories = summary["controls"]["a2l_vs_a2d_trajectory"]
     lines = [
         "# P28 lithofacies Stage-1 execution-agent pilot evidence",
         "",
         "## Outcome",
         "",
         (
-            f"The preregistered verdict is **{verdict}**. A2L promotion changed "
+            f"The preregistered verdict remains **{verdict}** (before correction: "
+            f"**{previous_verdict}**). A2L promotion changed "
             f"fixed-schema nine-class Macro-F1 from `{summary['a0']['observed_mean']:.10f}` "
             f"to `{summary['arms']['A2L']['promotion']['fixed_schema_macro_f1_mean']:.10f}` "
             f"(`{summary['arms']['A2L']['promotion']['delta_from_a0']:+.10f}`)."
@@ -1157,6 +1459,19 @@ def _make_evidence(summary: Mapping[str, Any]) -> str:
         "- Four outer anonymous promotion rotations; each remaining three folds form inner LOGO3 selection.",
         "- Each execution-policy instance used exactly 3 actions without replacement and the same three model seeds.",
         "- Promotion results were evaluated only after inner selection and were never returned to a policy.",
+        "",
+        "## Corrected A1 identity control",
+        "",
+        (
+            f"A1 now performs an actual `{a1['executor_entrypoint']}` replay of "
+            f"`{a1['action_id']}` over all {a1['cell_count']} outer-fold/seed cells. "
+            "It does not assign A0 hashes to A1."
+        ),
+        "",
+        f"- Same action/config: **{'PASS' if a1['action_config_sha256'] == summary['a0']['config_sha256'] else 'FAIL'}**.",
+        f"- Same fold/seed roster: **{'PASS' if a1['all_rosters_equal'] else 'FAIL'}**.",
+        f"- Independent prediction hashes equal A0: **{'PASS' if a1['all_prediction_hashes_equal'] else 'FAIL'}** (`{a1['prediction_sha256']}`).",
+        f"- Independent metric hashes equal A0: **{'PASS' if a1['all_metric_hashes_equal'] else 'FAIL'}** (`{a1['metric_sha256']}`).",
         "",
         "## Agent and controls",
         "",
@@ -1176,6 +1491,38 @@ def _make_evidence(summary: Mapping[str, Any]) -> str:
         f"| A3 | equal-budget random median (3 policy seeds) | "
         f"{a3['auc_median']:.10f} | {a3['promotion_median_mean']:.10f} | "
         f"{a3['promotion_median_delta']:+.10f} | n/a |"
+    )
+    lines.extend(
+        [
+            "",
+            "## A2L versus A2D trajectory clarification",
+            "",
+            (
+                f"A2L and A2D action trajectories differ in "
+                f"`{trajectories['differing_trajectory_count']}/"
+                f"{trajectories['total_outer_folds']}` outer folds "
+                f"(`{trajectories['differing_trajectory_outer_folds']}`), while "
+                f"their promotion endpoint is "
+                f"**{'identical' if trajectories['promotion_endpoint_identical'] else 'different'}**. "
+                "Thus endpoint equality is convergence after real LLM execution, not evidence that A2L was skipped or mirrored."
+            ),
+            "",
+            "## Exhaustive inner action-space ceiling",
+            "",
+            (
+                f"All `{ceiling['actions_per_outer_rollout']}` allowlisted actions were "
+                f"actually evaluated on each of `{ceiling['outer_rollout_count']}` inner "
+                "LOGO3 rotations with the frozen three-seed roster. This diagnostic was "
+                "not shown to any policy and was not used for promotion selection; no "
+                "oracle promotion metric was computed."
+            ),
+            "",
+            f"- Mean best-reachable inner delta versus A0: `{ceiling['mean_inner_ceiling_delta_from_a0']:+.10f}`.",
+            f"- Mean A2L-selected inner delta versus A0: `{ceiling['mean_a2l_inner_delta_from_a0']:+.10f}`.",
+            f"- Mean A2L regret to exhaustive inner ceiling: `{ceiling['mean_a2l_regret_to_inner_ceiling']:+.10f}`.",
+            f"- Failure diagnosis: **`{ceiling['failure_diagnosis']}`** — {ceiling['interpretation']}",
+            "",
+        ]
     )
     lines.extend(
         [
@@ -1241,6 +1588,50 @@ def _make_evidence(summary: Mapping[str, Any]) -> str:
         ]
     )
     return "\n".join(lines)
+
+
+def _write_artifacts(
+    *,
+    output_dir: Path,
+    batch_file: Path,
+    protocol: Mapping[str, Any],
+    results: Sequence[Mapping[str, Any]],
+    summary: Mapping[str, Any],
+) -> None:
+    results_path = output_dir / "results.jsonl"
+    protocol_path = output_dir / "protocol.json"
+    summary_path = output_dir / "summary.json"
+    evidence_path = output_dir / "evidence.md"
+    _write_json(protocol_path, protocol)
+    _write_jsonl(results_path, results)
+    _write_json(summary_path, summary)
+    _write_text(evidence_path, _make_evidence(summary))
+    test_path = TRACK_DIR / "tests" / "test_p28_agentic_optimization.py"
+    manifest = {
+        "schema_version": MANIFEST_SCHEMA,
+        "artifacts": {
+            path.name: {"sha256": _sha256(path), "bytes": path.stat().st_size}
+            for path in (protocol_path, results_path, summary_path, evidence_path)
+        },
+        "sources": {
+            Path(__file__).name: _sha256(Path(__file__)),
+            str(test_path.relative_to(TRACK_DIR)): _sha256(test_path),
+            "nested_development.npz": _sha256(batch_file),
+            MOMENT_PAIRED_LANE["source"]: summary["moment_attribution_lane"][
+                "source_sha256"
+            ],
+            "claude_final_audit_result.md": CLAUDE_AUDIT["result_sha256"],
+        },
+        "split_hash": EXPECTED_SPLIT_HASH,
+        "verdict": summary["verdict"],
+        "previous_verdict": summary.get("correction", {}).get(
+            "previous_verdict", summary["verdict"]
+        ),
+        "frozen_test_accessed": False,
+        "known_holdout_accessed": False,
+        "credential_persisted": False,
+    }
+    _write_json(output_dir / "artifact_manifest.json", manifest)
 
 
 def run_pilot(
@@ -1339,8 +1730,9 @@ def run_pilot(
         [row["prediction_sha256"] for row in a0_cells]
     )
     a0_metric_hash = _stable_hash([row["metrics"] for row in a0_cells])
-    a1_prediction_hash = a0_prediction_hash
-    a1_metric_hash = a0_metric_hash
+    a1_control, a1_cells = _actual_a1_replay(arrays, a0_by_outer)
+    a1_prediction_hash = str(a1_control["prediction_sha256"])
+    a1_metric_hash = str(a1_control["metric_sha256"])
 
     a2l_promotion = _promotion_summary(a2l_rollouts, evaluator, a0_by_outer)
     a2d_promotion = _promotion_summary(a2d_rollouts, evaluator, a0_by_outer)
@@ -1356,6 +1748,17 @@ def run_pilot(
                 "promotion": promotion,
             }
         )
+    inner_ceiling, inner_ceiling_records = _exhaustive_inner_ceiling(
+        evaluator=evaluator,
+        a0_inner=a0_inner,
+        a2l_rollouts=a2l_rollouts,
+    )
+    trajectory_comparison = _trajectory_comparison(
+        a2l_rollouts,
+        a2d_rollouts,
+        a2l_promotion,
+        a2d_promotion,
+    )
 
     a2l_auc = float(np.mean([row["auc_at_3"] for row in a2l_rollouts]))
     a2d_auc = float(np.mean([row["auc_at_3"] for row in a2d_rollouts]))
@@ -1412,6 +1815,7 @@ def run_pilot(
         "primary_metric": "fixed_schema_macro_f1",
         "a0": {
             "config": asdict(A0),
+            "config_sha256": _stable_hash(asdict(A0)),
             "frozen_mean": EXPECTED_A0_MEAN,
             "observed_mean": observed_a0,
             "outer_fold_means": outer_means,
@@ -1420,12 +1824,7 @@ def run_pilot(
             "metric_sha256": a0_metric_hash,
         },
         "arms": {
-            "A1": {
-                "role": "advice_only_identity_control",
-                "prediction_sha256": a1_prediction_hash,
-                "metric_sha256": a1_metric_hash,
-                "shares_a2l_initial_advice_but_executes_a0": True,
-            },
+            "A1": a1_control,
             "A2L": {
                 "role": "live_deepseek_execution_policy",
                 "rollouts": a2l_rollouts,
@@ -1454,6 +1853,18 @@ def run_pilot(
                 "promotion": a4_promotion,
             },
         },
+        "controls": {
+            "a2l_vs_a2d_trajectory": trajectory_comparison,
+            "inner_action_space_ceiling": inner_ceiling,
+        },
+        "correction": {
+            "source": "claude_final_audit",
+            "audit": dict(CLAUDE_AUDIT),
+            "previous_verdict": "REJECT",
+            "corrected_verdict": verdict,
+            "thresholds_changed": False,
+            "splits_changed": False,
+        },
         "moment_attribution_lane": _moment_lane_payload(),
         "gates": gates,
         "verdict": verdict,
@@ -1481,6 +1892,17 @@ def run_pilot(
                 **row,
             }
         )
+    for row in a1_cells:
+        results.append(
+            {
+                "schema_version": RESULT_SCHEMA,
+                "record_type": "a1_actual_replay_promotion_cell",
+                "arm": "A1",
+                "executor_entrypoint": "_evaluate_promotion_action",
+                "action_id": A0.action_id,
+                **row,
+            }
+        )
     for arm, groups in (
         ("A2L", [a2l_rollouts]),
         ("A2D", [a2d_rollouts]),
@@ -1501,36 +1923,256 @@ def run_pilot(
                             "promotion_result_exposed_to_policy": False,
                         }
                     )
-    results_path = output_dir / "results.jsonl"
-    protocol_path = output_dir / "protocol.json"
-    summary_path = output_dir / "summary.json"
-    evidence_path = output_dir / "evidence.md"
-    _write_json(protocol_path, protocol)
-    _write_jsonl(results_path, results)
-    _write_json(summary_path, summary)
-    evidence_path.write_text(_make_evidence(summary), encoding="utf-8")
-    manifest = {
-        "schema_version": MANIFEST_SCHEMA,
-        "artifacts": {
-            path.name: {"sha256": _sha256(path), "bytes": path.stat().st_size}
-            for path in (protocol_path, results_path, summary_path, evidence_path)
-        },
-        "sources": {
-            Path(__file__).name: _sha256(Path(__file__)),
-            "nested_development.npz": _sha256(batch_file),
-            MOMENT_PAIRED_LANE["source"]: summary["moment_attribution_lane"][
-                "source_sha256"
-            ],
-        },
-        "split_hash": EXPECTED_SPLIT_HASH,
-        "verdict": verdict,
-        "frozen_test_accessed": False,
-        "known_holdout_accessed": False,
-        "credential_persisted": False,
-    }
-    manifest_path = output_dir / "artifact_manifest.json"
-    _write_json(manifest_path, manifest)
+    for row in inner_ceiling_records:
+        results.append(
+            {
+                "schema_version": RESULT_SCHEMA,
+                "record_type": "inner_exhaustive_oracle_action",
+                "arm": "ORACLE_INNER_CEILING",
+                **row,
+            }
+        )
+    _write_artifacts(
+        output_dir=output_dir,
+        batch_file=batch_file,
+        protocol=protocol,
+        results=results,
+        summary=summary,
+    )
     return summary
+
+
+def correct_existing_pilot(
+    *,
+    batch_file: Path = DEFAULT_BATCH,
+    output_dir: Path = DEFAULT_OUTPUT_DIR,
+) -> dict[str, Any]:
+    """Apply the Claude audit controls without replaying the live LLM policy."""
+    ensure_development_only_paths((batch_file, output_dir))
+    output_dir = _owned_output(output_dir)
+    started = time.perf_counter()
+    artifact_paths = {
+        name: output_dir / name
+        for name in (
+            "artifact_manifest.json",
+            "protocol.json",
+            "results.jsonl",
+            "summary.json",
+            "evidence.md",
+        )
+    }
+    previous_manifest = json.loads(
+        artifact_paths["artifact_manifest.json"].read_text(encoding="utf-8")
+    )
+    for name, item in previous_manifest.get("artifacts", {}).items():
+        path = output_dir / name
+        if _sha256(path) != item["sha256"] or path.stat().st_size != item["bytes"]:
+            raise RuntimeError(f"pre-correction artifact hash mismatch: {name}")
+    previous_hashes = {
+        name: _sha256(path) for name, path in artifact_paths.items()
+    }
+    summary = json.loads(artifact_paths["summary.json"].read_text(encoding="utf-8"))
+    protocol = json.loads(artifact_paths["protocol.json"].read_text(encoding="utf-8"))
+    results = [
+        json.loads(line)
+        for line in artifact_paths["results.jsonl"].read_text(
+            encoding="utf-8"
+        ).splitlines()
+        if line.strip()
+    ]
+    if summary.get("schema_version") not in {PRE_CORRECTION_SCHEMA, SCHEMA_VERSION}:
+        raise RuntimeError("correction source has an unknown P28 summary schema")
+    if (
+        summary.get("split_hash") != EXPECTED_SPLIT_HASH
+        or summary.get("verdict") != "REJECT"
+        or protocol.get("split_hash") != EXPECTED_SPLIT_HASH
+    ):
+        raise RuntimeError("correction source changed the frozen split or reject verdict")
+
+    policy_rows_before = [
+        {key: value for key, value in row.items() if key != "schema_version"}
+        for row in results
+        if row.get("record_type") == "selection_trial"
+        and row.get("arm") == "A2L"
+    ]
+    if len(policy_rows_before) != len(OUTER_FOLDS) * TRIAL_BUDGET:
+        raise RuntimeError("correction source lacks the twelve live A2L trials")
+    policy_trajectory_sha256 = _stable_hash(policy_rows_before)
+
+    arrays, batch_manifest = load_nested_batch(batch_file)
+    a0_rows = [
+        row for row in results if row.get("record_type") == "a0_promotion_cell"
+    ]
+    if len(a0_rows) != len(OUTER_FOLDS) * len(REPEAT_SEEDS):
+        raise RuntimeError("correction source lacks the frozen A0 cells")
+    a0_by_outer = {
+        outer_id: sorted(
+            [
+                row
+                for row in a0_rows
+                if int(row["outer_rollout_id"]) == outer_id
+            ],
+            key=lambda row: int(row["repeat_id"]),
+        )
+        for outer_id in OUTER_FOLDS
+    }
+    a1_control, a1_cells = _actual_a1_replay(arrays, a0_by_outer)
+    if a1_control["a0_prediction_sha256"] != summary["a0"]["prediction_sha256"]:
+        raise RuntimeError("A0 prediction hash changed before the actual A1 replay")
+    if a1_control["a0_metric_sha256"] != summary["a0"]["metric_sha256"]:
+        raise RuntimeError("A0 metric hash changed before the actual A1 replay")
+
+    evaluator = _ActionEvaluator(arrays)
+    a0_inner = {
+        outer_id: evaluator.inner(outer_id, A0.action_id)
+        for outer_id in OUTER_FOLDS
+    }
+    a2l_rollouts = summary["arms"]["A2L"]["rollouts"]
+    a2d_rollouts = summary["arms"]["A2D"]["rollouts"]
+    inner_ceiling, inner_ceiling_records = _exhaustive_inner_ceiling(
+        evaluator=evaluator,
+        a0_inner=a0_inner,
+        a2l_rollouts=a2l_rollouts,
+    )
+    trajectory_comparison = _trajectory_comparison(
+        a2l_rollouts,
+        a2d_rollouts,
+        summary["arms"]["A2L"]["promotion"],
+        summary["arms"]["A2D"]["promotion"],
+    )
+    if trajectory_comparison["differing_trajectory_count"] != 2:
+        raise RuntimeError("Claude-audited A2L/A2D trajectory distinction changed")
+    if trajectory_comparison["promotion_endpoint_identical"] is not True:
+        raise RuntimeError("Claude-audited identical promotion endpoint changed")
+
+    summary["schema_version"] = SCHEMA_VERSION
+    summary["a0"]["config_sha256"] = _stable_hash(asdict(A0))
+    summary["arms"]["A1"] = a1_control
+    summary["controls"] = {
+        "a2l_vs_a2d_trajectory": trajectory_comparison,
+        "inner_action_space_ceiling": inner_ceiling,
+    }
+    summary["gates"]["a1_prediction_hash_equals_a0"] = (
+        a1_control["prediction_sha256"] == summary["a0"]["prediction_sha256"]
+    )
+    summary["gates"]["a1_metric_hash_equals_a0"] = (
+        a1_control["metric_sha256"] == summary["a0"]["metric_sha256"]
+    )
+    corrected_verdict = "RETAIN" if all(summary["gates"].values()) else "REJECT"
+    if corrected_verdict != "REJECT":
+        raise RuntimeError("Claude correction unexpectedly changed the frozen reject gate")
+    summary["verdict"] = corrected_verdict
+    summary["correction"] = {
+        "source": "claude_final_audit",
+        "audit": dict(CLAUDE_AUDIT),
+        "previous_verdict": "REJECT",
+        "corrected_verdict": corrected_verdict,
+        "previous_artifact_sha256": previous_hashes,
+        "thresholds_changed": False,
+        "splits_changed": False,
+        "live_provider_policy_replayed": False,
+        "preserved_a2l_policy_trajectory_sha256": policy_trajectory_sha256,
+        "bounded_model_recomputation": {
+            "a1_outer_promotion_cells": len(a1_cells),
+            "oracle_inner_action_evaluations": len(inner_ceiling_records),
+            "oracle_inner_model_cells": len(inner_ceiling_records)
+            * 3
+            * len(REPEAT_SEEDS),
+            "oracle_promotion_evaluations": 0,
+        },
+        "elapsed_seconds": time.perf_counter() - started,
+    }
+    summary["data"]["nested_batch_sha256"] = _sha256(batch_file)
+    summary["data"]["development_hdf5_sha256"] = batch_manifest[
+        "development_hdf5_sha256"
+    ]
+
+    retained_results = [
+        {**row, "schema_version": RESULT_SCHEMA}
+        for row in results
+        if row.get("record_type")
+        not in {
+            "a1_actual_replay_promotion_cell",
+            "inner_exhaustive_oracle_action",
+        }
+    ]
+    for row in a1_cells:
+        retained_results.append(
+            {
+                "schema_version": RESULT_SCHEMA,
+                "record_type": "a1_actual_replay_promotion_cell",
+                "arm": "A1",
+                "executor_entrypoint": "_evaluate_promotion_action",
+                "action_id": A0.action_id,
+                **row,
+            }
+        )
+    for row in inner_ceiling_records:
+        retained_results.append(
+            {
+                "schema_version": RESULT_SCHEMA,
+                "record_type": "inner_exhaustive_oracle_action",
+                "arm": "ORACLE_INNER_CEILING",
+                **row,
+            }
+        )
+    policy_rows_after = [
+        {key: value for key, value in row.items() if key != "schema_version"}
+        for row in retained_results
+        if row.get("record_type") == "selection_trial"
+        and row.get("arm") == "A2L"
+    ]
+    if _stable_hash(policy_rows_after) != policy_trajectory_sha256:
+        raise RuntimeError("correction altered the live A2L trajectory")
+
+    protocol_template = _protocol_payload(_sha256(batch_file))
+    protocol["schema_version"] = PROTOCOL_SCHEMA
+    protocol["diagnostic_controls"] = protocol_template["diagnostic_controls"]
+    protocol["claude_correction_audit"] = dict(CLAUDE_AUDIT)
+    protocol["correction"] = {
+        "previous_verdict": "REJECT",
+        "corrected_verdict": corrected_verdict,
+        "thresholds_changed": False,
+        "splits_changed": False,
+        "live_provider_policy_replayed": False,
+        "preserved_a2l_policy_trajectory_sha256": policy_trajectory_sha256,
+    }
+    _write_artifacts(
+        output_dir=output_dir,
+        batch_file=batch_file,
+        protocol=protocol,
+        results=retained_results,
+        summary=summary,
+    )
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "previous_verdict": "REJECT",
+        "corrected_verdict": corrected_verdict,
+        "a1_actual_replay_cells": len(a1_cells),
+        "a1_prediction_hash_equal": a1_control[
+            "all_prediction_hashes_equal"
+        ],
+        "a1_metric_hash_equal": a1_control["all_metric_hashes_equal"],
+        "oracle_inner_action_evaluations": len(inner_ceiling_records),
+        "oracle_promotion_evaluations": 0,
+        "failure_diagnosis": inner_ceiling["failure_diagnosis"],
+        "mean_inner_ceiling_delta_from_a0": inner_ceiling[
+            "mean_inner_ceiling_delta_from_a0"
+        ],
+        "mean_a2l_regret_to_inner_ceiling": inner_ceiling[
+            "mean_a2l_regret_to_inner_ceiling"
+        ],
+        "a2l_a2d_differing_trajectory_folds": trajectory_comparison[
+            "differing_trajectory_outer_folds"
+        ],
+        "promotion_endpoint_identical": trajectory_comparison[
+            "promotion_endpoint_identical"
+        ],
+        "live_provider_policy_replayed": False,
+        "preserved_a2l_policy_trajectory_sha256": policy_trajectory_sha256,
+        "elapsed_seconds": summary["correction"]["elapsed_seconds"],
+        "frozen_test_accessed": False,
+    }
 
 
 def verify_artifacts(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
@@ -1546,7 +2188,29 @@ def verify_artifacts(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
         if digest != expected["sha256"] or path.stat().st_size != expected["bytes"]:
             raise RuntimeError(f"P28 artifact verification failed: {name}")
         observed[name] = digest
+    source_paths = {
+        Path(__file__).name: Path(__file__),
+        "tests/test_p28_agentic_optimization.py": TRACK_DIR
+        / "tests"
+        / "test_p28_agentic_optimization.py",
+        "nested_development.npz": DEFAULT_BATCH,
+        MOMENT_PAIRED_LANE["source"]: TRACK_DIR / MOMENT_PAIRED_LANE["source"],
+    }
+    for name, path in source_paths.items():
+        if _sha256(path) != manifest["sources"][name]:
+            raise RuntimeError(f"P28 source verification failed: {name}")
+    if manifest["sources"].get("claude_final_audit_result.md") != CLAUDE_AUDIT[
+        "result_sha256"
+    ]:
+        raise RuntimeError("P28 Claude audit hash changed")
     summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
+    results = [
+        json.loads(line)
+        for line in (output_dir / "results.jsonl").read_text(
+            encoding="utf-8"
+        ).splitlines()
+        if line.strip()
+    ]
     serialized = "\n".join(
         path.read_text(encoding="utf-8")
         for path in output_dir.glob("*")
@@ -1557,12 +2221,66 @@ def verify_artifacts(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
         raise RuntimeError("DeepSeek credential leaked into P28 artifacts")
     if summary.get("split_hash") != EXPECTED_SPLIT_HASH:
         raise RuntimeError("P28 summary split hash changed")
+    if summary.get("schema_version") != SCHEMA_VERSION:
+        raise RuntimeError("P28 corrected summary schema changed")
     if summary.get("data", {}).get("frozen_test_accessed") is not False:
         raise RuntimeError("P28 summary violates the test firewall")
+    a1_rows = [
+        row
+        for row in results
+        if row.get("record_type") == "a1_actual_replay_promotion_cell"
+    ]
+    oracle_rows = [
+        row
+        for row in results
+        if row.get("record_type") == "inner_exhaustive_oracle_action"
+    ]
+    if len(a1_rows) != len(OUTER_FOLDS) * len(REPEAT_SEEDS):
+        raise RuntimeError("P28 actual A1 replay evidence is incomplete")
+    if len(oracle_rows) != len(OUTER_FOLDS) * len(ACTION_IDS):
+        raise RuntimeError("P28 exhaustive inner ceiling evidence is incomplete")
+    if any(
+        row.get("used_for_promotion_selection") is not False
+        or row.get("promotion_metrics_computed") is not False
+        for row in oracle_rows
+    ):
+        raise RuntimeError("P28 inner oracle entered promotion")
+    a1 = summary["arms"]["A1"]
+    if not (
+        a1["actual_replay_executed"]
+        and a1["all_rosters_equal"]
+        and a1["all_prediction_hashes_equal"]
+        and a1["all_metric_hashes_equal"]
+    ):
+        raise RuntimeError("P28 actual A1 replay identity failed")
+    ceiling = summary["controls"]["inner_action_space_ceiling"]
+    if (
+        ceiling["used_for_promotion_selection"] is not False
+        or ceiling["promotion_metrics_computed"] is not False
+    ):
+        raise RuntimeError("P28 summary misstates the inner oracle boundary")
+    trajectory = summary["controls"]["a2l_vs_a2d_trajectory"]
+    if (
+        trajectory["differing_trajectory_count"] != 2
+        or trajectory["promotion_endpoint_identical"] is not True
+    ):
+        raise RuntimeError("P28 A2L/A2D trajectory clarification changed")
+    if summary["correction"]["previous_verdict"] != "REJECT" or summary[
+        "verdict"
+    ] != "REJECT":
+        raise RuntimeError("P28 correction changed the reject verdict")
     return {
         "verified_artifacts": observed,
         "verdict": summary["verdict"],
+        "previous_verdict": summary["correction"]["previous_verdict"],
         "split_hash": summary["split_hash"],
+        "a1_actual_replay_cells": len(a1_rows),
+        "oracle_inner_action_evaluations": len(oracle_rows),
+        "oracle_promotion_evaluations": 0,
+        "failure_diagnosis": ceiling["failure_diagnosis"],
+        "a2l_a2d_differing_trajectory_count": trajectory[
+            "differing_trajectory_count"
+        ],
         "credential_persisted": False,
         "frozen_test_accessed": False,
     }
@@ -1578,6 +2296,9 @@ def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--batch-file", type=Path, default=DEFAULT_BATCH)
     run_parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    correct_parser = subparsers.add_parser("correct")
+    correct_parser.add_argument("--batch-file", type=Path, default=DEFAULT_BATCH)
+    correct_parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     verify_parser = subparsers.add_parser("verify")
     verify_parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser.parse_args(argv)
@@ -1596,6 +2317,11 @@ def main(argv: Sequence[str] | None = None) -> int:
             batch_file=args.batch_file,
             output_dir=args.output_dir,
             api_key=os.environ.get("DEEPSEEK_KEY", ""),
+        )
+    elif args.command == "correct":
+        payload = correct_existing_pilot(
+            batch_file=args.batch_file,
+            output_dir=args.output_dir,
         )
     else:
         payload = verify_artifacts(args.output_dir)

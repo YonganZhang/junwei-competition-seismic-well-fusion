@@ -11,6 +11,7 @@
       "rounds": 60,
       "weight_exponent": 0.5
     },
+    "config_sha256": "de6dc9699a8537e5137d6cbbd0bcfce241d7313acbf09bd880dd3c154c631eeb",
     "frozen_mean": 0.2133487970485067,
     "metric_sha256": "01e736e9a866ac5804563fdd3df7251f309ad89642cf202b9d7a410ae48497a2",
     "observed_mean": 0.21334879704850676,
@@ -35,9 +36,128 @@
   },
   "arms": {
     "A1": {
+      "a0_metric_sha256": "01e736e9a866ac5804563fdd3df7251f309ad89642cf202b9d7a410ae48497a2",
+      "a0_prediction_sha256": "98f3ee1d4cd77d1da1aa66955065853acb390909e1c5bd0b7f8594c47d2e9e0d",
+      "action_config_sha256": "de6dc9699a8537e5137d6cbbd0bcfce241d7313acbf09bd880dd3c154c631eeb",
+      "action_id": "A0_DEPTH3_ETA01_ROUNDS60",
+      "actual_replay_executed": true,
+      "all_metric_hashes_equal": true,
+      "all_prediction_hashes_equal": true,
+      "all_rosters_equal": true,
+      "cell_comparisons": [
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 0,
+          "prediction_hash_equal": true,
+          "repeat_id": 0,
+          "roster_equal": true,
+          "seed": 1867973658
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 0,
+          "prediction_hash_equal": true,
+          "repeat_id": 1,
+          "roster_equal": true,
+          "seed": 2137841944
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 0,
+          "prediction_hash_equal": true,
+          "repeat_id": 2,
+          "roster_equal": true,
+          "seed": 3902865753
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 1,
+          "prediction_hash_equal": true,
+          "repeat_id": 0,
+          "roster_equal": true,
+          "seed": 1867973658
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 1,
+          "prediction_hash_equal": true,
+          "repeat_id": 1,
+          "roster_equal": true,
+          "seed": 2137841944
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 1,
+          "prediction_hash_equal": true,
+          "repeat_id": 2,
+          "roster_equal": true,
+          "seed": 3902865753
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 2,
+          "prediction_hash_equal": true,
+          "repeat_id": 0,
+          "roster_equal": true,
+          "seed": 1867973658
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 2,
+          "prediction_hash_equal": true,
+          "repeat_id": 1,
+          "roster_equal": true,
+          "seed": 2137841944
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 2,
+          "prediction_hash_equal": true,
+          "repeat_id": 2,
+          "roster_equal": true,
+          "seed": 3902865753
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 3,
+          "prediction_hash_equal": true,
+          "repeat_id": 0,
+          "roster_equal": true,
+          "seed": 1867973658
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 3,
+          "prediction_hash_equal": true,
+          "repeat_id": 1,
+          "roster_equal": true,
+          "seed": 2137841944
+        },
+        {
+          "metric_hash_equal": true,
+          "outer_rollout_id": 3,
+          "prediction_hash_equal": true,
+          "repeat_id": 2,
+          "roster_equal": true,
+          "seed": 3902865753
+        }
+      ],
+      "cell_count": 12,
+      "executor_entrypoint": "_evaluate_promotion_action",
       "metric_sha256": "01e736e9a866ac5804563fdd3df7251f309ad89642cf202b9d7a410ae48497a2",
+      "outer_rollout_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
       "prediction_sha256": "98f3ee1d4cd77d1da1aa66955065853acb390909e1c5bd0b7f8594c47d2e9e0d",
-      "role": "advice_only_identity_control",
+      "repeat_seeds": [
+        1867973658,
+        2137841944,
+        3902865753
+      ],
+      "role": "advice_only_actual_identity_replay",
       "shares_a2l_initial_advice_but_executes_a0": true
     },
     "A2D": {
@@ -31969,6 +32089,517 @@
       ]
     }
   },
+  "controls": {
+    "a2l_vs_a2d_trajectory": {
+      "differing_trajectory_count": 2,
+      "differing_trajectory_outer_folds": [
+        1,
+        2
+      ],
+      "interpretation": "A2L and A2D take different action trajectories in 2/4 outer folds, while converging to the same promoted actions and endpoint metrics.",
+      "outer_folds": [
+        {
+          "a2d_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_WEIGHT_EXP05_MEAN1",
+            "ACT_PRIOR_SHRINK010"
+          ],
+          "a2l_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_WEIGHT_EXP05_MEAN1",
+            "ACT_PRIOR_SHRINK010"
+          ],
+          "outer_rollout_id": 0,
+          "promotion_action_identical": true,
+          "trajectory_identical": true
+        },
+        {
+          "a2d_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_WEIGHT_EXP05_MEAN1",
+            "ACT_PRIOR_SHRINK010"
+          ],
+          "a2l_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_PRIOR_SHRINK010",
+            "ACT_WEIGHT_EXP05_MEAN1"
+          ],
+          "outer_rollout_id": 1,
+          "promotion_action_identical": true,
+          "trajectory_identical": false
+        },
+        {
+          "a2d_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_WEIGHT_EXP05_MEAN1",
+            "ACT_PRIOR_SHRINK010"
+          ],
+          "a2l_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_WEIGHT_EXP075_MEAN1",
+            "ACT_PRIOR_SHRINK010"
+          ],
+          "outer_rollout_id": 2,
+          "promotion_action_identical": true,
+          "trajectory_identical": false
+        },
+        {
+          "a2d_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_WEIGHT_EXP05_MEAN1",
+            "ACT_PRIOR_SHRINK010"
+          ],
+          "a2l_action_sequence": [
+            "ACT_WELL_MASK_ONLY_858",
+            "ACT_WEIGHT_EXP05_MEAN1",
+            "ACT_PRIOR_SHRINK010"
+          ],
+          "outer_rollout_id": 3,
+          "promotion_action_identical": true,
+          "trajectory_identical": true
+        }
+      ],
+      "promotion_endpoint_identical": true,
+      "total_outer_folds": 4
+    },
+    "inner_action_space_ceiling": {
+      "action_ids": [
+        "ACT_DEPTH4_ETA0075_ROUNDS80",
+        "ACT_WEIGHT_EXP05_MEAN1",
+        "ACT_WEIGHT_EXP075_MEAN1",
+        "ACT_WELL_MASK_ONLY_858",
+        "ACT_PRIOR_SHRINK010"
+      ],
+      "actions_per_outer_rollout": 5,
+      "control_id": "INNER_EXHAUSTIVE_ORACLE_CEILING",
+      "failure_diagnosis": "INNER_TO_PROMOTION_TRANSFER_LIMIT",
+      "interpretation": "A2L reaches the material inner ceiling within 0.005, so its failed promotion is not explained by policy search; transfer from the bounded inner action space to the disjoint outer folds is the limit.",
+      "layer": "inner_selection_only",
+      "materiality": 0.005,
+      "mean_a2l_inner_delta_from_a0": 0.002454526770955291,
+      "mean_a2l_regret_to_inner_ceiling": 0.002861366257192667,
+      "mean_inner_ceiling_delta_from_a0": 0.005315893028147958,
+      "model_seed_roster": [
+        1867973658,
+        2137841944,
+        3902865753
+      ],
+      "outer_rollout_count": 4,
+      "outer_rollouts": [
+        {
+          "a0_inner_mean": 0.15850017464390476,
+          "a2l_regret_to_inner_ceiling": 0.004972003777402478,
+          "a2l_selected_action_id": "ACT_WEIGHT_EXP05_MEAN1",
+          "a2l_selected_inner_mean": 0.16340150556457578,
+          "all_five_actions": [
+            {
+              "action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+              "delta_from_a0_inner": 0.0098733346980735,
+              "per_class_selection_mean": [
+                0.0,
+                0.32908757908757913,
+                0.0,
+                0.1111111111111111,
+                0.0,
+                0.37864369492089067,
+                0.6965191989582232,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.16837350934197826
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP05_MEAN1",
+              "delta_from_a0_inner": 0.004901330920671021,
+              "per_class_selection_mean": [
+                0.05555555555555555,
+                0.22689372673777886,
+                0.0,
+                0.10666666666666665,
+                0.0,
+                0.3579298386021075,
+                0.7235677625190736,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.16340150556457578
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP075_MEAN1",
+              "delta_from_a0_inner": -0.001972286295646858,
+              "per_class_selection_mean": [
+                0.037037037037037035,
+                0.20626262626262626,
+                0.0,
+                0.10666666666666665,
+                0.0,
+                0.3541032444258251,
+                0.7046814207421663,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.1565278883482579
+            },
+            {
+              "action_id": "ACT_WELL_MASK_ONLY_858",
+              "delta_from_a0_inner": -0.0026116454075438833,
+              "per_class_selection_mean": [
+                0.0,
+                0.16655164481251436,
+                0.0,
+                0.08045977011494251,
+                0.0,
+                0.38355795148247984,
+                0.7724273967173114,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.15588852923636087
+            },
+            {
+              "action_id": "ACT_PRIOR_SHRINK010",
+              "delta_from_a0_inner": 0.0007244034598405391,
+              "per_class_selection_mean": [
+                0.0,
+                0.2626086956521739,
+                0.0,
+                0.1111111111111111,
+                0.0,
+                0.3741643110333377,
+                0.6851370851370852,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.1592245781037453
+            }
+          ],
+          "best_candidate_action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+          "best_candidate_delta_from_a0": 0.0098733346980735,
+          "best_candidate_inner_mean": 0.16837350934197826,
+          "best_reachable_including_a0_action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+          "best_reachable_including_a0_inner_mean": 0.16837350934197826,
+          "ceiling_delta_from_a0": 0.0098733346980735,
+          "outer_rollout_id": 0
+        },
+        {
+          "a0_inner_mean": 0.2047017893430239,
+          "a2l_regret_to_inner_ceiling": 0.00647346125136819,
+          "a2l_selected_action_id": "A0_DEPTH3_ETA01_ROUNDS60",
+          "a2l_selected_inner_mean": 0.2047017893430239,
+          "all_five_actions": [
+            {
+              "action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+              "delta_from_a0_inner": 0.004960258585608529,
+              "per_class_selection_mean": [
+                0.0,
+                0.4385783298826777,
+                0.0,
+                0.1818181818181818,
+                0.0,
+                0.4319770474700053,
+                0.834584872186827,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.20966204792863244
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP05_MEAN1",
+              "delta_from_a0_inner": -0.017405951703498068,
+              "per_class_selection_mean": [
+                0.0606060606060606,
+                0.40954141219329254,
+                0.0,
+                0.0,
+                0.0,
+                0.43924420756532684,
+                0.7762708583910525,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.18729583763952584
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP075_MEAN1",
+              "delta_from_a0_inner": 0.00647346125136819,
+              "per_class_selection_mean": [
+                0.06666666666666668,
+                0.40019379844961245,
+                0.0,
+                0.16666666666666666,
+                0.0,
+                0.44023617511520735,
+                0.8268139484513753,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.2111752505943921
+            },
+            {
+              "action_id": "ACT_WELL_MASK_ONLY_858",
+              "delta_from_a0_inner": -0.01711047833552673,
+              "per_class_selection_mean": [
+                0.10256410256410255,
+                0.3492592592592593,
+                0.0,
+                0.07407407407407407,
+                0.0,
+                0.34978819759269647,
+                0.8126361655773422,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.18759131100749718
+            },
+            {
+              "action_id": "ACT_PRIOR_SHRINK010",
+              "delta_from_a0_inner": -0.0065809689042535535,
+              "per_class_selection_mean": [
+                0.0,
+                0.4275582573454914,
+                0.0,
+                0.07407407407407407,
+                0.0,
+                0.4466666666666667,
+                0.834788385862701,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.19812082043877036
+            }
+          ],
+          "best_candidate_action_id": "ACT_WEIGHT_EXP075_MEAN1",
+          "best_candidate_delta_from_a0": 0.00647346125136819,
+          "best_candidate_inner_mean": 0.2111752505943921,
+          "best_reachable_including_a0_action_id": "ACT_WEIGHT_EXP075_MEAN1",
+          "best_reachable_including_a0_inner_mean": 0.2111752505943921,
+          "ceiling_delta_from_a0": 0.00647346125136819,
+          "outer_rollout_id": 1
+        },
+        {
+          "a0_inner_mean": 0.1729188619128591,
+          "a2l_regret_to_inner_ceiling": 0.0,
+          "a2l_selected_action_id": "ACT_WELL_MASK_ONLY_858",
+          "a2l_selected_inner_mean": 0.17783563807600924,
+          "all_five_actions": [
+            {
+              "action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+              "delta_from_a0_inner": -0.012252700454592619,
+              "per_class_selection_mean": [
+                0.0,
+                0.1362371445856019,
+                0.0,
+                0.05555555555555555,
+                0.0,
+                0.5289890777695656,
+                0.7252136752136752,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.16066616145826648
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP05_MEAN1",
+              "delta_from_a0_inner": -0.0021564998035760174,
+              "per_class_selection_mean": [
+                0.0,
+                0.1880360839988169,
+                0.0,
+                0.05128205128205129,
+                0.0,
+                0.5484718639931221,
+                0.7490712597095577,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.17076236210928308
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP075_MEAN1",
+              "delta_from_a0_inner": -0.0004585204097346529,
+              "per_class_selection_mean": [
+                0.0,
+                0.13911734666451647,
+                0.0,
+                0.125,
+                0.0,
+                0.5772461955388786,
+                0.7107795313247248,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.17246034150312445
+            },
+            {
+              "action_id": "ACT_WELL_MASK_ONLY_858",
+              "delta_from_a0_inner": 0.004916776163150144,
+              "per_class_selection_mean": [
+                0.0,
+                0.14421296296296293,
+                0.0,
+                0.2357142857142857,
+                0.0,
+                0.42338982311500795,
+                0.7972036708918266,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.17783563807600924
+            },
+            {
+              "action_id": "ACT_PRIOR_SHRINK010",
+              "delta_from_a0_inner": -0.004301774087660887,
+              "per_class_selection_mean": [
+                0.0,
+                0.17298117789921072,
+                0.0,
+                0.07407407407407407,
+                0.0,
+                0.5619031506128283,
+                0.708595387840671,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.16861708782519821
+            }
+          ],
+          "best_candidate_action_id": "ACT_WELL_MASK_ONLY_858",
+          "best_candidate_delta_from_a0": 0.004916776163150144,
+          "best_candidate_inner_mean": 0.17783563807600924,
+          "best_reachable_including_a0_action_id": "ACT_WELL_MASK_ONLY_858",
+          "best_reachable_including_a0_inner_mean": 0.17783563807600924,
+          "ceiling_delta_from_a0": 0.004916776163150144,
+          "outer_rollout_id": 2
+        },
+        {
+          "a0_inner_mean": 0.16044452774958043,
+          "a2l_regret_to_inner_ceiling": 0.0,
+          "a2l_selected_action_id": "A0_DEPTH3_ETA01_ROUNDS60",
+          "a2l_selected_inner_mean": 0.16044452774958043,
+          "all_five_actions": [
+            {
+              "action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+              "delta_from_a0_inner": -0.004961497365152057,
+              "per_class_selection_mean": [
+                0.0,
+                0.23709677419354844,
+                0.0,
+                0.03174603174603175,
+                0.0,
+                0.4053540949554128,
+                0.7251503725648624,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.15548303038442837
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP05_MEAN1",
+              "delta_from_a0_inner": -0.025734658701795976,
+              "per_class_selection_mean": [
+                0.0,
+                0.09960384833050367,
+                0.0,
+                0.06666666666666668,
+                0.0,
+                0.4012288470119796,
+                0.64488945942091,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.13470986904778445
+            },
+            {
+              "action_id": "ACT_WEIGHT_EXP075_MEAN1",
+              "delta_from_a0_inner": -2.367101213909817e-05,
+              "per_class_selection_mean": [
+                0.0,
+                0.23115079365079363,
+                0.0,
+                0.07692307692307693,
+                0.0,
+                0.3885634000702494,
+                0.7054837733261857,
+                0.041666666666666664,
+                0.0
+              ],
+              "selection_mean": 0.16042085673744133
+            },
+            {
+              "action_id": "ACT_WELL_MASK_ONLY_858",
+              "delta_from_a0_inner": -0.004691617445947843,
+              "per_class_selection_mean": [
+                0.024691358024691357,
+                0.14689265536723164,
+                0.0,
+                0.037037037037037035,
+                0.0,
+                0.4577858604228234,
+                0.7353692818809099,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.15575291030363259
+            },
+            {
+              "action_id": "ACT_PRIOR_SHRINK010",
+              "delta_from_a0_inner": -0.00015840486302926005,
+              "per_class_selection_mean": [
+                0.0,
+                0.2765246449456976,
+                0.0,
+                0.0303030303030303,
+                0.0,
+                0.39546893220056645,
+                0.7402784985296661,
+                0.0,
+                0.0
+              ],
+              "selection_mean": 0.16028612288655117
+            }
+          ],
+          "best_candidate_action_id": "ACT_WEIGHT_EXP075_MEAN1",
+          "best_candidate_delta_from_a0": -2.367101213909817e-05,
+          "best_candidate_inner_mean": 0.16042085673744133,
+          "best_reachable_including_a0_action_id": "A0_DEPTH3_ETA01_ROUNDS60",
+          "best_reachable_including_a0_inner_mean": 0.16044452774958043,
+          "ceiling_delta_from_a0": 0.0,
+          "outer_rollout_id": 3
+        }
+      ],
+      "promotion_metrics_computed": false,
+      "used_for_policy_feedback": false,
+      "used_for_promotion_selection": false
+    }
+  },
+  "correction": {
+    "audit": {
+      "completion_status": "COMPLETE",
+      "job_id": "20260801T162948__claude__1249571",
+      "result_sha256": "c1ddcc0e8c506cae69234919c87bd3680135b10f38b71ecbbbaea24a77ae4581"
+    },
+    "bounded_model_recomputation": {
+      "a1_outer_promotion_cells": 12,
+      "oracle_inner_action_evaluations": 20,
+      "oracle_inner_model_cells": 180,
+      "oracle_promotion_evaluations": 0
+    },
+    "corrected_verdict": "REJECT",
+    "elapsed_seconds": 330.3894860399887,
+    "live_provider_policy_replayed": false,
+    "preserved_a2l_policy_trajectory_sha256": "c444deaad2ee4c9715991c50b5d939fc75e364fc091132927c944562859ae69c",
+    "previous_artifact_sha256": {
+      "artifact_manifest.json": "5125fe86d6bee74e62d7fedea113a91216fb6f527e05b794a893be748dcfa213",
+      "evidence.md": "3c735aa5966b4290c4ee831a6ba24609ac6bb2c0171937902db1fb74800ea0a7",
+      "protocol.json": "c673011d42860e95412ad4605f89a841ebee03baa04aeac26d95c922ce4b7e18",
+      "results.jsonl": "9b094f787c2ae22385bebb87a6f4c1ee3d039cf37d9d0ce0b309fa10b597e347",
+      "summary.json": "0d994ecafa4af5dbbb32d4e3ed7c81d98d0f72777f7784762d2f7ed65c7d8b17"
+    },
+    "previous_verdict": "REJECT",
+    "source": "claude_final_audit",
+    "splits_changed": false,
+    "thresholds_changed": false
+  },
   "credential_persisted": false,
   "data": {
     "development_hdf5_sha256": "4cd414adb4a76447a35599416b55b91d41c62da19d676fe2289e10c35361450c",
@@ -32009,7 +32640,7 @@
     "status": "frozen_external_paired_evidence_not_rerun"
   },
   "primary_metric": "fixed_schema_macro_f1",
-  "schema_version": "lithofacies-p28-agentic-optimization/v1",
+  "schema_version": "lithofacies-p28-agentic-optimization/v2",
   "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
   "valid_action_count": 12,
   "verdict": "REJECT"

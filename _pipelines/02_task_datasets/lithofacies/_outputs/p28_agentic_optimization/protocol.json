@@ -80,12 +80,46 @@
     "A3",
     "A4"
   ],
+  "claude_correction_audit": {
+    "completion_status": "COMPLETE",
+    "job_id": "20260801T162948__claude__1249571",
+    "result_sha256": "c1ddcc0e8c506cae69234919c87bd3680135b10f38b71ecbbbaea24a77ae4581"
+  },
+  "correction": {
+    "corrected_verdict": "REJECT",
+    "live_provider_policy_replayed": false,
+    "preserved_a2l_policy_trajectory_sha256": "c444deaad2ee4c9715991c50b5d939fc75e364fc091132927c944562859ae69c",
+    "previous_verdict": "REJECT",
+    "splits_changed": false,
+    "thresholds_changed": false
+  },
   "deepseek": {
     "endpoint": "https://api.deepseek.com/chat/completions",
     "invalid_or_unavailable_provider": "fail_closed_no_replay",
     "missing_credential": "fail_closed",
     "model": "deepseek-chat",
     "strict_json": true
+  },
+  "diagnostic_controls": {
+    "a1_identity": {
+      "action_id": "A0_DEPTH3_ETA01_ROUNDS60",
+      "executor_entrypoint": "_evaluate_promotion_action",
+      "implementation": "actual_same_entrypoint_action_seed_replay",
+      "repeat_seeds": [
+        1867973658,
+        2137841944,
+        3902865753
+      ],
+      "required_cell_count": 12
+    },
+    "inner_action_space_ceiling": {
+      "implementation": "exhaustive_all_five_allowlisted_actions",
+      "layer": "inner_selection_only",
+      "materiality": 0.005,
+      "promotion_metrics_computed": false,
+      "used_for_policy_feedback": false,
+      "used_for_promotion_selection": false
+    }
   },
   "fixed_class_schema": [
     "F-MARSH",
@@ -181,7 +215,7 @@
       ]
     }
   ],
-  "schema_version": "lithofacies-p28-protocol/v1",
+  "schema_version": "lithofacies-p28-protocol/v2",
   "selection": "inner_LOGO3_mean_over_3_folds_x_3_repeat_seeds",
   "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
   "trial_budget_per_outer_rollout": 3
