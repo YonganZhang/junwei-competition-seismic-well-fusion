@@ -1,0 +1,123 @@
+{
+  "action_allowlist": {
+    "chronos": [
+      "T3_BLEND_WEIGHT_0_63",
+      "T3_BLEND_WEIGHT_0_65"
+    ],
+    "xgboost": [
+      "T3_XGB_DEPTH_4_ETA_0_05",
+      "T3_XGB_DEPTH_6_ETA_0_05"
+    ]
+  },
+  "blocked_reason": "BLOCKED_EXECUTOR: no portable P28 executor exists in the current sweetspot worktree; immutable sibling results are only references and cannot be replayed as new online evidence.",
+  "frozen_baseline": {
+    "baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+    "promotion_dev_feedback": "flat",
+    "route": "xgboost",
+    "selection_dev_feedback": "flat",
+    "split_hash": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "stage3_leaderboard_sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+    "stage3_summary_sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
+    "stage4_summary_sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+  },
+  "gates": {
+    "T5": "not_feasible",
+    "T6": "blocked",
+    "T7": "blocked"
+  },
+  "inputs": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
+      "role": "p5 stage-3 T3 leaderboard",
+      "scientific_role": "p5 stage-3 T3 leaderboard",
+      "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+      "shape_or_row_count": 3512,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json",
+      "role": "p5 stage-3 summary",
+      "scientific_role": "p5 stage-3 summary",
+      "sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
+      "shape_or_row_count": 20090,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+      "role": "p5 stage-4 confirmation summary",
+      "scientific_role": "p5 stage-4 confirmation summary",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+      "shape_or_row_count": 7591,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+      "role": "p7 Chronos summary",
+      "scientific_role": "p7 Chronos summary",
+      "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
+      "shape_or_row_count": 18587,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
+      "role": "p8 calendar Chronos summary",
+      "scientific_role": "p8 calendar Chronos summary",
+      "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
+      "shape_or_row_count": 26803,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md",
+      "role": "P17 acceptance evidence",
+      "scientific_role": "P17 acceptance evidence",
+      "sha256": "b7e78d08f231165a873a6d5d4ceeabaf060b0237ebb199ee666b9c6a5bddf6b4",
+      "shape_or_row_count": 3806,
+      "split_scope": "immutable reference"
+    }
+  ],
+  "leakage_firewall": {
+    "fold_train_only_fit": true,
+    "foundation_route_fixed_or_factorized": true,
+    "nested_disjoint_selection_and_promotion": true,
+    "no_holdout_or_test": true,
+    "no_labels": true,
+    "no_raw_metrics": true
+  },
+  "observation_schema": {
+    "foundation_route_fixed_or_separate_factor": true,
+    "hidden_from_llm": [
+      "raw_metric_values",
+      "validation_curves",
+      "per_sample_residuals",
+      "labels",
+      "paths"
+    ],
+    "promotion_fold_ids": [
+      3
+    ],
+    "selection_fold_ids": [
+      0,
+      1,
+      2
+    ],
+    "visible_to_llm": [
+      "fold_train_aggregates",
+      "selection_dev_feedback_improved_flat_worse",
+      "promotion_dev_feedback_improved_flat_worse",
+      "allowlist",
+      "stop_requested"
+    ]
+  },
+  "promotion_gate": {
+    "require_a2l_helpful_vs_a3": true,
+    "require_no_leakage": true,
+    "require_non_overlapping_selection_and_promotion": true,
+    "stage1_max_trials": 4,
+    "stage1_min_trials": 2
+  },
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p28-agentic-optimization/v1",
+  "task_id": "T3",
+  "track_id": "sweetspot",
+  "verdict": "BLOCKED_EXECUTOR"
+}

@@ -1,0 +1,111 @@
+{
+  "artifact_count": 4,
+  "generated_at": "2026-08-01T00:00:00Z",
+  "inputs": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
+      "role": "p5 stage-3 T3 leaderboard",
+      "scientific_role": "p5 stage-3 T3 leaderboard",
+      "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+      "shape_or_row_count": 3512,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json",
+      "role": "p5 stage-3 summary",
+      "scientific_role": "p5 stage-3 summary",
+      "sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
+      "shape_or_row_count": 20090,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+      "role": "p5 stage-4 confirmation summary",
+      "scientific_role": "p5 stage-4 confirmation summary",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+      "shape_or_row_count": 7591,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+      "role": "p7 Chronos summary",
+      "scientific_role": "p7 Chronos summary",
+      "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
+      "shape_or_row_count": 18587,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
+      "role": "p8 calendar Chronos summary",
+      "scientific_role": "p8 calendar Chronos summary",
+      "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
+      "shape_or_row_count": 26803,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md",
+      "role": "P17 acceptance evidence",
+      "scientific_role": "P17 acceptance evidence",
+      "sha256": "b7e78d08f231165a873a6d5d4ceeabaf060b0237ebb199ee666b9c6a5bddf6b4",
+      "shape_or_row_count": 3806,
+      "split_scope": "immutable reference"
+    }
+  ],
+  "manual_review": {
+    "colors_consistent": null,
+    "labels_legible": null,
+    "no_clipping": null,
+    "no_overlap": null,
+    "notes": "pending",
+    "reviewed": false,
+    "reviewed_at": null,
+    "reviewed_sha256": null,
+    "reviewer": null,
+    "scientific_boundary_preserved": null
+  },
+  "outputs": [
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/protocol.json",
+      "role": "protocol",
+      "sha256": "fd3528e22220ef3c11e488efb690df661e063846463f6442c8e70a7fe8b2889e",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/protocol.jsonl",
+      "role": "protocol_jsonl",
+      "sha256": "ecc3e6b03994e5a1c09e5565f0f068007a31239d60a1b3936a38d5008e4a4c4e",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/summary.json",
+      "role": "summary",
+      "sha256": "bc0fa70adefd512da70823712025eed2435c505c40cbbc9d521ffb534d32c447",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/evidence.md",
+      "role": "evidence",
+      "sha256": "cd708fcdf1c990362f3febf995049e79ba5f922a56a9cb9afac19a71c719cb8c",
+      "vector_companions": [],
+      "width_px": null
+    }
+  ],
+  "renderer": {
+    "path": "p28/sweetspot_p28_agentic_optimization.py",
+    "sha256": "f69e3cccb2b7bc0ad977114e10ceeb5d362c2e4e2d98986534f2a766ab900969"
+  },
+  "schema_version": "sweetspot-p28-agentic-optimization/v1",
+  "source_commit": "3bee71a8d195a268d9dcff9254116bc535f0d579",
+  "track_id": "sweetspot"
+}

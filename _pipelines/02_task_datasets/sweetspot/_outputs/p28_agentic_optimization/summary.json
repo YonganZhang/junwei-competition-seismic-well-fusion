@@ -1,0 +1,84 @@
+{
+  "a0_reference": {
+    "baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+    "promotion_dev_feedback": "flat",
+    "route": "xgboost",
+    "selection_dev_feedback": "flat",
+    "split_hash": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "stage3_leaderboard_sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+    "stage3_summary_sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
+    "stage4_summary_sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c"
+  },
+  "a1_prediction_hash_contract": "same_as_a0_not_replayed",
+  "a2d": {
+    "confidence": 0.71,
+    "rationale": "Chronos is the only route with existing development evidence of gain; keep route fixed and stop if no ported executor exists.",
+    "selected_action_id": "T3_BLEND_WEIGHT_0_63",
+    "selected_route": "chronos",
+    "stop_requested": false
+  },
+  "a2l": {
+    "confidence": 0.7,
+    "rationale": "Chronos stratum shows improved dev feedback on both selection and promotion folds, while XGBoost is flat. Budget allows 4 trials, so continue with Chronos.",
+    "raw": {
+      "_model": "deepseek-v4-flash",
+      "_provider": "deepseek",
+      "confidence": 0.7,
+      "rationale": "Chronos stratum shows improved dev feedback on both selection and promotion folds, while XGBoost is flat. Budget allows 4 trials, so continue with Chronos.",
+      "selected_action_id": "T3_BLEND_WEIGHT_0_63",
+      "selected_route": "chronos",
+      "stop_requested": false
+    },
+    "selected_action_id": "T3_BLEND_WEIGHT_0_63",
+    "selected_route": "chronos",
+    "status": "OK",
+    "stop_requested": false
+  },
+  "a3": {
+    "confidence": 0.5,
+    "rationale": "Random baseline with the same allowlist and seed roster.",
+    "selected_action_id": "T3_XGB_DEPTH_6_ETA_0_05",
+    "selected_route": "xgboost",
+    "stop_requested": false
+  },
+  "a4": {
+    "reason": "BLOCKED_EXECUTOR: no portable P28 executor exists in the current sweetspot worktree; immutable sibling results are only references and cannot be replayed as new online evidence.",
+    "status": "BLOCKED_EXECUTOR"
+  },
+  "blocked_reason": "BLOCKED_EXECUTOR: no portable P28 executor exists in the current sweetspot worktree; immutable sibling results are only references and cannot be replayed as new online evidence.",
+  "executor_available": false,
+  "gates": {
+    "T5": "not_feasible",
+    "T6": "blocked",
+    "T7": "blocked"
+  },
+  "hybrid": "A2L decision archived, but no executor to execute",
+  "llm_prompt_contract": {
+    "no_labels": true,
+    "no_paths": true,
+    "no_raw_metrics": true,
+    "no_residuals": true,
+    "only_improved_flat_worse_feedback": true
+  },
+  "promotion_fold_ids": [
+    3
+  ],
+  "protocol_jsonl_sha256": "ecc3e6b03994e5a1c09e5565f0f068007a31239d60a1b3936a38d5008e4a4c4e",
+  "protocol_sha256": "fd3528e22220ef3c11e488efb690df661e063846463f6442c8e70a7fe8b2889e",
+  "reference_commits": {
+    "current_worktree": "3bee71a8d195a268d9dcff9254116bc535f0d579",
+    "p10_results_sweetspot": "1c81a030ddbd2ec16a7175423448012a17147236"
+  },
+  "reject": "A2D/A3/A4 execution blocked",
+  "retention": "retain A0 reference only",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p28-agentic-optimization/v1",
+  "selection_fold_ids": [
+    0,
+    1,
+    2
+  ],
+  "task_id": "T3",
+  "track_id": "sweetspot",
+  "verdict": "BLOCKED_EXECUTOR"
+}
