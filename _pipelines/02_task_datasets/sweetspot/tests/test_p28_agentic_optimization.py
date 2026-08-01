@@ -108,6 +108,17 @@ class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
             self.assertEqual(summary["a4"]["selected_action_id"], "T3_XGB_D4_ETA_0_05_ROUNDS_96")
             self.assertEqual(summary_row["sha256"], p28._sha256_file(output_dir / "summary.json"))
 
+    def test_manifest_outputs_are_worktree_relative_and_hash_consistent(self) -> None:
+        output_dir = p28.OUTPUT_DIR
+        manifest_data = json.loads((output_dir / "manifest.json").read_text(encoding="utf-8"))
+        for record in manifest_data["outputs"]:
+            path = Path(record["path"])
+            self.assertFalse(path.is_absolute(), record["path"])
+            self.assertTrue(str(path).startswith("_pipelines/02_task_datasets/sweetspot/"), record["path"])
+            resolved = p28.WORKTREE_ROOT / path
+            self.assertTrue(resolved.is_file(), record["path"])
+            self.assertEqual(record["sha256"], p28._sha256_file(resolved))
+
 
 if __name__ == "__main__":
     unittest.main()

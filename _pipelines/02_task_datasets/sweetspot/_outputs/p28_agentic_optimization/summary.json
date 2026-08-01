@@ -1018,7 +1018,7 @@
   "protocol_jsonl_sha256": "6fc65978f58bc4439c17858fb77014f49b4e565a1e65df9fd804beb7f5f52e27",
   "protocol_sha256": "3db359eaab0b0df9371e167c6eb95157ef34ec4959fa3365903ee5bdbbd1ba6c",
   "reference_commits": {
-    "current_worktree": "3faee451e7da0c1bd17ff9344672697ad3c52a0b",
+    "current_worktree": "00dd5f9d136fdcfa6db1ba0ee4a0b3aa9d3404db",
     "p10_results_sweetspot": "1c81a030ddbd2ec16a7175423448012a17147236"
   },
   "reject": "A2L stop, A2D/A3/A4 promotion failure, or data blocks",

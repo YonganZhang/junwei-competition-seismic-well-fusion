@@ -832,7 +832,7 @@ def _evaluate_candidate_table(*, source_root: Path) -> dict[str, Any]:
 
 def _portable_display_path(path: Path) -> str:
     try:
-        return str(path.relative_to(TRACK_DIR))
+        return str(path.relative_to(WORKTREE_ROOT))
     except ValueError:
         return str(path)
 
@@ -856,7 +856,7 @@ def _write_text(path: Path, text: str) -> str:
 
 def _display_path(path: Path) -> str:
     try:
-        return str(path.relative_to(TRACK_DIR))
+        return str(path.relative_to(WORKTREE_ROOT))
     except ValueError:
         return str(path)
 
