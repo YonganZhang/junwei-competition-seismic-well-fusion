@@ -52,6 +52,13 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def relative_to_output_or_self(path: Path) -> str:
+    try:
+        return str(path.relative_to(OUTPUT_DIR))
+    except ValueError:
+        return str(path)
+
+
 def json_hash(payload: Any) -> str:
     text = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -157,6 +164,21 @@ def load_a0_checkpoint(n_features: int):
     return p28.load_a0_checkpoint(n_features)
 
 
+def load_checkpointed_tiny_mlp(checkpoint_path: Path, n_features: int):
+    model = p28.get_model(
+        "tiny_mlp",
+        models_package="models",
+        n_features=n_features,
+        n_outputs=3,
+        hidden_dim=24,
+        learning_rate=0.002,
+        weight_decay=1e-5,
+        seed=ROOT_SEED,
+    )
+    model.load_checkpoint(checkpoint_path)
+    return model
+
+
 def infer(model: Any, features: np.ndarray, stats: dict[str, Any]) -> np.ndarray:
     normalized = model.predict(features)
     return inverse_normalized_targets(normalized, stats)
@@ -204,6 +226,82 @@ def make_batches(features: np.ndarray, targets: np.ndarray, batch_size: int, see
 
 def train_model(route: RouteSpec, features: np.ndarray, target_norm: np.ndarray, seed: int, budget_steps: int) -> Any:
     return p28.train_model(route, features, target_norm, seed=seed, budget_steps=budget_steps)
+
+
+def train_matched_a0_trials(
+    *,
+    train_features: np.ndarray,
+    train_target_norm: np.ndarray,
+    selection_features: np.ndarray,
+    selection_targets: np.ndarray,
+    promotion_features: np.ndarray,
+    promotion_targets: np.ndarray,
+    stats: dict[str, Any],
+    budget_steps: int,
+) -> dict[str, Any]:
+    route = next(route for route in ROUTES if route.route_id == "tiny_mlp_default")
+    trials: list[dict[str, Any]] = []
+    for seed in SAME_BUDGET_SEEDS:
+        model = train_model(route, train_features, train_target_norm, seed=int(seed), budget_steps=budget_steps)
+        selection_pred = infer(model, selection_features, stats)
+        promotion_pred = infer(model, promotion_features, stats)
+        selection_metrics = evaluate_predictions(selection_targets, selection_pred, stats)
+        promotion_metrics = evaluate_predictions(promotion_targets, promotion_pred, stats)
+        checkpoint_path = CHECKPOINT_DIR / "A0" / route.route_id / f"seed_{seed}.npz"
+        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+        model.save_checkpoint(checkpoint_path)
+        trials.append(
+            {
+                "kind": "trial",
+                "strategy": "A0",
+                "route_id": route.route_id,
+                "model_name": route.model_name,
+                "seed": int(seed),
+                "budget_steps": budget_steps,
+                "status": "ok",
+                "selection": selection_metrics,
+                "promotion": promotion_metrics,
+                "prediction_hash": {
+                    "selection": prediction_hash(selection_pred),
+                    "promotion": prediction_hash(promotion_pred),
+                },
+                "checkpoint_path": relative_to_output_or_self(checkpoint_path),
+                "checkpoint_sha256": sha256_file(checkpoint_path),
+                "config_hash": route_config_hash(route, seed=int(seed), budget_steps=budget_steps),
+                "semantics": route_semantics(route),
+                "lane": route.lane,
+            }
+        )
+    selection_median = {
+        "composite_mean_train_std_normalized_RMSE": float(np.median([trial["selection"]["composite_mean_train_std_normalized_RMSE"] for trial in trials])),
+        "physical_MAE_macro": float(np.median([trial["selection"]["physical_MAE_macro"] for trial in trials])),
+        "worst_group_RMSE": {
+            target: float(np.median([trial["selection"]["worst_group_RMSE"][target] for trial in trials]))
+            for target in PHYSICAL_TARGETS
+        },
+    }
+    promotion_median = {
+        "composite_mean_train_std_normalized_RMSE": float(np.median([trial["promotion"]["composite_mean_train_std_normalized_RMSE"] for trial in trials])),
+        "physical_MAE_macro": float(np.median([trial["promotion"]["physical_MAE_macro"] for trial in trials])),
+        "worst_group_RMSE": {
+            target: float(np.median([trial["promotion"]["worst_group_RMSE"][target] for trial in trials]))
+            for target in PHYSICAL_TARGETS
+        },
+    }
+    return {
+        "route": dataclasses.asdict(route),
+        "seed_pool": list(SAME_BUDGET_SEEDS),
+        "budget_steps": budget_steps,
+        "trials": trials,
+        "selection_median": selection_median,
+        "promotion_median": promotion_median,
+        "replay_trial": trials[0],
+        "historical_reference": {
+            "checkpoint_path": str(BASELINE_CHECKPOINT.relative_to(RESERVOIR_DIR)),
+            "checkpoint_sha256": sha256_file(BASELINE_CHECKPOINT),
+            "note": "non-causal historical reference only",
+        },
+    }
 
 
 def compare_to_baseline(candidate: dict[str, Any], baseline: dict[str, Any]) -> str:
@@ -365,7 +463,6 @@ def pilot_route(
 
 def identity_replay(
     *,
-    train_features: np.ndarray,
     selection_features: np.ndarray,
     selection_targets: np.ndarray,
     promotion_features: np.ndarray,
@@ -374,8 +471,9 @@ def identity_replay(
     a0_selection_hash: str,
     a0_promotion_hash: str,
     a0_config_hash: str,
+    checkpoint_path: Path,
 ) -> dict[str, Any]:
-    model = load_a0_checkpoint(train_features.shape[1])
+    model = load_checkpointed_tiny_mlp(checkpoint_path, selection_features.shape[1])
     selection_pred = infer(model, selection_features, stats)
     promotion_pred = infer(model, promotion_features, stats)
     selection_metrics = evaluate_predictions(selection_targets, selection_pred, stats)
@@ -401,9 +499,46 @@ def identity_replay(
         "selection_hash_matches_a0": selection_hash == a0_selection_hash,
         "promotion_hash_matches_a0": promotion_hash == a0_promotion_hash,
         "config_hash": a0_config_hash,
-        "executor": "a0_frozen_tiny_mlp",
+        "executor": "a0_matched_budget_tiny_mlp",
+        "checkpoint_path": relative_to_output_or_self(checkpoint_path),
         "action": "identity_replay",
         "visible_to_llm": False,
+    }
+
+
+def evaluate_strategy_gate(
+    *,
+    selection_median: dict[str, Any],
+    promotion_median: dict[str, Any],
+    a0_selection_metrics: dict[str, Any],
+    a0_promotion_metrics: dict[str, Any],
+    declared_comparators: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    selection_ok = (
+        selection_median["composite_mean_train_std_normalized_RMSE"] <= a0_selection_metrics["composite_mean_train_std_normalized_RMSE"] * 0.99
+        and all(
+            selection_median["worst_group_RMSE"][target] <= a0_selection_metrics["worst_group_RMSE"][target] * 1.02
+            for target in PHYSICAL_TARGETS
+        )
+    )
+    promotion_ok = (
+        promotion_median["composite_mean_train_std_normalized_RMSE"] <= a0_promotion_metrics["composite_mean_train_std_normalized_RMSE"] * 0.99
+        and all(
+            promotion_median["worst_group_RMSE"][target] <= a0_promotion_metrics["worst_group_RMSE"][target] * 1.02
+            for target in PHYSICAL_TARGETS
+        )
+    )
+    declared_comparators = declared_comparators or []
+    available_selection_benchmarks = [item["selection_median"]["composite_mean_train_std_normalized_RMSE"] for item in declared_comparators if item.get("status") == "ok"]
+    declared_comparison_ok = True
+    if available_selection_benchmarks:
+        declared_comparison_ok = selection_median["composite_mean_train_std_normalized_RMSE"] <= min(available_selection_benchmarks)
+    retained = selection_ok and promotion_ok and declared_comparison_ok
+    return {
+        "selection_ok": selection_ok,
+        "promotion_ok": promotion_ok,
+        "declared_comparison_ok": declared_comparison_ok,
+        "retained": retained,
     }
 
 
@@ -411,6 +546,7 @@ def summarize(records: dict[str, Any]) -> dict[str, Any]:
     return {
         "a0": records["a0"],
         "a1": records["a1"],
+        "historical_reference": records["historical_reference"],
         "split": records["split"],
         "routes": records["routes"],
         "gate": records["gate"],
@@ -431,7 +567,8 @@ def markdown_root_cause(summary: dict[str, Any]) -> str:
     lines.append(f"| executor | yes | shared NumPy/MLP training loop on train-only statistics |")
     lines.append(f"| prediction | yes | every trial records prediction hash |")
     lines.append(f"| metric | yes | documented composite primary metric used for selection/promotion |")
-    lines.append(f"| promotion | yes | candidate-only gate excludes A0/A1 |")
+    lines.append(f"| promotion | yes | matched-budget A0 causal comparator; historical checkpoint is non-causal reference only |")
+    lines.append(f"| gate | yes | per-strategy gates; A2L retain verdict is independent of A3 failure |")
     lines.append(f"| endpoint | yes | outputs written to `_outputs/p29_agent_action_effect/` |")
     lines.append("")
     lines.append(f"- A0 selection hash: `{summary['a0']['selection_prediction_hash']}`")
@@ -518,29 +655,44 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
     selection_features, _, selection_targets, selection_meta = build_features(split["selection_dev"], stats)
     promotion_features, _, promotion_targets, promotion_meta = build_features(split["promotion_dev"], stats)
 
-    a0_model = load_a0_checkpoint(train_features.shape[1])
-    a0_selection_pred = infer(a0_model, selection_features, stats)
-    a0_promotion_pred = infer(a0_model, promotion_features, stats)
-    a0_selection_metrics = evaluate_predictions(selection_targets, a0_selection_pred, stats)
-    a0_promotion_metrics = evaluate_predictions(promotion_targets, a0_promotion_pred, stats)
-    a0_selection_hash = prediction_hash(a0_selection_pred)
-    a0_promotion_hash = prediction_hash(a0_promotion_pred)
+    causal_a0 = train_matched_a0_trials(
+        train_features=train_features,
+        train_target_norm=train_target_norm,
+        selection_features=selection_features,
+        selection_targets=selection_targets,
+        promotion_features=promotion_features,
+        promotion_targets=promotion_targets,
+        stats=stats,
+        budget_steps=budget_steps,
+    )
+    a0_selection_metrics = causal_a0["selection_median"]
+    a0_promotion_metrics = causal_a0["promotion_median"]
+    a0_selection_hash = causal_a0["replay_trial"]["prediction_hash"]["selection"]
+    a0_promotion_hash = causal_a0["replay_trial"]["prediction_hash"]["promotion"]
+    historical_reference = causal_a0["historical_reference"]
     a0 = {
         "model": "tiny_mlp",
-        "checkpoint_path": str(BASELINE_CHECKPOINT.relative_to(RESERVOIR_DIR)),
-        "checkpoint_sha256": sha256_file(BASELINE_CHECKPOINT),
+        "route_id": causal_a0["route"]["route_id"],
+        "checkpoint_path": causal_a0["replay_trial"]["checkpoint_path"],
+        "checkpoint_sha256": causal_a0["replay_trial"]["checkpoint_sha256"],
+        "matched_budget": True,
+        "seed_pool": causal_a0["seed_pool"],
+        "budget_steps": causal_a0["budget_steps"],
+        "selection_median": a0_selection_metrics,
+        "promotion_median": a0_promotion_metrics,
+        "trials": causal_a0["trials"],
         "run_manifest_path": str(BASELINE_RUN_MANIFEST.relative_to(RESERVOIR_DIR)),
         "run_manifest_sha256": sha256_file(BASELINE_RUN_MANIFEST),
         "selection_prediction_hash": a0_selection_hash,
         "promotion_prediction_hash": a0_promotion_hash,
         "selection_composite_mean_train_std_normalized_RMSE": a0_selection_metrics["composite_mean_train_std_normalized_RMSE"],
         "promotion_composite_mean_train_std_normalized_RMSE": a0_promotion_metrics["composite_mean_train_std_normalized_RMSE"],
-        "config_hash": json_hash({"checkpoint": sha256_file(BASELINE_CHECKPOINT), "seed": ROOT_SEED, "kind": "A0"}),
+        "config_hash": causal_a0["replay_trial"]["config_hash"],
+        "historical_reference": historical_reference,
     }
     a0_config_hash = a0["config_hash"]
 
     a1 = identity_replay(
-        train_features=train_features,
         selection_features=selection_features,
         selection_targets=selection_targets,
         promotion_features=promotion_features,
@@ -549,6 +701,7 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
         a0_selection_hash=a0_selection_hash,
         a0_promotion_hash=a0_promotion_hash,
         a0_config_hash=a0_config_hash,
+        checkpoint_path=OUTPUT_DIR / causal_a0["replay_trial"]["checkpoint_path"],
     )
 
     route_pilots: list[dict[str, Any]] = []
@@ -744,12 +897,31 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
     }
 
     candidate_gate_names = candidate_route_names()
-    promotion_gate_passed = all(
-        strategy_results[name]["promotion_median"]["composite_mean_train_std_normalized_RMSE"] <= a0_promotion_metrics["composite_mean_train_std_normalized_RMSE"] * 0.99
-        and all(strategy_results[name]["promotion_median"]["worst_group_RMSE"][target] <= a0_promotion_metrics["worst_group_RMSE"][target] * 1.02 for target in PHYSICAL_TARGETS)
-        for name in candidate_gate_names
+    declared_comparators = [
+        strategy_results[name]
+        for name in ("A2D", "A3")
         if strategy_results[name]["status"] == "ok"
-    )
+    ]
+    per_strategy_gates: dict[str, dict[str, Any]] = {}
+    for name in candidate_gate_names:
+        result = strategy_results[name]
+        if result["status"] == "ok":
+            per_strategy_gates[name] = evaluate_strategy_gate(
+                selection_median=result["selection_median"],
+                promotion_median=result["promotion_median"],
+                a0_selection_metrics=a0_selection_metrics,
+                a0_promotion_metrics=a0_promotion_metrics,
+                declared_comparators=[item for item in declared_comparators if item["chosen_route_id"] != result["chosen_route_id"]],
+            )
+        else:
+            per_strategy_gates[name] = {
+                "selection_ok": False,
+                "promotion_ok": False,
+                "declared_comparison_ok": False,
+                "retained": False,
+            }
+        strategy_results[name]["promotion_gate"] = per_strategy_gates[name]
+    promotion_gate_passed = per_strategy_gates["A2L"]["retained"]
     candidate_ok = [name for name in candidate_gate_names if strategy_results[name]["status"] == "ok"]
     oracle_name = min(candidate_ok, key=lambda name: strategy_results[name]["promotion_median"]["composite_mean_train_std_normalized_RMSE"], default=None)
     oracle_ceiling = {
@@ -788,7 +960,7 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
         },
         "promotion": {
             "connected": True,
-            "evidence": "A0 and A1 excluded from candidate gate",
+            "evidence": "matched-budget A0 causal comparator; per-strategy gates exclude A0/A1 from promotion",
         },
         "endpoint": {
             "connected": True,
@@ -818,6 +990,7 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
         {
             "a0": a0,
             "a1": a1,
+            "historical_reference": historical_reference,
             "split": {
                 "train": {
                     "count": len(split["train"]),
@@ -847,8 +1020,11 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
                 "passed": promotion_gate_passed,
                 "primary_metric": "composite_mean_train_std_normalized_RMSE",
                 "candidate_strategies": list(candidate_gate_names),
+                "per_strategy": per_strategy_gates,
                 "keep_llm": keep_llm,
                 "best_deterministic": oracle_name,
+                "a2l_retain_verdict": per_strategy_gates["A2L"]["retained"],
+                "historical_reference_is_causal": False,
             },
             "oracle_ceiling": oracle_ceiling,
             "commands": commands,
@@ -867,7 +1043,9 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
             "selection_hash_matches_a0": a1["selection_hash_matches_a0"],
             "promotion_hash_matches_a0": a1["promotion_hash_matches_a0"],
             "config_hash": a1["config_hash"],
+            "checkpoint_path": a1["checkpoint_path"],
         },
+        "historical_reference": historical_reference,
         "split": summary["split"],
         "route_catalog": [dataclasses.asdict(route) for route in ROUTES],
         "route_pilots": route_pilots,
@@ -879,6 +1057,9 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
             "a0_a1_excluded": True,
             "worst_group_rmse_max_worsening": 0.02,
             "primary_threshold_rel_improvement": 0.01,
+            "per_strategy": per_strategy_gates,
+            "a2l_retain_verdict": per_strategy_gates["A2L"]["retained"],
+            "historical_reference_is_causal": False,
         },
         "oracle_ceiling": oracle_ceiling,
         "train_h5_sha256": sha256_file(TRAIN_H5),
@@ -917,6 +1098,7 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
         "gate": summary["gate"],
         "route_catalog": summary["routes"],
         "command": commands,
+        "historical_reference": summary["historical_reference"],
     }
     write_json(OUTPUT_DIR / "manifest.json", manifest)
     return {

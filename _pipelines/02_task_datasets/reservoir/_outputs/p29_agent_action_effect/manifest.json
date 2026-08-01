@@ -9,6 +9,11 @@
     "reason": "CIG-Bench PropertyPredictor 404 and input contract mismatch",
     "status": "blocked"
   },
+  "historical_reference": {
+    "checkpoint_path": "_outputs/checkpoints/best.ckpt",
+    "checkpoint_sha256": "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5",
+    "note": "non-causal historical reference only"
+  },
   "inputs": {
     "baseline_checkpoint": {
       "path": "_outputs/checkpoints/best.ckpt",
@@ -38,27 +43,27 @@
   "outputs": {
     "action_effects_json": {
       "path": "action_effects.json",
-      "sha256": "313f1d2079c5670bfb73b28c821536c1062bc4df41e1d6d38a5f8b1ea7645738"
+      "sha256": "9fe06e61a1f89cc3a4048f3fb55c1116bd03fba5fbdd0551829c5d9705c85c07"
     },
     "deepseek_prompt_json": {
       "path": "deepseek_prompt.json",
-      "sha256": "0dd98163388816655b380e214dbb7c47e53978ee0eb203ecfa306d1a287007c8"
+      "sha256": "1c16598677d807b0b7bfc0ddcbead92f6956cdb85f31dbd0ad86344243e829cb"
     },
     "protocol_json": {
       "path": "protocol.json",
-      "sha256": "f88c9bd7f08c16e80fc48e87d86f184cb17351368d8751a051b0ce9e6efc920f"
+      "sha256": "a58b93f64a1b7c7e860cf9b7bfce170dfb6b6e4814621695f390d908c63eef4e"
     },
     "results_jsonl": {
       "path": "results.jsonl",
-      "sha256": "24ff736838ff95385658af95e69aa8f2e54c62d83a8387856dced2120c7197a5"
+      "sha256": "f9c13e22d75bdcb4e155e052226c478659bfb5637b19556f9daf3445d617fdbc"
     },
     "root_cause_md": {
       "path": "root_cause.md",
-      "sha256": "f9e5e619eac9ea41e7c58533209cba983f5d98ad3484da2ac5b7bd47af7833b9"
+      "sha256": "33a4bf652cc5a2f2677491c3b6be80f3bed2c2dc43e7cf794737466fa8faf07e"
     },
     "summary_json": {
       "path": "summary.json",
-      "sha256": "8fe7377245eaedb8bf007223b134c0ddcaaed8f720539fa7d35bcbad3391eacf"
+      "sha256": "5cf6efa6831ec0cf9dc4a1d8d7b54570d90f864865e9e9938e5cf684db6677f8"
     }
   },
   "route_catalog": [

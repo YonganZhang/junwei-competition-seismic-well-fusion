@@ -74,13 +74,12 @@ def test_identity_replay_is_noop_and_gate_excludes_a0_a1(monkeypatch) -> None:
     class FakeModel:
         pass
 
-    monkeypatch.setattr(p29, "load_a0_checkpoint", lambda n_features: FakeModel())
+    monkeypatch.setattr(p29, "load_checkpointed_tiny_mlp", lambda checkpoint_path, n_features: FakeModel())
     monkeypatch.setattr(p29, "infer", lambda model, features, stats: fake_prediction.copy())
     monkeypatch.setattr(p29, "evaluate_predictions", lambda actual, predicted, stats: dict(fake_metrics))
     monkeypatch.setattr(p29, "prediction_hash", lambda array: "hash-a0")
 
     replay = p29.identity_replay(
-        train_features=np.zeros((1, 2)),
         selection_features=np.zeros((1, 2)),
         selection_targets=np.zeros((1, 3)),
         promotion_features=np.zeros((1, 2)),
@@ -89,6 +88,7 @@ def test_identity_replay_is_noop_and_gate_excludes_a0_a1(monkeypatch) -> None:
         a0_selection_hash="hash-a0",
         a0_promotion_hash="hash-a0",
         a0_config_hash="cfg-a0",
+        checkpoint_path=Path("matched_a0.npz"),
     )
     assert replay["selection_hash_matches_a0"] is True
     assert replay["promotion_hash_matches_a0"] is True
@@ -143,3 +143,122 @@ def test_action_effects_mark_noop_and_candidate_visibility() -> None:
     assert a1_row["no_op"] is True
     candidate_rows = [row for row in action_effects["rows"] if row["kind"] in {"A2L", "A2D", "A3"}]
     assert candidate_rows and all(row["visible_to_llm"] is True for row in candidate_rows)
+
+
+def test_matched_a0_uses_same_seeds_and_keeps_historical_checkpoint_noncausal(monkeypatch, tmp_path) -> None:
+    seen: list[tuple[int, int]] = []
+
+    class FakeModel:
+        def save_checkpoint(self, path: Path) -> None:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(f"{path.name}".encode("utf-8"))
+
+    monkeypatch.setattr(p29, "CHECKPOINT_DIR", tmp_path / "checkpoints")
+    monkeypatch.setattr(p29, "train_model", lambda route, features, target_norm, seed, budget_steps: seen.append((int(seed), int(budget_steps))) or FakeModel())
+    monkeypatch.setattr(p29, "infer", lambda model, features, stats: np.full((len(features), 3), 0.5, dtype=float))
+    monkeypatch.setattr(
+        p29,
+        "evaluate_predictions",
+        lambda actual, predicted, stats: {
+            "composite_mean_train_std_normalized_RMSE": 1.0,
+            "physical_MAE_macro": 2.0,
+            "worst_group_RMSE": {"PHIF": 1.0, "KLOGH": 1.0, "SW": 1.0},
+        },
+    )
+    result = p29.train_matched_a0_trials(
+        train_features=np.zeros((4, 2)),
+        train_target_norm=np.zeros((4, 3)),
+        selection_features=np.zeros((2, 2)),
+        selection_targets=np.zeros((2, 3)),
+        promotion_features=np.zeros((2, 2)),
+        promotion_targets=np.zeros((2, 3)),
+        stats={},
+        budget_steps=7,
+    )
+    assert seen == [(2693, 7), (2694, 7), (2695, 7)]
+    assert result["seed_pool"] == [2693, 2694, 2695]
+    assert result["budget_steps"] == 7
+    assert result["historical_reference"]["checkpoint_path"] == "_outputs/checkpoints/best.ckpt"
+    assert result["historical_reference"]["checkpoint_path"] != result["replay_trial"]["checkpoint_path"]
+    assert result["replay_trial"]["checkpoint_path"].startswith(str((tmp_path / "checkpoints").as_posix()))
+
+
+def test_identity_replay_matches_saved_a0_trial_hash(monkeypatch, tmp_path) -> None:
+    expected = np.array([[0.2, 0.3, 0.4]], dtype=float)
+
+    class FakeModel:
+        pass
+
+    monkeypatch.setattr(p29, "load_checkpointed_tiny_mlp", lambda checkpoint_path, n_features: FakeModel())
+    monkeypatch.setattr(p29, "infer", lambda model, features, stats: expected.copy())
+    monkeypatch.setattr(p29, "prediction_hash", lambda array: "same-hash")
+    monkeypatch.setattr(
+        p29,
+        "evaluate_predictions",
+        lambda actual, predicted, stats: {
+            "composite_mean_train_std_normalized_RMSE": 1.0,
+            "physical_MAE_macro": 2.0,
+            "worst_group_RMSE": {"PHIF": 1.0, "KLOGH": 1.0, "SW": 1.0},
+        },
+    )
+    replay = p29.identity_replay(
+        selection_features=np.zeros((1, 2)),
+        selection_targets=np.zeros((1, 3)),
+        promotion_features=np.zeros((1, 2)),
+        promotion_targets=np.zeros((1, 3)),
+        stats={},
+        a0_selection_hash="same-hash",
+        a0_promotion_hash="same-hash",
+        a0_config_hash="cfg-a0",
+        checkpoint_path=tmp_path / "a0.npz",
+    )
+    assert replay["selection_hash_matches_a0"] is True
+    assert replay["promotion_hash_matches_a0"] is True
+    assert replay["config_hash"] == "cfg-a0"
+    assert replay["checkpoint_path"].endswith("a0.npz")
+
+
+def test_per_strategy_gate_is_independent_of_a3_failure() -> None:
+    a0_selection = {
+        "composite_mean_train_std_normalized_RMSE": 1.0,
+        "worst_group_RMSE": {"PHIF": 1.0, "KLOGH": 1.0, "SW": 1.0},
+    }
+    a0_promotion = {
+        "composite_mean_train_std_normalized_RMSE": 1.0,
+        "worst_group_RMSE": {"PHIF": 1.0, "KLOGH": 1.0, "SW": 1.0},
+    }
+    a2l = {
+        "selection_median": {
+            "composite_mean_train_std_normalized_RMSE": 0.8,
+            "worst_group_RMSE": {"PHIF": 0.8, "KLOGH": 0.8, "SW": 0.8},
+        },
+        "promotion_median": {
+            "composite_mean_train_std_normalized_RMSE": 0.8,
+            "worst_group_RMSE": {"PHIF": 0.8, "KLOGH": 0.8, "SW": 0.8},
+        },
+        "status": "ok",
+    }
+    gates = p29.evaluate_strategy_gate(
+        selection_median=a2l["selection_median"],
+        promotion_median=a2l["promotion_median"],
+        a0_selection_metrics=a0_selection,
+        a0_promotion_metrics=a0_promotion,
+        declared_comparators=[
+            {
+                "status": "ok",
+                "selection_median": {
+                    "composite_mean_train_std_normalized_RMSE": 0.9,
+                },
+            },
+            {
+                "status": "blocked",
+                "selection_median": {
+                    "composite_mean_train_std_normalized_RMSE": 999.0,
+                },
+            },
+        ],
+    )
+    assert gates["selection_ok"] is True
+    assert gates["promotion_ok"] is True
+    assert gates["declared_comparison_ok"] is True
+    assert gates["retained"] is True

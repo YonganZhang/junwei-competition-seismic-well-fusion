@@ -1,19 +1,323 @@
 {
   "a0": {
-    "checkpoint_path": "_outputs/checkpoints/best.ckpt",
-    "checkpoint_sha256": "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5",
-    "config_hash": "24f72dab62b886aac0d6e74f2d9587df4b9dbbd4f0c15d711b1c77ed7df45ab1",
+    "budget_steps": 2,
+    "checkpoint_path": "checkpoints/A0/tiny_mlp_default/seed_2693.npz",
+    "checkpoint_sha256": "7fbb8c07b74551102fbb1f5edecdd9c415e7cc714117089a989a5aa295397759",
+    "config_hash": "fe1d3d4152be023b19d265d2c9599a5629939ff9c113295f335c8c2859af5ac8",
+    "historical_reference": {
+      "checkpoint_path": "_outputs/checkpoints/best.ckpt",
+      "checkpoint_sha256": "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5",
+      "note": "non-causal historical reference only"
+    },
+    "matched_budget": true,
     "model": "tiny_mlp",
-    "promotion_composite_mean_train_std_normalized_RMSE": 0.4264657257103058,
-    "promotion_prediction_hash": "fcb8da8791d6617db183e714ddb5946f516814bb82a4b4846a2f11df1c69252f",
+    "promotion_composite_mean_train_std_normalized_RMSE": 1.2107471187476608,
+    "promotion_median": {
+      "composite_mean_train_std_normalized_RMSE": 1.2107471187476608,
+      "physical_MAE_macro": 43.75693418032933,
+      "worst_group_RMSE": {
+        "KLOGH": 254.05156714495658,
+        "PHIF": 0.07960722933461152,
+        "SW": 0.5320517616144909
+      }
+    },
+    "promotion_prediction_hash": "6efd56a8b98545a7510e4576b3234e3c6a0b4be28623146bdc0108a8aa3a99d8",
+    "route_id": "tiny_mlp_default",
     "run_manifest_path": "_outputs/run_manifest.json",
     "run_manifest_sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
-    "selection_composite_mean_train_std_normalized_RMSE": 0.44972923014140176,
-    "selection_prediction_hash": "43110d0d819b8f067a4a98771ea6aeb53492f0200fa6de8b10054ad71281f2ea"
+    "seed_pool": [
+      2693,
+      2694,
+      2695
+    ],
+    "selection_composite_mean_train_std_normalized_RMSE": 1.220174284803052,
+    "selection_median": {
+      "composite_mean_train_std_normalized_RMSE": 1.220174284803052,
+      "physical_MAE_macro": 47.899197264979996,
+      "worst_group_RMSE": {
+        "KLOGH": 274.78365191601057,
+        "PHIF": 0.0802989994241793,
+        "SW": 0.532628250663807
+      }
+    },
+    "selection_prediction_hash": "b0e108749d880bd55a2ddf0649ad3f7d2d4a95c5e8da9a119474db772a417fb6",
+    "trials": [
+      {
+        "budget_steps": 2,
+        "checkpoint_path": "checkpoints/A0/tiny_mlp_default/seed_2693.npz",
+        "checkpoint_sha256": "7fbb8c07b74551102fbb1f5edecdd9c415e7cc714117089a989a5aa295397759",
+        "config_hash": "fe1d3d4152be023b19d265d2c9599a5629939ff9c113295f335c8c2859af5ac8",
+        "kind": "trial",
+        "lane": "tabular-cpu",
+        "model_name": "tiny_mlp",
+        "prediction_hash": {
+          "promotion": "6efd56a8b98545a7510e4576b3234e3c6a0b4be28623146bdc0108a8aa3a99d8",
+          "selection": "b0e108749d880bd55a2ddf0649ad3f7d2d4a95c5e8da9a119474db772a417fb6"
+        },
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 1.2107471187476608,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.06028941192856789,
+              "Pearson": 0.30792802361150734,
+              "Pearson_reason": null,
+              "R2": -0.5955160947886506,
+              "R2_reason": null,
+              "RMSE": 0.07960722933461152
+            },
+            "SW": {
+              "MAE": 0.47092481489515575,
+              "Pearson": -0.222236547681673,
+              "Pearson_reason": null,
+              "R2": -2.8359626834305454,
+              "R2_reason": null,
+              "RMSE": 0.5320517616144909
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.173546529170142,
+              "Pearson": 0.5239093284529884,
+              "Pearson_reason": null,
+              "R2": -0.36024032924630034,
+              "R2_reason": null,
+              "RMSE": 2.693140837757901
+            }
+          },
+          "physical_MAE_macro": 69.00141971007558,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 405.60951343878486,
+            "PHIF": 0.07960722933461152,
+            "SW": 0.5320517616144909
+          }
+        },
+        "route_id": "tiny_mlp_default",
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 1.220174284803052,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.059438747448719714,
+              "Pearson": 0.2488588819031538,
+              "Pearson_reason": null,
+              "R2": -0.5387938782580315,
+              "R2_reason": null,
+              "RMSE": 0.0802989994241793
+            },
+            "SW": {
+              "MAE": 0.4608693478828555,
+              "Pearson": -0.31444479784286844,
+              "Pearson_reason": null,
+              "R2": -2.537716911483133,
+              "R2_reason": null,
+              "RMSE": 0.532628250663807
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.350993222740065,
+              "Pearson": 0.3410267052731507,
+              "Pearson_reason": null,
+              "R2": -0.3262747182855743,
+              "R2_reason": null,
+              "RMSE": 2.7390070569457565
+            }
+          },
+          "physical_MAE_macro": 72.28405195204589,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 458.8918178572798,
+            "PHIF": 0.0802989994241793,
+            "SW": 0.532628250663807
+          }
+        },
+        "semantics": "tiny_mlp: A0-compatible tiny MLP with frozen default regularization",
+        "status": "ok",
+        "strategy": "A0"
+      },
+      {
+        "budget_steps": 2,
+        "checkpoint_path": "checkpoints/A0/tiny_mlp_default/seed_2694.npz",
+        "checkpoint_sha256": "042f9e9262168e4393846e8d638e36091821cf0a29bd0b7b4eadc2108a3d6293",
+        "config_hash": "e145c77e167deb1df61b614058f93133203f43167dbdcc1f9e7f96960637a656",
+        "kind": "trial",
+        "lane": "tabular-cpu",
+        "model_name": "tiny_mlp",
+        "prediction_hash": {
+          "promotion": "f78eff5e035495ff42b856e962c04e0c36036b81da2fd82c78464485fb7337dc",
+          "selection": "24e22e4c12887d6b0fca3a17d7da4a791777fa3011f1f822846a230bbe5c3562"
+        },
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 1.2283163763454936,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.05699282299641121,
+              "Pearson": -0.48970205075378126,
+              "Pearson_reason": null,
+              "R2": -0.7642637040051627,
+              "R2_reason": null,
+              "RMSE": 0.08371121856950353
+            },
+            "SW": {
+              "MAE": 0.49412144930355373,
+              "Pearson": 0.22426805229772093,
+              "Pearson_reason": null,
+              "R2": -3.004610611947359,
+              "R2_reason": null,
+              "RMSE": 0.5436217766519307
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.3299921777785144,
+              "Pearson": 0.18235402466058617,
+              "Pearson_reason": null,
+              "R2": -0.25909133823901787,
+              "R2_reason": null,
+              "RMSE": 2.5910742604971997
+            }
+          },
+          "physical_MAE_macro": 43.689705871858116,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 254.05156714495658,
+            "PHIF": 0.08371121856950353,
+            "SW": 0.5436217766519307
+          }
+        },
+        "route_id": "tiny_mlp_default",
+        "seed": 2694,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 1.2262564889318994,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.057118796341384524,
+              "Pearson": -0.41051056261633667,
+              "Pearson_reason": null,
+              "R2": -0.5588300042889796,
+              "R2_reason": null,
+              "RMSE": 0.08082008205249214
+            },
+            "SW": {
+              "MAE": 0.5046552817790442,
+              "Pearson": 0.13269394180980149,
+              "Pearson_reason": null,
+              "R2": -2.8267849126466325,
+              "R2_reason": null,
+              "RMSE": 0.5539616312192119
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.2991441624477926,
+              "Pearson": 0.16084531783501893,
+              "Pearson_reason": null,
+              "R2": -0.19826660606849078,
+              "R2_reason": null,
+              "RMSE": 2.60347333419461
+            }
+          },
+          "physical_MAE_macro": 46.37198820367909,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 274.78365191601057,
+            "PHIF": 0.08082008205249214,
+            "SW": 0.5539616312192119
+          }
+        },
+        "semantics": "tiny_mlp: A0-compatible tiny MLP with frozen default regularization",
+        "status": "ok",
+        "strategy": "A0"
+      },
+      {
+        "budget_steps": 2,
+        "checkpoint_path": "checkpoints/A0/tiny_mlp_default/seed_2695.npz",
+        "checkpoint_sha256": "51df37ef4e8ea5149d1940390f2eafbf50b9e347d1a20dfd390af2b889d9e90d",
+        "config_hash": "ab85d3ac63fb980eb0b557393a45f922c5c2d05a1b638d814453a7549d5d90ec",
+        "kind": "trial",
+        "lane": "tabular-cpu",
+        "model_name": "tiny_mlp",
+        "prediction_hash": {
+          "promotion": "24c89714e510979a0f0f4dbc0e904c110bf3184d9393fa447a6e894709eeb773",
+          "selection": "e27e3a105d00b582b8c95c4b16fd136529c860ce7ef25301c71d8e1fcf15ea56"
+        },
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 1.0182245440327062,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.05375797854089429,
+              "Pearson": 0.2919783296401249,
+              "Pearson_reason": null,
+              "R2": -0.0736129068548923,
+              "R2_reason": null,
+              "RMSE": 0.06530189377179238
+            },
+            "SW": {
+              "MAE": 0.3680425847512313,
+              "Pearson": 0.7068285735461448,
+              "Pearson_reason": null,
+              "R2": -1.1030283105775696,
+              "R2_reason": null,
+              "RMSE": 0.39394832493045473
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.376560751249131,
+              "Pearson": 0.6395514805036537,
+              "Pearson_reason": null,
+              "R2": -0.40936308715798697,
+              "R2_reason": null,
+              "RMSE": 2.7413386440662166
+            }
+          },
+          "physical_MAE_macro": 43.75693418032933,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 218.67614823985406,
+            "PHIF": 0.06530189377179238,
+            "SW": 0.39394832493045473
+          }
+        },
+        "route_id": "tiny_mlp_default",
+        "seed": 2695,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 1.0516558022249658,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.05732376591097662,
+              "Pearson": 0.17495523602902083,
+              "Pearson_reason": null,
+              "R2": -0.19086403973640254,
+              "R2_reason": null,
+              "RMSE": 0.07064005022682256
+            },
+            "SW": {
+              "MAE": 0.3724366480688665,
+              "Pearson": 0.7074731763473151,
+              "Pearson_reason": null,
+              "R2": -0.9791472851527714,
+              "R2_reason": null,
+              "RMSE": 0.39838384270552907
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.403694799378042,
+              "Pearson": 0.5302678218085329,
+              "Pearson_reason": null,
+              "R2": -0.3628791342855615,
+              "R2_reason": null,
+              "RMSE": 2.776547303821661
+            }
+          },
+          "physical_MAE_macro": 47.899197264979996,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 247.46690444080468,
+            "PHIF": 0.07064005022682256,
+            "SW": 0.39838384270552907
+          }
+        },
+        "semantics": "tiny_mlp: A0-compatible tiny MLP with frozen default regularization",
+        "status": "ok",
+        "strategy": "A0"
+      }
+    ]
   },
   "a1": {
-    "config_hash": "24f72dab62b886aac0d6e74f2d9587df4b9dbbd4f0c15d711b1c77ed7df45ab1",
-    "executor": "a0_frozen_tiny_mlp",
+    "checkpoint_path": "checkpoints/A0/tiny_mlp_default/seed_2693.npz",
+    "config_hash": "fe1d3d4152be023b19d265d2c9599a5629939ff9c113295f335c8c2859af5ac8",
+    "executor": "a0_matched_budget_tiny_mlp",
     "kind": "identity_replay",
     "promotion_hash_matches_a0": true,
     "selection_hash_matches_a0": true
@@ -26,22 +330,49 @@
     "A3"
   ],
   "guard_npz_sha256": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+  "historical_reference": {
+    "checkpoint_path": "_outputs/checkpoints/best.ckpt",
+    "checkpoint_sha256": "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5",
+    "note": "non-causal historical reference only"
+  },
   "oracle_ceiling": {
-    "config_hash": "87d34e352ee5db8f112818b7c81b48f73da67bfc26e3ae79f72a0d8676a40d18",
-    "prediction_hash": "087eb61a0fb6285437ed917e272e66239076bc329d270b05ee54fb29b39a392e",
-    "promotion_primary_delta_rel": 1.206583,
+    "config_hash": "0ee87f5003e6f6f464cdfeb89006bd730b2758769becaa8c38565a5adfe1d025",
+    "prediction_hash": "2509b8e9bbda6f5f0ff0da4f57f95655196ca33fd5899ed42c3d337ddc2c4677",
+    "promotion_primary_delta_rel": -0.185152,
     "route_id": "reservoir_linear",
-    "selection_primary_delta_rel": 1.119505,
+    "selection_primary_delta_rel": -0.180833,
     "strategy": "A2D"
   },
   "primary_metric": "composite_mean_train_std_normalized_RMSE",
   "promotion_gate": {
     "a0_a1_excluded": true,
+    "a2l_retain_verdict": false,
     "candidate_strategies": [
       "A2L",
       "A2D",
       "A3"
     ],
+    "historical_reference_is_causal": false,
+    "per_strategy": {
+      "A2D": {
+        "declared_comparison_ok": true,
+        "promotion_ok": true,
+        "retained": true,
+        "selection_ok": true
+      },
+      "A2L": {
+        "declared_comparison_ok": false,
+        "promotion_ok": true,
+        "retained": false,
+        "selection_ok": true
+      },
+      "A3": {
+        "declared_comparison_ok": false,
+        "promotion_ok": false,
+        "retained": false,
+        "selection_ok": false
+      }
+    },
     "primary_metric": "composite_mean_train_std_normalized_RMSE",
     "primary_threshold_rel_improvement": 0.01,
     "worst_group_rmse_max_worsening": 0.02
@@ -98,192 +429,192 @@
   "route_pilots": [
     {
       "blocked": false,
-      "budget_steps": 8,
-      "config_hash": "926df4670152b80cb2fd7a7298f519b5a99ea21fa79f324051a81a9ca544bf81",
-      "feedback": "worse",
+      "budget_steps": 2,
+      "config_hash": "fe1d3d4152be023b19d265d2c9599a5629939ff9c113295f335c8c2859af5ac8",
+      "feedback": "flat",
       "lane": "tabular-cpu",
       "model_name": "tiny_mlp",
-      "prediction_hash": "6d3af756a496b28460270ea3ada00fabc8a832b7058dd989403bd0ad28d8b897",
+      "prediction_hash": "b0e108749d880bd55a2ddf0649ad3f7d2d4a95c5e8da9a119474db772a417fb6",
       "route_id": "tiny_mlp_default",
       "seed": 2693,
       "selection": {
-        "composite_mean_train_std_normalized_RMSE": 1.1867283833015048,
+        "composite_mean_train_std_normalized_RMSE": 1.220174284803052,
         "per_target": {
           "PHIF": {
-            "MAE": 0.08889319849354045,
-            "Pearson": 0.47611902314425164,
+            "MAE": 0.059438747448719714,
+            "Pearson": 0.2488588819031538,
             "Pearson_reason": null,
-            "R2": -1.6609045577627328,
+            "R2": -0.5387938782580315,
             "R2_reason": null,
-            "RMSE": 0.10559286109675155
+            "RMSE": 0.0802989994241793
           },
           "SW": {
-            "MAE": 0.3817284406860211,
-            "Pearson": -0.2907153761113859,
+            "MAE": 0.4608693478828555,
+            "Pearson": -0.31444479784286844,
             "Pearson_reason": null,
-            "R2": -1.4195649919448226,
+            "R2": -2.537716911483133,
             "R2_reason": null,
-            "RMSE": 0.44048518377702023
+            "RMSE": 0.532628250663807
           },
           "log1p(KLOGH)": {
-            "MAE": 1.5977753409217075,
-            "Pearson": 0.5569865746211293,
+            "MAE": 2.350993222740065,
+            "Pearson": 0.3410267052731507,
             "Pearson_reason": null,
-            "R2": 0.12387267331134744,
+            "R2": -0.3262747182855743,
             "R2_reason": null,
-            "RMSE": 2.2261786779268005
+            "RMSE": 2.7390070569457565
           }
         },
-        "physical_MAE_macro": 61.61483193143993,
+        "physical_MAE_macro": 72.28405195204589,
         "space": "PHIF, log1p(KLOGH), SW",
         "worst_group_RMSE": {
-          "KLOGH": 448.35854850186485,
-          "PHIF": 0.10559286109675155,
-          "SW": 0.44048518377702023
+          "KLOGH": 458.8918178572798,
+          "PHIF": 0.0802989994241793,
+          "SW": 0.532628250663807
         }
       },
       "semantics": "tiny_mlp: A0-compatible tiny MLP with frozen default regularization"
     },
     {
       "blocked": false,
-      "budget_steps": 8,
-      "config_hash": "17d4ab2c640d141974763a9ce07327e906132e0baf667c2958e7ae188193d498",
-      "feedback": "worse",
+      "budget_steps": 2,
+      "config_hash": "3491c0d58693986164afd19d36466e3e04f2b98dda99a767e8b45270b701638e",
+      "feedback": "flat",
       "lane": "tabular-cpu",
       "model_name": "tiny_mlp",
-      "prediction_hash": "cf3dc81e5cf02aa2174a50c9bca06d55e2d14f3eaddadbdd72008bba30709641",
+      "prediction_hash": "55f87ada32d5c36fb1bd4f9ba825ccf6f31a1fd7e2d2ac8c22d1e2a081c993d4",
       "route_id": "tiny_mlp_l2",
       "seed": 2693,
       "selection": {
-        "composite_mean_train_std_normalized_RMSE": 1.1870889717282769,
+        "composite_mean_train_std_normalized_RMSE": 1.2201473351072636,
         "per_target": {
           "PHIF": {
-            "MAE": 0.08881938083420515,
-            "Pearson": 0.47645550263829417,
+            "MAE": 0.059438955914786984,
+            "Pearson": 0.24905540786461808,
             "Pearson_reason": null,
-            "R2": -1.656759142850718,
+            "R2": -0.5384534828702721,
             "R2_reason": null,
-            "RMSE": 0.10551057764248016
+            "RMSE": 0.0802901174935973
           },
           "SW": {
-            "MAE": 0.3825598653760544,
-            "Pearson": -0.2941405460015899,
+            "MAE": 0.46088571351976926,
+            "Pearson": -0.3143788554340421,
             "Pearson_reason": null,
-            "R2": -1.4273063499628256,
+            "R2": -2.5378401221614184,
             "R2_reason": null,
-            "RMSE": 0.44118928355379905
+            "RMSE": 0.5326375257016767
           },
           "log1p(KLOGH)": {
-            "MAE": 1.5968915828998334,
-            "Pearson": 0.5555317321489818,
+            "MAE": 2.3510424118216133,
+            "Pearson": 0.34098188019570397,
             "Pearson_reason": null,
-            "R2": 0.12341663288952787,
+            "R2": -0.32631829925462186,
             "R2_reason": null,
-            "RMSE": 2.226757986068223
+            "RMSE": 2.7390520580301985
           }
         },
-        "physical_MAE_macro": 60.26953495019854,
+        "physical_MAE_macro": 72.28577871452573,
         "space": "PHIF, log1p(KLOGH), SW",
         "worst_group_RMSE": {
-          "KLOGH": 435.27335812784366,
-          "PHIF": 0.10551057764248016,
-          "SW": 0.44118928355379905
+          "KLOGH": 458.92100017139524,
+          "PHIF": 0.0802901174935973,
+          "SW": 0.5326375257016767
         }
       },
       "semantics": "tiny_mlp: Same architecture with stronger L2"
     },
     {
       "blocked": false,
-      "budget_steps": 8,
-      "config_hash": "39cb5bb8835a2bf0702bfc498789a96f0dd0a9a0d8ca29414e8d3545acefd72a",
-      "feedback": "worse",
+      "budget_steps": 2,
+      "config_hash": "9d88e1006c98c1ab84b8eb323300861cdf55dce16eae5417baa5728cb45f87f5",
+      "feedback": "improved",
       "lane": "tabular-cpu",
       "model_name": "reservoir_ridge",
-      "prediction_hash": "65542355afb1470499ddff4e5d9336fc035492ecfb49368ff2a4506291f460e3",
+      "prediction_hash": "de12d0be7980352801eeb21b4c1d53fb977d1a8f2db0a8900b6e2d6c1e79cbac",
       "route_id": "reservoir_ridge",
       "seed": 2693,
       "selection": {
-        "composite_mean_train_std_normalized_RMSE": 0.9525888193796748,
+        "composite_mean_train_std_normalized_RMSE": 0.9983013800615481,
         "per_target": {
           "PHIF": {
-            "MAE": 0.06220257021365866,
-            "Pearson": 0.7305087684043702,
+            "MAE": 0.06421401709733465,
+            "Pearson": 0.6748474662037761,
             "Pearson_reason": null,
-            "R2": -0.16610860652600867,
+            "R2": -0.25637822824677037,
             "R2_reason": null,
-            "RMSE": 0.06990196899965007
+            "RMSE": 0.07255713231915646
           },
           "SW": {
-            "MAE": 0.3391972214590653,
-            "Pearson": 0.7839816405360646,
+            "MAE": 0.3401754249648647,
+            "Pearson": 0.7616139324500196,
             "Pearson_reason": null,
-            "R2": -0.5287829459967364,
+            "R2": -0.568098346011483,
             "R2_reason": null,
-            "RMSE": 0.35013503867318546
+            "RMSE": 0.35460863538321247
           },
           "log1p(KLOGH)": {
-            "MAE": 2.1870180484065482,
-            "Pearson": 0.7613081585817941,
+            "MAE": 2.4142725867558164,
+            "Pearson": 0.7107343492500082,
             "Pearson_reason": null,
-            "R2": 0.0031417542003030485,
+            "R2": -0.20467813528420908,
             "R2_reason": null,
-            "RMSE": 2.374614462095488
+            "RMSE": 2.6104292053352847
           }
         },
-        "physical_MAE_macro": 41.908664919015415,
+        "physical_MAE_macro": 44.16234533674979,
         "space": "PHIF, log1p(KLOGH), SW",
         "worst_group_RMSE": {
-          "KLOGH": 266.3391036968314,
-          "PHIF": 0.06990196899965007,
-          "SW": 0.35013503867318546
+          "KLOGH": 267.7677057229377,
+          "PHIF": 0.07255713231915646,
+          "SW": 0.35460863538321247
         }
       },
       "semantics": "reservoir_ridge: Closed-form family not used; SGD ridge baseline"
     },
     {
       "blocked": false,
-      "budget_steps": 8,
-      "config_hash": "87d34e352ee5db8f112818b7c81b48f73da67bfc26e3ae79f72a0d8676a40d18",
-      "feedback": "worse",
+      "budget_steps": 2,
+      "config_hash": "0ee87f5003e6f6f464cdfeb89006bd730b2758769becaa8c38565a5adfe1d025",
+      "feedback": "improved",
       "lane": "tabular-cpu",
       "model_name": "reservoir_linear",
-      "prediction_hash": "d74f23f021c39d36a22f8b7e8385a67186f0518e56b785d60e431a786f4ce977",
+      "prediction_hash": "11960189143a1a9b9456e7fa56e882b34a9517b942a4c0a5d00d83cd4f9e3039",
       "route_id": "reservoir_linear",
       "seed": 2693,
       "selection": {
-        "composite_mean_train_std_normalized_RMSE": 0.9525884428939105,
+        "composite_mean_train_std_normalized_RMSE": 0.9983013616693451,
         "per_target": {
           "PHIF": {
-            "MAE": 0.06220256010136748,
-            "Pearson": 0.7305087913283094,
+            "MAE": 0.06421401694719137,
+            "Pearson": 0.674847484566053,
             "Pearson_reason": null,
-            "R2": -0.16610809169655982,
+            "R2": -0.25637820851119564,
             "R2_reason": null,
-            "RMSE": 0.06990195356901352
+            "RMSE": 0.0725571317492816
           },
           "SW": {
-            "MAE": 0.3391972247282026,
-            "Pearson": 0.783981608710877,
+            "MAE": 0.3401754242241754,
+            "Pearson": 0.7616139618071681,
             "Pearson_reason": null,
-            "R2": -0.5287827882657188,
+            "R2": -0.5680983199539271,
             "R2_reason": null,
-            "RMSE": 0.3501350206107269
+            "RMSE": 0.35460863243689394
           },
           "log1p(KLOGH)": {
-            "MAE": 2.187015711372191,
-            "Pearson": 0.7613082257402759,
+            "MAE": 2.414272484486521,
+            "Pearson": 0.7107343360487502,
             "Pearson_reason": null,
-            "R2": 0.003143710991494686,
+            "R2": -0.20467803853656852,
             "R2_reason": null,
-            "RMSE": 2.3746121314597315
+            "RMSE": 2.610429100513563
           }
         },
-        "physical_MAE_macro": 41.90864490026026,
+        "physical_MAE_macro": 44.16234414528869,
         "space": "PHIF, log1p(KLOGH), SW",
         "worst_group_RMSE": {
-          "KLOGH": 266.339087642526,
-          "PHIF": 0.06990195356901352,
-          "SW": 0.3501350206107269
+          "KLOGH": 267.7677047381922,
+          "PHIF": 0.0725571317492816,
+          "SW": 0.35460863243689394
         }
       },
       "semantics": "reservoir_linear: Plain multi-output linear SGD baseline"
@@ -340,13 +671,13 @@
       "selected_by": "deterministic_primary_metric_rank"
     },
     "A2L": {
-      "chosen_route_id": null,
+      "chosen_route_id": "reservoir_ridge",
       "deepseek": {
-        "action": "stop",
-        "reason": "All routes show worse feedback and positive selection deltas, indicating no improvement over baseline; stopping to avoid further degradation.",
-        "route_id": null
+        "action": "select",
+        "reason": "Route 3 and route 4 show the largest improvement in primary metric (delta -0.181837) with 'improved' feedback, but route 3 is preferred as it is the first improved route and uses a closed-form family baseline, offering a more robust alternative to the tiny MLP routes.",
+        "route_id": "route_3"
       },
-      "selected_by": "blocked"
+      "selected_by": "deepseek"
     },
     "A3": {
       "chosen_route_id": "tiny_mlp_default",
