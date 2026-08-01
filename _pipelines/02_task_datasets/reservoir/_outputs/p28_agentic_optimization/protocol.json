@@ -16,6 +16,34 @@
     "reservoir_ridge",
     "reservoir_linear"
   ],
+  "arms": {
+    "A0": {
+      "executor": "tiny_mlp",
+      "kind": "frozen_reference",
+      "seed": 2693
+    },
+    "A1": {
+      "executor": "tiny_mlp",
+      "kind": "identity_replay",
+      "seed": 2693
+    },
+    "A2D": {
+      "kind": "deterministic_physical_search",
+      "seed": 2693
+    },
+    "A2L": {
+      "kind": "llm_route_selection",
+      "seed": 2693
+    },
+    "A3": {
+      "kind": "pcg64_random_search",
+      "seed": 2693
+    },
+    "A4": {
+      "kind": "deterministic_primary_metric_search",
+      "seed": 2693
+    }
+  },
   "cig_rejection": {
     "blocked_checkpoints": [
       "douyimin/CIG-Bench/CIG-Bench-Property.pth"
@@ -37,8 +65,14 @@
     "status": "blocked"
   },
   "pilot_budget_steps": 8,
+  "primary_metric": {
+    "causal_comparison_status": "insufficient_for_primary",
+    "composite_recomputed_from_existing_dev_predictions": true,
+    "documented": "composite_mean_train_std_normalized_RMSE",
+    "implemented_causal_metric": "physical_MAE_macro"
+  },
   "promotion_gate": {
-    "primary_metric": "physical_MAE_macro",
+    "primary_metric": "composite_mean_train_std_normalized_RMSE",
     "primary_threshold_rel_improvement": 0.01,
     "selection_vs_promotion_separation": "selection-dev only used for route choice; promotion-dev only used for promotion gate",
     "worst_group_rmse_max_worsening": 0.02
@@ -339,6 +373,10 @@
     }
   },
   "strategy_choice": {
+    "A1": {
+      "chosen_route_id": "A1_identity",
+      "selected_by": "identity_replay"
+    },
     "A2D": {
       "chosen_route_id": "tiny_mlp_default",
       "selected_by": "deterministic_pilot_rank"
@@ -355,6 +393,10 @@
     "A3": {
       "chosen_route_id": "tiny_mlp_default",
       "selected_by": "pcg64_no_replacement"
+    },
+    "A4": {
+      "chosen_route_id": "tiny_mlp_l2",
+      "selected_by": "deterministic_primary_metric_search"
     }
   },
   "track_id": "property",

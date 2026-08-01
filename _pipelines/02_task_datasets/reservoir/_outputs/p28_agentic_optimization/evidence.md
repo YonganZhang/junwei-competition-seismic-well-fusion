@@ -4,7 +4,8 @@
 - baseline model: `tiny_mlp`
 - baseline metrics path: `_outputs/metrics.json`
 - baseline run_manifest hash: `9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9`
-- A1 prediction hash (selection-dev): `8294ee83dea95acc30f03099ab1bf52a6b920982badc89352f36d08b249d08d9`
+- A0 selection prediction hash: `8294ee83dea95acc30f03099ab1bf52a6b920982badc89352f36d08b249d08d9`
+- A1 replay hash matches A0: `True`
 
 ## Nested split
 - train: families=['15/9-F-1', '15/9-F-11'] / wells=['15/9-F-1', '15/9-F-1 A', '15/9-F-1 B', '15/9-F-1 C', '15/9-F-11 A', '15/9-F-11 B', '15/9-F-11 T2'] / n=988
@@ -32,11 +33,23 @@
 - A3: chosen_route=tiny_mlp_default selected_by=pcg64_no_replacement promotion_gate=False
   - selection_median_MAE_macro=171.233811
   - promotion_median_MAE_macro=224.939900
+- A4: chosen_route=tiny_mlp_l2 selected_by=deterministic_primary_metric_search promotion_gate=False
+  - selection_median_MAE_macro=171.233282
+  - promotion_median_MAE_macro=218.281639
+- A1: chosen_route=A1_identity selected_by=identity_replay promotion_gate=False
+  - selection_median_MAE_macro=115.465288
+  - promotion_median_MAE_macro=93.514594
 
 ## Promotion gate
 - passed: `False`
-- primary threshold: seed-median physical_MAE_macro improvement >= 1% vs A0 on promotion-dev
+- primary threshold: seed-median composite_mean_train_std_normalized_RMSE improvement >= 1% vs A0 on promotion-dev
 - worst-group threshold: per-target worst_group_RMSE worsening < 2% vs A0 on promotion-dev
+
+## Primary metric alignment
+- documented primary metric: composite_mean_train_std_normalized_RMSE
+- implemented causal metric: physical_MAE_macro
+- composite recomputed from existing dev predictions: `True`
+- causal comparison status: insufficient_for_primary
 
 ## Commands
 - `python3 -m py_compile _pipelines/02_task_datasets/reservoir/p28_agentic_optimization.py _pipelines/02_task_datasets/reservoir/tests/test_p28_agentic_optimization.py`

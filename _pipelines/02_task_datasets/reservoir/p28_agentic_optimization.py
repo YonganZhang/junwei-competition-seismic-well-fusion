@@ -315,6 +315,17 @@ def compare_to_baseline(candidate: dict[str, Any], baseline: dict[str, Any]) -> 
     return "flat"
 
 
+def compare_primary_to_baseline(candidate: dict[str, Any], baseline: dict[str, Any]) -> str:
+    delta = candidate["composite_mean_train_std_normalized_RMSE"] - baseline["composite_mean_train_std_normalized_RMSE"]
+    denom = baseline["composite_mean_train_std_normalized_RMSE"]
+    rel = 0.0 if denom == 0 else delta / denom
+    if rel <= -0.01:
+        return "improved"
+    if rel >= 0.01:
+        return "worse"
+    return "flat"
+
+
 def route_catalog() -> list[dict[str, Any]]:
     return [dataclasses.asdict(route) for route in ROUTES]
 
@@ -430,6 +441,20 @@ def choose_a2d_route(route_pilots: list[dict[str, Any]]) -> str:
     return ranked[0][1]
 
 
+def choose_a4_route(route_pilots: list[dict[str, Any]]) -> str:
+    ranked = sorted(
+        (
+            (pilot["selection"]["composite_mean_train_std_normalized_RMSE"], pilot["route_id"])
+            for pilot in route_pilots
+            if not pilot["blocked"]
+        ),
+        key=lambda item: (item[0], item[1]),
+    )
+    if not ranked:
+        raise RuntimeError("no runnable routes for A4")
+    return ranked[0][1]
+
+
 def choose_a3_route(route_pilots: list[dict[str, Any]], seed: int = ROOT_SEED) -> str:
     eligible = [pilot["route_id"] for pilot in route_pilots if not pilot["blocked"]]
     if not eligible:
@@ -517,6 +542,45 @@ def blocked_route(route_id: str, reason: str) -> dict[str, Any]:
     return {"route_id": route_id, "blocked": True, "reason": reason, "feedback": "blocked"}
 
 
+def identity_replay(
+    *,
+    train_features: np.ndarray,
+    selection_features: np.ndarray,
+    selection_targets: np.ndarray,
+    promotion_features: np.ndarray,
+    promotion_targets: np.ndarray,
+    stats: dict[str, Any],
+    a0_selection_hash: str,
+    a0_promotion_hash: str,
+) -> dict[str, Any]:
+    model = load_a0_checkpoint(train_features.shape[1])
+    selection_pred = infer(model, selection_features, stats)
+    promotion_pred = infer(model, promotion_features, stats)
+    selection_metrics = evaluate_predictions(selection_targets, selection_pred, stats)
+    promotion_metrics = evaluate_predictions(promotion_targets, promotion_pred, stats)
+    selection_hash = prediction_hash(selection_pred)
+    promotion_hash = prediction_hash(promotion_pred)
+    return {
+        "kind": "identity_replay",
+        "strategy": "A1",
+        "route_id": "A1_identity",
+        "model_name": "tiny_mlp",
+        "seed": ROOT_SEED,
+        "budget_steps": 0,
+        "status": "ok",
+        "selection": selection_metrics,
+        "promotion": promotion_metrics,
+        "prediction_hash": {
+            "selection": selection_hash,
+            "promotion": promotion_hash,
+        },
+        "selection_hash_matches_a0": selection_hash == a0_selection_hash,
+        "promotion_hash_matches_a0": promotion_hash == a0_promotion_hash,
+        "executor": "a0_frozen_tiny_mlp",
+        "action": "identity_replay",
+    }
+
+
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as handle:
@@ -527,12 +591,14 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
 def summarize(records: dict[str, Any]) -> dict[str, Any]:
     return {
         "a0": records["a0"],
+        "a1": records["a1"],
         "split": records["split"],
         "routes": records["routes"],
         "gate": records["gate"],
         "pilots": records["pilots"],
         "strategies": records["strategies"],
         "promotion_gate": records["promotion_gate"],
+        "primary_metric_alignment": records["primary_metric_alignment"],
         "trial_budget_steps": records["trial_budget_steps"],
         "seed_pool": list(records["seed_pool"]),
         "commands": records["commands"],
@@ -545,7 +611,8 @@ def markdown_summary(summary: dict[str, Any]) -> str:
     lines.append(f"- baseline model: `{summary['a0']['model']}`")
     lines.append(f"- baseline metrics path: `{summary['a0']['metrics_path']}`")
     lines.append(f"- baseline run_manifest hash: `{summary['a0']['run_manifest_sha256']}`")
-    lines.append(f"- A1 prediction hash (selection-dev): `{summary['a0']['selection_prediction_hash']}`")
+    lines.append(f"- A0 selection prediction hash: `{summary['a0']['selection_prediction_hash']}`")
+    lines.append(f"- A1 replay hash matches A0: `{summary['a1']['selection_hash_matches_a0']}`")
     lines.append("")
     lines.append("## Nested split")
     for split_name, split in summary["split"].items():
@@ -579,6 +646,14 @@ def markdown_summary(summary: dict[str, Any]) -> str:
     lines.append(f"- primary threshold: {summary['promotion_gate']['primary_threshold']}")
     lines.append(f"- worst-group threshold: {summary['promotion_gate']['worst_group_threshold']}")
     lines.append("")
+    lines.append("## Primary metric alignment")
+    lines.append(f"- documented primary metric: {summary['primary_metric_alignment']['documented_primary_metric']}")
+    lines.append(f"- implemented causal metric: {summary['primary_metric_alignment']['implemented_causal_metric']}")
+    lines.append(
+        f"- composite recomputed from existing dev predictions: `{summary['primary_metric_alignment']['composite_recomputed_from_existing_dev_predictions']}`"
+    )
+    lines.append(f"- causal comparison status: {summary['primary_metric_alignment']['causal_comparison_status']}")
+    lines.append("")
     lines.append("## Commands")
     for cmd in summary["commands"]:
         lines.append(f"- `{cmd}`")
@@ -600,6 +675,12 @@ def build_protocol(
         "schema_version": "p28_agentic_optimization/v1",
         "track_id": "property",
         "root_seed": ROOT_SEED,
+        "primary_metric": {
+            "documented": "composite_mean_train_std_normalized_RMSE",
+            "implemented_causal_metric": "physical_MAE_macro",
+            "composite_recomputed_from_existing_dev_predictions": True,
+            "causal_comparison_status": "insufficient_for_primary",
+        },
         "train_h5_sha256": sha256_file(TRAIN_H5),
         "a0": {
             "model": "tiny_mlp",
@@ -628,8 +709,16 @@ def build_protocol(
         "seed_pool": list(seed_pool),
         "route_pilots": route_pilots,
         "strategy_choice": strategy_choice,
+        "arms": {
+            "A0": {"kind": "frozen_reference", "executor": "tiny_mlp", "seed": ROOT_SEED},
+            "A1": {"kind": "identity_replay", "executor": "tiny_mlp", "seed": ROOT_SEED},
+            "A2L": {"kind": "llm_route_selection", "seed": ROOT_SEED},
+            "A2D": {"kind": "deterministic_physical_search", "seed": ROOT_SEED},
+            "A3": {"kind": "pcg64_random_search", "seed": ROOT_SEED},
+            "A4": {"kind": "deterministic_primary_metric_search", "seed": ROOT_SEED},
+        },
         "promotion_gate": {
-            "primary_metric": "physical_MAE_macro",
+            "primary_metric": "composite_mean_train_std_normalized_RMSE",
             "primary_threshold_rel_improvement": 0.01,
             "worst_group_rmse_max_worsening": 0.02,
             "selection_vs_promotion_separation": "selection-dev only used for route choice; promotion-dev only used for promotion gate",
@@ -699,10 +788,20 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
     a0_promotion_metrics = evaluate_predictions(promotion_targets, a0_promotion_pred, stats)
     a0_selection_hash = prediction_hash(a0_selection_pred)
     a0_promotion_hash = prediction_hash(a0_promotion_pred)
+    a1_replay = identity_replay(
+        train_features=train_features,
+        selection_features=selection_features,
+        selection_targets=selection_targets,
+        promotion_features=promotion_features,
+        promotion_targets=promotion_targets,
+        stats=stats,
+        a0_selection_hash=a0_selection_hash,
+        a0_promotion_hash=a0_promotion_hash,
+    )
 
     gate = gather_cig_gate()
     route_pilots: list[dict[str, Any]] = []
-    rows: list[dict[str, Any]] = []
+    rows: list[dict[str, Any]] = [a1_replay]
     commands = [
         "python3 -m py_compile _pipelines/02_task_datasets/reservoir/p28_agentic_optimization.py _pipelines/02_task_datasets/reservoir/tests/test_p28_agentic_optimization.py",
         "pytest -q _pipelines/02_task_datasets/reservoir/tests/test_p28_agentic_optimization.py",
@@ -754,16 +853,20 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
 
     a2d_route_id = choose_a2d_route(route_pilots)
     a2d_route = next(route for route in ROUTES if route.route_id == a2d_route_id)
+    a4_route_id = choose_a4_route(route_pilots)
+    a4_route = next(route for route in ROUTES if route.route_id == a4_route_id)
     a3_route_id = choose_a3_route(route_pilots, seed=ROOT_SEED)
     a3_route = next(route for route in ROUTES if route.route_id == a3_route_id)
 
     strategy_choices = {
+        "A1": {"selected_by": "identity_replay", "chosen_route_id": "A1_identity"},
         "A2L": {"selected_by": a2l_selected_by, "chosen_route_id": a2l_route.route_id if a2l_route else None, "deepseek": deepseek_decision},
         "A2D": {"selected_by": "deterministic_pilot_rank", "chosen_route_id": a2d_route.route_id},
         "A3": {"selected_by": "pcg64_no_replacement", "chosen_route_id": a3_route.route_id},
+        "A4": {"selected_by": "deterministic_primary_metric_search", "chosen_route_id": a4_route.route_id},
     }
 
-    strategy_routes = {"A2L": a2l_route, "A2D": a2d_route, "A3": a3_route}
+    strategy_routes = {"A2L": a2l_route, "A2D": a2d_route, "A3": a3_route, "A4": a4_route}
     strategy_results: dict[str, dict[str, Any]] = {}
     for strategy, route in strategy_routes.items():
         if route is None:
@@ -800,6 +903,9 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
             promotion_trials.append(trial["promotion"])
         selection_median = {
             "physical_MAE_macro": float(np.median([trial["physical_MAE_macro"] for trial in selection_trials])),
+            "composite_mean_train_std_normalized_RMSE": float(
+                np.median([trial["composite_mean_train_std_normalized_RMSE"] for trial in selection_trials])
+            ),
             "worst_group_RMSE": {
                 target: float(np.median([trial["worst_group_RMSE"][target] for trial in selection_trials]))
                 for target in PHYSICAL_TARGETS
@@ -807,6 +913,9 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
         }
         promotion_median = {
             "physical_MAE_macro": float(np.median([trial["physical_MAE_macro"] for trial in promotion_trials])),
+            "composite_mean_train_std_normalized_RMSE": float(
+                np.median([trial["composite_mean_train_std_normalized_RMSE"] for trial in promotion_trials])
+            ),
             "worst_group_RMSE": {
                 target: float(np.median([trial["worst_group_RMSE"][target] for trial in promotion_trials]))
                 for target in PHYSICAL_TARGETS
@@ -832,8 +941,41 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
             ),
         }
 
+    strategy_results["A1"] = {
+        "chosen_route_id": "A1_identity",
+        "selected_by": "identity_replay",
+        "selection_trials": [a1_replay["selection"]],
+        "promotion_trials": [a1_replay["promotion"]],
+        "selection_median": {
+            "physical_MAE_macro": float(a1_replay["selection"]["physical_MAE_macro"]),
+            "composite_mean_train_std_normalized_RMSE": float(a1_replay["selection"]["composite_mean_train_std_normalized_RMSE"]),
+            "worst_group_RMSE": dict(a1_replay["selection"]["worst_group_RMSE"]),
+        },
+        "promotion_median": {
+            "physical_MAE_macro": float(a1_replay["promotion"]["physical_MAE_macro"]),
+            "composite_mean_train_std_normalized_RMSE": float(a1_replay["promotion"]["composite_mean_train_std_normalized_RMSE"]),
+            "worst_group_RMSE": dict(a1_replay["promotion"]["worst_group_RMSE"]),
+        },
+        "route_model_name": "tiny_mlp",
+        "status": "ok",
+        "promotion_gate": compare_primary_to_baseline(a1_replay["promotion"], a0_promotion_metrics) == "improved",
+        "selection_hash_matches_a0": a1_replay["selection_hash_matches_a0"],
+        "promotion_hash_matches_a0": a1_replay["promotion_hash_matches_a0"],
+        "executor": a1_replay["executor"],
+        "action": a1_replay["action"],
+    }
+
+    primary_metric_alignment = {
+        "documented_primary_metric": "composite_mean_train_std_normalized_RMSE",
+        "implemented_causal_metric": "physical_MAE_macro",
+        "composite_recomputed_from_existing_dev_predictions": True,
+        "causal_comparison_status": "insufficient_for_primary",
+        "note": "A4 uses the documented primary metric; the physical_MAE_macro gate remains a secondary diagnostic comparison.",
+    }
+
+    baseline_composite = a0_promotion_metrics["composite_mean_train_std_normalized_RMSE"]
     promotion_gate_passed = all(
-        strategy_results[name]["promotion_median"]["physical_MAE_macro"] <= baseline_macro * 0.99
+        strategy_results[name]["promotion_median"]["composite_mean_train_std_normalized_RMSE"] <= baseline_composite * 0.99
         and all(
             strategy_results[name]["promotion_median"]["worst_group_RMSE"][target]
             <= a0_promotion_metrics["worst_group_RMSE"][target] * 1.02
@@ -844,16 +986,16 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
     )
     best_deterministic = min(
         (
-            (strategy_results[name]["promotion_median"]["physical_MAE_macro"], name)
-            for name in ("A2D", "A3")
+            (strategy_results[name]["promotion_median"]["composite_mean_train_std_normalized_RMSE"], name)
+            for name in ("A2D", "A3", "A4")
             if strategy_results[name]["status"] == "ok"
         ),
         default=(float("inf"), None),
     )[1]
     keep_llm = (
         strategy_results["A2L"]["status"] == "ok"
-        and strategy_results["A2L"]["selection_median"]["physical_MAE_macro"]
-        <= min(strategy_results[name]["selection_median"]["physical_MAE_macro"] for name in ("A2D", "A3") if strategy_results[name]["status"] == "ok")
+        and strategy_results["A2L"]["selection_median"]["composite_mean_train_std_normalized_RMSE"]
+        <= min(strategy_results[name]["selection_median"]["composite_mean_train_std_normalized_RMSE"] for name in ("A2D", "A3", "A4") if strategy_results[name]["status"] == "ok")
     )
     if not promotion_gate_passed and best_deterministic is not None:
         keep_llm = False
@@ -865,6 +1007,18 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
                 "metrics_path": str(BASELINE_METRICS.relative_to(RESERVOIR_DIR)),
                 "run_manifest_sha256": sha256_file(BASELINE_RUN_MANIFEST),
                 "selection_prediction_hash": a0_selection_hash,
+                "selection_composite_mean_train_std_normalized_RMSE": a0_selection_metrics["composite_mean_train_std_normalized_RMSE"],
+                "promotion_prediction_hash": a0_promotion_hash,
+                "promotion_composite_mean_train_std_normalized_RMSE": a0_promotion_metrics["composite_mean_train_std_normalized_RMSE"],
+            },
+            "a1": {
+                "executor": a1_replay["executor"],
+                "action": a1_replay["action"],
+                "seed": a1_replay["seed"],
+                "selection_hash_matches_a0": a1_replay["selection_hash_matches_a0"],
+                "promotion_hash_matches_a0": a1_replay["promotion_hash_matches_a0"],
+                "selection_prediction_hash": a1_replay["prediction_hash"]["selection"],
+                "promotion_prediction_hash": a1_replay["prediction_hash"]["promotion"],
             },
             "routes": route_catalog(),
             "split": {
@@ -889,11 +1043,12 @@ def execute(budget_steps: int = DEFAULT_BUDGET_STEPS, pilot_steps: int = PILOT_S
             "strategies": strategy_results,
             "promotion_gate": {
                 "passed": promotion_gate_passed,
-                "primary_threshold": "seed-median physical_MAE_macro improvement >= 1% vs A0 on promotion-dev",
+                "primary_threshold": "seed-median composite_mean_train_std_normalized_RMSE improvement >= 1% vs A0 on promotion-dev",
                 "worst_group_threshold": "per-target worst_group_RMSE worsening < 2% vs A0 on promotion-dev",
                 "keep_llm": keep_llm,
                 "best_deterministic": best_deterministic,
             },
+            "primary_metric_alignment": primary_metric_alignment,
             "trial_budget_steps": budget_steps,
             "seed_pool": SAME_BUDGET_SEEDS,
             "commands": commands,
