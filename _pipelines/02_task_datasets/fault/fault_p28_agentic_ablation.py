@@ -556,6 +556,58 @@ def _empty_policy_summary(policy_id: str) -> dict[str, Any]:
     }
 
 
+def select_retained_policy(policy_summaries: dict[str, Any]) -> tuple[str, str]:
+    """Pick the retained candidate with conservative, multi-objective dominance rules.
+
+    A2D is preferred when it is non-inferior to A2L on decision accuracy,
+    necessary-evidence F1, and dangerous false release rate. Deterministic
+    policies break ties in favor of A2D so the LLM stays advisory unless it
+    strictly dominates on the registered objective bundle.
+    """
+
+    a2d = policy_summaries["A2D_deterministic_agent"]
+    a2l = policy_summaries["A2L_llm_agent_execute"]
+    a2d_non_inferior = (
+        a2d["decision_accuracy"] >= a2l["decision_accuracy"]
+        and a2d["necessary_evidence_f1"] >= a2l["necessary_evidence_f1"]
+        and a2d["dangerous_false_release_rate"] <= a2l["dangerous_false_release_rate"]
+    )
+    a2l_non_inferior = (
+        a2l["decision_accuracy"] >= a2d["decision_accuracy"]
+        and a2l["necessary_evidence_f1"] >= a2d["necessary_evidence_f1"]
+        and a2l["dangerous_false_release_rate"] <= a2d["dangerous_false_release_rate"]
+    )
+    if a2d_non_inferior:
+        return "A2D_deterministic_agent", "A2L_llm_agent_execute"
+    if a2l_non_inferior:
+        return "A2L_llm_agent_execute", "A2D_deterministic_agent"
+    if a2d["decision_accuracy"] != a2l["decision_accuracy"]:
+        return (
+            "A2D_deterministic_agent",
+            "A2L_llm_agent_execute",
+        ) if a2d["decision_accuracy"] > a2l["decision_accuracy"] else (
+            "A2L_llm_agent_execute",
+            "A2D_deterministic_agent",
+        )
+    if a2d["necessary_evidence_f1"] != a2l["necessary_evidence_f1"]:
+        return (
+            "A2D_deterministic_agent",
+            "A2L_llm_agent_execute",
+        ) if a2d["necessary_evidence_f1"] > a2l["necessary_evidence_f1"] else (
+            "A2L_llm_agent_execute",
+            "A2D_deterministic_agent",
+        )
+    if a2d["dangerous_false_release_rate"] != a2l["dangerous_false_release_rate"]:
+        return (
+            "A2D_deterministic_agent",
+            "A2L_llm_agent_execute",
+        ) if a2d["dangerous_false_release_rate"] < a2l["dangerous_false_release_rate"] else (
+            "A2L_llm_agent_execute",
+            "A2D_deterministic_agent",
+        )
+    return "A2D_deterministic_agent", "A2L_llm_agent_execute"
+
+
 def _score_records(records: list[dict[str, Any]], scenarios: dict[str, Scenario]) -> dict[str, Any]:
     if not records:
         return {
@@ -872,15 +924,7 @@ def run_ablation(output_root: Path = OUTPUT_ROOT) -> dict[str, Any]:
         summary["promotion"] = _score_records(promotion_records[policy_id], scenario_map)
         policy_summaries[policy_id] = summary
 
-    retain_policy = "A2D_deterministic_agent"
-    reject_policy = "A2L_llm_agent_execute"
-    if policy_summaries["A2L_llm_agent_execute"]["blocked_provider_count"] == 0:
-        if policy_summaries["A2L_llm_agent_execute"]["dangerous_false_release_rate"] == 0.0 and (
-            policy_summaries["A2L_llm_agent_execute"]["decision_accuracy"]
-            >= policy_summaries["A3_random_policy"]["decision_accuracy"]
-        ):
-            retain_policy = "A2L_llm_agent_execute"
-            reject_policy = "A3_random_policy"
+    retain_policy, reject_policy = select_retained_policy(policy_summaries)
     policy_summaries["retain_policy"] = retain_policy
     policy_summaries["reject_policy"] = reject_policy
 

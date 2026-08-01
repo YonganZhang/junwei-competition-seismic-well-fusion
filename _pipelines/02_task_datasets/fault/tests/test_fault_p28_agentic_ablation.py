@@ -21,6 +21,7 @@ from fault_p28_agentic_ablation import (  # noqa: E402
     git_head,
     random_policy,
     run_ablation,
+    select_retained_policy,
     sha256_file,
 )
 
@@ -165,6 +166,23 @@ class FaultP28AgenticAblationTests(unittest.TestCase):
             self.assertEqual(result["necessary_evidence"], ["verify:_fake/baseline_metrics.json"])
             self.assertTrue(result["stop_requested"])
 
+    def test_retention_prefers_a2d_when_it_noninferiorly_dominates_a2l(self) -> None:
+        policy_summaries = {
+            "A2L_llm_agent_execute": {
+                "decision_accuracy": 1.0,
+                "necessary_evidence_f1": 0.0,
+                "dangerous_false_release_rate": 0.0,
+            },
+            "A2D_deterministic_agent": {
+                "decision_accuracy": 1.0,
+                "necessary_evidence_f1": 1.0,
+                "dangerous_false_release_rate": 0.0,
+            },
+        }
+        retain_policy, reject_policy = select_retained_policy(policy_summaries)
+        self.assertEqual(retain_policy, "A2D_deterministic_agent")
+        self.assertEqual(reject_policy, "A2L_llm_agent_execute")
+
     def test_run_ablation_writes_protocol_results_summary_evidence_and_manifest(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             with patch.dict(
@@ -232,14 +250,8 @@ class FaultP28AgenticAblationTests(unittest.TestCase):
             self.assertEqual(manifest["track_id"], "fault")
             self.assertEqual(len(manifest["inputs"]), 7)
             self.assertEqual(len(manifest["outputs"]), 4)
-            self.assertIn(
-                result["summary"]["retained_policy"],
-                {"A2L_llm_agent_execute", "A2D_deterministic_agent"},
-            )
-            self.assertIn(
-                result["summary"]["rejected_policy"],
-                {"A2L_llm_agent_execute", "A3_random_policy"},
-            )
+            self.assertEqual(result["summary"]["retained_policy"], "A2D_deterministic_agent")
+            self.assertEqual(result["summary"]["rejected_policy"], "A2L_llm_agent_execute")
             self.assertFalse(result["summary"]["frozen_test_accessed"])
             self.assertEqual(
                 json.loads(summary_path.read_text(encoding="utf-8"))["selection_scenario_ids"],
