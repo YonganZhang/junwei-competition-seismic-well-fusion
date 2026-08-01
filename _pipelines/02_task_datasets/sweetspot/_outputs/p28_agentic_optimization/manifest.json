@@ -3,6 +3,22 @@
   "generated_at": "2026-08-01T00:00:00Z",
   "inputs": [
     {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+      "role": "p5 label mapping",
+      "scientific_role": "p5 label mapping",
+      "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+      "shape_or_row_count": 9056,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+      "role": "p5 split manifest",
+      "scientific_role": "p5 split manifest",
+      "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+      "shape_or_row_count": 280746,
+      "split_scope": "immutable reference"
+    },
+    {
       "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
       "role": "p5 stage-3 T3 leaderboard",
       "scientific_role": "p5 stage-3 T3 leaderboard",
@@ -67,45 +83,45 @@
     {
       "dpi": null,
       "height_px": null,
-      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/protocol.json",
+      "path": "_outputs/p28_agentic_optimization/protocol.json",
       "role": "protocol",
-      "sha256": "fd3528e22220ef3c11e488efb690df661e063846463f6442c8e70a7fe8b2889e",
+      "sha256": "3db359eaab0b0df9371e167c6eb95157ef34ec4959fa3365903ee5bdbbd1ba6c",
       "vector_companions": [],
       "width_px": null
     },
     {
       "dpi": null,
       "height_px": null,
-      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/protocol.jsonl",
+      "path": "_outputs/p28_agentic_optimization/protocol.jsonl",
       "role": "protocol_jsonl",
-      "sha256": "ecc3e6b03994e5a1c09e5565f0f068007a31239d60a1b3936a38d5008e4a4c4e",
+      "sha256": "6fc65978f58bc4439c17858fb77014f49b4e565a1e65df9fd804beb7f5f52e27",
       "vector_companions": [],
       "width_px": null
     },
     {
       "dpi": null,
       "height_px": null,
-      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/summary.json",
+      "path": "_outputs/p28_agentic_optimization/summary.json",
       "role": "summary",
-      "sha256": "bc0fa70adefd512da70823712025eed2435c505c40cbbc9d521ffb534d32c447",
+      "sha256": "2a737c0ab825f863598fe7b98e4f1ec0e6d3dc5f414606d8ef819a89c0f94a90",
       "vector_companions": [],
       "width_px": null
     },
     {
       "dpi": null,
       "height_px": null,
-      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/evidence.md",
+      "path": "_outputs/p28_agentic_optimization/evidence.md",
       "role": "evidence",
-      "sha256": "cd708fcdf1c990362f3febf995049e79ba5f922a56a9cb9afac19a71c719cb8c",
+      "sha256": "b0d1350a01f346c379e3b29699f94dd79c9f6a63148244985c0e2deb2f084fad",
       "vector_companions": [],
       "width_px": null
     }
   ],
   "renderer": {
-    "path": "p28/sweetspot_p28_agentic_optimization.py",
-    "sha256": "f69e3cccb2b7bc0ad977114e10ceeb5d362c2e4e2d98986534f2a766ab900969"
+    "path": "_pipelines/02_task_datasets/sweetspot/p28_agentic_optimization.py",
+    "sha256": "70fb85c1075f81c1f185c472170b81d390ac56d31cd07d050225dfdf55d7a7e2"
   },
   "schema_version": "sweetspot-p28-agentic-optimization/v1",
-  "source_commit": "3bee71a8d195a268d9dcff9254116bc535f0d579",
+  "source_commit": "3faee451e7da0c1bd17ff9344672697ad3c52a0b",
   "track_id": "sweetspot"
 }

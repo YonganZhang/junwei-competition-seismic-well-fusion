@@ -1,15 +1,29 @@
 {
   "action_allowlist": {
-    "chronos": [
-      "T3_BLEND_WEIGHT_0_63",
-      "T3_BLEND_WEIGHT_0_65"
-    ],
     "xgboost": [
-      "T3_XGB_DEPTH_4_ETA_0_05",
-      "T3_XGB_DEPTH_6_ETA_0_05"
+      "T3_XGB_D4_ETA_0_03_ROUNDS_64",
+      "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+      "T3_XGB_D6_ETA_0_03_ROUNDS_96",
+      "T3_XGB_D6_ETA_0_05_ROUNDS_128"
     ]
   },
-  "blocked_reason": "BLOCKED_EXECUTOR: no portable P28 executor exists in the current sweetspot worktree; immutable sibling results are only references and cannot be replayed as new online evidence.",
+  "audit": {
+    "label_mapping_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+    "label_version": "future-30-calendar-row-mean-oil-v1",
+    "mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+    "p4_status": "feasible",
+    "primary_metric": "mae",
+    "primary_metric_direction": "minimize",
+    "proxy_semantics": "future 30-calendar-row mean oil production; an operational production target, not unified sweetspot truth",
+    "split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "target_id": "T3",
+    "target_name": "FUTURE_30D_MEAN_OIL",
+    "target_status": "approved_for_development_pilot",
+    "task_type": "regression"
+  },
+  "blocked_reason": null,
+  "candidate_table_sha256": "6895afb79b4ea5f8f01c8604e09e8571fdf57f2a7038234e2beea0796827ce12",
   "frozen_baseline": {
     "baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
     "promotion_dev_feedback": "flat",
@@ -26,6 +40,22 @@
     "T7": "blocked"
   },
   "inputs": [
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+      "role": "p5 label mapping",
+      "scientific_role": "p5 label mapping",
+      "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+      "shape_or_row_count": 9056,
+      "split_scope": "immutable reference"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+      "role": "p5 split manifest",
+      "scientific_role": "p5 split manifest",
+      "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+      "shape_or_row_count": 280746,
+      "split_scope": "immutable reference"
+    },
     {
       "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
       "role": "p5 stage-3 T3 leaderboard",
@@ -81,10 +111,10 @@
     "nested_disjoint_selection_and_promotion": true,
     "no_holdout_or_test": true,
     "no_labels": true,
-    "no_raw_metrics": true
+    "no_raw_metrics": true,
+    "sibling_worktree_python_imports": false
   },
   "observation_schema": {
-    "foundation_route_fixed_or_separate_factor": true,
     "hidden_from_llm": [
       "raw_metric_values",
       "validation_curves",
@@ -95,6 +125,7 @@
     "promotion_fold_ids": [
       3
     ],
+    "route_fixed": "xgboost",
     "selection_fold_ids": [
       0,
       1,
@@ -103,21 +134,35 @@
     "visible_to_llm": [
       "fold_train_aggregates",
       "selection_dev_feedback_improved_flat_worse",
-      "promotion_dev_feedback_improved_flat_worse",
       "allowlist",
       "stop_requested"
     ]
   },
   "promotion_gate": {
+    "equal_trial_budget": 4,
     "require_a2l_helpful_vs_a3": true,
     "require_no_leakage": true,
     "require_non_overlapping_selection_and_promotion": true,
     "stage1_max_trials": 4,
-    "stage1_min_trials": 2
+    "stage1_min_trials": 1
   },
   "root_seed": 2693,
   "schema_version": "sweetspot-p28-agentic-optimization/v1",
   "task_id": "T3",
+  "task_spec": {
+    "development_rebuild": "raw_source_development_groups_only",
+    "label_version": "future-30-calendar-row-mean-oil-v1",
+    "primary_metric": "mae",
+    "primary_metric_direction": "minimize",
+    "root_seed": 2693,
+    "route_family": "xgboost",
+    "route_note": "portable local xgboost-only pilot; Chronos requires sibling-code runtime dependency and is excluded by contract",
+    "split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "target_id": "T3",
+    "target_name": "FUTURE_30D_MEAN_OIL",
+    "task_type": "regression"
+  },
   "track_id": "sweetspot",
-  "verdict": "BLOCKED_EXECUTOR"
+  "verdict": "reject"
 }
