@@ -88,6 +88,10 @@ class FaultP28AgenticAblationTests(unittest.TestCase):
         a0 = conservative_policy(scenario)
         a1 = advice_only_policy(scenario, a0)
         self.assertEqual(a0["decision_hash"], a1["decision_hash"])
+        self.assertTrue(a1["replay_executed"])
+        self.assertEqual(a1["replay_source_policy_id"], "A0_static_baseline")
+        self.assertEqual(a1["replay_decision_hash"], a0["decision_hash"])
+        self.assertTrue(a1["replay_match"])
         self.assertEqual(a0["selected_action_id"], "STOP_DATA_GATE")
         self.assertEqual(a0["decision_status"], "OK")
 
@@ -244,8 +248,14 @@ class FaultP28AgenticAblationTests(unittest.TestCase):
             self.assertEqual(manifest["track_id"], "fault")
             self.assertEqual(len(manifest["inputs"]), 7)
             self.assertEqual(len(manifest["outputs"]), 4)
+            self.assertTrue(manifest["data_gate_blocked"])
+            self.assertEqual(manifest["selection_promotion_intersection"], [])
+            self.assertTrue(manifest["selection_promotion_intersection_ok"])
             self.assertEqual(result["summary"]["retained_policy"], "A2D_deterministic_agent")
             self.assertEqual(result["summary"]["rejected_policy"], "A2L_llm_agent_execute")
+            self.assertTrue(result["summary"]["data_gate_blocked"])
+            self.assertEqual(result["summary"]["selection_promotion_intersection"], [])
+            self.assertTrue(result["summary"]["selection_promotion_intersection_ok"])
             self.assertFalse(result["summary"]["frozen_test_accessed"])
             self.assertEqual(
                 json.loads(summary_path.read_text(encoding="utf-8"))["selection_scenario_ids"],

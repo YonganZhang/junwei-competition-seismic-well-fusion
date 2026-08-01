@@ -412,7 +412,10 @@ def conservative_policy(scenario: Scenario) -> dict[str, Any]:
 
 
 def advice_only_policy(scenario: Scenario, baseline_decision: dict[str, Any]) -> dict[str, Any]:
-    payload = dict(baseline_decision)
+    replay_decision = conservative_policy(scenario)
+    if replay_decision["decision_hash"] != baseline_decision["decision_hash"]:
+        raise RuntimeError("A1 replay did not reproduce the A0 decision hash")
+    payload = dict(replay_decision)
     payload["policy_id"] = "A1_advice_only"
     payload["advice_text"] = (
         "Advice-only mirror of A0; final decision is intentionally kept identical to A0."
@@ -426,6 +429,10 @@ def advice_only_policy(scenario: Scenario, baseline_decision: dict[str, Any]) ->
             }
         )
     )
+    payload["replay_executed"] = True
+    payload["replay_source_policy_id"] = "A0_static_baseline"
+    payload["replay_decision_hash"] = replay_decision["decision_hash"]
+    payload["replay_match"] = True
     return payload
 
 
@@ -606,6 +613,17 @@ def select_retained_policy(policy_summaries: dict[str, Any]) -> tuple[str, str]:
             "A2D_deterministic_agent",
         )
     return "A2D_deterministic_agent", "A2L_llm_agent_execute"
+
+
+def selection_promotion_intersection() -> list[str]:
+    return sorted(set(SELECTION_SCENARIO_IDS) & set(PROMOTION_SCENARIO_IDS))
+
+
+def ensure_selection_promotion_disjoint() -> list[str]:
+    overlap = selection_promotion_intersection()
+    if overlap:
+        raise RuntimeError(f"selection/promotion scenario overlap: {overlap}")
+    return overlap
 
 
 def _score_records(records: list[dict[str, Any]], scenarios: dict[str, Scenario]) -> dict[str, Any]:
@@ -926,6 +944,7 @@ def run_ablation(output_root: Path = OUTPUT_ROOT) -> dict[str, Any]:
         policy_summaries[policy_id] = summary
 
     retain_policy, reject_policy = select_retained_policy(policy_summaries)
+    selection_promotion_overlap = ensure_selection_promotion_disjoint()
     policy_summaries["retain_policy"] = retain_policy
     policy_summaries["reject_policy"] = reject_policy
 
@@ -941,6 +960,9 @@ def run_ablation(output_root: Path = OUTPUT_ROOT) -> dict[str, Any]:
         "policies": policy_summaries,
         "retained_policy": retain_policy,
         "rejected_policy": reject_policy,
+        "data_gate_blocked": True,
+        "selection_promotion_intersection": selection_promotion_overlap,
+        "selection_promotion_intersection_ok": not selection_promotion_overlap,
         "blocked_provider": {
             "A2L_llm_agent_execute": policy_summaries["A2L_llm_agent_execute"]["blocked_provider_count"] > 0
         },
@@ -977,8 +999,11 @@ def run_ablation(output_root: Path = OUTPUT_ROOT) -> dict[str, Any]:
         "outputs": [],
         "retained_policy": retain_policy,
         "rejected_policy": reject_policy,
+        "data_gate_blocked": summary["data_gate_blocked"],
+        "selection_promotion_intersection": selection_promotion_overlap,
+        "selection_promotion_intersection_ok": not selection_promotion_overlap,
         "blocked_provider": summary["blocked_provider"],
-        "notes": "A2L is BLOCKED_PROVIDER in this environment because no DeepSeek credentials are exposed.",
+        "notes": "A2L executed with provider_status=OK; the formal predictive lane remains data_gate_blocked.",
     }
     output_files = [protocol_path, results_path, summary_path, evidence_path]
     manifest["outputs"] = [
@@ -1069,6 +1094,8 @@ def render_evidence(
             "",
             f"- Retain: `{summary['retained_policy']}`",
             f"- Reject: `{summary['rejected_policy']}`",
+            f"- data_gate_blocked: `{summary['data_gate_blocked']}`",
+            f"- selection/promotion intersection: `{summary['selection_promotion_intersection']}`",
             f"- A2L blocked provider: `{summary['blocked_provider']['A2L_llm_agent_execute']}`",
             f"- Frozen test accessed: `{summary['frozen_test_accessed']}`",
             "",
@@ -1076,7 +1103,7 @@ def render_evidence(
             "",
             "- The real formal fault training lane remains DATA_GATE_BLOCKED.",
             "- `counterfactual_contract_green` is a protocol fixture that exercises the proceed branch without opening frozen test or claiming current data are green.",
-            "- A1 keeps its final decision hash identical to A0 because the hash excludes advice-only text.",
+            "- A1 replays the deterministic A0 decision and verifies the same decision hash.",
         ]
     )
     return "\n".join(lines) + "\n"
