@@ -14,19 +14,24 @@ class P29Test(unittest.TestCase):
     def test_prompt_ablation_contains_only_allowed_quantitative_field(self):
         histories = {f: [{"round": 1, "action_id": "x", "feedback":
                           {"classification": "improved", "relative_rmse_change": -0.12,
-                           "outcomes": {"win": 1}, "rmse": 2.0}}] for f in range(5)}
+                           "fold_outcomes": {"win": 1, "loss": 0},
+                           "uncertainty": {"stderr": 0.01}, "rmse": 2.0}}] for f in range(5)}
         categorical = json.dumps(p29.build_prompt_observation(mode="categorical", round_id=2, histories=histories))
         quantitative = json.dumps(p29.build_prompt_observation(mode="safe_quantitative", round_id=2, histories=histories))
         self.assertNotIn("relative_rmse_change", categorical)
         self.assertIn("relative_rmse_change", quantitative)
-        self.assertNotIn("outcomes", quantitative); self.assertNotIn('"rmse"', quantitative)
+        self.assertIn("fold_outcomes", quantitative); self.assertIn("uncertainty", quantitative)
+        self.assertIn("remaining_budget", quantitative); self.assertIn("promotion_threshold", quantitative)
+        self.assertNotIn('"rmse"', quantitative)
 
     def test_action_effect_and_serializable_replay(self):
         p29.validate_action_registry()
         c = np.array([[0., 0., 0.], [1., 0., 1.], [0., 1., 2.]])
         v = np.array([1., 2., 4.]); q = np.array([[.2, .2, .3]])
-        a0 = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 4.}), coordinates=c, values=v, query=q)
-        changed = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8.}), coordinates=c, values=v, query=q)
+        seismic = np.array([[.1,.2,.3],[.4,.2,.1],[.7,.1,.2]])
+        latent = np.array([[.1],[.9],[.3]])
+        a0 = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 4., "seismic_weights":[0.,.1,.2], "foundation_weight":.1}), coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
+        changed = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8., "seismic_weights":[0.,.1,.2], "foundation_weight":.1}), coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
         self.assertFalse(np.array_equal(a0, changed))
 
     def test_probe_writes_owned_output(self):

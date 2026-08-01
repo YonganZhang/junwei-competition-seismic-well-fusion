@@ -142,17 +142,158 @@
       ]
     }
   ],
-  "different_action_count": 3,
-  "held_fold_purge_reused": true,
+  "different_action_count": 8,
+  "held_fold_purge_reused": {
+    "entrypoint": "p19._rows",
+    "held_rows": 1
+  },
   "prediction_hashes": {
-    "A0": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
-    "foundation_weight_0.00": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
-    "foundation_weight_0.25": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
-    "foundation_weight_0.50": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
-    "seismic_mix_high": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
-    "seismic_mix_low": "686989e1dc2ab67dea3d71049f6b1193e1984177a70cf9c666a1b8aac5027b65",
-    "vertical_weight_2.0": "50f688b9247aa91a606e7d758fd64953399e0d74c54ef38f0ea86146cca8225e",
-    "vertical_weight_8.0": "6f8cedcc09aa5b47caeaa32046ef0767d046459b59cebb11827352684f93b1ba"
+    "A0": "92caf8250261746d06652127dc11e4b6b0156f90e1feb8ef9759d9c410d6bc49",
+    "foundation_weight_0.00": "05cd7feff4530f43d74cdcf14c5f2c807594da51881ab933d4b09feb801b9fdb",
+    "foundation_weight_0.25": "42a1e5220663ef863227423d549ed326381cff8db7111f63884ad3908c41ae8d",
+    "foundation_weight_0.50": "3c0f5ee831d4db8607a88763db8763cbfac20d34f2e455238d07016b33811ab7",
+    "seismic_mix_high": "8581f10e70055275d47f60c225d0bc33dbd58e102ebe394e49cd7bd593ef3130",
+    "seismic_mix_low": "dde81e6bcf6e8e0c81f03718b908eb40cf77e034ccec52981e01ee7fceaee7c8",
+    "vertical_weight_2.0": "708e05ce6f8351a05a62c14239edf2c5c404e96e28494b133a6a3411dfc444b9",
+    "vertical_weight_8.0": "f112526549995d8757f82366c395e9b9579eccd2903a717899e243455fce271a"
+  },
+  "predictor_configs": {
+    "A0": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    },
+    "foundation_weight_0.00": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.0,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    },
+    "foundation_weight_0.25": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.25,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    },
+    "foundation_weight_0.50": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.5,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 4.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    },
+    "seismic_mix_high": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.2,
+          0.4
+        ],
+        "vertical_weight": 4.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    },
+    "seismic_mix_low": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.05,
+          0.1
+        ],
+        "vertical_weight": 4.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    },
+    "vertical_weight_2.0": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 2.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    },
+    "vertical_weight_8.0": {
+      "parameters": {
+        "blend_weight": 0.75,
+        "distance_power": 1.5,
+        "foundation_weight": 0.1,
+        "kernel": "inverse_distance",
+        "neighbours": 64,
+        "pca_components": 16,
+        "seismic_weights": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "vertical_weight": 8.0
+      },
+      "schema_version": "p29-predictor-config/v1"
+    }
   },
   "probe": true,
   "promotion_threshold": {
@@ -163,5 +304,6 @@
     "categorical",
     "safe_quantitative"
   ],
+  "replay_hash_contract": "prediction_hash(replay_predictor(config))",
   "schema_version": "reconstruction-p29-agent-action-effect-repair/v1"
 }
