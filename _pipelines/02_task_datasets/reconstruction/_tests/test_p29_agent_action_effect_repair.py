@@ -40,6 +40,12 @@ class P29Test(unittest.TestCase):
             self.assertGreater(result["different_action_count"], 1)
             self.assertTrue((Path(td) / "summary.json").is_file())
 
+    def test_real_evidence_contract_rejects_empty_histories_and_fake_purge(self):
+        histories = {f: [] for f in range(5)}
+        with self.assertRaises(ValueError):
+            p29.build_prompt_observation(mode="safe_quantitative", round_id=2, histories=histories)
+        self.assertIn("p19", p29.p19._without_coordinates.__module__)
+
 
 if __name__ == "__main__":
     unittest.main()

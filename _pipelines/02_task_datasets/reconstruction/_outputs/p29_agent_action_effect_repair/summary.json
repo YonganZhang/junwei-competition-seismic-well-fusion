@@ -18,7 +18,10 @@
     "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
   },
   "frozen_holdout_opened": false,
-  "held_fold_purge_reused": "p19 coordinate purge is used by P28 executor",
+  "held_fold_purge_reused": {
+    "all_held_folds": true,
+    "entrypoint": "p19._rows + p19._without_coordinates"
+  },
   "metrics": {
     "A0": {
       "config_hash": "abbf493791945b261a57fef84da7dedb526ffd36098a6a4dafbd4a9a4b83f7ce",
@@ -330,27 +333,277 @@
       "fold_contexts": [
         {
           "fold": 0,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 1,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 2,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "flat"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 3,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 4,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "flat"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "improved"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat"
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "worse"
+              },
+              "round": 1
+            }
+          ]
         }
       ],
       "mode": "categorical",
-      "round": 1,
+      "round": 2,
       "schema_version": "p29-prompt-observation/v2",
       "visibility": {
         "absolute_rmse": false,
@@ -362,23 +615,588 @@
       "fold_contexts": [
         {
           "fold": 0,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.0012891681903553392,
+                "uncertainty": {
+                  "stderr": 2.848686154657032e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.0005494046946447953,
+                "uncertainty": {
+                  "stderr": 1.21402432874706e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.01535836268146369,
+                "uncertainty": {
+                  "stderr": 0.0003393750749995432
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.012268961808162691,
+                "uncertainty": {
+                  "stderr": 0.00027110831539595636
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.0006216786231005895,
+                "uncertainty": {
+                  "stderr": 1.373728656603571e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.0004080234040003472,
+                "uncertainty": {
+                  "stderr": 9.016128620358243e-06
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.0021199827703501078,
+                "uncertainty": {
+                  "stderr": 4.684544352853764e-05
+                }
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 1,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.0008682241501461047,
+                "uncertainty": {
+                  "stderr": 1.9185224504944932e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.001003918553596515,
+                "uncertainty": {
+                  "stderr": 2.218367553147144e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.009006193144172104,
+                "uncertainty": {
+                  "stderr": 0.0001990106326537465
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.003285250027514394,
+                "uncertainty": {
+                  "stderr": 7.259445538589749e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.004260094098518434,
+                "uncertainty": {
+                  "stderr": 9.413566954859925e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 7.630276587042528e-05,
+                "uncertainty": {
+                  "stderr": 1.6860688490708492e-06
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.0009602950206977617,
+                "uncertainty": {
+                  "stderr": 2.1219722533595727e-05
+                }
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 2,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.04224838670401584,
+                "uncertainty": {
+                  "stderr": 0.0009335662728937865
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.019647373543705885,
+                "uncertainty": {
+                  "stderr": 0.0004341497207893625
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "flat",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.0003751081632428324,
+                "uncertainty": {
+                  "stderr": 8.288797684607413e-06
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.0019602742884234007,
+                "uncertainty": {
+                  "stderr": 4.3316351322806896e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.04232490071341091,
+                "uncertainty": {
+                  "stderr": 0.0009352570096093812
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.002971722306881714,
+                "uncertainty": {
+                  "stderr": 6.566640609373094e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.00861084404697138,
+                "uncertainty": {
+                  "stderr": 0.00019027456929228987
+                }
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 3,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.005432270571354861,
+                "uncertainty": {
+                  "stderr": 0.00012003735494516072
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.0024571673722415515,
+                "uncertainty": {
+                  "stderr": 5.429624098194783e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.022420216595054967,
+                "uncertainty": {
+                  "stderr": 0.0004954214746885791
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.021393318843038134,
+                "uncertainty": {
+                  "stderr": 0.000472730025812444
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.007909145608518253,
+                "uncertainty": {
+                  "stderr": 0.00017476907791172058
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.0002976006309770889,
+                "uncertainty": {
+                  "stderr": 6.576107007790465e-06
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.0019104534897006371,
+                "uncertainty": {
+                  "stderr": 4.2215456803400765e-05
+                }
+              },
+              "round": 1
+            }
+          ]
         },
         {
           "fold": 4,
-          "prior_trials": []
+          "prior_trials": [
+            {
+              "action_id": "foundation_weight_0.00",
+              "feedback": {
+                "classification": "flat",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.00012942396682131426,
+                "uncertainty": {
+                  "stderr": 2.859892643356689e-06
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.25",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.004327268478630615,
+                "uncertainty": {
+                  "stderr": 9.56200276642032e-05
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "foundation_weight_0.50",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.00889187332838226,
+                "uncertainty": {
+                  "stderr": 0.0001964844977484654
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_2.0",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.021753863374281777,
+                "uncertainty": {
+                  "stderr": 0.0004806970096550098
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "vertical_weight_8.0",
+              "feedback": {
+                "classification": "improved",
+                "fold_outcomes": {
+                  "loss": 0,
+                  "tie": 0,
+                  "win": 1
+                },
+                "relative_rmse_change": -0.022613225407118253,
+                "uncertainty": {
+                  "stderr": 0.0004996864071835388
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_low",
+              "feedback": {
+                "classification": "flat",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.00012568799694447704,
+                "uncertainty": {
+                  "stderr": 2.7773385922873054e-06
+                }
+              },
+              "round": 1
+            },
+            {
+              "action_id": "seismic_mix_high",
+              "feedback": {
+                "classification": "worse",
+                "fold_outcomes": {
+                  "loss": 1,
+                  "tie": 0,
+                  "win": 0
+                },
+                "relative_rmse_change": 0.0007009056806944934,
+                "uncertainty": {
+                  "stderr": 1.548797374347654e-05
+                }
+              },
+              "round": 1
+            }
+          ]
         }
       ],
       "mode": "safe_quantitative",
@@ -386,8 +1204,8 @@
         "maximum_fold_relative_regression": 0.01,
         "minimum_relative_gain": 0.005
       },
-      "remaining_budget": 4,
-      "round": 1,
+      "remaining_budget": 3,
+      "round": 2,
       "schema_version": "p29-prompt-observation/v2",
       "uncertainty_definition": "fold bootstrap standard error supplied per trial",
       "visibility": {
@@ -397,8 +1215,81 @@
       }
     }
   },
+  "purge_audits": [
+    {
+      "forbidden_unique_coordinates": 2048,
+      "held_fold": 0,
+      "p19_rows_called": true,
+      "p19_without_coordinates_called": true,
+      "removed_occurrences": 58,
+      "removed_train_labels_by_fold": {
+        "0": 0,
+        "1": 15,
+        "2": 17,
+        "3": 15,
+        "4": 11
+      }
+    },
+    {
+      "forbidden_unique_coordinates": 2048,
+      "held_fold": 1,
+      "p19_rows_called": true,
+      "p19_without_coordinates_called": true,
+      "removed_occurrences": 44,
+      "removed_train_labels_by_fold": {
+        "0": 0,
+        "1": 0,
+        "2": 15,
+        "3": 15,
+        "4": 14
+      }
+    },
+    {
+      "forbidden_unique_coordinates": 2048,
+      "held_fold": 2,
+      "p19_rows_called": true,
+      "p19_without_coordinates_called": true,
+      "removed_occurrences": 24,
+      "removed_train_labels_by_fold": {
+        "0": 13,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 11
+      }
+    },
+    {
+      "forbidden_unique_coordinates": 2048,
+      "held_fold": 3,
+      "p19_rows_called": true,
+      "p19_without_coordinates_called": true,
+      "removed_occurrences": 27,
+      "removed_train_labels_by_fold": {
+        "0": 11,
+        "1": 16,
+        "2": 0,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "forbidden_unique_coordinates": 2048,
+      "held_fold": 4,
+      "p19_rows_called": true,
+      "p19_without_coordinates_called": true,
+      "removed_occurrences": 45,
+      "removed_train_labels_by_fold": {
+        "0": 14,
+        "1": 17,
+        "2": 14,
+        "3": 0,
+        "4": 0
+      }
+    }
+  ],
   "real_development": true,
   "replay": {
+    "chosen_action_id": "vertical_weight_8.0",
     "config": {
       "parameters": {
         "blend_weight": 0.75,
@@ -412,13 +1303,13 @@
           0.1,
           0.2
         ],
-        "vertical_weight": 4.0
+        "vertical_weight": 8.0
       },
       "schema_version": "p29-predictor-config/v1"
     },
     "fold": 0,
     "matches": true,
-    "prediction_hash": "9bf64c79832afc10ee054490b728833b4ed9c0dacea024ea3a7a132448ac579a"
+    "prediction_hash": "28577396c02c92849b8aa78a30bb140b0d03666788062b0c0069d207598acd50"
   },
   "schema_version": "reconstruction-p29-agent-action-effect-repair/v1"
 }

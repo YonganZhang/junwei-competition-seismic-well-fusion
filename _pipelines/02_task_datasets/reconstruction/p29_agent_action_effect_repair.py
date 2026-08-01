@@ -33,6 +33,8 @@ def build_prompt_observation(*, mode: str, round_id: int,
     if mode not in {"categorical", "safe_quantitative"}:
         raise ValueError("unknown prompt information mode")
     contexts = []
+    if mode == "safe_quantitative" and any(not histories[int(f)] for f in p28.base.FOLD_IDS):
+        raise ValueError("safe quantitative prompt requires real prior-trial histories")
     for fold in p28.base.FOLD_IDS:
         rows = []
         for row in histories[int(fold)]:
@@ -69,9 +71,30 @@ def run_real_probe(*, data_dir: Path, stage3_root: Path, output_dir: Path) -> di
     for name, prediction in bank.items():
         fm = _fold_metrics(oof.target, prediction, oof.fold_ids); base_rmse = _fold_metrics(oof.target, a0, oof.fold_ids)["pooled"]["rmse"]
         metrics[name] = {**fm, "signed_delta_rmse": float(fm["pooled"]["rmse"] - base_rmse), "config_hash": hashlib.sha256(json.dumps(configs[name], sort_keys=True).encode()).hexdigest(), "prediction_hash": prediction_hash(prediction)}
-    replay = build_real_action_bank(oof=oof, prepared=prepared, registry=())["A0"]; fold = int(p28.base.FOLD_IDS[0]); mask = oof.fold_ids == fold; np.testing.assert_array_equal(replay[mask], a0[mask])
-    histories = {int(f): [] for f in p28.base.FOLD_IDS}; observations = {mode: build_prompt_observation(mode=mode, round_id=1, histories=histories) for mode in ("categorical", "safe_quantitative")}
-    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "metrics": metrics, "replay": {"fold": fold, "config": configs["A0"], "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "prompt_observations": observations, "held_fold_purge_reused": "p19 coordinate purge is used by P28 executor", "frozen_holdout_opened": False}
+    full_bank = bank; purge_audits = []; purged_banks = {}
+    histories = {int(f): [] for f in p28.base.FOLD_IDS}
+    for held_fold in p28.base.FOLD_IDS:
+        held = next(f for f in folds if f.fold_id == held_fold); forbidden = p19._rows(held.validation_indices_kji)
+        purged_folds = []; removed = {}
+        for fold_sample in folds:
+            if fold_sample.fold_id == held_fold:
+                purged_folds.append(fold_sample); removed[str(fold_sample.fold_id)] = 0
+            else:
+                clean, count = p19._without_coordinates(fold_sample, forbidden)
+                purged_folds.append(clean); removed[str(fold_sample.fold_id)] = int(count)
+        purged_prepared, _ = p28.p18._prepare_fold_metrics(folds=tuple(purged_folds), requested_indices=cache_indices, foundation_features=foundation)  # noqa: SLF001
+        bank = build_real_action_bank(oof=oof, prepared=purged_prepared, registry=registry); purged_banks[int(held_fold)] = bank
+        purge_audits.append({"held_fold": int(held_fold), "forbidden_unique_coordinates": len(forbidden), "removed_train_labels_by_fold": removed, "removed_occurrences": sum(removed.values()), "p19_rows_called": True, "p19_without_coordinates_called": True})
+        base_fold = _fold_metrics(oof.target, bank["A0"], oof.fold_ids)["per_fold"][held_fold]
+        for action in registry:
+            row = _fold_metrics(oof.target, bank[action["action_id"]], oof.fold_ids)["per_fold"][held_fold]
+            delta = float((row["rmse"] - base_fold["rmse"]) / base_fold["rmse"])
+            histories[int(held_fold)].append({"round": 1, "action_id": action["action_id"], "feedback": {"classification": "improved" if delta < -p28.FLAT_RELATIVE_TOLERANCE else "worse" if delta > p28.FLAT_RELATIVE_TOLERANCE else "flat", "relative_rmse_change": delta, "fold_outcomes": {"win": int(delta < 0), "loss": int(delta > 0), "tie": int(delta == 0)}, "uncertainty": {"stderr": float(abs(delta) / np.sqrt(max(row["n"], 1)))}}})
+    chosen_id = "vertical_weight_8.0"; saved = json.loads(json.dumps(configs[chosen_id])); chosen_params = saved["parameters"]
+    chosen_spec = {"action_id": chosen_id, "changed_factor": "vertical_weight", "value": chosen_params["vertical_weight"], "parameters": chosen_params}
+    replay_bank = build_real_action_bank(oof=oof, prepared=prepared, registry=(chosen_spec,)); replay = replay_bank[chosen_id]; fold = int(p28.base.FOLD_IDS[0]); mask = oof.fold_ids == fold; expected = full_bank[chosen_id][mask]; np.testing.assert_array_equal(replay[mask], expected)
+    observations = {mode: build_prompt_observation(mode=mode, round_id=2, histories=histories) for mode in ("categorical", "safe_quantitative")}
+    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "metrics": metrics, "purge_audits": purge_audits, "replay": {"fold": fold, "chosen_action_id": chosen_id, "config": saved, "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "prompt_observations": observations, "held_fold_purge_reused": {"entrypoint": "p19._rows + p19._without_coordinates", "all_held_folds": True}, "frozen_holdout_opened": False}
     output_dir.mkdir(parents=True, exist_ok=True); (output_dir / "summary.json").write_text(json.dumps(result, indent=2, sort_keys=True, default=float) + "\n"); return result
 
 
