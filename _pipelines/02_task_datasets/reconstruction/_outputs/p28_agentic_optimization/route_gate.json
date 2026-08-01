@@ -6,8 +6,11 @@
     "schema_version": "p28-route-gate/v1",
     "stop": true
   },
+  "interpretation": "The route was preconstrained to the already-evaluated RGT-KED path; DeepSeek confirms the registered negative-transfer rule but does not discover routes autonomously.",
   "observation": {
+    "autonomous_route_discovery": false,
     "decision_rule": "reject a route when pooled RMSE is worse and losses exceed wins; return the exact response schema",
+    "gate_mode": "confirmatory_preconstrained",
     "response_schema": {
       "decision": "accept|reject",
       "reason_code": "short_snake_case",
@@ -35,18 +38,18 @@
     "model_requested": "deepseek-chat",
     "model_returned": "deepseek-v4-flash",
     "provider": "deepseek",
-    "request_sha256": "e9a5a480fe74322c6d88b7432c3f09562c025e14c88c9c10a3c55be39831c5c7",
-    "response_id": "b6e2472f-d217-4d91-afb6-9d0843a0e5c2",
+    "request_sha256": "3ff470fe5d567c8c72582ff9ab76b5f897b9a39d64d89873dd24224400dcf1e0",
+    "response_id": "f866e008-9365-4ed7-8a50-14d3567f660c",
     "response_sha256": "1db4a21281086492e2fab41b5896f1a5a6ca1541ebc3e0d0446f6d6a10d9a8d4",
     "usage": {
       "completion_tokens": 56,
-      "prompt_cache_hit_tokens": 128,
-      "prompt_cache_miss_tokens": 122,
-      "prompt_tokens": 250,
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 14,
+      "prompt_tokens": 270,
       "prompt_tokens_details": {
-        "cached_tokens": 128
+        "cached_tokens": 256
       },
-      "total_tokens": 306
+      "total_tokens": 326
     }
   },
   "source_summary_sha256": "b3ab1d6090791373a65a98ff937acd4d78faef7e802c85afb916cf90fa024107"

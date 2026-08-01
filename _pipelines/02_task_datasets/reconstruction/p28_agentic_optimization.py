@@ -238,11 +238,21 @@ def _build_action_bank(
     *,
     oof: base.OOFDevelopment,
     prepared: Sequence[Mapping[str, Any]],
+    action_ids: Sequence[str] | None = None,
+    seed: int = ROOT_SEED,
 ) -> tuple[dict[str, np.ndarray], list[dict[str, Any]]]:
     """Vectorise all registered actions over fixed P21 metric features."""
 
+    if int(seed) != ROOT_SEED:
+        raise ValueError("P28 action execution seed is frozen")
+    requested_actions = ("A0", *ACTION_BY_ID) if action_ids is None else tuple(action_ids)
+    if not requested_actions or any(
+        action_id != "A0" and action_id not in ACTION_BY_ID
+        for action_id in requested_actions
+    ):
+        raise ValueError("unknown P28 action execution id")
     action_predictions: dict[str, list[np.ndarray]] = {
-        action_id: [] for action_id in ("A0", *ACTION_BY_ID)
+        action_id: [] for action_id in requested_actions
     }
     bandwidth_audit: list[dict[str, Any]] = []
     max_neighbours = max(
@@ -273,13 +283,13 @@ def _build_action_bank(
                     * row["validation_latent"],
                 ]
             )
-            model = NearestNeighbors(n_neighbors=max_neighbours, n_jobs=-1).fit(
+            model = NearestNeighbors(n_neighbors=max_neighbours, n_jobs=1).fit(
                 train_metric
             )
             distance, neighbour_rows = model.kneighbors(validation_metric)
             train_query_count = min(65, len(train_metric))
             train_distance = NearestNeighbors(
-                n_neighbors=train_query_count, n_jobs=-1
+                n_neighbors=train_query_count, n_jobs=1
             ).fit(train_metric).kneighbors(train_metric, return_distance=True)[0]
             bandwidth = float(np.median(train_distance[:, -1]))
             fold_neighbours.append((fold, distance, neighbour_rows, bandwidth))
@@ -293,13 +303,14 @@ def _build_action_bank(
                 }
             )
 
-        for action_id, parameters in [
-            ("A0", A0_PARAMETERS),
-            *[
-                (action["action_id"], action["parameters"])
-                for action in ACTION_REGISTRY
-            ],
-        ]:
+        action_specs = [("A0", A0_PARAMETERS)] + [
+            (action["action_id"], action["parameters"])
+            for action in ACTION_REGISTRY
+            if action["action_id"] in requested_actions
+        ]
+        for action_id, parameters in action_specs:
+            if action_id not in requested_actions:
+                continue
             kernel_prediction = np.full(len(oof.target), np.nan, dtype=np.float64)
             for fold, distance, neighbour_rows, bandwidth in fold_neighbours:
                 neighbours = int(parameters["neighbours"])
@@ -466,6 +477,8 @@ def _run_route_gate(key: str) -> dict[str, Any]:
         raise RuntimeError("P18 RGT-KED evidence drift")
     observation = {
         "schema_version": "p28-route-gate-observation/v1",
+        "gate_mode": "confirmatory_preconstrained",
+        "autonomous_route_discovery": False,
         "route": {
             "route_id": "rgt_ked",
             "baseline_rmse": experiment["baseline"]["pykrige_ok3d_repeat_0"][
@@ -504,6 +517,11 @@ def _run_route_gate(key: str) -> dict[str, Any]:
         "decision": decision,
         "provider_audit": provider,
         "source_summary_sha256": EXPECTED_CIG_SUMMARY_SHA256,
+        "interpretation": (
+            "The route was preconstrained to the already-evaluated RGT-KED path; "
+            "DeepSeek confirms the registered negative-transfer rule but does not "
+            "discover routes autonomously."
+        ),
         "passed": True,
     }
 
@@ -594,6 +612,41 @@ def _llm_round(
     round_id: int,
     histories: Mapping[int, Sequence[Mapping[str, Any]]],
 ) -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, Any]]:
+    observation = _build_llm_observation(round_id=round_id, histories=histories)
+    available_by_fold = {
+        int(fold): [
+            action_id
+            for action_id in ACTION_BY_ID
+            if action_id not in {row["action_id"] for row in histories[fold]}
+        ]
+        for fold in base.FOLD_IDS
+    }
+    parsed, provider = _deepseek_json(
+        key=key,
+        system=(
+            "You are the constrained A2L search policy for reconstruction. "
+            "Choose exactly one unique untried allowlisted action for each held "
+            "fold. Use only the supplied categorical improved/flat/worse feedback. "
+            "Never request or infer held-fold/promotion/test data. Return exactly "
+            "the specified JSON object and no Markdown."
+        ),
+        observation=observation,
+    )
+    decisions = _validate_selection(
+        parsed,
+        round_id=round_id,
+        available_by_fold=available_by_fold,
+    )
+    return decisions, observation, provider
+
+
+def _build_llm_observation(
+    *,
+    round_id: int,
+    histories: Mapping[int, Sequence[Mapping[str, Any]]],
+) -> dict[str, Any]:
+    """Build the only observation allowed to reach the LLM."""
+
     available_by_fold = {
         int(fold): [
             action_id
@@ -608,7 +661,7 @@ def _llm_round(
             {
                 "round": row["round"],
                 "action_id": row["action_id"],
-                "fold_train_aggregate": row["feedback"],
+                "feedback": row["feedback"]["classification"],
             }
             for row in histories[fold]
         ]
@@ -634,7 +687,7 @@ def _llm_round(
         ],
         "fold_contexts": contexts,
         "visibility": {
-            "only_fold_train_aggregates": True,
+            "only_categorical_feedback": True,
             "feedback_vocabulary": ["improved", "flat", "worse"],
             "held_fold_metrics_visible": False,
             "promotion_feedback_visible": False,
@@ -650,23 +703,7 @@ def _llm_round(
             ],
         },
     }
-    parsed, provider = _deepseek_json(
-        key=key,
-        system=(
-            "You are the constrained A2L search policy for reconstruction. "
-            "Choose exactly one unique untried allowlisted action for each held "
-            "fold. Use only supplied fold-train aggregates and categorical "
-            "feedback. Never request or infer held-fold/promotion/test data. "
-            "Return exactly the specified JSON object and no Markdown."
-        ),
-        observation=observation,
-    )
-    decisions = _validate_selection(
-        parsed,
-        round_id=round_id,
-        available_by_fold=available_by_fold,
-    )
-    return decisions, observation, provider
+    return observation
 
 
 def _random_sequences() -> dict[int, list[str]]:
@@ -800,6 +837,11 @@ def _protocol() -> dict[str, Any]:
             "A2D": "deterministic registered search",
             "A3": "PCG64 random search; not random-init foundation",
         },
+        "route_gate": {
+            "mode": "confirmatory_preconstrained",
+            "autonomous_route_discovery": False,
+            "registered_route": "rgt_ked",
+        },
         "a0_parameters": A0_PARAMETERS,
         "action_registry": registry,
         "action_registry_sha256": _hash_payload(registry),
@@ -807,7 +849,7 @@ def _protocol() -> dict[str, Any]:
         "feedback": {
             "vocabulary": ["improved", "flat", "worse"],
             "flat_relative_tolerance": FLAT_RELATIVE_TOLERANCE,
-            "only_purged_fold_train_aggregates_visible_to_a2l": True,
+            "only_categorical_classification_visible_to_a2l": True,
         },
         "search_auc": "mean cumulative-best relative fold-train RMSE gain over 5x4 cells",
         "promotion_gate": {
@@ -831,10 +873,11 @@ def run(
     stage3_root: Path,
     output_dir: Path,
     credential_helper: Path,
+    recompute: bool = False,
 ) -> dict[str, Any]:
     output_dir = _validate_output_dir(output_dir)
     base.ensure_no_holdout_paths((data_dir, stage3_root, output_dir))
-    if (output_dir / "summary.json").exists():
+    if (output_dir / "summary.json").exists() and not recompute:
         raise RuntimeError("P28 completed evidence already exists")
     output_dir.mkdir(parents=True, exist_ok=True)
     protocol = _protocol()
@@ -869,6 +912,18 @@ def run(
     original_bank, original_bandwidth_audit = _build_action_bank(
         oof=oof, prepared=prepared
     )
+    a1_replay_bank, _ = _build_action_bank(
+        oof=oof,
+        prepared=prepared,
+        action_ids=("A0",),
+        seed=ROOT_SEED,
+    )
+    a1_prediction = np.asarray(a1_replay_bank["A0"], dtype=np.float64)
+    if p17._array_sha256(a1_prediction) != p17._array_sha256(  # noqa: SLF001
+        original_bank["A0"]
+    ):
+        raise RuntimeError("A1 same-entrypoint/action/seed replay diverged")
+    a1_reference_prediction = np.asarray(original_bank["A0"], dtype=np.float64)
     a0_reproduction_max_abs = float(
         np.max(np.abs(original_bank["A0"] - a0_prediction))
     )
@@ -1065,7 +1120,7 @@ def run(
             fold_ids=oof.fold_ids,
             target=oof.target,
             a0_prediction=a0_prediction,
-            a1_prediction=a0_prediction.copy(),
+            a1_prediction=a1_prediction,
             a2l_prediction=strategy_predictions["A2L"],
             a2d_prediction=strategy_predictions["A2D"],
             a3_prediction=strategy_predictions["A3"],
@@ -1077,11 +1132,32 @@ def run(
         "protocol_sha256": _sha256(output_dir / "protocol.json"),
         "a0": a0_audit,
         "a1": {
-            "advice_only_prediction_identity": "A1 equals A0 exactly",
+            "replay": {
+                "entrypoint": "_build_action_bank",
+                "action_id": "A0",
+                "seed": ROOT_SEED,
+                "same_fold_inputs": True,
+                "replayed_independently": True,
+                "reference_array_sha256": p17._array_sha256(  # noqa: SLF001
+                    a1_reference_prediction
+                ),
+                "replay_array_sha256": p17._array_sha256(  # noqa: SLF001
+                    a1_prediction
+                ),
+                "max_abs_difference_vs_p21_canonical": float(
+                    np.max(np.abs(a1_prediction - a0_prediction))
+                ),
+            },
             "prediction_array_sha256": p17._array_sha256(  # noqa: SLF001
-                a0_prediction.copy()
+                a1_prediction
             ),
-            "equal_to_a0": True,
+            "equal_to_replayed_reference": bool(
+                p17._array_sha256(a1_prediction)
+                == p17._array_sha256(a1_reference_prediction)
+            ),
+            "within_p21_canonical_tolerance": bool(
+                np.max(np.abs(a1_prediction - a0_prediction)) <= 1e-12
+            ),
         },
         "independent_route_gate": route_gate,
         "strategies": strategy_results,
@@ -1133,6 +1209,7 @@ def run(
             "frozen_holdout_opened": False,
             "held_fold_metrics_visible_to_strategy": False,
             "promotion_feedback_visible_to_strategy": False,
+            "llm_prompt_feedback_is_classification_only": True,
             "p19_coordinate_purge_reused": True,
         },
     }
@@ -1170,14 +1247,18 @@ def _write_evidence(output_dir: Path, result: Mapping[str, Any]) -> None:
             "- A2L used the real DeepSeek provider with strict JSON validation.",
             "- The independent A2L route gate rejected P18 RGT-KED, whose pooled "
             "RMSE was 0.6421439169% worse with 2/5 spatial-fold wins.",
+            "- This RGT-KED gate is confirmatory and preconstrained to a registered "
+            "route; it is not autonomous route discovery.",
             "- A2D and A3 each used the same four-trial budget per held fold. A3 "
             "is PCG64 random kernel search; it is not a random-init foundation arm.",
-            "- A1 is prediction-identical to A0 and preserves its array hash.",
+            "- A1 replays the same action entrypoint, fold inputs and frozen seed, "
+            "then compares the independently recomputed prediction hash to A0.",
             "",
             "## Selection firewall",
             "",
             "P19 coordinate purge was applied independently for every held fold. "
-            "The strategies saw only aggregates from the other four purged folds. "
+            "The strategies saw only improved/flat/worse classifications from the "
+            "other four purged folds. "
             "Held-fold and final promotion metrics were calculated only after all "
             "four actions were fixed and were never fed back to a strategy.",
             "",
@@ -1237,9 +1318,15 @@ def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
             strategy: np.asarray(payload[f"{strategy.lower()}_prediction"], dtype=np.float64)
             for strategy in ("A2L", "A2D", "A3")
         }
-    np.testing.assert_array_equal(a0, a1)
     if p17._array_sha256(a0) != EXPECTED_A0_ARRAY_SHA256:  # noqa: SLF001
         raise RuntimeError("P28 A0/A1 identity drift")
+    replay = summary["a1"]["replay"]
+    if p17._array_sha256(a1) != replay["replay_array_sha256"]:
+        raise RuntimeError("P28 A1 replay hash drift")
+    if replay["replay_array_sha256"] != replay["reference_array_sha256"]:
+        raise RuntimeError("P28 A1 replay is not equal to its independent reference")
+    if float(replay["max_abs_difference_vs_p21_canonical"]) > 1e-12:
+        raise RuntimeError("P28 A1 replay diverged beyond P21 tolerance")
     np.testing.assert_allclose(
         _metrics(target, a0)["rmse"], EXPECTED_A0_RMSE, rtol=0.0, atol=1e-15
     )
@@ -1290,7 +1377,7 @@ def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
         "protocol_sha256": _sha256(protocol_path),
         "prediction_artifact_sha256": _sha256(prediction_path),
         "trial_artifact_sha256": _sha256(trial_path),
-        "a0_a1_array_identity": True,
+        "a0_a1_replay_identity": True,
         "strategy_metrics_recomputed": checks,
         "trial_rows": len(trial_rows),
         "deepseek_route_gate_passed": bool(
@@ -1342,6 +1429,11 @@ def _parser() -> argparse.ArgumentParser:
     execute.add_argument(
         "--credential-helper", type=Path, default=DEFAULT_CREDENTIAL_HELPER
     )
+    execute.add_argument(
+        "--recompute",
+        action="store_true",
+        help="overwrite only this P28 canonical output after an explicit recomputation",
+    )
     verify = subparsers.add_parser("verify")
     verify.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     return parser
@@ -1359,6 +1451,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         stage3_root=args.stage3_root,
         output_dir=args.output_dir,
         credential_helper=args.credential_helper,
+        recompute=args.recompute,
     )
     verification = verify_evidence(args.output_dir)
     write_artifact_manifest(args.output_dir)

@@ -133,6 +133,44 @@ class P28AgenticOptimizationUnitTest(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             p28._strategy_auc(histories)  # noqa: SLF001
 
+    def test_rendered_llm_observation_is_categorical_only(self) -> None:
+        histories = {
+            fold: [
+                {
+                    "round": 1,
+                    "action_id": "kernel_matern32",
+                    "feedback": {
+                        "classification": "improved",
+                        "relative_rmse_change": -0.123,
+                        "relative_gain": 0.123,
+                        "outcomes": {"win": 4, "loss": 0, "tie": 0},
+                    },
+                }
+            ]
+            for fold in range(5)
+        }
+        observation = p28._build_llm_observation(  # noqa: SLF001
+            round_id=2, histories=histories
+        )
+        rendered = json.dumps(observation, sort_keys=True)
+        for forbidden in (
+            "relative_rmse_change",
+            "relative_gain",
+            "outcomes",
+            "win",
+            "loss",
+            "tie",
+        ):
+            self.assertNotIn(forbidden, rendered)
+        for context in observation["fold_contexts"]:
+            self.assertEqual(
+                set(context["prior_trials"][0]), {"round", "action_id", "feedback"}
+            )
+            self.assertIn(
+                context["prior_trials"][0]["feedback"],
+                {"improved", "flat", "worse"},
+            )
+
 
 class P28AgenticOptimizationArtifactTest(unittest.TestCase):
     @classmethod
@@ -149,7 +187,21 @@ class P28AgenticOptimizationArtifactTest(unittest.TestCase):
         with np.load(artifact, allow_pickle=False) as payload:
             a0 = payload["a0_prediction"]
             a1 = payload["a1_prediction"]
-        np.testing.assert_array_equal(a0, a1)
+        self.assertEqual(
+            p17._array_sha256(a1),  # noqa: SLF001
+            self.summary["a1"]["replay"]["replay_array_sha256"],
+        )
+        self.assertTrue(self.summary["a1"]["replay"]["replayed_independently"])
+        self.assertEqual(self.summary["a1"]["replay"]["action_id"], "A0")
+        self.assertEqual(self.summary["a1"]["replay"]["seed"], p28.ROOT_SEED)
+        self.assertEqual(
+            self.summary["a1"]["replay"]["replay_array_sha256"],
+            self.summary["a1"]["replay"]["reference_array_sha256"],
+        )
+        self.assertLessEqual(
+            self.summary["a1"]["replay"]["max_abs_difference_vs_p21_canonical"],
+            1e-12,
+        )
         self.assertEqual(
             p17._array_sha256(a0),  # noqa: SLF001
             p28.EXPECTED_A0_ARRAY_SHA256,
@@ -165,6 +217,15 @@ class P28AgenticOptimizationArtifactTest(unittest.TestCase):
             self.assertEqual(row["trials_per_held_fold"], 4)
         self.assertEqual(len(self.summary["a2l_provider_rounds"]), 4)
         self.assertTrue(self.summary["independent_route_gate"]["passed"])
+        self.assertEqual(
+            self.summary["independent_route_gate"]["observation"]["gate_mode"],
+            "confirmatory_preconstrained",
+        )
+        self.assertFalse(
+            self.summary["independent_route_gate"]["observation"][
+                "autonomous_route_discovery"
+            ]
+        )
         self.assertTrue(
             all(
                 row["provider_audit"]["provider"] == "deepseek"
@@ -181,6 +242,7 @@ class P28AgenticOptimizationArtifactTest(unittest.TestCase):
         self.assertFalse(firewall["frozen_holdout_opened"])
         self.assertFalse(firewall["held_fold_metrics_visible_to_strategy"])
         self.assertFalse(firewall["promotion_feedback_visible_to_strategy"])
+        self.assertTrue(firewall["llm_prompt_feedback_is_classification_only"])
         self.assertEqual(len(self.summary["purge_audits"]), 5)
         self.assertTrue(
             all(row["removed_occurrences"] > 0 for row in self.summary["purge_audits"])

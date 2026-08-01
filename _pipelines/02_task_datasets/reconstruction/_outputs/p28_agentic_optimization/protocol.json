@@ -204,7 +204,7 @@
   ],
   "feedback": {
     "flat_relative_tolerance": 0.0005,
-    "only_purged_fold_train_aggregates_visible_to_a2l": true,
+    "only_categorical_classification_visible_to_a2l": true,
     "vocabulary": [
       "improved",
       "flat",
@@ -233,6 +233,11 @@
     "minimum_a2l_relative_gain": 0.005
   },
   "root_seed": 2693,
+  "route_gate": {
+    "autonomous_route_discovery": false,
+    "mode": "confirmatory_preconstrained",
+    "registered_route": "rgt_ked"
+  },
   "schema_version": "reconstruction-p28-protocol/v1",
   "search_auc": "mean cumulative-best relative fold-train RMSE gain over 5x4 cells",
   "strategies": {

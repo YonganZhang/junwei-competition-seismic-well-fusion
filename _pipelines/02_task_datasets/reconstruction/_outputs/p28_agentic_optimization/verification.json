@@ -1,17 +1,18 @@
 {
-  "a0_a1_array_identity": true,
+  "a0_a1_replay_identity": true,
   "deepseek_route_gate_passed": true,
   "deepseek_selection_rounds": 4,
   "firewall": {
     "development_only": true,
     "frozen_holdout_opened": false,
     "held_fold_metrics_visible_to_strategy": false,
+    "llm_prompt_feedback_is_classification_only": true,
     "p19_coordinate_purge_reused": true,
     "promotion_feedback_visible_to_strategy": false,
     "test_h5_opened": false
   },
-  "prediction_artifact_sha256": "ade157c9857144b1f8359f21d4644416e0f4931e017a4f9ce55b584168e75cc5",
-  "protocol_sha256": "f9e67cda682a48c4faab2081959d2d3d2404e43e1f3dce65ebaff867eb11bdf7",
+  "prediction_artifact_sha256": "c7af58cb61c7c3130b94b995b4fb84d959ca7674297923dac194059926707b5d",
+  "protocol_sha256": "c0716e479c5162e08e769f6f83e140ec7b5b0306f71bfd90d2b16307be97d922",
   "schema_version": "reconstruction-p28-verification/v1",
   "status": "PASSED",
   "strategy_metrics_recomputed": {
@@ -69,15 +70,15 @@
     },
     "A2L": {
       "fold_outcomes": {
-        "loss": 4,
+        "loss": 3,
         "tie": 1,
-        "win": 0
+        "win": 1
       },
       "maximum_fold_relative_regression": 0.0022445572783923932,
       "metrics": {
-        "bias": -0.0003025520744694473,
-        "mae": 0.020791821884238837,
-        "rmse": 0.027761999130989645,
+        "bias": -0.0003089093794333499,
+        "mae": 0.02079401938172738,
+        "rmse": 0.027761334798820803,
         "valid_voxels": 10240
       },
       "per_fold": [
@@ -104,10 +105,10 @@
         },
         {
           "a0_rmse": 0.02771269550630355,
-          "candidate_rmse": 0.0277158840398663,
+          "candidate_rmse": 0.027712556692356272,
           "fold_id": 3,
-          "outcome": "loss",
-          "relative_rmse_change_candidate_minus_a0": 0.00011505678190075239
+          "outcome": "win",
+          "relative_rmse_change_candidate_minus_a0": -5.009038086759917e-06
         },
         {
           "a0_rmse": 0.03557550508835037,
@@ -117,7 +118,7 @@
           "relative_rmse_change_candidate_minus_a0": 0.0022445572783923932
         }
       ],
-      "relative_gain_vs_a0": -0.0009960474516351038
+      "relative_gain_vs_a0": -0.0009720940658552063
     },
     "A3": {
       "fold_outcomes": {
@@ -172,7 +173,7 @@
       "relative_gain_vs_a0": -0.0008005630159059031
     }
   },
-  "summary_sha256": "e5fa2a3713ab4a357376dca0429e6cdadd62d178c4e2873bc07fa3899ff33df1",
-  "trial_artifact_sha256": "ae7a3474437bbcb72f4b95ac1f1d684dc6fa749cb72a44622d67e79eb0ef01bb",
+  "summary_sha256": "bb1ec2a9cc195bafbc90a2d841f89b7a5b52c8c9fc3738408329c3e4b7dbeb60",
+  "trial_artifact_sha256": "f42bc0e736e89fda2df9ca36afa2fd0f542d348151e7f254f5b280da419c8e4b",
   "trial_rows": 60
 }
