@@ -1,0 +1,179 @@
+{
+  "a0": {
+    "action_id": "A0_GATE_020",
+    "changed_factor": "none",
+    "description": "frozen A0",
+    "dice_weight": 0.25,
+    "fusion_lr": 0.0002,
+    "fusion_scale_initial": 0.2,
+    "sam2_frozen": false
+  },
+  "action_space_hash": "84fac72e044f5b9074df70e275006e50369e741085867b71399194b08a1fd5ef",
+  "action_table": {
+    "FAC_DICE_050": {
+      "action_id": "FAC_DICE_050",
+      "changed_factor": "dice_weight",
+      "description": "set Dice loss weight to 0.5",
+      "dice_weight": 0.5,
+      "fusion_lr": 0.0002,
+      "fusion_scale_initial": 0.2,
+      "sam2_frozen": false
+    },
+    "FAC_FUSION_LR_1E4": {
+      "action_id": "FAC_FUSION_LR_1E4",
+      "changed_factor": "fusion_lr",
+      "description": "set fusion learning rate to 1e-4",
+      "dice_weight": 0.25,
+      "fusion_lr": 0.0001,
+      "fusion_scale_initial": 0.2,
+      "sam2_frozen": false
+    },
+    "FAC_GATE_035": {
+      "action_id": "FAC_GATE_035",
+      "changed_factor": "fusion_scale_initial",
+      "description": "set fusion gate initialization to 0.35",
+      "dice_weight": 0.25,
+      "fusion_lr": 0.0002,
+      "fusion_scale_initial": 0.35,
+      "sam2_frozen": false
+    },
+    "FAC_GATE_050": {
+      "action_id": "FAC_GATE_050",
+      "changed_factor": "fusion_scale_initial",
+      "description": "set fusion gate initialization to 0.5",
+      "dice_weight": 0.25,
+      "fusion_lr": 0.0002,
+      "fusion_scale_initial": 0.5,
+      "sam2_frozen": false
+    },
+    "FAC_SAM2_FROZEN": {
+      "action_id": "FAC_SAM2_FROZEN",
+      "changed_factor": "sam2_frozen",
+      "description": "freeze the complete pretrained SAM2 image encoder",
+      "dice_weight": 0.25,
+      "fusion_lr": 0.0002,
+      "fusion_scale_initial": 0.2,
+      "sam2_frozen": true
+    }
+  },
+  "candidate_updates": 160,
+  "comparison": "two_of_five_sample_efficiency",
+  "continued_cnn_is_policy_action": false,
+  "endpoint_metric": "equal_mean_F3_Penobscot_mIoU_on_disjoint_fold4_for_the_per_dataset_package_selected_only_from_fold0",
+  "frozen_test_accessed": false,
+  "gpu_limit": 1,
+  "holdout_paths_accepted": false,
+  "manifest_hashes": {
+    "facies_f3": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+    "facies_penobscot": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81"
+  },
+  "maximum_trials_per_policy": 2,
+  "metric_contract": {
+    "dataset_aggregation": "equal_weight_F3_Penobscot",
+    "entrypoint": "p4_metrics.evaluate_probabilities",
+    "formal_metric_support_hash": "7e94f0607cb4d1c34be3087f5673de4f1ef8f1516f80c491d3929f2ca4b1df82",
+    "primary_field": "miou",
+    "require_all_classes": true
+  },
+  "normalized_signed_delta_clip": 2.0,
+  "normalized_signed_delta_scale_mIoU": 0.05,
+  "observation_denylist": [
+    "miou",
+    "raw_metric",
+    "residual",
+    "label",
+    "sample_id",
+    "path",
+    "prediction",
+    "logit",
+    "probability",
+    "confusion",
+    "validation",
+    "curve",
+    "holdout",
+    "test"
+  ],
+  "observation_schema": "facies-p29-observation/v2",
+  "observation_v2_fields": [
+    "previous_action",
+    "full_action_history",
+    "normalized_signed_delta",
+    "optimizer_gradient_movement",
+    "fusion_gate_movement",
+    "stop_semantics"
+  ],
+  "oracle_scope": "selection_only_not_visible_to_policy_not_promoted",
+  "per_dataset_action_switch_min_delta_mIoU": 0.005,
+  "per_dataset_package_allows_A0": true,
+  "policies": [
+    "A0_static_baseline",
+    "A1_advice_only_true_replay",
+    "A2L_llm_agent_execute",
+    "A2D_deterministic_agent",
+    "A3_random_policy",
+    "A4_deterministic_search"
+  ],
+  "policy_seed": 2693,
+  "promotion_fold_ids": [
+    4
+  ],
+  "promotion_guards": {
+    "mean_delta": 0.005,
+    "not_worse_than_continued_cnn": true,
+    "per_dataset_min_delta": -0.005
+  },
+  "prompt_ablation": "A2L_v1_categorical_only_vs_A2L_v2_full_history",
+  "provider_failure": "fail_closed_BLOCKED_PROVIDER",
+  "random_generator": "numpy.random.PCG64",
+  "sam2_weight_mode": "pretrained",
+  "sample_efficiency_metric": "arithmetic_mean_over_two_action_opportunities_of_running_best_per_dataset_selection_mIoU_seeded_by_A0",
+  "schema_version": "facies-p29-protocol/v1",
+  "selection_fold_ids": [
+    0
+  ],
+  "selection_promotion_disjoint": true,
+  "split_contract": {
+    "promotion:facies_f3": {
+      "fold_id": 4,
+      "fold_split_hash": "afe190a89adb75d909868b5d33424ecaee32c6d86805c28a397075d17d7aea0f",
+      "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+      "train_ids_hash": "c967f30541b4041e3bfc4fe9a01b97c26e66228c2d246ed3093b607e56806c8f",
+      "train_samples": 32,
+      "validation_ids_hash": "4780037c9aaee905b17a5bd21a18a51ce89ae8df7f05b82f4ef0d3fdd3ca7636",
+      "validation_samples": 16
+    },
+    "promotion:facies_penobscot": {
+      "fold_id": 4,
+      "fold_split_hash": "0fdb35c440dedefdfb6fc17b28198afd0a745072ffdd5014adab50de5730d777",
+      "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+      "train_ids_hash": "e62928d5f37864c51db6b2e451fba528239b78cbe27e6c77179579cdedfb6c9f",
+      "train_samples": 32,
+      "validation_ids_hash": "ae2d19061ad4b8d9141564ac93917797283865be4f49390b6fd77540bce3db8d",
+      "validation_samples": 16
+    },
+    "selection:facies_f3": {
+      "fold_id": 0,
+      "fold_split_hash": "11c441c59aca9b63a0a80746c953036776351c75f7e30da013f2678fea852d11",
+      "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+      "train_ids_hash": "d1bad8c995bcb14c6bf83ebb86be733a1721ff347e93f4c802bbf020ecd463ed",
+      "train_samples": 32,
+      "validation_ids_hash": "35dd8bd805fc70cef1b6d6249f110c8c667af5f6cc68f0a0020eda8e00e9c28a",
+      "validation_samples": 16
+    },
+    "selection:facies_penobscot": {
+      "fold_id": 0,
+      "fold_split_hash": "0502fe8dc279056b7203ac53a59a8800b16be58c42517d2b484737a39c9a7fb4",
+      "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+      "train_ids_hash": "541f3fe228e930c48564ff26c7a127826d89f6cb4b6557696a57236b973d9942",
+      "train_samples": 32,
+      "validation_ids_hash": "ad5c766da4574fb2905f0b5d5339106ee5f3f31a0e895d5e9f597ce97c2c0dbb",
+      "validation_samples": 16
+    }
+  },
+  "stage": "P29_action_effect_repair",
+  "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+  "track_id": "facies",
+  "train_samples_per_fold": 32,
+  "validation_samples_per_fold": 16,
+  "wall_clock_budget_s": 90.0
+}

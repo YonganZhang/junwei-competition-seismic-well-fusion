@@ -1,0 +1,3585 @@
+{
+  "a0": {
+    "promotion": {
+      "action_id": "A0_GATE_020",
+      "config": {
+        "action_id": "A0_GATE_020",
+        "changed_factor": "none",
+        "description": "frozen A0",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "fusion_scale_initial": 0.2,
+        "sam2_frozen": false
+      },
+      "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+      "equal_mean": 0.27054177176795485,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "peak_vram_mb": 879,
+      "phase": "promotion",
+      "policy_id": "A0_static_baseline",
+      "round": 0,
+      "runtime_s": 15.514316505985335,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.5968246459960938,
+          "attention_entropy": 0.9233483076095581,
+          "fusion_scale": 0.20003361999988556,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 11.894082069396973,
+          "macro_f1": 0.4330417833693469,
+          "miou": 0.3065701377615836,
+          "prediction_hash": "218d8824161b55b4d0dcaae590b6d63d4bf45d73c73e6b9106dc6b6dad4ea464",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.4611234964092179,
+          "train_attention_entropy": 0.9103094339370728,
+          "train_loss_last": 1.404624104499817,
+          "train_loss_mean": 1.3196809781715273
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "attention_entropy": 0.9369974732398987,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.22656668311314196,
+          "train_attention_entropy": 0.9246217012405396,
+          "train_loss_last": 1.6417633295059204,
+          "train_loss_mean": 1.7786403939127922
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    },
+    "selection": {
+      "action_id": "A0_GATE_020",
+      "config": {
+        "action_id": "A0_GATE_020",
+        "changed_factor": "none",
+        "description": "frozen A0",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "fusion_scale_initial": 0.2,
+        "sam2_frozen": false
+      },
+      "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+      "equal_mean": 0.2290078984707724,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "peak_vram_mb": 879,
+      "phase": "selection",
+      "policy_id": "A0_static_baseline",
+      "round": 0,
+      "runtime_s": 22.878393348073587,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.46425628662109375,
+          "attention_entropy": 0.858697772026062,
+          "fusion_scale": 0.20104733109474182,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 10.522309303283691,
+          "macro_f1": 0.38333146024644416,
+          "miou": 0.26595340929296457,
+          "prediction_hash": "2c7cb2a49a7c0350881dfa9f186c32291f884da80bdf15e5197932a976eb38eb",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.3815087756483918,
+          "train_attention_entropy": 0.8671207427978516,
+          "train_loss_last": 0.9437141418457031,
+          "train_loss_mean": 1.1623190127313137
+        },
+        "Penobscot": {
+          "accuracy": 0.645233154296875,
+          "attention_entropy": 0.9487993121147156,
+          "fusion_scale": 0.2003694325685501,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 6.179182052612305,
+          "macro_f1": 0.24446220966518095,
+          "miou": 0.19206238764858025,
+          "prediction_hash": "2d3a73c0f6c403b2b07ac592649ae19ba02f2b58bece99ba228116bb11d17793",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.2389601678924338,
+          "train_attention_entropy": 0.9368394017219543,
+          "train_loss_last": 1.780058741569519,
+          "train_loss_mean": 1.8216083399951457
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    }
+  },
+  "a1": {
+    "a0_metrics": {
+      "promotion": {
+        "F3": 0.3065701377615836,
+        "Penobscot": 0.2345134057743261,
+        "equal_mean": 0.27054177176795485
+      },
+      "selection": {
+        "F3": 0.26595340929296457,
+        "Penobscot": 0.19206238764858025,
+        "equal_mean": 0.2290078984707724
+      }
+    },
+    "a0_prediction_hashes": {
+      "promotion": {
+        "F3": "218d8824161b55b4d0dcaae590b6d63d4bf45d73c73e6b9106dc6b6dad4ea464",
+        "Penobscot": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754"
+      },
+      "selection": {
+        "F3": "2c7cb2a49a7c0350881dfa9f186c32291f884da80bdf15e5197932a976eb38eb",
+        "Penobscot": "2d3a73c0f6c403b2b07ac592649ae19ba02f2b58bece99ba228116bb11d17793"
+      }
+    },
+    "credential_persisted": false,
+    "decision": {
+      "action_id": "FAC_FUSION_LR_1E4",
+      "confidence": 0.6,
+      "rationale": "Fusion movement is stuck in both datasets, suggesting the fusion module is not updating effectively. Increasing the fusion learning rate to 1e-4 directly targets this issue by allowing larger updates, which may help escape the stuck state. Other actions address initialization or freezing but do not directly address the stuck fusion movement.",
+      "stop": false
+    },
+    "error": null,
+    "executed_action": false,
+    "metrics": {
+      "promotion": {
+        "F3": 0.3065701377615836,
+        "Penobscot": 0.2345134057743261,
+        "equal_mean": 0.27054177176795485
+      },
+      "selection": {
+        "F3": 0.26595340929296457,
+        "Penobscot": 0.19206238764858025,
+        "equal_mean": 0.2290078984707724
+      }
+    },
+    "metrics_equal_a0": true,
+    "observation": {
+      "available_action_ids": [
+        "FAC_GATE_035",
+        "FAC_GATE_050",
+        "FAC_FUSION_LR_1E4",
+        "FAC_DICE_050",
+        "FAC_SAM2_FROZEN"
+      ],
+      "baseline_train_diagnostics": {
+        "F3": {
+          "attention_state": "moderate",
+          "encoder_update_state": "moderate",
+          "fusion_movement_state": "stuck",
+          "gradient_state": "moderate",
+          "loss_state": "moderate"
+        },
+        "Penobscot": {
+          "attention_state": "moderate",
+          "encoder_update_state": "moderate",
+          "fusion_movement_state": "stuck",
+          "gradient_state": "moderate",
+          "loss_state": "high"
+        }
+      },
+      "full_action_history": [],
+      "maximum_action_trials": 2,
+      "normalization_contract": {
+        "clip_range": [
+          -2.0,
+          2.0
+        ],
+        "negative_direction": "worse_than_A0",
+        "positive_direction": "better_than_A0",
+        "signed_delta_zero": "same_as_A0"
+      },
+      "policy_id": "A1_advice_only",
+      "policy_seed": 2693,
+      "previous_action": "none",
+      "round": 1,
+      "schema_version": "facies-p29-observation/v2",
+      "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+      "trials_remaining_including_current": 2
+    },
+    "observation_hash": "145f4c81941a9323cff241ca68dc04b09ac63f7aa2ef2cc99f34579b796a80aa",
+    "policy_id": "A1_advice_only",
+    "prediction_hash_equal_a0": true,
+    "prediction_hashes": {
+      "promotion": {
+        "F3": "218d8824161b55b4d0dcaae590b6d63d4bf45d73c73e6b9106dc6b6dad4ea464",
+        "Penobscot": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754"
+      },
+      "selection": {
+        "F3": "2c7cb2a49a7c0350881dfa9f186c32291f884da80bdf15e5197932a976eb38eb",
+        "Penobscot": "2d3a73c0f6c403b2b07ac592649ae19ba02f2b58bece99ba228116bb11d17793"
+      }
+    },
+    "replay": {
+      "promotion": {
+        "action_id": "A0_GATE_020",
+        "config": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+        "equal_mean": 0.27054177176795485,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 879,
+        "phase": "promotion",
+        "policy_id": "A1_advice_only",
+        "round": 0,
+        "runtime_s": 15.640118521871045,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.5968246459960938,
+            "attention_entropy": 0.9233483076095581,
+            "fusion_scale": 0.20003361999988556,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 11.894082069396973,
+            "macro_f1": 0.4330417833693469,
+            "miou": 0.3065701377615836,
+            "prediction_hash": "218d8824161b55b4d0dcaae590b6d63d4bf45d73c73e6b9106dc6b6dad4ea464",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.4611234964092179,
+            "train_attention_entropy": 0.9103094339370728,
+            "train_loss_last": 1.404624104499817,
+            "train_loss_mean": 1.3196809781715273
+          },
+          "Penobscot": {
+            "accuracy": 0.4635772705078125,
+            "attention_entropy": 0.9369974732398987,
+            "fusion_scale": 0.20085497200489044,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 5.897378921508789,
+            "macro_f1": 0.338289971262145,
+            "miou": 0.2345134057743261,
+            "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.22656668311314196,
+            "train_attention_entropy": 0.9246217012405396,
+            "train_loss_last": 1.6417633295059204,
+            "train_loss_mean": 1.7786403939127922
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      "selection": {
+        "action_id": "A0_GATE_020",
+        "config": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+        "equal_mean": 0.2290078984707724,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 879,
+        "phase": "selection",
+        "policy_id": "A1_advice_only",
+        "round": 0,
+        "runtime_s": 21.013142101932317,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.46425628662109375,
+            "attention_entropy": 0.858697772026062,
+            "fusion_scale": 0.20104733109474182,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 10.522309303283691,
+            "macro_f1": 0.38333146024644416,
+            "miou": 0.26595340929296457,
+            "prediction_hash": "2c7cb2a49a7c0350881dfa9f186c32291f884da80bdf15e5197932a976eb38eb",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.3815087756483918,
+            "train_attention_entropy": 0.8671207427978516,
+            "train_loss_last": 0.9437141418457031,
+            "train_loss_mean": 1.1623190127313137
+          },
+          "Penobscot": {
+            "accuracy": 0.645233154296875,
+            "attention_entropy": 0.9487993121147156,
+            "fusion_scale": 0.2003694325685501,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 6.179182052612305,
+            "macro_f1": 0.24446220966518095,
+            "miou": 0.19206238764858025,
+            "prediction_hash": "2d3a73c0f6c403b2b07ac592649ae19ba02f2b58bece99ba228116bb11d17793",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.2389601678924338,
+            "train_attention_entropy": 0.9368394017219543,
+            "train_loss_last": 1.780058741569519,
+            "train_loss_mean": 1.8216083399951457
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    },
+    "replay_kind": "fresh_same_config_seed_fold_reexecution",
+    "status": "OK"
+  },
+  "a2d": {
+    "decisions": [
+      {
+        "action_id": "FAC_GATE_035",
+        "confidence": 1.0,
+        "credential_persisted": false,
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_FUSION_LR_1E4",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A2D_deterministic_agent",
+          "policy_seed": 2693,
+          "previous_action": "none",
+          "round": 1,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 2
+        },
+        "observation_hash": "47ac3ed39fe6dd8fccf0d33881b95226a484ccea68a74c9d00294e52a2739e3f",
+        "provider": "deterministic_diagnostics",
+        "rationale": "A0 fusion movement is stuck; test the moderate gate.",
+        "round": 1,
+        "status": "OK",
+        "stop": false
+      },
+      {
+        "action_id": "FAC_SAM2_FROZEN",
+        "confidence": 1.0,
+        "credential_persisted": false,
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_050",
+            "FAC_FUSION_LR_1E4",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [
+            {
+              "action_id": "FAC_GATE_035",
+              "equal_weight_effect_signal": {
+                "direction": "improved",
+                "normalized_signed_delta": 0.10488
+              },
+              "per_dataset_effects": {
+                "F3": {
+                  "effect_signal": {
+                    "direction": "improved",
+                    "normalized_signed_delta": 0.297068
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.073537,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": 0.169,
+                    "state": "moderate"
+                  }
+                },
+                "Penobscot": {
+                  "effect_signal": {
+                    "direction": "flat",
+                    "normalized_signed_delta": -0.087308
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.049567,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": 0.00246,
+                    "state": "moderate"
+                  }
+                }
+              },
+              "round": 1,
+              "stop_requested": false
+            }
+          ],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A2D_deterministic_agent",
+          "policy_seed": 2693,
+          "previous_action": {
+            "action_id": "FAC_GATE_035",
+            "round": 1,
+            "stop_requested": false
+          },
+          "round": 2,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 1
+        },
+        "observation_hash": "1b633d49d3f4a24b3bee3c30c7bd3d4a0110c799f40525c970da40c87696132c",
+        "provider": "deterministic_diagnostics",
+        "rationale": "Use the fixed diagnostic rule on the complete prior effect signal.",
+        "round": 2,
+        "status": "OK",
+        "stop": true
+      }
+    ],
+    "endpoint_promotion_mean_mIoU": 0.2892722530163401,
+    "executed_action_count": 2,
+    "full_history": [
+      {
+        "action_id": "FAC_GATE_035",
+        "equal_weight_effect_signal": {
+          "direction": "improved",
+          "normalized_signed_delta": 0.10488
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "improved",
+              "normalized_signed_delta": 0.297068
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.073537,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.169,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": -0.087308
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.049567,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.00246,
+              "state": "moderate"
+            }
+          }
+        },
+        "round": 1,
+        "stop_requested": false
+      },
+      {
+        "action_id": "FAC_SAM2_FROZEN",
+        "equal_weight_effect_signal": {
+          "direction": "flat",
+          "normalized_signed_delta": -0.047654
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": 0.00386
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.105571,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.002724,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": -0.099167
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.009603,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 1.649203,
+              "state": "high"
+            }
+          }
+        },
+        "round": 2,
+        "stop_requested": true
+      }
+    ],
+    "maximum_action_trials": 2,
+    "policy_id": "A2D_deterministic_agent",
+    "promotion": {
+      "action_by_dataset": {
+        "F3": "FAC_GATE_035",
+        "Penobscot": "A0_GATE_020"
+      },
+      "config_by_dataset": {
+        "F3": {
+          "action_id": "FAC_GATE_035",
+          "changed_factor": "fusion_scale_initial",
+          "description": "set fusion gate initialization to 0.35",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.35,
+          "sam2_frozen": false
+        },
+        "Penobscot": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        }
+      },
+      "equal_mean": 0.2892722530163401,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "package_config_hash": "2e682787acef47b76fca861eaf74dd34dc53af5bb1b8f4046a2262b8cf6522fd",
+      "package_effect_hash": "050f53affe63af3a846222f9c1eae6a9176da21383b96c837f3074fd8d44f849",
+      "package_id": "F3=FAC_GATE_035|Penobscot=A0_GATE_020",
+      "peak_vram_mb": 879,
+      "phase": "promotion",
+      "policy_id": "A2D_deterministic_agent",
+      "round": 3,
+      "runtime_s": 14.340100849047303,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.6380500793457031,
+          "attention_entropy": 0.9330870509147644,
+          "fusion_scale": 0.34952473640441895,
+          "fusion_scale_initial": 0.35,
+          "last_grad_norm": 12.451271057128906,
+          "macro_f1": 0.47163892209108205,
+          "miou": 0.34403110025835404,
+          "prediction_hash": "9e2bf00b8339c3f38610cf1174c757371896f9dc377cdcf815f6b022196cad4c",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.4384120266418586,
+          "train_attention_entropy": 0.9226024746894836,
+          "train_loss_last": 1.2072017192840576,
+          "train_loss_mean": 1.264957187883556
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "attention_entropy": 0.9369974732398987,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.22656668311314196,
+          "train_attention_entropy": 0.9246217012405396,
+          "train_loss_last": 1.6417633295059204,
+          "train_loss_mean": 1.7786403939127922
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    },
+    "sample_efficiency_path_score_running_max_per_dataset_mean_mIoU": 0.23643459908655287,
+    "sample_efficiency_running_max_per_dataset_mean_mIoU_trace": [
+      0.23643459908655287,
+      0.23643459908655287
+    ],
+    "selected_per_dataset_package": {
+      "F3": "FAC_GATE_035",
+      "Penobscot": "A0_GATE_020"
+    },
+    "selection_trials": [
+      {
+        "action_effect_hash": "641ae0a3044f4526a561c637a5000c4acab9c777394df7d410379da09ab0e801",
+        "action_id": "FAC_GATE_035",
+        "config": {
+          "action_id": "FAC_GATE_035",
+          "changed_factor": "fusion_scale_initial",
+          "description": "set fusion gate initialization to 0.35",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.35,
+          "sam2_frozen": false
+        },
+        "config_hash": "31aad8047336b330c4a5892b2f8d6a0fb4115915ea4122e469675370e6907652",
+        "equal_mean": 0.23425191034427956,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 879,
+        "phase": "selection",
+        "policy_id": "A2D_deterministic_agent",
+        "round": 1,
+        "runtime_s": 14.364489919971675,
+        "safe_observation_effect": {
+          "action_id": "FAC_GATE_035",
+          "equal_weight_effect_signal": {
+            "direction": "improved",
+            "normalized_signed_delta": 0.10488
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "improved",
+                "normalized_signed_delta": 0.297068
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.073537,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.169,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": -0.087308
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.049567,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.00246,
+                "state": "moderate"
+              }
+            }
+          },
+          "round": 1,
+          "stop_requested": false
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4811248779296875,
+            "attention_entropy": 0.8736521005630493,
+            "fusion_scale": 0.3507353663444519,
+            "fusion_scale_initial": 0.35,
+            "last_grad_norm": 12.300575256347656,
+            "macro_f1": 0.40283833028511784,
+            "miou": 0.2808068105245255,
+            "prediction_hash": "589a910c6dd5c39805790ba8ff1161a0168f3fd6fde086ba46412b39315a4eab",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.36415114378479274,
+            "train_attention_entropy": 0.8799092173576355,
+            "train_loss_last": 0.8678745031356812,
+            "train_loss_mean": 1.1114546978846191
+          },
+          "Penobscot": {
+            "accuracy": 0.6435012817382812,
+            "attention_entropy": 0.9728041887283325,
+            "fusion_scale": 0.35049566626548767,
+            "fusion_scale_initial": 0.35,
+            "last_grad_norm": 6.1943840980529785,
+            "macro_f1": 0.23712152539248182,
+            "miou": 0.18769701016403362,
+            "prediction_hash": "7b52237d7e859a41882e092f66c0f5f931049a8d4e57dbaa4a056a5f48d55ca0",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.245924936822275,
+            "train_attention_entropy": 0.9719749093055725,
+            "train_loss_last": 1.7927778959274292,
+            "train_loss_mean": 1.8132601760327816
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_effect_hash": "001f4add89737029073a907bdc204c06eb4e14556a17ae7c552aff32e31900da",
+        "action_id": "FAC_SAM2_FROZEN",
+        "config": {
+          "action_id": "FAC_SAM2_FROZEN",
+          "changed_factor": "sam2_frozen",
+          "description": "freeze the complete pretrained SAM2 image encoder",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": true
+        },
+        "config_hash": "7144b4fcc1af4f9721495ad90a157d39665945bb4b0f58585f1b26ca94576f78",
+        "equal_mean": 0.2266252087377865,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 605,
+        "phase": "selection",
+        "policy_id": "A2D_deterministic_agent",
+        "round": 2,
+        "runtime_s": 12.989667906891555,
+        "safe_observation_effect": {
+          "action_id": "FAC_SAM2_FROZEN",
+          "equal_weight_effect_signal": {
+            "direction": "flat",
+            "normalized_signed_delta": -0.047654
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": 0.00386
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.105571,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.002724,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": -0.099167
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.009603,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 1.649203,
+                "state": "high"
+              }
+            }
+          },
+          "round": 2,
+          "stop_requested": true
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4642906188964844,
+            "attention_entropy": 0.8582842946052551,
+            "fusion_scale": 0.20105570554733276,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 10.550975799560547,
+            "macro_f1": 0.3835615368491885,
+            "miou": 0.26614639461517,
+            "prediction_hash": "4b768ee10fa8d41de20d9319c092f37773f4be6e192395d78e71fad4ff2110df",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.8663495182991028,
+            "train_loss_last": 0.9436558485031128,
+            "train_loss_mean": 1.1619663001969456
+          },
+          "Penobscot": {
+            "accuracy": 0.634124755859375,
+            "attention_entropy": 0.9416216611862183,
+            "fusion_scale": 0.2000960260629654,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 16.369905471801758,
+            "macro_f1": 0.24037791560044106,
+            "miou": 0.187104022860403,
+            "prediction_hash": "024b5dab2e584a9dcb59fb364d932a29a728ac1b0d58241537ad2798ba74b6e5",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.9289785623550415,
+            "train_loss_last": 1.8121402263641357,
+            "train_loss_mean": 1.8228325448930263
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    ],
+    "status": "OK",
+    "stop_after_round": 2,
+    "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback"
+  },
+  "a2l": {
+    "decisions": [
+      {
+        "action_id": "FAC_FUSION_LR_1E4",
+        "confidence": 0.7,
+        "credential_persisted": false,
+        "model_requested": "deepseek-chat",
+        "model_returned": "deepseek-v4-flash",
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_FUSION_LR_1E4",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A2L_llm_agent_execute",
+          "policy_seed": 2693,
+          "previous_action": "none",
+          "round": 1,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 2
+        },
+        "observation_hash": "4eab3ef588b96dbc673c58c7b0aec9e792fe3459dad237db9f3219cd30a040b8",
+        "provider": "deepseek",
+        "rationale": "The fusion movement state is 'stuck' for both datasets, indicating the fusion component is not updating effectively. Increasing the fusion learning rate to 1e-4 directly addresses this by allowing larger updates to the fusion parameters, potentially overcoming the stagnation.",
+        "response_id": "08b2174b-6325-4c17-88ea-372e1e54e6e8",
+        "round": 1,
+        "status": "OK",
+        "stop": false,
+        "usage": {
+          "completion_tokens": 91,
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 60,
+          "prompt_tokens": 700,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "total_tokens": 791
+        }
+      },
+      {
+        "action_id": "FAC_SAM2_FROZEN",
+        "confidence": 0.6,
+        "credential_persisted": false,
+        "model_requested": "deepseek-chat",
+        "model_returned": "deepseek-v4-flash",
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [
+            {
+              "action_id": "FAC_FUSION_LR_1E4",
+              "equal_weight_effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.332119
+              },
+              "per_dataset_effects": {
+                "F3": {
+                  "effect_signal": {
+                    "direction": "worse",
+                    "normalized_signed_delta": -0.524546
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.058739,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": 0.218794,
+                    "state": "moderate"
+                  }
+                },
+                "Penobscot": {
+                  "effect_signal": {
+                    "direction": "worse",
+                    "normalized_signed_delta": -0.139692
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.016967,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": -0.025278,
+                    "state": "moderate"
+                  }
+                }
+              },
+              "round": 1,
+              "stop_requested": false
+            }
+          ],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A2L_llm_agent_execute",
+          "policy_seed": 2693,
+          "previous_action": {
+            "action_id": "FAC_FUSION_LR_1E4",
+            "round": 1,
+            "stop_requested": false
+          },
+          "round": 2,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 1
+        },
+        "observation_hash": "d17d42f6954497d997ea26d3e436488aaacdc3f10c4c0bcc13e1899a9e69197f",
+        "provider": "deepseek",
+        "rationale": "The previous action (fusion LR 1e-4) worsened performance and left fusion gates stuck. With only one trial left, freezing the SAM2 encoder is a conservative, high-impact change that reduces trainable parameters and may stabilize training, potentially improving generalization without risking further degradation from another learning-rate tweak.",
+        "response_id": "58602bc0-80d8-4149-abfd-c328a97b0369",
+        "round": 2,
+        "status": "OK",
+        "stop": false,
+        "usage": {
+          "completion_tokens": 95,
+          "prompt_cache_hit_tokens": 896,
+          "prompt_cache_miss_tokens": 18,
+          "prompt_tokens": 914,
+          "prompt_tokens_details": {
+            "cached_tokens": 896
+          },
+          "total_tokens": 1009
+        }
+      }
+    ],
+    "endpoint_promotion_mean_mIoU": 0.27054177176795485,
+    "executed_action_count": 2,
+    "full_history": [
+      {
+        "action_id": "FAC_FUSION_LR_1E4",
+        "equal_weight_effect_signal": {
+          "direction": "worse",
+          "normalized_signed_delta": -0.332119
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "worse",
+              "normalized_signed_delta": -0.524546
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.058739,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.218794,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "worse",
+              "normalized_signed_delta": -0.139692
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.016967,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": -0.025278,
+              "state": "moderate"
+            }
+          }
+        },
+        "round": 1,
+        "stop_requested": false
+      },
+      {
+        "action_id": "FAC_SAM2_FROZEN",
+        "equal_weight_effect_signal": {
+          "direction": "flat",
+          "normalized_signed_delta": -0.047654
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": 0.00386
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.105571,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.002724,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": -0.099167
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.009603,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 1.649203,
+              "state": "high"
+            }
+          }
+        },
+        "round": 2,
+        "stop_requested": false
+      }
+    ],
+    "maximum_action_trials": 2,
+    "policy_id": "A2L_llm_agent_execute",
+    "promotion": {
+      "action_by_dataset": {
+        "F3": "A0_GATE_020",
+        "Penobscot": "A0_GATE_020"
+      },
+      "config_by_dataset": {
+        "F3": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "Penobscot": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        }
+      },
+      "equal_mean": 0.27054177176795485,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "package_config_hash": "e873c0dd41ca7b9d2c2f11226eeeb70b740c1527ba1de17c1bac452571e2841a",
+      "package_effect_hash": "bc3c4380dc006d4d07e0555187395ee7a5b93d90ee9d5c59ccae54ea56c19ae0",
+      "package_id": "F3=A0_GATE_020|Penobscot=A0_GATE_020",
+      "peak_vram_mb": 879,
+      "phase": "promotion",
+      "policy_id": "A2L_llm_agent_execute",
+      "round": 3,
+      "runtime_s": 14.697000354994088,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.5968246459960938,
+          "attention_entropy": 0.9233483076095581,
+          "fusion_scale": 0.20003361999988556,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 11.894082069396973,
+          "macro_f1": 0.4330417833693469,
+          "miou": 0.3065701377615836,
+          "prediction_hash": "218d8824161b55b4d0dcaae590b6d63d4bf45d73c73e6b9106dc6b6dad4ea464",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.4611234964092179,
+          "train_attention_entropy": 0.9103094339370728,
+          "train_loss_last": 1.404624104499817,
+          "train_loss_mean": 1.3196809781715273
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "attention_entropy": 0.9369974732398987,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.22656668311314196,
+          "train_attention_entropy": 0.9246217012405396,
+          "train_loss_last": 1.6417633295059204,
+          "train_loss_mean": 1.7786403939127922
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    },
+    "sample_efficiency_path_score_running_max_per_dataset_mean_mIoU": 0.22905614480132375,
+    "sample_efficiency_running_max_per_dataset_mean_mIoU_trace": [
+      0.2290078984707724,
+      0.2291043911318751
+    ],
+    "selected_per_dataset_package": {
+      "F3": "A0_GATE_020",
+      "Penobscot": "A0_GATE_020"
+    },
+    "selection_trials": [
+      {
+        "action_effect_hash": "818a14ba044ae20107bd6eb31428c984c923e4b85619aa56d824f80e6146d7eb",
+        "action_id": "FAC_FUSION_LR_1E4",
+        "config": {
+          "action_id": "FAC_FUSION_LR_1E4",
+          "changed_factor": "fusion_lr",
+          "description": "set fusion learning rate to 1e-4",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0001,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "config_hash": "057b627f0406b8c3912f825f308493667579ce74e1251740c76af397135601ca",
+        "equal_mean": 0.21240194786246294,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 878,
+        "phase": "selection",
+        "policy_id": "A2L_llm_agent_execute",
+        "round": 1,
+        "runtime_s": 14.635109516093507,
+        "safe_observation_effect": {
+          "action_id": "FAC_FUSION_LR_1E4",
+          "equal_weight_effect_signal": {
+            "direction": "worse",
+            "normalized_signed_delta": -0.332119
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.524546
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.058739,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.218794,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.139692
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.016967,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": -0.025278,
+                "state": "moderate"
+              }
+            }
+          },
+          "round": 1,
+          "stop_requested": false
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4292793273925781,
+            "attention_entropy": 0.8617292642593384,
+            "fusion_scale": 0.20058739185333252,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 12.82452392578125,
+            "macro_f1": 0.35192962800758953,
+            "miou": 0.23972610402541172,
+            "prediction_hash": "2ae4179fdacc9a95c7436a1c53bc7a36c763d09f8dfc33d5e47fabbcaafac504",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.46894226753460266,
+            "train_attention_entropy": 0.8757530450820923,
+            "train_loss_last": 1.0578781366348267,
+            "train_loss_mean": 1.2236325526610017
+          },
+          "Penobscot": {
+            "accuracy": 0.636749267578125,
+            "attention_entropy": 0.9723642468452454,
+            "fusion_scale": 0.2001696676015854,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 6.02298641204834,
+            "macro_f1": 0.23609867505083657,
+            "miou": 0.18507779169951416,
+            "prediction_hash": "d74abe11180d583ae6b8e5ae14b879ccafe6f09b2587d4f398ec553b89a47c3e",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.23311134555070476,
+            "train_attention_entropy": 0.9708825349807739,
+            "train_loss_last": 1.8073387145996094,
+            "train_loss_mean": 1.8238658249378203
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_effect_hash": "001f4add89737029073a907bdc204c06eb4e14556a17ae7c552aff32e31900da",
+        "action_id": "FAC_SAM2_FROZEN",
+        "config": {
+          "action_id": "FAC_SAM2_FROZEN",
+          "changed_factor": "sam2_frozen",
+          "description": "freeze the complete pretrained SAM2 image encoder",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": true
+        },
+        "config_hash": "7144b4fcc1af4f9721495ad90a157d39665945bb4b0f58585f1b26ca94576f78",
+        "equal_mean": 0.2266252087377865,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 605,
+        "phase": "selection",
+        "policy_id": "A2L_llm_agent_execute",
+        "round": 2,
+        "runtime_s": 12.707775152055547,
+        "safe_observation_effect": {
+          "action_id": "FAC_SAM2_FROZEN",
+          "equal_weight_effect_signal": {
+            "direction": "flat",
+            "normalized_signed_delta": -0.047654
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": 0.00386
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.105571,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.002724,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": -0.099167
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.009603,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 1.649203,
+                "state": "high"
+              }
+            }
+          },
+          "round": 2,
+          "stop_requested": false
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4642906188964844,
+            "attention_entropy": 0.8582842946052551,
+            "fusion_scale": 0.20105570554733276,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 10.550975799560547,
+            "macro_f1": 0.3835615368491885,
+            "miou": 0.26614639461517,
+            "prediction_hash": "4b768ee10fa8d41de20d9319c092f37773f4be6e192395d78e71fad4ff2110df",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.8663495182991028,
+            "train_loss_last": 0.9436558485031128,
+            "train_loss_mean": 1.1619663001969456
+          },
+          "Penobscot": {
+            "accuracy": 0.634124755859375,
+            "attention_entropy": 0.9416216611862183,
+            "fusion_scale": 0.2000960260629654,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 16.369905471801758,
+            "macro_f1": 0.24037791560044106,
+            "miou": 0.187104022860403,
+            "prediction_hash": "024b5dab2e584a9dcb59fb364d932a29a728ac1b0d58241537ad2798ba74b6e5",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.9289785623550415,
+            "train_loss_last": 1.8121402263641357,
+            "train_loss_mean": 1.8228325448930263
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    ],
+    "status": "OK",
+    "stop_after_round": null,
+    "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback"
+  },
+  "a3": {
+    "decisions": [
+      {
+        "action_id": "FAC_FUSION_LR_1E4",
+        "confidence": 0.2,
+        "credential_persisted": false,
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_FUSION_LR_1E4",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A3_random_policy",
+          "policy_seed": 2693,
+          "previous_action": "none",
+          "round": 1,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 2
+        },
+        "observation_hash": "7c185f4169e67630dc46d3b039d5e3974f963d70fbcd2bc150b522ca947db516",
+        "provider": "numpy.PCG64",
+        "rationale": "PCG64 random choice without replacement.",
+        "round": 1,
+        "status": "OK",
+        "stop": false
+      },
+      {
+        "action_id": "FAC_GATE_050",
+        "confidence": 0.25,
+        "credential_persisted": false,
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [
+            {
+              "action_id": "FAC_FUSION_LR_1E4",
+              "equal_weight_effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.332119
+              },
+              "per_dataset_effects": {
+                "F3": {
+                  "effect_signal": {
+                    "direction": "worse",
+                    "normalized_signed_delta": -0.524546
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.058739,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": 0.218794,
+                    "state": "moderate"
+                  }
+                },
+                "Penobscot": {
+                  "effect_signal": {
+                    "direction": "worse",
+                    "normalized_signed_delta": -0.139692
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.016967,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": -0.025278,
+                    "state": "moderate"
+                  }
+                }
+              },
+              "round": 1,
+              "stop_requested": false
+            }
+          ],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A3_random_policy",
+          "policy_seed": 2693,
+          "previous_action": {
+            "action_id": "FAC_FUSION_LR_1E4",
+            "round": 1,
+            "stop_requested": false
+          },
+          "round": 2,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 1
+        },
+        "observation_hash": "e907d949f44b333e8dbd679003c071d7d2354978f2095c35be8ee41d13790444",
+        "provider": "numpy.PCG64",
+        "rationale": "PCG64 random choice without replacement.",
+        "round": 2,
+        "status": "OK",
+        "stop": true
+      }
+    ],
+    "endpoint_promotion_mean_mIoU": 0.30102274922690286,
+    "executed_action_count": 2,
+    "full_history": [
+      {
+        "action_id": "FAC_FUSION_LR_1E4",
+        "equal_weight_effect_signal": {
+          "direction": "worse",
+          "normalized_signed_delta": -0.332119
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "worse",
+              "normalized_signed_delta": -0.524546
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.058739,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.218794,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "worse",
+              "normalized_signed_delta": -0.139692
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.016967,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": -0.025278,
+              "state": "moderate"
+            }
+          }
+        },
+        "round": 1,
+        "stop_requested": false
+      },
+      {
+        "action_id": "FAC_GATE_050",
+        "equal_weight_effect_signal": {
+          "direction": "improved",
+          "normalized_signed_delta": 0.310365
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "improved",
+              "normalized_signed_delta": 0.55029
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.022823,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.559037,
+              "state": "high"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": 0.07044
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.017416,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 2.0,
+              "state": "high"
+            }
+          }
+        },
+        "round": 2,
+        "stop_requested": true
+      }
+    ],
+    "maximum_action_trials": 2,
+    "policy_id": "A3_random_policy",
+    "promotion": {
+      "action_by_dataset": {
+        "F3": "FAC_GATE_050",
+        "Penobscot": "A0_GATE_020"
+      },
+      "config_by_dataset": {
+        "F3": {
+          "action_id": "FAC_GATE_050",
+          "changed_factor": "fusion_scale_initial",
+          "description": "set fusion gate initialization to 0.5",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.5,
+          "sam2_frozen": false
+        },
+        "Penobscot": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        }
+      },
+      "equal_mean": 0.30102274922690286,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "package_config_hash": "77e64c46b7bb651b2205c4af207d95e8c2d852bbcfaee4aa3f04f43fba08ef51",
+      "package_effect_hash": "91ef558b84438cf4ca41cfabe69995de67c0e3f2edd131ea67f030d14a295a44",
+      "package_id": "F3=FAC_GATE_050|Penobscot=A0_GATE_020",
+      "peak_vram_mb": 878,
+      "phase": "promotion",
+      "policy_id": "A3_random_policy",
+      "round": 3,
+      "runtime_s": 14.593559904024005,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.6660614013671875,
+          "attention_entropy": 0.9258869290351868,
+          "fusion_scale": 0.49907687306404114,
+          "fusion_scale_initial": 0.5,
+          "last_grad_norm": 14.694966316223145,
+          "macro_f1": 0.4931127136595675,
+          "miou": 0.36753209267947956,
+          "prediction_hash": "a9765c9cdc6fc8c492dd83fac1f3ecd8be15138f006da1887f65bc018011b7db",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.40986315367427617,
+          "train_attention_entropy": 0.9157161712646484,
+          "train_loss_last": 1.1398286819458008,
+          "train_loss_mean": 1.2290874477475882
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "attention_entropy": 0.9369974732398987,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.22656668311314196,
+          "train_attention_entropy": 0.9246217012405396,
+          "train_loss_last": 1.6417633295059204,
+          "train_loss_mean": 1.7786403939127922
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    },
+    "sample_efficiency_path_score_running_max_per_dataset_mean_mIoU": 0.2367670233142121,
+    "sample_efficiency_running_max_per_dataset_mean_mIoU_trace": [
+      0.2290078984707724,
+      0.24452614815765178
+    ],
+    "selected_per_dataset_package": {
+      "F3": "FAC_GATE_050",
+      "Penobscot": "A0_GATE_020"
+    },
+    "selection_trials": [
+      {
+        "action_effect_hash": "818a14ba044ae20107bd6eb31428c984c923e4b85619aa56d824f80e6146d7eb",
+        "action_id": "FAC_FUSION_LR_1E4",
+        "config": {
+          "action_id": "FAC_FUSION_LR_1E4",
+          "changed_factor": "fusion_lr",
+          "description": "set fusion learning rate to 1e-4",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0001,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "config_hash": "057b627f0406b8c3912f825f308493667579ce74e1251740c76af397135601ca",
+        "equal_mean": 0.21240194786246294,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 879,
+        "phase": "selection",
+        "policy_id": "A3_random_policy",
+        "round": 1,
+        "runtime_s": 13.778381875017658,
+        "safe_observation_effect": {
+          "action_id": "FAC_FUSION_LR_1E4",
+          "equal_weight_effect_signal": {
+            "direction": "worse",
+            "normalized_signed_delta": -0.332119
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.524546
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.058739,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.218794,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.139692
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.016967,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": -0.025278,
+                "state": "moderate"
+              }
+            }
+          },
+          "round": 1,
+          "stop_requested": false
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4292793273925781,
+            "attention_entropy": 0.8617292642593384,
+            "fusion_scale": 0.20058739185333252,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 12.82452392578125,
+            "macro_f1": 0.35192962800758953,
+            "miou": 0.23972610402541172,
+            "prediction_hash": "2ae4179fdacc9a95c7436a1c53bc7a36c763d09f8dfc33d5e47fabbcaafac504",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.46894226753460266,
+            "train_attention_entropy": 0.8757530450820923,
+            "train_loss_last": 1.0578781366348267,
+            "train_loss_mean": 1.2236325526610017
+          },
+          "Penobscot": {
+            "accuracy": 0.636749267578125,
+            "attention_entropy": 0.9723642468452454,
+            "fusion_scale": 0.2001696676015854,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 6.02298641204834,
+            "macro_f1": 0.23609867505083657,
+            "miou": 0.18507779169951416,
+            "prediction_hash": "d74abe11180d583ae6b8e5ae14b879ccafe6f09b2587d4f398ec553b89a47c3e",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.23311134555070476,
+            "train_attention_entropy": 0.9708825349807739,
+            "train_loss_last": 1.8073387145996094,
+            "train_loss_mean": 1.8238658249378203
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_effect_hash": "11a657773d5884cacfe54ff0e387f6f98ee59bb237011698528207c37fdf35dd",
+        "action_id": "FAC_GATE_050",
+        "config": {
+          "action_id": "FAC_GATE_050",
+          "changed_factor": "fusion_scale_initial",
+          "description": "set fusion gate initialization to 0.5",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.5,
+          "sam2_frozen": false
+        },
+        "config_hash": "4960082070bd0b4b9bb539592a02fd6567287d685d0d1ee55c23ec3d172f412d",
+        "equal_mean": 0.24452614815765178,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 878,
+        "phase": "selection",
+        "policy_id": "A3_random_policy",
+        "round": 2,
+        "runtime_s": 14.723746607080102,
+        "safe_observation_effect": {
+          "action_id": "FAC_GATE_050",
+          "equal_weight_effect_signal": {
+            "direction": "improved",
+            "normalized_signed_delta": 0.310365
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "improved",
+                "normalized_signed_delta": 0.55029
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.022823,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.559037,
+                "state": "high"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": 0.07044
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.017416,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 2.0,
+                "state": "high"
+              }
+            }
+          },
+          "round": 2,
+          "stop_requested": true
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.49330902099609375,
+            "attention_entropy": 0.8855457901954651,
+            "fusion_scale": 0.500228226184845,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 16.4046688079834,
+            "macro_f1": 0.4166849971692933,
+            "miou": 0.29346791323793775,
+            "prediction_hash": "c2bfd1a5337e2b4bd91a29a3afe3c1db7c9faab31896cd72c573813c69571244",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.34498484119385897,
+            "train_attention_entropy": 0.8895020484924316,
+            "train_loss_last": 0.8371528387069702,
+            "train_loss_mean": 1.082389502041042
+          },
+          "Penobscot": {
+            "accuracy": 0.6453361511230469,
+            "attention_entropy": 0.9134566187858582,
+            "fusion_scale": 0.5001741647720337,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 19.63987922668457,
+            "macro_f1": 0.2538724350426317,
+            "miou": 0.19558438307736578,
+            "prediction_hash": "28e8e7e30ee499d128d398df20845ed56907ed9435ed6322195232136bd53a5f",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.24527072992059143,
+            "train_attention_entropy": 0.9002954363822937,
+            "train_loss_last": 1.801487684249878,
+            "train_loss_mean": 1.8172238998115062
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    ],
+    "status": "OK",
+    "stop_after_round": 2,
+    "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback"
+  },
+  "a4": {
+    "decisions": [
+      {
+        "action_id": "FAC_GATE_050",
+        "confidence": 1.0,
+        "credential_persisted": false,
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_FUSION_LR_1E4",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A4_deterministic_search",
+          "policy_seed": 2693,
+          "previous_action": "none",
+          "round": 1,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 2
+        },
+        "observation_hash": "a0f1fa6f9a91eba5c0e041681f02be35dc55f1010dd50b41d87233f5f4af771c",
+        "provider": "deterministic_search",
+        "rationale": "Preregistered two-action domain search order.",
+        "round": 1,
+        "status": "OK",
+        "stop": false
+      },
+      {
+        "action_id": "FAC_DICE_050",
+        "confidence": 1.0,
+        "credential_persisted": false,
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_FUSION_LR_1E4",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_train_diagnostics": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "full_action_history": [
+            {
+              "action_id": "FAC_GATE_050",
+              "equal_weight_effect_signal": {
+                "direction": "improved",
+                "normalized_signed_delta": 0.310365
+              },
+              "per_dataset_effects": {
+                "F3": {
+                  "effect_signal": {
+                    "direction": "improved",
+                    "normalized_signed_delta": 0.55029
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.022823,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": 0.559037,
+                    "state": "high"
+                  }
+                },
+                "Penobscot": {
+                  "effect_signal": {
+                    "direction": "flat",
+                    "normalized_signed_delta": 0.07044
+                  },
+                  "fusion_gate_movement": {
+                    "normalized_signed_change": 0.017416,
+                    "state": "stuck"
+                  },
+                  "optimizer_gradient_movement": {
+                    "normalized_signed_change": 2.0,
+                    "state": "high"
+                  }
+                }
+              },
+              "round": 1,
+              "stop_requested": false
+            }
+          ],
+          "maximum_action_trials": 2,
+          "normalization_contract": {
+            "clip_range": [
+              -2.0,
+              2.0
+            ],
+            "negative_direction": "worse_than_A0",
+            "positive_direction": "better_than_A0",
+            "signed_delta_zero": "same_as_A0"
+          },
+          "policy_id": "A4_deterministic_search",
+          "policy_seed": 2693,
+          "previous_action": {
+            "action_id": "FAC_GATE_050",
+            "round": 1,
+            "stop_requested": false
+          },
+          "round": 2,
+          "schema_version": "facies-p29-observation/v2",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 1
+        },
+        "observation_hash": "38b309a70640304f31c39679e96307ca55fd29635f399931dd9db59ebcc1cf8b",
+        "provider": "deterministic_search",
+        "rationale": "Preregistered two-action domain search order.",
+        "round": 2,
+        "status": "OK",
+        "stop": true
+      }
+    ],
+    "endpoint_promotion_mean_mIoU": 0.30102274922690286,
+    "executed_action_count": 2,
+    "full_history": [
+      {
+        "action_id": "FAC_GATE_050",
+        "equal_weight_effect_signal": {
+          "direction": "improved",
+          "normalized_signed_delta": 0.310365
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "improved",
+              "normalized_signed_delta": 0.55029
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.022823,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.559037,
+              "state": "high"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": 0.07044
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.017416,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 2.0,
+              "state": "high"
+            }
+          }
+        },
+        "round": 1,
+        "stop_requested": false
+      },
+      {
+        "action_id": "FAC_DICE_050",
+        "equal_weight_effect_signal": {
+          "direction": "flat",
+          "normalized_signed_delta": -0.091826
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": 0.027865
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.105956,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.033459,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "worse",
+              "normalized_signed_delta": -0.211517
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.015031,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.954869,
+              "state": "moderate"
+            }
+          }
+        },
+        "round": 2,
+        "stop_requested": true
+      }
+    ],
+    "maximum_action_trials": 2,
+    "policy_id": "A4_deterministic_search",
+    "promotion": {
+      "action_by_dataset": {
+        "F3": "FAC_GATE_050",
+        "Penobscot": "A0_GATE_020"
+      },
+      "config_by_dataset": {
+        "F3": {
+          "action_id": "FAC_GATE_050",
+          "changed_factor": "fusion_scale_initial",
+          "description": "set fusion gate initialization to 0.5",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.5,
+          "sam2_frozen": false
+        },
+        "Penobscot": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        }
+      },
+      "equal_mean": 0.30102274922690286,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "package_config_hash": "77e64c46b7bb651b2205c4af207d95e8c2d852bbcfaee4aa3f04f43fba08ef51",
+      "package_effect_hash": "91ef558b84438cf4ca41cfabe69995de67c0e3f2edd131ea67f030d14a295a44",
+      "package_id": "F3=FAC_GATE_050|Penobscot=A0_GATE_020",
+      "peak_vram_mb": 878,
+      "phase": "promotion",
+      "policy_id": "A4_deterministic_search",
+      "round": 3,
+      "runtime_s": 14.352694649947807,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.6660614013671875,
+          "attention_entropy": 0.9258869290351868,
+          "fusion_scale": 0.49907687306404114,
+          "fusion_scale_initial": 0.5,
+          "last_grad_norm": 14.694966316223145,
+          "macro_f1": 0.4931127136595675,
+          "miou": 0.36753209267947956,
+          "prediction_hash": "a9765c9cdc6fc8c492dd83fac1f3ecd8be15138f006da1887f65bc018011b7db",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.40986315367427617,
+          "train_attention_entropy": 0.9157161712646484,
+          "train_loss_last": 1.1398286819458008,
+          "train_loss_mean": 1.2290874477475882
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "attention_entropy": 0.9369974732398987,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.22656668311314196,
+          "train_attention_entropy": 0.9246217012405396,
+          "train_loss_last": 1.6417633295059204,
+          "train_loss_mean": 1.7786403939127922
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    },
+    "sample_efficiency_path_score_running_max_per_dataset_mean_mIoU": 0.24452614815765178,
+    "sample_efficiency_running_max_per_dataset_mean_mIoU_trace": [
+      0.24452614815765178,
+      0.24452614815765178
+    ],
+    "selected_per_dataset_package": {
+      "F3": "FAC_GATE_050",
+      "Penobscot": "A0_GATE_020"
+    },
+    "selection_trials": [
+      {
+        "action_effect_hash": "11a657773d5884cacfe54ff0e387f6f98ee59bb237011698528207c37fdf35dd",
+        "action_id": "FAC_GATE_050",
+        "config": {
+          "action_id": "FAC_GATE_050",
+          "changed_factor": "fusion_scale_initial",
+          "description": "set fusion gate initialization to 0.5",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.5,
+          "sam2_frozen": false
+        },
+        "config_hash": "4960082070bd0b4b9bb539592a02fd6567287d685d0d1ee55c23ec3d172f412d",
+        "equal_mean": 0.24452614815765178,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 878,
+        "phase": "selection",
+        "policy_id": "A4_deterministic_search",
+        "round": 1,
+        "runtime_s": 14.799555097008124,
+        "safe_observation_effect": {
+          "action_id": "FAC_GATE_050",
+          "equal_weight_effect_signal": {
+            "direction": "improved",
+            "normalized_signed_delta": 0.310365
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "improved",
+                "normalized_signed_delta": 0.55029
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.022823,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.559037,
+                "state": "high"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": 0.07044
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.017416,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 2.0,
+                "state": "high"
+              }
+            }
+          },
+          "round": 1,
+          "stop_requested": false
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.49330902099609375,
+            "attention_entropy": 0.8855457901954651,
+            "fusion_scale": 0.500228226184845,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 16.4046688079834,
+            "macro_f1": 0.4166849971692933,
+            "miou": 0.29346791323793775,
+            "prediction_hash": "c2bfd1a5337e2b4bd91a29a3afe3c1db7c9faab31896cd72c573813c69571244",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.34498484119385897,
+            "train_attention_entropy": 0.8895020484924316,
+            "train_loss_last": 0.8371528387069702,
+            "train_loss_mean": 1.082389502041042
+          },
+          "Penobscot": {
+            "accuracy": 0.6453361511230469,
+            "attention_entropy": 0.9134566187858582,
+            "fusion_scale": 0.5001741647720337,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 19.63987922668457,
+            "macro_f1": 0.2538724350426317,
+            "miou": 0.19558438307736578,
+            "prediction_hash": "28e8e7e30ee499d128d398df20845ed56907ed9435ed6322195232136bd53a5f",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.24527072992059143,
+            "train_attention_entropy": 0.9002954363822937,
+            "train_loss_last": 1.801487684249878,
+            "train_loss_mean": 1.8172238998115062
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_effect_hash": "3aa29bc73d9ac8191f632a5b16107b5cfe8d53ef1845406f8bfffba8df914599",
+        "action_id": "FAC_DICE_050",
+        "config": {
+          "action_id": "FAC_DICE_050",
+          "changed_factor": "dice_weight",
+          "description": "set Dice loss weight to 0.5",
+          "dice_weight": 0.5,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "config_hash": "3674d90ea5e3104a8216ff9aaa2badbc7cc3316051b9a1ca89bff04295416095",
+        "equal_mean": 0.22441660423372606,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 878,
+        "phase": "selection",
+        "policy_id": "A4_deterministic_search",
+        "round": 2,
+        "runtime_s": 14.310956835048273,
+        "safe_observation_effect": {
+          "action_id": "FAC_DICE_050",
+          "equal_weight_effect_signal": {
+            "direction": "flat",
+            "normalized_signed_delta": -0.091826
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": 0.027865
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.105956,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.033459,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.211517
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.015031,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.954869,
+                "state": "moderate"
+              }
+            }
+          },
+          "round": 2,
+          "stop_requested": true
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4664344787597656,
+            "attention_entropy": 0.8603000640869141,
+            "fusion_scale": 0.20105956494808197,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 10.874375343322754,
+            "macro_f1": 0.3849984007083499,
+            "miou": 0.26734665233916755,
+            "prediction_hash": "4ad936d07a1e9e72dcfab7fa3b7dd174b8462365679397ae89094dfc9275ab94",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.38220359316148067,
+            "train_attention_entropy": 0.8684508204460144,
+            "train_loss_last": 1.1079305410385132,
+            "train_loss_mean": 1.3360832177102566
+          },
+          "Penobscot": {
+            "accuracy": 0.6344032287597656,
+            "attention_entropy": 0.9841347932815552,
+            "fusion_scale": 0.20015031099319458,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 12.079489707946777,
+            "macro_f1": 0.2282252364865051,
+            "miou": 0.18148655612828457,
+            "prediction_hash": "f85fe49a28d179c6b42f712a16c89416aec6e0ccc5f83c1b04c95338252505fe",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.21485249519181168,
+            "train_attention_entropy": 0.9859894514083862,
+            "train_loss_last": 2.0142486095428467,
+            "train_loss_mean": 2.0524043649435044
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    ],
+    "status": "OK",
+    "stop_after_round": 2,
+    "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback"
+  },
+  "action_effects": {
+    "action_effect_registry_hash": "c72d8a19bba820b04796b6e510a03259dd7be8167546506aa7095521c64eb56d",
+    "actions": {
+      "FAC_DICE_050": {
+        "action_effect_hash": "3aa29bc73d9ac8191f632a5b16107b5cfe8d53ef1845406f8bfffba8df914599",
+        "action_id": "FAC_DICE_050",
+        "config_hash": "3674d90ea5e3104a8216ff9aaa2badbc7cc3316051b9a1ca89bff04295416095",
+        "legal_selection_visibility": {
+          "oracle_only_for_unselected_actions": true,
+          "visible_after_action_execution_to_selecting_policy": true,
+          "visible_before_action_execution": false
+        },
+        "observed_action_effect_hashes": [
+          "3aa29bc73d9ac8191f632a5b16107b5cfe8d53ef1845406f8bfffba8df914599"
+        ],
+        "prediction_changed_vs_A0": {
+          "F3": true,
+          "Penobscot": true
+        },
+        "prediction_hash_by_dataset": {
+          "F3": "4ad936d07a1e9e72dcfab7fa3b7dd174b8462365679397ae89094dfc9275ab94",
+          "Penobscot": "f85fe49a28d179c6b42f712a16c89416aec6e0ccc5f83c1b04c95338252505fe"
+        },
+        "primary_delta_mIoU": {
+          "F3": 0.0013932430462029743,
+          "Penobscot": -0.010575831520295675,
+          "equal_mean": -0.0045912942370463505
+        },
+        "same_invocation_replay_consistent": true,
+        "selected_by_policies": [
+          "a4"
+        ],
+        "train_effect_diagnostics": {
+          "F3": {
+            "fusion_normalized_signed_movement": 0.105956,
+            "gradient_normalized_signed_change": 0.033459
+          },
+          "Penobscot": {
+            "fusion_normalized_signed_movement": 0.015031,
+            "gradient_normalized_signed_change": 0.954869
+          }
+        }
+      },
+      "FAC_FUSION_LR_1E4": {
+        "action_effect_hash": "818a14ba044ae20107bd6eb31428c984c923e4b85619aa56d824f80e6146d7eb",
+        "action_id": "FAC_FUSION_LR_1E4",
+        "config_hash": "057b627f0406b8c3912f825f308493667579ce74e1251740c76af397135601ca",
+        "legal_selection_visibility": {
+          "oracle_only_for_unselected_actions": true,
+          "visible_after_action_execution_to_selecting_policy": true,
+          "visible_before_action_execution": false
+        },
+        "observed_action_effect_hashes": [
+          "818a14ba044ae20107bd6eb31428c984c923e4b85619aa56d824f80e6146d7eb"
+        ],
+        "prediction_changed_vs_A0": {
+          "F3": true,
+          "Penobscot": true
+        },
+        "prediction_hash_by_dataset": {
+          "F3": "2ae4179fdacc9a95c7436a1c53bc7a36c763d09f8dfc33d5e47fabbcaafac504",
+          "Penobscot": "d74abe11180d583ae6b8e5ae14b879ccafe6f09b2587d4f398ec553b89a47c3e"
+        },
+        "primary_delta_mIoU": {
+          "F3": -0.026227305267552847,
+          "Penobscot": -0.006984595949066086,
+          "equal_mean": -0.016605950608309467
+        },
+        "same_invocation_replay_consistent": true,
+        "selected_by_policies": [
+          "a2l",
+          "a3"
+        ],
+        "train_effect_diagnostics": {
+          "F3": {
+            "fusion_normalized_signed_movement": 0.058739,
+            "gradient_normalized_signed_change": 0.218794
+          },
+          "Penobscot": {
+            "fusion_normalized_signed_movement": 0.016967,
+            "gradient_normalized_signed_change": -0.025278
+          }
+        }
+      },
+      "FAC_GATE_035": {
+        "action_effect_hash": "641ae0a3044f4526a561c637a5000c4acab9c777394df7d410379da09ab0e801",
+        "action_id": "FAC_GATE_035",
+        "config_hash": "31aad8047336b330c4a5892b2f8d6a0fb4115915ea4122e469675370e6907652",
+        "legal_selection_visibility": {
+          "oracle_only_for_unselected_actions": true,
+          "visible_after_action_execution_to_selecting_policy": true,
+          "visible_before_action_execution": false
+        },
+        "observed_action_effect_hashes": [
+          "641ae0a3044f4526a561c637a5000c4acab9c777394df7d410379da09ab0e801"
+        ],
+        "prediction_changed_vs_A0": {
+          "F3": true,
+          "Penobscot": true
+        },
+        "prediction_hash_by_dataset": {
+          "F3": "589a910c6dd5c39805790ba8ff1161a0168f3fd6fde086ba46412b39315a4eab",
+          "Penobscot": "7b52237d7e859a41882e092f66c0f5f931049a8d4e57dbaa4a056a5f48d55ca0"
+        },
+        "primary_delta_mIoU": {
+          "F3": 0.014853401231560925,
+          "Penobscot": -0.004365377484546629,
+          "equal_mean": 0.005244011873507148
+        },
+        "same_invocation_replay_consistent": true,
+        "selected_by_policies": [
+          "a2d"
+        ],
+        "train_effect_diagnostics": {
+          "F3": {
+            "fusion_normalized_signed_movement": 0.073537,
+            "gradient_normalized_signed_change": 0.169
+          },
+          "Penobscot": {
+            "fusion_normalized_signed_movement": 0.049567,
+            "gradient_normalized_signed_change": 0.00246
+          }
+        }
+      },
+      "FAC_GATE_050": {
+        "action_effect_hash": "11a657773d5884cacfe54ff0e387f6f98ee59bb237011698528207c37fdf35dd",
+        "action_id": "FAC_GATE_050",
+        "config_hash": "4960082070bd0b4b9bb539592a02fd6567287d685d0d1ee55c23ec3d172f412d",
+        "legal_selection_visibility": {
+          "oracle_only_for_unselected_actions": true,
+          "visible_after_action_execution_to_selecting_policy": true,
+          "visible_before_action_execution": false
+        },
+        "observed_action_effect_hashes": [
+          "11a657773d5884cacfe54ff0e387f6f98ee59bb237011698528207c37fdf35dd"
+        ],
+        "prediction_changed_vs_A0": {
+          "F3": true,
+          "Penobscot": true
+        },
+        "prediction_hash_by_dataset": {
+          "F3": "c2bfd1a5337e2b4bd91a29a3afe3c1db7c9faab31896cd72c573813c69571244",
+          "Penobscot": "28e8e7e30ee499d128d398df20845ed56907ed9435ed6322195232136bd53a5f"
+        },
+        "primary_delta_mIoU": {
+          "F3": 0.02751450394497318,
+          "Penobscot": 0.003521995428785535,
+          "equal_mean": 0.01551824968687937
+        },
+        "same_invocation_replay_consistent": true,
+        "selected_by_policies": [
+          "a3",
+          "a4"
+        ],
+        "train_effect_diagnostics": {
+          "F3": {
+            "fusion_normalized_signed_movement": 0.022823,
+            "gradient_normalized_signed_change": 0.559037
+          },
+          "Penobscot": {
+            "fusion_normalized_signed_movement": 0.017416,
+            "gradient_normalized_signed_change": 2.0
+          }
+        }
+      },
+      "FAC_SAM2_FROZEN": {
+        "action_effect_hash": "001f4add89737029073a907bdc204c06eb4e14556a17ae7c552aff32e31900da",
+        "action_id": "FAC_SAM2_FROZEN",
+        "config_hash": "7144b4fcc1af4f9721495ad90a157d39665945bb4b0f58585f1b26ca94576f78",
+        "legal_selection_visibility": {
+          "oracle_only_for_unselected_actions": true,
+          "visible_after_action_execution_to_selecting_policy": true,
+          "visible_before_action_execution": false
+        },
+        "observed_action_effect_hashes": [
+          "001f4add89737029073a907bdc204c06eb4e14556a17ae7c552aff32e31900da"
+        ],
+        "prediction_changed_vs_A0": {
+          "F3": true,
+          "Penobscot": true
+        },
+        "prediction_hash_by_dataset": {
+          "F3": "4b768ee10fa8d41de20d9319c092f37773f4be6e192395d78e71fad4ff2110df",
+          "Penobscot": "024b5dab2e584a9dcb59fb364d932a29a728ac1b0d58241537ad2798ba74b6e5"
+        },
+        "primary_delta_mIoU": {
+          "F3": 0.00019298532220540787,
+          "Penobscot": -0.004958364788177239,
+          "equal_mean": -0.0023826897329859154
+        },
+        "same_invocation_replay_consistent": true,
+        "selected_by_policies": [
+          "a2d",
+          "a2l"
+        ],
+        "train_effect_diagnostics": {
+          "F3": {
+            "fusion_normalized_signed_movement": 0.105571,
+            "gradient_normalized_signed_change": 0.002724
+          },
+          "Penobscot": {
+            "fusion_normalized_signed_movement": 0.009603,
+            "gradient_normalized_signed_change": 1.649203
+          }
+        }
+      }
+    },
+    "baseline": {
+      "action_effect_hash": "507f151783443e7d8dae68f42e34666d7273cb0497236733792a37de8fdbcba4",
+      "action_id": "A0_GATE_020",
+      "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+      "prediction_hash_by_dataset": {
+        "F3": "2c7cb2a49a7c0350881dfa9f186c32291f884da80bdf15e5197932a976eb38eb",
+        "Penobscot": "2d3a73c0f6c403b2b07ac592649ae19ba02f2b58bece99ba228116bb11d17793"
+      },
+      "primary_delta_mIoU": {
+        "F3": 0.0,
+        "Penobscot": 0.0,
+        "equal_mean": 0.0
+      }
+    },
+    "frozen_test_accessed": false,
+    "metric_entrypoint": "p4_metrics.evaluate_probabilities",
+    "promotion_metrics_used_for_action_effect_registry": false,
+    "schema_version": "facies-p29-action-effects/v1",
+    "scope": "development_selection_fold_0_only"
+  },
+  "action_noop_check_passed": true,
+  "continued_cnn": {
+    "promotion": {
+      "equal_mean": 0.2184385021893703,
+      "frozen_test_accessed": false,
+      "phase": "promotion",
+      "policy_id": "continued_cnn_control",
+      "runtime_s": 7.5887022719252855,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.4635581970214844,
+          "macro_f1": 0.31509711535816387,
+          "miou": 0.20583015005274005,
+          "prediction_hash": "94b274b965f96800fa07a29f0192ab4a192396cf4b8569b5ff1214a9496f3a2d"
+        },
+        "Penobscot": {
+          "accuracy": 0.46669769287109375,
+          "macro_f1": 0.33754255986773507,
+          "miou": 0.23104685432600056,
+          "prediction_hash": "bc45ea230bddf79dd21fa8d84e133c0072c981a4c0e3e77e0e9a39f94ab23129"
+        }
+      }
+    },
+    "selection": {
+      "equal_mean": 0.19743077141884718,
+      "frozen_test_accessed": false,
+      "phase": "selection",
+      "policy_id": "continued_cnn_control",
+      "runtime_s": 6.4120376240462065,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.3920097351074219,
+          "macro_f1": 0.3074516853901453,
+          "miou": 0.2042467864870922,
+          "prediction_hash": "61b494dc608b89ecd32162490fabf6257102f90b78e7f7548b506d417948055a"
+        },
+        "Penobscot": {
+          "accuracy": 0.6406173706054688,
+          "macro_f1": 0.24630974057958185,
+          "miou": 0.19061475635060213,
+          "prediction_hash": "56adb5f7791520a29d9cb7a5f2015145fdd2a0f7bfd83527291306a28a35cb86"
+        }
+      }
+    }
+  },
+  "evaluation": {
+    "fresh_trials_not_historical_replay": true,
+    "frozen_test_accessed": false,
+    "holdout_paths_accepted": false,
+    "manifest_hashes": {
+      "facies_f3": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+      "facies_penobscot": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81"
+    },
+    "metric_entrypoint": "p4_metrics.evaluate_probabilities",
+    "promotion_fold_ids": [
+      4
+    ],
+    "same_invocation": true,
+    "selection_fold_ids": [
+      0
+    ],
+    "train_samples_per_fold": 32,
+    "validation_samples_per_fold": 16
+  },
+  "formal_metric_support": {
+    "cells": {
+      "promotion:F3": {
+        "all_classes_supported": false,
+        "averaging": "all_configured_classes_and_valid_pixels",
+        "evaluated_pixels": 262144,
+        "fold_id": 4,
+        "num_configured_classes": 10,
+        "per_class_support": [
+          2048,
+          2560,
+          26100,
+          20614,
+          36079,
+          72980,
+          59583,
+          28375,
+          13805,
+          0
+        ],
+        "require_all_classes": true
+      },
+      "promotion:Penobscot": {
+        "all_classes_supported": true,
+        "averaging": "all_configured_classes_and_valid_pixels",
+        "evaluated_pixels": 262144,
+        "fold_id": 4,
+        "num_configured_classes": 8,
+        "per_class_support": [
+          5319,
+          10604,
+          23911,
+          9582,
+          10781,
+          66932,
+          38251,
+          96764
+        ],
+        "require_all_classes": true
+      },
+      "selection:F3": {
+        "all_classes_supported": true,
+        "averaging": "all_configured_classes_and_valid_pixels",
+        "evaluated_pixels": 262144,
+        "fold_id": 0,
+        "num_configured_classes": 10,
+        "per_class_support": [
+          2688,
+          8064,
+          42652,
+          22124,
+          29174,
+          56541,
+          43177,
+          23608,
+          23470,
+          10646
+        ],
+        "require_all_classes": true
+      },
+      "selection:Penobscot": {
+        "all_classes_supported": false,
+        "averaging": "all_configured_classes_and_valid_pixels",
+        "evaluated_pixels": 262144,
+        "fold_id": 0,
+        "num_configured_classes": 8,
+        "per_class_support": [
+          0,
+          2347,
+          23494,
+          5012,
+          6644,
+          58417,
+          13408,
+          152822
+        ],
+        "require_all_classes": true
+      }
+    },
+    "formal_metric_support_hash": "7e94f0607cb4d1c34be3087f5673de4f1ef8f1516f80c491d3929f2ca4b1df82",
+    "metric_entrypoint": "p4_metrics.evaluate_probabilities",
+    "primary_field": "miou"
+  },
+  "gate": {
+    "a2l_promotion_delta_vs_a0": {
+      "F3": 0.0,
+      "Penobscot": 0.0,
+      "equal_mean": 0.0
+    },
+    "a2l_promotion_delta_vs_continued_cnn": {
+      "F3": 0.10073998770884354,
+      "Penobscot": 0.0034665514483255555,
+      "equal_mean": 0.05210326957858455
+    },
+    "a4_hybrid_promotion_guards": {
+      "checks": {
+        "f3_delta_at_least_minus_0p005": true,
+        "mean_delta_at_least_0p005": true,
+        "not_worse_than_continued_cnn": true,
+        "penobscot_delta_at_least_minus_0p005": true
+      },
+      "delta_vs_a0": {
+        "F3": 0.060961954917895966,
+        "Penobscot": 0.0,
+        "equal_mean": 0.03048097745894801
+      },
+      "delta_vs_continued_cnn": {
+        "F3": 0.1617019426267395,
+        "Penobscot": 0.0034665514483255555,
+        "equal_mean": 0.08258424703753256
+      },
+      "passed": true,
+      "status": "OK"
+    },
+    "checks": {
+      "a1_replay_metrics_equal_a0": true,
+      "a1_replay_prediction_hash_equal_a0": true,
+      "a2l_sample_efficiency_above_a2d": false,
+      "a2l_sample_efficiency_above_a3": false,
+      "a2l_stop_semantics_executable": true,
+      "a2l_uses_at_most_two_legal_distinct_actions": true,
+      "all_five_action_effects_change_config_and_prediction": true,
+      "all_five_action_effects_persisted": true,
+      "f3_delta_at_least_minus_0p005": true,
+      "formal_metric_support_persisted_and_hashed": true,
+      "no_frozen_test_access": true,
+      "not_worse_than_continued_cnn": true,
+      "penobscot_delta_at_least_minus_0p005": true,
+      "promotion_endpoint_mean_delta_at_least_0p005": false
+    },
+    "direct_agent_endpoint_superiority": false,
+    "endpoint_promotion_mean_mIoU": {
+      "A2D": 0.2892722530163401,
+      "A2L": 0.27054177176795485,
+      "A3": 0.30102274922690286,
+      "A4": 0.30102274922690286
+    },
+    "hybrid_checks": {
+      "a4_dataset_conditioned_package_is_gate050_plus_a0": true,
+      "a4_package_passes_preserved_promotion_guards": true,
+      "action_effect_chain_is_non_noop": true,
+      "formal_metric_support_is_persisted": true,
+      "no_frozen_test_access": true
+    },
+    "retain": true,
+    "retain_agent": false,
+    "retain_hybrid": true,
+    "sample_efficiency_path_scores": {
+      "A2D": 0.23643459908655287,
+      "A2L": 0.22905614480132375,
+      "A3": 0.2367670233142121,
+      "A4": 0.24452614815765178
+    },
+    "verdict": "RETAIN_HYBRID"
+  },
+  "oracle_ceiling": {
+    "equal_mean_mIoU": 0.24452614815765178,
+    "evaluated_action_count": 5,
+    "per_dataset_mIoU": {
+      "F3": 0.29346791323793775,
+      "Penobscot": 0.19558438307736578
+    },
+    "promotion_metrics_computed": false,
+    "scope": "selection_only_diagnostic_not_eligible_for_promotion",
+    "selected_per_dataset_package": {
+      "F3": "FAC_GATE_050",
+      "Penobscot": "FAC_GATE_050"
+    },
+    "used_for_policy_feedback": false
+  },
+  "policy_promotion_guard_diagnostics": {
+    "a2d": {
+      "checks": {
+        "f3_delta_at_least_minus_0p005": true,
+        "mean_delta_at_least_0p005": true,
+        "not_worse_than_continued_cnn": true,
+        "penobscot_delta_at_least_minus_0p005": true
+      },
+      "delta_vs_a0": {
+        "F3": 0.037460962496770445,
+        "Penobscot": 0.0,
+        "equal_mean": 0.018730481248385222
+      },
+      "delta_vs_continued_cnn": {
+        "F3": 0.138200950205614,
+        "Penobscot": 0.0034665514483255555,
+        "equal_mean": 0.07083375082696977
+      },
+      "passed": true,
+      "status": "OK"
+    },
+    "a2l": {
+      "checks": {
+        "f3_delta_at_least_minus_0p005": true,
+        "mean_delta_at_least_0p005": false,
+        "not_worse_than_continued_cnn": true,
+        "penobscot_delta_at_least_minus_0p005": true
+      },
+      "delta_vs_a0": {
+        "F3": 0.0,
+        "Penobscot": 0.0,
+        "equal_mean": 0.0
+      },
+      "delta_vs_continued_cnn": {
+        "F3": 0.10073998770884354,
+        "Penobscot": 0.0034665514483255555,
+        "equal_mean": 0.05210326957858455
+      },
+      "passed": false,
+      "status": "OK"
+    },
+    "a3": {
+      "checks": {
+        "f3_delta_at_least_minus_0p005": true,
+        "mean_delta_at_least_0p005": true,
+        "not_worse_than_continued_cnn": true,
+        "penobscot_delta_at_least_minus_0p005": true
+      },
+      "delta_vs_a0": {
+        "F3": 0.060961954917895966,
+        "Penobscot": 0.0,
+        "equal_mean": 0.03048097745894801
+      },
+      "delta_vs_continued_cnn": {
+        "F3": 0.1617019426267395,
+        "Penobscot": 0.0034665514483255555,
+        "equal_mean": 0.08258424703753256
+      },
+      "passed": true,
+      "status": "OK"
+    },
+    "a4": {
+      "checks": {
+        "f3_delta_at_least_minus_0p005": true,
+        "mean_delta_at_least_0p005": true,
+        "not_worse_than_continued_cnn": true,
+        "penobscot_delta_at_least_minus_0p005": true
+      },
+      "delta_vs_a0": {
+        "F3": 0.060961954917895966,
+        "Penobscot": 0.0,
+        "equal_mean": 0.03048097745894801
+      },
+      "delta_vs_continued_cnn": {
+        "F3": 0.1617019426267395,
+        "Penobscot": 0.0034665514483255555,
+        "equal_mean": 0.08258424703753256
+      },
+      "passed": true,
+      "status": "OK"
+    }
+  },
+  "prompt_ablation": {
+    "decisions": [
+      {
+        "action_id": "FAC_FUSION_LR_1E4",
+        "confidence": 0.6,
+        "credential_persisted": false,
+        "model_requested": "deepseek-chat",
+        "model_returned": "deepseek-v4-flash",
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_FUSION_LR_1E4",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_state_bands": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "maximum_action_trials": 2,
+          "most_recent_direction_only": "not_available",
+          "policy_id": "A2L_v1_prompt_ablation",
+          "policy_seed": 2693,
+          "round": 1,
+          "schema_version": "facies-p29-observation/v1-ablation",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 2
+        },
+        "observation_hash": "3c62c4aca759e5c80f35dae06698063f700f19fc850702b42c24860c8438c556",
+        "provider": "deepseek",
+        "rationale": "Fusion movement is stuck in both basins, suggesting the fusion module is not updating effectively. Lowering the fusion learning rate to 1e-4 may help stabilize and improve fusion updates, addressing the stuck state without drastic changes.",
+        "response_id": "732726d9-d252-4703-924a-b65890f1be2c",
+        "round": 1,
+        "status": "OK",
+        "stop": false,
+        "usage": {
+          "completion_tokens": 81,
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 4,
+          "prompt_tokens": 644,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "total_tokens": 725
+        }
+      },
+      {
+        "action_id": "FAC_SAM2_FROZEN",
+        "confidence": 0.6,
+        "credential_persisted": false,
+        "model_requested": "deepseek-chat",
+        "model_returned": "deepseek-v4-flash",
+        "observation": {
+          "available_action_ids": [
+            "FAC_GATE_035",
+            "FAC_GATE_050",
+            "FAC_DICE_050",
+            "FAC_SAM2_FROZEN"
+          ],
+          "baseline_state_bands": {
+            "F3": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "moderate"
+            },
+            "Penobscot": {
+              "attention_state": "moderate",
+              "encoder_update_state": "moderate",
+              "fusion_movement_state": "stuck",
+              "gradient_state": "moderate",
+              "loss_state": "high"
+            }
+          },
+          "maximum_action_trials": 2,
+          "most_recent_direction_only": {
+            "F3": "worse",
+            "Penobscot": "worse"
+          },
+          "policy_id": "A2L_v1_prompt_ablation",
+          "policy_seed": 2693,
+          "round": 2,
+          "schema_version": "facies-p29-observation/v1-ablation",
+          "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback",
+          "trials_remaining_including_current": 1
+        },
+        "observation_hash": "c9e3673a116d51fe3474d9404131807fed66c76bcd8fce102de3130b7a167dce",
+        "provider": "deepseek",
+        "rationale": "Both datasets show stuck fusion movement and worsening direction. Freezing the SAM2 encoder reduces trainable parameters and may stabilize gradients, potentially unblocking fusion updates. With only one trial left, this is a targeted intervention to address the stuck state.",
+        "response_id": "07a85c60-1e08-4004-b8d1-dbf5e03b8094",
+        "round": 2,
+        "status": "OK",
+        "stop": false,
+        "usage": {
+          "completion_tokens": 82,
+          "prompt_cache_hit_tokens": 512,
+          "prompt_cache_miss_tokens": 91,
+          "prompt_tokens": 603,
+          "prompt_tokens_details": {
+            "cached_tokens": 512
+          },
+          "total_tokens": 685
+        }
+      }
+    ],
+    "endpoint_promotion_mean_mIoU": 0.27054177176795485,
+    "executed_action_count": 2,
+    "full_history": [
+      {
+        "action_id": "FAC_FUSION_LR_1E4",
+        "equal_weight_effect_signal": {
+          "direction": "worse",
+          "normalized_signed_delta": -0.332119
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "worse",
+              "normalized_signed_delta": -0.524546
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.058739,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.218794,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "worse",
+              "normalized_signed_delta": -0.139692
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.016967,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": -0.025278,
+              "state": "moderate"
+            }
+          }
+        },
+        "round": 1,
+        "stop_requested": false
+      },
+      {
+        "action_id": "FAC_SAM2_FROZEN",
+        "equal_weight_effect_signal": {
+          "direction": "flat",
+          "normalized_signed_delta": -0.047654
+        },
+        "per_dataset_effects": {
+          "F3": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": 0.00386
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.105571,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 0.002724,
+              "state": "moderate"
+            }
+          },
+          "Penobscot": {
+            "effect_signal": {
+              "direction": "flat",
+              "normalized_signed_delta": -0.099167
+            },
+            "fusion_gate_movement": {
+              "normalized_signed_change": 0.009603,
+              "state": "stuck"
+            },
+            "optimizer_gradient_movement": {
+              "normalized_signed_change": 1.649203,
+              "state": "high"
+            }
+          }
+        },
+        "round": 2,
+        "stop_requested": false
+      }
+    ],
+    "maximum_action_trials": 2,
+    "policy_id": "A2L_v1_prompt_ablation",
+    "promotion": {
+      "action_by_dataset": {
+        "F3": "A0_GATE_020",
+        "Penobscot": "A0_GATE_020"
+      },
+      "config_by_dataset": {
+        "F3": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "Penobscot": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        }
+      },
+      "equal_mean": 0.27054177176795485,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "package_config_hash": "e873c0dd41ca7b9d2c2f11226eeeb70b740c1527ba1de17c1bac452571e2841a",
+      "package_effect_hash": "bc3c4380dc006d4d07e0555187395ee7a5b93d90ee9d5c59ccae54ea56c19ae0",
+      "package_id": "F3=A0_GATE_020|Penobscot=A0_GATE_020",
+      "peak_vram_mb": 879,
+      "phase": "promotion",
+      "policy_id": "A2L_v1_prompt_ablation",
+      "round": 3,
+      "runtime_s": 14.632601635996252,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.5968246459960938,
+          "attention_entropy": 0.9233483076095581,
+          "fusion_scale": 0.20003361999988556,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 11.894082069396973,
+          "macro_f1": 0.4330417833693469,
+          "miou": 0.3065701377615836,
+          "prediction_hash": "218d8824161b55b4d0dcaae590b6d63d4bf45d73c73e6b9106dc6b6dad4ea464",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.4611234964092179,
+          "train_attention_entropy": 0.9103094339370728,
+          "train_loss_last": 1.404624104499817,
+          "train_loss_mean": 1.3196809781715273
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "attention_entropy": 0.9369974732398987,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.22656668311314196,
+          "train_attention_entropy": 0.9246217012405396,
+          "train_loss_last": 1.6417633295059204,
+          "train_loss_mean": 1.7786403939127922
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    },
+    "sample_efficiency_path_score_running_max_per_dataset_mean_mIoU": 0.22905614480132375,
+    "sample_efficiency_running_max_per_dataset_mean_mIoU_trace": [
+      0.2290078984707724,
+      0.2291043911318751
+    ],
+    "selected_per_dataset_package": {
+      "F3": "A0_GATE_020",
+      "Penobscot": "A0_GATE_020"
+    },
+    "selection_trials": [
+      {
+        "action_effect_hash": "818a14ba044ae20107bd6eb31428c984c923e4b85619aa56d824f80e6146d7eb",
+        "action_id": "FAC_FUSION_LR_1E4",
+        "config": {
+          "action_id": "FAC_FUSION_LR_1E4",
+          "changed_factor": "fusion_lr",
+          "description": "set fusion learning rate to 1e-4",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0001,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "config_hash": "057b627f0406b8c3912f825f308493667579ce74e1251740c76af397135601ca",
+        "equal_mean": 0.21240194786246294,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 878,
+        "phase": "selection",
+        "policy_id": "A2L_v1_prompt_ablation",
+        "round": 1,
+        "runtime_s": 13.931829218985513,
+        "safe_observation_effect": {
+          "action_id": "FAC_FUSION_LR_1E4",
+          "equal_weight_effect_signal": {
+            "direction": "worse",
+            "normalized_signed_delta": -0.332119
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.524546
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.058739,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.218794,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "worse",
+                "normalized_signed_delta": -0.139692
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.016967,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": -0.025278,
+                "state": "moderate"
+              }
+            }
+          },
+          "round": 1,
+          "stop_requested": false
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4292793273925781,
+            "attention_entropy": 0.8617292642593384,
+            "fusion_scale": 0.20058739185333252,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 12.82452392578125,
+            "macro_f1": 0.35192962800758953,
+            "miou": 0.23972610402541172,
+            "prediction_hash": "2ae4179fdacc9a95c7436a1c53bc7a36c763d09f8dfc33d5e47fabbcaafac504",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.46894226753460266,
+            "train_attention_entropy": 0.8757530450820923,
+            "train_loss_last": 1.0578781366348267,
+            "train_loss_mean": 1.2236325526610017
+          },
+          "Penobscot": {
+            "accuracy": 0.636749267578125,
+            "attention_entropy": 0.9723642468452454,
+            "fusion_scale": 0.2001696676015854,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 6.02298641204834,
+            "macro_f1": 0.23609867505083657,
+            "miou": 0.18507779169951416,
+            "prediction_hash": "d74abe11180d583ae6b8e5ae14b879ccafe6f09b2587d4f398ec553b89a47c3e",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.23311134555070476,
+            "train_attention_entropy": 0.9708825349807739,
+            "train_loss_last": 1.8073387145996094,
+            "train_loss_mean": 1.8238658249378203
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_effect_hash": "001f4add89737029073a907bdc204c06eb4e14556a17ae7c552aff32e31900da",
+        "action_id": "FAC_SAM2_FROZEN",
+        "config": {
+          "action_id": "FAC_SAM2_FROZEN",
+          "changed_factor": "sam2_frozen",
+          "description": "freeze the complete pretrained SAM2 image encoder",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": true
+        },
+        "config_hash": "7144b4fcc1af4f9721495ad90a157d39665945bb4b0f58585f1b26ca94576f78",
+        "equal_mean": 0.2266252087377865,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 605,
+        "phase": "selection",
+        "policy_id": "A2L_v1_prompt_ablation",
+        "round": 2,
+        "runtime_s": 12.46884365286678,
+        "safe_observation_effect": {
+          "action_id": "FAC_SAM2_FROZEN",
+          "equal_weight_effect_signal": {
+            "direction": "flat",
+            "normalized_signed_delta": -0.047654
+          },
+          "per_dataset_effects": {
+            "F3": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": 0.00386
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.105571,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 0.002724,
+                "state": "moderate"
+              }
+            },
+            "Penobscot": {
+              "effect_signal": {
+                "direction": "flat",
+                "normalized_signed_delta": -0.099167
+              },
+              "fusion_gate_movement": {
+                "normalized_signed_change": 0.009603,
+                "state": "stuck"
+              },
+              "optimizer_gradient_movement": {
+                "normalized_signed_change": 1.649203,
+                "state": "high"
+              }
+            }
+          },
+          "round": 2,
+          "stop_requested": false
+        },
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4642906188964844,
+            "attention_entropy": 0.8582842946052551,
+            "fusion_scale": 0.20105570554733276,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 10.550975799560547,
+            "macro_f1": 0.3835615368491885,
+            "miou": 0.26614639461517,
+            "prediction_hash": "4b768ee10fa8d41de20d9319c092f37773f4be6e192395d78e71fad4ff2110df",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.8663495182991028,
+            "train_loss_last": 0.9436558485031128,
+            "train_loss_mean": 1.1619663001969456
+          },
+          "Penobscot": {
+            "accuracy": 0.634124755859375,
+            "attention_entropy": 0.9416216611862183,
+            "fusion_scale": 0.2000960260629654,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 16.369905471801758,
+            "macro_f1": 0.24037791560044106,
+            "miou": 0.187104022860403,
+            "prediction_hash": "024b5dab2e584a9dcb59fb364d932a29a728ac1b0d58241537ad2798ba74b6e5",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.9289785623550415,
+            "train_loss_last": 1.8121402263641357,
+            "train_loss_mean": 1.8228325448930263
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    ],
+    "status": "OK",
+    "stop_after_round": null,
+    "stop_semantics": "execute_the_selected_action_then_terminate_without_a_hidden_fallback"
+  },
+  "prompt_ablation_comparison": {
+    "v1_ablation_actions": [
+      "FAC_FUSION_LR_1E4",
+      "FAC_SAM2_FROZEN"
+    ],
+    "v1_ablation_score": 0.22905614480132375,
+    "v1_ablation_status": "OK",
+    "v2_actions": [
+      "FAC_FUSION_LR_1E4",
+      "FAC_SAM2_FROZEN"
+    ],
+    "v2_score": 0.22905614480132375,
+    "v2_status": "OK"
+  },
+  "prompt_ablation_hash": "86cec0f4d68d77a8d85e7175e98de0008a2ae08393217295d35ade7a31964c6d",
+  "protected_evidence": {
+    "_outputs/p11_residual_fusion": "6e5bdd92906772db059086470559306d7314aaa4f0df4e019f5bd3c8a3a6161b",
+    "_outputs/p12_repair_v1": "0e1f8409017e5bd00e69e164b83377b3e4f8022d8682a8b450175ae1ed51b04b",
+    "_outputs/p13_cross_attention": "976578ef227a5faa0f8166f325c966b749208c66005a48f46f87e98004c8ed77",
+    "_outputs/p28_agentic_optimization": "2d12209beb6fffccd42cba4f9cc9967bf537daae8833bf7757c9b7f9e4f481d8"
+  },
+  "protocol_hashes": {
+    "action_space_hash": "84fac72e044f5b9074df70e275006e50369e741085867b71399194b08a1fd5ef",
+    "protocol_hash": "0187e606e47662fe363251ff0e5628ac20e83563a2bb417e219bb5c7691d4c11"
+  },
+  "runtime": {
+    "cuda": "13.0",
+    "device": "cuda:0",
+    "duration_seconds": 319.5308468451258,
+    "python": "3.11.15",
+    "runner_sha256": "8b467b019b971f187aa6c9e018de9a57b8719c8ec559d3d497881da9aa158753",
+    "sam2_checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5",
+    "sam2_source_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+    "torch": "2.12.1+cu130"
+  },
+  "schema_version": "facies-p29-action-effect/v1"
+}

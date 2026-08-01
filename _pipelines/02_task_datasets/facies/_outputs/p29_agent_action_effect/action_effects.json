@@ -1,0 +1,227 @@
+{
+  "action_effect_registry_hash": "c72d8a19bba820b04796b6e510a03259dd7be8167546506aa7095521c64eb56d",
+  "actions": {
+    "FAC_DICE_050": {
+      "action_effect_hash": "3aa29bc73d9ac8191f632a5b16107b5cfe8d53ef1845406f8bfffba8df914599",
+      "action_id": "FAC_DICE_050",
+      "config_hash": "3674d90ea5e3104a8216ff9aaa2badbc7cc3316051b9a1ca89bff04295416095",
+      "legal_selection_visibility": {
+        "oracle_only_for_unselected_actions": true,
+        "visible_after_action_execution_to_selecting_policy": true,
+        "visible_before_action_execution": false
+      },
+      "observed_action_effect_hashes": [
+        "3aa29bc73d9ac8191f632a5b16107b5cfe8d53ef1845406f8bfffba8df914599"
+      ],
+      "prediction_changed_vs_A0": {
+        "F3": true,
+        "Penobscot": true
+      },
+      "prediction_hash_by_dataset": {
+        "F3": "4ad936d07a1e9e72dcfab7fa3b7dd174b8462365679397ae89094dfc9275ab94",
+        "Penobscot": "f85fe49a28d179c6b42f712a16c89416aec6e0ccc5f83c1b04c95338252505fe"
+      },
+      "primary_delta_mIoU": {
+        "F3": 0.0013932430462029743,
+        "Penobscot": -0.010575831520295675,
+        "equal_mean": -0.0045912942370463505
+      },
+      "same_invocation_replay_consistent": true,
+      "selected_by_policies": [
+        "a4"
+      ],
+      "train_effect_diagnostics": {
+        "F3": {
+          "fusion_normalized_signed_movement": 0.105956,
+          "gradient_normalized_signed_change": 0.033459
+        },
+        "Penobscot": {
+          "fusion_normalized_signed_movement": 0.015031,
+          "gradient_normalized_signed_change": 0.954869
+        }
+      }
+    },
+    "FAC_FUSION_LR_1E4": {
+      "action_effect_hash": "818a14ba044ae20107bd6eb31428c984c923e4b85619aa56d824f80e6146d7eb",
+      "action_id": "FAC_FUSION_LR_1E4",
+      "config_hash": "057b627f0406b8c3912f825f308493667579ce74e1251740c76af397135601ca",
+      "legal_selection_visibility": {
+        "oracle_only_for_unselected_actions": true,
+        "visible_after_action_execution_to_selecting_policy": true,
+        "visible_before_action_execution": false
+      },
+      "observed_action_effect_hashes": [
+        "818a14ba044ae20107bd6eb31428c984c923e4b85619aa56d824f80e6146d7eb"
+      ],
+      "prediction_changed_vs_A0": {
+        "F3": true,
+        "Penobscot": true
+      },
+      "prediction_hash_by_dataset": {
+        "F3": "2ae4179fdacc9a95c7436a1c53bc7a36c763d09f8dfc33d5e47fabbcaafac504",
+        "Penobscot": "d74abe11180d583ae6b8e5ae14b879ccafe6f09b2587d4f398ec553b89a47c3e"
+      },
+      "primary_delta_mIoU": {
+        "F3": -0.026227305267552847,
+        "Penobscot": -0.006984595949066086,
+        "equal_mean": -0.016605950608309467
+      },
+      "same_invocation_replay_consistent": true,
+      "selected_by_policies": [
+        "a2l",
+        "a3"
+      ],
+      "train_effect_diagnostics": {
+        "F3": {
+          "fusion_normalized_signed_movement": 0.058739,
+          "gradient_normalized_signed_change": 0.218794
+        },
+        "Penobscot": {
+          "fusion_normalized_signed_movement": 0.016967,
+          "gradient_normalized_signed_change": -0.025278
+        }
+      }
+    },
+    "FAC_GATE_035": {
+      "action_effect_hash": "641ae0a3044f4526a561c637a5000c4acab9c777394df7d410379da09ab0e801",
+      "action_id": "FAC_GATE_035",
+      "config_hash": "31aad8047336b330c4a5892b2f8d6a0fb4115915ea4122e469675370e6907652",
+      "legal_selection_visibility": {
+        "oracle_only_for_unselected_actions": true,
+        "visible_after_action_execution_to_selecting_policy": true,
+        "visible_before_action_execution": false
+      },
+      "observed_action_effect_hashes": [
+        "641ae0a3044f4526a561c637a5000c4acab9c777394df7d410379da09ab0e801"
+      ],
+      "prediction_changed_vs_A0": {
+        "F3": true,
+        "Penobscot": true
+      },
+      "prediction_hash_by_dataset": {
+        "F3": "589a910c6dd5c39805790ba8ff1161a0168f3fd6fde086ba46412b39315a4eab",
+        "Penobscot": "7b52237d7e859a41882e092f66c0f5f931049a8d4e57dbaa4a056a5f48d55ca0"
+      },
+      "primary_delta_mIoU": {
+        "F3": 0.014853401231560925,
+        "Penobscot": -0.004365377484546629,
+        "equal_mean": 0.005244011873507148
+      },
+      "same_invocation_replay_consistent": true,
+      "selected_by_policies": [
+        "a2d"
+      ],
+      "train_effect_diagnostics": {
+        "F3": {
+          "fusion_normalized_signed_movement": 0.073537,
+          "gradient_normalized_signed_change": 0.169
+        },
+        "Penobscot": {
+          "fusion_normalized_signed_movement": 0.049567,
+          "gradient_normalized_signed_change": 0.00246
+        }
+      }
+    },
+    "FAC_GATE_050": {
+      "action_effect_hash": "11a657773d5884cacfe54ff0e387f6f98ee59bb237011698528207c37fdf35dd",
+      "action_id": "FAC_GATE_050",
+      "config_hash": "4960082070bd0b4b9bb539592a02fd6567287d685d0d1ee55c23ec3d172f412d",
+      "legal_selection_visibility": {
+        "oracle_only_for_unselected_actions": true,
+        "visible_after_action_execution_to_selecting_policy": true,
+        "visible_before_action_execution": false
+      },
+      "observed_action_effect_hashes": [
+        "11a657773d5884cacfe54ff0e387f6f98ee59bb237011698528207c37fdf35dd"
+      ],
+      "prediction_changed_vs_A0": {
+        "F3": true,
+        "Penobscot": true
+      },
+      "prediction_hash_by_dataset": {
+        "F3": "c2bfd1a5337e2b4bd91a29a3afe3c1db7c9faab31896cd72c573813c69571244",
+        "Penobscot": "28e8e7e30ee499d128d398df20845ed56907ed9435ed6322195232136bd53a5f"
+      },
+      "primary_delta_mIoU": {
+        "F3": 0.02751450394497318,
+        "Penobscot": 0.003521995428785535,
+        "equal_mean": 0.01551824968687937
+      },
+      "same_invocation_replay_consistent": true,
+      "selected_by_policies": [
+        "a3",
+        "a4"
+      ],
+      "train_effect_diagnostics": {
+        "F3": {
+          "fusion_normalized_signed_movement": 0.022823,
+          "gradient_normalized_signed_change": 0.559037
+        },
+        "Penobscot": {
+          "fusion_normalized_signed_movement": 0.017416,
+          "gradient_normalized_signed_change": 2.0
+        }
+      }
+    },
+    "FAC_SAM2_FROZEN": {
+      "action_effect_hash": "001f4add89737029073a907bdc204c06eb4e14556a17ae7c552aff32e31900da",
+      "action_id": "FAC_SAM2_FROZEN",
+      "config_hash": "7144b4fcc1af4f9721495ad90a157d39665945bb4b0f58585f1b26ca94576f78",
+      "legal_selection_visibility": {
+        "oracle_only_for_unselected_actions": true,
+        "visible_after_action_execution_to_selecting_policy": true,
+        "visible_before_action_execution": false
+      },
+      "observed_action_effect_hashes": [
+        "001f4add89737029073a907bdc204c06eb4e14556a17ae7c552aff32e31900da"
+      ],
+      "prediction_changed_vs_A0": {
+        "F3": true,
+        "Penobscot": true
+      },
+      "prediction_hash_by_dataset": {
+        "F3": "4b768ee10fa8d41de20d9319c092f37773f4be6e192395d78e71fad4ff2110df",
+        "Penobscot": "024b5dab2e584a9dcb59fb364d932a29a728ac1b0d58241537ad2798ba74b6e5"
+      },
+      "primary_delta_mIoU": {
+        "F3": 0.00019298532220540787,
+        "Penobscot": -0.004958364788177239,
+        "equal_mean": -0.0023826897329859154
+      },
+      "same_invocation_replay_consistent": true,
+      "selected_by_policies": [
+        "a2d",
+        "a2l"
+      ],
+      "train_effect_diagnostics": {
+        "F3": {
+          "fusion_normalized_signed_movement": 0.105571,
+          "gradient_normalized_signed_change": 0.002724
+        },
+        "Penobscot": {
+          "fusion_normalized_signed_movement": 0.009603,
+          "gradient_normalized_signed_change": 1.649203
+        }
+      }
+    }
+  },
+  "baseline": {
+    "action_effect_hash": "507f151783443e7d8dae68f42e34666d7273cb0497236733792a37de8fdbcba4",
+    "action_id": "A0_GATE_020",
+    "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+    "prediction_hash_by_dataset": {
+      "F3": "2c7cb2a49a7c0350881dfa9f186c32291f884da80bdf15e5197932a976eb38eb",
+      "Penobscot": "2d3a73c0f6c403b2b07ac592649ae19ba02f2b58bece99ba228116bb11d17793"
+    },
+    "primary_delta_mIoU": {
+      "F3": 0.0,
+      "Penobscot": 0.0,
+      "equal_mean": 0.0
+    }
+  },
+  "frozen_test_accessed": false,
+  "metric_entrypoint": "p4_metrics.evaluate_probabilities",
+  "promotion_metrics_used_for_action_effect_registry": false,
+  "schema_version": "facies-p29-action-effects/v1",
+  "scope": "development_selection_fold_0_only"
+}
