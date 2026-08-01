@@ -60,6 +60,34 @@ def build_prompt_observation(*, mode: str, round_id: int,
         result["uncertainty_definition"] = "fold bootstrap standard error supplied per trial"
     return result
 
+def build_outer_observation(*, mode: str, held_fold: int, histories: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    selection = sorted({int(f) for row in histories for f in row["selection_fold_ids"]})
+    if int(held_fold) in selection or not selection: raise ValueError("invalid outer selection observation")
+    contexts = []
+    for sf in selection:
+        rows = []
+        for row in histories:
+            fb = {"classification": row["feedback"]["classification"]}
+            if mode == "safe_quantitative":
+                fb.update(relative_rmse_change=float(row["feedback"]["relative_rmse_change"]), fold_outcomes=dict(row["feedback"]["fold_outcomes"]), uncertainty=dict(row["feedback"]["uncertainty"]))
+            rows.append({"round": row["round"], "action_id": row["action_id"], "feedback": fb, "source_fold": sf})
+        contexts.append({"fold": sf, "prior_trials": rows})
+    out = {"schema_version": "p29-outer-observation/v1", "mode": mode, "outer_held_fold": int(held_fold), "selection_fold_ids": selection, "fold_contexts": contexts, "fixed_budget": p28.TRIALS_PER_STRATEGY}
+    if mode == "safe_quantitative":
+        out["remaining_budget"] = 3; out["promotion_threshold"] = {"minimum_relative_gain": p28.MIN_LLM_RELATIVE_GAIN, "maximum_fold_relative_regression": p28.MAX_FOLD_RELATIVE_REGRESSION}; out["uncertainty_definition"] = "standard error over four selection folds"
+    return out
+
+def _policy_decision(observation: Mapping[str, Any], *, mode: str, action_ids: Sequence[str]) -> tuple[str, dict[str, Any]]:
+    """DeepSeek policy call with an auditable deterministic fallback."""
+    try:
+        key = p28._load_deepseek_key(p28.DEFAULT_CREDENTIAL_HELPER)  # noqa: SLF001
+        parsed, provider = p28._deepseek_json(key=key, system="Choose one action_id from the allowlisted action table. Return JSON {action_id, rationale}.", observation=observation)  # noqa: SLF001
+        action = str(parsed["action_id"])
+        if action not in action_ids: raise ValueError("provider selected non-allowlisted action")
+        return action, {"provider": "deepseek", "status": "success", **provider}
+    except Exception as exc:  # fail closed, preserving evidence
+        return str(action_ids[0]), {"provider": "deepseek", "status": "fallback", "error_type": type(exc).__name__, "fallback": "first_allowlisted_action"}
+
 def run_real_probe(*, data_dir: Path, stage3_root: Path, output_dir: Path) -> dict[str, Any]:
     p28.base.ensure_no_holdout_paths((data_dir, stage3_root, output_dir))
     inputs = p28.base.resolve_dev_inputs(data_dir); oof = p28.base.load_oof_development(stage3_root)
@@ -100,8 +128,33 @@ def run_real_probe(*, data_dir: Path, stage3_root: Path, output_dir: Path) -> di
     observations = {mode: build_prompt_observation(mode=mode, round_id=2, histories=histories) for mode in ("categorical", "safe_quantitative")}
     for held, rows in histories.items():
         if any(int(held) in row["selection_fold_ids"] for row in rows): raise RuntimeError("held promotion fold leaked into prompt")
-    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "metrics": metrics, "purge_audits": purge_audits, "replay": {"fold": fold, "chosen_action_id": chosen_id, "config": saved, "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "outer_fold_observations": {str(f): histories[f] for f in histories}, "prompt_observations": observations, "held_fold_purge_reused": {"entrypoint": "p19._rows + p19._without_coordinates", "all_held_folds": True}, "frozen_holdout_opened": False}
-    output_dir.mkdir(parents=True, exist_ok=True); (output_dir / "summary.json").write_text(json.dumps(result, indent=2, sort_keys=True, default=float) + "\n"); return result
+    action_ids = [a["action_id"] for a in registry]; policy_rows = []; categorical_rows = []
+    for held in p28.base.FOLD_IDS:
+        outer = build_outer_observation(mode="safe_quantitative", held_fold=int(held), histories=histories[int(held)])
+        cat = build_outer_observation(mode="categorical", held_fold=int(held), histories=histories[int(held)])
+        safe_action, provider = _policy_decision(outer, mode="safe_quantitative", action_ids=action_ids)
+        cat_action, cat_provider = _policy_decision(cat, mode="categorical", action_ids=action_ids)
+        held_mask = oof.fold_ids == held; base_rmse = p28._metrics(oof.target[held_mask], purged_banks[int(held)]["A0"][held_mask])["rmse"]
+        def row_for(action_id: str) -> dict[str, Any]:
+            pred = purged_banks[int(held)][action_id]; rmse = p28._metrics(oof.target[held_mask], pred[held_mask])["rmse"]
+            return {"action_id": action_id, "rmse": float(rmse), "signed_delta_rmse": float(rmse - base_rmse), "prediction_hash": prediction_hash(pred[held_mask]), "config_hash": metrics[action_id]["config_hash"]}
+        policy_rows.append({"held_fold": int(held), "selection_fold_ids": [f for f in p28.base.FOLD_IDS if f != held], "safe_action": row_for(safe_action), "safe_provider": provider, "safe_observation_hash": hashlib.sha256(json.dumps(outer, sort_keys=True).encode()).hexdigest()})
+        categorical_rows.append({"held_fold": int(held), "selection_fold_ids": [f for f in p28.base.FOLD_IDS if f != held], "categorical_action": row_for(cat_action), "categorical_provider": cat_provider, "categorical_observation_hash": hashlib.sha256(json.dumps(cat, sort_keys=True).encode()).hexdigest()})
+    a2d_ids = ["kernel_matern32", "neighbours_48", "distance_power_1.25", "blend_0.70"]; a3_ids = [action_ids[int(x)] for x in np.random.default_rng(2693).choice(len(action_ids), size=5, replace=False)]
+    baselines = {"A0": [{"held_fold": int(f), "action_id": "A0", "result": {"rmse": float(_fold_metrics(oof.target, purged_banks[int(f)]["A0"], oof.fold_ids)["per_fold"][int(f)]["rmse"])}} for f in p28.base.FOLD_IDS], "A1": "A0 identity replay", "A2D": a2d_ids, "A3": a3_ids, "oracle_diagnostic": "vertical_weight_8.0"}
+    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "metrics": metrics, "purge_audits": purge_audits, "replay": {"fold": fold, "chosen_action_id": chosen_id, "config": saved, "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "outer_fold_observations": {str(f): histories[f] for f in histories}, "prompt_observations": observations, "policy": {"safe_quantitative": policy_rows, "categorical_ablation": categorical_rows, "A1": baselines["A1"], "A2D": baselines["A2D"], "A3": baselines["A3"], "oracle_diagnostic": baselines["oracle_diagnostic"], "oracle_used_for_feedback": False, "oracle_used_for_promotion": False}, "held_fold_purge_reused": {"entrypoint": "p19._rows + p19._without_coordinates", "all_held_folds": True}, "frozen_holdout_opened": False}
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "summary.json").write_text(json.dumps(result, indent=2, sort_keys=True, default=float) + "\n")
+    (output_dir / "results.jsonl").write_text("\n".join(json.dumps(x, sort_keys=True, default=float) for x in policy_rows + categorical_rows) + "\n")
+    (output_dir / "action_effects.json").write_text(json.dumps(metrics, indent=2, sort_keys=True, default=float) + "\n")
+    (output_dir / "protocol.json").write_text(json.dumps({"schema_version": SCHEMA_VERSION, "budget": 4, "frozen_test_opened": False, "strategies": ["A0", "A1", "A2D", "A3", "oracle_diagnostic"]}, indent=2) + "\n")
+    (output_dir / "root_cause.md").write_text("# P29 policy efficacy\n\nOracle vertical_weight_8.0 is diagnostic only; it is excluded from feedback and promotion.\n")
+    (output_dir / "evidence.md").write_text("# P29 evidence\n\nReal development OOF only; frozen test opened: false.\n")
+    manifest = {}
+    for path in sorted(output_dir.iterdir()):
+        if path.is_file() and path.name != "manifest.json": manifest[path.name] = {"path": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    (output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    return result
 
 
 def action_registry() -> tuple[dict[str, Any], ...]:

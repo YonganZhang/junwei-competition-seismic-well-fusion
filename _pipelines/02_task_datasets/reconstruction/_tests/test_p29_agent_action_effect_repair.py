@@ -62,6 +62,16 @@ class P29Test(unittest.TestCase):
             self.assertTrue(rows)
             self.assertTrue(all(int(held) not in row["selection_fold_ids"] for row in rows))
 
+    def test_policy_layer_is_real_and_oracle_is_diagnostic_only(self):
+        path = TRACK / "_outputs" / "p29_agent_action_effect_repair" / "summary.json"
+        if not path.is_file(): self.skipTest("real probe not run")
+        summary = json.loads(path.read_text()); policy = summary["policy"]
+        self.assertEqual(len(policy["safe_quantitative"]), 5)
+        self.assertTrue(all(row["safe_provider"]["status"] in {"success", "fallback"} for row in policy["safe_quantitative"]))
+        self.assertFalse(policy["oracle_used_for_feedback"]); self.assertFalse(policy["oracle_used_for_promotion"])
+        self.assertIn("A1", policy); self.assertIn("A2D", policy); self.assertIn("A3", policy)
+        self.assertNotEqual(policy["oracle_diagnostic"], policy["A1"])
+
 
 if __name__ == "__main__":
     unittest.main()

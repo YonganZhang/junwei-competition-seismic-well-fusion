@@ -1,0 +1,26 @@
+{
+  "action_effects.json": {
+    "path": "action_effects.json",
+    "sha256": "4ff1e667851bfd432c2de24187d69e87f735a5d9582a272b5f4da1b805dcbb4f"
+  },
+  "evidence.md": {
+    "path": "evidence.md",
+    "sha256": "fb011d60bf8261594de1e358cf69dcc354e7c1befaeb3dd03e47f40bdbf2d9a7"
+  },
+  "protocol.json": {
+    "path": "protocol.json",
+    "sha256": "267546dfbf7730e384dfb09957528f446e04109dec84b74400adf2c37ee86c0f"
+  },
+  "results.jsonl": {
+    "path": "results.jsonl",
+    "sha256": "e4a3a2ed598961b4022cb9b719066a33191828e270eaaf4fc5863de6b6cd3306"
+  },
+  "root_cause.md": {
+    "path": "root_cause.md",
+    "sha256": "92b751bdcb0786a76bfe313dcb3b1c337f8698e26d347add663489ee8652eeb6"
+  },
+  "summary.json": {
+    "path": "summary.json",
+    "sha256": "28c64ef9e72532494ea0d81dae4e3c823461fed5aeb3573f4a9ab93e39ac8618"
+  }
+}
