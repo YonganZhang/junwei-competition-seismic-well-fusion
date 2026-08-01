@@ -1,0 +1,113 @@
+{
+  "a0_action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+  "a0_prediction_hash": "56d242ae11a39305298d02219b761185fbde7587b08b91f04d07a6203dd69a64",
+  "a1_prediction_hash": "56d242ae11a39305298d02219b761185fbde7587b08b91f04d07a6203dd69a64",
+  "a1_prediction_hash_contract": "EXECUTED_IDENTITY_CHECK",
+  "a1_same_hash": true,
+  "a2d": {
+    "mean_signed_normalized_delta": 0.0,
+    "selected_action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+    "selection_mae": 308.369659988208,
+    "status": "EXECUTED",
+    "trial_budget": 4
+  },
+  "a2l": {
+    "blocked_reason": null,
+    "confidence": 0.9,
+    "promotion_mae": null,
+    "rationale": "All candidates show negative or zero mean deltas; the baseline is the best. No candidate shows consistent improvement, so stop and keep the baseline.",
+    "raw": {
+      "_model": "deepseek-v4-flash",
+      "_provider": "deepseek",
+      "confidence": 0.9,
+      "rationale": "All candidates show negative or zero mean deltas; the baseline is the best. No candidate shows consistent improvement, so stop and keep the baseline.",
+      "selected_action_id": "A0_static_baseline",
+      "selected_route": "xgboost",
+      "stop_requested": true
+    },
+    "selected_action_id": "A0_static_baseline",
+    "selected_route": "xgboost",
+    "status": "STOPPED",
+    "stop_requested": true
+  },
+  "a3": {
+    "control_seed": 2710,
+    "promotion_mae": 144.08250915115292,
+    "selected_action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+    "selection_mae": 308.369659988208,
+    "status": "EXECUTED",
+    "trial_budget": 4
+  },
+  "action_effects_sha256": "0a3008fa87497c9e77b94993822b7c7c9b288409effda97132df2487b1536e77",
+  "baseline_kind": "same_fold_same_executor_a0",
+  "blocked_reason": null,
+  "candidate_table": {
+    "best_by_selection_delta": {
+      "action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+      "mean_signed_normalized_delta": 0.0,
+      "selection_mae": 308.369659988208
+    },
+    "candidates": [
+      {
+        "action_id": "T3_XGB_D4_ETA_0_03_ROUNDS_64",
+        "mean_signed_normalized_delta": -0.1820512933991156,
+        "selection_feedback": "worse",
+        "selection_mae": 365.8067851830976
+      },
+      {
+        "action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+        "mean_signed_normalized_delta": 0.0,
+        "selection_feedback": "flat",
+        "selection_mae": 308.369659988208
+      },
+      {
+        "action_id": "T3_XGB_D6_ETA_0_03_ROUNDS_96",
+        "mean_signed_normalized_delta": -0.11279246207325795,
+        "selection_feedback": "worse",
+        "selection_mae": 344.0128774887615
+      },
+      {
+        "action_id": "T3_XGB_D6_ETA_0_05_ROUNDS_128",
+        "mean_signed_normalized_delta": -0.025392640051756482,
+        "selection_feedback": "worse",
+        "selection_mae": 315.92453153247493
+      }
+    ]
+  },
+  "evidence_sha256": "851489576daf828ba5d01e517c7bff089d084a52f09fe80c6be23951c95129f1",
+  "generation_base_commit": "b355302f0fd5ffc82a12a8fe823c6b1848be5830",
+  "oracle_ceiling": {
+    "action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+    "mean_signed_normalized_delta": 0.0,
+    "promotion_mae": 144.08250915115292,
+    "selection_mae": 308.369659988208
+  },
+  "promotion_folds": [
+    3
+  ],
+  "prompt_contract": {
+    "no_labels": true,
+    "no_paths": true,
+    "no_raw_metrics": true,
+    "no_residuals": true,
+    "only_improved_flat_worse_feedback": true,
+    "remaining_budget_trials": 3,
+    "same_fold_same_executor_a0": true
+  },
+  "prompt_sha256": "a1ea81ca3510e4c0d2cd148c6af597d5f8088cd1a8cbfcc916376559bf6e5744",
+  "protocol_jsonl_sha256": "7b44562ec8d5bc18b2f4a8af2814d2e254c52b7193bb58753c0e5cb8f081de7b",
+  "protocol_sha256": "d763dc728631c7c9519c6066e01c14b1d71153c3cb6549c0842495af8dda3770",
+  "reject": true,
+  "retain_llm": false,
+  "root_cause_sha256": "43750126c6c7cf6cd26696d5163c3d22270f7af03a94e012905ae2986cd564cb",
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p29-agent-action-effect/v1",
+  "selection_folds": [
+    0,
+    1,
+    2
+  ],
+  "task_id": "T3",
+  "track_id": "sweetspot",
+  "verdict": "REJECT_AGENT"
+}

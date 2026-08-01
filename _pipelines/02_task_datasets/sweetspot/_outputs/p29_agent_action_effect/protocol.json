@@ -1,0 +1,340 @@
+{
+  "action_allowlist": [
+    "T3_XGB_D4_ETA_0_03_ROUNDS_64",
+    "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+    "T3_XGB_D6_ETA_0_03_ROUNDS_96",
+    "T3_XGB_D6_ETA_0_05_ROUNDS_128"
+  ],
+  "audit": {
+    "label_mapping_id": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+    "label_version": "future-30-calendar-row-mean-oil-v1",
+    "mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+    "p4_status": "feasible",
+    "primary_metric": "mae",
+    "primary_metric_direction": "minimize",
+    "proxy_semantics": "future 30-calendar-row mean oil production; an operational production target, not unified sweetspot truth",
+    "split_manifest_id": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "target_id": "T3",
+    "target_name": "FUTURE_30D_MEAN_OIL",
+    "target_status": "approved_for_development_pilot",
+    "task_type": "regression"
+  },
+  "baseline": {
+    "action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+    "fold_rows": [
+      {
+        "fold_id": 0,
+        "input_budget_sha256": "3835d4ba7de48f59394834d097700ea09cd128e513b8c54876ddf78d7812edb2",
+        "prediction_sha256": "c6c5eeff2da07e2c93c673f5f475910b8c907c34a957ef35b1bb051502d75721",
+        "selection_mae": 310.9998098810369,
+        "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+      },
+      {
+        "fold_id": 1,
+        "input_budget_sha256": "f854f6dd295bc69c720ea93e045744dade61dacd649c851e2411d19bb45a71ab",
+        "prediction_sha256": "ddfe1dc5d50ff3a4b48e64f0d1473c907a53744920a01db981f782911ac5bd3b",
+        "selection_mae": 323.85137540956924,
+        "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+      },
+      {
+        "fold_id": 2,
+        "input_budget_sha256": "60ca9b33ed3a7976339f31186b7af1145efb27ae840dec09893d6adbb71c47ad",
+        "prediction_sha256": "d6199a4c78e73f91886cb9b07e481d04b8b863cfd4abbca254339cd9fe3aaade",
+        "selection_mae": 290.25779467401793,
+        "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+      }
+    ],
+    "kind": "same_fold_same_executor_a0"
+  },
+  "candidate_feedback": [
+    {
+      "action_id": "T3_XGB_D4_ETA_0_03_ROUNDS_64",
+      "fold_feedback": [
+        {
+          "fold_id": 0,
+          "selection_feedback": "worse",
+          "signed_normalized_delta": -0.34842196576270507,
+          "train_rows": 1012,
+          "validation_rows": 99
+        },
+        {
+          "fold_id": 1,
+          "selection_feedback": "worse",
+          "signed_normalized_delta": -0.19524507093339563,
+          "train_rows": 684,
+          "validation_rows": 427
+        },
+        {
+          "fold_id": 2,
+          "selection_feedback": "flat",
+          "signed_normalized_delta": -0.0024868435012460523,
+          "train_rows": 684,
+          "validation_rows": 427
+        }
+      ],
+      "mean_signed_normalized_delta": -0.1820512933991156,
+      "remaining_budget_trials": 3,
+      "selection_feedback": "worse"
+    },
+    {
+      "action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+      "fold_feedback": [
+        {
+          "fold_id": 0,
+          "selection_feedback": "flat",
+          "signed_normalized_delta": 0.0,
+          "train_rows": 1012,
+          "validation_rows": 99
+        },
+        {
+          "fold_id": 1,
+          "selection_feedback": "flat",
+          "signed_normalized_delta": 0.0,
+          "train_rows": 684,
+          "validation_rows": 427
+        },
+        {
+          "fold_id": 2,
+          "selection_feedback": "flat",
+          "signed_normalized_delta": 0.0,
+          "train_rows": 684,
+          "validation_rows": 427
+        }
+      ],
+      "mean_signed_normalized_delta": 0.0,
+      "remaining_budget_trials": 3,
+      "selection_feedback": "flat"
+    },
+    {
+      "action_id": "T3_XGB_D6_ETA_0_03_ROUNDS_96",
+      "fold_feedback": [
+        {
+          "fold_id": 0,
+          "selection_feedback": "worse",
+          "signed_normalized_delta": -0.2538460877522261,
+          "train_rows": 1012,
+          "validation_rows": 99
+        },
+        {
+          "fold_id": 1,
+          "selection_feedback": "worse",
+          "signed_normalized_delta": -0.10262970252239256,
+          "train_rows": 684,
+          "validation_rows": 427
+        },
+        {
+          "fold_id": 2,
+          "selection_feedback": "improved",
+          "signed_normalized_delta": 0.01809840405484481,
+          "train_rows": 684,
+          "validation_rows": 427
+        }
+      ],
+      "mean_signed_normalized_delta": -0.11279246207325795,
+      "remaining_budget_trials": 3,
+      "selection_feedback": "worse"
+    },
+    {
+      "action_id": "T3_XGB_D6_ETA_0_05_ROUNDS_128",
+      "fold_feedback": [
+        {
+          "fold_id": 0,
+          "selection_feedback": "worse",
+          "signed_normalized_delta": -0.0573916723308517,
+          "train_rows": 1012,
+          "validation_rows": 99
+        },
+        {
+          "fold_id": 1,
+          "selection_feedback": "improved",
+          "signed_normalized_delta": 0.018963129282906423,
+          "train_rows": 684,
+          "validation_rows": 427
+        },
+        {
+          "fold_id": 2,
+          "selection_feedback": "worse",
+          "signed_normalized_delta": -0.037749377107324164,
+          "train_rows": 684,
+          "validation_rows": 427
+        }
+      ],
+      "mean_signed_normalized_delta": -0.025392640051756482,
+      "remaining_budget_trials": 3,
+      "selection_feedback": "worse"
+    }
+  ],
+  "control_policies": {
+    "A2D": {
+      "independent_seed": 2704,
+      "kind": "deterministic_best_mean_delta",
+      "trial_budget": 4
+    },
+    "A3": {
+      "independent_seed": 2710,
+      "kind": "random_independent_control",
+      "trial_budget": 4
+    }
+  },
+  "feedback_baseline": {
+    "action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+    "fold_rows": [
+      {
+        "fold_id": 0,
+        "input_budget_sha256": "3835d4ba7de48f59394834d097700ea09cd128e513b8c54876ddf78d7812edb2",
+        "prediction_sha256": "c6c5eeff2da07e2c93c673f5f475910b8c907c34a957ef35b1bb051502d75721",
+        "selection_mae": 310.9998098810369,
+        "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+      },
+      {
+        "fold_id": 1,
+        "input_budget_sha256": "f854f6dd295bc69c720ea93e045744dade61dacd649c851e2411d19bb45a71ab",
+        "prediction_sha256": "ddfe1dc5d50ff3a4b48e64f0d1473c907a53744920a01db981f782911ac5bd3b",
+        "selection_mae": 323.85137540956924,
+        "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+      },
+      {
+        "fold_id": 2,
+        "input_budget_sha256": "60ca9b33ed3a7976339f31186b7af1145efb27ae840dec09893d6adbb71c47ad",
+        "prediction_sha256": "d6199a4c78e73f91886cb9b07e481d04b8b863cfd4abbca254339cd9fe3aaade",
+        "selection_mae": 290.25779467401793,
+        "split_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a"
+      }
+    ],
+    "kind": "same_fold_same_executor_a0"
+  },
+  "gates": {
+    "T5": "not_feasible",
+    "T6": "blocked",
+    "T7": "blocked"
+  },
+  "generation_base_commit": "b355302f0fd5ffc82a12a8fe823c6b1848be5830",
+  "inputs": [
+    {
+      "scientific_role": "sweetspot_p5_label_mapping.v1.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+      "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+      "shape_or_row_count": 9056,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "split_manifest.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+      "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+      "shape_or_row_count": 280746,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "T3.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
+      "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+      "shape_or_row_count": 3512,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "p5_stage3_summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json",
+      "sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
+      "shape_or_row_count": 20090,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "p5_stage4_summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+      "shape_or_row_count": 7591,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+      "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
+      "shape_or_row_count": 18587,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
+      "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
+      "shape_or_row_count": 26803,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "P17_reconstruction_foundation_acceptance_evidence.md",
+      "scientific_source_id": "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md",
+      "sha256": "b7e78d08f231165a873a6d5d4ceeabaf060b0237ebb199ee666b9c6a5bddf6b4",
+      "shape_or_row_count": 3806,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    }
+  ],
+  "leakage_firewall": {
+    "fold_train_only_fit": true,
+    "foundation_route_fixed_or_separate_factor": true,
+    "nested_disjoint_selection_and_promotion": true,
+    "no_holdout_or_test": true,
+    "no_labels": true,
+    "no_raw_metrics": true,
+    "sibling_worktree_python_imports": false
+  },
+  "observation_schema": {
+    "hidden_from_llm": [
+      "raw_metric_values",
+      "validation_curves",
+      "per_sample_residuals",
+      "labels",
+      "paths",
+      "historical_stage3_aggregate"
+    ],
+    "promotion_fold_ids": [
+      3
+    ],
+    "route_fixed": "xgboost",
+    "selection_fold_ids": [
+      0,
+      1,
+      2
+    ],
+    "visible_to_llm": [
+      "fold_train_aggregates",
+      "signed_normalized_delta",
+      "remaining_budget_trials",
+      "improved_flat_worse_feedback"
+    ]
+  },
+  "prompt_contract": {
+    "no_labels": true,
+    "no_paths": true,
+    "no_raw_metrics": true,
+    "no_residuals": true,
+    "only_improved_flat_worse_feedback": true,
+    "remaining_budget_trials": 3,
+    "same_fold_same_executor_a0": true
+  },
+  "root_seed": 2693,
+  "schema_version": "sweetspot-p29-agent-action-effect/v1",
+  "task_id": "T3",
+  "task_spec": {
+    "development_rebuild": "raw_source_development_groups_only",
+    "label_version": "future-30-calendar-row-mean-oil-v1",
+    "primary_metric": "mae",
+    "primary_metric_direction": "minimize",
+    "root_seed": 2693,
+    "route_family": "xgboost",
+    "route_note": "portable local xgboost-only repair pilot; selection/promotion remain disjoint",
+    "split_manifest_id": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+    "target_id": "T3",
+    "target_name": "FUTURE_30D_MEAN_OIL",
+    "task_type": "regression"
+  },
+  "track_id": "sweetspot"
+}

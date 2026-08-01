@@ -1,0 +1,145 @@
+{
+  "artifact_count": 6,
+  "generated_at": "2026-08-01T00:00:00Z",
+  "inputs": [
+    {
+      "scientific_role": "sweetspot_p5_label_mapping.v1.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+      "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
+      "shape_or_row_count": 9056,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "split_manifest.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+      "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
+      "shape_or_row_count": 280746,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "T3.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
+      "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
+      "shape_or_row_count": 3512,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "p5_stage3_summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json",
+      "sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
+      "shape_or_row_count": 20090,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "p5_stage4_summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
+      "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
+      "shape_or_row_count": 7591,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+      "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
+      "shape_or_row_count": 18587,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "summary.json",
+      "scientific_source_id": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
+      "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
+      "shape_or_row_count": 26803,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    },
+    {
+      "scientific_role": "P17_reconstruction_foundation_acceptance_evidence.md",
+      "scientific_source_id": "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md",
+      "sha256": "b7e78d08f231165a873a6d5d4ceeabaf060b0237ebb199ee666b9c6a5bddf6b4",
+      "shape_or_row_count": 3806,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
+      "split_scope": "immutable reference"
+    }
+  ],
+  "manual_review": {
+    "colors_consistent": null,
+    "labels_legible": null,
+    "no_clipping": null,
+    "no_overlap": null,
+    "notes": "pending",
+    "reviewed": false,
+    "reviewed_at": null,
+    "reviewed_sha256": null,
+    "reviewer": null,
+    "scientific_boundary_preserved": null
+  },
+  "outputs": [
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/protocol.json",
+      "role": "protocol",
+      "sha256": "d763dc728631c7c9519c6066e01c14b1d71153c3cb6549c0842495af8dda3770",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/protocol.jsonl",
+      "role": "protocol_jsonl",
+      "sha256": "7b44562ec8d5bc18b2f4a8af2814d2e254c52b7193bb58753c0e5cb8f081de7b",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/action_effects.json",
+      "role": "action_effects",
+      "sha256": "0a3008fa87497c9e77b94993822b7c7c9b288409effda97132df2487b1536e77",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/root_cause.md",
+      "role": "root_cause",
+      "sha256": "43750126c6c7cf6cd26696d5163c3d22270f7af03a94e012905ae2986cd564cb",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json",
+      "role": "summary",
+      "sha256": "d4f45ea9b276639c000d6a38c802c1304052c78f8957059ffaf418e976642270",
+      "vector_companions": [],
+      "width_px": null
+    },
+    {
+      "dpi": null,
+      "height_px": null,
+      "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/evidence.md",
+      "role": "evidence",
+      "sha256": "851489576daf828ba5d01e517c7bff089d084a52f09fe80c6be23951c95129f1",
+      "vector_companions": [],
+      "width_px": null
+    }
+  ],
+  "renderer": {
+    "path": "_pipelines/02_task_datasets/sweetspot/p29_agent_action_effect.py",
+    "sha256": "9ce36ce6a514f0da455528b3b26f8d9d43ff77a4e5ee49a7a0df4a6f5bee9c35"
+  },
+  "schema_version": "sweetspot-p29-agent-action-effect/v1",
+  "source_commit": "b355302f0fd5ffc82a12a8fe823c6b1848be5830",
+  "track_id": "sweetspot"
+}
