@@ -1,0 +1,363 @@
+{
+  "a0": {
+    "checkpoint_path": "_outputs/checkpoints/best.ckpt",
+    "checkpoint_sha256": "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5",
+    "metrics_path": "_outputs/metrics.json",
+    "metrics_sha256": "548d6036bd21327d5f5cae614667b7772a27e89a29f7052e88ea93cc1dba14d5",
+    "model": "tiny_mlp",
+    "promotion_prediction_hash": "2823f7b6895ce5e0e05750e8d9124843f670540cfc02a0146773f3ac34ddea8d",
+    "run_manifest_path": "_outputs/run_manifest.json",
+    "run_manifest_sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+    "selection_prediction_hash": "8294ee83dea95acc30f03099ab1bf52a6b920982badc89352f36d08b249d08d9"
+  },
+  "allowlist": [
+    "tiny_mlp_default",
+    "tiny_mlp_l2",
+    "reservoir_ridge",
+    "reservoir_linear"
+  ],
+  "cig_rejection": {
+    "blocked_checkpoints": [
+      "douyimin/CIG-Bench/CIG-Bench-Property.pth"
+    ],
+    "evidence_path": "_outputs/p18_cigbench_property/evidence.md",
+    "input_contract": "PropertyPredictor expects seismic volume + sparse property volume, while the reservoir development data are sample-level seismic_patch + well_log_seq features only.",
+    "reason": "ModelScope default checkpoint 404 and input contract mismatch",
+    "route_id": "cig_bench_propertypredictor",
+    "status": "blocked"
+  },
+  "gate": {
+    "blocked_checkpoints": [
+      "douyimin/CIG-Bench/CIG-Bench-Property.pth"
+    ],
+    "evidence_path": "_outputs/p18_cigbench_property/evidence.md",
+    "input_contract": "PropertyPredictor expects seismic volume + sparse property volume, while the reservoir development data are sample-level seismic_patch + well_log_seq features only.",
+    "reason": "ModelScope default checkpoint 404 and input contract mismatch",
+    "route_id": "cig_bench_propertypredictor",
+    "status": "blocked"
+  },
+  "pilot_budget_steps": 8,
+  "promotion_gate": {
+    "primary_metric": "physical_MAE_macro",
+    "primary_threshold_rel_improvement": 0.01,
+    "selection_vs_promotion_separation": "selection-dev only used for route choice; promotion-dev only used for promotion gate",
+    "worst_group_rmse_max_worsening": 0.02
+  },
+  "root_seed": 2693,
+  "route_catalog": [
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "hidden_dim": 24,
+        "learning_rate": 0.002,
+        "weight_decay": 1e-05
+      },
+      "model_name": "tiny_mlp",
+      "notes": "A0-compatible tiny MLP with frozen default regularization",
+      "route_id": "tiny_mlp_default"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "hidden_dim": 24,
+        "learning_rate": 0.002,
+        "weight_decay": 0.001
+      },
+      "model_name": "tiny_mlp",
+      "notes": "Same architecture with stronger L2",
+      "route_id": "tiny_mlp_l2"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "l2_strength": 0.001,
+        "learning_rate": 0.002
+      },
+      "model_name": "reservoir_ridge",
+      "notes": "Closed-form family not used; SGD ridge baseline",
+      "route_id": "reservoir_ridge"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "l2_strength": 0.0,
+        "learning_rate": 0.002
+      },
+      "model_name": "reservoir_linear",
+      "notes": "Plain multi-output linear SGD baseline",
+      "route_id": "reservoir_linear"
+    }
+  ],
+  "route_pilots": [
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "feedback": "worse",
+      "model_name": "tiny_mlp",
+      "prediction_hash": "9acb82dcc773d95a73ba69bbfac816ba1124dbdb3231a1415cb1df78917919a9",
+      "route_id": "tiny_mlp_default",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 0.9238090882542948,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.046343750761390815,
+            "Pearson": 0.3937897417678773,
+            "Pearson_reason": null,
+            "R2": 0.11121504708039087,
+            "R2_reason": null,
+            "RMSE": 0.062018765808741466
+          },
+          "SW": {
+            "MAE": 0.28703022865783656,
+            "Pearson": 0.3938721234957784,
+            "Pearson_reason": null,
+            "R2": 0.15167256434551646,
+            "R2_reason": null,
+            "RMSE": 0.32328488355976565
+          },
+          "log1p(KLOGH)": {
+            "MAE": 1.9388156247170818,
+            "Pearson": 0.5298733886902995,
+            "Pearson_reason": null,
+            "R2": 0.20896767993280474,
+            "R2_reason": null,
+            "RMSE": 2.4389219132426163
+          }
+        },
+        "physical_MAE_macro": 152.49056758227624,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 1147.3958794786565,
+          "PHIF": 0.062018765808741466,
+          "SW": 0.32328488355976565
+        }
+      }
+    },
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "feedback": "worse",
+      "model_name": "tiny_mlp",
+      "prediction_hash": "57070ae9b325fa852e038ddfde87c4ac5e3db7f39adfa78ee70bdee4352735ca",
+      "route_id": "tiny_mlp_l2",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 0.9237594854019706,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.046341049244013346,
+            "Pearson": 0.39369627404214647,
+            "Pearson_reason": null,
+            "R2": 0.11112609404476148,
+            "R2_reason": null,
+            "RMSE": 0.06202186927006743
+          },
+          "SW": {
+            "MAE": 0.2870007593387269,
+            "Pearson": 0.39398635543801297,
+            "Pearson_reason": null,
+            "R2": 0.1517859096742764,
+            "R2_reason": null,
+            "RMSE": 0.32326328573449364
+          },
+          "log1p(KLOGH)": {
+            "MAE": 1.9394194692295876,
+            "Pearson": 0.5295235132630011,
+            "Pearson_reason": null,
+            "R2": 0.20918992854410134,
+            "R2_reason": null,
+            "RMSE": 2.4385792691601385
+          }
+        },
+        "physical_MAE_macro": 152.68780490008007,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 1149.9819558047902,
+          "PHIF": 0.06202186927006743,
+          "SW": 0.32326328573449364
+        }
+      }
+    },
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "feedback": "worse",
+      "model_name": "reservoir_ridge",
+      "prediction_hash": "e7b0b13910c5030c781f211b089bed363a397448061e535b9f186df34543b506",
+      "route_id": "reservoir_ridge",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 0.9597992341302519,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.04780755085459079,
+            "Pearson": 0.6142308359658418,
+            "Pearson_reason": null,
+            "R2": 0.01968695921202923,
+            "R2_reason": null,
+            "RMSE": 0.06513391194117873
+          },
+          "SW": {
+            "MAE": 0.29474073209130125,
+            "Pearson": 0.7734222324673377,
+            "Pearson_reason": null,
+            "R2": 0.1329431109859196,
+            "R2_reason": null,
+            "RMSE": 0.3268341573288152
+          },
+          "log1p(KLOGH)": {
+            "MAE": 2.2260413476180374,
+            "Pearson": 0.5533886203087129,
+            "Pearson_reason": null,
+            "R2": 0.11466516818375205,
+            "R2_reason": null,
+            "RMSE": 2.5802070476253185
+          }
+        },
+        "physical_MAE_macro": 195.4851990412726,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 1574.013880187239,
+          "PHIF": 0.06513391194117873,
+          "SW": 0.3268341573288152
+        }
+      }
+    },
+    {
+      "blocked": false,
+      "budget_steps": 8,
+      "feedback": "worse",
+      "model_name": "reservoir_linear",
+      "prediction_hash": "9a437818112b6ffb5e7c223eaae4e7e7511cc8cb6eaf8b9a63792f8adebb9ee0",
+      "route_id": "reservoir_linear",
+      "seed": 2693,
+      "selection": {
+        "composite_mean_train_std_normalized_RMSE": 0.9597988244361315,
+        "per_target": {
+          "PHIF": {
+            "MAE": 0.04780752462331659,
+            "Pearson": 0.6142306824636643,
+            "Pearson_reason": null,
+            "R2": 0.019687563535322528,
+            "R2_reason": null,
+            "RMSE": 0.06513389186496603
+          },
+          "SW": {
+            "MAE": 0.29474052681091983,
+            "Pearson": 0.7734221822743849,
+            "Pearson_reason": null,
+            "R2": 0.13294408512484523,
+            "R2_reason": null,
+            "RMSE": 0.3268339737295795
+          },
+          "log1p(KLOGH)": {
+            "MAE": 2.2260405567637935,
+            "Pearson": 0.5533885064337076,
+            "Pearson_reason": null,
+            "R2": 0.11466588253347487,
+            "R2_reason": null,
+            "RMSE": 2.580206006679851
+          }
+        },
+        "physical_MAE_macro": 195.48518355864812,
+        "space": "PHIF, log1p(KLOGH), SW",
+        "worst_group_RMSE": {
+          "KLOGH": 1574.0138005496876,
+          "PHIF": 0.06513389186496603,
+          "SW": 0.3268339737295795
+        }
+      }
+    }
+  ],
+  "schema_version": "p28_agentic_optimization/v1",
+  "seed_pool": [
+    2693,
+    2694,
+    2695
+  ],
+  "split": {
+    "promotion_dev": {
+      "count": 88,
+      "families": [
+        "15/9-19"
+      ],
+      "samples": [
+        "sample_0000059",
+        "sample_0000060",
+        "sample_0000061",
+        "sample_0000062",
+        "sample_0000063"
+      ],
+      "wells": [
+        "15/9-19 BT2",
+        "15/9-19 SR"
+      ]
+    },
+    "selection_dev": {
+      "count": 59,
+      "families": [
+        "15/9-19"
+      ],
+      "samples": [
+        "sample_0000000",
+        "sample_0000001",
+        "sample_0000002",
+        "sample_0000003",
+        "sample_0000004"
+      ],
+      "wells": [
+        "15/9-19 A"
+      ]
+    },
+    "train": {
+      "count": 988,
+      "families": [
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "samples": [
+        "sample_0000147",
+        "sample_0000148",
+        "sample_0000149",
+        "sample_0000150",
+        "sample_0000151"
+      ],
+      "wells": [
+        "15/9-F-1",
+        "15/9-F-1 A",
+        "15/9-F-1 B",
+        "15/9-F-1 C",
+        "15/9-F-11 A",
+        "15/9-F-11 B",
+        "15/9-F-11 T2"
+      ]
+    }
+  },
+  "strategy_choice": {
+    "A2D": {
+      "chosen_route_id": "tiny_mlp_default",
+      "selected_by": "deterministic_pilot_rank"
+    },
+    "A2L": {
+      "chosen_route_id": null,
+      "deepseek": {
+        "action": "stop",
+        "reason": "All four routes have identical metadata and all received 'worse' feedback, indicating no route is better than the others; stopping avoids selecting a suboptimal route.",
+        "route_id": null
+      },
+      "selected_by": "blocked"
+    },
+    "A3": {
+      "chosen_route_id": "tiny_mlp_default",
+      "selected_by": "pcg64_no_replacement"
+    }
+  },
+  "track_id": "property",
+  "train_h5_sha256": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2",
+  "trial_budget_steps": 32
+}

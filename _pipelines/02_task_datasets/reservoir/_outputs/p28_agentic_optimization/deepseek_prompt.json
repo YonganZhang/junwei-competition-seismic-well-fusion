@@ -1,0 +1,62 @@
+{
+  "a0_prediction_hash": "8294ee83dea95acc30f03099ab1bf52a6b920982badc89352f36d08b249d08d9",
+  "pilot_summaries": [
+    {
+      "feedback": "worse",
+      "route_id": "route_1"
+    },
+    {
+      "feedback": "worse",
+      "route_id": "route_2"
+    },
+    {
+      "feedback": "worse",
+      "route_id": "route_3"
+    },
+    {
+      "feedback": "worse",
+      "route_id": "route_4"
+    }
+  ],
+  "routes": [
+    {
+      "blocked": false,
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "pilot_feedback": "worse",
+      "route_id": "route_1"
+    },
+    {
+      "blocked": false,
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "pilot_feedback": "worse",
+      "route_id": "route_2"
+    },
+    {
+      "blocked": false,
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "pilot_feedback": "worse",
+      "route_id": "route_3"
+    },
+    {
+      "blocked": false,
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "pilot_feedback": "worse",
+      "route_id": "route_4"
+    }
+  ],
+  "rules": [
+    "Only use anonymous route metadata and improved|flat|worse feedback.",
+    "Return strict JSON only.",
+    "Choose exactly one route_id or stop."
+  ],
+  "schema": {
+    "action": "select|stop",
+    "reason": "string",
+    "route_id": "route_1|route_2|route_3|route_4|null"
+  },
+  "task": "A2L route selection or stop"
+}

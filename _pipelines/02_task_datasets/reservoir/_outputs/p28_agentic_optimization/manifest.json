@@ -1,0 +1,164 @@
+{
+  "command": [
+    "python3 -m py_compile _pipelines/02_task_datasets/reservoir/p28_agentic_optimization.py _pipelines/02_task_datasets/reservoir/tests/test_p28_agentic_optimization.py",
+    "pytest -q _pipelines/02_task_datasets/reservoir/tests/test_p28_agentic_optimization.py",
+    "python3 _pipelines/02_task_datasets/reservoir/p28_agentic_optimization.py --budget-steps 32 --pilot-steps 8"
+  ],
+  "gate": {
+    "blocked_checkpoints": [
+      "douyimin/CIG-Bench/CIG-Bench-Property.pth"
+    ],
+    "evidence_path": "_outputs/p18_cigbench_property/evidence.md",
+    "input_contract": "PropertyPredictor expects seismic volume + sparse property volume, while the reservoir development data are sample-level seismic_patch + well_log_seq features only.",
+    "reason": "ModelScope default checkpoint 404 and input contract mismatch",
+    "route_id": "cig_bench_propertypredictor",
+    "status": "blocked"
+  },
+  "inputs": {
+    "baseline_checkpoint": {
+      "path": "_outputs/checkpoints/best.ckpt",
+      "sha256": "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5"
+    },
+    "baseline_metrics": {
+      "path": "_outputs/metrics.json",
+      "sha256": "548d6036bd21327d5f5cae614667b7772a27e89a29f7052e88ea93cc1dba14d5"
+    },
+    "baseline_run_manifest": {
+      "path": "_outputs/run_manifest.json",
+      "sha256": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9"
+    },
+    "p18_evidence": {
+      "path": "_outputs/p18_cigbench_property/evidence.md",
+      "sha256": "b81cc0f396b1176eb17c67b31a45771538cdb7d4fd2ec580b57c33eef595d50c"
+    },
+    "train_h5": {
+      "path": "_data/processed/reservoir/train.h5",
+      "sha256": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2"
+    }
+  },
+  "outputs": {
+    "evidence_md": {
+      "path": "evidence.md",
+      "sha256": "f8043bf0174f232296d7ac9de4ecb8b19381c65a8dce1958436264bf2a855477"
+    },
+    "protocol_json": {
+      "path": "protocol.json",
+      "sha256": "8a5d379999225df2105f9016ae308a0c0e1eddaae1d2a6a49df40ab2d34566ca"
+    },
+    "results_jsonl": {
+      "path": "results.jsonl",
+      "sha256": "bdaa98c233af61304aac51ba60f9e93da235fc09946787045219fd3b6de97d5b"
+    },
+    "summary_json": {
+      "path": "summary.json",
+      "sha256": "bb139f1e84c41c78bbcf4703f66a191e6691936a194846ccb9ee00bad6472a7e"
+    }
+  },
+  "routes": [
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "hidden_dim": 24,
+        "learning_rate": 0.002,
+        "weight_decay": 1e-05
+      },
+      "model_name": "tiny_mlp",
+      "notes": "A0-compatible tiny MLP with frozen default regularization",
+      "route_id": "tiny_mlp_default"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "hidden_dim": 24,
+        "learning_rate": 0.002,
+        "weight_decay": 0.001
+      },
+      "model_name": "tiny_mlp",
+      "notes": "Same architecture with stronger L2",
+      "route_id": "tiny_mlp_l2"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "l2_strength": 0.001,
+        "learning_rate": 0.002
+      },
+      "model_name": "reservoir_ridge",
+      "notes": "Closed-form family not used; SGD ridge baseline",
+      "route_id": "reservoir_ridge"
+    },
+    {
+      "dependency_group": "tabular-cpu",
+      "lane": "tabular-cpu",
+      "model_kwargs": {
+        "l2_strength": 0.0,
+        "learning_rate": 0.002
+      },
+      "model_name": "reservoir_linear",
+      "notes": "Plain multi-output linear SGD baseline",
+      "route_id": "reservoir_linear"
+    }
+  ],
+  "schema_version": "p28_agentic_optimization/manifest/v1",
+  "split": {
+    "promotion_dev": {
+      "count": 88,
+      "families": [
+        "15/9-19"
+      ],
+      "samples": [
+        "sample_0000059",
+        "sample_0000060",
+        "sample_0000061",
+        "sample_0000062",
+        "sample_0000063"
+      ],
+      "wells": [
+        "15/9-19 BT2",
+        "15/9-19 SR"
+      ]
+    },
+    "selection_dev": {
+      "count": 59,
+      "families": [
+        "15/9-19"
+      ],
+      "samples": [
+        "sample_0000000",
+        "sample_0000001",
+        "sample_0000002",
+        "sample_0000003",
+        "sample_0000004"
+      ],
+      "wells": [
+        "15/9-19 A"
+      ]
+    },
+    "train": {
+      "count": 988,
+      "families": [
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "samples": [
+        "sample_0000147",
+        "sample_0000148",
+        "sample_0000149",
+        "sample_0000150",
+        "sample_0000151"
+      ],
+      "wells": [
+        "15/9-F-1",
+        "15/9-F-1 A",
+        "15/9-F-1 B",
+        "15/9-F-1 C",
+        "15/9-F-11 A",
+        "15/9-F-11 B",
+        "15/9-F-11 T2"
+      ]
+    }
+  }
+}
