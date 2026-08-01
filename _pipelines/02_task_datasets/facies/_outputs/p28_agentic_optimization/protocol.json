@@ -61,17 +61,21 @@
   "continued_cnn_is_policy_action": false,
   "frozen_test_accessed": false,
   "gates": {
-    "a1_prediction_hash_equal_a0": true,
-    "a2l_auc_strictly_above_a2d_and_a3": true,
+    "a1_true_replay_prediction_hash_and_metrics_equal_a0": true,
+    "a2l_path_score_strictly_above_a2d_and_a3": true,
     "not_worse_than_continued_cnn": true,
     "per_task_min_delta": -0.005,
-    "promotion_mean_delta": 0.005
+    "promotion_endpoint_mean_delta": 0.005
   },
   "gpu_limit": 1,
   "holdout_paths_accepted": false,
   "manifest_hashes": {
     "facies_f3": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
     "facies_penobscot": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81"
+  },
+  "metric_definitions": {
+    "endpoint_promotion_mean_mIoU": "equal_mean_F3_Penobscot_mIoU_on_disjoint_fold4_for_the_action_selected_from_fold0",
+    "optimization_path_score_running_max_mean_mIoU": "arithmetic_mean_across_four_selection_steps_of_running_max_equal_mean_F3_Penobscot_mIoU_seeded_by_A0"
   },
   "metric_entrypoint": "p4_metrics.evaluate_probabilities",
   "observation_denylist": [
@@ -107,7 +111,7 @@
   "provider_failure": "fail_closed_BLOCKED_PROVIDER",
   "random_generator": "numpy.random.PCG64",
   "sam2_weight_mode": "pretrained",
-  "schema_version": "facies-p28-protocol/v1",
+  "schema_version": "facies-p28-protocol/v2",
   "selection_fold_ids": [
     0
   ],
@@ -153,7 +157,7 @@
   "stage": "P28_stage1_online_pilot",
   "track_id": "facies",
   "train_samples_per_fold": 32,
-  "trials_per_executing_policy": 2,
+  "trials_per_executing_policy": 4,
   "validation_samples_per_fold": 16,
   "wall_clock_budget_s": 90.0
 }

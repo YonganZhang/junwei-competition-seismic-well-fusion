@@ -4,7 +4,7 @@
 This runner executes fresh, bounded development trials.  It fixes the P13
 pretrained SAM2 cross-attention route, lets policies select only registered
 single-factor changes, and keeps fold 4 hidden until each policy has completed
-its two fold-0 selection trials.  There is deliberately no test/holdout CLI.
+its four fold-0 selection trials.  There is deliberately no test/holdout CLI.
 """
 from __future__ import annotations
 
@@ -40,12 +40,12 @@ import p13_cross_attention as p13  # noqa: E402
 
 
 OUTPUT_ROOT = HERE / "_outputs" / "p28_agentic_optimization"
-SCHEMA_VERSION = "facies-p28-agentic-pilot/v1"
-PROTOCOL_SCHEMA_VERSION = "facies-p28-protocol/v1"
+SCHEMA_VERSION = "facies-p28-agentic-pilot/v2"
+PROTOCOL_SCHEMA_VERSION = "facies-p28-protocol/v2"
 ROOT_SEED = 2693
 SELECTION_FOLD = 0
 PROMOTION_FOLD = 4
-TRIALS_PER_POLICY = 2
+TRIALS_PER_POLICY = 4
 ACTION_WALL_CLOCK_BUDGET_S = 90.0
 GPU_LIMIT = 1
 DEEPSEEK_ENDPOINT = "https://api.deepseek.com/chat/completions"
@@ -720,14 +720,20 @@ def _metric_view(package: Mapping[str, Any]) -> dict[str, float]:
     }
 
 
-def _optimization_auc(results: Sequence[Mapping[str, Any]], baseline: float) -> float:
+def _optimization_path_score_running_max_mean_miou(
+    results: Sequence[Mapping[str, Any]],
+    baseline: float,
+) -> float:
+    """Mean running-best selection mIoU; not an area-under-curve statistic."""
     best = float(baseline)
     trace: list[float] = []
     for result in results:
         best = max(best, float(result["equal_mean"]))
         trace.append(best)
     if len(trace) != TRIALS_PER_POLICY:
-        raise ValueError("optimization AUC requires exactly two trials")
+        raise ValueError(
+            "optimization path score requires the frozen trial budget"
+        )
     return float(np.mean(trace))
 
 
@@ -888,9 +894,14 @@ def _run_policy(
         "selection_trials": selections,
         "selected_for_promotion": best["action_id"],
         "best_selection_mean_miou": float(best["equal_mean"]),
-        "optimization_auc": _optimization_auc(
-            selections,
-            float(a0["selection"]["equal_mean"]),
+        "optimization_path_score_running_max_mean_mIoU": (
+            _optimization_path_score_running_max_mean_miou(
+                selections,
+                float(a0["selection"]["equal_mean"]),
+            )
+        ),
+        "endpoint_promotion_mean_mIoU": float(
+            promotion["equal_mean"]
         ),
         "promotion": promotion,
     }
@@ -900,6 +911,8 @@ def _a1_advice(
     *,
     a0: Mapping[str, Any],
     a0_diagnostics: Mapping[str, Mapping[str, str]],
+    states: Mapping[tuple[str, str], tuple[Any, torch.nn.Module]],
+    device: str,
 ) -> dict[str, Any]:
     observation = _build_observation(
         policy_id="A1_advice_only",
@@ -909,11 +922,37 @@ def _a1_advice(
         prior_feedback=None,
     )
     response = _call_deepseek(observation, advice_only=True)
+    replay = {
+        phase: _run_config_package(
+            policy_id="A1_advice_only",
+            round_id=0,
+            phase=phase,
+            config=A0_CONFIG,
+            states=states,
+            device=device,
+        )
+        for phase in ("selection", "promotion")
+    }
     hashes = {
+        phase: {
+            task: replay[phase]["tasks"][task]["prediction_hash"]
+            for task in ("F3", "Penobscot")
+        }
+        for phase in ("selection", "promotion")
+    }
+    a0_hashes = {
         phase: {
             task: a0[phase]["tasks"][task]["prediction_hash"]
             for task in ("F3", "Penobscot")
         }
+        for phase in ("selection", "promotion")
+    }
+    replay_metrics = {
+        phase: _metric_view(replay[phase])
+        for phase in ("selection", "promotion")
+    }
+    a0_metrics = {
+        phase: _metric_view(a0[phase])
         for phase in ("selection", "promotion")
     }
     return {
@@ -923,9 +962,14 @@ def _a1_advice(
         "observation_hash": _hash_payload(observation),
         "decision": response.get("decision"),
         "error": response.get("error"),
+        "replay_kind": "fresh_same_config_seed_fold_reexecution",
+        "replay": replay,
         "prediction_hashes": hashes,
-        "a0_prediction_hashes": copy.deepcopy(hashes),
-        "prediction_hash_equal_a0": True,
+        "a0_prediction_hashes": a0_hashes,
+        "prediction_hash_equal_a0": hashes == a0_hashes,
+        "metrics": replay_metrics,
+        "a0_metrics": a0_metrics,
+        "metrics_equal_a0": replay_metrics == a0_metrics,
         "executed_action": False,
         "credential_persisted": False,
     }
@@ -941,11 +985,14 @@ def _gate_summary(
     a3: Mapping[str, Any],
 ) -> dict[str, Any]:
     checks: dict[str, bool] = {
-        "a1_prediction_hash_equal_a0": bool(a1["prediction_hash_equal_a0"]),
-        "a2l_two_legal_distinct_trials": False,
-        "a2l_auc_above_a2d": False,
-        "a2l_auc_above_a3": False,
-        "promotion_mean_delta_at_least_0p005": False,
+        "a1_replay_prediction_hash_equal_a0": bool(
+            a1["prediction_hash_equal_a0"]
+        ),
+        "a1_replay_metrics_equal_a0": bool(a1["metrics_equal_a0"]),
+        "a2l_four_legal_distinct_trials": False,
+        "a2l_path_score_above_a2d": False,
+        "a2l_path_score_above_a3": False,
+        "promotion_endpoint_mean_delta_at_least_0p005": False,
         "f3_delta_at_least_minus_0p005": False,
         "penobscot_delta_at_least_minus_0p005": False,
         "not_worse_than_continued_cnn": False,
@@ -956,19 +1003,24 @@ def _gate_summary(
             "checks": checks,
             "retain": False,
             "verdict": "BLOCKED_PROVIDER" if a2l.get("status") == "BLOCKED_PROVIDER" else "REJECT_A2L",
-        }
+    }
     action_ids = [trial["action_id"] for trial in a2l["selection_trials"]]
-    checks["a2l_two_legal_distinct_trials"] = (
+    checks["a2l_four_legal_distinct_trials"] = (
         len(action_ids) == TRIALS_PER_POLICY
         and len(set(action_ids)) == TRIALS_PER_POLICY
         and all(action_id in ACTION_ALLOWLIST for action_id in action_ids)
     )
-    checks["a2l_auc_above_a2d"] = float(a2l["optimization_auc"]) > float(a2d["optimization_auc"])
-    checks["a2l_auc_above_a3"] = float(a2l["optimization_auc"]) > float(a3["optimization_auc"])
+    score_key = "optimization_path_score_running_max_mean_mIoU"
+    checks["a2l_path_score_above_a2d"] = float(
+        a2l[score_key]
+    ) > float(a2d[score_key])
+    checks["a2l_path_score_above_a3"] = float(
+        a2l[score_key]
+    ) > float(a3[score_key])
     promotion = _metric_view(a2l["promotion"])
     baseline = _metric_view(a0["promotion"])
     continued = _metric_view(control["promotion"])
-    checks["promotion_mean_delta_at_least_0p005"] = (
+    checks["promotion_endpoint_mean_delta_at_least_0p005"] = (
         promotion["equal_mean"] - baseline["equal_mean"] >= MEAN_PROMOTION_DELTA
     )
     checks["f3_delta_at_least_minus_0p005"] = (
@@ -991,10 +1043,15 @@ def _gate_summary(
         "promotion_delta_vs_continued_cnn": {
             key: promotion[key] - continued[key] for key in promotion
         },
-        "optimization_auc": {
-            "A2L": a2l["optimization_auc"],
-            "A2D": a2d["optimization_auc"],
-            "A3": a3["optimization_auc"],
+        "optimization_path_score_running_max_mean_mIoU": {
+            "A2L": a2l[score_key],
+            "A2D": a2d[score_key],
+            "A3": a3[score_key],
+        },
+        "endpoint_promotion_mean_mIoU": {
+            "A2L": a2l["endpoint_promotion_mean_mIoU"],
+            "A2D": a2d["endpoint_promotion_mean_mIoU"],
+            "A3": a3["endpoint_promotion_mean_mIoU"],
         },
     }
 
@@ -1007,6 +1064,16 @@ def _protocol(split_contract: Mapping[str, Any]) -> dict[str, Any]:
         "stage": "P28_stage1_online_pilot",
         "primary_metric": "equal_mean_F3_Penobscot_mIoU",
         "metric_entrypoint": "p4_metrics.evaluate_probabilities",
+        "metric_definitions": {
+            "optimization_path_score_running_max_mean_mIoU": (
+                "arithmetic_mean_across_four_selection_steps_of_"
+                "running_max_equal_mean_F3_Penobscot_mIoU_seeded_by_A0"
+            ),
+            "endpoint_promotion_mean_mIoU": (
+                "equal_mean_F3_Penobscot_mIoU_on_disjoint_fold4_for_"
+                "the_action_selected_from_fold0"
+            ),
+        },
         "a0": asdict(A0_CONFIG),
         "sam2_weight_mode": "pretrained",
         "continued_cnn_is_policy_action": False,
@@ -1031,9 +1098,9 @@ def _protocol(split_contract: Mapping[str, Any]) -> dict[str, Any]:
         "observation_denylist": list(DENIED_OBSERVATION_TERMS),
         "provider_failure": "fail_closed_BLOCKED_PROVIDER",
         "gates": {
-            "a1_prediction_hash_equal_a0": True,
-            "a2l_auc_strictly_above_a2d_and_a3": True,
-            "promotion_mean_delta": MEAN_PROMOTION_DELTA,
+            "a1_true_replay_prediction_hash_and_metrics_equal_a0": True,
+            "a2l_path_score_strictly_above_a2d_and_a3": True,
+            "promotion_endpoint_mean_delta": MEAN_PROMOTION_DELTA,
             "per_task_min_delta": TASK_NON_DEGRADATION,
             "not_worse_than_continued_cnn": True,
         },
@@ -1118,7 +1185,8 @@ def _write_evidence(summary: Mapping[str, Any], protocol: Mapping[str, Any], out
         f"- A0 selection mean mIoU: `{summary['a0']['selection']['equal_mean']:.9f}`",
         f"- A0 promotion mean mIoU: `{summary['a0']['promotion']['equal_mean']:.9f}`",
         f"- Continued-CNN promotion mean mIoU: `{summary['continued_cnn']['promotion']['equal_mean']:.9f}`",
-        f"- A1 prediction hash equals A0: `{summary['a1']['prediction_hash_equal_a0']}`",
+        f"- A1 fresh replay prediction hashes equal A0: `{summary['a1']['prediction_hash_equal_a0']}`",
+        f"- A1 fresh replay metrics equal A0: `{summary['a1']['metrics_equal_a0']}`",
         "",
         "## Policy results",
         "",
@@ -1127,11 +1195,16 @@ def _write_evidence(summary: Mapping[str, Any], protocol: Mapping[str, Any], out
         policy = summary[key]
         if policy["status"] == "OK":
             actions = [trial["action_id"] for trial in policy["selection_trials"]]
+            score_key = (
+                "optimization_path_score_running_max_mean_mIoU"
+            )
             lines.extend([
-                f"- {policy['policy_id']}: actions `{actions}`, optimization AUC "
-                f"`{policy['optimization_auc']:.9f}`, promotion action "
-                f"`{policy['selected_for_promotion']}`, promotion mean mIoU "
-                f"`{policy['promotion']['equal_mean']:.9f}`.",
+                f"- {policy['policy_id']}: actions `{actions}`, "
+                "optimization path score (mean of the four-step running "
+                f"maximum selection mean mIoU; not area under a curve) "
+                f"`{policy[score_key]:.9f}`; endpoint promotion action "
+                f"`{policy['selected_for_promotion']}`, endpoint promotion "
+                f"mean mIoU `{policy['endpoint_promotion_mean_mIoU']:.9f}`.",
             ])
         else:
             lines.append(f"- {policy['policy_id']}: `{policy['status']}`; no fallback action was selected.")
@@ -1143,6 +1216,9 @@ def _write_evidence(summary: Mapping[str, Any], protocol: Mapping[str, Any], out
     for name, passed in gate["checks"].items():
         lines.append(f"- {name}: `{passed}`")
     lines.extend([
+        "",
+        f"Previous two-trial verdict: **{summary['previous_run']['verdict']}**. "
+        f"Corrected four-trial verdict: **{gate['verdict']}**.",
         "",
         f"Verdict: **{gate['verdict']}**.",
         "",
@@ -1176,6 +1252,33 @@ def build(
         processed_root=processed_root,
     )
     output_root = _validate_output_root(OUTPUT_ROOT)
+    previous_summary_path = output_root / "summary.json"
+    previous_run = {
+        "schema_version": "not_available",
+        "trials_per_policy": None,
+        "verdict": "NOT_AVAILABLE",
+        "retain": False,
+        "summary_sha256": None,
+    }
+    if previous_summary_path.is_file():
+        previous_summary = json.loads(
+            previous_summary_path.read_text(encoding="utf-8")
+        )
+        previous_run = {
+            "schema_version": previous_summary.get("schema_version"),
+            "trials_per_policy": len(
+                previous_summary.get("a2l", {}).get(
+                    "selection_trials", []
+                )
+            ),
+            "verdict": previous_summary.get("gate", {}).get(
+                "verdict", "UNKNOWN"
+            ),
+            "retain": bool(
+                previous_summary.get("gate", {}).get("retain", False)
+            ),
+            "summary_sha256": p11._sha256(previous_summary_path),
+        }
     for verifier, root in (
         (p11.verify, p11.OUTPUT_ROOT),
         (p12.verify, p12.OUTPUT_ROOT),
@@ -1201,7 +1304,12 @@ def build(
         task: _safe_train_diagnostics(a0["selection"]["tasks"][task])
         for task in ("F3", "Penobscot")
     }
-    a1 = _a1_advice(a0=a0, a0_diagnostics=a0_diagnostics)
+    a1 = _a1_advice(
+        a0=a0,
+        a0_diagnostics=a0_diagnostics,
+        states=states,
+        device=device,
+    )
     a2l = _run_policy(
         policy_id="A2L_llm_agent_execute",
         states=states,
@@ -1236,6 +1344,7 @@ def build(
         raise RuntimeError("protected P11/P12/P13 evidence changed during P28")
     summary = {
         "schema_version": SCHEMA_VERSION,
+        "previous_run": previous_run,
         "a0": a0,
         "continued_cnn": continued,
         "a1": a1,
@@ -1347,12 +1456,32 @@ def verify(output_root: Path = OUTPUT_ROOT) -> dict[str, Any]:
         raise ValueError("P28 violated development-only scope")
     if not summary["a1"]["prediction_hash_equal_a0"]:
         raise ValueError("A1 prediction identity probe failed")
+    if not summary["a1"]["metrics_equal_a0"]:
+        raise ValueError("A1 metric identity replay failed")
+    if summary["a1"].get("replay_kind") != (
+        "fresh_same_config_seed_fold_reexecution"
+    ):
+        raise ValueError("A1 is not a true execution replay")
     if summary["a2l"]["status"] == "OK":
         for key in ("a2l", "a2d", "a3"):
             policy = summary[key]
             actions = [trial["action_id"] for trial in policy["selection_trials"]]
-            if len(actions) != 2 or len(set(actions)) != 2 or not set(actions) <= set(ACTION_IDS):
+            if (
+                len(actions) != TRIALS_PER_POLICY
+                or len(set(actions)) != TRIALS_PER_POLICY
+                or not set(actions) <= set(ACTION_IDS)
+            ):
                 raise ValueError(f"{key} trial budget/allowlist contract failed")
+            if "optimization_auc" in policy:
+                raise ValueError("deprecated ambiguous path-score alias persisted")
+            if "optimization_path_score_running_max_mean_mIoU" not in policy:
+                raise ValueError("policy omitted the unambiguous path score")
+            if not math.isclose(
+                float(policy["endpoint_promotion_mean_mIoU"]),
+                float(policy["promotion"]["equal_mean"]),
+                abs_tol=1e-12,
+            ):
+                raise ValueError("promotion endpoint field is inconsistent")
     elif summary["gate"]["verdict"] != "BLOCKED_PROVIDER":
         raise ValueError("failed A2L did not fail closed")
     serialized = json.dumps({"protocol": protocol, "rows": rows}, ensure_ascii=False).lower()
