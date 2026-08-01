@@ -945,8 +945,10 @@ These are adaptive development findings, not an unbiased holdout estimate.
 Because all estimator variants use `subsample=1` and
 `colsample_bytree=1`, the three nominal seeds are identical: `12/12` cell wins
 for the depth-3 candidate represent four distinct held-out family outcomes,
-each repeated three times. The candidate remains disabled by default. No
-result in this chapter measures a MOMENT contribution; 大模型贡献占比待下一轮消融确认。
+each repeated three times. At the time of this chapter the candidate remained
+disabled; the separate adoption run below subsequently promoted it to the
+track default without modifying the original P17 evidence. No result in this
+chapter measures a MOMENT contribution; 大模型贡献占比待下一轮消融确认。
 
 ### Reproduce the agent chapter
 
@@ -982,3 +984,45 @@ Portable evidence is `_outputs/agent_chapter/evidence.md`, `summary.json`,
 ignored runtime state. SMOTE/ADASYN, three-point input smoothing, larger
 MOMENT variants, alternative losses, and any frozen-holdout effect are marked
 `未验证` rather than assigned invented scores.
+
+## Default XGBoost baseline adopted from P17
+
+The lithofacies default baseline is now `xgboost_multisoftprob_window` with
+`max_depth=3`, `eta=0.1`, and `rounds=60`. The canonical adapter uses these
+values when they are not overridden, and `baseline_registry.json` records the
+active configuration. The older P5 Stage-2/3 and Stage-4 settings remain
+explicit historical contracts at depth 2 / eta 0.2 / 40 rounds; their existing
+evidence was not rewritten.
+
+An independent live rerun retrained both configurations on the immutable
+development LOGO4 split with the same three seeds. The old configuration
+reproduced at `0.194937702076`; the adopted default reached `0.213348797049`,
+for `+0.018411094973` fixed-schema nine-class Macro-F1 and `12/12` paired cell
+wins. Both means match the original P17 record within `1e-12`. Since
+`subsample=1.0` and `colsample_bytree=1.0`, these 12 cells are four distinct
+held-out-family outcomes repeated under three nominal seeds.
+
+This is only an XGBoost hyperparameter-tuning improvement. MOMENT embeddings,
+pretrained encoders, LLM inference, and other large-model components do not
+participate in the adopted baseline or explain its measured delta. The run
+opened only the prebuilt development batch; it did not read frozen holdout or
+`test.h5`.
+
+### Reproduce the default-baseline verification
+
+```bash
+TABULAR_PYTHON="${P5_TABULAR_PYTHON:?set the approved tabular interpreter}"
+DEVELOPMENT_BATCH="${LITHOFACIES_STAGE3_DEVELOPMENT:?set development LOGO4 npz}"
+RUNNER=_pipelines/02_task_datasets/lithofacies/lithofacies_default_baseline.py
+OUT=_pipelines/02_task_datasets/lithofacies/_outputs/default_baseline
+
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$RUNNER" run \
+  --development-batch "$DEVELOPMENT_BATCH" --output-dir "$OUT"
+PYTHONDONTWRITEBYTECODE=1 "$TABULAR_PYTHON" "$RUNNER" verify \
+  --output-dir "$OUT"
+```
+
+Portable evidence is `_outputs/default_baseline/evidence.md`, `summary.json`,
+`results.jsonl`, and `artifact_manifest.json`. The local baseline registry is
+`baseline_registry.json`; the original `_outputs/agent_chapter/` files remain
+unchanged.

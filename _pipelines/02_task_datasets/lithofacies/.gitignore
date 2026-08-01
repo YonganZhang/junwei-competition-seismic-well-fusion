@@ -52,6 +52,12 @@ _outputs/agent_chapter/**
 !_outputs/agent_chapter/summary.json
 !_outputs/agent_chapter/evidence.md
 !_outputs/agent_chapter/artifact_manifest.json
+!_outputs/default_baseline/
+_outputs/default_baseline/**
+!_outputs/default_baseline/results.jsonl
+!_outputs/default_baseline/summary.json
+!_outputs/default_baseline/evidence.md
+!_outputs/default_baseline/artifact_manifest.json
 !_outputs/p5_stage2/
 _outputs/p5_stage2/**
 !_outputs/p5_stage2/p5_stage2_results.jsonl

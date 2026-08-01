@@ -1,0 +1,33 @@
+{
+  "schema_version": "lithofacies-baseline-registry/v1",
+  "track_id": "lithofacies",
+  "task_id": "gm09_genetic_facies_9class",
+  "primary_metric": "fixed_schema_macro_f1",
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "default_baseline": {
+    "model_id": "xgboost_multisoftprob_window",
+    "config": {
+      "max_depth": 3,
+      "eta": 0.1,
+      "rounds": 60
+    },
+    "development_logo4_three_seed_mean": 0.2133487970485067,
+    "supersedes_mean": 0.19493770207563763,
+    "delta": 0.01841109497286908,
+    "paired_cell_wins": "12/12",
+    "status": "default",
+    "evidence": "_outputs/default_baseline/evidence.md",
+    "attribution": "xgboost_hyperparameter_tuning_only",
+    "moment_or_large_model_contribution": false,
+    "frozen_test_accessed": false
+  },
+  "archived_baseline": {
+    "config": {
+      "max_depth": 2,
+      "eta": 0.2,
+      "rounds": 40
+    },
+    "status": "historical_comparator",
+    "evidence": "_outputs/agent_chapter/evidence.md"
+  }
+}

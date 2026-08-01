@@ -284,7 +284,16 @@ def _stage2_model_config(
     config = _build_config(lock, well, seismic)
     model_id = str(lock["model_id"])
     if model_id == "xgboost_multisoftprob_window":
-        config.update({"rounds": NEURAL_PARAMETER_UPDATE_LIMIT, "seed": model_seed})
+        # P5 Stage-2/3 is archived evidence, not the current default-baseline
+        # entrypoint. Keep its historical eta explicit after the adapter default
+        # moves to the independently validated P17 configuration.
+        config.update(
+            {
+                "rounds": NEURAL_PARAMETER_UPDATE_LIMIT,
+                "eta": 0.2,
+                "seed": model_seed,
+            }
+        )
     elif model_id == "catboost_multiclass_window":
         config.update({"iterations": NEURAL_PARAMETER_UPDATE_LIMIT, "seed": model_seed})
     elif model_id == "minirocket_ridge_window":

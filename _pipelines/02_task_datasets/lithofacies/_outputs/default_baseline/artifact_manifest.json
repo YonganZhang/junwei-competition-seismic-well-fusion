@@ -1,0 +1,29 @@
+{
+  "artifacts": [
+    {
+      "bytes": 111408,
+      "path": "results.jsonl",
+      "sha256": "9cf9fc937a3d7225114ce539f2662ac55246d20bd4265e136c3ac8c5e9177fc4"
+    },
+    {
+      "bytes": 2300,
+      "path": "summary.json",
+      "sha256": "025e189ee2e6c097193be91dee56e348558fb01b0a5b019fe22581433ea9c50b"
+    },
+    {
+      "bytes": 1606,
+      "path": "evidence.md",
+      "sha256": "100fc7c743e5fc968b714b87d6afe28dc805eba9ced91d31d9c854ab262bee5d"
+    }
+  ],
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "p17_original_hashes": {
+    "_outputs/agent_chapter/artifact_manifest.json": "bc75f1857cc772b18b8578ed8f6d3b63d3b3498787c74a2ff92594442d9f2348",
+    "_outputs/agent_chapter/evidence.md": "05664d19f171c0bcb252a435d47315d94e513a844c20bf12b99aac25d7287a18",
+    "_outputs/agent_chapter/results.jsonl": "6a8b7e20431a2557bdb3463dc960cfafdb1cd1771d291179678e19f0b9126175",
+    "_outputs/agent_chapter/summary.json": "182e2f014977baea68ab335678f766d9fd1ec409132b6ad686ea3ad26e85f37f"
+  },
+  "schema_version": "lithofacies-default-baseline-manifest/v1",
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555"
+}

@@ -1,0 +1,73 @@
+{
+  "comparison": {
+    "all_class_metrics_finite": true,
+    "default_minus_legacy": 0.01841109497286908,
+    "default_wins": 12,
+    "matches_p17_at_1e_12": {
+      "default": true,
+      "legacy": true
+    },
+    "materiality_threshold": 0.005,
+    "paired_cells": 12
+  },
+  "decision": {
+    "attribution": "xgboost_hyperparameter_tuning_only",
+    "default_variant": "default_depth3_eta01_rounds60",
+    "moment_or_large_model_contribution": false,
+    "status": "ACCEPT_AS_DEFAULT"
+  },
+  "default_config": {
+    "eta": 0.1,
+    "max_depth": 3,
+    "rounds": 60
+  },
+  "development_batch_sha256": "b6817ae218dee12bc72a1551e76423a61eb4ff11faf70dcb0444b01ba422f51c",
+  "folds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "metric": "fixed_schema_macro_f1",
+  "p17_original_hashes": {
+    "_outputs/agent_chapter/artifact_manifest.json": "bc75f1857cc772b18b8578ed8f6d3b63d3b3498787c74a2ff92594442d9f2348",
+    "_outputs/agent_chapter/evidence.md": "05664d19f171c0bcb252a435d47315d94e513a844c20bf12b99aac25d7287a18",
+    "_outputs/agent_chapter/results.jsonl": "6a8b7e20431a2557bdb3463dc960cfafdb1cd1771d291179678e19f0b9126175",
+    "_outputs/agent_chapter/summary.json": "182e2f014977baea68ab335678f766d9fd1ec409132b6ad686ea3ad26e85f37f"
+  },
+  "protocol": "fixed_LOGO4_three_seed_development_only",
+  "schema_version": "lithofacies-default-baseline-adoption/v1",
+  "seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "status": "complete",
+  "variants": {
+    "default_depth3_eta01_rounds60": {
+      "cells": 12,
+      "fold_means": {
+        "0": 0.241355505165029,
+        "1": 0.19674800002668855,
+        "2": 0.1837172825599845,
+        "3": 0.231574400442325
+      },
+      "mean_fixed_schema_macro_f1": 0.2133487970485067,
+      "std_fixed_schema_macro_f1": 0.02488242222516974
+    },
+    "legacy_depth2_eta02_rounds40": {
+      "cells": 12,
+      "fold_means": {
+        "0": 0.2135804514277343,
+        "1": 0.18357214680744094,
+        "2": 0.18127577519230875,
+        "3": 0.20132243487506649
+      },
+      "mean_fixed_schema_macro_f1": 0.19493770207563763,
+      "std_fixed_schema_macro_f1": 0.013857794088969907
+    }
+  }
+}

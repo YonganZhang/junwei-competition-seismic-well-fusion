@@ -10,6 +10,8 @@ import sys
 import unittest
 from pathlib import Path
 
+import numpy as np
+
 
 TRACK_DIR = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = TRACK_DIR.parents[2]
@@ -50,7 +52,13 @@ def _model_config(model_id: str, seed: int) -> dict:
         "seismic_shape": (3, 3, 33),
     }
     if model_id == "xgboost_multisoftprob_window":
-        return {**common, "rounds": 40, "max_depth": 2, "seed": seed}
+        return {
+            **common,
+            "rounds": 40,
+            "max_depth": 2,
+            "eta": 0.2,
+            "seed": seed,
+        }
     if model_id == "catboost_multiclass_window":
         return {**common, "iterations": 40, "depth": 3, "seed": seed}
     return {**common, "nf": 8, "kernel_size": 31}
@@ -155,6 +163,22 @@ class LithofaciesStage3FrozenContractTests(unittest.TestCase):
         self.assertEqual(budget["catboost"], {"iterations": 40, "depth": 3})
         self.assertEqual(budget["inceptiontime"], {"nf": 8, "kernel_size": 31})
         self.assertFalse(budget["hpo"])
+
+    def test_archived_xgboost_runner_keeps_legacy_eta_explicit(self) -> None:
+        lock = {
+            "model_id": "xgboost_multisoftprob_window",
+            "smoke_config": {"rounds": 8, "max_depth": 2, "seed": 2693},
+        }
+        config = _p5_stage2._stage2_model_config(
+            lock,
+            np.zeros((2, 26, 33), dtype=np.float32),
+            np.zeros((2, 3, 3, 33), dtype=np.float32),
+            model_seed=123,
+        )
+        self.assertEqual(config["rounds"], 40)
+        self.assertEqual(config["max_depth"], 2)
+        self.assertEqual(config["eta"], 0.2)
+        self.assertEqual(config["seed"], 123)
 
     def test_cell_seed_lane_loss_budget_and_preprocessing_fail_closed(self) -> None:
         valid = _fake_cell(stage3.TOP3[0], 0, 0)

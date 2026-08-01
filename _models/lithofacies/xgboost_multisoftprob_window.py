@@ -18,6 +18,9 @@ from _models.lithofacies.p5_adapter_common import (
 
 
 model_id = "xgboost_multisoftprob_window"
+DEFAULT_BASELINE_ROUNDS = 60
+DEFAULT_BASELINE_MAX_DEPTH = 3
+DEFAULT_BASELINE_ETA = 0.1
 
 
 def capabilities() -> dict[str, Any]:
@@ -25,10 +28,18 @@ def capabilities() -> dict[str, Any]:
 
 
 class XGBoostWindowAdapter:
-    def __init__(self, *, rounds: int = 8, max_depth: int = 2, seed: int = 2693) -> None:
+    def __init__(
+        self,
+        *,
+        rounds: int = DEFAULT_BASELINE_ROUNDS,
+        max_depth: int = DEFAULT_BASELINE_MAX_DEPTH,
+        eta: float = DEFAULT_BASELINE_ETA,
+        seed: int = 2693,
+    ) -> None:
         require_dependency(model_id, "xgboost")
         self.rounds = int(rounds)
         self.max_depth = int(max_depth)
+        self.eta = float(eta)
         self.seed = int(seed)
         self.booster: Any | None = None
 
@@ -51,7 +62,7 @@ class XGBoostWindowAdapter:
                 "objective": "multi:softprob",
                 "num_class": NUM_CLASSES,
                 "max_depth": self.max_depth,
-                "eta": 0.2,
+                "eta": self.eta,
                 "subsample": 1.0,
                 "colsample_bytree": 1.0,
                 "tree_method": "hist",
