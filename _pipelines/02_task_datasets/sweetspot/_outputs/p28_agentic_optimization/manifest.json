@@ -3,67 +3,67 @@
   "generated_at": "2026-08-01T00:00:00Z",
   "inputs": [
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
-      "role": "p5 label mapping",
       "scientific_role": "p5 label mapping",
+      "scientific_source_id": "p5 label mapping",
       "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
       "shape_or_row_count": 9056,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
-      "role": "p5 split manifest",
       "scientific_role": "p5 split manifest",
+      "scientific_source_id": "p5 split manifest",
       "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
       "shape_or_row_count": 280746,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
-      "role": "p5 stage-3 T3 leaderboard",
       "scientific_role": "p5 stage-3 T3 leaderboard",
+      "scientific_source_id": "p5 stage-3 T3 leaderboard",
       "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
       "shape_or_row_count": 3512,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json",
-      "role": "p5 stage-3 summary",
       "scientific_role": "p5 stage-3 summary",
+      "scientific_source_id": "p5 stage-3 summary",
       "sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
       "shape_or_row_count": 20090,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
-      "role": "p5 stage-4 confirmation summary",
       "scientific_role": "p5 stage-4 confirmation summary",
+      "scientific_source_id": "p5 stage-4 confirmation summary",
       "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
       "shape_or_row_count": 7591,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
-      "role": "p7 Chronos summary",
       "scientific_role": "p7 Chronos summary",
+      "scientific_source_id": "p7 Chronos summary",
       "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
       "shape_or_row_count": 18587,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
-      "role": "p8 calendar Chronos summary",
       "scientific_role": "p8 calendar Chronos summary",
+      "scientific_source_id": "p8 calendar Chronos summary",
       "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
       "shape_or_row_count": 26803,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md",
-      "role": "P17 acceptance evidence",
       "scientific_role": "P17 acceptance evidence",
+      "scientific_source_id": "P17 acceptance evidence",
       "sha256": "b7e78d08f231165a873a6d5d4ceeabaf060b0237ebb199ee666b9c6a5bddf6b4",
       "shape_or_row_count": 3806,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     }
   ],
@@ -85,7 +85,7 @@
       "height_px": null,
       "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/protocol.json",
       "role": "protocol",
-      "sha256": "3db359eaab0b0df9371e167c6eb95157ef34ec4959fa3365903ee5bdbbd1ba6c",
+      "sha256": "d67738a662a48adf8c20e16325063479278ab29749a7965e23de07775602d5a6",
       "vector_companions": [],
       "width_px": null
     },
@@ -103,7 +103,7 @@
       "height_px": null,
       "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/summary.json",
       "role": "summary",
-      "sha256": "09178648ff0da7e33064e9a772ffa92cd8f9ce49f546972d293c35966e864fc6",
+      "sha256": "b7e440fcd576c35d816b3b40ab543f30c48a0e8d2874961895adfa902b6ba3a5",
       "vector_companions": [],
       "width_px": null
     },
@@ -119,9 +119,9 @@
   ],
   "renderer": {
     "path": "_pipelines/02_task_datasets/sweetspot/p28_agentic_optimization.py",
-    "sha256": "185a8fb24450169dd4745f298d79a1dfb5e6450bcbaf5bf49e2b01a8ddea2043"
+    "sha256": "3c8ae6805d2e1e2f4e06b33a3d67744ad720ccff5f6095a7cece511000a6874c"
   },
   "schema_version": "sweetspot-p28-agentic-optimization/v1",
-  "source_commit": "92a4aeb063c8442ed39527f5bf93b0554d29059f",
+  "source_commit": "a0d3a9aee301b3cd8d99f115fcf85882bba55012",
   "track_id": "sweetspot"
 }

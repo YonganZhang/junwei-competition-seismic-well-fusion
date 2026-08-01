@@ -82,8 +82,8 @@ class PilotAudit:
     primary_metric_direction: str
     label_version: str
     proxy_semantics: str
-    split_manifest_path: str
-    label_mapping_path: str
+    split_manifest_id: str
+    label_mapping_id: str
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -97,7 +97,7 @@ class PilotTaskSpec:
     primary_metric: str
     primary_metric_direction: str
     label_version: str
-    split_manifest_path: str
+    split_manifest_id: str
     split_manifest_sha256: str
     root_seed: int
     route_family: str
@@ -119,13 +119,6 @@ class DeepSeekDecision:
 
 
 def _reference_inputs() -> list[dict[str, Any]]:
-    def display_path(path: Path) -> str:
-        if path.is_relative_to(REFERENCE_ROOT):
-            return str(path.relative_to(REFERENCE_ROOT))
-        if path.is_relative_to(PROJECT_ROOT):
-            return str(path.relative_to(PROJECT_ROOT))
-        return path.name
-
     items = [
         ("p5 label mapping", P5_LABEL_MAPPING_PATH),
         ("p5 split manifest", P5_T3_SPLIT_MANIFEST_PATH),
@@ -136,14 +129,15 @@ def _reference_inputs() -> list[dict[str, Any]]:
         ("p8 calendar Chronos summary", P8_SUMMARY_PATH),
         ("P17 acceptance evidence", P17_EVIDENCE_PATH),
     ]
+    source_commit = _git_commit(REFERENCE_ROOT)
     return [
         {
-            "role": role,
-            "path": display_path(path),
+            "scientific_source_id": role,
             "sha256": _sha256_file(path),
             "shape_or_row_count": path.stat().st_size,
             "scientific_role": role,
             "split_scope": "immutable reference",
+            "source_commit": source_commit,
         }
         for role, path in items
     ]
@@ -664,8 +658,8 @@ def _load_task_contract() -> tuple[PilotAudit, PilotTaskSpec, dict[str, Any]]:
         primary_metric_direction=str(target["primary_metric_direction"]),
         label_version=str(target["label_version"]),
         proxy_semantics=str(target["proxy_semantics"]),
-        split_manifest_path=str(target["split_manifest"]["path"]),
-        label_mapping_path=str(P5_LABEL_MAPPING_PATH),
+        split_manifest_id=str(target["split_manifest"]["path"]),
+        label_mapping_id="p5/sweetspot_p5_label_mapping.v1.json",
     )
     task_spec = PilotTaskSpec(
         target_id="T3",
@@ -674,7 +668,7 @@ def _load_task_contract() -> tuple[PilotAudit, PilotTaskSpec, dict[str, Any]]:
         primary_metric=str(target["primary_metric"]),
         primary_metric_direction=str(target["primary_metric_direction"]),
         label_version=str(target["label_version"]),
-        split_manifest_path=str(target["split_manifest"]["path"]),
+        split_manifest_id=str(target["split_manifest"]["path"]),
         split_manifest_sha256=str(target["split_manifest"]["sha256"]),
         root_seed=ROOT_SEED,
         route_family="xgboost",
@@ -1175,10 +1169,7 @@ def generate_report(output_dir: Path = OUTPUT_DIR, *, call_deepseek: bool = True
             "only_improved_flat_worse_feedback": True,
         },
         "executor_available": candidate_table is not None,
-        "reference_commits": {
-            "p10_results_sweetspot": _git_commit(REFERENCE_ROOT),
-            "current_worktree": _git_commit(WORKTREE_ROOT),
-        },
+        "generation_base_commit": _git_commit(WORKTREE_ROOT),
         "protocol_sha256": protocol_sha,
         "protocol_jsonl_sha256": jsonl_sha,
     }

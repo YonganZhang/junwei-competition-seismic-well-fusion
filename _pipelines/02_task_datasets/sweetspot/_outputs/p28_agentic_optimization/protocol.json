@@ -8,14 +8,14 @@
     ]
   },
   "audit": {
-    "label_mapping_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p10-results-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
+    "label_mapping_id": "p5/sweetspot_p5_label_mapping.v1.json",
     "label_version": "future-30-calendar-row-mean-oil-v1",
     "mapping_sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
     "p4_status": "feasible",
     "primary_metric": "mae",
     "primary_metric_direction": "minimize",
     "proxy_semantics": "future 30-calendar-row mean oil production; an operational production target, not unified sweetspot truth",
-    "split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "split_manifest_id": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
     "split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
     "target_id": "T3",
     "target_name": "FUTURE_30D_MEAN_OIL",
@@ -23,7 +23,7 @@
     "task_type": "regression"
   },
   "blocked_reason": null,
-  "candidate_table_sha256": "6895afb79b4ea5f8f01c8604e09e8571fdf57f2a7038234e2beea0796827ce12",
+  "candidate_table_sha256": "9aa67a14edd7b881188e7bead8e099ff2e1e2c23964198d4e13b57928dae7923",
   "frozen_baseline": {
     "baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
     "promotion_dev_feedback": "flat",
@@ -41,67 +41,67 @@
   },
   "inputs": [
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/sweetspot_p5_label_mapping.v1.json",
-      "role": "p5 label mapping",
       "scientific_role": "p5 label mapping",
+      "scientific_source_id": "p5 label mapping",
       "sha256": "a66bb5bc0098307ab03c3f3c64ee156a5292725ad1740488eaeb3b8bf572a167",
       "shape_or_row_count": 9056,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
-      "role": "p5 split manifest",
       "scientific_role": "p5 split manifest",
+      "scientific_source_id": "p5 split manifest",
       "sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
       "shape_or_row_count": 280746,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T3.json",
-      "role": "p5 stage-3 T3 leaderboard",
       "scientific_role": "p5 stage-3 T3 leaderboard",
+      "scientific_source_id": "p5 stage-3 T3 leaderboard",
       "sha256": "a68d7cee0bd9ede4907ede0f59dd55530821524999bac429bb7feb1824e772d7",
       "shape_or_row_count": 3512,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/p5_stage3_summary.json",
-      "role": "p5 stage-3 summary",
       "scientific_role": "p5 stage-3 summary",
+      "scientific_source_id": "p5 stage-3 summary",
       "sha256": "9dc9420f1bafcf91e341c1986e083fa5cb42fc5f3bd4855f774e146290381877",
       "shape_or_row_count": 20090,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json",
-      "role": "p5 stage-4 confirmation summary",
       "scientific_role": "p5 stage-4 confirmation summary",
+      "scientific_source_id": "p5 stage-4 confirmation summary",
       "sha256": "1db1b5e15cf53a567dcc922f7d68b73bc6de2e987cc05f14eb9f6e36e47f992c",
       "shape_or_row_count": 7591,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
-      "role": "p7 Chronos summary",
       "scientific_role": "p7 Chronos summary",
+      "scientific_source_id": "p7 Chronos summary",
       "sha256": "bb27792bcc4d34fb622ebaa5eea908b7ae4c6a08a5fa1ff19fda4d3dc97b7d3b",
       "shape_or_row_count": 18587,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
-      "role": "p8 calendar Chronos summary",
       "scientific_role": "p8 calendar Chronos summary",
+      "scientific_source_id": "p8 calendar Chronos summary",
       "sha256": "cfd1b2955638fa14ec9d00d9b169769fb8dbd2392eac47415c12fab0e4202783",
       "shape_or_row_count": 26803,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     },
     {
-      "path": "_wiki-methodology/_tests/P17_reconstruction_foundation_acceptance_evidence.md",
-      "role": "P17 acceptance evidence",
       "scientific_role": "P17 acceptance evidence",
+      "scientific_source_id": "P17 acceptance evidence",
       "sha256": "b7e78d08f231165a873a6d5d4ceeabaf060b0237ebb199ee666b9c6a5bddf6b4",
       "shape_or_row_count": 3806,
+      "source_commit": "1c81a030ddbd2ec16a7175423448012a17147236",
       "split_scope": "immutable reference"
     }
   ],
@@ -157,7 +157,7 @@
     "root_seed": 2693,
     "route_family": "xgboost",
     "route_note": "portable local xgboost-only pilot; Chronos requires sibling-code runtime dependency and is excluded by contract",
-    "split_manifest_path": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
+    "split_manifest_id": "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/split_manifest.json",
     "split_manifest_sha256": "c44277ffc1f6fb6b5dd740952e921c732d45193c7cb3b5c3dfc061e79025c62a",
     "target_id": "T3",
     "target_name": "FUTURE_30D_MEAN_OIL",

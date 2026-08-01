@@ -6,6 +6,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from typing import Any
 
 
 p28 = importlib.import_module(
@@ -14,6 +15,24 @@ p28 = importlib.import_module(
 
 
 class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
+    def _path_like_strings(self, payload: Any) -> list[str]:
+        values: list[str] = []
+        if isinstance(payload, dict):
+            for value in payload.values():
+                values.extend(self._path_like_strings(value))
+        elif isinstance(payload, list):
+            for value in payload:
+                values.extend(self._path_like_strings(value))
+        elif isinstance(payload, str):
+            if (
+                "/" in payload
+                or payload.startswith(".")
+                or payload.startswith("_")
+                or payload.endswith((".json", ".jsonl", ".md", ".py", ".csv", ".xlsx", ".yml", ".yaml", ".zip"))
+            ):
+                values.append(payload)
+        return values
+
     def test_source_rejects_sibling_worktree_python_imports(self) -> None:
         source = Path(p28.__file__).read_text(encoding="utf-8")
         tree = ast.parse(source)
@@ -73,6 +92,7 @@ class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
             self.assertFalse(manifest_data["manual_review"]["reviewed"])
             self.assertEqual(manifest_data["artifact_count"], 4)
             self.assertGreaterEqual(len(manifest_data["inputs"]), 8)
+            self.assertTrue(all("scientific_source_id" in item for item in manifest_data["inputs"]))
             self.assertEqual(summary["executor_available"], True)
             self.assertEqual(summary["verdict"], "blocked")
             self.assertFalse(summary["retain_llm"])
@@ -108,9 +128,17 @@ class SweetspotP28AgenticOptimizationTests(unittest.TestCase):
             self.assertEqual(summary["a4"]["selected_action_id"], "T3_XGB_D4_ETA_0_05_ROUNDS_96")
             self.assertEqual(summary_row["sha256"], p28._sha256_file(output_dir / "summary.json"))
 
-    def test_manifest_outputs_are_worktree_relative_and_hash_consistent(self) -> None:
+    def test_canonical_artifacts_have_only_relative_path_like_fields(self) -> None:
         output_dir = p28.OUTPUT_DIR
+        protocol_data = json.loads((output_dir / "protocol.json").read_text(encoding="utf-8"))
+        summary_data = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
         manifest_data = json.loads((output_dir / "manifest.json").read_text(encoding="utf-8"))
+        protocol_rows = [json.loads(line) for line in (output_dir / "protocol.jsonl").read_text(encoding="utf-8").splitlines()]
+        for blob in (protocol_data, summary_data, manifest_data, protocol_rows):
+            for value in self._path_like_strings(blob):
+                self.assertFalse(Path(value).is_absolute(), value)
+                self.assertNotIn(".claude/worktrees", value)
+                self.assertNotIn("p10-results-sweetspot", value)
         for record in manifest_data["outputs"]:
             path = Path(record["path"])
             self.assertFalse(path.is_absolute(), record["path"])

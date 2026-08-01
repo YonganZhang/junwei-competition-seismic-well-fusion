@@ -490,16 +490,16 @@
         1,
         2
       ],
-      "task_spec_sha256": "75e6f8eeede2fe2fdee5fc0eddc39ef49003fca01efb286fe4d83061cc193d89"
+      "task_spec_sha256": "f407846d61b6104a30ff533717e6f563c42137adba1fa482caa323bfd163f03e"
     },
     "confidence": 0.2,
     "promotion_mae": null,
-    "rationale": "All four configs show worse selection feedback; no config stands out. Stop to avoid further budget waste.",
+    "rationale": "All four configs show worse selection feedback; no improvement signal to justify further trials.",
     "raw": {
       "_model": "deepseek-v4-flash",
       "_provider": "deepseek",
       "confidence": 0.2,
-      "rationale": "All four configs show worse selection feedback; no config stands out. Stop to avoid further budget waste.",
+      "rationale": "All four configs show worse selection feedback; no improvement signal to justify further trials.",
       "selected_action_id": "A0_static_baseline",
       "selected_route": "xgboost",
       "stop_requested": true
@@ -996,7 +996,7 @@
       1,
       2
     ],
-    "task_spec_sha256": "75e6f8eeede2fe2fdee5fc0eddc39ef49003fca01efb286fe4d83061cc193d89"
+    "task_spec_sha256": "f407846d61b6104a30ff533717e6f563c42137adba1fa482caa323bfd163f03e"
   },
   "executor_available": true,
   "gates": {
@@ -1004,6 +1004,7 @@
     "T6": "blocked",
     "T7": "blocked"
   },
+  "generation_base_commit": "a0d3a9aee301b3cd8d99f115fcf85882bba55012",
   "hybrid": "A2L decision executed when available",
   "llm_prompt_contract": {
     "no_labels": true,
@@ -1016,11 +1017,7 @@
     3
   ],
   "protocol_jsonl_sha256": "6fc65978f58bc4439c17858fb77014f49b4e565a1e65df9fd804beb7f5f52e27",
-  "protocol_sha256": "3db359eaab0b0df9371e167c6eb95157ef34ec4959fa3365903ee5bdbbd1ba6c",
-  "reference_commits": {
-    "current_worktree": "92a4aeb063c8442ed39527f5bf93b0554d29059f",
-    "p10_results_sweetspot": "1c81a030ddbd2ec16a7175423448012a17147236"
-  },
+  "protocol_sha256": "d67738a662a48adf8c20e16325063479278ab29749a7965e23de07775602d5a6",
   "reject": "A2L stop, A2D/A3/A4 promotion failure, or data blocks",
   "retain_llm": false,
   "retention": "no retain",
