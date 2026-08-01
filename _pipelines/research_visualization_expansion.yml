@@ -7,5 +7,5 @@ steps:
     ref: code:research_visualization_render
   - id: validate_outputs
     ref: code:research_visualization_validate
-verified_steps_hash: bf5c7daf2a1bd6947cb9278bc0325e493665b3d6c278babe26098976e2ad43b8
-verified_at_commit: 8375b97cfd3447ab44082bd69f27b105df85feab
+verified_steps_hash: 15cf4f2df18730fcba06e0bccf5797529eff848ee7781a3d4d2ed23ce18a9508
+verified_at_commit: 16d523d4936c66d6f594e6b58e8fbc018494d307

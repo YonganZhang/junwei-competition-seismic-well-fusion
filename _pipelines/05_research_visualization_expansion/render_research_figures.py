@@ -1512,17 +1512,53 @@ def render_research_matrix(output_dir: Path) -> dict[str, Any]:
     """
 
     rows = [
-        ("Fault", "Local logistic", "SAM-Med3D", "prompted 3-D adapter", "data gate"),
-        ("Facies", "FPN / DeepLabV3+", "SAM2 Hiera", "cross-attention", "attribution"),
-        ("Property", "ExtraTrees / XGBoost", "TabICL", "parallel comparator", "no promotion"),
-        ("Lithofacies", "XGBoost", "MOMENT", "sequence encoder", "non-beneficial"),
-        ("Sweetspot", "GBDT routing", "Chronos-2", "causal forecast", "T3 development"),
-        ("Reconstruction", "OK3D", "OpenMind-MAE", "gated residual", "diagnostic"),
+        (
+            "Fault",
+            "Local logistic",
+            "SAM-Med3D",
+            "prompted 3-D adapter",
+            "3-D data unavailable",
+        ),
+        (
+            "Facies",
+            "FPN / DeepLabV3+",
+            "SAM2 Hiera",
+            "cross-attention",
+            "pretraining unresolved",
+        ),
+        (
+            "Property",
+            "ExtraTrees / XGBoost",
+            "TabICL",
+            "parallel comparator",
+            "development only",
+        ),
+        (
+            "Lithofacies",
+            "XGBoost",
+            "MOMENT",
+            "sequence encoder",
+            "below tree baseline",
+        ),
+        (
+            "Sweetspot",
+            "GBDT routing",
+            "Chronos-2",
+            "causal forecast",
+            "T3 development gain",
+        ),
+        (
+            "Reconstruction",
+            "OK3D",
+            "OpenMind-MAE",
+            "fixed 3-kernel metric",
+            "dev + same-field transfer",
+        ),
     ]
     publication_style()
     fig, ax = plt.subplots(figsize=(11.5, 5.8))
     ax.set_xlim(0, 1)
-    ax.set_ylim(-0.6, len(rows) - 0.4)
+    ax.set_ylim(-0.6, len(rows) + 0.4)
     ax.axis("off")
     columns = [
         (0.02, 0.18, "Track"),
@@ -1686,7 +1722,7 @@ def render_all(output_dir: Path, *, interactive: bool = True) -> dict[str, Any]:
             "cross_field_coordinate_fusion": False,
             "reference_prediction_separation": True,
             "large_model_role": (
-                "controlled encoder, comparator, or residual/forecast branch; "
+                "controlled encoder, comparator, forecast branch, or neighborhood representation; "
                 "never visual evidence generation"
             ),
         },

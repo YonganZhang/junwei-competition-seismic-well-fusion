@@ -84,7 +84,8 @@ code_domains:
       六赛道真实数据科研图件与三维视图入口；统一使用
       `_code/visualization/geo3d_viz.py` 的出版样式、哈希和provenance辅助函数。
       主脚本只读已归档观测/预测，不训练、不选模、不生成地质伪数据；
-      产物由`research_visualization_expansion`流水线的机器哈希门禁验证。
+      六赛道总览中的三维重建路径固定为 P21 三邻域核，产物由
+      `research_visualization_expansion`流水线的机器哈希门禁验证。
 
   - id: ml_framework
     path: _code/ml_framework
@@ -257,7 +258,7 @@ entrypoints:
     type: pipeline_step
     status: active
     owner: project
-    description: "Render the six-track real-data spatial diagnostics, research figures and optional interactive views under the frozen scientific contract."
+    description: "Render the six-track real-data spatial diagnostics and research figures under the frozen scientific contract, including the P21 fixed three-kernel reconstruction path."
 
   - id: research_visualization_validate
     path: _pipelines/05_research_visualization_expansion/render_research_figures.py

@@ -10,13 +10,13 @@
         "scientific baseline",
         "same 3-D adapter with random initialization",
         "SAM-Med3D pretrained initialization",
-        "validation-gated residual combination"
+        "validation-conditional residual combination"
       ],
       "split_contract": "grouped spatial validation with interpreted-positive and explicitly sampled negative policy unchanged",
       "primary_metrics": ["AUPRC", "voxel F1", "surface-distance error"],
       "structure_diagnostics": ["source-seismic section overlay", "3-D fault-stick continuity"],
       "promotion_rule": "promote only if the pretrained condition improves grouped validation and the gate is non-degrading",
-      "current_evidence": "data gate blocked; no foundation-model gain claim"
+      "current_evidence": "continuous 3-D development data unavailable; no foundation-model gain claim"
     },
     "facies": {
       "research_question": "Does Hiera pretraining transfer reflection texture and boundary context across F3 and Penobscot domains?",
@@ -83,20 +83,20 @@
       "current_evidence": "development gain recorded; frozen temporal-holdout diagnostic remains weak"
     },
     "reconstruction": {
-      "research_question": "Can pretrained volumetric context recover spatial structure missed by kriging without degrading a reliable geostatistical baseline?",
+      "research_question": "Can pretrained volumetric context improve a fixed geostatistical neighborhood metric without replacing the stable kriging baseline?",
       "scientific_baseline": "PyKrige OK3D",
       "foundation_model": "OpenMind-MAE ResEncL",
       "controlled_conditions": [
         "OK3D baseline",
-        "same residual encoder with random initialization",
-        "pretrained OpenMind-MAE residual encoder",
-        "fold-consistency gated residual"
+        "same representation pipeline with random initialization as a diagnostic",
+        "frozen pretrained OpenMind-MAE representation",
+        "P21 fixed three-kernel neighborhood ensemble"
       ],
-      "split_contract": "strict and conditional spatial holdouts reported separately",
-      "primary_metrics": ["MAE", "RMSE", "R2", "directional variogram deviation"],
+      "split_contract": "five spatial development folds and same-field historical-version transfer reported separately",
+      "primary_metrics": ["MAE", "RMSE", "Bias", "directional variogram deviation"],
       "structure_diagnostics": ["registered 3-D volume", "orthogonal slices", "directional semivariogram"],
-      "promotion_rule": "the residual branch must improve pointwise metrics and spatial structure; otherwise the gate returns to OK3D",
-      "current_evidence": "development diagnostic only; current conditional reconstruction is strongly over-smoothed"
+      "promotion_rule": "the frozen P21 configuration must improve pooled RMSE under the locked spatial protocol without post-evaluation parameter changes",
+      "current_evidence": "P21 improves development RMSE by 2.5144% versus OK3D and same-field historical-version RMSE by 1.4529%; fine-scale structure remains under-dispersed"
     }
   }
 }

@@ -1,7 +1,7 @@
 # _meta/_data_registry.yml — 数据资产注册表(单一真源)
 project: 军伟的比赛-地震测井多模态融合
 schema_version: v4.0
-last_synced: 2026-08-01 (P26 master merge and report v1.3 delivery)
+last_synced: 2026-08-01 (P27 report v1.4 audit and stable-link delivery)
 
 assets:
   - id: volve-north-sea
@@ -113,9 +113,9 @@ assets:
     status: published
     location: _outputs/technical_report_delivery/junwei_six_track_latex_source_latest.zip
     source: _paper/technical_report/
-    sha256: 5678a5c9a1f7ed913ed29f306a4d65b2f9a00bac00fb8cfcaf3acc8ab8a2ea0a
+    sha256: 753a0a41289888bb50e141b86d3bebb2ab61690bf43da89ea29e0e70a7837b7f
     note: >
-      140个归档条目，包含LaTeX章节、BibTeX参考文献、六张最终架构图、正文结果图、
+      143个归档条目，包含LaTeX章节、BibTeX参考文献、六张最终架构图、正文结果图、
       Nano Banana 2提示词、构建脚本、最终PDF、P21/P24证据和默认模型配置。
       unzip完整性、XeLaTeX编译与公网HTTP 200均已通过。稳定下载地址为
       https://share.yongan.site/junwei-six-track-latex-source/junwei_six_track_latex_source_latest.zip。
