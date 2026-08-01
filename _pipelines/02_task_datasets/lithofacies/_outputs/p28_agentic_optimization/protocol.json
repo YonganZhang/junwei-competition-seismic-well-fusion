@@ -1,0 +1,188 @@
+{
+  "a0": {
+    "config": {
+      "action_id": "A0_DEPTH3_ETA01_ROUNDS60",
+      "description": "frozen depth-3 eta-0.1 60-round full-feature XGBoost",
+      "eta": 0.1,
+      "features": "all_1155",
+      "max_depth": 3,
+      "normalize_weight": false,
+      "prior_shrinkage": 0.0,
+      "rounds": 60,
+      "weight_exponent": 0.5
+    },
+    "config_sha256": "de6dc9699a8537e5137d6cbbd0bcfce241d7313acbf09bd880dd3c154c631eeb",
+    "frozen_mean": 0.2133487970485067
+  },
+  "action_table_sha256": "061685a0760c0a4584bb4242035fe1e9ec3d29cfcc4178686032869d67aaddc3",
+  "actions": [
+    {
+      "action_id": "ACT_DEPTH4_ETA0075_ROUNDS80",
+      "description": "depth 4, eta 0.075, 80 rounds; all 1155 features",
+      "eta": 0.075,
+      "features": "all_1155",
+      "max_depth": 4,
+      "normalize_weight": false,
+      "prior_shrinkage": 0.0,
+      "rounds": 80,
+      "weight_exponent": 0.5
+    },
+    {
+      "action_id": "ACT_WEIGHT_EXP05_MEAN1",
+      "description": "class-weight exponent 0.5 normalized to supported-class mean one",
+      "eta": 0.1,
+      "features": "all_1155",
+      "max_depth": 3,
+      "normalize_weight": true,
+      "prior_shrinkage": 0.0,
+      "rounds": 60,
+      "weight_exponent": 0.5
+    },
+    {
+      "action_id": "ACT_WEIGHT_EXP075_MEAN1",
+      "description": "class-weight exponent 0.75 normalized to supported-class mean one",
+      "eta": 0.1,
+      "features": "all_1155",
+      "max_depth": 3,
+      "normalize_weight": true,
+      "prior_shrinkage": 0.0,
+      "rounds": 60,
+      "weight_exponent": 0.75
+    },
+    {
+      "action_id": "ACT_WELL_MASK_ONLY_858",
+      "description": "use only 13 logs plus 13 missing masks, flattened to 858 features",
+      "eta": 0.1,
+      "features": "well_mask_858",
+      "max_depth": 3,
+      "normalize_weight": false,
+      "prior_shrinkage": 0.0,
+      "rounds": 60,
+      "weight_exponent": 0.5
+    },
+    {
+      "action_id": "ACT_PRIOR_SHRINK010",
+      "description": "apply fold-train prior shrinkage 0.10 to frozen A0 logits",
+      "eta": 0.1,
+      "features": "all_1155",
+      "max_depth": 3,
+      "normalize_weight": false,
+      "prior_shrinkage": 0.1,
+      "rounds": 60,
+      "weight_exponent": 0.5
+    }
+  ],
+  "arms": [
+    "A0",
+    "A1",
+    "A2L",
+    "A2D",
+    "A3",
+    "A4"
+  ],
+  "deepseek": {
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "invalid_or_unavailable_provider": "fail_closed_no_replay",
+    "missing_credential": "fail_closed",
+    "model": "deepseek-chat",
+    "strict_json": true
+  },
+  "fixed_class_schema": [
+    "F-MARSH",
+    "F-MOUTHBAR",
+    "F-OFFSHORE",
+    "F-LOWER SHOREFACE",
+    "F-UPPER SHOREFACE",
+    "F-TIDAL BAR",
+    "F-TIDAL CHANNEL",
+    "F-TIDAL FLAT MUDDY",
+    "F-TIDAL FLAT SANDY"
+  ],
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "moment_attribution_lane": {
+    "encoder_weight_switch": [
+      "pretrained",
+      "random_init"
+    ],
+    "lane_id": "moment_pretrained_vs_random_paired",
+    "main_effect_member": false,
+    "source": "_outputs/p11_clean_well_native33/summary.json",
+    "status": "frozen_external_paired_evidence_not_rerun"
+  },
+  "nested_batch_sha256": "eb1f7692352a2d8eb96a4806f24ab8b82977798e077c272d746348744bc44e86",
+  "policy_deny_list": [
+    "metric",
+    "score",
+    "label",
+    "residual",
+    "path",
+    "family",
+    "sample",
+    "promotion",
+    "validation"
+  ],
+  "policy_observables": [
+    "fold_train_support_buckets",
+    "underfit_balanced_overfit",
+    "improved_flat_worse"
+  ],
+  "primary_metric": "fixed_schema_macro_f1",
+  "promotion": "outer_disjoint_family_refit_x_3_repeat_seeds",
+  "random_policy_seeds": [
+    2693,
+    2694,
+    2695
+  ],
+  "repeat_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "rotations": [
+    {
+      "disjoint": true,
+      "outer_rollout_id": 0,
+      "promotion_fold_id": 0,
+      "selection_fold_ids": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "disjoint": true,
+      "outer_rollout_id": 1,
+      "promotion_fold_id": 1,
+      "selection_fold_ids": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "disjoint": true,
+      "outer_rollout_id": 2,
+      "promotion_fold_id": 2,
+      "selection_fold_ids": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "disjoint": true,
+      "outer_rollout_id": 3,
+      "promotion_fold_id": 3,
+      "selection_fold_ids": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "schema_version": "lithofacies-p28-protocol/v1",
+  "selection": "inner_LOGO3_mean_over_3_folds_x_3_repeat_seeds",
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "trial_budget_per_outer_rollout": 3
+}

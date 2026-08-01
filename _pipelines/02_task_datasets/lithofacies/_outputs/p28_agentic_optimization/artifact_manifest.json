@@ -1,0 +1,31 @@
+{
+  "artifacts": {
+    "evidence.md": {
+      "bytes": 3578,
+      "sha256": "3c735aa5966b4290c4ee831a6ba24609ac6bb2c0171937902db1fb74800ea0a7"
+    },
+    "protocol.json": {
+      "bytes": 4693,
+      "sha256": "c673011d42860e95412ad4605f89a841ebee03baa04aeac26d95c922ce4b7e18"
+    },
+    "results.jsonl": {
+      "bytes": 520701,
+      "sha256": "9b094f787c2ae22385bebb87a6f4c1ee3d039cf37d9d0ce0b309fa10b597e347"
+    },
+    "summary.json": {
+      "bytes": 1236800,
+      "sha256": "0d994ecafa4af5dbbb32d4e3ed7c81d98d0f72777f7784762d2f7ed65c7d8b17"
+    }
+  },
+  "credential_persisted": false,
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "schema_version": "lithofacies-p28-artifact-manifest/v1",
+  "sources": {
+    "_outputs/p11_clean_well_native33/summary.json": "d6058f791cf40f7597e0b820c5379df69e7f1e581f686b71cd497d547cce71ab",
+    "lithofacies_p28_agentic_optimization.py": "ab07f4fb6af62d68e87772fc6c3f74b65daed7d81a3ff20361e684fae47a24de",
+    "nested_development.npz": "eb1f7692352a2d8eb96a4806f24ab8b82977798e077c272d746348744bc44e86"
+  },
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555",
+  "verdict": "REJECT"
+}
