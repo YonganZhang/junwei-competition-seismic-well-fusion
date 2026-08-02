@@ -21,6 +21,27 @@ def _load_module():
 
 
 class P30CigBenchCompareTests(unittest.TestCase):
+    def test_portable_audited_v2_checkpoint_replays_archived_metrics(self) -> None:
+        module = _load_module()
+        with np.load(module.P30_SUBVOLUME_PATH) as archive:
+            dev = {key: archive[key] for key in archive.files}
+        split = module.load_json(module.P30_SPLIT_MANIFEST_PATH)
+        folds = {fold.name: fold for fold in module.parse_fold_views(dev, split)}
+        fit_probabilities, info = module.predict_baseline_volume(folds["fit"].seismic)
+        guard_probabilities, _ = module.predict_baseline_volume(folds["guard"].seismic)
+        fit = module.evaluate_model_on_fold(folds["fit"], fit_probabilities)
+        guard = module.evaluate_model_on_fold(
+            folds["guard"],
+            guard_probabilities,
+            threshold=fit["threshold"],
+            threshold_source="fit_reused",
+        )
+        archived = module.load_json(module.SCALED_OUTPUT_ROOT / "comparison.json")["models"]["fault_local_logistic"]
+        for stage, actual in (("fit", fit["metrics"]), ("guard", guard["metrics"])):
+            for metric in ("precision", "recall", "f1", "iou", "threshold"):
+                self.assertAlmostEqual(actual[metric], archived[stage][metric], places=12)
+        self.assertIn("FaultLocalLogistic", info["model_class"])
+
     def test_compare_models_excludes_unknown_and_uses_fit_threshold(self) -> None:
         module = _load_module()
         seismic = np.zeros((2, 4, 2), dtype=np.float32)

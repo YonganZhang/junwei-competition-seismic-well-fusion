@@ -25,6 +25,7 @@ P30_SPLIT_MANIFEST_PATH = P30_OUTPUT_ROOT / "split_manifest.json"
 AUDITED_V2_DIR = TRACK_DIR / "_outputs" / "runs" / "audited_v2"
 AUDITED_V2_MODEL_PATH = AUDITED_V2_DIR / "baseline_model.joblib"
 AUDITED_V2_METRICS_PATH = AUDITED_V2_DIR / "baseline_metrics.json"
+AUDITED_V2_PORTABLE_PATH = P30_OUTPUT_ROOT / "audited_v2_model_portable.json"
 OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline"
 FIXED_OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline_threshold_fix"
 SCALED_OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline_scale_fix"
@@ -176,13 +177,30 @@ def predict_baseline_volume(seismic: np.ndarray) -> tuple[np.ndarray, dict[str, 
     sys.path.insert(0, str(TRACK_DIR))
     sys.path.insert(0, str(PROJECT_ROOT / "_code"))
     started = time.perf_counter()
-    model = joblib.load(AUDITED_V2_MODEL_PATH)
+    model = joblib.load(AUDITED_V2_MODEL_PATH) if AUDITED_V2_MODEL_PATH.is_file() else None
+    portable = load_json(AUDITED_V2_PORTABLE_PATH)
+    if portable["source_metrics_sha256"] != sha256_file(AUDITED_V2_METRICS_PATH):
+        raise ValueError("portable audited_v2 checkpoint is not bound to the tracked metrics file")
+    estimator = portable["estimator"]
+    coef = np.asarray(estimator["coef"], dtype=np.float32)
+    intercept = np.asarray(estimator["intercept"], dtype=np.float32)
+    if coef.shape != (1, 5) or intercept.shape != (1,) or estimator["classes"] != [0, 1]:
+        raise ValueError("portable audited_v2 checkpoint has an invalid binary-logistic shape")
     # Preserve the same [channel, spatial, temporal] contract the audited 2-D
     # baseline was trained on: each inline slice is converted to [1, xline, time].
     probabilities = np.empty_like(seismic, dtype=np.float32)
     for inline_index in range(seismic.shape[1]):
         patch = np.asarray(seismic[:, inline_index, :], dtype=np.float32).T[None, None]
-        slice_probabilities = np.asarray(model.predict_batch(patch)[0], dtype=np.float32)
+        if model is not None:
+            slice_probabilities = np.asarray(model.predict_batch(patch)[0], dtype=np.float32)
+        else:
+            from models.fault_local_logistic import FaultLocalLogistic
+
+            features = FaultLocalLogistic._features(patch).astype(np.float32)
+            logits = features @ coef[0] + intercept[0]
+            slice_probabilities = (1.0 / (1.0 + np.exp(-np.clip(logits, -80.0, 80.0)))).reshape(
+                patch.shape[0], *patch.shape[-2:]
+            )[0].astype(np.float32)
         if slice_probabilities.shape != (seismic.shape[2], seismic.shape[0]):
             raise ValueError(
                 "baseline predict_batch returned unexpected shape "
@@ -191,11 +209,23 @@ def predict_baseline_volume(seismic: np.ndarray) -> tuple[np.ndarray, dict[str, 
         probabilities[:, inline_index, :] = slice_probabilities.T
     elapsed = time.perf_counter() - started
     return probabilities, {
-        "model_class": f"{type(model).__module__}.{type(model).__name__}",
+        "model_class": (
+            f"{type(model).__module__}.{type(model).__name__}"
+            if model is not None
+            else f"{portable['model_class']}[portable_coefficients]"
+        ),
         "model_builder": "models.fault_local_logistic.build_model",
-        "model_description": getattr(model, "description", type(model).__name__),
+        "model_description": (
+            getattr(model, "description", type(model).__name__)
+            if model is not None
+            else portable["feature_contract"]
+        ),
         "elapsed_seconds": elapsed,
-        "note": "audited_v2 joblib checkpoint evaluated slice-by-slice over the P30 development cube",
+        "note": (
+            "audited_v2 joblib checkpoint evaluated slice-by-slice over the P30 development cube"
+            if model is not None
+            else "tracked portable coefficients reconstructed from the hash-locked audited_v2 joblib checkpoint"
+        ),
     }
 
 
@@ -252,6 +282,7 @@ def compare_models(
     cig_scale: dict[str, float] | None = None,
 ) -> dict[str, Any]:
     folds = parse_fold_views(dev, split_manifest)
+    portable = load_json(AUDITED_V2_PORTABLE_PATH)
     scale = dict(DEFAULT_CIG_BENCH_SCALE)
     if cig_scale is not None:
         scale.update(cig_scale)
@@ -351,7 +382,13 @@ def compare_models(
         },
         "baseline_reference": {
             "audited_v2_model_path": str(AUDITED_V2_MODEL_PATH.relative_to(PROJECT_ROOT)),
-            "audited_v2_model_sha256": sha256_file(AUDITED_V2_MODEL_PATH),
+            "audited_v2_model_sha256": (
+                sha256_file(AUDITED_V2_MODEL_PATH)
+                if AUDITED_V2_MODEL_PATH.is_file()
+                else portable["source_joblib_sha256"]
+            ),
+            "portable_model_path": str(AUDITED_V2_PORTABLE_PATH.relative_to(PROJECT_ROOT)),
+            "portable_model_sha256": sha256_file(AUDITED_V2_PORTABLE_PATH),
             "audited_v2_metrics_path": str(AUDITED_V2_METRICS_PATH.relative_to(PROJECT_ROOT)),
             "audited_v2_metrics_sha256": sha256_file(AUDITED_V2_METRICS_PATH),
             "audited_v2_old_metrics": load_json(AUDITED_V2_METRICS_PATH)["test_metrics"],

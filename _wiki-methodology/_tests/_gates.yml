@@ -7,6 +7,48 @@
 #
 # 字段: id(唯一)/ cmd(项目根为 cwd)/ timeout(秒)/ expect(目前唯一语义 exit0)/ note(可选)
 gates:
+  - id: p31-fault-agentic-pipeline
+    cmd: "python3 _pipelines/02_task_datasets/track_lifecycle.py --track fault --stage verify"
+    timeout: 30
+    expect: exit0
+    note: "验证断层 A2D 治理晋级、LLM/CIG 拒绝和 P30 连续三维体 READY 证据。"
+
+  - id: p31-facies-agentic-pipeline
+    cmd: "python3 _pipelines/02_task_datasets/track_lifecycle.py --track facies --stage verify"
+    timeout: 30
+    expect: exit0
+    note: "验证地震相按数据集确定性混合策略晋级，不将 DeepSeek 直接端点归因为改善。"
+
+  - id: p31-property-agentic-pipeline
+    cmd: "python3 _pipelines/02_task_datasets/track_lifecycle.py --track property --stage verify"
+    timeout: 30
+    expect: exit0
+    note: "验证物性 A2D 确定性路线晋级、A2L 不保留以及 CIG-Bench 阻塞边界。"
+
+  - id: p31-lithofacies-agentic-pipeline
+    cmd: "python3 _pipelines/02_task_datasets/track_lifecycle.py --track lithofacies --stage verify"
+    timeout: 30
+    expect: exit0
+    note: "验证岩相 XGBoost depth=3/eta=0.1/60 轮的默认晋级及 LLM/MOMENT 非归因边界。"
+
+  - id: p31-sweetspot-agentic-pipeline
+    cmd: "python3 _pipelines/02_task_datasets/track_lifecycle.py --track sweetspot --stage verify"
+    timeout: 30
+    expect: exit0
+    note: "验证甜点智能体在候选无正改善时停止并保留冻结 A0。"
+
+  - id: p31-reconstruction-agentic-pipeline
+    cmd: "python3 _pipelines/02_task_datasets/track_lifecycle.py --track reconstruction --stage verify"
+    timeout: 30
+    expect: exit0
+    note: "验证三维重建保留 P21 固定三核默认，P29 LLM 数值策略不晋级。"
+
+  - id: p31-six-track-lifecycle-unit
+    cmd: "python3 -m unittest -v _pipelines/02_task_datasets/tests/test_track_lifecycle.py"
+    timeout: 30
+    expect: exit0
+    note: "六赛道七段生命周期总门禁：确切字段、哈希报告与 fail-loud 回归。"
+
   - id: domain-visualization-delivery
     cmd: "python3 -m unittest discover -s _pipelines/03_domain_visualization_delivery/tests -p 'test_*.py' -v"
     timeout: 180

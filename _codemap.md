@@ -1,6 +1,6 @@
 # Code Map — 军伟的比赛（地震+测井多模态融合识别有利油气目标）
 
-更新: 2026-08-01
+更新: 2026-08-03
 
 本文只做 COL4 代码地图 / 注册路由。当前 phase、下一步、运行态、最近测试结果只写 `_wiki-methodology/_top/_task_plan.md`。
 
@@ -42,6 +42,22 @@
 | 输出/图/论文 | `_outputs/` / `_figures/` / `_paper/` | `_meta/_runs.yml` / `_meta/_data_registry.yml` |
 | 实验代码 | `_sandbox/` | `_sandbox/_index.yml`; 优于 baseline 才进入主流程 |
 | 归档代码 | `_legacy/` | 每个归档目录需 README/TOMBSTONE |
+
+## P31 六赛道智能决策 pipeline
+
+六个 pipeline 分别是 `_pipelines/{fault,facies,property,lithofacies,sweetspot,reconstruction}_agentic_optimization.yml`。
+它们复用同一个校验入口 `_pipelines/02_task_datasets/track_lifecycle.py`，但各自保持独立参数、七段生命周期、证据路径和门禁。
+
+| 赛道 | 当前默认/晋级结论 | 不晋级路线 |
+|---|---|---|
+| ①断层 | 局部断层 baseline + A2D 决策治理；P30 连续三维开发体保留 | CIG-Bench 指标下降；A2L 直接执行 |
+| ②地震相 | 按数据集选择的确定性混合包 | DeepSeek 直接端点 |
+| ③储层物性 | A2D `reservoir_linear` | A2L 不单独保留；CIG-Bench PropertyPredictor 不可用 |
+| ④岩相 | XGBoost `depth=3, eta=0.1, rounds=60` | P29 LLM 策略；MOMENT/大模型因果归因 |
+| ⑤甜点 | 冻结 A0 XGBoost | 候选无正改善后的 LLM 路线 |
+| ⑥三维重建 | P21 固定三核集成 | P29 LLM 选择的数值策略 |
+
+`track_lifecycle.py --track <id> --stage verify` 不重训模型，而是对已归档开发证据进行反伪完成校验：默认配置、候选动作、预测效应、晋级结论任一漂移即失败。
 
 ## P4 训练与评价系统
 

@@ -25,6 +25,7 @@ GUARD_NPZ = RESERVOIR_DIR / "_outputs" / "guard.npz"
 BASELINE_RUN_MANIFEST = RESERVOIR_DIR / "_outputs" / "run_manifest.json"
 BASELINE_METRICS = RESERVOIR_DIR / "_outputs" / "metrics.json"
 BASELINE_CHECKPOINT = RESERVOIR_DIR / "_outputs" / "checkpoints" / "best.ckpt"
+HISTORICAL_BASELINE_CHECKPOINT_SHA256 = "7bbb49426a863bd5931b3c034b144109486742f6da1a217f366045bd7e2dafd5"
 P18_EVIDENCE = RESERVOIR_DIR / "_outputs" / "p18_cigbench_property" / "evidence.md"
 
 sys.path.insert(0, str(RESERVOIR_DIR))
@@ -50,6 +51,16 @@ def sha256_file(path: Path) -> str:
         while chunk := handle.read(1024 * 1024):
             h.update(chunk)
     return h.hexdigest()
+
+
+def historical_baseline_checkpoint_hash() -> str:
+    """Return the frozen non-causal reference hash without requiring its ignored binary."""
+    if not BASELINE_CHECKPOINT.is_file():
+        return HISTORICAL_BASELINE_CHECKPOINT_SHA256
+    actual = sha256_file(BASELINE_CHECKPOINT)
+    if actual != HISTORICAL_BASELINE_CHECKPOINT_SHA256:
+        raise RuntimeError("historical baseline checkpoint hash drifted from the P29 preregistration")
+    return actual
 
 
 def relative_to_output_or_self(path: Path) -> str:
@@ -298,7 +309,7 @@ def train_matched_a0_trials(
         "replay_trial": trials[0],
         "historical_reference": {
             "checkpoint_path": str(BASELINE_CHECKPOINT.relative_to(RESERVOIR_DIR)),
-            "checkpoint_sha256": sha256_file(BASELINE_CHECKPOINT),
+            "checkpoint_sha256": historical_baseline_checkpoint_hash(),
             "note": "non-causal historical reference only",
         },
     }

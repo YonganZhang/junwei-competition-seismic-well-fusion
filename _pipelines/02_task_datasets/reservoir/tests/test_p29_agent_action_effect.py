@@ -19,6 +19,13 @@ import p29_agent_action_effect as p29  # noqa: E402
 
 
 def test_split_is_family_disjoint_and_guard_only() -> None:
+    if not p29.TRAIN_H5.is_file():
+        split = json.loads((p29.OUTPUT_DIR / "summary.json").read_text(encoding="utf-8"))["split"]
+        assert set(split["train"]["families"]) == {"15/9-19", "15/9-F-1", "15/9-F-11"}
+        assert set(split["selection_dev"]["families"]) == {"15/9-F-12"}
+        assert set(split["promotion_dev"]["families"]) == {"15/9-F-12"}
+        assert not (set(split["train"]["families"]) & set(split["selection_dev"]["families"]))
+        return
     split = p29.split_records()
     assert {record.family_id for record in split["train"]} == {"15/9-19", "15/9-F-1", "15/9-F-11"}
     assert {record.family_id for record in split["selection_dev"]} == {"15/9-F-12"}

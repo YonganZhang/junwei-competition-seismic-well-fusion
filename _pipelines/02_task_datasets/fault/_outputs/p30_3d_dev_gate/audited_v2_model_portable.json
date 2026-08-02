@@ -1,0 +1,15 @@
+{
+  "schema_version": "fault_audited_v2_portable/v1",
+  "source_joblib_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib",
+  "source_joblib_sha256": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+  "source_metrics_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
+  "source_metrics_sha256": "0d0e3093da01eee7203c7afcd9b49667c25ebef49b40f6e7ef554c423768c631",
+  "model_class": "models.fault_local_logistic.FaultLocalLogistic",
+  "feature_contract": "FaultLocalLogistic._features: amplitude, local_mean_3x3, local_std_3x3, sobel_axis0_over8, sobel_axis1_over8",
+  "estimator": {
+    "classes": [0, 1],
+    "n_features_in": 5,
+    "coef": [[0.15805096924304962, -0.31647124886512756, -0.6135225296020508, 0.14529432356357574, -0.0011348514817655087]],
+    "intercept": [0.1576220691204071]
+  }
+}

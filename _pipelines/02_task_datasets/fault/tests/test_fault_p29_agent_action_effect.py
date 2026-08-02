@@ -113,7 +113,7 @@ class FaultP29AgentActionEffectTests(unittest.TestCase):
             )
 
     def test_run_p29_writes_outputs_and_manifest_and_spy_effects(self) -> None:
-        output_root = Path("_outputs") / "p29_agent_action_effect_test"
+        output_root = TRACK_DIR / "_outputs" / "p29_agent_action_effect_test"
         if output_root.exists():
             shutil.rmtree(output_root)
         with patch.dict(os.environ, {"DEEPSEEK_KEY": "present"}, clear=True), patch(

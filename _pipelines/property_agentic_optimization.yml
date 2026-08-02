@@ -1,0 +1,48 @@
+pipeline: property_agentic_optimization
+description: "③储层物性：校验开发证据、候选动作、晋级决策与默认模型，不把未过门槛的智能体路线写成成功。"
+domain: ml_research
+status: active
+entry_role: main
+verification_method: validate
+steps:
+  - id: validate
+    ref: code:track_lifecycle_verify
+    params: {track: property, stage: validate}
+    success:
+      outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
+  - id: prepare
+    ref: code:track_lifecycle_verify
+    needs: [validate]
+    params: {track: property, stage: prepare}
+    success:
+      outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
+  - id: baseline
+    ref: code:track_lifecycle_verify
+    needs: [prepare]
+    params: {track: property, stage: baseline}
+    success:
+      outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
+  - id: optimize
+    ref: code:track_lifecycle_verify
+    needs: [baseline]
+    params: {track: property, stage: optimize}
+    success:
+      outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
+  - id: promote
+    ref: code:track_lifecycle_verify
+    needs: [optimize]
+    params: {track: property, stage: promote}
+    success:
+      outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
+  - id: refit
+    ref: code:track_lifecycle_verify
+    needs: [promote]
+    params: {track: property, stage: refit}
+    success:
+      outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
+  - id: verify
+    ref: code:track_lifecycle_verify
+    needs: [refit]
+    params: {track: property, stage: verify}
+    success:
+      outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
