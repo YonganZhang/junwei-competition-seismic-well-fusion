@@ -46,5 +46,5 @@ steps:
     params: {track: lithofacies, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/p33_hybrid_agent_optimizer/independent_verification.json]
-verified_steps_hash: e1c349bc4b812b022d902d5601275c92fd0ec09bab27bba61f1fb0d480a96c8d
-verified_at_commit: 63521274b8c0e177ed81a92df1e87a00bd4a24d5
+verified_steps_hash: 992b95d88f9c546e0fa6be694e5f131d0c760a2161b6c2aaa763db18947854f1
+verified_at_commit: d6864950ed0c8461ef6cff589fd681fa25b0bb2b

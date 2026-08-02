@@ -46,5 +46,5 @@ steps:
     params: {track: reconstruction, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
-verified_steps_hash: 470ac7704db8b27bdb3598a2c9503c30e47d24d33cdfdce0c37317722a1fb624
-verified_at_commit: 63521274b8c0e177ed81a92df1e87a00bd4a24d5
+verified_steps_hash: b72d99e4182ec00f79f1c6fe43418edeeb9ac13b6eb09e43f300757e2512f9a7
+verified_at_commit: d6864950ed0c8461ef6cff589fd681fa25b0bb2b
