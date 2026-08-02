@@ -84,8 +84,11 @@ class P30CigBenchCompareTests(unittest.TestCase):
             dtype=np.float32,
         )
 
-        def fake_cig(volume: np.ndarray, *, device: str):
+        captured_scales: list[tuple[float, float, float]] = []
+
+        def fake_cig(volume: np.ndarray, *, device: str, scale_t: float, scale_h: float, scale_w: float):
             _ = device
+            captured_scales.append((scale_t, scale_h, scale_w))
             if volume.shape[1] == 2 and float(volume.mean()) == 1.0:
                 return cig_fit, {"package": "cig_bench", "package_version": "x", "restore_path": "/tmp/cig", "restore_sha256": "a", "restore_bytes": 1}
             return cig_guard, {"package": "cig_bench", "package_version": "x", "restore_path": "/tmp/cig", "restore_sha256": "a", "restore_bytes": 1}
@@ -113,8 +116,10 @@ class P30CigBenchCompareTests(unittest.TestCase):
             report["models"]["fault_local_logistic"]["fit"]["threshold"],
             places=6,
         )
+        self.assertEqual(report["cig_bench_scale"], {"scale_t": 0.5, "scale_h": 0.85, "scale_w": 0.85})
         self.assertEqual(report["models"]["cig_bench_fault_predictor"]["guard"]["threshold_source"], "fit_reused")
         self.assertEqual(report["models"]["fault_local_logistic"]["guard"]["threshold_source"], "fit_reused")
+        self.assertEqual(captured_scales, [(0.5, 0.85, 0.85), (0.5, 0.85, 0.85)])
         self.assertEqual(report["split"]["folds"][0]["unknown_voxels"], 2)
         self.assertGreaterEqual(report["models"]["cig_bench_fault_predictor"]["guard"]["scoreable_voxels"], 1)
         self.assertAlmostEqual(

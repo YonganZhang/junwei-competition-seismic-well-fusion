@@ -1,0 +1,276 @@
+{
+  "status": "READY",
+  "reason_code": "CIG_BENCH_AND_BASELINE_DEV_COMPARISON_COMPLETED",
+  "generated_at": "2026-08-02T13:56:17.485071+00:00",
+  "track_id": "fault",
+  "source_commit": "59aecb0236a9bce60ca5597354e3d729b962da9c",
+  "p30_manifest": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/manifest.json",
+  "p30_split_manifest": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/split_manifest.json",
+  "p30_subvolume": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/dev_subvolume.npz",
+  "p30_gate": {
+    "status": "READY",
+    "reason_code": "LEGAL_CONTIGUOUS_3D_DEVELOPMENT_VOLUME_READY",
+    "data_gate_blocked": false
+  },
+  "split": {
+    "development_only": true,
+    "group_isolated": true,
+    "frozen_holdout_accessed": false,
+    "coordinate_order": [
+      "tline",
+      "iline",
+      "xline"
+    ],
+    "subvolume": {
+      "crossline": [
+        2175,
+        2350
+      ],
+      "inline": [
+        10095,
+        10235
+      ],
+      "time_idx": [
+        605,
+        785
+      ],
+      "time_ms": [
+        2420.0,
+        3140.0
+      ]
+    },
+    "folds": [
+      {
+        "name": "fit",
+        "inline": [
+          10095,
+          10175
+        ],
+        "shape": [
+          181,
+          81,
+          176
+        ],
+        "scoreable_voxels": 2218775,
+        "positive_voxels": 8934,
+        "unknown_voxels": 361561
+      },
+      {
+        "name": "guard",
+        "inline": [
+          10176,
+          10183
+        ],
+        "shape": [
+          181,
+          8,
+          176
+        ],
+        "scoreable_voxels": 211325,
+        "positive_voxels": 1834,
+        "unknown_voxels": 43523
+      },
+      {
+        "name": "validation",
+        "inline": [
+          10184,
+          10235
+        ],
+        "shape": [
+          181,
+          52,
+          176
+        ],
+        "scoreable_voxels": 1267293,
+        "positive_voxels": 12956,
+        "unknown_voxels": 389219
+      }
+    ]
+  },
+  "models": {
+    "cig_bench_fault_predictor": {
+      "info": {
+        "package": "cig_bench",
+        "package_version": "0.2.0",
+        "predictor_class": "cig_bench.predictor.fault.FaultPredictor",
+        "device": "cuda",
+        "restore_path": "/mnt/data/yongan-admin-2/.cache/modelscope/models/douyimin--CIG-Bench/snapshots/master/CIG-Bench-Fault.pth",
+        "restore_sha256": "9d6e8668f0fd27cf0f0131d2b600d79e26bd5cd8f483c3ca2d1614d448351a36",
+        "restore_bytes": 138135635,
+        "elapsed_seconds": 0.46216484099568333,
+        "scale_t": 0.5,
+        "scale_h": 0.85,
+        "scale_w": 0.85
+      },
+      "fit": {
+        "tp": 244,
+        "fp": 27799,
+        "fn": 8690,
+        "tn": 2182042,
+        "precision": 0.008700923581642478,
+        "recall": 0.0273113946720394,
+        "dice": 0.013197392974010872,
+        "iou": 0.0066425285165927096,
+        "f1": 0.013197392974010872,
+        "average_precision": 0.0038922055877225036,
+        "pr_auc": 0.0038858854489683616,
+        "threshold": 1.7805648511171057e-08,
+        "threshold_source": "validation_max_f1",
+        "fit_selected_f1": 0.013197392974010872,
+        "scoreable_voxels": 2218775,
+        "positive_voxels": 8934,
+        "unknown_voxels_excluded": 361561
+      },
+      "guard": {
+        "tp": 19,
+        "fp": 8835,
+        "fn": 1815,
+        "tn": 200656,
+        "precision": 0.002145922746781116,
+        "recall": 0.010359869138495093,
+        "dice": 0.003555389221556886,
+        "iou": 0.0017808604367794544,
+        "f1": 0.003555389221556886,
+        "average_precision": 0.007832339705822054,
+        "pr_auc": 0.007811317917658904,
+        "threshold": 1.7805648511171057e-08,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.003555389221556886,
+        "scoreable_voxels": 211325,
+        "positive_voxels": 1834,
+        "unknown_voxels_excluded": 43523
+      },
+      "development_union": {
+        "tp": 263,
+        "fp": 36634,
+        "fn": 10505,
+        "tn": 2382698,
+        "precision": 0.007127950781906388,
+        "recall": 0.024424219910846954,
+        "dice": 0.011035350886394629,
+        "iou": 0.005548289101725666,
+        "f1": 0.011035350886394629,
+        "average_precision": 0.0043196802732797055,
+        "pr_auc": 0.0043146266429004276,
+        "threshold": 1.7805648511171057e-08,
+        "scoreable_voxels": 2430100,
+        "positive_voxels": 10768
+      }
+    },
+    "fault_local_logistic": {
+      "info": {
+        "model_class": "models.fault_local_logistic.FaultLocalLogistic",
+        "model_builder": "models.fault_local_logistic.build_model",
+        "model_description": "balanced_logistic_pixel_classifier_with_local_convolutional_features",
+        "elapsed_seconds": 0.524532660987461,
+        "note": "audited_v2 joblib checkpoint evaluated slice-by-slice over the P30 development cube"
+      },
+      "fit": {
+        "tp": 8272,
+        "fp": 1998473,
+        "fn": 662,
+        "tn": 211368,
+        "precision": 0.004122098223740435,
+        "recall": 0.9259010521602865,
+        "dice": 0.00820765608015959,
+        "iou": 0.004120738843692386,
+        "f1": 0.008207656080159588,
+        "average_precision": 0.0034764350621594316,
+        "pr_auc": 0.0034739799490826092,
+        "threshold": 0.535703182220459,
+        "threshold_source": "validation_max_f1",
+        "fit_selected_f1": 0.008207656080159588,
+        "scoreable_voxels": 2218775,
+        "positive_voxels": 8934,
+        "unknown_voxels_excluded": 361561
+      },
+      "guard": {
+        "tp": 1726,
+        "fp": 192120,
+        "fn": 108,
+        "tn": 17371,
+        "precision": 0.008903975320615334,
+        "recall": 0.9411123227917121,
+        "dice": 0.017641046606704826,
+        "iou": 0.00889901729276014,
+        "f1": 0.017641046606704822,
+        "average_precision": 0.007472891913055289,
+        "pr_auc": 0.00745990772489741,
+        "threshold": 0.535703182220459,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.017641046606704822,
+        "scoreable_voxels": 211325,
+        "positive_voxels": 1834,
+        "unknown_voxels_excluded": 43523
+      },
+      "development_union": {
+        "tp": 9998,
+        "fp": 2190593,
+        "fn": 770,
+        "tn": 228739,
+        "precision": 0.004543324952251463,
+        "recall": 0.9284918276374443,
+        "dice": 0.009042403336590758,
+        "iou": 0.004541735771643088,
+        "f1": 0.009042403336590756,
+        "average_precision": 0.0038405527935767942,
+        "pr_auc": 0.003838723205878991,
+        "threshold": 0.535703182220459,
+        "scoreable_voxels": 2430100,
+        "positive_voxels": 10768
+      }
+    }
+  },
+  "comparison": {
+    "primary_metric": "f1",
+    "guard_delta": {
+      "f1": -0.014085657385147936,
+      "precision": -0.0067580525738342185,
+      "recall": -0.930752453653217,
+      "iou": -0.007118156855980685
+    },
+    "fit_thresholds": {
+      "cig_bench": 1.7805648511171057e-08,
+      "fault_local_logistic": 0.535703182220459
+    }
+  },
+  "baseline_reference": {
+    "audited_v2_model_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib",
+    "audited_v2_model_sha256": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+    "audited_v2_metrics_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
+    "audited_v2_metrics_sha256": "0d0e3093da01eee7203c7afcd9b49667c25ebef49b40f6e7ef554c423768c631",
+    "audited_v2_old_metrics": {
+      "tp": 1328,
+      "fp": 168215,
+      "fn": 144,
+      "tn": 25949,
+      "precision": 0.00783282117221,
+      "recall": 0.9021739130434783,
+      "dice": 0.015530801391690788,
+      "iou": 0.0078261740734411,
+      "f1": 0.015530801391690788
+    }
+  },
+  "minimum_unblock_contract": [
+    "The comparison stays inside the P30 continuous 3-D development volume.",
+    "Scoring excludes unknown voxels and uses verified background only.",
+    "Thresholds are selected on the fit fold and then reused for guard reporting.",
+    "The audited_v2 baseline checkpoint is applied slice-by-slice without retraining.",
+    "No frozen holdout/test.h5 path is opened or consumed."
+  ],
+  "cig_bench": {
+    "package": "cig_bench",
+    "package_version": "0.2.0",
+    "restore_path": "/mnt/data/yongan-admin-2/.cache/modelscope/models/douyimin--CIG-Bench/snapshots/master/CIG-Bench-Fault.pth",
+    "restore_sha256": "9d6e8668f0fd27cf0f0131d2b600d79e26bd5cd8f483c3ca2d1614d448351a36",
+    "restore_bytes": 138135635,
+    "scale_t": 0.5,
+    "scale_h": 0.85,
+    "scale_w": 0.85
+  },
+  "cig_bench_scale": {
+    "scale_t": 0.5,
+    "scale_h": 0.85,
+    "scale_w": 0.85
+  }
+}

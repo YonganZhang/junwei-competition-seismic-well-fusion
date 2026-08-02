@@ -27,9 +27,11 @@ AUDITED_V2_MODEL_PATH = AUDITED_V2_DIR / "baseline_model.joblib"
 AUDITED_V2_METRICS_PATH = AUDITED_V2_DIR / "baseline_metrics.json"
 OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline"
 FIXED_OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline_threshold_fix"
+SCALED_OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline_scale_fix"
 COMPARISON_JSON_PATH = OUTPUT_ROOT / "comparison.json"
 EVIDENCE_PATH = OUTPUT_ROOT / "evidence.md"
 MANIFEST_PATH = OUTPUT_ROOT / "manifest.json"
+DEFAULT_CIG_BENCH_SCALE = {"scale_t": 0.5, "scale_h": 0.85, "scale_w": 0.85}
 
 sys.path.insert(0, str(TRACK_DIR))
 sys.path.insert(0, str(PROJECT_ROOT / "_code"))
@@ -131,13 +133,27 @@ def scoreable_truth_and_probabilities(truth: np.ndarray, probabilities: np.ndarr
     return truth_flat, probabilities_flat
 
 
-def predict_cigbench_volume(seismic: np.ndarray, *, device: str) -> tuple[np.ndarray, dict[str, Any]]:
+def predict_cigbench_volume(
+    seismic: np.ndarray,
+    *,
+    device: str,
+    scale_t: float,
+    scale_h: float,
+    scale_w: float,
+) -> tuple[np.ndarray, dict[str, Any]]:
     from cig_bench.predictor.fault import FaultPredictor
 
     predictor = FaultPredictor(device=device)
     weight_path = Path(predictor.restore_path)
     started = time.perf_counter()
-    probabilities, _ = predictor.predict(np.asarray(seismic, dtype=np.float32), threshold=0.0, resize_back=True)
+    probabilities, _ = predictor.predict(
+        np.asarray(seismic, dtype=np.float32),
+        threshold=0.0,
+        resize_back=True,
+        scale_t=scale_t,
+        scale_h=scale_h,
+        scale_w=scale_w,
+    )
     elapsed = time.perf_counter() - started
     if probabilities.shape != seismic.shape:
         raise ValueError(f"FaultPredictor output shape {probabilities.shape} does not match input {seismic.shape}")
@@ -150,6 +166,9 @@ def predict_cigbench_volume(seismic: np.ndarray, *, device: str) -> tuple[np.nda
         "restore_sha256": sha256_file(weight_path),
         "restore_bytes": weight_path.stat().st_size,
         "elapsed_seconds": elapsed,
+        "scale_t": scale_t,
+        "scale_h": scale_h,
+        "scale_w": scale_w,
     }
 
 
@@ -225,18 +244,33 @@ def aggregate_union(fit_result: dict[str, Any], guard_result: dict[str, Any], th
     return metrics
 
 
-def compare_models(dev: dict[str, np.ndarray], split_manifest: dict[str, Any], *, device: str) -> dict[str, Any]:
+def compare_models(
+    dev: dict[str, np.ndarray],
+    split_manifest: dict[str, Any],
+    *,
+    device: str,
+    cig_scale: dict[str, float] | None = None,
+) -> dict[str, Any]:
     folds = parse_fold_views(dev, split_manifest)
+    scale = dict(DEFAULT_CIG_BENCH_SCALE)
+    if cig_scale is not None:
+        scale.update(cig_scale)
     by_name = {fold.name: fold for fold in folds}
     if "fit" not in by_name or "guard" not in by_name:
         raise ValueError("P30 split manifest must contain fit and guard folds")
     fit_fold = by_name["fit"]
     guard_fold = by_name["guard"]
 
-    cig_fit_probabilities, cig_info = predict_cigbench_volume(fit_fold.seismic, device=device)
-    cig_guard_probabilities, _ = predict_cigbench_volume(guard_fold.seismic, device=device)
+    cig_fit_probabilities, cig_info = predict_cigbench_volume(fit_fold.seismic, device=device, **scale)
+    cig_guard_probabilities, _ = predict_cigbench_volume(guard_fold.seismic, device=device, **scale)
     baseline_fit_probabilities, baseline_info = predict_baseline_volume(fit_fold.seismic)
     baseline_guard_probabilities, _ = predict_baseline_volume(guard_fold.seismic)
+    cig_info = {
+        **cig_info,
+        "scale_t": float(cig_info.get("scale_t", scale["scale_t"])),
+        "scale_h": float(cig_info.get("scale_h", scale["scale_h"])),
+        "scale_w": float(cig_info.get("scale_w", scale["scale_w"])),
+    }
 
     cig_fit = evaluate_model_on_fold(fit_fold, cig_fit_probabilities)
     baseline_fit = evaluate_model_on_fold(fit_fold, baseline_fit_probabilities)
@@ -335,7 +369,11 @@ def compare_models(dev: dict[str, np.ndarray], split_manifest: dict[str, Any], *
             "restore_path": cig_info["restore_path"],
             "restore_sha256": cig_info["restore_sha256"],
             "restore_bytes": cig_info["restore_bytes"],
+            "scale_t": cig_info["scale_t"],
+            "scale_h": cig_info["scale_h"],
+            "scale_w": cig_info["scale_w"],
         },
+        "cig_bench_scale": scale,
     }
 
 
@@ -501,6 +539,16 @@ def run_fixed(output_root: Path = FIXED_OUTPUT_ROOT, device: str | None = None) 
     split_manifest = load_json(P30_SPLIT_MANIFEST_PATH)
     resolved_device = device or ("cuda" if __import__("torch").cuda.is_available() else "cpu")
     report = compare_models(dev, split_manifest, device=resolved_device)
+    report["cig_bench_scale"] = DEFAULT_CIG_BENCH_SCALE
+    output_info = write_outputs(report, output_root=output_root)
+    return {"report": report, "outputs": output_info}
+
+
+def run_scaled(output_root: Path = SCALED_OUTPUT_ROOT, device: str | None = None) -> dict[str, Any]:
+    dev = np.load(P30_SUBVOLUME_PATH, allow_pickle=False)
+    split_manifest = load_json(P30_SPLIT_MANIFEST_PATH)
+    resolved_device = device or ("cuda" if __import__("torch").cuda.is_available() else "cpu")
+    report = compare_models(dev, split_manifest, device=resolved_device, cig_scale=DEFAULT_CIG_BENCH_SCALE)
     output_info = write_outputs(report, output_root=output_root)
     return {"report": report, "outputs": output_info}
 
@@ -510,15 +558,23 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-root", type=Path, default=None)
     parser.add_argument("--device", default=None)
     parser.add_argument("--fixed", action="store_true")
+    parser.add_argument("--scaled", action="store_true")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
     output_root = args.output_root
+    if args.scaled and args.fixed:
+        raise ValueError("--scaled and --fixed are mutually exclusive")
     if args.fixed:
         report = run_fixed(
             output_root=output_root or FIXED_OUTPUT_ROOT,
+            device=args.device,
+        )
+    elif args.scaled:
+        report = run_scaled(
+            output_root=output_root or SCALED_OUTPUT_ROOT,
             device=args.device,
         )
     else:

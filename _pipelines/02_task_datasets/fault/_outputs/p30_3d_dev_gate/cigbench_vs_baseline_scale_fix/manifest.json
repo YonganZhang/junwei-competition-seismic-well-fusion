@@ -1,0 +1,76 @@
+{
+  "schema_version": "fault_p30_cigbench_compare/v1",
+  "track_id": "fault",
+  "source_commit": "59aecb0236a9bce60ca5597354e3d729b962da9c",
+  "generated_at": "2026-08-02T13:56:17.485071+00:00",
+  "runner": {
+    "path": "_pipelines/02_task_datasets/fault/fault_p30_cigbench_compare.py",
+    "sha256": "595f525969b843f2409f36f4cb00a632b5d86e09c67a9dad80c63940409135b5"
+  },
+  "inputs": [
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/manifest.json",
+      "sha256": "b32c9785312557e9d40a52ec51cbd8ab7d181ae6c61d3f32a2f6bbfcf9264589",
+      "role": "P30 development gate manifest"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/dev_subvolume.npz",
+      "sha256": "07b5319caa7268f5e6b6ec1cc254af36f8beac08251e222ff81b1ab46a43ff35",
+      "role": "P30 continuous 3-D development subvolume"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/split_manifest.json",
+      "sha256": "3ecd335e7b23dbde7300202746d5104f17c568465a8e815cd3ffadb6554b8dbb",
+      "role": "P30 development split manifest"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib",
+      "sha256": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+      "role": "audited_v2 logistic checkpoint"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
+      "sha256": "0d0e3093da01eee7203c7afcd9b49667c25ebef49b40f6e7ef554c423768c631",
+      "role": "audited_v2 baseline metrics"
+    },
+    {
+      "path": "/mnt/data/yongan-admin-2/.cache/modelscope/models/douyimin--CIG-Bench/snapshots/master/CIG-Bench-Fault.pth",
+      "sha256": "9d6e8668f0fd27cf0f0131d2b600d79e26bd5cd8f483c3ca2d1614d448351a36",
+      "role": "CIG-Bench FaultPredictor weights"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/cigbench_vs_baseline_scale_fix/comparison.json",
+      "sha256": "b617b2db994762ba96d2a0565887fc3b573a8529f20d052b8e772e13907c0aaf",
+      "role": "structured comparison report"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/cigbench_vs_baseline_scale_fix/evidence.md",
+      "sha256": "21f1dff0a4529f644ffc4ca1187b8c20b2edfe5a78f73fa201ede0617984baee",
+      "role": "human evidence"
+    }
+  ],
+  "status": "READY",
+  "reason_code": "CIG_BENCH_AND_BASELINE_DEV_COMPARISON_COMPLETED",
+  "comparison": {
+    "primary_metric": "f1",
+    "guard_delta": {
+      "f1": -0.014085657385147936,
+      "precision": -0.0067580525738342185,
+      "recall": -0.930752453653217,
+      "iou": -0.007118156855980685
+    },
+    "fit_thresholds": {
+      "cig_bench": 1.7805648511171057e-08,
+      "fault_local_logistic": 0.535703182220459
+    }
+  },
+  "minimum_unblock_contract": [
+    "The comparison stays inside the P30 continuous 3-D development volume.",
+    "Scoring excludes unknown voxels and uses verified background only.",
+    "Thresholds are selected on the fit fold and then reused for guard reporting.",
+    "The audited_v2 baseline checkpoint is applied slice-by-slice without retraining.",
+    "No frozen holdout/test.h5 path is opened or consumed."
+  ]
+}
