@@ -46,3 +46,5 @@ steps:
     params: {track: property, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json]
+verified_steps_hash: 0b7ccdce3580bc27e2c4b868bc66b0816c0c7c431973f9db2d2a82767947688f
+verified_at_commit: 3c0e1051667fa94c1cfe163b809f32c00d639c6b

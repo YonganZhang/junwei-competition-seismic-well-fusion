@@ -46,3 +46,5 @@ steps:
     params: {track: fault, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
+verified_steps_hash: 4177cc1612f84a87354f70536a95a0efea8813e31eb8f9ba7cc054212ba19b22
+verified_at_commit: 3c0e1051667fa94c1cfe163b809f32c00d639c6b

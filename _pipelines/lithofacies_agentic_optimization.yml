@@ -46,3 +46,5 @@ steps:
     params: {track: lithofacies, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/default_baseline/summary.json]
+verified_steps_hash: f4859fb4a8b4f4f9dc6c7e3d3385270f3a82b28fc2ec5387caa8176344970675
+verified_at_commit: 3c0e1051667fa94c1cfe163b809f32c00d639c6b
