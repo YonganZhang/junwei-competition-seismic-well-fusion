@@ -46,5 +46,5 @@ steps:
     params: {track: sweetspot, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json]
-verified_steps_hash: 37dd2ec292fba974546f5b393f3927bfb73e81e0d645a8a7837589f712a3f171
-verified_at_commit: 3c0e1051667fa94c1cfe163b809f32c00d639c6b
+verified_steps_hash: 2a2467ceeea956ecdbcc4e863a96eacf1ab37577c64a5fad50fc6226436ed015
+verified_at_commit: 63521274b8c0e177ed81a92df1e87a00bd4a24d5
