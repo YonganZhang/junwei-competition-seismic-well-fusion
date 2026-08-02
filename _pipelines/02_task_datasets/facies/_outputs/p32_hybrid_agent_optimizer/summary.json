@@ -1,0 +1,903 @@
+{
+  "a0": {
+    "promotion": {
+      "action_id": "A0_GATE_020",
+      "config": {
+        "action_id": "A0_GATE_020",
+        "changed_factor": "none",
+        "description": "frozen A0",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "fusion_scale_initial": 0.2,
+        "sam2_frozen": false
+      },
+      "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+      "equal_mean": 0.27054177176795485,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "peak_vram_mb": 879,
+      "phase": "promotion",
+      "policy_id": "A0_static_baseline",
+      "round": 0,
+      "runtime_s": 18.305138253999758,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.5968246459960938,
+          "attention_entropy": 0.9233483076095581,
+          "fusion_scale": 0.20003361999988556,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 11.894082069396973,
+          "macro_f1": 0.4330417833693469,
+          "miou": 0.3065701377615836,
+          "prediction_hash": "218d8824161b55b4d0dcaae590b6d63d4bf45d73c73e6b9106dc6b6dad4ea464",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.4611234964092179,
+          "train_attention_entropy": 0.9103094339370728,
+          "train_loss_last": 1.404624104499817,
+          "train_loss_mean": 1.3196809781715273
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "attention_entropy": 0.9369974732398987,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.22656668311314196,
+          "train_attention_entropy": 0.9246217012405396,
+          "train_loss_last": 1.6417633295059204,
+          "train_loss_mean": 1.7786403939127922
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    },
+    "selection": {
+      "action_id": "A0_GATE_020",
+      "config": {
+        "action_id": "A0_GATE_020",
+        "changed_factor": "none",
+        "description": "frozen A0",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "fusion_scale_initial": 0.2,
+        "sam2_frozen": false
+      },
+      "config_hash": "733528f2da9fa2ec4ecf693f47538f1ae2e65f887997bcd5446309dc167afb3c",
+      "equal_mean": 0.2290078984707724,
+      "exit_status": "OK",
+      "frozen_test_accessed": false,
+      "peak_vram_mb": 879,
+      "phase": "selection",
+      "policy_id": "A0_static_baseline",
+      "round": 0,
+      "runtime_s": 18.937723786992137,
+      "tasks": {
+        "F3": {
+          "accuracy": 0.46425628662109375,
+          "attention_entropy": 0.858697772026062,
+          "fusion_scale": 0.20104733109474182,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 10.522309303283691,
+          "macro_f1": 0.38333146024644416,
+          "miou": 0.26595340929296457,
+          "prediction_hash": "2c7cb2a49a7c0350881dfa9f186c32291f884da80bdf15e5197932a976eb38eb",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.3815087756483918,
+          "train_attention_entropy": 0.8671207427978516,
+          "train_loss_last": 0.9437141418457031,
+          "train_loss_mean": 1.1623190127313137
+        },
+        "Penobscot": {
+          "accuracy": 0.645233154296875,
+          "attention_entropy": 0.9487993121147156,
+          "fusion_scale": 0.2003694325685501,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 6.179182052612305,
+          "macro_f1": 0.24446220966518095,
+          "miou": 0.19206238764858025,
+          "prediction_hash": "2d3a73c0f6c403b2b07ac592649ae19ba02f2b58bece99ba228116bb11d17793",
+          "sam2_trainable_blocks": [
+            22,
+            23
+          ],
+          "sam2_trainable_parameters": 19290880,
+          "sam2_update_l2": 0.2389601678924338,
+          "train_attention_entropy": 0.9368394017219543,
+          "train_loss_last": 1.780058741569519,
+          "train_loss_mean": 1.8216083399951457
+        }
+      },
+      "wall_clock_budget_s": 90.0
+    }
+  },
+  "agent": {
+    "candidate_budget": 4,
+    "candidates": [
+      {
+        "candidate_id": "agent_joint_1",
+        "dice_weight": 0.75,
+        "fusion_lr": 0.0005,
+        "fusion_scale_initial": 0.8,
+        "rationale": "High fusion scale and learning rate to break the stuck state, high dice weight to counter high loss, unfreeze SAM2 for moderate updates.",
+        "sam2_frozen": false,
+        "source": "deepseek_joint_candidate_generator"
+      },
+      {
+        "candidate_id": "agent_joint_2",
+        "dice_weight": 0.1,
+        "fusion_lr": 5e-05,
+        "fusion_scale_initial": 0.1,
+        "rationale": "Low scale and LR to stabilize, low dice weight to reduce loss pressure, freeze SAM2 to prevent overfitting.",
+        "sam2_frozen": true,
+        "source": "deepseek_joint_candidate_generator"
+      },
+      {
+        "candidate_id": "agent_joint_3",
+        "dice_weight": 0.5,
+        "fusion_lr": 0.0003,
+        "fusion_scale_initial": 0.5,
+        "rationale": "Mid-range scale and LR to nudge scale, balanced dice weight, unfreeze SAM2 for moderate updates.",
+        "sam2_frozen": false,
+        "source": "deepseek_joint_candidate_generator"
+      },
+      {
+        "candidate_id": "agent_joint_4",
+        "dice_weight": 0.3,
+        "fusion_lr": 0.0001,
+        "fusion_scale_initial": 0.3,
+        "rationale": "Lower scale and LR to gradually adjust, lower dice weight to reduce loss, freeze SAM2 to maintain stability.",
+        "sam2_frozen": true,
+        "source": "deepseek_joint_candidate_generator"
+      }
+    ],
+    "promotion": {
+      "config_by_dataset": {
+        "F3": {
+          "action_id": "agent_joint_1",
+          "changed_factor": "joint_hyperparameters",
+          "description": "High fusion scale and learning rate to break the stuck state, high dice weight to counter high loss, unfreeze SAM2 for moderate updates.",
+          "dice_weight": 0.75,
+          "fusion_lr": 0.0005,
+          "fusion_scale_initial": 0.8,
+          "sam2_frozen": false
+        },
+        "Penobscot": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        }
+      },
+      "equal_mean": 0.3257213409539492,
+      "frozen_test_accessed": false,
+      "phase": "promotion",
+      "policy_id": "A2H_llm_joint_candidates_deterministic_scheduler",
+      "runtime_s": 18.25790966799832,
+      "selected_candidate_by_dataset": {
+        "F3": "agent_joint_1",
+        "Penobscot": null
+      },
+      "tasks": {
+        "F3": {
+          "accuracy": 0.7215957641601562,
+          "fusion_scale": 0.795742392539978,
+          "fusion_scale_initial": 0.8,
+          "last_grad_norm": 11.398605346679688,
+          "macro_f1": 0.5296985223235606,
+          "miou": 0.4169292761335723,
+          "prediction_hash": "452409790c5b1cd2875ce68f95178b4c54f6e6211b5a4e9a85d4fd309fa189e9",
+          "sam2_update_l2": 0.39026576304134597,
+          "train_loss_mean": 1.6613536436110734
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_update_l2": 0.22656668311314196,
+          "train_loss_mean": 1.7786403939127922
+        }
+      }
+    },
+    "selected_candidate_by_dataset": {
+      "F3": "agent_joint_1",
+      "Penobscot": null
+    },
+    "selection_trials": [
+      {
+        "action_id": "agent_joint_1",
+        "config": {
+          "action_id": "agent_joint_1",
+          "changed_factor": "joint_hyperparameters",
+          "description": "High fusion scale and learning rate to break the stuck state, high dice weight to counter high loss, unfreeze SAM2 for moderate updates.",
+          "dice_weight": 0.75,
+          "fusion_lr": 0.0005,
+          "fusion_scale_initial": 0.8,
+          "sam2_frozen": false
+        },
+        "config_hash": "0e3351a7c4ae0137162c69f81308f39c63843c86037508357110c5fd80ed5f2a",
+        "equal_mean": 0.2676964029460268,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 879,
+        "phase": "selection",
+        "policy_id": "A2H_llm_joint_candidates_deterministic_scheduler",
+        "round": 1,
+        "runtime_s": 19.444771199996467,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.5641098022460938,
+            "attention_entropy": 0.8614485263824463,
+            "fusion_scale": 0.797654390335083,
+            "fusion_scale_initial": 0.8,
+            "last_grad_norm": 6.698688983917236,
+            "macro_f1": 0.47264290679618304,
+            "miou": 0.35396775917497597,
+            "prediction_hash": "b7d10aea7bd1d2bd98d27c2e9c9b1db17d8e5d22d565d01b3d2671fc82f4d0eb",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.3250394638940938,
+            "train_attention_entropy": 0.8512473106384277,
+            "train_loss_last": 0.8870718479156494,
+            "train_loss_mean": 1.4068467363715171
+          },
+          "Penobscot": {
+            "accuracy": 0.6354484558105469,
+            "attention_entropy": 0.7066067457199097,
+            "fusion_scale": 0.7996151447296143,
+            "fusion_scale_initial": 0.8,
+            "last_grad_norm": 6.467773914337158,
+            "macro_f1": 0.2308210675617682,
+            "miou": 0.18142504671707763,
+            "prediction_hash": "4b232a7e46aeabc852d188c161f1a6c21a791b88be318e5c57f0ca9c6bf4a954",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.23325068925667755,
+            "train_attention_entropy": 0.7013993263244629,
+            "train_loss_last": 2.254528045654297,
+            "train_loss_mean": 2.2783383943140505
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_id": "agent_joint_2",
+        "config": {
+          "action_id": "agent_joint_2",
+          "changed_factor": "joint_hyperparameters",
+          "description": "Low scale and LR to stabilize, low dice weight to reduce loss pressure, freeze SAM2 to prevent overfitting.",
+          "dice_weight": 0.1,
+          "fusion_lr": 5e-05,
+          "fusion_scale_initial": 0.1,
+          "sam2_frozen": true
+        },
+        "config_hash": "060d31643d5063f03fe761dbfbbada76eb5b621711a00ab8202b421237ef1318",
+        "equal_mean": 0.19488677934620485,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 609,
+        "phase": "selection",
+        "policy_id": "A2H_llm_joint_candidates_deterministic_scheduler",
+        "round": 2,
+        "runtime_s": 17.883882287002052,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.3926124572753906,
+            "attention_entropy": 0.9185431003570557,
+            "fusion_scale": 0.10014256834983826,
+            "fusion_scale_initial": 0.1,
+            "last_grad_norm": 14.537939071655273,
+            "macro_f1": 0.3145826476412072,
+            "miou": 0.20996261217643428,
+            "prediction_hash": "8845d8ee434b67ee39df01b8caffc8ba521d851a0c4802d4996495379036989c",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.9244245290756226,
+            "train_loss_last": 1.1217246055603027,
+            "train_loss_mean": 1.2239545626565813
+          },
+          "Penobscot": {
+            "accuracy": 0.6305656433105469,
+            "attention_entropy": 0.9886083006858826,
+            "fusion_scale": 0.10008940100669861,
+            "fusion_scale_initial": 0.1,
+            "last_grad_norm": 7.001002788543701,
+            "macro_f1": 0.22947239220684829,
+            "miou": 0.1798109465159754,
+            "prediction_hash": "097b440364c8f99d37e6383cf015fb75676f9e218a12f19ed8764706ef3b57a7",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.9895962476730347,
+            "train_loss_last": 1.7401522397994995,
+            "train_loss_mean": 1.6890021696686746
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_id": "agent_joint_3",
+        "config": {
+          "action_id": "agent_joint_3",
+          "changed_factor": "joint_hyperparameters",
+          "description": "Mid-range scale and LR to nudge scale, balanced dice weight, unfreeze SAM2 for moderate updates.",
+          "dice_weight": 0.5,
+          "fusion_lr": 0.0003,
+          "fusion_scale_initial": 0.5,
+          "sam2_frozen": false
+        },
+        "config_hash": "1483e754501ef82a185fa159c953e21b9b9d4167003ba66857d2983525f163bd",
+        "equal_mean": 0.2576551263422789,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 879,
+        "phase": "selection",
+        "policy_id": "A2H_llm_joint_candidates_deterministic_scheduler",
+        "round": 3,
+        "runtime_s": 20.408484113009763,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.5146903991699219,
+            "attention_entropy": 0.8813120126724243,
+            "fusion_scale": 0.49952754378318787,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 11.558774948120117,
+            "macro_f1": 0.4410662920359151,
+            "miou": 0.31938888763172973,
+            "prediction_hash": "e6ddff167e2c925744a4d6790802fbb609014057f04d9d8416dab14fb39d27c6",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.32797367376540254,
+            "train_attention_entropy": 0.8824279308319092,
+            "train_loss_last": 0.8854937553405762,
+            "train_loss_mean": 1.2297724187374115
+          },
+          "Penobscot": {
+            "accuracy": 0.6538162231445312,
+            "attention_entropy": 0.9351930618286133,
+            "fusion_scale": 0.5005260109901428,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 14.03778076171875,
+            "macro_f1": 0.2493790910055517,
+            "miou": 0.19592136505282803,
+            "prediction_hash": "eb74f3bae285e1ddb847765acd3fc2f892476e53d6bb603ab9401a9733d58742",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.23552577867045377,
+            "train_attention_entropy": 0.928726851940155,
+            "train_loss_last": 1.9997904300689697,
+            "train_loss_mean": 2.0412259817123415
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_id": "agent_joint_4",
+        "config": {
+          "action_id": "agent_joint_4",
+          "changed_factor": "joint_hyperparameters",
+          "description": "Lower scale and LR to gradually adjust, lower dice weight to reduce loss, freeze SAM2 to maintain stability.",
+          "dice_weight": 0.3,
+          "fusion_lr": 0.0001,
+          "fusion_scale_initial": 0.3,
+          "sam2_frozen": true
+        },
+        "config_hash": "b8803f7746095bb6dfd4ff00d346ec08607eec51f4c4e52f918796c4a330e36f",
+        "equal_mean": 0.21367522726338473,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 609,
+        "phase": "selection",
+        "policy_id": "A2H_llm_joint_candidates_deterministic_scheduler",
+        "round": 4,
+        "runtime_s": 16.206875821997528,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.438140869140625,
+            "attention_entropy": 0.8718456029891968,
+            "fusion_scale": 0.30060717463493347,
+            "fusion_scale_initial": 0.3,
+            "last_grad_norm": 15.453713417053223,
+            "macro_f1": 0.3627566608466284,
+            "miou": 0.2471610795756009,
+            "prediction_hash": "9bb5be1cae76b124e1e2fc2c6e8c316ea7cf6dc3f0b19b7c9e65487bdfdd9fbd",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.8836491703987122,
+            "train_loss_last": 1.049499273300171,
+            "train_loss_mean": 1.2277470510452986
+          },
+          "Penobscot": {
+            "accuracy": 0.6236648559570312,
+            "attention_entropy": 0.987994909286499,
+            "fusion_scale": 0.3003697693347931,
+            "fusion_scale_initial": 0.3,
+            "last_grad_norm": 6.651952743530273,
+            "macro_f1": 0.2299804208127255,
+            "miou": 0.18018937495116857,
+            "prediction_hash": "7bc9e135807023394fe52b7811d7c8c22dbc1f338a5896e1df640850718f46be",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.9895352721214294,
+            "train_loss_last": 1.9163340330123901,
+            "train_loss_mean": 1.8717087887227535
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    ],
+    "strategy_id": "A2H_llm_joint_candidates_deterministic_scheduler",
+    "total_config_packages": 5
+  },
+  "data": {
+    "f3_manifest_sha256": "3196dace67bbc6ab040271b5e11bfc014bc22656de549dcda0fc98f948a17efa",
+    "frozen_test_accessed": false,
+    "penobscot_manifest_sha256": "98ae521950056717673048d18ab406219c4b20ab4044b69fa5759f86d1f9ede4",
+    "selection_promotion_disjoint": true,
+    "split_contract": {
+      "promotion:facies_f3": {
+        "fold_id": 4,
+        "fold_split_hash": "afe190a89adb75d909868b5d33424ecaee32c6d86805c28a397075d17d7aea0f",
+        "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+        "train_ids_hash": "c967f30541b4041e3bfc4fe9a01b97c26e66228c2d246ed3093b607e56806c8f",
+        "train_samples": 32,
+        "validation_ids_hash": "4780037c9aaee905b17a5bd21a18a51ce89ae8df7f05b82f4ef0d3fdd3ca7636",
+        "validation_samples": 16
+      },
+      "promotion:facies_penobscot": {
+        "fold_id": 4,
+        "fold_split_hash": "0fdb35c440dedefdfb6fc17b28198afd0a745072ffdd5014adab50de5730d777",
+        "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+        "train_ids_hash": "e62928d5f37864c51db6b2e451fba528239b78cbe27e6c77179579cdedfb6c9f",
+        "train_samples": 32,
+        "validation_ids_hash": "ae2d19061ad4b8d9141564ac93917797283865be4f49390b6fd77540bce3db8d",
+        "validation_samples": 16
+      },
+      "selection:facies_f3": {
+        "fold_id": 0,
+        "fold_split_hash": "11c441c59aca9b63a0a80746c953036776351c75f7e30da013f2678fea852d11",
+        "manifest_stable_hash": "76a501385482bedce4e48dc44dfe5e9854b1b7aa0674fc223b3a6b42760f4614",
+        "train_ids_hash": "d1bad8c995bcb14c6bf83ebb86be733a1721ff347e93f4c802bbf020ecd463ed",
+        "train_samples": 32,
+        "validation_ids_hash": "35dd8bd805fc70cef1b6d6249f110c8c667af5f6cc68f0a0020eda8e00e9c28a",
+        "validation_samples": 16
+      },
+      "selection:facies_penobscot": {
+        "fold_id": 0,
+        "fold_split_hash": "0502fe8dc279056b7203ac53a59a8800b16be58c42517d2b484737a39c9a7fb4",
+        "manifest_stable_hash": "3440bbbd415158e41c6f0ed14513208fc77075c108716f9f6593ff0847382c81",
+        "train_ids_hash": "541f3fe228e930c48564ff26c7a127826d89f6cb4b6557696a57236b973d9942",
+        "train_samples": 32,
+        "validation_ids_hash": "ad5c766da4574fb2905f0b5d5339106ee5f3f31a0e895d5e9f597ce97c2c0dbb",
+        "validation_samples": 16
+      }
+    }
+  },
+  "deterministic": {
+    "candidate_budget": 4,
+    "candidates": [
+      {
+        "candidate_id": "det_fac_gate_035",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "fusion_scale_initial": 0.35,
+        "rationale": "set fusion gate initialization to 0.35",
+        "sam2_frozen": false,
+        "source": "p29_single_factor_grid"
+      },
+      {
+        "candidate_id": "det_fac_gate_050",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "fusion_scale_initial": 0.5,
+        "rationale": "set fusion gate initialization to 0.5",
+        "sam2_frozen": false,
+        "source": "p29_single_factor_grid"
+      },
+      {
+        "candidate_id": "det_fac_fusion_lr_1e4",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0001,
+        "fusion_scale_initial": 0.2,
+        "rationale": "set fusion learning rate to 1e-4",
+        "sam2_frozen": false,
+        "source": "p29_single_factor_grid"
+      },
+      {
+        "candidate_id": "det_fac_sam2_frozen",
+        "dice_weight": 0.25,
+        "fusion_lr": 0.0002,
+        "fusion_scale_initial": 0.2,
+        "rationale": "freeze the complete pretrained SAM2 image encoder",
+        "sam2_frozen": true,
+        "source": "p29_single_factor_grid"
+      }
+    ],
+    "promotion": {
+      "config_by_dataset": {
+        "F3": {
+          "action_id": "det_fac_gate_050",
+          "changed_factor": "joint_hyperparameters",
+          "description": "set fusion gate initialization to 0.5",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.5,
+          "sam2_frozen": false
+        },
+        "Penobscot": {
+          "action_id": "A0_GATE_020",
+          "changed_factor": "none",
+          "description": "frozen A0",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        }
+      },
+      "equal_mean": 0.30102274922690286,
+      "frozen_test_accessed": false,
+      "phase": "promotion",
+      "policy_id": "A2D_p29_single_factor_grid",
+      "runtime_s": 18.107760758008226,
+      "selected_candidate_by_dataset": {
+        "F3": "det_fac_gate_050",
+        "Penobscot": null
+      },
+      "tasks": {
+        "F3": {
+          "accuracy": 0.6660614013671875,
+          "fusion_scale": 0.49907687306404114,
+          "fusion_scale_initial": 0.5,
+          "last_grad_norm": 14.694966316223145,
+          "macro_f1": 0.4931127136595675,
+          "miou": 0.36753209267947956,
+          "prediction_hash": "a9765c9cdc6fc8c492dd83fac1f3ecd8be15138f006da1887f65bc018011b7db",
+          "sam2_update_l2": 0.40986315367427617,
+          "train_loss_mean": 1.2290874477475882
+        },
+        "Penobscot": {
+          "accuracy": 0.4635772705078125,
+          "fusion_scale": 0.20085497200489044,
+          "fusion_scale_initial": 0.2,
+          "last_grad_norm": 5.897378921508789,
+          "macro_f1": 0.338289971262145,
+          "miou": 0.2345134057743261,
+          "prediction_hash": "7fada56ecb5ff2aa119a2b11b28766cabd3639b4d7501e7ef2dc9227cb711754",
+          "sam2_update_l2": 0.22656668311314196,
+          "train_loss_mean": 1.7786403939127922
+        }
+      }
+    },
+    "selected_candidate_by_dataset": {
+      "F3": "det_fac_gate_050",
+      "Penobscot": null
+    },
+    "selection_trials": [
+      {
+        "action_id": "det_fac_gate_035",
+        "config": {
+          "action_id": "det_fac_gate_035",
+          "changed_factor": "joint_hyperparameters",
+          "description": "set fusion gate initialization to 0.35",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.35,
+          "sam2_frozen": false
+        },
+        "config_hash": "048aac6baf893714fa488108f0462b6c54f02136471823af20b1d8e75bfcf315",
+        "equal_mean": 0.23425191034427956,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 879,
+        "phase": "selection",
+        "policy_id": "A2D_p29_single_factor_grid",
+        "round": 1,
+        "runtime_s": 17.282414626009995,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4811248779296875,
+            "attention_entropy": 0.8736521005630493,
+            "fusion_scale": 0.3507353663444519,
+            "fusion_scale_initial": 0.35,
+            "last_grad_norm": 12.300575256347656,
+            "macro_f1": 0.40283833028511784,
+            "miou": 0.2808068105245255,
+            "prediction_hash": "589a910c6dd5c39805790ba8ff1161a0168f3fd6fde086ba46412b39315a4eab",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.36415114378479274,
+            "train_attention_entropy": 0.8799092173576355,
+            "train_loss_last": 0.8678745031356812,
+            "train_loss_mean": 1.1114546978846191
+          },
+          "Penobscot": {
+            "accuracy": 0.6435012817382812,
+            "attention_entropy": 0.9728041887283325,
+            "fusion_scale": 0.35049566626548767,
+            "fusion_scale_initial": 0.35,
+            "last_grad_norm": 6.1943840980529785,
+            "macro_f1": 0.23712152539248182,
+            "miou": 0.18769701016403362,
+            "prediction_hash": "7b52237d7e859a41882e092f66c0f5f931049a8d4e57dbaa4a056a5f48d55ca0",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.245924936822275,
+            "train_attention_entropy": 0.9719749093055725,
+            "train_loss_last": 1.7927778959274292,
+            "train_loss_mean": 1.8132601760327816
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_id": "det_fac_gate_050",
+        "config": {
+          "action_id": "det_fac_gate_050",
+          "changed_factor": "joint_hyperparameters",
+          "description": "set fusion gate initialization to 0.5",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.5,
+          "sam2_frozen": false
+        },
+        "config_hash": "a4afbf29891f83885a1f0956f2060da7f35877c0d2182319730025c3ac070f72",
+        "equal_mean": 0.24452614815765178,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 878,
+        "phase": "selection",
+        "policy_id": "A2D_p29_single_factor_grid",
+        "round": 2,
+        "runtime_s": 17.77127946600376,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.49330902099609375,
+            "attention_entropy": 0.8855457901954651,
+            "fusion_scale": 0.500228226184845,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 16.4046688079834,
+            "macro_f1": 0.4166849971692933,
+            "miou": 0.29346791323793775,
+            "prediction_hash": "c2bfd1a5337e2b4bd91a29a3afe3c1db7c9faab31896cd72c573813c69571244",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.34498484119385897,
+            "train_attention_entropy": 0.8895020484924316,
+            "train_loss_last": 0.8371528387069702,
+            "train_loss_mean": 1.082389502041042
+          },
+          "Penobscot": {
+            "accuracy": 0.6453361511230469,
+            "attention_entropy": 0.9134566187858582,
+            "fusion_scale": 0.5001741647720337,
+            "fusion_scale_initial": 0.5,
+            "last_grad_norm": 19.63987922668457,
+            "macro_f1": 0.2538724350426317,
+            "miou": 0.19558438307736578,
+            "prediction_hash": "28e8e7e30ee499d128d398df20845ed56907ed9435ed6322195232136bd53a5f",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.24527072992059143,
+            "train_attention_entropy": 0.9002954363822937,
+            "train_loss_last": 1.801487684249878,
+            "train_loss_mean": 1.8172238998115062
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_id": "det_fac_fusion_lr_1e4",
+        "config": {
+          "action_id": "det_fac_fusion_lr_1e4",
+          "changed_factor": "joint_hyperparameters",
+          "description": "set fusion learning rate to 1e-4",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0001,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": false
+        },
+        "config_hash": "8ed1bde2040c0028ccc12deb9660e8cadcf473c4641ba18fc209e57e1ed0cda8",
+        "equal_mean": 0.21240194786246294,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 878,
+        "phase": "selection",
+        "policy_id": "A2D_p29_single_factor_grid",
+        "round": 3,
+        "runtime_s": 17.770230531998095,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4292793273925781,
+            "attention_entropy": 0.8617292642593384,
+            "fusion_scale": 0.20058739185333252,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 12.82452392578125,
+            "macro_f1": 0.35192962800758953,
+            "miou": 0.23972610402541172,
+            "prediction_hash": "2ae4179fdacc9a95c7436a1c53bc7a36c763d09f8dfc33d5e47fabbcaafac504",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.46894226753460266,
+            "train_attention_entropy": 0.8757530450820923,
+            "train_loss_last": 1.0578781366348267,
+            "train_loss_mean": 1.2236325526610017
+          },
+          "Penobscot": {
+            "accuracy": 0.636749267578125,
+            "attention_entropy": 0.9723642468452454,
+            "fusion_scale": 0.2001696676015854,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 6.02298641204834,
+            "macro_f1": 0.23609867505083657,
+            "miou": 0.18507779169951416,
+            "prediction_hash": "d74abe11180d583ae6b8e5ae14b879ccafe6f09b2587d4f398ec553b89a47c3e",
+            "sam2_trainable_blocks": [
+              22,
+              23
+            ],
+            "sam2_trainable_parameters": 19290880,
+            "sam2_update_l2": 0.23311134555070476,
+            "train_attention_entropy": 0.9708825349807739,
+            "train_loss_last": 1.8073387145996094,
+            "train_loss_mean": 1.8238658249378203
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      },
+      {
+        "action_id": "det_fac_sam2_frozen",
+        "config": {
+          "action_id": "det_fac_sam2_frozen",
+          "changed_factor": "joint_hyperparameters",
+          "description": "freeze the complete pretrained SAM2 image encoder",
+          "dice_weight": 0.25,
+          "fusion_lr": 0.0002,
+          "fusion_scale_initial": 0.2,
+          "sam2_frozen": true
+        },
+        "config_hash": "242e733e8f3f357cd97bf5906fa3dca4c78f0fb69502f2ceb0cdcd812295b76f",
+        "equal_mean": 0.2266252087377865,
+        "exit_status": "OK",
+        "frozen_test_accessed": false,
+        "peak_vram_mb": 605,
+        "phase": "selection",
+        "policy_id": "A2D_p29_single_factor_grid",
+        "round": 4,
+        "runtime_s": 13.997440032006125,
+        "tasks": {
+          "F3": {
+            "accuracy": 0.4642906188964844,
+            "attention_entropy": 0.8582842946052551,
+            "fusion_scale": 0.20105570554733276,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 10.550975799560547,
+            "macro_f1": 0.3835615368491885,
+            "miou": 0.26614639461517,
+            "prediction_hash": "4b768ee10fa8d41de20d9319c092f37773f4be6e192395d78e71fad4ff2110df",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.8663495182991028,
+            "train_loss_last": 0.9436558485031128,
+            "train_loss_mean": 1.1619663001969456
+          },
+          "Penobscot": {
+            "accuracy": 0.634124755859375,
+            "attention_entropy": 0.9416216611862183,
+            "fusion_scale": 0.2000960260629654,
+            "fusion_scale_initial": 0.2,
+            "last_grad_norm": 16.369905471801758,
+            "macro_f1": 0.24037791560044106,
+            "miou": 0.187104022860403,
+            "prediction_hash": "024b5dab2e584a9dcb59fb364d932a29a728ac1b0d58241537ad2798ba74b6e5",
+            "sam2_trainable_blocks": [],
+            "sam2_trainable_parameters": 0,
+            "sam2_update_l2": 0.0,
+            "train_attention_entropy": 0.9289785623550415,
+            "train_loss_last": 1.8121402263641357,
+            "train_loss_mean": 1.8228325448930263
+          }
+        },
+        "wall_clock_budget_s": 90.0
+      }
+    ],
+    "strategy_id": "A2D_p29_single_factor_grid",
+    "total_config_packages": 5
+  },
+  "matched_budget": {
+    "agent_candidate_count": 4,
+    "agent_config_packages": 5,
+    "deterministic_candidate_count": 4,
+    "deterministic_config_packages": 5,
+    "equal": true
+  },
+  "metric_direction": "higher_is_better",
+  "primary_metric": "equal_mean_mIoU",
+  "promotion_gate": {
+    "agent_minus_deterministic_equal_mean_mIoU": 0.02469859172704636,
+    "decision": "RETAIN_HYBRID",
+    "minimum_required_absolute_improvement": 0.005,
+    "retain_hybrid": true,
+    "task_mIoU_deltas": {
+      "F3": 0.04939718345409272,
+      "Penobscot": 0.0
+    },
+    "task_nondegradation_floor": -0.005,
+    "task_nondegradation_pass": true
+  },
+  "prompt_sha256": "c1b352bc16075d151aa8c2e90e8f85073e5251e1c1e0b1afc1b98c1c9ff1c694",
+  "provider": {
+    "credential_persisted": false,
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "provider": "deepseek",
+    "response_id": "264012fc-23c3-4348-9b2a-9e8cc9fc46d5",
+    "usage": {
+      "completion_tokens": 325,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 342,
+      "prompt_tokens": 342,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 667
+    }
+  },
+  "runtime": {
+    "device": "cuda:0",
+    "sam2_checkpoint_sha256": "a2345aede8715ab1d5d31b4a509fb160c5a4af1970f199d9054ccfb746c004c5"
+  },
+  "schema_version": "facies-p32-hybrid-agent-optimizer/v1",
+  "summary_core_sha256": "d5b09ebb57fd6341b534c1a685de413f2f7b5a8561c4cc8d36e4eb517426f5f0"
+}

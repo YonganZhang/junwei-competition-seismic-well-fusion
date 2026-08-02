@@ -1,0 +1,21 @@
+{
+  "candidate_pool_exact_match": false,
+  "endpoint_metrics_stable": true,
+  "independent_provider_calls": true,
+  "primary_response_id": "6e5a5814-6b8d-4d71-b899-715cb2c164a4",
+  "promotion_decision_stable": true,
+  "replay_response_id": "e7241991-bd51-4db9-9a81-7f99c4bb1f72",
+  "schema_version": "property-p32-independent-replay/v1",
+  "scientific_interpretation": "The full candidate lists varied, but two independent provider calls selected the same executable endpoint and reproduced identical metrics.",
+  "selected_candidate_signature": {
+    "model_kwargs": {
+      "l2_strength": 0.0,
+      "learning_rate": 0.01
+    },
+    "model_name": "reservoir_linear"
+  },
+  "selected_decision_stable": true,
+  "stable_data": true,
+  "verification_sha256": "3287f2410081bb7d2635988e2190467ccb9be6791e121c87fe5b9835f0983bcb",
+  "verified": true
+}

@@ -1,0 +1,47 @@
+{
+  "allowlist": {
+    "dice_weight": [
+      0.1,
+      0.75
+    ],
+    "fusion_lr": [
+      5e-05,
+      0.0005
+    ],
+    "fusion_scale_initial": [
+      0.1,
+      0.8
+    ],
+    "sam2_frozen": [
+      false,
+      true
+    ]
+  },
+  "candidate_budget": 4,
+  "model": "small CNN cross-attention fusion with a pretrained SAM2 image encoder",
+  "objective": "improve equal-mean development mIoU across F3 and Penobscot",
+  "rules": [
+    "Return strict JSON with the single top-level key candidates.",
+    "Return exactly four unique joint configurations.",
+    "Do not request new data, models, paths, metrics, epochs, or actions.",
+    "No raw labels, validation values, promotion values, or test data are available.",
+    "Each candidate has fusion_scale_initial, fusion_lr, dice_weight, sam2_frozen, rationale only."
+  ],
+  "safe_train_diagnostics": {
+    "F3": {
+      "attention_entropy": "moderate",
+      "fusion_scale_state": "stuck",
+      "gradient_norm": "moderate",
+      "loss_level": "moderate",
+      "sam2_update": "moderate"
+    },
+    "Penobscot": {
+      "attention_entropy": "moderate",
+      "fusion_scale_state": "stuck",
+      "gradient_norm": "moderate",
+      "loss_level": "high",
+      "sam2_update": "moderate"
+    }
+  },
+  "task": "Propose four joint configurations for seismic facies segmentation"
+}

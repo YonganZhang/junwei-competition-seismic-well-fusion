@@ -1,0 +1,57 @@
+{
+  "payload": {
+    "candidates": [
+      {
+        "model_kwargs": {
+          "l2_strength": 0.01,
+          "learning_rate": 0.005
+        },
+        "model_name": "reservoir_ridge",
+        "rationale": "Adds small L2 regularization to the linear baseline to improve generalization without deviating far from the incumbent."
+      },
+      {
+        "model_kwargs": {
+          "l2_strength": 0.0,
+          "learning_rate": 0.01
+        },
+        "model_name": "reservoir_linear",
+        "rationale": "Increases learning rate from incumbent to speed convergence, potentially improving fit within limited steps."
+      },
+      {
+        "model_kwargs": {
+          "hidden_dim": 16,
+          "learning_rate": 0.001,
+          "weight_decay": 0.0
+        },
+        "model_name": "tiny_mlp",
+        "rationale": "Introduces a small MLP to capture nonlinear interactions among 153 features, with moderate capacity to avoid overfitting."
+      },
+      {
+        "model_kwargs": {
+          "hidden_dim": 32,
+          "learning_rate": 0.005,
+          "weight_decay": 0.001
+        },
+        "model_name": "tiny_mlp",
+        "rationale": "Larger MLP with slight weight decay to balance capacity and regularization, aiming for better multi-target accuracy."
+      }
+    ]
+  },
+  "provenance": {
+    "credential_persisted": false,
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "provider": "deepseek",
+    "response_id": "e7241991-bd51-4db9-9a81-7f99c4bb1f72",
+    "usage": {
+      "completion_tokens": 322,
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 51,
+      "prompt_tokens": 435,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "total_tokens": 757
+    }
+  }
+}

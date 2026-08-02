@@ -43,6 +43,7 @@ class TrackContract:
     promoted_default: str
     rejected_route: str
     required_files: tuple[str, ...] = ()
+    verification: str | None = None
 
 
 def _c(source: str, path: str, operator: str, expected: Any) -> Check:
@@ -86,50 +87,67 @@ TRACKS: dict[str, TrackContract] = {
     "facies": TrackContract(
         summary="_pipelines/02_task_datasets/facies/_outputs/p29_agent_action_effect/summary.json",
         actions="_pipelines/02_task_datasets/facies/_outputs/p29_agent_action_effect/action_effects.json",
-        final=None,
+        final="_pipelines/02_task_datasets/facies/_outputs/p32_hybrid_agent_optimizer/summary.json",
         checks={
-            "validate": (_c("summary", "gate.checks.no_frozen_test_access", "eq", True),),
+            "validate": (
+                _c("summary", "gate.checks.no_frozen_test_access", "eq", True),
+                _c("final", "data.frozen_test_accessed", "eq", False),
+                _c("verification", "verified", "eq", True),
+            ),
             "prepare": (_c("actions", "actions", "nonempty", True),),
             "baseline": (_c("summary", "a0.selection.policy_id", "eq", "A0_static_baseline"),),
             "optimize": (
                 _c("summary", "action_noop_check_passed", "eq", True),
                 _c("summary", "gate.direct_agent_endpoint_superiority", "eq", False),
+                _c("final", "matched_budget.equal", "eq", True),
             ),
             "promote": (
-                _c("summary", "gate.verdict", "eq", "RETAIN_HYBRID"),
-                _c("summary", "gate.retain_agent", "eq", False),
-                _c("summary", "gate.retain_hybrid", "eq", True),
+                _c("final", "promotion_gate.decision", "eq", "RETAIN_HYBRID"),
+                _c("final", "promotion_gate.task_nondegradation_pass", "eq", True),
+                _c("verification", "selected_decision_stable", "eq", True),
             ),
             "refit": (
-                _c("summary", "gate.a4_hybrid_promotion_guards.passed", "eq", True),
-                _c("summary", "gate.a4_hybrid_promotion_guards.delta_vs_a0.equal_mean", "gt", 0.0),
+                _c("final", "promotion_gate.agent_minus_deterministic_equal_mean_mIoU", "gt", 0.005),
+                _c("final", "agent.promotion.config_by_dataset.F3.fusion_scale_initial", "eq", 0.8),
+                _c("final", "agent.promotion.config_by_dataset.F3.fusion_lr", "eq", 0.0005),
+                _c("final", "agent.promotion.config_by_dataset.F3.dice_weight", "eq", 0.75),
             ),
         },
-        promoted_default="dataset_conditioned_deterministic_hybrid",
-        rejected_route="direct LLM endpoint",
+        promoted_default="P32_hybrid_F3_joint_gate0.8_lr5e-4_dice0.75_plus_Penobscot_A0",
+        rejected_route="direct LLM endpoint without deterministic candidate scheduling",
+        verification="_pipelines/02_task_datasets/facies/_outputs/p32_hybrid_agent_optimizer/independent_verification.json",
     ),
     "property": TrackContract(
         summary="_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/summary.json",
         actions="_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/action_effects.json",
-        final=None,
+        final="_pipelines/02_task_datasets/reservoir/_outputs/p32_hybrid_agent_optimizer/summary.json",
         checks={
-            "validate": (_c("summary", "gate.status", "eq", "blocked"),),
+            "validate": (
+                _c("summary", "gate.status", "eq", "blocked"),
+                _c("final", "data.frozen_test_accessed", "eq", False),
+                _c("verification", "verified", "eq", True),
+            ),
             "prepare": (_c("actions", "rows", "nonempty", True),),
             "baseline": (_c("summary", "strategies.A1.selected_by", "eq", "identity_replay"),),
             "optimize": (
                 _c("summary", "strategies.A2D.selection_primary_delta_rel", "lt", 0.0),
+                _c("final", "matched_budget.equal", "eq", True),
             ),
             "promote": (
-                _c("summary", "promotion_gate.best_deterministic", "eq", "A2D"),
-                _c("summary", "promotion_gate.keep_llm", "eq", False),
-                _c("summary", "promotion_gate.per_strategy.A2D.retained", "eq", True),
+                _c("final", "promotion_gate.decision", "eq", "RETAIN_HYBRID"),
+                _c("final", "promotion_gate.paired_seed_wins", "eq", 3),
+                _c("final", "promotion_gate.worst_target_nondegradation_2pct", "eq", True),
+                _c("verification", "selected_decision_stable", "eq", True),
             ),
             "refit": (
-                _c("summary", "strategies.A2D.promotion_primary_delta_rel", "lt", 0.0),
+                _c("final", "promotion_gate.agent_minus_deterministic_relative_primary", "lt", -0.01),
+                _c("final", "agent.selected_candidate.model_name", "eq", "reservoir_linear"),
+                _c("final", "agent.selected_candidate.model_kwargs.learning_rate", "eq", 0.01),
             ),
         },
-        promoted_default="A2D_reservoir_linear",
-        rejected_route="direct LLM selector and unavailable CIG-Bench PropertyPredictor",
+        promoted_default="P32_hybrid_reservoir_linear_lr0.01",
+        rejected_route="direct LLM selector without deterministic candidate scheduling and unavailable CIG-Bench PropertyPredictor",
+        verification="_pipelines/02_task_datasets/reservoir/_outputs/p32_hybrid_agent_optimizer/independent_verification.json",
     ),
     "lithofacies": TrackContract(
         summary="_pipelines/02_task_datasets/lithofacies/_outputs/p29_agent_action_effect/summary.json",
@@ -258,6 +276,8 @@ def evaluate(track: str, stage: str) -> dict[str, Any]:
     }
     if contract.final:
         sources["final"] = _load(contract.final)
+    if contract.verification:
+        sources["verification"] = _load(contract.verification)
     required_artifacts: dict[str, dict[str, Any]] = {}
     for artifact in contract.required_files:
         artifact_path = PROJECT_ROOT / artifact

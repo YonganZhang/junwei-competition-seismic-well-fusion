@@ -27,24 +27,24 @@ steps:
     needs: [baseline]
     params: {track: facies, stage: optimize}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p29_agent_action_effect/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p32_hybrid_agent_optimizer/summary.json]
   - id: promote
     ref: code:track_lifecycle_verify
     needs: [optimize]
     params: {track: facies, stage: promote}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p29_agent_action_effect/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p32_hybrid_agent_optimizer/summary.json]
   - id: refit
     ref: code:track_lifecycle_verify
     needs: [promote]
     params: {track: facies, stage: refit}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p29_agent_action_effect/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p32_hybrid_agent_optimizer/summary.json]
   - id: verify
     ref: code:track_lifecycle_verify
     needs: [refit]
     params: {track: facies, stage: verify}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p29_agent_action_effect/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p32_hybrid_agent_optimizer/independent_verification.json]
 verified_steps_hash: 99437ba65e547af448f7b6365c3f8f5a4a693109706dc6d5bfdbe822769af3bd
 verified_at_commit: 3c0e1051667fa94c1cfe163b809f32c00d639c6b

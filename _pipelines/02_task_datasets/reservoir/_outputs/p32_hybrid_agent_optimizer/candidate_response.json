@@ -1,0 +1,57 @@
+{
+  "payload": {
+    "candidates": [
+      {
+        "model_kwargs": {
+          "l2_strength": 0.0,
+          "learning_rate": 0.01
+        },
+        "model_name": "reservoir_linear",
+        "rationale": "Higher learning rate within bounds to speed convergence, no regularization to maintain flexibility."
+      },
+      {
+        "model_kwargs": {
+          "l2_strength": 0.05,
+          "learning_rate": 0.01
+        },
+        "model_name": "reservoir_ridge",
+        "rationale": "Add moderate L2 regularization to improve generalization, higher learning rate for faster adaptation."
+      },
+      {
+        "model_kwargs": {
+          "hidden_dim": 32,
+          "learning_rate": 0.005,
+          "weight_decay": 0.001
+        },
+        "model_name": "tiny_mlp",
+        "rationale": "Small MLP with moderate capacity and mild regularization to capture nonlinearities without overfitting."
+      },
+      {
+        "model_kwargs": {
+          "hidden_dim": 64,
+          "learning_rate": 0.001,
+          "weight_decay": 0.0
+        },
+        "model_name": "tiny_mlp",
+        "rationale": "Larger hidden layer with lower learning rate for stable training, no weight decay to allow full capacity."
+      }
+    ]
+  },
+  "provenance": {
+    "credential_persisted": false,
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "provider": "deepseek",
+    "response_id": "6e5a5814-6b8d-4d71-b899-715cb2c164a4",
+    "usage": {
+      "completion_tokens": 308,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 435,
+      "prompt_tokens": 435,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 743
+    }
+  }
+}

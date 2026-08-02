@@ -1,0 +1,51 @@
+{
+  "payload": {
+    "candidates": [
+      {
+        "dice_weight": 0.75,
+        "fusion_lr": 0.0005,
+        "fusion_scale_initial": 0.8,
+        "rationale": "High fusion scale and learning rate to break the stuck state, high dice weight to counter high loss, unfreeze SAM2 for moderate updates.",
+        "sam2_frozen": false
+      },
+      {
+        "dice_weight": 0.1,
+        "fusion_lr": 5e-05,
+        "fusion_scale_initial": 0.1,
+        "rationale": "Low scale and LR to stabilize, low dice weight to reduce loss pressure, freeze SAM2 to prevent overfitting.",
+        "sam2_frozen": true
+      },
+      {
+        "dice_weight": 0.5,
+        "fusion_lr": 0.0003,
+        "fusion_scale_initial": 0.5,
+        "rationale": "Mid-range scale and LR to nudge scale, balanced dice weight, unfreeze SAM2 for moderate updates.",
+        "sam2_frozen": false
+      },
+      {
+        "dice_weight": 0.3,
+        "fusion_lr": 0.0001,
+        "fusion_scale_initial": 0.3,
+        "rationale": "Lower scale and LR to gradually adjust, lower dice weight to reduce loss, freeze SAM2 to maintain stability.",
+        "sam2_frozen": true
+      }
+    ]
+  },
+  "provenance": {
+    "credential_persisted": false,
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "provider": "deepseek",
+    "response_id": "264012fc-23c3-4348-9b2a-9e8cc9fc46d5",
+    "usage": {
+      "completion_tokens": 325,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 342,
+      "prompt_tokens": 342,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 667
+    }
+  }
+}

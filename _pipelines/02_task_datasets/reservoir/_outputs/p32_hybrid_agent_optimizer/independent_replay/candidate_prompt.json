@@ -1,0 +1,76 @@
+{
+  "allowlist": {
+    "reservoir_linear": {
+      "l2_strength": [
+        0.0,
+        0.0
+      ],
+      "learning_rate": [
+        0.0001,
+        0.05
+      ]
+    },
+    "reservoir_ridge": {
+      "l2_strength": [
+        0.0,
+        0.1
+      ],
+      "learning_rate": [
+        0.0001,
+        0.05
+      ]
+    },
+    "tiny_mlp": {
+      "hidden_dim": [
+        8,
+        16,
+        24,
+        32,
+        48,
+        64
+      ],
+      "learning_rate": [
+        0.0001,
+        0.02
+      ],
+      "weight_decay": [
+        0.0,
+        0.01
+      ]
+    }
+  },
+  "available_development_data": {
+    "feature_count": 153,
+    "promotion_metrics_visible": false,
+    "raw_labels_visible": false,
+    "sample_count": 1135,
+    "selection_metrics_visible": false,
+    "test_data_visible": false
+  },
+  "budget": {
+    "candidates": 4,
+    "final_seeds": [
+      2693,
+      2694,
+      2695
+    ],
+    "final_update_steps": 32,
+    "pilot_update_steps_each": 8
+  },
+  "domain": "seismic-patch and well-log summary features; predict PHIF, KLOGH, and SW",
+  "known_incumbent": {
+    "model_kwargs": {
+      "l2_strength": 0.0,
+      "learning_rate": 0.002
+    },
+    "model_name": "reservoir_linear"
+  },
+  "objective": "minimize mean train-standard-deviation-normalized RMSE without degrading any target",
+  "rules": [
+    "Return strict JSON with the single top-level key candidates.",
+    "Return exactly four unique candidates covering at least two model families.",
+    "Use no unlisted model, parameter, data path, metric, or action.",
+    "Each candidate contains model_name, model_kwargs, and a short rationale only."
+  ],
+  "task": "Propose four bounded candidates for multi-output reservoir property regression"
+}

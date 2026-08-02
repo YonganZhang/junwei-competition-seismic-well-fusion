@@ -49,6 +49,18 @@ gates:
     expect: exit0
     note: "六赛道七段生命周期总门禁：确切字段、哈希报告与 fail-loud 回归。"
 
+  - id: p32-property-hybrid-agent
+    cmd: "python3 -m pytest -q _pipelines/02_task_datasets/reservoir/tests/test_p32_hybrid_agent_optimizer.py && python3 _pipelines/02_task_datasets/reservoir/p32_hybrid_agent_optimizer.py verify && python3 _pipelines/02_task_datasets/reservoir/p32_hybrid_agent_optimizer.py verify-replay"
+    timeout: 60
+    expect: exit0
+    note: "验证物性匹配预算、候选防越界、3/3配对胜出、目标级非劣和独立 provider 复跑。"
+
+  - id: p32-facies-hybrid-agent
+    cmd: "${P5_TORCH_PYTHON:?set P5_TORCH_PYTHON to torch-common} -m pytest -q _pipelines/02_task_datasets/facies/tests/test_p32_hybrid_agent_optimizer.py && ${P5_TORCH_PYTHON} _pipelines/02_task_datasets/facies/p32_hybrid_agent_optimizer.py verify && ${P5_TORCH_PYTHON} _pipelines/02_task_datasets/facies/p32_hybrid_agent_optimizer.py verify-replay"
+    timeout: 90
+    expect: exit0
+    note: "验证地震相联合候选、条件化端点、匹配配置包预算、跨任务非劣和独立 provider/GPU 复跑。"
+
   - id: domain-visualization-delivery
     cmd: "python3 -m unittest discover -s _pipelines/03_domain_visualization_delivery/tests -p 'test_*.py' -v"
     timeout: 180

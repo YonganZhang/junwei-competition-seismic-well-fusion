@@ -1,0 +1,1101 @@
+{
+  "agent": {
+    "candidate_budget": 4,
+    "endpoint": {
+      "promotion_primary_median": 0.6339455553243365,
+      "promotion_primary_values": [
+        0.6339455553243365,
+        0.6298205168890548,
+        0.655212068678288
+      ],
+      "promotion_worst_group_RMSE_median": {
+        "KLOGH": 209.6598524384989,
+        "PHIF": 0.03808915241153383,
+        "SW": 0.3391139900671556
+      },
+      "selection_primary_median": 0.7062542089047715
+    },
+    "final_seed_pool": [
+      2693,
+      2694,
+      2695
+    ],
+    "final_trials": [
+      {
+        "candidate": {
+          "candidate_id": "agent_1_reservoir_linear",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.01
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "Higher learning rate within bounds to speed convergence, no regularization to maintain flexibility.",
+          "source": "deepseek_candidate_generator"
+        },
+        "candidate_hash": "aa483903c84859f7fcd92469aced581819cb20dfc07fed6d8ce68a5e29c2b9ba",
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 0.6339455553243365,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.03331245608446342,
+              "Pearson": 0.9203517592235331,
+              "Pearson_reason": null,
+              "R2": 0.6347427973461686,
+              "R2_reason": null,
+              "RMSE": 0.03808915241153383
+            },
+            "SW": {
+              "MAE": 0.3133732561064355,
+              "Pearson": 0.8973889285621475,
+              "Pearson_reason": null,
+              "R2": -0.5443391806268219,
+              "R2_reason": null,
+              "RMSE": 0.3375888106654459
+            },
+            "log1p(KLOGH)": {
+              "MAE": 0.9578565208679846,
+              "Pearson": 0.8895600645999776,
+              "Pearson_reason": null,
+              "R2": 0.7776288857915075,
+              "R2_reason": null,
+              "RMSE": 1.0889060932881758
+            }
+          },
+          "physical_MAE_macro": 27.83636444084587,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 205.3335745170025,
+            "PHIF": 0.03808915241153383,
+            "SW": 0.3375888106654459
+          }
+        },
+        "promotion_prediction_hash": "0c5e520024d4d5ad7ff46cd66afc5d25a16418f904a20537498ad6f7de96eb3c",
+        "runtime_s": 0.0050240860000485554,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.7062542089047715,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.036154234910704325,
+              "Pearson": 0.8925308802528851,
+              "Pearson_reason": null,
+              "R2": 0.5598723138580595,
+              "R2_reason": null,
+              "RMSE": 0.042944668344548936
+            },
+            "SW": {
+              "MAE": 0.3155724354280857,
+              "Pearson": 0.9007411965817679,
+              "Pearson_reason": null,
+              "R2": -0.4431979957059866,
+              "R2_reason": null,
+              "RMSE": 0.34019319140694604
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.1750168591987107,
+              "Pearson": 0.7883770427581966,
+              "Pearson_reason": null,
+              "R2": 0.6170504588896204,
+              "R2_reason": null,
+              "RMSE": 1.4717945227374423
+            }
+          },
+          "physical_MAE_macro": 32.376065591471416,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 238.6367307432266,
+            "PHIF": 0.042944668344548936,
+            "SW": 0.34019319140694604
+          }
+        },
+        "selection_prediction_hash": "b99d4f6fb7ad29da204198057abe98899616536b4a462ab63e70ca45c2d01c37",
+        "update_steps": 32
+      },
+      {
+        "candidate": {
+          "candidate_id": "agent_1_reservoir_linear",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.01
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "Higher learning rate within bounds to speed convergence, no regularization to maintain flexibility.",
+          "source": "deepseek_candidate_generator"
+        },
+        "candidate_hash": "aa483903c84859f7fcd92469aced581819cb20dfc07fed6d8ce68a5e29c2b9ba",
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 0.6298205168890548,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.03273821327540227,
+              "Pearson": 0.9270431926414225,
+              "Pearson_reason": null,
+              "R2": 0.6531183173083892,
+              "R2_reason": null,
+              "RMSE": 0.037118686339774117
+            },
+            "SW": {
+              "MAE": 0.31645226640596424,
+              "Pearson": 0.9006340758482131,
+              "Pearson_reason": null,
+              "R2": -0.5583249224836784,
+              "R2_reason": null,
+              "RMSE": 0.3391139900671556
+            },
+            "log1p(KLOGH)": {
+              "MAE": 0.9401672666436933,
+              "Pearson": 0.8897988465944894,
+              "Pearson_reason": null,
+              "R2": 0.7811349514064944,
+              "R2_reason": null,
+              "RMSE": 1.0802877426025392
+            }
+          },
+          "physical_MAE_macro": 28.382195416635952,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 209.6598524384989,
+            "PHIF": 0.037118686339774117,
+            "SW": 0.3391139900671556
+          }
+        },
+        "promotion_prediction_hash": "2123cfcf9be1dd41e533ab2262704d1b28f7c3ece5efb40bf4b909ae6d31ec18",
+        "runtime_s": 0.0071647379954811186,
+        "seed": 2694,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.7022748678450937,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.0351963792934396,
+              "Pearson": 0.9008058117540744,
+              "Pearson_reason": null,
+              "R2": 0.587893492109439,
+              "R2_reason": null,
+              "RMSE": 0.0415551299930318
+            },
+            "SW": {
+              "MAE": 0.31616967139200364,
+              "Pearson": 0.9006224579010882,
+              "Pearson_reason": null,
+              "R2": -0.45453509674366677,
+              "R2_reason": null,
+              "RMSE": 0.34152677830148653
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.1674587041642863,
+              "Pearson": 0.7889572499072659,
+              "Pearson_reason": null,
+              "R2": 0.6118969779716966,
+              "R2_reason": null,
+              "RMSE": 1.4816646445519328
+            }
+          },
+          "physical_MAE_macro": 32.74932304317819,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 241.1249660150734,
+            "PHIF": 0.0415551299930318,
+            "SW": 0.34152677830148653
+          }
+        },
+        "selection_prediction_hash": "c9cf6ea453be8d092579ff3743e4c79f62050d93714bf5fa5969ba839416a285",
+        "update_steps": 32
+      },
+      {
+        "candidate": {
+          "candidate_id": "agent_1_reservoir_linear",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.01
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "Higher learning rate within bounds to speed convergence, no regularization to maintain flexibility.",
+          "source": "deepseek_candidate_generator"
+        },
+        "candidate_hash": "aa483903c84859f7fcd92469aced581819cb20dfc07fed6d8ce68a5e29c2b9ba",
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 0.655212068678288,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.036703262019456395,
+              "Pearson": 0.9159121415148644,
+              "Pearson_reason": null,
+              "R2": 0.5669231478592338,
+              "R2_reason": null,
+              "RMSE": 0.04147480949472183
+            },
+            "SW": {
+              "MAE": 0.32114497001115694,
+              "Pearson": 0.8940320788299922,
+              "Pearson_reason": null,
+              "R2": -0.6175958118000744,
+              "R2_reason": null,
+              "RMSE": 0.34550290678837514
+            },
+            "log1p(KLOGH)": {
+              "MAE": 0.9358087715923986,
+              "Pearson": 0.8927994123896641,
+              "Pearson_reason": null,
+              "R2": 0.7843785066016051,
+              "R2_reason": null,
+              "RMSE": 1.0722529920569865
+            }
+          },
+          "physical_MAE_macro": 28.328638791673324,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 209.86893385342407,
+            "PHIF": 0.04147480949472183,
+            "SW": 0.34550290678837514
+          }
+        },
+        "promotion_prediction_hash": "73f237aae7571d59d45a88b526fa5d09e286b8c0df4edf78fe47354bb32f1073",
+        "runtime_s": 0.00629806199867744,
+        "seed": 2695,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.729421071356488,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.03971472795515523,
+              "Pearson": 0.8869373772946678,
+              "Pearson_reason": null,
+              "R2": 0.4841390564844762,
+              "R2_reason": null,
+              "RMSE": 0.04649285682021171
+            },
+            "SW": {
+              "MAE": 0.32238881033907685,
+              "Pearson": 0.8971512722966617,
+              "Pearson_reason": null,
+              "R2": -0.5082578966693538,
+              "R2_reason": null,
+              "RMSE": 0.3477766844634576
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.156814813809026,
+              "Pearson": 0.7924712932867989,
+              "Pearson_reason": null,
+              "R2": 0.6195542021080374,
+              "R2_reason": null,
+              "RMSE": 1.4669752997055272
+            }
+          },
+          "physical_MAE_macro": 32.71423513793167,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 241.24650250300752,
+            "PHIF": 0.04649285682021171,
+            "SW": 0.3477766844634576
+          }
+        },
+        "selection_prediction_hash": "fdf2055821f65cf3eab85e3876042d9a718d43b7085fdd60e3228f24b9109799",
+        "update_steps": 32
+      }
+    ],
+    "final_update_steps_each": 32,
+    "pilot_update_steps_each": 8,
+    "pilots": [
+      {
+        "candidate": {
+          "candidate_id": "agent_1_reservoir_linear",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.01
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "Higher learning rate within bounds to speed convergence, no regularization to maintain flexibility.",
+          "source": "deepseek_candidate_generator"
+        },
+        "candidate_hash": "aa483903c84859f7fcd92469aced581819cb20dfc07fed6d8ce68a5e29c2b9ba",
+        "runtime_s": 0.02497252999455668,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.8406861619589815,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.05486207268355197,
+              "Pearson": 0.7946923997595893,
+              "Pearson_reason": null,
+              "R2": 0.07523050034082446,
+              "R2_reason": null,
+              "RMSE": 0.062249613254628126
+            },
+            "SW": {
+              "MAE": 0.34116517121679596,
+              "Pearson": 0.8368547425128927,
+              "Pearson_reason": null,
+              "R2": -0.6196635176324297,
+              "R2_reason": null,
+              "RMSE": 0.3603919310978537
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.40635154085554,
+              "Pearson": 0.7935164179135472,
+              "Pearson_reason": null,
+              "R2": 0.503023671060524,
+              "R2_reason": null,
+              "RMSE": 1.6766571199185665
+            }
+          },
+          "physical_MAE_macro": 36.987127828200755,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 258.5687934255884,
+            "PHIF": 0.062249613254628126,
+            "SW": 0.3603919310978537
+          }
+        },
+        "selection_prediction_hash": "382064b26d01fadc7d52234b9775df1f28677ca9ebc80f6da10904be96abe6c6",
+        "update_steps": 8
+      },
+      {
+        "candidate": {
+          "candidate_id": "agent_2_reservoir_ridge",
+          "model_kwargs": {
+            "l2_strength": 0.05,
+            "learning_rate": 0.01
+          },
+          "model_name": "reservoir_ridge",
+          "rationale": "Add moderate L2 regularization to improve generalization, higher learning rate for faster adaptation.",
+          "source": "deepseek_candidate_generator"
+        },
+        "candidate_hash": "6e016f7eb52e76a3f1c05de3d1458669047d70d4bf54f7015d52823dd3cb80b4",
+        "runtime_s": 0.004005084003438242,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.8408025185720988,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.05486874698383584,
+              "Pearson": 0.7946602239573567,
+              "Pearson_reason": null,
+              "R2": 0.07503075704563777,
+              "R2_reason": null,
+              "RMSE": 0.062256335617088716
+            },
+            "SW": {
+              "MAE": 0.3411452584052653,
+              "Pearson": 0.8368412716513521,
+              "Pearson_reason": null,
+              "R2": -0.6190278066875672,
+              "R2_reason": null,
+              "RMSE": 0.36032119801729473
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.408136678069398,
+              "Pearson": 0.7934668180564557,
+              "Pearson_reason": null,
+              "R2": 0.5022898155978726,
+              "R2_reason": null,
+              "RMSE": 1.6778945733206194
+            }
+          },
+          "physical_MAE_macro": 36.99559635296382,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 258.5885440720854,
+            "PHIF": 0.062256335617088716,
+            "SW": 0.36032119801729473
+          }
+        },
+        "selection_prediction_hash": "70fc7d0a177c94627019dc2eded4288a517145294a983000139786d77c7a9753",
+        "update_steps": 8
+      },
+      {
+        "candidate": {
+          "candidate_id": "agent_3_tiny_mlp",
+          "model_kwargs": {
+            "hidden_dim": 32,
+            "learning_rate": 0.005,
+            "weight_decay": 0.001
+          },
+          "model_name": "tiny_mlp",
+          "rationale": "Small MLP with moderate capacity and mild regularization to capture nonlinearities without overfitting.",
+          "source": "deepseek_candidate_generator"
+        },
+        "candidate_hash": "6aba75afb8d610ac9530369f1e88d62867d5a9f125519b70baa91b1ff229292b",
+        "runtime_s": 0.00817751900467556,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.9215028083460878,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.08076769131615066,
+              "Pearson": 0.42878884419449653,
+              "Pearson_reason": null,
+              "R2": -1.115545148205228,
+              "R2_reason": null,
+              "RMSE": 0.09415232692458197
+            },
+            "SW": {
+              "MAE": 0.2637470756386617,
+              "Pearson": 0.8127407386622068,
+              "Pearson_reason": null,
+              "R2": -0.11987811108219049,
+              "R2_reason": null,
+              "RMSE": 0.29967329077670435
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.2776427196555447,
+              "Pearson": 0.8752423391739658,
+              "Pearson_reason": null,
+              "R2": 0.5487909005285391,
+              "R2_reason": null,
+              "RMSE": 1.5975899886864808
+            }
+          },
+          "physical_MAE_macro": 79.14708651527108,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 628.4232094922136,
+            "PHIF": 0.09415232692458197,
+            "SW": 0.29967329077670435
+          }
+        },
+        "selection_prediction_hash": "b8f776d3c5853ebf2f62afb994d1aa82a3c51c9051788e46080909be242d43b9",
+        "update_steps": 8
+      },
+      {
+        "candidate": {
+          "candidate_id": "agent_4_tiny_mlp",
+          "model_kwargs": {
+            "hidden_dim": 64,
+            "learning_rate": 0.001,
+            "weight_decay": 0.0
+          },
+          "model_name": "tiny_mlp",
+          "rationale": "Larger hidden layer with lower learning rate for stable training, no weight decay to allow full capacity.",
+          "source": "deepseek_candidate_generator"
+        },
+        "candidate_hash": "40246c654555eed4448218c08d072cda996c1137f1eca3b9c13a47130f229beb",
+        "runtime_s": 0.005774690012913197,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 1.1134121937427197,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.03847872402121921,
+              "Pearson": 0.565668087971584,
+              "Pearson_reason": null,
+              "R2": 0.3162281747131733,
+              "R2_reason": null,
+              "RMSE": 0.05352732122755145
+            },
+            "SW": {
+              "MAE": 0.4604274334079841,
+              "Pearson": 0.5667614064208004,
+              "Pearson_reason": null,
+              "R2": -2.332389054947786,
+              "R2_reason": null,
+              "RMSE": 0.5169404405437384
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.5059250821269,
+              "Pearson": 0.3669256571372085,
+              "Pearson_reason": null,
+              "R2": -0.59695076429067,
+              "R2_reason": null,
+              "RMSE": 3.0055376240317306
+            }
+          },
+          "physical_MAE_macro": 178.13321656105313,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 2187.3502841365507,
+            "PHIF": 0.05352732122755145,
+            "SW": 0.5169404405437384
+          }
+        },
+        "selection_prediction_hash": "252ff101680ea1f2c584750d9e629e4b5cff6f5792a82797f6d2aad9c72ce590",
+        "update_steps": 8
+      }
+    ],
+    "selected_candidate": {
+      "candidate_id": "agent_1_reservoir_linear",
+      "model_kwargs": {
+        "l2_strength": 0.0,
+        "learning_rate": 0.01
+      },
+      "model_name": "reservoir_linear",
+      "rationale": "Higher learning rate within bounds to speed convergence, no regularization to maintain flexibility.",
+      "source": "deepseek_candidate_generator"
+    },
+    "selection_rule": "minimum pilot selection primary metric; candidate_id tie break",
+    "strategy_id": "A2H_llm_candidates_deterministic_scheduler",
+    "total_train_update_steps": 128
+  },
+  "agent_candidate_set_sha256": "fdb832c4bb3a2f7840a949765f78937c8e5fe0b3bc1a4bcdc7635b851363ed0d",
+  "data": {
+    "frozen_test_accessed": false,
+    "guard_npz_sha256": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+    "promotion_record_count": 40,
+    "promotion_sample_ids_sha256": "dceaea9a6f08e0be71341db048ba92e4a58105493f923cf79e24a107734d9f6b",
+    "selection_promotion_overlap": false,
+    "selection_record_count": 41,
+    "selection_sample_ids_sha256": "11142d831ea09cf469e60a9f450a3026ec4b5b1d5a7a689e650179a4b6d7d3b3",
+    "train_h5_sha256": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2",
+    "train_record_count": 1135,
+    "train_sample_ids_sha256": "8127780958333d503de8040cef9a94dfc7ef8191d3b585b0815e1f6017f1cb55"
+  },
+  "deterministic": {
+    "candidate_budget": 4,
+    "endpoint": {
+      "promotion_primary_median": 0.6622199990060977,
+      "promotion_primary_values": [
+        0.6622199990060977,
+        0.6589302307021279,
+        0.6779000543163454
+      ],
+      "promotion_worst_group_RMSE_median": {
+        "KLOGH": 213.57864911171254,
+        "PHIF": 0.042183218444317515,
+        "SW": 0.34521434489459524
+      },
+      "selection_primary_median": 0.7263638617164512
+    },
+    "final_seed_pool": [
+      2693,
+      2694,
+      2695
+    ],
+    "final_trials": [
+      {
+        "candidate": {
+          "candidate_id": "det_linear_lr008",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.008
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "frozen higher-rate linear probe",
+          "source": "frozen_grid"
+        },
+        "candidate_hash": "9a8ac539d26b17fd65bf3a572223288ae946da5c5b286a7176bd4dbc272d7459",
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 0.6622199990060977,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.03739215276085528,
+              "Pearson": 0.9098693700662202,
+              "Pearson_reason": null,
+              "R2": 0.5520024947477591,
+              "R2_reason": null,
+              "RMSE": 0.042183218444317515
+            },
+            "SW": {
+              "MAE": 0.318627172446031,
+              "Pearson": 0.8902094021652117,
+              "Pearson_reason": null,
+              "R2": -0.5937909785572419,
+              "R2_reason": null,
+              "RMSE": 0.34295124259727944
+            },
+            "log1p(KLOGH)": {
+              "MAE": 0.9841438823114277,
+              "Pearson": 0.8895789179687754,
+              "Pearson_reason": null,
+              "R2": 0.763867764451138,
+              "R2_reason": null,
+              "RMSE": 1.122093072968699
+            }
+          },
+          "physical_MAE_macro": 28.59723391896765,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 210.6753150985992,
+            "PHIF": 0.042183218444317515,
+            "SW": 0.34295124259727944
+          }
+        },
+        "promotion_prediction_hash": "32891a1f3c6ae0db99561908df33c6ada5b51ff1524f1cd0fa8c18d8e17ab8ff",
+        "runtime_s": 0.004558964996249415,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.7263638617164512,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.03914513426321896,
+              "Pearson": 0.8799901353708365,
+              "Pearson_reason": null,
+              "R2": 0.4828266616776764,
+              "R2_reason": null,
+              "RMSE": 0.04655196017527117
+            },
+            "SW": {
+              "MAE": 0.31994630435019533,
+              "Pearson": 0.897728795181622,
+              "Pearson_reason": null,
+              "R2": -0.481127079509742,
+              "R2_reason": null,
+              "RMSE": 0.34463455493865003
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.1857834457067131,
+              "Pearson": 0.7882415603556022,
+              "Pearson_reason": null,
+              "R2": 0.6209507530544205,
+              "R2_reason": null,
+              "RMSE": 1.4642803174969996
+            }
+          },
+          "physical_MAE_macro": 32.950811813281696,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 241.38739236952787,
+            "PHIF": 0.04655196017527117,
+            "SW": 0.34463455493865003
+          }
+        },
+        "selection_prediction_hash": "99517ff605f7f281558fe0a7b3ed67a033dec506a2fd72ef4790faca9c4bd71d",
+        "update_steps": 32
+      },
+      {
+        "candidate": {
+          "candidate_id": "det_linear_lr008",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.008
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "frozen higher-rate linear probe",
+          "source": "frozen_grid"
+        },
+        "candidate_hash": "9a8ac539d26b17fd65bf3a572223288ae946da5c5b286a7176bd4dbc272d7459",
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 0.6589302307021279,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.036847115860445666,
+              "Pearson": 0.9173294351408096,
+              "Pearson_reason": null,
+              "R2": 0.5710953785545817,
+              "R2_reason": null,
+              "RMSE": 0.04127454335054357
+            },
+            "SW": {
+              "MAE": 0.32216282499896515,
+              "Pearson": 0.8949129283369384,
+              "Pearson_reason": null,
+              "R2": -0.6148949280898264,
+              "R2_reason": null,
+              "RMSE": 0.34521434489459524
+            },
+            "log1p(KLOGH)": {
+              "MAE": 0.9700479030483098,
+              "Pearson": 0.8893625867649896,
+              "Pearson_reason": null,
+              "R2": 0.7680125253262194,
+              "R2_reason": null,
+              "RMSE": 1.1122015875299587
+            }
+          },
+          "physical_MAE_macro": 28.961906765188857,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 213.57864911171254,
+            "PHIF": 0.04127454335054357,
+            "SW": 0.34521434489459524
+          }
+        },
+        "promotion_prediction_hash": "aca3cc660714600d49ea701050544738e241edd671d2fea488a382ca400b8df5",
+        "runtime_s": 0.005780430001323111,
+        "seed": 2694,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.7230858696689867,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.038419239772742676,
+              "Pearson": 0.8883270059111315,
+              "Pearson_reason": null,
+              "R2": 0.5097943294890057,
+              "R2_reason": null,
+              "RMSE": 0.04532200080098806
+            },
+            "SW": {
+              "MAE": 0.32158376164412683,
+              "Pearson": 0.8995020176486695,
+              "Pearson_reason": null,
+              "R2": -0.49946191018327113,
+              "R2_reason": null,
+              "RMSE": 0.3467611048112531
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.1813574577788992,
+              "Pearson": 0.7883196724805548,
+              "Pearson_reason": null,
+              "R2": 0.6191923422137964,
+              "R2_reason": null,
+              "RMSE": 1.4676727884977936
+            }
+          },
+          "physical_MAE_macro": 33.194856842216915,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 243.05236765372476,
+            "PHIF": 0.04532200080098806,
+            "SW": 0.3467611048112531
+          }
+        },
+        "selection_prediction_hash": "401ce21ee723b8611ed76d73465596a88ee1c10c595577c06db600256970fece",
+        "update_steps": 32
+      },
+      {
+        "candidate": {
+          "candidate_id": "det_linear_lr008",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.008
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "frozen higher-rate linear probe",
+          "source": "frozen_grid"
+        },
+        "candidate_hash": "9a8ac539d26b17fd65bf3a572223288ae946da5c5b286a7176bd4dbc272d7459",
+        "promotion": {
+          "composite_mean_train_std_normalized_RMSE": 0.6779000543163454,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.04007835721082161,
+              "Pearson": 0.9056352925373996,
+              "Pearson_reason": null,
+              "R2": 0.493022640752273,
+              "R2_reason": null,
+              "RMSE": 0.04487414600109343
+            },
+            "SW": {
+              "MAE": 0.32417127087022507,
+              "Pearson": 0.887985648931204,
+              "Pearson_reason": null,
+              "R2": -0.6466345445415891,
+              "R2_reason": null,
+              "RMSE": 0.34859030932927154
+            },
+            "log1p(KLOGH)": {
+              "MAE": 0.9630485972198649,
+              "Pearson": 0.8928417888488787,
+              "Pearson_reason": null,
+              "R2": 0.7714281784415251,
+              "R2_reason": null,
+              "RMSE": 1.1039835104163096
+            }
+          },
+          "physical_MAE_macro": 28.982010533756952,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 214.3326060253886,
+            "PHIF": 0.04487414600109343,
+            "SW": 0.34859030932927154
+          }
+        },
+        "promotion_prediction_hash": "2a92b536756003789ecbad7c6fc2fdd8de901950c77e0326ca0efd32b194534f",
+        "runtime_s": 0.00575571101217065,
+        "seed": 2695,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.7436325925192505,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.041790869447610075,
+              "Pearson": 0.8747871488190972,
+              "Pearson_reason": null,
+              "R2": 0.41818589599233813,
+              "R2_reason": null,
+              "RMSE": 0.049375559657451565
+            },
+            "SW": {
+              "MAE": 0.32487769998652977,
+              "Pearson": 0.8952934281671948,
+              "Pearson_reason": null,
+              "R2": -0.5278142170420941,
+              "R2_reason": null,
+              "RMSE": 0.35002408776937066
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.1702839613610851,
+              "Pearson": 0.7921110803444403,
+              "Pearson_reason": null,
+              "R2": 0.6252375070513245,
+              "R2_reason": null,
+              "RMSE": 1.455976834963599
+            }
+          },
+          "physical_MAE_macro": 33.23839295771551,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 243.56836541995224,
+            "PHIF": 0.049375559657451565,
+            "SW": 0.35002408776937066
+          }
+        },
+        "selection_prediction_hash": "4fae5a041629585830c87bd8238350620a0f6a3723e4d8f598b9207f65bf2ccb",
+        "update_steps": 32
+      }
+    ],
+    "final_update_steps_each": 32,
+    "pilot_update_steps_each": 8,
+    "pilots": [
+      {
+        "candidate": {
+          "candidate_id": "det_linear_lr002",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.002
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "P29 deterministic incumbent",
+          "source": "frozen_grid"
+        },
+        "candidate_hash": "4d9dd3f678cbe89c2c1b0a9d205983fe9a4619eeefd33e5e126872a5f6804192",
+        "runtime_s": 0.002661770995473489,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.9525884428939105,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.06220256010136748,
+              "Pearson": 0.7305087913283094,
+              "Pearson_reason": null,
+              "R2": -0.16610809169655982,
+              "R2_reason": null,
+              "RMSE": 0.06990195356901352
+            },
+            "SW": {
+              "MAE": 0.3391972247282026,
+              "Pearson": 0.783981608710877,
+              "Pearson_reason": null,
+              "R2": -0.5287827882657188,
+              "R2_reason": null,
+              "RMSE": 0.3501350206107269
+            },
+            "log1p(KLOGH)": {
+              "MAE": 2.187015711372191,
+              "Pearson": 0.7613082257402759,
+              "Pearson_reason": null,
+              "R2": 0.003143710991494686,
+              "R2_reason": null,
+              "RMSE": 2.3746121314597315
+            }
+          },
+          "physical_MAE_macro": 41.90864490026026,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 266.339087642526,
+            "PHIF": 0.06990195356901352,
+            "SW": 0.3501350206107269
+          }
+        },
+        "selection_prediction_hash": "d74f23f021c39d36a22f8b7e8385a67186f0518e56b785d60e431a786f4ce977",
+        "update_steps": 8
+      },
+      {
+        "candidate": {
+          "candidate_id": "det_linear_lr008",
+          "model_kwargs": {
+            "l2_strength": 0.0,
+            "learning_rate": 0.008
+          },
+          "model_name": "reservoir_linear",
+          "rationale": "frozen higher-rate linear probe",
+          "source": "frozen_grid"
+        },
+        "candidate_hash": "9a8ac539d26b17fd65bf3a572223288ae946da5c5b286a7176bd4dbc272d7459",
+        "runtime_s": 0.0015366250008810312,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.8580286068481712,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.0564573712978593,
+              "Pearson": 0.7808709557519624,
+              "Pearson_reason": null,
+              "R2": 0.027455137330903656,
+              "R2_reason": null,
+              "RMSE": 0.06383733242535748
+            },
+            "SW": {
+              "MAE": 0.3413456513337815,
+              "Pearson": 0.825208092405028,
+              "Pearson_reason": null,
+              "R2": -0.5917596672547683,
+              "R2_reason": null,
+              "RMSE": 0.3572739956104731
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.5458093998741516,
+              "Pearson": 0.7888339706941098,
+              "Pearson_reason": null,
+              "R2": 0.43893480412599173,
+              "R2_reason": null,
+              "RMSE": 1.7814886931507694
+            }
+          },
+          "physical_MAE_macro": 37.77263888509246,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 260.6296305242892,
+            "PHIF": 0.06383733242535748,
+            "SW": 0.3572739956104731
+          }
+        },
+        "selection_prediction_hash": "fc7cfbc219685c46da825e2a210e6a6a5e025259958c9861df613f7599761f02",
+        "update_steps": 8
+      },
+      {
+        "candidate": {
+          "candidate_id": "det_ridge_lr004_l2_1e4",
+          "model_kwargs": {
+            "l2_strength": 0.0001,
+            "learning_rate": 0.004
+          },
+          "model_name": "reservoir_ridge",
+          "rationale": "frozen moderate ridge probe",
+          "source": "frozen_grid"
+        },
+        "candidate_hash": "6cb5e2fb78b4670b500a9b6a239400ed5d8ba8d87c27dd9c779782952da5f13a",
+        "runtime_s": 0.0015196879976429045,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 0.9098489274607621,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.06019298750158519,
+              "Pearson": 0.7488036114679603,
+              "Pearson_reason": null,
+              "R2": -0.08732665758814373,
+              "R2_reason": null,
+              "RMSE": 0.0674994022015486
+            },
+            "SW": {
+              "MAE": 0.33981456485811706,
+              "Pearson": 0.7986003899060256,
+              "Pearson_reason": null,
+              "R2": -0.530782409803511,
+              "R2_reason": null,
+              "RMSE": 0.3503639310685661
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.9240295014750106,
+              "Pearson": 0.7732300565648105,
+              "Pearson_reason": null,
+              "R2": 0.20773270315709336,
+              "R2_reason": null,
+              "RMSE": 2.116958139483907
+            }
+          },
+          "physical_MAE_macro": 39.959239348281194,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 264.43515214661846,
+            "PHIF": 0.0674994022015486,
+            "SW": 0.3503639310685661
+          }
+        },
+        "selection_prediction_hash": "f39a6bb1389dc0a75362c3555a5fde6aa2cfca49e15e8bdcd6efc6fa364725d8",
+        "update_steps": 8
+      },
+      {
+        "candidate": {
+          "candidate_id": "det_mlp_h24_lr002_wd1e3",
+          "model_kwargs": {
+            "hidden_dim": 24,
+            "learning_rate": 0.002,
+            "weight_decay": 0.001
+          },
+          "model_name": "tiny_mlp",
+          "rationale": "P29 regularized MLP probe",
+          "source": "frozen_grid"
+        },
+        "candidate_hash": "35bf163b9d9e0088fabb5806e52af235785d539e42c213a23818a3a484f39ed5",
+        "runtime_s": 0.0034462769981473684,
+        "seed": 2693,
+        "selection": {
+          "composite_mean_train_std_normalized_RMSE": 1.1870889717282769,
+          "per_target": {
+            "PHIF": {
+              "MAE": 0.08881938083420515,
+              "Pearson": 0.47645550263829417,
+              "Pearson_reason": null,
+              "R2": -1.656759142850718,
+              "R2_reason": null,
+              "RMSE": 0.10551057764248016
+            },
+            "SW": {
+              "MAE": 0.3825598653760544,
+              "Pearson": -0.2941405460015899,
+              "Pearson_reason": null,
+              "R2": -1.4273063499628256,
+              "R2_reason": null,
+              "RMSE": 0.44118928355379905
+            },
+            "log1p(KLOGH)": {
+              "MAE": 1.5968915828998334,
+              "Pearson": 0.5555317321489818,
+              "Pearson_reason": null,
+              "R2": 0.12341663288952787,
+              "R2_reason": null,
+              "RMSE": 2.226757986068223
+            }
+          },
+          "physical_MAE_macro": 60.26953495019854,
+          "space": "PHIF, log1p(KLOGH), SW",
+          "worst_group_RMSE": {
+            "KLOGH": 435.27335812784366,
+            "PHIF": 0.10551057764248016,
+            "SW": 0.44118928355379905
+          }
+        },
+        "selection_prediction_hash": "cf3dc81e5cf02aa2174a50c9bca06d55e2d14f3eaddadbdd72008bba30709641",
+        "update_steps": 8
+      }
+    ],
+    "selected_candidate": {
+      "candidate_id": "det_linear_lr008",
+      "model_kwargs": {
+        "l2_strength": 0.0,
+        "learning_rate": 0.008
+      },
+      "model_name": "reservoir_linear",
+      "rationale": "frozen higher-rate linear probe",
+      "source": "frozen_grid"
+    },
+    "selection_rule": "minimum pilot selection primary metric; candidate_id tie break",
+    "strategy_id": "A2D_frozen_grid_deterministic_scheduler",
+    "total_train_update_steps": 128
+  },
+  "deterministic_candidate_set_sha256": "93d7b66da34bc670c30910de7f8496aee87c53edfcb6687167f1e3a2ee73a05c",
+  "matched_budget": {
+    "agent_total_train_update_steps": 128,
+    "deterministic_total_train_update_steps": 128,
+    "equal": true
+  },
+  "metric_direction": "lower_is_better",
+  "primary_metric": "composite_mean_train_std_normalized_RMSE",
+  "promotion_gate": {
+    "agent_minus_deterministic_relative_primary": -0.04269645091389167,
+    "decision": "RETAIN_HYBRID",
+    "minimum_paired_seed_wins": 2,
+    "minimum_required_relative_improvement": -0.01,
+    "paired_seed_wins": 3,
+    "retain_hybrid": true,
+    "worst_target_nondegradation_2pct": true
+  },
+  "prompt_sha256": "ed14ef0f327152e9a6dd1ef1dbcb7df85da38a4cf13a20cd5f1beb8f43cad140",
+  "provider": {
+    "credential_persisted": false,
+    "model_requested": "deepseek-chat",
+    "model_returned": "deepseek-v4-flash",
+    "provider": "deepseek",
+    "response_id": "6e5a5814-6b8d-4d71-b899-715cb2c164a4",
+    "usage": {
+      "completion_tokens": 308,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 435,
+      "prompt_tokens": 435,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 743
+    }
+  },
+  "schema_version": "property-p32-hybrid-agent-optimizer/v1",
+  "summary_core_sha256": "6621152c55967b534238effe6f8871afca1f6f142c02b11b5fa344b405c8af15"
+}

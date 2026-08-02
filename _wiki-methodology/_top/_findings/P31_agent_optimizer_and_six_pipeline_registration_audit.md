@@ -5,8 +5,8 @@ severity: major
 owner_col: COL4
 source: user
 created_at: 2026-08-01
-closed_at:
-closure_evidence:
+closed_at: 2026-08-03
+closure_evidence: _wiki-methodology/_tests/P31_six_track_agentic_pipeline_acceptance_evidence.md
 ---
 
 # 智能体优化机制与六赛道独立 Pipeline 注册审计
@@ -94,11 +94,11 @@ P29 之后出现了两项必须纳入 P31 的新证据。赛道①在 `track-fau
 
 ## 2026-08-03 落地状态
 
-P29 六赛道修复、P30 断层连续三维证据与④新 XGBoost 默认已选择性集成到 `p31-agentic-pipeline-integration`。注册名称最终为 `fault_agentic_optimization`、`facies_agentic_optimization`、`property_agentic_optimization`、`lithofacies_agentic_optimization`、`sweetspot_agentic_optimization` 和 `reconstruction_agentic_optimization`。六条线都引用主仓内的 `_pipelines/02_task_datasets/track_lifecycle.py`，不依赖 `.claude/worktrees/` 路径。
+P29 六赛道修复、P30 断层连续三维证据与④新 XGBoost 默认已选择性集成，并快进合入 `master@0942cf5`。注册名称最终为 `fault_agentic_optimization`、`facies_agentic_optimization`、`property_agentic_optimization`、`lithofacies_agentic_optimization`、`sweetspot_agentic_optimization` 和 `reconstruction_agentic_optimization`。六条线都引用主仓内的 `_pipelines/02_task_datasets/track_lifecycle.py`，不依赖 `.claude/worktrees/` 路径。
 
 六条 pipeline 均已由 `sixone-cli verify-pipeline` 生成内容哈希印记，TOP doctor 报告 8 条已注册 pipeline 全部 `fresh`，无 `stale` 或 `broken`。六赛道 P29/P30/default 聚焦回归与新 lifecycle 回归共 61 项通过。断层 ignored joblib 的五维局部特征逻辑回归参数已转为哈希绑定的可移植系数检查点，在完整 P30 development 体上重算 fit/guard 的 precision、recall、F1、IoU 和 threshold，均与归档结果在 12 位小数内一致。
 
-当前默认结论为：①保留断层局部 baseline 和 A2D 治理，CIG/LLM 不晋级；②保留数据集条件化确定性 hybrid；③保留 A2D `reservoir_linear`；④升级纯 XGBoost `depth=3/eta=0.1/rounds=60`；⑤保留冻结 A0；⑥保留 P21 固定三核集成。这些结论区分“确定性优化有效”与“直接 LLM 决策有效”，不再把两者混合归因。
+P31 验收时的默认结论为：①保留断层局部 baseline 和 A2D 治理，CIG/LLM 不晋级；②保留数据集条件化确定性 hybrid；③保留 A2D `reservoir_linear`；④升级纯 XGBoost `depth=3/eta=0.1/rounds=60`；⑤保留冻结 A0；⑥保留 P21 固定三核集成。这些结论区分“确定性优化有效”与“直接 LLM 决策有效”，不再把两者混合归因。后续 P32 已将②③升级为“LLM 有界候选生成 + 确定性预算调度”的混合优化器；P31 的直接 LLM 负面结论仍然有效，新的混合结果见 `P32_hybrid_agent_optimizer_results.md`。
 
 ## Prevention Rule
 

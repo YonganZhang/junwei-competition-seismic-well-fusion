@@ -101,7 +101,8 @@
 | P28 执行型智能体消融 | ✅ | 1/1 | 六赛道 Stage 1 已完成：智能体均能真实选动作并执行，但 A2L 均未获得可归因的 prediction endpoint 增益，因此不进入直接 LLM 数值优化 Stage 2；保留确定性执行器及有限的 LLM 路线/诊断/停止角色。Claude 最终复核无 blocker/major。 |
 | P29 动作效应修复 | ✅ | 1/1 | 六赛道动作链、对照和晋级口径完成修复与独立验收：②仅保留确定性 hybrid（promotion mean mIoU 相对 A0 `+0.030481`），③仅保留 A2D；直接 LLM 在六赛道均未取得可归因的稳定 endpoint 优势。详见 `_phases/P29_agent_action_effect_repair.md`。 |
 | P30 断层连续三维评测 | ✅ | 1/1 | 连续 3D development 体、verified background/unknown mask、group-isolated split 和 CIG 对比已集成到 P31 分支；CIG 不晋级，可移植 baseline 复算通过。 |
-| P31 智能体优化与管线注册 | 🔄 | 0.8/1 | 六赛道 P29/P30/默认配置已集成；六个独立 manifest、七段 lifecycle CLI、registry、gate 与机器 stamp 已完成，doctor 显示 8/8 pipeline fresh。待将集成分支合入主仓，并把②③混合优化小试验作为下一研究阶段。详见 `_findings/P31_agent_optimizer_and_six_pipeline_registration_audit.md`。 |
+| P31 智能体优化与管线注册 | ✅ | 1/1 | 六赛道 P29/P30/默认配置、六个独立 manifest、七段 lifecycle CLI、registry、gate 与机器 stamp 已合入主仓；doctor 显示 8/8 pipeline fresh。详见 `_findings/P31_agent_optimizer_and_six_pipeline_registration_audit.md`。 |
+| P32 混合智能体优化 | ✅ | 1/1 | ②③完成“LLM 候选生成 + 确定性预算调度”真实 development pilot 与独立复跑。③相对确定性策略主指标改善 `4.2696%`、3/3 seed 全胜；②等均 mIoU 改善 `+0.024699`，F3 `+0.049397`、Penobscot 不降。完整候选池不完全稳定，但最终可执行决策与指标稳定；frozen test 未读取。详见 `_findings/P32_hybrid_agent_optimizer_results.md`。 |
 
 ## 协作与决策权边界
 

@@ -1,0 +1,31 @@
+{
+  "candidate_pool_exact_match": false,
+  "candidate_pool_overlap_count": 3,
+  "candidate_pool_size": 4,
+  "endpoint_metrics_stable": true,
+  "gpu_determinism_boundary": "PyTorch warned that CUDA NLL loss and memory-efficient attention are not guaranteed bitwise deterministic; the independent replay nevertheless reproduced the complete endpoint metrics exactly.",
+  "independent_provider_calls": true,
+  "primary_response_id": "264012fc-23c3-4348-9b2a-9e8cc9fc46d5",
+  "promotion_decision_stable": true,
+  "replay_response_id": "61ec51a8-c19d-4b28-b49d-e71b7214c08a",
+  "schema_version": "facies-p32-independent-replay/v1",
+  "scientific_interpretation": "Three of four executable proposals overlapped; the selected joint endpoint and its promotion metrics were identical across independent provider calls.",
+  "selected_decision_stable": true,
+  "selected_executable_config_by_dataset": {
+    "F3": {
+      "dice_weight": 0.75,
+      "fusion_lr": 0.0005,
+      "fusion_scale_initial": 0.8,
+      "sam2_frozen": false
+    },
+    "Penobscot": {
+      "dice_weight": 0.25,
+      "fusion_lr": 0.0002,
+      "fusion_scale_initial": 0.2,
+      "sam2_frozen": false
+    }
+  },
+  "stable_data": true,
+  "verification_sha256": "ef4efc2b839b8c0f8964be01b13d07e71e8ad547c23c90115989d350fcdef5fc",
+  "verified": true
+}
