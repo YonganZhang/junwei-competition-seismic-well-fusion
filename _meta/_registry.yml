@@ -390,6 +390,13 @@ entrypoints:
     owner: col3
     description: "Master merge preservation, P21/P24 regression gates, report build, stable publication links and TOP health evidence."
 
+  - id: p31_six_track_agentic_pipeline_acceptance
+    path: _wiki-methodology/_tests/P31_six_track_agentic_pipeline_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Six independent lifecycle pipelines, exact promote/reject decisions, 61 focused regressions, portable fault-baseline replay and fresh machine stamps."
+
 cross_domain_edges:
   - from: six_track_agentic_lifecycle
     to: task_datasets

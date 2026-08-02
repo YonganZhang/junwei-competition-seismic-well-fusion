@@ -1,8 +1,8 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P31 智能体优化机制与六 Pipeline 注册] 文献与本地审计确认：当前“小动作表 + 极少试次 + 直接 LLM 终选”协议结构性偏向可穷举的确定性策略。下一步先集成 P29，再为六赛道补稳定 lifecycle CLI、独立 manifest/stamp 和 P29 门禁；随后在②③试验 LLM warm-start/candidate proposal + BO/ASHA 的匹配预算混合优化。**
->   2026-08-02 增量：①已在 `track-fault` 构建合法连续 3D development 体并完成 CIG-Bench FaultPredictor 同场对比；修正体素尺度后 CIG-Bench guard F1=`0.003555`，低于 audited_v2 baseline 的 `0.017641`，不晋级。④在 `p11-residual-lithofacies@1e1915f` 将纯 XGBoost `depth=3/eta=0.1/rounds=60` 提升为分支默认，development Macro-F1 从 `0.194938` 提升到 `0.213349`；后续智能体比较必须使用新 A0。两项均尚未合入主仓。
+> **🧭 当前: [P31 智能体优化机制与六 Pipeline 注册] P29/P30/④新默认已选择性集成到 `p31-agentic-pipeline-integration`；六赛道已各自拥有 `validate → prepare → baseline → optimize → promote → refit → verify` 七段 pipeline，六条机器印记全部 fresh。下一研究步骤是在②③开展匹配预算的 LLM candidate proposal + BO/ASHA 小试验，而不是继续把 LLM 直接终选写成默认。**
+>   2026-08-03 增量：① P30 连续三维开发体已集成，CIG-Bench guard F1=`0.003555` 低于 baseline `0.017641`，不晋级；忽略目录中的 joblib 已转为哈希绑定的可移植系数检查点，在完整 P30 体上复算指标至 12 位小数一致。④默认 XGBoost 已升级为 `depth=3/eta=0.1/rounds=60`，Macro-F1=`0.213349`，与 MOMENT/LLM 无关。六赛道聚焦回归共 61 项通过。
 >   P21 在开发 OOF 上相对 PyKrige RMSE 改善 `2.5144%`，相对 P19 改善 `0.0613%`；P24 同场区历史版本迁移中相对重拟合 PyKrige 改善 `1.4529%`，但不声称跨场区、fresh blind 或 LoRA 因果贡献。
 >   六赛道 baseline pipeline 候选已完成真实数据端到端验收和可移植性收口；
 >   ①②③④⑥又各新增2个已通过动态发现/小批次训练/检查点契约的简单备选模型（每条现有3个模型，SHA见下方），
@@ -100,8 +100,8 @@
 | P27 报告终审 | ✅ | 1/1 | 修正 P21 跨章节旧结论与科研总览图，六赛道目录逐项核对；45 页 PDF、143 项源码包和固定链接通过交付检查。 |
 | P28 执行型智能体消融 | ✅ | 1/1 | 六赛道 Stage 1 已完成：智能体均能真实选动作并执行，但 A2L 均未获得可归因的 prediction endpoint 增益，因此不进入直接 LLM 数值优化 Stage 2；保留确定性执行器及有限的 LLM 路线/诊断/停止角色。Claude 最终复核无 blocker/major。 |
 | P29 动作效应修复 | ✅ | 1/1 | 六赛道动作链、对照和晋级口径完成修复与独立验收：②仅保留确定性 hybrid（promotion mean mIoU 相对 A0 `+0.030481`），③仅保留 A2D；直接 LLM 在六赛道均未取得可归因的稳定 endpoint 优势。详见 `_phases/P29_agent_action_effect_repair.md`。 |
-| P30 断层连续三维评测 | ✅ | 1/1 | 分支已补齐连续 3D development 体、verified background/unknown mask 和 group-isolated split；CIG-Bench FaultPredictor 数据门由 blocked 转为 ready，但尺度修正后的 guard F1 低于 audited_v2 baseline，不晋级。分支 HEAD=`44b3d4e`，尚未合入主仓。 |
-| P31 智能体优化与管线注册 | 🔄 | 0.25/1 | 已完成文献、本地入口、P29 结果、①P30 与④新 baseline 审计；确认应将大模型改为候选/先验模块，并注册六条独立 pipeline。尚未集成相关分支，也未创建指向主仓稳定入口的六个 manifest。详见 `_findings/P31_agent_optimizer_and_six_pipeline_registration_audit.md`。 |
+| P30 断层连续三维评测 | ✅ | 1/1 | 连续 3D development 体、verified background/unknown mask、group-isolated split 和 CIG 对比已集成到 P31 分支；CIG 不晋级，可移植 baseline 复算通过。 |
+| P31 智能体优化与管线注册 | 🔄 | 0.8/1 | 六赛道 P29/P30/默认配置已集成；六个独立 manifest、七段 lifecycle CLI、registry、gate 与机器 stamp 已完成，doctor 显示 8/8 pipeline fresh。待将集成分支合入主仓，并把②③混合优化小试验作为下一研究阶段。详见 `_findings/P31_agent_optimizer_and_six_pipeline_registration_audit.md`。 |
 
 ## 协作与决策权边界
 

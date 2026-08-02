@@ -92,6 +92,14 @@ P29 之后出现了两项必须纳入 P31 的新证据。赛道①在 `track-fau
 
 六 pipeline 注册是必要的工程基础，但它本身不会提高指标。它解决的是入口、状态、反馈和证据合同不清晰的问题；真正提高智能体效果的是角色重构、匹配预算、条件化搜索、数值 surrogate 和嵌套验证。两项工作应按“集成 P29 → 补六条稳定 CLI/manifest → 赛道②③小范围混合优化试验 → 通过后扩展”的顺序推进。
 
+## 2026-08-03 落地状态
+
+P29 六赛道修复、P30 断层连续三维证据与④新 XGBoost 默认已选择性集成到 `p31-agentic-pipeline-integration`。注册名称最终为 `fault_agentic_optimization`、`facies_agentic_optimization`、`property_agentic_optimization`、`lithofacies_agentic_optimization`、`sweetspot_agentic_optimization` 和 `reconstruction_agentic_optimization`。六条线都引用主仓内的 `_pipelines/02_task_datasets/track_lifecycle.py`，不依赖 `.claude/worktrees/` 路径。
+
+六条 pipeline 均已由 `sixone-cli verify-pipeline` 生成内容哈希印记，TOP doctor 报告 8 条已注册 pipeline 全部 `fresh`，无 `stale` 或 `broken`。六赛道 P29/P30/default 聚焦回归与新 lifecycle 回归共 61 项通过。断层 ignored joblib 的五维局部特征逻辑回归参数已转为哈希绑定的可移植系数检查点，在完整 P30 development 体上重算 fit/guard 的 precision、recall、F1、IoU 和 threshold，均与归档结果在 12 位小数内一致。
+
+当前默认结论为：①保留断层局部 baseline 和 A2D 治理，CIG/LLM 不晋级；②保留数据集条件化确定性 hybrid；③保留 A2D `reservoir_linear`；④升级纯 XGBoost `depth=3/eta=0.1/rounds=60`；⑤保留冻结 A0；⑥保留 P21 固定三核集成。这些结论区分“确定性优化有效”与“直接 LLM 决策有效”，不再把两者混合归因。
+
 ## Prevention Rule
 
 凡比较智能体与确定性优化器，必须使用相同搜索域、相同信息权限和相同计算预算；大模型生成的候选必须经过真实 executor 和独立 promotion，不能用 oracle、冻结测试或确定性枚举结果回写提示后再归因给智能体。
@@ -103,3 +111,4 @@ P29 之后出现了两项必须纳入 P31 的新证据。赛道①在 `track-fau
 - registry: ../../../_meta/_registry.yml
 - codemap: ../../../_codemap.md
 - gates: ../../_tests/_gates.yml
+- P31 acceptance: ../../_tests/P31_six_track_agentic_pipeline_acceptance_evidence.md
