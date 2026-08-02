@@ -1,0 +1,55 @@
+{
+  "allowlist": {
+    "colsample_bytree": [
+      0.75,
+      1.0
+    ],
+    "eta": [
+      0.03,
+      0.2
+    ],
+    "max_depth": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rounds": 60,
+    "subsample": [
+      0.75,
+      1.0
+    ]
+  },
+  "budget": {
+    "candidate_count": 4,
+    "promotion_fold_hidden": true,
+    "rounds_each": 60,
+    "selection_folds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "data_boundary": {
+    "promotion_metrics_visible": false,
+    "raw_rows_visible": false,
+    "selection_metrics_visible": false,
+    "test_visible": false
+  },
+  "known_incumbent": {
+    "colsample_bytree": 1.0,
+    "eta": 0.1,
+    "max_depth": 3,
+    "rounds": 60,
+    "subsample": 1.0
+  },
+  "objective": "maximize fixed-schema Macro-F1 under family-isolated LOGO validation",
+  "rules": [
+    "Return strict JSON with the single top-level key candidates.",
+    "Return exactly four unique candidates.",
+    "Each candidate contains max_depth, eta, subsample, colsample_bytree, rationale only.",
+    "Do not request data, paths, labels, metrics, a model family change, or promotion access."
+  ],
+  "task": "Propose four XGBoost candidates for nine-class well-log/seismic lithofacies classification"
+}

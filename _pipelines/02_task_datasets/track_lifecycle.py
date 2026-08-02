@@ -44,6 +44,7 @@ class TrackContract:
     rejected_route: str
     required_files: tuple[str, ...] = ()
     verification: str | None = None
+    optimization: str | None = None
 
 
 def _c(source: str, path: str, operator: str, expected: Any) -> Check:
@@ -164,8 +165,14 @@ TRACKS: dict[str, TrackContract] = {
                 _c("final", "default_config.eta", "eq", 0.1),
                 _c("final", "default_config.rounds", "eq", 60),
             ),
-            "optimize": (_c("summary", "verdict", "eq", "REJECT_AGENT"),),
+            "optimize": (
+                _c("optimization", "matched_budget.equal", "eq", True),
+                _c("optimization", "data.selection_promotion_overlap", "eq", False),
+                _c("verification", "verified", "eq", True),
+            ),
             "promote": (
+                _c("optimization", "promotion_gate.decision", "eq", "KEEP_CURRENT_DEFAULT"),
+                _c("optimization", "promotion_gate.agent_minus_incumbent_promotion_macro_f1", "lt", 0.0),
                 _c("final", "decision.status", "eq", "ACCEPT_AS_DEFAULT"),
                 _c("final", "decision.moment_or_large_model_contribution", "eq", False),
             ),
@@ -175,7 +182,9 @@ TRACKS: dict[str, TrackContract] = {
             ),
         },
         promoted_default="XGBoost_depth3_eta0.1_rounds60",
-        rejected_route="P29 LLM policy and MOMENT causal attribution",
+        rejected_route="P33 hybrid candidate depth3_eta0.2, P29 direct LLM policy, and MOMENT causal attribution",
+        verification="_pipelines/02_task_datasets/lithofacies/_outputs/p33_hybrid_agent_optimizer/independent_verification.json",
+        optimization="_pipelines/02_task_datasets/lithofacies/_outputs/p33_hybrid_agent_optimizer/summary.json",
     ),
     "sweetspot": TrackContract(
         summary="_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json",
@@ -278,6 +287,8 @@ def evaluate(track: str, stage: str) -> dict[str, Any]:
         sources["final"] = _load(contract.final)
     if contract.verification:
         sources["verification"] = _load(contract.verification)
+    if contract.optimization:
+        sources["optimization"] = _load(contract.optimization)
     required_artifacts: dict[str, dict[str, Any]] = {}
     for artifact in contract.required_files:
         artifact_path = PROJECT_ROOT / artifact

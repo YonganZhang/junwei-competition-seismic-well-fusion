@@ -53,13 +53,15 @@
 | ①断层 | 局部断层 baseline + A2D 决策治理；P30 连续三维开发体保留 | CIG-Bench 指标下降；A2L 直接执行 |
 | ②地震相 | P32 混合优化：F3 联合配置 + Penobscot A0 | DeepSeek 直接端点；无调度的单次选择 |
 | ③储层物性 | P32 混合优化：`reservoir_linear(lr=0.01)` | A2L 不单独保留；CIG-Bench PropertyPredictor 不可用 |
-| ④岩相 | XGBoost `depth=3, eta=0.1, rounds=60` | P29 LLM 策略；MOMENT/大模型因果归因 |
+| ④岩相 | XGBoost `depth=3, eta=0.1, rounds=60` | P33 混合候选未超过现 A0；P29 LLM 策略；MOMENT/大模型因果归因 |
 | ⑤甜点 | 冻结 A0 XGBoost | 候选无正改善后的 LLM 路线 |
 | ⑥三维重建 | P21 固定三核集成 | P29 LLM 选择的数值策略 |
 
 `track_lifecycle.py --track <id> --stage verify` 不重训模型，而是对已归档开发证据进行反伪完成校验：默认配置、候选动作、预测效应、晋级结论任一漂移即失败。
 
 ②③的 P32 runner 分别为 `_pipelines/02_task_datasets/facies/p32_hybrid_agent_optimizer.py` 和 `_pipelines/02_task_datasets/reservoir/p32_hybrid_agent_optimizer.py`。两者只把 LLM 用作有界候选生成器，最终排序、预算和 promotion 由确定性代码执行。
+
+④的 P33 runner 为 `_pipelines/02_task_datasets/lithofacies/lithofacies_p33_hybrid_agent_optimizer.py`。它进一步要求候选同时超过同预算确定性端点和当前默认 A0；本轮候选只超过前者，因而被拒绝。
 
 ## P4 训练与评价系统
 

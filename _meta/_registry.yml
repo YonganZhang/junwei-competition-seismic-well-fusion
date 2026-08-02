@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-08-03 (P32 hybrid agent optimizer acceptance)
+last_synced: 2026-08-03 (P33 lithofacies incumbent-guard acceptance)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -81,9 +81,9 @@ code_domains:
     status: active
     owner: project
     description: >
-      P31/P32 六赛道独立 pipeline 的共享证据校验器。七段生命周期为
+      P31--P33 六赛道独立 pipeline 的共享证据校验器。七段生命周期为
       validate/prepare/baseline/optimize/promote/refit/verify；读取各赛道已归档的
-      P29/P30/P32/default 证据，验证默认模型、候选动作和晋级结论一致。
+      P29/P30/P32/P33/default 证据，验证默认模型、候选动作和晋级结论一致。
       拒绝路线是合法结果，缺失字段、漂移结论或假晋级直接失败。
 
   - id: research_visualization
@@ -403,6 +403,13 @@ entrypoints:
     status: active
     owner: col3
     description: "Facies/property matched-budget hybrid-agent pilots, independent provider replays, stable executable endpoints and frozen-test firewalls."
+
+  - id: p33_lithofacies_hybrid_agent_acceptance
+    path: _wiki-methodology/_tests/P33_lithofacies_hybrid_agent_acceptance_evidence.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Lithofacies matched-budget hybrid search, independent replay and incumbent-A0 guard preventing selection-overfit false promotion."
 
 cross_domain_edges:
   - from: six_track_agentic_lifecycle

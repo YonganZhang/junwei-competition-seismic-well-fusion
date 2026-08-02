@@ -61,6 +61,12 @@ gates:
     expect: exit0
     note: "验证地震相联合候选、条件化端点、匹配配置包预算、跨任务非劣和独立 provider/GPU 复跑。"
 
+  - id: p33-lithofacies-hybrid-agent
+    cmd: "${P5_TABULAR_PYTHON:?set P5_TABULAR_PYTHON to tabular-cpu} -m pytest -q _pipelines/02_task_datasets/lithofacies/tests/test_lithofacies_p33_hybrid_agent_optimizer.py && ${P5_TABULAR_PYTHON} _pipelines/02_task_datasets/lithofacies/lithofacies_p33_hybrid_agent_optimizer.py verify-replay"
+    timeout: 120
+    expect: exit0
+    note: "验证匹配 boosting 预算、独立 provider 复跑，以及阻止选择过拟合假晋级的现默认 A0 护栏。"
+
   - id: domain-visualization-delivery
     cmd: "python3 -m unittest discover -s _pipelines/03_domain_visualization_delivery/tests -p 'test_*.py' -v"
     timeout: 180

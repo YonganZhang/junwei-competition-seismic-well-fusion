@@ -1,0 +1,20 @@
+{
+  "candidate_pool_exact_match": true,
+  "candidate_pool_overlap_count": 4,
+  "endpoint_metrics_stable": true,
+  "independent_provider_calls": true,
+  "primary_response_id": "e4da7e6f-f749-4ade-9b45-20731d8bc1c8",
+  "promotion_decision_stable": true,
+  "replay_response_id": "b10fcf85-7afc-42de-bdb7-4d52f6ea303a",
+  "schema_version": "lithofacies-p33-independent-replay/v1",
+  "selected_decision_stable": true,
+  "selected_executable_config": {
+    "colsample_bytree": 1.0,
+    "eta": 0.2,
+    "max_depth": 3,
+    "rounds": 60,
+    "subsample": 1.0
+  },
+  "verification_sha256": "739b01acfcf307c77dde389bebe98f8d8347186360b4a9ffb9b4885fe28bd97f",
+  "verified": true
+}
