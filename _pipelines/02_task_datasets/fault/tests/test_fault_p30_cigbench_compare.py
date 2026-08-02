@@ -103,6 +103,18 @@ class P30CigBenchCompareTests(unittest.TestCase):
         self.assertEqual(report["status"], "READY")
         self.assertAlmostEqual(report["comparison"]["fit_thresholds"]["cig_bench"], 0.95, places=6)
         self.assertAlmostEqual(report["comparison"]["fit_thresholds"]["fault_local_logistic"], 0.9, places=6)
+        self.assertAlmostEqual(
+            report["models"]["cig_bench_fault_predictor"]["guard"]["threshold"],
+            report["models"]["cig_bench_fault_predictor"]["fit"]["threshold"],
+            places=6,
+        )
+        self.assertAlmostEqual(
+            report["models"]["fault_local_logistic"]["guard"]["threshold"],
+            report["models"]["fault_local_logistic"]["fit"]["threshold"],
+            places=6,
+        )
+        self.assertEqual(report["models"]["cig_bench_fault_predictor"]["guard"]["threshold_source"], "fit_reused")
+        self.assertEqual(report["models"]["fault_local_logistic"]["guard"]["threshold_source"], "fit_reused")
         self.assertEqual(report["split"]["folds"][0]["unknown_voxels"], 2)
         self.assertGreaterEqual(report["models"]["cig_bench_fault_predictor"]["guard"]["scoreable_voxels"], 1)
         self.assertAlmostEqual(

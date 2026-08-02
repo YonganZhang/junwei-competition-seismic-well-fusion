@@ -26,6 +26,7 @@ AUDITED_V2_DIR = TRACK_DIR / "_outputs" / "runs" / "audited_v2"
 AUDITED_V2_MODEL_PATH = AUDITED_V2_DIR / "baseline_model.joblib"
 AUDITED_V2_METRICS_PATH = AUDITED_V2_DIR / "baseline_metrics.json"
 OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline"
+FIXED_OUTPUT_ROOT = P30_OUTPUT_ROOT / "cigbench_vs_baseline_threshold_fix"
 COMPARISON_JSON_PATH = OUTPUT_ROOT / "comparison.json"
 EVIDENCE_PATH = OUTPUT_ROOT / "evidence.md"
 MANIFEST_PATH = OUTPUT_ROOT / "manifest.json"
@@ -179,11 +180,20 @@ def predict_baseline_volume(seismic: np.ndarray) -> tuple[np.ndarray, dict[str, 
     }
 
 
-def evaluate_model_on_fold(fold: FoldView, probabilities: np.ndarray) -> dict[str, Any]:
+def evaluate_model_on_fold(
+    fold: FoldView,
+    probabilities: np.ndarray,
+    *,
+    threshold: float | None = None,
+    threshold_source: str = "validation_max_f1",
+) -> dict[str, Any]:
     score_mask = fold.score_mask
     truth = np.asarray(fold.positive_mask, dtype=np.uint8)
     truth_flat, probabilities_flat = scoreable_truth_and_probabilities(truth, probabilities, score_mask)
-    threshold, threshold_source, fit_f1 = select_threshold_by_f1(truth_flat, probabilities_flat)
+    if threshold is None:
+        threshold, threshold_source, fit_f1 = select_threshold_by_f1(truth_flat, probabilities_flat)
+    else:
+        fit_f1 = float(binary_metrics(truth_flat, probabilities_flat >= threshold)["f1"])
     predictions = probabilities_flat >= threshold
     metrics = binary_metrics(truth_flat, predictions)
     metrics.update(probability_metrics(truth_flat, probabilities_flat))
@@ -229,9 +239,19 @@ def compare_models(dev: dict[str, np.ndarray], split_manifest: dict[str, Any], *
     baseline_guard_probabilities, _ = predict_baseline_volume(guard_fold.seismic)
 
     cig_fit = evaluate_model_on_fold(fit_fold, cig_fit_probabilities)
-    cig_guard = evaluate_model_on_fold(guard_fold, cig_guard_probabilities)
     baseline_fit = evaluate_model_on_fold(fit_fold, baseline_fit_probabilities)
-    baseline_guard = evaluate_model_on_fold(guard_fold, baseline_guard_probabilities)
+    cig_guard = evaluate_model_on_fold(
+        guard_fold,
+        cig_guard_probabilities,
+        threshold=float(cig_fit["threshold"]),
+        threshold_source="fit_reused",
+    )
+    baseline_guard = evaluate_model_on_fold(
+        guard_fold,
+        baseline_guard_probabilities,
+        threshold=float(baseline_fit["threshold"]),
+        threshold_source="fit_reused",
+    )
 
     cig_union = aggregate_union(cig_fit, cig_guard, cig_fit["threshold"])
     baseline_union = aggregate_union(baseline_fit, baseline_guard, baseline_fit["threshold"])
@@ -303,7 +323,7 @@ def compare_models(dev: dict[str, np.ndarray], split_manifest: dict[str, Any], *
             "audited_v2_old_metrics": load_json(AUDITED_V2_METRICS_PATH)["test_metrics"],
         },
         "minimum_unblock_contract": [
-        "The comparison stays inside the P30 continuous 3-D development volume.",
+            "The comparison stays inside the P30 continuous 3-D development volume.",
             "Scoring excludes unknown voxels and uses verified background only.",
             "Thresholds are selected on the fit fold and then reused for guard reporting.",
             "The audited_v2 baseline checkpoint is applied slice-by-slice without retraining.",
@@ -476,16 +496,33 @@ def run(output_root: Path = OUTPUT_ROOT, device: str | None = None) -> dict[str,
     return {"report": report, "outputs": output_info}
 
 
+def run_fixed(output_root: Path = FIXED_OUTPUT_ROOT, device: str | None = None) -> dict[str, Any]:
+    dev = np.load(P30_SUBVOLUME_PATH, allow_pickle=False)
+    split_manifest = load_json(P30_SPLIT_MANIFEST_PATH)
+    resolved_device = device or ("cuda" if __import__("torch").cuda.is_available() else "cpu")
+    report = compare_models(dev, split_manifest, device=resolved_device)
+    output_info = write_outputs(report, output_root=output_root)
+    return {"report": report, "outputs": output_info}
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output-root", type=Path, default=OUTPUT_ROOT)
+    parser.add_argument("--output-root", type=Path, default=None)
     parser.add_argument("--device", default=None)
+    parser.add_argument("--fixed", action="store_true")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    report = run(output_root=args.output_root, device=args.device)
+    output_root = args.output_root
+    if args.fixed:
+        report = run_fixed(
+            output_root=output_root or FIXED_OUTPUT_ROOT,
+            device=args.device,
+        )
+    else:
+        report = run(output_root=output_root or OUTPUT_ROOT, device=args.device)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 
