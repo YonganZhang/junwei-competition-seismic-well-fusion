@@ -22,6 +22,7 @@ TRACK_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = TRACK_DIR.parents[2]
 ASSET_ROOT = base.ASSET_ROOT
 OUTPUT_ROOT = ASSET_ROOT / "cigbench_vs_baseline_lift_tolerance"
+OUTPUT_ROOT_V2 = ASSET_ROOT / "cigbench_vs_baseline_lift_tolerance_v2"
 COMPARISON_JSON_PATH = OUTPUT_ROOT / "comparison.json"
 EVIDENCE_PATH = OUTPUT_ROOT / "evidence.md"
 MANIFEST_PATH = OUTPUT_ROOT / "manifest.json"
@@ -75,6 +76,30 @@ def tolerance_scores(truth: np.ndarray, pred: np.ndarray, score_mask: np.ndarray
     }
 
 
+def aggregate_tolerance_summaries(summaries: list[dict[str, dict[str, float | int]]], radii: tuple[int, ...]) -> dict[str, dict[str, float | int]]:
+    aggregated: dict[str, dict[str, float | int]] = {}
+    for radius in radii:
+        key = f"radius_{radius}"
+        pred_positive = sum(int(summary[key]["predicted_positive_voxels"]) for summary in summaries)
+        truth_positive = sum(int(summary[key]["truth_positive_voxels"]) for summary in summaries)
+        matched_pred = sum(int(summary[key]["matched_prediction_voxels"]) for summary in summaries)
+        matched_truth = sum(int(summary[key]["matched_truth_voxels"]) for summary in summaries)
+        precision = matched_pred / pred_positive if pred_positive else 0.0
+        recall = matched_truth / truth_positive if truth_positive else 0.0
+        f1 = 2.0 * precision * recall / (precision + recall) if precision + recall else 0.0
+        aggregated[key] = {
+            "radius": int(radius),
+            "predicted_positive_voxels": int(pred_positive),
+            "truth_positive_voxels": int(truth_positive),
+            "matched_prediction_voxels": int(matched_pred),
+            "matched_truth_voxels": int(matched_truth),
+            "precision": float(precision),
+            "recall": float(recall),
+            "f1": float(f1),
+        }
+    return aggregated
+
+
 def enrich_fold_metrics(
     fold: base.FoldView,
     probabilities_volume: np.ndarray,
@@ -90,6 +115,8 @@ def enrich_fold_metrics(
     metrics["recall_to_prior_ratio"] = lift_against_prior(metrics["recall"], prior)
     metrics["average_precision_lift"] = lift_against_prior(metrics["average_precision"], prior)
     metrics["f1_vs_prior_ratio"] = lift_against_prior(metrics["f1"], prior)
+    metrics["predicted_positive_fraction"] = float(metrics["tp"] + metrics["fp"]) / float(metrics["scoreable_voxels"]) if metrics["scoreable_voxels"] else float("nan")
+    metrics["coverage_ratio"] = lift_against_prior(metrics["predicted_positive_fraction"], prior)
 
     fold_probabilities = np.asarray(probabilities_volume, dtype=np.float64)[:, fold.selection, :]
     fold_pred = fold_probabilities >= float(threshold)
@@ -101,6 +128,25 @@ def enrich_fold_metrics(
     result["metrics"] = metrics
     result["tolerance"] = tolerance
     return result
+
+
+def enrich_union_metrics(
+    union_metrics: dict[str, Any],
+    fold_results: list[dict[str, Any]],
+    *,
+    prior: float,
+    radii: tuple[int, ...],
+) -> dict[str, Any]:
+    enriched = dict(union_metrics)
+    enriched["positive_prior"] = prior
+    enriched["precision_lift"] = lift_against_prior(enriched["precision"], prior)
+    enriched["recall_to_prior_ratio"] = lift_against_prior(enriched["recall"], prior)
+    enriched["average_precision_lift"] = lift_against_prior(enriched["average_precision"], prior)
+    enriched["f1_vs_prior_ratio"] = lift_against_prior(enriched["f1"], prior)
+    enriched["predicted_positive_fraction"] = float(enriched["tp"] + enriched["fp"]) / float(enriched["scoreable_voxels"]) if enriched["scoreable_voxels"] else float("nan")
+    enriched["coverage_ratio"] = lift_against_prior(enriched["predicted_positive_fraction"], prior)
+    enriched["tolerance"] = aggregate_tolerance_summaries([result["tolerance"] for result in fold_results], radii)
+    return enriched
 
 
 def compare_with_lift_and_tolerance(
@@ -145,43 +191,17 @@ def compare_with_lift_and_tolerance(
 
     cig_union = base.aggregate_union([cig_fit, cig_guard, cig_validation], float(cig_fit["metrics"]["threshold"]))
     baseline_union = base.aggregate_union([baseline_fit, baseline_guard, baseline_validation], float(baseline_fit["metrics"]["threshold"]))
-
-    def _union_enrich(
-        union_metrics: dict[str, Any],
-        fold_results: list[dict[str, Any]],
-        prior: float,
-    ) -> dict[str, Any]:
-        enriched = dict(union_metrics)
-        enriched["positive_prior"] = prior
-        enriched["precision_lift"] = lift_against_prior(enriched["precision"], prior)
-        enriched["recall_to_prior_ratio"] = lift_against_prior(enriched["recall"], prior)
-        enriched["average_precision_lift"] = lift_against_prior(enriched["average_precision"], prior)
-        enriched["f1_vs_prior_ratio"] = lift_against_prior(enriched["f1"], prior)
-        enriched["tolerance"] = {}
-        for radius in radii:
-            pred_list = [
-                np.asarray(fold_result["probabilities"], dtype=np.float64) >= float(fold_result["threshold"])
-                for fold_result in fold_results
-            ]
-            truth_list = [np.asarray(fold_result["truth"], dtype=bool) for fold_result in fold_results]
-            score_mask_list = [np.ones_like(truth, dtype=bool) for truth in truth_list]
-            # Tolerance on the union is computed from the same concatenated per-fold
-            # truth/prediction fields used by the metric aggregation.
-            truth = np.concatenate(truth_list).astype(bool)
-            pred = np.concatenate(pred_list).astype(bool)
-            score_mask = np.concatenate(score_mask_list).astype(bool)
-            enriched["tolerance"][f"radius_{radius}"] = tolerance_scores(truth, pred, score_mask, radius)
-        return enriched
-
-    cig_union = _union_enrich(
+    cig_union = enrich_union_metrics(
         cig_union,
         [cig_fit, cig_guard, cig_validation],
-        fold_prior(cig_union["scoreable_voxels"], cig_union["positive_voxels"]),
+        prior=fold_prior(cig_union["scoreable_voxels"], cig_union["positive_voxels"]),
+        radii=radii,
     )
-    baseline_union = _union_enrich(
+    baseline_union = enrich_union_metrics(
         baseline_union,
         [baseline_fit, baseline_guard, baseline_validation],
-        fold_prior(baseline_union["scoreable_voxels"], baseline_union["positive_voxels"]),
+        prior=fold_prior(baseline_union["scoreable_voxels"], baseline_union["positive_voxels"]),
+        radii=radii,
     )
 
     return {
@@ -255,6 +275,19 @@ def compare_with_lift_and_tolerance(
                 "recall_to_prior_ratio": float(cig_guard["metrics"]["recall_to_prior_ratio"]),
                 "baseline_recall_to_prior_ratio": float(baseline_guard["metrics"]["recall_to_prior_ratio"]),
                 "positive_prior": float(cig_guard["metrics"]["positive_prior"]),
+                "predicted_positive_fraction": float(cig_guard["metrics"]["predicted_positive_fraction"]),
+                "baseline_predicted_positive_fraction": float(baseline_guard["metrics"]["predicted_positive_fraction"]),
+                "coverage_ratio": float(cig_guard["metrics"]["coverage_ratio"]),
+                "baseline_coverage_ratio": float(baseline_guard["metrics"]["coverage_ratio"]),
+                "threshold": float(cig_guard["metrics"]["threshold"]),
+            },
+            "guard_tolerance_sweep": {
+                "cig_bench": cig_guard["tolerance"],
+                "baseline": baseline_guard["tolerance"],
+            },
+            "development_union_tolerance_sweep": {
+                "cig_bench": cig_union["tolerance"],
+                "baseline": baseline_union["tolerance"],
             },
             "tolerance_radius_2": {
                 "cig_bench": cig_guard["tolerance"]["radius_2"],
@@ -264,6 +297,29 @@ def compare_with_lift_and_tolerance(
                 "cig_bench": float(cig_fit["metrics"]["threshold"]),
                 "fault_local_logistic": float(baseline_fit["metrics"]["threshold"]),
             },
+        },
+        "decision": {
+            "default_recommendation": "do_not_advance",
+            "model_classification": "diagnostic_high_recall_proposal_only",
+            "reason_codes": [
+                "precision_lift_only_moderate",
+                "average_precision_lift_only_moderate",
+                "threshold_near_zero_for_cigbench",
+                "predicted_positive_fraction_is_high",
+                "tolerance_f1_radius_2_is_low",
+            ],
+            "summary": (
+                "CIG-Bench should not be promoted as the default fault detector yet. "
+                "It is a diagnostic/high-recall proposal: precision lift is about 1.18x, "
+                "AP lift about 1.42x, fit threshold is near zero, predicted positive fraction "
+                "is about 69.4%, and radius-2 tolerance F1 is about 0.0202."
+            ),
+            "minimum_advancement_conditions": [
+                "Lift precision materially beyond the current ~1.18x level without collapsing recall.",
+                "Reduce predicted positive fraction substantially below the current ~69.4% coverage.",
+                "Raise tolerance F1 beyond the current radius-2 ~0.0202 while keeping guard and validation stable.",
+                "Demonstrate calibration stability across the development folds with the same fit threshold.",
+            ],
         },
         "baseline_reference": {
             "audited_v2_model_path": str(base.BASELINE_MODEL_PATH.relative_to(PROJECT_ROOT)),
@@ -278,6 +334,7 @@ def compare_with_lift_and_tolerance(
             "Guard, validation and union reuse the fit threshold without extra search.",
             "Lift metrics are normalized by the observed positive prior on each fold.",
             "Tolerance metrics use 1/2/3 voxel Euclidean hit radii, with 2 voxels as the primary radius.",
+            "Union tolerance is micro-aggregated from per-fold 3-D tolerance counts, not flattened across fold boundaries.",
             "The audited_v2 baseline checkpoint is applied slice-by-slice without retraining.",
             "No frozen holdout/test.h5 path is opened or consumed.",
         ],
@@ -299,8 +356,10 @@ def render_evidence(report: dict[str, Any]) -> str:
     cig = report["models"]["cig_bench_fault_predictor"]
     baseline = report["models"]["fault_local_logistic"]
     guard = report["comparison"]["guard_lift"]
-    tol_cig = report["comparison"]["tolerance_radius_2"]["cig_bench"]
-    tol_baseline = report["comparison"]["tolerance_radius_2"]["baseline"]
+    guard_tol_cig = report["comparison"]["guard_tolerance_sweep"]["cig_bench"]
+    guard_tol_baseline = report["comparison"]["guard_tolerance_sweep"]["baseline"]
+    union_tol_cig = report["comparison"]["development_union_tolerance_sweep"]["cig_bench"]
+    union_tol_baseline = report["comparison"]["development_union_tolerance_sweep"]["baseline"]
     lines = [
         "# P30 CIG-Bench vs audited_v2 lift and tolerance analysis",
         "",
@@ -324,6 +383,11 @@ def render_evidence(report: dict[str, Any]) -> str:
         f"- Baseline AP lift: {guard['baseline_average_precision_lift']:.3f}x",
         f"- CIG-Bench recall / prior ratio: {guard['recall_to_prior_ratio']:.3f}x",
         f"- Baseline recall / prior ratio: {guard['baseline_recall_to_prior_ratio']:.3f}x",
+        f"- CIG-Bench predicted-positive fraction: {guard['predicted_positive_fraction']:.6f}",
+        f"- Baseline predicted-positive fraction: {guard['baseline_predicted_positive_fraction']:.6f}",
+        f"- CIG-Bench coverage ratio vs prior: {guard['coverage_ratio']:.3f}x",
+        f"- Baseline coverage ratio vs prior: {guard['baseline_coverage_ratio']:.3f}x",
+        f"- CIG-Bench fit threshold: {guard['threshold']:.12g}",
         "",
         "## Guard ordinary metrics",
         "",
@@ -332,17 +396,26 @@ def render_evidence(report: dict[str, Any]) -> str:
         "",
         "## Tolerance radius 2 voxels",
         "",
-        f"- CIG-Bench tolerance: precision={tol_cig['precision']:.6f}, recall={tol_cig['recall']:.6f}, F1={tol_cig['f1']:.6f}",
-        f"- Baseline tolerance: precision={tol_baseline['precision']:.6f}, recall={tol_baseline['recall']:.6f}, F1={tol_baseline['f1']:.6f}",
+        f"- CIG-Bench tolerance: precision={guard_tol_cig['radius_2']['precision']:.6f}, recall={guard_tol_cig['radius_2']['recall']:.6f}, F1={guard_tol_cig['radius_2']['f1']:.6f}",
+        f"- Baseline tolerance: precision={guard_tol_baseline['radius_2']['precision']:.6f}, recall={guard_tol_baseline['radius_2']['recall']:.6f}, F1={guard_tol_baseline['radius_2']['f1']:.6f}",
         "",
         "## Radius sweep",
         "",
-        f"- CIG-Bench: {json.dumps(report['comparison']['tolerance_radius_2']['cig_bench'], sort_keys=True)}",
-        f"- Baseline: {json.dumps(report['comparison']['tolerance_radius_2']['baseline'], sort_keys=True)}",
+        f"- Guard CIG-Bench: {json.dumps(guard_tol_cig, sort_keys=True)}",
+        f"- Guard baseline: {json.dumps(guard_tol_baseline, sort_keys=True)}",
+        f"- Union CIG-Bench: {json.dumps(union_tol_cig, sort_keys=True)}",
+        f"- Union baseline: {json.dumps(union_tol_baseline, sort_keys=True)}",
+        "",
+        "## Verdict",
+        "",
+        f"- Default recommendation: `{report['decision']['default_recommendation']}`",
+        f"- Model classification: `{report['decision']['model_classification']}`",
+        f"- Summary: {report['decision']['summary']}",
+        f"- Minimum advancement conditions: {json.dumps(report['decision']['minimum_advancement_conditions'], ensure_ascii=False)}",
         "",
         "## Interpretation",
         "",
-        "CIG-Bench remains the higher-recall model, but its precision lift over the measured positive prior is still only modest and the tolerance-based scores do not transform it into a clean, high-precision detector. The tolerance sweep is included to show whether the gain survives a near-boundary match criterion instead of exact voxel equality.",
+        "CIG-Bench remains the higher-recall model, but the prior-normalized lift is still modest and the tolerance-based scores do not transform it into a clean, high-precision detector. The per-fold tolerance sweep is included to show whether the gain survives a near-boundary match criterion instead of exact voxel equality, and the union result is micro-aggregated from per-fold 3-D counts rather than flattened across fold boundaries.",
     ]
     return "\n".join(lines) + "\n"
 
@@ -355,7 +428,7 @@ def write_outputs(report: dict[str, Any], output_root: Path = OUTPUT_ROOT) -> di
     compare_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     evidence_path.write_text(render_evidence(report), encoding="utf-8")
     manifest = {
-        "schema_version": "fault_p30_cigbench_compare_lift_tolerance/v1",
+        "schema_version": "fault_p30_cigbench_compare_lift_tolerance/v2",
         "track_id": "fault",
         "source_commit": report["source_commit"],
         "generated_at": report["generated_at"],
@@ -379,9 +452,12 @@ def write_outputs(report: dict[str, Any], output_root: Path = OUTPUT_ROOT) -> di
         "comparison": {
             "primary_metric": report["comparison"]["primary_metric"],
             "guard_lift": report["comparison"]["guard_lift"],
+            "guard_tolerance_sweep": report["comparison"]["guard_tolerance_sweep"],
+            "development_union_tolerance_sweep": report["comparison"]["development_union_tolerance_sweep"],
             "tolerance_radius_2": report["comparison"]["tolerance_radius_2"],
             "fit_thresholds": report["comparison"]["fit_thresholds"],
         },
+        "decision": report["decision"],
         "minimum_unblock_contract": report["minimum_unblock_contract"],
     }
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -395,13 +471,17 @@ def write_outputs(report: dict[str, Any], output_root: Path = OUTPUT_ROOT) -> di
     }
 
 
-def run(output_root: Path = OUTPUT_ROOT, device: str | None = None, cig_scale: dict[str, float] | None = None) -> dict[str, Any]:
+def run(output_root: Path = OUTPUT_ROOT_V2, device: str | None = None, cig_scale: dict[str, float] | None = None) -> dict[str, Any]:
     dev = np.load(base.SUBVOLUME_PATH, allow_pickle=False)
     split_manifest = base.load_json(base.SPLIT_MANIFEST_PATH)
     resolved_device = device or ("cuda" if __import__("torch").cuda.is_available() else "cpu")
     report = compare_with_lift_and_tolerance(dev, split_manifest, device=resolved_device, cig_scale=cig_scale)
     outputs = write_outputs(report, output_root=output_root)
     return {"report": report, "outputs": outputs}
+
+
+def run_default() -> dict[str, Any]:
+    return run(output_root=OUTPUT_ROOT_V2)
 
 
 def parse_args() -> argparse.Namespace:
@@ -417,7 +497,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     cig_scale = {"scale_t": args.scale_t, "scale_h": args.scale_h, "scale_w": args.scale_w}
-    report = run(output_root=args.output_root or OUTPUT_ROOT, device=args.device, cig_scale=cig_scale)
+    report = run(output_root=args.output_root or OUTPUT_ROOT_V2, device=args.device, cig_scale=cig_scale)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

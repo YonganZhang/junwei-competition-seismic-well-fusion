@@ -52,7 +52,118 @@ class P30CigBenchLiftToleranceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "positive truth"):
             module.tolerance_scores(empty_truth, exact_pred, score_mask, radius=1)
 
-    def test_report_contains_lift_and_tolerance_fields(self) -> None:
+    def test_micro_aggregate_tolerance_summaries_sums_per_fold_counts(self) -> None:
+        module = _load_module()
+        summaries = [
+            {
+                "radius_1": {
+                    "radius": 1,
+                    "predicted_positive_voxels": 4,
+                    "truth_positive_voxels": 2,
+                    "matched_prediction_voxels": 1,
+                    "matched_truth_voxels": 1,
+                    "precision": 0.25,
+                    "recall": 0.5,
+                    "f1": 1 / 3,
+                }
+            },
+            {
+                "radius_1": {
+                    "radius": 1,
+                    "predicted_positive_voxels": 2,
+                    "truth_positive_voxels": 4,
+                    "matched_prediction_voxels": 1,
+                    "matched_truth_voxels": 2,
+                    "precision": 0.5,
+                    "recall": 0.5,
+                    "f1": 0.5,
+                }
+            },
+        ]
+        aggregated = module.aggregate_tolerance_summaries(summaries, radii=(1,))
+        radius_1 = aggregated["radius_1"]
+        self.assertEqual(radius_1["predicted_positive_voxels"], 6)
+        self.assertEqual(radius_1["truth_positive_voxels"], 6)
+        self.assertEqual(radius_1["matched_prediction_voxels"], 2)
+        self.assertEqual(radius_1["matched_truth_voxels"], 3)
+        self.assertAlmostEqual(radius_1["precision"], 2 / 6)
+        self.assertAlmostEqual(radius_1["recall"], 3 / 6)
+        self.assertAlmostEqual(radius_1["f1"], 0.4)
+
+    def test_predicted_positive_fraction_and_coverage_ratio_use_tp_fp(self) -> None:
+        module = _load_module()
+        positive = np.zeros((2, 2, 1), dtype=bool)
+        positive[0, 0, 0] = True
+        positive[1, 1, 0] = True
+        verified_background = ~positive
+        fold = module.base.FoldView(
+            name="fit",
+            inline_start=10,
+            inline_end=11,
+            selection=np.asarray([0, 1], dtype=np.int32),
+            positive_mask=positive,
+            unknown_mask=np.zeros_like(positive, dtype=bool),
+            verified_background_mask=verified_background,
+        )
+        probabilities = np.zeros((2, 2, 1), dtype=np.float32)
+        probabilities[0, 0, 0] = 1.0
+        probabilities[1, 1, 0] = 1.0
+
+        fake_result = {
+            "metrics": {
+                "tp": 3,
+                "fp": 7,
+                "fn": 2,
+                "tn": 8,
+                "precision": 0.3,
+                "recall": 0.6,
+                "dice": 0.4,
+                "iou": 0.25,
+                "f1": 0.4,
+                "average_precision": 0.5,
+                "pr_auc": 0.5,
+                "threshold": 0.5,
+                "threshold_source": "fit_reused",
+                "fit_selected_f1": 0.4,
+                "scoreable_voxels": 20,
+                "positive_voxels": 5,
+                "unknown_voxels_excluded": 0,
+            },
+            "truth": np.asarray([1, 0, 1, 0], dtype=np.uint8),
+            "probabilities": np.asarray([1.0, 0.0, 1.0, 0.0], dtype=np.float64),
+        }
+
+        with mock.patch.object(module.base, "evaluate_fold", return_value=fake_result):
+            enriched = module.enrich_fold_metrics(fold, probabilities, threshold=0.5, radii=(1,))
+
+        self.assertAlmostEqual(enriched["metrics"]["predicted_positive_fraction"], 0.5)
+        self.assertAlmostEqual(enriched["metrics"]["coverage_ratio"], 2.0)
+        union = module.enrich_union_metrics(
+            {
+                "tp": 3,
+                "fp": 7,
+                "fn": 2,
+                "tn": 8,
+                "precision": 0.3,
+                "recall": 0.6,
+                "dice": 0.4,
+                "iou": 0.25,
+                "f1": 0.4,
+                "average_precision": 0.5,
+                "pr_auc": 0.5,
+                "threshold": 0.5,
+                "scoreable_voxels": 20,
+                "positive_voxels": 5,
+            },
+            [enriched],
+            prior=0.25,
+            radii=(1,),
+        )
+        self.assertAlmostEqual(union["predicted_positive_fraction"], 0.5)
+        self.assertAlmostEqual(union["coverage_ratio"], 2.0)
+        self.assertNotEqual(union["coverage_ratio"], 1.0)
+
+    def test_report_contains_lift_tolerance_and_verdict_fields(self) -> None:
         module = _load_module()
         seismic = np.zeros((2, 4, 2), dtype=np.float32)
         positive = np.zeros_like(seismic, dtype=bool)
@@ -132,9 +243,14 @@ class P30CigBenchLiftToleranceTests(unittest.TestCase):
         guard = report["comparison"]["guard_lift"]
         self.assertIn("precision_lift", guard)
         self.assertIn("average_precision_lift", guard)
-        self.assertIsInstance(guard["precision_lift"], float)
-        self.assertIn("tolerance_radius_2", report["comparison"])
-        self.assertEqual(report["comparison"]["tolerance_radius_2"]["cig_bench"]["radius"], 2)
+        self.assertIn("predicted_positive_fraction", guard)
+        self.assertIn("coverage_ratio", guard)
+        self.assertIn("guard_tolerance_sweep", report["comparison"])
+        self.assertIn("development_union_tolerance_sweep", report["comparison"])
+        self.assertEqual(sorted(report["comparison"]["guard_tolerance_sweep"]["cig_bench"].keys()), ["radius_1", "radius_2"])
+        self.assertEqual(sorted(report["comparison"]["development_union_tolerance_sweep"]["baseline"].keys()), ["radius_1", "radius_2"])
+        self.assertEqual(report["decision"]["default_recommendation"], "do_not_advance")
+        self.assertEqual(report["decision"]["model_classification"], "diagnostic_high_recall_proposal_only")
         self.assertEqual(report["models"]["cig_bench_fault_predictor"]["guard"]["threshold_source"], "fit_reused")
 
     def test_render_mentions_tolerance_and_prior(self) -> None:
@@ -179,7 +295,8 @@ class P30CigBenchLiftToleranceTests(unittest.TestCase):
                         "average_precision_lift": 1.0,
                         "recall_to_prior_ratio": 1.0,
                         "positive_prior": 0.01,
-                        "tolerance": {"radius_1": {"precision": 0.8, "recall": 0.7, "f1": 0.75}},
+                        "predicted_positive_fraction": 0.694,
+                        "coverage_ratio": 69.4,
                     },
                     "validation": {"precision": 0.8, "recall": 0.7, "f1": 0.75, "iou": 0.65, "threshold_source": "fit_reused"},
                     "development_union": {"precision": 0.8, "recall": 0.7, "f1": 0.75, "iou": 0.65},
@@ -196,7 +313,8 @@ class P30CigBenchLiftToleranceTests(unittest.TestCase):
                         "average_precision_lift": 1.0,
                         "recall_to_prior_ratio": 1.0,
                         "positive_prior": 0.01,
-                        "tolerance": {"radius_1": {"precision": 0.8, "recall": 0.7, "f1": 0.75}},
+                        "predicted_positive_fraction": 0.04,
+                        "coverage_ratio": 4.0,
                     },
                     "validation": {"precision": 0.7, "recall": 0.6, "f1": 0.65, "iou": 0.55, "threshold_source": "fit_reused"},
                     "development_union": {"precision": 0.7, "recall": 0.6, "f1": 0.65, "iou": 0.55},
@@ -205,15 +323,19 @@ class P30CigBenchLiftToleranceTests(unittest.TestCase):
             "comparison": {
                 "primary_metric": "tolerance_f1_radius_2",
                 "guard_delta": {"precision": 0.10, "recall": 0.10, "f1": 0.10, "iou": 0.10},
-                "guard_lift": {"precision_lift": 1.0, "baseline_precision_lift": 1.0, "average_precision_lift": 1.0, "baseline_average_precision_lift": 1.0, "recall_to_prior_ratio": 1.0, "baseline_recall_to_prior_ratio": 1.0, "positive_prior": 0.01},
-                "tolerance_radius_2": {"cig_bench": {"precision": 0.9, "recall": 0.8, "f1": 0.85}, "baseline": {"precision": 0.8, "recall": 0.7, "f1": 0.75}},
+                "guard_lift": {"precision_lift": 1.0, "baseline_precision_lift": 1.0, "average_precision_lift": 1.0, "baseline_average_precision_lift": 1.0, "recall_to_prior_ratio": 1.0, "baseline_recall_to_prior_ratio": 1.0, "positive_prior": 0.01, "predicted_positive_fraction": 0.694, "baseline_predicted_positive_fraction": 0.04, "coverage_ratio": 69.4, "baseline_coverage_ratio": 4.0, "threshold": 0.0},
+                "guard_tolerance_sweep": {"cig_bench": {"radius_1": {"precision": 0.8, "recall": 0.7, "f1": 0.75}, "radius_2": {"precision": 0.9, "recall": 0.8, "f1": 0.85}, "radius_3": {"precision": 1.0, "recall": 0.9, "f1": 0.95}}, "baseline": {"radius_1": {"precision": 0.6, "recall": 0.5, "f1": 0.55}, "radius_2": {"precision": 0.8, "recall": 0.7, "f1": 0.75}, "radius_3": {"precision": 0.9, "recall": 0.8, "f1": 0.85}}},
+                "development_union_tolerance_sweep": {"cig_bench": {"radius_1": {"precision": 0.8, "recall": 0.7, "f1": 0.75}, "radius_2": {"precision": 0.9, "recall": 0.8, "f1": 0.85}, "radius_3": {"precision": 1.0, "recall": 0.9, "f1": 0.95}}, "baseline": {"radius_1": {"precision": 0.6, "recall": 0.5, "f1": 0.55}, "radius_2": {"precision": 0.8, "recall": 0.7, "f1": 0.75}, "radius_3": {"precision": 0.9, "recall": 0.8, "f1": 0.85}}},
+                "tolerance_radius_2": {"cig_bench": {"radius": 2, "precision": 0.9, "recall": 0.8, "f1": 0.85}, "baseline": {"radius": 2, "precision": 0.8, "recall": 0.7, "f1": 0.75}},
                 "fit_thresholds": {"cig_bench": 0.8, "fault_local_logistic": 0.9},
             },
+            "decision": {"default_recommendation": "do_not_advance", "model_classification": "diagnostic_high_recall_proposal_only", "reason_codes": [], "summary": "x", "minimum_advancement_conditions": ["a"]},
             "minimum_unblock_contract": ["full volume"],
         }
         text = module.render_evidence(report)
         self.assertIn("precision lift", text)
         self.assertIn("Tolerance radius 2 voxels", text)
+        self.assertIn("Default recommendation", text)
 
 
 if __name__ == "__main__":
