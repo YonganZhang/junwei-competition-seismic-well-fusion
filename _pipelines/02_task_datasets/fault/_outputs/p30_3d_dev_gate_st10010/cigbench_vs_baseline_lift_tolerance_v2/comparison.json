@@ -1,0 +1,636 @@
+{
+  "status": "READY",
+  "reason_code": "P30_LIFT_AND_TOLERANCE_ANALYSIS_COMPLETED",
+  "generated_at": "2026-08-03T18:41:35.658947+00:00",
+  "track_id": "fault",
+  "source_commit": "66e98707b612147202fab8887da4070594ae393d",
+  "asset_root": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010",
+  "p30_manifest": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/manifest.json",
+  "p30_split_manifest": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/split_manifest.json",
+  "p30_subvolume": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/dev_subvolume.npz",
+  "split": {
+    "development_only": true,
+    "group_isolated": true,
+    "frozen_holdout_accessed": false,
+    "coordinate_order": [
+      "tline",
+      "iline",
+      "xline"
+    ],
+    "subvolume": {
+      "crossline": [
+        2175,
+        2350
+      ],
+      "inline": [
+        10095,
+        10235
+      ],
+      "time_idx": [
+        605,
+        785
+      ],
+      "time_ms": [
+        2432.0,
+        3152.0
+      ]
+    },
+    "folds": [
+      {
+        "name": "fit",
+        "inline": [
+          10095,
+          10175
+        ],
+        "shape": [
+          181,
+          81,
+          176
+        ],
+        "scoreable_voxels": 2218775,
+        "positive_voxels": 8934,
+        "unknown_voxels": 361561,
+        "positive_prior": 0.004026546179761355
+      },
+      {
+        "name": "guard",
+        "inline": [
+          10176,
+          10183
+        ],
+        "shape": [
+          181,
+          8,
+          176
+        ],
+        "scoreable_voxels": 211326,
+        "positive_voxels": 1834,
+        "unknown_voxels": 43522,
+        "positive_prior": 0.00867853458637366
+      },
+      {
+        "name": "validation",
+        "inline": [
+          10184,
+          10235
+        ],
+        "shape": [
+          181,
+          52,
+          176
+        ],
+        "scoreable_voxels": 1267294,
+        "positive_voxels": 12956,
+        "unknown_voxels": 389218,
+        "positive_prior": 0.010223357800163183
+      }
+    ]
+  },
+  "tolerance_policy": {
+    "distance_metric": "euclidean_voxel",
+    "radii_voxels": [
+      1,
+      2,
+      3
+    ],
+    "primary_radius_voxels": 2,
+    "rationale": [
+      "1 voxel is a strict near-exact match.",
+      "2 voxels is the main reporting radius because it matches the existing boundary halo used in the development gate and tolerates small rasterization offsets without granting broad blobs a free pass.",
+      "3 voxels is a sensitivity upper bound to show whether any apparent gain survives a looser boundary tolerance."
+    ]
+  },
+  "models": {
+    "cig_bench_fault_predictor": {
+      "info": {
+        "package": "cig_bench",
+        "package_version": "0.2.0",
+        "predictor_class": "cig_bench.predictor.fault.FaultPredictor",
+        "device": "cuda",
+        "restore_path": "/mnt/data/yongan-admin-2/.cache/modelscope/models/douyimin--CIG-Bench/snapshots/master/CIG-Bench-Fault.pth",
+        "restore_sha256": "9d6e8668f0fd27cf0f0131d2b600d79e26bd5cd8f483c3ca2d1614d448351a36",
+        "restore_bytes": 138135635,
+        "elapsed_seconds": 0.5059505460085347,
+        "scale_t": 0.5,
+        "scale_h": 0.85,
+        "scale_w": 0.85
+      },
+      "fit": {
+        "tp": 6659,
+        "fp": 1467479,
+        "fn": 2275,
+        "tn": 742362,
+        "precision": 0.004517216162937256,
+        "recall": 0.7453548242668457,
+        "dice": 0.008980009062270746,
+        "iou": 0.004510255599212415,
+        "f1": 0.008980009062270748,
+        "average_precision": 0.004168700875366889,
+        "pr_auc": 0.004165252503401765,
+        "threshold": 3.6436327045807904e-13,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.008980009062270748,
+        "scoreable_voxels": 2218775,
+        "positive_voxels": 8934,
+        "unknown_voxels_excluded": 361561,
+        "positive_prior": 0.004026546179761355,
+        "precision_lift": 1.1218587745602318,
+        "recall_to_prior_ratio": 185.1102138138203,
+        "average_precision_lift": 1.0353043748312256,
+        "f1_vs_prior_ratio": 2.23020143352807,
+        "predicted_positive_fraction": 0.664392739236741,
+        "coverage_ratio": 165.00313409447057
+      },
+      "guard": {
+        "tp": 1501,
+        "fp": 145113,
+        "fn": 333,
+        "tn": 64379,
+        "precision": 0.010237767198221179,
+        "recall": 0.8184296619411123,
+        "dice": 0.02022256951929295,
+        "iou": 0.010214567156866082,
+        "f1": 0.02022256951929295,
+        "average_precision": 0.012357309493036041,
+        "pr_auc": 0.01229665536554264,
+        "threshold": 3.6436327045807904e-13,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.02022256951929295,
+        "scoreable_voxels": 211326,
+        "positive_voxels": 1834,
+        "unknown_voxels_excluded": 43522,
+        "positive_prior": 0.00867853458637366,
+        "precision_lift": 1.179665425807682,
+        "recall_to_prior_ratio": 94.30505274774673,
+        "average_precision_lift": 1.4238935583017092,
+        "f1_vs_prior_ratio": 2.3301825115780272,
+        "predicted_positive_fraction": 0.6937811722173325,
+        "coverage_ratio": 79.94220283533261
+      },
+      "validation": {
+        "tp": 9955,
+        "fp": 819376,
+        "fn": 3001,
+        "tn": 434962,
+        "precision": 0.012003651135674417,
+        "recall": 0.7683698672429762,
+        "dice": 0.02363802361902772,
+        "iou": 0.011960371582493525,
+        "f1": 0.023638023619027723,
+        "average_precision": 0.012622524199014985,
+        "pr_auc": 0.012615642892043546,
+        "threshold": 3.6436327045807904e-13,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.023638023619027723,
+        "scoreable_voxels": 1267294,
+        "positive_voxels": 12956,
+        "unknown_voxels_excluded": 389218,
+        "positive_prior": 0.010223357800163183,
+        "precision_lift": 1.174139785607701,
+        "recall_to_prior_ratio": 75.15826817982558,
+        "average_precision_lift": 1.2346749909128198,
+        "f1_vs_prior_ratio": 2.3121584983214047,
+        "predicted_positive_fraction": 0.6544108943938818,
+        "coverage_ratio": 64.0113460944736
+      },
+      "development_union": {
+        "tp": 18115,
+        "fp": 2431968,
+        "fn": 5609,
+        "tn": 1241703,
+        "precision": 0.007393627073042015,
+        "recall": 0.7635727533299612,
+        "dice": 0.014645443237892042,
+        "iou": 0.007376739428234485,
+        "f1": 0.014645443237892042,
+        "average_precision": 0.006703549194354184,
+        "pr_auc": 0.006699618286026015,
+        "threshold": 3.6436327045807904e-13,
+        "scoreable_voxels": 3697395,
+        "positive_voxels": 23724,
+        "positive_prior": 0.0064164093909360505,
+        "precision_lift": 1.152299771190785,
+        "recall_to_prior_ratio": 119.00312258887338,
+        "average_precision_lift": 1.044750854554847,
+        "f1_vs_prior_ratio": 2.282498254955566,
+        "predicted_positive_fraction": 0.662651136813892,
+        "coverage_ratio": 103.27444781655709,
+        "tolerance": {
+          "radius_1": {
+            "radius": 1,
+            "predicted_positive_voxels": 2450083,
+            "truth_positive_voxels": 23724,
+            "matched_prediction_voxels": 18115,
+            "matched_truth_voxels": 18696,
+            "precision": 0.007393627073042015,
+            "recall": 0.7880627212948913,
+            "f1": 0.014649809215491975
+          },
+          "radius_2": {
+            "radius": 2,
+            "predicted_positive_voxels": 2450083,
+            "truth_positive_voxels": 23724,
+            "matched_prediction_voxels": 18115,
+            "matched_truth_voxels": 19611,
+            "precision": 0.007393627073042015,
+            "recall": 0.8266312594840668,
+            "f1": 0.014656165200954628
+          },
+          "radius_3": {
+            "radius": 3,
+            "predicted_positive_voxels": 2450083,
+            "truth_positive_voxels": 23724,
+            "matched_prediction_voxels": 25176,
+            "matched_truth_voxels": 20924,
+            "precision": 0.010275570256191321,
+            "recall": 0.8819760580003372,
+            "f1": 0.020314464353446977
+          }
+        }
+      }
+    },
+    "fault_local_logistic": {
+      "info": {
+        "model_class": "models.fault_local_logistic.FaultLocalLogistic",
+        "model_builder": "models.fault_local_logistic.build_model",
+        "model_description": "balanced_logistic_pixel_classifier_with_local_convolutional_features",
+        "elapsed_seconds": 0.5927035009954125,
+        "note": "audited_v2 checkpoint evaluated slice-by-slice over the full ST10010 development cube"
+      },
+      "fit": {
+        "tp": 277,
+        "fp": 54629,
+        "fn": 8657,
+        "tn": 2155212,
+        "precision": 0.005044985976031763,
+        "recall": 0.031005148869487353,
+        "dice": 0.008677944862155389,
+        "iou": 0.004357881157277033,
+        "f1": 0.008677944862155389,
+        "average_precision": 0.0033219296119781825,
+        "pr_auc": 0.00331910208015459,
+        "threshold": 0.5469172596931458,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.008677944862155389,
+        "scoreable_voxels": 2218775,
+        "positive_voxels": 8934,
+        "unknown_voxels_excluded": 361561,
+        "positive_prior": 0.004026546179761355,
+        "precision_lift": 1.2529313587385131,
+        "recall_to_prior_ratio": 7.700184596249922,
+        "average_precision_lift": 0.825007205598488,
+        "f1_vs_prior_ratio": 2.1551832450782205,
+        "predicted_positive_fraction": 0.024746087368029655,
+        "coverage_ratio": 6.145735392881128
+      },
+      "guard": {
+        "tp": 58,
+        "fp": 8435,
+        "fn": 1776,
+        "tn": 201057,
+        "precision": 0.006829153420463911,
+        "recall": 0.03162486368593239,
+        "dice": 0.011232691004163842,
+        "iou": 0.00564806699776025,
+        "f1": 0.011232691004163842,
+        "average_precision": 0.006604866615900263,
+        "pr_auc": 0.006595640988809324,
+        "threshold": 0.5469172596931458,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.011232691004163842,
+        "scoreable_voxels": 211326,
+        "positive_voxels": 1834,
+        "unknown_voxels_excluded": 43522,
+        "positive_prior": 0.00867853458637366,
+        "precision_lift": 0.7869016770626808,
+        "recall_to_prior_ratio": 3.6440326844565694,
+        "average_precision_lift": 0.7610578203226495,
+        "f1_vs_prior_ratio": 1.2943073386837123,
+        "predicted_positive_fraction": 0.04018909173504443,
+        "coverage_ratio": 4.6308615049073065
+      },
+      "validation": {
+        "tp": 502,
+        "fp": 47274,
+        "fn": 12454,
+        "tn": 1207064,
+        "precision": 0.010507367716008038,
+        "recall": 0.03874652670577339,
+        "dice": 0.016531647237041428,
+        "iou": 0.008334716918479163,
+        "f1": 0.016531647237041428,
+        "average_precision": 0.00872209923602652,
+        "pr_auc": 0.008717306251654037,
+        "threshold": 0.5469172596931458,
+        "threshold_source": "fit_reused",
+        "fit_selected_f1": 0.016531647237041428,
+        "scoreable_voxels": 1267294,
+        "positive_voxels": 12956,
+        "unknown_voxels_excluded": 389218,
+        "positive_prior": 0.010223357800163183,
+        "precision_lift": 1.0277804926127423,
+        "recall_to_prior_ratio": 3.790000062910341,
+        "average_precision_lift": 0.8531540621504317,
+        "f1_vs_prior_ratio": 1.6170467238051234,
+        "predicted_positive_fraction": 0.03769922370026213,
+        "coverage_ratio": 3.6875578882371096
+      },
+      "development_union": {
+        "tp": 837,
+        "fp": 110338,
+        "fn": 22887,
+        "tn": 3563333,
+        "precision": 0.007528671014166854,
+        "recall": 0.03528072837632777,
+        "dice": 0.0124092839828316,
+        "iou": 0.0062433799286897105,
+        "f1": 0.0124092839828316,
+        "average_precision": 0.0054542363089721815,
+        "pr_auc": 0.005452365997101284,
+        "threshold": 0.5469172596931458,
+        "scoreable_voxels": 3697395,
+        "positive_voxels": 23724,
+        "positive_prior": 0.0064164093909360505,
+        "precision_lift": 1.1733464240610967,
+        "recall_to_prior_ratio": 5.498515793921448,
+        "average_precision_lift": 0.8500449358292109,
+        "f1_vs_prior_ratio": 1.9339919301846924,
+        "predicted_positive_fraction": 0.03006846712347477,
+        "coverage_ratio": 4.686182768504469,
+        "tolerance": {
+          "radius_1": {
+            "radius": 1,
+            "predicted_positive_voxels": 111175,
+            "truth_positive_voxels": 23724,
+            "matched_prediction_voxels": 837,
+            "matched_truth_voxels": 1648,
+            "precision": 0.007528671014166854,
+            "recall": 0.06946552014837296,
+            "f1": 0.013585000118282361
+          },
+          "radius_2": {
+            "radius": 2,
+            "predicted_positive_voxels": 111175,
+            "truth_positive_voxels": 23724,
+            "matched_prediction_voxels": 837,
+            "matched_truth_voxels": 2543,
+            "precision": 0.007528671014166854,
+            "recall": 0.10719103018040803,
+            "f1": 0.014069178937786248
+          },
+          "radius_3": {
+            "radius": 3,
+            "predicted_positive_voxels": 111175,
+            "truth_positive_voxels": 23724,
+            "matched_prediction_voxels": 1204,
+            "matched_truth_voxels": 4170,
+            "precision": 0.010829772880593658,
+            "recall": 0.17577137076378352,
+            "f1": 0.020402490436073544
+          }
+        }
+      }
+    }
+  },
+  "comparison": {
+    "primary_metric": "tolerance_f1_radius_2",
+    "guard_delta": {
+      "precision": 0.003408613777757268,
+      "recall": 0.7868047982551799,
+      "f1": 0.00898987851512911,
+      "iou": 0.004566500159105832
+    },
+    "guard_lift": {
+      "precision_lift": 1.179665425807682,
+      "baseline_precision_lift": 0.7869016770626808,
+      "average_precision_lift": 1.4238935583017092,
+      "baseline_average_precision_lift": 0.7610578203226495,
+      "recall_to_prior_ratio": 94.30505274774673,
+      "baseline_recall_to_prior_ratio": 3.6440326844565694,
+      "positive_prior": 0.00867853458637366,
+      "predicted_positive_fraction": 0.6937811722173325,
+      "baseline_predicted_positive_fraction": 0.04018909173504443,
+      "coverage_ratio": 79.94220283533261,
+      "baseline_coverage_ratio": 4.6308615049073065,
+      "threshold": 3.6436327045807904e-13
+    },
+    "guard_tolerance_sweep": {
+      "cig_bench": {
+        "radius_1": {
+          "radius": 1,
+          "predicted_positive_voxels": 146614,
+          "truth_positive_voxels": 1834,
+          "matched_prediction_voxels": 1501,
+          "matched_truth_voxels": 1546,
+          "precision": 0.010237767198221179,
+          "recall": 0.8429661941112323,
+          "f1": 0.020229844310699872
+        },
+        "radius_2": {
+          "radius": 2,
+          "predicted_positive_voxels": 146614,
+          "truth_positive_voxels": 1834,
+          "matched_prediction_voxels": 1501,
+          "matched_truth_voxels": 1598,
+          "precision": 0.010237767198221179,
+          "recall": 0.871319520174482,
+          "f1": 0.020237746384917106
+        },
+        "radius_3": {
+          "radius": 3,
+          "predicted_positive_voxels": 146614,
+          "truth_positive_voxels": 1834,
+          "matched_prediction_voxels": 1888,
+          "matched_truth_voxels": 1660,
+          "precision": 0.012877351412552689,
+          "recall": 0.9051254089422028,
+          "f1": 0.02539342683212625
+        }
+      },
+      "baseline": {
+        "radius_1": {
+          "radius": 1,
+          "predicted_positive_voxels": 8493,
+          "truth_positive_voxels": 1834,
+          "matched_prediction_voxels": 58,
+          "matched_truth_voxels": 131,
+          "precision": 0.006829153420463911,
+          "recall": 0.07142857142857142,
+          "f1": 0.012466415905427188
+        },
+        "radius_2": {
+          "radius": 2,
+          "predicted_positive_voxels": 8493,
+          "truth_positive_voxels": 1834,
+          "matched_prediction_voxels": 58,
+          "matched_truth_voxels": 215,
+          "precision": 0.006829153420463911,
+          "recall": 0.11723009814612868,
+          "f1": 0.012906451000249952
+        },
+        "radius_3": {
+          "radius": 3,
+          "predicted_positive_voxels": 8493,
+          "truth_positive_voxels": 1834,
+          "matched_prediction_voxels": 86,
+          "matched_truth_voxels": 353,
+          "precision": 0.01012598610620511,
+          "recall": 0.19247546346782987,
+          "f1": 0.01923978207419909
+        }
+      }
+    },
+    "development_union_tolerance_sweep": {
+      "cig_bench": {
+        "radius_1": {
+          "radius": 1,
+          "predicted_positive_voxels": 2450083,
+          "truth_positive_voxels": 23724,
+          "matched_prediction_voxels": 18115,
+          "matched_truth_voxels": 18696,
+          "precision": 0.007393627073042015,
+          "recall": 0.7880627212948913,
+          "f1": 0.014649809215491975
+        },
+        "radius_2": {
+          "radius": 2,
+          "predicted_positive_voxels": 2450083,
+          "truth_positive_voxels": 23724,
+          "matched_prediction_voxels": 18115,
+          "matched_truth_voxels": 19611,
+          "precision": 0.007393627073042015,
+          "recall": 0.8266312594840668,
+          "f1": 0.014656165200954628
+        },
+        "radius_3": {
+          "radius": 3,
+          "predicted_positive_voxels": 2450083,
+          "truth_positive_voxels": 23724,
+          "matched_prediction_voxels": 25176,
+          "matched_truth_voxels": 20924,
+          "precision": 0.010275570256191321,
+          "recall": 0.8819760580003372,
+          "f1": 0.020314464353446977
+        }
+      },
+      "baseline": {
+        "radius_1": {
+          "radius": 1,
+          "predicted_positive_voxels": 111175,
+          "truth_positive_voxels": 23724,
+          "matched_prediction_voxels": 837,
+          "matched_truth_voxels": 1648,
+          "precision": 0.007528671014166854,
+          "recall": 0.06946552014837296,
+          "f1": 0.013585000118282361
+        },
+        "radius_2": {
+          "radius": 2,
+          "predicted_positive_voxels": 111175,
+          "truth_positive_voxels": 23724,
+          "matched_prediction_voxels": 837,
+          "matched_truth_voxels": 2543,
+          "precision": 0.007528671014166854,
+          "recall": 0.10719103018040803,
+          "f1": 0.014069178937786248
+        },
+        "radius_3": {
+          "radius": 3,
+          "predicted_positive_voxels": 111175,
+          "truth_positive_voxels": 23724,
+          "matched_prediction_voxels": 1204,
+          "matched_truth_voxels": 4170,
+          "precision": 0.010829772880593658,
+          "recall": 0.17577137076378352,
+          "f1": 0.020402490436073544
+        }
+      }
+    },
+    "tolerance_radius_2": {
+      "cig_bench": {
+        "radius": 2,
+        "predicted_positive_voxels": 146614,
+        "truth_positive_voxels": 1834,
+        "matched_prediction_voxels": 1501,
+        "matched_truth_voxels": 1598,
+        "precision": 0.010237767198221179,
+        "recall": 0.871319520174482,
+        "f1": 0.020237746384917106
+      },
+      "baseline": {
+        "radius": 2,
+        "predicted_positive_voxels": 8493,
+        "truth_positive_voxels": 1834,
+        "matched_prediction_voxels": 58,
+        "matched_truth_voxels": 215,
+        "precision": 0.006829153420463911,
+        "recall": 0.11723009814612868,
+        "f1": 0.012906451000249952
+      }
+    },
+    "fit_thresholds": {
+      "cig_bench": 3.6436327045807904e-13,
+      "fault_local_logistic": 0.5469172596931458
+    }
+  },
+  "decision": {
+    "default_recommendation": "do_not_advance",
+    "model_classification": "diagnostic_high_recall_proposal_only",
+    "reason_codes": [
+      "precision_lift_only_moderate",
+      "average_precision_lift_only_moderate",
+      "threshold_near_zero_for_cigbench",
+      "predicted_positive_fraction_is_high",
+      "tolerance_f1_radius_2_is_low"
+    ],
+    "summary": "CIG-Bench should not be promoted as the default fault detector yet. It is a diagnostic/high-recall proposal: precision lift is about 1.18x, AP lift about 1.42x, fit threshold is near zero, predicted positive fraction is about 69.4%, and radius-2 tolerance F1 is about 0.0202.",
+    "minimum_advancement_conditions": [
+      "Lift precision materially beyond the current ~1.18x level without collapsing recall.",
+      "Reduce predicted positive fraction substantially below the current ~69.4% coverage.",
+      "Raise tolerance F1 beyond the current radius-2 ~0.0202 while keeping guard and validation stable.",
+      "Demonstrate calibration stability across the development folds with the same fit threshold."
+    ]
+  },
+  "baseline_reference": {
+    "audited_v2_model_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib",
+    "audited_v2_model_sha256": "6d5668eb73f01bfe0294ba3dc23dee67edeb519263be99fa034156dd40395c84",
+    "audited_v2_metrics_path": "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_metrics.json",
+    "audited_v2_metrics_sha256": "0d0e3093da01eee7203c7afcd9b49667c25ebef49b40f6e7ef554c423768c631",
+    "audited_v2_old_metrics": {
+      "tp": 1328,
+      "fp": 168215,
+      "fn": 144,
+      "tn": 25949,
+      "precision": 0.00783282117221,
+      "recall": 0.9021739130434783,
+      "dice": 0.015530801391690788,
+      "iou": 0.0078261740734411,
+      "f1": 0.015530801391690788
+    }
+  },
+  "minimum_unblock_contract": [
+    "The comparison uses the ST10010 continuous 3-D development asset.",
+    "CIG-Bench is run once on the full cube and thresholds are selected only on fit.",
+    "Guard, validation and union reuse the fit threshold without extra search.",
+    "Lift metrics are normalized by the observed positive prior on each fold.",
+    "Tolerance metrics use 1/2/3 voxel Euclidean hit radii, with 2 voxels as the primary radius.",
+    "Union tolerance is micro-aggregated from per-fold 3-D tolerance counts, not flattened across fold boundaries.",
+    "The audited_v2 baseline checkpoint is applied slice-by-slice without retraining.",
+    "No frozen holdout/test.h5 path is opened or consumed."
+  ],
+  "cig_bench": {
+    "package": "cig_bench",
+    "package_version": "0.2.0",
+    "restore_path": "/mnt/data/yongan-admin-2/.cache/modelscope/models/douyimin--CIG-Bench/snapshots/master/CIG-Bench-Fault.pth",
+    "restore_sha256": "9d6e8668f0fd27cf0f0131d2b600d79e26bd5cd8f483c3ca2d1614d448351a36",
+    "restore_bytes": 138135635,
+    "scale_t": 0.5,
+    "scale_h": 0.85,
+    "scale_w": 0.85
+  },
+  "cig_bench_scale": {
+    "scale_t": 0.5,
+    "scale_h": 0.85,
+    "scale_w": 0.85
+  }
+}

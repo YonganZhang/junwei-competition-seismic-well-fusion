@@ -1,0 +1,17 @@
+{
+  "segy_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/track-fault/_sandbox/volve_data/_extracted_seismic/ST10010/Stacks/ST10010ZC11_PZ_PSDM_KIRCH_FULL_T.MIG_FIN.POST_STACK.3D.JS-017536.segy",
+  "stack_member": "ST10010/Stacks/ST10010ZC11_PZ_PSDM_KIRCH_FULL_T.MIG_FIN.POST_STACK.3D.JS-017536.segy",
+  "il_range": [
+    9961,
+    10361
+  ],
+  "xl_range": [
+    1961,
+    2680
+  ],
+  "n_traces": 288694,
+  "n_samples": 850,
+  "sample_interval_ms": 4.0,
+  "missing_traces": 26,
+  "note": "trace_map indexes (inline, crossline) directly into the extracted ST10010 stack"
+}

@@ -1,0 +1,166 @@
+{
+  "claim_boundary": "future contract; no well-log-plus-seismic fusion result is claimed by P30",
+  "inputs": {
+    "alignment": {
+      "fields": [
+        "depth_datum",
+        "time_depth_transform_id",
+        "support_radius_m",
+        "cell_to_well_weights",
+        "outside_support_mask"
+      ],
+      "required": true
+    },
+    "cell_id": {
+      "dtype": "int64",
+      "order": [
+        "k",
+        "j",
+        "i"
+      ],
+      "required": true,
+      "shape": [
+        "n",
+        3
+      ]
+    },
+    "seismic": {
+      "alignment": "same cell_id and depth/time datum",
+      "dtype": "float32",
+      "required": true,
+      "shape": [
+        "n",
+        "seismic_feature"
+      ]
+    },
+    "seismic_foundation_embedding": {
+      "dtype": "float32",
+      "provenance": [
+        "model_id",
+        "revision",
+        "weights_sha256",
+        "input_transform"
+      ],
+      "required": false,
+      "shape": [
+        "n",
+        "embedding"
+      ]
+    },
+    "source_lock": {
+      "fields": [
+        "asset_id",
+        "license",
+        "source_sha256",
+        "feature_cache_sha256"
+      ],
+      "required": true
+    },
+    "split": {
+      "fields": [
+        "outer_fold_id",
+        "role",
+        "effective_train_sample_ids",
+        "buffer_definition",
+        "frozen_test_opened"
+      ],
+      "required": true
+    },
+    "well_log_foundation_embedding": {
+      "dtype": "float32",
+      "provenance": [
+        "model_id",
+        "revision",
+        "weights_sha256",
+        "curve_mapping"
+      ],
+      "required": false,
+      "shape": [
+        "observation",
+        "embedding"
+      ]
+    },
+    "well_log_observations": {
+      "columns": [
+        "well_id",
+        "MD_m",
+        "TVDSS_m",
+        "x_m",
+        "y_m",
+        "curve_name",
+        "value",
+        "unit",
+        "quality_mask"
+      ],
+      "dtype": "table",
+      "required": true
+    },
+    "xyz_m": {
+      "dtype": "float64",
+      "order": [
+        "easting_m",
+        "northing_m",
+        "TVDSS_or_declared_depth_m"
+      ],
+      "required": true,
+      "shape": [
+        "n",
+        3
+      ]
+    }
+  },
+  "invariants": [
+    "all normalization, variograms, PCA and fusion weights fit on effective outer-train rows only",
+    "well observations from a held spatial fold cannot enter feature fitting or action selection",
+    "MD is not interchangeable with TVDSS; seismic TWT requires an identified time-depth transform",
+    "missing modalities use explicit masks, never silent zero substitution",
+    "frozen test/holdout paths are rejected before filesystem access"
+  ],
+  "outputs": {
+    "conditioning_audit": {
+      "fields": [
+        "exact_well_cells_honoured",
+        "bound_clips",
+        "outside_support_count"
+      ]
+    },
+    "modality_ablation": {
+      "members": [
+        "seismic_only",
+        "well_only",
+        "seismic_plus_well",
+        "foundation_disabled"
+      ],
+      "required": true
+    },
+    "porosity_mean": {
+      "bounds": [
+        0.0,
+        1.0
+      ],
+      "dtype": "float32",
+      "shape": [
+        "n"
+      ],
+      "unit": "fraction"
+    },
+    "porosity_variance": {
+      "dtype": "float32",
+      "minimum": 0.0,
+      "shape": [
+        "n"
+      ],
+      "unit": "fraction^2"
+    },
+    "provenance": {
+      "fields": [
+        "config_sha256",
+        "input_hashes",
+        "split_hash",
+        "prediction_sha256"
+      ],
+      "required": true
+    }
+  },
+  "schema_version": "reconstruction-cross-modal-fusion-io/v1"
+}

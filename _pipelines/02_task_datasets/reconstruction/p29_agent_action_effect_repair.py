@@ -19,7 +19,7 @@ import p28_agentic_optimization as p28
 import p19_meta_purged_geostatistics as p19
 from sklearn.neighbors import NearestNeighbors
 
-SCHEMA_VERSION = "reconstruction-p29-agent-action-effect-repair/v1"
+SCHEMA_VERSION = "reconstruction-p29-agent-action-effect-repair/v2"
 SAFE_QUANTITATIVE_FIELDS = ("classification", "relative_rmse_change")
 
 
@@ -88,12 +88,22 @@ def _policy_decision(observation: Mapping[str, Any], *, mode: str, action_ids: S
     except Exception as exc:  # fail closed, preserving evidence
         return str(action_ids[0]), {"provider": "deepseek", "status": "fallback", "error_type": type(exc).__name__, "fallback": "first_allowlisted_action"}
 
-def run_real_probe(*, data_dir: Path, stage3_root: Path, output_dir: Path) -> dict[str, Any]:
-    p28.base.ensure_no_holdout_paths((data_dir, stage3_root, output_dir))
+def run_real_probe(
+    *,
+    data_dir: Path,
+    stage3_root: Path,
+    feature_cache: Path,
+    output_dir: Path,
+) -> dict[str, Any]:
+    p28.base.ensure_no_holdout_paths((data_dir, stage3_root, feature_cache, output_dir))
     inputs = p28.base.resolve_dev_inputs(data_dir); oof = p28.base.load_oof_development(stage3_root)
     folds, _ = p28.p17.load_fold_samples(stage3_root=stage3_root, train_h5=inputs.train_h5, oof=oof)
     indices = p28.p17._unique_indices(folds)  # noqa: SLF001
-    cache_indices, foundation, audit = p28.p18._load_feature_cache(p28.p18.DEFAULT_FEATURE_CACHE, train_h5=inputs.train_h5, expected_indices=indices)  # noqa: SLF001
+    cache_indices, foundation, audit = p28.p18._load_feature_cache(
+        feature_cache,
+        train_h5=inputs.train_h5,
+        expected_indices=indices,
+    )  # noqa: SLF001
     prepared, _ = p28.p18._prepare_fold_metrics(folds=folds, requested_indices=cache_indices, foundation_features=foundation)  # noqa: SLF001
     registry = action_registry(); bank = build_real_action_bank(oof=oof, prepared=prepared, registry=registry); a0 = bank["A0"]
     metrics = {}; configs = {"A0": predictor_config(p28.A0_PARAMETERS)}
@@ -143,7 +153,7 @@ def run_real_probe(*, data_dir: Path, stage3_root: Path, output_dir: Path) -> di
     a2d_ids = ["kernel_matern32", "neighbours_48", "distance_power_1.25", "blend_0.70"]; a3_ids = [action_ids[int(x)] for x in np.random.default_rng(2693).choice(len(action_ids), size=5, replace=False)]
     baselines = {"A0": [{"held_fold": int(f), "action_id": "A0", "result": {"rmse": float(_fold_metrics(oof.target, purged_banks[int(f)]["A0"], oof.fold_ids)["per_fold"][int(f)]["rmse"])}} for f in p28.base.FOLD_IDS], "A1": "A0 identity replay", "A2D": a2d_ids, "A3": a3_ids, "oracle_diagnostic": "vertical_weight_8.0"}
     safe_deltas = [r["safe_action"]["signed_delta_rmse"] for r in policy_rows]
-    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "metrics": metrics, "purge_audits": purge_audits, "replay": {"fold": fold, "chosen_action_id": chosen_id, "config": saved, "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "outer_fold_observations": {str(f): histories[f] for f in histories}, "prompt_observations": observations, "policy": {"safe_quantitative": policy_rows, "categorical_ablation": categorical_rows, "A1": baselines["A1"], "A2D": baselines["A2D"], "A3": baselines["A3"], "oracle_diagnostic": baselines["oracle_diagnostic"], "oracle_used_for_feedback": False, "oracle_used_for_promotion": False, "promotion": {"mean_signed_delta_rmse": float(np.mean(safe_deltas)), "positive_folds": int(sum(d < 0 for d in safe_deltas)), "folds": len(safe_deltas), "verdict": "RETAIN_FROZEN_BASELINE"}}, "held_fold_purge_reused": {"entrypoint": "p19._rows + p19._without_coordinates", "all_held_folds": True}, "frozen_holdout_opened": False}
+    result = {"schema_version": SCHEMA_VERSION, "real_development": True, "feature_cache_audit": audit, "interface_contract": {"feature_cache_is_explicit_runtime_input": True, "query_side_seismic_required": True, "query_side_foundation_embedding_required": True, "query_baseline_required_when_blended": True, "seismic_weights_are_scalar_ensemble_members": True}, "metrics": metrics, "purge_audits": purge_audits, "replay": {"fold": fold, "chosen_action_id": chosen_id, "config": saved, "prediction_hash": prediction_hash(replay[mask]), "matches": True}, "outer_fold_observations": {str(f): histories[f] for f in histories}, "prompt_observations": observations, "policy": {"safe_quantitative": policy_rows, "categorical_ablation": categorical_rows, "A1": baselines["A1"], "A2D": baselines["A2D"], "A3": baselines["A3"], "oracle_diagnostic": baselines["oracle_diagnostic"], "oracle_used_for_feedback": False, "oracle_used_for_promotion": False, "promotion": {"mean_signed_delta_rmse": float(np.mean(safe_deltas)), "positive_folds": int(sum(d < 0 for d in safe_deltas)), "folds": len(safe_deltas), "verdict": "RETAIN_FROZEN_BASELINE"}}, "held_fold_purge_reused": {"entrypoint": "p19._rows + p19._without_coordinates", "all_held_folds": True}, "frozen_holdout_opened": False}
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "summary.json").write_text(json.dumps(result, indent=2, sort_keys=True, default=float) + "\n")
     (output_dir / "results.jsonl").write_text("\n".join(json.dumps(x, sort_keys=True, default=float) for x in policy_rows + categorical_rows) + "\n")
@@ -378,7 +388,21 @@ def run_probe(output_dir: Path) -> dict[str, Any]:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(); parser.add_argument("--output-dir", type=Path, required=True); parser.add_argument("--data-dir", type=Path); parser.add_argument("--stage3-root", type=Path)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--data-dir", type=Path)
+    parser.add_argument("--stage3-root", type=Path)
+    parser.add_argument("--feature-cache", type=Path)
     args = parser.parse_args()
-    if args.data_dir and args.stage3_root: run_real_probe(data_dir=args.data_dir, stage3_root=args.stage3_root, output_dir=args.output_dir)
-    else: run_probe(args.output_dir)
+    real_inputs = (args.data_dir, args.stage3_root, args.feature_cache)
+    if any(real_inputs) and not all(real_inputs):
+        parser.error("--data-dir, --stage3-root and --feature-cache must be supplied together")
+    if all(real_inputs):
+        run_real_probe(
+            data_dir=args.data_dir,
+            stage3_root=args.stage3_root,
+            feature_cache=args.feature_cache,
+            output_dir=args.output_dir,
+        )
+    else:
+        run_probe(args.output_dir)

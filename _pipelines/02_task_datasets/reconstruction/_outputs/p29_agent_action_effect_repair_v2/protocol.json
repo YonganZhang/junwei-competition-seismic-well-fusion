@@ -1,0 +1,12 @@
+{
+  "schema_version": "reconstruction-p29-agent-action-effect-repair/v2",
+  "budget": 4,
+  "frozen_test_opened": false,
+  "strategies": [
+    "A0",
+    "A1",
+    "A2D",
+    "A3",
+    "oracle_diagnostic"
+  ]
+}

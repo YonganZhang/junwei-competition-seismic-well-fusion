@@ -91,6 +91,14 @@ class P29Test(unittest.TestCase):
             self.assertGreater(result["different_action_count"], 1)
             self.assertTrue((Path(td) / "summary.json").is_file())
 
+    def test_real_runner_has_no_hidden_feature_cache_default(self):
+        parser_source = (TRACK / "p29_agent_action_effect_repair.py").read_text()
+        self.assertIn('parser.add_argument("--feature-cache"', parser_source)
+        self.assertNotIn(
+            "_load_feature_cache(p28.p18.DEFAULT_FEATURE_CACHE",
+            parser_source,
+        )
+
     def test_real_evidence_contract_rejects_empty_histories_and_fake_purge(self):
         histories = {f: [] for f in range(5)}
         with self.assertRaises(ValueError):
@@ -98,7 +106,7 @@ class P29Test(unittest.TestCase):
         self.assertIn("p19", p29.p19._without_coordinates.__module__)
 
     def test_real_summary_purge_calls_and_no_held_fold_prompt_leak(self):
-        path = TRACK / "_outputs" / "p29_agent_action_effect_repair" / "summary.json"
+        path = TRACK / "_outputs" / "p29_agent_action_effect_repair_v2" / "summary.json"
         if not path.is_file(): self.skipTest("real probe not run")
         summary = json.loads(path.read_text())
         self.assertEqual(len(summary["purge_audits"]), 5)
@@ -108,7 +116,7 @@ class P29Test(unittest.TestCase):
             self.assertTrue(all(int(held) not in row["selection_fold_ids"] for row in rows))
 
     def test_policy_layer_is_real_and_oracle_is_diagnostic_only(self):
-        path = TRACK / "_outputs" / "p29_agent_action_effect_repair" / "summary.json"
+        path = TRACK / "_outputs" / "p29_agent_action_effect_repair_v2" / "summary.json"
         if not path.is_file(): self.skipTest("real probe not run")
         summary = json.loads(path.read_text()); policy = summary["policy"]
         self.assertEqual(len(policy["safe_quantitative"]), 5)

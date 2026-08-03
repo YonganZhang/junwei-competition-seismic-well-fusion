@@ -1,8 +1,8 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P34 六赛道 Pipeline 模块化] 将六赛道统一为固定七阶段接口，补齐真实预处理入口、智能体角色、依赖闭包、预检和结构化运行证据；P33 剩余科研优化暂停但不回退。**
->   2026-08-03 增量：① P30 连续三维开发体已集成，CIG-Bench guard F1=`0.003555` 低于 baseline `0.017641`，不晋级；忽略目录中的 joblib 已转为哈希绑定的可移植系数检查点，在完整 P30 体上复算指标至 12 位小数一致。④默认 XGBoost 已升级为 `depth=3/eta=0.1/rounds=60`，Macro-F1=`0.213349`，与 MOMENT/LLM 无关。六赛道聚焦回归共 61 项通过。
+> **🧭 当前: [P35 井震跨模态前置收口] 已修复断层最终评估与重建基础特征接口，六赛道 Pipeline 引用权威 v2 证据；下一步在冻结 P21 基线和显式对齐合同上接入测井基础模型、地震基础模型与井震跨模态融合。**
+>   2026-08-03 增量：① P30 连续三维开发体已集成，CIG-Bench guard 逐体素 F1=`0.003555` 低于 baseline `0.017641`，不晋级；忽略目录中的 joblib 已转为哈希绑定的可移植系数检查点，在完整 P30 体上复算指标至 12 位小数一致。④默认 XGBoost 已升级为 `depth=3/eta=0.1/rounds=60`，Macro-F1=`0.213349`，与 MOMENT/LLM 无关。六赛道聚焦回归共 61 项通过。
 >   P21 在开发 OOF 上相对 PyKrige RMSE 改善 `2.5144%`，相对 P19 改善 `0.0613%`；P24 同场区历史版本迁移中相对重拟合 PyKrige 改善 `1.4529%`，但不声称跨场区、fresh blind 或 LoRA 因果贡献。
 >   六赛道 baseline pipeline 候选已完成真实数据端到端验收和可移植性收口；
 >   ①②③④⑥又各新增2个已通过动态发现/小批次训练/检查点契约的简单备选模型（每条现有3个模型，SHA见下方），
@@ -105,6 +105,7 @@
 | P32 混合智能体优化 | ✅ | 1/1 | ②③完成“LLM 候选生成 + 确定性预算调度”真实 development pilot 与独立复跑。③相对确定性策略主指标改善 `4.2696%`、3/3 seed 全胜；②等均 mIoU 改善 `+0.024699`，F3 `+0.049397`、Penobscot 不降。完整候选池不完全稳定，但最终可执行决策与指标稳定；frozen test 未读取。详见 `_findings/P32_hybrid_agent_optimizer_results.md`。 |
 | P33 四赛道混合扩展 | 🔄 | 1/4 | ④完成真实 matched-budget pilot 与独立复跑：智能体相对确定性端点 `+0.027373`，但相对现默认 A0 `-0.013750`，共同护栏拒绝假晋级并保留 `depth=3/eta=0.1/rounds=60`。下一步推进⑥重建。详见 `_findings/P33_lithofacies_incumbent_guard_prevents_false_promotion.md`。 |
 | P34 Pipeline 模块化 | ✅ | 4/4 | 六条独立 Pipeline、共享运行时、赛道 adapter、CodeBook、registry 与防漏门禁已完成；14 项运行时测试、3 项 lifecycle 回归、42 阶段核验和 Claude 独立终审通过，六条 manifest 验签均已刷新。详见 `_phases/P34_six_track_pipeline_modularization.md`。 |
+| P35 接口与证据收口 | ✅ | 4/4 | ①最终 ST10010 评估原子接入 Pipeline；⑥P29 v2 显式注入 feature cache 和查询侧模态，真实五折重算；P30 v2 复验地质统计候选并产出井震跨模态 I/O 合同；旧 P29 v1 退出晋级证据。详见 `_findings/P35_fault_reconstruction_interface_closeout.md`。 |
 
 ## 协作与决策权边界
 

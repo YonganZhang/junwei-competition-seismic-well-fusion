@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-08-03 (P34 six-track pipeline modularization)
+last_synced: 2026-08-04 (P35 fault/reconstruction interface closeout)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -81,10 +81,31 @@ code_domains:
     status: active
     owner: project
     description: >
-      P31--P33 六赛道独立 pipeline 的共享证据校验器。七段生命周期为
+      P31--P35 六赛道独立 pipeline 的共享证据校验器。七段生命周期为
       validate/prepare/baseline/optimize/promote/refit/verify；读取各赛道已归档的
       P29/P30/P32/P33/default 证据，验证默认模型、候选动作和晋级结论一致。
       拒绝路线是合法结果，缺失字段、漂移结论或假晋级直接失败。
+
+  - id: fault_p30_finalize
+    path: _pipelines/02_task_datasets/fault/fault_p30_finalize.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Atomically rebuild the ST10010 aligned 3-D development asset and run the final CIG-Bench lift/tolerance audit."
+
+  - id: reconstruction_p29_action_effect_v2
+    path: _pipelines/02_task_datasets/reconstruction/p29_agent_action_effect_repair.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Run the repaired held-fold agent action probe with explicit feature-cache and query-side modality inputs."
+
+  - id: reconstruction_p30_geostatistics_v2
+    path: _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Audit bounded geostatistical candidates against P21 and emit the well-log/seismic cross-modal fusion I/O contract."
 
   - id: six_track_pipeline_runtime
     path: _code/six_track_pipeline
@@ -478,6 +499,13 @@ entrypoints:
     owner: col3
     description: "Six modular track adapters, dependency-closed seven-stage plans, fail-closed execution preflight and 42-stage portable verification trace."
 
+  - id: p35_fault_reconstruction_interface_closeout
+    path: _wiki-methodology/_tests/P35_fault_reconstruction_interface_closeout.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "ST10010 fault finalization, reconstructed P29 v2 explicit feature inputs, P30 v2 geostatistics audit, cross-modal contract and six-pipeline regression evidence."
+
 cross_domain_edges:
   - from: six_track_pipeline_runtime
     to: six_track_agentic_lifecycle
@@ -488,6 +516,12 @@ cross_domain_edges:
   - from: six_track_agentic_lifecycle
     to: task_datasets
     relation: validates_archived_decisions
+  - from: fault_p30_finalize
+    to: common_preprocess
+    relation: consumes_fault_sticks_and_st10010
+  - from: reconstruction_p30_geostatistics_v2
+    to: reconstruction_p29_action_effect_v2
+    relation: validates_repaired_agent_evidence
   - from: task_datasets
     to: dataset_io
     relation: calls

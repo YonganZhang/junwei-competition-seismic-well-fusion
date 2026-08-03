@@ -32,7 +32,7 @@ validator_version: 1
 
 六个赛道共用一个入口：`python3 _code/six_track_pipeline/cli.py`。它统一负责发现、规划、执行前预检和证据核验；真正的训练命令、参数和产物仍由各赛道 adapter 声明，不再靠临时记忆拼接零散脚本。
 
-> 本页描述 P34 的统一接口。CLI 与 adapter 正在集成时，应以最终 registry、测试 gate 和 `--help` 为准；本页不代表任何实验已经执行，也不声明任何指标结果。
+> 本页描述当前统一接口。CLI、adapter、registry、测试 gate 和归档 evidence 共同构成真源；历史输出不能仅凭文件存在继续参与晋级。
 
 ## 基本用法
 
@@ -97,12 +97,12 @@ python3 _code/six_track_pipeline/cli.py verify \
 
 | 赛道 | Track id | Adapter | Manifest | 当前科学入口 |
 |---|---|---|---|---|
-| ① 断层识别 | `fault` | `_pipelines/02_task_datasets/fault/pipeline_adapter.py` | `_pipelines/fault_agentic_optimization.yml` | `_pipelines/02_task_datasets/fault/fault_p29_agent_action_effect.py` |
+| ① 断层识别 | `fault` | `_pipelines/02_task_datasets/fault/pipeline_adapter.py` | `_pipelines/fault_agentic_optimization.yml` | `fault_p29_agent_action_effect.py` + `fault_p30_finalize.py` |
 | ② 地震相识别 | `facies` | `_pipelines/02_task_datasets/facies/pipeline_adapter.py` | `_pipelines/facies_agentic_optimization.yml` | `_pipelines/02_task_datasets/facies/p32_hybrid_agent_optimizer.py` |
 | ③ 储层物性预测 | `property` | `_pipelines/02_task_datasets/reservoir/pipeline_adapter.py` | `_pipelines/property_agentic_optimization.yml` | `_pipelines/02_task_datasets/reservoir/p32_hybrid_agent_optimizer.py` |
 | ④ 岩相识别 | `lithofacies` | `_pipelines/02_task_datasets/lithofacies/pipeline_adapter.py` | `_pipelines/lithofacies_agentic_optimization.yml` | `_pipelines/02_task_datasets/lithofacies/lithofacies_p33_hybrid_agent_optimizer.py` |
 | ⑤ 甜点评价 | `sweetspot` | `_pipelines/02_task_datasets/sweetspot/pipeline_adapter.py` | `_pipelines/sweetspot_agentic_optimization.yml` | `_pipelines/02_task_datasets/sweetspot/p29_agent_action_effect.py` |
-| ⑥ 三维重建 | `reconstruction` | `_pipelines/02_task_datasets/reconstruction/pipeline_adapter.py` | `_pipelines/reconstruction_agentic_optimization.yml` | `_pipelines/02_task_datasets/reconstruction/p29_agent_action_effect_repair.py` |
+| ⑥ 三维重建 | `reconstruction` | `_pipelines/02_task_datasets/reconstruction/pipeline_adapter.py` | `_pipelines/reconstruction_agentic_optimization.yml` | `p29_agent_action_effect_repair.py` + `p30_bounded_geostatistics_feasibility.py` |
 
 `property` 是公共 track id，而磁盘上的历史目录名是 `reservoir`。这个差异只由 adapter 处理，用户不应把目录名当作新的 track id。
 
@@ -113,6 +113,12 @@ python3 _code/six_track_pipeline/cli.py verify \
 候选必须经过确定性执行器真实运行。调度器记录候选配置、预算、随机种子、输入证据和输出摘要，使“智能体选了什么”与“代码实际跑了什么”可以逐项对照。智能体无响应、输出非法或建议超出动作空间时，Pipeline 回退到事先登记的确定性候选或 incumbent，而不是猜测一个配置继续运行。
 
 最终是否晋级由 `promote` 的确定性 guard 决定。guard 至少比较候选与当前 incumbent，并检查主指标方向、任务级非退化、预算一致性和 selection/promotion 数据隔离。智能体可以引导搜索，但不能给自己的候选签发晋级结论。
+
+## 断层与重建的显式输入修复
+
+断层 `refit` 阶段现在通过 `fault_p30_finalize.py` 原子执行 ST10010 连续三维体构建和最终 CIG-Bench lift/tolerance 评估，避免先生成子体、后续却误用旧 ST0202 或 scale-fix 结果。权威结论来自 `p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2`；当前 CIG-Bench 只保留为高召回诊断候选，不替代默认模型。
+
+重建 `optimize` 阶段必须显式提供 `data_dir`、`stage3_root` 与 `feature_cache`，不得从当前工作目录猜基础模型缓存。修复后的 P29 v2 强制同时提供训练侧与查询侧地震/基础模型特征，并按 P21 语义把 `seismic_weights` 解释为标量集成成员。`refit` 阶段在保留 P21 后运行 P30 v2，生成地质统计审计及井震跨模态 `fusion_io_contract.json`；旧 P29 v1 仅作历史记录，不再作为晋级证据。
 
 ## 何时会 fail closed
 

@@ -1,0 +1,37 @@
+{
+  "candidate_metrics_recomputed": {
+    "anisotropic_ordinary_kriging": {
+      "bias": -0.0019140680783283621,
+      "mae": 0.02340336002764439,
+      "rmse": 0.030569516403486055,
+      "valid_voxels": 10240
+    },
+    "regression_kriging_cokriging_proxy": {
+      "bias": -0.0011154286956899426,
+      "mae": 0.022943986331324835,
+      "rmse": 0.030093884155904194,
+      "valid_voxels": 10240
+    }
+  },
+  "firewall": {
+    "frozen_holdout_opened": false,
+    "test_h5_opened": false
+  },
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "nonnegative_finite_variances": true,
+  "p29_replay_max_abs_difference_vs_p21": 8.326672684688674e-17,
+  "physical_bounds_verified": [
+    0.0,
+    1.0
+  ],
+  "prediction_artifact_sha256": "3365816659ba03e9ab901743604af8df1fdb6480d7fa483554680746a3fc0c9f",
+  "rows": 10240,
+  "status": "PASSED",
+  "summary_sha256": "abc2a7988e82e707e3b12d4a719b92fc361fa62e5b49ce701806b7953b4df4f9"
+}

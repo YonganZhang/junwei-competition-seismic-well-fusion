@@ -9,42 +9,42 @@ steps:
     ref: code:reconstruction_pipeline_adapter
     params: {track: reconstruction, stage: validate}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/summary.json]
   - id: prepare
     ref: code:reconstruction_pipeline_adapter
     needs: [validate]
     params: {track: reconstruction, stage: prepare}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/summary.json]
   - id: baseline
     ref: code:reconstruction_pipeline_adapter
     needs: [prepare]
     params: {track: reconstruction, stage: baseline}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/summary.json]
   - id: optimize
     ref: code:reconstruction_pipeline_adapter
     needs: [baseline]
     params: {track: reconstruction, stage: optimize}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair_v2/summary.json]
   - id: promote
     ref: code:reconstruction_pipeline_adapter
     needs: [optimize]
     params: {track: reconstruction, stage: promote}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair_v2/summary.json]
   - id: refit
     ref: code:reconstruction_pipeline_adapter
     needs: [promote]
     params: {track: reconstruction, stage: refit}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/summary.json]
   - id: verify
     ref: code:reconstruction_pipeline_adapter
     needs: [refit]
     params: {track: reconstruction, stage: verify}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/verification.json]
 verified_steps_hash: 8de94e0cdbf73ea707fa813c300ed9a1e1b290eba78a9f8ffef00ebebb13528b
 verified_at_commit: fef7655005696c72e5d3e81b825a70908a8cbb43

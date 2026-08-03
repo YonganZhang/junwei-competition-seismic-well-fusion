@@ -39,8 +39,8 @@ import p21_fixed_foundation_ensemble as p21  # noqa: E402
 import p29_agent_action_effect_repair as p29  # noqa: E402
 
 
-SCHEMA_VERSION = "reconstruction-p30-bounded-geostatistics-feasibility/v1"
-DEFAULT_OUTPUT_DIR = TRACK / "_outputs" / "p30_bounded_geostatistics_feasibility"
+SCHEMA_VERSION = "reconstruction-p30-bounded-geostatistics-feasibility/v2"
+DEFAULT_OUTPUT_DIR = TRACK / "_outputs" / "p30_bounded_geostatistics_feasibility_v2"
 NEIGHBOURS = 64
 RIDGE_ALPHA = 1.0
 POROSITY_BOUNDS = (0.0, 1.0)
@@ -512,7 +512,7 @@ def _write_finding(output_dir: Path, result: Mapping[str, Any]) -> None:
             "PYTHONPYCACHEPREFIX=_pipelines/02_task_datasets/reconstruction/_tmp/p30_pycache /usr/bin/python3 -m py_compile _pipelines/02_task_datasets/reconstruction/p29_agent_action_effect_repair.py _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py _pipelines/02_task_datasets/reconstruction/_tests/test_p29_agent_action_effect_repair.py _pipelines/02_task_datasets/reconstruction/_tests/test_p30_bounded_geostatistics_feasibility.py",
             "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_p29_agent_action_effect_repair.py' -v",
             "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_p30_bounded_geostatistics_feasibility.py' -v",
-            "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --data-dir ../track-reconstruction/_data/processed/reconstruction --stage3-root ../p5-stage3-reconstruction/_tmp/p5_stage3_reconstruction --build-summary ../track-reconstruction/_pipelines/02_task_datasets/reconstruction/build_summary.json",
+            "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --data-dir .claude/worktrees/track-reconstruction/_data/processed/reconstruction --stage3-root .claude/worktrees/p5-stage3-reconstruction/_tmp/p5_stage3_reconstruction --feature-cache .claude/worktrees/p10-results-reconstruction/_tmp/p17_foundation_geostatistics/gfm_point_features.npz --build-summary .claude/worktrees/track-reconstruction/_pipelines/02_task_datasets/reconstruction/build_summary.json --p29-summary _pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair_v2/summary.json --output-dir _pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2",
             "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --verify-only",
             "git diff --check",
             "```",
@@ -526,6 +526,7 @@ def run(
     data_dir: Path,
     stage3_root: Path,
     build_summary_path: Path,
+    feature_cache_path: Path,
     p21_predictions_path: Path,
     p21_summary_path: Path,
     p29_summary_path: Path,
@@ -537,6 +538,7 @@ def run(
             data_dir,
             stage3_root,
             build_summary_path,
+            feature_cache_path,
             p21_predictions_path,
             p21_summary_path,
             p29_summary_path,
@@ -555,6 +557,8 @@ def run(
     bounds = _physical_bounds(build_summary)
     p21_summary = json.loads(p21_summary_path.read_text(encoding="utf-8"))
     p29_summary = json.loads(p29_summary_path.read_text(encoding="utf-8"))
+    if p29_summary.get("schema_version") != "reconstruction-p29-agent-action-effect-repair/v2":
+        raise RuntimeError("P30 v2 requires a fresh P29 v2 summary")
     registry_text = data_registry_path.read_text(encoding="utf-8")
     legal = "Equinor Open Data Licence" in registry_text
     if not legal:
@@ -568,7 +572,7 @@ def run(
 
     requested = p17._unique_indices(folds)  # noqa: SLF001
     cache_indices, foundation, feature_audit = p18._load_feature_cache(  # noqa: SLF001
-        p18.DEFAULT_FEATURE_CACHE,
+        feature_cache_path,
         train_h5=inputs.train_h5,
         expected_indices=requested,
     )
@@ -750,11 +754,11 @@ def run(
             "p29": {
                 "policy_verdict": p29_summary["policy"]["promotion"]["verdict"],
                 "default_model_changed": False,
-                "legacy_summary_preserved": True,
-                "legacy_output_usable_for_new_promotion": False,
-                "legacy_summary_sha256": _sha256(p29_summary_path),
-                "legacy_a0_rmse": p29_summary["metrics"]["A0"]["pooled"]["rmse"],
-                "interface_bug": "seismic_weights treated as per-channel values and query secondary variables silently zeroed in replay",
+                "schema_version": p29_summary["schema_version"],
+                "authoritative_output_usable_for_new_promotion": True,
+                "summary_sha256": _sha256(p29_summary_path),
+                "current_a0_rmse": p29_summary["metrics"]["A0"]["pooled"]["rmse"],
+                "repaired_interface_bug": "query-side seismic/foundation variables are explicit and seismic_weights are scalar ensemble members",
                 "corrected_a0_rmse": _metrics(oof.target, corrected_p29_a0)["rmse"],
                 "corrected_a0_max_abs_difference_vs_p21": replay_maximum_difference,
                 "repair_locks": [
@@ -766,7 +770,7 @@ def run(
         },
         "conclusions": {
             "old_p29_outputs": "HISTORICAL_ONLY_NOT_ELIGIBLE_FOR_NEW_PROMOTION",
-            "p29_repair": "LOCKED_BY_A0_EQUALS_P21_AND_QUERY_SIDE_FAIL_CLOSED_TESTS",
+            "p29_repair": "V2_AUTHORITATIVE_AND_LOCKED_BY_A0_EQUALS_P21_AND_QUERY_SIDE_FAIL_CLOSED_TESTS",
             "anisotropic_ordinary_kriging": "NO_PROMOTION",
             "regression_kriging_cokriging_proxy": "NO_PROMOTION",
             "classical_well_log_cokriging": "BLOCKED_PENDING_ALIGNED_SECONDARY_INPUT",
@@ -784,7 +788,7 @@ def run(
             "py_compile": "PYTHONPYCACHEPREFIX=_pipelines/02_task_datasets/reconstruction/_tmp/p30_pycache /usr/bin/python3 -m py_compile _pipelines/02_task_datasets/reconstruction/p29_agent_action_effect_repair.py _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py _pipelines/02_task_datasets/reconstruction/_tests/test_p29_agent_action_effect_repair.py _pipelines/02_task_datasets/reconstruction/_tests/test_p30_bounded_geostatistics_feasibility.py",
             "p29_tests": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_p29_agent_action_effect_repair.py' -v",
             "p30_tests": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_p30_bounded_geostatistics_feasibility.py' -v",
-            "run": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --data-dir ../track-reconstruction/_data/processed/reconstruction --stage3-root ../p5-stage3-reconstruction/_tmp/p5_stage3_reconstruction --build-summary ../track-reconstruction/_pipelines/02_task_datasets/reconstruction/build_summary.json",
+            "run": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --data-dir .claude/worktrees/track-reconstruction/_data/processed/reconstruction --stage3-root .claude/worktrees/p5-stage3-reconstruction/_tmp/p5_stage3_reconstruction --feature-cache .claude/worktrees/p10-results-reconstruction/_tmp/p17_foundation_geostatistics/gfm_point_features.npz --build-summary .claude/worktrees/track-reconstruction/_pipelines/02_task_datasets/reconstruction/build_summary.json --p29-summary _pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair_v2/summary.json",
             "verify_only": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --verify-only",
         },
         "feasibility": {
@@ -947,9 +951,10 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--data-dir", type=Path)
     parser.add_argument("--stage3-root", type=Path)
     parser.add_argument("--build-summary", type=Path)
+    parser.add_argument("--feature-cache", type=Path)
     parser.add_argument("--p21-predictions", type=Path, default=TRACK / "_outputs" / "p21_fixed_foundation_ensemble" / "predictions.npz")
     parser.add_argument("--p21-summary", type=Path, default=TRACK / "_outputs" / "p21_fixed_foundation_ensemble" / "summary.json")
-    parser.add_argument("--p29-summary", type=Path, default=TRACK / "_outputs" / "p29_agent_action_effect_repair" / "summary.json")
+    parser.add_argument("--p29-summary", type=Path, default=TRACK / "_outputs" / "p29_agent_action_effect_repair_v2" / "summary.json")
     parser.add_argument("--data-registry", type=Path, default=PROJECT_ROOT / "_meta" / "_data_registry.yml")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--verify-only", action="store_true")
@@ -970,13 +975,14 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
         )
         return 0
-    required = ("data_dir", "stage3_root", "build_summary")
+    required = ("data_dir", "stage3_root", "build_summary", "feature_cache")
     if any(getattr(args, name) is None for name in required):
-        raise SystemExit("--data-dir, --stage3-root and --build-summary are required")
+        raise SystemExit("--data-dir, --stage3-root, --build-summary and --feature-cache are required")
     result = run(
         data_dir=args.data_dir.expanduser().resolve(),
         stage3_root=args.stage3_root.expanduser().resolve(),
         build_summary_path=args.build_summary.expanduser().resolve(),
+        feature_cache_path=args.feature_cache.expanduser().resolve(),
         p21_predictions_path=args.p21_predictions.expanduser().resolve(),
         p21_summary_path=args.p21_summary.expanduser().resolve(),
         p29_summary_path=args.p29_summary.expanduser().resolve(),

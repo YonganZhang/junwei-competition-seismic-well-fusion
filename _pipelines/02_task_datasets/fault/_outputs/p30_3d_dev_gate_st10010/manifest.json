@@ -1,0 +1,101 @@
+{
+  "schema_version": "fault_p30_3d_dev_gate_st10010/v1",
+  "track_id": "fault",
+  "source_commit": "44b3d4efde6e22c96181f271732c46dbfcb97ce7",
+  "generated_at": "2026-08-03T13:27:53.345078+00:00",
+  "runner": {
+    "path": "_pipelines/02_task_datasets/fault/fault_p30_3d_dev_gate_st10010.py",
+    "sha256": "b85f8c0c660ad04e511f757bc83c4a9683266da0dedf4c3236eee54675538080"
+  },
+  "inputs": [
+    {
+      "path": "_sandbox/volve_data/Volve_Seismic_ST10010.zip",
+      "sha256": null,
+      "role": "canonical ST10010 seismic archive",
+      "status": "present_unhashed_large_archive"
+    },
+    {
+      "path": "_sandbox/volve_data/_extracted_seismic/ST10010/Stacks/ST10010ZC11_PZ_PSDM_KIRCH_FULL_T.MIG_FIN.POST_STACK.3D.JS-017536.segy",
+      "sha256": "f902e2bdaa277caf93a32e5f35eae653eb8b923138db0efc1e91918ef6757b2e",
+      "role": "extracted ST10010 stack member"
+    },
+    {
+      "path": "_pipelines/01_common_preprocess/outputs/fault_points.npz",
+      "sha256": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+      "role": "sparse fault sticks"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/seismic_index.npz",
+      "sha256": "861408dfc3e094c225175a7427719a65cf7fb94f1ae08c2a89f5968719ead249",
+      "role": "seismic index"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/seismic_index_meta.json",
+      "sha256": "2f6d235c18dbd42036b09bf4aaa18e551228f5ecfd4d41cee3d1120a54ffea14",
+      "role": "seismic index metadata"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/dev_subvolume.npz",
+      "sha256": "6249bda46a9b9e7814637a35bcd18ed318e78d8070bddc41ab5a53d364047b2b",
+      "role": "3D development subvolume"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/split_manifest.json",
+      "sha256": "d6aa8e1627d375c18418b13f12b2d8708a3717cfeebca5a6f30878908da3222f",
+      "role": "development split manifest"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/gate_result.json",
+      "sha256": "f3f501045acd6e5838a07002d5c435bf64eb309c1c58b6006a14140a2dbe6202",
+      "role": "gate result"
+    },
+    {
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/evidence.md",
+      "sha256": "29bc41152869de6dc351f1132e687800dd6ff110871708e87683ac81eca6232c",
+      "role": "human evidence"
+    }
+  ],
+  "subvolume": {
+    "coordinate_order": [
+      "tline",
+      "iline",
+      "xline"
+    ],
+    "inline": [
+      10095,
+      10235
+    ],
+    "crossline": [
+      2175,
+      2350
+    ],
+    "time_idx": [
+      605,
+      785
+    ],
+    "time_ms": [
+      2432.0,
+      3152.0
+    ],
+    "shape": [
+      181,
+      141,
+      176
+    ]
+  },
+  "mask_logic": {
+    "positive_mask": "exact rasterized fault-stick voxels from sparse points",
+    "unknown_mask": "binary dilation radius {\"tline\": 4, \"iline\": 2, \"xline\": 2} plus 2-voxel boundary halo; excludes positives",
+    "verified_background_mask": "complement of positive and unknown within subvolume"
+  },
+  "split_manifest": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/split_manifest.json",
+  "manifest_path": "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/manifest.json",
+  "data_gate_blocked": false,
+  "status": "READY",
+  "reason_code": "LEGAL_CONTIGUOUS_3D_DEVELOPMENT_VOLUME_READY",
+  "frozen_holdout_accessed": false,
+  "source_stack_member": "ST10010/Stacks/ST10010ZC11_PZ_PSDM_KIRCH_FULL_T.MIG_FIN.POST_STACK.3D.JS-017536.segy",
+  "source_stack_sha256": "f902e2bdaa277caf93a32e5f35eae653eb8b923138db0efc1e91918ef6757b2e"
+}

@@ -1,0 +1,2639 @@
+{
+  "asset_audit": {
+    "data_registry_sha256": "40c7fe9a1adb92ea2ed0c9e3ad6f445b564c541f15300629b9b92a4bb2f74ba4",
+    "license": "Equinor Open Data Licence",
+    "registered_for_reuse": true,
+    "source_asset": "volve-north-sea",
+    "target": "Eclipse PORO fraction on active cells",
+    "target_observed_range_development_oof": [
+      0.12999999523162842,
+      0.28981107473373413
+    ],
+    "train_h5_only": true,
+    "train_h5_sha256": "2e395d810feb067b24c2295d87e6b33e308cb21aba224c6d2ddd1e6fcd88de73"
+  },
+  "candidates": {
+    "anisotropic_ordinary_kriging": {
+      "maximum_fold_relative_regression": 0.4196794178210162,
+      "metrics": {
+        "bias": -0.0019140680783283621,
+        "mae": 0.02340336002764439,
+        "rmse": 0.030569516403486055,
+        "valid_voxels": 10240
+      },
+      "outcomes_vs_p21": {
+        "loss": 4,
+        "tie": 0,
+        "win": 1
+      },
+      "p21_metrics": {
+        "bias": -0.00037572982480664973,
+        "mae": 0.0207985238320136,
+        "rmse": 0.027734374378067677,
+        "valid_voxels": 10240
+      },
+      "per_fold": [
+        {
+          "baseline": {
+            "bias": -0.007129292054579207,
+            "mae": 0.020675758142029252,
+            "rmse": 0.026804535898329696,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": -0.005215157839978675,
+            "mae": 0.021159861621722044,
+            "rmse": 0.027374617415870873,
+            "valid_voxels": 2048
+          },
+          "fold_id": 0,
+          "outcome": "loss",
+          "relative_rmse_change": 0.021268098791320644,
+          "rmse_delta_candidate_minus_p21": 0.0005700815175411766
+        },
+        {
+          "baseline": {
+            "bias": 0.003276960461288578,
+            "mae": 0.022797521933632846,
+            "rmse": 0.02857967878401642,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": 0.007961965009532848,
+            "mae": 0.026826337379554414,
+            "rmse": 0.03327185996926007,
+            "valid_voxels": 2048
+          },
+          "fold_id": 1,
+          "outcome": "loss",
+          "relative_rmse_change": 0.16417893359486663,
+          "rmse_delta_candidate_minus_p21": 0.00469218118524365
+        },
+        {
+          "baseline": {
+            "bias": -0.010225189072466155,
+            "mae": 0.013383280341842834,
+            "rmse": 0.01664591157237539,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": -0.013946110938617697,
+            "mae": 0.018853331237489303,
+            "rmse": 0.02363185805017001,
+            "valid_voxels": 2048
+          },
+          "fold_id": 2,
+          "outcome": "loss",
+          "relative_rmse_change": 0.4196794178210162,
+          "rmse_delta_candidate_minus_p21": 0.00698594647779462
+        },
+        {
+          "baseline": {
+            "bias": -0.0015840828483876445,
+            "mae": 0.021880997660983795,
+            "rmse": 0.02771269550630355,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": -0.008791399258263341,
+            "mae": 0.02440809588752866,
+            "rmse": 0.031618691656643154,
+            "valid_voxels": 2048
+          },
+          "fold_id": 3,
+          "outcome": "loss",
+          "relative_rmse_change": 0.14094609271953148,
+          "rmse_delta_candidate_minus_p21": 0.0039059961503396037
+        },
+        {
+          "baseline": {
+            "bias": 0.01378295439011118,
+            "mae": 0.025255061081579266,
+            "rmse": 0.03557550508835037,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": 0.010420362635685054,
+            "mae": 0.025769174011927527,
+            "rmse": 0.03546665961511462,
+            "valid_voxels": 2048
+          },
+          "fold_id": 4,
+          "outcome": "win",
+          "relative_rmse_change": -0.003059562273689129,
+          "rmse_delta_candidate_minus_p21": -0.00010884547323575244
+        }
+      ],
+      "physical_constraint": {
+        "bounds": [
+          0.0,
+          1.0
+        ],
+        "finite_after_constraint": true,
+        "maximum_absolute_change": 0.0,
+        "property": "PORO fraction",
+        "violations_before_constraint": 0
+      },
+      "relative_rmse_change_vs_p21": 0.10222484151870417,
+      "rmse_delta_candidate_minus_p21": 0.002835142025418378,
+      "whole_fold_bootstrap": {
+        "draws": 20000,
+        "independent_units": 5,
+        "rmse_delta_candidate_minus_baseline": {
+          "ci95": [
+            0.0008905622612386428,
+            0.005116644464633481
+          ],
+          "mean": 0.002894276556698946,
+          "probability_candidate_better": 0.002
+        },
+        "seed": 2693,
+        "unit": "whole spatial fold"
+      }
+    },
+    "regression_kriging_cokriging_proxy": {
+      "maximum_fold_relative_regression": 0.2998396937694728,
+      "metrics": {
+        "bias": -0.0011154286956899426,
+        "mae": 0.022943986331324835,
+        "rmse": 0.030093884155904194,
+        "valid_voxels": 10240
+      },
+      "outcomes_vs_p21": {
+        "loss": 5,
+        "tie": 0,
+        "win": 0
+      },
+      "p21_metrics": {
+        "bias": -0.00037572982480664973,
+        "mae": 0.0207985238320136,
+        "rmse": 0.027734374378067677,
+        "valid_voxels": 10240
+      },
+      "per_fold": [
+        {
+          "baseline": {
+            "bias": -0.007129292054579207,
+            "mae": 0.020675758142029252,
+            "rmse": 0.026804535898329696,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": -0.0035644776596295167,
+            "mae": 0.020680179334193603,
+            "rmse": 0.027102193024663386,
+            "valid_voxels": 2048
+          },
+          "fold_id": 0,
+          "outcome": "loss",
+          "relative_rmse_change": 0.01110472971674313,
+          "rmse_delta_candidate_minus_p21": 0.0002976571263336898
+        },
+        {
+          "baseline": {
+            "bias": 0.003276960461288578,
+            "mae": 0.022797521933632846,
+            "rmse": 0.02857967878401642,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": 0.006701923567465606,
+            "mae": 0.02638694075495903,
+            "rmse": 0.03263197474151443,
+            "valid_voxels": 2048
+          },
+          "fold_id": 1,
+          "outcome": "loss",
+          "relative_rmse_change": 0.14178941576363382,
+          "rmse_delta_candidate_minus_p21": 0.004052295957498009
+        },
+        {
+          "baseline": {
+            "bias": -0.010225189072466155,
+            "mae": 0.013383280341842834,
+            "rmse": 0.01664591157237539,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": -0.012743553194155089,
+            "mae": 0.017430524983257478,
+            "rmse": 0.02163701660075015,
+            "valid_voxels": 2048
+          },
+          "fold_id": 2,
+          "outcome": "loss",
+          "relative_rmse_change": 0.2998396937694728,
+          "rmse_delta_candidate_minus_p21": 0.00499110502837476
+        },
+        {
+          "baseline": {
+            "bias": -0.0015840828483876445,
+            "mae": 0.021880997660983795,
+            "rmse": 0.02771269550630355,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": -0.007924571586928376,
+            "mae": 0.024141301352205553,
+            "rmse": 0.03093640468063483,
+            "valid_voxels": 2048
+          },
+          "fold_id": 3,
+          "outcome": "loss",
+          "relative_rmse_change": 0.11632607782949202,
+          "rmse_delta_candidate_minus_p21": 0.0032237091743312803
+        },
+        {
+          "baseline": {
+            "bias": 0.01378295439011118,
+            "mae": 0.025255061081579266,
+            "rmse": 0.03557550508835037,
+            "valid_voxels": 2048
+          },
+          "candidate": {
+            "bias": 0.011953535394797661,
+            "mae": 0.0260809852320085,
+            "rmse": 0.03610558202996894,
+            "valid_voxels": 2048
+          },
+          "fold_id": 4,
+          "outcome": "loss",
+          "relative_rmse_change": 0.014900053851720359,
+          "rmse_delta_candidate_minus_p21": 0.0005300769416185722
+        }
+      ],
+      "physical_constraint": {
+        "bounds": [
+          0.0,
+          1.0
+        ],
+        "finite_after_constraint": true,
+        "maximum_absolute_change": 0.0,
+        "property": "PORO fraction",
+        "violations_before_constraint": 0
+      },
+      "relative_rmse_change_vs_p21": 0.0850752840382228,
+      "rmse_delta_candidate_minus_p21": 0.0023595097778365166,
+      "whole_fold_bootstrap": {
+        "draws": 20000,
+        "independent_units": 5,
+        "rmse_delta_candidate_minus_baseline": {
+          "ci95": [
+            0.0009508061645329448,
+            0.004052104544983413
+          ],
+          "mean": 0.0023980101771254054,
+          "probability_candidate_better": 0.0
+        },
+        "seed": 2693,
+        "unit": "whole spatial fold"
+      }
+    }
+  },
+  "conclusions": {
+    "anisotropic_ordinary_kriging": "NO_PROMOTION",
+    "classical_well_log_cokriging": "BLOCKED_PENDING_ALIGNED_SECONDARY_INPUT",
+    "default": "P21_REMAINS_DEFAULT",
+    "old_p29_outputs": "HISTORICAL_ONLY_NOT_ELIGIBLE_FOR_NEW_PROMOTION",
+    "p29_repair": "V2_AUTHORITATIVE_AND_LOCKED_BY_A0_EQUALS_P21_AND_QUERY_SIDE_FAIL_CLOSED_TESTS",
+    "regression_kriging_cokriging_proxy": "NO_PROMOTION"
+  },
+  "coordinate_audit": {
+    "depth_semantics": "Eclipse cell-centre depth, TVD-like; not MD and not seismic TWT",
+    "p21_vertical_weight_semantics": "dimensionless multiplier after per-fold coordinate standardization; not a fitted physical variogram range",
+    "physical_bounds": [
+      [
+        432851.25,
+        437175.25
+      ],
+      [
+        6477478.5,
+        6480275.0
+      ],
+      [
+        2800.718505859375,
+        3543.77587890625
+      ]
+    ],
+    "seismic_sampling": {
+      "attribute_definitions": {
+        "amplitude": "nearest 4-ms sample",
+        "local_rms": "RMS over +/-2 samples",
+        "vertical_gradient": "sample[t+1] - sample[t-1]"
+      },
+      "n_unique_traces_read": 16646,
+      "segy": "ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME.MIG_FIN.POST_STACK.3D.JS-017534.segy",
+      "time_index_range": [
+        471,
+        601
+      ],
+      "twt_ms_range": [
+        1882.8172607421875,
+        2403.076416015625
+      ]
+    },
+    "stored_channels": [
+      "x_normalized",
+      "y_normalized",
+      "depth_normalized"
+    ],
+    "weak_tie_warning": "Layer-1 tie depth is MD while Eclipse centre depth is TVD-like; alignment is weak.",
+    "working_units": [
+      "easting_m",
+      "northing_m",
+      "depth_m"
+    ]
+  },
+  "decision": {
+    "best_candidate": "regression_kriging_cokriging_proxy",
+    "cross_modal_foundation_claimed": false,
+    "fresh_blind_claimed": false,
+    "p21_remains_default": true,
+    "promote_over_p21": false,
+    "state": "FEASIBLE_NO_PROMOTION"
+  },
+  "default_evidence_audit": {
+    "p21": {
+      "default_enabled": true,
+      "rmse": 0.027734374378067677,
+      "state": "ACCEPTED_SIMPLICITY_WIN",
+      "summary_sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8"
+    },
+    "p29": {
+      "authoritative_output_usable_for_new_promotion": true,
+      "corrected_a0_max_abs_difference_vs_p21": 8.326672684688674e-17,
+      "corrected_a0_rmse": 0.027734374378067677,
+      "current_a0_rmse": 0.027734374378067677,
+      "default_model_changed": false,
+      "policy_verdict": "RETAIN_FROZEN_BASELINE",
+      "repair_locks": [
+        "corrected real A0 equals P21 within 1e-12",
+        "query-side seismic/GFM features are required as train/query pairs",
+        "query baseline is required when blend_weight < 1"
+      ],
+      "repaired_interface_bug": "query-side seismic/foundation variables are explicit and seismic_weights are scalar ensemble members",
+      "schema_version": "reconstruction-p29-agent-action-effect-repair/v2",
+      "summary_sha256": "24753da3e87c242b9ab2835dc8344a0907bb2e89ddee3139b4ab4b63eafdf1db"
+    }
+  },
+  "direction_cone_audit": {
+    "fit_count": 30,
+    "fixed_relaxation_schedule": [
+      0.6,
+      0.4,
+      0.2,
+      0.0
+    ],
+    "relaxations": [
+      {
+        "axis": "depth_m",
+        "fold_id": 0,
+        "low_direction_resolution": true,
+        "pair_count": 226,
+        "requested": 0.8,
+        "used": 0.6,
+        "variogram": "target"
+      },
+      {
+        "axis": "depth_m",
+        "fold_id": 0,
+        "low_direction_resolution": true,
+        "pair_count": 226,
+        "requested": 0.8,
+        "used": 0.6,
+        "variogram": "regression_residual"
+      }
+    ],
+    "relaxed_fit_count": 2,
+    "requested_cosine_minimum": 0.8,
+    "validation_target_used_for_threshold": false
+  },
+  "feasibility": {
+    "anisotropic_variogram": "IMPLEMENTED_DEVELOPMENT_PILOT",
+    "classical_cokriging": "BLOCKED_NO_ALIGNED_INDEPENDENT_WELL_LOG_SECONDARY_VARIABLE_IN_P21_SPLITS",
+    "physical_constraints": "IMPLEMENTED_POROSITY_BOUNDS_AND_EXACT_CONDITIONING_KERNEL",
+    "regression_kriging_cokriging_proxy": "IMPLEMENTED_DEVELOPMENT_PILOT"
+  },
+  "feature_cache_audit": {
+    "cache_reused": true,
+    "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
+    "encoder_weight_mode": "pretrained",
+    "feature_cache_path": ".claude/worktrees/p10-results-reconstruction/_tmp/p17_foundation_geostatistics/gfm_point_features.npz",
+    "feature_cache_sha256": "0e6233be85c8bc9f013d29b9ef07038132233befcaff23e84a5418935cfc82d8",
+    "feature_shape": [
+      3,
+      12583,
+      96
+    ],
+    "manifest_path": ".claude/worktrees/p10-results-reconstruction/_tmp/p17_foundation_geostatistics/gfm_point_features.json",
+    "manifest_sha256": "d4faf445438a93a5a6d460c0c0f5a453c73315901dbb4cdeb3efc1adcb96b3e6",
+    "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+    "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
+    "target_used_for_feature_extraction": false,
+    "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+  },
+  "fold_audits": [
+    {
+      "coordinate_bounds_observed_m": [
+        [
+          432895.37500121817,
+          435700.87493133545
+        ],
+        [
+          6477505.50000094,
+          6480256.500033021
+        ],
+        [
+          2821.841797219099,
+          3516.33129722836
+        ]
+      ],
+      "coordinate_units": [
+        "easting_m",
+        "northing_m",
+        "depth_m"
+      ],
+      "fold_id": 0,
+      "ordinary_solve": {
+        "exact_conditioned_queries": 0,
+        "fallback_solves": 0,
+        "neighbours": 64,
+        "solve_batch_size": 128
+      },
+      "ordinary_variogram": {
+        "directions": [
+          {
+            "axis": "x_easting_m",
+            "bin_centres_m": [
+              313.2873809385211,
+              581.9930969621635,
+              779.3074833959928,
+              958.4132954779334,
+              1118.5828209969013,
+              1280.0102781309795,
+              1435.9122601147544,
+              1594.970948443858,
+              1756.8025168637068,
+              1934.787031711555,
+              2139.831347940701,
+              2458.6412408345163
+            ],
+            "bin_counts": [
+              4400,
+              4400,
+              4400,
+              4400,
+              4400,
+              4400,
+              4400,
+              4400,
+              4400,
+              4399,
+              4399,
+              4399
+            ],
+            "bin_semivariance": [
+              0.00022238907138716346,
+              0.0002577190121866302,
+              0.0002793048712917967,
+              0.00030312164597412483,
+              0.0003225227955145904,
+              0.0003283705059492492,
+              0.0003445658174894284,
+              0.00041011099019466757,
+              0.0004403872950336507,
+              0.00045598593773554796,
+              0.0003999042006879172,
+              0.0003405772509457172
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 2940.960339312057,
+            "fit_cost": 54.33426387901327,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 0.00011812009007283122,
+            "pair_count": 52797,
+            "partial_sill": 0.00032087496863389463
+          },
+          {
+            "axis": "y_northing_m",
+            "bin_centres_m": [
+              324.78993933859226,
+              573.3279314292336,
+              773.8803717804117,
+              946.9908807792858,
+              1107.1068179135173,
+              1260.1876539725388,
+              1413.3179428519688,
+              1573.9975428939556,
+              1743.5814559848125,
+              1918.53452788641,
+              2138.1664003342107,
+              2441.279749589791
+            ],
+            "bin_counts": [
+              4180,
+              4180,
+              4180,
+              4180,
+              4179,
+              4179,
+              4179,
+              4179,
+              4179,
+              4179,
+              4179,
+              4179
+            ],
+            "bin_semivariance": [
+              0.00024199999737739564,
+              0.00028157208350659824,
+              0.0003349429660546299,
+              0.00033632029939245633,
+              0.00043578837076729826,
+              0.00042049997580051457,
+              0.00042049997580051457,
+              0.0003762003492814303,
+              0.0003981584895119683,
+              0.00037916871259657814,
+              0.0003196231790597581,
+              0.00025494329111908076
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 922.3310604278183,
+            "fit_cost": 102.13229305560928,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 2.7764933484876058e-18,
+            "pair_count": 50152,
+            "partial_sill": 0.00037179618302068035
+          },
+          {
+            "axis": "depth_m",
+            "bin_centres_m": [
+              4.635871683150207,
+              12.759701065107935,
+              49.441641122198135,
+              156.3590517769298,
+              216.65592876771095,
+              294.0153032293322,
+              362.7479942413739,
+              409.4864782769127,
+              476.87466622644956,
+              551.440399058961,
+              640.3329687998416,
+              730.7034683100675
+            ],
+            "bin_counts": [
+              19,
+              19,
+              19,
+              19,
+              19,
+              19,
+              19,
+              19,
+              19,
+              19,
+              18,
+              18
+            ],
+            "bin_semivariance": [
+              0.00032002077477999435,
+              0.0004355798740047767,
+              0.0001493272241970267,
+              0.0003559754126887249,
+              0.0006147685871855657,
+              0.0005447313815541976,
+              0.00042049997580051457,
+              0.00042049997580051457,
+              0.0005444997482300096,
+              0.00042049997580051457,
+              0.00023797051435542338,
+              0.00014462448582763798
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.6,
+            "direction_resolution": "relaxed_low_resolution",
+            "effective_range_m": 257.0575846779958,
+            "fit_cost": 3.624253600858668,
+            "fit_success": true,
+            "low_direction_resolution": true,
+            "nugget": 0.0003119293105001444,
+            "pair_count": 226,
+            "partial_sill": 9.526877526903419e-05
+          }
+        ],
+        "effective_ranges_m": [
+          2940.960339312057,
+          922.3310604278183,
+          257.0575846779958
+        ],
+        "model": "directional_exponential",
+        "nugget": 0.00011812009007283122,
+        "partial_sill": 0.00032087496863389463,
+        "sill_reference": 0.0007820139628391662,
+        "validation_target_used": false
+      },
+      "regression_kriging": {
+        "method": "regression_kriging_cokriging_proxy",
+        "residual_variogram": {
+          "directions": [
+            {
+              "axis": "x_easting_m",
+              "bin_centres_m": [
+                313.2873809385211,
+                581.9930969621635,
+                779.3074833959928,
+                958.4132954779334,
+                1118.5828209969013,
+                1280.0102781309795,
+                1435.9122601147544,
+                1594.970948443858,
+                1756.8025168637068,
+                1934.787031711555,
+                2139.831347940701,
+                2458.6412408345163
+              ],
+              "bin_counts": [
+                4400,
+                4400,
+                4400,
+                4400,
+                4400,
+                4400,
+                4400,
+                4400,
+                4400,
+                4399,
+                4399,
+                4399
+              ],
+              "bin_semivariance": [
+                0.00023820919741297656,
+                0.000275270249347742,
+                0.0002760188882421487,
+                0.0002871302748613147,
+                0.0003147667484554391,
+                0.00031243126888832903,
+                0.0003380937440106226,
+                0.0003856356168741511,
+                0.0004163454912625883,
+                0.0004400314994093674,
+                0.0003948341969415136,
+                0.0003522083673124022
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 4371.64398392685,
+              "fit_cost": 41.94122496687884,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 0.00016929014610221843,
+              "pair_count": 52797,
+              "partial_sill": 0.0002918364187083039
+            },
+            {
+              "axis": "y_northing_m",
+              "bin_centres_m": [
+                324.78993933859226,
+                573.3279314292336,
+                773.8803717804117,
+                946.9908807792858,
+                1107.1068179135173,
+                1260.1876539725388,
+                1413.3179428519688,
+                1573.9975428939556,
+                1743.5814559848125,
+                1918.53452788641,
+                2138.1664003342107,
+                2441.279749589791
+              ],
+              "bin_counts": [
+                4180,
+                4180,
+                4180,
+                4180,
+                4179,
+                4179,
+                4179,
+                4179,
+                4179,
+                4179,
+                4179,
+                4179
+              ],
+              "bin_semivariance": [
+                0.00026558857797684946,
+                0.00028182891616114795,
+                0.0003102713532027709,
+                0.00030569740573383787,
+                0.000381396375423665,
+                0.0003987912828370723,
+                0.00036572713949214986,
+                0.0003353047665306404,
+                0.00034667805695796157,
+                0.0003261089945996873,
+                0.0002804224353440262,
+                0.0002370306237991759
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 716.8279685464237,
+              "fit_cost": 81.76175630316149,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 5.5195407073237175e-05,
+              "pair_count": 50152,
+              "partial_sill": 0.00027410305616050614
+            },
+            {
+              "axis": "depth_m",
+              "bin_centres_m": [
+                4.635871683150207,
+                12.759701065107935,
+                49.441641122198135,
+                156.3590517769298,
+                216.65592876771095,
+                294.0153032293322,
+                362.7479942413739,
+                409.4864782769127,
+                476.87466622644956,
+                551.440399058961,
+                640.3329687998416,
+                730.7034683100675
+              ],
+              "bin_counts": [
+                19,
+                19,
+                19,
+                19,
+                19,
+                19,
+                19,
+                19,
+                19,
+                19,
+                18,
+                18
+              ],
+              "bin_semivariance": [
+                0.00032002077477999435,
+                0.0004369701581908271,
+                0.00018321782158419535,
+                0.0006084211719650531,
+                0.0004072410532960314,
+                0.0005171952442118607,
+                0.0004836713100855192,
+                0.00029536926062529616,
+                0.0003974449143262089,
+                0.00022035358304341217,
+                0.00012294431687647595,
+                4.8121449238169866e-05
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.6,
+              "direction_resolution": "relaxed_low_resolution",
+              "effective_range_m": 78.32828019718345,
+              "fit_cost": 5.293383733441139,
+              "fit_success": true,
+              "low_direction_resolution": true,
+              "nugget": 0.00033897072591103914,
+              "pair_count": 226,
+              "partial_sill": 1.0000025933373678e-12
+            }
+          ],
+          "effective_ranges_m": [
+            4371.64398392685,
+            716.8279685464237,
+            78.32828019718345
+          ],
+          "model": "directional_exponential",
+          "nugget": 0.00016929014610221843,
+          "partial_sill": 0.00027410305616050614,
+          "sill_reference": 0.0007433989467687583,
+          "validation_target_used": false
+        },
+        "ridge_alpha": 1.0,
+        "ridge_coefficients": [
+          -0.0006913891791998753,
+          -0.006294630873114392,
+          -0.0018909603458728307
+        ],
+        "ridge_intercept": 0.2185314304952044,
+        "secondary_variables": [
+          "seismic_amplitude",
+          "seismic_local_rms",
+          "seismic_vertical_gradient"
+        ],
+        "solve_audit": {
+          "exact_conditioned_queries": 0,
+          "fallback_solves": 0,
+          "neighbours": 64,
+          "solve_batch_size": 128
+        },
+        "train_secondary_target_correlations": [
+          0.004388111014373373,
+          -0.21100644919722447,
+          -0.027119237736124426
+        ],
+        "validation_target_used": false
+      },
+      "train_labels": 512,
+      "validation_rows": 2048
+    },
+    {
+      "coordinate_bounds_observed_m": [
+        [
+          432942.8749992326,
+          435713.06249046326
+        ],
+        [
+          6477516.000000147,
+          6480255.499926686
+        ],
+        [
+          2820.352782640029,
+          3516.33129722836
+        ]
+      ],
+      "coordinate_units": [
+        "easting_m",
+        "northing_m",
+        "depth_m"
+      ],
+      "fold_id": 1,
+      "ordinary_solve": {
+        "exact_conditioned_queries": 0,
+        "fallback_solves": 0,
+        "neighbours": 64,
+        "solve_batch_size": 128
+      },
+      "ordinary_variogram": {
+        "directions": [
+          {
+            "axis": "x_easting_m",
+            "bin_centres_m": [
+              325.7324312088275,
+              572.8109863904058,
+              757.836157304042,
+              926.7952775837116,
+              1085.6033841965968,
+              1239.2320947653188,
+              1389.3591023356114,
+              1545.6982389016475,
+              1702.5114619062683,
+              1877.2726638563313,
+              2073.8968077881696,
+              2376.5949230506985
+            ],
+            "bin_counts": [
+              4179,
+              4179,
+              4179,
+              4179,
+              4178,
+              4178,
+              4178,
+              4178,
+              4178,
+              4178,
+              4178,
+              4178
+            ],
+            "bin_semivariance": [
+              0.0002684940662018853,
+              0.0003198828131019127,
+              0.00036602025075227473,
+              0.00035470502703738305,
+              0.00037053146208898546,
+              0.00035185261398257284,
+              0.0004049602409144093,
+              0.0004298133796521997,
+              0.000463430722090985,
+              0.0005203812236810323,
+              0.0005345035404436538,
+              0.0004756796739233682
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 9506.379692202792,
+            "fit_cost": 21.25713211083889,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 0.0002143835199310926,
+            "pair_count": 50140,
+            "partial_sill": 0.0005784704321870068
+          },
+          {
+            "axis": "y_northing_m",
+            "bin_centres_m": [
+              330.6999067387554,
+              584.2901756027537,
+              780.7434412100107,
+              952.8717694289464,
+              1116.6374386271812,
+              1271.1681017199417,
+              1424.1791621433963,
+              1588.4414991890949,
+              1757.8167399527379,
+              1946.629405873324,
+              2164.714093212325,
+              2478.390159372866
+            ],
+            "bin_counts": [
+              4330,
+              4330,
+              4330,
+              4330,
+              4330,
+              4330,
+              4330,
+              4330,
+              4330,
+              4330,
+              4329,
+              4329
+            ],
+            "bin_semivariance": [
+              0.00031054390333890014,
+              0.00039267181893287706,
+              0.0004075004655892944,
+              0.00039467622052297147,
+              0.00041293780640261346,
+              0.0003941388691482417,
+              0.00038333117073247047,
+              0.0003761537591554509,
+              0.0003660557624241001,
+              0.00039935443925653846,
+              0.00032760526732300566,
+              0.00024124527667546136
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 465.1152519176462,
+            "fit_cost": 56.418537229979684,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 3.8665008229085766e-18,
+            "pair_count": 51958,
+            "partial_sill": 0.0003719673142250912
+          },
+          {
+            "axis": "depth_m",
+            "bin_centres_m": [
+              6.182966320050668,
+              9.608949721821775,
+              36.07819166204505,
+              43.94680221676575,
+              49.656781347661,
+              60.348038022674125,
+              72.50838961904587,
+              74.64296745850729,
+              78.7422586655876,
+              89.52681285009876,
+              100.27965951235137,
+              252.55341199147512
+            ],
+            "bin_counts": [
+              7,
+              7,
+              7,
+              7,
+              7,
+              7,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "bin_semivariance": [
+              1.9942296707431417e-05,
+              4.9999904632613834e-05,
+              1.4564709848174928e-06,
+              0.0002660256577914355,
+              0.0007999996662140241,
+              0.00033614580468510624,
+              0.0016966182248227685,
+              5.64986015648139e-05,
+              0.00022143360155280067,
+              0.0008180724984344079,
+              0.0,
+              0.00015899344422570794
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 79.11658751981625,
+            "fit_cost": 7.993475918306868,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 2.247105382706062e-26,
+            "pair_count": 78,
+            "partial_sill": 0.00047373239959912883
+          }
+        ],
+        "effective_ranges_m": [
+          9506.379692202792,
+          465.1152519176462,
+          79.11658751981625
+        ],
+        "model": "directional_exponential",
+        "nugget": 1e-10,
+        "partial_sill": 0.00047373239959912883,
+        "sill_reference": 0.0009859806811145862,
+        "validation_target_used": false
+      },
+      "regression_kriging": {
+        "method": "regression_kriging_cokriging_proxy",
+        "residual_variogram": {
+          "directions": [
+            {
+              "axis": "x_easting_m",
+              "bin_centres_m": [
+                325.7324312088275,
+                572.8109863904058,
+                757.836157304042,
+                926.7952775837116,
+                1085.6033841965968,
+                1239.2320947653188,
+                1389.3591023356114,
+                1545.6982389016475,
+                1702.5114619062683,
+                1877.2726638563313,
+                2073.8968077881696,
+                2376.5949230506985
+              ],
+              "bin_counts": [
+                4179,
+                4179,
+                4179,
+                4179,
+                4178,
+                4178,
+                4178,
+                4178,
+                4178,
+                4178,
+                4178,
+                4178
+              ],
+              "bin_semivariance": [
+                0.0002773270016020752,
+                0.0003059997313637054,
+                0.00033394096098025817,
+                0.000336150884255823,
+                0.0003499342827518461,
+                0.00033404542200152237,
+                0.0003692355387861021,
+                0.0004027974075309828,
+                0.00042351129118768936,
+                0.0004777250225430165,
+                0.0004798788956080893,
+                0.0004454155466953214
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 9506.379692202792,
+              "fit_cost": 14.127597996484447,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 0.00022018886048684902,
+              "pair_count": 50140,
+              "partial_sill": 0.0004788518610867887
+            },
+            {
+              "axis": "y_northing_m",
+              "bin_centres_m": [
+                330.6999067387554,
+                584.2901756027537,
+                780.7434412100107,
+                952.8717694289464,
+                1116.6374386271812,
+                1271.1681017199417,
+                1424.1791621433963,
+                1588.4414991890949,
+                1757.8167399527379,
+                1946.629405873324,
+                2164.714093212325,
+                2478.390159372866
+              ],
+              "bin_counts": [
+                4330,
+                4330,
+                4330,
+                4330,
+                4330,
+                4330,
+                4330,
+                4330,
+                4330,
+                4330,
+                4329,
+                4329
+              ],
+              "bin_semivariance": [
+                0.00029271921446199145,
+                0.0003779833910823183,
+                0.0003759033649479005,
+                0.0003480031707381679,
+                0.00035086076313425066,
+                0.0003358979960357241,
+                0.00034347926971833767,
+                0.0003535288609795849,
+                0.0003501393953966958,
+                0.00038203040627097725,
+                0.00031231822847814614,
+                0.00021247493964341452
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 413.2379741490255,
+              "fit_cost": 54.800070631082164,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 1.4825143794067124e-17,
+              "pair_count": 51958,
+              "partial_sill": 0.000339447160581226
+            },
+            {
+              "axis": "depth_m",
+              "bin_centres_m": [
+                6.182966320050668,
+                9.608949721821775,
+                36.07819166204505,
+                43.94680221676575,
+                49.656781347661,
+                60.348038022674125,
+                72.50838961904587,
+                74.64296745850729,
+                78.7422586655876,
+                89.52681285009876,
+                100.27965951235137,
+                252.55341199147512
+              ],
+              "bin_counts": [
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6
+              ],
+              "bin_semivariance": [
+                7.126102208321328e-06,
+                5.1809200544615736e-05,
+                1.7382843179928853e-05,
+                0.00021846493864829128,
+                0.001693628333061748,
+                0.00058536444203202,
+                0.001634543715000937,
+                9.721139572010216e-05,
+                0.00020224207833170396,
+                0.000879144867164842,
+                2.1599398394036986e-05,
+                0.00022886311007619062
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 64.3052480876318,
+              "fit_cost": 13.386412904799949,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 5.565766920399618e-21,
+              "pair_count": 78,
+              "partial_sill": 0.0005885348959118562
+            }
+          ],
+          "effective_ranges_m": [
+            9506.379692202792,
+            413.2379741490255,
+            64.3052480876318
+          ],
+          "model": "directional_exponential",
+          "nugget": 1e-10,
+          "partial_sill": 0.0004788518610867887,
+          "sill_reference": 0.0009485920241720048,
+          "validation_target_used": false
+        },
+        "ridge_alpha": 1.0,
+        "ridge_coefficients": [
+          0.00018848157782933337,
+          -0.005967281281842518,
+          -0.0005946618236854064
+        ],
+        "ridge_intercept": 0.21684168560022954,
+        "secondary_variables": [
+          "seismic_amplitude",
+          "seismic_local_rms",
+          "seismic_vertical_gradient"
+        ],
+        "solve_audit": {
+          "exact_conditioned_queries": 0,
+          "fallback_solves": 0,
+          "neighbours": 64,
+          "solve_batch_size": 128
+        },
+        "train_secondary_target_correlations": [
+          0.025508526524537063,
+          -0.1936914924379886,
+          -0.044874122976172014
+        ],
+        "validation_target_used": false
+      },
+      "train_labels": 512,
+      "validation_rows": 2048
+    },
+    {
+      "coordinate_bounds_observed_m": [
+        [
+          432937.9062535018,
+          435713.06249046326
+        ],
+        [
+          6477529.5000006175,
+          6480259.500018656
+        ],
+        [
+          2802.5761719143256,
+          3520.944597914917
+        ]
+      ],
+      "coordinate_units": [
+        "easting_m",
+        "northing_m",
+        "depth_m"
+      ],
+      "fold_id": 2,
+      "ordinary_solve": {
+        "exact_conditioned_queries": 0,
+        "fallback_solves": 0,
+        "neighbours": 64,
+        "solve_batch_size": 128
+      },
+      "ordinary_variogram": {
+        "directions": [
+          {
+            "axis": "x_easting_m",
+            "bin_centres_m": [
+              322.3409929016839,
+              595.3061766027287,
+              819.072861409811,
+              1007.543184130358,
+              1188.419184793441,
+              1350.7642050616187,
+              1507.5623995317799,
+              1654.9074700638791,
+              1806.2315952901868,
+              1963.8137191746164,
+              2153.8540301110497,
+              2434.989351224347
+            ],
+            "bin_counts": [
+              4367,
+              4367,
+              4367,
+              4367,
+              4367,
+              4367,
+              4367,
+              4367,
+              4366,
+              4366,
+              4366,
+              4366
+            ],
+            "bin_semivariance": [
+              0.0002977304385282098,
+              0.0003655519177030442,
+              0.00034333977399836346,
+              0.00038791547843797236,
+              0.00041831622204047125,
+              0.0004046117273777128,
+              0.0003939407784021576,
+              0.0003831970639578408,
+              0.0004063282717450267,
+              0.00044723626473075484,
+              0.000431845535662001,
+              0.00038606323751466665
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 1520.7888037410785,
+            "fit_cost": 10.120972271407831,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 0.00019700303453605304,
+            "pair_count": 52400,
+            "partial_sill": 0.00021925681622130366
+          },
+          {
+            "axis": "y_northing_m",
+            "bin_centres_m": [
+              319.65725291941175,
+              563.6125217884082,
+              759.2084083037998,
+              935.5154898647388,
+              1096.3141770917614,
+              1255.243517886216,
+              1411.5154751188916,
+              1574.148150535662,
+              1749.0906776494462,
+              1941.2607215871853,
+              2160.449716697367,
+              2465.7380221695544
+            ],
+            "bin_counts": [
+              4181,
+              4181,
+              4180,
+              4180,
+              4180,
+              4180,
+              4180,
+              4180,
+              4180,
+              4180,
+              4180,
+              4180
+            ],
+            "bin_semivariance": [
+              0.0003209476974196379,
+              0.0003598337730466028,
+              0.0003754459274986077,
+              0.00037162382438016284,
+              0.00035657583706272256,
+              0.0003642255297419128,
+              0.00041247310951547655,
+              0.0003917996788747047,
+              0.0003736004790877434,
+              0.0004195942109702644,
+              0.00035959696531745466,
+              0.0003303408216641657
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 612.2000898028166,
+            "fit_cost": 12.63362728795781,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 0.00011063575555759811,
+            "pair_count": 50162,
+            "partial_sill": 0.0002660164508884696
+          },
+          {
+            "axis": "depth_m",
+            "bin_centres_m": [
+              1.8473224470819525,
+              4.280759413740922,
+              10.918802636253222,
+              23.300015486293546,
+              36.315155026106275,
+              48.08447775767773,
+              61.82659936554382,
+              70.50201574750422,
+              76.83673552899609,
+              88.87448890671307,
+              231.74766345063773,
+              270.12759310123204
+            ],
+            "bin_counts": [
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              6,
+              5,
+              5
+            ],
+            "bin_semivariance": [
+              1.2756202926456073e-05,
+              0.0002640013170820965,
+              0.00034694801587337176,
+              0.0006975264842231654,
+              0.000767263178474864,
+              0.00010198515282278109,
+              0.000129391146250879,
+              0.0010248743589373888,
+              0.0008722630147622312,
+              0.0004255493469325078,
+              1.79999835491218e-05,
+              0.00012800004196167336
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 18.938592371432655,
+            "fit_cost": 3.2853224454143373,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 2.4398009875796306e-33,
+            "pair_count": 70,
+            "partial_sill": 0.000473159269797144
+          }
+        ],
+        "effective_ranges_m": [
+          1520.7888037410785,
+          612.2000898028166,
+          18.938592371432655
+        ],
+        "model": "directional_exponential",
+        "nugget": 0.00011063575555759811,
+        "partial_sill": 0.0002660164508884696,
+        "sill_reference": 0.001025222389950928,
+        "validation_target_used": false
+      },
+      "regression_kriging": {
+        "method": "regression_kriging_cokriging_proxy",
+        "residual_variogram": {
+          "directions": [
+            {
+              "axis": "x_easting_m",
+              "bin_centres_m": [
+                322.3409929016839,
+                595.3061766027287,
+                819.072861409811,
+                1007.543184130358,
+                1188.419184793441,
+                1350.7642050616187,
+                1507.5623995317799,
+                1654.9074700638791,
+                1806.2315952901868,
+                1963.8137191746164,
+                2153.8540301110497,
+                2434.989351224347
+              ],
+              "bin_counts": [
+                4367,
+                4367,
+                4367,
+                4367,
+                4367,
+                4367,
+                4367,
+                4367,
+                4366,
+                4366,
+                4366,
+                4366
+              ],
+              "bin_semivariance": [
+                0.0003231371101360507,
+                0.000354437608419825,
+                0.0003477070829816827,
+                0.0003788225228115787,
+                0.0004126705033034181,
+                0.0004017746861150097,
+                0.000388618703067078,
+                0.0003812903602037439,
+                0.00040246497693373346,
+                0.00044881440049256084,
+                0.0004310689376187851,
+                0.00037385387956909583
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 2048.288963113527,
+              "fit_cost": 11.351641564349777,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 0.00026112051222641324,
+              "pair_count": 52400,
+              "partial_sill": 0.000155509377971237
+            },
+            {
+              "axis": "y_northing_m",
+              "bin_centres_m": [
+                319.65725291941175,
+                563.6125217884082,
+                759.2084083037998,
+                935.5154898647388,
+                1096.3141770917614,
+                1255.243517886216,
+                1411.5154751188916,
+                1574.148150535662,
+                1749.0906776494462,
+                1941.2607215871853,
+                2160.449716697367,
+                2465.7380221695544
+              ],
+              "bin_counts": [
+                4181,
+                4181,
+                4180,
+                4180,
+                4180,
+                4180,
+                4180,
+                4180,
+                4180,
+                4180,
+                4180,
+                4180
+              ],
+              "bin_semivariance": [
+                0.0003263279620922761,
+                0.0003545320149979145,
+                0.00037285942336318806,
+                0.0003885438606086927,
+                0.00036593872567988007,
+                0.0003731890589090726,
+                0.00042214191547318913,
+                0.0003923848966572717,
+                0.00038429974259456944,
+                0.0004324759486878895,
+                0.00036087258793619174,
+                0.00033960581980510275
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 835.7694619643959,
+              "fit_cost": 14.186059901591358,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 0.0001933266619553773,
+              "pair_count": 50162,
+              "partial_sill": 0.0001922865034377856
+            },
+            {
+              "axis": "depth_m",
+              "bin_centres_m": [
+                1.8473224470819525,
+                4.280759413740922,
+                10.918802636253222,
+                23.300015486293546,
+                36.315155026106275,
+                48.08447775767773,
+                61.82659936554382,
+                70.50201574750422,
+                76.83673552899609,
+                88.87448890671307,
+                231.74766345063773,
+                270.12759310123204
+              ],
+              "bin_counts": [
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                6,
+                5,
+                5
+              ],
+              "bin_semivariance": [
+                1.2484679973480987e-05,
+                0.00022987339749553064,
+                0.00031521578518736314,
+                0.0006227294453592571,
+                0.0006816969956432654,
+                0.00022067830012428334,
+                0.000191735160949366,
+                0.0012721754610686177,
+                0.0007715947127547112,
+                0.0005711750444913269,
+                1.2767069301455248e-05,
+                5.478290096900077e-05
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 24.336245150649944,
+              "fit_cost": 3.775118031365576,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 5.103367570441131e-23,
+              "pair_count": 70,
+              "partial_sill": 0.0005034536066038861
+            }
+          ],
+          "effective_ranges_m": [
+            2048.288963113527,
+            835.7694619643959,
+            24.336245150649944
+          ],
+          "model": "directional_exponential",
+          "nugget": 0.0001933266619553773,
+          "partial_sill": 0.0001922865034377856,
+          "sill_reference": 0.0010084761647479992,
+          "validation_target_used": false
+        },
+        "ridge_alpha": 1.0,
+        "ridge_coefficients": [
+          0.0026868731983195806,
+          -0.0024373146508455392,
+          0.0011520203766523253
+        ],
+        "ridge_intercept": 0.21627582820656244,
+        "secondary_variables": [
+          "seismic_amplitude",
+          "seismic_local_rms",
+          "seismic_vertical_gradient"
+        ],
+        "solve_audit": {
+          "exact_conditioned_queries": 0,
+          "fallback_solves": 0,
+          "neighbours": 64,
+          "solve_batch_size": 128
+        },
+        "train_secondary_target_correlations": [
+          0.09688796073925986,
+          -0.0925313399337415,
+          0.031039606323611364
+        ],
+        "validation_target_used": false
+      },
+      "train_labels": 512,
+      "validation_rows": 2048
+    },
+    {
+      "coordinate_bounds_observed_m": [
+        [
+          433006.21874921024,
+          435713.06249046326
+        ],
+        [
+          6477495.500000206,
+          6480265.499989927
+        ],
+        [
+          2808.172607619327,
+          3470.366458242701
+        ]
+      ],
+      "coordinate_units": [
+        "easting_m",
+        "northing_m",
+        "depth_m"
+      ],
+      "fold_id": 3,
+      "ordinary_solve": {
+        "exact_conditioned_queries": 0,
+        "fallback_solves": 0,
+        "neighbours": 64,
+        "solve_batch_size": 128
+      },
+      "ordinary_variogram": {
+        "directions": [
+          {
+            "axis": "x_easting_m",
+            "bin_centres_m": [
+              320.11902238504706,
+              589.6834033189166,
+              807.0782583795888,
+              1000.5630717519966,
+              1176.5438706163536,
+              1352.6847305766528,
+              1517.9403443854949,
+              1672.2961135677378,
+              1822.932156901857,
+              1983.3361137272252,
+              2174.0702442747793,
+              2480.4231124866687
+            ],
+            "bin_counts": [
+              4392,
+              4392,
+              4392,
+              4392,
+              4392,
+              4392,
+              4392,
+              4392,
+              4392,
+              4392,
+              4391,
+              4391
+            ],
+            "bin_semivariance": [
+              0.00034464190595390187,
+              0.0003635116085211054,
+              0.0004069490443847634,
+              0.00039982982846514803,
+              0.00044834624434308967,
+              0.00042898494784626706,
+              0.0004821041374195034,
+              0.00046300073373928274,
+              0.0005033218579737486,
+              0.0005378157341066059,
+              0.0004564810701594979,
+              0.0004826361510485988
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 3374.2472781718952,
+            "fit_cost": 14.943538391525372,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 0.00026877198709889503,
+            "pair_count": 52702,
+            "partial_sill": 0.00026168935754147967
+          },
+          {
+            "axis": "y_northing_m",
+            "bin_centres_m": [
+              308.5015673064262,
+              561.1236748320807,
+              758.8184868907348,
+              933.709052424399,
+              1096.647672197434,
+              1258.3690722635592,
+              1416.6795533875857,
+              1576.3731471591645,
+              1747.7444594276692,
+              1939.2146875638955,
+              2161.040129010781,
+              2464.1491999754153
+            ],
+            "bin_counts": [
+              4168,
+              4168,
+              4167,
+              4167,
+              4167,
+              4167,
+              4167,
+              4167,
+              4167,
+              4167,
+              4167,
+              4167
+            ],
+            "bin_semivariance": [
+              0.00034097366073571056,
+              0.00040419663322049937,
+              0.00044848095439864455,
+              0.0004400258054860773,
+              0.0004796306678560569,
+              0.0005006681180081962,
+              0.0004372131119296796,
+              0.0004403910168787606,
+              0.00045291852564588453,
+              0.000418152454227827,
+              0.0003298844250583244,
+              0.0003359588295244187
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 544.2393169106934,
+            "fit_cost": 58.09507637744132,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 2.3022855268876824e-15,
+            "pair_count": 50006,
+            "partial_sill": 0.0004281656873723527
+          },
+          {
+            "axis": "depth_m",
+            "bin_centres_m": [
+              1.379102512054902,
+              3.7399908607095056,
+              6.98758787692586,
+              9.222365336414486,
+              11.186749667432919,
+              17.06221015447779,
+              18.93582702367594,
+              22.33564824969646,
+              25.546631219973214,
+              31.884523844960196,
+              260.7913402341747,
+              403.74765868497536
+            ],
+            "bin_counts": [
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "bin_semivariance": [
+              4.094407341215245e-05,
+              0.0006875003987545369,
+              7.905463867630136e-05,
+              0.0009059683927247209,
+              0.0005916041778252223,
+              0.000392581340156295,
+              0.0001510040581014227,
+              0.0004810001018047405,
+              0.00012157803581491766,
+              0.00011746975485193989,
+              0.0007344998254180113,
+              0.0008506528707977745
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 5.976800991854201,
+            "fit_cost": 2.2942272793373704,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 7.557788674497095e-36,
+            "pair_count": 54,
+            "partial_sill": 0.00046726952014866646
+          }
+        ],
+        "effective_ranges_m": [
+          3374.2472781718952,
+          544.2393169106934,
+          5.976800991854201
+        ],
+        "model": "directional_exponential",
+        "nugget": 1e-10,
+        "partial_sill": 0.0004281656873723527,
+        "sill_reference": 0.0010058567778298054,
+        "validation_target_used": false
+      },
+      "regression_kriging": {
+        "method": "regression_kriging_cokriging_proxy",
+        "residual_variogram": {
+          "directions": [
+            {
+              "axis": "x_easting_m",
+              "bin_centres_m": [
+                320.11902238504706,
+                589.6834033189166,
+                807.0782583795888,
+                1000.5630717519966,
+                1176.5438706163536,
+                1352.6847305766528,
+                1517.9403443854949,
+                1672.2961135677378,
+                1822.932156901857,
+                1983.3361137272252,
+                2174.0702442747793,
+                2480.4231124866687
+              ],
+              "bin_counts": [
+                4392,
+                4392,
+                4392,
+                4392,
+                4392,
+                4392,
+                4392,
+                4392,
+                4392,
+                4392,
+                4391,
+                4391
+              ],
+              "bin_semivariance": [
+                0.0003465396111828748,
+                0.000363778257037941,
+                0.0004037535209530028,
+                0.0004043197639684633,
+                0.0004467754086661277,
+                0.00042468453908367504,
+                0.00047332162679242045,
+                0.0004508508125754807,
+                0.000479210380391611,
+                0.0005029212499123037,
+                0.00040976007725930974,
+                0.0004518515185879609
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 2048.6948123379084,
+              "fit_cost": 16.62795928872127,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 0.00025527492953029626,
+              "pair_count": 52702,
+              "partial_sill": 0.0002156680855680887
+            },
+            {
+              "axis": "y_northing_m",
+              "bin_centres_m": [
+                308.5015673064262,
+                561.1236748320807,
+                758.8184868907348,
+                933.709052424399,
+                1096.647672197434,
+                1258.3690722635592,
+                1416.6795533875857,
+                1576.3731471591645,
+                1747.7444594276692,
+                1939.2146875638955,
+                2161.040129010781,
+                2464.1491999754153
+              ],
+              "bin_counts": [
+                4168,
+                4168,
+                4167,
+                4167,
+                4167,
+                4167,
+                4167,
+                4167,
+                4167,
+                4167,
+                4167,
+                4167
+              ],
+              "bin_semivariance": [
+                0.0003375242822407208,
+                0.00040443049700008643,
+                0.00042299233707194655,
+                0.0004022967711823782,
+                0.00045745074167626194,
+                0.0004732692485172061,
+                0.00041529102378946696,
+                0.00042699804051655506,
+                0.0004359840995957486,
+                0.00042235989776931253,
+                0.00035349476574742704,
+                0.0003725743681640547
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 542.9152637355621,
+              "fit_cost": 25.81413724769081,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 3.10486477714374e-19,
+              "pair_count": 50006,
+              "partial_sill": 0.0004192301415032321
+            },
+            {
+              "axis": "depth_m",
+              "bin_centres_m": [
+                1.379102512054902,
+                3.7399908607095056,
+                6.98758787692586,
+                9.222365336414486,
+                11.186749667432919,
+                17.06221015447779,
+                18.93582702367594,
+                22.33564824969646,
+                25.546631219973214,
+                31.884523844960196,
+                260.7913402341747,
+                403.74765868497536
+              ],
+              "bin_counts": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4
+              ],
+              "bin_semivariance": [
+                4.094407341215245e-05,
+                0.0006907561941301597,
+                4.903797485187283e-05,
+                0.000855022815527289,
+                0.0005586454567415678,
+                0.00023788658154999035,
+                0.0001351089333213943,
+                0.0004284941666841348,
+                0.00018017783887334712,
+                0.00014257856370042228,
+                0.0004165033517688939,
+                0.0009352350974915257
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 5.237496888754042,
+              "fit_cost": 2.3738484064818723,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 6.091413399637347e-17,
+              "pair_count": 54,
+              "partial_sill": 0.00041891999120544993
+            }
+          ],
+          "effective_ranges_m": [
+            2048.6948123379084,
+            542.9152637355621,
+            5.237496888754042
+          ],
+          "model": "directional_exponential",
+          "nugget": 1e-10,
+          "partial_sill": 0.00041891999120544993,
+          "sill_reference": 0.0009727737184769587,
+          "validation_target_used": false
+        },
+        "ridge_alpha": 1.0,
+        "ridge_coefficients": [
+          0.0020041255623319365,
+          -0.005428502128311442,
+          -0.0003782489610882774
+        ],
+        "ridge_intercept": 0.21360953849216457,
+        "secondary_variables": [
+          "seismic_amplitude",
+          "seismic_local_rms",
+          "seismic_vertical_gradient"
+        ],
+        "solve_audit": {
+          "exact_conditioned_queries": 0,
+          "fallback_solves": 0,
+          "neighbours": 64,
+          "solve_batch_size": 128
+        },
+        "train_secondary_target_correlations": [
+          0.0591046712658073,
+          -0.16908910707784686,
+          -0.009734527415692721
+        ],
+        "validation_target_used": false
+      },
+      "train_labels": 512,
+      "validation_rows": 2048
+    },
+    {
+      "coordinate_bounds_observed_m": [
+        [
+          432947.4062474668,
+          435714.65629577637
+        ],
+        [
+          6477513.499999965,
+          6480260.000071824
+        ],
+        [
+          2804.3417967671458,
+          3486.81054865387
+        ]
+      ],
+      "coordinate_units": [
+        "easting_m",
+        "northing_m",
+        "depth_m"
+      ],
+      "fold_id": 4,
+      "ordinary_solve": {
+        "exact_conditioned_queries": 0,
+        "fallback_solves": 0,
+        "neighbours": 64,
+        "solve_batch_size": 128
+      },
+      "ordinary_variogram": {
+        "directions": [
+          {
+            "axis": "x_easting_m",
+            "bin_centres_m": [
+              324.66522671649386,
+              592.0672174677054,
+              806.0208770254842,
+              991.8270290684367,
+              1173.3588665626166,
+              1340.9169351371934,
+              1496.800519011997,
+              1650.2339229250388,
+              1805.814874534848,
+              1972.4066804288043,
+              2168.6071020611307,
+              2437.5226182968377
+            ],
+            "bin_counts": [
+              4391,
+              4391,
+              4391,
+              4391,
+              4391,
+              4391,
+              4391,
+              4391,
+              4391,
+              4391,
+              4391,
+              4390
+            ],
+            "bin_semivariance": [
+              0.00027677520490998475,
+              0.0003220922564413087,
+              0.0003375830739966723,
+              0.0003788786526985888,
+              0.00036949612472192417,
+              0.00039441397710338055,
+              0.00037787066654904056,
+              0.00041158998245016676,
+              0.000423219454326329,
+              0.0004196806177692025,
+              0.0003953654167841991,
+              0.0004243337801460023
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 2341.369622384538,
+            "fit_cost": 3.9825797513174748,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 0.0001961341077776887,
+            "pair_count": 52691,
+            "partial_sill": 0.00023463738537434083
+          },
+          {
+            "axis": "y_northing_m",
+            "bin_centres_m": [
+              316.3215719067848,
+              564.9054280011592,
+              759.520366069264,
+              925.3426509987742,
+              1085.0831173017298,
+              1239.8088456623063,
+              1396.960027812142,
+              1557.8533260320837,
+              1725.4396615184087,
+              1911.4658305116513,
+              2141.242154123527,
+              2459.42885296077
+            ],
+            "bin_counts": [
+              4141,
+              4140,
+              4140,
+              4140,
+              4140,
+              4140,
+              4140,
+              4140,
+              4140,
+              4140,
+              4140,
+              4140
+            ],
+            "bin_semivariance": [
+              0.00030558593959328917,
+              0.00038692951495838956,
+              0.00038503395232353244,
+              0.00035001710227799965,
+              0.0004234520748727655,
+              0.00043691969648274043,
+              0.00047753237048892005,
+              0.00045789390151279585,
+              0.00048384848285842885,
+              0.000500532113441976,
+              0.00040198026475524173,
+              0.00027238340445034925
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 946.5306666689742,
+            "fit_cost": 98.97639642623587,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 9.324783690405942e-05,
+            "pair_count": 49681,
+            "partial_sill": 0.00033468177400252893
+          },
+          {
+            "axis": "depth_m",
+            "bin_centres_m": [
+              4.428906694474095,
+              7.023051346589649,
+              9.76985893581411,
+              12.000524997254777,
+              15.281143327806953,
+              19.65108887302495,
+              26.034046451091232,
+              38.544347752465036,
+              44.61015432922989,
+              55.622997813179715,
+              68.1165612080521,
+              242.3812367523894
+            ],
+            "bin_counts": [
+              6,
+              6,
+              6,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ],
+            "bin_semivariance": [
+              9.992775572631452e-05,
+              0.00048724074279538065,
+              0.0007054062010434237,
+              0.0007710898046769943,
+              0.00012280483064630587,
+              0.0004500000357627876,
+              0.00038390981907376887,
+              0.00019999991655350602,
+              4.9999904632613834e-05,
+              7.042683454194787e-05,
+              4.9999904632613834e-05,
+              0.00012800004196167336
+            ],
+            "direction_cosine_minimum_requested": 0.8,
+            "direction_cosine_minimum_used": 0.8,
+            "direction_resolution": "requested_cone",
+            "effective_range_m": 6.075247234220952,
+            "fit_cost": 2.236500941765213,
+            "fit_success": true,
+            "low_direction_resolution": false,
+            "nugget": 1.633044222429871e-28,
+            "pair_count": 63,
+            "partial_sill": 0.00030512619321348917
+          }
+        ],
+        "effective_ranges_m": [
+          2341.369622384538,
+          946.5306666689742,
+          6.075247234220952
+        ],
+        "model": "directional_exponential",
+        "nugget": 9.324783690405942e-05,
+        "partial_sill": 0.00030512619321348917,
+        "sill_reference": 0.0009335848262843328,
+        "validation_target_used": false
+      },
+      "regression_kriging": {
+        "method": "regression_kriging_cokriging_proxy",
+        "residual_variogram": {
+          "directions": [
+            {
+              "axis": "x_easting_m",
+              "bin_centres_m": [
+                324.66522671649386,
+                592.0672174677054,
+                806.0208770254842,
+                991.8270290684367,
+                1173.3588665626166,
+                1340.9169351371934,
+                1496.800519011997,
+                1650.2339229250388,
+                1805.814874534848,
+                1972.4066804288043,
+                2168.6071020611307,
+                2437.5226182968377
+              ],
+              "bin_counts": [
+                4391,
+                4391,
+                4391,
+                4391,
+                4391,
+                4391,
+                4391,
+                4391,
+                4391,
+                4391,
+                4391,
+                4390
+              ],
+              "bin_semivariance": [
+                0.00028960314871017936,
+                0.0003309474401252844,
+                0.00033859434629758236,
+                0.0003838669136509816,
+                0.000360110017278033,
+                0.0003916785087546259,
+                0.00037371485918032767,
+                0.0004008126996697533,
+                0.00041681307743845,
+                0.0004095286709731789,
+                0.00039012611698738877,
+                0.0004112871844476586
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 2258.820813282511,
+              "fit_cost": 4.488251709945147,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 0.00022077519009730786,
+              "pair_count": 52691,
+              "partial_sill": 0.00019662887122794207
+            },
+            {
+              "axis": "y_northing_m",
+              "bin_centres_m": [
+                316.3215719067848,
+                564.9054280011592,
+                759.520366069264,
+                925.3426509987742,
+                1085.0831173017298,
+                1239.8088456623063,
+                1396.960027812142,
+                1557.8533260320837,
+                1725.4396615184087,
+                1911.4658305116513,
+                2141.242154123527,
+                2459.42885296077
+              ],
+              "bin_counts": [
+                4141,
+                4140,
+                4140,
+                4140,
+                4140,
+                4140,
+                4140,
+                4140,
+                4140,
+                4140,
+                4140,
+                4140
+              ],
+              "bin_semivariance": [
+                0.0003143340298783961,
+                0.00039298890105904773,
+                0.0003839091619722156,
+                0.00034150875033272176,
+                0.00041252428922630626,
+                0.00041480751591969835,
+                0.000476999642997479,
+                0.00045473156382637013,
+                0.0004566143096207015,
+                0.00046010552702901715,
+                0.00037440626614813693,
+                0.0002584142149743629
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 736.1626947992092,
+              "fit_cost": 97.39192102324274,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 7.531353415535893e-05,
+              "pair_count": 49681,
+              "partial_sill": 0.0003328027474167826
+            },
+            {
+              "axis": "depth_m",
+              "bin_centres_m": [
+                4.428906694474095,
+                7.023051346589649,
+                9.76985893581411,
+                12.000524997254777,
+                15.281143327806953,
+                19.65108887302495,
+                26.034046451091232,
+                38.544347752465036,
+                44.61015432922989,
+                55.622997813179715,
+                68.1165612080521,
+                242.3812367523894
+              ],
+              "bin_counts": [
+                6,
+                6,
+                6,
+                5,
+                5,
+                5,
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "bin_semivariance": [
+                8.848339959119218e-05,
+                0.0005275193065073631,
+                0.0006704036883688517,
+                0.0007139312060677136,
+                9.661787334857406e-05,
+                0.0004924350274598129,
+                0.0004165335431399005,
+                0.00025599292982037204,
+                8.576823363031848e-05,
+                9.558461655239633e-05,
+                5.982041776778593e-05,
+                7.627502989375248e-05
+              ],
+              "direction_cosine_minimum_requested": 0.8,
+              "direction_cosine_minimum_used": 0.8,
+              "direction_resolution": "requested_cone",
+              "effective_range_m": 6.221405639048352,
+              "fit_cost": 2.1632863749711264,
+              "fit_success": true,
+              "low_direction_resolution": false,
+              "nugget": 1.2819850999270338e-29,
+              "pair_count": 63,
+              "partial_sill": 0.00031029657963114234
+            }
+          ],
+          "effective_ranges_m": [
+            2258.820813282511,
+            736.1626947992092,
+            6.221405639048352
+          ],
+          "model": "directional_exponential",
+          "nugget": 7.531353415535893e-05,
+          "partial_sill": 0.00031029657963114234,
+          "sill_reference": 0.0009198090554668186,
+          "validation_target_used": false
+        },
+        "ridge_alpha": 1.0,
+        "ridge_coefficients": [
+          0.00038706123176901415,
+          -0.0035109935443343636,
+          0.0008018267613604085
+        ],
+        "ridge_intercept": 0.2158186401356943,
+        "secondary_variables": [
+          "seismic_amplitude",
+          "seismic_local_rms",
+          "seismic_vertical_gradient"
+        ],
+        "solve_audit": {
+          "exact_conditioned_queries": 0,
+          "fallback_solves": 0,
+          "neighbours": 64,
+          "solve_batch_size": 128
+        },
+        "train_secondary_target_correlations": [
+          0.009825893889463306,
+          -0.11801222361418526,
+          0.03920279925471351
+        ],
+        "validation_target_used": false
+      },
+      "train_labels": 512,
+      "validation_rows": 2048
+    }
+  ],
+  "fusion_contract": {
+    "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/fusion_io_contract.json",
+    "sha256": "42f2d0d3b157c1140a7c56f517bb5a4d2bcbbfccb31d0d2319695cb4c84b2162"
+  },
+  "objective": "bounded feasibility of co-kriging, directional variograms and physical constraints",
+  "prediction_artifact": {
+    "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/predictions.npz",
+    "sha256": "3365816659ba03e9ab901743604af8df1fdb6480d7fa483554680746a3fc0c9f"
+  },
+  "protocol": {
+    "candidate_hyperparameters_selected_with_validation_labels": false,
+    "frozen_holdout_opened": false,
+    "matched_to_p21_rows_and_budget": true,
+    "outer_spatial_folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "primary_metric": "pooled development OOF RMSE",
+    "test_h5_opened": false,
+    "train_labels_per_fold": 512,
+    "validation_rows_per_fold": 2048
+  },
+  "reproduction": {
+    "p29_tests": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_p29_agent_action_effect_repair.py' -v",
+    "p30_tests": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s _pipelines/02_task_datasets/reconstruction/_tests -p 'test_p30_bounded_geostatistics_feasibility.py' -v",
+    "py_compile": "PYTHONPYCACHEPREFIX=_pipelines/02_task_datasets/reconstruction/_tmp/p30_pycache /usr/bin/python3 -m py_compile _pipelines/02_task_datasets/reconstruction/p29_agent_action_effect_repair.py _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py _pipelines/02_task_datasets/reconstruction/_tests/test_p29_agent_action_effect_repair.py _pipelines/02_task_datasets/reconstruction/_tests/test_p30_bounded_geostatistics_feasibility.py",
+    "run": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --data-dir .claude/worktrees/track-reconstruction/_data/processed/reconstruction --stage3-root .claude/worktrees/p5-stage3-reconstruction/_tmp/p5_stage3_reconstruction --feature-cache .claude/worktrees/p10-results-reconstruction/_tmp/p17_foundation_geostatistics/gfm_point_features.npz --build-summary .claude/worktrees/track-reconstruction/_pipelines/02_task_datasets/reconstruction/build_summary.json --p29-summary _pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair_v2/summary.json",
+    "verify_only": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 _pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py --verify-only"
+  },
+  "schema_version": "reconstruction-p30-bounded-geostatistics-feasibility/v2",
+  "split_audit": {
+    "development_source": "train.h5 only",
+    "fold_loading_audit": {
+      "active_coordinate_rows": 134222,
+      "coordinate_match_tolerance": 1e-08,
+      "folds": [
+        {
+          "fold_id": 0,
+          "source_hashes": {
+            "point_train_npz": "f7baf0a42dfe734fe7110e9421d412b8fcde5445a0beffa188802472a4c2ae37",
+            "point_validation_npz": "bfb429990a737c1dcc35a84a6ae40508a3ef1fc8002f528b3744eab85e6c467c",
+            "preprocess_stats": "7ed8e3dc64331e511dd25d8cfb4538c0133ef22941c90d4c3a73cc6a56b04ad6"
+          },
+          "train_indices_sha256": "0c8061f87414845531c17039d027fe8e6d257765b7865d88547459c9c909d949",
+          "validation_indices_sha256": "47e3ee4c7f5e6c0c4eeb0a3542cfb5df6101282233e664fbfc5bde9cb2b79a5e"
+        },
+        {
+          "fold_id": 1,
+          "source_hashes": {
+            "point_train_npz": "ce725e1e9f97c97ed201d4c0b1bac6dff5e333ff36edc5a1c48968d3a4ef5d8a",
+            "point_validation_npz": "facd02b8fc6fb987a144226f93ce79ec577d2cb7b0a8c02be7a26f77c340c0a1",
+            "preprocess_stats": "1ef6e4920fc7155d46f005f4c1e9cfb084fe374b21cb6905ab781dde0835e772"
+          },
+          "train_indices_sha256": "dedece511a4e6a9f7a297be74a1507f0506dc7c87d8e02196cf543c3a6326eba",
+          "validation_indices_sha256": "765ca27700aa91be7b7a2df35870a98cc88617e07de6ebf3274c129c94361e56"
+        },
+        {
+          "fold_id": 2,
+          "source_hashes": {
+            "point_train_npz": "e14448da99b7108624585179553d422754575d3469118a1d195ccc602a2d4ceb",
+            "point_validation_npz": "ce9d166ebc03ca371aea5d0d3e1e38e669a5c2aec627ebf0016f1f4b32f66229",
+            "preprocess_stats": "30f8c6c5d594dcb6640b1beabf3213c50dc1f2d6a04a6705a7b9eb382008d620"
+          },
+          "train_indices_sha256": "36792e7114a63a06a8dd0e21cca5e85d6eae51bee29807f1ad68313cc90e21a1",
+          "validation_indices_sha256": "95ad41f26f144743281f7dd7c52c0ab73cbefd0de9f2912c225a0707d949e726"
+        },
+        {
+          "fold_id": 3,
+          "source_hashes": {
+            "point_train_npz": "77d5eba47ab0b87948372bd7a27fb005c9ea7fdc01a180aa74bc17e9fb5ccb7b",
+            "point_validation_npz": "cfa3e8575d1c30bd1b5b76bad61011c93ef96451f069a492e58174e1c86160bb",
+            "preprocess_stats": "f72f766dfb16652e60ca605c51c4f82aeb4c9b9da998707ca636889cc2d3a1d8"
+          },
+          "train_indices_sha256": "a0ac593fa2cf72aaf5590b600f4ffb5aac5b573a80e4506846bfa2e948018d1e",
+          "validation_indices_sha256": "ceedcefde798e34a96a0512301f308c3fde98912f35011874cfb27604a8ccda9"
+        },
+        {
+          "fold_id": 4,
+          "source_hashes": {
+            "point_train_npz": "e6b2f88100405455018e5faf948d8d50a24984d9cdb6b59754e5c4cdf5d271d6",
+            "point_validation_npz": "03561799010609a0143cbc18de16e6f78eae70b01de8bab3cb9e39e210b23d57",
+            "preprocess_stats": "0b6dd3cc7e64409ae000c1284bd97137d05429b4d91e767096438e553d6ff5fb"
+          },
+          "train_indices_sha256": "559cb936992f0420fc1c7ef5a1bdd0406d70a8b8f3bf24598de29949c0de8d98",
+          "validation_indices_sha256": "04f9027ccc136273612bb8c33a473bbb796b6b0877018da694509767faefeb5b"
+        }
+      ],
+      "hdf5_datasets_read": [
+        "seismic_patch[3:6]",
+        "seismic_patch[8]"
+      ],
+      "hdf5_files_opened": [
+        "train.h5"
+      ],
+      "label_dataset_read": false,
+      "maximum_coordinate_match_distance": 6.206335383118183e-17,
+      "patch_count": 140,
+      "patch_keys_sha256": "8c6a7a989ad7ebee7499df855202f0a5128f32778c56ee491c29822d80a45518",
+      "train_labels_per_fold": 512,
+      "validation_rows_per_fold": 2048
+    },
+    "original_dataset_split_metadata": {
+      "active_cells": {
+        "test": 49323,
+        "train": 134222
+      },
+      "evaluation_protocol": "conditional reconstruction given test-region well constraints, NOT strict spatial holdout generalization",
+      "n_test_samples": 70,
+      "n_train_samples": 140,
+      "strategy": "blocked east label split with global cross-boundary well constraints",
+      "test_patch_i_blocks": [
+        4,
+        5
+      ],
+      "train_patch_i_blocks": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "outer_cv": "five deterministic buffered spatial folds from Stage-3",
+    "stage3_frozen_test_loaded": false
+  }
+}

@@ -9,7 +9,7 @@ steps:
     ref: code:fault_pipeline_adapter
     params: {track: fault, stage: validate}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/comparison.json]
   - id: prepare
     ref: code:fault_pipeline_adapter
     needs: [validate]
@@ -39,12 +39,12 @@ steps:
     needs: [promote]
     params: {track: fault, stage: refit}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/comparison.json]
   - id: verify
     ref: code:fault_pipeline_adapter
     needs: [refit]
     params: {track: fault, stage: verify}
     success:
-      outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
+      outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/manifest.json]
 verified_steps_hash: 3d2da57dbedd84229db4245cb67a5a40537196cad4c291514ff5e90a4d282edb
 verified_at_commit: fef7655005696c72e5d3e81b825a70908a8cbb43

@@ -80,7 +80,7 @@ class P30BoundedGeostatisticsFeasibilityTest(unittest.TestCase):
         self.assertIn("porosity_variance", contract["outputs"])
 
     def test_persisted_evidence_verifies_if_available(self) -> None:
-        output = TRACK / "_outputs" / "p30_bounded_geostatistics_feasibility"
+        output = p30.DEFAULT_OUTPUT_DIR
         if not (output / "summary.json").is_file():
             self.skipTest("P30 development pilot has not been run")
         verification = p30.verify_evidence(output)
@@ -92,6 +92,10 @@ class P30BoundedGeostatisticsFeasibilityTest(unittest.TestCase):
             "HISTORICAL_ONLY_NOT_ELIGIBLE_FOR_NEW_PROMOTION",
         )
         self.assertIn("A0_EQUALS_P21", summary["conclusions"]["p29_repair"])
+        self.assertTrue(
+            summary["default_evidence_audit"]["p29"]
+            ["authoritative_output_usable_for_new_promotion"]
+        )
         self.assertEqual(summary["conclusions"]["anisotropic_ordinary_kriging"], "NO_PROMOTION")
         self.assertEqual(summary["conclusions"]["regression_kriging_cokriging_proxy"], "NO_PROMOTION")
         self.assertEqual(summary["direction_cone_audit"]["relaxed_fit_count"], 2)

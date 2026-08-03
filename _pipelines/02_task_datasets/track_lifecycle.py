@@ -45,6 +45,7 @@ class TrackContract:
     required_files: tuple[str, ...] = ()
     verification: str | None = None
     optimization: str | None = None
+    audit: str | None = None
 
 
 def _c(source: str, path: str, operator: str, expected: Any) -> Check:
@@ -55,11 +56,13 @@ TRACKS: dict[str, TrackContract] = {
     "fault": TrackContract(
         summary="_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json",
         actions="_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/action_effects.json",
-        final="_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/cigbench_vs_baseline_scale_fix/comparison.json",
+        final="_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/comparison.json",
         checks={
             "validate": (
                 _c("summary", "frozen_test_accessed", "eq", False),
                 _c("summary", "data_gate_blocked", "eq", True),
+                _c("final", "split.development_only", "eq", True),
+                _c("final", "split.frozen_holdout_accessed", "eq", False),
             ),
             "prepare": (_c("actions", "records", "nonempty", True),),
             "baseline": (
@@ -75,14 +78,19 @@ TRACKS: dict[str, TrackContract] = {
             ),
             "refit": (
                 _c("final", "status", "eq", "READY"),
-                _c("final", "comparison.guard_delta.f1", "lt", 0.0),
+                _c("final", "decision.default_recommendation", "eq", "do_not_advance"),
+                _c("final", "comparison.guard_lift.precision_lift", "gt", 1.0),
+                _c("final", "comparison.guard_lift.average_precision_lift", "gt", 1.0),
+                _c("final", "comparison.guard_lift.predicted_positive_fraction", "gt", 0.5),
+                _c("final", "comparison.tolerance_radius_2.cig_bench.f1", "lt", 0.05),
             ),
         },
         promoted_default="fault_local_logistic_with_A2D_governance",
         rejected_route="CIG-Bench FaultPredictor and direct LLM execution",
         required_files=(
-            "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/audited_v2_model_portable.json",
-            "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/dev_subvolume.npz",
+            "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib",
+            "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/dev_subvolume.npz",
+            "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/manifest.json",
         ),
     ),
     "facies": TrackContract(
@@ -208,28 +216,47 @@ TRACKS: dict[str, TrackContract] = {
         rejected_route="direct LLM policy after legal stop",
     ),
     "reconstruction": TrackContract(
-        summary="_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/summary.json",
-        actions="_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair/action_effects.json",
+        summary="_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair_v2/summary.json",
+        actions="_pipelines/02_task_datasets/reconstruction/_outputs/p29_agent_action_effect_repair_v2/action_effects.json",
         final="_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/summary.json",
         checks={
             "validate": (
                 _c("summary", "frozen_holdout_opened", "eq", False),
                 _c("summary", "held_fold_purge_reused.all_held_folds", "eq", True),
+                _c("audit", "protocol.matched_to_p21_rows_and_budget", "eq", True),
+                _c("audit", "protocol.frozen_holdout_opened", "eq", False),
+                _c("audit", "default_evidence_audit.p29.authoritative_output_usable_for_new_promotion", "eq", True),
             ),
             "prepare": (_c("actions", "", "min_length", 8),),
             "baseline": (
                 _c("final", "decision.default_enabled", "eq", True),
                 _c("final", "protocol.holdout_opened", "eq", False),
             ),
-            "optimize": (_c("summary", "policy.oracle_used_for_promotion", "eq", False),),
+            "optimize": (
+                _c("summary", "policy.oracle_used_for_promotion", "eq", False),
+                _c("summary", "interface_contract.feature_cache_is_explicit_runtime_input", "eq", True),
+                _c("summary", "interface_contract.query_side_seismic_required", "eq", True),
+                _c("summary", "interface_contract.query_side_foundation_embedding_required", "eq", True),
+                _c("summary", "interface_contract.seismic_weights_are_scalar_ensemble_members", "eq", True),
+            ),
             "promote": (
                 _c("summary", "policy.promotion.verdict", "eq", "RETAIN_FROZEN_BASELINE"),
                 _c("summary", "policy.promotion.positive_folds", "lt", 3),
+                _c("audit", "decision.promote_over_p21", "eq", False),
+                _c("audit", "decision.p21_remains_default", "eq", True),
             ),
-            "refit": (_c("summary", "policy.promotion.mean_signed_delta_rmse", "gt", 0.0),),
+            "refit": (
+                _c("audit", "default_evidence_audit.p29.corrected_a0_max_abs_difference_vs_p21", "lt", 1e-12),
+                _c("audit", "decision.cross_modal_foundation_claimed", "eq", False),
+            ),
         },
         promoted_default="P21_fixed_three_kernel_ensemble",
         rejected_route="P29 LLM-selected numerical strategy",
+        audit="_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/summary.json",
+        required_files=(
+            "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/fusion_io_contract.json",
+            "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/predictions.npz",
+        ),
     ),
 }
 
@@ -289,6 +316,8 @@ def evaluate(track: str, stage: str) -> dict[str, Any]:
         sources["verification"] = _load(contract.verification)
     if contract.optimization:
         sources["optimization"] = _load(contract.optimization)
+    if contract.audit:
+        sources["audit"] = _load(contract.audit)
     required_artifacts: dict[str, dict[str, Any]] = {}
     for artifact in contract.required_files:
         artifact_path = PROJECT_ROOT / artifact

@@ -16,7 +16,7 @@ ADAPTER = {
             "required_parameters": [],
             "required_inputs": [
                 "_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json",
-                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/cigbench_vs_baseline_scale_fix/comparison.json",
+                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/comparison.json",
             ],
             "expected_outputs": [],
             "description": "Fail-closed validation of the committed development-only fault evidence; this does not rebuild data or train a model.",
@@ -103,14 +103,21 @@ ADAPTER = {
         "refit": {
             "id": "refit",
             "needs": ["promote"],
-            "execution": "included",
-            "entrypoint": "_pipelines/02_task_datasets/fault/fault_p29_agent_action_effect.py",
-            "argv": [],
+            "execution": "command",
+            "entrypoint": "_pipelines/02_task_datasets/fault/fault_p30_finalize.py",
+            "argv": ["{python}", "{project_root}/_pipelines/02_task_datasets/fault/fault_p30_finalize.py"],
             "required_parameters": [],
-            "required_inputs": ["_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib"],
-            "expected_outputs": ["_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib"],
-            "description": "No numerical candidate is refit: the accepted action is governance around the already-trained baseline, so the optimizer intentionally preserves that model artifact.",
-            "included_in": "optimize",
+            "required_inputs": [
+                "_pipelines/02_task_datasets/fault/_outputs/runs/audited_v2/baseline_model.joblib",
+                "_pipelines/01_common_preprocess/outputs/fault_points.npz",
+                "_sandbox/volve_data/Volve_Seismic_ST10010.zip",
+            ],
+            "expected_outputs": [
+                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/dev_subvolume.npz",
+                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/comparison.json",
+                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/manifest.json",
+            ],
+            "description": "Preserve the retained local baseline, rebuild the aligned ST10010 development cube, and atomically run the final CIG-Bench lift/tolerance audit.",
         },
         "verify": {
             "id": "verify",
@@ -121,8 +128,8 @@ ADAPTER = {
             "required_parameters": [],
             "required_inputs": [
                 "_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json",
-                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/dev_subvolume.npz",
-                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate/cigbench_vs_baseline_scale_fix/comparison.json",
+                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/dev_subvolume.npz",
+                "_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/comparison.json",
             ],
             "expected_outputs": [],
             "description": "Verify the complete fault lifecycle evidence, including the post-P29 continuous 3-D development gate.",
