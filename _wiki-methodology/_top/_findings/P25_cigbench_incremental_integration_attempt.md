@@ -1,12 +1,20 @@
 ---
 phase_id: P25
-status: accepted
+status: superseded
 owner_col: COL2
 source: manual
 created_at: 2026-08-01
+superseded_by:
+  - P25.1_cigbench_fault_st10010_alignment_recovery.md
+closure_evidence: >
+  ①断层部分的"DATA_GATE_BLOCKED"结论已被P25.1推翻：3D development体资产已实际构建完成(P30)，
+  且发现并修复了两个真实bug(fit/guard独立归一化复用阈值、ST10010/ST0202地震处理批次错位)后，
+  CIG-Bench FaultPredictor与baseline的对比已产出方法论站得住脚的真实数字。③物性、⑥重建部分结论不变。
 ---
 
 # CIG-Bench(伍老师组开源，douyimin/CIG-bench)增量接入尝试：①③被阻塞（非权限问题），⑥有真实development对比但未晋升
+
+> **①部分已被P25.1更新**：本文①断层"DATA_GATE_BLOCKED"这一结论已过时——3D development体资产后续被实际构建出来(P30)，且发现修复了两个真实bug后CIG-Bench产出了有效对比结果。详见`P25.1_cigbench_fault_st10010_alignment_recovery.md`。③物性、⑥重建部分结论仍然有效。
 
 ## Local Case
 
