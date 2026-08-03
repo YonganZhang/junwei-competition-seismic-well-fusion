@@ -471,6 +471,13 @@ entrypoints:
     owner: col3
     description: "Lithofacies matched-budget hybrid search, independent replay and incumbent-A0 guard preventing selection-overfit false promotion."
 
+  - id: p34_six_track_pipeline_modularization_acceptance
+    path: _wiki-methodology/_tests/P34_six_track_pipeline_modularization_acceptance.md
+    type: test_evidence
+    status: active
+    owner: col3
+    description: "Six modular track adapters, dependency-closed seven-stage plans, fail-closed execution preflight and 42-stage portable verification trace."
+
 cross_domain_edges:
   - from: six_track_pipeline_runtime
     to: six_track_agentic_lifecycle

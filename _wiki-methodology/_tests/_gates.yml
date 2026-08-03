@@ -7,6 +7,12 @@
 #
 # 字段: id(唯一)/ cmd(项目根为 cwd)/ timeout(秒)/ expect(目前唯一语义 exit0)/ note(可选)
 gates:
+  - id: p34-six-track-pipeline-contract
+    cmd: "python3 -m unittest -v _code.six_track_pipeline.tests.test_runtime && python3 _code/six_track_pipeline/cli.py preflight --intent verify --track all && python3 _code/six_track_pipeline/cli.py verify --track all"
+    timeout: 60
+    expect: exit0
+    note: "统一验证六 adapter、七阶段依赖闭包、manifest 对齐、智能体元数据、执行前 fail-closed 和便携核验 trace。"
+
   - id: p31-fault-agentic-pipeline
     cmd: "python3 _pipelines/02_task_datasets/track_lifecycle.py --track fault --stage verify"
     timeout: 30

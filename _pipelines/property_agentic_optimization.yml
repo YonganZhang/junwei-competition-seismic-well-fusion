@@ -46,5 +46,5 @@ steps:
     params: {track: property, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/reservoir/_outputs/p32_hybrid_agent_optimizer/independent_verification.json]
-verified_steps_hash: dafa023f7604eae8e2bdf95add6c2bbb8795596c6fce1e0cfc828fb7ff0714a8
-verified_at_commit: d6864950ed0c8461ef6cff589fd681fa25b0bb2b
+verified_steps_hash: ae76992bf4d729a542d943a8635236e935163519748e17064431137ac2a12e33
+verified_at_commit: fef7655005696c72e5d3e81b825a70908a8cbb43

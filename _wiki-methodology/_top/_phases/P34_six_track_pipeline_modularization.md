@@ -39,3 +39,16 @@
 - 不重新训练六个模型，不调用外部 LLM，不打开冻结测试集。
 - 不以统一接口为理由强迫分割、分类、回归和三维重建共用内部张量形状。
 - 不把尚未包装为安全命令的科学入口包装成“已自动执行”；这类入口必须 fail closed。
+
+## 实施结果
+
+- 新增 `_code/six_track_pipeline/` 公共运行时，提供 `list / plan / preflight / verify`。
+- 新增六个赛道 adapter，显式登记真实预处理、基线、智能体优化、晋级、重训和核验入口。
+- 六个根 manifest 已从同一生命周期校验器引用改为各自 adapter 引用；公共 lifecycle 继续作为底层证据核验器。
+- `verify --track all` 已顺序核验 6 条 Pipeline 的 42 个阶段，全部通过并生成便携 trace。
+- `preflight --intent execute --track all` 已按预期 fail closed：集中报告数据、参数和⑤甜点人工门禁，且未启动训练或网络调用。
+- Claude 独立终审复跑了 14 项运行时测试、3 项 lifecycle 回归和 42 阶段核验；其发现的六条 stale pipeline 验签已全部刷新。关于甜点 `python -m` 的疑问经本机实测排除，模块帮助入口正常退出。
+
+⑤甜点是当前唯一不能无人值守执行的赛道。原因不是统一层缺失，而是 canonical 标签合同尚未获批、数据构建入口只支持审计、旧优化器仍含隐式 worktree 依赖；三段均以 `manual` 明示，后续补齐科学真源后再解除。
+
+验收证据见 `_wiki-methodology/_tests/P34_six_track_pipeline_modularization_acceptance.md`。

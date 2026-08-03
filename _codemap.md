@@ -43,10 +43,26 @@
 | 实验代码 | `_sandbox/` | `_sandbox/_index.yml`; 优于 baseline 才进入主流程 |
 | 归档代码 | `_legacy/` | 每个归档目录需 README/TOMBSTONE |
 
-## P31 六赛道智能决策 pipeline
+## P34 六赛道统一 Pipeline
 
 六个 pipeline 分别是 `_pipelines/{fault,facies,property,lithofacies,sweetspot,reconstruction}_agentic_optimization.yml`。
-它们复用同一个校验入口 `_pipelines/02_task_datasets/track_lifecycle.py`，但各自保持独立参数、七段生命周期、证据路径和门禁。
+每条 manifest 引用本赛道的 `pipeline_adapter.py`；公共入口 `_code/six_track_pipeline/cli.py`
+负责 `list / plan / preflight / verify`。七段生命周期固定为
+`validate → prepare → baseline → optimize → promote → refit → verify`，请求任一下游阶段都会展开完整前置链。
+
+| Track id | Adapter 目录 | 根 manifest |
+|---|---|---|
+| `fault` | `fault/pipeline_adapter.py` | `fault_agentic_optimization.yml` |
+| `facies` | `facies/pipeline_adapter.py` | `facies_agentic_optimization.yml` |
+| `property` | `reservoir/pipeline_adapter.py` | `property_agentic_optimization.yml` |
+| `lithofacies` | `lithofacies/pipeline_adapter.py` | `lithofacies_agentic_optimization.yml` |
+| `sweetspot` | `sweetspot/pipeline_adapter.py` | `sweetspot_agentic_optimization.yml` |
+| `reconstruction` | `reconstruction/pipeline_adapter.py` | `reconstruction_agentic_optimization.yml` |
+
+`plan --track all --through verify` 给出六条完整阶段链；`preflight --intent execute`
+在任何训练或网络调用前一次性检查参数、输入和 manual 阻断；`verify --track all`
+逐赛道逐阶段调用证据校验器并可写便携 trace。⑤甜点缺少获批标签合同且旧优化器依赖
+隐式 worktree，因此 prepare/baseline/optimize 明确标为 manual，不能被统一入口静默跳过。
 
 | 赛道 | 当前默认/晋级结论 | 不晋级路线 |
 |---|---|---|
@@ -57,7 +73,9 @@
 | ⑤甜点 | 冻结 A0 XGBoost | 候选无正改善后的 LLM 路线 |
 | ⑥三维重建 | P21 固定三核集成 | P29 LLM 选择的数值策略 |
 
-`track_lifecycle.py --track <id> --stage verify` 不重训模型，而是对已归档开发证据进行反伪完成校验：默认配置、候选动作、预测效应、晋级结论任一漂移即失败。
+`track_lifecycle.py --track <id> --stage verify` 仍是底层证据核验器，不重训模型；
+统一 CLI 在其上补齐 adapter/manifest 一致性、依赖闭包和结构化 trace。默认配置、候选动作、
+预测效应、晋级结论或接线任一漂移都会失败。用户手册见 `_codebook/six_track_pipelines.md`。
 
 ②③的 P32 runner 分别为 `_pipelines/02_task_datasets/facies/p32_hybrid_agent_optimizer.py` 和 `_pipelines/02_task_datasets/reservoir/p32_hybrid_agent_optimizer.py`。两者只把 LLM 用作有界候选生成器，最终排序、预算和 promotion 由确定性代码执行。
 

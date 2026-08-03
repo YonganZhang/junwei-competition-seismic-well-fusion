@@ -104,7 +104,7 @@
 | P31 智能体优化与管线注册 | ✅ | 1/1 | 六赛道 P29/P30/默认配置、六个独立 manifest、七段 lifecycle CLI、registry、gate 与机器 stamp 已合入主仓；doctor 显示 8/8 pipeline fresh。详见 `_findings/P31_agent_optimizer_and_six_pipeline_registration_audit.md`。 |
 | P32 混合智能体优化 | ✅ | 1/1 | ②③完成“LLM 候选生成 + 确定性预算调度”真实 development pilot 与独立复跑。③相对确定性策略主指标改善 `4.2696%`、3/3 seed 全胜；②等均 mIoU 改善 `+0.024699`，F3 `+0.049397`、Penobscot 不降。完整候选池不完全稳定，但最终可执行决策与指标稳定；frozen test 未读取。详见 `_findings/P32_hybrid_agent_optimizer_results.md`。 |
 | P33 四赛道混合扩展 | 🔄 | 1/4 | ④完成真实 matched-budget pilot 与独立复跑：智能体相对确定性端点 `+0.027373`，但相对现默认 A0 `-0.013750`，共同护栏拒绝假晋级并保留 `depth=3/eta=0.1/rounds=60`。下一步推进⑥重建。详见 `_findings/P33_lithofacies_incumbent_guard_prevents_false_promotion.md`。 |
-| P34 Pipeline 模块化 | 🔄 | 0/4 | 正在建立共享运行合同、六赛道 adapter、统一 CodeBook 与防漏门禁；不改科学模型、不重训、不调用外部 LLM。详见 `_phases/P34_six_track_pipeline_modularization.md`。 |
+| P34 Pipeline 模块化 | ✅ | 4/4 | 六条独立 Pipeline、共享运行时、赛道 adapter、CodeBook、registry 与防漏门禁已完成；14 项运行时测试、3 项 lifecycle 回归、42 阶段核验和 Claude 独立终审通过，六条 manifest 验签均已刷新。详见 `_phases/P34_six_track_pipeline_modularization.md`。 |
 
 ## 协作与决策权边界
 

@@ -46,5 +46,5 @@ steps:
     params: {track: facies, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/facies/_outputs/p32_hybrid_agent_optimizer/independent_verification.json]
-verified_steps_hash: e4068486d3473b8857219373977335f8b91ce994065b1a9f17d194d07617f56d
-verified_at_commit: d6864950ed0c8461ef6cff589fd681fa25b0bb2b
+verified_steps_hash: 441fb915cfa34486ff50cbc3a6d9f3f629a15328d0844bc370fb382d01ec51d8
+verified_at_commit: fef7655005696c72e5d3e81b825a70908a8cbb43

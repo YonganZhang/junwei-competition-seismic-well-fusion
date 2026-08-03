@@ -1,0 +1,770 @@
+{
+  "schema_version": "six_track_pipeline_trace/v1",
+  "status": "PASS",
+  "track": "all",
+  "through_stage": "verify",
+  "started_at": "2026-08-03T04:06:42.786460+00:00",
+  "preflight": {
+    "schema_version": "six_track_pipeline_preflight/v1",
+    "status": "PASS",
+    "intent": "verify",
+    "adapter_count": 6,
+    "tracks": [
+      "fault",
+      "facies",
+      "property",
+      "lithofacies",
+      "sweetspot",
+      "reconstruction"
+    ],
+    "selected_track": "all",
+    "through_stage": "verify"
+  },
+  "pipelines": [
+    {
+      "schema_version": "six_track_pipeline_trace/v1",
+      "status": "PASS",
+      "track": "fault",
+      "through_stage": "verify",
+      "started_at": "2026-08-03T04:06:42.786495+00:00",
+      "preflight": {
+        "schema_version": "six_track_pipeline_preflight/v1",
+        "status": "PASS",
+        "intent": "verify",
+        "adapter_count": 6,
+        "tracks": [
+          "fault",
+          "facies",
+          "property",
+          "lithofacies",
+          "sweetspot",
+          "reconstruction"
+        ],
+        "selected_track": "all",
+        "through_stage": "verify"
+      },
+      "stages": [
+        {
+          "stage": "validate",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "fault",
+            "--stage",
+            "validate"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.066788,
+          "stdout_sha256": "8fa09e105b202c2c96a9bf3d485701f8a61e9262c0e3db0f673d29676c55700a"
+        },
+        {
+          "stage": "prepare",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "fault",
+            "--stage",
+            "prepare"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.068065,
+          "stdout_sha256": "d3fdb34c37e09df465115f9d9c9752655f953b2870879b6cecf497984d7248bd"
+        },
+        {
+          "stage": "baseline",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "fault",
+            "--stage",
+            "baseline"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.075371,
+          "stdout_sha256": "0fad85008fad4f6193067a6d3bed705c35463ad8b8c2e5d72196fe024f48d2e2"
+        },
+        {
+          "stage": "optimize",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "fault",
+            "--stage",
+            "optimize"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.070296,
+          "stdout_sha256": "5ca2dca2eaeee21cc24e317e62fd3df1520b9b394ce3b3a9a8bc074e63f3b617"
+        },
+        {
+          "stage": "promote",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "fault",
+            "--stage",
+            "promote"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.074803,
+          "stdout_sha256": "617e090648d3b971958ad99b63632687542d78a3ab86a66661ca5995ddf124eb"
+        },
+        {
+          "stage": "refit",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "fault",
+            "--stage",
+            "refit"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.067107,
+          "stdout_sha256": "5fa2261617795ebee16343f157e44221e27cfd4ec79158d2bf122e89524ddd95"
+        },
+        {
+          "stage": "verify",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "fault",
+            "--stage",
+            "verify"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.071128,
+          "stdout_sha256": "bb8098ca4babfc028b2643138b39723f671cefd2ec75627d79790131a7a770ba"
+        }
+      ],
+      "finished_at": "2026-08-03T04:06:43.280754+00:00"
+    },
+    {
+      "schema_version": "six_track_pipeline_trace/v1",
+      "status": "PASS",
+      "track": "facies",
+      "through_stage": "verify",
+      "started_at": "2026-08-03T04:06:43.280824+00:00",
+      "preflight": {
+        "schema_version": "six_track_pipeline_preflight/v1",
+        "status": "PASS",
+        "intent": "verify",
+        "adapter_count": 6,
+        "tracks": [
+          "fault",
+          "facies",
+          "property",
+          "lithofacies",
+          "sweetspot",
+          "reconstruction"
+        ],
+        "selected_track": "all",
+        "through_stage": "verify"
+      },
+      "stages": [
+        {
+          "stage": "validate",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "facies",
+            "--stage",
+            "validate"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.053764,
+          "stdout_sha256": "7c163b9a1e08e9b19eb76ecdf84bbaeb69992aa774e7c89c306420fa5d99ce58"
+        },
+        {
+          "stage": "prepare",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "facies",
+            "--stage",
+            "prepare"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.049485,
+          "stdout_sha256": "20550ec5e038b9469fcf4e1c9c9f2cd8216c31d8a468b557348af4a82b6224d0"
+        },
+        {
+          "stage": "baseline",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "facies",
+            "--stage",
+            "baseline"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.04829,
+          "stdout_sha256": "acac32b1cb8226345356f0f79827cada2ef39a46381bc5da15bb57114a173312"
+        },
+        {
+          "stage": "optimize",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "facies",
+            "--stage",
+            "optimize"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.04873,
+          "stdout_sha256": "e8ff8e33115eed85273e60c0b384b2814380ffdfa558ff70686d85a14a0da468"
+        },
+        {
+          "stage": "promote",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "facies",
+            "--stage",
+            "promote"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.047558,
+          "stdout_sha256": "e6636533e8619c88be080a071f6235fc76c7feeb0ac407fcd3b826e8292015a3"
+        },
+        {
+          "stage": "refit",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "facies",
+            "--stage",
+            "refit"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.049591,
+          "stdout_sha256": "acf979604b077824ec87d507a7986e7109d1e8aaf9bc34d0ea0c467a694566ab"
+        },
+        {
+          "stage": "verify",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "facies",
+            "--stage",
+            "verify"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.049147,
+          "stdout_sha256": "b76b46adbe10eb5f6821ae90bee552731ced1f80296f68e0e97eb2b23862e758"
+        }
+      ],
+      "finished_at": "2026-08-03T04:06:43.628019+00:00"
+    },
+    {
+      "schema_version": "six_track_pipeline_trace/v1",
+      "status": "PASS",
+      "track": "property",
+      "through_stage": "verify",
+      "started_at": "2026-08-03T04:06:43.628103+00:00",
+      "preflight": {
+        "schema_version": "six_track_pipeline_preflight/v1",
+        "status": "PASS",
+        "intent": "verify",
+        "adapter_count": 6,
+        "tracks": [
+          "fault",
+          "facies",
+          "property",
+          "lithofacies",
+          "sweetspot",
+          "reconstruction"
+        ],
+        "selected_track": "all",
+        "through_stage": "verify"
+      },
+      "stages": [
+        {
+          "stage": "validate",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "property",
+            "--stage",
+            "validate"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.048637,
+          "stdout_sha256": "ceef4396044ad039f2415bbc06d5d51ff71ede752a57763338f38f776342a9c6"
+        },
+        {
+          "stage": "prepare",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "property",
+            "--stage",
+            "prepare"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.046618,
+          "stdout_sha256": "1d0b9414073775bf0ebc157d648ea73087c62a783e09f4c93cde12fcb4839489"
+        },
+        {
+          "stage": "baseline",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "property",
+            "--stage",
+            "baseline"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.049303,
+          "stdout_sha256": "662fb260407c66bbaaa9e3dc73bf425be6d2656e352b76c8bb7c4f15134669c9"
+        },
+        {
+          "stage": "optimize",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "property",
+            "--stage",
+            "optimize"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.048731,
+          "stdout_sha256": "51db5a05cad7fa91b7212f79d018c882b36179bf77689d96709ec86cf2302d60"
+        },
+        {
+          "stage": "promote",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "property",
+            "--stage",
+            "promote"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.047729,
+          "stdout_sha256": "5c3ac0e52f88b8151479dd52c2a800c8e760fcf218208be9756645604926c504"
+        },
+        {
+          "stage": "refit",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "property",
+            "--stage",
+            "refit"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.046066,
+          "stdout_sha256": "cd8edc5686fc0baba52ef6cbb55afbfeaeaf4451f53c28cedbaeb0eb08a8149d"
+        },
+        {
+          "stage": "verify",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "property",
+            "--stage",
+            "verify"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.049568,
+          "stdout_sha256": "05b258b8341be693abcaf4e72a3cafba3f247776620ed8704cdd237c875f4b2b"
+        }
+      ],
+      "finished_at": "2026-08-03T04:06:43.965503+00:00"
+    },
+    {
+      "schema_version": "six_track_pipeline_trace/v1",
+      "status": "PASS",
+      "track": "lithofacies",
+      "through_stage": "verify",
+      "started_at": "2026-08-03T04:06:43.965588+00:00",
+      "preflight": {
+        "schema_version": "six_track_pipeline_preflight/v1",
+        "status": "PASS",
+        "intent": "verify",
+        "adapter_count": 6,
+        "tracks": [
+          "fault",
+          "facies",
+          "property",
+          "lithofacies",
+          "sweetspot",
+          "reconstruction"
+        ],
+        "selected_track": "all",
+        "through_stage": "verify"
+      },
+      "stages": [
+        {
+          "stage": "validate",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "lithofacies",
+            "--stage",
+            "validate"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.057882,
+          "stdout_sha256": "207d52d9f7d7fc8780b02d4551dc4e232d5d37108168c2fb26644d0dd43560a3"
+        },
+        {
+          "stage": "prepare",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "lithofacies",
+            "--stage",
+            "prepare"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.060611,
+          "stdout_sha256": "74bc6823df99eabe261a0d01b3fc1e18b2a8d2f35f6f582c37f1bc4e37053e40"
+        },
+        {
+          "stage": "baseline",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "lithofacies",
+            "--stage",
+            "baseline"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.059266,
+          "stdout_sha256": "5f10196873799cccce5b3d3ada3c643b138b994a768f0612ec97f18c2c36b71d"
+        },
+        {
+          "stage": "optimize",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "lithofacies",
+            "--stage",
+            "optimize"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.057367,
+          "stdout_sha256": "6a1b82a0cfb7b7bf3b4a4a4f575f29fcde54a924b24c50d5b58cf2b843718907"
+        },
+        {
+          "stage": "promote",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "lithofacies",
+            "--stage",
+            "promote"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.098184,
+          "stdout_sha256": "a36b970f8d9e985a4334d78494b72440f003a29213ebfca3c225a2ef8d4e4643"
+        },
+        {
+          "stage": "refit",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "lithofacies",
+            "--stage",
+            "refit"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.049295,
+          "stdout_sha256": "e795eea1e835889bd7523739d7c314ae16e6508f4af524014f1ce1302ed0648b"
+        },
+        {
+          "stage": "verify",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "lithofacies",
+            "--stage",
+            "verify"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.056856,
+          "stdout_sha256": "747f41f9861d393cf3e04b1a6dbf23552892dfa0fc8f65d9351e58fa1655e6bd"
+        }
+      ],
+      "finished_at": "2026-08-03T04:06:44.405627+00:00"
+    },
+    {
+      "schema_version": "six_track_pipeline_trace/v1",
+      "status": "PASS",
+      "track": "sweetspot",
+      "through_stage": "verify",
+      "started_at": "2026-08-03T04:06:44.405708+00:00",
+      "preflight": {
+        "schema_version": "six_track_pipeline_preflight/v1",
+        "status": "PASS",
+        "intent": "verify",
+        "adapter_count": 6,
+        "tracks": [
+          "fault",
+          "facies",
+          "property",
+          "lithofacies",
+          "sweetspot",
+          "reconstruction"
+        ],
+        "selected_track": "all",
+        "through_stage": "verify"
+      },
+      "stages": [
+        {
+          "stage": "validate",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "sweetspot",
+            "--stage",
+            "validate"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.048585,
+          "stdout_sha256": "8b2e6e375ee2a1b7dce84c43019d69e2749f6a64727d40ee32f104348aaac66c"
+        },
+        {
+          "stage": "prepare",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "sweetspot",
+            "--stage",
+            "prepare"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.071021,
+          "stdout_sha256": "28d2a2aa24e5a8aa89ef001acb7563631006c305b8a61f73e7077e692d25a8d5"
+        },
+        {
+          "stage": "baseline",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "sweetspot",
+            "--stage",
+            "baseline"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.043584,
+          "stdout_sha256": "1cb068c0f7d43b3d9f88540d462a4ec72d58a31e60e8efb66592e553c172fe29"
+        },
+        {
+          "stage": "optimize",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "sweetspot",
+            "--stage",
+            "optimize"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.050508,
+          "stdout_sha256": "88ee2249fc382a556b01899be0efaf5093b2fa480919dce89a3786a1c36d62be"
+        },
+        {
+          "stage": "promote",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "sweetspot",
+            "--stage",
+            "promote"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.048311,
+          "stdout_sha256": "c0e1862002a5eba811181aa94c533809b6ceb78708fb6f759014ccd5ac7768c5"
+        },
+        {
+          "stage": "refit",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "sweetspot",
+            "--stage",
+            "refit"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.047395,
+          "stdout_sha256": "2ff843e3490ba548c32eabb43dc8b635fa113118d167b2c5704ee0d3f837d464"
+        },
+        {
+          "stage": "verify",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "sweetspot",
+            "--stage",
+            "verify"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.046577,
+          "stdout_sha256": "67ee9de2bef4537bdc55088e6730203a9326fd192cba05f43cd00ebd16e74026"
+        }
+      ],
+      "finished_at": "2026-08-03T04:06:44.762373+00:00"
+    },
+    {
+      "schema_version": "six_track_pipeline_trace/v1",
+      "status": "PASS",
+      "track": "reconstruction",
+      "through_stage": "verify",
+      "started_at": "2026-08-03T04:06:44.762433+00:00",
+      "preflight": {
+        "schema_version": "six_track_pipeline_preflight/v1",
+        "status": "PASS",
+        "intent": "verify",
+        "adapter_count": 6,
+        "tracks": [
+          "fault",
+          "facies",
+          "property",
+          "lithofacies",
+          "sweetspot",
+          "reconstruction"
+        ],
+        "selected_track": "all",
+        "through_stage": "verify"
+      },
+      "stages": [
+        {
+          "stage": "validate",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "reconstruction",
+            "--stage",
+            "validate"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.04857,
+          "stdout_sha256": "33a57ecd0543d1c53f1a40670588236c5cab1e13c15645e5acfc15dc1aa2b458"
+        },
+        {
+          "stage": "prepare",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "reconstruction",
+            "--stage",
+            "prepare"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.047937,
+          "stdout_sha256": "58577c7e614db18f7aa9501b11edcfbb1ae68abeb5c91741b70634d3d253b846"
+        },
+        {
+          "stage": "baseline",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "reconstruction",
+            "--stage",
+            "baseline"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.047327,
+          "stdout_sha256": "ce64c4e69cad60340060f1049a422a7bf4e368b93fb413263dac3a0ff4cd6488"
+        },
+        {
+          "stage": "optimize",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "reconstruction",
+            "--stage",
+            "optimize"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.038732,
+          "stdout_sha256": "4ec8ae6b6d4c913314bc148d5d26115eba0c52d5172092dbcebc5f8ba9697fa2"
+        },
+        {
+          "stage": "promote",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "reconstruction",
+            "--stage",
+            "promote"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.046078,
+          "stdout_sha256": "4c1dbffce42fd1625c2cf8fdff7d10d1f699f18244ada9fbe4392ef3b3dbad3a"
+        },
+        {
+          "stage": "refit",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "reconstruction",
+            "--stage",
+            "refit"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.048473,
+          "stdout_sha256": "a9276c3c2acd0804d2382c9a12db8ecaa54f19b22d506dd521a609e935fc9620"
+        },
+        {
+          "stage": "verify",
+          "command": [
+            "{python}",
+            "_pipelines/02_task_datasets/track_lifecycle.py",
+            "--track",
+            "reconstruction",
+            "--stage",
+            "verify"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.049258,
+          "stdout_sha256": "8a6acd84d633f078fe0151acab6f068b7fab5d0a286abbd11ab2fb116b13aa5f"
+        }
+      ],
+      "finished_at": "2026-08-03T04:06:45.089412+00:00"
+    }
+  ],
+  "finished_at": "2026-08-03T04:06:45.089433+00:00"
+}
