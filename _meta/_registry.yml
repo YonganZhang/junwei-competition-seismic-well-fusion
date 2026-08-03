@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-08-03 (P33 lithofacies incumbent-guard acceptance)
+last_synced: 2026-08-03 (P34 six-track pipeline modularization)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -85,6 +85,17 @@ code_domains:
       validate/prepare/baseline/optimize/promote/refit/verify；读取各赛道已归档的
       P29/P30/P32/P33/default 证据，验证默认模型、候选动作和晋级结论一致。
       拒绝路线是合法结果，缺失字段、漂移结论或假晋级直接失败。
+
+  - id: six_track_pipeline_runtime
+    path: _code/six_track_pipeline
+    type: shared_library
+    status: active
+    owner: project
+    description: >
+      P34 六赛道统一 Pipeline 接口：发现六个赛道 adapter，固定
+      validate/prepare/baseline/optimize/promote/refit/verify 七段顺序，提供
+      list/plan/preflight/verify 公共入口。依赖闭包阻止跳过预处理或智能体阶段；
+      execute 意图在参数、输入或可执行适配未齐时于任何动作前失败。
 
   - id: research_visualization
     path: _pipelines/05_research_visualization_expansion
@@ -235,6 +246,55 @@ entrypoints:
     status: active
     owner: project
     description: "Run one evidence-backed lifecycle stage for any registered track; parameters select track and stage, and contradictory promotion evidence fails loudly."
+
+  - id: six_track_pipeline_cli
+    path: _code/six_track_pipeline/cli.py
+    type: pipeline_entry
+    status: active
+    owner: project
+    description: "List, plan, preflight and verify the six track pipelines through one fail-closed command surface."
+
+  - id: fault_pipeline_adapter
+    path: _pipelines/02_task_datasets/fault/pipeline_adapter.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Map the fault scientific modules, preprocessing and agent-governed optimization into the seven-stage contract."
+
+  - id: facies_pipeline_adapter
+    path: _pipelines/02_task_datasets/facies/pipeline_adapter.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Map the seismic-facies scientific modules, preprocessing and hybrid-agent optimization into the seven-stage contract."
+
+  - id: property_pipeline_adapter
+    path: _pipelines/02_task_datasets/reservoir/pipeline_adapter.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Map the reservoir-property scientific modules, preprocessing and hybrid-agent optimization into the seven-stage contract."
+
+  - id: lithofacies_pipeline_adapter
+    path: _pipelines/02_task_datasets/lithofacies/pipeline_adapter.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Map the lithofacies scientific modules, preprocessing and incumbent-guarded agent optimization into the seven-stage contract."
+
+  - id: sweetspot_pipeline_adapter
+    path: _pipelines/02_task_datasets/sweetspot/pipeline_adapter.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Map the seven-target sweet-spot modules, preprocessing and fail-closed agent route into the seven-stage contract."
+
+  - id: reconstruction_pipeline_adapter
+    path: _pipelines/02_task_datasets/reconstruction/pipeline_adapter.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Map the 3-D reconstruction modules, preprocessing and agent-governed numerical search into the seven-stage contract."
 
   - id: domain_visualization_discover
     path: _pipelines/03_domain_visualization_delivery/step_00_discover.py
@@ -412,6 +472,12 @@ entrypoints:
     description: "Lithofacies matched-budget hybrid search, independent replay and incumbent-A0 guard preventing selection-overfit false promotion."
 
 cross_domain_edges:
+  - from: six_track_pipeline_runtime
+    to: six_track_agentic_lifecycle
+    relation: plans_and_runs_stage_verification
+  - from: six_track_pipeline_runtime
+    to: task_datasets
+    relation: loads_track_adapters
   - from: six_track_agentic_lifecycle
     to: task_datasets
     relation: validates_archived_decisions

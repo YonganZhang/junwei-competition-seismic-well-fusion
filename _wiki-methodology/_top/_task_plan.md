@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P33 剩余四赛道混合智能体扩展] P32 已证明②③的 LLM 候选生成配合确定性预算调度可稳定晋级；当前依次推进④岩相、⑥重建、①断层与⑤甜点，保持选择/promotion 隔离、匹配预算和 fail-closed 门禁。**
+> **🧭 当前: [P34 六赛道 Pipeline 模块化] 将六赛道统一为固定七阶段接口，补齐真实预处理入口、智能体角色、依赖闭包、预检和结构化运行证据；P33 剩余科研优化暂停但不回退。**
 >   2026-08-03 增量：① P30 连续三维开发体已集成，CIG-Bench guard F1=`0.003555` 低于 baseline `0.017641`，不晋级；忽略目录中的 joblib 已转为哈希绑定的可移植系数检查点，在完整 P30 体上复算指标至 12 位小数一致。④默认 XGBoost 已升级为 `depth=3/eta=0.1/rounds=60`，Macro-F1=`0.213349`，与 MOMENT/LLM 无关。六赛道聚焦回归共 61 项通过。
 >   P21 在开发 OOF 上相对 PyKrige RMSE 改善 `2.5144%`，相对 P19 改善 `0.0613%`；P24 同场区历史版本迁移中相对重拟合 PyKrige 改善 `1.4529%`，但不声称跨场区、fresh blind 或 LoRA 因果贡献。
 >   六赛道 baseline pipeline 候选已完成真实数据端到端验收和可移植性收口；
@@ -104,6 +104,7 @@
 | P31 智能体优化与管线注册 | ✅ | 1/1 | 六赛道 P29/P30/默认配置、六个独立 manifest、七段 lifecycle CLI、registry、gate 与机器 stamp 已合入主仓；doctor 显示 8/8 pipeline fresh。详见 `_findings/P31_agent_optimizer_and_six_pipeline_registration_audit.md`。 |
 | P32 混合智能体优化 | ✅ | 1/1 | ②③完成“LLM 候选生成 + 确定性预算调度”真实 development pilot 与独立复跑。③相对确定性策略主指标改善 `4.2696%`、3/3 seed 全胜；②等均 mIoU 改善 `+0.024699`，F3 `+0.049397`、Penobscot 不降。完整候选池不完全稳定，但最终可执行决策与指标稳定；frozen test 未读取。详见 `_findings/P32_hybrid_agent_optimizer_results.md`。 |
 | P33 四赛道混合扩展 | 🔄 | 1/4 | ④完成真实 matched-budget pilot 与独立复跑：智能体相对确定性端点 `+0.027373`，但相对现默认 A0 `-0.013750`，共同护栏拒绝假晋级并保留 `depth=3/eta=0.1/rounds=60`。下一步推进⑥重建。详见 `_findings/P33_lithofacies_incumbent_guard_prevents_false_promotion.md`。 |
+| P34 Pipeline 模块化 | 🔄 | 0/4 | 正在建立共享运行合同、六赛道 adapter、统一 CodeBook 与防漏门禁；不改科学模型、不重训、不调用外部 LLM。详见 `_phases/P34_six_track_pipeline_modularization.md`。 |
 
 ## 协作与决策权边界
 

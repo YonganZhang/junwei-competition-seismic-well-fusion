@@ -6,42 +6,42 @@ entry_role: main
 verification_method: validate
 steps:
   - id: validate
-    ref: code:track_lifecycle_verify
+    ref: code:lithofacies_pipeline_adapter
     params: {track: lithofacies, stage: validate}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/default_baseline/summary.json]
   - id: prepare
-    ref: code:track_lifecycle_verify
+    ref: code:lithofacies_pipeline_adapter
     needs: [validate]
     params: {track: lithofacies, stage: prepare}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/default_baseline/summary.json]
   - id: baseline
-    ref: code:track_lifecycle_verify
+    ref: code:lithofacies_pipeline_adapter
     needs: [prepare]
     params: {track: lithofacies, stage: baseline}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/default_baseline/summary.json]
   - id: optimize
-    ref: code:track_lifecycle_verify
+    ref: code:lithofacies_pipeline_adapter
     needs: [baseline]
     params: {track: lithofacies, stage: optimize}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/p33_hybrid_agent_optimizer/summary.json]
   - id: promote
-    ref: code:track_lifecycle_verify
+    ref: code:lithofacies_pipeline_adapter
     needs: [optimize]
     params: {track: lithofacies, stage: promote}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/default_baseline/summary.json]
   - id: refit
-    ref: code:track_lifecycle_verify
+    ref: code:lithofacies_pipeline_adapter
     needs: [promote]
     params: {track: lithofacies, stage: refit}
     success:
       outputs_exist: [_pipelines/02_task_datasets/lithofacies/_outputs/default_baseline/summary.json]
   - id: verify
-    ref: code:track_lifecycle_verify
+    ref: code:lithofacies_pipeline_adapter
     needs: [refit]
     params: {track: lithofacies, stage: verify}
     success:

@@ -6,42 +6,42 @@ entry_role: main
 verification_method: validate
 steps:
   - id: validate
-    ref: code:track_lifecycle_verify
+    ref: code:sweetspot_pipeline_adapter
     params: {track: sweetspot, stage: validate}
     success:
       outputs_exist: [_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json]
   - id: prepare
-    ref: code:track_lifecycle_verify
+    ref: code:sweetspot_pipeline_adapter
     needs: [validate]
     params: {track: sweetspot, stage: prepare}
     success:
       outputs_exist: [_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json]
   - id: baseline
-    ref: code:track_lifecycle_verify
+    ref: code:sweetspot_pipeline_adapter
     needs: [prepare]
     params: {track: sweetspot, stage: baseline}
     success:
       outputs_exist: [_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json]
   - id: optimize
-    ref: code:track_lifecycle_verify
+    ref: code:sweetspot_pipeline_adapter
     needs: [baseline]
     params: {track: sweetspot, stage: optimize}
     success:
       outputs_exist: [_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json]
   - id: promote
-    ref: code:track_lifecycle_verify
+    ref: code:sweetspot_pipeline_adapter
     needs: [optimize]
     params: {track: sweetspot, stage: promote}
     success:
       outputs_exist: [_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json]
   - id: refit
-    ref: code:track_lifecycle_verify
+    ref: code:sweetspot_pipeline_adapter
     needs: [promote]
     params: {track: sweetspot, stage: refit}
     success:
       outputs_exist: [_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json]
   - id: verify
-    ref: code:track_lifecycle_verify
+    ref: code:sweetspot_pipeline_adapter
     needs: [refit]
     params: {track: sweetspot, stage: verify}
     success:

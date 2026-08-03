@@ -6,42 +6,42 @@ entry_role: main
 verification_method: validate
 steps:
   - id: validate
-    ref: code:track_lifecycle_verify
+    ref: code:fault_pipeline_adapter
     params: {track: fault, stage: validate}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
   - id: prepare
-    ref: code:track_lifecycle_verify
+    ref: code:fault_pipeline_adapter
     needs: [validate]
     params: {track: fault, stage: prepare}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
   - id: baseline
-    ref: code:track_lifecycle_verify
+    ref: code:fault_pipeline_adapter
     needs: [prepare]
     params: {track: fault, stage: baseline}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
   - id: optimize
-    ref: code:track_lifecycle_verify
+    ref: code:fault_pipeline_adapter
     needs: [baseline]
     params: {track: fault, stage: optimize}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
   - id: promote
-    ref: code:track_lifecycle_verify
+    ref: code:fault_pipeline_adapter
     needs: [optimize]
     params: {track: fault, stage: promote}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
   - id: refit
-    ref: code:track_lifecycle_verify
+    ref: code:fault_pipeline_adapter
     needs: [promote]
     params: {track: fault, stage: refit}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p29_agent_action_effect/summary.json]
   - id: verify
-    ref: code:track_lifecycle_verify
+    ref: code:fault_pipeline_adapter
     needs: [refit]
     params: {track: fault, stage: verify}
     success:
