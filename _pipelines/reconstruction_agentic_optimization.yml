@@ -46,5 +46,5 @@ steps:
     params: {track: reconstruction, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/verification.json]
-verified_steps_hash: 8de94e0cdbf73ea707fa813c300ed9a1e1b290eba78a9f8ffef00ebebb13528b
-verified_at_commit: fef7655005696c72e5d3e81b825a70908a8cbb43
+verified_steps_hash: 0c7a7d4f21b46f1b64a828d601d9867a99be5ea4afb8be278552e129e75243c8
+verified_at_commit: bfc2f7ec4f43ff744d5f4efc19556a0508bb6efb

@@ -46,5 +46,5 @@ steps:
     params: {track: fault, stage: verify}
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/manifest.json]
-verified_steps_hash: 3d2da57dbedd84229db4245cb67a5a40537196cad4c291514ff5e90a4d282edb
-verified_at_commit: fef7655005696c72e5d3e81b825a70908a8cbb43
+verified_steps_hash: 6859ee768bc3a8a64543c0102ca758cd3b5c60109089d86128b58d34e5db1d0a
+verified_at_commit: bfc2f7ec4f43ff744d5f4efc19556a0508bb6efb
