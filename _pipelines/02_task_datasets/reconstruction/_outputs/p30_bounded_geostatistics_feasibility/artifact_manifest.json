@@ -1,0 +1,55 @@
+{
+  "artifacts": [
+    {
+      "bytes": 25364,
+      "path": "_pipelines/02_task_datasets/reconstruction/p29_agent_action_effect_repair.py",
+      "sha256": "1c7e7183fa5d8ef157e4d148e945f977e8d909f570a865f188c014ce33acc711"
+    },
+    {
+      "bytes": 6758,
+      "path": "_pipelines/02_task_datasets/reconstruction/_tests/test_p29_agent_action_effect_repair.py",
+      "sha256": "d1ec37b8c4049fe70724b0179095c81e6fb8effba5aa6a6e64df118e5cbd7940"
+    },
+    {
+      "bytes": 48151,
+      "path": "_pipelines/02_task_datasets/reconstruction/p30_bounded_geostatistics_feasibility.py",
+      "sha256": "bdf460fdd5daf669102ee273ae7c281d0f5985b317fa22d49972bb268dd287c4"
+    },
+    {
+      "bytes": 5339,
+      "path": "_pipelines/02_task_datasets/reconstruction/_tests/test_p30_bounded_geostatistics_feasibility.py",
+      "sha256": "e6878017955fd348ece252e0c46cbe7d6f38f4698554572a2d840f0e1829748e"
+    },
+    {
+      "bytes": 742,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility/evidence.md",
+      "sha256": "2f7e91f6bdd56633f7944cff3e4fccad6f9330c3cd9d7e6b784d5935eb32d756"
+    },
+    {
+      "bytes": 3549,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility/finding.md",
+      "sha256": "656c3a1528ad1119a7457e5adf19a90174a9f43b75b0a4cbc0b553bcaeae70a7"
+    },
+    {
+      "bytes": 3554,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility/fusion_io_contract.json",
+      "sha256": "42f2d0d3b157c1140a7c56f517bb5a4d2bcbbfccb31d0d2319695cb4c84b2162"
+    },
+    {
+      "bytes": 515240,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility/predictions.npz",
+      "sha256": "3365816659ba03e9ab901743604af8df1fdb6480d7fa483554680746a3fc0c9f"
+    },
+    {
+      "bytes": 86179,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility/summary.json",
+      "sha256": "f05ba91c1ab6de7a76890fa683d0c9f12fd9c8a447ed3002cb5a71b23c6bf9c4"
+    },
+    {
+      "bytes": 935,
+      "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility/verification.json",
+      "sha256": "6159db23265e356c0d61730f386aab183bca27df412139b216e9c0510729b645"
+    }
+  ],
+  "schema_version": "reconstruction-p30-artifact-manifest/v1"
+}

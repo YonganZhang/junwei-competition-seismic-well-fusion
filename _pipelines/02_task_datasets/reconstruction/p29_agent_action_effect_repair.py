@@ -187,28 +187,122 @@ def predictor_config(parameters: Mapping[str, Any]) -> dict[str, Any]:
     return {"schema_version": "p29-predictor-config/v1", "parameters": json.loads(json.dumps(parameters))}
 
 
-def replay_predictor(config: Mapping[str, Any], *, coordinates: np.ndarray,
-                     values: np.ndarray, query: np.ndarray,
-                     seismic: np.ndarray | None = None,
-                     latent: np.ndarray | None = None) -> np.ndarray:
-    """Replay the same metric construction used by P28's action bank."""
+def replay_predictor(
+    config: Mapping[str, Any],
+    *,
+    coordinates: np.ndarray,
+    values: np.ndarray,
+    query: np.ndarray,
+    seismic: np.ndarray | None = None,
+    query_seismic: np.ndarray | None = None,
+    latent: np.ndarray | None = None,
+    query_latent: np.ndarray | None = None,
+    query_baseline: np.ndarray | None = None,
+) -> np.ndarray:
+    """Replay the P29 predictor from prepared train/query arrays.
+
+    ``seismic_weights`` is an ensemble of scalar metric weights, matching P21
+    and P28; it is not a per-channel multiplier.  Secondary variables must be
+    supplied on both sides so a serialized configuration cannot silently
+    replace query covariates with zeros.  The supplied baseline is required
+    whenever the configured blend does not put all mass on the local kernel.
+    """
+
     params = config.get("parameters", config)
+    c = np.asarray(coordinates, dtype=np.float64)
+    q = np.asarray(query, dtype=np.float64)
+    target = np.asarray(values, dtype=np.float64)
+    if c.ndim != 2 or q.ndim != 2 or c.shape[1] != 3 or q.shape[1] != 3:
+        raise ValueError("coordinates and query must have shape [n, 3]")
+    if target.shape != (len(c),):
+        raise ValueError("values must contain one scalar per training coordinate")
+
+    def paired_features(
+        train: np.ndarray | None,
+        requested: np.ndarray | None,
+        *,
+        name: str,
+    ) -> tuple[np.ndarray, np.ndarray]:
+        if train is None and requested is None:
+            return np.empty((len(c), 0)), np.empty((len(q), 0))
+        if train is None or requested is None:
+            raise ValueError(f"{name} and query_{name} must be supplied together")
+        train_array = np.asarray(train, dtype=np.float64)
+        query_array = np.asarray(requested, dtype=np.float64)
+        if train_array.ndim == 1:
+            train_array = train_array[:, None]
+        if query_array.ndim == 1:
+            query_array = query_array[:, None]
+        if (
+            train_array.shape[0] != len(c)
+            or query_array.shape[0] != len(q)
+            or train_array.shape[1] != query_array.shape[1]
+        ):
+            raise ValueError(f"{name} train/query feature shapes are incompatible")
+        return train_array, query_array
+
+    train_seismic, requested_seismic = paired_features(
+        seismic, query_seismic, name="seismic"
+    )
+    train_latent, requested_latent = paired_features(
+        latent, query_latent, name="latent"
+    )
+    vertical = float(params.get("vertical_weight", 4.0))
+    train_coordinate = np.array(c, copy=True)
+    query_coordinate = np.array(q, copy=True)
+    train_coordinate[:, 2] *= vertical
+    query_coordinate[:, 2] *= vertical
+    foundation_weight = float(params.get("foundation_weight", 0.1))
+    seismic_weights = tuple(float(v) for v in params.get("seismic_weights", [0.0]))
+    if not seismic_weights:
+        raise ValueError("seismic_weights must contain at least one scalar")
+    neighbours = min(int(params.get("neighbours", 64)), len(c))
+    if neighbours < 1:
+        raise ValueError("neighbours must be positive")
     kernel = str(params.get("kernel", "inverse_distance"))
     power = float(params.get("distance_power", 1.5))
-    vertical = float(params.get("vertical_weight", 4.0))
-    seismic = np.zeros((len(coordinates), 1)) if seismic is None else np.asarray(seismic, float)
-    latent = np.zeros((len(coordinates), 1)) if latent is None else np.asarray(latent, float)
-    qseis = np.zeros((len(query), seismic.shape[1]))
-    qlatent = np.zeros((len(query), latent.shape[1]))
-    c = np.asarray(coordinates, dtype=float).copy(); q = np.asarray(query, dtype=float).copy()
-    c[:, 2] *= vertical; q[:, 2] *= vertical
-    mix = np.asarray(params.get("seismic_weights", [0.0] * seismic.shape[1]), float)
-    metric_c = np.column_stack([c, seismic * mix[:seismic.shape[1]],
-                                latent * float(params.get("foundation_weight", 0.1))])
-    metric_q = np.column_stack([q, qseis, qlatent])
-    d = np.linalg.norm(metric_q[:, None, :] - metric_c[None, :, :], axis=2)
-    w = p28._kernel_weights(d, family=kernel, power=power, bandwidth=1.0)  # noqa: SLF001
-    return (w @ np.asarray(values, dtype=float)) / w.sum(axis=1)
+
+    components = []
+    for seismic_weight in seismic_weights:
+        metric_c = np.column_stack(
+            [
+                train_coordinate,
+                seismic_weight * train_seismic,
+                foundation_weight * train_latent,
+            ]
+        )
+        metric_q = np.column_stack(
+            [
+                query_coordinate,
+                seismic_weight * requested_seismic,
+                foundation_weight * requested_latent,
+            ]
+        )
+        distance, rows = NearestNeighbors(
+            n_neighbors=neighbours, n_jobs=1
+        ).fit(metric_c).kneighbors(metric_q)
+        bandwidth = max(float(np.median(distance)), 1e-8)
+        weights = p28._kernel_weights(  # noqa: SLF001
+            distance,
+            family=kernel,
+            power=power,
+            bandwidth=bandwidth,
+        )
+        components.append(
+            np.sum(weights * target[rows], axis=1) / np.sum(weights, axis=1)
+        )
+    local_prediction = np.mean(np.stack(components), axis=0)
+    blend = float(params.get("blend_weight", 1.0))
+    if not 0.0 <= blend <= 1.0:
+        raise ValueError("blend_weight must be within [0, 1]")
+    if blend < 1.0:
+        if query_baseline is None:
+            raise ValueError("query_baseline is required when blend_weight < 1")
+        baseline = np.asarray(query_baseline, dtype=np.float64)
+        if baseline.shape != (len(q),):
+            raise ValueError("query_baseline must contain one scalar per query")
+        return (1.0 - blend) * baseline + blend * local_prediction
+    return local_prediction
 
 
 def prediction_hash(prediction: np.ndarray) -> str:
@@ -221,15 +315,19 @@ def build_real_action_bank(*, oof: Any, prepared: Sequence[Mapping[str, Any]], r
     for name, params in specs:
         pred = np.full(len(oof.target), np.nan)
         for row in prepared:
-            fold = row["fold"]; tc = np.asarray(row["train_coordinate"], float).copy(); vc = np.asarray(row["validation_coordinate"], float).copy()
-            vertical = float(params["vertical_weight"]); tc[:, 2] *= vertical; vc[:, 2] *= vertical
-            sw = np.asarray(params["seismic_weights"], float)
-            tm = np.column_stack([tc, row["train_seismic"] * sw, row["train_latent"] * float(params["foundation_weight"])])
-            vm = np.column_stack([vc, row["validation_seismic"] * sw, row["validation_latent"] * float(params["foundation_weight"])])
-            n = min(int(params["neighbours"]), len(tm)); d, ix = NearestNeighbors(n_neighbors=n, n_jobs=1).fit(tm).kneighbors(vm)
-            bw = max(float(np.median(d)), 1e-8); w = p28._kernel_weights(d, family=str(params["kernel"]), power=float(params["distance_power"]), bandwidth=bw)  # noqa: SLF001
-            kp = (w * fold.train_target[ix]).sum(axis=1) / w.sum(axis=1); mask = oof.fold_ids == fold.fold_id
-            pred[mask] = (1.0 - float(params["blend_weight"])) * oof.baseline[mask] + float(params["blend_weight"]) * kp
+            fold = row["fold"]
+            mask = oof.fold_ids == fold.fold_id
+            pred[mask] = replay_predictor(
+                predictor_config(params),
+                coordinates=row["train_coordinate"],
+                values=fold.train_target,
+                query=row["validation_coordinate"],
+                seismic=row["train_seismic"],
+                query_seismic=row["validation_seismic"],
+                latent=row["train_latent"],
+                query_latent=row["validation_latent"],
+                query_baseline=oof.baseline[mask],
+            )
         out[name] = pred
     if any(not np.all(np.isfinite(v)) for v in out.values()): raise RuntimeError("real action bank has incomplete predictions")
     return out
@@ -250,12 +348,19 @@ def run_probe(output_dir: Path) -> dict[str, Any]:
     a0 = predictor_config(p28.A0_PARAMETERS)
     seismic = np.asarray([[0.1, 0.2, 0.3], [0.4, 0.2, 0.1], [0.7, 0.1, 0.2]])
     latent = np.asarray([[0.1], [0.9], [0.3]])
+    query_seismic = np.asarray([[0.2, 0.2, 0.2], [0.6, 0.1, 0.2]])
+    query_latent = np.asarray([[0.2], [0.5]])
+    query_baseline = np.asarray([1.5, 3.0])
     predictions = {"A0": replay_predictor(a0, coordinates=coordinates, values=values, query=query,
-                                           seismic=seismic, latent=latent)}
+                                           seismic=seismic, query_seismic=query_seismic,
+                                           latent=latent, query_latent=query_latent,
+                                           query_baseline=query_baseline)}
     for action in action_registry():
         predictions[action["action_id"]] = replay_predictor(
             predictor_config(action["parameters"]), coordinates=coordinates, values=values, query=query,
-            seismic=seismic, latent=latent)
+            seismic=seismic, query_seismic=query_seismic,
+            latent=latent, query_latent=query_latent,
+            query_baseline=query_baseline)
     held = np.asarray([[0., 0., 0.]])
     purge_demo = p19._rows(held)  # noqa: SLF001
     result = {"schema_version": SCHEMA_VERSION, "probe": True,

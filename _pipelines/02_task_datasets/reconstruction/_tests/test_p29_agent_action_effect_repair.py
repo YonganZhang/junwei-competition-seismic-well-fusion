@@ -29,16 +29,61 @@ class P29Test(unittest.TestCase):
         c = np.array([[0., 0., 0.], [1., 0., 1.], [0., 1., 2.]])
         v = np.array([1., 2., 4.]); q = np.array([[.2, .2, .3]])
         seismic = np.array([[.1,.2,.3],[.4,.2,.1],[.7,.1,.2]])
+        query_seismic = np.array([[.2,.3,.1]])
         latent = np.array([[.1],[.9],[.3]])
-        a0 = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 4., "seismic_weights":[0.,.1,.2], "foundation_weight":.1}), coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
-        changed = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8., "seismic_weights":[0.,.1,.2], "foundation_weight":.1}), coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
+        query_latent = np.array([[.4]])
+        baseline = np.array([1.5])
+        common = {
+            "coordinates": c, "values": v, "query": q,
+            "seismic": seismic, "query_seismic": query_seismic,
+            "latent": latent, "query_latent": query_latent,
+            "query_baseline": baseline,
+        }
+        a0 = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 4., "seismic_weights":[0.,.1,.2], "foundation_weight":.1, "blend_weight":.75, "neighbours":3}), **common)
+        changed = p29.replay_predictor(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8., "seismic_weights":[0.,.1,.2], "foundation_weight":.1, "blend_weight":.75, "neighbours":3}), **common)
         self.assertFalse(np.array_equal(a0, changed))
         with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "config.json"; path.write_text(json.dumps(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8., "seismic_weights":[0.,.1,.2], "foundation_weight":.1})))
+            path = Path(td) / "config.json"; path.write_text(json.dumps(p29.predictor_config({"distance_power": 1.5, "vertical_weight": 8., "seismic_weights":[0.,.1,.2], "foundation_weight":.1, "blend_weight":.75, "neighbours":3})))
             loaded = json.loads(path.read_text())
-            replay = p29.replay_predictor(loaded, coordinates=c, values=v, query=q, seismic=seismic, latent=latent)
+            replay = p29.replay_predictor(loaded, **common)
             mutated = json.loads(path.read_text()); mutated["parameters"]["vertical_weight"] = 2.
-            self.assertFalse(np.array_equal(replay, p29.replay_predictor(mutated, coordinates=c, values=v, query=q, seismic=seismic, latent=latent)))
+            self.assertFalse(np.array_equal(replay, p29.replay_predictor(mutated, **common)) )
+
+    def test_replay_requires_query_side_covariates_and_baseline(self):
+        config = p29.predictor_config({"seismic_weights": [0.0], "blend_weight": 0.75})
+        coordinates = np.array([[0., 0., 0.], [1., 1., 1.]])
+        query = np.array([[.5, .5, .5]])
+        with self.assertRaisesRegex(ValueError, "query_seismic"):
+            p29.replay_predictor(
+                config, coordinates=coordinates, values=np.array([1., 2.]),
+                query=query, seismic=np.ones((2, 1)),
+            )
+        with self.assertRaisesRegex(ValueError, "query_baseline"):
+            p29.replay_predictor(
+                config, coordinates=coordinates, values=np.array([1., 2.]),
+                query=query,
+            )
+
+    def test_seismic_weights_are_scalar_ensemble_members(self):
+        config = p29.predictor_config({
+            "seismic_weights": [0.0, 0.5], "foundation_weight": 0.0,
+            "vertical_weight": 1.0, "neighbours": 2, "blend_weight": 1.0,
+        })
+        common = {
+            "coordinates": np.array([[0., 0., 0.], [1., 0., 0.]]),
+            "values": np.array([0., 1.]), "query": np.array([[.25, 0., 0.]]),
+            "seismic": np.array([[0., 10.], [10., 0.]]),
+            "query_seismic": np.array([[0., 10.]]),
+        }
+        ensemble = p29.replay_predictor(config, **common)
+        members = [
+            p29.replay_predictor(
+                p29.predictor_config({**config["parameters"], "seismic_weights": [weight]}),
+                **common,
+            )
+            for weight in (0.0, 0.5)
+        ]
+        np.testing.assert_allclose(ensemble, np.mean(np.stack(members), axis=0))
 
     def test_probe_writes_owned_output(self):
         with tempfile.TemporaryDirectory() as td:
