@@ -14,6 +14,12 @@ misread scalar ensemble weights and silently zero-filled query-side
 seismic/GFM covariates. The repaired code is locked by an A0-to-P21
 identity check and query-side fail-closed tests.
 
+P30 is a sparse Eclipse-grid proxy under fixed five-fold, 512-label
+training and 2,048-row validation budgets per fold. It is not a real
+well-log-driven kriging or co-kriging experiment. The covariance-form
+variance now uses `C(0) - w^T c - mu`; this sign correction changes no
+weights, mean predictions, RMSE values, or promotion decision.
+
 ## Matched five-fold result
 
 | fold | P21 RMSE | anisotropic OK RMSE | regression-kriging RMSE |

@@ -11,3 +11,5 @@ fold cache has no aligned independent well-log secondary variable; the implement
 regression-kriging route is therefore a bounded seismic-secondary feasibility proxy.
 P21's historical vertical weight is dimensionless and must not be described as a
 physical directional variogram. No frozen test or holdout was opened.
+The covariance-form variance uses `C(0) - w^T c - mu`; correcting the
+previous multiplier sign does not change weights, mean predictions, RMSE, or decision.
