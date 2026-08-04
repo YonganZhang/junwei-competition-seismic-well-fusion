@@ -1,0 +1,47 @@
+{
+  "artifacts": [
+    {
+      "path": "summary.json",
+      "sha256": "c1f0417c1b9907fc45dfed7963ed51830703357ed6336b66f306235b6cf5f476",
+      "size_bytes": 19331
+    },
+    {
+      "path": "asset_inventory.json",
+      "sha256": "e147fbe74798337181de0e76d867744ab8c0c8fc5aa623a7b7ac9f767f6cd5d1",
+      "size_bytes": 24869
+    },
+    {
+      "path": "split_manifest.json",
+      "sha256": "5a13e7163a6b55b6132a7fad78a4d5a40d2862086857d464a6f24b2dd2b80fc0",
+      "size_bytes": 1056
+    },
+    {
+      "path": "verification.json",
+      "sha256": "8e9175732a650902d648eee628ed650267b89a067db8a571f15bfd0ae0de82c1",
+      "size_bytes": 751
+    },
+    {
+      "path": "rerun_commands.json",
+      "sha256": "44691b8acb1286036358d979b509932578bff7c64d44c00acd14e32cc2c49ace",
+      "size_bytes": 1666
+    },
+    {
+      "path": "finding.md",
+      "sha256": "139cabb6bfb8da865c5f7e6e606716d73cd05e39230a8256fc6a7173cfe01d0e",
+      "size_bytes": 1387
+    }
+  ],
+  "input_and_source_sha256": {
+    "build_summary_sha256": "950ef2405e3d98fe4dbdaf235f4f12bb22dd66f4f3560444e296b857ac905dea",
+    "p21_summary_sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8",
+    "p30_summary_sha256": "010bf52f25f57fb1c6674ed3f3a469317222a3137e2b7ba7fd3bf1218e5d3680",
+    "script_sha256": "81b1658f2a367f95e8cf7b14de4da0492711c878155958294ac7d86714373a32",
+    "seismic_index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "seismic_vsp_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4",
+    "test_sha256": "0579084485a01959736d7d1aa1bd892ba88a2c00f160378079dc952932149161",
+    "train_h5_sha256": "2e395d810feb067b24c2295d87e6b33e308cb21aba224c6d2ddd1e6fcd88de73",
+    "well_logs_zip_sha256": "0a496a55c865a7bce1d8e5bae767869534ae3c43a8d9dbd33601259d25da6bb4",
+    "well_technical_data_zip_sha256": "d52c42f4a146ee04c35435e21e6609ecc4a0479acac6626e0c49c4fab4a6b133"
+  },
+  "schema_version": "reconstruction-p37-artifact-manifest/v1"
+}

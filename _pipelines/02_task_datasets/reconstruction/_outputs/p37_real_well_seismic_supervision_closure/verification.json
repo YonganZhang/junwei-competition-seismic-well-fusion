@@ -1,0 +1,21 @@
+{
+  "checks": {
+    "decision_is_blocked_real_aligned_supervision": true,
+    "exactly_three_independent_parents_audited": true,
+    "f11t2_legal_train_kji_rows_is_zero": true,
+    "frozen_holdout_not_opened": true,
+    "inventory_raw_archives_read_only": true,
+    "legal_train_kji_parent_count_is_two": true,
+    "native_phie_parent_count_is_one": true,
+    "no_eclipse_proxy_substitution": true,
+    "no_hdf5_labels_read": true,
+    "only_train_h5_opened": true,
+    "p21_remains_default": true,
+    "p21_rmse_preserved": true,
+    "p30_decision_preserved": true,
+    "phie_phif_not_elementwise_equal": true,
+    "pilot_not_run": true
+  },
+  "schema_version": "reconstruction-p37-supervision-verification/v1",
+  "status": "PASS_BLOCKED_EVIDENCE"
+}

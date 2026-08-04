@@ -1,0 +1,865 @@
+{
+  "license": "Equinor Open Data Licence",
+  "raw_archives_modified": false,
+  "registered_raw_root": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5",
+  "schema_version": "reconstruction-p37-real-well-asset-inventory/v1",
+  "selected_parent_wells": [
+    "15/9-19",
+    "15/9-F-11",
+    "15/9-F-15"
+  ],
+  "selected_well_profiles": {
+    "19A": {
+      "actual_survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          109.0,
+          4131.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-19/15_9-19 A/Standard Survey Report_Volve F_159-19_19 A_19 A_ACTUAL.pdf",
+        "member_sha256": "f24943c472b1077d398b3d61727694f3b8f693eceaf854fdc8382a8936aa064f",
+        "pages": 10,
+        "reference_elevation_m_above_msl": 25.0,
+        "stations": 313,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          84.0,
+          3293.72
+        ]
+      },
+      "branch": "15/9-19 A",
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_19A.txt",
+        "member_sha256": "7818892b00fd6202372d5012d1b8294ea87ba5224a33918883b7b668710f558c",
+        "rows": 185,
+        "tvdss_range_m": [
+          0.0,
+          3246.9
+        ],
+        "twt_range_ms": [
+          0.0,
+          2767.6001
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "inputs": {
+        "curves": {
+          "CALI": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_CALI",
+            "source_unit": "inches"
+          },
+          "DT": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_DT",
+            "source_unit": "us/ft"
+          },
+          "GR": {
+            "finite_md_range_m": [
+              3500.0183,
+              4086.9106
+            ],
+            "finite_rows": 3850,
+            "present": true,
+            "source_curve": "LFP_GR",
+            "source_unit": "API"
+          },
+          "NPHI": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_NPHI",
+            "source_unit": "v/v_decimal"
+          },
+          "RHOB": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3902,
+            "present": true,
+            "source_curve": "LFP_RHOB",
+            "source_unit": "g/cm3"
+          },
+          "RT": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_RT",
+            "source_unit": "ohm.m"
+          }
+        },
+        "depth_unit_source": "M",
+        "format": "las",
+        "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+        "member_sha256": "92537d18afb6608818c635c77b0d1493fbdbe8ccaaf83e48d755411f23e6e7b6"
+      },
+      "parent_well": "15/9-19",
+      "target": {
+        "curve": "LFP_PHIE",
+        "curve_unit": "v/v_decimal",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "M",
+        "format": "las",
+        "md_range_m": [
+          3500.0183,
+          4085.844
+        ],
+        "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+        "member_sha256": "92537d18afb6608818c635c77b0d1493fbdbe8ccaaf83e48d755411f23e6e7b6",
+        "physical_rows": 3842,
+        "value_range_fraction": [
+          0.01,
+          0.3801
+        ]
+      }
+    },
+    "F11T2": {
+      "actual_survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          145.9,
+          4562.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-F-11/15_9-F-11 T2/Standard Survey Report_Volve F_F-11_159-F-11 T2_159-F-11 T2_ACTUAL.pdf",
+        "member_sha256": "5193e039f5df80589d5cfc54d9877918ae98d2114fdf9e1221a5b31f76819c73",
+        "pages": 13,
+        "reference_elevation_m_above_msl": 54.9,
+        "stations": 443,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          91.0,
+          3345.4
+        ]
+      },
+      "branch": "15/9-F-11 T2",
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_F_11T2.ASC",
+        "member_sha256": "41c9dd5c5e0d8c7753bdc88f1ee50870a1a7dc67ecba73a16925f33ea1751ed1",
+        "rows": 249,
+        "tvdss_range_m": [
+          634.43,
+          3312.36
+        ],
+        "twt_range_ms": [
+          717.474,
+          2823.12
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "inputs": {
+        "curves": {
+          "CALI": {
+            "finite_md_range_m": [
+              2570.7,
+              4538.3
+            ],
+            "finite_rows": 19677,
+            "present": true,
+            "source_curve": "CALI",
+            "source_unit": "inches"
+          },
+          "DT": {
+            "finite_md_range_m": [
+              2575.9,
+              4522.3
+            ],
+            "finite_rows": 19465,
+            "present": true,
+            "source_curve": "DT",
+            "source_unit": "us/ft"
+          },
+          "GR": {
+            "finite_md_range_m": [
+              188.5,
+              4550.9
+            ],
+            "finite_rows": 43566,
+            "present": true,
+            "source_curve": "GR",
+            "source_unit": "API"
+          },
+          "NPHI": {
+            "finite_md_range_m": [
+              2577.0,
+              4536.2
+            ],
+            "finite_rows": 19593,
+            "present": true,
+            "source_curve": "NPHI",
+            "source_unit": "v/v"
+          },
+          "RHOB": {
+            "finite_md_range_m": [
+              2577.0,
+              4538.9
+            ],
+            "finite_rows": 19620,
+            "present": true,
+            "source_curve": "RHOB",
+            "source_unit": "g/cm3"
+          },
+          "RT": {
+            "finite_md_range_m": [
+              208.9,
+              4553.0
+            ],
+            "finite_rows": 43161,
+            "present": true,
+            "source_curve": "RT",
+            "source_unit": "ohm.m"
+          }
+        },
+        "depth_unit_source": "M",
+        "format": "las",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+        "member_sha256": "6ef9631e99d7da34b3d95356fa58dd6ecac230413723c320c30340dd7ed7979c"
+      },
+      "parent_well": "15/9-F-11",
+      "target": {
+        "curve": "PHIF",
+        "curve_unit": "v/v",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "M",
+        "format": "las",
+        "md_range_m": [
+          4334.7,
+          4536.3
+        ],
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+        "member_sha256": "d4c214e11d18a2aaa325dc8811d8d42ea77396f21f7d0bd9d022dfa08554a611",
+        "physical_rows": 2017,
+        "value_range_fraction": [
+          0.001,
+          0.245
+        ]
+      }
+    },
+    "F15A": {
+      "actual_survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          145.9,
+          4095.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-F-15/15_9-F-15 A/Standard Survey Report_Volve F_F-15_F-15A_F-15A_ACTUAL.pdf",
+        "member_sha256": "4769ccf8e0356d5b18e0cdd86544ea23ffff67e757e1fd2ce23f3abcc3702e29",
+        "pages": 5,
+        "reference_elevation_m_above_msl": 54.9,
+        "stations": 100,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          91.0,
+          3157.24
+        ]
+      },
+      "branch": "15/9-F-15 A",
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_F_15A.txt",
+        "member_sha256": "ffe08e8cc53a43e721490665cd98c1371c987dcc45cc7ccfbf2d4bce32a2bb65",
+        "rows": 191,
+        "tvdss_range_m": [
+          1052.0,
+          3079.8
+        ],
+        "twt_range_ms": [
+          1096.2,
+          2671.3
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "inputs": {
+        "curves": {
+          "CALI": {
+            "finite_md_range_m": [
+              2575.1028,
+              4084.4723999999997
+            ],
+            "finite_rows": 9905,
+            "present": true,
+            "source_curve": "CALI",
+            "source_unit": "IN"
+          },
+          "DT": {
+            "finite_md_range_m": [
+              2606.9544,
+              4069.9944
+            ],
+            "finite_rows": 9369,
+            "present": true,
+            "source_curve": "DT",
+            "source_unit": "US/FT"
+          },
+          "GR": {
+            "finite_md_range_m": [
+              216.8652,
+              4085.9964
+            ],
+            "finite_rows": 25353,
+            "present": true,
+            "source_curve": "GR",
+            "source_unit": "GAPI"
+          },
+          "NPHI": {
+            "finite_md_range_m": [
+              2575.1028,
+              4081.8815999999997
+            ],
+            "finite_rows": 9880,
+            "present": true,
+            "source_curve": "NPHI",
+            "source_unit": "V/V"
+          },
+          "RHOB": {
+            "finite_md_range_m": [
+              2575.1028,
+              4084.6248
+            ],
+            "finite_rows": 9906,
+            "present": true,
+            "source_curve": "RHOB",
+            "source_unit": "G/CC"
+          },
+          "RT": {
+            "finite_md_range_m": [
+              1350.1116,
+              4083.1007999999997
+            ],
+            "finite_rows": 17905,
+            "present": true,
+            "source_curve": "RT",
+            "source_unit": "OHMM"
+          }
+        },
+        "depth_unit_source": "0.1 in",
+        "format": "dlis",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_INPUT_1.DLIS",
+        "member_sha256": "3db25740007a8df8e04759b0aaf7767637702771155ab70927a06908ad013a6d"
+      },
+      "parent_well": "15/9-F-15",
+      "target": {
+        "curve": "PHIF",
+        "curve_unit": "V/V",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "0.1 in",
+        "format": "dlis",
+        "md_range_m": [
+          2608.6308,
+          4081.8815999999997
+        ],
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+        "member_sha256": "88c49b77f57829b50736739087f3d59bec060170cd08ab0d6f1f222d3b677337",
+        "physical_rows": 9668,
+        "value_range_fraction": [
+          0.00139999995008111,
+          0.3531999886035919
+        ]
+      }
+    }
+  },
+  "target_token_inventory": {
+    "literal_phie_parents": [
+      "15/9-19"
+    ],
+    "parent_count_with_literal_phie": 1,
+    "parent_count_with_phif": 9,
+    "parents": {
+      "15/9-19": {
+        "branches": [
+          "15_9-19 A",
+          "15_9-19 BT2",
+          "15_9-19 SR"
+        ],
+        "files": [
+          {
+            "crc32": "2b04206b",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+            "size_bytes": 1100423,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "9712d2ad",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/first interpretation/L898NOM.ASC",
+            "size_bytes": 2203,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "4277bb49",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 BT2/CPI/15_9-19_BT2_CPI.las",
+            "size_bytes": 666161,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "2580a9f2",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 BT2/first interpretation/L916NOM.ASC",
+            "size_bytes": 2770,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "855ee629",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 SR/CPI/15_9-19_SR_CPI.las",
+            "size_bytes": 948421,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "bc322ebd",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 SR/first intepretation/L749NOM.ASC",
+            "size_bytes": 2082,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "1adc8728",
+            "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+            "size_bytes": 8810367,
+            "tokens": [
+              "PHIE"
+            ]
+          },
+          {
+            "crc32": "f5dc5069",
+            "member": "Well_logs/06.LFP/15_9-19 BT2/159-19BT2_LFP.las",
+            "size_bytes": 15769458,
+            "tokens": [
+              "PHIE"
+            ]
+          },
+          {
+            "crc32": "60a227b6",
+            "member": "Well_logs/06.LFP/15_9-19 SR/159-19SR_LFP.las",
+            "size_bytes": 88423751,
+            "tokens": [
+              "PHIE"
+            ]
+          }
+        ],
+        "tokens": [
+          "PHIE",
+          "PHIF"
+        ]
+      },
+      "15/9-F-1": {
+        "branches": [
+          "15_9-F-1",
+          "15_9-F-1 A",
+          "15_9-F-1 B",
+          "15_9-F-1 C"
+        ],
+        "files": [
+          {
+            "crc32": "24aa6122",
+            "member": "Well_logs/04.COMPOSITE/15_9-F-1/WLC_PETROPHYSICAL_COMPOSITE_1.DLIS",
+            "size_bytes": 11994082,
+            "tokens": [
+              "EFFECTIVE POROSITY",
+              "MPHE"
+            ]
+          },
+          {
+            "crc32": "4ff3f29a",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 A/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3080,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "c6fda861",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 472730,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "58b68619",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 B/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3237,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "1b265dd1",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 B/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 423193,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "6b07cff0",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 C/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3122,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "e7c22eda",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1 C/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 1434236,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "5530f670",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3111,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "61de9ff1",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-1/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 526414,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "EFFECTIVE POROSITY",
+          "MPHE",
+          "PHIF"
+        ]
+      },
+      "15/9-F-10": {
+        "branches": [
+          "15_9-F-10"
+        ],
+        "files": [
+          {
+            "crc32": "d7dbc2de",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-10/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 2098,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "0e6243cd",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-10/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+            "size_bytes": 1814840,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "PHIF"
+        ]
+      },
+      "15/9-F-11": {
+        "branches": [
+          "15_9-F-11 A",
+          "15_9-F-11 B",
+          "15_9-F-11 T2"
+        ],
+        "files": [
+          {
+            "crc32": "227353f7",
+            "member": "Well_logs/04.COMPOSITE/15_9-F-11 T2/WLC_PETROPHYSICAL_COMPOSITE_2.DLIS",
+            "size_bytes": 13075092,
+            "tokens": [
+              "EFFECTIVE POROSITY",
+              "MPHE"
+            ]
+          },
+          {
+            "crc32": "42a6227e",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 A/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3146,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "9feef0b6",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 189896,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "12d2e422",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 B/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3021,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "b4320194",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 B/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 1410696,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "8536e346",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3147,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "a99a5dc8",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 229964,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "EFFECTIVE POROSITY",
+          "MPHE",
+          "PHIF"
+        ]
+      },
+      "15/9-F-12": {
+        "branches": [
+          "15_9-F-12"
+        ],
+        "files": [
+          {
+            "crc32": "9ef64e03",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-12/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 2176,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "5ac2bfc3",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-12/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 179900,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "PHIF"
+        ]
+      },
+      "15/9-F-14": {
+        "branches": [
+          "15_9-F-14"
+        ],
+        "files": [
+          {
+            "crc32": "09a8b635",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-14/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 2213,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "PHIF"
+        ]
+      },
+      "15/9-F-15": {
+        "branches": [
+          "15_9-F-15",
+          "15_9-F-15 A",
+          "15_9-F-15 B",
+          "15_9-F-15 C",
+          "15_9-F-15 D"
+        ],
+        "files": [
+          {
+            "crc32": "46fc6f94",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 1734,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "2c4c7c40",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+            "size_bytes": 451090,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "6ee7e205",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 B/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 1657,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "4b59f382",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 B/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+            "size_bytes": 71594,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "fe494edb",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 C/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 1699,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "cc1ddcb4",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 C/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+            "size_bytes": 135754,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "aa7c6bef",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 D/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 3141,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "3490853f",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 D/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+            "size_bytes": 1771868,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "ba802d58",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 2292,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "d5ae9462",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+            "size_bytes": 455460,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "PHIF"
+        ]
+      },
+      "15/9-F-4": {
+        "branches": [
+          "15_9-F-4"
+        ],
+        "files": [
+          {
+            "crc32": "cdbb0ac1",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-4/CONTENT-WLC_PETRO_COMPUTED_OUTPUT_1.DLIS.TXT",
+            "size_bytes": 12653,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "ee114451",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-4/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 2238,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "ff8cfe2e",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-4/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+            "size_bytes": 1017326,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "PHIF"
+        ]
+      },
+      "15/9-F-5": {
+        "branches": [
+          "15_9-F-5"
+        ],
+        "files": [
+          {
+            "crc32": "cf3118f2",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-5/WLC_PETRO_COMPUTED_1_INF_1.ASC",
+            "size_bytes": 2333,
+            "tokens": [
+              "PHIF"
+            ]
+          },
+          {
+            "crc32": "1a17e297",
+            "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-5/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+            "size_bytes": 1120800,
+            "tokens": [
+              "PHIF"
+            ]
+          }
+        ],
+        "tokens": [
+          "PHIF"
+        ]
+      }
+    }
+  }
+}
