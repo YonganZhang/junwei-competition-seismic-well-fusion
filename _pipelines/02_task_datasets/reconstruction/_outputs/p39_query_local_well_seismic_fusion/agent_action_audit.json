@@ -3,7 +3,7 @@
   "all_actions_frozen_before_outer_evaluation": true,
   "authority": "preregistered P38 allowlist only",
   "base_prediction_audit": {
-    "pretrained__fold0": {
+    "shared_pretrained__fold0": {
       "held_base_source": "exact P38 recorded well-only prediction",
       "outer_fold": 0,
       "outer_train_crossfit": {
@@ -65,7 +65,7 @@
         "selected_steps": 37
       }
     },
-    "pretrained__fold1": {
+    "shared_pretrained__fold1": {
       "held_base_source": "exact P38 recorded well-only prediction",
       "outer_fold": 1,
       "outer_train_crossfit": {
@@ -127,7 +127,7 @@
         "selected_steps": 22
       }
     },
-    "pretrained__fold2": {
+    "shared_pretrained__fold2": {
       "held_base_source": "exact P38 recorded well-only prediction",
       "outer_fold": 2,
       "outer_train_crossfit": {
@@ -188,192 +188,6 @@
         },
         "selected_steps": 77
       }
-    },
-    "random_init__fold0": {
-      "held_base_source": "same-procedure random-MOMENT well-only outer fit",
-      "outer_fold": 0,
-      "outer_train_crossfit": {
-        "folds": [
-          {
-            "inner_held_parent_index": 1,
-            "rmse": 0.06300237767154057,
-            "selected_steps": 10,
-            "train_rows": 8846,
-            "training_audit": {
-              "first_loss": 0.010711750015616417,
-              "frozen_foundation_parameter_count_not_in_head": true,
-              "last_loss": 0.005707531236112118,
-              "maximum_gradient_norm": 0.12543682754039764,
-              "seismic_source_variance": 1.3063833713531494,
-              "seismic_transformed_variance": 0.9457831382751465,
-              "selected_steps": 10,
-              "train_parent_counts": {
-                "2": 8846
-              },
-              "train_rows": 8846,
-              "trainable_parameter_count": 6305,
-              "updates_executed": 30,
-              "well_source_variance": 0.7960449457168579,
-              "well_transformed_variance": 0.9103273749351501
-            },
-            "validation_rows": 1877
-          },
-          {
-            "inner_held_parent_index": 2,
-            "rmse": 0.08427097573166939,
-            "selected_steps": 45,
-            "train_rows": 1877,
-            "training_audit": {
-              "first_loss": 0.03299449011683464,
-              "frozen_foundation_parameter_count_not_in_head": true,
-              "last_loss": 0.002507956698536873,
-              "maximum_gradient_norm": 0.35960832238197327,
-              "seismic_source_variance": 1.2605937719345093,
-              "seismic_transformed_variance": 0.8793721795082092,
-              "selected_steps": 45,
-              "train_parent_counts": {
-                "1": 1877
-              },
-              "train_rows": 1877,
-              "trainable_parameter_count": 6305,
-              "updates_executed": 65,
-              "well_source_variance": 0.7986512184143066,
-              "well_transformed_variance": 1.0303288698196411
-            },
-            "validation_rows": 8846
-          }
-        ],
-        "macro_rmse": 0.07363667670160498,
-        "per_parent_rmse": {
-          "1": 0.06300237767154057,
-          "2": 0.08427097573166939
-        },
-        "selected_steps": 27
-      }
-    },
-    "random_init__fold1": {
-      "held_base_source": "same-procedure random-MOMENT well-only outer fit",
-      "outer_fold": 1,
-      "outer_train_crossfit": {
-        "folds": [
-          {
-            "inner_held_parent_index": 0,
-            "rmse": 0.07424564734422857,
-            "selected_steps": 10,
-            "train_rows": 8846,
-            "training_audit": {
-              "first_loss": 0.012518632225692272,
-              "frozen_foundation_parameter_count_not_in_head": true,
-              "last_loss": 0.005766182206571102,
-              "maximum_gradient_norm": 0.1521403193473816,
-              "seismic_source_variance": 1.3063833713531494,
-              "seismic_transformed_variance": 1.0106241703033447,
-              "selected_steps": 10,
-              "train_parent_counts": {
-                "2": 8846
-              },
-              "train_rows": 8846,
-              "trainable_parameter_count": 6305,
-              "updates_executed": 30,
-              "well_source_variance": 0.7960521578788757,
-              "well_transformed_variance": 1.0580086708068848
-            },
-            "validation_rows": 1962
-          },
-          {
-            "inner_held_parent_index": 2,
-            "rmse": 0.09407822896297025,
-            "selected_steps": 30,
-            "train_rows": 1962,
-            "training_audit": {
-              "first_loss": 0.09740222990512848,
-              "frozen_foundation_parameter_count_not_in_head": true,
-              "last_loss": 0.003971273545175791,
-              "maximum_gradient_norm": 0.6762738823890686,
-              "seismic_source_variance": 1.1051377058029175,
-              "seismic_transformed_variance": 0.8509103059768677,
-              "selected_steps": 30,
-              "train_parent_counts": {
-                "0": 1962
-              },
-              "train_rows": 1962,
-              "trainable_parameter_count": 6305,
-              "updates_executed": 50,
-              "well_source_variance": 0.8004790544509888,
-              "well_transformed_variance": 0.9872198104858398
-            },
-            "validation_rows": 8846
-          }
-        ],
-        "macro_rmse": 0.0841619381535994,
-        "per_parent_rmse": {
-          "0": 0.07424564734422857,
-          "2": 0.09407822896297025
-        },
-        "selected_steps": 20
-      }
-    },
-    "random_init__fold2": {
-      "held_base_source": "same-procedure random-MOMENT well-only outer fit",
-      "outer_fold": 2,
-      "outer_train_crossfit": {
-        "folds": [
-          {
-            "inner_held_parent_index": 0,
-            "rmse": 0.07713826906565338,
-            "selected_steps": 115,
-            "train_rows": 1877,
-            "training_audit": {
-              "first_loss": 0.1101989895105362,
-              "frozen_foundation_parameter_count_not_in_head": true,
-              "last_loss": 0.002213003346696496,
-              "maximum_gradient_norm": 0.7138168215751648,
-              "seismic_source_variance": 1.2605937719345093,
-              "seismic_transformed_variance": 0.8979214429855347,
-              "selected_steps": 115,
-              "train_parent_counts": {
-                "1": 1877
-              },
-              "train_rows": 1877,
-              "trainable_parameter_count": 6305,
-              "updates_executed": 120,
-              "well_source_variance": 0.7986583113670349,
-              "well_transformed_variance": 0.9018669128417969
-            },
-            "validation_rows": 1962
-          },
-          {
-            "inner_held_parent_index": 1,
-            "rmse": 0.06692644275947701,
-            "selected_steps": 20,
-            "train_rows": 1962,
-            "training_audit": {
-              "first_loss": 0.020295297726988792,
-              "frozen_foundation_parameter_count_not_in_head": true,
-              "last_loss": 0.0032944174017757177,
-              "maximum_gradient_norm": 0.22583317756652832,
-              "seismic_source_variance": 1.1051377058029175,
-              "seismic_transformed_variance": 0.9575435519218445,
-              "selected_steps": 20,
-              "train_parent_counts": {
-                "0": 1962
-              },
-              "train_rows": 1962,
-              "trainable_parameter_count": 6305,
-              "updates_executed": 40,
-              "well_source_variance": 0.8004790544509888,
-              "well_transformed_variance": 1.016917109489441
-            },
-            "validation_rows": 1877
-          }
-        ],
-        "macro_rmse": 0.0720323559125652,
-        "per_parent_rmse": {
-          "0": 0.07713826906565338,
-          "1": 0.06692644275947701
-        },
-        "selected_steps": 67
-      }
     }
   },
   "complete_action_allowlist": [
@@ -396,6 +210,211 @@
       "weight_decay": 0.0001
     }
   ],
+  "fixed_base_attribution": {
+    "all_controls_all_folds_exact_shared_base": true,
+    "controls": {
+      "moment_pretrained_gfm_pretrained": {
+        "folds": {
+          "0": {
+            "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+            "exact_shared_base": true,
+            "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1962,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10723,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+          },
+          "1": {
+            "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+            "exact_shared_base": true,
+            "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1877,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10808,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+          },
+          "2": {
+            "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+            "exact_shared_base": true,
+            "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 8846,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 3839,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+          }
+        }
+      },
+      "moment_pretrained_gfm_random": {
+        "folds": {
+          "0": {
+            "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+            "exact_shared_base": true,
+            "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1962,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10723,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+          },
+          "1": {
+            "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+            "exact_shared_base": true,
+            "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1877,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10808,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+          },
+          "2": {
+            "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+            "exact_shared_base": true,
+            "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 8846,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 3839,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+          }
+        }
+      },
+      "moment_random_gfm_pretrained": {
+        "folds": {
+          "0": {
+            "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+            "exact_shared_base": true,
+            "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1962,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10723,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+          },
+          "1": {
+            "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+            "exact_shared_base": true,
+            "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1877,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10808,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+          },
+          "2": {
+            "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+            "exact_shared_base": true,
+            "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 8846,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 3839,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+          }
+        }
+      },
+      "moment_random_gfm_random": {
+        "folds": {
+          "0": {
+            "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+            "exact_shared_base": true,
+            "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1962,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10723,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+          },
+          "1": {
+            "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+            "exact_shared_base": true,
+            "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 1877,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 10808,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+          },
+          "2": {
+            "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+            "exact_shared_base": true,
+            "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+            "held_max_abs_diff_vs_shared": 0.0,
+            "held_rows": 8846,
+            "max_abs_diff_vs_shared": 0.0,
+            "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+            "outer_train_max_abs_diff_vs_shared": 0.0,
+            "outer_train_rows": 3839,
+            "shape": [
+              12685
+            ],
+            "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+          }
+        }
+      }
+    },
+    "invariant": "All Iteration-3 controls share the pretrained P38 outer-train cross-fitted base and exact recorded outer-held base; only MOMENT/GFM correction features vary.",
+    "pre_fix_commit": "c6056a0b05cbe401bf1dfa90fbab2fac16430c08",
+    "pre_fix_summary_sha256": "a68dabe2d4d9b5e238bb4db060a40e68a4576f2e952bcbdf96c923eaf54924d1",
+    "schema_version": "reconstruction-p39-fixed-base-attribution/v1"
+  },
   "held_parent_labels_or_metrics_visible_before_action": false,
   "iteration_2": {
     "folds": {
@@ -1964,15 +1983,15 @@
       ],
       "moment_random_gfm_pretrained": [
         {
-          "calibration_sigma_from_outer_train_inner_oof": 0.08150200430074662,
+          "calibration_sigma_from_outer_train_inner_oof": 0.08509111986600965,
           "final_fit": {
             "base_targets_are_outer_train_cross_fitted": true,
             "correction_bound": 0.5,
-            "first_loss": 0.005542763974517584,
+            "first_loss": 0.005994532722979784,
             "held_parent_target_used": false,
-            "last_loss": 0.005467794835567474,
+            "last_loss": 0.005871767643839121,
             "maximum_gate": 0.1,
-            "maximum_gradient_norm": 0.0002605510817375034,
+            "maximum_gradient_norm": 0.0005269474349915981,
             "selected_steps": 7,
             "train_parent_counts": {
               "1": 1877,
@@ -1995,15 +2014,15 @@
           "selected_steps": 7
         },
         {
-          "calibration_sigma_from_outer_train_inner_oof": 0.09112068565261229,
+          "calibration_sigma_from_outer_train_inner_oof": 0.09639907518511023,
           "final_fit": {
             "base_targets_are_outer_train_cross_fitted": true,
             "correction_bound": 0.5,
-            "first_loss": 0.0071490975096821785,
+            "first_loss": 0.007597167044878006,
             "held_parent_target_used": false,
-            "last_loss": 0.0071490975096821785,
+            "last_loss": 0.007597167044878006,
             "maximum_gate": 0.1,
-            "maximum_gradient_norm": 0.0007530254079028964,
+            "maximum_gradient_norm": 0.0001345972705166787,
             "selected_steps": 1,
             "train_parent_counts": {
               "0": 1962,
@@ -2026,15 +2045,15 @@
           "selected_steps": 1
         },
         {
-          "calibration_sigma_from_outer_train_inner_oof": 0.07303739226371488,
+          "calibration_sigma_from_outer_train_inner_oof": 0.07914903859116332,
           "final_fit": {
             "base_targets_are_outer_train_cross_fitted": true,
             "correction_bound": 0.5,
-            "first_loss": 0.005230430513620377,
+            "first_loss": 0.006142026279121637,
             "held_parent_target_used": false,
-            "last_loss": 0.005230430513620377,
+            "last_loss": 0.006142026279121637,
             "maximum_gate": 0.05,
-            "maximum_gradient_norm": 0.0001126197530538775,
+            "maximum_gradient_norm": 0.00038878913619555533,
             "selected_steps": 1,
             "train_parent_counts": {
               "0": 1962,
@@ -2059,15 +2078,15 @@
       ],
       "moment_random_gfm_random": [
         {
-          "calibration_sigma_from_outer_train_inner_oof": 0.0835779451383559,
+          "calibration_sigma_from_outer_train_inner_oof": 0.08604353081199509,
           "final_fit": {
             "base_targets_are_outer_train_cross_fitted": true,
             "correction_bound": 0.5,
-            "first_loss": 0.005540941376239061,
+            "first_loss": 0.0059923394583165646,
             "held_parent_target_used": false,
-            "last_loss": 0.0054582105949521065,
+            "last_loss": 0.00586188118904829,
             "maximum_gate": 0.1,
-            "maximum_gradient_norm": 0.00026342671480961144,
+            "maximum_gradient_norm": 0.0005272971466183662,
             "selected_steps": 7,
             "train_parent_counts": {
               "1": 1877,
@@ -2090,15 +2109,15 @@
           "selected_steps": 7
         },
         {
-          "calibration_sigma_from_outer_train_inner_oof": 0.09105715431412462,
+          "calibration_sigma_from_outer_train_inner_oof": 0.09640851860209487,
           "final_fit": {
             "base_targets_are_outer_train_cross_fitted": true,
             "correction_bound": 0.5,
-            "first_loss": 0.007150559686124325,
+            "first_loss": 0.007598979398608208,
             "held_parent_target_used": false,
-            "last_loss": 0.007150559686124325,
+            "last_loss": 0.007598979398608208,
             "maximum_gate": 0.1,
-            "maximum_gradient_norm": 0.0007632970809936523,
+            "maximum_gradient_norm": 0.0001294268440688029,
             "selected_steps": 1,
             "train_parent_counts": {
               "0": 1962,
@@ -2121,15 +2140,15 @@
           "selected_steps": 1
         },
         {
-          "calibration_sigma_from_outer_train_inner_oof": 0.07318976694194163,
+          "calibration_sigma_from_outer_train_inner_oof": 0.0791389346612551,
           "final_fit": {
             "base_targets_are_outer_train_cross_fitted": true,
             "correction_bound": 0.5,
-            "first_loss": 0.005232165567576885,
+            "first_loss": 0.006142894737422466,
             "held_parent_target_used": false,
-            "last_loss": 0.005232165567576885,
+            "last_loss": 0.006142894737422466,
             "maximum_gate": 0.05,
-            "maximum_gradient_norm": 0.00012087783397873864,
+            "maximum_gradient_norm": 0.00038341351319104433,
             "selected_steps": 1,
             "train_parent_counts": {
               "0": 1962,

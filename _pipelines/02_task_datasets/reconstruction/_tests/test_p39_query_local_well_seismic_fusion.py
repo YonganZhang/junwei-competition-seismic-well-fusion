@@ -175,6 +175,45 @@ def test_weight_control_routing_is_complete_and_non_aliasing() -> None:
     assert p39.FINAL_CANDIDATE == "moment_pretrained_gfm_pretrained"
 
 
+def test_all_weight_controls_share_exact_pretrained_locked_base_per_fold() -> None:
+    parent = np.repeat(np.arange(3), 4)
+    shared = {
+        fold: np.linspace(0.01 + fold, 0.12 + fold, len(parent), dtype=np.float32)
+        for fold in range(3)
+    }
+    control_bases = {name: shared for name in p39.WEIGHT_CONTROLS}
+    audit = p39.fixed_base_attribution_audit(
+        control_bases=control_bases,
+        parent_index=parent,
+    )
+    assert audit["all_controls_all_folds_exact_shared_base"] is True
+    for name in p39.WEIGHT_CONTROLS:
+        for fold in range(3):
+            row = audit["controls"][name]["folds"][str(fold)]
+            assert row["base_sha256"] == row["shared_base_sha256"]
+            assert row["max_abs_diff_vs_shared"] == 0.0
+            assert row["outer_train_max_abs_diff_vs_shared"] == 0.0
+            assert row["held_max_abs_diff_vs_shared"] == 0.0
+
+
+def test_fixed_base_audit_fails_closed_on_random_moment_base_substitution() -> None:
+    parent = np.repeat(np.arange(3), 4)
+    shared = {
+        fold: np.linspace(0.01 + fold, 0.12 + fold, len(parent), dtype=np.float32)
+        for fold in range(3)
+    }
+    control_bases = {
+        name: {fold: values.copy() for fold, values in shared.items()}
+        for name in p39.WEIGHT_CONTROLS
+    }
+    control_bases["moment_random_gfm_random"][1][5] += 1e-3
+    with pytest.raises(RuntimeError, match="exact locked P38 well base"):
+        p39.fixed_base_attribution_audit(
+            control_bases=control_bases,
+            parent_index=parent,
+        )
+
+
 def test_promotion_logic_requires_every_boolean_gate_but_not_count_field() -> None:
     acceptance = {
         "macro_below_locked_well_only": True,
@@ -205,8 +244,9 @@ def test_phase0_freeze_and_verification_reproduce() -> None:
 def test_final_artifacts_verify_independently_when_present() -> None:
     output = TRACK / "_outputs/p39_query_local_well_seismic_fusion"
     summary = output / "summary.json"
-    if not summary.is_file():
-        pytest.skip("P39 durable final evidence has not been generated yet")
+    fixed_base = output / "fixed_base_attribution_audit.json"
+    if not summary.is_file() or not fixed_base.is_file():
+        pytest.skip("P39.1 durable final evidence has not been generated yet")
     result = p39._recompute_final(output)  # noqa: SLF001
     assert result["status"] == "PASS"
     assert all(result["checks"].values())

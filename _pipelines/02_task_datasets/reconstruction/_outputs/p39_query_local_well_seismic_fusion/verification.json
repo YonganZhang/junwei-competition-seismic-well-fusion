@@ -1,10 +1,14 @@
 {
   "checks": {
+    "all_controls_share_exact_fold_bases": true,
     "bootstrap_recomputes": true,
     "cyclic_well_recomputes": true,
     "decision_matches_all_gates": true,
     "exact_three_iterations": true,
+    "fixed_base_audit_recomputes": true,
     "fixed_twt_plus_160ms_recomputes": true,
+    "frozen_actions_and_steps_unchanged": true,
+    "held_base_is_exact_recorded_p38": true,
     "locked_base_exact_p38_reuse": true,
     "manifest_hashes_match": true,
     "moment_pretrained_gfm_pretrained_calibration_recompute": true,
@@ -20,8 +24,10 @@
     "moment_random_gfm_random_finite_bounded": true,
     "moment_random_gfm_random_metrics_recompute": true,
     "no_forbidden_data": true,
+    "no_fourth_iteration_or_gate_change": true,
     "phase0_reproduces": true,
     "row_ids_exact_once": true,
+    "shared_base_arrays_retain_independent_audit": true,
     "target_exact_p38_reuse": true,
     "wiki_finding_matches_output": true,
     "zero_gate_exact_fallback": true

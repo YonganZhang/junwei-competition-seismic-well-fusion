@@ -3,7 +3,7 @@
     "bootstrap_ci95_upper_below_zero": false,
     "both_pretrained_below_both_random": false,
     "both_pretrained_below_moment_pretrained_gfm_random": false,
-    "both_pretrained_below_moment_random_gfm_pretrained": false,
+    "both_pretrained_below_moment_random_gfm_pretrained": true,
     "cyclic_mismatch_degrades_macro_and_two_parents": false,
     "firewall_and_provenance_pass": true,
     "full_twt_mismatch_degrades_macro_and_two_parents": false,
@@ -12,6 +12,34 @@
     "train_only_calibration_finite_nonvacuous": true,
     "wins_at_least_two_parents": false,
     "zero_gate_exact_fallback": true
+  },
+  "attribution_fix": {
+    "action_allowlist_changed": false,
+    "all_controls_all_folds_exact_shared_base": true,
+    "fourth_iteration_added": false,
+    "post_fix_control_macro_rmse": {
+      "moment_pretrained_gfm_pretrained": 0.0759084841201444,
+      "moment_pretrained_gfm_random": 0.07586122373838418,
+      "moment_random_gfm_pretrained": 0.07593875659660637,
+      "moment_random_gfm_random": 0.07588689473180493
+    },
+    "post_fix_parent_wins_vs_locked_base": {
+      "moment_pretrained_gfm_pretrained": 1,
+      "moment_pretrained_gfm_random": 1,
+      "moment_random_gfm_pretrained": 1,
+      "moment_random_gfm_random": 1
+    },
+    "pre_fix_commit": "c6056a0b05cbe401bf1dfa90fbab2fac16430c08",
+    "pre_fix_control_macro_rmse": {
+      "moment_pretrained_gfm_pretrained": 0.0759084841201444,
+      "moment_pretrained_gfm_random": 0.07586122373838418,
+      "moment_random_gfm_pretrained": 0.07473459535678662,
+      "moment_random_gfm_random": 0.07468168654416331
+    },
+    "pre_fix_summary_sha256": "a68dabe2d4d9b5e238bb4db060a40e68a4576f2e952bcbdf96c923eaf54924d1",
+    "promotion_thresholds_changed": false,
+    "selected_training_actions_or_steps_changed": false,
+    "state": "FIXED_SHARED_LOCKED_P38_BASE"
   },
   "decision": {
     "cross_target_comparison_made": false,
@@ -26,7 +54,7 @@
     "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
     "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
     "torch": "2.13.0+cu130",
-    "wall_seconds": 114.37649488000898
+    "wall_seconds": 111.87192036601482
   },
   "firewall": {
     "frozen_holdout_opened": false,
@@ -398,6 +426,39 @@
             "selected_steps": 5
           }
         },
+        "chosen_action": {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        "complete_action_allowlist": [
+          {
+            "action_id": "default",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          },
+          {
+            "action_id": "stronger_regularization",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.05,
+            "weight_decay": 0.001
+          },
+          {
+            "action_id": "shorter_patience",
+            "early_stopping_patience": 10,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          }
+        ],
+        "executor_confirmation": {
+          "action_id": "stronger_regularization",
+          "fixed_steps": 5,
+          "held_parent_metric_read_before_execution": false
+        },
+        "observation_scope": "outer-train inner-LOGO only",
+        "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
         "selected_steps": 5
       },
       "1": {
@@ -577,6 +638,39 @@
             "selected_steps": 1
           }
         },
+        "chosen_action": {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        "complete_action_allowlist": [
+          {
+            "action_id": "default",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          },
+          {
+            "action_id": "stronger_regularization",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.05,
+            "weight_decay": 0.001
+          },
+          {
+            "action_id": "shorter_patience",
+            "early_stopping_patience": 10,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          }
+        ],
+        "executor_confirmation": {
+          "action_id": "shorter_patience",
+          "fixed_steps": 1,
+          "held_parent_metric_read_before_execution": false
+        },
+        "observation_scope": "outer-train inner-LOGO only",
+        "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
         "selected_steps": 1
       },
       "2": {
@@ -756,6 +850,39 @@
             "selected_steps": 5
           }
         },
+        "chosen_action": {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        "complete_action_allowlist": [
+          {
+            "action_id": "default",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          },
+          {
+            "action_id": "stronger_regularization",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.05,
+            "weight_decay": 0.001
+          },
+          {
+            "action_id": "shorter_patience",
+            "early_stopping_patience": 10,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          }
+        ],
+        "executor_confirmation": {
+          "action_id": "stronger_regularization",
+          "fixed_steps": 5,
+          "held_parent_metric_read_before_execution": false
+        },
+        "observation_scope": "outer-train inner-LOGO only",
+        "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
         "selected_steps": 5
       }
     },
@@ -953,61 +1080,61 @@
       "moment_random_gfm_pretrained": {
         "calibration": {
           "15/9-19": {
-            "coverage_50": 0.46992864424057085,
-            "coverage_90": 0.9663608562691132,
-            "gaussian_nll": -1.2016355641028655,
-            "mean_width_50": 0.1099445346035278,
-            "mean_width_90": 0.268117738562419,
-            "sigma": 0.08150200545787811
+            "coverage_50": 0.5417940876656473,
+            "coverage_90": 0.9694189602446484,
+            "gaussian_nll": -1.198969373933508,
+            "mean_width_50": 0.11478617856182378,
+            "mean_width_90": 0.2799248796240818,
+            "sigma": 0.08509112149477005
           },
           "15/9-F-11": {
-            "coverage_50": 0.5897709110282365,
-            "coverage_90": 1.0,
-            "gaussian_nll": -1.2397713508280301,
-            "mean_width_50": 0.1229199329657157,
-            "mean_width_90": 0.299760370716548,
-            "sigma": 0.09112068265676498
+            "coverage_50": 0.648907831646244,
+            "coverage_90": 0.9957378795950985,
+            "gaussian_nll": -1.1900430956106418,
+            "mean_width_50": 0.1300403777624778,
+            "mean_width_90": 0.3171247405176562,
+            "sigma": 0.09639907628297806
           },
           "15/9-F-15": {
-            "coverage_50": 0.34704951390458966,
-            "coverage_90": 0.8185620619489035,
-            "gaussian_nll": -0.9415649048505342,
-            "mean_width_50": 0.09852594644671563,
-            "mean_width_90": 0.24027164284497107,
-            "sigma": 0.07303739339113235
+            "coverage_50": 0.3859371467329867,
+            "coverage_90": 0.8485191046800814,
+            "gaussian_nll": -0.9478185901241849,
+            "mean_width_50": 0.10677042919757986,
+            "mean_width_90": 0.26037716313072123,
+            "sigma": 0.0791490375995636
           },
           "equal_parent_macro": {
-            "coverage_50": 0.4689163563911323,
-            "coverage_90": 0.9283076394060056,
-            "gaussian_nll": -1.1276572732604766,
-            "mean_width_50": 0.11046347133865304,
-            "mean_width_90": 0.26938325070797936,
-            "sigma": 0.08188669383525848
+            "coverage_50": 0.5255463553482926,
+            "coverage_90": 0.9378919815066095,
+            "gaussian_nll": -1.112277019889445,
+            "mean_width_50": 0.11719899517396047,
+            "mean_width_90": 0.2858089277574864,
+            "sigma": 0.08687974512577057
           }
         },
         "metrics": {
           "15/9-19": {
-            "bias": -0.0118293143941767,
-            "mae": 0.06042906690984968,
-            "rmse": 0.07166186868680315,
+            "bias": -0.019386932346496646,
+            "mae": 0.057741090361403374,
+            "rmse": 0.07079710907181323,
             "rows": 1962
           },
           "15/9-F-11": {
-            "bias": 0.011489416501454049,
-            "mae": 0.05372600779032854,
-            "rmse": 0.06271600129669953,
+            "bias": 0.02971614978878303,
+            "mae": 0.054532045535765565,
+            "rmse": 0.06542039781260099,
             "rows": 1877
           },
           "15/9-F-15": {
-            "bias": 0.013860822303066707,
-            "mae": 0.07513368900779722,
-            "rmse": 0.08982591608685715,
+            "bias": 0.006582178396462136,
+            "mae": 0.07572370816425703,
+            "rmse": 0.09159876290540488,
             "rows": 8846
           },
           "equal_parent_macro": {
-            "bias": 0.004506974803448019,
-            "mae": 0.06309625456932515,
-            "rmse": 0.07473459535678662,
+            "bias": 0.005637131946249506,
+            "mae": 0.06266561468714199,
+            "rmse": 0.07593875659660637,
             "rows": 12685
           }
         }
@@ -1015,61 +1142,61 @@
       "moment_random_gfm_random": {
         "calibration": {
           "15/9-19": {
-            "coverage_50": 0.48216106014271154,
-            "coverage_90": 0.9724770642201835,
-            "gaussian_nll": -1.1964247107183998,
-            "mean_width_50": 0.11274493560744933,
-            "mean_width_90": 0.2749469746581192,
-            "sigma": 0.0835779458284378
+            "coverage_50": 0.54638124362895,
+            "coverage_90": 0.971967380224261,
+            "gaussian_nll": -1.1969564370667303,
+            "mean_width_50": 0.1160709570490228,
+            "mean_width_90": 0.2830580222016883,
+            "sigma": 0.08604352921247482
           },
           "15/9-F-11": {
-            "coverage_50": 0.5881726158763985,
-            "coverage_90": 1.0,
-            "gaussian_nll": -1.2400690220218333,
-            "mean_width_50": 0.12283423081316663,
-            "mean_width_90": 0.29955137199356235,
-            "sigma": 0.09105715155601501
+            "coverage_50": 0.648907831646244,
+            "coverage_90": 0.9952051145444859,
+            "gaussian_nll": -1.1898108353776267,
+            "mean_width_50": 0.13005311197466024,
+            "mean_width_90": 0.3171557949778442,
+            "sigma": 0.09640851616859436
           },
           "15/9-F-15": {
-            "coverage_50": 0.3488582410128872,
-            "coverage_90": 0.8199186072801267,
-            "gaussian_nll": -0.9438430635835734,
-            "mean_width_50": 0.09873149291344258,
-            "mean_width_90": 0.24077290153897585,
-            "sigma": 0.07318976521492004
+            "coverage_50": 0.3874067375084784,
+            "coverage_90": 0.8488582410128872,
+            "gaussian_nll": -0.9481303947171551,
+            "mean_width_50": 0.1067568004748337,
+            "mean_width_90": 0.26034392726014915,
+            "sigma": 0.07913893461227417
           },
           "equal_parent_macro": {
-            "coverage_50": 0.47306397234399905,
-            "coverage_90": 0.93079855716677,
-            "gaussian_nll": -1.1267789321079356,
-            "mean_width_50": 0.11143688644468619,
-            "mean_width_90": 0.27175708273021915,
-            "sigma": 0.08260828753312428
+            "coverage_50": 0.5275652709278907,
+            "coverage_90": 0.9386769119272115,
+            "gaussian_nll": -1.1116325557205038,
+            "mean_width_50": 0.1176269564995056,
+            "mean_width_90": 0.2868525814798939,
+            "sigma": 0.08719699333111446
           }
         },
         "metrics": {
           "15/9-19": {
-            "bias": -0.011083189952098534,
-            "mae": 0.060424306254669165,
-            "rmse": 0.07156657599735385,
+            "bias": -0.018574461097489708,
+            "mae": 0.05767329549881938,
+            "rmse": 0.0706403212489649,
             "rows": 1962
           },
           "15/9-F-11": {
-            "bias": 0.011522013121026534,
-            "mae": 0.053734719158412235,
-            "rmse": 0.06272514370361844,
+            "bias": 0.029779449673446434,
+            "mae": 0.05455242731745147,
+            "rmse": 0.06544588580606962,
             "rows": 1877
           },
           "15/9-F-15": {
-            "bias": 0.013605765149029102,
-            "mae": 0.0750222961479552,
-            "rmse": 0.08975333993151764,
+            "bias": 0.006380558253405732,
+            "mae": 0.07565564140681137,
+            "rmse": 0.09157447714038028,
             "rows": 8846
           },
           "equal_parent_macro": {
-            "bias": 0.004681529439319034,
-            "mae": 0.06306044052034554,
-            "rmse": 0.07468168654416331,
+            "bias": 0.0058618489431208195,
+            "mae": 0.06262712140769407,
+            "rmse": 0.07588689473180493,
             "rows": 12685
           }
         }
@@ -1253,6 +1380,39 @@
             "selected_steps": 5
           }
         },
+        "chosen_action": {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        "complete_action_allowlist": [
+          {
+            "action_id": "default",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          },
+          {
+            "action_id": "stronger_regularization",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.05,
+            "weight_decay": 0.001
+          },
+          {
+            "action_id": "shorter_patience",
+            "early_stopping_patience": 10,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          }
+        ],
+        "executor_confirmation": {
+          "action_id": "shorter_patience",
+          "fixed_steps": 7,
+          "held_parent_metric_read_before_execution": false
+        },
+        "observation_scope": "outer-train inner-LOGO only",
+        "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
         "selected_steps": 7
       },
       "1": {
@@ -1432,6 +1592,39 @@
             "selected_steps": 1
           }
         },
+        "chosen_action": {
+          "action_id": "default",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        "complete_action_allowlist": [
+          {
+            "action_id": "default",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          },
+          {
+            "action_id": "stronger_regularization",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.05,
+            "weight_decay": 0.001
+          },
+          {
+            "action_id": "shorter_patience",
+            "early_stopping_patience": 10,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          }
+        ],
+        "executor_confirmation": {
+          "action_id": "default",
+          "fixed_steps": 1,
+          "held_parent_metric_read_before_execution": false
+        },
+        "observation_scope": "outer-train inner-LOGO only",
+        "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
         "selected_steps": 1
       },
       "2": {
@@ -1611,6 +1804,39 @@
             "selected_steps": 1
           }
         },
+        "chosen_action": {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        "complete_action_allowlist": [
+          {
+            "action_id": "default",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          },
+          {
+            "action_id": "stronger_regularization",
+            "early_stopping_patience": 20,
+            "gate_strength": 0.05,
+            "weight_decay": 0.001
+          },
+          {
+            "action_id": "shorter_patience",
+            "early_stopping_patience": 10,
+            "gate_strength": 0.1,
+            "weight_decay": 0.0001
+          }
+        ],
+        "executor_confirmation": {
+          "action_id": "stronger_regularization",
+          "fixed_steps": 1,
+          "held_parent_metric_read_before_execution": false
+        },
+        "observation_scope": "outer-train inner-LOGO only",
+        "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
         "selected_steps": 1
       }
     }

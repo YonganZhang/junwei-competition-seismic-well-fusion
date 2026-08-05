@@ -2,13 +2,18 @@
   "artifacts": [
     {
       "path": "agent_action_audit.json",
-      "sha256": "babd712001bc2caac2735d2af71c5b5b2b7388a29fed9c59a803237a6121d461",
-      "size_bytes": 80132
+      "sha256": "1ec2ea5e0d607aac255e7a800c6f4e932c6e4f280936fc4aad15cdde2d6e7d02",
+      "size_bytes": 83006
     },
     {
       "path": "finding.md",
-      "sha256": "260c8c7b761905c09cbfca23a85c4eaa19dc32653e7152ef1fd01d9476d080f8",
-      "size_bytes": 2125
+      "sha256": "147accb1593ca1032a3fec1e94854bd49562f6af5cb84289ea8133f84c3b67b3",
+      "size_bytes": 2857
+    },
+    {
+      "path": "fixed_base_attribution_audit.json",
+      "sha256": "fddce69dd2dffbaa15de962dd711f85778ee4b85b7fe7f40f41b5ed10291dc11",
+      "size_bytes": 9403
     },
     {
       "path": "iteration_1_locked_reuse.json",
@@ -17,13 +22,13 @@
     },
     {
       "path": "iteration_2_anchored_residual.json",
-      "sha256": "39f45e06aec6e6f4d4568e839deae5af0344cd43acab6f834ed7828cb4d31900",
-      "size_bytes": 21207
+      "sha256": "d66371e360026ee0d92af228dfac0cffaefb3e6cb4d92cd1017245b3b6d272f5",
+      "size_bytes": 24511
     },
     {
       "path": "iteration_3_query_local_fusion.json",
-      "sha256": "f48c3a1b248a7a8292b80226d2ff58d519e07d7ea60b8c3ab9c4dc6d4d2eec92",
-      "size_bytes": 28192
+      "sha256": "423af205d6bde92ef0f6a016eb74015ee0b9b03fb6129106df05a643fc96e4f3",
+      "size_bytes": 31483
     },
     {
       "path": "phase0_freeze.json",
@@ -37,13 +42,13 @@
     },
     {
       "path": "predictions.npz",
-      "sha256": "1fdb94686708d34daaee0345058abc3f401cc87e1430098f6706ad609a620947",
-      "size_bytes": 1213330
+      "sha256": "4f92334ffcd721ea99f4b4806048a096d3e261ab0136fb3308f018f0126a3ef2",
+      "size_bytes": 1888392
     },
     {
       "path": "representation_audit.json",
-      "sha256": "5db672b47fa0d29cce8a4b05d232a5f6a4242800be97e3063499bad1b7c193b2",
-      "size_bytes": 30888
+      "sha256": "ed3f13ff7af7fe716126ce9d0b906b4731ca24416f2adab9b854ce692b44336a",
+      "size_bytes": 30934
     },
     {
       "path": "rerun_commands.json",
@@ -57,13 +62,13 @@
     },
     {
       "path": "summary.json",
-      "sha256": "a68dabe2d4d9b5e238bb4db060a40e68a4576f2e952bcbdf96c923eaf54924d1",
-      "size_bytes": 65309
+      "sha256": "4a8a539d858391860ee61b7086f0d10247fef287638f06b5b7b53f5c4ffeb365",
+      "size_bytes": 73536
     },
     {
       "path": "verification.json",
-      "sha256": "d9a21b92d565709ab796b077e3c760aecdf906e62214bff21fd21d9bffd1efb5",
-      "size_bytes": 1305
+      "sha256": "7ecfb34f5cec158a0caa36825d0b6b9eeb96837394818f93d82a48fb95df9eeb",
+      "size_bytes": 1593
     }
   ],
   "schema_version": "reconstruction-p39-artifact-manifest/v1",
@@ -72,7 +77,9 @@
     "p38_manifest_sha256": "e511fe7962bf8e390005fa87624b8e7a0a6e55c841d448106950c2e5de2ebf53",
     "p38_predictions_sha256": "90eeaefef170993a01afed7136ed161f998a96be646726e07c1df45e4ce833b3",
     "p38_worker_sha256": "1ea6d44d2a360ef5ebf1121f79c890cf00d838e241b89a8a9c8f7336feffe5d7",
-    "p39_runner_sha256": "7ccf4ccdaf56a31efbe92c26c6b75aee44bf8c4f2e61d025e12272ea2f028317",
-    "wiki_finding_sha256": "260c8c7b761905c09cbfca23a85c4eaa19dc32653e7152ef1fd01d9476d080f8"
+    "p39_pre_fix_commit": "c6056a0b05cbe401bf1dfa90fbab2fac16430c08",
+    "p39_pre_fix_summary_sha256": "a68dabe2d4d9b5e238bb4db060a40e68a4576f2e952bcbdf96c923eaf54924d1",
+    "p39_runner_sha256": "b695d62793778b70ff74794ae44d6043dd8c2775d55b143bf0ce6148581d99ec",
+    "wiki_finding_sha256": "147accb1593ca1032a3fec1e94854bd49562f6af5cb84289ea8133f84c3b67b3"
   }
 }

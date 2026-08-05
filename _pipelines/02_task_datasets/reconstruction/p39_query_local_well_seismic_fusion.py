@@ -47,6 +47,21 @@ WIKI_FINDING = (
 P38_LOCKED_COMMIT = "eb4789b0c406440a9ad897cc3f09c25beda50fa3"
 P38_WELL_MACRO_RMSE = 0.0753144330342321
 P38_FUSION_MACRO_RMSE = 0.07978122851402457
+P39_PRE_FIX_COMMIT = "c6056a0b05cbe401bf1dfa90fbab2fac16430c08"
+P39_PRE_FIX_SUMMARY_SHA256 = (
+    "a68dabe2d4d9b5e238bb4db060a40e68a4576f2e952bcbdf96c923eaf54924d1"
+)
+P39_PRE_FIX_CONTROL_MACRO_RMSE = {
+    "moment_random_gfm_random": 0.07468168654416331,
+    "moment_pretrained_gfm_random": 0.07586122373838418,
+    "moment_random_gfm_pretrained": 0.07473459535678662,
+    "moment_pretrained_gfm_pretrained": 0.0759084841201444,
+}
+P39_FROZEN_SELECTED_ACTIONS = {
+    "0": {"action_id": "shorter_patience", "selected_steps": 7},
+    "1": {"action_id": "default", "selected_steps": 1},
+    "2": {"action_id": "stronger_regularization", "selected_steps": 1},
+}
 PARENT_ORDER = p38.PARENT_ORDER
 SEED = 2693
 MAX_SCIENTIFIC_ITERATIONS = 3
@@ -86,6 +101,79 @@ def _array_sha256(value: np.ndarray) -> str:
     digest.update(json.dumps(list(array.shape)).encode("ascii"))
     digest.update(array.tobytes())
     return digest.hexdigest()
+
+
+def fixed_base_attribution_audit(
+    *,
+    control_bases: Mapping[str, Mapping[int, np.ndarray]],
+    parent_index: np.ndarray,
+) -> dict[str, Any]:
+    """Prove every weight control uses one identical fold-specific well base."""
+
+    if set(control_bases) != set(WEIGHT_CONTROLS):
+        raise ValueError("P39.1 fixed-base audit requires all four weight controls")
+    parent = np.asarray(parent_index, dtype=np.int64)
+    shared = control_bases[FINAL_CANDIDATE]
+    controls: dict[str, Any] = {}
+    all_exact = True
+    for name in WEIGHT_CONTROLS:
+        folds: dict[str, Any] = {}
+        for fold in range(3):
+            expected = np.asarray(shared[fold], dtype=np.float32)
+            actual = np.asarray(control_bases[name][fold], dtype=np.float32)
+            if actual.shape != expected.shape or actual.shape != parent.shape:
+                raise ValueError(f"P39.1 base shape drift for {name}/fold{fold}")
+            outer_train = parent != fold
+            held = parent == fold
+            full_diff = float(
+                np.max(np.abs(actual.astype(np.float64) - expected.astype(np.float64)))
+            )
+            train_diff = float(
+                np.max(
+                    np.abs(
+                        actual[outer_train].astype(np.float64)
+                        - expected[outer_train].astype(np.float64)
+                    )
+                )
+            )
+            held_diff = float(
+                np.max(
+                    np.abs(
+                        actual[held].astype(np.float64)
+                        - expected[held].astype(np.float64)
+                    )
+                )
+            )
+            exact = full_diff == train_diff == held_diff == 0.0
+            all_exact = all_exact and exact
+            folds[str(fold)] = {
+                "shape": list(actual.shape),
+                "base_sha256": _array_sha256(actual),
+                "shared_base_sha256": _array_sha256(expected),
+                "outer_train_crossfit_sha256": _array_sha256(actual[outer_train]),
+                "held_exact_sha256": _array_sha256(actual[held]),
+                "max_abs_diff_vs_shared": full_diff,
+                "outer_train_max_abs_diff_vs_shared": train_diff,
+                "held_max_abs_diff_vs_shared": held_diff,
+                "exact_shared_base": exact,
+                "outer_train_rows": int(np.count_nonzero(outer_train)),
+                "held_rows": int(np.count_nonzero(held)),
+            }
+        controls[name] = {"folds": folds}
+    if not all_exact:
+        raise RuntimeError("P39.1 controls do not share the exact locked P38 well base")
+    return {
+        "schema_version": "reconstruction-p39-fixed-base-attribution/v1",
+        "invariant": (
+            "All Iteration-3 controls share the pretrained P38 outer-train "
+            "cross-fitted base and exact recorded outer-held base; only MOMENT/GFM "
+            "correction features vary."
+        ),
+        "pre_fix_commit": P39_PRE_FIX_COMMIT,
+        "pre_fix_summary_sha256": P39_PRE_FIX_SUMMARY_SHA256,
+        "controls": controls,
+        "all_controls_all_folds_exact_shared_base": bool(all_exact),
+    }
 
 
 def _json_hash(value: Mapping[str, Any]) -> str:
@@ -1229,29 +1317,28 @@ def run_experiment(
     p38_action_ids = p38_summary["agent_effect"]["selected_action_ids"]
     allowlist = json.loads((output / "phase0_freeze.json").read_text())["action_allowlist"]
     actions_by_id = {str(row["action_id"]): row for row in allowlist}
-    base_by_mode: dict[str, dict[int, np.ndarray]] = {"pretrained": {}, "random_init": {}}
+    shared_pretrained_base_by_fold: dict[int, np.ndarray] = {}
     base_audit: dict[str, Any] = {}
     for fold in range(3):
         config = actions_by_id[str(p38_action_ids[fold])]
-        for mode in ("pretrained", "random_init"):
-            base, audit = _p38_base_for_fold(
-                fold=fold,
-                moment_features=moment[(fold, mode)],
-                seismic_features=gfm_rows["pretrained"],
-                target=target,
-                parent=parent,
-                config=config,
-                locked_outer_prediction=locked_base if mode == "pretrained" else None,
-                device=device,
-            )
-            base_by_mode[mode][fold] = base
-            base_audit[f"{mode}__fold{fold}"] = audit
+        base, audit = _p38_base_for_fold(
+            fold=fold,
+            moment_features=moment[(fold, "pretrained")],
+            seismic_features=gfm_rows["pretrained"],
+            target=target,
+            parent=parent,
+            config=config,
+            locked_outer_prediction=locked_base,
+            device=device,
+        )
+        shared_pretrained_base_by_fold[fold] = base
+        base_audit[f"shared_pretrained__fold{fold}"] = audit
     pretrained_well = {fold: moment[(fold, "pretrained")] for fold in range(3)}
     iteration2 = _run_anchored_variant(
         label=ITERATION2_NAME,
         well_by_fold=pretrained_well,
         seismic=gfm_rows["pretrained"],
-        base_by_fold=base_by_mode["pretrained"],
+        base_by_fold=shared_pretrained_base_by_fold,
         target=target,
         parent=parent,
         selected_actions=None,
@@ -1303,13 +1390,20 @@ def run_experiment(
         ("moment_pretrained_gfm_random", "pretrained", "random_init"),
         ("moment_random_gfm_pretrained", "random_init", "pretrained"),
     )
+    control_bases = {
+        name: shared_pretrained_base_by_fold for name in WEIGHT_CONTROLS
+    }
+    fixed_base_audit = fixed_base_attribution_audit(
+        control_bases=control_bases,
+        parent_index=parent,
+    )
     for index, (name, moment_mode, gfm_mode) in enumerate(control_order):
         well_by_fold = {fold: moment[(fold, moment_mode)] for fold in range(3)}
         result = _run_anchored_variant(
             label=name,
             well_by_fold=well_by_fold,
             seismic=combined[gfm_mode],
-            base_by_fold=base_by_mode[moment_mode],
+            base_by_fold=control_bases[name],
             target=target,
             parent=parent,
             selected_actions=selected_actions,
@@ -1339,7 +1433,7 @@ def run_experiment(
     for fold in range(3):
         held = np.flatnonzero(parent == fold)
         well = moment[(fold, "pretrained")]
-        base = base_by_mode["pretrained"][fold]
+        base = shared_pretrained_base_by_fold[fold]
         action = selected_actions[fold]
         steps = selected_steps[fold]
         final = candidate_bundles[fold]
@@ -1447,6 +1541,31 @@ def run_experiment(
             "models": models,
             "selected_actions": {str(key): value for key, value in final_choices.items()},
         },
+        "attribution_fix": {
+            "state": "FIXED_SHARED_LOCKED_P38_BASE",
+            "pre_fix_commit": P39_PRE_FIX_COMMIT,
+            "pre_fix_summary_sha256": P39_PRE_FIX_SUMMARY_SHA256,
+            "pre_fix_control_macro_rmse": dict(P39_PRE_FIX_CONTROL_MACRO_RMSE),
+            "post_fix_control_macro_rmse": {
+                name: models[name]["metrics"]["equal_parent_macro"]["rmse"]
+                for name in WEIGHT_CONTROLS
+            },
+            "post_fix_parent_wins_vs_locked_base": {
+                name: sum(
+                    models[name]["metrics"][parent_name]["rmse"]
+                    < well_metrics[parent_name]["rmse"]
+                    for parent_name in PARENT_ORDER
+                )
+                for name in WEIGHT_CONTROLS
+            },
+            "all_controls_all_folds_exact_shared_base": fixed_base_audit[
+                "all_controls_all_folds_exact_shared_base"
+            ],
+            "action_allowlist_changed": False,
+            "selected_training_actions_or_steps_changed": False,
+            "promotion_thresholds_changed": False,
+            "fourth_iteration_added": False,
+        },
         "locked_well_only": {"metrics": well_metrics, "calibration": well_calibration},
         "paired_depth_block_bootstrap": bootstrap,
         "misalignment": mismatch,
@@ -1501,6 +1620,14 @@ def run_experiment(
         predictions[f"{name}__sigma"] = final_sigmas[name]
         predictions[f"{name}__gate"] = final_gates[name]
         predictions[f"{name}__correction"] = final_corrections[name]
+        for fold in range(3):
+            predictions[f"{name}__base_fold{fold}"] = np.asarray(
+                control_bases[name][fold], dtype=np.float32
+            )
+    for fold in range(3):
+        predictions[f"shared_pretrained_locked_base__fold{fold}"] = np.asarray(
+            shared_pretrained_base_by_fold[fold], dtype=np.float32
+        )
     representation_audit = {
         "schema_version": "reconstruction-p39-representation-audit/v1",
         "row_rebuild_max_abs_difference": row_differences,
@@ -1530,6 +1657,9 @@ def run_experiment(
         "p38_parameter_count": p38_core.parameter_count(),
         "all_weight_controls_identical_parameter_count": anchored_parameter_count()
         == p38_core.parameter_count(),
+        "fixed_base_attribution_invariant": fixed_base_audit[
+            "all_controls_all_folds_exact_shared_base"
+        ],
         "encoder_audit": encoder_audit,
     }
     agent_audit = {
@@ -1546,12 +1676,13 @@ def run_experiment(
         "iteration_2": {"folds": iter2_choices, "training": iter2_audit},
         "iteration_3": {"folds": final_choices, "training": final_audits},
         "base_prediction_audit": base_audit,
+        "fixed_base_attribution": fixed_base_audit,
         "mismatch_execution": mismatch_audit,
         "held_parent_labels_or_metrics_visible_before_action": False,
         "iteration_3_adapted_from_iteration_2_outer_results": False,
         "all_actions_frozen_before_outer_evaluation": True,
     }
-    return summary, predictions, representation_audit, agent_audit
+    return summary, predictions, representation_audit, agent_audit, fixed_base_audit
 
 
 def _iteration_record(summary: Mapping[str, Any], iteration: int) -> dict[str, Any]:
@@ -1575,11 +1706,11 @@ def _finding(summary: Mapping[str, Any]) -> str:
     models = summary["iteration_3"]["models"]
     candidate = models[FINAL_CANDIDATE]["metrics"]
     lines = [
-        "# P39 query-local real-well PHIF well-seismic fusion",
+        "# P39.1 fixed-base query-local real-well PHIF well-seismic fusion",
         "",
         f"Decision: `{summary['decision']['state']}`; default: `{summary['decision']['default']}`.",
         "",
-        "P39 kept the exact P38 three-parent native-PHIF LOGO3 rows and replaced no target, split, or gate. Iteration 2 changed only the prediction interface; Iteration 3 changed only the seismic representation. No fourth iteration was run.",
+        "P39.1 fixes the P39 attribution interface so every Iteration-3 weight control shares the exact pretrained/locked P38 well-only base in every outer fold. MOMENT and GFM modes now change only correction-head features. Target, split, action allowlist, selected steps, thresholds and the three-iteration limit are unchanged.",
         "",
         "## Results",
         "",
@@ -1595,6 +1726,29 @@ def _finding(summary: Mapping[str, Any]) -> str:
         lines.append(
             f"| {name} | {metrics['15/9-19']['rmse']:.12f} | {metrics['15/9-F-11']['rmse']:.12f} | {metrics['15/9-F-15']['rmse']:.12f} | {metrics['equal_parent_macro']['rmse']:.12f} |"
         )
+    lines.extend(
+        [
+            "",
+            "## Fixed-base attribution audit",
+            "",
+            "| control | pre-fix macro RMSE | fixed-base macro RMSE | fixed-base well wins |",
+            "|---|---:|---:|---:|",
+        ]
+    )
+    for name in WEIGHT_CONTROLS:
+        lines.append(
+            f"| {name} | {summary['attribution_fix']['pre_fix_control_macro_rmse'][name]:.15f} | "
+            f"{summary['attribution_fix']['post_fix_control_macro_rmse'][name]:.15f} | "
+            f"{summary['attribution_fix']['post_fix_parent_wins_vs_locked_base'][name]}/3 |"
+        )
+    lines.extend(
+        [
+            "",
+            "Every per-control/per-fold base hash matches the shared pretrained P38 base; "
+            "all full, outer-train cross-fitted, and held-row max-absolute differences are exactly zero. "
+            "The row-aligned base arrays are retained in `predictions.npz`.",
+        ]
+    )
     lines.extend(
         [
             "",
@@ -1665,6 +1819,8 @@ def _artifact_manifest(output: Path) -> dict[str, Any]:
             "p38_core_sha256": _sha256(HERE / "p38_pilot_core.py"),
             "p38_worker_sha256": _sha256(HERE / "p38_foundation_feature_worker.py"),
             "wiki_finding_sha256": _sha256(WIKI_FINDING),
+            "p39_pre_fix_commit": P39_PRE_FIX_COMMIT,
+            "p39_pre_fix_summary_sha256": P39_PRE_FIX_SUMMARY_SHA256,
         },
     }
 
@@ -1672,11 +1828,38 @@ def _artifact_manifest(output: Path) -> dict[str, Any]:
 def _recompute_final(output: Path) -> dict[str, Any]:
     summary = json.loads((output / "summary.json").read_text(encoding="utf-8"))
     manifest = json.loads((output / "artifact_manifest.json").read_text(encoding="utf-8"))
+    committed_fixed_base = json.loads(
+        (output / "fixed_base_attribution_audit.json").read_text(encoding="utf-8")
+    )
     with np.load(output / "predictions.npz", allow_pickle=False) as payload:
         arrays = {key: payload[key] for key in payload.files}
     locked = _p38_prediction_arrays()
     target = np.asarray(arrays["target"], dtype=np.float32)
     parent = np.asarray(arrays["parent_index"], dtype=np.int64)
+    control_bases = {
+        name: {
+            fold: np.asarray(arrays[f"{name}__base_fold{fold}"], dtype=np.float32)
+            for fold in range(3)
+        }
+        for name in WEIGHT_CONTROLS
+    }
+    recomputed_fixed_base = fixed_base_attribution_audit(
+        control_bases=control_bases,
+        parent_index=parent,
+    )
+    selected_actions = {
+        str(fold): {
+            "action_id": summary["iteration_3"]["selected_actions"][str(fold)][
+                "action"
+            ]["action_id"],
+            "selected_steps": int(
+                summary["iteration_3"]["selected_actions"][str(fold)][
+                    "selected_steps"
+                ]
+            ),
+        }
+        for fold in range(3)
+    }
     checks: dict[str, bool] = {
         "phase0_reproduces": _phase0_checks(output)["status"] == "PASS_PHASE0",
         "manifest_hashes_match": all(
@@ -1699,6 +1882,40 @@ def _recompute_final(output: Path) -> dict[str, Any]:
         and _sha256(WIKI_FINDING) == _sha256(output / "finding.md")
         and manifest["source_provenance"]["wiki_finding_sha256"]
         == _sha256(WIKI_FINDING),
+        "fixed_base_audit_recomputes": recomputed_fixed_base == committed_fixed_base,
+        "all_controls_share_exact_fold_bases": recomputed_fixed_base[
+            "all_controls_all_folds_exact_shared_base"
+        ]
+        and summary["attribution_fix"][
+            "all_controls_all_folds_exact_shared_base"
+        ],
+        "shared_base_arrays_retain_independent_audit": all(
+            np.array_equal(
+                arrays[f"{name}__base_fold{fold}"],
+                arrays[f"shared_pretrained_locked_base__fold{fold}"],
+            )
+            for name in WEIGHT_CONTROLS
+            for fold in range(3)
+        ),
+        "held_base_is_exact_recorded_p38": all(
+            np.array_equal(
+                arrays[f"shared_pretrained_locked_base__fold{fold}"][parent == fold],
+                locked["well_only__prediction"][parent == fold],
+            )
+            for fold in range(3)
+        ),
+        "frozen_actions_and_steps_unchanged": selected_actions
+        == P39_FROZEN_SELECTED_ACTIONS,
+        "no_fourth_iteration_or_gate_change": summary["attribution_fix"][
+            "fourth_iteration_added"
+        ]
+        is False
+        and summary["attribution_fix"]["promotion_thresholds_changed"] is False
+        and summary["attribution_fix"]["action_allowlist_changed"] is False
+        and summary["attribution_fix"][
+            "selected_training_actions_or_steps_changed"
+        ]
+        is False,
     }
     for name in WEIGHT_CONTROLS:
         prediction = np.asarray(arrays[f"{name}__prediction"], dtype=np.float32)
@@ -1763,17 +1980,24 @@ def _recompute_final(output: Path) -> dict[str, Any]:
 def write_final(
     *,
     output_dir: Path,
-    result: tuple[dict[str, Any], dict[str, np.ndarray], dict[str, Any], dict[str, Any]],
+    result: tuple[
+        dict[str, Any],
+        dict[str, np.ndarray],
+        dict[str, Any],
+        dict[str, Any],
+        dict[str, Any],
+    ],
     commands: Mapping[str, str],
 ) -> None:
     output = _validate_output(output_dir)
-    summary, predictions, representation, agent = result
+    summary, predictions, representation, agent, fixed_base = result
     with (output / "predictions.npz").open("wb") as handle:
         np.savez_compressed(handle, **predictions)
     payloads = {
         "summary.json": _canonical(summary),
         "representation_audit.json": _canonical(representation),
         "agent_action_audit.json": _canonical(agent),
+        "fixed_base_attribution_audit.json": _canonical(fixed_base),
         "iteration_2_anchored_residual.json": _canonical(_iteration_record(summary, 2)),
         "iteration_3_query_local_fusion.json": _canonical(_iteration_record(summary, 3)),
         "rerun_commands.json": _canonical(commands),

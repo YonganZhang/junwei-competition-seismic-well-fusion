@@ -177,6 +177,39 @@
           "selected_steps": 5
         }
       },
+      "chosen_action": {
+        "action_id": "stronger_regularization",
+        "early_stopping_patience": 20,
+        "gate_strength": 0.05,
+        "weight_decay": 0.001
+      },
+      "complete_action_allowlist": [
+        {
+          "action_id": "default",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        }
+      ],
+      "executor_confirmation": {
+        "action_id": "stronger_regularization",
+        "fixed_steps": 5,
+        "held_parent_metric_read_before_execution": false
+      },
+      "observation_scope": "outer-train inner-LOGO only",
+      "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
       "selected_steps": 5
     },
     "1": {
@@ -356,6 +389,39 @@
           "selected_steps": 1
         }
       },
+      "chosen_action": {
+        "action_id": "shorter_patience",
+        "early_stopping_patience": 10,
+        "gate_strength": 0.1,
+        "weight_decay": 0.0001
+      },
+      "complete_action_allowlist": [
+        {
+          "action_id": "default",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        }
+      ],
+      "executor_confirmation": {
+        "action_id": "shorter_patience",
+        "fixed_steps": 1,
+        "held_parent_metric_read_before_execution": false
+      },
+      "observation_scope": "outer-train inner-LOGO only",
+      "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
       "selected_steps": 1
     },
     "2": {
@@ -535,6 +601,39 @@
           "selected_steps": 5
         }
       },
+      "chosen_action": {
+        "action_id": "stronger_regularization",
+        "early_stopping_patience": 20,
+        "gate_strength": 0.05,
+        "weight_decay": 0.001
+      },
+      "complete_action_allowlist": [
+        {
+          "action_id": "default",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        }
+      ],
+      "executor_confirmation": {
+        "action_id": "stronger_regularization",
+        "fixed_steps": 5,
+        "held_parent_metric_read_before_execution": false
+      },
+      "observation_scope": "outer-train inner-LOGO only",
+      "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
       "selected_steps": 5
     }
   },

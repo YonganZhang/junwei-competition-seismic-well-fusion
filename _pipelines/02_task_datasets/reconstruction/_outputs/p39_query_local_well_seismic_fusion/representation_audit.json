@@ -211,7 +211,7 @@
           161,
           16
         ],
-        "wall_seconds": 9.343076171993744
+        "wall_seconds": 9.054296268965118
       },
       "gfm_random_init": {
         "audit": {
@@ -301,7 +301,7 @@
           161,
           16
         ],
-        "wall_seconds": 8.909028205031063
+        "wall_seconds": 8.822026644018479
       },
       "moment_fold0_pretrained": {
         "audit": {
@@ -373,7 +373,7 @@
           4,
           16
         ],
-        "wall_seconds": 10.88548846798949
+        "wall_seconds": 11.192874835978728
       },
       "moment_fold0_random_init": {
         "audit": {
@@ -445,7 +445,7 @@
           4,
           16
         ],
-        "wall_seconds": 11.480607127014082
+        "wall_seconds": 11.779701706022024
       },
       "moment_fold1_pretrained": {
         "audit": {
@@ -517,7 +517,7 @@
           4,
           16
         ],
-        "wall_seconds": 11.047129366954323
+        "wall_seconds": 11.049251054006163
       },
       "moment_fold1_random_init": {
         "audit": {
@@ -589,7 +589,7 @@
           4,
           16
         ],
-        "wall_seconds": 11.525293459009845
+        "wall_seconds": 11.658198399003595
       },
       "moment_fold2_pretrained": {
         "audit": {
@@ -661,7 +661,7 @@
           4,
           16
         ],
-        "wall_seconds": 11.144268087053206
+        "wall_seconds": 10.822082497994415
       },
       "moment_fold2_random_init": {
         "audit": {
@@ -733,13 +733,14 @@
           4,
           16
         ],
-        "wall_seconds": 11.40433445799863
+        "wall_seconds": 11.409883788030129
       }
     },
     "schema_version": "reconstruction-p39-foundation-feature-audit/v1",
     "worker": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
     "worker_sha256": "1ea6d44d2a360ef5ebf1121f79c890cf00d838e241b89a8a9c8f7336feffe5d7"
   },
+  "fixed_base_attribution_invariant": true,
   "fixed_modality_transform_output_shape": [
     12685,
     32
