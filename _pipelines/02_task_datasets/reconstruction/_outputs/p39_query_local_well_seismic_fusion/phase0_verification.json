@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "exact_row_count": true,
+    "exact_three_iterations": true,
+    "exact_three_parents": true,
+    "freeze_hash_matches": true,
+    "local_assets_exist": true,
+    "local_only_frozen_encoders": true,
+    "p38_decision_locked": true,
+    "p38_fusion_macro_locked": true,
+    "p38_manifest_all_hashes_match": true,
+    "p38_verification_pass": true,
+    "phase0_no_encoder_or_training": true,
+    "row_ids_exact_once": true,
+    "well_only_macro_locked": true
+  },
+  "schema_version": "reconstruction-p39-phase0-verification/v1",
+  "status": "PASS_PHASE0"
+}

@@ -1,0 +1,193 @@
+{
+  "action_allowlist": [
+    {
+      "action_id": "default",
+      "early_stopping_patience": 20,
+      "gate_strength": 0.1,
+      "weight_decay": 0.0001
+    },
+    {
+      "action_id": "stronger_regularization",
+      "early_stopping_patience": 20,
+      "gate_strength": 0.05,
+      "weight_decay": 0.001
+    },
+    {
+      "action_id": "shorter_patience",
+      "early_stopping_patience": 10,
+      "gate_strength": 0.1,
+      "weight_decay": 0.0001
+    }
+  ],
+  "agent_policy": {
+    "evidence": "outer-train inner-LOGO only",
+    "held_parent_metric_visible": false,
+    "one_action_per_outer_fold": true,
+    "tie_break": "default"
+  },
+  "anchored_residual": {
+    "correction_bounds": [
+      -0.5,
+      0.5
+    ],
+    "formula": "clip(locked_well_base + gate * bounded_seismic_correction, 0, 1)",
+    "gate_bounds_by_action": [
+      0.0,
+      0.1
+    ],
+    "outer_held_base": "exact recorded P38 well-only prediction for pretrained MOMENT",
+    "outer_train_base_targets": "unchanged P38 well-only cross-fitted predictions",
+    "zero_gate_exact_fallback": true
+  },
+  "base": {
+    "branch": "p38-real-well-phif-direct-seismic",
+    "commit": "eb4789b0c406440a9ad897cc3f09c25beda50fa3",
+    "fusion_macro_rmse": 0.07978122851402457,
+    "p38_decision": "FEASIBLE_NO_PROMOTION",
+    "well_only_macro_rmse": 0.0753144330342321
+  },
+  "bootstrap": {
+    "draws": 20000,
+    "paired": true,
+    "physical_MD_block_m": 20.0,
+    "seed": 2693
+  },
+  "calibration": "outer-train inner-LOGO residual Gaussian scale",
+  "firewall": {
+    "forbidden": [
+      "train.h5",
+      "test.h5",
+      "frozen holdout",
+      "KJI",
+      "PHIE",
+      "PORO"
+    ],
+    "held_parent_target_used_for_action_or_transform": false,
+    "target_derived_alignment": false
+  },
+  "freeze_sha256": "4c7af71080c53e80077b22c33c60162430fdbc75d0aba3f462512e11904f261a",
+  "iterations": [
+    {
+      "changed_variable": null,
+      "iteration": 1,
+      "operation": "exact P38 artifact reuse"
+    },
+    {
+      "changed_variable": "prediction_interface_only",
+      "iteration": 2,
+      "operation": "anchored bounded residual with P38 GFM row representation"
+    },
+    {
+      "changed_variable": "seismic_representation_only",
+      "iteration": 3,
+      "operation": "native query-local waveform plus retained GFM trace/CLS context"
+    }
+  ],
+  "local_assets": {
+    "foundation_python": "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+    "gfm_snapshot": "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--thinkonward--geophysical-foundation-model/snapshots/d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+    "gfm_source_root": "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src",
+    "moment_dependency_root": "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+    "moment_snapshot": "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+    "moment_source_root": "/mnt/data/yongan-admin-2/.cache/upstream/moment"
+  },
+  "maximum_scientific_iterations": 3,
+  "mismatch_controls": {
+    "cyclic_well": "replace complete local and global seismic evidence by relative-MD cyclic map",
+    "fixed_twt_operation": "relocate waveform query and all manual query-position fields without refit",
+    "fixed_twt_shift_ms": 160.0,
+    "fixed_twt_shift_samples": 40
+  },
+  "parent_order": [
+    "15/9-19",
+    "15/9-F-11",
+    "15/9-F-15"
+  ],
+  "phase0_encoder_calls": 0,
+  "phase0_training_runs": 0,
+  "promotion_gates": [
+    "candidate macro RMSE < locked well-only 0.0753144330342321",
+    "candidate wins at least 2 of 3 parents",
+    "paired 20m block-bootstrap CI95 upper < 0",
+    "both-pretrained macro < both-random macro",
+    "both-pretrained macro < each single-pretrained macro",
+    "both mismatches worsen macro and at least 2 of 3 parents",
+    "finite non-vacuous train-only calibration",
+    "zero-gate exact fallback for every row",
+    "all firewall, provenance, tensor, hash, and rerun checks pass"
+  ],
+  "representation": {
+    "boundary_policy": "clip shifted query center to keep all frozen offsets native",
+    "channels": [
+      "amplitude",
+      "local_rms_5_sample",
+      "vertical_gradient_2_sample"
+    ],
+    "combination": "concatenate local waveform and GFM row context before fixed 32D transform",
+    "crossline_offsets": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "gfm_context": "per-row trace token and CLS token retained",
+    "temporal_offsets": [
+      -8,
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "resource_budget": {
+    "foundation_encoders_frozen": true,
+    "gpu_uuid": "GPU-918cc4df-d171-a840-28ba-5173a6b2086f",
+    "head_eval_every": 5,
+    "head_learning_rate": 0.003,
+    "head_max_updates": 120,
+    "head_parameter_ceiling": 6305,
+    "local_only": true,
+    "new_dependencies": false,
+    "seed": 2693,
+    "selected_device": "cuda:5"
+  },
+  "schema_version": "reconstruction-p39-phase0-freeze/v1",
+  "split": "exact P38 LOGO3 retained rows",
+  "state": "FROZEN_ACTIVE",
+  "stop_conditions": [
+    "stop if exact P38 reuse or retained-row identity fails",
+    "stop after iteration 3 regardless of outcome",
+    "no held-outcome tuning and no fourth iteration"
+  ],
+  "target": {
+    "bounds": [
+      0.0,
+      1.0
+    ],
+    "forbidden_aliases": [
+      "PHIE",
+      "Eclipse PORO"
+    ],
+    "name": "native published CPI PHIF",
+    "unit": "V/V_fraction"
+  },
+  "weight_controls": [
+    "moment_random_gfm_random",
+    "moment_pretrained_gfm_random",
+    "moment_random_gfm_pretrained",
+    "moment_pretrained_gfm_pretrained"
+  ]
+}

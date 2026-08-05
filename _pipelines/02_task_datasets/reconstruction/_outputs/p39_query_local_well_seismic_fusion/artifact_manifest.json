@@ -1,0 +1,78 @@
+{
+  "artifacts": [
+    {
+      "path": "agent_action_audit.json",
+      "sha256": "babd712001bc2caac2735d2af71c5b5b2b7388a29fed9c59a803237a6121d461",
+      "size_bytes": 80132
+    },
+    {
+      "path": "finding.md",
+      "sha256": "260c8c7b761905c09cbfca23a85c4eaa19dc32653e7152ef1fd01d9476d080f8",
+      "size_bytes": 2125
+    },
+    {
+      "path": "iteration_1_locked_reuse.json",
+      "sha256": "59174a32206e2f7bd094858bd5e1021ff0000a6355c7f2fee7a6e7883fd16757",
+      "size_bytes": 5628
+    },
+    {
+      "path": "iteration_2_anchored_residual.json",
+      "sha256": "39f45e06aec6e6f4d4568e839deae5af0344cd43acab6f834ed7828cb4d31900",
+      "size_bytes": 21207
+    },
+    {
+      "path": "iteration_3_query_local_fusion.json",
+      "sha256": "f48c3a1b248a7a8292b80226d2ff58d519e07d7ea60b8c3ab9c4dc6d4d2eec92",
+      "size_bytes": 28192
+    },
+    {
+      "path": "phase0_freeze.json",
+      "sha256": "1ccfb4c7ec74bb0d839030eb59798d0fa629b9cb29af889f1c04871e2dae005c",
+      "size_bytes": 5723
+    },
+    {
+      "path": "phase0_verification.json",
+      "sha256": "b4f24479fd939d5db04b2aba1d370171d7d5cd53eeeb6ae2e7b10d2390823912",
+      "size_bytes": 575
+    },
+    {
+      "path": "predictions.npz",
+      "sha256": "1fdb94686708d34daaee0345058abc3f401cc87e1430098f6706ad609a620947",
+      "size_bytes": 1213330
+    },
+    {
+      "path": "representation_audit.json",
+      "sha256": "5db672b47fa0d29cce8a4b05d232a5f6a4242800be97e3063499bad1b7c193b2",
+      "size_bytes": 30888
+    },
+    {
+      "path": "rerun_commands.json",
+      "sha256": "be153a34561dd87c61fe719083b3da514e21778a0aa2903fd33072d76f2be372",
+      "size_bytes": 3008
+    },
+    {
+      "path": "row_contract.json",
+      "sha256": "4e875dcbd65f215c2bc9d838aa700aecff0a0d8a01a3d7d5132074d5cf759495",
+      "size_bytes": 1874
+    },
+    {
+      "path": "summary.json",
+      "sha256": "a68dabe2d4d9b5e238bb4db060a40e68a4576f2e952bcbdf96c923eaf54924d1",
+      "size_bytes": 65309
+    },
+    {
+      "path": "verification.json",
+      "sha256": "d9a21b92d565709ab796b077e3c760aecdf906e62214bff21fd21d9bffd1efb5",
+      "size_bytes": 1305
+    }
+  ],
+  "schema_version": "reconstruction-p39-artifact-manifest/v1",
+  "source_provenance": {
+    "p38_core_sha256": "9504aeda2001aa089e0e920ed6c8a420beff27de3d6442249f3b1a60ce1efca8",
+    "p38_manifest_sha256": "e511fe7962bf8e390005fa87624b8e7a0a6e55c841d448106950c2e5de2ebf53",
+    "p38_predictions_sha256": "90eeaefef170993a01afed7136ed161f998a96be646726e07c1df45e4ce833b3",
+    "p38_worker_sha256": "1ea6d44d2a360ef5ebf1121f79c890cf00d838e241b89a8a9c8f7336feffe5d7",
+    "p39_runner_sha256": "7ccf4ccdaf56a31efbe92c26c6b75aee44bf8c4f2e61d025e12272ea2f028317",
+    "wiki_finding_sha256": "260c8c7b761905c09cbfca23a85c4eaa19dc32653e7152ef1fd01d9476d080f8"
+  }
+}

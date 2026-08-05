@@ -1,0 +1,34 @@
+{
+  "array_sha256": {
+    "MD_m": "36cfd5f74781c3c6cfc1df4b1eb88fceed4b4fbc40c905afdebbc25ea8c071b0",
+    "TVDSS_m": "29ef0dca9dde7cc1c636e44997136108450238ee2e6bd63a72c03d2a924dd095",
+    "TWT_ms": "9eaae1b76bef121db6a4b1d3aed5d304bbcce37873360c31e6ea6dd731af6d78",
+    "crossline": "175c09dc4741fafcd78a9052852dc11b76318fd0da7f6235575b90815eeebcb5",
+    "inline": "08bdbd2029ba70983ec0c86e594e59871d908e7096314ae3df55de262833d88c",
+    "parent_index": "45be7f864e2a88dc8cdab5efe45e19f9d54887a805ec646f83e90713e283bd4d",
+    "row_id": "e819690a7051859ac8db6d5043e3de253b0ac1c142fd5c591dd115339f3eb88d",
+    "section_id": "a2b033333dd3ce9157d0290c289025e0a06772a0f0e09d531753da42542bca0c",
+    "target": "246d164348c54a08cac17d500fccd9cf851d693e8b6ccb22084367bb3402d980",
+    "time_index": "705d54e81895202813292d7cc3803c0e8edc1bc3825e7a8e9723316eaf7b9662",
+    "time_position": "825b1ad27bae922516e5b1e3d85a31baf0d71489e675e1d29eb4aabd60a53e6c",
+    "trace_token_id": "c026474e5379e1cb89b825b4664ac206bf406c5c830a53af49f89788b46e7344",
+    "x_m": "4417879ed688f1202c03bcaaeaa12422303874f1931dff226d58aad5031c73f0",
+    "y_m": "791b56f4bb330df6b446113b0e037c17e8885d89cc076c04e8e9ca193308f2eb"
+  },
+  "parent_counts": {
+    "15/9-19": 1962,
+    "15/9-F-11": 1877,
+    "15/9-F-15": 8846
+  },
+  "row_id_exact_once": true,
+  "rows": 12685,
+  "schema_version": "reconstruction-p39-row-contract/v1",
+  "source": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/_outputs/p38_real_well_phif_direct_seismic/predictions.npz",
+  "split_hash": "0498e89412e5f530da120155754ec751a01b14d25f34f85b8322c28ff745bd89",
+  "target_forbidden_aliases": [
+    "PHIE",
+    "Eclipse PORO"
+  ],
+  "target_name": "native published CPI PHIF",
+  "target_unit": "V/V_fraction"
+}
