@@ -1,0 +1,173 @@
+{
+  "claim_boundary": "Three-parent Volve native-PHIF LOGO3 pilot only; not Eclipse PORO, not PHIE, and not field-wide generalization.",
+  "model_output": {
+    "fields": [
+      "prediction_PHIF_fraction",
+      "train_only_calibration_sigma_fraction",
+      "interval_50_fraction",
+      "interval_90_fraction",
+      "fold_id",
+      "model_id",
+      "action_id"
+    ],
+    "prediction_bounds": [
+      0.0,
+      1.0
+    ],
+    "uncertainty_method": "outer-train inner-LOGO residual Gaussian scale"
+  },
+  "provenance_required": [
+    "raw_archive_member_and_sha256",
+    "survey_and_checkshot_member_sha256",
+    "seismic_index_and_SEG-Y identity",
+    "encoder_model_revision_and_weights_sha256",
+    "normalization_fit_parent_ids",
+    "split_hash",
+    "prediction_sha256",
+    "config_and_action_id"
+  ],
+  "row_identity": {
+    "fields": [
+      "row_id",
+      "parent_id",
+      "well_key",
+      "MD_m",
+      "TVDSS_m",
+      "x_m_ED50_UTM31N",
+      "y_m_ED50_UTM31N",
+      "TWT_ms",
+      "inline",
+      "crossline",
+      "time_index_4ms",
+      "section_id",
+      "trace_token_id"
+    ],
+    "ordering": "parent_order then increasing native target MD",
+    "required": true
+  },
+  "schema_version": "reconstruction-p38-real-well-fusion-io/v1",
+  "seismic_input": {
+    "channel_order": [
+      "amplitude",
+      "local_rms_5_sample",
+      "vertical_gradient_2_sample"
+    ],
+    "gfm_tokens": {
+      "fixed_projected_width": 16,
+      "model_id": "thinkonward/geophysical-foundation-model",
+      "per_channel_source_shape": [
+        "section",
+        161,
+        1200
+      ],
+      "revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+      "time_position_feature": "local_time_index / 399 plus fixed sin/cos",
+      "token_order": "CLS then 160 complete-trace tokens",
+      "trace_and_cls_retained_separately": true,
+      "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+    },
+    "interpolation": false,
+    "native_section_shape": [
+      "section",
+      3,
+      400,
+      160
+    ],
+    "padding": false,
+    "source": "continuous ST0202 post-stack SEG-Y"
+  },
+  "split": {
+    "fit_order": [
+      "normalization",
+      "imputation",
+      "projection",
+      "cache",
+      "encoder_call",
+      "model_selection",
+      "calibration",
+      "agent_action"
+    ],
+    "folds": [
+      {
+        "fold_id": 0,
+        "held_parent": "15/9-19",
+        "train_parents": [
+          "15/9-F-11",
+          "15/9-F-15"
+        ]
+      },
+      {
+        "fold_id": 1,
+        "held_parent": "15/9-F-11",
+        "train_parents": [
+          "15/9-19",
+          "15/9-F-15"
+        ]
+      },
+      {
+        "fold_id": 2,
+        "held_parent": "15/9-F-15",
+        "train_parents": [
+          "15/9-19",
+          "15/9-F-11"
+        ]
+      }
+    ],
+    "held_parent_target_visible_to_fit": false,
+    "protocol": "LOGO3 by independent parent"
+  },
+  "target": {
+    "bounds": [
+      0.0,
+      1.0
+    ],
+    "definition": "native published CPI final/total formation porosity",
+    "forbidden_aliases": [
+      "PHIE",
+      "LFP_PHIE",
+      "Eclipse PORO"
+    ],
+    "name": "PHIF",
+    "quality_mask": "finite, explicit-null-distinct, six center curves observed, direct ST0202 alignment",
+    "unit": "V/V_fraction"
+  },
+  "well_input": {
+    "curve_order": [
+      "GR",
+      "RHOB",
+      "NPHI",
+      "DT",
+      "RT",
+      "CALI"
+    ],
+    "depth_unit": "m_MD",
+    "mask_shape": [
+      "n",
+      6,
+      33
+    ],
+    "missing": "normalized zero only with explicit mask",
+    "moment_tokens": {
+      "fixed_projected_shape": [
+        "n",
+        6,
+        4,
+        16
+      ],
+      "model_id": "AutonLab/MOMENT-1-base",
+      "source_shape": [
+        "n",
+        6,
+        4,
+        768
+      ],
+      "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+    },
+    "normalization": "equal-parent outer-train-only per curve",
+    "values_shape": [
+      "n",
+      6,
+      33
+    ]
+  }
+}

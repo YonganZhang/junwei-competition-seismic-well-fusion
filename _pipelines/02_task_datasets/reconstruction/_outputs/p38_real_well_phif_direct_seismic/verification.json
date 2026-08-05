@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "decision_matches_all_frozen_gates": true,
+    "exact_three_held_parents": true,
+    "frozen_pretrained_moment_gfm_fusion_calibration_recomputes": true,
+    "frozen_pretrained_moment_gfm_fusion_finite_bounded_predictions": true,
+    "frozen_pretrained_moment_gfm_fusion_metrics_recompute": true,
+    "manifest_all_artifact_hashes_match": true,
+    "no_cross_target_rmse_ranking": true,
+    "no_test_holdout_or_kji": true,
+    "phase0_passed_before_pilot": true,
+    "raw_feature_fusion_calibration_recomputes": true,
+    "raw_feature_fusion_finite_bounded_predictions": true,
+    "raw_feature_fusion_metrics_recompute": true,
+    "row_ids_are_exact_once": true,
+    "same_architecture_random_init_moment_gfm_fusion_calibration_recomputes": true,
+    "same_architecture_random_init_moment_gfm_fusion_finite_bounded_predictions": true,
+    "same_architecture_random_init_moment_gfm_fusion_metrics_recompute": true,
+    "seismic_only_calibration_recomputes": true,
+    "seismic_only_finite_bounded_predictions": true,
+    "seismic_only_metrics_recompute": true,
+    "well_only_calibration_recomputes": true,
+    "well_only_finite_bounded_predictions": true,
+    "well_only_metrics_recompute": true
+  },
+  "schema_version": "reconstruction-p38-final-verification/v1",
+  "status": "PASS"
+}

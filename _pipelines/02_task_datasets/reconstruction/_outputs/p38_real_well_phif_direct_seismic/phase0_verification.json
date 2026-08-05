@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "all_parent_coverages_at_least_90_percent": true,
+    "all_zero_rows_retained_by_nonperformance_rule": true,
+    "direct_alignment_gate_passed": true,
+    "logo3_is_frozen_active": true,
+    "native_phif_for_exactly_three_parents": true,
+    "native_uninterpolated_unpadded_windows": true,
+    "no_hdf5_or_holdout_opened": true,
+    "phase0_has_zero_encoder_calls_and_training": true,
+    "phif_is_not_phie": true,
+    "phif_semantics_gate_passed": true,
+    "protocol_frozen_before_results": true,
+    "split_precedes_encoder_and_normalization": true
+  },
+  "parent_coverages": {
+    "15/9-19": 0.9974580579562786,
+    "15/9-F-11": 0.9305899851264254,
+    "15/9-F-15": 0.9149772445179976
+  },
+  "schema_version": "reconstruction-p38-phase0-verification/v1",
+  "status": "PASS_PHASE0"
+}

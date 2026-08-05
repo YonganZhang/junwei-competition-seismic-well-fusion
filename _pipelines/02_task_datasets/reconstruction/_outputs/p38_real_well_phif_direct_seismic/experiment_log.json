@@ -1,0 +1,95 @@
+{
+  "rows": [
+    {
+      "action_id": "default",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 0,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.08157863550913491,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 0,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "stronger_regularization",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 0,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.1078605496458544,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 1,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "shorter_patience",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 0,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.10197917902268291,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 2,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "default",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 1,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.09294258161062594,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 0,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "stronger_regularization",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 1,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.07192406374445899,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 1,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "shorter_patience",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 1,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.10474123846879951,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 2,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "default",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 2,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.11293500485109345,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 0,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "stronger_regularization",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 2,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.08764448795151072,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 1,
+      "status": "L3_validated_candidate"
+    },
+    {
+      "action_id": "shorter_patience",
+      "evidence_scope": "outer-train inner-LOGO only",
+      "fold_id": 2,
+      "held_parent_metric_read_by_agent": false,
+      "metric": 0.12301475888240476,
+      "primary_metric": "equal-inner-parent macro RMSE",
+      "scientific_iteration": 2,
+      "status": "L3_validated_candidate"
+    }
+  ],
+  "schema_version": "reconstruction-p38-experiment-log/v1"
+}

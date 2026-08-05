@@ -1,0 +1,400 @@
+{
+  "bounds": [
+    0.0,
+    1.0
+  ],
+  "canonical_target": "published CPI PHIF",
+  "operational_definition": "The native published final/total CPI PHIF curve from each parent is the target. Different historical interpretation recipes are provenance, not permission to rename PHIE or performance-filter rows.",
+  "parents": {
+    "15/9-19": {
+      "branch": "15/9-19 A",
+      "definition_evidence": "Official CPI output; PHIF is the final edited formation-porosity curve, BVW=PHIF*SW, and the explicit LAS null is -999.25.",
+      "input": {
+        "curves": {
+          "CALI": {
+            "center_observed_rows": 1967,
+            "finite_source_rows": 3905,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "LFP_CALI",
+            "source_unit": "inches",
+            "window_observed_fraction": 1.0
+          },
+          "DT": {
+            "center_observed_rows": 1967,
+            "finite_source_rows": 3905,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "LFP_DT",
+            "source_unit": "us/ft",
+            "window_observed_fraction": 1.0
+          },
+          "GR": {
+            "center_observed_rows": 1965,
+            "finite_source_rows": 3850,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "LFP_GR",
+            "source_unit": "API",
+            "window_observed_fraction": 0.9989832231825114
+          },
+          "NPHI": {
+            "center_observed_rows": 1967,
+            "finite_source_rows": 3905,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "LFP_NPHI",
+            "source_unit": "v/v_decimal",
+            "window_observed_fraction": 1.0
+          },
+          "RHOB": {
+            "center_observed_rows": 1964,
+            "finite_source_rows": 3902,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "LFP_RHOB",
+            "source_unit": "g/cm3",
+            "window_observed_fraction": 0.9984748347737672
+          },
+          "RT": {
+            "center_observed_rows": 1967,
+            "finite_source_rows": 3905,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "LFP_RT",
+            "source_unit": "ohm.m",
+            "window_observed_fraction": 1.0
+          }
+        },
+        "depth_unit_source": "M",
+        "format": "las",
+        "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+        "member_sha256": "92537d18afb6608818c635c77b0d1493fbdbe8ccaaf83e48d755411f23e6e7b6",
+        "missing_values_retained_with_explicit_mask": true,
+        "window_padding_applied": false,
+        "window_shape": [
+          6,
+          33
+        ],
+        "window_step_m": 0.15239999999994325
+      },
+      "key": "19A",
+      "quality_flag_provenance": {
+        "BVW": {
+          "finite_rows_in_source": 1965,
+          "unit": "V/V"
+        },
+        "CARB_FLAG": {
+          "finite_rows_in_source": 2692,
+          "unit": "UNITLESS"
+        },
+        "COAL_FLAG": {
+          "finite_rows_in_source": 3008,
+          "unit": "UNITLESS"
+        },
+        "PORD": {
+          "finite_rows_in_source": 1967,
+          "unit": "V/V"
+        },
+        "SAND_FLAG": {
+          "finite_rows_in_source": 1967,
+          "unit": "UNITLESS"
+        },
+        "SW": {
+          "finite_rows_in_source": 1965,
+          "unit": "V/V"
+        },
+        "VSH": {
+          "finite_rows_in_source": 3008,
+          "unit": "V/V"
+        }
+      },
+      "report": null,
+      "shared_operational_definition_passed": true,
+      "target": {
+        "curve": "PHIF",
+        "curve_description": "Values changed using TEXT_EDIT",
+        "curve_unit_canonical": "V/V_fraction",
+        "curve_unit_source": "V/V",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "M",
+        "explicit_null": -999.25,
+        "format": "las",
+        "md_range_m": [
+          3666.5916,
+          3966.21
+        ],
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+        "member_sha256": "2b0bae3caa0c10f2f6fb3323cde198edcaf0e0ff3adb0c00308cf139cae9035b",
+        "physical_rows": 1967,
+        "valid_rule": "finite and explicit-null-distinct and 0<=PHIF<=1",
+        "value_range_fraction": [
+          0.0,
+          0.359646
+        ],
+        "zero_rows": 42
+      }
+    },
+    "15/9-F-11": {
+      "branch": "15/9-F-11 T2",
+      "definition_evidence": "The report defines PHIF as total porosity derived from density and calibrated to overburden-corrected core porosity.",
+      "input": {
+        "curves": {
+          "CALI": {
+            "center_observed_rows": 2017,
+            "finite_source_rows": 19677,
+            "median_source_step_m": 0.09999999999990905,
+            "source_curve": "CALI",
+            "source_unit": "inches",
+            "window_observed_fraction": 1.0
+          },
+          "DT": {
+            "center_observed_rows": 1877,
+            "finite_source_rows": 19465,
+            "median_source_step_m": 0.09999999999990905,
+            "source_curve": "DT",
+            "source_unit": "us/ft",
+            "window_observed_fraction": 0.9305899851264254
+          },
+          "GR": {
+            "center_observed_rows": 2017,
+            "finite_source_rows": 43566,
+            "median_source_step_m": 0.09999999999990905,
+            "source_curve": "GR",
+            "source_unit": "API",
+            "window_observed_fraction": 1.0
+          },
+          "NPHI": {
+            "center_observed_rows": 2016,
+            "finite_source_rows": 19593,
+            "median_source_step_m": 0.09999999999990905,
+            "source_curve": "NPHI",
+            "source_unit": "v/v",
+            "window_observed_fraction": 0.9977013566502907
+          },
+          "RHOB": {
+            "center_observed_rows": 2017,
+            "finite_source_rows": 19620,
+            "median_source_step_m": 0.09999999999990905,
+            "source_curve": "RHOB",
+            "source_unit": "g/cm3",
+            "window_observed_fraction": 1.0
+          },
+          "RT": {
+            "center_observed_rows": 2017,
+            "finite_source_rows": 43161,
+            "median_source_step_m": 0.09999999999990905,
+            "source_curve": "RT",
+            "source_unit": "ohm.m",
+            "window_observed_fraction": 1.0
+          }
+        },
+        "depth_unit_source": "M",
+        "format": "las",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+        "member_sha256": "6ef9631e99d7da34b3d95356fa58dd6ecac230413723c320c30340dd7ed7979c",
+        "missing_values_retained_with_explicit_mask": true,
+        "window_padding_applied": false,
+        "window_shape": [
+          6,
+          33
+        ],
+        "window_step_m": 0.1000000000003638
+      },
+      "key": "F11T2",
+      "quality_flag_provenance": {
+        "BVW": {
+          "finite_rows_in_source": 2017,
+          "unit": "v/v"
+        },
+        "CARB_FLAG": {
+          "finite_rows_in_source": 1949,
+          "unit": "unitless"
+        },
+        "COAL_FLAG": {
+          "finite_rows_in_source": 2268,
+          "unit": "unitless"
+        },
+        "SAND_FLAG": {
+          "finite_rows_in_source": 1999,
+          "unit": "unitless"
+        },
+        "SW": {
+          "finite_rows_in_source": 2017,
+          "unit": "v/v"
+        },
+        "VSH": {
+          "finite_rows_in_source": 2164,
+          "unit": "v/v"
+        }
+      },
+      "report": {
+        "format": "pdf",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/PETROPHYSICAL_REPORT_2.PDF",
+        "member_sha256": "f9ba7383f7a267a72bf2503eeae67d110a486f9a57199cb7ffd6f30d66035cd8"
+      },
+      "shared_operational_definition_passed": true,
+      "target": {
+        "curve": "PHIF",
+        "curve_description": "v1",
+        "curve_unit_canonical": "V/V_fraction",
+        "curve_unit_source": "v/v",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "M",
+        "explicit_null": -999.25,
+        "format": "las",
+        "md_range_m": [
+          4334.7,
+          4536.3
+        ],
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+        "member_sha256": "d4c214e11d18a2aaa325dc8811d8d42ea77396f21f7d0bd9d022dfa08554a611",
+        "physical_rows": 2017,
+        "valid_rule": "finite and explicit-null-distinct and 0<=PHIF<=1",
+        "value_range_fraction": [
+          0.001,
+          0.245
+        ],
+        "zero_rows": 0
+      }
+    },
+    "15/9-F-15": {
+      "branch": "15/9-F-15 A",
+      "definition_evidence": "The report defines Phif from density porosity, NPHI and fixed regression constants calibrated to overburden-corrected core porosity.",
+      "input": {
+        "curves": {
+          "CALI": {
+            "center_observed_rows": 9668,
+            "finite_source_rows": 9905,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "CALI",
+            "source_unit": "IN",
+            "window_observed_fraction": 1.0
+          },
+          "DT": {
+            "center_observed_rows": 9358,
+            "finite_source_rows": 9369,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "DT",
+            "source_unit": "US/FT",
+            "window_observed_fraction": 0.9678884417196374
+          },
+          "GR": {
+            "center_observed_rows": 9668,
+            "finite_source_rows": 25353,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "GR",
+            "source_unit": "GAPI",
+            "window_observed_fraction": 1.0
+          },
+          "NPHI": {
+            "center_observed_rows": 9660,
+            "finite_source_rows": 9880,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "NPHI",
+            "source_unit": "V/V",
+            "window_observed_fraction": 0.9987462544351249
+          },
+          "RHOB": {
+            "center_observed_rows": 9668,
+            "finite_source_rows": 9906,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "RHOB",
+            "source_unit": "G/CC",
+            "window_observed_fraction": 1.0
+          },
+          "RT": {
+            "center_observed_rows": 9668,
+            "finite_source_rows": 17905,
+            "median_source_step_m": 0.15239999999994325,
+            "source_curve": "RT",
+            "source_unit": "OHMM",
+            "window_observed_fraction": 0.9998871628991612
+          }
+        },
+        "depth_unit_source": "0.1 in",
+        "format": "dlis",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_INPUT_1.DLIS",
+        "member_sha256": "3db25740007a8df8e04759b0aaf7767637702771155ab70927a06908ad013a6d",
+        "missing_values_retained_with_explicit_mask": true,
+        "window_padding_applied": false,
+        "window_shape": [
+          6,
+          33
+        ],
+        "window_step_m": 0.15239999999994325
+      },
+      "key": "F15A",
+      "quality_flag_provenance": {
+        "BVW": {
+          "finite_rows_in_source": 9676,
+          "unit": "V/V"
+        },
+        "CARB_FLAG": {
+          "finite_rows_in_source": 9757,
+          "unit": "UNITLESS"
+        },
+        "COAL_FLAG": {
+          "finite_rows_in_source": 9668,
+          "unit": "UNITLESS"
+        },
+        "SAND_FLAG": {
+          "finite_rows_in_source": 9676,
+          "unit": "UNITLESS"
+        },
+        "SW": {
+          "finite_rows_in_source": 9676,
+          "unit": "V/V"
+        },
+        "VSH": {
+          "finite_rows_in_source": 9668,
+          "unit": "V/V"
+        }
+      },
+      "report": {
+        "format": "pdf",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/PETROPHYSICAL_REPORT_1.PDF",
+        "member_sha256": "43b1f4c7852961c7ddb3165db068e8eda6696509b05a0fbbeefe320449169a4e"
+      },
+      "shared_operational_definition_passed": true,
+      "target": {
+        "curve": "PHIF",
+        "curve_description": "",
+        "curve_unit_canonical": "V/V_fraction",
+        "curve_unit_source": "V/V",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "0.1 in",
+        "explicit_null": -999.25,
+        "format": "dlis",
+        "md_range_m": [
+          2608.6308,
+          4081.8815999999997
+        ],
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+        "member_sha256": "88c49b77f57829b50736739087f3d59bec060170cd08ab0d6f1f222d3b677337",
+        "physical_rows": 9668,
+        "valid_rule": "finite and explicit-null-distinct and 0<=PHIF<=1",
+        "value_range_fraction": [
+          0.00139999995008111,
+          0.3531999886035919
+        ],
+        "zero_rows": 0
+      }
+    }
+  },
+  "phif_is_distinct_from_phie": true,
+  "phif_phie_same_well_audit": {
+    "conclusion": "PHIF cannot be silently renamed to PHIE",
+    "correlation": 0.6898342670399774,
+    "elementwise_equal": false,
+    "mae_fraction": 0.05228949627462001,
+    "maximum_absolute_difference_fraction": 0.2631971103083672,
+    "overlap_rows": 1967,
+    "phie_curve": "LFP_PHIE",
+    "phif_curve": "PHIF",
+    "phif_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+    "phif_member_sha256": "2b0bae3caa0c10f2f6fb3323cde198edcaf0e0ff3adb0c00308cf139cae9035b",
+    "rmse_fraction": 0.07790825422663222,
+    "well": "15/9-19 A"
+  },
+  "same_well_phif_phie_max_abs": 0.2631971103083672,
+  "same_well_phif_phie_rmse": 0.07790825422663222,
+  "schema_version": "reconstruction-p38-native-phif-target/v1",
+  "semantic_gate_passed": true,
+  "unit": "V/V_fraction",
+  "zero_rule": "Retain finite PHIF=0. It is distinct from explicit -999.25 null; on 19A all 42 zero rows also have PORD=0, BVW=0, SW=1 and SAND_FLAG=0."
+}
