@@ -1,0 +1,274 @@
+{
+  "alignment": {
+    "chain": [
+      "frozen sample TWT",
+      "inverse official bracketed TWT-to-MD tie",
+      "official MD-to-TVD/TVDSS/XY interpolation",
+      "locked UTM-to-ILXL affine",
+      "nearest native 4ms ST0202 sample"
+    ],
+    "interpolation_applied_to_seismic": false,
+    "maximum_native_patch_replay_error": 1.4901161193847656e-08,
+    "maximum_twt_roundtrip_error_ms": 0.0,
+    "native_section_shape": [
+      400,
+      160
+    ],
+    "native_sections": 44,
+    "official_picks_sha256": "1c132bba09555915b62e23dc4475f790a304856d369d9d26cc76466cf7b77d3a",
+    "padding_applied_to_seismic": false,
+    "segy_bytes": 1104999800,
+    "segy_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/_sandbox/volve_data/_extracted_seismic/ST0202/Stacks/ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME.MIG_FIN.POST_STACK.3D.JS-017534.segy",
+    "seismic_index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "source_rows_filtered_before_parse": [
+      "15/9-19 A",
+      "15/9-19 BT2",
+      "15/9-19 SR",
+      "15/9-F-14",
+      "15/9-F-15",
+      "15/9-F-15 A",
+      "15/9-F-15 B",
+      "15/9-F-15 C",
+      "15/9-F-4"
+    ],
+    "test_or_frozen_rows_parsed": false
+  },
+  "baseline": {
+    "config": {
+      "eta": 0.1,
+      "max_depth": 3,
+      "rounds": 60
+    },
+    "expected_logo4_three_seed_mean": 0.2133487970485067,
+    "locked_evidence_verified": true,
+    "locked_summary_sha256": "025e189ee2e6c097193be91dee56e348558fb01b0a5b019fe22581433ea9c50b",
+    "model_id": "xgboost_multisoftprob_window",
+    "source": "committed default_baseline/summary.json; historical three-seed evidence"
+  },
+  "census": {
+    "families": [
+      "15/9-19",
+      "15/9-F-14",
+      "15/9-F-15",
+      "15/9-F-4"
+    ],
+    "samples": 447,
+    "wells": [
+      "15/9-19 A",
+      "15/9-19 BT2",
+      "15/9-19 SR",
+      "15/9-F-14",
+      "15/9-F-15",
+      "15/9-F-15 A",
+      "15/9-F-15 B",
+      "15/9-F-15 C",
+      "15/9-F-4"
+    ]
+  },
+  "development_batch": {
+    "bytes": 886832,
+    "external_read_only": true,
+    "sha256": "b6817ae218dee12bc72a1551e76423a61eb4ff11faf70dcb0444b01ba422f51c",
+    "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555"
+  },
+  "development_only": true,
+  "firewall": {
+    "frozen_test_family": "not parsed or materialized",
+    "known_holdout_opened": false,
+    "outer_held_used_for_fit": false,
+    "test_h5_opened": false
+  },
+  "inner_folds_per_outer": 3,
+  "input_replay": {
+    "maximum_log_replay_error": 0.000244140625,
+    "maximum_seismic_replay_error": 2.9802322387695312e-08,
+    "method": "invert every fold-train fitted z-score; cross-occurrence replay",
+    "target_statistics_used": false
+  },
+  "outer_folds": 4,
+  "phase0_cache_sha256": "0b5ef80fdb43417c9c1cf09d0fdb7455eab50d5b89c07aacbb2091604f1bc55f",
+  "schema_version": "lithofacies-p40-crossmodal-foundation-pilot/v1",
+  "split_records": [
+    {
+      "context": "outer0_inner0",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-14",
+      "inner_fold": 0,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 0,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-F-15",
+        "15/9-F-4"
+      ],
+      "train_rows": 214,
+      "validation_rows": 101
+    },
+    {
+      "context": "outer0_inner1",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-15",
+      "inner_fold": 1,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 0,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-F-14",
+        "15/9-F-4"
+      ],
+      "train_rows": 188,
+      "validation_rows": 127
+    },
+    {
+      "context": "outer0_inner2",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-4",
+      "inner_fold": 2,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 0,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-F-14",
+        "15/9-F-15"
+      ],
+      "train_rows": 228,
+      "validation_rows": 87
+    },
+    {
+      "context": "outer1_inner0",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-19",
+      "inner_fold": 0,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 1,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-F-15",
+        "15/9-F-4"
+      ],
+      "train_rows": 188,
+      "validation_rows": 132
+    },
+    {
+      "context": "outer1_inner1",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-15",
+      "inner_fold": 1,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 1,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-19",
+        "15/9-F-4"
+      ],
+      "train_rows": 193,
+      "validation_rows": 127
+    },
+    {
+      "context": "outer1_inner2",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-4",
+      "inner_fold": 2,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 1,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-19",
+        "15/9-F-15"
+      ],
+      "train_rows": 259,
+      "validation_rows": 61
+    },
+    {
+      "context": "outer2_inner0",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-19",
+      "inner_fold": 0,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 2,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-F-14",
+        "15/9-F-4"
+      ],
+      "train_rows": 188,
+      "validation_rows": 132
+    },
+    {
+      "context": "outer2_inner1",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-14",
+      "inner_fold": 1,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 2,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-19",
+        "15/9-F-4"
+      ],
+      "train_rows": 219,
+      "validation_rows": 101
+    },
+    {
+      "context": "outer2_inner2",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-4",
+      "inner_fold": 2,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 2,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-19",
+        "15/9-F-14"
+      ],
+      "train_rows": 233,
+      "validation_rows": 87
+    },
+    {
+      "context": "outer3_inner0",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-19",
+      "inner_fold": 0,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 3,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-F-14",
+        "15/9-F-15"
+      ],
+      "train_rows": 188,
+      "validation_rows": 132
+    },
+    {
+      "context": "outer3_inner1",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-14",
+      "inner_fold": 1,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 3,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-19",
+        "15/9-F-15"
+      ],
+      "train_rows": 219,
+      "validation_rows": 101
+    },
+    {
+      "context": "outer3_inner2",
+      "early_stopping": "disabled; fixed budget",
+      "held_family": "15/9-F-15",
+      "inner_fold": 2,
+      "normalization_fit_scope": "inner-train only",
+      "outer_fold": 3,
+      "pca_fit_scope": "inner-train only",
+      "train_families": [
+        "15/9-19",
+        "15/9-F-14"
+      ],
+      "train_rows": 233,
+      "validation_rows": 87
+    }
+  ],
+  "state": "PHASE0_FROZEN"
+}
