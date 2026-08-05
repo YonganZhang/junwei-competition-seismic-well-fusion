@@ -1,0 +1,54 @@
+{
+  "language": "en",
+  "style": "Camera-ready SCI neural-network architecture figure on pure white #FFFFFF background, landscape 16:9, Times New Roman only, crisp vector-like geometry, thin precise arrows, high information density with strong hierarchy. The model internals occupy at least 70% of the canvas. Stable scientific baseline is cool blue, foundation-model branch is warm orange, fusion is teal, outputs are green, validation gates are neutral gray. Use compact tensor glyphs, feature pyramids, attention matrices, volumetric tokens, equations and dimension annotations. No figure title, no Figure number, no watermark, no decorative slogan, no long prose, no invented metrics, no performance ranking.",
+  "pages": [
+    {
+      "title": "fault_architecture_v5",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/fault_architecture.png"
+      ],
+      "description": "Redraw as a substantially richer left-to-right research framework. Input: a real 3-D seismic cube X∈R^(B×1×H×W×D), illustrated with inline, crossline and time axes. Split into two parallel lanes. Blue scientific-baseline lane: Multiscale amplitude → Sobel gradients → Local discontinuity statistics → z_i → Logistic head σ(w^Tz_i+b). Orange foundation lane: 3-D patch tokens → SAM-Med3D encoder with four visible hierarchical feature stages → Prompt adapter → Feature projection → p_i^SAM. Center-right: a large controlled gate with p_i=(1-g_i)p_i^base+g_i p_i^SAM; show g_i=0 as the safe fallback. Then Probability volume → Validation-only threshold τ → Fault voxels. Add a compact training strip below the architecture: Weighted BCE → grouped validation → threshold selection. Add a small gray data-validity gate before the foundation lane, but do not write blocked or imply a result. Use only these short labels and equations."
+    },
+    {
+      "title": "facies_architecture_v5",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/facies_architecture.png"
+      ],
+      "description": "Create a detailed dual-encoder segmentation framework. Left: three-channel seismic slices X∈R^(B×3×128×128), with small F3 and Penobscot dataset tags. Upper blue path: dataset router → FPN-ResNet18 / DeepLabV3+-ResNet18 → four multiscale CNN tensors F1,F2,F3,F_cnn. Lower orange path: SAM2.1 Hiera image encoder → four hierarchical token maps, with the two deepest blocks visually marked trainable → F_sam. Make the center Cross-attention block dominant and internally visible: Q=W_QF_cnn, K=W_KF_sam, V=W_VF_sam; 4 heads, d=128; A=softmax(QK^T/√d)V. Show token-to-token attention grids and head merge. Then residual fusion F_fused=F_cnn+γW_OA → multiscale decoder → C-class facies probabilities → dense facies map. Add a compact lower loss path L=CE+0.25 Dice and a three-arm ablation bracket: short CNN, long CNN, CNN+SAM2. No result numbers or promotion language."
+    },
+    {
+      "title": "property_architecture_v5",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/property_architecture.png"
+      ],
+      "description": "Create a high-information multi-target reservoir-property framework. Left input stack: well-log curves, measured depth, grouped well identity, local seismic patch and spatial coordinates. Show train-fold-only preprocessing: missing-value handling, neighborhood statistics, scaling, and log1p transform only for KLOGH. Center: a large Target router with three visible lanes. PHIF lane: ExtraTrees ensemble f_1...f_M → mean prediction. KLOGH lane: log1p(KLOGH) → ExtraTrees → expm1 inverse. SW lane: XGBoost stages F_t=F_(t-1)+ηf_t. Below all three, show an orange TabICL in-context branch as a parallel comparator, connected by dashed comparison arrows and never as the default output. Right: point predictions PHIF, KLOGH, SW plus OOF residual calibration q_0.9 → [ŷ-q_0.9, ŷ+q_0.9]. Add a small grouped-by-mother-well split rail along the bottom. No invented performance values."
+    },
+    {
+      "title": "lithofacies_architecture_v5",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/lithofacies_architecture.png"
+      ],
+      "description": "Create a detailed fixed-nine lithofacies classification framework. Left: aligned multichannel well-log window X∈R^(B×35×33), a missing-modality mask, and a vertical stratigraphic-order glyph. Split into a blue tree baseline and orange foundation comparison. Blue path: center values + window statistics + local gradients → XGBoost multi-softprob trees → nine logits s_c(x). Orange path must visibly show MOMENT internals: 35-channel window → interpolation 33→512 → patch embedding → transformer encoder blocks → sequence embedding e → nine-class linear head softmax(We+b). Duplicate the MOMENT encoder into two weight conditions, pretrained and random initialization, sharing the identical classifier head, joined by an ablation comparator. Merge only at an evaluation bracket, not by averaging predictions. Right: fixed 9-class probability vector and depth/TWT class sequence. Bottom: LOGO4 mother-well split → class weighting → multi-seed training → fixed-nine metrics. No claim of benefit."
+    },
+    {
+      "title": "sweetspot_architecture_v5",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/sweetspot_architecture.png"
+      ],
+      "description": "Create a dense but readable typed multi-task framework; never show one composite sweetspot score. Left evidence stack: static well logs, reservoir properties, production history, pressure/choke covariates. Center: a large T1–T7 typed router. T1 lane: LightGBM → RQI proxy. T2 lane: CatBoost → sandstone probability. T3 lane must be the most detailed: causal history window up to t_0 → multivariate normalization → Chronos-2 patch tokens → pretrained transformer blocks → probabilistic forecast decoder → 30-day aggregation; parallel History mean enters a controlled convex fusion ŷ_T3=αŷ_Chronos2+(1-α)ȳ_train. T4 lane: CatBoost → water-onset probability, with no connection to History mean. T5, T6, T7 end at three explicit neutral data-definition/input gates, not synthetic outputs. Bottom rails: grouped split for static tasks and rolling-origin split for temporal tasks. Right outputs remain four separate cards plus three gated tasks. No invented metrics."
+    },
+    {
+      "title": "reconstruction_architecture_v5",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/reconstruction_architecture.png"
+      ],
+      "description": "Create a sophisticated 3-D geostatistics-plus-foundation-model residual framework. Inputs: sparse well observations {(s_i,z_i)}, registered MAPAXES grid coordinates, and three-channel 3-D context. Blue main path: variogram γ(h) → OK3D kriging system with λ_i and Σλ_i=1 → baseline volume z_OK(s_0). Orange foundation path: 3-D context patches → OpenMind-MAE patch embedding → several visible ResEncL encoder stages → volumetric tokens K,V. Structured target query combines s_0, local geometry and z_OK, then enters a dominant four-head Cross-attention block QK^T/√d → token aggregation → residual head r_θ(s_0). Center-right: four internal spatial folds feed a Consistency gate g(s_0); final formula ẑ(s_0)=z_OK(s_0)+g(s_0)r_θ(s_0), with g=0 safe fallback. Right: registered 3-D property volume and a separate residual volume. Bottom ablation rail: OK3D, direct pretrained encoder, random-init encoder, fixed residual, gated residual. No positive performance claim."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "en",
+  "style": "Perform a surgical edit of the supplied SCI framework figure. Preserve the canvas, compact module geometry, typography, colors, labels, equations, and all module positions. Do not redesign, enlarge, crop, or add any content. No title, watermark, or performance number.",
+  "pages": [
+    {
+      "title": "lithofacies_architecture_v5r3",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture_v5r2_lithofacies/slide_01_lithofacies_architecture_v5r2.png"
+      ],
+      "description": "Correct arrows only. The blue XGBoost path alone must connect from sc(x) through Softmax to the fixed-nine probability distribution and then to the Depth/TWT class sequence. The orange MOMENT path must terminate inside the gray Pretraining-effect comparator after the Pretrained and Random init heads. Delete every cyan, blue, orange, or gray line that exits the orange MOMENT comparison panel toward Softmax, probability distribution, or class sequence. There must be clear white space between the right edge of the orange comparison panel and the blue operational output arrow. Keep all other content exactly as supplied."
+    }
+  ]
+}

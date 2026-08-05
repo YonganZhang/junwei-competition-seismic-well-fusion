@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Camera-ready KDD scientific architecture figure, pure white background, Times New Roman for every label, concise exact typography, cool blue tree models, warm orange Chronos-2, green forecast fusion, grey unavailable targets. No title, no watermark, no experiment status words, no training timeline, no result numbers.",
+  "pages": [
+    {
+      "title": "sweetspot_architecture_v2",
+      "is_cover": false,
+      "description": "Edit the reference into a clean seven-target left-to-right framework. Keep only these exact short labels: Static features, Production history, Target router, T1, T2, T3, T4, T5, T6, T7, LightGBM, CatBoost, Chronos-2, History mean, Forecast, Unavailable. Show Y_past∈R^(B×T×1), C_past∈R^(B×T×6), y_hat_T3=αy_hat_Chronos2⊕(1-α)μ_train. T1 goes to LightGBM, T2 and T4 to CatBoost, T3 to Chronos-2 blended with History mean, and T5-T7 end in simple grey Unavailable boxes. Remove router slogans, promotion gates, blocked wording, status cards, repeated labels, training strip, long sentences, and every word not listed above. Make all displayed words exactly as written."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+\chapter{复现说明}
+
+\section{文档真源}
+
+报告的 LaTeX 真源、编译入口和图件目录分别为：
+\begin{itemize}
+  \item \path{_paper/technical_report/src/}
+  \item \path{_paper/technical_report/build_report.sh}
+  \item \path{_paper/technical_report/figures/}
+\end{itemize}
+
+各赛道的定量结论来自已归档的 JSON 指标文件。模型、图件与来源之间的对应关系记录在
+\path{_paper/technical_report/report_manifest.yml}。后续扩展应先更新赛道实验，
+再更新清单与正文，避免手工改写数值造成不一致。
+
+\section{图件生成}
+
+模型架构图采用 Nano Banana 2 生成。初版与审阅修订提示词分别保存在：
+\begin{itemize}
+  \item \path{_paper/technical_report/prompts/nano_banana_v1/}
+  \item \path{_paper/technical_report/prompts/nano_banana_v2/}
+  \item \path{_paper/technical_report/prompts/nano_banana_v3/} 至
+        \path{_paper/technical_report/prompts/nano_banana_v5/}
+\end{itemize}
+架构图用于解释信息流，不作为模型性能证据。数据图由下列流水线统一生成：
+\begin{itemize}
+  \item \path{_pipelines/05_research_visualization_expansion/}
+\end{itemize}
+真实输入、证据类型、图片尺寸和哈希记录在：
+\begin{itemize}
+  \item \path{_outputs/research_visualization_expansion/v1/artifact_manifest.json}
+\end{itemize}
+正文只引用已经人工检查的成品。
+
+基础模型的强基线、随机初始化、预训练初始化和融合条件记录在
+\path{_pipelines/05_research_visualization_expansion/foundation_model_experiment_contract.json}。
+该合同约束后续实验的可比性，不把待完成实验写成既有结果。
+
+\section{扩展方式}
+
+后续版本可以增加新模型、消融实验、计算开销和新盲测，但六个赛道的固定六节目录
+保持不变。新增结果应同时保存数据划分、参数、随机种子、指标文件和图件；若评价集
+已经被用于模型选择，必须在正文中继续标明为已知留出集。

@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Camera-ready KDD scientific architecture figure, pure white background, Times New Roman for every label, concise exact typography, cool blue tree models, warm orange TabICL representation, teal uncertainty intervals. No title, no watermark, no experiment status, no training timeline, no result numbers.",
+  "pages": [
+    {
+      "title": "property_architecture_v2",
+      "is_cover": false,
+      "description": "Edit the reference into a compact left-to-right method framework. Keep only these exact short labels: Well logs, Feature table, PHIF, KLOGH, SW, ExtraTrees, XGBoost, TabICL, Prediction interval, Predictions. Show X∈R^(B×F), y_hat=M^(-1)Σ_m f_m(X), u=log(1+KLOGH), I_0.90=[y_hat-q_0.90,y_hat+q_0.90]. Route PHIF and KLOGH to ExtraTrees, SW to XGBoost, and show TabICL as a parallel orange representation branch. Residuals feed the interval module. Remove audit-only wording, promotion wording, holdout wording, training steps, long sentences, repeated text, and every word not listed above. Make all displayed words exactly as written."
+    }
+  ]
+}

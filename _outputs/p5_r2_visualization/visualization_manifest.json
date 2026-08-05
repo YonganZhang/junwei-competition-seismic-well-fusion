@@ -1,0 +1,298 @@
+{
+  "schema_version": "p5-r2-protocol-visualization-sources/v2",
+  "artifact_class": "protocol_and_model_performance_summary",
+  "domain_visualization_eligible": false,
+  "card_render_policy": "blocked_as_domain_visualization",
+  "sources": {
+    "fault": {
+      "commit": "0ff064d8e8850611df2f6eea0eab1aeebf03721c",
+      "worktree": "p5-r2-fault-v2",
+      "path": "_pipelines/02_task_datasets/fault/_outputs/p5_r2_data_acquisition/p5_r2_summary.json",
+      "object_ref": "0ff064d8e8850611df2f6eea0eab1aeebf03721c:_pipelines/02_task_datasets/fault/_outputs/p5_r2_data_acquisition/p5_r2_summary.json",
+      "acquisition": "git_blob",
+      "snapshot_path": "source_snapshots/fault.json",
+      "bytes": 3374,
+      "sha256": "6cbcb2aa92a1a36dd45468e4f57e137cbff172c7a214257ce9d8601474711978"
+    },
+    "facies": {
+      "commit": "450f3d5840ac8d25bc8f3d5e9029753f1cdbe591",
+      "worktree": "p5-r2-facies",
+      "path": "_pipelines/02_task_datasets/facies/_outputs/p5_r2/p5_r2_summary.json",
+      "object_ref": "450f3d5840ac8d25bc8f3d5e9029753f1cdbe591:_pipelines/02_task_datasets/facies/_outputs/p5_r2/p5_r2_summary.json",
+      "acquisition": "git_blob",
+      "snapshot_path": "source_snapshots/facies.json",
+      "bytes": 9335,
+      "sha256": "437638c466b415cf65fbd9dc725757cb87efe632154e316e3fe9389852e14d23"
+    },
+    "property": {
+      "commit": "65740d49b479b1716f8c1a1d807ca4915d7a1dba",
+      "worktree": "p5-r2-property",
+      "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_r2/p5_r2_summary.json",
+      "object_ref": "65740d49b479b1716f8c1a1d807ca4915d7a1dba:_pipelines/02_task_datasets/reservoir/_outputs/p5_r2/p5_r2_summary.json",
+      "acquisition": "git_blob",
+      "snapshot_path": "source_snapshots/property.json",
+      "bytes": 12114,
+      "sha256": "f007de7fd515b4308da8c87baf659c0c0f191a2bed4e4eaeef108fe6cc7263e9"
+    },
+    "lithofacies": {
+      "commit": "e5d5cbce2d2e26ce8479d4e6731b32d0bec16362",
+      "worktree": "p5-r2-lithofacies",
+      "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p5_r2/p5_r2_summary.json",
+      "object_ref": "e5d5cbce2d2e26ce8479d4e6731b32d0bec16362:_pipelines/02_task_datasets/lithofacies/_outputs/p5_r2/p5_r2_summary.json",
+      "acquisition": "worktree_file",
+      "snapshot_path": "source_snapshots/lithofacies.json",
+      "bytes": 5162,
+      "sha256": "720105abef80429b230da52f3465eca4c9e7910e7177c2e2ef8c948cf9d7eead"
+    },
+    "sweetspot": {
+      "commit": "5f80b5c6fb6fbf80b2af9781809ab48def6b932d",
+      "worktree": "p5-r2-sweetspot",
+      "path": "_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_summary.json",
+      "object_ref": "5f80b5c6fb6fbf80b2af9781809ab48def6b932d:_pipelines/02_task_datasets/sweetspot/p5/r02/_outputs/protocol_r2/p5_r02_summary.json",
+      "acquisition": "git_blob",
+      "snapshot_path": "source_snapshots/sweetspot.json",
+      "bytes": 4026,
+      "sha256": "8d898c8e90077f27d5f9e464879d390d911c3695a32346d0a4ab2de7e80dbfe8"
+    },
+    "reconstruction": {
+      "commit": "f6e6efbac1663c3fe6f768ea79c2f1189c45b751",
+      "worktree": "p5-r2-reconstruction-v2",
+      "path": "_pipelines/02_task_datasets/reconstruction/p5_r2_evidence/p5_r2_summary.json",
+      "object_ref": "f6e6efbac1663c3fe6f768ea79c2f1189c45b751:_pipelines/02_task_datasets/reconstruction/p5_r2_evidence/p5_r2_summary.json",
+      "acquisition": "worktree_file",
+      "snapshot_path": "source_snapshots/reconstruction.json",
+      "bytes": 4065,
+      "sha256": "669bad48e71372e80b1b60f123f324a0f335f45929d07524443c9010c06e17fa"
+    }
+  },
+  "font": {
+    "requested": "Times New Roman",
+    "resolved": "TeX Gyre Termes",
+    "exact_match": false
+  },
+  "derived_fields": {
+    "coverage": [
+      {
+        "track": "fault",
+        "numerator": 3,
+        "denominator": 12,
+        "kind": "acquisition evidence"
+      },
+      {
+        "track": "facies",
+        "numerator": 36,
+        "denominator": 36,
+        "kind": "completed experiment cells"
+      },
+      {
+        "track": "property",
+        "numerator": 96,
+        "denominator": 168,
+        "kind": "completed experiment cells"
+      },
+      {
+        "track": "lithofacies",
+        "numerator": 36,
+        "denominator": 36,
+        "kind": "completed experiment cells"
+      },
+      {
+        "track": "sweetspot",
+        "numerator": 48,
+        "denominator": 120,
+        "kind": "passed experiment cells"
+      },
+      {
+        "track": "reconstruction",
+        "numerator": 48,
+        "denominator": 49,
+        "kind": "passed mode/cell outcomes"
+      }
+    ],
+    "readiness_gate_matrix": {
+      "columns": [
+        "legal_development_data",
+        "controlled_sweep",
+        "model_diversity",
+        "rankable_output",
+        "test_firewall"
+      ],
+      "encoding": {
+        "no": 0.0,
+        "partial": 0.5,
+        "yes": 1.0
+      },
+      "rows": {
+        "fault": [
+          0.5,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "facies": [
+          1.0,
+          1.0,
+          0.5,
+          1.0,
+          1.0
+        ],
+        "property": [
+          1.0,
+          0.5,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "lithofacies": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "sweetspot": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "reconstruction": [
+          0.5,
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    "property_panel": {
+      "PHIF_and_SW": "RMSE divided by the same target's budget-40 RMSE",
+      "KLOGH": "shown on an independent log10(RMSE) right axis because values span 1e96–1e106"
+    },
+    "sweetspot_panel": "relative improvement from budget 64; sign inverted only for minimize-direction metrics"
+  },
+  "figures": [
+    {
+      "figure_id": "protocol_readiness",
+      "outputs": [
+        {
+          "path": "figure_01_protocol_readiness.png",
+          "bytes": 90010,
+          "sha256": "cf6185dbb8ee536738090aa030816fdfb0f342905eda9c81ab3c3ed287fafa1e"
+        },
+        {
+          "path": "figure_01_protocol_readiness.pdf",
+          "bytes": 16092,
+          "sha256": "00880270a8ed46da49927bd11b80cbf33e571e7ed1ab539a60d399556127cdc1"
+        }
+      ]
+    },
+    {
+      "figure_id": "r2_scientific_results",
+      "outputs": [
+        {
+          "path": "figure_02_r2_scientific_results.png",
+          "bytes": 326631,
+          "sha256": "8e221ca46a6773b4a3563191baf617ed51e910b66e92aa46a8421f695de4bc10"
+        },
+        {
+          "path": "figure_02_r2_scientific_results.pdf",
+          "bytes": 25141,
+          "sha256": "52e066406ce3ad0728b393f9932aa36fc4588ca7748da512b0619c4790e94fb2"
+        }
+      ]
+    },
+    {
+      "figure_id": "track_fault",
+      "outputs": [
+        {
+          "path": "track_01_fault.png",
+          "bytes": 35711,
+          "sha256": "09ba7b09d64643afa8afbb9210dd8cb2639e57caab67cc9cd184325bfa5dbacc"
+        },
+        {
+          "path": "track_01_fault.pdf",
+          "bytes": 10642,
+          "sha256": "5a91a94f17d98a675050a881494b080de5486894d5b54249cdad48f9c70778ee"
+        }
+      ]
+    },
+    {
+      "figure_id": "track_facies",
+      "outputs": [
+        {
+          "path": "track_02_facies.png",
+          "bytes": 64193,
+          "sha256": "91c747cc44c66ed317ee8550918af9b7c284a96e9b71fce98b60c64558691398"
+        },
+        {
+          "path": "track_02_facies.pdf",
+          "bytes": 12243,
+          "sha256": "e92dcaf864cef61fc7284532684fecbbf0158b986c31405dc718b40321a94f82"
+        }
+      ]
+    },
+    {
+      "figure_id": "track_property",
+      "outputs": [
+        {
+          "path": "track_03_property.png",
+          "bytes": 128401,
+          "sha256": "974da8de768e734671df2c09eb339882a658fe15827218b8182c157463f7dc65"
+        },
+        {
+          "path": "track_03_property.pdf",
+          "bytes": 14121,
+          "sha256": "4be4030cb4ba32bc7008987525e6754d4d567739d3164175d871997707a5970a"
+        }
+      ]
+    },
+    {
+      "figure_id": "track_lithofacies",
+      "outputs": [
+        {
+          "path": "track_04_lithofacies.png",
+          "bytes": 56414,
+          "sha256": "2256e6738e13c491642c1a468743208f3d3d3181847cd5bb5643a8522dcc4152"
+        },
+        {
+          "path": "track_04_lithofacies.pdf",
+          "bytes": 13081,
+          "sha256": "ab3141c36c6138fabadf4592e54c796abf80580271c916af64e9e7cd395a3631"
+        }
+      ]
+    },
+    {
+      "figure_id": "track_sweetspot",
+      "outputs": [
+        {
+          "path": "track_05_sweetspot.png",
+          "bytes": 78651,
+          "sha256": "c879c20cc8de62f51505faada3fc61e8a046b5c49d7ff40cdb4b71703223c11e"
+        },
+        {
+          "path": "track_05_sweetspot.pdf",
+          "bytes": 12725,
+          "sha256": "80bd79b8fcc8e4327b464fe7230ecc22523f1e3d623f796578075e1fe32c6ff8"
+        }
+      ]
+    },
+    {
+      "figure_id": "track_reconstruction",
+      "outputs": [
+        {
+          "path": "track_06_reconstruction.png",
+          "bytes": 69969,
+          "sha256": "903f0db018bd18e4c4966b7bb0499811b13d17557295efd02e0da13851d224d0"
+        },
+        {
+          "path": "track_06_reconstruction.pdf",
+          "bytes": 12763,
+          "sha256": "a1e441d51e85e11dcd4011d23d66949730c0976d87a311064f9c80764c0dc513"
+        }
+      ]
+    }
+  ]
+}

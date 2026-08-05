@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>六赛道三维可视化参考板</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #10263b;
+      --muted: #52677a;
+      --line: #d8e1e8;
+      --paper: #f4f7f9;
+      --card: #ffffff;
+      --blue: #0f6685;
+      --orange: #d56b29;
+      --green: #1f7a62;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Times New Roman", "Noto Serif SC", serif;
+      line-height: 1.55;
+    }
+    main {
+      width: min(1500px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 42px 0 80px;
+    }
+    header {
+      padding: 30px 34px;
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--blue);
+      background: var(--card);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: clamp(30px, 4vw, 48px); }
+    h2 { margin: 46px 0 18px; font-size: 30px; }
+    h3 { margin-bottom: 8px; font-size: 23px; }
+    .lead { margin-bottom: 0; color: var(--muted); font-size: 18px; }
+    .notice {
+      margin-top: 18px;
+      padding: 13px 16px;
+      border-left: 4px solid var(--orange);
+      background: #fff7ef;
+      color: #5f4129;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--card);
+      box-shadow: 0 8px 22px rgb(30 52 70 / 7%);
+    }
+    .image-wrap {
+      display: grid;
+      place-items: center;
+      min-height: 340px;
+      padding: 12px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+    }
+    .body { padding: 20px 22px 22px; }
+    .tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #e8f2f6;
+      color: var(--blue);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .copy { margin-bottom: 12px; color: var(--muted); }
+    .proposal {
+      margin: 0 0 12px;
+      padding: 11px 13px;
+      border-left: 3px solid var(--green);
+      background: #f0f8f5;
+    }
+    a { color: var(--blue); text-underline-offset: 3px; }
+    .recommendation {
+      padding: 24px 28px;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+    .recommendation ol { margin-bottom: 0; }
+    footer {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 15px;
+    }
+    @media (max-width: 900px) {
+      main { width: min(100% - 22px, 1500px); padding-top: 18px; }
+      header { padding: 22px 20px; }
+      .grid { grid-template-columns: 1fr; }
+      .image-wrap { min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>六赛道三维可视化参考板</h1>
+    <p class="lead">每个赛道给出两种文献或工业软件常见的结果表达。请直接回复“1A、2B、3A……”选择方向；本页只用于选型，尚未改动最终 PDF。</p>
+    <div class="notice">
+      核心原则：三维结果必须由真实体数据、角点网格、断层面、井轨迹、属性场和不确定性共同支撑；架构图负责解释方法，不能代替真实三维结果。
+    </div>
+  </header>
+
+  <h2>赛道一｜断层检测</h2>
+  <section class="grid">
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://www.geoinsights.com/wp-content/uploads/2022/06/Synth-Data-12.jpg" alt="三维地震体与断层概率对比">
+      </div>
+      <div class="body">
+        <span class="tag">1A · 地震体 + 概率体</span>
+        <h3>正交切片上的断层概率体</h3>
+        <p class="copy">领域论文常把原始地震振幅、CNN 断层概率、传统 fault likelihood 与细化结果放在同一三维正交视图中，直接比较连续性、噪声与微小断距。</p>
+        <p class="proposal"><strong>建议落地：</strong>Volve 原始三维地震块作为底图，叠加概率热图与阈值后的断层面；保留 inline、crossline、time slice 三个方向。</p>
+        <a href="https://www.geoinsights.com/3d-seismic-fault-segmentation/" target="_blank" rel="noreferrer">来源：Wu 等，3D seismic fault segmentation</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://share.yongan.site/junwei-3d-reference-gong-engineering-qc/dataset2_professional_engineering_qc.20260731-011918.png" alt="龚老师项目角点网格与多断层三维视图">
+      </div>
+      <div class="body">
+        <span class="tag">1B · 角点网格 + 断层面</span>
+        <h3>工程级断层约束角点网格</h3>
+        <p class="copy">这是“龚老师”项目已有的真实三维链路：角点网格单元、断层切割面、深度属性和拓扑关系，不是概念性插画。</p>
+        <p class="proposal"><strong>建议落地：</strong>复用该项目的 VTK/PyVista、GRDECL、ResInsight 与 NNC 代码，将断层预测面映射到角点网格，并增加井轨迹和局部 cutaway。</p>
+        <a href="https://share.yongan.site/dataset2-web/dataset2_3d_explorer.20260721-163327.html" target="_blank" rel="noreferrer">打开“龚老师”交互式三维场景</a>
+      </div>
+    </article>
+  </section>
+
+  <h2>赛道二｜地震相识别</h2>
+  <section class="grid">
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://essd.copernicus.org/articles/17/595/2025/essd-17-595-2025-f13.jpg" alt="Longgang 三维地震相预测与多方向剖面">
+      </div>
+      <div class="body">
+        <span class="tag">2A · 三维体 + 多方向剖面</span>
+        <h3>三维地震体与预测剖面联动</h3>
+        <p class="copy">先给出三维地震体及目标层顶、底界面，再把预测结果叠加到多个 inline/crossline 剖面，能够同时说明空间位置与局部边界质量。</p>
+        <p class="proposal"><strong>建议落地：</strong>主图使用 F3/Penobscot 三维体，配三方向切片；副图使用真实标签、预测类别和不确定性边界的同位对照。</p>
+        <a href="https://essd.copernicus.org/articles/17/595/2025/" target="_blank" rel="noreferrer">来源：Gao 等，cigFacies，Figure 13</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://share.yongan.site/junwei-3d-reference-facies-figure14/facies_figure_14.jpg" alt="Yuanba 三维地震相预测叠加层面">
+      </div>
+      <div class="body">
+        <span class="tag">2B · 层面着色 + 体切片</span>
+        <h3>预测相分布叠加解释层面</h3>
+        <p class="copy">把预测地震相直接投影到专家解释层面，并辅以多方向二维视图，适合表现礁体、河道或丘状相带的横向连通性。</p>
+        <p class="proposal"><strong>建议落地：</strong>输出 categorical facies geobody，保留离散调色板、透明层面、井位和专家解释轮廓；避免仅展示一张二维分割图。</p>
+        <a href="https://essd.copernicus.org/articles/17/595/2025/" target="_blank" rel="noreferrer">来源：Gao 等，cigFacies，Figure 14</a>
+      </div>
+    </article>
+  </section>
+
+  <h2>赛道三｜储层物性</h2>
+  <section class="grid">
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://gmd.copernicus.org/articles/14/2075/2021/gmd-14-2075-2021-f09.png" alt="Volve 三维孔隙度渗透率模型及井">
+      </div>
+      <div class="body">
+        <span class="tag">3A · 属性体 + 井约束</span>
+        <h3>孔隙度、渗透率与井位一体化</h3>
+        <p class="copy">Volve 相关研究通常把孔隙度、渗透率三维空间分布和控制井放在同一场景中，并用井曲线验证属性体，而不是只给留出井折线。</p>
+        <p class="proposal"><strong>建议落地：</strong>同一角点网格按 PHIF、log10(KLOGH)、SW 切换着色；显示 F-系列井轨迹、断层、层位和目标层 cutaway。</p>
+        <a href="https://gmd.copernicus.org/articles/14/2075/2021/" target="_blank" rel="noreferrer">来源：Otoo 与 Hodgetts，Volve property modeling，Figure 9</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://share.yongan.site/junwei-3d-reference-property-figure11/property_figure_11.png" alt="Volve 原始物性模型与多个实现对比">
+      </div>
+      <div class="body">
+        <span class="tag">3B · 原始模型 + 多实现</span>
+        <h3>参考模型与多种空间实现并列</h3>
+        <p class="copy">把参考模型、多个孔隙度/渗透率实现并排，既展示空间异质性，也暴露不同随机实现之间的变化，是比单张彩色体更完整的结果表达。</p>
+        <p class="proposal"><strong>建议落地：</strong>将模型预测、PyKrige/SGS 基线和残差校正结果并列；再给误差体或 q90 区间体，明确“哪里可信、哪里不稳”。</p>
+        <a href="https://gmd.copernicus.org/articles/14/2075/2021/" target="_blank" rel="noreferrer">来源：Otoo 与 Hodgetts，Volve property modeling，Figure 11</a>
+      </div>
+    </article>
+  </section>
+
+  <h2>赛道四｜岩相预测</h2>
+  <section class="grid">
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://www.frontiersin.org/files/Articles/659611/xml-images/feart-09-659611-g011.webp" alt="岩心、测井、岩相真值与预测沿深度对比">
+      </div>
+      <div class="body">
+        <span class="tag">4A · 岩心 + 曲线 + 相带</span>
+        <h3>沿深度的多轨联合解释</h3>
+        <p class="copy">标准岩相图把岩心图像、测井曲线、真实岩性/岩相列和模型预测列按深度严格对齐，能看清层界、薄层和错分位置。</p>
+        <p class="proposal"><strong>建议落地：</strong>为 F-5 等盲井画完整多轨图：GR/RHOB/NPHI/RT、真实九类、预测九类、类别概率或置信度；混淆矩阵只作副图。</p>
+        <a href="https://www.frontiersin.org/journals/earth-science/articles/10.3389/feart.2021.659611/full" target="_blank" rel="noreferrer">来源：Frontiers in Earth Science，Figure 11</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-023-49080-7/MediaObjects/41598_2023_49080_Fig5_HTML.png" alt="多井原始与预测岩性列对比">
+      </div>
+      <div class="body">
+        <span class="tag">4B · 多井对照 + 局部放大</span>
+        <h3>盲井全井段与关键层段放大</h3>
+        <p class="copy">先展示完整井段，再放大少数类或薄互层区间，能够把平均指标背后的地质难点交代清楚。</p>
+        <p class="proposal"><strong>建议落地：</strong>完整井段 + 2–3 个薄层放大窗 + per-class F1；若有多井，可增加跨井对比或简化 fence panel。</p>
+        <a href="https://www.nature.com/articles/s41598-023-49080-7" target="_blank" rel="noreferrer">来源：Scientific Reports，Figure 5</a>
+      </div>
+    </article>
+  </section>
+
+  <h2>赛道五｜甜点区评价</h2>
+  <section class="grid">
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-025-90371-y/MediaObjects/41598_2025_90371_Fig9_HTML.png" alt="多层地质工程甜点区三维模型">
+      </div>
+      <div class="body">
+        <span class="tag">5A · 多层甜点指数</span>
+        <h3>分层展示地质—工程甜点分布</h3>
+        <p class="copy">专业表达通常保留各层甜点指数，而不是把所有目标压成一个总分；不同层的空间连续性和阈值区间清晰可见。</p>
+        <p class="proposal"><strong>建议落地：</strong>T1–T7 保持任务分路；有空间坐标的目标映射到层面或体网格，无空间证据的目标仅作状态/统计图，不伪造三维场。</p>
+        <a href="https://www.nature.com/articles/s41598-025-90371-y" target="_blank" rel="noreferrer">来源：Scientific Reports，Figure 9</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs13202-020-00913-5/MediaObjects/13202_2020_913_Fig21_HTML.png" alt="脆性与含烃饱和度叠加的三维甜点图">
+      </div>
+      <div class="body">
+        <span class="tag">5B · 多属性叠加 + 剖面</span>
+        <h3>甜点区与控制属性联动</h3>
+        <p class="copy">把脆性、含烃饱和度等控制属性做可解释叠加，并在三维模型中布置剖面和拟议井位，能说明“为什么这里是甜点”。</p>
+        <p class="proposal"><strong>建议落地：</strong>主图显示甜点综合概率，副图拆回孔隙度、饱和度、脆性、应力或产能贡献；同时标出建议井轨迹与阈值。</p>
+        <a href="https://link.springer.com/article/10.1007/s13202-020-00913-5" target="_blank" rel="noreferrer">来源：Journal of Petroleum Exploration and Production Technology，Figure 21</a>
+      </div>
+    </article>
+  </section>
+
+  <h2>赛道六｜三维重构</h2>
+  <section class="grid">
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs12145-025-01778-0/MediaObjects/12145_2025_1778_Fig11_HTML.jpg" alt="三维地质模型不确定性点云与等值面">
+      </div>
+      <div class="body">
+        <span class="tag">6A · 重构体 + 不确定性壳层</span>
+        <h3>把不确定性作为三维结果的一部分</h3>
+        <p class="copy">稀疏井约束的重构不能只给一张预测体。文献常同时展示体素不确定性、等值面包络和井周可信度衰减。</p>
+        <p class="proposal"><strong>建议落地：</strong>重构孔隙度体外叠加 q90/残差等值面；井轨迹附近低不确定，远离控制点或断层附近高不确定，并给可交互阈值。</p>
+        <a href="https://link.springer.com/article/10.1007/s12145-025-01778-0" target="_blank" rel="noreferrer">来源：Earth Science Informatics，Figure 11</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="image-wrap">
+        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs13202-021-01308-w/MediaObjects/13202_2021_1308_Fig16_HTML.png" alt="GRFS SGS Kriging 三维重构对比">
+      </div>
+      <div class="body">
+        <span class="tag">6B · 基线对照 + 井条件</span>
+        <h3>重构方法的空间结果并列比较</h3>
+        <p class="copy">Kriging、SGS/GRFS 等结果并列能直观看到平滑偏差与空间异质性；井位置必须保留，便于判断条件约束是否被满足。</p>
+        <p class="proposal"><strong>建议落地：</strong>PyKrige、基础模型残差校正、最终融合三列并排；统一色标和相机，再补三方向切片与井上误差曲线。</p>
+        <a href="https://link.springer.com/article/10.1007/s13202-021-01308-w" target="_blank" rel="noreferrer">来源：Journal of Petroleum Exploration and Production Technology，Figure 16</a>
+      </div>
+    </article>
+  </section>
+
+  <h2>Framework 图升级方向</h2>
+  <section class="recommendation">
+    <ol>
+      <li><strong>输入层：</strong>真实数据形态、空间坐标、张量尺寸、井/断层/层位约束。</li>
+      <li><strong>模型层：</strong>编码器、跨模态融合、跳连、残差支路、关键特征尺寸；模型主体占图约 60%。</li>
+      <li><strong>训练层：</strong>主损失、边界/类别不平衡/物理约束、采样策略、训练—验证—测试切分。</li>
+      <li><strong>输出层：</strong>概率体、属性体、岩相列、甜点指数或重构体，并与对应的三维结果图形成一一映射。</li>
+      <li><strong>公式策略：</strong>模型生成视觉结构，公式和算子采用经校核的矢量/LaTeX 覆盖，避免“+”被误画成“⊕”。</li>
+    </ol>
+  </section>
+
+  <footer>
+    本参考板引用公开论文或官方技术页面的图片，仅用于内部视觉选型；后续报告将使用项目真实数据重绘结果，不直接复制第三方图片。更新时间：2026-07-31。
+  </footer>
+</main>
+</body>
+</html>

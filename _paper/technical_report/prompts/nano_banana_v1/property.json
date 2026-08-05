@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Top-tier KDD / IEEE TNNLS scientific framework figure for multimodal tabular geoscience. Pure white #FFFFFF background, cool-blue confirmed tree-model path, warm-orange TabICLv2 audit path, teal uncertainty interval path, grey context. Times New Roman serif typography throughout. Tight academic vector layout, no overall title, no Figure label, no watermark, no page number.",
+  "pages": [
+    {
+      "title": "property_architecture_v1",
+      "is_cover": false,
+      "description": "Create a landscape scientific model framework diagram for reservoir property prediction. No overall title. LEFT DOMAIN ANCHOR: compact multi-source evidence consisting of vertical well-log curves, well coordinates, and a small local seismic neighborhood; convert them into a feature table X in R^(B×F). CENTRAL ROUTER: a prominent target router with three lanes PHIF, KLOGH and SW. COOL-BLUE CONFIRMED MAIN PATH: PHIF -> ExtraTrees, KLOGH -> log1p transform -> ExtraTrees -> expm1 inverse transform, SW -> XGBoost. Show each ensemble as multiple small decision trees with aggregated leaves, not as neural cubes. WARM-ORANGE AUDIT SIDE PATH: show TabICLv2 in-context tabular encoder with column attention followed by row attention, rendered as compact 2.5D token stacks; label it audit-only and not promoted. TEAL UNCERTAINTY PATH: development out-of-fold residuals feed a q_0.90 quantile module. Embed the equations y_hat_t = f_t(X), u = log(1 + KLOGH), KLOGH_hat = exp(u_hat)-1, and I_0.90(x) = [y_hat_t - q_0.90, y_hat_t + q_0.90]. RIGHT OUTPUT: three calibrated-style prediction panels with physical units and symmetric intervals, one for PHIF, one KLOGH, one SW. BOTTOM TRAINING STRIP: maternal-well group split -> train-only imputation/scaling and target transform -> target-specific model selection -> out-of-fold residual interval fitting -> frozen known-holdout confirmation. Mark that the known holdout is confirmation only, not a new selection loop. Use X in R^(B×F) and y_hat in R^(B×1). No metric values, no learning rates, no paragraphs."
+    }
+  ]
+}

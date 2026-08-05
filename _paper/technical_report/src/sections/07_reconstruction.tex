@@ -1,0 +1,183 @@
+\chapter{三维重建}
+
+\section{任务背景}
+
+三维重建根据稀疏井点恢复连续储层属性体。输入包括观测位置
+$\{\bm{s}_i\}_{i=1}^{N}$、孔隙度标签 $\{z_i\}_{i=1}^{N}$ 以及与井点配准的
+三维地震体，输出为规则网格任意位置 $\bm{s}_0$ 的孔隙度估计。该问题具有明显的
+欠定性：井点能够约束局部数值，却不足以单独确定井间结构；地震体覆盖完整空间，
+却与孔隙度之间不存在简单的一一对应关系。
+
+普通克里金能稳定表达距离衰减与空间连续性，是稀疏重建的强基线。OpenMind-MAE
+等三维地学基础模型则能从地震块中提取多尺度结构表征。前期实验表明，让大模型直接
+预测孔隙度或学习克里金残差，容易重复已有空间信号并放大折间波动。本赛道最终采用
+一条更稳健的路径：保留克里金主路，用冻结基础模型表征重新定义邻域，再由固定核
+集成补充地震结构信息。
+
+\section{方法原理}
+
+普通克里金以观测值的无偏线性组合估计目标点：
+\begin{equation}
+  \hat{z}_{\mathrm{OK}}(\bm{s}_0)
+  =\sum_{i=1}^{N}\lambda_i z_i,
+  \qquad \sum_{i=1}^{N}\lambda_i=1,
+\end{equation}
+其中权重 $\lambda_i$ 由变异函数和空间几何共同确定。它提供可解释、稳定的低方差
+预测，但只在预先给定的坐标度量中寻找邻点。
+
+为引入地震结构，配准的三通道三维块首先通过真实预训练的 OpenMind-MAE
+编码器\cite{wald2025openmind}，得到 $96$ 维体素特征 $\bm{U}_i$。编码器参数保持
+冻结；标准化与主成分变换只在当前外折训练点拟合：
+\begin{equation}
+  \bm{u}_i=\operatorname{PCA}\!\left(
+  \operatorname{Std}_{\mathcal{T}}(\bm{U}_i)\right).
+\end{equation}
+对地震属性向量 $\bm{a}_i$，构造三组基础模型引导的邻域度量
+\begin{equation}
+  \bm{m}_{s}(\bm{s}_i)=
+  \left[
+    \tilde{x}_i,\ \tilde{y}_i,\ 4\tilde{z}_i,
+    \ s\tilde{\bm{a}}_i,\ 0.1\bm{u}_i
+  \right],
+  \qquad s\in\{0,0.1,0.2\},
+  \label{eq:reconstruction-metric}
+\end{equation}
+其中波浪号表示按训练折统计量归一化，系数 $4$ 表示垂向各向异性，$0.1$ 固定
+基础模型表征的尺度。每组度量检索 $64$ 个最近邻，并采用幂指数为 $1.5$ 的反距离核：
+\begin{equation}
+  k_s(\bm{s}_0)=
+  \frac{\sum_{i\in\mathcal{N}_{64}(\bm{s}_0)}
+  w_i(\bm{s}_0)z_i}
+  {\sum_{i\in\mathcal{N}_{64}(\bm{s}_0)}w_i(\bm{s}_0)},
+  \quad
+  w_i(\bm{s}_0)=
+  \left(\lVert\bm{m}_s(\bm{s}_0)-\bm{m}_s(\bm{s}_i)\rVert_2
+  +\varepsilon\right)^{-1.5}.
+\end{equation}
+
+最终模型对三组核等权平均，再与普通克里金融合：
+\begin{equation}
+  \hat{z}_{\mathrm{P21}}(\bm{s}_0)
+  =0.25\hat{z}_{\mathrm{OK}}(\bm{s}_0)
+  +\frac{0.75}{3}\sum_{s\in\{0,0.1,0.2\}}k_s(\bm{s}_0).
+  \label{eq:reconstruction-p21}
+\end{equation}
+这一定义不包含逐折模型选择，也不在评价数据上调整融合权重。基础模型的作用不是
+直接输出属性值，而是把地震结构编码进邻域关系；克里金仍负责维持数值稳定性。
+
+\ArchitectureFigure{reconstruction}
+  {三维重建模型架构。冻结的 OpenMind-MAE 表征与坐标、垂向各向异性及地震属性共同定义三组固定邻域核，核均值再与普通克里金融合。}
+  {reconstruction-architecture}
+
+\section{训练策略}
+
+开发评价沿用五个空间外折，每折固定使用 $512$ 个训练标签和 $2{,}048$ 个验证点。
+所有标准化、PCA 与邻域索引均在当前训练折内建立，验证标签不参与特征变换、参数
+搜索或模型选择。OpenMind-MAE 保持冻结，因此本方法的训练实质是训练折内的表征
+校准、邻域构建与固定参数执行，而不是端到端更新大模型。
+
+LoRA、Adapter 和分阶段解冻曾作为独立训练路线接受检查。张量尺寸、梯度、参数更新
+与损失均为有限值，说明这些模块已经真实接入；其中表现最好的 staged-LoRA-r4
+取得 $0.027790$ 的 OOF RMSE，但仍未超过当时的 P19 参考模型 $0.027751$。
+因此这些可训练路线保留为诊断实验，默认配置全部关闭；部署路径只启用
+\Cref{eq:reconstruction-p21} 的固定 P21 集成。
+
+\TrainingFlow
+  {井点与三维地震配准}
+  {空间五折划分}
+  {冻结基础模型取特征}
+  {训练折标准化与 PCA}
+  {固定三核集成与融合}
+  {三维重建训练与推理流程}
+  {reconstruction-training}
+
+\section{实验设计}
+
+实验分为开发评价与迁移压力测试。开发评价在同一组五个空间折上比较普通克里金、
+经去重修正的 P19 基础模型邻域、P20 staged-LoRA-r4 和最终 P21 固定三核集成。
+该阶段回答两个问题：地学基础模型表征能否改善邻域检索，以及取消逐折元选择后能否
+维持或改善性能。
+
+迁移压力测试在读取目标指标前完成预注册，锁定数据来源、空间映射、五折划分、
+PyKrige 1.7.3 基线、P21 参数与成功门槛。测试目标为同一 Volve 场区中此前未被
+现有管线使用的历史孔隙度属性版本；开指标后没有重新调参。输入几何、地震表征和
+标签预算保持不变，只替换目标属性版本，从而检验固定邻域度量是否依赖某一个开发
+目标。该测试属于同场区历史版本迁移，不是跨场区验证、赛事隐藏测试或首次盲测。
+
+\section{评估指标}
+
+三维重建使用 RMSE、MAE 和 Bias：
+\begin{align}
+  \Metric{RMSE} &= \sqrt{\frac{1}{N}\sum_i(z_i-\hat{z}_i)^2},\\
+  \Metric{MAE} &= \frac{1}{N}\sum_i|z_i-\hat{z}_i|,\\
+  \Metric{Bias} &= \frac{1}{N}\sum_i(\hat{z}_i-z_i).
+\end{align}
+RMSE 为主指标，MAE 衡量典型绝对误差，Bias 检查整体偏移。开发阶段同时报告相对
+P19 的折级胜、平、负与整折 bootstrap；历史版本测试的预注册门槛为相对 PyKrige
+的 pooled RMSE 改善不少于 $1\%$，且五个空间折中最多一折退步。置信区间用于说明
+不确定性，不在开指标后改写成功门槛。
+
+\section{实验结果}
+
+\begin{table}[htbp]
+  \centering
+  \caption{三维重建开发空间折的主要结果}
+  \label{tab:reconstruction-development}
+  \begin{tabular}{lrrl}
+    \toprule
+    模型 & RMSE & MAE & 研究角色 \\
+    \midrule
+    普通克里金 & 0.028450 & 0.021413 & 基线 \\
+    P19 基础模型邻域 & 0.027751 & 0.020826 & 参考模型 \\
+    P20 staged-LoRA-r4 & 0.027790 & 0.020871 & 未采用 \\
+    P21 固定三核集成 & \textbf{0.027734} & \textbf{0.020799} & 最终模型 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+P21 相对普通克里金的开发 OOF RMSE 降低 $2.5144\%$，相对 P19 再降低
+$0.0613\%$。与 P19 比较时，一折改善、四折数值等价、没有折退步。整折
+bootstrap 给出的候选更优概率为 $0.70075$，RMSE 差值的 $95\%$ 区间为
+$[-6.50\times10^{-5},0]$。因此 P21 被接受为更简单的确定性改进，但不据此声称
+广泛统计效应，也不把全部增益归因于某一单独组件。
+
+\begin{table}[htbp]
+  \centering
+  \caption{冻结 P21 的同场区历史版本迁移结果}
+  \label{tab:reconstruction-transfer}
+  \begin{tabular}{lrrrl}
+    \toprule
+    模型 & RMSE & MAE & Bias & 空间折 \\
+    \midrule
+    普通克里金 & 0.028235 & 0.021294 & -0.001011 & -- \\
+    冻结 P21 & \textbf{0.027825} & \textbf{0.020826} & 0.000513 & 4 胜 1 负 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+在未用于开发的历史属性版本上，冻结 P21 的 RMSE 相对 PyKrige 降低
+$1.4529\%$，通过预注册门槛；整折 bootstrap 的候选更优概率为 $0.94595$，
+$95\%$ 差值区间为 $[-9.16\times10^{-4},8.81\times10^{-5}]$，仍跨越零。
+该结果表明，大模型表征进入固定邻域度量后能够在目标版本变化下保留增益，但证据
+范围仍限于同一场区。
+
+\ResultFigure{0.94}{reconstruction}{before_after_primary_metric.png}
+  {三维重建的开发空间折与历史版本迁移结果。两个面板使用不同目标版本，数值只在面板内比较。}
+
+\ResultFigure{0.99}{reconstruction}{research_native_volume.png}
+  {Volve MAPAXES 配准网格中的参考孔隙度、条件留出真值、重建结果和“预测减真值”残差。残差表示已知留出点上的观测误差，不是不确定性预测。}
+
+\ResultFigure{0.94}{reconstruction}{research_orthogonal_diagnostics.png}
+  {条件留出网格的三组正交切片。三行依次为真值、重建和残差，三列为 K、J 和 I 法向切面。}
+
+\ResultFigure{0.92}{reconstruction}{research_directional_variogram.png}
+  {条件留出网格的方向经验变差函数。左图沿 K 索引方向，右图合并 I--J 索引方向；横轴距离由 MAPAXES 坐标计算。}
+
+这些三维图件用于检查属性范围、切片连续性与方向空间相关，不替代上述空间折指标。
+现有条件重建仍表现出细尺度方差不足，说明点值 RMSE 改善并不等于全部地质结构已经
+恢复。当前默认配置因此冻结 P21，关闭未晋级的 LoRA、Adapter、分阶段解冻与残差
+旁路。本报告以同场区历史版本迁移作为当前验证终点，不再围绕同一目标版本调参，
+也不追加跨数据集测试；后续若获得独立新井，可将其作为新的外部证据，而不回写本次
+模型选择。
+
+\FloatBarrier

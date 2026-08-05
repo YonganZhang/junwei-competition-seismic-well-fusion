@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Exact scientific figure correction, pure white background, Times New Roman.",
+  "pages": [
+    {
+      "title": "sweetspot_architecture_v4",
+      "is_cover": false,
+      "description": "Based on the reference image, make these changes only in the T4 lane: remove the intermediate green Forecast box after CatBoost. Remove the grey line that connects the T4 lane to History mean. Connect T4 CatBoost directly to the green Water-onset probability output. History mean must connect only to the T3 plus operator. Keep T1, T2, T3, T5, T6, T7, all formulas, all other arrows, colors, and layout unchanged. Do not add a title or status language."
+    }
+  ]
+}

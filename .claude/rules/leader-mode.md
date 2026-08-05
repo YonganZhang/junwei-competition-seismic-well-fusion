@@ -4,15 +4,18 @@
 
 ## 角色结构
 
-用户（董事长）→ 本 Claude 会话（负责人/领导）→ 3个 Codex worker 窗口（各自一条赛道，git worktree隔离）：
+用户（董事长）→ 本 Claude 会话（负责人/领导）→ 6个 Codex worker 窗口（每个任务一窗、各自用 git worktree 隔离）。AI Session Cards 统一归入项目级分类 **`军伟的比赛`**，不再用阶段或单次交付物拼成长分类名。
 
-| Worker | 窗口 | worktree | 赛道 |
+| Worker target | 窗口 / pane | worktree | 赛道 |
 |---|---|---|---|
-| worker-0 | `secretary_web:28` | `.claude/worktrees/track-fault` | ①断层预测 |
-| worker-1 | 新开 | `.claude/worktrees/track-facies` | ②地震相分类 |
-| worker-2 | 新开 | `.claude/worktrees/track-reconstruction` | ⑥三维模型重建 |
+| `volve-worker-fault` | `secretary_web:19` / `%5885` | `.claude/worktrees/track-fault` | ①断层预测 |
+| `volve-worker-facies` | `secretary_web:9` / `%5883` | `.claude/worktrees/track-facies` | ②地震相分类 |
+| `volve-worker-property` | `secretary_web:41` / `%5886` | `.claude/worktrees/track-property` | ③储层物性预测 |
+| `volve-worker-lithofacies` | `secretary_web:42` / `%5887` | `.claude/worktrees/track-lithofacies` | ④岩相预测 |
+| `volve-worker-sweetspot` | `secretary_web:43` / `%5888` | `.claude/worktrees/track-sweetspot` | ⑤甜点预测 |
+| `volve-worker-reconstruction` | `secretary_web:10` / `%5884` | `.claude/worktrees/track-reconstruction` | ⑥三维模型重建 |
 
-③④⑤三条赛道**暂不开窗口**：③④岩心样本量不足需要军伟决策降级方案，⑤甜点预测标签定义需要军伟决策，两者都决策落地后再开新worker，不能让worker自己瞎猜标签方案硬跑。
+③④⑤窗口现已建立，用于保持独立上下文和承接后续任务；窗口存在不等于授权 worker 自行拍板。③④的训练目标/样本方案以及⑤的甜点标签定义仍须由军伟确认，确认前不得让 worker 猜标签或擅自改变赛道范围。
 
 ## 负责人（本 Claude）该做和不该做
 
@@ -48,4 +51,4 @@
 
 ## 何时废弃本文件
 
-三条赛道验收完成、或用户明确结束leader模式时，本文件可以归档进`_legacy/`，不再作为当前工作方式说明。
+六条赛道验收完成、或用户明确结束leader模式时，本文件可以归档进`_legacy/`，不再作为当前工作方式说明。

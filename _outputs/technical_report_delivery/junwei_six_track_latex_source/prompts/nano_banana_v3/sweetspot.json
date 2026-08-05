@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Exact scientific figure correction, pure white background, Times New Roman.",
+  "pages": [
+    {
+      "title": "sweetspot_architecture_v3",
+      "is_cover": false,
+      "description": "Based on the reference image, make these changes only: completely remove the top sentence Left KDD scientific architecture with 7 targets and leave blank white space above the diagram. Change the T1 right green output label from Forecast to RQI proxy. Change the T2 right green output label from Forecast to Sand probability. Keep T3 output as Forecast. Change the T4 right green output label from Forecast to Water-onset probability. Keep T5, T6, and T7 as Unavailable. Preserve the router, LightGBM, CatBoost, Chronos-2, History mean, formulas, arrows, colors, and layout. Do not add any title or status language."
+    }
+  ]
+}

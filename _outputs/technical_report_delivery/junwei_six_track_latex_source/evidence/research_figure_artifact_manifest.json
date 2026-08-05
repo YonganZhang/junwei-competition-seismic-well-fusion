@@ -1,0 +1,459 @@
+{
+  "entrypoint": "_pipelines/05_research_visualization_expansion/render_research_figures.py",
+  "generated_utc": "2026-08-01T04:34:22.732209+00:00",
+  "schema_version": "junwei-research-visualization-expansion/v1",
+  "scientific_contract": {
+    "cross_field_coordinate_fusion": false,
+    "large_model_role": "controlled encoder, comparator, forecast branch, or neighborhood representation; never visual evidence generation",
+    "reference_prediction_separation": true,
+    "synthetic_geology": false
+  },
+  "tracks": [
+    {
+      "evidence_mode": "spatial_context",
+      "outputs": [
+        {
+          "caption": "Volve fault sticks in real UTM–TWT coordinates above the interpreted BCU horizon. The horizon is spatial context; no dense fault-probability volume is implied.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "spatial_context",
+          "height_px": 1893,
+          "path": "_outputs/research_visualization_expansion/v1/figures/fault_geological_context.png",
+          "role": "fault_spatial_context",
+          "sha256": "90ef14db6efc350c82017d8cf5512299d0fee4146acf912bce08976f3bf2b2aa",
+          "size_bytes": 669974,
+          "width_px": 2309
+        },
+        {
+          "caption": "Volve fault sticks in real UTM–TWT coordinates above the interpreted BCU horizon. The horizon is spatial context; no dense fault-probability volume is implied.",
+          "evidence_mode": "spatial_context",
+          "path": "_outputs/research_visualization_expansion/v1/figures/fault_geological_context.pdf",
+          "role": "fault_spatial_context",
+          "sha256": "66c4c3537939984ca8fff3d4a19d00d7796df6d259b4ad74e2ee08888a4da5fc",
+          "size_bytes": 373274
+        },
+        {
+          "caption": "Source-seismic section along crossline direction at inline 10243, with official fault-stick points that lie on the same inline. Only stick segments with at least two control points are connected.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "spatial_context",
+          "height_px": 1647,
+          "path": "_outputs/research_visualization_expansion/v1/figures/fault_seismic_section_overlay.png",
+          "role": "fault_source_seismic_validation",
+          "sha256": "c9e8fdfac2539b7d17a218633a02b449de499a99b3d5574306f568a54b9e4485",
+          "size_bytes": 350836,
+          "width_px": 2780
+        },
+        {
+          "caption": "Source-seismic section along crossline direction at inline 10243, with official fault-stick points that lie on the same inline. Only stick segments with at least two control points are connected.",
+          "evidence_mode": "spatial_context",
+          "path": "_outputs/research_visualization_expansion/v1/figures/fault_seismic_section_overlay.pdf",
+          "role": "fault_source_seismic_validation",
+          "sha256": "5dfe3da24d18ab8cdd48330f4a9029264c6238bb3b510526d95c66e35fdf8791",
+          "size_bytes": 181309
+        }
+      ],
+      "scientific_boundary": "The figure shows interpreted geometry and does not claim a dense model prediction volume.",
+      "sources": [
+        {
+          "path": "_pipelines/01_common_preprocess/outputs/fault_points.npz",
+          "scientific_role": "official interpreted fault-stick control points",
+          "sha256": "5c658c8ffbe331826098a8eeb27e18055cfb0df420530715a593762b2846c74b",
+          "shape_or_row_count": "3998 points",
+          "split_scope": "full interpretation set; not a model split"
+        },
+        {
+          "path": "_pipelines/01_common_preprocess/outputs/horizon_bcu_points.npz",
+          "scientific_role": "official interpreted BCU horizon control points",
+          "sha256": "0dc2b065f92bcce074823d5b0af7e74a69bdbd166fd89a832a11cb8baa0333ca",
+          "shape_or_row_count": "225558 points",
+          "split_scope": "full interpretation set; not a model split"
+        },
+        {
+          "path": "_sandbox/volve_data/_extracted_seismic/ST0202/Stacks/ST0202R08_PZ_PSDM_FULL_OFFSET_PP_TIME.MIG_FIN.POST_STACK.3D.JS-017534.segy",
+          "scientific_role": "Volve ST0202 post-stack 3-D source seismic",
+          "sha256": "b79602a1c371c2abdd3c018c9ce71cbec3738a6f09a5ab77594161fd38721a3e",
+          "shape_or_row_count": "385×605 traces, 1126 time samples",
+          "split_scope": "source volume; inline section read lazily without loading the full cube"
+        },
+        {
+          "path": "_pipelines/01_common_preprocess/outputs/seismic_index.npz",
+          "scientific_role": "measured SEG-Y inline/crossline/time index",
+          "sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+          "shape_or_row_count": "385×605 regular trace grid",
+          "split_scope": "source coordinate registration; not a model split"
+        }
+      ],
+      "track": "fault"
+    },
+    {
+      "evidence_mode": "native_volume",
+      "outputs": [
+        {
+          "caption": "Registered F3 inline curtains sampled from the continuous seismic volume: (a) seismic amplitude and (b) the corresponding ten-class interpretation. These are reference data, not dense predictions from the current SAM2 model.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "native_volume",
+          "height_px": 1347,
+          "path": "_outputs/research_visualization_expansion/v1/figures/facies_f3_curtains.png",
+          "role": "facies_reference_volume_context",
+          "sha256": "769e59db898dded50a50aaa9928a1f09f3d207bec62dd3d5e53beaf9f68e6110",
+          "size_bytes": 469573,
+          "width_px": 3290
+        },
+        {
+          "caption": "Registered F3 inline curtains sampled from the continuous seismic volume: (a) seismic amplitude and (b) the corresponding ten-class interpretation. These are reference data, not dense predictions from the current SAM2 model.",
+          "evidence_mode": "native_volume",
+          "path": "_outputs/research_visualization_expansion/v1/figures/facies_f3_curtains.pdf",
+          "role": "facies_reference_volume_context",
+          "sha256": "fa9ecad4be26de26edf764fcc98251a92039327a13b1efe10482c2ecc9cc6ce4",
+          "size_bytes": 1053094
+        }
+      ],
+      "scientific_boundary": "F3/Penobscot provide true three-dimensional reference context, but the current archived SAM2 run does not persist a dense prediction volume.",
+      "sources": [
+        {
+          "path": "_sandbox/f3_penobscot/f3demo/inlines.zip",
+          "scientific_role": "continuous F3 inline seismic sections",
+          "sha256": "2288ea261ccc2a5ae67972c0e93c556d21ceb67083d0b2b9fdd33329a5c56c01",
+          "shape_or_row_count": "651 inline TIFF sections, each 462×951",
+          "split_scope": "reference interpretation data; not a model split"
+        },
+        {
+          "path": "_sandbox/f3_penobscot/f3demo/masks.tar.gz",
+          "scientific_role": "F3 inline/crossline interval-class interpretations",
+          "sha256": "f56bd426e29318ae6bcf64257daffc4772281745a142f63cc356f05ecad8b9ab",
+          "shape_or_row_count": "1602 masks; rendered inlines use 462×951 labels 0–9",
+          "split_scope": "reference interpretation data; not a model split"
+        },
+        {
+          "path": "_sandbox/f3_penobscot/penobscot/dataset.h5",
+          "scientific_role": "registered Penobscot seismic and eight-class label volume",
+          "sha256": "c78a63d56949bbf9685eddc582c1269d1899bf9d032c4000bb5e8d920c235656",
+          "shape_or_row_count": "(601, 1501, 481, 1)",
+          "split_scope": "reference dataset; read-only dimensional audit"
+        }
+      ],
+      "track": "facies"
+    },
+    {
+      "evidence_mode": "section_only",
+      "outputs": [
+        {
+          "caption": "Along-well observed and predicted PHIF, KLOGH and SW with archived 90% residual intervals (a–c), and depth-resolved residuals (d–f). KLOGH is shown on a logarithmic physical scale; no samples are removed.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "section_only",
+          "height_px": 2199,
+          "path": "_outputs/research_visualization_expansion/v1/figures/property_well_diagnostics.png",
+          "role": "property_along_well_diagnostics",
+          "sha256": "5dee3fc5f30a8a1707e72cbb443722d0a4a97d47b8f04928e99130903853d1f6",
+          "size_bytes": 642760,
+          "width_px": 3180
+        },
+        {
+          "caption": "Along-well observed and predicted PHIF, KLOGH and SW with archived 90% residual intervals (a–c), and depth-resolved residuals (d–f). KLOGH is shown on a logarithmic physical scale; no samples are removed.",
+          "evidence_mode": "section_only",
+          "path": "_outputs/research_visualization_expansion/v1/figures/property_well_diagnostics.pdf",
+          "role": "property_along_well_diagnostics",
+          "sha256": "1564ff17478266d2f129875850a1347defc29ec038b41d6406354418795265f3",
+          "size_bytes": 67045
+        },
+        {
+          "caption": "Paired PHIF–KLOGH relationship on identical known-holdout samples: (a) observations and (b) independently predicted properties. Colour encodes measured depth, and permeability remains on its physical log scale.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "section_only",
+          "height_px": 1308,
+          "path": "_outputs/research_visualization_expansion/v1/figures/property_rock_physics_crossplot.png",
+          "role": "property_rock_physics_consistency",
+          "sha256": "8ae697807e5530d0b436495df4147c44a574a78e7a9d5d57d51a97cd1901e9b7",
+          "size_bytes": 298503,
+          "width_px": 2746
+        },
+        {
+          "caption": "Paired PHIF–KLOGH relationship on identical known-holdout samples: (a) observations and (b) independently predicted properties. Colour encodes measured depth, and permeability remains on its physical log scale.",
+          "evidence_mode": "section_only",
+          "path": "_outputs/research_visualization_expansion/v1/figures/property_rock_physics_crossplot.pdf",
+          "role": "property_rock_physics_consistency",
+          "sha256": "82a1a86a26c9af20620d85ed7063f3e2355f9d0b768f4d0a49dec890c5aea2b9",
+          "size_bytes": 197577
+        }
+      ],
+      "scientific_boundary": "The figure is an along-well holdout diagnostic; intervals are empirical OOF-residual intervals, not Bayesian posterior uncertainty.",
+      "sources": [
+        {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/phif/predictions.csv",
+          "scientific_role": "PHIF known-holdout predictions and OOF residual interval",
+          "sha256": "f1c605f6f303d6d2038e2c647e130b8e2ae101402b2b4fc381ed74c3ab04e2dc",
+          "shape_or_row_count": "344 rows",
+          "split_scope": "previously seen reusable holdout: 15/9-F-15 D"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/klogh/predictions.csv",
+          "scientific_role": "KLOGH known-holdout predictions and OOF residual interval",
+          "sha256": "1901fa1a01397d20ac70e631fa3e5caa76a4acf2df81ce53a757e4b164f2f493",
+          "shape_or_row_count": "344 rows",
+          "split_scope": "previously seen reusable holdout: 15/9-F-15 D"
+        },
+        {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/sw/predictions.csv",
+          "scientific_role": "SW known-holdout predictions and OOF residual interval",
+          "sha256": "c0118d2be5ecb1fa03db55d31628e94a583fef3f7289e2c89ca0ec049ac5ec18",
+          "shape_or_row_count": "344 rows",
+          "split_scope": "previously seen reusable holdout: 15/9-F-15 D"
+        }
+      ],
+      "track": "property"
+    },
+    {
+      "evidence_mode": "section_only",
+      "outputs": [
+        {
+          "caption": "Fixed-nine lithofacies sequence for the known holdout well 15/9-F-5: (a) observed class, (b) XGBoost prediction and (c) maximum probability with all misclassified samples marked. The vertical axis is TWT because the archived records do not contain verified MD or XYZ coordinates.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "section_only",
+          "height_px": 1948,
+          "path": "_outputs/research_visualization_expansion/v1/figures/lithofacies_well_sequence.png",
+          "role": "lithofacies_sequence_diagnostics",
+          "sha256": "e2371a6a5a5b2d2e4c2c41fa33b053d9f7c0b9b8daa18c8c399d93af35cc59f5",
+          "size_bytes": 223744,
+          "width_px": 3005
+        },
+        {
+          "caption": "Fixed-nine lithofacies sequence for the known holdout well 15/9-F-5: (a) observed class, (b) XGBoost prediction and (c) maximum probability with all misclassified samples marked. The vertical axis is TWT because the archived records do not contain verified MD or XYZ coordinates.",
+          "evidence_mode": "section_only",
+          "path": "_outputs/research_visualization_expansion/v1/figures/lithofacies_well_sequence.pdf",
+          "role": "lithofacies_sequence_diagnostics",
+          "sha256": "de929887fb80e5076796802045b915f2e88a897a4f0afcf3ca88e61d44cf3b2d",
+          "size_bytes": 22413
+        }
+      ],
+      "scientific_boundary": "The archived records contain TWT but no verified trajectory/XYZ; the figure is therefore a one-dimensional sequence, not a 3-D facies body.",
+      "sources": [
+        {
+          "path": ".claude/worktrees/p10-results-lithofacies/_pipelines/02_task_datasets/lithofacies/_outputs/p5_stage4_confirmation/predictions.json",
+          "scientific_role": "fixed-nine known-holdout class probabilities and labels",
+          "sha256": "0ff2854a584d9494e04fd322d5be210538a61148c9ab15464c9d167349c2666f",
+          "shape_or_row_count": "120 records",
+          "split_scope": "previously seen reusable holdout: 15/9-F-5"
+        }
+      ],
+      "track": "lithofacies"
+    },
+    {
+      "evidence_mode": "section_only",
+      "outputs": [
+        {
+          "caption": "Sweetspot tasks remain target-specific: T1 depth-domain reservoir-quality proxy and residuals (a,b), and T3 causal-history productivity forecasts and residuals (c,d). They are not collapsed into an unsupported composite score.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "section_only",
+          "height_px": 2139,
+          "path": "_outputs/research_visualization_expansion/v1/figures/sweetspot_target_diagnostics.png",
+          "role": "sweetspot_target_specific_diagnostics",
+          "sha256": "747083f0247306929c1b399553ee670c998bfd1d6fe5ffcc3442991e4613429e",
+          "size_bytes": 491350,
+          "width_px": 3257
+        },
+        {
+          "caption": "Sweetspot tasks remain target-specific: T1 depth-domain reservoir-quality proxy and residuals (a,b), and T3 causal-history productivity forecasts and residuals (c,d). They are not collapsed into an unsupported composite score.",
+          "evidence_mode": "section_only",
+          "path": "_outputs/research_visualization_expansion/v1/figures/sweetspot_target_diagnostics.pdf",
+          "role": "sweetspot_target_specific_diagnostics",
+          "sha256": "7ec93a30e9e07f828cd11e9e8cf2c864ccb12933defc0073278eda145d5dac18",
+          "size_bytes": 82534
+        },
+        {
+          "caption": "T3 frozen temporal-holdout diagnostics: (a) observed versus predicted mean oil rate with the identity line and R²=-0.064; (b) residual normal Q–Q diagnostic. The colour ordering in (a) follows forecast time.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "section_only",
+          "height_px": 1308,
+          "path": "_outputs/research_visualization_expansion/v1/figures/sweetspot_productivity_performance.png",
+          "role": "sweetspot_productivity_performance",
+          "sha256": "aa58c11881bfa5c358c9ea2abb5085617c3aa16277427458e29154a2a3e86823",
+          "size_bytes": 196160,
+          "width_px": 2775
+        },
+        {
+          "caption": "T3 frozen temporal-holdout diagnostics: (a) observed versus predicted mean oil rate with the identity line and R²=-0.064; (b) residual normal Q–Q diagnostic. The colour ordering in (a) follows forecast time.",
+          "evidence_mode": "section_only",
+          "path": "_outputs/research_visualization_expansion/v1/figures/sweetspot_productivity_performance.pdf",
+          "role": "sweetspot_productivity_performance",
+          "sha256": "7c686d28fa841e9262acfeb1a1675ab4d7536dfd1d548083e15209f210a35bed",
+          "size_bytes": 78485
+        }
+      ],
+      "scientific_boundary": "T1 is a proxy and T3 is an observed production target. The two axes are different evidence domains and are not combined into one score.",
+      "sources": [
+        {
+          "path": ".claude/worktrees/p10-results-sweetspot/_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/frozen_test/predictions.csv",
+          "scientific_role": "T1 reservoir-quality proxy observed/predicted depth samples",
+          "sha256": "385f84d8ad52162ca815bf500dab2aef93b8c9f6fefbf3628d38c4145bd9dce1",
+          "shape_or_row_count": "11936 rows",
+          "split_scope": "previously seen reusable holdout: 15/9-F-15 D"
+        },
+        {
+          "path": ".claude/worktrees/p10-results-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/targets/T3/predictions.csv.gz",
+          "scientific_role": "T3 causal-history productivity observed/predicted samples",
+          "sha256": "60a29dbe9753be4ec4acbe19d6cfa03bec79886478484d24bca94b68a777c245",
+          "shape_or_row_count": "132 rows",
+          "split_scope": "previously seen reusable temporal holdout"
+        }
+      ],
+      "track": "sweetspot"
+    },
+    {
+      "evidence_mode": "native_volume",
+      "outputs": [
+        {
+          "caption": "Registered Volve MAPAXES volumes: (a) reference porosity, (b) held-out conditional truth, (c) conditional reconstruction and (d) prediction-minus-truth residual. Residual is an observed error field, not posterior uncertainty.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "native_volume",
+          "height_px": 985,
+          "path": "_outputs/research_visualization_expansion/v1/figures/reconstruction_native_volume.png",
+          "role": "reconstruction_native_volume_diagnostics",
+          "sha256": "de4af5670fd17d1e3a881a37f7ac550e09cb86db6e82ea44c33d096e81a622ef",
+          "size_bytes": 866374,
+          "width_px": 4346
+        },
+        {
+          "caption": "Registered Volve MAPAXES volumes: (a) reference porosity, (b) held-out conditional truth, (c) conditional reconstruction and (d) prediction-minus-truth residual. Residual is an observed error field, not posterior uncertainty.",
+          "evidence_mode": "native_volume",
+          "path": "_outputs/research_visualization_expansion/v1/figures/reconstruction_native_volume.pdf",
+          "role": "reconstruction_native_volume_diagnostics",
+          "sha256": "9b773d72b6fa499a6475c903becacdd8e1b3d1d3f27aba2b014a53c81b926a4f",
+          "size_bytes": 598709
+        },
+        {
+          "caption": "Orthogonal conditional-holdout sections through the registered grid. Rows show truth, reconstruction and residual; columns show K-, J- and I-normal cuts through the median active-cell location.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "native_volume",
+          "height_px": 2663,
+          "path": "_outputs/research_visualization_expansion/v1/figures/reconstruction_orthogonal_diagnostics.png",
+          "role": "reconstruction_orthogonal_slices",
+          "sha256": "7bf03b1cd6b29f64ae9414e456a4fd74ddafd52a04dc37f8078a99527334fcfa",
+          "size_bytes": 237934,
+          "width_px": 2987
+        },
+        {
+          "caption": "Orthogonal conditional-holdout sections through the registered grid. Rows show truth, reconstruction and residual; columns show K-, J- and I-normal cuts through the median active-cell location.",
+          "evidence_mode": "native_volume",
+          "path": "_outputs/research_visualization_expansion/v1/figures/reconstruction_orthogonal_diagnostics.pdf",
+          "role": "reconstruction_orthogonal_slices",
+          "sha256": "c44937b15afa79069eb98217a11679cf040ae75927c0ec26c2ee2d21197d5cd2",
+          "size_bytes": 104869
+        },
+        {
+          "caption": "Directional empirical semivariograms on the conditional holdout: (a) K-index direction and (b) pooled I–J index directions, with physical lag distances derived from MAPAXES coordinates. Truth, reconstruction and observed residual are shown in the same PHIF² units.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "native_volume",
+          "height_px": 1295,
+          "path": "_outputs/research_visualization_expansion/v1/figures/reconstruction_directional_variogram.png",
+          "role": "reconstruction_spatial_structure_diagnostics",
+          "sha256": "c91ddb1f40a06f69fe31ca84e544572752484f2320fe7571cf03ba2f5c8d03c0",
+          "size_bytes": 172920,
+          "width_px": 2880
+        },
+        {
+          "caption": "Directional empirical semivariograms on the conditional holdout: (a) K-index direction and (b) pooled I–J index directions, with physical lag distances derived from MAPAXES coordinates. Truth, reconstruction and observed residual are shown in the same PHIF² units.",
+          "evidence_mode": "native_volume",
+          "path": "_outputs/research_visualization_expansion/v1/figures/reconstruction_directional_variogram.pdf",
+          "role": "reconstruction_spatial_structure_diagnostics",
+          "sha256": "cc1889b7e4ed1ddc301d5b271fd227a674daa49e0004365298239150336a8af5",
+          "size_bytes": 20090
+        }
+      ],
+      "scientific_boundary": "Strict and conditional holdouts are previously seen reusable holdouts; residual is not relabeled as uncertainty.",
+      "sources": [
+        {
+          "path": ".claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/_outputs/3d_property_volume_v2/reference/reference_property_volume.npz",
+          "scientific_role": "registered Volve reference porosity grid",
+          "sha256": "d7144af71df94a2a7e01f09a7872f9c2f8863874c140190cbf38231182f77fcb",
+          "shape_or_row_count": "(63, 100, 108)",
+          "split_scope": "reference full grid; not a model split"
+        },
+        {
+          "path": ".claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/_outputs/3d_property_volume_v2/strict/heldout_reconstruction_volume.npz",
+          "scientific_role": "strict held-out reconstruction volume",
+          "sha256": "78eeba1c4b4cfe67667da0b110504de7aab2a6a30d657260c2e0527ee53dcc92",
+          "shape_or_row_count": "63×56×41 registered cells",
+          "split_scope": "previously seen reusable strict holdout"
+        },
+        {
+          "path": ".claude/worktrees/p5-r2-reconstruction-v2/_pipelines/02_task_datasets/reconstruction/_outputs/3d_property_volume_v2/conditional/heldout_reconstruction_volume.npz",
+          "scientific_role": "conditional held-out truth, prediction and residual volumes",
+          "sha256": "1744a416e71163d692edbef0ce44bc2902389ad03d71aff29d434c621ee156be",
+          "shape_or_row_count": "(63, 52, 29)",
+          "split_scope": "previously seen reusable conditional holdout"
+        }
+      ],
+      "track": "reconstruction"
+    },
+    {
+      "evidence_mode": "section_only",
+      "outputs": [
+        {
+          "caption": "Six-track foundation-model research map. Each pretrained model is attached to a reproducible scientific baseline through a controlled interface; the rightmost state is an evidence status rather than a performance claim.",
+          "dpi": [
+            299.9994,
+            299.9994
+          ],
+          "evidence_mode": "section_only",
+          "height_px": 1608,
+          "path": "_outputs/research_visualization_expansion/v1/figures/foundation_model_research_map.png",
+          "role": "foundation_model_research_map",
+          "sha256": "f79c216eb4825553dcc899f3ff97920e64a67e52fb93ef789eff2c68d1bd5cbe",
+          "size_bytes": 228590,
+          "width_px": 3441
+        },
+        {
+          "caption": "Six-track foundation-model research map. Each pretrained model is attached to a reproducible scientific baseline through a controlled interface; the rightmost state is an evidence status rather than a performance claim.",
+          "evidence_mode": "section_only",
+          "path": "_outputs/research_visualization_expansion/v1/figures/foundation_model_research_map.pdf",
+          "role": "foundation_model_research_map",
+          "sha256": "6b2a8ff32d432ddf4d1d58ed22ef8c86cd7636188fe524d26e5be223a5feba8f",
+          "size_bytes": 20414
+        }
+      ],
+      "scientific_boundary": "The chart records interfaces and evidence states only; it does not rank models or convert pending evidence into a positive result.",
+      "sources": [
+        {
+          "path": "_pipelines/05_research_visualization_expansion/foundation_model_experiment_contract.json",
+          "scientific_role": "pre-registered six-track foundation-model ablation and promotion contract",
+          "sha256": "00b06cf2a331f4bb8075df518f62a454d81362729b266fc2810375a035ba098e",
+          "shape_or_row_count": "6 track protocols",
+          "split_scope": "methodological contract; no test labels or generated evidence"
+        }
+      ],
+      "track": "cross_track"
+    }
+  ]
+}

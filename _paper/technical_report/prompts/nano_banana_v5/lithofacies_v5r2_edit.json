@@ -1,0 +1,14 @@
+{
+  "language": "en",
+  "style": "Edit the supplied SCI framework figure conservatively. Preserve its exact landscape composition, compact typography, module sizes, margins, reading order, blue/orange/gray/green palette, thin arrows, and white background. Keep all text in Times New Roman. Do not introduce zone headings, oversized labels, new panels, or a new layout. No title, watermark, or performance number.",
+  "pages": [
+    {
+      "title": "lithofacies_architecture_v5r2",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture_v5/slide_04_lithofacies_architecture_v5.png"
+      ],
+      "description": "Make only the scientifically necessary correction to the supplied figure. Remove the Fusion box and every arrow that merges MOMENT with XGBoost. Keep the blue operational path: aligned 35-by-33 well-log window, window statistics and local gradients, XGBoost multi-softprob trees, nine logits, softmax, fixed nine-class probability vector, Depth/TWT class sequence. Keep the orange MOMENT path as a separate controlled research ablation: interpolate the same window from 33 to 512 samples, patch embedding, MOMENT transformer encoder, then two matched heads labelled Pretrained and Random init. Both orange heads terminate only at a gray Pretraining-effect comparator with placeholders Delta Macro-F1, Delta mIoU, and Delta NLL; this comparator must not connect to the operational class sequence. Preserve the bottom LOGO4 mother-well split, class weighting, multi-seed training, and fixed-nine metrics. Preserve every other module and the original compact professional geometry. Ensure no content is cropped at any edge."
+    }
+  ]
+}

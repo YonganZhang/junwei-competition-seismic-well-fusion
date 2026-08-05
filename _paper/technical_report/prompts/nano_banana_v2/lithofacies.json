@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Camera-ready ICML scientific architecture figure, pure white background, Times New Roman for every label, concise exact typography, cool blue XGBoost baseline, warm orange MOMENT classifier, grey input mask. No title, no watermark, no experiment status, no training timeline, no result numbers.",
+  "pages": [
+    {
+      "title": "lithofacies_architecture_v2",
+      "is_cover": false,
+      "description": "Edit the reference into a clean left-to-right method comparison. Keep only these exact short labels: Well-log window, Missing mask, XGBoost, MOMENT encoder, Linear head, Nine-class probabilities, Facies column. Show X∈R^(B×35×33), e=E_θ(X), p=softmax(We+b), F1_macro=(1/9)Σ_c F1_c. The blue XGBoost path and orange frozen MOMENT encoder plus linear head are separate comparable classifiers; do not concatenate their features. Both end in nine-class probabilities and one depth-aligned facies column. Remove Gaia, audit, promotion, holdout, fold, seed, status language, long sentences, and every word not listed above. Make all displayed words exactly as written."
+    }
+  ]
+}

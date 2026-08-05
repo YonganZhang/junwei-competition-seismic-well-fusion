@@ -1,0 +1,141 @@
+\chapter{断层预测}
+
+\section{任务背景}
+
+断层预测的目标是从三维地震振幅体中识别不连续构造。输入为局部地震体
+$\bm{X}\in\mathbb{R}^{H\times W\times D}$，输出为逐体素断层概率
+$\bm{P}\in[0,1]^{H\times W\times D}$。断层通常只占很少的体素，类别极不平衡；
+同时，断层面具有跨切片延续性，单张切片上的局部纹理不足以完整描述空间结构。
+
+本赛道先建立可解释的局部逻辑回归基线，再评估 SAM-Med3D 的三维预训练表征
+\cite{wang2023sammed3d}。研究问题不是简单判断“大模型是否更强”，而是检验三维
+预训练表征能否在合法开发折上稳定改善断层分割。
+
+\section{方法原理}
+
+基线模型从地震振幅、局部梯度和不连续性响应中构造特征向量 $\bm{z}_i$，并用
+逻辑函数估计第 $i$ 个体素属于断层的概率：
+\begin{equation}
+  p_i^{\mathrm{base}}=\sigma(\bm{w}^{\mathsf T}\bm{z}_i+b),
+  \qquad
+  \sigma(a)=\frac{1}{1+\exp(-a)} .
+\end{equation}
+其中 $\bm{w}$ 和 $b$ 分别为特征权重与截距。该模型参数少，便于检查局部特征与
+断层概率之间的关系，适合作为小样本条件下的基线。
+
+候选分支把三维地震块送入 SAM-Med3D 编码器，得到预训练特征
+$\bm{h}_i^{\mathrm{sam}}$。适配头将其映射为候选概率 $p_i^{\mathrm{sam}}$，再由
+门控系数 $g_i\in[0,1]$ 与基线融合：
+\begin{equation}
+  p_i=(1-g_i)p_i^{\mathrm{base}}+g_i p_i^{\mathrm{sam}} .
+\end{equation}
+当开发集证据不足时令 $g_i=0$，模型自动退回基线。这一设计把候选表征与默认预测
+分开，避免未经验证的三维分支直接改变结果。
+
+\ArchitectureFigure{fault}
+  {断层预测模型架构。局部可解释基线与 SAM-Med3D 三维表征通过受控门融合。}
+  {fault-architecture}
+
+\Cref{fig:fault-architecture}描述目标模型的数据流。方法图中的三维分支能否进入
+定量比较，仍取决于是否存在连续三维开发体。
+
+\section{训练策略}
+
+训练采用类别加权二元交叉熵。设正样本权重为 $\omega_1$，负样本权重为
+$\omega_0$，则损失为
+\begin{equation}
+  \mathcal{L}_{\mathrm{WBCE}}
+  =-\frac{1}{N}\sum_{i=1}^{N}
+  \left[\omega_1 y_i\log p_i+\omega_0(1-y_i)\log(1-p_i)\right].
+\end{equation}
+权重由训练集类别频率确定，本次实验的负类与正类权重分别为 $0.5053$ 和
+$47.7847$。模型训练 120 个 epoch，批量大小为 16，并根据验证集损失选择第 16
+个 epoch 的参数。
+
+概率阈值也只在验证集上选择。最终阈值为 $0.4506$，对应验证集 F1 的最大值。
+测试集只在模型和阈值固定后评价一次。
+
+\TrainingFlow
+  {地震体与断层标签}
+  {局部块采样}
+  {加权损失训练}
+  {验证集选模型}
+  {固定阈值测试}
+  {断层预测训练流程}
+  {fault-training}
+
+\section{实验设计}
+
+基线实验使用 198 个训练样本、56 个验证样本和 96 个测试样本。现有样本是彼此独立
+的二维剖面，输入通道形状为 $1\times33\times65$，输出为逐像素断层概率。理论任务
+目标仍是三维体素预测；候选实验需要在连续三维数据上增加预训练编码器，并由独立
+开发折评价。
+
+进一步检查发现，当前三维赛道没有满足约束的合法开发折。因此，SAM-Med3D 分支
+尚不能完成公平排名，冻结测试集也没有用于候选模型选择。本章报告的定量结果来自
+已完成独立复核的基线；方法架构用于说明后续实验的比较对象。
+
+\section{评估指标}
+
+断层预测同时评价检出能力和空间重叠。精确率与召回率分别为
+\begin{equation}
+  \Metric{Precision}=\frac{TP}{TP+FP},
+  \qquad
+  \Metric{Recall}=\frac{TP}{TP+FN}.
+\end{equation}
+Dice 系数和交并比定义为
+\begin{equation}
+  \Metric{Dice}=\frac{2TP}{2TP+FP+FN},
+  \qquad
+  \Metric{IoU}=\frac{TP}{TP+FP+FN}.
+\end{equation}
+由于正类稀少，准确率会被大量背景体素主导，因此本赛道以 Dice、IoU、平均精确率
+（AP）和 PR-AUC 为主要指标，并用召回率检查漏检风险。
+
+\section{实验结果}
+
+\begin{table}[htbp]
+  \centering
+  \caption{断层预测基线的测试结果}
+  \label{tab:fault-results}
+  \begin{tabular}{lrrrrr}
+    \toprule
+    模型 & Precision & Recall & Dice/F1 & IoU & AP \\
+    \midrule
+    局部逻辑回归 & 0.0078 & 0.9022 & 0.0155 & 0.0078 & 0.0069 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\Cref{tab:fault-results}显示，基线取得 $0.9022$ 的召回率，但精确率只有
+$0.0078$。这说明模型能够覆盖大部分
+真实断层，却产生了大量误检。Dice 和 IoU 均较低，当前模型更适合作为高召回的
+候选区域生成器，尚不足以直接承担精确断层制图。
+
+\ResultFigure{0.92}{fault}{research_geological_context.png}
+  {Volve 断层棒与 BCU 层位在真实 UTM--TWT 坐标中的空间关系。该图展示解释几何，
+  不把稀疏断层棒扩展为未验证的连续概率体。}
+
+\ResultFigure{0.94}{fault}{research_seismic_overlay.png}
+  {Inline 10243 的原始地震剖面与同一剖面上的断层解释控制点。连线仅连接同一断层棒
+  中至少两个控制点，用于核对解释位置与反射不连续结构。}
+
+三维场景说明断层解释并不是无坐标的样本集合，而是位于已配准地震网格中的空间
+结构。剖面核对进一步显示，进入连线的控制点主要分布在反射同相轴发生弯折或中断的
+区域。两幅图只验证解释与地震背景的几何一致性，不能替代模型的体素级预测评价。
+
+\ResultPair{fault}
+  {real_test_panel.png}{测试样本上的输入、标签与预测}
+  {spatial_context.png}{断层预测的空间位置与邻域结构}
+  {断层预测的样本级与空间级结果}
+
+\ResultPair{fault}
+  {loss_curve.png}{训练与验证损失}
+  {prediction_visualization.png}{概率预测与二值结果}
+  {基线模型的优化过程与预测表现}
+
+当前实验的主要问题是误检，而不是漏检。后续实验应先补齐合法三维
+开发折，再比较局部基线、随机初始化三维编码器和 SAM-Med3D 三组模型；只有当预训练
+分支在独立开发折上稳定提高 Dice、PR-AUC 和表面距离指标时，才有理由进入最终预测。
+
+\FloatBarrier

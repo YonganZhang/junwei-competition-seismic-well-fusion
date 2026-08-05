@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Camera-ready CVPR scientific architecture figure, pure white background, Times New Roman for every label, concise exact typography, cool blue CNN path, warm orange SAM2 path, teal fusion. No title, no watermark, no experiment status, no training timeline, no result numbers.",
+  "pages": [
+    {
+      "title": "facies_architecture_v2",
+      "is_cover": false,
+      "description": "Edit the reference into a clean left-to-right model framework. Keep only these exact short labels: Seismic slices, CNN encoder, SAM2 encoder, Cross-attention, Decoder, Facies probabilities, F3, Penobscot. Show X∈R^(B×3×128×128), Q=W_QF_cnn, K=W_KF_sam, V=W_VF_sam, A=softmax(QK^T/√d)V, F_fused=F_cnn⊕γW_OA. The two dataset-specific CNN encoders and the SAM2 encoder feed one large cross-attention module, then one decoder and facies maps. Remove controls, promotion language, frozen-test language, update counts, long sentences, duplicate labels, and every word not listed above. Make all displayed words exactly as written."
+    }
+  ]
+}

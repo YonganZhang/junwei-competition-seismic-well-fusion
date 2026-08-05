@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Exact scientific figure correction, pure white background, Times New Roman.",
+  "pages": [
+    {
+      "title": "property_architecture_v3",
+      "is_cover": false,
+      "description": "Based on the reference image, make these changes only: remove the orange words audit path. Remove every physical unit inside square brackets from the three right prediction plots because the displayed units are incorrect. Keep only the target names PHIF, KLOGH, and SW on those plot axes. Preserve all model blocks, formulas, arrows, colors, and layout. Do not add any title, status, promotion, audit, holdout, or training text."
+    }
+  ]
+}

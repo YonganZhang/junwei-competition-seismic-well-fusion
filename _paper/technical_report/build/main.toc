@@ -1,0 +1,52 @@
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}报告概述}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}技术基础}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}研究对象}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.2}模型体系}{2}{section.2.2}%
+\contentsline {section}{\numberline {2.3}实验原则}{3}{section.2.3}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}断层预测}{4}{chapter.3}%
+\contentsline {section}{\numberline {3.1}任务背景}{4}{section.3.1}%
+\contentsline {section}{\numberline {3.2}方法原理}{4}{section.3.2}%
+\contentsline {section}{\numberline {3.3}训练策略}{4}{section.3.3}%
+\contentsline {section}{\numberline {3.4}实验设计}{5}{section.3.4}%
+\contentsline {section}{\numberline {3.5}评估指标}{5}{section.3.5}%
+\contentsline {section}{\numberline {3.6}实验结果}{6}{section.3.6}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}地震相分割}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}任务背景}{9}{section.4.1}%
+\contentsline {section}{\numberline {4.2}方法原理}{9}{section.4.2}%
+\contentsline {section}{\numberline {4.3}训练策略}{9}{section.4.3}%
+\contentsline {section}{\numberline {4.4}实验设计}{9}{section.4.4}%
+\contentsline {section}{\numberline {4.5}评估指标}{10}{section.4.5}%
+\contentsline {section}{\numberline {4.6}实验结果}{10}{section.4.6}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}储层物性预测}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}任务背景}{13}{section.5.1}%
+\contentsline {section}{\numberline {5.2}方法原理}{13}{section.5.2}%
+\contentsline {section}{\numberline {5.3}训练策略}{13}{section.5.3}%
+\contentsline {section}{\numberline {5.4}实验设计}{14}{section.5.4}%
+\contentsline {section}{\numberline {5.5}评估指标}{15}{section.5.5}%
+\contentsline {section}{\numberline {5.6}实验结果}{15}{section.5.6}%
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}岩相分类}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}任务背景}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}方法原理}{20}{section.6.2}%
+\contentsline {section}{\numberline {6.3}训练策略}{20}{section.6.3}%
+\contentsline {section}{\numberline {6.4}实验设计}{21}{section.6.4}%
+\contentsline {section}{\numberline {6.5}评估指标}{21}{section.6.5}%
+\contentsline {section}{\numberline {6.6}实验结果}{22}{section.6.6}%
+\contentsline {chapter}{\numberline {第七章\hspace {.3em}}甜点评价}{25}{chapter.7}%
+\contentsline {section}{\numberline {7.1}任务背景}{25}{section.7.1}%
+\contentsline {section}{\numberline {7.2}方法原理}{25}{section.7.2}%
+\contentsline {section}{\numberline {7.3}训练策略}{25}{section.7.3}%
+\contentsline {section}{\numberline {7.4}实验设计}{26}{section.7.4}%
+\contentsline {section}{\numberline {7.5}评估指标}{26}{section.7.5}%
+\contentsline {section}{\numberline {7.6}实验结果}{27}{section.7.6}%
+\contentsline {chapter}{\numberline {第八章\hspace {.3em}}三维重建}{31}{chapter.8}%
+\contentsline {section}{\numberline {8.1}任务背景}{31}{section.8.1}%
+\contentsline {section}{\numberline {8.2}方法原理}{31}{section.8.2}%
+\contentsline {section}{\numberline {8.3}训练策略}{32}{section.8.3}%
+\contentsline {section}{\numberline {8.4}实验设计}{33}{section.8.4}%
+\contentsline {section}{\numberline {8.5}评估指标}{33}{section.8.5}%
+\contentsline {section}{\numberline {8.6}实验结果}{33}{section.8.6}%
+\contentsline {chapter}{\numberline {第九章\hspace {.3em}}总结展望}{37}{chapter.9}%
+\contentsline {chapter}{\numberline {附录 A\hspace {.3em}}复现说明}{38}{appendix.A}%
+\contentsline {section}{\numberline {A.1}文档真源}{38}{section.A.1}%
+\contentsline {section}{\numberline {A.2}图件生成}{38}{section.A.2}%
+\contentsline {section}{\numberline {A.3}扩展方式}{38}{section.A.3}%

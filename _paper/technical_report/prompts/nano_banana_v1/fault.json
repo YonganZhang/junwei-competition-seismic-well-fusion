@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Top-tier IEEE TGRS / NeurIPS AI-for-science methodology figure. Pure white #FFFFFF background, restrained cool-blue backbone, warm-orange foundation-model branch, teal residual or safety connections, neutral grey context and blocked states. Dense but readable scientific vector illustration, Times New Roman serif typography throughout, crisp alignment, no slide title, no Figure label, no watermark, no page number, no decorative bands.",
+  "pages": [
+    {
+      "title": "fault_architecture_v1",
+      "is_cover": false,
+      "description": "Create a landscape scientific neural-network framework diagram for 3D seismic fault prediction. Do not place any overall title at the top. Use a left-to-right pipeline with the neural and model core occupying at least 60% of the canvas. LEFT DOMAIN ANCHOR: a compact realistic 3D seismic amplitude cube X in R^(B×1×D×H×W), with a few thin fault-stick annotations and an explicit three-state mask: positive, verified negative, unknown. MAIN COOL-BLUE PATH: show train-only z-score normalization, local discontinuity and neighborhood feature extraction z in R^(N×F), then a balanced logistic pixel classifier with the embedded equation p_base = sigma(w^T z + b). WARM-ORANGE CONTROLLED SIDE PATH: show 3D patch tokens, a SAM-Med3D image encoder as stacked 2.5D cubes, a sparse 3D prompt encoder, and a mask decoder producing p_sam in R^(N×1). CENTRAL FUSION: a compact evidence gate g_3D with the equation p = (1-g_3D)p_base ⊕ g_3D p_sam; depict the gate as grey and closed because continuous 3D development folds and an explicit unknown mask are required. RIGHT OUTPUT: a 3D fault-probability volume and a binary surface mask, with uncertainty/unknown voxels visibly hatched rather than treated as negatives. BOTTOM TRAINING STRIP: group-aware inline blocks -> train-only preprocessing and class weights -> validation threshold selection -> frozen evaluation; show blocked foundation ranking if the 3D legality gate fails. Mark key arrows with X in R^(B×1×D×H×W), z in R^(N×F), and p in [0,1]^N. Use mathematical operators sigma, ⊕ and a gate icon. No experimental metric values, no learning rate, no epochs, no paragraphs."
+    }
+  ]
+}

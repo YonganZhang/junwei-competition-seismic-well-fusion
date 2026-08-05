@@ -1,0 +1,145 @@
+schema_version: junwei-six-track-technical-report/v1
+report:
+  title_zh: "六赛道地学智能建模技术报告"
+  title_en: "Technical Report on Intelligent Modeling for Six Geoscience Tasks"
+  language: zh-CN
+  source_format: LaTeX
+  compiler: XeLaTeX
+  writing_style: yongan_prose_kernel
+  expansion_policy: section_files_plus_appendices
+  canonical_pdf: "_paper/technical_report/build/junwei_six_track_technical_report.pdf"
+  canonical_pdf_sha256: "bd793ea45c7687ee842e44d9a3c61af1e8978aaa08dd40e5f41c54aedf733b21"
+  page_count: 45
+  stable_url: "https://share.yongan.site/junwei-six-track-report/junwei_six_track_technical_report.pdf"
+  published_version_url: "https://share.yongan.site/junwei-six-track-report/junwei_six_track_technical_report.20260801-122750.pdf"
+  claude_handoff: "_reports/handoffs/20260731_six_track_pdf_handoff_to_claude.md"
+  latex_source_package: "_outputs/technical_report_delivery/junwei_six_track_latex_source_latest.zip"
+  latex_source_package_sha256: "753a0a41289888bb50e141b86d3bebb2ab61690bf43da89ea29e0e70a7837b7f"
+  latex_source_stable_url: "https://share.yongan.site/junwei-six-track-latex-source/junwei_six_track_latex_source_latest.zip"
+  latex_source_version_url: "https://share.yongan.site/junwei-six-track-latex-source/junwei_six_track_latex_source_latest.20260801-123538.zip"
+  track_section_template: [任务背景, 方法原理, 训练策略, 实验设计, 评估指标, 实验结果]
+
+claim_policy:
+  winning_terms_require_promotion_evidence: true
+  development_gain_is_not_holdout_gain: true
+  blocked_and_no_promotion_states_must_be_visible: true
+
+tracks:
+  - id: fault
+    number: 1
+    name_zh: 断层预测
+    domain_pain:
+      - 稀疏正样本与极端类别不平衡
+      - 二维切片不足以支撑连续三维断层体评价
+      - 未标注区域不能自动当作负样本
+    knowledge_prior:
+      - 断层表现为空间连续的破裂面
+      - 局部地震不连续性和邻域统计可作为结构先验
+    current_backbone: fault_local_logistic
+    foundation_extension: SAM-Med3D prompted 3D adapter
+    method_hook: "局部特征逻辑回归主模型 + SAM-Med3D 三维候选模型 + 三维数据适用性检验"
+    current_state: CONNECTED_DATA_GATE_BLOCKED
+    evidence:
+      - ".claude/worktrees/p10-results-fault/_pipelines/02_task_datasets/fault/fault_p10_model_results.py"
+      - ".claude/worktrees/p10-results-fault/_pipelines/02_task_datasets/fault/_outputs/p9_sammed3d_gate/summary.json"
+
+  - id: facies
+    number: 2
+    name_zh: 地震相分割
+    domain_pain:
+      - F3 与 Penobscot 存在明显域差异
+      - 像素级密集分类容易发生相邻切片泄漏
+      - 小样本条件下大模型贡献需要随机权重消融
+    knowledge_prior:
+      - 地震相边界与反射连续性和多尺度纹理相关
+      - CNN 局部语义与基础模型层级表征互补
+    current_backbone: "FPN-ResNet18 (F3) / DeepLabV3+-ResNet18 (Penobscot)"
+    foundation_extension: "SAM2.1 Hiera base-plus, top two Hiera blocks trainable"
+    method_hook: "最深 CNN 特征作 Query，SAM2 特征作 Key/Value 的四头交叉注意力融合"
+    current_state: DEVELOPMENT_GAIN_ATTRIBUTION_PENDING
+    evidence:
+      - ".claude/worktrees/p10-results-facies/_pipelines/02_task_datasets/facies/_outputs/p13_cross_attention/p13_cross_attention_summary.json"
+      - ".claude/worktrees/p10-results-facies/_pipelines/02_task_datasets/facies/p13_cross_attention.py"
+
+  - id: property
+    number: 3
+    name_zh: 储层物性预测
+    domain_pain:
+      - 井样本稀疏且必须按母井隔离
+      - PHIF、KLOGH、SW 的分布与量纲不同
+      - KLOGH 需要在模型域与物理域之间可逆转换
+    knowledge_prior:
+      - 岩石物理量由井曲线、空间位置与地震邻域共同约束
+      - 每个目标应保留独立模型和不确定性区间
+    current_backbone: "ExtraTrees (PHIF/KLOGH) + XGBoost (SW)"
+    foundation_extension: TabICL in-context tabular branch
+    method_hook: "按目标路由的树模型主路 + TabICL 对照旁路 + 开发集 OOF 残差 q90 区间"
+    current_state: BASELINE_CONFIRMED_FOUNDATION_NOT_PROMOTED
+    evidence:
+      - ".claude/worktrees/p10-results-property/_pipelines/02_task_datasets/reservoir/p10_model_results.py"
+      - ".claude/worktrees/p10-results-property/_pipelines/02_task_datasets/reservoir/_outputs/p5_stage4_confirmation/summary.json"
+      - ".claude/worktrees/p10-results-property/_pipelines/02_task_datasets/reservoir/_outputs/p9_tabicl_effect/summary.json"
+
+  - id: lithofacies
+    number: 4
+    name_zh: 岩相分类
+    domain_pain:
+      - 九类遗传岩相高度不平衡
+      - 同井相邻深度跨折会产生严重泄漏
+      - 多模态曲线存在缺失与尺度不一致
+    knowledge_prior:
+      - 垂向层序连续性和局部曲线形态携带沉积语义
+      - 固定九类指标不能被支持类指标替代
+    current_backbone: XGBoost multi-softprob on well-log windows
+    foundation_extension: MOMENT-1-base fixed-nine classifier
+    method_hook: "九类 XGBoost 强基线 + MOMENT 真实预训练权重 + 同架构随机初始化对照"
+    current_state: PRETRAINING_EFFECT_SMALL_BUT_NON_BENEFICIAL
+    evidence:
+      - ".claude/worktrees/p6-gaia-lithofacies/_pipelines/02_task_datasets/lithofacies/_outputs/p6_gaia_dagt_cli_smoke/summary.json"
+      - ".claude/worktrees/p10-results-lithofacies/_pipelines/02_task_datasets/lithofacies/lithofacies_p10_model_results.py"
+
+  - id: sweetspot
+    number: 5
+    name_zh: 甜点评价
+    domain_pain:
+      - 七个目标的任务类型、数据源与可行性不同
+      - 生产时序与静态地质目标不能强行合成一个分数
+      - 缺失目标必须显式停机而不是生成伪标签
+    knowledge_prior:
+      - 地质、岩石物理与历史生产证据需要按目标路由
+      - T3 生产率具有因果历史窗口和多变量协变量结构
+    current_backbone: "T1 LightGBM; T2 CatBoost; T3 XGBoost/Chronos-2; T4 CatBoost"
+    foundation_extension: Chronos-2 causal-history forecasting
+    method_hook: "七目标分任务建模 + T3 Chronos-2/历史均值凸融合 + T5--T7 数据可行性检验"
+    current_state: "T3_DEVELOPMENT_GAIN; T1_T4_KNOWN_HOLDOUT; T5_LABEL_UNAVAILABLE; T6_T7_INPUT_INCOMPLETE"
+    evidence:
+      - ".claude/worktrees/p10-results-sweetspot/_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json"
+      - ".claude/worktrees/p10-results-sweetspot/_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage4_confirmation/p5_stage4_summary.json"
+
+  - id: reconstruction
+    number: 6
+    name_zh: 三维重建
+    domain_pain:
+      - 稀疏井观测到完整三维属性体是强欠定问题
+      - 条件评价与严格评价必须分离
+      - 基础模型直接回归或残差学习容易重复已有空间信号
+    knowledge_prior:
+      - 克里金提供空间连续性与可解释基线
+      - 多通道地震表征可用于重定义邻域几何并补充地质结构
+    current_backbone: "PyKrige OK3D + P21 fixed foundation-informed kernel ensemble"
+    foundation_extension: "MIC-DKFZ/ResEncL-OpenMind-MAE frozen N×96 representation"
+    method_hook: "训练折内标准化/PCA + z×4 各向异性 + foundation=0.1 + seismic={0,0.1,0.2} 三核固定均值 + 0.25/0.75 PyKrige 融合"
+    current_state: DEVELOPMENT_AND_SAME_FIELD_TRANSFER_SUPPORTED
+    evidence:
+      - "_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/summary.json"
+      - "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/summary.json"
+      - "_pipelines/02_task_datasets/reconstruction/p21_fixed_foundation_ensemble.py"
+      - "_pipelines/02_task_datasets/reconstruction/p24_historical_transfer_preregistration.json"
+
+visualization_inventory:
+  report_tracks: [fault, facies, property, lithofacies, sweetspot, reconstruction]
+  report_result_png_count: 50
+  architecture_png_count: 6
+  research_expansion_manifest: "_outputs/research_visualization_expansion/v1/artifact_manifest.json"
+  foundation_model_experiment_contract: "_pipelines/05_research_visualization_expansion/foundation_model_experiment_contract.json"
+  qa_contact_sheet: "_paper/technical_report/qa/v1_3/reconstruction_contact_sheet.png"

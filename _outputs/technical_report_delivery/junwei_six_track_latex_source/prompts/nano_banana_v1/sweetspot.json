@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Top-tier KDD / ICML scientific system architecture figure for heterogeneous targets and causal forecasting. Pure white #FFFFFF background, cool-blue confirmed task models, warm-orange Chronos-2 innovation, green promoted T3 branch, grey infeasible or blocked target gates. Times New Roman serif typography for all labels and equations. No overall title, no Figure label, no watermark, no page number.",
+  "pages": [
+    {
+      "title": "sweetspot_architecture_v1",
+      "is_cover": false,
+      "description": "Create a landscape scientific framework diagram for seven-target sweetspot prediction. Do not add an overall title. LEFT DOMAIN ANCHOR: three compact evidence families—static geology, petrophysical well logs, and causal production histories with past-only covariates. CENTRAL VISUAL CORE: a large seven-target evidence router T1 through T7 that prevents any synthetic composite sweetspot score. COOL-BLUE CONFIRMED LANES: T1 LightGBM regression, T2 CatBoost classification, T4 CatBoost classification. For T3, show both the archived XGBoost control and a dominant WARM-ORANGE Chronos-2 branch. Expand Chronos-2 internally as grouped target/covariate tokens, group attention transformer cube stacks, and a forecast horizon. Blend the Chronos-2 forecast with the fold-train causal history mean using y_hat_T3 = alpha y_hat_Chronos2 ⊕ (1-alpha) mu_train, and color this lane green after the development promotion gate. GREY STATUS LANES: T5 not feasible, T6 blocked, T7 blocked; show stopped arrows, not predictions. RIGHT OUTPUT: four legitimate target-specific outputs and three explicit status cards. Add a compact router formula y_hat_t = f_{R(t)}(E_t), where E_t denotes only evidence legal for target t. BOTTOM TRAINING STRIP: target-specific grouped development folds -> train-only preprocessing -> fixed-budget model comparison -> T3 causal rolling-origin folds and fold-train blend selection -> dual-baseline promotion gate -> known-holdout confirmation without feedback. Label time-series tensors Y_past in R^(B×T×1), C_past in R^(B×T×6), and forecast in R^(B×H). No metric values, no long text, no table."
+    }
+  ]
+}

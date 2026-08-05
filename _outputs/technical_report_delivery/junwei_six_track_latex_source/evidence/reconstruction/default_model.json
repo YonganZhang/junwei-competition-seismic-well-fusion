@@ -1,0 +1,37 @@
+{
+  "schema_version": "reconstruction-default-model/v1",
+  "active_method": "p21_fixed_foundation_ensemble",
+  "default_enabled": true,
+  "foundation_model": {
+    "name": "MIC-DKFZ/ResEncL-OpenMind-MAE",
+    "weight_mode": "pretrained",
+    "backbone_frozen": true,
+    "latent_dimension": 96,
+    "target_used_for_feature_extraction": false
+  },
+  "fixed_inference": {
+    "vertical_weight": 4.0,
+    "foundation_weight": 0.1,
+    "seismic_weights": [0.0, 0.1, 0.2],
+    "neighbours": 64,
+    "distance_power": 1.5,
+    "pykrige_weight": 0.25,
+    "kernel_mean_weight": 0.75,
+    "per_fold_model_selection": false
+  },
+  "disabled_training_routes": [
+    "lora_r4",
+    "adapter_b16",
+    "staged_adapter",
+    "staged_lora_r4",
+    "contrastive_lora_neural_residual",
+    "contrastive_lora_single_ridge",
+    "contrastive_lora_crossfit_ridge"
+  ],
+  "evidence": {
+    "development": "_pipelines/02_task_datasets/reconstruction/_outputs/p21_fixed_foundation_ensemble/summary.json",
+    "same_field_transfer": "_pipelines/02_task_datasets/reconstruction/_outputs/p24_historical_transfer/summary.json",
+    "peft_diagnostic": "_pipelines/02_task_datasets/reconstruction/_outputs/p20_peft_staged_unfreeze/verification.json"
+  },
+  "claim_boundary": "development OOF plus same-field historical-version transfer; no cross-field or competition-hidden-test claim"
+}

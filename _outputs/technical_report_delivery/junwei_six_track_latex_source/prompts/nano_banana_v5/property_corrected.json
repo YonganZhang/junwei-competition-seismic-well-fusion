@@ -1,0 +1,14 @@
+{
+  "language": "en",
+  "style": "Camera-ready SCI architecture figure, pure white background, landscape 16:9, Times New Roman, crisp vector-like geometry, thin precise arrows. Blue is the operational tree-model path, orange is the TabICL comparison only, teal is calibration, green is output. No title, no watermark, no performance numbers, no SAM, no SAM-Med3D, no prompt adapter, no attention matrix, no computer-vision encoder.",
+  "pages": [
+    {
+      "title": "property_architecture_v5r1",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/property_architecture.png"
+      ],
+      "description": "Redraw the reservoir-property framework with five zones. Zone 1, inputs: well-log curves, measured depth, mother-well identity, local seismic summary features, and spatial coordinates. Zone 2, train-fold-only preprocessing: missing-value handling, neighborhood statistics, scaling, and log1p(KLOGH) transform only. Zone 3, a dominant Target router with exactly three blue operational lanes: PHIF → ExtraTrees ensemble f_1...f_M → mean prediction; KLOGH → log1p → ExtraTrees → expm1 inverse; SW → XGBoost stages F_t=F_(t-1)+ηf_t. Zone 4, one separate orange TabICL in-context tabular comparator receiving the same prepared feature table; connect it only to an Ablation comparison bracket, never to operational predictions and never to residual calibration. Zone 5, green outputs PHIF, KLOGH, SW; below them teal OOF residual calibration q_0.9 creates [ŷ-q_0.9,ŷ+q_0.9]. Add a grouped-by-mother-well split rail along the bottom. The image must contain no 3-D token stack and no model name other than ExtraTrees, XGBoost and TabICL."
+    }
+  ]
+}

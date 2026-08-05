@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Top-tier NeurIPS AI-for-science / IEEE TGRS methodology figure for sparse-to-dense 3D reconstruction. Pure white #FFFFFF background, cool-blue geostatistical main path, warm-orange OpenMind-MAE representation branch, teal residual correction, grey safety gate. Times New Roman serif typography. Dense but clear academic vector layout, no overall title, no Figure label, no watermark, no page number.",
+  "pages": [
+    {
+      "title": "reconstruction_architecture_v1",
+      "is_cover": false,
+      "description": "Create a landscape scientific framework diagram for sparse-well to dense 3D porosity reconstruction. Do not add an overall title. LEFT DOMAIN ANCHOR: sparse well observations (x_i, y_i), a three-channel seismic volume X_s in R^(B×3×D×H×W), and structural query coordinates q in R^(N×F). COOL-BLUE RELIABLE MAIN PATH: ordinary kriging with a variogram card and weighted spatial neighbors; embed y_hat_OK(x_0) = sum_i lambda_i y_i with sum_i lambda_i = 1. WARM-ORANGE FOUNDATION SIDE PATH: three seismic channels enter a real pretrained OpenMind-MAE encoder shown as 3D patch tokens and stacked 2.5D residual encoder blocks, producing channel tokens K,V in R^(N×3×d). CENTRAL CROSS-ATTENTION: structured queries Q = W_Q q attend to K = W_K h and V = W_V h through A = softmax(QK^T/sqrt(d))V; a residual head outputs r_hat. TEAL SAFE FUSION: y_hat = y_hat_OK ⊕ g_consensus gamma r_hat. Show a prominent grey four-inner-fold consensus gate that closes unless every inner spatial fold improves over kriging; gate-zero must visibly route the exact PyKrige result unchanged. RIGHT OUTPUT: a dense 3D porosity volume, a residual volume and an uncertainty/diagnostic slice. BOTTOM TRAINING STRIP: locked outer spatial folds -> inner-fold train-only preprocessing and residual fitting -> four-fold consensus safety test -> paired three-seed diagnostic -> default route selection; make clear the current safe route may tie the baseline. Label query and token dimensions. No experimental metric values, no learning rates, no paragraphs."
+    }
+  ]
+}

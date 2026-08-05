@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Exact scientific figure correction, pure white background, Times New Roman.",
+  "pages": [
+    {
+      "title": "lithofacies_architecture_v3",
+      "is_cover": false,
+      "description": "Based on the reference image, make this single correction only: inside the orange MOMENT encoder, replace the unreadable symbol label in the first narrow block with the exact word Transformer. Keep all other blocks, formulas, arrows, labels, colors, and layout unchanged. Do not add any title, status, audit, promotion, holdout, or training text."
+    }
+  ]
+}

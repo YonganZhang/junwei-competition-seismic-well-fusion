@@ -1,0 +1,177 @@
+\documentclass[UTF8,11pt,openany]{ctexrep}
+
+\usepackage[a4paper,margin=24mm,headheight=15pt]{geometry}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{placeins}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{cleveref}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage[numbers,sort&compress]{natbib}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+
+\definecolor{YonganNavy}{HTML}{17365D}
+\definecolor{YonganBlue}{HTML}{2F75B5}
+\definecolor{YonganOrange}{HTML}{ED7D31}
+\definecolor{YonganGreen}{HTML}{548235}
+\definecolor{YonganRed}{HTML}{C00000}
+\definecolor{YonganGray}{HTML}{666666}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=YonganNavy,
+  citecolor=YonganGreen,
+  urlcolor=YonganBlue,
+  pdftitle={六赛道地学智能建模技术报告},
+  pdfauthor={项目组}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{六赛道地学智能建模技术报告}
+\fancyhead[R]{第 1.4 版}
+\fancyfoot[C]{\thepage}
+
+\titleformat{\chapter}{\Huge\bfseries\color{YonganNavy}}{\thechapter}{1em}{}
+\titleformat{\section}{\Large\bfseries\color{YonganNavy}}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries\color{YonganBlue}}{\thesubsection}{0.7em}{}
+\setlist{nosep,leftmargin=2em}
+\setstretch{1.15}
+\setlength{\emergencystretch}{2em}
+\captionsetup{font=small,labelfont=bf}
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+\crefname{equation}{式}{式}
+
+\newcommand{\ReportVersion}{1.4}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\ArchitectureFigure}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{../figures/architecture/#1_architecture.png}
+    \caption{#2}
+    \label{fig:#3}
+  \end{figure}
+}
+
+\newcommand{\ResultFigure}[4]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#1\textwidth]{../figures/results/#2/#3}
+    \caption{#4}
+    \label{fig:res-#2-#3}
+  \end{figure}
+}
+
+\newcommand{\ResultPair}[6]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.485\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../figures/results/#1/#2}
+      \caption{#3}
+    \end{subfigure}\hfill
+    \begin{subfigure}[t]{0.485\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../figures/results/#1/#4}
+      \caption{#5}
+    \end{subfigure}
+    \caption{#6}
+    \label{fig:pair-#1-#2}
+  \end{figure}
+}
+
+\newcommand{\TrainingFlow}[7]{%
+  \begin{figure}[htbp]
+    \centering
+    \resizebox{\textwidth}{!}{%
+      \begin{tikzpicture}[
+        >=Latex,
+        node distance=8mm,
+        flownode/.style={draw=YonganNavy,rounded corners=2mm,very thick,
+          fill=YonganBlue!7,minimum height=12mm,text width=28mm,
+          align=center,font=\small},
+        arrow/.style={->,very thick,draw=YonganOrange}
+      ]
+        \node[flownode] (a) {#1};
+        \node[flownode,right=of a] (b) {#2};
+        \node[flownode,right=of b] (c) {#3};
+        \node[flownode,right=of c] (d) {#4};
+        \node[flownode,right=of d] (e) {#5};
+        \draw[arrow] (a) -- (b);
+        \draw[arrow] (b) -- (c);
+        \draw[arrow] (c) -- (d);
+        \draw[arrow] (d) -- (e);
+      \end{tikzpicture}%
+    }
+    \caption{#6}
+    \label{fig:#7}
+  \end{figure}
+}
+
+\newcommand{\Metric}[1]{\mathrm{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{2.2cm}
+  {\Huge\bfseries\color{YonganNavy} 六赛道地学智能建模技术报告\par}
+  \vspace{0.6cm}
+  {\Large Technical Report on Intelligent Modeling for Six Geoscience Tasks\par}
+  \vspace{1.6cm}
+  {\large 方法原理、训练策略与实验结果\par}
+  \vfill
+  \begin{tabular}{rl}
+    版本： & \ReportVersion \\
+    日期： & 2026 年 8 月 \\
+  \end{tabular}
+  \vfill
+  {\large 项目组\par}
+\end{titlepage}
+
+\pagenumbering{Roman}
+\tableofcontents
+\listoffigures
+\clearpage
+\pagenumbering{arabic}
+
+\input{sections/00_executive_summary}
+\input{sections/01_technology}
+\input{sections/02_fault}
+\input{sections/03_facies}
+\input{sections/04_property}
+\input{sections/05_lithofacies}
+\input{sections/06_sweetspot}
+\input{sections/07_reconstruction}
+\input{sections/08_conclusion}
+
+\appendix
+\input{sections/A_provenance}
+
+\renewcommand{\bibname}{参考文献}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

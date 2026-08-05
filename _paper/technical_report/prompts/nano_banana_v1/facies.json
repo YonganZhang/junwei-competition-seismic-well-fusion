@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Top-tier ICLR / CVPR methodology figure for dense prediction. Pure white #FFFFFF background, cool-blue CNN backbone, warm-orange SAM2 and cross-attention innovation, teal residual connections, grey controls. Times New Roman serif typography for every label and equation. Tight 16:9 academic vector layout, no overall title, no Figure label, no watermark, no page number.",
+  "pages": [
+    {
+      "title": "facies_architecture_v1",
+      "is_cover": false,
+      "description": "Create a landscape neural-network framework diagram for seismic facies segmentation across F3 and Penobscot. Do not add an overall title. LEFT DOMAIN ANCHOR: paired 128×128 three-channel seismic slices X in R^(B×3×128×128) with reflection textures and compact ground-truth facies masks. CENTRAL CORE, occupying most of the image: two task-specific cool-blue CNN encoders, FPN-ResNet18 for F3 and DeepLabV3+-ResNet18 for Penobscot, producing deepest semantic features F_cnn. In parallel, show a warm-orange SAM2.1 Hiera base-plus encoder as a multiscale 2.5D cube stack producing hierarchical tokens F_sam, with only Hiera blocks 22 and 23 visibly trainable and all earlier blocks frozen. Make the visual center a large four-head cross-attention module with internal Q, K, V projections and one attention heatmap. Embed Q = W_Q F_cnn, K = W_K F_sam, V = W_V F_sam and A = softmax(QK^T/sqrt(128))V. Fuse using F_fused = F_cnn ⊕ gamma W_O A, then send through a semantic decoder to an H×W facies probability map. RIGHT OUTPUT: predicted facies map and per-pixel class probabilities. Include a small grey same-architecture random-weight SAM2 control branch next to the pretrained branch, labelled attribution control, without implying it has been completed. BOTTOM TRAINING STRIP: locked dataset-specific folds -> augmentation on training only -> 40-update strong CNN control -> 160-update cross-attention candidate -> validation mIoU and attribution gate -> frozen test firewall. Label key tensors in R^(B×C×H/16×W/16) and attention tokens in R^(B×L×128). No metric values, no paragraphs, no experimental table."
+    }
+  ]
+}

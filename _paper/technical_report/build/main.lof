@@ -1,0 +1,51 @@
+\addvspace {10.0pt}
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces 六赛道基础模型研究设计。各赛道以强基线为参照，预训练模型分别通过独立 对照、注意力融合、时序预测或邻域度量进入实验，并在固定划分下评价。\relax }}{3}{figure.caption.4}%
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 断层预测模型架构。局部可解释基线与 SAM-Med3D 三维表征通过受控门融合。\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 断层预测训练流程\relax }}{5}{figure.caption.6}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Volve 断层棒与 BCU 层位在真实 UTM--TWT 坐标中的空间关系。该图展示解释几何， 不把稀疏断层棒扩展为未验证的连续概率体。\relax }}{6}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Inline 10243 的原始地震剖面与同一剖面上的断层解释控制点。连线仅连接同一断层棒 中至少两个控制点，用于核对解释位置与反射不连续结构。\relax }}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces 断层预测的样本级与空间级结果\relax }}{7}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 基线模型的优化过程与预测表现\relax }}{8}{figure.caption.11}%
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 地震相分割模型架构。卷积语义特征查询 SAM2 表征，经交叉注意力融合后送入解码器。\relax }}{10}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 地震相分割训练流程\relax }}{10}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces F3 连续地震体中三个已配准 inline 切面的振幅与十类解释。左侧为原始地震振幅， 右侧为同位置参考类别；两者均为数据证据，不是当前 SAM2 模型的稠密预测。\relax }}{11}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 两个数据集的既有基线诊断\relax }}{11}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 既有模型在历史留出数据上的诊断\relax }}{12}{figure.caption.17}%
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces 储层物性预测模型架构。三个目标使用与其分布相匹配的树模型，并由折外残差给出预测区间。\relax }}{14}{figure.caption.18}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces 储层物性预测训练流程\relax }}{14}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces PHIF 在已知留出集上的预测、残差与区间诊断。\relax }}{16}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces KLOGH 在已知留出集上的预测、残差与区间诊断。横轴变换仅用于展示长尾分布。\relax }}{17}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces SW 在已知留出集上的预测、残差与区间诊断。\relax }}{18}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces 储层物性预测的整体比较与训练表现\relax }}{18}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces 同一已知留出井段上的 PHIF、KLOGH 与 SW 观测、预测、经验残差区间及逐深度残差。 KLOGH 保留物理单位并采用对数坐标显示。\relax }}{19}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces 相同留出样本上的 PHIF--KLOGH 联合关系。左图为观测，右图为两个独立回归器的 预测，颜色表示测量深度。\relax }}{19}{figure.caption.27}%
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces 岩相分类模型架构。井曲线窗口同时进入树模型与 MOMENT 序列表征分支。\relax }}{21}{figure.caption.28}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces 岩相分类训练流程\relax }}{21}{figure.caption.29}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces 岩相分类主要指标的阶段比较。\relax }}{22}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces 固定九类条件下的分类结构\relax }}{23}{figure.caption.33}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces 预测置信度与输入完整性分析\relax }}{23}{figure.caption.34}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces 岩相分类的稳定性与优化过程\relax }}{23}{figure.caption.35}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces 已知留出井 15/9-F-5 的固定九类观测序列、XGBoost 预测序列和逐样本最大类别概率。 纵轴采用归档记录中的 TWT；红点表示误分类位置。\relax }}{24}{figure.caption.36}%
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces 甜点评价模型架构。七个目标分别建模，T3 由 Chronos-2 与训练期均值受控融合。\relax }}{26}{figure.caption.37}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces 甜点评价训练流程\relax }}{26}{figure.caption.38}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces T1 储层质量代理的逐深度观测、预测与残差，以及 T3 生产率在因果时间轴上的观测、 预测与残差。两个目标保持独立单位，不合成为单一评分。\relax }}{28}{figure.caption.41}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces T3 已知留出集的实测--预测散点与标准化残差 Q--Q 图。散点按预测时序着色， 虚线分别表示理想预测和正态残差参照。\relax }}{28}{figure.caption.42}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces 甜点评价七个目标的定义、数据可用性与主要结果总览。\relax }}{29}{figure.caption.43}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces T1 与 T2 的实验结果\relax }}{29}{figure.caption.44}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces T3 与 T4 的实验结果\relax }}{29}{figure.caption.45}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces T5--T7 的数据可用性。T5 缺少经审定标签，T6--T7 缺少完整多模态开发输入。\relax }}{30}{figure.caption.46}%
+\addvspace {10.0pt}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces 三维重建模型架构。冻结的 OpenMind-MAE 表征与坐标、垂向各向异性及地震属性共同定义三组固定邻域核，核均值再与普通克里金融合。\relax }}{32}{figure.caption.47}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces 三维重建训练与推理流程\relax }}{32}{figure.caption.48}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces 三维重建的开发空间折与历史版本迁移结果。两个面板使用不同目标版本，数值只在面板内比较。\relax }}{34}{figure.caption.51}%
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Volve MAPAXES 配准网格中的参考孔隙度、条件留出真值、重建结果和“预测减真值”残差。残差表示已知留出点上的观测误差，不是不确定性预测。\relax }}{34}{figure.caption.52}%
+\contentsline {figure}{\numberline {8.5}{\ignorespaces 条件留出网格的三组正交切片。三行依次为真值、重建和残差，三列为 K、J 和 I 法向切面。\relax }}{35}{figure.caption.53}%
+\contentsline {figure}{\numberline {8.6}{\ignorespaces 条件留出网格的方向经验变差函数。左图沿 K 索引方向，右图合并 I--J 索引方向；横轴距离由 MAPAXES 坐标计算。\relax }}{35}{figure.caption.54}%
+\addvspace {10.0pt}
+\addvspace {10.0pt}

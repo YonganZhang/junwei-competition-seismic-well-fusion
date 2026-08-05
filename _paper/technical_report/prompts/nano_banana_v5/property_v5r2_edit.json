@@ -1,0 +1,14 @@
+{
+  "language": "en",
+  "style": "Edit the supplied SCI framework figure conservatively. Preserve its exact landscape composition, compact typography, module sizes, margins, reading order, blue/teal/green palette, thin arrows, and white background. Keep all text in Times New Roman. Do not introduce zone headings, oversized labels, new panels, or a new layout. No title, watermark, performance number, SAM, SAM-Med3D, prompt adapter, attention matrix, image encoder, token stack, or computer-vision terminology.",
+  "pages": [
+    {
+      "title": "property_architecture_v5r2",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture_v5/slide_03_property_architecture_v5.png"
+      ],
+      "description": "Make only the scientifically necessary correction to the supplied figure. Keep the three compact operational lanes exactly as arranged: PHIF uses ExtraTrees; KLOGH uses log1p, ExtraTrees, then expm1; SW uses XGBoost. Keep the grouped-by-mother-well split and the OOF residual interval calibration. Replace the contaminated orange foundation-model lane at the bottom with one small, clearly separated orange TabICL comparator. It receives the same prepared tabular feature table and terminates at an Ablation comparison bracket. It must not connect to the operational predictions, must not enter the residual calibration, and must not be fused or averaged with ExtraTrees or XGBoost. Preserve every other module and the original compact professional geometry. Ensure no content is cropped at any edge."
+    }
+  ]
+}

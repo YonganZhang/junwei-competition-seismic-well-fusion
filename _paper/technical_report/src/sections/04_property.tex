@@ -1,0 +1,154 @@
+\chapter{储层物性预测}
+
+\section{任务背景}
+
+储层物性预测根据井曲线和地质位置估计孔隙度、渗透率与含水饱和度。本赛道包含三个
+连续目标：孔隙度 PHIF、水平渗透率 KLOGH 和含水饱和度 SW。输入为同深度位置的
+多条测井曲线及派生特征，输出为目标物性的点估计和不确定性区间。
+
+三类物性的统计分布不同。PHIF 与 SW 的数值范围相对集中，KLOGH 则具有明显长尾，
+可跨越多个数量级。因此，本赛道不强行使用同一回归器，而是根据目标分布选择模型，
+再用统一的留出评价比较结果。
+
+\section{方法原理}
+
+PHIF 和 KLOGH 使用极端随机树。设第 $m$ 棵树的预测为 $f_m(\bm{x})$，集成输出为
+\begin{equation}
+  \hat{y}=\frac{1}{M}\sum_{m=1}^{M}f_m(\bm{x}).
+\end{equation}
+随机特征和随机切分降低了单棵树的方差，适合处理非线性井曲线关系。KLOGH 在
+$\log(1+y)$ 域训练，以减弱长尾样本对平方误差的支配。
+
+SW 使用 XGBoost。第 $t$ 轮在已有预测上增加一棵回归树：
+\begin{equation}
+  \hat{y}^{(t)}_i=\hat{y}^{(t-1)}_i+\eta f_t(\bm{x}_i),
+\end{equation}
+其中 $\eta$ 为学习率。候选基础模型 TabICL 通过上下文学习读取表格样本
+\cite{qu2025tabicl}，其输出作为独立对照分支，不直接覆盖树模型结果。
+
+预测区间由训练折外残差构造。若绝对残差的 $90\%$ 分位数为 $q_{0.9}$，则区间写为
+\begin{equation}
+  [\hat{y}-q_{0.9},\ \hat{y}+q_{0.9}] .
+\end{equation}
+该区间不假设残差服从正态分布，更适合分布偏斜的物性变量。
+
+\ArchitectureFigure{property}
+  {储层物性预测模型架构。三个目标使用与其分布相匹配的树模型，并由折外残差给出预测区间。}
+  {property-architecture}
+
+\section{训练策略}
+
+数据按井族划分，避免同一口井的相邻深度同时出现在训练集和评价集。缺失值处理、
+特征缩放和目标变换只在训练数据上拟合，再应用到验证和留出数据。模型参数通过开发
+折选择，最终参数固定后在已知留出井族 15/9-F-15 上评价。
+
+PHIF 与 KLOGH 的树数量、叶节点样本数和特征采样率通过交叉验证确定；SW 进一步
+优化树深、学习率和迭代轮数。TabICL 使用相同输入与划分，比较真实预训练权重与
+传统树模型；后续还需加入同架构随机权重对照，才能判断收益是否来自预训练。
+
+\TrainingFlow
+  {井曲线与深度}
+  {按井族划分}
+  {目标变换与特征处理}
+  {树模型参数优化}
+  {留出集与区间评价}
+  {储层物性预测训练流程}
+  {property-training}
+
+\section{实验设计}
+
+实验分别训练 PHIF、KLOGH 和 SW 三个模型。输入包括原始井曲线、邻域统计和空间
+位置，输出包括点预测、残差和 $90\%$ 预测区间。主要对照为每个目标的赛道基线，
+基础模型分支只用于检查表格预训练表征是否提供额外信息。
+
+留出集共有 344 个有效样本。该井族在历史实验中已经使用，因此本章将其称为已知
+留出集，而不称为全新盲测。实验重点是确认当前模型在固定数据口径下能否复现，而非
+用同一留出集继续选择模型。
+
+\section{评估指标}
+
+连续变量使用决定系数、均方根误差、平均绝对误差和偏差：
+\begin{align}
+  R^2 &= 1-\frac{\sum_i(y_i-\hat{y}_i)^2}
+  {\sum_i(y_i-\bar{y})^2},\\
+  \Metric{RMSE} &= \sqrt{\frac{1}{N}\sum_i(y_i-\hat{y}_i)^2},\\
+  \Metric{MAE} &= \frac{1}{N}\sum_i|y_i-\hat{y}_i|,\\
+  \Metric{Bias} &= \frac{1}{N}\sum_i(\hat{y}_i-y_i).
+\end{align}
+预测区间还评价覆盖率，即真实值落入区间的比例，以及平均区间宽度。理想区间应在
+接近目标覆盖率的同时保持较窄；仅追求高覆盖率会得到缺乏信息的宽区间。
+
+\section{实验结果}
+
+\begin{table}[htbp]
+  \centering
+  \caption{三类物性在已知留出集上的结果}
+  \label{tab:property-holdout}
+  \begin{tabular}{llrrrrr}
+    \toprule
+    目标 & 模型 & $R^2$ & RMSE & MAE & Bias & 覆盖率 \\
+    \midrule
+    PHIF & ExtraTrees & 0.9807 & 0.0093 & 0.0061 & 0.0006 & 0.9942 \\
+    KLOGH & ExtraTrees & 0.8891 & 278.8388 & 145.6398 & 71.2485 & 1.0000 \\
+    SW & XGBoost & 0.9032 & 0.0806 & 0.0644 & 0.0240 & 0.9942 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\Cref{tab:property-holdout}显示，PHIF 的 $R^2$ 达到 $0.9807$，点预测误差较小。
+SW 的 $R^2$ 为 $0.9032$，仍存在
+轻微正偏。KLOGH 在物理域的 $R^2$ 为 $0.8891$，但 RMSE 达到
+$278.84\,\mathrm{mD}$；在 $\log(1+y)$ 训练域中，其 $R^2$ 为 $0.9130$。这说明
+模型能够解释总体变化，但极高渗透率样本仍主导物理域误差。
+
+\begin{table}[htbp]
+  \centering
+  \caption{TabICL 与树模型在开发折上的初步比较}
+  \label{tab:property-tabicl}
+  \begin{tabular}{lrrr}
+    \toprule
+    目标 & 树模型 RMSE & TabICL RMSE & 相对变化 \\
+    \midrule
+    PHIF & 0.02764 & 0.02629 & $-4.89\%$ \\
+    KLOGH & 542.9026 & 469.2547 & $-13.57\%$ \\
+    SW & 0.17043 & 0.12750 & $-25.19\%$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\Cref{tab:property-tabicl}仅报告开发折机制实验。TabICL 在三个目标上均降低 RMSE，
+且优于目标置乱对照，但同架构随机初始化对照尚未完成。因此，这些结果不能替代
+\Cref{tab:property-holdout}中的已知留出结果，也不能单独证明增益来自预训练权重。
+
+\ResultFigure{0.92}{property}{phif_heldout_summary.png}
+  {PHIF 在已知留出集上的预测、残差与区间诊断。}
+
+\ResultFigure{0.92}{property}{klogh_heldout_summary.png}
+  {KLOGH 在已知留出集上的预测、残差与区间诊断。横轴变换仅用于展示长尾分布。}
+
+\ResultFigure{0.92}{property}{sw_heldout_summary.png}
+  {SW 在已知留出集上的预测、残差与区间诊断。}
+
+\ResultPair{property}
+  {before_after_primary_metric.png}{主要指标的阶段比较}
+  {loss_curve.png}{模型优化过程}
+  {储层物性预测的整体比较与训练表现}
+
+\ResultFigure{0.98}{property}{research_well_diagnostics.png}
+  {同一已知留出井段上的 PHIF、KLOGH 与 SW 观测、预测、经验残差区间及逐深度残差。
+  KLOGH 保留物理单位并采用对数坐标显示。}
+
+\ResultFigure{0.92}{property}{research_rock_physics_crossplot.png}
+  {相同留出样本上的 PHIF--KLOGH 联合关系。左图为观测，右图为两个独立回归器的
+  预测，颜色表示测量深度。}
+
+单目标指标不能判断多个物性预测是否仍然满足一致的岩石物理关系。观测样本中 PHIF
+与 $\log(1+\mathrm{KLOGH})$ 的 Pearson 相关系数为 $0.704$，独立预测后的相关系数
+为 $0.790$。模型保留了总体正相关，但提高的相关强度也提示预测可能压缩局部离散度；
+因此，联合关系应作为物理一致性诊断，而不能替代三个目标各自的留出误差。
+
+三个目标的区间覆盖率均高于 $0.99$，但 KLOGH 的平均区间宽度达到
+$2879.75\,\mathrm{mD}$。因此，高覆盖率并不表示不确定性已经解决。下一步应针对
+KLOGH 的长尾区间进行分层校准，并补充新的井族盲测。
+
+\FloatBarrier

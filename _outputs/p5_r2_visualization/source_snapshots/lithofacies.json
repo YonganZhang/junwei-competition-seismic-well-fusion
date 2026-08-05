@@ -1,0 +1,274 @@
+{
+  "schema_version": "lithofacies-p5-r2-v1",
+  "status": "PASS",
+  "task_id": "gm09_genetic_facies_9class",
+  "root_seed": 2693,
+  "models": [
+    "multimodal_mlp",
+    "xgboost_multisoftprob_window",
+    "inceptiontime_window"
+  ],
+  "budget_points": [
+    40,
+    200,
+    1000
+  ],
+  "expected_cells": 36,
+  "completed_cells": 36,
+  "completion_rate": 1.0,
+  "primary_metric": "fixed_schema_macro_f1",
+  "supported_class_metric_role": "diagnostic_only",
+  "fold_seed_matrix": [
+    [
+      0.10474540314635465,
+      0.10881067402806532,
+      0.1714896214896215,
+      0.15656565656565652,
+      0.10774410774410775,
+      0.10490500835226604,
+      0.11791925767586475,
+      0.11903958836607464,
+      0.1277080931154854,
+      0.051130776794493606,
+      0.051587301587301584,
+      0.051587301587301584
+    ],
+    [
+      0.2304317153592516,
+      0.2304317153592516,
+      0.2304317153592516,
+      0.18015413008994524,
+      0.18015413008994524,
+      0.18015413008994524,
+      0.17051612055918686,
+      0.17051612055918686,
+      0.17051612055918686,
+      0.26126942016806937,
+      0.26126942016806937,
+      0.26126942016806937
+    ],
+    [
+      0.07419037790554818,
+      0.16325445648753922,
+      0.06430701830911646,
+      0.09379509379509379,
+      0.13910201761864166,
+      0.17724064893876212,
+      0.09726533318163115,
+      0.09413327334854377,
+      0.14146445295870583,
+      0.15452035886818496,
+      0.1626673135293825,
+      0.18270800720429564
+    ]
+  ],
+  "confusion_matrix": [
+    [
+      0,
+      22,
+      1,
+      1,
+      3,
+      52,
+      17,
+      3,
+      0
+    ],
+    [
+      6,
+      184,
+      6,
+      51,
+      44,
+      311,
+      330,
+      4,
+      0
+    ],
+    [
+      1,
+      6,
+      2,
+      2,
+      0,
+      38,
+      14,
+      0,
+      0
+    ],
+    [
+      2,
+      91,
+      2,
+      54,
+      24,
+      146,
+      41,
+      0,
+      0
+    ],
+    [
+      0,
+      48,
+      1,
+      8,
+      2,
+      103,
+      79,
+      2,
+      0
+    ],
+    [
+      12,
+      194,
+      14,
+      93,
+      101,
+      488,
+      211,
+      3,
+      0
+    ],
+    [
+      0,
+      99,
+      5,
+      14,
+      6,
+      250,
+      768,
+      1,
+      0
+    ],
+    [
+      1,
+      5,
+      0,
+      5,
+      4,
+      39,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      7,
+      1,
+      0,
+      0
+    ]
+  ],
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "F-MARSH",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "iou": 0.0,
+      "support": 99,
+      "predicted": 22
+    },
+    {
+      "class_id": 1,
+      "class_name": "F-MOUTHBAR",
+      "precision": 0.28307692307692306,
+      "recall": 0.19658119658119658,
+      "f1": 0.23203026481715006,
+      "iou": 0.1312410841654779,
+      "support": 936,
+      "predicted": 650
+    },
+    {
+      "class_id": 2,
+      "class_name": "F-OFFSHORE",
+      "precision": 0.06451612903225806,
+      "recall": 0.031746031746031744,
+      "f1": 0.0425531914893617,
+      "iou": 0.021739130434782608,
+      "support": 63,
+      "predicted": 31
+    },
+    {
+      "class_id": 3,
+      "class_name": "F-LOWER SHOREFACE",
+      "precision": 0.23684210526315788,
+      "recall": 0.15,
+      "f1": 0.1836734693877551,
+      "iou": 0.10112359550561797,
+      "support": 360,
+      "predicted": 228
+    },
+    {
+      "class_id": 4,
+      "class_name": "F-UPPER SHOREFACE",
+      "precision": 0.010869565217391304,
+      "recall": 0.00823045267489712,
+      "f1": 0.00936768149882904,
+      "iou": 0.004705882352941176,
+      "support": 243,
+      "predicted": 184
+    },
+    {
+      "class_id": 5,
+      "class_name": "F-TIDAL BAR",
+      "precision": 0.3403068340306834,
+      "recall": 0.43727598566308246,
+      "f1": 0.3827450980392157,
+      "iou": 0.23666343355965083,
+      "support": 1116,
+      "predicted": 1434
+    },
+    {
+      "class_id": 6,
+      "class_name": "F-TIDAL CHANNEL",
+      "precision": 0.5256673511293635,
+      "recall": 0.6719160104986877,
+      "f1": 0.5898617511520737,
+      "iou": 0.41830065359477125,
+      "support": 1143,
+      "predicted": 1461
+    },
+    {
+      "class_id": 7,
+      "class_name": "F-TIDAL FLAT MUDDY",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "iou": 0.0,
+      "support": 54,
+      "predicted": 13
+    },
+    {
+      "class_id": 8,
+      "class_name": "F-TIDAL FLAT SANDY",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "iou": 0.0,
+      "support": 9,
+      "predicted": 0
+    }
+  ],
+  "accuracy": 0.3723589361173254,
+  "fixed_schema_macro_f1": 0.1600257173760428,
+  "supported_class_macro_f1": 0.1600257173760428,
+  "expected_calibration_error": 0.0,
+  "missing_modality_diagnostic": {
+    "seismic_missing_delta": 0.8064451506124927,
+    "center_delta": 2.0702823437135858
+  },
+  "S_lane": {
+    "status": "not_rankable",
+    "finite_center_md_count": 0,
+    "reason": "no real finite center_md_m; sequence fabrication is forbidden"
+  },
+  "development_hdf5_sha256": "4cd414adb4a76447a35599416b55b91d41c62da19d676fe2289e10c35361450c",
+  "frozen_test_accessed": false,
+  "development_only": true
+}

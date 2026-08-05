@@ -1,0 +1,118 @@
+{
+  "conditional": {
+    "counts": {
+      "blocked": 0,
+      "not_rankable": 0,
+      "passed": 48
+    },
+    "development_only": true,
+    "field_generalization": false,
+    "fresh_blind": false,
+    "leaderboard": {
+      "path": "p5_r2_evidence/conditional/leaderboard.json",
+      "sha256": "f7e2f19d55dee591608fe26e2d53f68a4250ad7ae3f49e2d508861d5c7a67f73"
+    },
+    "mode": "conditional",
+    "r3_allowed": false,
+    "r3_gate": [
+      {
+        "delta_ratio": 0.11813488174573612,
+        "loss_name": "mse",
+        "model_id": "reconstruction_linear_sgd",
+        "plateau_reached": false,
+        "rmse_100": 0.0417222486049979,
+        "rmse_400": 0.03679339569988027
+      },
+      {
+        "delta_ratio": 0.27341194297106797,
+        "loss_name": "huber",
+        "model_id": "reconstruction_linear_sgd",
+        "plateau_reached": false,
+        "rmse_100": 0.2028869673384171,
+        "rmse_400": 0.14741524739491288
+      },
+      {
+        "delta_ratio": 0.39753836211248683,
+        "loss_name": "mse",
+        "model_id": "reconstruction_tiny_mlp",
+        "plateau_reached": false,
+        "rmse_100": 0.17291877082926094,
+        "rmse_400": 0.10417692589529208
+      },
+      {
+        "delta_ratio": 0.23893181912299083,
+        "loss_name": "huber",
+        "model_id": "reconstruction_tiny_mlp",
+        "plateau_reached": false,
+        "rmse_100": 1.1664785751414897,
+        "rmse_400": 0.8877697272149392
+      }
+    ],
+    "results": "p5_r2_evidence/conditional/results.jsonl",
+    "root_seed": 2693,
+    "schema_version": "p5.2-r2-reconstruction-v1",
+    "shared_k4_block": 4,
+    "shared_k4_metric_mask_count": 32,
+    "summary_hash": "40cb39031a61ed82fdae31940d2ff16441ba95601c63af9f312e9d08ffe3e242",
+    "task_id": "volve_porosity_conditional_reconstruction",
+    "track_id": "reconstruction",
+    "visualizations": "p5_r2_evidence/conditional/visualization_manifest.json"
+  },
+  "development_only": true,
+  "field_generalization": false,
+  "fresh_blind": false,
+  "modes": {
+    "conditional": {
+      "leaderboard": "p5_r2_evidence/conditional/leaderboard.json",
+      "oof_manifest": "p5_r2_evidence/conditional/oof_manifest.json",
+      "results": "p5_r2_evidence/conditional/results.jsonl",
+      "summary": "p5_r2_evidence/conditional/summary.json",
+      "visualization_manifest": "p5_r2_evidence/conditional/visualization_manifest.json"
+    },
+    "strict": {
+      "leaderboard": "p5_r2_evidence/strict/leaderboard.json",
+      "oof_manifest": "p5_r2_evidence/strict/oof_manifest.json",
+      "results": "p5_r2_evidence/strict/results.jsonl",
+      "summary": "p5_r2_evidence/strict/summary.json",
+      "visualization_manifest": "p5_r2_evidence/strict/visualization_manifest.json"
+    }
+  },
+  "modes_are_independent": true,
+  "r3_allowed": false,
+  "root_seed": 2693,
+  "schema_version": "p5.2-r2-reconstruction-v1",
+  "shared_k4_block": 4,
+  "shared_k4_metric_mask_count": 0,
+  "strict": {
+    "blocked_reason": {
+      "code": "ValueError",
+      "message": "development train.h5 contains no usable cells for this mode"
+    },
+    "counts": {
+      "blocked": 1,
+      "not_rankable": 0,
+      "passed": 0
+    },
+    "development_only": true,
+    "field_generalization": false,
+    "fresh_blind": false,
+    "leaderboard": {
+      "path": "p5_r2_evidence/strict/leaderboard.json",
+      "sha256": "1683d9bc21070eb223b06f6343a62fd55c6251bd36086e6fc7b709214eb3bd8c"
+    },
+    "mode": "strict",
+    "r3_allowed": false,
+    "r3_gate": [],
+    "results": "p5_r2_evidence/strict/results.jsonl",
+    "root_seed": 2693,
+    "schema_version": "p5.2-r2-reconstruction-v1",
+    "shared_k4_block": 4,
+    "shared_k4_metric_mask_count": 0,
+    "summary_hash": "6bfbd089a51d571f082bc09e671a19ef57aaaa483fdea2a4400dd6423f930025",
+    "task_id": "volve_porosity_strict_spatial_reconstruction",
+    "track_id": "reconstruction",
+    "visualizations": "p5_r2_evidence/strict/visualization_manifest.json"
+  },
+  "summary_hash": "248e34c660d04f06c752940df1052776eb7f255dabe7c11c488d05c784a22964",
+  "track_id": "reconstruction"
+}

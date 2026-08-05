@@ -1,0 +1,102 @@
+{
+  "schema_version": "junwei-foundation-model-experiment-contract/v1",
+  "principle": "A pretrained branch is accepted only against the same architecture with random initialization and the established scientific baseline under an unchanged split.",
+  "tracks": {
+    "fault": {
+      "research_question": "Can volumetric pretraining improve sparse fault detection without turning unlabelled voxels into negatives?",
+      "scientific_baseline": "local multiscale discontinuity features plus logistic probability head",
+      "foundation_model": "SAM-Med3D",
+      "controlled_conditions": [
+        "scientific baseline",
+        "same 3-D adapter with random initialization",
+        "SAM-Med3D pretrained initialization",
+        "validation-conditional residual combination"
+      ],
+      "split_contract": "grouped spatial validation with interpreted-positive and explicitly sampled negative policy unchanged",
+      "primary_metrics": ["AUPRC", "voxel F1", "surface-distance error"],
+      "structure_diagnostics": ["source-seismic section overlay", "3-D fault-stick continuity"],
+      "promotion_rule": "promote only if the pretrained condition improves grouped validation and the gate is non-degrading",
+      "current_evidence": "continuous 3-D development data unavailable; no foundation-model gain claim"
+    },
+    "facies": {
+      "research_question": "Does Hiera pretraining transfer reflection texture and boundary context across F3 and Penobscot domains?",
+      "scientific_baseline": "FPN-ResNet18 on F3 and DeepLabV3+-ResNet18 on Penobscot",
+      "foundation_model": "SAM2.1 Hiera base-plus",
+      "controlled_conditions": [
+        "CNN baseline",
+        "same Hiera fusion path with random initialization",
+        "pretrained Hiera fusion path",
+        "pretrained path with attention-attribution audit"
+      ],
+      "split_contract": "spatially separated folds and unchanged cross-survey evaluation",
+      "primary_metrics": ["macro F1", "mIoU", "NLL"],
+      "structure_diagnostics": ["class-boundary continuity", "cross-domain confusion matrix"],
+      "promotion_rule": "pretraining must outperform random initialization, not merely the smaller CNN",
+      "current_evidence": "development gain observed; pretraining attribution pending because random-init control is incomplete"
+    },
+    "property": {
+      "research_question": "Can in-context tabular pretraining improve sparse-well regression while preserving physical target routing?",
+      "scientific_baseline": "ExtraTrees for PHIF/KLOGH and XGBoost for SW",
+      "foundation_model": "TabICL",
+      "controlled_conditions": [
+        "target-specific tree baseline",
+        "TabICL on the identical prepared feature table",
+        "feature-family ablations",
+        "OOF residual interval audit"
+      ],
+      "split_contract": "mother-well grouped folds with train-fold-only transforms",
+      "primary_metrics": ["MAE", "RMSE", "R2", "interval coverage"],
+      "structure_diagnostics": ["depth-resolved residual", "PHIF-KLOGH cross-property consistency"],
+      "promotion_rule": "TabICL remains a comparator unless it improves grouped validation and physical diagnostics",
+      "current_evidence": "tree baseline confirmed; TabICL not promoted"
+    },
+    "lithofacies": {
+      "research_question": "Does time-series pretraining improve fixed-nine genetic-facies discrimination beyond a strong windowed tree baseline?",
+      "scientific_baseline": "XGBoost multi-softprob on aligned well-log windows",
+      "foundation_model": "MOMENT-1-base",
+      "controlled_conditions": [
+        "XGBoost baseline",
+        "MOMENT architecture with random initialization",
+        "MOMENT pretrained initialization",
+        "missing-modality ablation"
+      ],
+      "split_contract": "LOGO4 mother-well folds with fixed-nine labels and unchanged class weighting",
+      "primary_metrics": ["fixed-nine macro F1", "fixed-nine mIoU", "NLL"],
+      "structure_diagnostics": ["TWT class sequence", "confidence at errors", "hidden-state embedding if persisted"],
+      "promotion_rule": "pretrained MOMENT must improve both random initialization and XGBoost under fixed-nine metrics",
+      "current_evidence": "pretraining effect small and non-beneficial; no fusion with the operational XGBoost output"
+    },
+    "sweetspot": {
+      "research_question": "Can time-series pretraining improve causal production forecasting without collapsing heterogeneous geological targets into one score?",
+      "scientific_baseline": "target-routed GBDT models; historical-mean and XGBoost comparators for T3",
+      "foundation_model": "Chronos-2 for T3 causal-history forecasting",
+      "controlled_conditions": [
+        "historical-mean baseline",
+        "XGBoost causal-history baseline",
+        "Chronos-2 forecast",
+        "validation-selected convex combination"
+      ],
+      "split_contract": "strict chronological cutoffs; static targets retain independent well-grouped splits",
+      "primary_metrics": ["MAE", "RMSE", "R2"],
+      "structure_diagnostics": ["forecast timeline", "observed-predicted scatter", "residual Q-Q"],
+      "promotion_rule": "Chronos-2 contributes only to T3 and only after temporal-holdout improvement",
+      "current_evidence": "development gain recorded; frozen temporal-holdout diagnostic remains weak"
+    },
+    "reconstruction": {
+      "research_question": "Can pretrained volumetric context improve a fixed geostatistical neighborhood metric without replacing the stable kriging baseline?",
+      "scientific_baseline": "PyKrige OK3D",
+      "foundation_model": "OpenMind-MAE ResEncL",
+      "controlled_conditions": [
+        "OK3D baseline",
+        "same representation pipeline with random initialization as a diagnostic",
+        "frozen pretrained OpenMind-MAE representation",
+        "P21 fixed three-kernel neighborhood ensemble"
+      ],
+      "split_contract": "five spatial development folds and same-field historical-version transfer reported separately",
+      "primary_metrics": ["MAE", "RMSE", "Bias", "directional variogram deviation"],
+      "structure_diagnostics": ["registered 3-D volume", "orthogonal slices", "directional semivariogram"],
+      "promotion_rule": "the frozen P21 configuration must improve pooled RMSE under the locked spatial protocol without post-evaluation parameter changes",
+      "current_evidence": "P21 improves development RMSE by 2.5144% versus OK3D and same-field historical-version RMSE by 1.4529%; fine-scale structure remains under-dispersed"
+    }
+  }
+}

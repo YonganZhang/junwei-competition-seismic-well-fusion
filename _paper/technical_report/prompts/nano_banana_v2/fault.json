@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Camera-ready IEEE TGRS scientific architecture figure, pure white background, Times New Roman for every label, concise exact typography, cool blue main path, warm orange foundation branch, teal fusion, grey context. No title, no watermark, no status words, no training timeline, no result numbers.",
+  "pages": [
+    {
+      "title": "fault_architecture_v2",
+      "is_cover": false,
+      "description": "Edit the reference into a clean left-to-right method framework. Keep only these exact short labels: Seismic cube, Local features, Logistic regression, SAM-Med3D, 3D encoder, Mask decoder, Fusion, Fault probability, Fault surface. Show X∈R^(B×1×D×H×W), z∈R^(N×F), p_base=σ(w^Tz+b), p=(1-g)p_base⊕g p_sam. Use one seismic cube at left, the blue logistic path and orange SAM-Med3D path in the center, one teal fusion operator, and two distinct outputs at right. Remove every other sentence, status label, gate verdict, training note, duplicated output label, spelling error, and paragraph. Make all displayed words exactly as written."
+    }
+  ]
+}

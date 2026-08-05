@@ -1,0 +1,122 @@
+\chapter{地震相分割}
+
+\section{任务背景}
+
+地震相分割根据多道地震切片识别不同沉积或构造相。输入为三通道地震切片
+$\bm{X}\in\mathbb{R}^{3\times H\times W}$，输出为每个像素的类别概率。
+F3 和 Penobscot 的相类别数、纹理与信噪比不同，因此分别使用
+FPN--ResNet18 和 DeepLabV3+--ResNet18 作为卷积基线。
+
+\section{方法原理}
+
+卷积主干输出语义特征 $\bm{F}_{\mathrm{cnn}}$，SAM2 编码器
+\cite{ravi2024sam2} 从同一切片提取预训练特征 $\bm{F}_{\mathrm{sam}}$。
+交叉注意力以卷积特征为查询、SAM2 特征为键和值：
+\begin{align}
+  \bm{Q}&=\bm{W}_Q\bm{F}_{\mathrm{cnn}},&
+  \bm{K}&=\bm{W}_K\bm{F}_{\mathrm{sam}},&
+  \bm{V}&=\bm{W}_V\bm{F}_{\mathrm{sam}},\\
+  \bm{A}&=\mathrm{softmax}\!\left(
+    \frac{\bm{Q}\bm{K}^{\mathsf T}}{\sqrt{d}}
+  \right)\bm{V}.
+\end{align}
+其中 $\bm{W}_Q,\bm{W}_K,\bm{W}_V$ 为线性投影矩阵，$d=128$，注意力头数为 4。
+融合特征为
+\begin{equation}
+  \bm{F}_{\mathrm{fused}}
+  =\bm{F}_{\mathrm{cnn}}+\gamma\bm{W}_O\bm{A},
+\end{equation}
+其中 $\gamma$ 为可学习系数。\Cref{fig:facies-architecture}给出了完整的数据流。
+
+\ArchitectureFigure{facies}
+  {地震相分割模型架构。卷积语义特征查询 SAM2 表征，经交叉注意力融合后送入解码器。}
+  {facies-architecture}
+
+\section{训练策略}
+
+训练目标由像素交叉熵与软 Dice 损失组成：
+\begin{equation}
+  \mathcal{L}=\mathcal{L}_{\mathrm{CE}}+
+  0.25\,\mathcal{L}_{\mathrm{Dice}} .
+\end{equation}
+训练集使用水平翻转和高斯噪声增强，验证集不做增强。卷积主干学习率为
+$5\times10^{-5}$，融合层学习率为 $2\times10^{-4}$，SAM2 可训练块学习率为
+$10^{-5}$；优化过程采用余弦退火。
+
+\TrainingFlow
+  {三通道地震切片}
+  {固定空间折}
+  {训练集增强}
+  {卷积与 SAM2 编码}
+  {交叉注意力与解码}
+  {地震相分割训练流程}
+  {facies-training}
+
+\section{实验设计}
+
+F3 使用第 0 折，Penobscot 使用第 4 折。每个数据集比较三种模型：40 次更新的强卷积
+基线、160 次更新的继续训练卷积对照，以及 160 次更新的 SAM2 交叉注意力模型。
+SAM2 加载真实预训练权重，仅解冻 Hiera 的第 22 和 23 个块。每次实验最多使用
+32 个训练样本和 16 个验证样本，批量大小为 2。实验只访问固定开发折，不读取冻结
+测试集。三臂设计用于区分额外训练预算与交叉注意力分支的作用。
+
+\section{评估指标}
+
+主要指标为平均交并比：
+\begin{equation}
+  \Metric{mIoU}=\frac{1}{C}\sum_{c=1}^{C}
+  \frac{TP_c}{TP_c+FP_c+FN_c}.
+\end{equation}
+其中 $TP_c$、$FP_c$ 和 $FN_c$ 分别为第 $c$ 类的真阳性、假阳性和假阴性像素数。
+同时报告像素准确率、Macro-F1 和负对数似然，以描述分类性能与概率质量。
+
+\section{实验结果}
+
+\begin{table}[htbp]
+  \centering
+  \caption{地震相分割的固定开发折结果}
+  \label{tab:facies-dev}
+  \begin{tabular}{llrr}
+    \toprule
+    数据集 & 模型 & mIoU & Macro-F1 \\
+    \midrule
+    F3 & 40 次更新卷积基线 & 0.1363 & 0.2215 \\
+    F3 & 160 次更新卷积对照 & 0.2069 & 0.3145 \\
+    F3 & SAM2 交叉注意力 & \textbf{0.2922} & \textbf{0.4164} \\
+    \midrule
+    Penobscot & 40 次更新卷积基线 & 0.1291 & 0.1766 \\
+    Penobscot & 160 次更新卷积对照 & 0.1896 & 0.2624 \\
+    Penobscot & SAM2 交叉注意力 & \textbf{0.2053} & \textbf{0.2826} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\Cref{tab:facies-dev}显示，两个数据集的平均 mIoU 从 $0.1327$ 提高到 $0.2487$，
+绝对增益为 $0.1160$。与继续训练卷积对照相比，F3 和 Penobscot 分别提高
+$0.0853$ 和 $0.0157$，说明额外训练预算不能完全解释结果。
+
+\ResultFigure{0.98}{facies}{research_f3_curtains.png}
+  {F3 连续地震体中三个已配准 inline 切面的振幅与十类解释。左侧为原始地震振幅，
+  右侧为同位置参考类别；两者均为数据证据，不是当前 SAM2 模型的稠密预测。}
+
+\Cref{fig:res-facies-research_f3_curtains.png}把二维样本放回连续三维索引中。三个
+切面同时保留 inline、crossline 和采样点坐标，因此可以检查相带沿空间方向的延续性。
+当前归档结果没有保存 SAM2 的完整三维概率体，故本版不构造预测混淆矩阵或相体表面；
+这些图必须在稠密预测落盘后才能进入模型结果。
+
+\ResultPair{facies}
+  {facies_f3_stage3_oof_diagnostics.png}{F3 既有基线的折外诊断}
+  {facies_penobscot_stage3_oof_diagnostics.png}{Penobscot 既有基线的折外诊断}
+  {两个数据集的既有基线诊断}
+
+\ResultPair{facies}
+  {f3_known_holdout_diagnostics.png}{F3 历史留出诊断}
+  {penobscot_known_holdout_diagnostics.png}{Penobscot 历史留出诊断}
+  {既有模型在历史留出数据上的诊断}
+
+\Cref{tab:facies-dev}与历史留出诊断并非同一次模型评价。前者是本次
+SAM2 交叉注意力的固定开发折结果，后者仅说明既有分割流程的误差形态，不能据此宣称
+SAM2 已在留出集上获得同等增益。此外，同结构随机初始化 SAM2 分支尚未完成，因此
+当前结论应表述为“交叉注意力系统在开发集上更优”，而非“预训练权重已经被证明有效”。
+
+\FloatBarrier

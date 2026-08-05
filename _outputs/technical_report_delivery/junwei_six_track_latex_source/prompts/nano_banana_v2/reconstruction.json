@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Camera-ready NeurIPS AI-for-science architecture figure, pure white background, Times New Roman for every label, concise exact typography, cool blue kriging path, warm orange OpenMind-MAE path, teal residual fusion. No title, no watermark, no experiment status, no training timeline, no result numbers.",
+  "pages": [
+    {
+      "title": "reconstruction_architecture_v2",
+      "is_cover": false,
+      "description": "Edit the reference into a clean left-to-right residual-reconstruction framework. Keep only these exact short labels: Sparse wells, Seismic volume, Ordinary kriging, OpenMind-MAE, Cross-attention, Residual head, Validation weight, Reconstructed volume, Residual volume. Show y_hat_OK(s_0)=Σ_iλ_i z_i with Σ_iλ_i=1, A=softmax(QK^T/√d)V, y_hat=y_hat_OK⊕g r_θ. The blue kriging path supplies the main prediction; the orange OpenMind-MAE features feed cross-attention and a teal residual head; validation weight g controls only the residual contribution. Remove gate verdicts, fold counts, default-route wording, exact-backend wording, duplicate text, spelling errors, long sentences, and every word not listed above. Make all displayed words exactly as written."
+    }
+  ]
+}

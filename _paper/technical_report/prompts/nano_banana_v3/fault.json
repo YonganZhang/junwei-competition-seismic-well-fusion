@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Exact scientific figure correction, pure white background, Times New Roman.",
+  "pages": [
+    {
+      "title": "fault_architecture_v3",
+      "is_cover": false,
+      "description": "Based on the reference image, make these changes only: completely remove the entire grey bottom training strip and all of its text, including Train-only preprocessing, Group-aware inline block, Class weights, Validation threshold selection, Frozen evaluation, and Blocked foundation ranking. Expand the central model diagram vertically into the freed space. Keep the seismic cube, Local features, Logistic regression, SAM-Med3D, 3D encoder, Mask decoder, fusion equation, Fault probability, and Fault surface unchanged. Do not add any replacement text, status, verdict, title, or timeline."
+    }
+  ]
+}

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="777.6pt" height="302.4pt" viewBox="0 0 777.6 302.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-01T03:26:34.337707</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 302.4 
+L 777.6 302.4 
+L 777.6 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 47.75024 284.29976 
+L 384.912 284.29976 
+L 384.912 38.24822 
+L 47.75024 38.24822 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="me9ef634ccc" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me9ef634ccc" x="99.342307" y="284.29976" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="99.342307" y="297.438041" transform="rotate(-0 99.342307 297.438041)">PyKrige</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#me9ef634ccc" x="216.33112" y="284.29976" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="216.33112" y="297.446479" transform="rotate(-0 216.33112 297.446479)">P19</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#me9ef634ccc" x="333.319933" y="284.29976" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="333.319933" y="297.446479" transform="rotate(-0 333.319933 297.446479)">P21 fixed</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <path d="M 47.75024 266.354326 
+L 384.912 266.354326 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_5">
+      <defs>
+       <path id="m561d95bac0" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="266.354326" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="269.427685" transform="rotate(-0 40.75024 269.427685)">0.0274</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <path d="M 47.75024 235.313741 
+L 384.912 235.313741 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="235.313741" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="238.387101" transform="rotate(-0 40.75024 238.387101)">0.0276</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <path d="M 47.75024 204.273157 
+L 384.912 204.273157 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="204.273157" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="207.346516" transform="rotate(-0 40.75024 207.346516)">0.0278</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_10">
+      <path d="M 47.75024 173.232573 
+L 384.912 173.232573 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="173.232573" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="176.305932" transform="rotate(-0 40.75024 176.305932)">0.0280</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_12">
+      <path d="M 47.75024 142.191989 
+L 384.912 142.191989 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="142.191989" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="145.265348" transform="rotate(-0 40.75024 145.265348)">0.0282</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_14">
+      <path d="M 47.75024 111.151404 
+L 384.912 111.151404 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="111.151404" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="114.224764" transform="rotate(-0 40.75024 114.224764)">0.0284</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_16">
+      <path d="M 47.75024 80.11082 
+L 384.912 80.11082 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="80.11082" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="83.184179" transform="rotate(-0 40.75024 83.184179)">0.0286</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_18">
+      <path d="M 47.75024 49.070236 
+L 384.912 49.070236 
+" clip-path="url(#p17556bf3ec)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m561d95bac0" x="47.75024" y="49.070236" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="40.75024" y="52.143595" transform="rotate(-0 40.75024 52.143595)">0.0288</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 10px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="9.829927" y="161.27399" transform="rotate(-90 9.829927 161.27399)">RMSE (lower is better)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 63.075775 4518.914372 
+L 135.608839 4518.914372 
+L 135.608839 103.433447 
+L 63.075775 103.433447 
+z
+" clip-path="url(#p17556bf3ec)" style="fill: #6b7280; stroke: #263238; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 180.064588 4518.914372 
+L 252.597652 4518.914372 
+L 252.597652 211.816387 
+L 180.064588 211.816387 
+z
+" clip-path="url(#p17556bf3ec)" style="fill: #72bcd5; stroke: #263238; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 297.053401 4518.914372 
+L 369.586465 4518.914372 
+L 369.586465 214.458445 
+L 297.053401 214.458445 
+z
+" clip-path="url(#p17556bf3ec)" style="fill: #376795; stroke: #263238; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 47.75024 284.29976 
+L 47.75024 38.24822 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 47.75024 284.29976 
+L 384.912 284.29976 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1e466e" x="54.493475" y="54.237" transform="rotate(-0 54.493475 54.237)">P21 vs P19: 1 win, 4 ties, 0 losses</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #202124" x="99.342307" y="94.604316" transform="rotate(-0 99.342307 94.604316)">0.028450</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #202124" x="216.33112" y="202.987256" transform="rotate(-0 216.33112 202.987256)">0.027751</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #202124" x="333.319933" y="205.629314" transform="rotate(-0 333.319933 205.629314)">0.027734</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 287.038099 78.333219 
+Q 309.857693 145.450749 332.245415 211.298048 
+" style="fill: none; stroke: #376795; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 332.851372 206.867154 
+L 332.245415 211.298048 
+L 329.064274 208.154747 
+" style="fill: none; stroke: #376795; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #376795" x="257.277205" y="72.392863" transform="rotate(-0 257.277205 72.392863)">2.51% lower</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #1e466e" x="216.33112" y="28.24822" transform="rotate(-0 216.33112 28.24822)">Development spatial OOF</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 437.438 284.29976 
+L 774.59976 284.29976 
+L 774.59976 38.24822 
+L 437.438 38.24822 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_4">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#me9ef634ccc" x="511.416815" y="284.29976" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="511.416815" y="297.438041" transform="rotate(-0 511.416815 297.438041)">PyKrige</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#me9ef634ccc" x="700.620945" y="284.29976" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="700.620945" y="297.446479" transform="rotate(-0 700.620945 297.446479)">Frozen P21</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_9">
+     <g id="line2d_22">
+      <path d="M 437.438 279.530026 
+L 774.59976 279.530026 
+" clip-path="url(#pbb0417d92e)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m561d95bac0" x="437.438" y="279.530026" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="430.438" y="282.603385" transform="rotate(-0 430.438 282.603385)">0.0274</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_24">
+      <path d="M 437.438 241.0913 
+L 774.59976 241.0913 
+" clip-path="url(#pbb0417d92e)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m561d95bac0" x="437.438" y="241.0913" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="430.438" y="244.164659" transform="rotate(-0 430.438 244.164659)">0.0276</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_26">
+      <path d="M 437.438 202.652574 
+L 774.59976 202.652574 
+" clip-path="url(#pbb0417d92e)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#m561d95bac0" x="437.438" y="202.652574" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="430.438" y="205.725933" transform="rotate(-0 430.438 205.725933)">0.0278</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_28">
+      <path d="M 437.438 164.213848 
+L 774.59976 164.213848 
+" clip-path="url(#pbb0417d92e)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m561d95bac0" x="437.438" y="164.213848" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="430.438" y="167.287207" transform="rotate(-0 430.438 167.287207)">0.0280</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_30">
+      <path d="M 437.438 125.775122 
+L 774.59976 125.775122 
+" clip-path="url(#pbb0417d92e)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m561d95bac0" x="437.438" y="125.775122" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="430.438" y="128.848481" transform="rotate(-0 430.438 128.848481)">0.0282</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_32">
+      <path d="M 437.438 87.336396 
+L 774.59976 87.336396 
+" clip-path="url(#pbb0417d92e)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#m561d95bac0" x="437.438" y="87.336396" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_26">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="430.438" y="90.409755" transform="rotate(-0 430.438 90.409755)">0.0284</text>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_34">
+      <path d="M 437.438 48.89767 
+L 774.59976 48.89767 
+" clip-path="url(#pbb0417d92e)" style="fill: none; stroke: #d9dee3; stroke-opacity: 0.8; stroke-width: 0.65; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#m561d95bac0" x="437.438" y="48.89767" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: end" x="430.438" y="51.971029" transform="rotate(-0 430.438 51.971029)">0.0286</text>
+     </g>
+    </g>
+    <g id="text_28">
+     <text style="font-size: 10px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="399.517687" y="161.27399" transform="rotate(-90 399.517687 161.27399)">RMSE (lower is better)</text>
+    </g>
+   </g>
+   <g id="patch_10">
+    <path d="M 452.763535 5545.635494 
+L 570.070095 5545.635494 
+L 570.070095 118.969545 
+L 452.763535 118.969545 
+z
+" clip-path="url(#pbb0417d92e)" style="fill: #6b7280; stroke: #263238; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 641.967665 5545.635494 
+L 759.274225 5545.635494 
+L 759.274225 197.812626 
+L 641.967665 197.812626 
+z
+" clip-path="url(#pbb0417d92e)" style="fill: #e76254; stroke: #263238; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 437.438 284.29976 
+L 437.438 38.24822 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 437.438 284.29976 
+L 774.59976 284.29976 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1e466e" x="444.181235" y="54.237" transform="rotate(-0 444.181235 54.237)">Frozen P21 vs PyKrige: 4 wins, 1 loss</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #202124" x="511.416815" y="108.475831" transform="rotate(-0 511.416815 108.475831)">0.028235</text>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #202124" x="700.620945" y="187.318913" transform="rotate(-0 700.620945 187.318913)">0.027825</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 628.792879 88.177919 
+Q 664.157811 142.157153 698.787501 195.01415 
+" style="fill: none; stroke: #e76254; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 698.268362 190.572248 
+L 698.787501 195.01415 
+L 694.922496 192.764319 
+" style="fill: none; stroke: #e76254; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #e76254" x="596.558673" y="82.452755" transform="rotate(-0 596.558673 82.452755)">1.45% lower</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #1e466e" x="606.01888" y="28.24822" transform="rotate(-0 606.01888 28.24822)">Historical-version transfer</text>
+   </g>
+  </g>
+  <g id="text_34">
+   <text style="font-weight: 700; font-size: 13px; font-family: 'TeX Gyre Termes', 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #1e466e" x="388.8" y="11.982427" transform="rotate(-0 388.8 11.982427)">Foundation-informed reconstruction under fixed spatial protocols</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p17556bf3ec">
+   <rect x="47.75024" y="38.24822" width="337.16176" height="246.05154"/>
+  </clipPath>
+  <clipPath id="pbb0417d92e">
+   <rect x="437.438" y="38.24822" width="337.16176" height="246.05154"/>
+  </clipPath>
+ </defs>
+</svg>

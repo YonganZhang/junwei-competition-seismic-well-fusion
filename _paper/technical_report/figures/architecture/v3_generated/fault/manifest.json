@@ -1,0 +1,16 @@
+{
+  "artifact_kind": "slide_image_sequence",
+  "provider": "fal",
+  "model": "fal-ai/nano-banana-2",
+  "network_mode": "direct",
+  "image_size": "4K",
+  "billed_api_call": true,
+  "slides": [
+    {
+      "index": 1,
+      "title": "fault_architecture_v3",
+      "status": "generated",
+      "path": "_paper/technical_report/figures/architecture/v3_generated/fault/slide_01_fault_architecture_v3.png"
+    }
+  ]
+}

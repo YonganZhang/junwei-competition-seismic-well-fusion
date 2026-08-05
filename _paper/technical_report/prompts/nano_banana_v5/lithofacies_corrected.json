@@ -1,0 +1,14 @@
+{
+  "language": "en",
+  "style": "Camera-ready SCI architecture figure, pure white background, landscape 16:9, Times New Roman, crisp vector-like geometry, thin precise arrows. Blue is the operational XGBoost path, orange is the MOMENT ablation path, gray is evaluation, green is output. No title, no watermark, no performance numbers. Do not merge or average XGBoost and MOMENT predictions.",
+  "pages": [
+    {
+      "title": "lithofacies_architecture_v5r1",
+      "is_cover": false,
+      "reference_images": [
+        "_paper/technical_report/figures/architecture/lithofacies_architecture.png"
+      ],
+      "description": "Redraw a fixed-nine lithofacies framework. Left: aligned well-log window X∈R^(B×35×33), missing-modality mask, vertical stratigraphic order. The dominant blue operational path is center values + window statistics + local gradients → XGBoost multi-softprob trees → nine logits s_c(x) → softmax → fixed 9-class probability vector → Depth/TWT class sequence. The orange research path is a separate controlled ablation: window → interpolation 33→512 → patch embedding → MOMENT transformer encoder. Split this encoder into pretrained and random-init conditions with identical nine-class heads. Both orange conditions end at one gray Pretraining-effect comparator containing ΔMacro-F1, ΔmIoU, ΔNLL placeholders without numbers. The comparator must not connect to the operational probability vector or class sequence. Bottom rail: LOGO4 mother-well split → class weighting → multi-seed training → fixed-nine metrics. Add an Evaluation bracket spanning the blue operational output and the orange comparator, but no box or arrow labeled Fusion."
+    }
+  ]
+}

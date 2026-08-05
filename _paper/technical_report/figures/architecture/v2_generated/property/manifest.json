@@ -1,0 +1,16 @@
+{
+  "artifact_kind": "slide_image_sequence",
+  "provider": "fal",
+  "model": "fal-ai/nano-banana-2",
+  "network_mode": "direct",
+  "image_size": "4K",
+  "billed_api_call": true,
+  "slides": [
+    {
+      "index": 1,
+      "title": "property_architecture_v2",
+      "status": "generated",
+      "path": "_paper/technical_report/figures/architecture/v2_generated/property/slide_01_property_architecture_v2.png"
+    }
+  ]
+}

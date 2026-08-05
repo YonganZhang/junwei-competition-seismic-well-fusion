@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "style": "Top-tier KDD / NeurIPS time-series classification methodology figure. Pure white #FFFFFF background, cool-blue XGBoost main path, warm-orange MOMENT foundation representation audit, teal quality-control branch, grey masks and blocked paths. Times New Roman serif typography. Compact high-information vector layout, no overall title, no Figure label, no watermark, no page number.",
+  "pages": [
+    {
+      "title": "lithofacies_architecture_v1",
+      "is_cover": false,
+      "description": "Create a landscape scientific framework diagram for fixed nine-class genetic lithofacies prediction from well logs. Do not add an overall title. LEFT DOMAIN ANCHOR: aligned vertical well-log curves over depth, a sliding window tensor X in R^(B×L×C), an explicit missing-modality mask M in {0,1}^(B×L×C), and a compact nine-class facies legend. COOL-BLUE MAIN PATH: train-only normalization, window statistics and local shape descriptors, then XGBoost multi-softprob as an ensemble of shallow trees producing p_xgb in R^(B×9). WARM-ORANGE AUDIT PATH: patch the multichannel depth window into time-series tokens, pass them through a frozen MOMENT-1-base encoder shown as a 2.5D transformer stack, pool to h_moment in R^(B×d), and concatenate with classical features for an audited candidate. TEAL SUPERVISORY QC: a small Gaia QC module checks schema, missing modalities, fold membership and probability validity; it must not look like a sample-level predictive agent. Embed p_k = exp(s_k)/sum_j exp(s_j), y_hat = argmax_k p_k, and the fixed-schema macro-F1 equation F1_macro = (1/9) sum_{k=1}^9 F1_k. RIGHT OUTPUT: a depth-aligned nine-class probability track and facies column. Show unsupported or zero-support classes in grey but retain all nine classes. BOTTOM TRAINING STRIP: maternal-well LOGO4 folds -> train-only preprocessing -> three-seed model fitting -> out-of-fold ranking on fixed-nine macro-F1 -> refit winner -> previously seen holdout confirmation. Include a grey no-verified-gain promotion gate for MOMENT. No metric values, no paragraphs, no title."
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+\chapter{岩相分类}
+
+\section{任务背景}
+
+岩相分类根据井曲线序列判断每个深度点所属的地质相。本赛道固定使用 9 类遗传岩相，
+即使某个评价井不包含其中部分类型，评价时也保留完整类别集合。输入为目标深度附近的
+多道测井窗口，输出为 9 类概率和最终类别。
+
+该任务同时具有表格与序列特征。单个深度点的曲线值提供局部物性信息，邻近深度的
+变化趋势则反映层序结构。小样本、类别不平衡和跨井分布差异是主要困难。
+
+\section{方法原理}
+
+主模型使用 XGBoost 多类 softprob。对第 $c$ 类，模型累加多棵树得到得分
+$s_c(\bm{x})$，再用 softmax 转换为概率：
+\begin{equation}
+  p(y=c\mid\bm{x})
+  =\frac{\exp(s_c(\bm{x}))}{\sum_{k=1}^{9}\exp(s_k(\bm{x}))}.
+\end{equation}
+输入特征由中心深度的测井值、窗口统计量和局部变化率组成。树模型能够处理非线性
+特征交互，也能在样本量有限时保持较低方差。
+
+候选分支使用 MOMENT-1-base 对多通道深度窗口进行分类
+\cite{goswami2024moment}。设窗口为 $\bm{X}$，冻结编码器输出为
+$\bm{e}=E_{\theta}(\bm{X})$，九类线性头写为
+\begin{equation}
+  \bm{p}=\mathrm{softmax}(\bm{W}\bm{e}+\bm{b}).
+\end{equation}
+输入包含 35 个通道和 33 个深度位置，编码器内部插值到长度 512。预训练 MOMENT
+与同架构随机初始化 MOMENT 使用相同的九类分类头，因而可直接检验预训练权重的作用。
+
+\ArchitectureFigure{lithofacies}
+  {岩相分类模型架构。井曲线窗口同时进入树模型与 MOMENT 序列表征分支。}
+  {lithofacies-architecture}
+
+\section{训练策略}
+
+数据按母井执行四折留一井交叉验证（LOGO4）。每一折以三口井训练，剩余一口井验证，
+确保相邻深度样本不会跨越训练和验证边界。窗口归一化、缺失值填补和类别权重均只由
+当折训练井计算。
+
+模型选择以固定 9 类 Macro-F1 为主，而不是只对当前验证井中出现的类别求平均。
+对每个候选参数组合重复多个随机种子，并观察折间方差。最终模型固定后，再在已知
+留出井族 15/9-F-5 上做确认性评价。
+
+\TrainingFlow
+  {九类井曲线标签}
+  {按母井 LOGO4}
+  {窗口特征与归一化}
+  {多种子模型训练}
+  {固定九类评价}
+  {岩相分类训练流程}
+  {lithofacies-training}
+
+\section{实验设计}
+
+实验比较三种分类器：固定九类 XGBoost、真实预训练权重的 MOMENT，以及同架构
+随机初始化 MOMENT。三者使用相同的 LOGO4 开发折。缺失模态实验进一步移除部分
+曲线，用于检查模型对真实测井缺失的敏感性。
+
+开发阶段用 LOGO4 选择参数，确认阶段使用 120 个已知留出样本。部分岩相在该井族中
+没有支持样本，因此同时报告固定 9 类指标和“仅对有支持类别求平均”的诊断指标。
+后者帮助解释当前井的表现，但不替代主要指标。
+
+\section{评估指标}
+
+主要指标为固定 9 类 Macro-F1：
+\begin{equation}
+  \Metric{MacroF1}_{9}
+  =\frac{1}{9}\sum_{c=1}^{9}
+  \frac{2TP_c}{2TP_c+FP_c+FN_c}.
+\end{equation}
+此外报告固定 9 类平均交并比、准确率和概率质量。多类负对数似然与 Brier 分数分别为
+\begin{align}
+  \Metric{NLL} &=-\frac{1}{N}\sum_{i=1}^{N}\log p_{i,y_i},\\
+  \Metric{Brier} &=\frac{1}{N}\sum_{i=1}^{N}
+  \sum_{c=1}^{9}\left(p_{ic}-\mathbb{I}(y_i=c)\right)^2.
+\end{align}
+期望校准误差（ECE）比较概率置信度与实际正确率，用于判断模型是否过度自信。
+
+\section{实验结果}
+
+\begin{table}[htbp]
+  \centering
+  \caption{岩相分类在已知留出井族上的结果}
+  \label{tab:litho-holdout}
+  \begin{tabular}{lr}
+    \toprule
+    指标 & 数值 \\
+    \midrule
+    Accuracy & 0.4167 \\
+    固定 9 类 Macro-F1 & 0.1892 \\
+    有支持类别 Macro-F1（诊断） & 0.2432 \\
+    固定 9 类 mIoU & 0.1288 \\
+    NLL & 1.7022 \\
+    Multiclass Brier & 0.7938 \\
+    ECE & 0.1415 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\Cref{tab:litho-holdout}中的固定 9 类 Macro-F1 为 $0.1892$，与开发阶段
+XGBoost 的 $0.1949$ 接近，说明当前
+流程可以复现，但总体分类能力仍有限。准确率为 $0.4167$，明显高于 Macro-F1，
+说明结果受多数类主导。ECE 为 $0.1415$，概率仍有进一步校准空间。
+
+\begin{table}[htbp]
+  \centering
+  \caption{岩相分类在 LOGO4 开发折上的模型比较}
+  \label{tab:litho-dev}
+  \begin{tabular}{lr}
+    \toprule
+    模型 & 固定 9 类 Macro-F1 \\
+    \midrule
+    XGBoost & \textbf{0.1949} \\
+    MOMENT 真实预训练权重 & 0.0463 \\
+    MOMENT 同架构随机初始化 & 0.0411 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\Cref{tab:litho-dev}表明，MOMENT 真实权重略优于随机初始化，说明预训练表征包含
+少量可迁移信息；但其 Macro-F1 远低于 XGBoost。因此，MOMENT 不应替代当前树模型。
+
+\ResultFigure{0.94}{lithofacies}{before_after_primary_metric.png}
+  {岩相分类主要指标的阶段比较。}
+
+\ResultPair{lithofacies}
+  {fixed9_confusion.png}{固定九类混淆矩阵}
+  {fixed9_per_class_pr_f1_support.png}{类别级精确率、召回率与支持度}
+  {固定九类条件下的分类结构}
+
+\ResultPair{lithofacies}
+  {calibration_reliability.png}{概率校准曲线}
+  {missing_modality_diagnostic.png}{缺失测井模态诊断}
+  {预测置信度与输入完整性分析}
+
+\ResultPair{lithofacies}
+  {fold_seed_matrix.png}{跨井折与随机种子的稳定性}
+  {multimodal_mlp_loss_curve.png}{多模态 MLP 的训练过程}
+  {岩相分类的稳定性与优化过程}
+
+\ResultFigure{0.94}{lithofacies}{research_well_sequence.png}
+  {已知留出井 15/9-F-5 的固定九类观测序列、XGBoost 预测序列和逐样本最大类别概率。
+  纵轴采用归档记录中的 TWT；红点表示误分类位置。}
+
+\Cref{fig:res-lithofacies-research_well_sequence.png}显示，错误样本与正确样本的平均
+最大类别概率分别为 $0.506$ 和 $0.501$，两者几乎没有分离。这说明当前置信度不能
+有效识别错误区间，与 ECE 仍偏高的结果一致。由于归档预测未包含经过核验的井轨迹
+XYZ 坐标，本章只报告 TWT 序列，不把一维井段外推为三维岩相体。
+
+同架构随机初始化对照已经完成，结论不是“仍待归因”，而是“存在轻微预训练效应，
+但不足以超过强基线”。后续工作的重点应是扩大母井样本、改善少数类学习和检验
+跨井泛化，而不是继续提高 MOMENT 分类头的训练预算。
+
+\FloatBarrier
