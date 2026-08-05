@@ -1,0 +1,46 @@
+{
+  "artifacts": {
+    "aligned_pair_manifest.jsonl": {
+      "bytes": 890192,
+      "sha256": "c2a2232f06c9fb3b29a9a2c9e27849e402e3f71ee432a1ece949d80fd36ccd6c"
+    },
+    "evidence.md": {
+      "bytes": 549,
+      "sha256": "0c096461566db4686466a0690e0d1f4d431fac04a02a90acd3889ef59360b03f"
+    },
+    "feature_or_adapter_audit.json": {
+      "bytes": 180795,
+      "sha256": "645fd0b8246920257523eef23592bcd8993014a9c99d201e30cd27fe3fee709f"
+    },
+    "foundation_audit.json": {
+      "bytes": 4811,
+      "sha256": "e734dff7c4feefe5eb0b7d1795da5ae57f09dfb63d9563b6fefec74db4d5521f"
+    },
+    "independent_metric_check.json": {
+      "bytes": 480,
+      "sha256": "1fb988c77886ae662da9c9f5687eb8ae75db31a7d536c43da76d2b6cb341d99c"
+    },
+    "phase0_freeze.json": {
+      "bytes": 15082,
+      "sha256": "69adf6ac957accc8f6666c716586be16e422ef8ef99836baf744aa4b6fcb8b94"
+    },
+    "predictions.npz": {
+      "bytes": 232953,
+      "sha256": "e3fd09480065bb7cd0b02df28da7f8147101d195d7d99e08866c0e875d38726b"
+    },
+    "rerun_commands.json": {
+      "bytes": 852,
+      "sha256": "aaff6e463bbadfb31d9f5f093fc67110132b9a9e1195293343a9300d5466cb84"
+    },
+    "results.jsonl": {
+      "bytes": 123812,
+      "sha256": "9f50a8be8c018021b830644a6f11839e51e70e7870ad5ee71bcf9bbb4cac0e80"
+    },
+    "summary.json": {
+      "bytes": 5981,
+      "sha256": "e8ee85bb41a38c050f0431814d1dcd14d0ef62e4e3e10958741babf5e71bc324"
+    }
+  },
+  "schema": "p41-artifact-manifest/v2",
+  "test_access": false
+}

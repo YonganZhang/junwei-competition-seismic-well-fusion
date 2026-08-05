@@ -1,10 +1,17 @@
 ---
 phase_id: P16
-status: accepted
+status: superseded
 owner_col: COL2
+superseded_by:
+  - P16.1_foundation_model_transfer_diagnosis_and_recovery.md
+closure_evidence: >
+  三轮本地实验数值继续保留，但全局外推已由 P16.1 收窄；P16.1 同时复核赛道②、④、⑥的
+  随机初始化、强基线、融合归因与公开预训练目标，并给出新的统一恢复协议。
 ---
 
 # ⑥三维重建赛道：三种不同桥接方式全部验证大模型无增益，方法论层面已排除"桥接方式错误"这个解释
+
+> **结论边界修正（2026-07-31）：** 本文三轮实验数值继续有效，但标题和 Impact 对“方法论已排除桥接错误”的外推过宽。现有证据只排除了当前 GFM、当前标签规模与三种既定桥接协议的稳定增益，不能排除真实目标域继续预训练、任务对齐预训练或物理约束融合。统一解释与后续方案见 `P16.1_foundation_model_transfer_diagnosis_and_recovery.md`。
 
 ## Local Case
 

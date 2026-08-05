@@ -1,0 +1,24 @@
+{
+  "environment_note": "Run from the repository root in torch-common. The P5 baseline is delegated to P41_TABULAR_PYTHON; raw property assets may be overridden with JUNWEI_PROPERTY_SOURCE_ROOT. Foundation cache roots use the P41_* environment variables.",
+  "independent_metric": [
+    "{python}",
+    "_pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py",
+    "--independent-metric-check"
+  ],
+  "phase0": [
+    "{python}",
+    "_pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py",
+    "--phase0-only"
+  ],
+  "r0": [
+    "{python}",
+    "_pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py",
+    "--device",
+    "cuda:5"
+  ],
+  "verify": [
+    "{python}",
+    "_pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py",
+    "--verify-only"
+  ]
+}

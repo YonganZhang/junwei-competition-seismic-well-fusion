@@ -1,7 +1,13 @@
-# P33：④岩相现默认护栏阻止一次错误晋级
-
+---
+phase_id: P33
 status: accepted
-owner_col: col3
+severity: major
+owner_col: COL3
+source: experiment
+closure_evidence: _pipelines/02_task_datasets/lithofacies/_outputs/p33_hybrid_agent_optimizer/independent_verification.json
+---
+
+# P33：④岩相现默认护栏阻止一次错误晋级
 
 ## 结论
 

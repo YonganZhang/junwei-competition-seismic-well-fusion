@@ -1,0 +1,430 @@
+{
+  "aligned_manifest_sha256": "c2a2232f06c9fb3b29a9a2c9e27849e402e3f71ee432a1ece949d80fd36ccd6c",
+  "alignment": {
+    "authoritative_position_metadata": true,
+    "maximum_native_patch_replay_error": 0.0,
+    "nearest_time_index_mismatch_rows": 611,
+    "official_pick_usage": "MD-to-TVD/TVDSS/XY audit only; explicit linear extrapolation is flagged",
+    "official_picks_sha256": "1c132bba09555915b62e23dc4475f790a304856d369d9d26cc76466cf7b77d3a",
+    "official_tie_bracketed_rows": 1114,
+    "official_tie_extrapolated_rows": 102,
+    "sample_count": 1216,
+    "section_count": 91,
+    "section_shape": [
+      400,
+      160
+    ],
+    "segy_bytes": 1104999800,
+    "seismic_index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "upsampled_3x3x9": false
+  },
+  "contexts": [
+    {
+      "context_id": "outer::15/9-19",
+      "fit_validation_overlap": false,
+      "level": "outer",
+      "outer": "15/9-19",
+      "train_all_count": 1069,
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "50e7d42f36a15eecd3e9799f43cd9c8db221287500af5033eff7b97e5d2a8a12",
+      "validation_count": 147,
+      "validation_family": "15/9-19",
+      "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+    },
+    {
+      "context_id": "inner::15/9-19::15/9-F-1",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-19",
+      "train_all_count": 618,
+      "train_families": [
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 177,
+      "train_selected_sample_ids_sha256": "596ec161ef1f152ab2b7b4f7a58214a010d7880103b4cfc20b0f63d3690e1fd6",
+      "validation_count": 451,
+      "validation_family": "15/9-F-1",
+      "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+    },
+    {
+      "context_id": "inner::15/9-19::15/9-F-11",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-19",
+      "train_all_count": 532,
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 177,
+      "train_selected_sample_ids_sha256": "d0990254fe6c81b3ae2039a68c51ab89a1acf883a5e2e910a60901ddbb48cf9f",
+      "validation_count": 537,
+      "validation_family": "15/9-F-11",
+      "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+    },
+    {
+      "context_id": "inner::15/9-19::15/9-F-12",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-19",
+      "train_all_count": 988,
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "65cbba488c0614c1a774d988c54197eac4721d4388a95d98628f60bbef95453f",
+      "validation_count": 81,
+      "validation_family": "15/9-F-12",
+      "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+    },
+    {
+      "context_id": "outer::15/9-F-1",
+      "fit_validation_overlap": false,
+      "level": "outer",
+      "outer": "15/9-F-1",
+      "train_all_count": 765,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "e6dc8e3713409f3a3b4d28123d0dc6e1f2218b5015d9d5c3048752a990d7027c",
+      "validation_count": 451,
+      "validation_family": "15/9-F-1",
+      "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+    },
+    {
+      "context_id": "inner::15/9-F-1::15/9-19",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-1",
+      "train_all_count": 618,
+      "train_families": [
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 177,
+      "train_selected_sample_ids_sha256": "596ec161ef1f152ab2b7b4f7a58214a010d7880103b4cfc20b0f63d3690e1fd6",
+      "validation_count": 147,
+      "validation_family": "15/9-19",
+      "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+    },
+    {
+      "context_id": "inner::15/9-F-1::15/9-F-11",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-1",
+      "train_all_count": 228,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 177,
+      "train_selected_sample_ids_sha256": "f8e62c9bffd13fd1353af5184e226fc1d49585613003bf8c208640730444f2c7",
+      "validation_count": 537,
+      "validation_family": "15/9-F-11",
+      "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+    },
+    {
+      "context_id": "inner::15/9-F-1::15/9-F-12",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-1",
+      "train_all_count": 684,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-11"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "aadd6f766b49d7c049621db94ad19605f84070c40aca43ac569a6dd1df28f66f",
+      "validation_count": 81,
+      "validation_family": "15/9-F-12",
+      "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+    },
+    {
+      "context_id": "outer::15/9-F-11",
+      "fit_validation_overlap": false,
+      "level": "outer",
+      "outer": "15/9-F-11",
+      "train_all_count": 679,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "d70d61d05c32669aa130c35cbea2a4efd1b426be8088b990498bc5cb1d81aa2e",
+      "validation_count": 537,
+      "validation_family": "15/9-F-11",
+      "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+    },
+    {
+      "context_id": "inner::15/9-F-11::15/9-19",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-11",
+      "train_all_count": 532,
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 177,
+      "train_selected_sample_ids_sha256": "d0990254fe6c81b3ae2039a68c51ab89a1acf883a5e2e910a60901ddbb48cf9f",
+      "validation_count": 147,
+      "validation_family": "15/9-19",
+      "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+    },
+    {
+      "context_id": "inner::15/9-F-11::15/9-F-1",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-11",
+      "train_all_count": 228,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-12"
+      ],
+      "train_selected_count": 177,
+      "train_selected_sample_ids_sha256": "f8e62c9bffd13fd1353af5184e226fc1d49585613003bf8c208640730444f2c7",
+      "validation_count": 451,
+      "validation_family": "15/9-F-1",
+      "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+    },
+    {
+      "context_id": "inner::15/9-F-11::15/9-F-12",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-11",
+      "train_all_count": 598,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "508e23d3a383bf2a891761af2b0939ceb85a41e3b2b811afdf80b2171a9281df",
+      "validation_count": 81,
+      "validation_family": "15/9-F-12",
+      "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+    },
+    {
+      "context_id": "outer::15/9-F-12",
+      "fit_validation_overlap": false,
+      "level": "outer",
+      "outer": "15/9-F-12",
+      "train_all_count": 1135,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "1c7f68fbee9c4227e0524e8e51f2fe6c542b85f24fcfb00bcbbe8b289f6ad75e",
+      "validation_count": 81,
+      "validation_family": "15/9-F-12",
+      "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+    },
+    {
+      "context_id": "inner::15/9-F-12::15/9-19",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-12",
+      "train_all_count": 988,
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "65cbba488c0614c1a774d988c54197eac4721d4388a95d98628f60bbef95453f",
+      "validation_count": 147,
+      "validation_family": "15/9-19",
+      "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+    },
+    {
+      "context_id": "inner::15/9-F-12::15/9-F-1",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-12",
+      "train_all_count": 684,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-11"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "aadd6f766b49d7c049621db94ad19605f84070c40aca43ac569a6dd1df28f66f",
+      "validation_count": 451,
+      "validation_family": "15/9-F-1",
+      "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+    },
+    {
+      "context_id": "inner::15/9-F-12::15/9-F-11",
+      "fit_validation_overlap": false,
+      "level": "inner",
+      "outer": "15/9-F-12",
+      "train_all_count": 598,
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1"
+      ],
+      "train_selected_count": 192,
+      "train_selected_sample_ids_sha256": "508e23d3a383bf2a891761af2b0939ceb85a41e3b2b811afdf80b2171a9281df",
+      "validation_count": 537,
+      "validation_family": "15/9-F-11",
+      "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+    }
+  ],
+  "development": {
+    "families": [
+      "15/9-19",
+      "15/9-F-1",
+      "15/9-F-11",
+      "15/9-F-12"
+    ],
+    "family_count": 4,
+    "guard_rows": 81,
+    "sample_count": 1216,
+    "train_h5_rows": 1135,
+    "wells": [
+      "15/9-19 A",
+      "15/9-19 BT2",
+      "15/9-19 SR",
+      "15/9-F-1",
+      "15/9-F-1 A",
+      "15/9-F-1 B",
+      "15/9-F-1 C",
+      "15/9-F-11 A",
+      "15/9-F-11 B",
+      "15/9-F-11 T2",
+      "15/9-F-12"
+    ]
+  },
+  "frozen_family_seen": false,
+  "input_shapes": {
+    "seismic": [
+      3,
+      3,
+      9
+    ],
+    "well_log": [
+      9,
+      8
+    ]
+  },
+  "moment_adapter": {
+    "adapted_shape": [
+      1216,
+      9,
+      33
+    ],
+    "label_independent": true,
+    "masks_preserved": true,
+    "n_channels": 9,
+    "padded_length": 33,
+    "right_padding_exactly_zero": true,
+    "source_shape": [
+      1216,
+      9,
+      8
+    ],
+    "valid_length": 8,
+    "values": "per-sample per-log observed-only zscore"
+  },
+  "p5_strong_baseline": {
+    "configs": {
+      "extra_trees_regressor": {
+        "max_depth": 8,
+        "max_features": 0.7,
+        "min_samples_leaf": 2,
+        "n_estimators": 32,
+        "n_jobs": 1,
+        "random_state": 2693
+      },
+      "xgboost_regressor": {
+        "colsample_bytree": 0.8,
+        "learning_rate": 0.05,
+        "max_depth": 4,
+        "n_estimators": 32,
+        "n_jobs": 1,
+        "random_state": 2693,
+        "reg_lambda": 0.001,
+        "subsample": 0.8,
+        "tree_method": "hist"
+      }
+    },
+    "historical_baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+    "input": "153 = 81 seismic amplitudes + 36 normalized log values + 36 masks",
+    "leaderboards": {
+      "KLOGH": {
+        "sha256": "f80a05a039f56b9c9bd5bce9804d77ad811ba66d67e73315b0e6d1c251c5e539",
+        "winner": "extra_trees_regressor"
+      },
+      "PHIF": {
+        "sha256": "590ef021351b04264f0a6e889ac206ef1929aea9d54ca9d823a879f8265aa8bf",
+        "winner": "extra_trees_regressor"
+      },
+      "SW": {
+        "sha256": "0d68817ee16e716a1b0ef18d52dc3e3988679b0f1f08a10e2f4cd3956c98c919",
+        "winner": "xgboost_regressor"
+      }
+    },
+    "preprocessing": "fit on each context train rows only",
+    "selection": "deterministic family-balanced depth-spread, at most 192 train rows",
+    "source_commit": "317ee5d320c061bef78fb6db4fc395764dd18e8d",
+    "source_files": {
+      "budget": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_pipelines/02_task_datasets/reservoir/reservoir_p5_stage3_budget.json",
+        "sha256": "d7f36c0917d3ff68fc6c47fb2258ae2c86f802d5299ea0a5ff23c00e1b53e0a1"
+      },
+      "common_adapter": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/_p5_common.py",
+        "sha256": "36053f02ed1bfdc25b195229a0c9b76616cdeee312afc996981210a68688e6ad"
+      },
+      "extra_trees_adapter": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/extra_trees_regressor.py",
+        "sha256": "e946f23a168d4a34eebf2052a36c50f70d14533e41bce623d59e2fb0b281d9fa"
+      },
+      "runner": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_pipelines/02_task_datasets/reservoir/reservoir_p5_stage3.py",
+        "sha256": "9e709582c9fb64505f28f989220090cd1c7504bcdee237c88ef35939454dea0f"
+      },
+      "source_lock": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/source_lock.json",
+        "sha256": "a25789166f0a9eae7bbfe6716009fa65aa45c2a1f93118e1e10ffb9711bb0db8"
+      },
+      "xgboost_adapter": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/xgboost_regressor.py",
+        "sha256": "a39c22117d0807f371a3647a45da62a4deec8e2ffc01b505df9f948bdf4eb1ee"
+      }
+    },
+    "source_head_is_descendant": false,
+    "status": "P5_STRONG_BASELINE_REPLAY_LOCKED",
+    "winners": {
+      "KLOGH": "extra_trees_regressor",
+      "PHIF": "extra_trees_regressor",
+      "SW": "xgboost_regressor"
+    }
+  },
+  "phase0_cache_sha256": "c039084674b912b44f3ce43ea9cc81871010d5116a501efd63b1000c96fe6308",
+  "schema": "p41-phase0/v2",
+  "source_hashes": {
+    "guard_npz": "67b3866d1975f0ddb32b7016d3e7ba6fa595a5cbbd03cb6b0231a74851ca77fe",
+    "run_manifest": "9b34d916f75860294673a4061401a7fcfce462b0c8b3d85aeb5c43bf8fafeef9",
+    "split_manifest": "50063177c9e5bfb4994b855226ddc2a312aebdba8fbcb7afa5ddc45cfdae9ea1",
+    "train_h5": "b1962a89b049dd2c23ff2fbf857b5daf69de8b40c2f1f5166205f9bc3df70ab2"
+  },
+  "source_joint_complete_case_filter": true,
+  "status": "PHASE0_READY",
+  "targets": [
+    "PHIF",
+    "log1p(KLOGH)",
+    "SW"
+  ],
+  "test_access": false
+}

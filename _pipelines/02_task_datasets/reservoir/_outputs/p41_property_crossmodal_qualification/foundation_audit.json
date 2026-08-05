@@ -1,0 +1,166 @@
+{
+  "assets": {
+    "auto_download": false,
+    "gfm": {
+      "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
+      "license": "Apache-2.0",
+      "model_card_sha256": "3ca7d92f45bac244c7fa9fb8460b703636e853acbbaa35831ae4dc9bdcdbcf5f",
+      "model_id": "thinkonward/geophysical-foundation-model",
+      "revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+      "source_root": "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src",
+      "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
+      "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+    },
+    "local_only": true,
+    "moment": {
+      "config_sha256": "f1c66c2bb845229c0ed27a1600dbcc956b85ab21f9e5fd8a1663e6641bed7755",
+      "dependency_root": "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+      "model_id": "AutonLab/MOMENT-1-base",
+      "revision": "5e44b0ea26376a176360f87831124e018f876d96",
+      "source_root": "/mnt/data/yongan-admin-2/.cache/upstream/moment",
+      "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+    }
+  },
+  "device": "cuda:5",
+  "foundation_cache_sha256": "ab8808941f197f6f0bd01bc1661cda544c3db776922582383b31fda1def6f38c",
+  "gfm": {
+    "all_encoder_parameters_frozen": true,
+    "feature_variance": 1.3526757955551147,
+    "input_section_shape": [
+      91,
+      400,
+      160
+    ],
+    "normalization": "per-section amplitude z-score; label-independent",
+    "parameter_count": 371104800,
+    "projection": "none",
+    "retained_native_token_shape": [
+      1216,
+      2,
+      1200
+    ],
+    "retained_token_order": [
+      "CLS",
+      "aligned_complete_trace"
+    ],
+    "source_root": "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src",
+    "source_token_shape": [
+      91,
+      161,
+      1200
+    ],
+    "token_width": 1200,
+    "weight_mode": "pretrained"
+  },
+  "gfm_random": {
+    "all_encoder_parameters_frozen": true,
+    "feature_variance": 0.9999989867210388,
+    "input_section_shape": [
+      91,
+      400,
+      160
+    ],
+    "normalization": "per-section amplitude z-score; label-independent",
+    "parameter_count": 371104800,
+    "projection": "none",
+    "retained_native_token_shape": [
+      1216,
+      2,
+      1200
+    ],
+    "retained_token_order": [
+      "CLS",
+      "aligned_complete_trace"
+    ],
+    "source_root": "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src",
+    "source_token_shape": [
+      91,
+      161,
+      1200
+    ],
+    "token_width": 1200,
+    "weight_mode": "random_init"
+  },
+  "gfm_shifted": {
+    "all_encoder_parameters_frozen": true,
+    "feature_variance": 1.3526796102523804,
+    "input_section_shape": [
+      91,
+      400,
+      160
+    ],
+    "intervention": "native section shifted +1 sample (4 ms) on time axis",
+    "max_abs_feature_difference_vs_aligned": 2.9088294506073,
+    "normalization": "per-section amplitude z-score; label-independent",
+    "parameter_count": 371104800,
+    "projection": "none",
+    "retained_native_token_shape": [
+      1216,
+      2,
+      1200
+    ],
+    "retained_token_order": [
+      "CLS",
+      "aligned_complete_trace"
+    ],
+    "source_root": "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src",
+    "source_token_shape": [
+      91,
+      161,
+      1200
+    ],
+    "token_width": 1200,
+    "validation_intervention": false,
+    "weight_mode": "pretrained"
+  },
+  "moment": {
+    "adapter": "label-independent per-sample curve normalization; exact zero right-pad 8->33 with input mask",
+    "all_encoder_parameters_frozen": true,
+    "dependency_root": "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+    "feature_variance": 0.10153783857822418,
+    "input_shape": [
+      1216,
+      9,
+      33
+    ],
+    "native_token_shape": [
+      1216,
+      9,
+      4,
+      768
+    ],
+    "parameter_count": 109656195,
+    "projection": "none",
+    "source_root": "/mnt/data/yongan-admin-2/.cache/upstream/moment",
+    "token_width": 768,
+    "valid_length": 8,
+    "weight_mode": "pretrained"
+  },
+  "moment_random": {
+    "adapter": "label-independent per-sample curve normalization; exact zero right-pad 8->33 with input mask",
+    "all_encoder_parameters_frozen": true,
+    "dependency_root": "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+    "feature_variance": 0.8477703332901001,
+    "input_shape": [
+      1216,
+      9,
+      33
+    ],
+    "native_token_shape": [
+      1216,
+      9,
+      4,
+      768
+    ],
+    "parameter_count": 109656195,
+    "projection": "none",
+    "source_root": "/mnt/data/yongan-admin-2/.cache/upstream/moment",
+    "token_width": 768,
+    "valid_length": 8,
+    "weight_mode": "random_init"
+  },
+  "pretrained_random_max_abs_difference": {
+    "gfm": 18.17129898071289,
+    "moment": 4.454423904418945
+  }
+}

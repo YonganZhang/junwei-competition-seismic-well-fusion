@@ -1,3 +1,12 @@
+---
+phase_id: P39
+status: accepted
+severity: major
+owner_col: COL4
+source: experiment
+closure_evidence: _pipelines/02_task_datasets/reconstruction/_outputs/p39_query_local_well_seismic_fusion/artifact_manifest.json
+---
+
 # P39.1 fixed-base query-local real-well PHIF well-seismic fusion
 
 Decision: `FEASIBLE_NO_PROMOTION`; default: `locked_p38_well_only`.

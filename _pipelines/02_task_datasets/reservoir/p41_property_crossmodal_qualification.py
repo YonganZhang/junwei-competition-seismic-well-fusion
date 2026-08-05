@@ -30,12 +30,27 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 WORKTREE_ROOT = HERE.parents[2]
+
+
+def _canonical_repo_root() -> Path:
+    """Return the shared repository root when running inside a git worktree."""
+    parts = WORKTREE_ROOT.parts
+    try:
+        marker = parts.index(".claude")
+    except ValueError:
+        return WORKTREE_ROOT
+    return Path(*parts[:marker])
+
+
+CANONICAL_ROOT = _canonical_repo_root()
+_legacy_property_root = CANONICAL_ROOT / ".claude/worktrees/track-property"
 SOURCE_ROOT = Path(
-    "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/track-property"
-)
-P5_ROOT = Path(
-    "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property"
-)
+    os.environ.get(
+        "JUNWEI_PROPERTY_SOURCE_ROOT",
+        str(_legacy_property_root if _legacy_property_root.is_dir() else CANONICAL_ROOT),
+    )
+).expanduser().resolve()
+P5_ROOT = Path(os.environ.get("JUNWEI_P5_ROOT", str(WORKTREE_ROOT))).expanduser().resolve()
 P5_COMMIT = "317ee5d320c061bef78fb6db4fc395764dd18e8d"
 P5_HISTORICAL_BASELINE_COMMIT = "16bebd18a0bc722afcbc4b841610bf76ce9503e4"
 P5_DIR = P5_ROOT / "_pipelines" / "02_task_datasets" / "reservoir"
@@ -60,10 +75,6 @@ P5_SOURCE_FILES = {
     "common_adapter": (
         P5_ROOT / "_models/property/_p5_common.py",
         "36053f02ed1bfdc25b195229a0c9b76616cdeee312afc996981210a68688e6ad",
-    ),
-    "source_lock": (
-        P5_ROOT / "_models/property/source_lock.json",
-        "a25789166f0a9eae7bbfe6716009fa65aa45c2a1f93118e1e10ffb9711bb0db8",
     ),
 }
 P5_BOARD_HASHES = {
@@ -100,18 +111,26 @@ RERUN_PATH = OUTPUT / "rerun_commands.json"
 EVIDENCE_PATH = OUTPUT / "evidence.md"
 INDEPENDENT_PATH = OUTPUT / "independent_metric_check.json"
 
-MOMENT_DEPS = Path("/mnt/data/yongan-admin-2/.cache/p8-foundation-deps")
-MOMENT_SOURCE = Path("/mnt/data/yongan-admin-2/.cache/upstream/moment")
+MOMENT_DEPS = Path(os.environ.get("P41_MOMENT_DEPS", "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps"))
+MOMENT_SOURCE = Path(os.environ.get("P41_MOMENT_SOURCE", "/mnt/data/yongan-admin-2/.cache/upstream/moment"))
 MOMENT_SNAPSHOT = Path(
-    "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/"
-    "snapshots/5e44b0ea26376a176360f87831124e018f876d96"
+    os.environ.get(
+        "P41_MOMENT_SNAPSHOT",
+        "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/"
+        "snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+    )
 )
-GFM_SOURCE = Path("/mnt/data/yongan-admin-2/.cache/gfm_vendor_src")
+GFM_SOURCE = Path(os.environ.get("P41_GFM_SOURCE", "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src"))
 GFM_SNAPSHOT = Path(
-    "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--thinkonward--"
-    "geophysical-foundation-model/snapshots/d4a33965730a506cfdb4c85fa2a0a344c53216a2"
+    os.environ.get(
+        "P41_GFM_SNAPSHOT",
+        "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--thinkonward--"
+        "geophysical-foundation-model/snapshots/d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+    )
 )
-TABULAR_PYTHON = Path("/mnt/data/yongan-admin-2/.cache/volve-p5/envs/tabular-cpu/bin/python")
+TABULAR_PYTHON = Path(
+    os.environ.get("P41_TABULAR_PYTHON", "/mnt/data/yongan-admin-2/.cache/volve-p5/envs/tabular-cpu/bin/python")
+)
 
 SEED = 2693
 TARGETS = ("PHIF", "log1p(KLOGH)", "SW")
@@ -1089,12 +1108,17 @@ def run_r0(device: str) -> dict[str, Any]:
     }
     write_json(SUMMARY_PATH, summary)
     independent_metric_check(write=True)
+    runner = "_pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py"
     write_json(RERUN_PATH, {
-        "phase0": [str(Path(sys.executable)), str(Path(__file__).resolve()), "--phase0-only"],
-        "r0": [str(Path(sys.executable)), str(Path(__file__).resolve()), "--device", device],
-        "verify": [str(Path(sys.executable)), str(Path(__file__).resolve()), "--verify-only"],
-        "independent_metric": [str(Path(sys.executable)), str(Path(__file__).resolve()), "--independent-metric-check"],
-        "environment_note": "Run phase0/R0/verify in torch-common; B0 is automatically delegated to pinned tabular-cpu.",
+        "phase0": ["{python}", runner, "--phase0-only"],
+        "r0": ["{python}", runner, "--device", device],
+        "verify": ["{python}", runner, "--verify-only"],
+        "independent_metric": ["{python}", runner, "--independent-metric-check"],
+        "environment_note": (
+            "Run from the repository root in torch-common. The P5 baseline is delegated to "
+            "P41_TABULAR_PYTHON; raw property assets may be overridden with "
+            "JUNWEI_PROPERTY_SOURCE_ROOT. Foundation cache roots use the P41_* environment variables."
+        ),
     })
     EVIDENCE_PATH.write_text(
         "# P41 物性井震双基础模型条件增量资格门\n\n"

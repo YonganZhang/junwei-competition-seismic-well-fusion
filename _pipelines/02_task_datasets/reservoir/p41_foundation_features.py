@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 from typing import Any
@@ -11,8 +12,15 @@ from typing import Any
 import numpy as np
 
 
-PROJ3_SITE_PACKAGES = Path("/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/lib/python3.10/site-packages")
-LOCAL_SITE_PACKAGES = Path("/mnt/data/yongan-admin-2/.local/lib/python3.10/site-packages")
+PROJ3_SITE_PACKAGES = Path(
+    os.environ.get(
+        "P41_PROJ3_SITE_PACKAGES",
+        "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/lib/python3.10/site-packages",
+    )
+)
+LOCAL_SITE_PACKAGES = Path(
+    os.environ.get("P41_LOCAL_SITE_PACKAGES", "/mnt/data/yongan-admin-2/.local/lib/python3.10/site-packages")
+)
 
 
 MOMENT_REVISION = "5e44b0ea26376a176360f87831124e018f876d96"

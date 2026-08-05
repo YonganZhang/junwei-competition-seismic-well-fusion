@@ -1,3 +1,12 @@
+---
+phase_id: P37
+status: accepted
+severity: major
+owner_col: COL4
+source: experiment
+closure_evidence: _pipelines/02_task_datasets/reconstruction/_outputs/p37_real_well_seismic_supervision_closure/artifact_manifest.json
+---
+
 # P37 real-well–seismic cross-modal foundation
 
 ## Decision
