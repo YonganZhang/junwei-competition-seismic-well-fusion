@@ -1,0 +1,660 @@
+{
+  "baseline_preservation": {
+    "p21_rmse": 0.027734374378067677,
+    "p21_summary_sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8",
+    "p30_decision": "FEASIBLE_NO_PROMOTION",
+    "p30_is_sparse_eclipse_proxy_only": true,
+    "p30_ordinary_rmse": 0.030569516403486055,
+    "p30_regression_rmse": 0.030093884155904194
+  },
+  "blockers": [
+    {
+      "code": "COMMON_NATIVE_PHIE_PARENT_COUNT_LT_3",
+      "evidence": "Only 1 independent parent well has native PHIE; F11T2 and F15A publish PHIF. The same-well PHIE/PHIF audit is non-equivalent."
+    },
+    {
+      "code": "LEGAL_DEVELOPMENT_KJI_PARENT_COUNT_LT_3",
+      "evidence": "Only 2 parent wells have any target row within the existing legal train.h5 active-KJI distance gate; F11T2 has zero."
+    }
+  ],
+  "coordinate_bounds_m": [
+    [
+      432851.25,
+      437175.25
+    ],
+    [
+      6477478.5,
+      6480275.0
+    ],
+    [
+      2800.718505859375,
+      3543.77587890625
+    ]
+  ],
+  "decision": {
+    "eclipse_grid_proxy_substituted": false,
+    "p21_remains_default": true,
+    "pilot_run": false,
+    "promotion_evaluated": false,
+    "state": "BLOCKED_REAL_ALIGNED_SUPERVISION",
+    "supervision_closes": false
+  },
+  "firewall": {
+    "development_hdf5_opened": [
+      "train.h5"
+    ],
+    "frozen_holdout_opened": false,
+    "hdf5_datasets_read": [
+      "seismic_patch[3:6]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_label_datasets_read": [],
+    "normalization_or_encoder_adaptation_run": false,
+    "target_statistics_used_for_training": false,
+    "test_h5_opened": false,
+    "training_run": false
+  },
+  "legal_development_coordinate_index": {
+    "active_rows": 134222,
+    "datasets_read": [
+      "seismic_patch[3:6]",
+      "seismic_patch[8]"
+    ],
+    "hdf5_files_opened": [
+      "train.h5"
+    ],
+    "label_datasets_read": [],
+    "patch_count": 140,
+    "patch_keys_sha256": "8c6a7a989ad7ebee7499df855202f0a5128f32778c56ee491c29822d80a45518"
+  },
+  "phase": "P37_PHASE_0_SUPERVISION_CLOSURE",
+  "phie_phif_same_well_audit": {
+    "conclusion": "PHIF cannot be silently renamed to PHIE",
+    "correlation": 0.6898342670399774,
+    "elementwise_equal": false,
+    "mae_fraction": 0.05228949627462001,
+    "maximum_absolute_difference_fraction": 0.2631971103083672,
+    "overlap_rows": 1967,
+    "phie_curve": "LFP_PHIE",
+    "phif_curve": "PHIF",
+    "phif_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+    "phif_member_sha256": "2b0bae3caa0c10f2f6fb3323cde198edcaf0e0ff3adb0c00308cf139cae9035b",
+    "rmse_fraction": 0.07790825422663222,
+    "well": "15/9-19 A"
+  },
+  "provenance": {
+    "build_summary_sha256": "950ef2405e3d98fe4dbdaf235f4f12bb22dd66f4f3560444e296b857ac905dea",
+    "p21_summary_sha256": "25a92577ca954ac1b7ca214848d24a25d0cac8a9b2ba7af5d584e4360da882b8",
+    "p30_summary_sha256": "010bf52f25f57fb1c6674ed3f3a469317222a3137e2b7ba7fd3bf1218e5d3680",
+    "script_sha256": "81b1658f2a367f95e8cf7b14de4da0492711c878155958294ac7d86714373a32",
+    "seismic_index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "seismic_vsp_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4",
+    "test_sha256": "0579084485a01959736d7d1aa1bd892ba88a2c00f160378079dc952932149161",
+    "train_h5_sha256": "2e395d810feb067b24c2295d87e6b33e308cb21aba224c6d2ddd1e6fcd88de73",
+    "well_logs_zip_sha256": "0a496a55c865a7bce1d8e5bae767869534ae3c43a8d9dbd33601259d25da6bb4",
+    "well_technical_data_zip_sha256": "d52c42f4a146ee04c35435e21e6609ecc4a0479acac6626e0c49c4fab4a6b133"
+  },
+  "rerun_commands_file": "rerun_commands.json",
+  "schema_version": "reconstruction-p37-real-well-seismic-supervision/v1",
+  "seismic_index": {
+    "affine_il_xl_to_xy": [
+      [
+        3.0240328630467417,
+        -12.128696475217623,
+        431964.7076368299
+      ],
+      [
+        12.128715063076285,
+        3.0240281880546718,
+        6348566.800326749
+      ]
+    ],
+    "crossline_range": [
+      1932,
+      2536
+    ],
+    "index_path": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/_pipelines/01_common_preprocess/outputs/seismic_index.npz",
+    "index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "inline_range": [
+      9985,
+      10369
+    ],
+    "sample_interval_ms": 4.0,
+    "sample_range_ms": [
+      0.0,
+      4500.0
+    ],
+    "sample_rows": 1126,
+    "trace_count": 232925
+  },
+  "supervision_gate": {
+    "common_legal_input_curves": [
+      "GR",
+      "RHOB",
+      "NPHI",
+      "DT",
+      "RT",
+      "CALI"
+    ],
+    "common_legal_input_gate_passed": true,
+    "common_phie_gate_passed": false,
+    "full_alignment_for_all_parent_wells_passed": false,
+    "independent_parent_well_gate_passed": true,
+    "independent_parent_wells_audited": 3,
+    "independent_parent_wells_required": 3,
+    "literal_native_phie_parent_wells_available": 1,
+    "literal_native_phie_parent_wells_required": 3,
+    "literal_native_phie_parents": [
+      "15/9-19"
+    ],
+    "parents_with_auditable_actual_survey_and_checkshot": [
+      "15/9-19",
+      "15/9-F-11",
+      "15/9-F-15"
+    ],
+    "parents_with_legal_train_kji": [
+      "15/9-19",
+      "15/9-F-15"
+    ]
+  },
+  "well_profiles": {
+    "19A": {
+      "actual_survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          109.0,
+          4131.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-19/15_9-19 A/Standard Survey Report_Volve F_159-19_19 A_19 A_ACTUAL.pdf",
+        "member_sha256": "f24943c472b1077d398b3d61727694f3b8f693eceaf854fdc8382a8936aa064f",
+        "pages": 10,
+        "reference_elevation_m_above_msl": 25.0,
+        "stations": 313,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          84.0,
+          3293.72
+        ]
+      },
+      "alignment_join": {
+        "aligned_ranges": {
+          "crossline": [
+            2391,
+            2396
+          ],
+          "inline": [
+            10180,
+            10198
+          ],
+          "tvdss_m": [
+            2720.264873821429,
+            3246.77350359322
+          ],
+          "twt_ms": [
+            2479.5664385746786,
+            2767.529925887506
+          ]
+        },
+        "legal_train_kji_gate": {
+          "maximum_scaled_distance": 6.0,
+          "scales_m": [
+            50.0,
+            50.0,
+            2.0
+          ]
+        },
+        "legal_train_kji_rows": 879,
+        "legal_train_unique_kji": 76,
+        "md_to_tvdss_rows": 3842,
+        "nearest_legal_train_scaled_distance": {
+          "max": 53.3934040061645,
+          "max_accepted": 5.988682515792341,
+          "median": 16.919688815238324,
+          "min": 0.26603950450223224
+        },
+        "seismic_ilxl_time_rows": 3806,
+        "target_rows": 3842,
+        "tvdss_to_twt_rows": 3806,
+        "within_full_eclipse_bounds_rows": 3230
+      },
+      "branch": "15/9-19 A",
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_19A.txt",
+        "member_sha256": "7818892b00fd6202372d5012d1b8294ea87ba5224a33918883b7b668710f558c",
+        "rows": 185,
+        "tvdss_range_m": [
+          0.0,
+          3246.9
+        ],
+        "twt_range_ms": [
+          0.0,
+          2767.6001
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "inputs": {
+        "curves": {
+          "CALI": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_CALI",
+            "source_unit": "inches"
+          },
+          "DT": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_DT",
+            "source_unit": "us/ft"
+          },
+          "GR": {
+            "finite_md_range_m": [
+              3500.0183,
+              4086.9106
+            ],
+            "finite_rows": 3850,
+            "present": true,
+            "source_curve": "LFP_GR",
+            "source_unit": "API"
+          },
+          "NPHI": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_NPHI",
+            "source_unit": "v/v_decimal"
+          },
+          "RHOB": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3902,
+            "present": true,
+            "source_curve": "LFP_RHOB",
+            "source_unit": "g/cm3"
+          },
+          "RT": {
+            "finite_md_range_m": [
+              3500.0183,
+              4094.9878
+            ],
+            "finite_rows": 3905,
+            "present": true,
+            "source_curve": "LFP_RT",
+            "source_unit": "ohm.m"
+          }
+        },
+        "depth_unit_source": "M",
+        "format": "las",
+        "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+        "member_sha256": "92537d18afb6608818c635c77b0d1493fbdbe8ccaaf83e48d755411f23e6e7b6"
+      },
+      "parent_well": "15/9-19",
+      "target": {
+        "curve": "LFP_PHIE",
+        "curve_unit": "v/v_decimal",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "M",
+        "format": "las",
+        "md_range_m": [
+          3500.0183,
+          4085.844
+        ],
+        "member": "Well_logs/06.LFP/15_9-19 A/159-19A_LFP.las",
+        "member_sha256": "92537d18afb6608818c635c77b0d1493fbdbe8ccaaf83e48d755411f23e6e7b6",
+        "physical_rows": 3842,
+        "value_range_fraction": [
+          0.01,
+          0.3801
+        ]
+      }
+    },
+    "F11T2": {
+      "actual_survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          145.9,
+          4562.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-F-11/15_9-F-11 T2/Standard Survey Report_Volve F_F-11_159-F-11 T2_159-F-11 T2_ACTUAL.pdf",
+        "member_sha256": "5193e039f5df80589d5cfc54d9877918ae98d2114fdf9e1221a5b31f76819c73",
+        "pages": 13,
+        "reference_elevation_m_above_msl": 54.9,
+        "stations": 443,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          91.0,
+          3345.4
+        ]
+      },
+      "alignment_join": {
+        "aligned_ranges": {
+          "crossline": [
+            2202,
+            2205
+          ],
+          "inline": [
+            10214,
+            10216
+          ],
+          "tvdss_m": [
+            3125.1778999999997,
+            3312.2882000000004
+          ],
+          "twt_ms": [
+            2726.783555174777,
+            2823.086240379404
+          ]
+        },
+        "legal_train_kji_gate": {
+          "maximum_scaled_distance": 6.0,
+          "scales_m": [
+            50.0,
+            50.0,
+            2.0
+          ]
+        },
+        "legal_train_kji_rows": 0,
+        "legal_train_unique_kji": 0,
+        "md_to_tvdss_rows": 2017,
+        "nearest_legal_train_scaled_distance": {
+          "max": 17.9454299565432,
+          "max_accepted": null,
+          "median": 9.747646751768865,
+          "min": 9.05590655452919
+        },
+        "seismic_ilxl_time_rows": 1932,
+        "target_rows": 2017,
+        "tvdss_to_twt_rows": 1932,
+        "within_full_eclipse_bounds_rows": 1932
+      },
+      "branch": "15/9-F-11 T2",
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_F_11T2.ASC",
+        "member_sha256": "41c9dd5c5e0d8c7753bdc88f1ee50870a1a7dc67ecba73a16925f33ea1751ed1",
+        "rows": 249,
+        "tvdss_range_m": [
+          634.43,
+          3312.36
+        ],
+        "twt_range_ms": [
+          717.474,
+          2823.12
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "inputs": {
+        "curves": {
+          "CALI": {
+            "finite_md_range_m": [
+              2570.7,
+              4538.3
+            ],
+            "finite_rows": 19677,
+            "present": true,
+            "source_curve": "CALI",
+            "source_unit": "inches"
+          },
+          "DT": {
+            "finite_md_range_m": [
+              2575.9,
+              4522.3
+            ],
+            "finite_rows": 19465,
+            "present": true,
+            "source_curve": "DT",
+            "source_unit": "us/ft"
+          },
+          "GR": {
+            "finite_md_range_m": [
+              188.5,
+              4550.9
+            ],
+            "finite_rows": 43566,
+            "present": true,
+            "source_curve": "GR",
+            "source_unit": "API"
+          },
+          "NPHI": {
+            "finite_md_range_m": [
+              2577.0,
+              4536.2
+            ],
+            "finite_rows": 19593,
+            "present": true,
+            "source_curve": "NPHI",
+            "source_unit": "v/v"
+          },
+          "RHOB": {
+            "finite_md_range_m": [
+              2577.0,
+              4538.9
+            ],
+            "finite_rows": 19620,
+            "present": true,
+            "source_curve": "RHOB",
+            "source_unit": "g/cm3"
+          },
+          "RT": {
+            "finite_md_range_m": [
+              208.9,
+              4553.0
+            ],
+            "finite_rows": 43161,
+            "present": true,
+            "source_curve": "RT",
+            "source_unit": "ohm.m"
+          }
+        },
+        "depth_unit_source": "M",
+        "format": "las",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_INPUT_1.LAS",
+        "member_sha256": "6ef9631e99d7da34b3d95356fa58dd6ecac230413723c320c30340dd7ed7979c"
+      },
+      "parent_well": "15/9-F-11",
+      "target": {
+        "curve": "PHIF",
+        "curve_unit": "v/v",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "M",
+        "format": "las",
+        "md_range_m": [
+          4334.7,
+          4536.3
+        ],
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-11 T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS",
+        "member_sha256": "d4c214e11d18a2aaa325dc8811d8d42ea77396f21f7d0bd9d022dfa08554a611",
+        "physical_rows": 2017,
+        "value_range_fraction": [
+          0.001,
+          0.245
+        ]
+      }
+    },
+    "F15A": {
+      "actual_survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          145.9,
+          4095.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-F-15/15_9-F-15 A/Standard Survey Report_Volve F_F-15_F-15A_F-15A_ACTUAL.pdf",
+        "member_sha256": "4769ccf8e0356d5b18e0cdd86544ea23ffff67e757e1fd2ce23f3abcc3702e29",
+        "pages": 5,
+        "reference_elevation_m_above_msl": 54.9,
+        "stations": 100,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          91.0,
+          3157.24
+        ]
+      },
+      "alignment_join": {
+        "aligned_ranges": {
+          "crossline": [
+            2270,
+            2358
+          ],
+          "inline": [
+            10081,
+            10100
+          ],
+          "tvdss_m": [
+            2399.7750643512777,
+            3079.774299429705
+          ],
+          "twt_ms": [
+            2306.797829483599,
+            2671.2837924331475
+          ]
+        },
+        "legal_train_kji_gate": {
+          "maximum_scaled_distance": 6.0,
+          "scales_m": [
+            50.0,
+            50.0,
+            2.0
+          ]
+        },
+        "legal_train_kji_rows": 2594,
+        "legal_train_unique_kji": 153,
+        "md_to_tvdss_rows": 9668,
+        "nearest_legal_train_scaled_distance": {
+          "max": 201.28126727388272,
+          "max_accepted": 5.997676371167054,
+          "median": 15.565185326896447,
+          "min": 0.24045018046897523
+        },
+        "seismic_ilxl_time_rows": 9086,
+        "target_rows": 9668,
+        "tvdss_to_twt_rows": 9086,
+        "within_full_eclipse_bounds_rows": 4720
+      },
+      "branch": "15/9-F-15 A",
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_F_15A.txt",
+        "member_sha256": "ffe08e8cc53a43e721490665cd98c1371c987dcc45cc7ccfbf2d4bce32a2bb65",
+        "rows": 191,
+        "tvdss_range_m": [
+          1052.0,
+          3079.8
+        ],
+        "twt_range_ms": [
+          1096.2,
+          2671.3
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "inputs": {
+        "curves": {
+          "CALI": {
+            "finite_md_range_m": [
+              2575.1028,
+              4084.4723999999997
+            ],
+            "finite_rows": 9905,
+            "present": true,
+            "source_curve": "CALI",
+            "source_unit": "IN"
+          },
+          "DT": {
+            "finite_md_range_m": [
+              2606.9544,
+              4069.9944
+            ],
+            "finite_rows": 9369,
+            "present": true,
+            "source_curve": "DT",
+            "source_unit": "US/FT"
+          },
+          "GR": {
+            "finite_md_range_m": [
+              216.8652,
+              4085.9964
+            ],
+            "finite_rows": 25353,
+            "present": true,
+            "source_curve": "GR",
+            "source_unit": "GAPI"
+          },
+          "NPHI": {
+            "finite_md_range_m": [
+              2575.1028,
+              4081.8815999999997
+            ],
+            "finite_rows": 9880,
+            "present": true,
+            "source_curve": "NPHI",
+            "source_unit": "V/V"
+          },
+          "RHOB": {
+            "finite_md_range_m": [
+              2575.1028,
+              4084.6248
+            ],
+            "finite_rows": 9906,
+            "present": true,
+            "source_curve": "RHOB",
+            "source_unit": "G/CC"
+          },
+          "RT": {
+            "finite_md_range_m": [
+              1350.1116,
+              4083.1007999999997
+            ],
+            "finite_rows": 17905,
+            "present": true,
+            "source_curve": "RT",
+            "source_unit": "OHMM"
+          }
+        },
+        "depth_unit_source": "0.1 in",
+        "format": "dlis",
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_INPUT_1.DLIS",
+        "member_sha256": "3db25740007a8df8e04759b0aaf7767637702771155ab70927a06908ad013a6d"
+      },
+      "parent_well": "15/9-F-15",
+      "target": {
+        "curve": "PHIF",
+        "curve_unit": "V/V",
+        "depth_unit_canonical": "m_MD",
+        "depth_unit_source": "0.1 in",
+        "format": "dlis",
+        "md_range_m": [
+          2608.6308,
+          4081.8815999999997
+        ],
+        "member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-F-15 A/WLC_PETRO_COMPUTED_OUTPUT_1.DLIS",
+        "member_sha256": "88c49b77f57829b50736739087f3d59bec060170cd08ab0d6f1f222d3b677337",
+        "physical_rows": 9668,
+        "value_range_fraction": [
+          0.00139999995008111,
+          0.3531999886035919
+        ]
+      }
+    }
+  }
+}

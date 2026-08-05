@@ -1,0 +1,54 @@
+{
+  "artifacts": [
+    {
+      "bytes": 374976,
+      "path": "aligned_pair_manifest.jsonl",
+      "sha256": "7e2cd179aca11c8494945fda202cbe55f72fe6e4bc7d991e5317014b237b752e"
+    },
+    {
+      "bytes": 7779,
+      "path": "phase0_freeze.json",
+      "sha256": "9d5ced13471b99475f16f3872fe0e72cc02c61448cfa752b38f1fe6e6a1918d9"
+    },
+    {
+      "bytes": 536463,
+      "path": "results.jsonl",
+      "sha256": "3683c9f46778ff544bc8c7b4be815a33ce5a12a85f160b635aaec00105c2244e"
+    },
+    {
+      "bytes": 679373,
+      "path": "summary.json",
+      "sha256": "c3dd3123ea5beb4106585599de22bc913308f1e099eeea36228234502c624279"
+    },
+    {
+      "bytes": 99088,
+      "path": "predictions.npz",
+      "sha256": "7ff802de897e03d55c387119158fdf13744c5d174d765ee7e98a3fa9e4c87511"
+    },
+    {
+      "bytes": 1483,
+      "path": "evidence.md",
+      "sha256": "cb1bde7ef2405f6d8bd24e9d5953e47104788a1c4821bc1fe106c50d4db67b2c"
+    },
+    {
+      "bytes": 3833,
+      "path": "foundation_audit.json",
+      "sha256": "2a2e3c955682e6bbed57207ddf93931dd3981931c336e90bac22dce8ab00133a"
+    },
+    {
+      "bytes": 79121,
+      "path": "pca_audit.json",
+      "sha256": "2e37916fe3f64ede217ee010252d44893793685981811b5b785e0a0cea511898"
+    },
+    {
+      "bytes": 584,
+      "path": "rerun_commands.json",
+      "sha256": "5ba2c0ec0ab5e7b8b5b7711c60687cf2abbceba96e22a1878cf87ebbe31765dd"
+    }
+  ],
+  "development_batch_sha256": "b6817ae218dee12bc72a1551e76423a61eb4ff11faf70dcb0444b01ba422f51c",
+  "frozen_test_accessed": false,
+  "known_holdout_accessed": false,
+  "schema_version": "lithofacies-p40-crossmodal-foundation-pilot/v1",
+  "split_hash": "a06375429f9e9cf380fb5cdebd7d0cb7b25d7a13d29522b8e2420f4dae1b4555"
+}

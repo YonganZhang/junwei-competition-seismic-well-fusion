@@ -1,0 +1,6214 @@
+{
+  "a7_max_abs_error": 0.0,
+  "all_transforms_fit_train_only": true,
+  "b0_shared_by_all_arms": true,
+  "contexts": [
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0004951865994371474,
+          "final_loss": 0.00024177806335501373,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5309550477349276e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.1549944430589676,
+            0.21230453252792358,
+            -0.14271357655525208
+          ],
+          "gate_raw": [
+            0.15625379979610443,
+            0.2155834287405014,
+            -0.14369447529315948
+          ],
+          "initial_gradient_norm": 0.001634154818020761,
+          "initial_loss": 0.017451733350753784,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.8040621280670166,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000633555871900171,
+          "final_loss": 0.00031835128902457654,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5309550477349276e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.21234549582004547,
+            -0.22839415073394775,
+            0.14565227925777435
+          ],
+          "gate_raw": [
+            0.2156263142824173,
+            -0.23249457776546478,
+            0.1466955691576004
+          ],
+          "initial_gradient_norm": 0.0018301430391147733,
+          "initial_loss": 0.017451733350753784,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.808505654335022,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0004503436211962253,
+          "final_loss": 0.00019121395598631352,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5309550477349276e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.169422909617424,
+            -0.21236750483512878,
+            0.15057499706745148
+          ],
+          "gate_raw": [
+            -0.17107245326042175,
+            -0.21564936637878418,
+            0.15172871947288513
+          ],
+          "initial_gradient_norm": 0.0023588482290506363,
+          "initial_loss": 0.017451733350753784,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.4300326108932495,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0005169094074517488,
+          "final_loss": 0.00026562405400909483,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5309550477349276e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.24280205368995667,
+            0.22796513140201569,
+            -0.14900919795036316
+          ],
+          "gate_raw": [
+            0.24774956703186035,
+            0.23204199969768524,
+            -0.15012697875499725
+          ],
+          "initial_gradient_norm": 0.0009387204190716147,
+          "initial_loss": 0.017451733350753784,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.522322416305542,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.002698269672691822,
+          "final_loss": 0.00438443198800087,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5309550477349276e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.18374453485012054,
+            -0.16866320371627808,
+            -0.16801603138446808
+          ],
+          "gate_raw": [
+            0.18585532903671265,
+            -0.17029041051864624,
+            -0.16962435841560364
+          ],
+          "initial_gradient_norm": 0.0003492157848086208,
+          "initial_loss": 0.017451733350753784,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.9069086313247681,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0007438748725689948,
+          "final_loss": 0.0009009744971990585,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5309550477349276e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.13150663673877716,
+            0.13571622967720032,
+            0.24807216227054596
+          ],
+          "gate_raw": [
+            0.13227269053459167,
+            0.13655881583690643,
+            0.25335749983787537
+          ],
+          "initial_gradient_norm": 0.0005710592376999557,
+          "initial_loss": 0.017451733350753784,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6761717796325684,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "outer::15/9-19",
+      "context_index": 0,
+      "level": "outer",
+      "outer": "15/9-19",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "a64ab425c8f83c0024f2572c74f47d980537801f688c48c700edac1b34110339",
+        "b0_validation_prediction_sha256": "93835848384e904ef1db3c6ee8e8cf81d230fc83265a0106b3c1cbcd0eef0705",
+        "context_id": "outer::15/9-19",
+        "context_index": 0,
+        "feature_count": 153,
+        "level": "outer",
+        "outer": "15/9-19",
+        "train_families": [
+          "15/9-F-1",
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "50e7d42f36a15eecd3e9799f43cd9c8db221287500af5033eff7b97e5d2a8a12",
+        "validation_family": "15/9-19",
+        "validation_rows": 147,
+        "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9134170413017273,
+          "fit_mean_sha256": "a3503d94fa95a75106867c05d28d0fd70f4e78daa940e16ae45cb8135268b20f",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9352675080299377,
+          "fit_mean_sha256": "fdf5caefa3602227da67e12d6be6f6daf9f14b76e48002ee3f5315479de22f2d",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9134170413017273,
+          "fit_mean_sha256": "a3503d94fa95a75106867c05d28d0fd70f4e78daa940e16ae45cb8135268b20f",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8416661620140076,
+          "fit_mean_sha256": "3542a2a0ec27390dfa15d21b105f2690a2e62f7b92dbd987b0b2fbbce730a8f2",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.861889123916626,
+          "fit_mean_sha256": "4e48689417fd55461bf2f60a4c4fb0ce2269a232ba172617253c189500b83e20",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 9.470172882080078,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-19"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00042158213909715414,
+          "final_loss": 0.00018303334945812821,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.559630220526742e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.1498011201620102,
+            0.16679537296295166,
+            0.1303807497024536
+          ],
+          "gate_raw": [
+            -0.15093699097633362,
+            0.16836850345134735,
+            0.13112716376781464
+          ],
+          "initial_gradient_norm": 0.00017344707157462835,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.2554041147232056,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0013776901178061962,
+          "final_loss": 0.0003119800821878016,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.559630220526742e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.22781921923160553,
+            0.17580024898052216,
+            0.13458530604839325
+          ],
+          "gate_raw": [
+            0.23188810050487518,
+            0.17764566838741302,
+            0.13540683686733246
+          ],
+          "initial_gradient_norm": 0.0005979757406748831,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.828876256942749,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000676131749060005,
+          "final_loss": 0.00028861756436526775,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.559630220526742e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.22084882855415344,
+            0.15811052918434143,
+            -0.15328645706176758
+          ],
+          "gate_raw": [
+            0.22454828023910522,
+            0.15944817662239075,
+            -0.15450425446033478
+          ],
+          "initial_gradient_norm": 0.00043947866652160883,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.3325039148330688,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000637355144135654,
+          "final_loss": 0.0002872559998650104,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.559630220526742e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.1963069885969162,
+            0.20322056114673615,
+            0.13597740232944489
+          ],
+          "gate_raw": [
+            0.1988885998725891,
+            0.2060895711183548,
+            0.13682489097118378
+          ],
+          "initial_gradient_norm": 0.0015635358868166804,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.3612926006317139,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0013194649945944548,
+          "final_loss": 0.004482439253479242,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.559630220526742e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.23418723046779633,
+            0.23844538629055023,
+            -0.1147930771112442
+          ],
+          "gate_raw": [
+            0.23861511051654816,
+            0.24312512576580048,
+            -0.11530132591724396
+          ],
+          "initial_gradient_norm": 0.0006137537420727313,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 2.2843825817108154,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.001662926166318357,
+          "final_loss": 0.0007930451538413763,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.559630220526742e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.11884896457195282,
+            -0.14210636913776398,
+            0.2305740863084793
+          ],
+          "gate_raw": [
+            -0.1194133386015892,
+            -0.14307470619678497,
+            0.2347957044839859
+          ],
+          "initial_gradient_norm": 7.70301921875216e-05,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7640895247459412,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-19::15/9-F-1",
+      "context_index": 1,
+      "level": "inner",
+      "outer": "15/9-19",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "e64c02ec0d3d8ca9966a90d55dbb9dd13ecd61032eba3c4c26ecda8d7565ab35",
+        "b0_validation_prediction_sha256": "0e00ef8cdf55d6a28fa8e0bee635cd8b7633663737cf8c0b602614ea3504e189",
+        "context_id": "inner::15/9-19::15/9-F-1",
+        "context_index": 1,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-19",
+        "train_families": [
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "train_rows": 177,
+        "train_sample_ids_sha256": "596ec161ef1f152ab2b7b4f7a58214a010d7880103b4cfc20b0f63d3690e1fd6",
+        "validation_family": "15/9-F-1",
+        "validation_rows": 451,
+        "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770459532737732,
+          "fit_mean_sha256": "bccacc90f0c8b9154ebe0f8c255e7813735a31fb0f89d23f4eb5a88aba89d942",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9809528589248657,
+          "fit_mean_sha256": "754d022502f915ceb55c9ed95a7ba00c76f1e645aa31509e7ac4f061fbf1e9df",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770459532737732,
+          "fit_mean_sha256": "bccacc90f0c8b9154ebe0f8c255e7813735a31fb0f89d23f4eb5a88aba89d942",
+          "fit_rows": 177,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8387096524238586,
+          "fit_mean_sha256": "32a986e2fcffd6330deadc407afb9d423e53f4b006cb57711570c3a3b887f2c7",
+          "fit_rows": 177,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8571093082427979,
+          "fit_mean_sha256": "324cbf5938378c153066d8db6678014850d14593ac42c7102a0951df027901fa",
+          "fit_rows": 177,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 177
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 177,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 7.926024436950684,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-F-1"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000403534242650494,
+          "final_loss": 0.00013559350918512791,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4970812944881118e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.1157367154955864,
+            0.17679643630981445,
+            -0.13565565645694733
+          ],
+          "gate_raw": [
+            0.1162576749920845,
+            0.17867381870746613,
+            -0.13649709522724152
+          ],
+          "initial_gradient_norm": 0.0014848734717816114,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.863411784172058,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00028331467183306813,
+          "final_loss": 0.0001825013168854639,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4970812944881118e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2503172755241394,
+            0.24789388477802277,
+            0.15491138398647308
+          ],
+          "gate_raw": [
+            0.25575125217437744,
+            0.2531675398349762,
+            0.15616869926452637
+          ],
+          "initial_gradient_norm": 0.0032667655032128096,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7635563611984253,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00031361228320747614,
+          "final_loss": 0.00017572627984918654,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4970812944881118e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2065022736787796,
+            0.21114087104797363,
+            0.15269093215465546
+          ],
+          "gate_raw": [
+            -0.2095150500535965,
+            0.214365154504776,
+            0.15389445424079895
+          ],
+          "initial_gradient_norm": 0.0016022900817915797,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.3490815162658691,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0005650020320899785,
+          "final_loss": 0.00032868681591935456,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4970812944881118e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.17494164407253265,
+            0.17516280710697174,
+            -0.13019585609436035
+          ],
+          "gate_raw": [
+            -0.17675982415676117,
+            0.17698797583580017,
+            -0.1309390813112259
+          ],
+          "initial_gradient_norm": 0.000678213604260236,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 2.0453920364379883,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0013964528916403651,
+          "final_loss": 0.005118259694427252,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4970812944881118e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.16171720623970032,
+            -0.11877331882715225,
+            0.13196076452732086
+          ],
+          "gate_raw": [
+            0.16314952075481415,
+            -0.11933661252260208,
+            0.13273483514785767
+          ],
+          "initial_gradient_norm": 0.0013680225238204002,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.7949955463409424,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0008422551909461617,
+          "final_loss": 0.0007395439315587282,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4970812944881118e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.1259051114320755,
+            -0.19180884957313538,
+            0.19644339382648468
+          ],
+          "gate_raw": [
+            -0.12657679617404938,
+            -0.19421443343162537,
+            0.19903048872947693
+          ],
+          "initial_gradient_norm": 0.0009301922400481999,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.937759518623352,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-19::15/9-F-11",
+      "context_index": 2,
+      "level": "inner",
+      "outer": "15/9-19",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "fdf7e9aea8150fe32e39dec1c339f4c98cc8b52ecb36edecb081910f79656b90",
+        "b0_validation_prediction_sha256": "0db6a934c5ca3a04a69526f6c483de4a860a0b0ed01d34a7a3c87a558440fabd",
+        "context_id": "inner::15/9-19::15/9-F-11",
+        "context_index": 2,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-19",
+        "train_families": [
+          "15/9-F-1",
+          "15/9-F-12"
+        ],
+        "train_rows": 177,
+        "train_sample_ids_sha256": "d0990254fe6c81b3ae2039a68c51ab89a1acf883a5e2e910a60901ddbb48cf9f",
+        "validation_family": "15/9-F-11",
+        "validation_rows": 537,
+        "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9795532822608948,
+          "fit_mean_sha256": "cc8b55642e1498ef513e5c60589d15d43cdaded39694f59fd8e99b29ff006931",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9868782162666321,
+          "fit_mean_sha256": "77353590e2a260a0544a5099bd1c3579f9f09de73c89fbcd0c5df92b55db6038",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9795532822608948,
+          "fit_mean_sha256": "cc8b55642e1498ef513e5c60589d15d43cdaded39694f59fd8e99b29ff006931",
+          "fit_rows": 177,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8493525981903076,
+          "fit_mean_sha256": "150275d349991f84cc3e769f9e3868d37d95328035a1a7a327a88c847b1b1ab4",
+          "fit_rows": 177,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8785206079483032,
+          "fit_mean_sha256": "38a8fe6c72d83f3c9a4c567fe0e0a0443b2adbf76941e0223dfcb778743b0678",
+          "fit_rows": 177,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 177
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 177,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 9.437856674194336,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-F-11"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0007382511394098401,
+          "final_loss": 0.0001444181107217446,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4108982036853401e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.19345583021640778,
+            -0.13380587100982666,
+            0.13525165617465973
+          ],
+          "gate_raw": [
+            -0.19592489302158356,
+            -0.13461311161518097,
+            0.13608555495738983
+          ],
+          "initial_gradient_norm": 0.0007021137280389667,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.7595088481903076,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0005492329364642501,
+          "final_loss": 0.00028504047077149153,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4108982036853401e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.12515629827976227,
+            0.17688801884651184,
+            -0.1386839598417282
+          ],
+          "gate_raw": [
+            0.1258160024881363,
+            0.1787683516740799,
+            -0.13958348333835602
+          ],
+          "initial_gradient_norm": 0.002180199371650815,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6576908826828003,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0005518787656910717,
+          "final_loss": 0.00029603796429000795,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4108982036853401e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.1464538276195526,
+            0.16684643924236298,
+            0.1659288853406906
+          ],
+          "gate_raw": [
+            -0.14751459658145905,
+            0.16842103004455566,
+            0.16747735440731049
+          ],
+          "initial_gradient_norm": 0.000311850308207795,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7346552014350891,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0004434186266735196,
+          "final_loss": 0.0003088754019699991,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4108982036853401e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.12323909252882004,
+            -0.14268314838409424,
+            0.14444519579410553
+          ],
+          "gate_raw": [
+            -0.12386875599622726,
+            -0.1436634212732315,
+            0.14546255767345428
+          ],
+          "initial_gradient_norm": 0.0005773062584921718,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7379680871963501,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0019067287212237716,
+          "final_loss": 0.006297553423792124,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4108982036853401e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.09711411595344543,
+            0.17282380163669586,
+            0.12498744577169418
+          ],
+          "gate_raw": [
+            0.09742115437984467,
+            0.17457595467567444,
+            0.12564446032047272
+          ],
+          "initial_gradient_norm": 0.0001474601886002347,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.4458030164241791,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.001892819069325924,
+          "final_loss": 0.0008940823026932776,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4108982036853401e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2544582486152649,
+            -0.14717571437358856,
+            -0.2168131172657013
+          ],
+          "gate_raw": [
+            -0.2601739764213562,
+            -0.14825238287448883,
+            -0.22030958533287048
+          ],
+          "initial_gradient_norm": 0.0006764653371647,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7592053413391113,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-19::15/9-F-12",
+      "context_index": 3,
+      "level": "inner",
+      "outer": "15/9-19",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "23b3a97b2f3634b7f3e1dbde8eb10a08f2cbfc60e939e50149ca3b585dfc2cc8",
+        "b0_validation_prediction_sha256": "d164c74d3bb750d47ff7b8ce91422692dd95b6dd67c400e8e7b9149c22bc7458",
+        "context_id": "inner::15/9-19::15/9-F-12",
+        "context_index": 3,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-19",
+        "train_families": [
+          "15/9-F-1",
+          "15/9-F-11"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "65cbba488c0614c1a774d988c54197eac4721d4388a95d98628f60bbef95453f",
+        "validation_family": "15/9-F-12",
+        "validation_rows": 81,
+        "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9243839383125305,
+          "fit_mean_sha256": "1a3d7ed8f6a28324248a6338e46d595997df9939dfdaf308c9f8dfa7b186eb18",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.936046838760376,
+          "fit_mean_sha256": "83c11a7517b90f767ce39c7a3f0a18b2e9675e1928d4da9dd8a362f3f2c0b6d3",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9243839383125305,
+          "fit_mean_sha256": "1a3d7ed8f6a28324248a6338e46d595997df9939dfdaf308c9f8dfa7b186eb18",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8137955069541931,
+          "fit_mean_sha256": "3b36b70cf90a30c9fc6f83cb2b6ec993fd0492bd966f8e206e6f7a9689249315",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8334595561027527,
+          "fit_mean_sha256": "8958f8ad8ac4844c416080712c6455a3917b3e0ec3d3a9148e53e574b9f33a77",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 8.172019004821777,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "validation_family": "15/9-F-12"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0008522645221091807,
+          "final_loss": 0.0003074929700233042,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.563367822421391e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.24525651335716248,
+            0.2536843717098236,
+            0.12411942332983017
+          ],
+          "gate_raw": [
+            0.250359445810318,
+            0.25934669375419617,
+            0.12476275861263275
+          ],
+          "initial_gradient_norm": 0.0031631614547222853,
+          "initial_loss": 0.021755646914243698,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.6459434032440186,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0007159523665904999,
+          "final_loss": 0.0003094762214459479,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.563367822421391e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.19591124355793,
+            0.18201132118701935,
+            0.14618325233459473
+          ],
+          "gate_raw": [
+            -0.19847702980041504,
+            0.1840621381998062,
+            0.1472381055355072
+          ],
+          "initial_gradient_norm": 0.00074429449159652,
+          "initial_loss": 0.021755646914243698,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8498997092247009,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.001258561504073441,
+          "final_loss": 0.00037169564166106284,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.563367822421391e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.1956883817911148,
+            0.28964361548423767,
+            0.12674786150455475
+          ],
+          "gate_raw": [
+            0.19824528694152832,
+            0.29817721247673035,
+            0.12743321061134338
+          ],
+          "initial_gradient_norm": 0.002966976258903742,
+          "initial_loss": 0.021755646914243698,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.2899004220962524,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0025167420972138643,
+          "final_loss": 0.0005966798635199666,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.563367822421391e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2119583785533905,
+            -0.26477721333503723,
+            -0.13094274699687958
+          ],
+          "gate_raw": [
+            0.21522095799446106,
+            -0.27123886346817017,
+            -0.13169892132282257
+          ],
+          "initial_gradient_norm": 0.00047219061525538564,
+          "initial_loss": 0.021755646914243698,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.0157886743545532,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0020436702761799097,
+          "final_loss": 0.00710497610270977,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.563367822421391e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.1507212221622467,
+            0.20388218760490417,
+            0.12260990589857101
+          ],
+          "gate_raw": [
+            -0.15187834203243256,
+            0.20677979290485382,
+            0.12322991341352463
+          ],
+          "initial_gradient_norm": 0.000956993899308145,
+          "initial_loss": 0.021755646914243698,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.8472989797592163,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0013019772013649344,
+          "final_loss": 0.0012094478588551283,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.563367822421391e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.27158719301223755,
+            -0.24491187930107117,
+            -0.21671107411384583
+          ],
+          "gate_raw": [
+            -0.2785766124725342,
+            -0.24999278783798218,
+            -0.2202025204896927
+          ],
+          "initial_gradient_norm": 0.0002733796718530357,
+          "initial_loss": 0.021755646914243698,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8673933148384094,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "outer::15/9-F-1",
+      "context_index": 4,
+      "level": "outer",
+      "outer": "15/9-F-1",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "539f7445ca893e0de9b8681caefec0743d61bb18264f47032b9e908fa1fbf7ba",
+        "b0_validation_prediction_sha256": "91fa78b4c8eeb8017a6fab620aeae552a9d6d847930bc7f691acde12ec8b69b9",
+        "context_id": "outer::15/9-F-1",
+        "context_index": 4,
+        "feature_count": 153,
+        "level": "outer",
+        "outer": "15/9-F-1",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "e6dc8e3713409f3a3b4d28123d0dc6e1f2218b5015d9d5c3048752a990d7027c",
+        "validation_family": "15/9-F-1",
+        "validation_rows": 451,
+        "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9643992185592651,
+          "fit_mean_sha256": "fb1712e140220a8e80b242a956613e398d3a39d935ea0b20d927bfa2ff534e93",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9753125309944153,
+          "fit_mean_sha256": "189f5fbb9e66f3acc37502444ce34fe13864a499898d30b87bd8ba3c57492c23",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9643992185592651,
+          "fit_mean_sha256": "fb1712e140220a8e80b242a956613e398d3a39d935ea0b20d927bfa2ff534e93",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8301321864128113,
+          "fit_mean_sha256": "26206b9dda3c4e0ee3e1884aedde4b06768f1528cc7a9a8436f62d6adc4dd63c",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8403913974761963,
+          "fit_mean_sha256": "2ed9ceaea27632a0b4667d19122b4f9ec855c7f6806733f2db3ab81c63d4c301",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 8.688405990600586,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-F-1"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0004188313032500446,
+          "final_loss": 0.0002438319061184302,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5657770635613133e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.13031038641929626,
+            -0.12657766044139862,
+            -0.1414511799812317
+          ],
+          "gate_raw": [
+            0.1310555785894394,
+            -0.1272602379322052,
+            -0.14240607619285583
+          ],
+          "initial_gradient_norm": 0.0023204716853797436,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.4037026166915894,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0015565770445391536,
+          "final_loss": 0.00030166583019308746,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5657770635613133e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.22443917393684387,
+            0.15274007618427277,
+            0.14251857995986938
+          ],
+          "gate_raw": [
+            0.22832588851451874,
+            0.15394477546215057,
+            0.14349544048309326
+          ],
+          "initial_gradient_norm": 0.001004133722744882,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.2623002529144287,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000842952576931566,
+          "final_loss": 0.0002869840827770531,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5657770635613133e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.26225852966308594,
+            -0.16979221999645233,
+            0.13438479602336884
+          ],
+          "gate_raw": [
+            0.2685322165489197,
+            -0.17145270109176636,
+            0.13520264625549316
+          ],
+          "initial_gradient_norm": 0.0006032967357896268,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.9701987504959106,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0009332961053587496,
+          "final_loss": 0.0003005356702487916,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5657770635613133e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.20600959658622742,
+            0.2492428869009018,
+            -0.13101144134998322
+          ],
+          "gate_raw": [
+            0.20900048315525055,
+            0.25460538268089294,
+            -0.1317688226699829
+          ],
+          "initial_gradient_norm": 0.0004155512142460793,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.829031229019165,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0012360763503238559,
+          "final_loss": 0.004506793338805437,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5657770635613133e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.18427103757858276,
+            -0.10914333164691925,
+            0.14264313876628876
+          ],
+          "gate_raw": [
+            0.18640027940273285,
+            -0.10957983881235123,
+            0.14362257719039917
+          ],
+          "initial_gradient_norm": 0.0020070013124495745,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 2.7325499057769775,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0005630513769574463,
+          "final_loss": 0.0005010864697396755,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5657770635613133e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.22520489990711212,
+            0.20146693289279938,
+            -0.22612062096595764
+          ],
+          "gate_raw": [
+            0.22913238406181335,
+            0.20426107943058014,
+            -0.230097234249115
+          ],
+          "initial_gradient_norm": 3.248871144023724e-05,
+          "initial_loss": 0.017994185909628868,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6703370213508606,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-1::15/9-19",
+      "context_index": 5,
+      "level": "inner",
+      "outer": "15/9-F-1",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "e64c02ec0d3d8ca9966a90d55dbb9dd13ecd61032eba3c4c26ecda8d7565ab35",
+        "b0_validation_prediction_sha256": "784159f86e2bd99137c85d09f0fe2c27f9de020f64a8e8c9fde168fd28342f41",
+        "context_id": "inner::15/9-F-1::15/9-19",
+        "context_index": 5,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-1",
+        "train_families": [
+          "15/9-F-11",
+          "15/9-F-12"
+        ],
+        "train_rows": 177,
+        "train_sample_ids_sha256": "596ec161ef1f152ab2b7b4f7a58214a010d7880103b4cfc20b0f63d3690e1fd6",
+        "validation_family": "15/9-19",
+        "validation_rows": 147,
+        "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770459532737732,
+          "fit_mean_sha256": "bccacc90f0c8b9154ebe0f8c255e7813735a31fb0f89d23f4eb5a88aba89d942",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9809528589248657,
+          "fit_mean_sha256": "754d022502f915ceb55c9ed95a7ba00c76f1e645aa31509e7ac4f061fbf1e9df",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770459532737732,
+          "fit_mean_sha256": "bccacc90f0c8b9154ebe0f8c255e7813735a31fb0f89d23f4eb5a88aba89d942",
+          "fit_rows": 177,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8387096524238586,
+          "fit_mean_sha256": "32a986e2fcffd6330deadc407afb9d423e53f4b006cb57711570c3a3b887f2c7",
+          "fit_rows": 177,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8571093082427979,
+          "fit_mean_sha256": "324cbf5938378c153066d8db6678014850d14593ac42c7102a0951df027901fa",
+          "fit_rows": 177,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 177
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 177,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 7.926024436950684,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-F-11",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-19"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.001167325652204454,
+          "final_loss": 0.0003353993524797261,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6127299051760247e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.23719070851802826,
+            -0.20970357954502106,
+            0.11177250742912292
+          ],
+          "gate_raw": [
+            0.24179524183273315,
+            -0.21286126971244812,
+            0.11224149167537689
+          ],
+          "initial_gradient_norm": 0.0009109657257795334,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7458961009979248,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0011245424393564463,
+          "final_loss": 0.0002302895300090313,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6127299051760247e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.23496761918067932,
+            0.24690812826156616,
+            0.13400456309318542
+          ],
+          "gate_raw": [
+            0.2394409328699112,
+            0.2521175146102905,
+            0.13481543958187103
+          ],
+          "initial_gradient_norm": 0.0005115647800266743,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6878920793533325,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0011755564482882619,
+          "final_loss": 0.0004766623897012323,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6127299051760247e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2778535783290863,
+            -0.2099328339099884,
+            0.10601407289505005
+          ],
+          "gate_raw": [
+            -0.2853545844554901,
+            -0.2131010890007019,
+            0.10641393810510635
+          ],
+          "initial_gradient_norm": 0.002784046111628413,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.045029878616333,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0009103164775297046,
+          "final_loss": 0.0003257232892792672,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6127299051760247e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.18074293434619904,
+            -0.2246028035879135,
+            0.12291005998849869
+          ],
+          "gate_raw": [
+            -0.1827506124973297,
+            -0.2284982055425644,
+            0.1235346570611
+          ],
+          "initial_gradient_norm": 0.0005819213110953569,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6927270293235779,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000252068362897262,
+          "final_loss": 0.007608806248754263,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6127299051760247e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.16948260366916656,
+            0.08715847879648209,
+            -0.10523083806037903
+          ],
+          "gate_raw": [
+            0.17113392055034637,
+            0.08738019317388535,
+            -0.10562186688184738
+          ],
+          "initial_gradient_norm": 0.000527048425283283,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7069107294082642,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0027036031242460012,
+          "final_loss": 0.0015807393938302994,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6127299051760247e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.253165602684021,
+            0.2554110288619995,
+            -0.1739172786474228
+          ],
+          "gate_raw": [
+            -0.25879231095314026,
+            0.2611929774284363,
+            -0.17570331692695618
+          ],
+          "initial_gradient_norm": 0.0026463838294148445,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8554946780204773,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-1::15/9-F-11",
+      "context_index": 6,
+      "level": "inner",
+      "outer": "15/9-F-1",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "016be9f26458fb7408e7b05bce35ab91374e11df6137a2620860731a9c2ad75d",
+        "b0_validation_prediction_sha256": "3ecb866d5393b774e40ee3ae308912a0252c9d5793f53b6a39829389b4fcd647",
+        "context_id": "inner::15/9-F-1::15/9-F-11",
+        "context_index": 6,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-1",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-12"
+        ],
+        "train_rows": 177,
+        "train_sample_ids_sha256": "f8e62c9bffd13fd1353af5184e226fc1d49585613003bf8c208640730444f2c7",
+        "validation_family": "15/9-F-11",
+        "validation_rows": 537,
+        "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9984498620033264,
+          "fit_mean_sha256": "4dd86a882a3e4619f2f1ad1680278830195f9137f0c6d7053f1ad38c793a593f",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9992192983627319,
+          "fit_mean_sha256": "c39dfa14c12aeee57cbad13407674ec3cdeea9733e158fd5941cae4ae25558c6",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9984498620033264,
+          "fit_mean_sha256": "4dd86a882a3e4619f2f1ad1680278830195f9137f0c6d7053f1ad38c793a593f",
+          "fit_rows": 177,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.837655782699585,
+          "fit_mean_sha256": "a06cfa8b123ead0bf893cb1f0f346f490fa166fc58176b9a34863814a195bb93",
+          "fit_rows": 177,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8513510227203369,
+          "fit_mean_sha256": "2edf68a133c1c922faad9baff601f0b7e1207682a339445048d9725b4f04c5a8",
+          "fit_rows": 177,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 177
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 177,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 10.944462776184082,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-F-11"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0010293021332472563,
+          "final_loss": 0.00034520961344242096,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6387488543934126e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2302001714706421,
+            0.18428179621696472,
+            -0.12198995798826218
+          ],
+          "gate_raw": [
+            -0.23440082371234894,
+            0.18641141057014465,
+            -0.12260055541992188
+          ],
+          "initial_gradient_norm": 0.00032283004838973284,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.830898642539978,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0010213450295850635,
+          "final_loss": 0.00021363933046814054,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6387488543934126e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2322627753019333,
+            -0.23942191898822784,
+            0.1350127011537552
+          ],
+          "gate_raw": [
+            0.23657995462417603,
+            -0.24416078627109528,
+            0.13584214448928833
+          ],
+          "initial_gradient_norm": 0.0017950229812413454,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.1065016984939575,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00100258260499686,
+          "final_loss": 0.0004220911068841815,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6387488543934126e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.27969327569007874,
+            -0.2404232621192932,
+            0.11192546039819717
+          ],
+          "gate_raw": [
+            0.28734928369522095,
+            -0.2452232986688614,
+            0.11239638179540634
+          ],
+          "initial_gradient_norm": 0.0011812475277110934,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7902888059616089,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0011251308023929596,
+          "final_loss": 0.0003483821055851877,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6387488543934126e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.23798424005508423,
+            -0.19490943849086761,
+            -0.13606008887290955
+          ],
+          "gate_raw": [
+            -0.24263624846935272,
+            -0.19743545353412628,
+            -0.1369091421365738
+          ],
+          "initial_gradient_norm": 0.0011617313139140606,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8276656270027161,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00046852469677105546,
+          "final_loss": 0.0073455688543617725,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6387488543934126e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.19401764869689941,
+            0.10959247499704361,
+            0.10592737793922424
+          ],
+          "gate_raw": [
+            0.19650861620903015,
+            0.11003442108631134,
+            0.10632625967264175
+          ],
+          "initial_gradient_norm": 0.0015298780053853989,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.5660871863365173,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0028929924592375755,
+          "final_loss": 0.0012481283629313111,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6387488543934126e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.22523218393325806,
+            0.2186136692762375,
+            0.25478920340538025
+          ],
+          "gate_raw": [
+            0.2291611284017563,
+            0.22219973802566528,
+            0.2605278789997101
+          ],
+          "initial_gradient_norm": 0.0004494398308452219,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6220604777336121,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-1::15/9-F-12",
+      "context_index": 7,
+      "level": "inner",
+      "outer": "15/9-F-1",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "738b05b3ee3c75fcea2bdecc9a596f4ca42f106ae5b998a7d801338c24df63eb",
+        "b0_validation_prediction_sha256": "ddebd43bf0e1b4deb881d9e36fbbc2df7ae28f5d9855f39df64ae03336742d9c",
+        "context_id": "inner::15/9-F-1::15/9-F-12",
+        "context_index": 7,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-1",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-11"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "aadd6f766b49d7c049621db94ad19605f84070c40aca43ac569a6dd1df28f66f",
+        "validation_family": "15/9-F-12",
+        "validation_rows": 81,
+        "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9768397212028503,
+          "fit_mean_sha256": "ee32970590b8a943ebb4f146a5eadfad0c07e339c4e521942e35e6580f136f74",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9791355133056641,
+          "fit_mean_sha256": "099107fb0fbbea26c336341706945bd5a84b7360bae6c5951f369f93d9a0e717",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9768397212028503,
+          "fit_mean_sha256": "ee32970590b8a943ebb4f146a5eadfad0c07e339c4e521942e35e6580f136f74",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8024160861968994,
+          "fit_mean_sha256": "27627cd0319a5cffc9950ce819e338030fd89cdbcb2ac373fabe12aae7ea8412",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8113096952438354,
+          "fit_mean_sha256": "28833998199e1138550edda5cd0b7e56cd674d6fb17d2ba3bb1de6dd850885db",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 8.76547622680664,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-11"
+      ],
+      "validation_family": "15/9-F-12"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0010537008056417108,
+          "final_loss": 0.0003704338159877807,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5454947366322358e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.24359656870365143,
+            -0.27366477251052856,
+            -0.13111238181591034
+          ],
+          "gate_raw": [
+            -0.2485940158367157,
+            -0.2808209955692291,
+            -0.1318715214729309
+          ],
+          "initial_gradient_norm": 0.001193558913655579,
+          "initial_loss": 0.024480871856212616,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.1679984331130981,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0005805885302834213,
+          "final_loss": 0.00026814432931132615,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5454947366322358e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2231995314359665,
+            -0.2561529576778412,
+            -0.14595136046409607
+          ],
+          "gate_raw": [
+            0.22702087461948395,
+            -0.2619868516921997,
+            -0.14700114727020264
+          ],
+          "initial_gradient_norm": 0.0006635672179982066,
+          "initial_loss": 0.024480871856212616,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.0059809684753418,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0013022450730204582,
+          "final_loss": 0.00039082884904928505,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5454947366322358e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.27321410179138184,
+            -0.24123890697956085,
+            -0.13840162754058838
+          ],
+          "gate_raw": [
+            0.28033390641212463,
+            -0.2460891604423523,
+            -0.13929562270641327
+          ],
+          "initial_gradient_norm": 0.0015380920376628637,
+          "initial_loss": 0.024480871856212616,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8433489799499512,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0011229763040319085,
+          "final_loss": 0.0003583794750738889,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5454947366322358e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2319258153438568,
+            -0.2381294220685959,
+            -0.14426575601100922
+          ],
+          "gate_raw": [
+            -0.23622380197048187,
+            -0.24279014766216278,
+            -0.14527928829193115
+          ],
+          "initial_gradient_norm": 0.000999321579001844,
+          "initial_loss": 0.024480871856212616,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8210914134979248,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.002497459761798382,
+          "final_loss": 0.009390480816364288,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5454947366322358e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2192745804786682,
+            -0.22512193024158478,
+            -0.11882618069648743
+          ],
+          "gate_raw": [
+            -0.22289392352104187,
+            -0.22904498875141144,
+            -0.11939022690057755
+          ],
+          "initial_gradient_norm": 0.0011743338545784354,
+          "initial_loss": 0.024480871856212616,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.9654644727706909,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.004414132796227932,
+          "final_loss": 0.0014375040773302317,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5454947366322358e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.3455126881599426,
+            -0.19667620956897736,
+            0.21063381433486938
+          ],
+          "gate_raw": [
+            0.36033910512924194,
+            -0.19927264750003815,
+            0.2138344943523407
+          ],
+          "initial_gradient_norm": 0.0008783607045188546,
+          "initial_loss": 0.024480871856212616,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8449106216430664,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "outer::15/9-F-11",
+      "context_index": 8,
+      "level": "outer",
+      "outer": "15/9-F-11",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "5af13509ca00b3dc8bde78d9c95c3f841ce6b13326a51bbbff8579c21f08f85c",
+        "b0_validation_prediction_sha256": "a2c2ca71e50101b92743d6786d2bc83c47f2b1e6a0d89d9174bb9f9ffde97f68",
+        "context_id": "outer::15/9-F-11",
+        "context_index": 8,
+        "feature_count": 153,
+        "level": "outer",
+        "outer": "15/9-F-11",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-1",
+          "15/9-F-12"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "d70d61d05c32669aa130c35cbea2a4efd1b426be8088b990498bc5cb1d81aa2e",
+        "validation_family": "15/9-F-11",
+        "validation_rows": 537,
+        "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9648870229721069,
+          "fit_mean_sha256": "90d496f2e06a50958d0148dde35eb3645c2cd49a434c80dec671f6f0ff5d397a",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9724294543266296,
+          "fit_mean_sha256": "a001ec9c6009dc7792d4e2e27ed3c201a2915c15bf19af17223ccad0bca9ea44",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9648870229721069,
+          "fit_mean_sha256": "90d496f2e06a50958d0148dde35eb3645c2cd49a434c80dec671f6f0ff5d397a",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8387375473976135,
+          "fit_mean_sha256": "f50458532bd1da67f5cd2b5a18fc7df4bcef3b3ad99a013b40888e5336d1d1bb",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8569322824478149,
+          "fit_mean_sha256": "8a72b6d04f12e46f2eff701b4b22f5f041267f0c1d76c59e446021dd211355b0",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 9.694253921508789,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-F-11"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00038274936378002167,
+          "final_loss": 0.0002260296168969944,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4948386262148006e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.13915282487869263,
+            0.11866962164640427,
+            0.15099163353443146
+          ],
+          "gate_raw": [
+            -0.14006157219409943,
+            0.11923143267631531,
+            0.1521550565958023
+          ],
+          "initial_gradient_norm": 0.0008844530675560236,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.9225091934204102,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00035161463893018663,
+          "final_loss": 0.0002630853559821844,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4948386262148006e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.1465086191892624,
+            0.11983367055654526,
+            -0.14850403368473053
+          ],
+          "gate_raw": [
+            -0.14757059514522552,
+            0.12041227519512177,
+            -0.14961038529872894
+          ],
+          "initial_gradient_norm": 0.0007365813944488764,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7642521858215332,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0003048888174816966,
+          "final_loss": 0.00028135921456851065,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4948386262148006e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.15926094353199005,
+            0.19288460910320282,
+            0.1462731510400772
+          ],
+          "gate_raw": [
+            -0.1606283187866211,
+            0.19533152878284454,
+            0.14732995629310608
+          ],
+          "initial_gradient_norm": 0.0009167599491775036,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.0674152374267578,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0019495466258376837,
+          "final_loss": 0.00024807933368720114,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4948386262148006e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.12450658529996872,
+            0.221613809466362,
+            -0.1322527527809143
+          ],
+          "gate_raw": [
+            0.1251560002565384,
+            0.22535263001918793,
+            -0.13303200900554657
+          ],
+          "initial_gradient_norm": 0.0018682023510336876,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.0731894969940186,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0012070974335074425,
+          "final_loss": 0.005268963519483805,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4948386262148006e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.14057594537734985,
+            0.14866484701633453,
+            -0.12210403382778168
+          ],
+          "gate_raw": [
+            -0.14151307940483093,
+            0.14977483451366425,
+            -0.12271635234355927
+          ],
+          "initial_gradient_norm": 0.0013778575230389833,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.23581649363040924,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0014362427173182368,
+          "final_loss": 0.000807122967671603,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.4948386262148006e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.21158751845359802,
+            -0.13343945145606995,
+            -0.2219724953174591
+          ],
+          "gate_raw": [
+            -0.21483267843723297,
+            -0.1342400312423706,
+            -0.22572988271713257
+          ],
+          "initial_gradient_norm": 0.0006570605910383165,
+          "initial_loss": 0.01753024198114872,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7507265210151672,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-11::15/9-19",
+      "context_index": 9,
+      "level": "inner",
+      "outer": "15/9-F-11",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "fdf7e9aea8150fe32e39dec1c339f4c98cc8b52ecb36edecb081910f79656b90",
+        "b0_validation_prediction_sha256": "a6fd6dd455381574c48f39bbd31abc1aedf308665a487c1eca3b9d4dc65b3df8",
+        "context_id": "inner::15/9-F-11::15/9-19",
+        "context_index": 9,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-11",
+        "train_families": [
+          "15/9-F-1",
+          "15/9-F-12"
+        ],
+        "train_rows": 177,
+        "train_sample_ids_sha256": "d0990254fe6c81b3ae2039a68c51ab89a1acf883a5e2e910a60901ddbb48cf9f",
+        "validation_family": "15/9-19",
+        "validation_rows": 147,
+        "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9795532822608948,
+          "fit_mean_sha256": "cc8b55642e1498ef513e5c60589d15d43cdaded39694f59fd8e99b29ff006931",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9868782162666321,
+          "fit_mean_sha256": "77353590e2a260a0544a5099bd1c3579f9f09de73c89fbcd0c5df92b55db6038",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9795532822608948,
+          "fit_mean_sha256": "cc8b55642e1498ef513e5c60589d15d43cdaded39694f59fd8e99b29ff006931",
+          "fit_rows": 177,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8493525981903076,
+          "fit_mean_sha256": "150275d349991f84cc3e769f9e3868d37d95328035a1a7a327a88c847b1b1ab4",
+          "fit_rows": 177,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8785206079483032,
+          "fit_mean_sha256": "38a8fe6c72d83f3c9a4c567fe0e0a0443b2adbf76941e0223dfcb778743b0678",
+          "fit_rows": 177,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 177
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 177,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 9.437856674194336,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-19"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000834875216241926,
+          "final_loss": 0.00026380750932730734,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6108388578572885e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.24082130193710327,
+            -0.19121280312538147,
+            -0.11764991283416748
+          ],
+          "gate_raw": [
+            0.24564579129219055,
+            -0.19359569251537323,
+            -0.11819728463888168
+          ],
+          "initial_gradient_norm": 0.0022879382595419884,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.2733598947525024,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.000729965278878808,
+          "final_loss": 0.000365246320143342,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6108388578572885e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.22201812267303467,
+            -0.18835031986236572,
+            0.144491508603096
+          ],
+          "gate_raw": [
+            -0.22577786445617676,
+            -0.19062626361846924,
+            0.14550985395908356
+          ],
+          "initial_gradient_norm": 0.0006818406982347369,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.5200436115264893,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00165590550750494,
+          "final_loss": 0.0005833575851283967,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6108388578572885e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.23588769137859344,
+            0.3219456374645233,
+            0.10763456672430038
+          ],
+          "gate_raw": [
+            -0.24041499197483063,
+            0.33381620049476624,
+            0.10805313289165497
+          ],
+          "initial_gradient_norm": 0.0033700603526085615,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.1741504669189453,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0008192597306333482,
+          "final_loss": 0.00040944080683402717,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6108388578572885e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2021770179271698,
+            0.21773171424865723,
+            -0.11748726665973663
+          ],
+          "gate_raw": [
+            -0.20500130951404572,
+            0.22127370536327362,
+            -0.11803235858678818
+          ],
+          "initial_gradient_norm": 0.0009458106942474842,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.0569558143615723,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00017312263662461191,
+          "final_loss": 0.007608018349856138,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6108388578572885e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.19178585708141327,
+            -0.09473120421171188,
+            -0.1027708500623703
+          ],
+          "gate_raw": [
+            0.19419056177139282,
+            -0.09501611441373825,
+            -0.10313497483730316
+          ],
+          "initial_gradient_norm": 0.0006482603494077921,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8838806748390198,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0024395298678427935,
+          "final_loss": 0.001089603640139103,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6108388578572885e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2636335492134094,
+            -0.2066390961408615,
+            -0.19189384579658508
+          ],
+          "gate_raw": [
+            0.2700093686580658,
+            -0.2096579670906067,
+            -0.19430267810821533
+          ],
+          "initial_gradient_norm": 0.0020146495662629604,
+          "initial_loss": 0.02111753262579441,
+          "input_shapes": {
+            "base": [
+              177,
+              3
+            ],
+            "seismic": [
+              177,
+              16
+            ],
+            "well": [
+              177,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8510500192642212,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-11::15/9-F-1",
+      "context_index": 10,
+      "level": "inner",
+      "outer": "15/9-F-11",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "016be9f26458fb7408e7b05bce35ab91374e11df6137a2620860731a9c2ad75d",
+        "b0_validation_prediction_sha256": "477c4d2c6b80d434cd5fd7a52d0c1c278ebc67de84ffdcca6b9f9fbd3e0247b1",
+        "context_id": "inner::15/9-F-11::15/9-F-1",
+        "context_index": 10,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-11",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-12"
+        ],
+        "train_rows": 177,
+        "train_sample_ids_sha256": "f8e62c9bffd13fd1353af5184e226fc1d49585613003bf8c208640730444f2c7",
+        "validation_family": "15/9-F-1",
+        "validation_rows": 451,
+        "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9984498620033264,
+          "fit_mean_sha256": "4dd86a882a3e4619f2f1ad1680278830195f9137f0c6d7053f1ad38c793a593f",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9992192983627319,
+          "fit_mean_sha256": "c39dfa14c12aeee57cbad13407674ec3cdeea9733e158fd5941cae4ae25558c6",
+          "fit_rows": 177,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9984498620033264,
+          "fit_mean_sha256": "4dd86a882a3e4619f2f1ad1680278830195f9137f0c6d7053f1ad38c793a593f",
+          "fit_rows": 177,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.837655782699585,
+          "fit_mean_sha256": "a06cfa8b123ead0bf893cb1f0f346f490fa166fc58176b9a34863814a195bb93",
+          "fit_rows": 177,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8513510227203369,
+          "fit_mean_sha256": "2edf68a133c1c922faad9baff601f0b7e1207682a339445048d9725b4f04c5a8",
+          "fit_rows": 177,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 177
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 177,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 10.944462776184082,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-12"
+      ],
+      "validation_family": "15/9-F-1"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0014267185470089316,
+          "final_loss": 0.00019680724653881043,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5796612759522155e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2521539032459259,
+            0.2524731457233429,
+            0.1307326853275299
+          ],
+          "gate_raw": [
+            0.25771161913871765,
+            0.2580525875091553,
+            0.1314852088689804
+          ],
+          "initial_gradient_norm": 0.0030347092542797327,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.9715183973312378,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0007778551080264151,
+          "final_loss": 0.00029767348314635456,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5796612759522155e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2630983889102936,
+            -0.2558365762233734,
+            0.14892613887786865
+          ],
+          "gate_raw": [
+            -0.2694343030452728,
+            -0.2616482675075531,
+            0.15004204213619232
+          ],
+          "initial_gradient_norm": 0.0015334408963099122,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.886388897895813,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0009989141253754497,
+          "final_loss": 0.00034021842293441296,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5796612759522155e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2421046495437622,
+            0.18908709287643433,
+            0.14839395880699158
+          ],
+          "gate_raw": [
+            -0.24700860679149628,
+            0.1913902461528778,
+            0.1494978368282318
+          ],
+          "initial_gradient_norm": 0.00422643544152379,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.1183890104293823,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0014758928446099162,
+          "final_loss": 0.000358287594281137,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5796612759522155e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.23674149811267853,
+            -0.23296339809894562,
+            -0.15263471007347107
+          ],
+          "gate_raw": [
+            -0.24131929874420166,
+            -0.2373206466436386,
+            -0.15383689105510712
+          ],
+          "initial_gradient_norm": 0.0006124804494902492,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.9620199799537659,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0007188013405539095,
+          "final_loss": 0.010330067947506905,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5796612759522155e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.17841772735118866,
+            0.12381646037101746,
+            0.11334013193845749
+          ],
+          "gate_raw": [
+            0.18034791946411133,
+            0.12445506453514099,
+            0.11382923275232315
+          ],
+          "initial_gradient_norm": 0.0009264827240258455,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 2.317018508911133,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0018315499182790518,
+          "final_loss": 0.001007107668556273,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.5796612759522155e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.28524836897850037,
+            0.2778417766094208,
+            -0.2530067265033722
+          ],
+          "gate_raw": [
+            0.2933860719203949,
+            0.2853417694568634,
+            -0.25862258672714233
+          ],
+          "initial_gradient_norm": 0.0002404943370493129,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8558613061904907,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-11::15/9-F-12",
+      "context_index": 11,
+      "level": "inner",
+      "outer": "15/9-F-11",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "d980276a2d79391d400a4e040e7bbeb1c7067ca4f4905dd415bc61b020ba3e77",
+        "b0_validation_prediction_sha256": "f95aad296781d7b3e66205a589ea39682c101ee43f1d91bb75547b10deafec67",
+        "context_id": "inner::15/9-F-11::15/9-F-12",
+        "context_index": 11,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-11",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-1"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "508e23d3a383bf2a891761af2b0939ceb85a41e3b2b811afdf80b2171a9281df",
+        "validation_family": "15/9-F-12",
+        "validation_rows": 81,
+        "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770423769950867,
+          "fit_mean_sha256": "79c043c6a2b2bca5345daa0ec566bd5928298ce540f9dc17ad49ca3137f74b51",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9842545986175537,
+          "fit_mean_sha256": "11ee8420cc35f58138f42af63e4cf279452707f69d06fcb8b8dc85a1f72c4b7a",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770423769950867,
+          "fit_mean_sha256": "79c043c6a2b2bca5345daa0ec566bd5928298ce540f9dc17ad49ca3137f74b51",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8127340078353882,
+          "fit_mean_sha256": "5ed70c2282e672e64fe04662834ca40d1ee08a4a6e2ba38214d5af6f53e3d3c8",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.822845995426178,
+          "fit_mean_sha256": "69a18b2e50ce635e6e58f99529d4fe0e1b30d4ac21d9da2f1bd0480d2c3f98af",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 11.153944969177246,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1"
+      ],
+      "validation_family": "15/9-F-12"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0006883759051561356,
+          "final_loss": 0.00021704092796426266,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.553218060834638e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.22850480675697327,
+            -0.19404879212379456,
+            -0.15513938665390015
+          ],
+          "gate_raw": [
+            0.23261132836341858,
+            -0.1965409815311432,
+            -0.1564023196697235
+          ],
+          "initial_gradient_norm": 0.0018654741579666734,
+          "initial_loss": 0.023226695135235786,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.918339729309082,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0005087347817607224,
+          "final_loss": 0.0002085783053189516,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.553218060834638e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2334454357624054,
+            0.24693563580513,
+            0.15584197640419006
+          ],
+          "gate_raw": [
+            0.23783041536808014,
+            0.25214681029319763,
+            0.15712231397628784
+          ],
+          "initial_gradient_norm": 0.0016731558134779334,
+          "initial_loss": 0.023226695135235786,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6937603950500488,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00056127377320081,
+          "final_loss": 0.0003395075327716768,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.553218060834638e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2756955027580261,
+            0.2462666779756546,
+            0.1519055813550949
+          ],
+          "gate_raw": [
+            0.28301745653152466,
+            0.2514345347881317,
+            0.1530904471874237
+          ],
+          "initial_gradient_norm": 0.0003328749444335699,
+          "initial_loss": 0.023226695135235786,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.5211986303329468,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0018835567170754075,
+          "final_loss": 0.0004530875012278557,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.553218060834638e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.22619397938251495,
+            0.27900293469429016,
+            0.14206641912460327
+          ],
+          "gate_raw": [
+            0.23017455637454987,
+            0.2866005003452301,
+            0.1430339366197586
+          ],
+          "initial_gradient_norm": 0.0011815347243100405,
+          "initial_loss": 0.023226695135235786,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6266658306121826,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0036585372872650623,
+          "final_loss": 0.008597217500209808,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.553218060834638e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.10497572273015976,
+            -0.2696205973625183,
+            -0.13485866785049438
+          ],
+          "gate_raw": [
+            0.10536389797925949,
+            -0.2764546275138855,
+            -0.1356852650642395
+          ],
+          "initial_gradient_norm": 0.0002574805694166571,
+          "initial_loss": 0.023226695135235786,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.9297566413879395,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.003195545170456171,
+          "final_loss": 0.001593514927662909,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.553218060834638e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.28503572940826416,
+            -0.21959729492664337,
+            -0.2272961288690567
+          ],
+          "gate_raw": [
+            -0.29315462708473206,
+            -0.2232329547405243,
+            -0.23133642971515656
+          ],
+          "initial_gradient_norm": 0.0005523124127648771,
+          "initial_loss": 0.023226695135235786,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.825542151927948,
+          "validation_shapes": {
+            "prediction": [
+              81,
+              3
+            ],
+            "seismic": [
+              81,
+              16
+            ],
+            "well": [
+              81,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "outer::15/9-F-12",
+      "context_index": 12,
+      "level": "outer",
+      "outer": "15/9-F-12",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "8a80114c604585c520ac3e6c29acd071ad8eb715eabe35f03f8a46a67a86f876",
+        "b0_validation_prediction_sha256": "247eb036b3ac67653216e461cd59a67ef0a14252ab9ff3642af5637dd4f1c42c",
+        "context_id": "outer::15/9-F-12",
+        "context_index": 12,
+        "feature_count": 153,
+        "level": "outer",
+        "outer": "15/9-F-12",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-1",
+          "15/9-F-11"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "1c7f68fbee9c4227e0524e8e51f2fe6c542b85f24fcfb00bcbbe8b289f6ad75e",
+        "validation_family": "15/9-F-12",
+        "validation_rows": 81,
+        "validation_sample_ids_sha256": "796a2c1c440833244cfb457cbd448f5b5dbf89b82f3de730ea73f9f0805843a9"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9021674394607544,
+          "fit_mean_sha256": "b5aacaf942358d5cff542d0aadd1937886f049f9d17e308ccd6c94f0c1f8401c",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9229095578193665,
+          "fit_mean_sha256": "7d14abc6e9a72b06558212bbb6260f942663c8dc452fd6cb446ff8135e1cf5e8",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9021674394607544,
+          "fit_mean_sha256": "b5aacaf942358d5cff542d0aadd1937886f049f9d17e308ccd6c94f0c1f8401c",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8209522366523743,
+          "fit_mean_sha256": "6460595b34ad272a7609a1ad1550d49467bab02ee7ca85f58157be7412dae9b7",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8245936036109924,
+          "fit_mean_sha256": "4dc52c345328f75beaac40ab7e9dbc7d5c4cd120a15bfa44b564730a8fe57469",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 8.35531234741211,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "validation_family": "15/9-F-12"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00043024407932534814,
+          "final_loss": 0.00023413641611114144,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.560778998682677e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.17171242833137512,
+            0.12594160437583923,
+            0.13980728387832642
+          ],
+          "gate_raw": [
+            0.17343057692050934,
+            0.12661388516426086,
+            0.14072901010513306
+          ],
+          "initial_gradient_norm": 0.0003947841178160161,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 2.324816942214966,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00032462429953739047,
+          "final_loss": 0.000196174718439579,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.560778998682677e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.1840076744556427,
+            -0.1714235246181488,
+            0.14808250963687897
+          ],
+          "gate_raw": [
+            -0.1861276775598526,
+            -0.17313292622566223,
+            0.1491793841123581
+          ],
+          "initial_gradient_norm": 0.00014964120055083185,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7174662947654724,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0007868241518735886,
+          "final_loss": 0.0002724725054576993,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.560778998682677e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.22924818098545074,
+            -0.17841888964176178,
+            0.14303067326545715
+          ],
+          "gate_raw": [
+            -0.2333957999944687,
+            -0.18034911155700684,
+            0.14401818811893463
+          ],
+          "initial_gradient_norm": 0.00019984005484730005,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8717108964920044,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0007871259585954249,
+          "final_loss": 0.00016006550868041813,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.560778998682677e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.21946930885314941,
+            0.19289417564868927,
+            0.14330753684043884
+          ],
+          "gate_raw": [
+            -0.2230985015630722,
+            0.19534146785736084,
+            0.14430084824562073
+          ],
+          "initial_gradient_norm": 0.00029388960683718324,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.1184163093566895,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0021515239495784044,
+          "final_loss": 0.006336950231343508,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.560778998682677e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2869739830493927,
+            -0.14932624995708466,
+            -0.12352877110242844
+          ],
+          "gate_raw": [
+            -0.2952655255794525,
+            -0.15045124292373657,
+            -0.12416291236877441
+          ],
+          "initial_gradient_norm": 0.0017839870415627956,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.4617261588573456,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0008960424456745386,
+          "final_loss": 0.0006757907103747129,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.560778998682677e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2094413936138153,
+            -0.26520657539367676,
+            0.2096899151802063
+          ],
+          "gate_raw": [
+            -0.21258704364299774,
+            -0.2717006504535675,
+            0.21284697949886322
+          ],
+          "initial_gradient_norm": 0.00043906064820475876,
+          "initial_loss": 0.017446331679821014,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8934628367424011,
+          "validation_shapes": {
+            "prediction": [
+              147,
+              3
+            ],
+            "seismic": [
+              147,
+              16
+            ],
+            "well": [
+              147,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-12::15/9-19",
+      "context_index": 13,
+      "level": "inner",
+      "outer": "15/9-F-12",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "23b3a97b2f3634b7f3e1dbde8eb10a08f2cbfc60e939e50149ca3b585dfc2cc8",
+        "b0_validation_prediction_sha256": "7ab3a518a8f81affb3206011e86efe33dec30b5b6ae0114665b541a75ba5f44d",
+        "context_id": "inner::15/9-F-12::15/9-19",
+        "context_index": 13,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-12",
+        "train_families": [
+          "15/9-F-1",
+          "15/9-F-11"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "65cbba488c0614c1a774d988c54197eac4721d4388a95d98628f60bbef95453f",
+        "validation_family": "15/9-19",
+        "validation_rows": 147,
+        "validation_sample_ids_sha256": "9557089c8876c0e600099638288ae36865afa2accc142932f6e413466ca1c40f"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9243839383125305,
+          "fit_mean_sha256": "1a3d7ed8f6a28324248a6338e46d595997df9939dfdaf308c9f8dfa7b186eb18",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.936046838760376,
+          "fit_mean_sha256": "83c11a7517b90f767ce39c7a3f0a18b2e9675e1928d4da9dd8a362f3f2c0b6d3",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9243839383125305,
+          "fit_mean_sha256": "1a3d7ed8f6a28324248a6338e46d595997df9939dfdaf308c9f8dfa7b186eb18",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8137955069541931,
+          "fit_mean_sha256": "3b36b70cf90a30c9fc6f83cb2b6ec993fd0492bd966f8e206e6f7a9689249315",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8334595561027527,
+          "fit_mean_sha256": "8958f8ad8ac4844c416080712c6455a3917b3e0ec3d3a9148e53e574b9f33a77",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 8.172019004821777,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-F-1",
+        "15/9-F-11"
+      ],
+      "validation_family": "15/9-19"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0008115252130664885,
+          "final_loss": 0.00027586991200223565,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.639149143084495e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2715334892272949,
+            0.15746450424194336,
+            0.13793523609638214
+          ],
+          "gate_raw": [
+            -0.2785186469554901,
+            0.1587856560945511,
+            0.13882015645503998
+          ],
+          "initial_gradient_norm": 0.0012570933904498816,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6970124244689941,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0008928264724090695,
+          "final_loss": 0.0003189395065419376,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.639149143084495e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.23995128273963928,
+            0.17641520500183105,
+            -0.12695199251174927
+          ],
+          "gate_raw": [
+            -0.2447224110364914,
+            0.178280308842659,
+            -0.12764067947864532
+          ],
+          "initial_gradient_norm": 0.00022060915944166481,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8406828045845032,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.001314956578426063,
+          "final_loss": 0.0004997642827220261,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.639149143084495e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.19672854244709015,
+            -0.23299024999141693,
+            0.11800383776426315
+          ],
+          "gate_raw": [
+            0.19932709634304047,
+            -0.2373490333557129,
+            0.1185561940073967
+          ],
+          "initial_gradient_norm": 0.0010091154836118221,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8974093198776245,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0009130534599535167,
+          "final_loss": 0.00044361522304825485,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.639149143084495e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.28379330039024353,
+            0.18459452688694,
+            -0.11641678959131241
+          ],
+          "gate_raw": [
+            -0.2918028235435486,
+            0.18673516809940338,
+            -0.11694703251123428
+          ],
+          "initial_gradient_norm": 0.0014230796368792653,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.8522350192070007,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00046440251753665507,
+          "final_loss": 0.007290538866072893,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.639149143084495e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.19182553887367249,
+            0.11461599916219711,
+            -0.10496950149536133
+          ],
+          "gate_raw": [
+            0.1942317634820938,
+            0.11512188613414764,
+            -0.10535760968923569
+          ],
+          "initial_gradient_norm": 0.0006712976610288024,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.6154659390449524,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0019050930859521031,
+          "final_loss": 0.0012265967670828104,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.639149143084495e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2509997487068176,
+            0.24587607383728027,
+            -0.24228264391422272
+          ],
+          "gate_raw": [
+            0.25647950172424316,
+            0.251018762588501,
+            -0.247197687625885
+          ],
+          "initial_gradient_norm": 0.0006284550181590021,
+          "initial_loss": 0.020733879879117012,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.7042685151100159,
+          "validation_shapes": {
+            "prediction": [
+              451,
+              3
+            ],
+            "seismic": [
+              451,
+              16
+            ],
+            "well": [
+              451,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-12::15/9-F-1",
+      "context_index": 14,
+      "level": "inner",
+      "outer": "15/9-F-12",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "738b05b3ee3c75fcea2bdecc9a596f4ca42f106ae5b998a7d801338c24df63eb",
+        "b0_validation_prediction_sha256": "15b98a5c07681a7700e0574fbfcecced768542c930aacd795624274bde2b777a",
+        "context_id": "inner::15/9-F-12::15/9-F-1",
+        "context_index": 14,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-12",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-11"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "aadd6f766b49d7c049621db94ad19605f84070c40aca43ac569a6dd1df28f66f",
+        "validation_family": "15/9-F-1",
+        "validation_rows": 451,
+        "validation_sample_ids_sha256": "bce4f760101b6a0b521ea22fd5b677a99dd906d1316a7d68a337864564bbb140"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9768397212028503,
+          "fit_mean_sha256": "ee32970590b8a943ebb4f146a5eadfad0c07e339c4e521942e35e6580f136f74",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9791355133056641,
+          "fit_mean_sha256": "099107fb0fbbea26c336341706945bd5a84b7360bae6c5951f369f93d9a0e717",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9768397212028503,
+          "fit_mean_sha256": "ee32970590b8a943ebb4f146a5eadfad0c07e339c4e521942e35e6580f136f74",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8024160861968994,
+          "fit_mean_sha256": "27627cd0319a5cffc9950ce819e338030fd89cdbcb2ac373fabe12aae7ea8412",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8113096952438354,
+          "fit_mean_sha256": "28833998199e1138550edda5cd0b7e56cd674d6fb17d2ba3bb1de6dd850885db",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 8.76547622680664,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-11"
+      ],
+      "validation_family": "15/9-F-1"
+    },
+    {
+      "arms": {
+        "A5": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0012060635490342975,
+          "final_loss": 0.00031496380688622594,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6173798655927385e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.20914305746555328,
+            -0.25520652532577515,
+            0.1403556913137436
+          ],
+          "gate_raw": [
+            -0.21227504312992096,
+            -0.2609742283821106,
+            0.1412883996963501
+          ],
+          "initial_gradient_norm": 0.0021795607171952724,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.097216248512268,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A6": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0008688801317475736,
+          "final_loss": 0.00028521387139335275,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6173798655927385e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.27519890666007996,
+            -0.19558407366275787,
+            -0.14762136340141296
+          ],
+          "gate_raw": [
+            0.2824800908565521,
+            -0.1981368213891983,
+            -0.14870792627334595
+          ],
+          "initial_gradient_norm": 0.005080115981400013,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 1.0823363065719604,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "A8": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.00129633245524019,
+          "final_loss": 0.0006931384559720755,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6173798655927385e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.15881046652793884,
+            0.2376203089952469,
+            0.1618616282939911
+          ],
+          "gate_raw": [
+            -0.16016614437103271,
+            0.2422505021095276,
+            0.16329781711101532
+          ],
+          "initial_gradient_norm": 0.0018364962888881564,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.711098313331604,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "F1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.001115236897021532,
+          "final_loss": 0.0004724625323433429,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6173798655927385e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.2673830986022949,
+            -0.1792408674955368,
+            -0.14965465664863586
+          ],
+          "gate_raw": [
+            -0.2740432918071747,
+            -0.18119825422763824,
+            -0.15078715980052948
+          ],
+          "initial_gradient_norm": 0.0012512532994151115,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.849240779876709,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "S1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0013141692616045475,
+          "final_loss": 0.010340212844312191,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6173798655927385e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            -0.21771985292434692,
+            -0.10813982784748077,
+            -0.10829030722379684
+          ],
+          "gate_raw": [
+            -0.22126124799251556,
+            -0.1085643470287323,
+            -0.10871660709381104
+          ],
+          "initial_gradient_norm": 0.000524834031239152,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.9811513423919678,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        },
+        "W1": {
+          "early_stopping": false,
+          "final_gradient_norm": 0.0021549067460000515,
+          "final_loss": 0.0011380622163414955,
+          "fixed_steps": 160,
+          "fusion_off_internal_float32_roundtrip_max_abs_error": 1.6173798655927385e-07,
+          "fusion_off_max_abs_error_vs_base": 0.0,
+          "gate": [
+            0.2866992652416229,
+            0.2295110672712326,
+            0.22336778044700623
+          ],
+          "gate_raw": [
+            0.2949661910533905,
+            0.23367328941822052,
+            0.22719796001911163
+          ],
+          "initial_gradient_norm": 0.001038125716149807,
+          "initial_loss": 0.02458915486931801,
+          "input_shapes": {
+            "base": [
+              192,
+              3
+            ],
+            "seismic": [
+              192,
+              16
+            ],
+            "well": [
+              192,
+              16
+            ]
+          },
+          "parameter_count": 2134,
+          "trainable_parameter_count": 2134,
+          "validation_residual_normalized_rms": 0.872632622718811,
+          "validation_shapes": {
+            "prediction": [
+              537,
+              3
+            ],
+            "seismic": [
+              537,
+              16
+            ],
+            "well": [
+              537,
+              16
+            ]
+          }
+        }
+      },
+      "context_id": "inner::15/9-F-12::15/9-F-11",
+      "context_index": 15,
+      "level": "inner",
+      "outer": "15/9-F-12",
+      "p5_b0": {
+        "b0_train_prediction_sha256": "d980276a2d79391d400a4e040e7bbeb1c7067ca4f4905dd415bc61b020ba3e77",
+        "b0_validation_prediction_sha256": "933b8fe4fdeab443be578547c69ec83e234f7ee7e86cc153e2f2ed9edc9af287",
+        "context_id": "inner::15/9-F-12::15/9-F-11",
+        "context_index": 15,
+        "feature_count": 153,
+        "level": "inner",
+        "outer": "15/9-F-12",
+        "train_families": [
+          "15/9-19",
+          "15/9-F-1"
+        ],
+        "train_rows": 192,
+        "train_sample_ids_sha256": "508e23d3a383bf2a891761af2b0939ceb85a41e3b2b811afdf80b2171a9281df",
+        "validation_family": "15/9-F-11",
+        "validation_rows": 537,
+        "validation_sample_ids_sha256": "db32f9a4e1e4cb18e0c014cf38e4d52e3688af0052ff1dc2264c08583cf32a30"
+      },
+      "pca": {
+        "gfm": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770423769950867,
+          "fit_mean_sha256": "79c043c6a2b2bca5345daa0ec566bd5928298ce540f9dc17ad49ca3137f74b51",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9842545986175537,
+          "fit_mean_sha256": "11ee8420cc35f58138f42af63e4cf279452707f69d06fcb8b8dc85a1f72c4b7a",
+          "fit_rows": 192,
+          "source_width": 2400
+        },
+        "gfm_shifted": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.9770423769950867,
+          "fit_mean_sha256": "79c043c6a2b2bca5345daa0ec566bd5928298ce540f9dc17ad49ca3137f74b51",
+          "fit_rows": 192,
+          "fit_source": "aligned_gfm_train_tokens",
+          "source_width": 2400
+        },
+        "moment": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.8127340078353882,
+          "fit_mean_sha256": "5ed70c2282e672e64fe04662834ca40d1ee08a4a6e2ba38214d5af6f53e3d3c8",
+          "fit_rows": 192,
+          "source_width": 27648
+        },
+        "moment_random": {
+          "components": 16,
+          "explained_variance_ratio_sum": 0.822845995426178,
+          "fit_mean_sha256": "69a18b2e50ce635e6e58f99529d4fe0e1b30d4ac21d9da2f1bd0480d2c3f98af",
+          "fit_rows": 192,
+          "source_width": 27648
+        }
+      },
+      "same_family_shuffle": {
+        "all_same_family": true,
+        "changed_pairs": 192
+      },
+      "small_depth_shift": {
+        "changed_feature_rows": 192,
+        "fixed_time_shift_ms": 4.0,
+        "fixed_time_shift_samples": 1,
+        "kind": "native section time-axis intervention",
+        "max_abs_pca_feature_difference": 11.153944969177246,
+        "validation_intervention": false
+      },
+      "train_families": [
+        "15/9-19",
+        "15/9-F-1"
+      ],
+      "validation_family": "15/9-F-11"
+    }
+  ],
+  "inner_logo_contexts": 12,
+  "outer_held_early_stopping": false,
+  "outer_logo_folds": 4,
+  "pca_components": 16,
+  "residual_steps": 160,
+  "schema": "p41-feature-adapter-audit/v2",
+  "seed": 2693
+}

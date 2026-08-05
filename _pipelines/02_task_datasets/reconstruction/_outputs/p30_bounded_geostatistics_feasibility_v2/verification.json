@@ -30,8 +30,8 @@
     0.0,
     1.0
   ],
-  "prediction_artifact_sha256": "3365816659ba03e9ab901743604af8df1fdb6480d7fa483554680746a3fc0c9f",
+  "prediction_artifact_sha256": "eca869e2d0f310a3842ae78f44f001626f3766621f4ac1307e2b62e4524c2721",
   "rows": 10240,
   "status": "PASSED",
-  "summary_sha256": "abc2a7988e82e707e3b12d4a719b92fc361fa62e5b49ce701806b7953b4df4f9"
+  "summary_sha256": "010bf52f25f57fb1c6674ed3f3a469317222a3137e2b7ba7fd3bf1218e5d3680"
 }

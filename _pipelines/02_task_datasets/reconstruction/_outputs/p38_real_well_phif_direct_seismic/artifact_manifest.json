@@ -1,0 +1,102 @@
+{
+  "artifacts": [
+    {
+      "path": "agent_action_audit.json",
+      "sha256": "c4ae2233d699eac195b75d96b38044bd3b1aca917152b88252101787f56db0a5",
+      "size_bytes": 32524
+    },
+    {
+      "path": "alignment_manifest.json",
+      "sha256": "2d1e9a07ba15ccf137b7ea147e6163de3bf34808c1e936482b2fcbc24d06b54e",
+      "size_bytes": 7683
+    },
+    {
+      "path": "checkpoints.npz",
+      "sha256": "4838ed103a80286f1bbdffcee5fe56677131278c64874bb69a514171bdfc53a3",
+      "size_bytes": 1515088
+    },
+    {
+      "path": "encoder_audit.json",
+      "sha256": "546d517c8ef9f14c5468ed5fe57ea15f5d7a2fffd231e9bfe188221785726bed",
+      "size_bytes": 31467
+    },
+    {
+      "path": "experiment_log.json",
+      "sha256": "fd16bf585cbe523b7636ef1b231857df1e026adeb4b6525d12c421f4a798ff55",
+      "size_bytes": 3168
+    },
+    {
+      "path": "finding.md",
+      "sha256": "c7c2ecacfd76c65f497d5e9e5e8667a28900a78adb481632900550d916fe282d",
+      "size_bytes": 1960
+    },
+    {
+      "path": "fusion_io_contract.json",
+      "sha256": "a677c90693782162227544d73a72a7fd5b6d0dbf4d73daaa3d8b442b335086be",
+      "size_bytes": 4031
+    },
+    {
+      "path": "phase0_freeze.json",
+      "sha256": "a3424344782098b122184b96b2d7bfd188a02c0b1b43c873a2963a8ff318edf1",
+      "size_bytes": 4696
+    },
+    {
+      "path": "phase0_verification.json",
+      "sha256": "cfbb5dc5aa9965e66f94724452e98e213ec476bd142d98735fb23d3e12b60f86",
+      "size_bytes": 807
+    },
+    {
+      "path": "phif_phie_audit.json",
+      "sha256": "52854606432bebac104c69355337ae8b27fe98401e8aa5fb8982398068aae2fd",
+      "size_bytes": 555
+    },
+    {
+      "path": "predictions.npz",
+      "sha256": "90eeaefef170993a01afed7136ed161f998a96be646726e07c1df45e4ce833b3",
+      "size_bytes": 660669
+    },
+    {
+      "path": "rerun_commands.json",
+      "sha256": "1a02fcb053b3bf08ad6519b76d1744cd549c94899b44676be4f005c388d06709",
+      "size_bytes": 2978
+    },
+    {
+      "path": "split_manifest.json",
+      "sha256": "0498e89412e5f530da120155754ec751a01b14d25f34f85b8322c28ff745bd89",
+      "size_bytes": 853
+    },
+    {
+      "path": "summary.json",
+      "sha256": "61ab409bba4ee378e5d98a4752128b7bab62d5c4c426690984c4c11cb51a49b5",
+      "size_bytes": 75231
+    },
+    {
+      "path": "target_contract.json",
+      "sha256": "0d51c6fa27f420e5d58010d226b480b69c5e1cf622558ff16a50eaaeb6f0b933",
+      "size_bytes": 13946
+    },
+    {
+      "path": "verification.json",
+      "sha256": "48abd0ba6982519c11d66121eb1e529bdaebee77eb0630d72d52d0775c9b06c3",
+      "size_bytes": 1305
+    }
+  ],
+  "input_and_source_provenance": {
+    "checkpoints_sha256": "4838ed103a80286f1bbdffcee5fe56677131278c64874bb69a514171bdfc53a3",
+    "gfm_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+    "gfm_weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446",
+    "moment_adapter_sha256": "25346a88e9bbad53048ff1d0723bd07713d5110962c17cac638d3ac1599a5dbc",
+    "moment_weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825",
+    "p38_core_sha256": "9504aeda2001aa089e0e920ed6c8a420beff27de3d6442249f3b1a60ce1efca8",
+    "p38_runner_sha256": "474b216c19d8cceb24a300ef2b4255df50842b96d9f8001cd9846b2cc9fb7587",
+    "p38_test_sha256": "0c4ce709fff5036f1be7d20c3cc7f5b6dba2d783d59b8f7c94f464c3eb0bf052",
+    "p38_worker_sha256": "1ea6d44d2a360ef5ebf1121f79c890cf00d838e241b89a8a9c8f7336feffe5d7",
+    "predictions_sha256": "90eeaefef170993a01afed7136ed161f998a96be646726e07c1df45e4ce833b3",
+    "seismic_index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "seismic_vsp_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4",
+    "st0202_segy_size_bytes": 1104999800,
+    "well_logs_zip_sha256": "0a496a55c865a7bce1d8e5bae767869534ae3c43a8d9dbd33601259d25da6bb4",
+    "well_technical_data_zip_sha256": "d52c42f4a146ee04c35435e21e6609ecc4a0479acac6626e0c49c4fab4a6b133"
+  },
+  "schema_version": "reconstruction-p38-artifact-manifest/v1"
+}

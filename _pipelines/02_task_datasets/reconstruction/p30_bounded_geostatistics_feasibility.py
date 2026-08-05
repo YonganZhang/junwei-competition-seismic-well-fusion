@@ -280,7 +280,7 @@ def local_ordinary_kriging(
             partial_sill
             + nugget
             - np.sum(weights * rhs[:, :count], axis=1)
-            + solution[:, count]
+            - solution[:, count]
         )
         prediction[start:stop][pending] = block_prediction
         variance[start:stop][pending] = np.maximum(block_variance, 0.0)
@@ -463,6 +463,12 @@ def _write_finding(output_dir: Path, result: Mapping[str, Any]) -> None:
         "misread scalar ensemble weights and silently zero-filled query-side",
         "seismic/GFM covariates. The repaired code is locked by an A0-to-P21",
         "identity check and query-side fail-closed tests.",
+        "",
+        "P30 is a sparse Eclipse-grid proxy under fixed five-fold, 512-label",
+        "training and 2,048-row validation budgets per fold. It is not a real",
+        "well-log-driven kriging or co-kriging experiment. The covariance-form",
+        "variance now uses `C(0) - w^T c - mu`; this sign correction changes no",
+        "weights, mean predictions, RMSE values, or promotion decision.",
         "",
         "## Matched five-fold result",
         "",
@@ -776,6 +782,11 @@ def run(
             "classical_well_log_cokriging": "BLOCKED_PENDING_ALIGNED_SECONDARY_INPUT",
             "default": "P21_REMAINS_DEFAULT",
         },
+        "variance_formula_audit": {
+            "ordinary_kriging_covariance_form": "C(0) - w^T c - mu",
+            "lagrange_multiplier_sign": "SUBTRACTED",
+            "weights_and_mean_prediction_affected_by_sign_fix": False,
+        },
         "direction_cone_audit": {
             "requested_cosine_minimum": DIRECTION_COSINE_MINIMUM,
             "fixed_relaxation_schedule": [0.60, 0.40, 0.20, 0.0],
@@ -842,6 +853,8 @@ def run(
         "regression-kriging route is therefore a bounded seismic-secondary feasibility proxy.",
         "P21's historical vertical weight is dimensionless and must not be described as a",
         "physical directional variogram. No frozen test or holdout was opened.",
+        "The covariance-form variance uses `C(0) - w^T c - mu`; correcting the",
+        "previous multiplier sign does not change weights, mean predictions, RMSE, or decision.",
     ]
     (output_dir / "evidence.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     return result
@@ -850,6 +863,12 @@ def run(
 def verify_evidence(output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:
     summary_path = output_dir / "summary.json"
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    if summary.get("variance_formula_audit") != {
+        "ordinary_kriging_covariance_form": "C(0) - w^T c - mu",
+        "lagrange_multiplier_sign": "SUBTRACTED",
+        "weights_and_mean_prediction_affected_by_sign_fix": False,
+    }:
+        raise RuntimeError("P30 ordinary-kriging variance formula audit is invalid")
     prediction_path = PROJECT_ROOT / summary["prediction_artifact"]["path"]
     if _sha256(prediction_path) != summary["prediction_artifact"]["sha256"]:
         raise RuntimeError("P30 prediction artifact hash mismatch")

@@ -1,0 +1,205 @@
+{
+  "all_controls_all_folds_exact_shared_base": true,
+  "controls": {
+    "moment_pretrained_gfm_pretrained": {
+      "folds": {
+        "0": {
+          "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+          "exact_shared_base": true,
+          "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1962,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10723,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+        },
+        "1": {
+          "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+          "exact_shared_base": true,
+          "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1877,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10808,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+        },
+        "2": {
+          "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+          "exact_shared_base": true,
+          "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 8846,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 3839,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+        }
+      }
+    },
+    "moment_pretrained_gfm_random": {
+      "folds": {
+        "0": {
+          "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+          "exact_shared_base": true,
+          "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1962,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10723,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+        },
+        "1": {
+          "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+          "exact_shared_base": true,
+          "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1877,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10808,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+        },
+        "2": {
+          "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+          "exact_shared_base": true,
+          "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 8846,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 3839,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+        }
+      }
+    },
+    "moment_random_gfm_pretrained": {
+      "folds": {
+        "0": {
+          "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+          "exact_shared_base": true,
+          "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1962,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10723,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+        },
+        "1": {
+          "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+          "exact_shared_base": true,
+          "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1877,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10808,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+        },
+        "2": {
+          "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+          "exact_shared_base": true,
+          "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 8846,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 3839,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+        }
+      }
+    },
+    "moment_random_gfm_random": {
+      "folds": {
+        "0": {
+          "base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d",
+          "exact_shared_base": true,
+          "held_exact_sha256": "6deb7979aa5dcb97a245bc0157295e78e8afabb2e662e7a02a25a1603f2f4fb8",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1962,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "47e210f2ac6886e1ac77a6728d5ac86b566cadc3fef45ff7bdaf99c9770c7df2",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10723,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "9f37f81068be5ee3a216279cdc51d3b65a862a409214f3cc08306b696993ff9d"
+        },
+        "1": {
+          "base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e",
+          "exact_shared_base": true,
+          "held_exact_sha256": "03d394f0768cd910245989f3ea91870a34d771ec0f77d3e7a54f6f20dc8c1f6a",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 1877,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "2537e7db2d709768469284b2bded7609c64d3c6dad05595508f786bda33739fa",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 10808,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "cc2016d4d58f3b692314d29f70b4716dd694c1da8c34a88c38218abe792e091e"
+        },
+        "2": {
+          "base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a",
+          "exact_shared_base": true,
+          "held_exact_sha256": "982742fc9a797a4b49afffed07b6221d08e7784f1bfc4621488fc16eb64b7e59",
+          "held_max_abs_diff_vs_shared": 0.0,
+          "held_rows": 8846,
+          "max_abs_diff_vs_shared": 0.0,
+          "outer_train_crossfit_sha256": "a557a39b20553a458ac175763bdd342dfc0e7c0e452b67f06254035b2dcc44bb",
+          "outer_train_max_abs_diff_vs_shared": 0.0,
+          "outer_train_rows": 3839,
+          "shape": [
+            12685
+          ],
+          "shared_base_sha256": "a39754f1d72ce6d30940c13166b0fcd8d29fe176df8895dbf0c747eceda8ae5a"
+        }
+      }
+    }
+  },
+  "invariant": "All Iteration-3 controls share the pretrained P38 outer-train cross-fitted base and exact recorded outer-held base; only MOMENT/GFM correction features vary.",
+  "pre_fix_commit": "c6056a0b05cbe401bf1dfa90fbab2fac16430c08",
+  "pre_fix_summary_sha256": "a68dabe2d4d9b5e238bb4db060a40e68a4576f2e952bcbdf96c923eaf54924d1",
+  "schema_version": "reconstruction-p39-fixed-base-attribution/v1"
+}

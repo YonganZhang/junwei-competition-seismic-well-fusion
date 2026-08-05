@@ -96,3 +96,19 @@ _outputs/p5_r01/**
 !_outputs/p5_r01/klogh/*.csv
 !_outputs/p5_r01/sw/
 !_outputs/p5_r01/sw/*.csv
+
+# P41 development-only cross-modal qualification. Keep the compact evidence
+# and row-aligned predictions; foundation tokens and other runtime caches stay local.
+!_outputs/p41_property_crossmodal_qualification/
+_outputs/p41_property_crossmodal_qualification/**
+!_outputs/p41_property_crossmodal_qualification/aligned_pair_manifest.jsonl
+!_outputs/p41_property_crossmodal_qualification/artifact_manifest.json
+!_outputs/p41_property_crossmodal_qualification/evidence.md
+!_outputs/p41_property_crossmodal_qualification/feature_or_adapter_audit.json
+!_outputs/p41_property_crossmodal_qualification/foundation_audit.json
+!_outputs/p41_property_crossmodal_qualification/independent_metric_check.json
+!_outputs/p41_property_crossmodal_qualification/phase0_freeze.json
+!_outputs/p41_property_crossmodal_qualification/predictions.npz
+!_outputs/p41_property_crossmodal_qualification/rerun_commands.json
+!_outputs/p41_property_crossmodal_qualification/results.jsonl
+!_outputs/p41_property_crossmodal_qualification/summary.json

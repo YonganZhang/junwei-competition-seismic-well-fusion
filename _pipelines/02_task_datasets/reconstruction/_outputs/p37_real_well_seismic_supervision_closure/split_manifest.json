@@ -1,0 +1,43 @@
+{
+  "activation_decision": false,
+  "activation_gate": "three native-PHIE parent wells and full legal alignment",
+  "frozen_parent_well_order": [
+    "15/9-19",
+    "15/9-F-11",
+    "15/9-F-15"
+  ],
+  "frozen_test_or_holdout_member": null,
+  "held_parent_phie_must_be_fully_masked": true,
+  "planned_leave_one_parent_well_out_folds": [
+    {
+      "fold_id": 0,
+      "held_parent_well": "15/9-19",
+      "training_parent_wells": [
+        "15/9-F-11",
+        "15/9-F-15"
+      ]
+    },
+    {
+      "fold_id": 1,
+      "held_parent_well": "15/9-F-11",
+      "training_parent_wells": [
+        "15/9-19",
+        "15/9-F-15"
+      ]
+    },
+    {
+      "fold_id": 2,
+      "held_parent_well": "15/9-F-15",
+      "training_parent_wells": [
+        "15/9-19",
+        "15/9-F-11"
+      ]
+    }
+  ],
+  "reason": "BLOCKED_REAL_ALIGNED_SUPERVISION",
+  "schema_version": "reconstruction-p37-parent-well-split/v1",
+  "split_before_caching": true,
+  "split_before_encoder_adaptation": true,
+  "split_before_normalization": true,
+  "state": "FROZEN_NOT_ACTIVATED"
+}

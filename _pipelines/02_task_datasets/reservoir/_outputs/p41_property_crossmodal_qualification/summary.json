@@ -1,0 +1,168 @@
+{
+  "arms": [
+    "B0",
+    "W1",
+    "S1",
+    "F1",
+    "A5",
+    "A6",
+    "A7",
+    "A8"
+  ],
+  "feature_audit_sha256": "645fd0b8246920257523eef23592bcd8993014a9c99d201e30cd27fe3fee709f",
+  "foundation_audit_sha256": "e734dff7c4feefe5eb0b7d1795da5ae57f09dfb63d9563b6fefec74db4d5521f",
+  "frozen_family_seen": false,
+  "gate": {
+    "bootstrap_improvement_ci": [
+      -0.005133873428220521,
+      0.006637890596206042
+    ],
+    "conditions": {
+      "a7_exact": true,
+      "data_asset_alignment_firewall_guards": true,
+      "f1_vs_a5_at_least_0p5pct": true,
+      "f1_vs_a6_at_least_0p5pct": true,
+      "f1_vs_a8_at_least_0p5pct": true,
+      "f1_vs_b0_at_least_0p5pct": false,
+      "f1_vs_best_single_at_least_0p3pct": true,
+      "outer_wins_at_least_3_of_4": false,
+      "paired_bootstrap_ci_above_zero": false,
+      "targets_non_degraded_at_least_2_of_3": false
+    },
+    "f1_relative_gain_vs_b0": 0.001703186788514781,
+    "macro_composite": {
+      "A5": 0.44366680874060255,
+      "A6": 0.4437870007616108,
+      "A7": 0.4272251218128183,
+      "A8": 0.4347921506660359,
+      "B0": 0.4272251218128183,
+      "F1": 0.4264974776296251,
+      "S1": 0.44344702691499926,
+      "W1": 0.45959519186895315
+    },
+    "non_degraded_targets": 1,
+    "outer_wins": 2,
+    "passed": false,
+    "verdict": "R0_STOP_NO_ATTRIBUTABLE_SIGNAL",
+    "worst_family_by_arm": {
+      "A5": {
+        "composite": 0.6155010056676232,
+        "family_id": "15/9-19"
+      },
+      "A6": {
+        "composite": 0.6724260033568007,
+        "family_id": "15/9-19"
+      },
+      "A7": {
+        "composite": 0.6624255940615118,
+        "family_id": "15/9-19"
+      },
+      "A8": {
+        "composite": 0.6379023644374681,
+        "family_id": "15/9-19"
+      },
+      "B0": {
+        "composite": 0.6624255940615118,
+        "family_id": "15/9-19"
+      },
+      "F1": {
+        "composite": 0.6190374845021401,
+        "family_id": "15/9-19"
+      },
+      "S1": {
+        "composite": 0.6042871111297616,
+        "family_id": "15/9-19"
+      },
+      "W1": {
+        "composite": 0.6862739425766904,
+        "family_id": "15/9-19"
+      }
+    }
+  },
+  "inner_logo_contexts": 12,
+  "outer_logo_folds": 4,
+  "phase0_sha256": "69adf6ac957accc8f6666c716586be16e422ef8ef99836baf744aa4b6fcb8b94",
+  "predictions_sha256": "e3fd09480065bb7cd0b02df28da7f8147101d195d7d99e08866c0e875d38726b",
+  "results_sha256": "9f50a8be8c018021b830644a6f11839e51e70e7870ad5ee71bcf9bbb4cac0e80",
+  "schema": "p41-property-crossmodal-qualification/v2",
+  "seed_pool": [
+    2693
+  ],
+  "strong_baseline": {
+    "configs": {
+      "extra_trees_regressor": {
+        "max_depth": 8,
+        "max_features": 0.7,
+        "min_samples_leaf": 2,
+        "n_estimators": 32,
+        "n_jobs": 1,
+        "random_state": 2693
+      },
+      "xgboost_regressor": {
+        "colsample_bytree": 0.8,
+        "learning_rate": 0.05,
+        "max_depth": 4,
+        "n_estimators": 32,
+        "n_jobs": 1,
+        "random_state": 2693,
+        "reg_lambda": 0.001,
+        "subsample": 0.8,
+        "tree_method": "hist"
+      }
+    },
+    "historical_baseline_commit": "16bebd18a0bc722afcbc4b841610bf76ce9503e4",
+    "input": "153 = 81 seismic amplitudes + 36 normalized log values + 36 masks",
+    "leaderboards": {
+      "KLOGH": {
+        "sha256": "f80a05a039f56b9c9bd5bce9804d77ad811ba66d67e73315b0e6d1c251c5e539",
+        "winner": "extra_trees_regressor"
+      },
+      "PHIF": {
+        "sha256": "590ef021351b04264f0a6e889ac206ef1929aea9d54ca9d823a879f8265aa8bf",
+        "winner": "extra_trees_regressor"
+      },
+      "SW": {
+        "sha256": "0d68817ee16e716a1b0ef18d52dc3e3988679b0f1f08a10e2f4cd3956c98c919",
+        "winner": "xgboost_regressor"
+      }
+    },
+    "preprocessing": "fit on each context train rows only",
+    "selection": "deterministic family-balanced depth-spread, at most 192 train rows",
+    "source_commit": "317ee5d320c061bef78fb6db4fc395764dd18e8d",
+    "source_files": {
+      "budget": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_pipelines/02_task_datasets/reservoir/reservoir_p5_stage3_budget.json",
+        "sha256": "d7f36c0917d3ff68fc6c47fb2258ae2c86f802d5299ea0a5ff23c00e1b53e0a1"
+      },
+      "common_adapter": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/_p5_common.py",
+        "sha256": "36053f02ed1bfdc25b195229a0c9b76616cdeee312afc996981210a68688e6ad"
+      },
+      "extra_trees_adapter": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/extra_trees_regressor.py",
+        "sha256": "e946f23a168d4a34eebf2052a36c50f70d14533e41bce623d59e2fb0b281d9fa"
+      },
+      "runner": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_pipelines/02_task_datasets/reservoir/reservoir_p5_stage3.py",
+        "sha256": "9e709582c9fb64505f28f989220090cd1c7504bcdee237c88ef35939454dea0f"
+      },
+      "source_lock": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/source_lock.json",
+        "sha256": "a25789166f0a9eae7bbfe6716009fa65aa45c2a1f93118e1e10ffb9711bb0db8"
+      },
+      "xgboost_adapter": {
+        "path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p5-stage3-property/_models/property/xgboost_regressor.py",
+        "sha256": "a39c22117d0807f371a3647a45da62a4deec8e2ffc01b505df9f948bdf4eb1ee"
+      }
+    },
+    "source_head_is_descendant": false,
+    "status": "P5_STRONG_BASELINE_REPLAY_LOCKED",
+    "winners": {
+      "KLOGH": "extra_trees_regressor",
+      "PHIF": "extra_trees_regressor",
+      "SW": "xgboost_regressor"
+    }
+  },
+  "test_access": false,
+  "verdict": "R0_STOP_NO_ATTRIBUTABLE_SIGNAL"
+}

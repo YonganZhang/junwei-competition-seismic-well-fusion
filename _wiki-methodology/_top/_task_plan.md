@@ -1,7 +1,8 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P35 井震跨模态前置收口] 已修复断层最终评估与重建基础特征接口，六赛道 Pipeline 引用权威 v2 证据；下一步在冻结 P21 基线和显式对齐合同上接入测井基础模型、地震基础模型与井震跨模态融合。**
+> **🧭 当前: [P42 六赛道主仓收口与 Claude 交接] 六条独立 Pipeline 保持统一生命周期；P36--P41 的重建、岩相与物性增量已进入隔离集成分支，默认模型仅在通过 promotion 时改变。下一步优先关闭⑤标签门，并在共同锁定基线与独立井族上继续③④⑥井震跨模态研究。**
+>   2026-08-06 增量：⑥P39 固定共同 well-only base 后，双预训练融合宏平均 RMSE=`0.075908484`，仍弱于 well-only `0.075314433`；④P40 双基础融合 Macro-F1=`0.161312`，弱于 B0 `0.213349`；③P41 双基础融合相对 B0 仅改善 `0.1703%`，2/4 外层胜出且 bootstrap 区间跨零。三条均不晋级，实验代码、轻量证据和结论边界已归档。
 >   2026-08-03 增量：① P30 连续三维开发体已集成，CIG-Bench guard 逐体素 F1=`0.003555` 低于 baseline `0.017641`，不晋级；忽略目录中的 joblib 已转为哈希绑定的可移植系数检查点，在完整 P30 体上复算指标至 12 位小数一致。④默认 XGBoost 已升级为 `depth=3/eta=0.1/rounds=60`，Macro-F1=`0.213349`，与 MOMENT/LLM 无关。六赛道聚焦回归共 61 项通过。
 >   P21 在开发 OOF 上相对 PyKrige RMSE 改善 `2.5144%`，相对 P19 改善 `0.0613%`；P24 同场区历史版本迁移中相对重拟合 PyKrige 改善 `1.4529%`，但不声称跨场区、fresh blind 或 LoRA 因果贡献。
 >   六赛道 baseline pipeline 候选已完成真实数据端到端验收和可移植性收口；
@@ -106,6 +107,13 @@
 | P33 四赛道混合扩展 | 🔄 | 1/4 | ④完成真实 matched-budget pilot 与独立复跑：智能体相对确定性端点 `+0.027373`，但相对现默认 A0 `-0.013750`，共同护栏拒绝假晋级并保留 `depth=3/eta=0.1/rounds=60`。下一步推进⑥重建。详见 `_findings/P33_lithofacies_incumbent_guard_prevents_false_promotion.md`。 |
 | P34 Pipeline 模块化 | ✅ | 4/4 | 六条独立 Pipeline、共享运行时、赛道 adapter、CodeBook、registry 与防漏门禁已完成；14 项运行时测试、3 项 lifecycle 回归、42 阶段核验和 Claude 独立终审通过，六条 manifest 验签均已刷新。详见 `_phases/P34_six_track_pipeline_modularization.md`。 |
 | P35 接口与证据收口 | ✅ | 4/4 | ①最终 ST10010 评估原子接入 Pipeline；⑥P29 v2 显式注入 feature cache 和查询侧模态，真实五折重算；P30 v2 复验地质统计候选并产出井震跨模态 I/O 合同；旧 P29 v1 退出晋级证据。详见 `_findings/P35_fault_reconstruction_interface_closeout.md`。 |
+| P36 重建方差修复 | ✅ | 1/1 | 修正 P30 covariance-form ordinary kriging 方差的 Lagrange multiplier 符号；权重、均值预测、RMSE 和晋级决定不变。 |
+| P37 真实井监督门 | ✅ | 1/1 | 三口父井无法同时满足原生 PHIE 与合法 development KJI 支持，状态为 `BLOCKED_REAL_ALIGNED_SUPERVISION`；未启动模型小试。 |
+| P38 真实井 PHIF 融合 | ✅ | 1/1 | 完成三父井 LOGO3、真实测井 PHIF 与原生地震对齐；双预训练融合 RMSE=`0.079781229`，未超过 well-only `0.075314433`。 |
+| P39 查询侧井震融合 | ✅ | 1/1 | 修复所有控制共享同一锁定 P38 well-only base；双预训练 RMSE=`0.075908484`，置信区间和错位门均未通过，状态为 `FEASIBLE_NO_PROMOTION`。 |
+| P40 岩相双基础资格门 | ✅ | 1/1 | MOMENT+GFM 真实进入门控残差头，但 Macro-F1=`0.161312`，低于强 B0 `0.213349`；停止 LoRA/Adapter。 |
+| P41 物性双基础资格门 | ✅ | 1/1 | 复合 RMSE 从 `0.427225122` 降至 `0.426497478`，仅改善 `0.1703%`；2/4 外层胜出且置信区间跨零，停止 LoRA/Adapter。 |
+| P42 主仓与交接收口 | ✅ | 1/1 | 集成 P36--P41 的可复现增量，保留六 Pipeline 默认与拒绝结论，归档 Claude 接手文档、轻量证据和验证记录。详见 `_findings/P42_six_track_progress_and_claude_handoff.md`。 |
 
 ## 协作与决策权边界
 

@@ -1,0 +1,706 @@
+{
+  "agent_choices": {
+    "0": {
+      "action": {
+        "action_id": "stronger_regularization",
+        "early_stopping_patience": 20,
+        "gate_strength": 0.05,
+        "weight_decay": 0.001
+      },
+      "candidates": {
+        "default": {
+          "folds": [
+            {
+              "inner_held_parent_index": 1,
+              "rmse": 0.062134081693129756,
+              "selected_steps": 1,
+              "train_rows": 8846,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.008185850456357002,
+                "held_parent_target_used": false,
+                "last_loss": 0.006822007708251476,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0011775237508118153,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "2": 8846
+                },
+                "train_rows": 8846,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 1877
+            },
+            {
+              "inner_held_parent_index": 2,
+              "rmse": 0.0922396797889122,
+              "selected_steps": 5,
+              "train_rows": 1877,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.0038122087717056274,
+                "held_parent_target_used": false,
+                "last_loss": 0.003005067352205515,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0004672631621360779,
+                "selected_steps": 5,
+                "train_parent_counts": {
+                  "1": 1877
+                },
+                "train_rows": 1877,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 25
+              },
+              "validation_rows": 8846
+            }
+          ],
+          "macro_rmse": 0.07718688074102098,
+          "per_parent_rmse": {
+            "1": 0.062134081693129756,
+            "2": 0.0922396797889122
+          },
+          "selected_steps": 3
+        },
+        "shorter_patience": {
+          "folds": [
+            {
+              "inner_held_parent_index": 1,
+              "rmse": 0.06188108697149436,
+              "selected_steps": 10,
+              "train_rows": 8846,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.008173778653144836,
+                "held_parent_target_used": false,
+                "last_loss": 0.006977687124162912,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0009837000397965312,
+                "selected_steps": 10,
+                "train_parent_counts": {
+                  "2": 8846
+                },
+                "train_rows": 8846,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 1877
+            },
+            {
+              "inner_held_parent_index": 2,
+              "rmse": 0.08998938103204947,
+              "selected_steps": 15,
+              "train_rows": 1877,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.0038086839485913515,
+                "held_parent_target_used": false,
+                "last_loss": 0.002966377418488264,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0005551489884965122,
+                "selected_steps": 15,
+                "train_parent_counts": {
+                  "1": 1877
+                },
+                "train_rows": 1877,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 25
+              },
+              "validation_rows": 8846
+            }
+          ],
+          "macro_rmse": 0.0759352340017719,
+          "per_parent_rmse": {
+            "1": 0.06188108697149436,
+            "2": 0.08998938103204947
+          },
+          "selected_steps": 12
+        },
+        "stronger_regularization": {
+          "folds": [
+            {
+              "inner_held_parent_index": 1,
+              "rmse": 0.061951633636857,
+              "selected_steps": 5,
+              "train_rows": 8846,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.008169706910848618,
+                "held_parent_target_used": false,
+                "last_loss": 0.007282718550413847,
+                "maximum_gate": 0.05,
+                "maximum_gradient_norm": 0.0005304757505655289,
+                "selected_steps": 5,
+                "train_parent_counts": {
+                  "2": 8846
+                },
+                "train_rows": 8846,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 25
+              },
+              "validation_rows": 1877
+            },
+            {
+              "inner_held_parent_index": 2,
+              "rmse": 0.08926158181744134,
+              "selected_steps": 5,
+              "train_rows": 1877,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.0038125573191791773,
+                "held_parent_target_used": false,
+                "last_loss": 0.0033296484034508467,
+                "maximum_gate": 0.05,
+                "maximum_gradient_norm": 0.00027249896083958447,
+                "selected_steps": 5,
+                "train_parent_counts": {
+                  "1": 1877
+                },
+                "train_rows": 1877,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 25
+              },
+              "validation_rows": 8846
+            }
+          ],
+          "macro_rmse": 0.07560660772714917,
+          "per_parent_rmse": {
+            "1": 0.061951633636857,
+            "2": 0.08926158181744134
+          },
+          "selected_steps": 5
+        }
+      },
+      "chosen_action": {
+        "action_id": "stronger_regularization",
+        "early_stopping_patience": 20,
+        "gate_strength": 0.05,
+        "weight_decay": 0.001
+      },
+      "complete_action_allowlist": [
+        {
+          "action_id": "default",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        }
+      ],
+      "executor_confirmation": {
+        "action_id": "stronger_regularization",
+        "fixed_steps": 5,
+        "held_parent_metric_read_before_execution": false
+      },
+      "observation_scope": "outer-train inner-LOGO only",
+      "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
+      "selected_steps": 5
+    },
+    "1": {
+      "action": {
+        "action_id": "shorter_patience",
+        "early_stopping_patience": 10,
+        "gate_strength": 0.1,
+        "weight_decay": 0.0001
+      },
+      "candidates": {
+        "default": {
+          "folds": [
+            {
+              "inner_held_parent_index": 0,
+              "rmse": 0.06957342741542161,
+              "selected_steps": 1,
+              "train_rows": 8846,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.010389374569058418,
+                "held_parent_target_used": false,
+                "last_loss": 0.008817499503493309,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0013805091148242354,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "2": 8846
+                },
+                "train_rows": 8846,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 1962
+            },
+            {
+              "inner_held_parent_index": 2,
+              "rmse": 0.1012905640226822,
+              "selected_steps": 1,
+              "train_rows": 1962,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.00496463431045413,
+                "held_parent_target_used": false,
+                "last_loss": 0.004045848269015551,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0008408077410422266,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "0": 1962
+                },
+                "train_rows": 1962,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 8846
+            }
+          ],
+          "macro_rmse": 0.08543199571905191,
+          "per_parent_rmse": {
+            "0": 0.06957342741542161,
+            "2": 0.1012905640226822
+          },
+          "selected_steps": 1
+        },
+        "shorter_patience": {
+          "folds": [
+            {
+              "inner_held_parent_index": 0,
+              "rmse": 0.0697417058147882,
+              "selected_steps": 1,
+              "train_rows": 8846,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.01035312470048666,
+                "held_parent_target_used": false,
+                "last_loss": 0.009880680590867996,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0008360001374967396,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "2": 8846
+                },
+                "train_rows": 8846,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 10
+              },
+              "validation_rows": 1962
+            },
+            {
+              "inner_held_parent_index": 2,
+              "rmse": 0.10110173614961221,
+              "selected_steps": 1,
+              "train_rows": 1962,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.004979499150067568,
+                "held_parent_target_used": false,
+                "last_loss": 0.0046327682211995125,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0008550205384381115,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "0": 1962
+                },
+                "train_rows": 1962,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 10
+              },
+              "validation_rows": 8846
+            }
+          ],
+          "macro_rmse": 0.0854217209822002,
+          "per_parent_rmse": {
+            "0": 0.0697417058147882,
+            "2": 0.10110173614961221
+          },
+          "selected_steps": 1
+        },
+        "stronger_regularization": {
+          "folds": [
+            {
+              "inner_held_parent_index": 0,
+              "rmse": 0.06956969140560834,
+              "selected_steps": 1,
+              "train_rows": 8846,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.01033933088183403,
+                "held_parent_target_used": false,
+                "last_loss": 0.00962055753916502,
+                "maximum_gate": 0.05,
+                "maximum_gradient_norm": 0.0005341054638847709,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "2": 8846
+                },
+                "train_rows": 8846,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 1962
+            },
+            {
+              "inner_held_parent_index": 2,
+              "rmse": 0.10138354226922741,
+              "selected_steps": 1,
+              "train_rows": 1962,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.0049100168980658054,
+                "held_parent_target_used": false,
+                "last_loss": 0.004417023155838251,
+                "maximum_gate": 0.05,
+                "maximum_gradient_norm": 0.00042985283653251827,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "0": 1962
+                },
+                "train_rows": 1962,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 8846
+            }
+          ],
+          "macro_rmse": 0.08547661683741788,
+          "per_parent_rmse": {
+            "0": 0.06956969140560834,
+            "2": 0.10138354226922741
+          },
+          "selected_steps": 1
+        }
+      },
+      "chosen_action": {
+        "action_id": "shorter_patience",
+        "early_stopping_patience": 10,
+        "gate_strength": 0.1,
+        "weight_decay": 0.0001
+      },
+      "complete_action_allowlist": [
+        {
+          "action_id": "default",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        }
+      ],
+      "executor_confirmation": {
+        "action_id": "shorter_patience",
+        "fixed_steps": 1,
+        "held_parent_metric_read_before_execution": false
+      },
+      "observation_scope": "outer-train inner-LOGO only",
+      "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
+      "selected_steps": 1
+    },
+    "2": {
+      "action": {
+        "action_id": "stronger_regularization",
+        "early_stopping_patience": 20,
+        "gate_strength": 0.05,
+        "weight_decay": 0.001
+      },
+      "candidates": {
+        "default": {
+          "folds": [
+            {
+              "inner_held_parent_index": 0,
+              "rmse": 0.0834214412554993,
+              "selected_steps": 1,
+              "train_rows": 1877,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.005265249405056238,
+                "held_parent_target_used": false,
+                "last_loss": 0.003905658842995763,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0015185399679467082,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "1": 1877
+                },
+                "train_rows": 1877,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 1962
+            },
+            {
+              "inner_held_parent_index": 1,
+              "rmse": 0.07491235809283446,
+              "selected_steps": 5,
+              "train_rows": 1962,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.006896285805851221,
+                "held_parent_target_used": false,
+                "last_loss": 0.00506540946662426,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.000967027444858104,
+                "selected_steps": 5,
+                "train_parent_counts": {
+                  "0": 1962
+                },
+                "train_rows": 1962,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 25
+              },
+              "validation_rows": 1877
+            }
+          ],
+          "macro_rmse": 0.07916689967416687,
+          "per_parent_rmse": {
+            "0": 0.0834214412554993,
+            "1": 0.07491235809283446
+          },
+          "selected_steps": 3
+        },
+        "shorter_patience": {
+          "folds": [
+            {
+              "inner_held_parent_index": 0,
+              "rmse": 0.083525066565148,
+              "selected_steps": 1,
+              "train_rows": 1877,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.005256963893771172,
+                "held_parent_target_used": false,
+                "last_loss": 0.0045807878486812115,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0015284755500033498,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "1": 1877
+                },
+                "train_rows": 1877,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 10
+              },
+              "validation_rows": 1962
+            },
+            {
+              "inner_held_parent_index": 1,
+              "rmse": 0.07514124654175285,
+              "selected_steps": 1,
+              "train_rows": 1962,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.006871718447655439,
+                "held_parent_target_used": false,
+                "last_loss": 0.006545988842844963,
+                "maximum_gate": 0.1,
+                "maximum_gradient_norm": 0.0006053219549357891,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "0": 1962
+                },
+                "train_rows": 1962,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 10
+              },
+              "validation_rows": 1877
+            }
+          ],
+          "macro_rmse": 0.07933315655345043,
+          "per_parent_rmse": {
+            "0": 0.083525066565148,
+            "1": 0.07514124654175285
+          },
+          "selected_steps": 1
+        },
+        "stronger_regularization": {
+          "folds": [
+            {
+              "inner_held_parent_index": 0,
+              "rmse": 0.08295768056691051,
+              "selected_steps": 1,
+              "train_rows": 1877,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.00539728719741106,
+                "held_parent_target_used": false,
+                "last_loss": 0.00449602073058486,
+                "maximum_gate": 0.05,
+                "maximum_gradient_norm": 0.0008228482911363244,
+                "selected_steps": 1,
+                "train_parent_counts": {
+                  "1": 1877
+                },
+                "train_rows": 1877,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 20
+              },
+              "validation_rows": 1962
+            },
+            {
+              "inner_held_parent_index": 1,
+              "rmse": 0.07450861638343877,
+              "selected_steps": 10,
+              "train_rows": 1962,
+              "training_audit": {
+                "base_targets_are_outer_train_cross_fitted": true,
+                "correction_bound": 0.5,
+                "first_loss": 0.0068846214562654495,
+                "held_parent_target_used": false,
+                "last_loss": 0.005741151049733162,
+                "maximum_gate": 0.05,
+                "maximum_gradient_norm": 0.0005008139996789396,
+                "selected_steps": 10,
+                "train_parent_counts": {
+                  "0": 1962
+                },
+                "train_rows": 1962,
+                "trainable_parameter_count": 6305,
+                "updates_executed": 30
+              },
+              "validation_rows": 1877
+            }
+          ],
+          "macro_rmse": 0.07873314847517464,
+          "per_parent_rmse": {
+            "0": 0.08295768056691051,
+            "1": 0.07450861638343877
+          },
+          "selected_steps": 5
+        }
+      },
+      "chosen_action": {
+        "action_id": "stronger_regularization",
+        "early_stopping_patience": 20,
+        "gate_strength": 0.05,
+        "weight_decay": 0.001
+      },
+      "complete_action_allowlist": [
+        {
+          "action_id": "default",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        },
+        {
+          "action_id": "stronger_regularization",
+          "early_stopping_patience": 20,
+          "gate_strength": 0.05,
+          "weight_decay": 0.001
+        },
+        {
+          "action_id": "shorter_patience",
+          "early_stopping_patience": 10,
+          "gate_strength": 0.1,
+          "weight_decay": 0.0001
+        }
+      ],
+      "executor_confirmation": {
+        "action_id": "stronger_regularization",
+        "fixed_steps": 5,
+        "held_parent_metric_read_before_execution": false
+      },
+      "observation_scope": "outer-train inner-LOGO only",
+      "prompt": "Choose exactly one preregistered action by minimum outer-train inner-LOGO equal-parent macro RMSE; ties select default.",
+      "selected_steps": 5
+    }
+  },
+  "changed_variable": "prediction_interface_only",
+  "iteration": 2,
+  "model": {
+    "calibration": {
+      "15/9-19": {
+        "coverage_50": 0.5489296636085627,
+        "coverage_90": 0.9724770642201835,
+        "gaussian_nll": -1.2099978029968823,
+        "mean_width_50": 0.11481996894963543,
+        "mean_width_90": 0.2800072830140991,
+        "sigma": 0.08511617034673691
+      },
+      "15/9-F-11": {
+        "coverage_50": 0.6430474160895046,
+        "coverage_90": 0.9952051145444859,
+        "gaussian_nll": -1.1919079763982239,
+        "mean_width_50": 0.12973350033503786,
+        "mean_width_90": 0.3163763696945156,
+        "sigma": 0.09617158770561218
+      },
+      "15/9-F-15": {
+        "coverage_50": 0.39803300926972646,
+        "coverage_90": 0.8482930137915442,
+        "gaussian_nll": -0.9513969910644432,
+        "mean_width_50": 0.1064881055825801,
+        "mean_width_90": 0.2596886707971144,
+        "sigma": 0.07893975079059601
+      },
+      "equal_parent_macro": {
+        "coverage_50": 0.5300033629892645,
+        "coverage_90": 0.9386583975187378,
+        "gaussian_nll": -1.1177675901531832,
+        "mean_width_50": 0.11701385828908446,
+        "mean_width_90": 0.28535744116857636,
+        "sigma": 0.08674250294764836
+      }
+    },
+    "metrics": {
+      "15/9-19": {
+        "bias": -0.015625756778485208,
+        "mae": 0.05698499710324559,
+        "rmse": 0.06964998640498339,
+        "rows": 1962
+      },
+      "15/9-F-11": {
+        "bias": 0.029494314550816095,
+        "mae": 0.054493489404373686,
+        "rmse": 0.0653365166393784,
+        "rows": 1877
+      },
+      "15/9-F-15": {
+        "bias": 0.004524512229108917,
+        "mae": 0.07497136981123644,
+        "rmse": 0.09129305159829156,
+        "rows": 8846
+      },
+      "equal_parent_macro": {
+        "bias": 0.006131023333813268,
+        "mae": 0.06214995210628523,
+        "rmse": 0.07542651821421777,
+        "rows": 12685
+      }
+    }
+  },
+  "outer_results_not_used_to_define_iteration_3": true,
+  "schema_version": "reconstruction-p39-iteration/v1"
+}

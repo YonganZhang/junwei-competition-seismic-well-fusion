@@ -1,0 +1,14 @@
+{
+  "conclusion": "PHIF cannot be silently renamed to PHIE",
+  "correlation": 0.6898342670399774,
+  "elementwise_equal": false,
+  "mae_fraction": 0.05228949627462001,
+  "maximum_absolute_difference_fraction": 0.2631971103083672,
+  "overlap_rows": 1967,
+  "phie_curve": "LFP_PHIE",
+  "phif_curve": "PHIF",
+  "phif_member": "Well_logs/05.PETROPHYSICAL INTERPRETATION/15_9-19 A/CPI/15_9-19_A_CPI.las",
+  "phif_member_sha256": "2b0bae3caa0c10f2f6fb3323cde198edcaf0e0ff3adb0c00308cf139cae9035b",
+  "rmse_fraction": 0.07790825422663222,
+  "well": "15/9-19 A"
+}

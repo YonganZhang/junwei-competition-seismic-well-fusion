@@ -1,0 +1,909 @@
+{
+  "all_weight_controls_identical_parameter_count": true,
+  "combined_local_global_shape": [
+    12685,
+    159
+  ],
+  "correction_shape": [
+    12685
+  ],
+  "encoder_audit": {
+    "fold_normalization": {
+      "0": {
+        "curve_mean": {
+          "CALI": 8.594429016113281,
+          "DT": 76.00491333007812,
+          "GR": 42.33197784423828,
+          "NPHI": 0.17122571170330048,
+          "RHOB": 2.4651074409484863,
+          "RT": 3.9730758666992188
+        },
+        "curve_scale": {
+          "CALI": 0.11790896952152252,
+          "DT": 9.902295112609863,
+          "GR": 24.702327728271484,
+          "NPHI": 0.07204405218362808,
+          "RHOB": 0.13458985090255737,
+          "RT": 11.79980754852295
+        },
+        "fit_scope": "equal-parent outer-train observed well samples only",
+        "fold_id": 0,
+        "held_parent_target_used": false,
+        "input_shape": [
+          12685,
+          6,
+          33
+        ],
+        "missing_fill": "normalized_zero_plus_explicit_input_mask",
+        "outer_train_parents": [
+          "15/9-F-11",
+          "15/9-F-15"
+        ],
+        "time_mask_observed_fraction": 0.9961037254691176,
+        "time_mask_shape": [
+          12685,
+          33
+        ]
+      },
+      "1": {
+        "curve_mean": {
+          "CALI": 8.671830177307129,
+          "DT": 81.69248962402344,
+          "GR": 55.12356185913086,
+          "NPHI": 0.22168418765068054,
+          "RHOB": 2.4284558296203613,
+          "RT": 7.907008647918701
+        },
+        "curve_scale": {
+          "CALI": 0.4558853805065155,
+          "DT": 15.174288749694824,
+          "GR": 61.39080047607422,
+          "NPHI": 0.8463453054428101,
+          "RHOB": 0.14128416776657104,
+          "RT": 37.962100982666016
+        },
+        "fit_scope": "equal-parent outer-train observed well samples only",
+        "fold_id": 1,
+        "held_parent_target_used": false,
+        "input_shape": [
+          12685,
+          6,
+          33
+        ],
+        "missing_fill": "normalized_zero_plus_explicit_input_mask",
+        "outer_train_parents": [
+          "15/9-19",
+          "15/9-F-15"
+        ],
+        "time_mask_observed_fraction": 0.9961037254691176,
+        "time_mask_shape": [
+          12685,
+          33
+        ]
+      },
+      "2": {
+        "curve_mean": {
+          "CALI": 8.776187896728516,
+          "DT": 82.96055603027344,
+          "GR": 61.638099670410156,
+          "NPHI": 0.23007750511169434,
+          "RHOB": 2.4298300743103027,
+          "RT": 8.100945472717285
+        },
+        "curve_scale": {
+          "CALI": 0.423719584941864,
+          "DT": 13.581291198730469,
+          "GR": 61.041587829589844,
+          "NPHI": 0.8454055786132812,
+          "RHOB": 0.13781362771987915,
+          "RT": 39.621910095214844
+        },
+        "fit_scope": "equal-parent outer-train observed well samples only",
+        "fold_id": 2,
+        "held_parent_target_used": false,
+        "input_shape": [
+          12685,
+          6,
+          33
+        ],
+        "missing_fill": "normalized_zero_plus_explicit_input_mask",
+        "outer_train_parents": [
+          "15/9-19",
+          "15/9-F-11"
+        ],
+        "time_mask_observed_fraction": 0.9961037254691176,
+        "time_mask_shape": [
+          12685,
+          33
+        ]
+      }
+    },
+    "pretrained_random_max_abs_difference": {
+      "gfm": 4.4249653816223145,
+      "moment": 2.9283366203308105
+    },
+    "runs": {
+      "gfm_pretrained": {
+        "audit": {
+          "asset_audit": {
+            "architecture_sha256": "640c44691b13b21d5172585d06927d275d7ce730bf7f97cf4fba0a762cc3c54d",
+            "auto_download": false,
+            "config": {
+              "classes": 10,
+              "custom_head": false,
+              "decoder_depth": 12,
+              "decoder_embed_dim": 800,
+              "decoder_num_heads": 20,
+              "depth": 16,
+              "embed_dim": 1200,
+              "full_image_loss": true,
+              "img_size": [
+                400,
+                160
+              ],
+              "in_chans": 1,
+              "mlp_ratio": 4,
+              "norm_pix_loss": false,
+              "num_heads": 20,
+              "patch_size": [
+                400,
+                1
+              ]
+            },
+            "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
+            "encoder_probe_sha256": "48f456747e2e54fad355df2a726c00a02aced719151cf06172ab3a5412ae0152",
+            "encoder_weight_mode": "pretrained",
+            "license": "Apache-2.0",
+            "local_only": true,
+            "model_card_sha256": "3ca7d92f45bac244c7fa9fb8460b703636e853acbbaa35831ae4dc9bdcdbcf5f",
+            "model_id": "thinkonward/geophysical-foundation-model",
+            "parameter_count": 371104800,
+            "pretrained_weights_loaded": true,
+            "random_seed": null,
+            "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+            "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
+            "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+          },
+          "cls_token_retained": true,
+          "feature_variance": 1.289014458656311,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 51,
+          "kind": "gfm",
+          "normalization": "per-section per-channel z-score; label-independent",
+          "projected_token_shape": [
+            3,
+            161,
+            16
+          ],
+          "source_token_shape": [
+            161,
+            1200
+          ],
+          "trace_tokens_retained": 160,
+          "weight_mode": "pretrained"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "gfm",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/gfm_sections_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/gfm_sections_pretrained.npz",
+          "--weight-mode",
+          "pretrained",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "2",
+          "--gfm-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--thinkonward--geophysical-foundation-model/snapshots/d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+          "--gfm-source-root",
+          "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src"
+        ],
+        "output_sha256": "eaee3cd8a77f96e8dd4407e0f3077f8ad1fe65164d3a64b0c7b68cf5a012d03c",
+        "output_shape": [
+          34,
+          3,
+          161,
+          16
+        ],
+        "wall_seconds": 9.054296268965118
+      },
+      "gfm_random_init": {
+        "audit": {
+          "asset_audit": {
+            "architecture_sha256": "640c44691b13b21d5172585d06927d275d7ce730bf7f97cf4fba0a762cc3c54d",
+            "auto_download": false,
+            "config": {
+              "classes": 10,
+              "custom_head": false,
+              "decoder_depth": 12,
+              "decoder_embed_dim": 800,
+              "decoder_num_heads": 20,
+              "depth": 16,
+              "embed_dim": 1200,
+              "full_image_loss": true,
+              "img_size": [
+                400,
+                160
+              ],
+              "in_chans": 1,
+              "mlp_ratio": 4,
+              "norm_pix_loss": false,
+              "num_heads": 20,
+              "patch_size": [
+                400,
+                1
+              ]
+            },
+            "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
+            "encoder_probe_sha256": "f1f2f0fc29a5dc01db5d6aa1a15627370f496aec53d3efe8e2361b5230fd86cd",
+            "encoder_weight_mode": "random_init",
+            "license": "Apache-2.0",
+            "local_only": true,
+            "model_card_sha256": "3ca7d92f45bac244c7fa9fb8460b703636e853acbbaa35831ae4dc9bdcdbcf5f",
+            "model_id": "thinkonward/geophysical-foundation-model",
+            "parameter_count": 371104800,
+            "pretrained_weights_loaded": false,
+            "random_seed": 2693,
+            "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+            "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
+            "weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446"
+          },
+          "cls_token_retained": true,
+          "feature_variance": 1.0763846635818481,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 51,
+          "kind": "gfm",
+          "normalization": "per-section per-channel z-score; label-independent",
+          "projected_token_shape": [
+            3,
+            161,
+            16
+          ],
+          "source_token_shape": [
+            161,
+            1200
+          ],
+          "trace_tokens_retained": 160,
+          "weight_mode": "random_init"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "gfm",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/gfm_sections_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/gfm_sections_random_init.npz",
+          "--weight-mode",
+          "random_init",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "2",
+          "--gfm-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--thinkonward--geophysical-foundation-model/snapshots/d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+          "--gfm-source-root",
+          "/mnt/data/yongan-admin-2/.cache/gfm_vendor_src"
+        ],
+        "output_sha256": "70849695da1193982ed27e8a68b236f85dc88036d47bf388dfed7687a75c2d61",
+        "output_shape": [
+          34,
+          3,
+          161,
+          16
+        ],
+        "wall_seconds": 8.822026644018479
+      },
+      "moment_fold0_pretrained": {
+        "audit": {
+          "asset_audit": {
+            "auto_download": false,
+            "config_sha256": "f1c66c2bb845229c0ed27a1600dbcc956b85ab21f9e5fd8a1663e6641bed7755",
+            "input_shape": [
+              6,
+              33
+            ],
+            "local_only": true,
+            "model_id": "AutonLab/MOMENT-1-base",
+            "parameter_count": 109640065,
+            "random_seed": null,
+            "snapshot_revision": "5e44b0ea26376a176360f87831124e018f876d96",
+            "token_shape": [
+              6,
+              4,
+              768
+            ],
+            "trainable_parameter_count": 0,
+            "weight_mode": "pretrained",
+            "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+          },
+          "feature_variance": 0.04606938734650612,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 50,
+          "kind": "moment",
+          "projected_token_shape": [
+            6,
+            4,
+            16
+          ],
+          "source_token_shape": [
+            6,
+            4,
+            768
+          ],
+          "weight_mode": "pretrained"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "moment",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold0_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold0_pretrained.npz",
+          "--weight-mode",
+          "pretrained",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "256",
+          "--moment-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+          "--moment-dependency-root",
+          "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+          "--moment-source-root",
+          "/mnt/data/yongan-admin-2/.cache/upstream/moment"
+        ],
+        "output_sha256": "f742479282d5eb4c6a1969cd1d6300801eb5a8325e7848f325eb667798be8aab",
+        "output_shape": [
+          12685,
+          6,
+          4,
+          16
+        ],
+        "wall_seconds": 11.192874835978728
+      },
+      "moment_fold0_random_init": {
+        "audit": {
+          "asset_audit": {
+            "auto_download": false,
+            "config_sha256": "f1c66c2bb845229c0ed27a1600dbcc956b85ab21f9e5fd8a1663e6641bed7755",
+            "input_shape": [
+              6,
+              33
+            ],
+            "local_only": true,
+            "model_id": "AutonLab/MOMENT-1-base",
+            "parameter_count": 109640065,
+            "random_seed": 2693,
+            "snapshot_revision": "5e44b0ea26376a176360f87831124e018f876d96",
+            "token_shape": [
+              6,
+              4,
+              768
+            ],
+            "trainable_parameter_count": 0,
+            "weight_mode": "random_init",
+            "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+          },
+          "feature_variance": 0.7971174716949463,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 50,
+          "kind": "moment",
+          "projected_token_shape": [
+            6,
+            4,
+            16
+          ],
+          "source_token_shape": [
+            6,
+            4,
+            768
+          ],
+          "weight_mode": "random_init"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "moment",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold0_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold0_random_init.npz",
+          "--weight-mode",
+          "random_init",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "256",
+          "--moment-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+          "--moment-dependency-root",
+          "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+          "--moment-source-root",
+          "/mnt/data/yongan-admin-2/.cache/upstream/moment"
+        ],
+        "output_sha256": "a2e6a6a770424139a82c5a307764487c107414ae7f5ddae4789bc452a9a1a8ec",
+        "output_shape": [
+          12685,
+          6,
+          4,
+          16
+        ],
+        "wall_seconds": 11.779701706022024
+      },
+      "moment_fold1_pretrained": {
+        "audit": {
+          "asset_audit": {
+            "auto_download": false,
+            "config_sha256": "f1c66c2bb845229c0ed27a1600dbcc956b85ab21f9e5fd8a1663e6641bed7755",
+            "input_shape": [
+              6,
+              33
+            ],
+            "local_only": true,
+            "model_id": "AutonLab/MOMENT-1-base",
+            "parameter_count": 109640065,
+            "random_seed": null,
+            "snapshot_revision": "5e44b0ea26376a176360f87831124e018f876d96",
+            "token_shape": [
+              6,
+              4,
+              768
+            ],
+            "trainable_parameter_count": 0,
+            "weight_mode": "pretrained",
+            "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+          },
+          "feature_variance": 0.04606239125132561,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 50,
+          "kind": "moment",
+          "projected_token_shape": [
+            6,
+            4,
+            16
+          ],
+          "source_token_shape": [
+            6,
+            4,
+            768
+          ],
+          "weight_mode": "pretrained"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "moment",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold1_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold1_pretrained.npz",
+          "--weight-mode",
+          "pretrained",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "256",
+          "--moment-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+          "--moment-dependency-root",
+          "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+          "--moment-source-root",
+          "/mnt/data/yongan-admin-2/.cache/upstream/moment"
+        ],
+        "output_sha256": "eb5a151528240e933a241df9bae1e2af2909f1a55086ec1ee0dce4667e5ebbe6",
+        "output_shape": [
+          12685,
+          6,
+          4,
+          16
+        ],
+        "wall_seconds": 11.049251054006163
+      },
+      "moment_fold1_random_init": {
+        "audit": {
+          "asset_audit": {
+            "auto_download": false,
+            "config_sha256": "f1c66c2bb845229c0ed27a1600dbcc956b85ab21f9e5fd8a1663e6641bed7755",
+            "input_shape": [
+              6,
+              33
+            ],
+            "local_only": true,
+            "model_id": "AutonLab/MOMENT-1-base",
+            "parameter_count": 109640065,
+            "random_seed": 2693,
+            "snapshot_revision": "5e44b0ea26376a176360f87831124e018f876d96",
+            "token_shape": [
+              6,
+              4,
+              768
+            ],
+            "trainable_parameter_count": 0,
+            "weight_mode": "random_init",
+            "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+          },
+          "feature_variance": 0.7971233129501343,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 50,
+          "kind": "moment",
+          "projected_token_shape": [
+            6,
+            4,
+            16
+          ],
+          "source_token_shape": [
+            6,
+            4,
+            768
+          ],
+          "weight_mode": "random_init"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "moment",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold1_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold1_random_init.npz",
+          "--weight-mode",
+          "random_init",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "256",
+          "--moment-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+          "--moment-dependency-root",
+          "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+          "--moment-source-root",
+          "/mnt/data/yongan-admin-2/.cache/upstream/moment"
+        ],
+        "output_sha256": "b5765f2295786c58388330a71e024462cce6d7d611c6709059be3c205990e693",
+        "output_shape": [
+          12685,
+          6,
+          4,
+          16
+        ],
+        "wall_seconds": 11.658198399003595
+      },
+      "moment_fold2_pretrained": {
+        "audit": {
+          "asset_audit": {
+            "auto_download": false,
+            "config_sha256": "f1c66c2bb845229c0ed27a1600dbcc956b85ab21f9e5fd8a1663e6641bed7755",
+            "input_shape": [
+              6,
+              33
+            ],
+            "local_only": true,
+            "model_id": "AutonLab/MOMENT-1-base",
+            "parameter_count": 109640065,
+            "random_seed": null,
+            "snapshot_revision": "5e44b0ea26376a176360f87831124e018f876d96",
+            "token_shape": [
+              6,
+              4,
+              768
+            ],
+            "trainable_parameter_count": 0,
+            "weight_mode": "pretrained",
+            "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+          },
+          "feature_variance": 0.04606214165687561,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 50,
+          "kind": "moment",
+          "projected_token_shape": [
+            6,
+            4,
+            16
+          ],
+          "source_token_shape": [
+            6,
+            4,
+            768
+          ],
+          "weight_mode": "pretrained"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "moment",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold2_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold2_pretrained.npz",
+          "--weight-mode",
+          "pretrained",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "256",
+          "--moment-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+          "--moment-dependency-root",
+          "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+          "--moment-source-root",
+          "/mnt/data/yongan-admin-2/.cache/upstream/moment"
+        ],
+        "output_sha256": "b9beda77d77a7f34ce42e70ed4a7f0eb9932516aa869090f3a92e3d262bb68eb",
+        "output_shape": [
+          12685,
+          6,
+          4,
+          16
+        ],
+        "wall_seconds": 10.822082497994415
+      },
+      "moment_fold2_random_init": {
+        "audit": {
+          "asset_audit": {
+            "auto_download": false,
+            "config_sha256": "f1c66c2bb845229c0ed27a1600dbcc956b85ab21f9e5fd8a1663e6641bed7755",
+            "input_shape": [
+              6,
+              33
+            ],
+            "local_only": true,
+            "model_id": "AutonLab/MOMENT-1-base",
+            "parameter_count": 109640065,
+            "random_seed": 2693,
+            "snapshot_revision": "5e44b0ea26376a176360f87831124e018f876d96",
+            "token_shape": [
+              6,
+              4,
+              768
+            ],
+            "trainable_parameter_count": 0,
+            "weight_mode": "random_init",
+            "weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825"
+          },
+          "feature_variance": 0.7971234917640686,
+          "finite": true,
+          "fixed_projection_seed": 2693,
+          "forward_batches": 50,
+          "kind": "moment",
+          "projected_token_shape": [
+            6,
+            4,
+            16
+          ],
+          "source_token_shape": [
+            6,
+            4,
+            768
+          ],
+          "weight_mode": "random_init"
+        },
+        "command": [
+          "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+          "moment",
+          "--input",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold2_input.npz",
+          "--output",
+          "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p39_query_local_well_seismic_fusion/moment_fold2_random_init.npz",
+          "--weight-mode",
+          "random_init",
+          "--seed",
+          "2693",
+          "--device",
+          "cuda:5",
+          "--batch-size",
+          "256",
+          "--moment-snapshot",
+          "/mnt/data/yongan-admin-2/.cache/huggingface/hub/models--AutonLab--MOMENT-1-base/snapshots/5e44b0ea26376a176360f87831124e018f876d96",
+          "--moment-dependency-root",
+          "/mnt/data/yongan-admin-2/.cache/p8-foundation-deps",
+          "--moment-source-root",
+          "/mnt/data/yongan-admin-2/.cache/upstream/moment"
+        ],
+        "output_sha256": "208c9872cba7c6dcc67a6cb745699b81276ef261d595249c3037eaece03e50e3",
+        "output_shape": [
+          12685,
+          6,
+          4,
+          16
+        ],
+        "wall_seconds": 11.409883788030129
+      }
+    },
+    "schema_version": "reconstruction-p39-foundation-feature-audit/v1",
+    "worker": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_pipelines/02_task_datasets/reconstruction/p38_foundation_feature_worker.py",
+    "worker_sha256": "1ea6d44d2a360ef5ebf1121f79c890cf00d838e241b89a8a9c8f7336feffe5d7"
+  },
+  "fixed_base_attribution_invariant": true,
+  "fixed_modality_transform_output_shape": [
+    12685,
+    32
+  ],
+  "gate_shape": [
+    12685
+  ],
+  "gfm_projected_section_shape": [
+    34,
+    3,
+    161,
+    16
+  ],
+  "gfm_row_cls_shape": [
+    12685,
+    3,
+    16
+  ],
+  "gfm_row_trace_shape": [
+    12685,
+    3,
+    16
+  ],
+  "gfm_row_with_position_shape": [
+    12685,
+    99
+  ],
+  "gfm_source_per_section_channel_shape": [
+    161,
+    1200
+  ],
+  "learned_parameter_count": 6305,
+  "local_waveform": {
+    "boundary_policy": "clip query center to [8,391]",
+    "clipped_rows": 0,
+    "crossline_offsets": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "query_center_min_max": [
+      154,
+      245
+    ],
+    "shape": [
+      12685,
+      60
+    ],
+    "shift_ms": 0.0,
+    "shift_samples": 0,
+    "target_statistics_used": false,
+    "temporal_offsets": [
+      -8,
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "moment_flattened_shape": [
+    12685,
+    384
+  ],
+  "moment_projected_shape": [
+    12685,
+    6,
+    4,
+    16
+  ],
+  "moment_source_shape": [
+    12685,
+    6,
+    4,
+    768
+  ],
+  "native_seismic_shape": [
+    34,
+    3,
+    400,
+    160
+  ],
+  "p38_parameter_count": 6305,
+  "prediction_shape": [
+    12685
+  ],
+  "query_local_features_change_with_depth": true,
+  "raw_well_input_shape": [
+    12685,
+    6,
+    33
+  ],
+  "row_rebuild_max_abs_difference": {
+    "MD_m": 0.0,
+    "TVDSS_m": 0.0,
+    "TWT_ms": 0.0,
+    "crossline": 0.0,
+    "inline": 0.0,
+    "parent_index": 0.0,
+    "row_id": 0.0,
+    "section_id": 0.0,
+    "target": 0.0,
+    "time_index": 0.0,
+    "time_position": 0.0,
+    "trace_token_id": 0.0,
+    "x_m": 0.0,
+    "y_m": 0.0
+  },
+  "same_trace_group_count": 131,
+  "schema_version": "reconstruction-p39-representation-audit/v1",
+  "shifted_combined_max_abs_difference": 7.024477005004883,
+  "shifted_local_waveform": {
+    "boundary_policy": "clip query center to [8,391]",
+    "clipped_rows": 0,
+    "crossline_offsets": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "query_center_min_max": [
+      194,
+      285
+    ],
+    "shape": [
+      12685,
+      60
+    ],
+    "shift_ms": 160.0,
+    "shift_samples": 40,
+    "target_statistics_used": false,
+    "temporal_offsets": [
+      -8,
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  }
+}

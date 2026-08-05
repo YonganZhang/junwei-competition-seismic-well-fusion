@@ -1,0 +1,288 @@
+{
+  "alignment_gate_passed": true,
+  "chain": [
+    "MD_m",
+    "actual_survey_TVDSS_and_UTM_ED50_zone31N",
+    "checkshot_TWT_ms",
+    "UTM_to_ILXL_affine",
+    "nearest_native_ST0202_trace_and_4ms_sample"
+  ],
+  "interpolation_applied": false,
+  "minimum_parent_coverage": 0.9,
+  "native_window_shape": [
+    3,
+    400,
+    160
+  ],
+  "padding_applied": false,
+  "parents": {
+    "15/9-19": {
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_19A.txt",
+        "member_sha256": "7818892b00fd6202372d5012d1b8294ea87ba5224a33918883b7b668710f558c",
+        "rows": 185,
+        "tvdss_range_m": [
+          0.0,
+          3246.9
+        ],
+        "twt_range_ms": [
+          0.0,
+          2767.6001
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "coverage_gate_passed": true,
+      "direct_st0202_rows_before_joint_mask": 1967,
+      "key": "19A",
+      "native_window": {
+        "crossline_start": 2315,
+        "crossline_stop_inclusive": 2474,
+        "finite": true,
+        "source_samples_include_two_sample_halo": true,
+        "time_start_index": 459,
+        "time_stop_index_inclusive": 858,
+        "uninterpolated": true,
+        "unique_inline_sections": 11,
+        "unpadded": true
+      },
+      "physical_phif_rows": 1967,
+      "ranges": {
+        "MD_m": [
+          3666.5916,
+          3966.21
+        ],
+        "TVDSS_m": [
+          2873.753165142857,
+          3143.3083827586206
+        ],
+        "TWT_ms": [
+          2556.8955290113054,
+          2713.611340653103
+        ],
+        "crossline": [
+          2393,
+          2396
+        ],
+        "inline": [
+          10185,
+          10195
+        ],
+        "time_index": [
+          639,
+          678
+        ]
+      },
+      "retained_fraction": 0.9974580579562786,
+      "retained_joint_rows": 1962,
+      "six_curve_center_rows": 1962,
+      "survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          109.0,
+          4131.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-19/15_9-19 A/Standard Survey Report_Volve F_159-19_19 A_19 A_ACTUAL.pdf",
+        "member_sha256": "f24943c472b1077d398b3d61727694f3b8f693eceaf854fdc8382a8936aa064f",
+        "pages": 10,
+        "reference_elevation_m_above_msl": 25.0,
+        "stations": 313,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          84.0,
+          3293.72
+        ]
+      }
+    },
+    "15/9-F-11": {
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_F_11T2.ASC",
+        "member_sha256": "41c9dd5c5e0d8c7753bdc88f1ee50870a1a7dc67ecba73a16925f33ea1751ed1",
+        "rows": 249,
+        "tvdss_range_m": [
+          634.43,
+          3312.36
+        ],
+        "twt_range_ms": [
+          717.474,
+          2823.12
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "coverage_gate_passed": true,
+      "direct_st0202_rows_before_joint_mask": 1932,
+      "key": "F11T2",
+      "native_window": {
+        "crossline_start": 2124,
+        "crossline_stop_inclusive": 2283,
+        "finite": true,
+        "source_samples_include_two_sample_halo": true,
+        "time_start_index": 494,
+        "time_stop_index_inclusive": 893,
+        "uninterpolated": true,
+        "unique_inline_sections": 3,
+        "unpadded": true
+      },
+      "physical_phif_rows": 2017,
+      "ranges": {
+        "MD_m": [
+          4334.7,
+          4522.3
+        ],
+        "TVDSS_m": [
+          3125.1778999999997,
+          3306.9587
+        ],
+        "TWT_ms": [
+          2726.783555174777,
+          2820.5803643631434
+        ],
+        "crossline": [
+          2202,
+          2205
+        ],
+        "inline": [
+          10214,
+          10216
+        ],
+        "time_index": [
+          682,
+          705
+        ]
+      },
+      "retained_fraction": 0.9305899851264254,
+      "retained_joint_rows": 1877,
+      "six_curve_center_rows": 1877,
+      "survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          145.9,
+          4562.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-F-11/15_9-F-11 T2/Standard Survey Report_Volve F_F-11_159-F-11 T2_159-F-11 T2_ACTUAL.pdf",
+        "member_sha256": "5193e039f5df80589d5cfc54d9877918ae98d2114fdf9e1221a5b31f76819c73",
+        "pages": 13,
+        "reference_elevation_m_above_msl": 54.9,
+        "stations": 443,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          91.0,
+          3345.4
+        ]
+      }
+    },
+    "15/9-F-15": {
+      "checkshot": {
+        "member": "VSP/Checkshots/checkshot_15_9_F_15A.txt",
+        "member_sha256": "ffe08e8cc53a43e721490665cd98c1371c987dcc45cc7ccfbf2d4bce32a2bb65",
+        "rows": 191,
+        "tvdss_range_m": [
+          1052.0,
+          3079.8
+        ],
+        "twt_range_ms": [
+          1096.2,
+          2671.3
+        ],
+        "units": {
+          "depth": "m_TVDSS",
+          "time": "ms_TWT"
+        }
+      },
+      "coverage_gate_passed": true,
+      "direct_st0202_rows_before_joint_mask": 9086,
+      "key": "F15A",
+      "native_window": {
+        "crossline_start": 2234,
+        "crossline_stop_inclusive": 2393,
+        "finite": true,
+        "source_samples_include_two_sample_halo": true,
+        "time_start_index": 423,
+        "time_stop_index_inclusive": 822,
+        "uninterpolated": true,
+        "unique_inline_sections": 20,
+        "unpadded": true
+      },
+      "physical_phif_rows": 9668,
+      "ranges": {
+        "MD_m": [
+          2608.6308,
+          3993.1848
+        ],
+        "TVDSS_m": [
+          2399.7750643512777,
+          3079.774299429705
+        ],
+        "TWT_ms": [
+          2306.797829483599,
+          2671.2837924331475
+        ],
+        "crossline": [
+          2270,
+          2358
+        ],
+        "inline": [
+          10081,
+          10100
+        ],
+        "time_index": [
+          577,
+          668
+        ]
+      },
+      "retained_fraction": 0.9149772445179976,
+      "retained_joint_rows": 8846,
+      "six_curve_center_rows": 9350,
+      "survey": {
+        "coordinate_reference": "ED50 / UTM zone 31N, parsed from actual survey report",
+        "md_monotonic": true,
+        "md_range_m": [
+          145.9,
+          4095.0
+        ],
+        "member": "Well_technical_data/WellWellbore/15_9-F-15/15_9-F-15 A/Standard Survey Report_Volve F_F-15_F-15A_F-15A_ACTUAL.pdf",
+        "member_sha256": "4769ccf8e0356d5b18e0cdd86544ea23ffff67e757e1fd2ce23f3abcc3702e29",
+        "pages": 5,
+        "reference_elevation_m_above_msl": 54.9,
+        "stations": 100,
+        "tvd_monotonic": true,
+        "tvdss_range_m": [
+          91.0,
+          3157.24
+        ]
+      }
+    }
+  },
+  "schema_version": "reconstruction-p38-direct-st0202-alignment/v1",
+  "seismic_index": {
+    "affine_il_xl_to_xy": [
+      [
+        3.0240328630467417,
+        -12.128696475217623,
+        431964.7076368299
+      ],
+      [
+        12.128715063076285,
+        3.0240281880546718,
+        6348566.800326749
+      ]
+    ],
+    "grid_shape_il_xl": [
+      385,
+      605
+    ],
+    "path": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/_pipelines/01_common_preprocess/outputs/seismic_index.npz",
+    "sample_count": 1126,
+    "sample_interval_ms": 4.0,
+    "sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "trace_count": 232925
+  },
+  "target_derived_alignment": false
+}

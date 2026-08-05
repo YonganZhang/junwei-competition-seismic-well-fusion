@@ -65,6 +65,61 @@ class P30BoundedGeostatisticsFeasibilityTest(unittest.TestCase):
         self.assertTrue(np.all(variance >= 0.0))
         self.assertEqual(audit["exact_conditioned_queries"], 0)
 
+    def test_ordinary_kriging_covariance_variance_subtracts_multiplier(self) -> None:
+        coordinates = np.asarray(
+            [[0.0, 0.0, 0.0], [2.0, 0.0, 0.0], [0.0, 2.0, 0.0]]
+        )
+        values = np.asarray([0.10, 0.25, 0.40])
+        query = np.asarray([[0.4, 0.7, 0.0]])
+        partial_sill = 1.5
+        nugget = 0.2
+        variogram = {
+            "effective_ranges_m": [1.0, 1.0, 1.0],
+            "partial_sill": partial_sill,
+            "nugget": nugget,
+        }
+
+        prediction, variance, _ = p30.local_ordinary_kriging(
+            train_coordinates_m=coordinates,
+            train_values=values,
+            query_coordinates_m=query,
+            variogram=variogram,
+            neighbours=3,
+        )
+
+        distances = np.linalg.norm(coordinates - query[0], axis=1)
+        order = np.argsort(distances, kind="stable")
+        ordered_coordinates = coordinates[order]
+        pair_distances = np.linalg.norm(
+            ordered_coordinates[:, None, :] - ordered_coordinates[None, :, :],
+            axis=2,
+        )
+        covariance = partial_sill * np.exp(-3.0 * pair_distances)
+        covariance[np.diag_indices(3)] += nugget + 1e-10
+        query_covariance = partial_sill * np.exp(-3.0 * distances[order])
+        system = np.block(
+            [
+                [covariance, np.ones((3, 1))],
+                [np.ones((1, 3)), np.zeros((1, 1))],
+            ]
+        )
+        solution = np.linalg.solve(system, np.append(query_covariance, 1.0))
+        weights = solution[:3]
+        multiplier = solution[3]
+        expected_prediction = weights @ values[order]
+        expected_variance = (
+            partial_sill
+            + nugget
+            - weights @ query_covariance
+            - multiplier
+        )
+        wrong_sign_variance = expected_variance + 2.0 * multiplier
+
+        np.testing.assert_allclose(prediction[0], expected_prediction, rtol=0.0, atol=1e-15)
+        np.testing.assert_allclose(variance[0], expected_variance, rtol=0.0, atol=1e-15)
+        self.assertGreater(abs(expected_variance - wrong_sign_variance), 1e-3)
+        self.assertGreater(wrong_sign_variance, 0.0)
+
     def test_physical_porosity_constraint_reports_changes(self) -> None:
         constrained, audit = p30._clip_physical(np.asarray([-0.1, 0.2, 1.1]))  # noqa: SLF001
         np.testing.assert_array_equal(constrained, np.asarray([0.0, 0.2, 1.0]))
@@ -98,6 +153,14 @@ class P30BoundedGeostatisticsFeasibilityTest(unittest.TestCase):
         )
         self.assertEqual(summary["conclusions"]["anisotropic_ordinary_kriging"], "NO_PROMOTION")
         self.assertEqual(summary["conclusions"]["regression_kriging_cokriging_proxy"], "NO_PROMOTION")
+        self.assertEqual(
+            summary["variance_formula_audit"]["ordinary_kriging_covariance_form"],
+            "C(0) - w^T c - mu",
+        )
+        self.assertFalse(
+            summary["variance_formula_audit"]
+            ["weights_and_mean_prediction_affected_by_sign_fix"]
+        )
         self.assertEqual(summary["direction_cone_audit"]["relaxed_fit_count"], 2)
         self.assertTrue(
             all(
@@ -109,7 +172,9 @@ class P30BoundedGeostatisticsFeasibilityTest(unittest.TestCase):
         self.assertTrue((output / "finding.md").is_file())
         manifest = p30.write_artifact_manifest(output)
         self.assertEqual(len(manifest["artifacts"]), 10)
-        self.assertEqual(p30.verify_artifact_manifest(output)["status"], "PASSED")
+        manifest_verification = p30.verify_artifact_manifest(output)
+        self.assertEqual(manifest_verification["status"], "PASSED")
+        self.assertEqual(manifest_verification["artifact_count"], 10)
 
 
 if __name__ == "__main__":

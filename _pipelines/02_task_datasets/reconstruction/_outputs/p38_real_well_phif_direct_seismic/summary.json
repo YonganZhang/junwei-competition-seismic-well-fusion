@@ -1,0 +1,2188 @@
+{
+  "acceptance": {
+    "cyclic_well_mismatch_degrades_macro_and_two_parents": false,
+    "fixed_twt_mismatch_degrades_macro_and_two_parents": false,
+    "fusion_macro_rmse_strictly_below_strongest_control": false,
+    "fusion_parent_wins": 2,
+    "fusion_wins_at_least_two_parents": true,
+    "paired_bootstrap_ci95_upper_below_zero": false,
+    "pretrained_beats_same_architecture_random_init": true,
+    "train_only_calibration_is_finite_and_nonvacuous": true
+  },
+  "agent_effect": {
+    "agent_gain_claimed": true,
+    "default_calibration": {
+      "15/9-19": {
+        "coverage_50": 0.5147808358817533,
+        "coverage_90": 0.9194699286442406,
+        "gaussian_nll": -0.9424137953513712,
+        "mean_width_50": 0.13281912960062114,
+        "mean_width_90": 0.32390118158001396,
+        "sigma": 0.09845896810293198
+      },
+      "15/9-F-11": {
+        "coverage_50": 0.47948854555141185,
+        "coverage_90": 0.9030367607884923,
+        "gaussian_nll": -1.1411734068057189,
+        "mean_width_50": 0.10233790823936151,
+        "mean_width_90": 0.2495677354521771,
+        "sigma": 0.07586320489645004
+      },
+      "15/9-F-15": {
+        "coverage_50": 0.40605923581279674,
+        "coverage_90": 0.8984851910468008,
+        "gaussian_nll": -0.9633991872425662,
+        "mean_width_50": 0.1219060102670759,
+        "mean_width_90": 0.29728775430121884,
+        "sigma": 0.09036906063556671
+      },
+      "equal_parent_macro": {
+        "coverage_50": 0.46677620574865397,
+        "coverage_90": 0.9069972934931778,
+        "gaussian_nll": -1.0156621297998853,
+        "mean_width_50": 0.1190210160356862,
+        "mean_width_90": 0.2902522237778033,
+        "sigma": 0.08823041121164958
+      }
+    },
+    "default_metrics": {
+      "15/9-19": {
+        "bias": 0.00491186025591227,
+        "mae": 0.07536973198201591,
+        "rmse": 0.0941056638970108,
+        "rows": 1962
+      },
+      "15/9-F-11": {
+        "bias": 0.044802854309534804,
+        "mae": 0.06250283429747697,
+        "rmse": 0.07726968564723025,
+        "rows": 1877
+      },
+      "15/9-F-15": {
+        "bias": 0.014901604123615493,
+        "mae": 0.07856876424494491,
+        "rmse": 0.09229292655548345,
+        "rows": 8846
+      },
+      "equal_parent_macro": {
+        "bias": 0.021538772896354186,
+        "mae": 0.0721471101748126,
+        "rmse": 0.08788942536657483,
+        "rows": 12685
+      }
+    },
+    "fixed_default_counterfactual_macro_rmse": 0.08788942536657483,
+    "rmse_delta_selected_minus_default": -0.008108196852550265,
+    "selected_action_ids": [
+      "default",
+      "stronger_regularization",
+      "stronger_regularization"
+    ],
+    "selected_action_macro_rmse": 0.07978122851402457,
+    "selected_action_parent_wins": 2
+  },
+  "decision": {
+    "cross_target_p21_comparison_made": false,
+    "generalization_beyond_three_volve_parents_claimed": false,
+    "promote": false,
+    "state": "FEASIBLE_NO_PROMOTION",
+    "strongest_budget_matched_control": "well_only",
+    "traditional_geostatistics_disproved_claimed": false
+  },
+  "environment": {
+    "foundation_device": "cuda:0",
+    "foundation_python": "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python",
+    "head_device": "cuda:0",
+    "numpy": "2.2.6",
+    "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+    "torch": "2.13.0+cu130",
+    "wall_seconds": 105.59803383098915
+  },
+  "firewall": {
+    "frozen_holdout_opened": false,
+    "hdf5_label_datasets_read": [],
+    "held_parent_target_used_for_fit_or_agent": false,
+    "survey_checkshot_segy_headers_are_label_independent": true,
+    "target_derived_alignment": false,
+    "test_h5_opened": false,
+    "train_h5_opened": false
+  },
+  "history_boundary": {
+    "p21_p30_target": "Eclipse PORO",
+    "p21_rmse": 0.027734374378067677,
+    "p30_decision": "FEASIBLE_NO_PROMOTION",
+    "p38_target": "native published CPI PHIF",
+    "rmse_ranked_across_targets": false
+  },
+  "misalignment": {
+    "cyclic_well": {
+      "calibration": {
+        "15/9-19": {
+          "coverage_50": 0.5107033639143731,
+          "coverage_90": 0.918960244648318,
+          "gaussian_nll": -0.9483265445447505,
+          "mean_width_50": 0.13281912960062114,
+          "mean_width_90": 0.32390118158001396,
+          "sigma": 0.09845896810293198
+        },
+        "15/9-F-11": {
+          "coverage_50": 0.2477357485348961,
+          "coverage_90": 0.6808737346830048,
+          "gaussian_nll": -0.6260337780815186,
+          "mean_width_50": 0.10233790823936151,
+          "mean_width_90": 0.2495677354521771,
+          "sigma": 0.07586320489645004
+        },
+        "15/9-F-15": {
+          "coverage_50": 0.5169568166402894,
+          "coverage_90": 0.9797648654759213,
+          "gaussian_nll": -1.1547062955958856,
+          "mean_width_50": 0.1219060102670759,
+          "mean_width_90": 0.29728775430121884,
+          "sigma": 0.09036906063556671
+        },
+        "equal_parent_macro": {
+          "coverage_50": 0.4251319763631862,
+          "coverage_90": 0.8598662816024149,
+          "gaussian_nll": -0.9096888727407183,
+          "mean_width_50": 0.1190210160356862,
+          "mean_width_90": 0.2902522237778033,
+          "sigma": 0.08823041121164958
+        }
+      },
+      "macro_rmse_delta_mismatch_minus_correct": 0.012225937719753194,
+      "metrics": {
+        "15/9-19": {
+          "bias": -0.014530013015952825,
+          "mae": 0.07510066390166502,
+          "rmse": 0.09349458596476722,
+          "rows": 1962
+        },
+        "15/9-F-11": {
+          "bias": 0.002677760258692599,
+          "mae": 0.09491044944074088,
+          "rmse": 0.10908755264733554,
+          "rows": 1877
+        },
+        "15/9-F-15": {
+          "bias": 0.023368545820400256,
+          "mae": 0.06307835608649504,
+          "rmse": 0.07343936008923056,
+          "rows": 8846
+        },
+        "equal_parent_macro": {
+          "bias": 0.0038387643543800094,
+          "mae": 0.07769648980963365,
+          "rmse": 0.09200716623377776,
+          "rows": 12685
+        }
+      },
+      "parents_degraded": 1
+    },
+    "fixed_twt_plus_160ms": {
+      "calibration": {
+        "15/9-19": {
+          "coverage_50": 0.5178389398572885,
+          "coverage_90": 0.9220183486238532,
+          "gaussian_nll": -0.9476736732445181,
+          "mean_width_50": 0.13281912960062114,
+          "mean_width_90": 0.32390118158001396,
+          "sigma": 0.09845896810293198
+        },
+        "15/9-F-11": {
+          "coverage_50": 0.5183803942461375,
+          "coverage_90": 0.9808204581779435,
+          "gaussian_nll": -1.3305827114218745,
+          "mean_width_50": 0.10233790823936151,
+          "mean_width_90": 0.2495677354521771,
+          "sigma": 0.07586320489645004
+        },
+        "15/9-F-15": {
+          "coverage_50": 0.6601853945286005,
+          "coverage_90": 0.8652498304318336,
+          "gaussian_nll": -1.0363993142966195,
+          "mean_width_50": 0.1219060102670759,
+          "mean_width_90": 0.29728775430121884,
+          "sigma": 0.09036906063556671
+        },
+        "equal_parent_macro": {
+          "coverage_50": 0.5654682428773421,
+          "coverage_90": 0.9226962124112101,
+          "gaussian_nll": -1.1048852329876706,
+          "mean_width_50": 0.1190210160356862,
+          "mean_width_90": 0.2902522237778033,
+          "sigma": 0.08823041121164958
+        }
+      },
+      "macro_rmse_delta_mismatch_minus_correct": 0.00045834253943619063,
+      "metrics": {
+        "15/9-19": {
+          "bias": 0.00250897564935548,
+          "mae": 0.07486910069214979,
+          "rmse": 0.09356225570912166,
+          "rows": 1962
+        },
+        "15/9-F-11": {
+          "bias": 0.02105683917369491,
+          "mae": 0.05213277130287248,
+          "rmse": 0.061566367969812096,
+          "rows": 1877
+        },
+        "15/9-F-15": {
+          "bias": -0.027980522284756528,
+          "mae": 0.06254137405114854,
+          "rmse": 0.08559008948144851,
+          "rows": 8846
+        },
+        "equal_parent_macro": {
+          "bias": -0.0014715691539020463,
+          "mae": 0.06318108201539027,
+          "rmse": 0.08023957105346076,
+          "rows": 12685
+        }
+      },
+      "parents_degraded": 1
+    }
+  },
+  "models": {
+    "frozen_pretrained_moment_gfm_fusion": {
+      "calibration": {
+        "15/9-19": {
+          "coverage_50": 0.5147808358817533,
+          "coverage_90": 0.9194699286442406,
+          "gaussian_nll": -0.9424137953513712,
+          "mean_width_50": 0.13281912960062114,
+          "mean_width_90": 0.32390118158001396,
+          "sigma": 0.09845896810293198
+        },
+        "15/9-F-11": {
+          "coverage_50": 0.5061267980820459,
+          "coverage_90": 0.9792221630261055,
+          "gaussian_nll": -1.3199394186367228,
+          "mean_width_50": 0.10233790823936151,
+          "mean_width_90": 0.2495677354521771,
+          "sigma": 0.07586320489645004
+        },
+        "15/9-F-15": {
+          "coverage_50": 0.6769161202803528,
+          "coverage_90": 0.8764413294144247,
+          "gaussian_nll": -1.0663332710969733,
+          "mean_width_50": 0.1219060102670759,
+          "mean_width_90": 0.29728775430121884,
+          "sigma": 0.09036906063556671
+        },
+        "equal_parent_macro": {
+          "coverage_50": 0.5659412514147172,
+          "coverage_90": 0.9250444736949236,
+          "gaussian_nll": -1.1095621616950224,
+          "mean_width_50": 0.1190210160356862,
+          "mean_width_90": 0.2902522237778033,
+          "sigma": 0.08823041121164958
+        }
+      },
+      "metrics": {
+        "15/9-19": {
+          "bias": 0.00491186025591227,
+          "mae": 0.07536973198201591,
+          "rmse": 0.0941056638970108,
+          "rows": 1962
+        },
+        "15/9-F-11": {
+          "bias": 0.02202232258691322,
+          "mae": 0.053156507935895464,
+          "rmse": 0.0625533913763209,
+          "rows": 1877
+        },
+        "15/9-F-15": {
+          "bias": -0.025421798830086936,
+          "mae": 0.06059281951742044,
+          "rmse": 0.08268463026874197,
+          "rows": 8846
+        },
+        "equal_parent_macro": {
+          "bias": 0.0005041280042461851,
+          "mae": 0.06303968647844393,
+          "rmse": 0.07978122851402457,
+          "rows": 12685
+        }
+      }
+    },
+    "raw_feature_fusion": {
+      "calibration": {
+        "15/9-19": {
+          "coverage_50": 0.9016309887869521,
+          "coverage_90": 0.9648318042813455,
+          "gaussian_nll": -0.403067437554474,
+          "mean_width_50": 0.2146960434081043,
+          "mean_width_90": 0.5235714339458655,
+          "sigma": 0.15915441513061523
+        },
+        "15/9-F-11": {
+          "coverage_50": 0.9552477357485349,
+          "coverage_90": 1.0,
+          "gaussian_nll": -1.300786520102153,
+          "mean_width_50": 0.13699416217533364,
+          "mean_width_90": 0.33408268170089794,
+          "sigma": 0.10155392438173294
+        },
+        "15/9-F-15": {
+          "coverage_50": 0.9606601853945286,
+          "coverage_90": 0.9843997286909337,
+          "gaussian_nll": -0.9075092811058666,
+          "mean_width_50": 0.14146321735713777,
+          "mean_width_90": 0.3449812040619861,
+          "sigma": 0.10486683994531631
+        },
+        "equal_parent_macro": {
+          "coverage_50": 0.9391796366433386,
+          "coverage_90": 0.9830771776574264,
+          "gaussian_nll": -0.8704544129208313,
+          "mean_width_50": 0.16438447431352524,
+          "mean_width_90": 0.40087843990291655,
+          "sigma": 0.12185839315255483
+        }
+      },
+      "metrics": {
+        "15/9-19": {
+          "bias": -0.002705868439528216,
+          "mae": 0.07651202915014352,
+          "rmse": 0.16166115697372058,
+          "rows": 1962
+        },
+        "15/9-F-11": {
+          "bias": -0.012689644373994525,
+          "mae": 0.029647320632566785,
+          "rmse": 0.03729678822160508,
+          "rows": 1877
+        },
+        "15/9-F-15": {
+          "bias": 0.005960858403273405,
+          "mae": 0.030344645822764568,
+          "rmse": 0.09709288915493805,
+          "rows": 8846
+        },
+        "equal_parent_macro": {
+          "bias": -0.003144884803416445,
+          "mae": 0.045501331868491625,
+          "rmse": 0.0986836114500879,
+          "rows": 12685
+        }
+      }
+    },
+    "same_architecture_random_init_moment_gfm_fusion": {
+      "calibration": {
+        "15/9-19": {
+          "coverage_50": 0.6829765545361876,
+          "coverage_90": 0.9994903160040775,
+          "gaussian_nll": -0.5120150162380935,
+          "mean_width_50": 0.2696855476269107,
+          "mean_width_90": 0.6576723382698708,
+          "sigma": 0.19991819560527802
+        },
+        "15/9-F-11": {
+          "coverage_50": 0.36014917421417153,
+          "coverage_90": 0.7661161427810336,
+          "gaussian_nll": -0.4886975932904445,
+          "mean_width_50": 0.12916015926641336,
+          "mean_width_90": 0.3149781836791862,
+          "sigma": 0.09574656933546066
+        },
+        "15/9-F-15": {
+          "coverage_50": 0.4240334614515035,
+          "coverage_90": 0.7707438390232874,
+          "gaussian_nll": -0.42352426536889065,
+          "mean_width_50": 0.14739371183713595,
+          "mean_width_90": 0.35944368529643766,
+          "sigma": 0.10926312208175659
+        },
+        "equal_parent_macro": {
+          "coverage_50": 0.4890530634006209,
+          "coverage_90": 0.8454500992694661,
+          "gaussian_nll": -0.4747456249658095,
+          "mean_width_50": 0.18207980624348666,
+          "mean_width_90": 0.44403140241516487,
+          "sigma": 0.13497596234083176
+        }
+      },
+      "metrics": {
+        "15/9-19": {
+          "bias": -0.09074410746381154,
+          "mae": 0.10009342772737909,
+          "rmse": 0.11958165606704944,
+          "rows": 1962
+        },
+        "15/9-F-11": {
+          "bias": 0.09460165314571103,
+          "mae": 0.10655599001594847,
+          "rmse": 0.13117030877037925,
+          "rows": 1877
+        },
+        "15/9-F-15": {
+          "bias": -0.1178389945162061,
+          "mae": 0.1178389945162061,
+          "rmse": 0.1442549275632852,
+          "rows": 8846
+        },
+        "equal_parent_macro": {
+          "bias": -0.0379938162781022,
+          "mae": 0.10816280408651123,
+          "rmse": 0.1316689641335713,
+          "rows": 12685
+        }
+      }
+    },
+    "seismic_only": {
+      "calibration": {
+        "15/9-19": {
+          "coverage_50": 0.9979612640163099,
+          "coverage_90": 1.0,
+          "gaussian_nll": 0.13501916557208707,
+          "mean_width_50": 0.5753661199325918,
+          "mean_width_90": 1.4031244343164477,
+          "sigma": 0.4265195429325104
+        },
+        "15/9-F-11": {
+          "coverage_50": 0.579115610015983,
+          "coverage_90": 0.9648375066595631,
+          "gaussian_nll": -1.1619833481185684,
+          "mean_width_50": 0.11264144375043073,
+          "mean_width_90": 0.27469459282974074,
+          "sigma": 0.08350122720003128
+        },
+        "15/9-F-15": {
+          "coverage_50": 0.42516391589418945,
+          "coverage_90": 0.7481347501695682,
+          "gaussian_nll": -0.35407667113910146,
+          "mean_width_50": 0.11838178940621459,
+          "mean_width_90": 0.28869336504106985,
+          "sigma": 0.08775655180215836
+        },
+        "equal_parent_macro": {
+          "coverage_50": 0.6674135966421608,
+          "coverage_90": 0.9043240856097104,
+          "gaussian_nll": -0.4603469512285276,
+          "mean_width_50": 0.2687964510297457,
+          "mean_width_90": 0.6555041307290861,
+          "sigma": 0.19925910731156668
+        }
+      },
+      "metrics": {
+        "15/9-19": {
+          "bias": -0.14259292971718898,
+          "mae": 0.14259292971718898,
+          "rmse": 0.1574980502723219,
+          "rows": 1962
+        },
+        "15/9-F-11": {
+          "bias": -0.042069319514004486,
+          "mae": 0.061882922957332775,
+          "rmse": 0.07486964857860623,
+          "rows": 1877
+        },
+        "15/9-F-15": {
+          "bias": -0.10359819420726947,
+          "mae": 0.10363498034956185,
+          "rmse": 0.13367679616319436,
+          "rows": 8846
+        },
+        "equal_parent_macro": {
+          "bias": -0.09608681447948764,
+          "mae": 0.10270361100802787,
+          "rmse": 0.12201483167137417,
+          "rows": 12685
+        }
+      }
+    },
+    "well_only": {
+      "calibration": {
+        "15/9-19": {
+          "coverage_50": 0.5530071355759429,
+          "coverage_90": 0.9755351681957186,
+          "gaussian_nll": -1.2099254062466323,
+          "mean_width_50": 0.11602044232887368,
+          "mean_width_90": 0.28293483379055595,
+          "sigma": 0.08600608259439468
+        },
+        "15/9-F-11": {
+          "coverage_50": 0.6547682472029834,
+          "coverage_90": 0.9957378795950985,
+          "gaussian_nll": -1.1927848127983214,
+          "mean_width_50": 0.1303094043271876,
+          "mean_width_90": 0.31778080581824913,
+          "sigma": 0.09659850597381592
+        },
+        "15/9-F-15": {
+          "coverage_50": 0.3677368302057427,
+          "coverage_90": 0.8479538774587384,
+          "gaussian_nll": -0.9441161926924206,
+          "mean_width_50": 0.10650061867979171,
+          "mean_width_90": 0.25971918603226357,
+          "sigma": 0.07894902676343918
+        },
+        "equal_parent_macro": {
+          "coverage_50": 0.5251707376615563,
+          "coverage_90": 0.9397423084165185,
+          "gaussian_nll": -1.115608803912458,
+          "mean_width_50": 0.117610155111951,
+          "mean_width_90": 0.2868116085470229,
+          "sigma": 0.08718453844388326
+        }
+      },
+      "metrics": {
+        "15/9-19": {
+          "bias": -0.013555589307264354,
+          "mae": 0.05679179718955125,
+          "rmse": 0.06928411271673622,
+          "rows": 1962
+        },
+        "15/9-F-11": {
+          "bias": 0.028547843288618834,
+          "mae": 0.054108640601345945,
+          "rmse": 0.06486769966725374,
+          "rows": 1877
+        },
+        "15/9-F-15": {
+          "bias": 0.009381918766470123,
+          "mae": 0.07658697176196053,
+          "rmse": 0.09179148671870635,
+          "rows": 8846
+        },
+        "equal_parent_macro": {
+          "bias": 0.008124724249274866,
+          "mae": 0.06249580318428591,
+          "rmse": 0.0753144330342321,
+          "rows": 12685
+        }
+      }
+    }
+  },
+  "paired_depth_block_bootstrap": {
+    "blocks_per_parent": {
+      "0": 15,
+      "1": 10,
+      "2": 70
+    },
+    "ci95": [
+      0.0005355760193219085,
+      0.008768653250911774
+    ],
+    "draws": 20000,
+    "mean_delta": 0.004472364098755622,
+    "physical_MD_block_m": 20.0,
+    "probability_candidate_better": 0.0129,
+    "seed": 2693
+  },
+  "phase0": {
+    "retained_fraction": {
+      "15/9-19": 0.9974580579562786,
+      "15/9-F-11": 0.9305899851264254,
+      "15/9-F-15": 0.9149772445179976
+    },
+    "retained_joint_rows": {
+      "15/9-19": 1962,
+      "15/9-F-11": 1877,
+      "15/9-F-15": 8846
+    },
+    "state": "PHASE0_PASSED",
+    "target_rows": {
+      "15/9-19": 1967,
+      "15/9-F-11": 2017,
+      "15/9-F-15": 9668
+    },
+    "verification": {
+      "checks": {
+        "all_parent_coverages_at_least_90_percent": true,
+        "all_zero_rows_retained_by_nonperformance_rule": true,
+        "direct_alignment_gate_passed": true,
+        "logo3_is_frozen_active": true,
+        "native_phif_for_exactly_three_parents": true,
+        "native_uninterpolated_unpadded_windows": true,
+        "no_hdf5_or_holdout_opened": true,
+        "phase0_has_zero_encoder_calls_and_training": true,
+        "phif_is_not_phie": true,
+        "phif_semantics_gate_passed": true,
+        "protocol_frozen_before_results": true,
+        "split_precedes_encoder_and_normalization": true
+      },
+      "parent_coverages": {
+        "15/9-19": 0.9974580579562786,
+        "15/9-F-11": 0.9305899851264254,
+        "15/9-F-15": 0.9149772445179976
+      },
+      "schema_version": "reconstruction-p38-phase0-verification/v1",
+      "status": "PASS_PHASE0"
+    }
+  },
+  "protocol": {
+    "bootstrap": {
+      "draws": 20000,
+      "paired": true,
+      "physical_MD_block_m": 20.0,
+      "seed": 2693,
+      "statistic": "equal-parent macro RMSE delta"
+    },
+    "controls": [
+      "well_only",
+      "seismic_only",
+      "raw_feature_fusion",
+      "same_architecture_random_init_moment_gfm_fusion",
+      "frozen_pretrained_moment_gfm_fusion"
+    ],
+    "fixed_misalignment_controls": {
+      "cyclic_well": "15/9-19 -> 15/9-F-11 -> 15/9-F-15 -> 15/9-19 by relative MD rank",
+      "target_information_used": false,
+      "twt_boundary_policy": "clip inside the already frozen native 400-sample section",
+      "twt_perturbation_ms": 160.0,
+      "twt_perturbation_samples": 40
+    },
+    "maximum_scientific_iterations": 3,
+    "primary_metric": "equal_parent_macro_RMSE",
+    "resource_budget": {
+      "foundation_encoders_frozen": true,
+      "foundation_projection_dimension": 16,
+      "head_eval_every_updates": 5,
+      "head_feature_dimension_per_modality": 32,
+      "head_hidden_dimension": 32,
+      "head_learning_rate": 0.003,
+      "head_max_updates": 120,
+      "parent_balanced_full_batch_loss": true,
+      "repeat_seeds": [
+        2693
+      ]
+    },
+    "scientific_iterations_executed": 3
+  },
+  "schema_version": "reconstruction-p38-real-well-phif-direct-seismic/v1",
+  "split": {
+    "folds": [
+      {
+        "fold_id": 0,
+        "held_parent": "15/9-19",
+        "train_parents": [
+          "15/9-F-11",
+          "15/9-F-15"
+        ]
+      },
+      {
+        "fold_id": 1,
+        "held_parent": "15/9-F-11",
+        "train_parents": [
+          "15/9-19",
+          "15/9-F-15"
+        ]
+      },
+      {
+        "fold_id": 2,
+        "held_parent": "15/9-F-15",
+        "train_parents": [
+          "15/9-19",
+          "15/9-F-11"
+        ]
+      }
+    ],
+    "held_parent_phif_invisible_to_fit": true,
+    "parent_order": [
+      "15/9-19",
+      "15/9-F-11",
+      "15/9-F-15"
+    ],
+    "schema_version": "reconstruction-p38-logo3-split/v1",
+    "split_before": [
+      "normalization",
+      "imputation",
+      "projection",
+      "cache",
+      "encoder_call",
+      "model_selection",
+      "calibration",
+      "agent_action"
+    ],
+    "state": "FROZEN_ACTIVE",
+    "test_h5_or_holdout_member": null
+  },
+  "stratified_by_MD_quartile": {
+    "15/9-19": [
+      {
+        "MD_m": [
+          3666.5916,
+          3741.3057
+        ],
+        "candidate": {
+          "bias": 0.0004279481762993603,
+          "mae": 0.07249717394462853,
+          "rmse": 0.09072474186662863,
+          "rows": 491
+        },
+        "depth_quartile": 0,
+        "strongest_control": {
+          "bias": -0.029152760826536814,
+          "mae": 0.05683603934951263,
+          "rmse": 0.07154674512285988,
+          "rows": 491
+        }
+      },
+      {
+        "MD_m": [
+          3741.3057,
+          3816.7817999999997
+        ],
+        "candidate": {
+          "bias": 0.06507394885824286,
+          "mae": 0.0760862701582872,
+          "rmse": 0.09969945632789838,
+          "rows": 490
+        },
+        "depth_quartile": 1,
+        "strongest_control": {
+          "bias": 0.04229969790841486,
+          "mae": 0.046837456899841215,
+          "rmse": 0.061086931029612976,
+          "rows": 490
+        }
+      },
+      {
+        "MD_m": [
+          3816.7817999999997,
+          3891.4959
+        ],
+        "candidate": {
+          "bias": -0.04269281798660071,
+          "mae": 0.08508838756171493,
+          "rmse": 0.1009993406264363,
+          "rows": 490
+        },
+        "depth_quartile": 2,
+        "strongest_control": {
+          "bias": -0.05032017531624178,
+          "mae": 0.07268663897625721,
+          "rmse": 0.08186033128266225,
+          "rows": 490
+        }
+      },
+      {
+        "MD_m": [
+          3891.4959,
+          3966.21
+        ],
+        "candidate": {
+          "bias": -0.0031360628504435058,
+          "mae": 0.06782834920387283,
+          "rmse": 0.0840037140097731,
+          "rows": 491
+        },
+        "depth_quartile": 3,
+        "strongest_control": {
+          "bias": -0.01701023772950692,
+          "mae": 0.050819152313646865,
+          "rmse": 0.06042502949255565,
+          "rows": 491
+        }
+      }
+    ],
+    "15/9-F-11": [
+      {
+        "MD_m": [
+          4334.7,
+          4381.6
+        ],
+        "candidate": {
+          "bias": 0.05810448246152162,
+          "mae": 0.05883888895514169,
+          "rmse": 0.06460968050269655,
+          "rows": 469
+        },
+        "depth_quartile": 0,
+        "strongest_control": {
+          "bias": 0.053259776694688205,
+          "mae": 0.054110590773604826,
+          "rmse": 0.06043688205128583,
+          "rows": 469
+        }
+      },
+      {
+        "MD_m": [
+          4381.6,
+          4428.5
+        ],
+        "candidate": {
+          "bias": 0.019429546131539955,
+          "mae": 0.042464262819779455,
+          "rmse": 0.057379498125865916,
+          "rows": 469
+        },
+        "depth_quartile": 1,
+        "strongest_control": {
+          "bias": 0.028452158343594974,
+          "mae": 0.04921746087560394,
+          "rmse": 0.06385143504554183,
+          "rows": 469
+        }
+      },
+      {
+        "MD_m": [
+          4428.5,
+          4475.4
+        ],
+        "candidate": {
+          "bias": -0.0028048595075986023,
+          "mae": 0.054703501730299454,
+          "rmse": 0.06331687627157967,
+          "rows": 469
+        },
+        "depth_quartile": 2,
+        "strongest_control": {
+          "bias": 0.008538002235644153,
+          "mae": 0.0552710061158135,
+          "rmse": 0.06518781250061721,
+          "rows": 469
+        }
+      },
+      {
+        "MD_m": [
+          4475.4,
+          4522.3
+        ],
+        "candidate": {
+          "bias": 0.013378551477774423,
+          "mae": 0.05661201042920708,
+          "rmse": 0.0646165861993062,
+          "rows": 470
+        },
+        "depth_quartile": 3,
+        "strongest_control": {
+          "bias": 0.023951236747373688,
+          "mae": 0.05782757514240616,
+          "rmse": 0.06964789621269507,
+          "rows": 470
+        }
+      }
+    ],
+    "15/9-F-15": [
+      {
+        "MD_m": [
+          2608.6308,
+          2955.8360999999995
+        ],
+        "candidate": {
+          "bias": -0.0885943298701325,
+          "mae": 0.10306538439862713,
+          "rmse": 0.12542869661996325,
+          "rows": 2212
+        },
+        "depth_quartile": 0,
+        "strongest_control": {
+          "bias": -0.07651426560274084,
+          "mae": 0.10311085644226932,
+          "rmse": 0.12280079604384957,
+          "rows": 2212
+        }
+      },
+      {
+        "MD_m": [
+          2955.8360999999995,
+          3293.745
+        ],
+        "candidate": {
+          "bias": 0.01882668097483686,
+          "mae": 0.031816123827638154,
+          "rmse": 0.03828577636355272,
+          "rows": 2211
+        },
+        "depth_quartile": 1,
+        "strongest_control": {
+          "bias": 0.06469620032339601,
+          "mae": 0.06655809761428122,
+          "rmse": 0.0762733563088256,
+          "rows": 2211
+        }
+      },
+      {
+        "MD_m": [
+          3293.745,
+          3630.7394999999997
+        ],
+        "candidate": {
+          "bias": 0.03226127812140994,
+          "mae": 0.03599333200369524,
+          "rmse": 0.042202788598725824,
+          "rows": 2211
+        },
+        "depth_quartile": 2,
+        "strongest_control": {
+          "bias": 0.06945693072846496,
+          "mae": 0.07038251939893092,
+          "rmse": 0.08011599818594582,
+          "rows": 2211
+        }
+      },
+      {
+        "MD_m": [
+          3630.7394999999997,
+          3993.1848
+        ],
+        "candidate": {
+          "bias": -0.06413474337252154,
+          "mae": 0.07147230755798367,
+          "rmse": 0.09144968395659084,
+          "rows": 2212
+        },
+        "depth_quartile": 3,
+        "strongest_control": {
+          "bias": -0.020059025241504127,
+          "mae": 0.06628907483715689,
+          "rmse": 0.07990236643206808,
+          "rows": 2212
+        }
+      }
+    ]
+  },
+  "strongest_control": "well_only",
+  "training_audit": {
+    "frozen_pretrained_moment_gfm_fusion__fold0": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.09845896875863376,
+      "final_fit": {
+        "first_loss": 0.044278018176555634,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.008734886534512043,
+        "maximum_gradient_norm": 0.4128485918045044,
+        "seismic_source_variance": 1.2986961603164673,
+        "seismic_transformed_variance": 1.2143890857696533,
+        "selected_steps": 13,
+        "train_parent_counts": {
+          "1": 1877,
+          "2": 8846
+        },
+        "train_rows": 10723,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 13,
+        "well_source_variance": 0.04596325755119324,
+        "well_transformed_variance": 1.0339266061782837
+      },
+      "gate_mean": 0.05093790963292122,
+      "gate_std": 0.012817510403692722,
+      "held_rows": 1962,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.058111594395567095,
+            "selected_steps": 25,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.0120017034932971,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0009879351127892733,
+              "maximum_gradient_norm": 0.13296513259410858,
+              "seismic_source_variance": 1.3063833713531494,
+              "seismic_transformed_variance": 0.9457831382751465,
+              "selected_steps": 25,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 45,
+              "well_source_variance": 0.0470280684530735,
+              "well_transformed_variance": 0.9966399669647217
+            },
+            "validation_rows": 1877
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.10504567662270273,
+            "selected_steps": 1,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.030871257185935974,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0036289014387875795,
+              "maximum_gradient_norm": 0.3449379801750183,
+              "seismic_source_variance": 1.2605937719345093,
+              "seismic_transformed_variance": 0.8793721795082092,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.04088762030005455,
+              "well_transformed_variance": 1.0700023174285889
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.08157863550913491,
+        "per_parent_rmse": {
+          "1": 0.058111594395567095,
+          "2": 0.10504567662270273
+        },
+        "selected_steps": 13
+      },
+      "selected_action_id": "default"
+    },
+    "frozen_pretrained_moment_gfm_fusion__fold1": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.0758632025837681,
+      "final_fit": {
+        "first_loss": 0.01847219653427601,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.0014437546487897635,
+        "maximum_gradient_norm": 0.2337290495634079,
+        "seismic_source_variance": 1.2707953453063965,
+        "seismic_transformed_variance": 1.2288919687271118,
+        "selected_steps": 70,
+        "train_parent_counts": {
+          "0": 1962,
+          "2": 8846
+        },
+        "train_rows": 10808,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 70,
+        "well_source_variance": 0.04695354029536247,
+        "well_transformed_variance": 0.9808656573295593
+      },
+      "gate_mean": 0.03126024454832077,
+      "gate_std": 0.0073903095908463,
+      "held_rows": 1877,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.06595859883635963,
+            "selected_steps": 30,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.013188443146646023,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.001078609493561089,
+              "maximum_gradient_norm": 0.14825601875782013,
+              "seismic_source_variance": 1.3063833713531494,
+              "seismic_transformed_variance": 0.9323760867118835,
+              "selected_steps": 30,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 50,
+              "well_source_variance": 0.04702083021402359,
+              "well_transformed_variance": 1.029776930809021
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.07788952865255835,
+            "selected_steps": 110,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.09205502271652222,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0016547631239518523,
+              "maximum_gradient_norm": 0.6558295488357544,
+              "seismic_source_variance": 1.1051377058029175,
+              "seismic_transformed_variance": 1.068315863609314,
+              "selected_steps": 110,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 120,
+              "well_source_variance": 0.04664173722267151,
+              "well_transformed_variance": 1.011417031288147
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.07192406374445899,
+        "per_parent_rmse": {
+          "0": 0.06595859883635963,
+          "2": 0.07788952865255835
+        },
+        "selected_steps": 70
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "frozen_pretrained_moment_gfm_fusion__fold2": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.09036906167460115,
+      "final_fit": {
+        "first_loss": 0.006742906756699085,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.002512307371944189,
+        "maximum_gradient_norm": 0.07142876833677292,
+        "seismic_source_variance": 1.1814017295837402,
+        "seismic_transformed_variance": 0.8731725811958313,
+        "selected_steps": 30,
+        "train_parent_counts": {
+          "0": 1962,
+          "1": 1877
+        },
+        "train_rows": 3839,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 30,
+        "well_source_variance": 0.04383092746138573,
+        "well_transformed_variance": 1.021766185760498
+      },
+      "gate_mean": 0.026314934715628624,
+      "gate_std": 0.009772038087248802,
+      "held_rows": 8846,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.10781223206544599,
+            "selected_steps": 25,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.10825232416391373,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.003517930395901203,
+              "maximum_gradient_norm": 0.7083835601806641,
+              "seismic_source_variance": 1.2605937719345093,
+              "seismic_transformed_variance": 1.0090625286102295,
+              "selected_steps": 25,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 45,
+              "well_source_variance": 0.040879473090171814,
+              "well_transformed_variance": 0.9312524795532227
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.06747674383757547,
+            "selected_steps": 35,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.018231211230158806,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0018041729927062988,
+              "maximum_gradient_norm": 0.2374717891216278,
+              "seismic_source_variance": 1.1051377058029175,
+              "seismic_transformed_variance": 1.0757248401641846,
+              "selected_steps": 35,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 55,
+              "well_source_variance": 0.0466415137052536,
+              "well_transformed_variance": 0.9899023175239563
+            },
+            "validation_rows": 1877
+          }
+        ],
+        "macro_rmse": 0.08764448795151072,
+        "per_parent_rmse": {
+          "0": 0.10781223206544599,
+          "1": 0.06747674383757547
+        },
+        "selected_steps": 30
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "raw_feature_fusion__fold0": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.15915440945784254,
+      "final_fit": {
+        "first_loss": 0.008907207287847996,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.00042341649532318115,
+        "maximum_gradient_norm": 0.10128382593393326,
+        "seismic_source_variance": 2.299285650253296,
+        "seismic_transformed_variance": 1.3107526302337646,
+        "selected_steps": 60,
+        "train_parent_counts": {
+          "1": 1877,
+          "2": 8846
+        },
+        "train_rows": 10723,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 60,
+        "well_source_variance": 0.7865349054336548,
+        "well_transformed_variance": 0.7201290130615234
+      },
+      "gate_mean": 0.05344277620315552,
+      "gate_std": 0.017692146822810173,
+      "held_rows": 1962,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.03852071977412887,
+            "selected_steps": 120,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.039112430065870285,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.00030459981644526124,
+              "maximum_gradient_norm": 0.3928154706954956,
+              "seismic_source_variance": 2.7184412479400635,
+              "seismic_transformed_variance": 1.0385721921920776,
+              "selected_steps": 120,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 120,
+              "well_source_variance": 0.8014788627624512,
+              "well_transformed_variance": 0.6940118670463562
+            },
+            "validation_rows": 1877
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.1743272210167549,
+            "selected_steps": 1,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.043743085116147995,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0014064043061807752,
+              "maximum_gradient_norm": 0.42310354113578796,
+              "seismic_source_variance": 0.1927100121974945,
+              "seismic_transformed_variance": 1.1033003330230713,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.6698468327522278,
+              "well_transformed_variance": 0.5373690128326416
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.10642397039544188,
+        "per_parent_rmse": {
+          "1": 0.03852071977412887,
+          "2": 0.1743272210167549
+        },
+        "selected_steps": 60
+      },
+      "selected_action_id": "default"
+    },
+    "raw_feature_fusion__fold1": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.10155392532841126,
+      "final_fit": {
+        "first_loss": 0.011346837505698204,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.0018721310188993812,
+        "maximum_gradient_norm": 0.11512979865074158,
+        "seismic_source_variance": 2.7148170471191406,
+        "seismic_transformed_variance": 0.9627608060836792,
+        "selected_steps": 13,
+        "train_parent_counts": {
+          "0": 1962,
+          "2": 8846
+        },
+        "train_rows": 10808,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 13,
+        "well_source_variance": 0.6027499437332153,
+        "well_transformed_variance": 0.6200475096702576
+      },
+      "gate_mean": 0.02497607283294201,
+      "gate_std": 0.001545116538181901,
+      "held_rows": 1877,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.13192280891426975,
+            "selected_steps": 1,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.010179508477449417,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0007211760967038572,
+              "maximum_gradient_norm": 0.08629696816205978,
+              "seismic_source_variance": 2.7184412479400635,
+              "seismic_transformed_variance": 0.9485870599746704,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.5159464478492737,
+              "well_transformed_variance": 0.7296791672706604
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.09349105399921116,
+            "selected_steps": 25,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.007240250241011381,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0007815075223334134,
+              "maximum_gradient_norm": 0.04793703183531761,
+              "seismic_source_variance": 2.695068120956421,
+              "seismic_transformed_variance": 0.8814899921417236,
+              "selected_steps": 25,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 45,
+              "well_source_variance": 0.9665873050689697,
+              "well_transformed_variance": 0.6702318787574768
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.11270693145674046,
+        "per_parent_rmse": {
+          "0": 0.13192280891426975,
+          "2": 0.09349105399921116
+        },
+        "selected_steps": 13
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "raw_feature_fusion__fold2": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.10486684365108516,
+      "final_fit": {
+        "first_loss": 0.00707250414416194,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.001605261000804603,
+        "maximum_gradient_norm": 0.038828231394290924,
+        "seismic_source_variance": 1.525223970413208,
+        "seismic_transformed_variance": 0.9934801459312439,
+        "selected_steps": 10,
+        "train_parent_counts": {
+          "0": 1962,
+          "1": 1877
+        },
+        "train_rows": 3839,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 10,
+        "well_source_variance": 0.7558906078338623,
+        "well_transformed_variance": 0.7470582723617554
+      },
+      "gate_mean": 0.025761356577277184,
+      "gate_std": 0.004931711126118898,
+      "held_rows": 8846,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.1378146664818152,
+            "selected_steps": 1,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.005120998248457909,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0006924503832124174,
+              "maximum_gradient_norm": 0.027578724548220634,
+              "seismic_source_variance": 0.1927100121974945,
+              "seismic_transformed_variance": 0.9572464227676392,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.4700804352760315,
+              "well_transformed_variance": 0.5954358577728271
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.051372523970290296,
+            "selected_steps": 20,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.007966996170580387,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0008004390983842313,
+              "maximum_gradient_norm": 0.04192453995347023,
+              "seismic_source_variance": 2.695068120956421,
+              "seismic_transformed_variance": 0.9922725558280945,
+              "selected_steps": 20,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 40,
+              "well_source_variance": 1.0225952863693237,
+              "well_transformed_variance": 0.7220757603645325
+            },
+            "validation_rows": 1877
+          }
+        ],
+        "macro_rmse": 0.09459359522605275,
+        "per_parent_rmse": {
+          "0": 0.1378146664818152,
+          "1": 0.051372523970290296
+        },
+        "selected_steps": 10
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "same_architecture_random_init_moment_gfm_fusion__fold0": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.19991818821870838,
+      "final_fit": {
+        "first_loss": 0.03665094077587128,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.019570481032133102,
+        "maximum_gradient_norm": 0.38190287351608276,
+        "seismic_source_variance": 1.0227919816970825,
+        "seismic_transformed_variance": 1.203261375427246,
+        "selected_steps": 3,
+        "train_parent_counts": {
+          "1": 1877,
+          "2": 8846
+        },
+        "train_rows": 10723,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 3,
+        "well_source_variance": 0.7965012788772583,
+        "well_transformed_variance": 1.0649131536483765
+      },
+      "gate_mean": 0.04708115756511688,
+      "gate_std": 0.009569876827299595,
+      "held_rows": 1962,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.09130827189337062,
+            "selected_steps": 5,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.047853779047727585,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.002980313263833523,
+              "maximum_gradient_norm": 0.44017472863197327,
+              "seismic_source_variance": 1.0025484561920166,
+              "seismic_transformed_variance": 0.9018891453742981,
+              "selected_steps": 5,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 25,
+              "well_source_variance": 0.7960449457168579,
+              "well_transformed_variance": 0.9419531226158142
+            },
+            "validation_rows": 1877
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.21605266001662632,
+            "selected_steps": 1,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.04537384212017059,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.004557039123028517,
+              "maximum_gradient_norm": 0.43976065516471863,
+              "seismic_source_variance": 1.1086344718933105,
+              "seismic_transformed_variance": 0.9973048567771912,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.7986512184143066,
+              "well_transformed_variance": 1.063767910003662
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.15368046595499846,
+        "per_parent_rmse": {
+          "1": 0.09130827189337062,
+          "2": 0.21605266001662632
+        },
+        "selected_steps": 3
+      },
+      "selected_action_id": "default"
+    },
+    "same_architecture_random_init_moment_gfm_fusion__fold1": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.09574657274604594,
+      "final_fit": {
+        "first_loss": 0.07435241341590881,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.0125748161226511,
+        "maximum_gradient_norm": 0.5699536204338074,
+        "seismic_source_variance": 1.0201406478881836,
+        "seismic_transformed_variance": 1.17505943775177,
+        "selected_steps": 13,
+        "train_parent_counts": {
+          "0": 1962,
+          "2": 8846
+        },
+        "train_rows": 10808,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 13,
+        "well_source_variance": 0.7968569397926331,
+        "well_transformed_variance": 1.0603922605514526
+      },
+      "gate_mean": 0.030274253338575363,
+      "gate_std": 0.010226440615952015,
+      "held_rows": 1877,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.08855415015984108,
+            "selected_steps": 25,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.06887703388929367,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0021104677580296993,
+              "maximum_gradient_norm": 0.5414280295372009,
+              "seismic_source_variance": 1.0025484561920166,
+              "seismic_transformed_variance": 1.066946268081665,
+              "selected_steps": 25,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 45,
+              "well_source_variance": 0.7960521578788757,
+              "well_transformed_variance": 1.0539230108261108
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.09726978417135031,
+            "selected_steps": 1,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.00750738987699151,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.002522884402424097,
+              "maximum_gradient_norm": 0.09765449166297913,
+              "seismic_source_variance": 1.0902704000473022,
+              "seismic_transformed_variance": 0.9933473467826843,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.8004790544509888,
+              "well_transformed_variance": 1.0201914310455322
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.09291196716559569,
+        "per_parent_rmse": {
+          "0": 0.08855415015984108,
+          "2": 0.09726978417135031
+        },
+        "selected_steps": 13
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "same_architecture_random_init_moment_gfm_fusion__fold2": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.10926311937354373,
+      "final_fit": {
+        "first_loss": 0.08692597597837448,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.08692597597837448,
+        "maximum_gradient_norm": 0.6206746697425842,
+        "seismic_source_variance": 1.1106516122817993,
+        "seismic_transformed_variance": 0.8485584855079651,
+        "selected_steps": 1,
+        "train_parent_counts": {
+          "0": 1962,
+          "1": 1877
+        },
+        "train_rows": 3839,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 1,
+        "well_source_variance": 0.7995909452438354,
+        "well_transformed_variance": 1.0271024703979492
+      },
+      "gate_mean": 0.024262260645627975,
+      "gate_std": 0.007668043486773968,
+      "held_rows": 8846,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.13245928018847145,
+            "selected_steps": 1,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.07821628451347351,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.005482648499310017,
+              "maximum_gradient_norm": 0.586926281452179,
+              "seismic_source_variance": 1.1086344718933105,
+              "seismic_transformed_variance": 0.7665423154830933,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.7986583113670349,
+              "well_transformed_variance": 1.0307027101516724
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.07795821322818615,
+            "selected_steps": 1,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.017184793949127197,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0031745191663503647,
+              "maximum_gradient_norm": 0.2340160757303238,
+              "seismic_source_variance": 1.0902704000473022,
+              "seismic_transformed_variance": 0.8071658611297607,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.8004790544509888,
+              "well_transformed_variance": 0.9523717164993286
+            },
+            "validation_rows": 1877
+          }
+        ],
+        "macro_rmse": 0.1052087467083288,
+        "per_parent_rmse": {
+          "0": 0.13245928018847145,
+          "1": 0.07795821322818615
+        },
+        "selected_steps": 1
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "seismic_only__fold0": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.42651954694098726,
+      "final_fit": {
+        "first_loss": 0.055433113127946854,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.04550915211439133,
+        "maximum_gradient_norm": 0.4759926199913025,
+        "seismic_source_variance": 1.2986961603164673,
+        "seismic_transformed_variance": 1.3148608207702637,
+        "selected_steps": 3,
+        "train_parent_counts": {
+          "1": 1877,
+          "2": 8846
+        },
+        "train_rows": 10723,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 3,
+        "well_source_variance": 0.04596325755119324,
+        "well_transformed_variance": 1.040618896484375
+      },
+      "gate_mean": 0.04728631675243378,
+      "gate_std": 0.005168169271200895,
+      "held_rows": 1962,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.06296764486310162,
+            "selected_steps": 5,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.013850033283233643,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.002034083241596818,
+              "maximum_gradient_norm": 0.17662392556667328,
+              "seismic_source_variance": 1.3063833713531494,
+              "seismic_transformed_variance": 0.8428981304168701,
+              "selected_steps": 5,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 25,
+              "well_source_variance": 0.0470280684530735,
+              "well_transformed_variance": 0.9472867250442505
+            },
+            "validation_rows": 1877
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.4686985432832439,
+            "selected_steps": 1,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.030079560354351997,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.004935631062835455,
+              "maximum_gradient_norm": 0.34407731890678406,
+              "seismic_source_variance": 1.2605937719345093,
+              "seismic_transformed_variance": 0.715228796005249,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.04088762030005455,
+              "well_transformed_variance": 0.9191199541091919
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.26583309407317274,
+        "per_parent_rmse": {
+          "1": 0.06296764486310162,
+          "2": 0.4686985432832439
+        },
+        "selected_steps": 3
+      },
+      "selected_action_id": "default"
+    },
+    "seismic_only__fold1": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.08350122821568161,
+      "final_fit": {
+        "first_loss": 0.028236109763383865,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.012315531261265278,
+        "maximum_gradient_norm": 0.315107136964798,
+        "seismic_source_variance": 1.2707953453063965,
+        "seismic_transformed_variance": 1.2818214893341064,
+        "selected_steps": 8,
+        "train_parent_counts": {
+          "0": 1962,
+          "2": 8846
+        },
+        "train_rows": 10808,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 8,
+        "well_source_variance": 0.04695354029536247,
+        "well_transformed_variance": 1.0054693222045898
+      },
+      "gate_mean": 0.025246040895581245,
+      "gate_std": 0.0065181683748960495,
+      "held_rows": 1877,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.06675069704579617,
+            "selected_steps": 15,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.02575431391596794,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.002535372506827116,
+              "maximum_gradient_norm": 0.2887946367263794,
+              "seismic_source_variance": 1.3063833713531494,
+              "seismic_transformed_variance": 0.9819884896278381,
+              "selected_steps": 15,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 35,
+              "well_source_variance": 0.04702083021402359,
+              "well_transformed_variance": 1.007623553276062
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.08677942773618763,
+            "selected_steps": 1,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.005385486874729395,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0030039274133741856,
+              "maximum_gradient_norm": 0.0654354840517044,
+              "seismic_source_variance": 1.1051377058029175,
+              "seismic_transformed_variance": 0.9054680466651917,
+              "selected_steps": 1,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 20,
+              "well_source_variance": 0.04664173722267151,
+              "well_transformed_variance": 1.008469581604004
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.0767650623909919,
+        "per_parent_rmse": {
+          "0": 0.06675069704579617,
+          "2": 0.08677942773618763
+        },
+        "selected_steps": 8
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "seismic_only__fold2": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.08775655437960729,
+      "final_fit": {
+        "first_loss": 0.035652510821819305,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.0222292710095644,
+        "maximum_gradient_norm": 0.3740176260471344,
+        "seismic_source_variance": 1.1814017295837402,
+        "seismic_transformed_variance": 1.0872315168380737,
+        "selected_steps": 5,
+        "train_parent_counts": {
+          "0": 1962,
+          "1": 1877
+        },
+        "train_rows": 3839,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 5,
+        "well_source_variance": 0.04383092746138573,
+        "well_transformed_variance": 0.9983183145523071
+      },
+      "gate_mean": 0.026403916999697685,
+      "gate_std": 0.007427335716784,
+      "held_rows": 8846,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.10437520421117216,
+            "selected_steps": 5,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.029982859268784523,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.004598076920956373,
+              "maximum_gradient_norm": 0.34204280376434326,
+              "seismic_source_variance": 1.2605937719345093,
+              "seismic_transformed_variance": 0.929167628288269,
+              "selected_steps": 5,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 25,
+              "well_source_variance": 0.040879473090171814,
+              "well_transformed_variance": 1.009820818901062
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.06605791898114073,
+            "selected_steps": 5,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.009528878144919872,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0029988710302859545,
+              "maximum_gradient_norm": 0.15165747702121735,
+              "seismic_source_variance": 1.1051377058029175,
+              "seismic_transformed_variance": 1.0758289098739624,
+              "selected_steps": 5,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 25,
+              "well_source_variance": 0.0466415137052536,
+              "well_transformed_variance": 0.9559537172317505
+            },
+            "validation_rows": 1877
+          }
+        ],
+        "macro_rmse": 0.08521656159615645,
+        "per_parent_rmse": {
+          "0": 0.10437520421117216,
+          "1": 0.06605791898114073
+        },
+        "selected_steps": 5
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "well_only__fold0": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.086006086024101,
+      "final_fit": {
+        "first_loss": 0.020201925188302994,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.004489472601562738,
+        "maximum_gradient_norm": 0.2543155252933502,
+        "seismic_source_variance": 1.2986961603164673,
+        "seismic_transformed_variance": 1.312052845954895,
+        "selected_steps": 37,
+        "train_parent_counts": {
+          "1": 1877,
+          "2": 8846
+        },
+        "train_rows": 10723,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 37,
+        "well_source_variance": 0.04596325755119324,
+        "well_transformed_variance": 1.0722603797912598
+      },
+      "gate_mean": 0.04970000684261322,
+      "gate_std": 0.003868153551593423,
+      "held_rows": 1962,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.0618611974363825,
+            "selected_steps": 30,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.01197429932653904,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.005159769672900438,
+              "maximum_gradient_norm": 0.1346864253282547,
+              "seismic_source_variance": 1.3063833713531494,
+              "seismic_transformed_variance": 0.9457831382751465,
+              "selected_steps": 30,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 50,
+              "well_source_variance": 0.0470280684530735,
+              "well_transformed_variance": 0.9966399669647217
+            },
+            "validation_rows": 1877
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.09030283855325238,
+            "selected_steps": 45,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.03150869533419609,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.002333809854462743,
+              "maximum_gradient_norm": 0.34935855865478516,
+              "seismic_source_variance": 1.2605937719345093,
+              "seismic_transformed_variance": 0.8793721795082092,
+              "selected_steps": 45,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 65,
+              "well_source_variance": 0.04088762030005455,
+              "well_transformed_variance": 1.0700023174285889
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.07608201799481744,
+        "per_parent_rmse": {
+          "1": 0.0618611974363825,
+          "2": 0.09030283855325238
+        },
+        "selected_steps": 37
+      },
+      "selected_action_id": "default"
+    },
+    "well_only__fold1": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.09659850553529678,
+      "final_fit": {
+        "first_loss": 0.013902483507990837,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.004816858563572168,
+        "maximum_gradient_norm": 0.17352479696273804,
+        "seismic_source_variance": 1.2707953453063965,
+        "seismic_transformed_variance": 1.2597049474716187,
+        "selected_steps": 22,
+        "train_parent_counts": {
+          "0": 1962,
+          "2": 8846
+        },
+        "train_rows": 10808,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 22,
+        "well_source_variance": 0.04695354029536247,
+        "well_transformed_variance": 1.0195952653884888
+      },
+      "gate_mean": 0.025296930223703384,
+      "gate_std": 0.0019765831530094147,
+      "held_rows": 1877,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.06974851501961304,
+            "selected_steps": 15,
+            "train_rows": 8846,
+            "training_audit": {
+              "first_loss": 0.013362265191972256,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.005154336802661419,
+              "maximum_gradient_norm": 0.15048474073410034,
+              "seismic_source_variance": 1.3063833713531494,
+              "seismic_transformed_variance": 1.0106241703033447,
+              "selected_steps": 15,
+              "train_parent_counts": {
+                "2": 8846
+              },
+              "train_rows": 8846,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 35,
+              "well_source_variance": 0.04702083021402359,
+              "well_transformed_variance": 1.0234371423721313
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 2,
+            "rmse": 0.10159675542841745,
+            "selected_steps": 30,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.09840144962072372,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.00391055503860116,
+              "maximum_gradient_norm": 0.6811491847038269,
+              "seismic_source_variance": 1.1051377058029175,
+              "seismic_transformed_variance": 0.8509103059768677,
+              "selected_steps": 30,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 50,
+              "well_source_variance": 0.04664173722267151,
+              "well_transformed_variance": 0.9889481067657471
+            },
+            "validation_rows": 8846
+          }
+        ],
+        "macro_rmse": 0.08567263522401525,
+        "per_parent_rmse": {
+          "0": 0.06974851501961304,
+          "2": 0.10159675542841745
+        },
+        "selected_steps": 22
+      },
+      "selected_action_id": "stronger_regularization"
+    },
+    "well_only__fold2": {
+      "calibration_sigma_fit_on_outer_train_inner_oof": 0.07894903003139829,
+      "final_fit": {
+        "first_loss": 0.12239618599414825,
+        "frozen_foundation_parameter_count_not_in_head": true,
+        "last_loss": 0.0037955045700073242,
+        "maximum_gradient_norm": 0.7564071416854858,
+        "seismic_source_variance": 1.1814017295837402,
+        "seismic_transformed_variance": 0.9310956597328186,
+        "selected_steps": 77,
+        "train_parent_counts": {
+          "0": 1962,
+          "1": 1877
+        },
+        "train_rows": 3839,
+        "trainable_parameter_count": 6305,
+        "updates_executed": 77,
+        "well_source_variance": 0.04383092746138573,
+        "well_transformed_variance": 1.0405099391937256
+      },
+      "gate_mean": 0.02479020319879055,
+      "gate_std": 0.002228392753750086,
+      "held_rows": 8846,
+      "inner_logo": {
+        "folds": [
+          {
+            "inner_held_parent_index": 0,
+            "rmse": 0.08290077896859017,
+            "selected_steps": 120,
+            "train_rows": 1877,
+            "training_audit": {
+              "first_loss": 0.10976995527744293,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.002028309740126133,
+              "maximum_gradient_norm": 0.7149937152862549,
+              "seismic_source_variance": 1.2605937719345093,
+              "seismic_transformed_variance": 0.8979214429855347,
+              "selected_steps": 120,
+              "train_parent_counts": {
+                "1": 1877
+              },
+              "train_rows": 1877,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 120,
+              "well_source_variance": 0.040879473090171814,
+              "well_transformed_variance": 1.009072184562683
+            },
+            "validation_rows": 1962
+          },
+          {
+            "inner_held_parent_index": 1,
+            "rmse": 0.07459487709541009,
+            "selected_steps": 35,
+            "train_rows": 1962,
+            "training_audit": {
+              "first_loss": 0.01827877201139927,
+              "frozen_foundation_parameter_count_not_in_head": true,
+              "last_loss": 0.0029432682786136866,
+              "maximum_gradient_norm": 0.23382368683815002,
+              "seismic_source_variance": 1.1051377058029175,
+              "seismic_transformed_variance": 0.9575435519218445,
+              "selected_steps": 35,
+              "train_parent_counts": {
+                "0": 1962
+              },
+              "train_rows": 1962,
+              "trainable_parameter_count": 6305,
+              "updates_executed": 55,
+              "well_source_variance": 0.0466415137052536,
+              "well_transformed_variance": 0.9786661863327026
+            },
+            "validation_rows": 1877
+          }
+        ],
+        "macro_rmse": 0.07874782803200013,
+        "per_parent_rmse": {
+          "0": 0.08290077896859017,
+          "1": 0.07459487709541009
+        },
+        "selected_steps": 77
+      },
+      "selected_action_id": "stronger_regularization"
+    }
+  }
+}

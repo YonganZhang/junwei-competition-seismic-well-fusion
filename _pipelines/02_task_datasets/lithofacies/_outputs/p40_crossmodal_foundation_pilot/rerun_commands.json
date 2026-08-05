@@ -1,0 +1,7 @@
+{
+  "baseline_worker": "run with the local XGBoost interpreter",
+  "extract_features": "run with the pinned foundation interpreter and local snapshots",
+  "phase0": "see CLI --help; development-only external asset is SHA locked",
+  "run": "run with the pinned foundation interpreter; --device cuda:5",
+  "verify_only": "/mnt/data/yongan-admin-2/envs/proj3-matrix3d-poc-py310/bin/python _pipelines/02_task_datasets/lithofacies/lithofacies_p40_crossmodal_foundation_pilot.py --verify-only --output-dir _pipelines/02_task_datasets/lithofacies/_outputs/p40_crossmodal_foundation_pilot"
+}

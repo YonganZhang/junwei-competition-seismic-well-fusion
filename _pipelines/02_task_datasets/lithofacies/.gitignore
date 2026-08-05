@@ -93,3 +93,15 @@ _outputs/p5_r01/**
 !_outputs/p5_r01/r1_results.jsonl
 !_outputs/p5_r01/r1_summary.json
 !_outputs/p5_r01/artifact_manifest.json
+!_outputs/p40_crossmodal_foundation_pilot/
+_outputs/p40_crossmodal_foundation_pilot/**
+!_outputs/p40_crossmodal_foundation_pilot/aligned_pair_manifest.jsonl
+!_outputs/p40_crossmodal_foundation_pilot/phase0_freeze.json
+!_outputs/p40_crossmodal_foundation_pilot/results.jsonl
+!_outputs/p40_crossmodal_foundation_pilot/summary.json
+!_outputs/p40_crossmodal_foundation_pilot/predictions.npz
+!_outputs/p40_crossmodal_foundation_pilot/evidence.md
+!_outputs/p40_crossmodal_foundation_pilot/foundation_audit.json
+!_outputs/p40_crossmodal_foundation_pilot/pca_audit.json
+!_outputs/p40_crossmodal_foundation_pilot/rerun_commands.json
+!_outputs/p40_crossmodal_foundation_pilot/artifact_manifest.json

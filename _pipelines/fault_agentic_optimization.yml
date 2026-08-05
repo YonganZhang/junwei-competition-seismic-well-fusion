@@ -47,4 +47,4 @@ steps:
     success:
       outputs_exist: [_pipelines/02_task_datasets/fault/_outputs/p30_3d_dev_gate_st10010/cigbench_vs_baseline_lift_tolerance_v2/manifest.json]
 verified_steps_hash: 6859ee768bc3a8a64543c0102ca758cd3b5c60109089d86128b58d34e5db1d0a
-verified_at_commit: bfc2f7ec4f43ff744d5f4efc19556a0508bb6efb
+verified_at_commit: 788429b3476f93fd4db56f3f3796bc0e730818be

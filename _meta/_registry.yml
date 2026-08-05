@@ -1,7 +1,7 @@
 # _meta/_registry.yml — code-domain / entrypoint registry
 project: 军伟的比赛-地震测井多模态融合
 schema_version: code-domain-v1
-last_synced: 2026-08-04 (P35 fault/reconstruction interface closeout)
+last_synced: 2026-08-06 (P42 six-track integration and Claude handoff)
 
 # Default v4 registry is coarse-grained. Register code domains, public entrypoints,
 # reusable scripts/tools, and cross-domain edges. Do not default to a function ledger.
@@ -106,6 +106,34 @@ code_domains:
     status: active
     owner: project
     description: "Audit bounded geostatistical candidates against P21 and emit the well-log/seismic cross-modal fusion I/O contract."
+
+  - id: reconstruction_query_local_crossmodal_p39
+    path: _pipelines/02_task_datasets/reconstruction/p39_query_local_well_seismic_fusion.py
+    type: research_pipeline
+    status: active
+    owner: project
+    description: >
+      P39 real-well PHIF qualification with a shared locked P38 well-only base,
+      query-local seismic/foundation features and fixed-base attribution controls.
+      The route is reproducible but not promoted; P21 remains the Eclipse-PORO default.
+
+  - id: lithofacies_crossmodal_qualification_p40
+    path: _pipelines/02_task_datasets/lithofacies/lithofacies_p40_crossmodal_foundation_pilot.py
+    type: research_pipeline
+    status: active
+    owner: project
+    description: >
+      P40 development-only MOMENT+GFM qualification against the adopted XGBoost
+      incumbent. The real fusion path executed but failed the attributable-signal gate.
+
+  - id: property_crossmodal_qualification_p41
+    path: _pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py
+    type: research_pipeline
+    status: active
+    owner: project
+    description: >
+      P41 development-only well/seismic dual-foundation qualification against the
+      P5 Stage-3 strong baseline. Portable evidence is committed; large token caches stay local.
 
   - id: six_track_pipeline_runtime
     path: _code/six_track_pipeline

@@ -24,7 +24,10 @@ tracked_paths_hint:
 - _pipelines/lithofacies_agentic_optimization.yml
 - _pipelines/sweetspot_agentic_optimization.yml
 - _pipelines/reconstruction_agentic_optimization.yml
-last_verified_hash: a63781a85de3702862834f0ad47df327943c99e19b28a78e71435b400afa2f72
+- _pipelines/02_task_datasets/reconstruction/p39_query_local_well_seismic_fusion.py
+- _pipelines/02_task_datasets/lithofacies/lithofacies_p40_crossmodal_foundation_pilot.py
+- _pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py
+last_verified_hash: b430ad28aaaf62aab7b9c8b40af57ea5e2381e483edf267b44b7c04f1f56b2ef
 validator_version: 1
 ---
 
@@ -105,6 +108,18 @@ python3 _code/six_track_pipeline/cli.py verify \
 | ⑥ 三维重建 | `reconstruction` | `_pipelines/02_task_datasets/reconstruction/pipeline_adapter.py` | `_pipelines/reconstruction_agentic_optimization.yml` | `p29_agent_action_effect_repair.py` + `p30_bounded_geostatistics_feasibility.py` |
 
 `property` 是公共 track id，而磁盘上的历史目录名是 `reservoir`。这个差异只由 adapter 处理，用户不应把目录名当作新的 track id。
+
+## 非默认研究入口
+
+P39、P40 和 P41 已进入主仓，但没有替换六条 Pipeline 的权威默认。它们用于回答井震跨模态特征是否具有可归因增量，不能仅凭文件存在被下游自动晋级。
+
+| 研究入口 | 任务与对照 | 当前判定 |
+|---|---|---|
+| `reconstruction/p39_query_local_well_seismic_fusion.py` | 真实井 PHIF，所有控制共享锁定 P38 well-only base | `FEASIBLE_NO_PROMOTION`；双预训练宏 RMSE `0.075908484`，弱于 base `0.075314433` |
+| `lithofacies/lithofacies_p40_crossmodal_foundation_pilot.py` | 9 类岩相，MOMENT+GFM 对比 XGBoost `depth=3/eta=0.1/rounds=60` | `R0_STOP_NO_ATTRIBUTABLE_SIGNAL`；F1 `0.161312`，弱于 B0 `0.213349` |
+| `reservoir/p41_property_crossmodal_qualification.py` | PHIF、KLOGH、SW，双基础残差对比 P5 Stage-3 强基线 | `R0_STOP_NO_ATTRIBUTABLE_SIGNAL`；相对改善仅 `0.1703%`，区间跨零 |
+
+这些入口可以由各自 `rerun_commands.json` 独立复跑。大体积 foundation token 缓存不进入 Git；资产路径通过环境变量显式覆盖。若后续实验通过预注册 promotion，才更新对应 adapter、manifest 和默认模型说明。
 
 ## 智能体如何参与优化
 

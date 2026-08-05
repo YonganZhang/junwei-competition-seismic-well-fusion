@@ -418,14 +418,14 @@
     "cache_reused": true,
     "config_sha256": "3abf4d69533c7aca3075deef079b28098eb9d3ba3ba10ed45e0733aebbb3fefc",
     "encoder_weight_mode": "pretrained",
-    "feature_cache_path": ".claude/worktrees/p10-results-reconstruction/_tmp/p17_foundation_geostatistics/gfm_point_features.npz",
+    "feature_cache_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.npz",
     "feature_cache_sha256": "0e6233be85c8bc9f013d29b9ef07038132233befcaff23e84a5418935cfc82d8",
     "feature_shape": [
       3,
       12583,
       96
     ],
-    "manifest_path": ".claude/worktrees/p10-results-reconstruction/_tmp/p17_foundation_geostatistics/gfm_point_features.json",
+    "manifest_path": "_tmp/p17_foundation_geostatistics/gfm_point_features.json",
     "manifest_sha256": "d4faf445438a93a5a6d460c0c0f5a453c73315901dbb4cdeb3efc1adcb96b3e6",
     "snapshot_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
     "source_sha256": "ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904",
@@ -2516,7 +2516,7 @@
   "objective": "bounded feasibility of co-kriging, directional variograms and physical constraints",
   "prediction_artifact": {
     "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p30_bounded_geostatistics_feasibility_v2/predictions.npz",
-    "sha256": "3365816659ba03e9ab901743604af8df1fdb6480d7fa483554680746a3fc0c9f"
+    "sha256": "eca869e2d0f310a3842ae78f44f001626f3766621f4ac1307e2b62e4524c2721"
   },
   "protocol": {
     "candidate_hyperparameters_selected_with_validation_labels": false,
@@ -2635,5 +2635,10 @@
     },
     "outer_cv": "five deterministic buffered spatial folds from Stage-3",
     "stage3_frozen_test_loaded": false
+  },
+  "variance_formula_audit": {
+    "lagrange_multiplier_sign": "SUBTRACTED",
+    "ordinary_kriging_covariance_form": "C(0) - w^T c - mu",
+    "weights_and_mean_prediction_affected_by_sign_fix": false
   }
 }

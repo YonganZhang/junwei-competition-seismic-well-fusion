@@ -1,0 +1,47 @@
+{
+  "folds": [
+    {
+      "fold_id": 0,
+      "held_parent": "15/9-19",
+      "train_parents": [
+        "15/9-F-11",
+        "15/9-F-15"
+      ]
+    },
+    {
+      "fold_id": 1,
+      "held_parent": "15/9-F-11",
+      "train_parents": [
+        "15/9-19",
+        "15/9-F-15"
+      ]
+    },
+    {
+      "fold_id": 2,
+      "held_parent": "15/9-F-15",
+      "train_parents": [
+        "15/9-19",
+        "15/9-F-11"
+      ]
+    }
+  ],
+  "held_parent_phif_invisible_to_fit": true,
+  "parent_order": [
+    "15/9-19",
+    "15/9-F-11",
+    "15/9-F-15"
+  ],
+  "schema_version": "reconstruction-p38-logo3-split/v1",
+  "split_before": [
+    "normalization",
+    "imputation",
+    "projection",
+    "cache",
+    "encoder_call",
+    "model_selection",
+    "calibration",
+    "agent_action"
+  ],
+  "state": "FROZEN_ACTIVE",
+  "test_h5_or_holdout_member": null
+}

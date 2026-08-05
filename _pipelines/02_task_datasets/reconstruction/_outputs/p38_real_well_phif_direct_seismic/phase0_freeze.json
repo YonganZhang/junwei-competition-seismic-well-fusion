@@ -1,0 +1,137 @@
+{
+  "acceptance": {
+    "both_fixed_misalignment_controls_degrade_macro_and_two_parents": true,
+    "finite_nonvacuous_train_only_calibration": true,
+    "fusion_macro_rmse_strictly_below_strongest_control": true,
+    "minimum_held_parent_wins": 2,
+    "paired_bootstrap_delta_ci95_upper_below_zero": true,
+    "pretrained_beats_same_architecture_random_init": true
+  },
+  "action_allowlist": [
+    {
+      "action_id": "default",
+      "early_stopping_patience": 20,
+      "gate_strength": 0.1,
+      "weight_decay": 0.0001
+    },
+    {
+      "action_id": "stronger_regularization",
+      "early_stopping_patience": 20,
+      "gate_strength": 0.05,
+      "weight_decay": 0.001
+    },
+    {
+      "action_id": "shorter_patience",
+      "early_stopping_patience": 10,
+      "gate_strength": 0.1,
+      "weight_decay": 0.0001
+    }
+  ],
+  "bootstrap": {
+    "draws": 20000,
+    "paired": true,
+    "physical_MD_block_m": 20.0,
+    "seed": 2693,
+    "statistic": "equal-parent macro RMSE delta"
+  },
+  "calibration_contract": {
+    "held_parent_target_used_for_fit": false,
+    "maximum_mean_90_interval_width": 1.0,
+    "method": "outer-train inner-LOGO residual Gaussian scale",
+    "minimum_mean_90_interval_width": 0.0,
+    "nominal_coverages": [
+      0.5,
+      0.9
+    ],
+    "proper_score": "Gaussian negative log likelihood"
+  },
+  "controls": [
+    "well_only",
+    "seismic_only",
+    "raw_feature_fusion",
+    "same_architecture_random_init_moment_gfm_fusion",
+    "frozen_pretrained_moment_gfm_fusion"
+  ],
+  "firewall": {
+    "frozen_holdout_opened": false,
+    "hdf5_labels_read": [],
+    "phase0_encoder_calls": 0,
+    "phase0_training_runs": 0,
+    "target_derived_alignment": false,
+    "test_h5_opened": false,
+    "train_h5_opened": false
+  },
+  "fixed_misalignment_controls": {
+    "cyclic_well": "15/9-19 -> 15/9-F-11 -> 15/9-F-15 -> 15/9-19 by relative MD rank",
+    "target_information_used": false,
+    "twt_boundary_policy": "clip inside the already frozen native 400-sample section",
+    "twt_perturbation_ms": 160.0,
+    "twt_perturbation_samples": 40
+  },
+  "fixed_seeds": [
+    2693
+  ],
+  "immutable_after_iteration0": [
+    "target",
+    "quality_mask",
+    "alignment",
+    "split",
+    "resource_budget",
+    "controls",
+    "acceptance",
+    "bootstrap"
+  ],
+  "maximum_scientific_iterations": 3,
+  "primary_metric": "equal_parent_macro_RMSE",
+  "provenance": {
+    "gfm_revision": "d4a33965730a506cfdb4c85fa2a0a344c53216a2",
+    "gfm_weights_sha256": "c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446",
+    "moment_weights_sha256": "1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825",
+    "seismic_index_sha256": "19f0dadedee788cf9be8f86469264aa177ddb2b99aa68ed904784a8db9ea2905",
+    "seismic_vsp_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4",
+    "st0202_segy_size_bytes": 1104999800,
+    "well_logs_zip_sha256": "0a496a55c865a7bce1d8e5bae767869534ae3c43a8d9dbd33601259d25da6bb4",
+    "well_technical_data_zip_sha256": "d52c42f4a146ee04c35435e21e6609ecc4a0479acac6626e0c49c4fab4a6b133"
+  },
+  "resource_budget": {
+    "foundation_encoders_frozen": true,
+    "foundation_projection_dimension": 16,
+    "head_eval_every_updates": 5,
+    "head_feature_dimension_per_modality": 32,
+    "head_hidden_dimension": 32,
+    "head_learning_rate": 0.003,
+    "head_max_updates": 120,
+    "parent_balanced_full_batch_loss": true,
+    "repeat_seeds": [
+      2693
+    ]
+  },
+  "row_contract": {
+    "alignment_sha256": "2308f1c35f5c71425786beace309975d31fa52b2d55ea5e3bf8b2c28e5a28dbc",
+    "md_sha256": "36cfd5f74781c3c6cfc1df4b1eb88fceed4b4fbc40c905afdebbc25ea8c071b0",
+    "parent_index_sha256": "45be7f864e2a88dc8cdab5efe45e19f9d54887a805ec646f83e90713e283bd4d",
+    "row_id_sha256": "e819690a7051859ac8db6d5043e3de253b0ac1c142fd5c591dd115339f3eb88d",
+    "rows": 12685,
+    "target_sha256": "246d164348c54a08cac17d500fccd9cf851d693e8b6ccb22084367bb3402d980"
+  },
+  "schema_version": "reconstruction-p38-phase0-freeze/v1",
+  "scratch_cache": {
+    "committed": false,
+    "native_sections_sha256": "248bfe0128c44275b84caf7d1a3483ba89108b9751c04dc544da34270ba6ecb8",
+    "native_sections_shape": [
+      34,
+      3,
+      400,
+      160
+    ],
+    "path": "/mnt/data/yongan-admin-2/projects/\u5e08\u5f1f-\u519b\u4f1f\u7684\u6bd4\u8d5b-2693e5/.claude/worktrees/p10-results-reconstruction/_tmp/p38_real_well_phif_direct_seismic/phase0_arrays.npz",
+    "sha256": "af0f6ef0ab088c6d7c885912d3cae3ae0c8232632d4151605739627225dc4384"
+  },
+  "secondary_metrics": [
+    "per_parent_RMSE",
+    "MAE",
+    "bias"
+  ],
+  "state": "PHASE0_PASSED",
+  "training_parent_balance": "equal parent contribution per update"
+}
