@@ -94,6 +94,16 @@ PORO RMSE, and does not disprove traditional geostatistics. P21 remains the
 Eclipse-PORO reconstruction default; P30 remains historical sparse-grid proxy
 evidence with `FEASIBLE_NO_PROMOTION`.
 
+**2026-08-06 independent re-audit note:** unlike P40/P41 (lithofacies/property,
+see their finding files), P38's GFM seismic input is a native `[3, 400, 160]`
+whole-trace-plus-window section, not a single collapsed CLS token, and the
+independent re-audit found no trace-level label-collision defect here. But the
+GFM branch still only encodes the whole trace plus a coarse 3-dim time
+position, not a query-point-local waveform window — a weaker interface than
+P39's later query-local design. This negative result is credible for that
+specific interface; it does not establish that a depth-local seismic token
+would fail the same way.
+
 Authoritative machine-readable evidence is under
 `_pipelines/02_task_datasets/reconstruction/_outputs/p38_real_well_phif_direct_seismic/`.
 `predictions.npz` contains row-aligned predictions, `summary.json` records the

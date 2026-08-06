@@ -11,7 +11,13 @@ closure_evidence: _pipelines/02_task_datasets/reservoir/_outputs/p41_property_cr
 
 # 储层物性井震双基础模型资格门
 
-## 结论
+## 结论修正（2026-08-06，Codex 独立复核后收窄）
+
+原始 `R0_STOP_NO_ATTRIBUTABLE_SIGNAL` 结论把负结果解释为"井震融合在③赛道无可归因信号"，**这个外推范围过宽，已被收窄**。独立复核（用户质疑触发，Claude 子智能体 + Codex 各自独立用真实数据复核，均重新提取过 embedding 并从原始 SEG-Y 重建过 patch）确认了与④赛道 P40 同一类结构性接口缺陷：1216 个样本的 MOMENT 测井侧 embedding 各不相同，但 GFM 地震侧 embedding 只有 211 种取值（=211 个不同的 `section_id+trace_id`），1201/1216 行落在"同道重复组"里；组内真实物性目标仍有明显差异（PHIF/log1p(KLOGH)/SW 组内标准差中位数分别为 0.02448/0.62695/0.05558，最大达 0.09891/3.61959/0.43732），但地震 embedding 对这些不同深度点完全相同。根因同样是 GFM 只保留了整道 CLS token，没有把查询点 time_idx 传入。
+
+这不是数据/标签/坐标对齐 bug（两次独立复核均确认张量非空、无 NaN、真实进入模型、标签与原始 SEG-Y 重建逐元素零误差），而是**接口设计缺陷**，把 trace-level 表示误当作 depth-local 表示使用。因此本轮 `0.1703%` 的微弱改善及"不晋级"结论**只能证明"整道级、无深度分辨率的地震表征提供不了足够信号"，不能证明"井震融合本身在③赛道无效"**。正确定性应为 `R0_INCONCLUSIVE_DEPTH_BLIND_SEISMIC_INTERFACE`，下一步应换用能分辨深度的局部地震 token（参考 ⑥赛道 P39 的 query-local 波形 token 设计）重新测试。
+
+## 原始结论（保留存档，范围已收窄见上）
 
 P41 完成了③储层物性赛道的开发集井震双基础模型资格门。冻结 MOMENT 测井特征与 GFM 地震特征真实进入门控残差头，但未达到预注册晋级条件。因此，本轮结论为 `R0_STOP_NO_ATTRIBUTABLE_SIGNAL`，不进入 LoRA、Adapter 或分阶段解冻。
 
@@ -32,3 +38,4 @@ F1 双基础模型融合将等权复合 RMSE 从 `0.427225121813` 降至 `0.4264
 - summary: `_pipelines/02_task_datasets/reservoir/_outputs/p41_property_crossmodal_qualification/summary.json`
 - independent metric check: `_pipelines/02_task_datasets/reservoir/_outputs/p41_property_crossmodal_qualification/independent_metric_check.json`
 - artifact manifest: `_pipelines/02_task_datasets/reservoir/_outputs/p41_property_crossmodal_qualification/artifact_manifest.json`
+- 深度分辨率独立复核笔记: `_sandbox/p37_p41_data_integrity_audit/reservoir_p41_notes.md`

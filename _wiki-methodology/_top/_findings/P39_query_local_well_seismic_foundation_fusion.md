@@ -46,4 +46,6 @@ Failed promotion gates: `bootstrap_ci95_upper_below_zero`, `both_pretrained_belo
 
 This is a three-parent Volve native-PHIF experiment. PHIF remains distinct from PHIE and Eclipse PORO; P21/P30 are history, not cross-target controls. The result does not establish field-wide generalization or disprove traditional geostatistics.
 
+**2026-08-06 independent re-audit note:** P39 already uses a query-local seismic representation (not a single collapsed whole-trace token), which is the same fix later recommended for P40 (lithofacies) and P41 (property) after their independent re-audit found those two tracks' GFM branch collapses to trace-level (depth-blind) tokens. P39 having already tried the depth-local design and still found `FEASIBLE_NO_PROMOTION` for reconstruction does not imply P40/P41 would see the same outcome once they get a comparable depth-local seismic token — each track's result is scoped to its own tested interface.
+
 Exact rerun commands, row-aligned predictions, verification, and artifact hashes are stored beside this finding.

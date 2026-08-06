@@ -1,6 +1,12 @@
 # P40 岩相井震双基础模型可归因小试 finding
 
-## 结论
+## 结论修正（2026-08-06，Codex 独立复核后收窄）
+
+原始 `R0_STOP_NO_ATTRIBUTABLE_SIGNAL` 结论把本轮负结果解释为"井震融合在本赛道无可归因信号"，**这个外推范围过宽，已被收窄**。独立复核（用户质疑触发，Claude 子智能体 + Codex 各自独立用真实数据复核）确认了一个结构性接口缺陷：GFM 地震侧只保留了"整条地震道"的 CLS token，**没有传入查询点的 time_idx/深度位置**。447 个样本的 MOMENT 测井侧 embedding 各不相同，但 GFM 地震侧 embedding 只有 69 种取值（=69 个不同的 section_id+trace_id），443/447 行落在"同道重复组"里，其中 39 组内部混着多个不同的真实岩相标签——即同一个地震输入对应着不同的真实标签，模型物理上不可能从这个输入分辨它们。
+
+这不是数据搬运 bug（张量非空、无 NaN、确实进入模型、四个外层折的循环错位干预都会改变预测），而是**接口设计缺陷**：把"trace-level"表示误当成了"depth-local"表示。因此本轮的负结果**只能证明"整道级、无深度分辨率的地震表征无法带来可归因增益"，不能证明"井震融合本身在④赛道无效"**。正确定性应为 `R0_INCONCLUSIVE_DEPTH_BLIND_SEISMIC_INTERFACE`，下一步应换用能分辨深度的局部地震 token（参考 ⑥赛道 P39 的 query-local 波形 token 设计）重新测试，而不是就此关闭 LoRA/Adapter 方向。
+
+## 原始结论（保留存档，范围已收窄见上）
 
 R0 结论为 `R0_STOP_NO_ATTRIBUTABLE_SIGNAL`。不存在可支持继续 LoRA/Adapter 的内层信号，因此按预注册停止。这不是融合通路未生效：F1 的门梯度、门值、预测改变和配对错位干预均为非零，但真实动作显著伤害了泛化。
 
@@ -32,6 +38,7 @@ F1 在 4/4 外层井族均输给 B0。按井族 bootstrap 2000 次的 F1-B0 平�
 - MOMENT 权重 SHA256 `1a436826ffe618273ec62b9656dc4cab8edc470364f104e90542a4ebc14fb825`；GFM `model.safetensors` SHA256 `c905945267bbbc58f0e1848106d182f40b5dc61273959b666a49b384cfcb7446`，GFM source SHA256 `ce6f97b5be889231107716d71175fe4482a678f8eb4e608c274265ca57612904`。
 - F1 外层首次 gate 梯度范围为 `[0.014635856263, 0.019517308101]`，每折改变 `38/47/47/37` 个类别预测；循环错位 GFM 配对后每折改变 `21/21/23/11` 个预测，最大 logit 变化均大于 `2.79`。
 - A7 在所有 outer/inner cells 与 B0 逐元素完全一致，最大绝对误差为 `0.0`。
-- F1 虽高于最佳单基础模型 B2 和 A5，但低于 B0 且低于 shuffled-pair A6，因此不存在“预训练双模态配对带来可归因泛化收益”的信号。
+- F1 虽高于最佳单基础模型 B2 和 A5，但低于 B0 且低于 shuffled-pair A6，因此不存在“预训练双模态配对带来可归因泛化收益”的信号——**在当前 GFM 整道级接口下**。
+- 深度分辨率审计（新增）：447 个 GFM 表示中只有 69 个唯一值，对应 69 个 `(section_id, trace_id)`；443/447 行落在重复组，39 组内部混着 ≥2 个不同岩相标签，组内标签不一致直接证明该接口丢失了标签判别所需的深度信息。
 
-类别 F1、混淆矩阵、NLL、ECE、门值、消融、错位干预、bootstrap 和全部分折结果见 `_outputs/p40_crossmodal_foundation_pilot/summary.json` 与 `results.jsonl`。
+类别 F1、混淆矩阵、NLL、ECE、门值、消融、错位干预、bootstrap 和全部分折结果见 `_outputs/p40_crossmodal_foundation_pilot/summary.json` 与 `results.jsonl`。深度分辨率审计笔记见 `_sandbox/p37_p41_data_integrity_audit/lithofacies_p40_notes.md`。
