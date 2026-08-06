@@ -35,10 +35,61 @@ PROMOTION_FOLDS = [3]
 
 HERE = Path(__file__).resolve().parent
 TRACK_DIR = HERE
-WORKTREE_ROOT = HERE.parents[2]
+
+REFERENCE_ROOT_ENV = "SWEETSPOT_REFERENCE_ROOT"
+REFERENCE_WORKTREE_NAME = "p10-results-sweetspot"
+
+
+def _git_output(args: list[str], cwd: Path) -> str:
+    return subprocess.check_output(["git", "-C", str(cwd), *args], text=True).strip()
+
+
+def _resolve_checkout_root(start: Path) -> Path:
+    """Root of the checkout this file lives in — the main repo or any worktree.
+
+    Replaces the old `parents[2]` guess, which silently produced wrong roots on
+    any layout other than `.claude/worktrees/<name>/`.
+    """
+    return Path(_git_output(["rev-parse", "--show-toplevel"], start)).resolve()
+
+
+def _resolve_main_repo_root(start: Path) -> Path:
+    """Root of the main repository, i.e. the checkout owning the shared `.git`.
+
+    Worktrees share the main repo's git dir, so this resolves to the same place
+    from every checkout. Shared data such as `_sandbox/volve_data` lives here and
+    is not duplicated per worktree.
+    """
+    common = Path(_git_output(["rev-parse", "--path-format=absolute", "--git-common-dir"], start)).resolve()
+    return common.parent
+
+
+def _resolve_reference_root(main_repo_root: Path, checkout_root: Path) -> Path:
+    """Root holding the P5/P7/P8 reference artifacts this pilot reads.
+
+    Resolution order, first hit wins:
+
+    1. ``$SWEETSPOT_REFERENCE_ROOT`` — explicit override.
+    2. The legacy ``p10-results-sweetspot`` sibling worktree, when it still
+       exists. Kept first so provenance stays continuous with the archived
+       manifests, which record that worktree's commit as ``source_commit``.
+    3. The main repository. Every referenced artifact is version-controlled and
+       byte-identical to the sibling worktree's copy, so this is a safe fallback
+       once the legacy worktree is gone.
+    """
+    override = os.environ.get(REFERENCE_ROOT_ENV)
+    if override:
+        return Path(override).expanduser().resolve()
+    legacy = checkout_root.parent / REFERENCE_WORKTREE_NAME
+    if (legacy / "_pipelines/02_task_datasets/sweetspot").is_dir():
+        return legacy.resolve()
+    return main_repo_root
+
+
+WORKTREE_ROOT = _resolve_checkout_root(HERE)
+PROJECT_ROOT = _resolve_main_repo_root(HERE)
 WORKTREES_DIR = WORKTREE_ROOT.parent
-PROJECT_ROOT = WORKTREE_ROOT.parents[2]
-REFERENCE_ROOT = WORKTREES_DIR / "p10-results-sweetspot"
+REFERENCE_ROOT = _resolve_reference_root(PROJECT_ROOT, WORKTREE_ROOT)
 REFERENCE_SWEETSPOT = REFERENCE_ROOT / "_pipelines/02_task_datasets/sweetspot"
 OUTPUT_DIR = TRACK_DIR / "_outputs" / P28_ID
 

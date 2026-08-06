@@ -22,8 +22,11 @@ from typing import Any, Mapping
 import sys
 
 
-if str(WORKTREE_ROOT := Path(__file__).resolve().parents[3]) not in sys.path:
-    sys.path.insert(0, str(WORKTREE_ROOT))
+# Bootstrap only: `<root>/_pipelines/02_task_datasets/sweetspot/<file>.py` means parents[3]
+# is the checkout root under any layout. The authoritative roots below come from p28,
+# which resolves them through git rather than by counting directories.
+if str(_IMPORT_ROOT := Path(__file__).resolve().parents[3]) not in sys.path:
+    sys.path.insert(0, str(_IMPORT_ROOT))
 
 
 p28 = importlib.import_module("_pipelines.02_task_datasets.sweetspot.p28_agentic_optimization")
@@ -34,9 +37,11 @@ P29_ID = "p29_agent_action_effect"
 SCHEMA_VERSION = "sweetspot-p29-agent-action-effect/v1"
 HERE = Path(__file__).resolve().parent
 TRACK_DIR = HERE
-WORKTREES_DIR = WORKTREE_ROOT.parent
-PROJECT_ROOT = WORKTREE_ROOT.parents[2]
-REFERENCE_ROOT = WORKTREES_DIR / "p10-results-sweetspot"
+# Single source of truth: reuse p28's git-resolved roots instead of re-deriving them.
+WORKTREE_ROOT = p28.WORKTREE_ROOT
+WORKTREES_DIR = p28.WORKTREES_DIR
+PROJECT_ROOT = p28.PROJECT_ROOT
+REFERENCE_ROOT = p28.REFERENCE_ROOT
 OUTPUT_DIR = TRACK_DIR / "_outputs" / P29_ID
 SOURCE_COMMIT = subprocess.check_output(["git", "-C", str(WORKTREE_ROOT), "rev-parse", "HEAD"], text=True).strip()
 
