@@ -113,41 +113,44 @@ P28 / P29 依赖 `xgboost`，**系统 `/usr/bin/python3` 没有装**。直接用
 （`gaia-v2-8a4915-py312`、`gaia-petro-inference-mcp-py312` 也有 xgboost，但 sklearn 是 1.8.0，
 版本不同，复现 canonical 产物前需自行验证。）
 
-### 🔴 只能在 worktree 布局下运行（2026-08-07 实测）
+### ✅ 运行位置限制已修复（2026-08-07）
 
-即使解释器带 xgboost，**在主仓 checkout 上跑这两套测试仍然失败**。
-`p28_agentic_optimization.py:38-41` 和 `p29_agent_action_effect.py:37-39` 的路径常量
-按 worktree 目录深度硬推，换成主仓布局后全部错位：
+原先即使解释器带 xgboost，**在主仓 checkout 上跑这两套测试仍然失败**：路径常量按 worktree
+目录深度硬推，主仓上 `PROJECT_ROOT` 解析成 `/mnt/data`、`REFERENCE_ROOT` 指向不存在的
+`projects/p10-results-sweetspot`，`_reference_inputs()` 在 `git rev-parse HEAD` 抛
+`CalledProcessError`（实测 P28 errors=2、P29 errors=3）。之前几轮 "remove absolute
+provenance locators" 只清理了产物侧，源码侧的推导没动，而测试一直在 worktree 里跑，缺陷被布局掩盖。
 
-| 常量 | worktree 内 | 主仓 checkout 内 |
-|---|---|---|
-| `WORKTREE_ROOT` | 该 worktree 根 ✓ | 仓库根 ✓ |
-| `PROJECT_ROOT` | 仓库根 ✓ | **`/mnt/data`** ❌ |
-| `REFERENCE_ROOT` | `.claude/worktrees/p10-results-sweetspot` ✓ | `projects/p10-results-sweetspot`（不存在）❌ |
+已在分支 `fix-sweetspot-path-derivation` 修复：三个根改为从 git 反查
+（`rev-parse --show-toplevel` / `--git-common-dir`），`REFERENCE_ROOT` 按
+`$SWEETSPOT_REFERENCE_ROOT` → 兄弟 worktree `p10-results-sweetspot` → 主仓 依次回落。
+兄弟 worktree 因此从硬依赖变成可选，删掉它 P28/P29 仍可运行。
 
-主仓实测结果：P28 `Ran 5 tests, FAILED (errors=2)`、P29 `Ran 4 tests, FAILED (errors=3)`，
-失败点是 `_reference_inputs()` 对不存在的 `REFERENCE_ROOT` 执行 `git rev-parse HEAD` 抛
-`CalledProcessError`。
+行为等价性已实测两轮：
 
-连带的隐式依赖：**兄弟 worktree `p10-results-sweetspot` 必须存在**，P5 split manifest、
-stage3/stage4 摘要、P7/P8 摘要都从它读。清理该 worktree 会让 P28/P29 失去可复现性。
+- legacy worktree 存在的现状下，产物与修复前逐字节一致，唯一差异是脚本自身的 `renderer.sha256`
+- 强制切到主仓回落时，全部科学产物仍逐字节一致，差异只有 8 处 `inputs[*].source_commit`
+  及由它级联的 manifest / protocol 哈希；`inputs[*].sha256` 不变，即两处参考数据字节相同
 
 ### 已跑过且通过的项目级检查
 
-以下均在 `.claude/worktrees/track-sweetspot` 内、用 geocfc-train 解释器执行：
-
 - `python3 ~/.codex/skills/share-top/scripts/topic-brief.py .`
-- `<geocfc-train-python> -m unittest -v _pipelines.02_task_datasets.sweetspot.tests.test_p28_agentic_optimization` → Ran 5 tests, OK（约 95s）
-- `<geocfc-train-python> -m unittest -v _pipelines.02_task_datasets.sweetspot.tests.test_p29_agent_action_effect` → Ran 4 tests, OK（约 254s）
-- `python3 -m py_compile _pipelines/02_task_datasets/sweetspot/p29_agent_action_effect.py _pipelines/02_task_datasets/sweetspot/tests/test_p29_agent_action_effect.py`
+- `<geocfc-train-python> -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p28_path_resolution` → Ran 9 tests, OK
+- `<geocfc-train-python> -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p28_agentic_optimization` → Ran 5 tests, OK（约 95s）
+- `<geocfc-train-python> -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p29_agent_action_effect` → Ran 4 tests, OK（约 245s）
+- `python3 -m pytest _pipelines/02_task_datasets/sweetspot/tests/test_validate_only.py -q` → 11 passed
 - `git diff --check`
+
+以上三套 unittest 在 `.claude/worktrees/fix-sweetspot-paths`（worktree 布局）和
+`~/tmp/20260807-sweetspot-mainlayout`（**非 worktree 布局**，即修复前完全跑不了的场景）
+各跑一遍，结果相同。
 
 当前检查结果：
 
-- canonical **产物**里没有机器绝对路径或 `.claude/worktrees/...` 兄弟工作树定位
-  （注意：这只覆盖产物，**源码里的路径推导仍绑定 worktree 布局**，见上一节）
-- P28 / P29 test suite 在 worktree 布局下清洁通过
-- 当前工作树 clean
+- canonical 产物里没有机器绝对路径或 `.claude/worktrees/...` 兄弟工作树定位
+- 源码侧的根推导也不再绑定布局，并有 `test_p28_path_resolution.py` 兜底
+  （含一条防止退回 `parents[N]` 写法的守卫）
+- 工作树 clean
 
 ## 5. 接手建议
 
@@ -163,11 +166,12 @@ stage3/stage4 摘要、P7/P8 摘要都从它读。清理该 worktree 会让 P28/
 - 本文档只总结已验证事实，不包含未执行计划。
 - 当前没有运行中的修复任务。
 - 如果接手方需要继续，可直接基于现有 clean HEAD 开新 goal。
-- 已知缺口 1：`manifest.json` 记录了输入哈希和 `source_commit`，但**没有记录 python 解释器
+- 已知缺口：`manifest.json` 记录了输入哈希和 `source_commit`，但**没有记录 python 解释器
   与 xgboost / sklearn 版本**。如果后续换环境重跑，产物哈希可能变化却无法归因。
   建议在下一次改 P28/P29 时把 runtime 版本写进 manifest。
-- 已知缺口 2（更严重）：源码路径推导按 worktree 目录深度硬推，模块在主线 checkout 上**等同不可运行**，
-  且隐式依赖兄弟 worktree `p10-results-sweetspot` 存在。正确修法是从 git 顶层反查
-  （`git rev-parse --show-toplevel`）并把参考数据的位置变成显式配置而非目录深度巧合。
-  该改动触及 canonical pipeline，动手前需确认是否影响已归档的产物哈希——**不要顺手改**。
+- 已修复（2026-08-07，分支 `fix-sweetspot-path-derivation`）：源码路径推导原先按 worktree
+  目录深度硬推，模块在主线 checkout 上等同不可运行，且隐式依赖兄弟 worktree
+  `p10-results-sweetspot` 存在。现已改为从 git 反查、参考数据位置可配置可回落，
+  行为等价性经两轮逐字节比对确认，细节见第 4 节。
+- 归档的 canonical 产物**未**重新生成，仍是原始证据；本次修复不触碰它们。
 

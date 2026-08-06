@@ -99,10 +99,10 @@ python3 -m pytest _pipelines/02_task_datasets/sweetspot/tests -q
 
 ### P28 / P29 的运行前提（2026-08-07 实测）
 
-`p28_agentic_optimization.py` / `p29_agent_action_effect.py` 这两套测试**不能在主仓 checkout 上直接运行**，
-需要同时满足两个前提。两条都不满足时的报错都不代表代码回归，请先核对本节再排查。
+`p28_agentic_optimization.py` / `p29_agent_action_effect.py` 只有一个运行前提。
+报错前请先核对本节，多数失败不是代码回归。
 
-**前提 1：解释器必须带 `xgboost`。**
+**前提：解释器必须带 `xgboost`。**
 系统 `/usr/bin/python3` 没有装，会报 `ModuleNotFoundError: No module named 'xgboost'`
 （P28 挂 2/5，P29 挂 3/4）。本机已验证可用（py310，`xgboost 3.2.0` + `sklearn 1.7.2`，
 与 canonical 产物生成环境一致）：
@@ -114,32 +114,36 @@ PY=/mnt/data/yongan-admin-2/envs/geocfc-train/bin/python
 本机另有 `envs/gaia-v2-8a4915-py312`、`envs/gaia-petro-inference-mcp-py312` 带 xgboost，
 但 sklearn 是 1.8.0；用它们复现 canonical 产物哈希前需自行验证版本影响。
 
-**前提 2：必须在 `.claude/worktrees/<name>/` 布局下运行。**
-这两个模块的路径常量按 worktree 目录深度硬推（`p28_agentic_optimization.py:38-41`、
-`p29_agent_action_effect.py:37-39`）：
+### 运行位置（2026-08-07 起不再受限）
 
-| 常量 | worktree 内 | 主仓 checkout 内 |
+早期版本的路径常量按目录深度硬推，只在 `.claude/worktrees/<name>/` 布局下成立：在主仓
+checkout 上 `PROJECT_ROOT` 会解析成 `/mnt/data`、`REFERENCE_ROOT` 指向不存在的目录，
+`_reference_inputs()` 直接以 `CalledProcessError` 中止。现在三个根一律由 git 反查：
+
+| 常量 | 来源 | 含义 |
 |---|---|---|
-| `WORKTREE_ROOT` | 该 worktree 根 ✓ | 仓库根 ✓ |
-| `PROJECT_ROOT` | 仓库根 ✓ | **`/mnt/data`** ❌ |
-| `REFERENCE_ROOT` | `.claude/worktrees/p10-results-sweetspot` ✓ | `projects/p10-results-sweetspot`（不存在）❌ |
+| `WORKTREE_ROOT` | `rev-parse --show-toplevel` | 当前 checkout（主仓或任意 worktree） |
+| `PROJECT_ROOT` | `rev-parse --git-common-dir` 的父目录 | 主仓，共享数据 `_sandbox/volve_data` 所在 |
+| `REFERENCE_ROOT` | 见下 | P5/P7/P8 参考产物所在 |
 
-在主仓直接跑，`_reference_inputs()` 会对不存在的 `REFERENCE_ROOT` 执行 `git rev-parse HEAD`
-并以 `CalledProcessError` 中止（P28 5 tests → 2 errors，P29 4 tests → 3 errors）。
+`REFERENCE_ROOT` 按顺序解析，命中即止：
 
-**前提 3（隐式）：兄弟 worktree `p10-results-sweetspot` 必须存在。**
-`REFERENCE_ROOT` 指向它，P5 的 split manifest、stage3/stage4 摘要、P7/P8 摘要都从那里读。
-清理该 worktree 会让 P28/P29 直接失去可复现性。
+1. 环境变量 `SWEETSPOT_REFERENCE_ROOT` — 显式覆盖
+2. 兄弟 worktree `p10-results-sweetspot`（若仍存在）— 排在前面是为了让 provenance 与归档
+   manifest 保持连续，那些 manifest 把该 worktree 的 commit 记作每个输入的 `source_commit`
+3. 主仓 — 被引用的参考产物全部在版本控制里，且与兄弟 worktree 的副本逐字节相同
 
-已验证可通过的跑法（在某个 sweetspot worktree 内，例如 `.claude/worktrees/track-sweetspot`）：
+所以 `p10-results-sweetspot` 现在是可选的：删掉它 P28/P29 照常运行，只是 `source_commit`
+会记成主仓 commit 而不是 `1c81a03`。已实测：切换 `REFERENCE_ROOT` 时全部科学产物逐字节不变，
+差异只出现在 `source_commit` 及由它级联的 manifest 哈希。
+
+已验证的跑法（**任意 checkout 位置均可**，含主仓）：
 
 ```bash
-$PY -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p28_agentic_optimization  # 5 tests OK, ~95s
-$PY -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p29_agent_action_effect   # 4 tests OK, ~254s
+$PY -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p28_path_resolution      # 9 tests OK
+$PY -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p28_agentic_optimization # 5 tests OK, ~95s
+$PY -m unittest _pipelines.02_task_datasets.sweetspot.tests.test_p29_agent_action_effect  # 4 tests OK, ~245s
 ```
 
-⚠️ 两个已知缺口，待后续修复决策：
-1. 上述路径推导应改为从 git 顶层反查（如 `git rev-parse --show-toplevel`）而非按目录深度硬推，
-   否则模块在主线上等同不可运行。改动会触及 canonical pipeline，需先确认是否影响产物哈希。
-2. `_outputs/*/manifest.json` 记录了输入哈希和 `source_commit`，但没有记录解释器与依赖版本，
-   换环境重跑若哈希变化无法归因。
+⚠️ 剩余已知缺口：`_outputs/*/manifest.json` 记录了输入哈希和 `source_commit`，
+但没有记录解释器与依赖版本；换环境重跑若哈希变化，目前无法归因。
