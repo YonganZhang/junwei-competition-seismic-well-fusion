@@ -1,0 +1,108 @@
+{
+  "feature_names": [
+    "velocity_m_s",
+    "rhob_g_cc",
+    "local_impedance_std",
+    "norm_depth"
+  ],
+  "per_well_point_counts": {
+    "19A": 39,
+    "19BT2": 71,
+    "19SR": 20
+  },
+  "results": {
+    "19A": {
+      "status": "evaluated",
+      "n_train_points": 91,
+      "n_test_points": 39,
+      "selected_alpha": 1.0,
+      "inner_cv_mae_ms": 2044.0187921320646,
+      "ridge_coefficients": {
+        "velocity_m_s": 29.571842479553613,
+        "rhob_g_cc": -177.21340356758262,
+        "local_impedance_std": -129.32368225129318,
+        "norm_depth": 28.576557255704504
+      },
+      "i0_baseline_metrics": {
+        "rows": 39,
+        "mae_ms": 265.9366332605604,
+        "rmse_ms": 278.7825669505464,
+        "bias_ms": 265.9366332605604,
+        "median_absolute_error_ms": 255.80000000000018
+      },
+      "i1_corrected_metrics": {
+        "rows": 39,
+        "mae_ms": 493.5417404338831,
+        "rmse_ms": 516.5423942358201,
+        "bias_ms": 493.5417404338831,
+        "median_absolute_error_ms": 492.1921761694357
+      },
+      "mae_delta_ms": 227.60510717332266,
+      "improved": false
+    },
+    "19BT2": {
+      "status": "evaluated",
+      "n_train_points": 59,
+      "n_test_points": 71,
+      "selected_alpha": 10.0,
+      "inner_cv_mae_ms": 2121.8920262643605,
+      "ridge_coefficients": {
+        "velocity_m_s": 76.60637690547124,
+        "rhob_g_cc": -220.22085733935654,
+        "local_impedance_std": -276.01079771596505,
+        "norm_depth": 42.5367315742632
+      },
+      "i0_baseline_metrics": {
+        "rows": 71,
+        "mae_ms": 183.83144712558519,
+        "rmse_ms": 192.52525448776927,
+        "bias_ms": 183.83144712558519,
+        "median_absolute_error_ms": 175.09380759648457
+      },
+      "i1_corrected_metrics": {
+        "rows": 71,
+        "mae_ms": 612.7724249997759,
+        "rmse_ms": 707.1311674927764,
+        "bias_ms": 602.0928436444669,
+        "median_absolute_error_ms": 597.7401880457228
+      },
+      "mae_delta_ms": 428.9409778741907,
+      "improved": false
+    },
+    "19SR": {
+      "status": "evaluated",
+      "n_train_points": 110,
+      "n_test_points": 20,
+      "selected_alpha": 10.0,
+      "inner_cv_mae_ms": 86.14172768537901,
+      "ridge_coefficients": {
+        "velocity_m_s": 15.700503431237873,
+        "rhob_g_cc": -10.210348177290188,
+        "local_impedance_std": -4.69784926201212,
+        "norm_depth": 39.17329434982585
+      },
+      "i0_baseline_metrics": {
+        "rows": 20,
+        "mae_ms": 1863.746025332791,
+        "rmse_ms": 1864.430982067737,
+        "bias_ms": -1863.746025332791,
+        "median_absolute_error_ms": 1863.9232854945112
+      },
+      "i1_corrected_metrics": {
+        "rows": 20,
+        "mae_ms": 2072.2984607127264,
+        "rmse_ms": 2072.5371594270914,
+        "bias_ms": -2072.2984607127264,
+        "median_absolute_error_ms": 2070.859139474382
+      },
+      "mae_delta_ms": 208.55243537993533,
+      "improved": false
+    }
+  },
+  "verdict": {
+    "n_wells_evaluated": 3,
+    "n_wells_improved": 0,
+    "decision": "I1_NOT_PROMOTED_INSUFFICIENT_EVIDENCE",
+    "caveat": "Only 3 wells total; leave-one-well-out with 2 training wells per fold is the minimum defensible generalization test, not a statistically powered claim. Any 'improved' result here is a weak signal, not a promotion-grade result."
+  }
+}
