@@ -277,6 +277,18 @@ code_domains:
       checkshot评分。依赖新增 welly/bruges/dtaidistance（pip --user）。
       19BT2通过歧义门MAE=183.8ms；19A/19SR被正确标记歧义拒绝。
 
+  - id: p45_well_tie_ai_residual_i1
+    path: _pipelines/02_task_datasets/reconstruction/p45_well_tie_ai_residual_i1.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P45 I1：Ridge回归残差修正 + 留一井交叉验证(n=3口井)，测试I0物理baseline
+      是否能被一个小规模学习组件改进。首版误用井级常数特征(coarse_xcorr/
+      ambiguity_gap)导致19BT2灾难性外推(32332ms)，已定位修复；修复后三口井
+      留一验证全部变差，诚实判定I1_NOT_PROMOTED_INSUFFICIENT_EVIDENCE，
+      暂不推进I2(接入MOMENT/GFM做特征提取器)。
+
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
     type: pipeline
