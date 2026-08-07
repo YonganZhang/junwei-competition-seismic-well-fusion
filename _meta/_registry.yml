@@ -265,6 +265,18 @@ code_domains:
       不读孔隙度标签、reconstruction HDF5、test 或 holdout；产物状态限定为
       VALIDATED_CALIBRATION_ONLY，不替代 P21 默认模型。
 
+  - id: p45_well_tie_physics_baseline
+    path: _pipelines/02_task_datasets/reconstruction/p45_well_tie_physics_baseline.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P45 I0：无checkshot物理baseline井震标定（军伟 GitHub issue #1 驱动）。
+      声波积分+bruges反射系数+Ricker子波估计+相关搜索(前3峰非极大值抑制+
+      歧义拒绝)+斜率约束DTW，完全不读取checkshot作为输入，只在事后用真实
+      checkshot评分。依赖新增 welly/bruges/dtaidistance（pip --user）。
+      19BT2通过歧义门MAE=183.8ms；19A/19SR被正确标记歧义拒绝。
+
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
     type: pipeline

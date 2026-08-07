@@ -1,0 +1,130 @@
+{
+  "method": "sonic_integration + acoustic_reflectivity + ricker_wavelet + xcorr_coarse_search + slope_constrained_dtw",
+  "wells": {
+    "19A": {
+      "coarse_t0_ms": 2740.0,
+      "coarse_xcorr": 0.5534511299866991,
+      "top_k_peaks": [
+        [
+          2740.0,
+          0.5534511299866991
+        ],
+        [
+          3044.0,
+          0.5351758519447187
+        ],
+        [
+          516.0,
+          0.46344281969859014
+        ]
+      ],
+      "ambiguity_gap": 0.01827527804198037,
+      "reject_ambiguous": true,
+      "dtw_distance": 0.3239245240984555,
+      "wavelet_freq_hz": 25.976909413854347,
+      "inline": 10183,
+      "crossline": 2191,
+      "own_log_depth_tvdss_range": [
+        2721.033720710308,
+        3259.9583856159143
+      ],
+      "n_checkshot_points_in_range": 39,
+      "metrics_vs_own_checkshot": {
+        "rows": 39,
+        "mae_ms": 265.9366332605604,
+        "rmse_ms": 278.7825669505464,
+        "bias_ms": 265.9366332605604,
+        "median_absolute_error_ms": 255.80000000000018
+      }
+    },
+    "19BT2": {
+      "coarse_t0_ms": 2560.0,
+      "coarse_xcorr": 0.4304705763120544,
+      "top_k_peaks": [
+        [
+          2560.0,
+          0.4304705763120544
+        ],
+        [
+          3276.0,
+          0.3645314244297248
+        ],
+        [
+          1548.0,
+          0.3465320324066631
+        ]
+      ],
+      "ambiguity_gap": 0.06593915188232957,
+      "reject_ambiguous": false,
+      "dtw_distance": 0.3366213115153063,
+      "wavelet_freq_hz": 23.09058614564831,
+      "inline": 10107,
+      "crossline": 2159,
+      "own_log_depth_tvdss_range": [
+        2409.3906590415754,
+        3304.97
+      ],
+      "n_checkshot_points_in_range": 71,
+      "metrics_vs_own_checkshot": {
+        "rows": 71,
+        "mae_ms": 183.83144712558519,
+        "rmse_ms": 192.52525448776927,
+        "bias_ms": 183.83144712558519,
+        "median_absolute_error_ms": 175.09380759648457
+      }
+    },
+    "19SR": {
+      "coarse_t0_ms": 612.0,
+      "coarse_xcorr": 0.5472104567654732,
+      "top_k_peaks": [
+        [
+          612.0,
+          0.5472104567654732
+        ],
+        [
+          212.0,
+          0.5254610074798178
+        ],
+        [
+          1776.0,
+          0.5073801656287611
+        ]
+      ],
+      "ambiguity_gap": 0.021749449285655365,
+      "reject_ambiguous": true,
+      "dtw_distance": 0.42291840067336817,
+      "wavelet_freq_hz": 30.639431616341028,
+      "inline": 10132,
+      "crossline": 2300,
+      "own_log_depth_tvdss_range": [
+        2759.4620257285796,
+        3061.39
+      ],
+      "n_checkshot_points_in_range": 20,
+      "metrics_vs_own_checkshot": {
+        "rows": 20,
+        "mae_ms": 1863.746025332791,
+        "rmse_ms": 1864.430982067737,
+        "bias_ms": -1863.746025332791,
+        "median_absolute_error_ms": 1863.9232854945112
+      }
+    }
+  },
+  "p23_reference": {
+    "note": "P23 checkshot-based spatial interpolation on VALIDATION wells F11T2/F15A",
+    "target_reservoir_mae_ms": 8.7389,
+    "old_weak_tie_mae_ms": 633.1867
+  },
+  "inputs": {
+    "well_picks_sha256": "1c132bba09555915b62e23dc4475f790a304856d369d9d26cc76466cf7b77d3a",
+    "checkshot_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4"
+  },
+  "constraints": {
+    "max_local_stretch": 1.2,
+    "dtw_window_ms": 200.0,
+    "t0_search_range_ms": [
+      0.0,
+      3596.0
+    ]
+  }
+}
