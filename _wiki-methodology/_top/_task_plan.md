@@ -118,7 +118,7 @@
 | P43 甜点门限根因 | ✅ | 1/1 | T6/T7 的 `no development-only feature source` 实为样本身份不可逆（P4 冻结 1216 个内容哈希 ID，物化 h5 已不存在），标签源 `PHIF`/`KLOGH` 各 35810 条一直在被读取；T2 的 AP `0.9847` 非泄漏而是 `SAND_FLAG` 代理任务。另更正：T6/T7 P4 阶段已完整完成并过 frozen test（T6 R²=`0.93411`）。详见 `_findings/P43_sweetspot_seven_target_gate_root_cause.md`。 |
 | P44 甜点标签溯源 | ✅ | 1/1 | 特征消融显示 T6 上单条 `RHOB` 即达 R²=`0.9696`、全 16 条仅 `0.9709`；T1/T2/T6/T7 的标签均为 CPI 解释产物，模型在复现解析式而非预测地质，其中 T6/T7 的 `is_proxy=False` 标注与证据不符。七目标中仅 T3/T4/T5 具备真实预测意义。详见 `_findings/P44_sweetspot_label_provenance_collapse.md`。 |
 | P45 无checkshot井震标定 | 🔄 | 1/3(I0) | 军伟issue #1驱动。I0物理baseline(声波积分+bruges反射系数+Ricker子波+相关搜索+斜率约束DTW)在Volve 3口有DT+RHOB的井上测试：19BT2通过歧义门MAE=183.8ms，19A/19SR被歧义检测正确拒绝(19SR因DT+RHOB覆盖区间跟checkshot范围只有边缘重叠导致周期跳跃，MAE若不拒绝会是1863.8ms)。对比P23 checkshot锚定(8.7ms)仍差1-2个数量级，但比纯官方分层弱标定(633ms)有意义提升。**重要发现**：项目已下载的F3数据是图块+层位解释集，不含LAS测井曲线，原计划的跨工区冒烟测试暂不可行，需额外下载官方F3-Demo井数据才能做真正跨工区验证。详见`_findings/P45_well_tie_physics_baseline_no_checkshot.md`。I1(AI小模型探索)、I2(基础模型接入)待续。 |
-| P45 甜点三层技术流固化 | ✅ | 1/1 | ⑤甜点的小模型层（P5）、大模型层（P7/P8 Chronos-2）与智能体层（P28/P29）已写进 adapter：`baseline` 解析 incumbent、`optimize` 承载智能体、`verify` 三层同验。此前 P7 Chronos-2 的晋级结果（T3 MAE `186.572`，较归档 XGBoost 降 `30.15%`）完全游离于 pipeline 之外，verify 可以全绿而验不到真正的冠军。新增单一真源 `sweetspot/_outputs/incumbent/incumbent.json`（incumbents / rejected_routes / open_work）。六赛道 verify 仍 PASS。 |
+| P46 甜点三层技术流固化 | ✅ | 1/1 | ⑤甜点的小模型层（P5）、大模型层（P7/P8 Chronos-2）与智能体层（P28/P29）已写进 adapter：`baseline` 解析 incumbent、`optimize` 承载智能体、`verify` 三层同验。此前 P7 Chronos-2 的晋级结果（T3 MAE `186.572`，较归档 XGBoost 降 `30.15%`）完全游离于 pipeline 之外，verify 可以全绿而验不到真正的冠军。新增单一真源 `sweetspot/_outputs/incumbent/incumbent.json`（incumbents / rejected_routes / open_work）。六赛道 verify 仍 PASS。 |
 
 ## 协作与决策权边界
 
