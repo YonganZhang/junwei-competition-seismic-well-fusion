@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P42 六赛道主仓收口与 Claude 交接] 六条独立 Pipeline 保持统一生命周期；P36--P41 的重建、岩相与物性增量已进入隔离集成分支，默认模型仅在通过 promotion 时改变。下一步优先关闭⑤标签门，并在共同锁定基线与独立井族上继续③④⑥井震跨模态研究。**
+> **🧭 当前: [P45 无checkshot井震标定 I0] 军伟 GitHub issue #1 驱动，物理baseline(声波积分+bruges反射系数+相关搜索+斜率约束DTW)已在Volve 3口有DT+RHOB的井上跑通，19BT2通过歧义门MAE=183.8ms，19A/19SR被正确拒绝为歧义。F3当前下载内容不含LAS测井，跨工区冒烟测试暂被数据缺口阻塞。下一步：I1(小模型探索)或先解决F3井数据缺口。**
 >   2026-08-06 增量：⑥P39 固定共同 well-only base 后，双预训练融合宏平均 RMSE=`0.075908484`，仍弱于 well-only `0.075314433`；④P40 双基础融合 Macro-F1=`0.161312`，弱于 B0 `0.213349`；③P41 双基础融合相对 B0 仅改善 `0.1703%`，2/4 外层胜出且 bootstrap 区间跨零。三条均不晋级，实验代码、轻量证据和结论边界已归档。
 >   2026-08-06 结论收窄：用户质疑触发 Claude 子智能体 + Codex 双独立复核（不预设立场，重新从数据侧核查）。⑥P38/P39 负结果确认可信、无 bug。但④P40、③P41 发现同一类结构性接口缺陷——GFM 地震侧只保留整道 CLS token、未传入查询点 time_idx，导致 P40 的 447 个样本只对应 69 个不同地震表示（443/447 行落在同道重复组，39 组内部混着不同岩相标签）、P41 的 1216 个样本只对应 211 个不同地震表示（1201/1216 行同道重复但组内真实物性值明显不同）。这不是数据/坐标/标签 bug，是"整道级表征当作深度局部表征使用"的接口设计缺陷。P40、P41 的结论已从 `R0_STOP_NO_ATTRIBUTABLE_SIGNAL` 收窄为 `R0_INCONCLUSIVE_DEPTH_BLIND_SEISMIC_INTERFACE`（详见各自 finding），下一步应换用 P39 已验证过的 query-local 波形 token 设计重新测试，而非直接判定井震融合在④③无效。
 >   2026-08-03 增量：① P30 连续三维开发体已集成，CIG-Bench guard 逐体素 F1=`0.003555` 低于 baseline `0.017641`，不晋级；忽略目录中的 joblib 已转为哈希绑定的可移植系数检查点，在完整 P30 体上复算指标至 12 位小数一致。④默认 XGBoost 已升级为 `depth=3/eta=0.1/rounds=60`，Macro-F1=`0.213349`，与 MOMENT/LLM 无关。六赛道聚焦回归共 61 项通过。
@@ -117,6 +117,7 @@
 | P42 主仓与交接收口 | ✅ | 1/1 | 集成 P36--P41 的可复现增量，保留六 Pipeline 默认与拒绝结论，归档 Claude 接手文档、轻量证据和验证记录。详见 `_findings/P42_six_track_progress_and_claude_handoff.md`。 |
 | P43 甜点门限根因 | ✅ | 1/1 | T6/T7 的 `no development-only feature source` 实为样本身份不可逆（P4 冻结 1216 个内容哈希 ID，物化 h5 已不存在），标签源 `PHIF`/`KLOGH` 各 35810 条一直在被读取；T2 的 AP `0.9847` 非泄漏而是 `SAND_FLAG` 代理任务。另更正：T6/T7 P4 阶段已完整完成并过 frozen test（T6 R²=`0.93411`）。详见 `_findings/P43_sweetspot_seven_target_gate_root_cause.md`。 |
 | P44 甜点标签溯源 | ✅ | 1/1 | 特征消融显示 T6 上单条 `RHOB` 即达 R²=`0.9696`、全 16 条仅 `0.9709`；T1/T2/T6/T7 的标签均为 CPI 解释产物，模型在复现解析式而非预测地质，其中 T6/T7 的 `is_proxy=False` 标注与证据不符。七目标中仅 T3/T4/T5 具备真实预测意义。详见 `_findings/P44_sweetspot_label_provenance_collapse.md`。 |
+| P45 无checkshot井震标定 | 🔄 | 1/3(I0) | 军伟issue #1驱动。I0物理baseline(声波积分+bruges反射系数+Ricker子波+相关搜索+斜率约束DTW)在Volve 3口有DT+RHOB的井上测试：19BT2通过歧义门MAE=183.8ms，19A/19SR被歧义检测正确拒绝(19SR因DT+RHOB覆盖区间跟checkshot范围只有边缘重叠导致周期跳跃，MAE若不拒绝会是1863.8ms)。对比P23 checkshot锚定(8.7ms)仍差1-2个数量级，但比纯官方分层弱标定(633ms)有意义提升。**重要发现**：项目已下载的F3数据是图块+层位解释集，不含LAS测井曲线，原计划的跨工区冒烟测试暂不可行，需额外下载官方F3-Demo井数据才能做真正跨工区验证。详见`_findings/P45_well_tie_physics_baseline_no_checkshot.md`。I1(AI小模型探索)、I2(基础模型接入)待续。 |
 | P45 甜点三层技术流固化 | ✅ | 1/1 | ⑤甜点的小模型层（P5）、大模型层（P7/P8 Chronos-2）与智能体层（P28/P29）已写进 adapter：`baseline` 解析 incumbent、`optimize` 承载智能体、`verify` 三层同验。此前 P7 Chronos-2 的晋级结果（T3 MAE `186.572`，较归档 XGBoost 降 `30.15%`）完全游离于 pipeline 之外，verify 可以全绿而验不到真正的冠军。新增单一真源 `sweetspot/_outputs/incumbent/incumbent.json`（incumbents / rejected_routes / open_work）。六赛道 verify 仍 PASS。 |
 
 ## 协作与决策权边界

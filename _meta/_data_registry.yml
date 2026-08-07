@@ -69,6 +69,12 @@ assets:
       651个inline mask+951个crossline mask），3924682 是Penobscot。
       2026-07-13 Codex审查更正：标注不是"9类"，是9个解释层位分隔出10个地震相区间/类别。
       2026-07-13确认：8/8文件MD5全部匹配Zenodo当前版本，下载已完整（此前note末尾"下载中"是残留文字，已删除）。
+      2026-08-07 P45核实澄清：上面"4口井测井"描述的是F3-Demo原始数据集页面的介绍内容，不是我们
+      实际下载到的文件内容——已下载的8个文件（inlines.zip/crosslines.zip/tiles_*.tar.gz/
+      horizons.tar.gz/masks.tar.gz等）全部是inline/crossline图块(TIFF)+层位xyz+分割掩膜，
+      不含任何LAS测井曲线或原始SEG-Y振幅道。若后续需要F3的真实测井数据（如井震标定跨工区验证），
+      需另外下载官方F3-Demo的4口井LAS文件（dGB/OpendTect学术数据集，是与本条目不同的下载源），
+      不能假设当前已下载内容里已经包含。
 
   - id: penobscot-canada
     name: Penobscot（加拿大 Nova Scotia 海域）
