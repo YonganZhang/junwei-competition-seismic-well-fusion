@@ -20,9 +20,12 @@ python3 ~/.claude/skills/share-top/scripts/topic-brief.py .                   # 
 
 ## 三条硬规矩
 
-1. **拒绝结果是有效结果。** `REJECT_AGENT`、`NOT_PROMOTED`、`not_feasible` 是候选真跑过但没赢，
-   不是流水线失败。不要因为看到这些状态就重开同一条路——先读 `_active_digest.md` 的
-   「不要重启的路线」和对应赛道的 rejected_routes。
+1. **分清「赛道」和「路线」，否则会得出完全错误的项目判断。**
+   六条赛道**全部成功**：都跑通七段生命周期、都有默认模型、都相对基线有改善。
+   而某些**具体增强路线**未通过晋级门（`REJECT_AGENT`、`NOT_PROMOTED`、`not_feasible`），
+   意思是候选真跑过但没赢过当前默认，**不是赛道失败，更不是流水线失败**。
+   看到这些状态不要重开同一条路——先读 `_active_digest.md` 的赛道层/路线层两张表，
+   以及对应赛道的 rejected_routes。
 2. **不要编辑冻结产物来反映新决策。** `label_mapping.v1.json`、各目标 `split_manifest.json` 的
    sha256 被归档 protocol/manifest 引用（分别有 5 和 7 处），改了就断证据链。新裁定写进当前真源。
 3. **指标必须带标签溯源。** ⑤甜点的 T1/T2/T6/T7 标签是 CPI 解释产物（单条 `RHOB` 即可让 T6 达
