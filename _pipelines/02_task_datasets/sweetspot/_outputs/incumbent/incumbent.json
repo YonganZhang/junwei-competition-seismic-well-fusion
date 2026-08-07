@@ -1,0 +1,238 @@
+{
+  "generation_base_commit": "9d456d9110394daaf51e379cba66dc3c964a60ae",
+  "incumbents": {
+    "T1": {
+      "evidence": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T1.json",
+      "incumbent": "lightgbm",
+      "label_caveat": "label is a CPI interpretation product; a higher score reflects reproducing an analytical relation, not predictive skill (see P44)",
+      "layer": "small_model",
+      "metric": "mae",
+      "slug": "reservoir_quality",
+      "value": 0.16037946224927158
+    },
+    "T2": {
+      "evidence": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T2.json",
+      "incumbent": "catboost",
+      "label_caveat": "label is a CPI interpretation product; a higher score reflects reproducing an analytical relation, not predictive skill (see P44)",
+      "layer": "small_model",
+      "metric": "average_precision",
+      "slug": "hydrocarbon_pay",
+      "value": 0.9846538508258352
+    },
+    "T3": {
+      "evidence": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+      "incumbent": "F1_chronos2_train_blend",
+      "layer": "foundation_model",
+      "metric": "mae",
+      "model_id": "amazon/chronos-2",
+      "slug": "productivity",
+      "superseded": {
+        "improvement_percent": 30.153883554551374,
+        "method": "xgboost",
+        "value": 267.1179548547381
+      },
+      "value": 186.57151779454128
+    },
+    "T4": {
+      "evidence": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T4.json",
+      "incumbent": "catboost",
+      "layer": "small_model",
+      "metric": "average_precision",
+      "slug": "water_breakthrough",
+      "value": 0.6540992322855067
+    },
+    "T5": {
+      "incumbent": null,
+      "reason": "no label is defined; simulation case must not be presented as field truth",
+      "slug": "remaining_oil_infill"
+    },
+    "T6": {
+      "incumbent": null,
+      "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+      "slug": "porosity"
+    },
+    "T7": {
+      "incumbent": null,
+      "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+      "slug": "permeability"
+    }
+  },
+  "layers": {
+    "agent": {
+      "p28": {
+        "a0_action_id": null,
+        "a2l_status": "STOPPED",
+        "baseline_kind": null,
+        "retain_llm": false,
+        "source": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/summary.json",
+        "verdict": "reject"
+      },
+      "p29": {
+        "a0_action_id": "T3_XGB_D4_ETA_0_05_ROUNDS_96",
+        "a2l_status": "STOPPED",
+        "baseline_kind": "same_fold_same_executor_a0",
+        "retain_llm": false,
+        "source": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json",
+        "verdict": "REJECT_AGENT"
+      }
+    },
+    "foundation_model": {
+      "p7_t3": {
+        "archived_xgboost_macro_fold_mae": 267.1179548547381,
+        "causal_history_mean_macro_fold_mae": 204.6370684329111,
+        "mae_reduction_vs_archived_xgboost_percent": 30.153883554551374,
+        "mae_reduction_vs_history_mean_percent": 8.828092963173232,
+        "model_id": "amazon/chronos-2",
+        "promotion_status": "PROMOTE",
+        "real_pretrained_weights_loaded": true,
+        "selected_macro_fold_mae": 186.57151779454128,
+        "selected_method": "F1_chronos2_train_blend",
+        "source": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+        "t4_status": "REJECTED_NO_GAIN"
+      },
+      "p8_t3_calendar": {
+        "blocking_control": "Chronos beats the causal mean, same-grid ExtraTrees, target-shuffle, and history-order-shuffle controls on the locked development folds; default promotion still requires a same-architecture random-init control.",
+        "default_enabled": false,
+        "effect_supported": true,
+        "source": "_pipelines/02_task_datasets/sweetspot/p8/_outputs/t3_chronos2_calendar_cv/summary.json",
+        "state": "EFFECT_SUPPORTED_NOT_PROMOTED"
+      }
+    },
+    "small_model": {
+      "source": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards",
+      "targets": {
+        "T1": {
+          "best_model": "lightgbm",
+          "bootstrap_95ci": [
+            0.14543730278293693,
+            0.17532162171560614
+          ],
+          "direction": "minimize",
+          "label_is_interpretation_product": true,
+          "primary_mean": 0.16037946224927158,
+          "primary_metric": "mae",
+          "slug": "reservoir_quality",
+          "status": "rankable",
+          "worst_fold": {
+            "fold_id": 2,
+            "value": 0.18683390444311077
+          }
+        },
+        "T2": {
+          "best_model": "catboost",
+          "bootstrap_95ci": [
+            0.9761820652592899,
+            0.9925230380120005
+          ],
+          "direction": "maximize",
+          "label_is_interpretation_product": true,
+          "primary_mean": 0.9846538508258352,
+          "primary_metric": "average_precision",
+          "slug": "hydrocarbon_pay",
+          "status": "rankable",
+          "worst_fold": {
+            "fold_id": 2,
+            "value": 0.9674397305322233
+          }
+        },
+        "T3": {
+          "best_model": "xgboost",
+          "bootstrap_95ci": [
+            221.13446832313244,
+            317.23844648101846
+          ],
+          "direction": "minimize",
+          "label_is_interpretation_product": false,
+          "primary_mean": 267.1179548547381,
+          "primary_metric": "mae",
+          "slug": "productivity",
+          "status": "rankable",
+          "worst_fold": {
+            "fold_id": 1,
+            "value": 408.9915808301043
+          }
+        },
+        "T4": {
+          "best_model": "catboost",
+          "bootstrap_95ci": [
+            0.39606157277725906,
+            0.8665197051042635
+          ],
+          "direction": "maximize",
+          "label_is_interpretation_product": false,
+          "primary_mean": 0.6540992322855067,
+          "primary_metric": "average_precision",
+          "slug": "water_breakthrough",
+          "status": "rankable",
+          "worst_fold": {
+            "fold_id": 2,
+            "value": 0.14285325241207594
+          }
+        },
+        "T5": {
+          "label_is_interpretation_product": false,
+          "reason": "no label is defined; simulation case must not be presented as field truth",
+          "slug": "remaining_oil_infill",
+          "status": "not_rankable"
+        },
+        "T6": {
+          "label_is_interpretation_product": true,
+          "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+          "slug": "porosity",
+          "status": "not_rankable"
+        },
+        "T7": {
+          "label_is_interpretation_product": true,
+          "reason": "P4 label and split are frozen, but no development-only feature source exists; materialized test fallback is forbidden",
+          "slug": "permeability",
+          "status": "not_rankable"
+        }
+      }
+    }
+  },
+  "open_work": [
+    {
+      "blocks": "P8 default promotion",
+      "item": "Add the same-architecture random-init control for P8",
+      "why": "P8 already beats the causal mean, same-grid ExtraTrees, target-shuffle and history-order-shuffle controls. The remaining control separates the value of the pretrained weights from the value of the architecture — it is the decisive test of whether foundation pretraining helps here."
+    },
+    {
+      "blocks": "Any meaningful agent-layer result on T3",
+      "item": "Switch the P28/P29 agent A0 baseline to the current T3 incumbent",
+      "why": "The agent currently optimises against the archived XGBoost, which the foundation lane superseded by 30%. Its rejection verdicts are therefore measured against a stale frontier."
+    }
+  ],
+  "read_this_first": "This file is the sweetspot track's single source of truth. `incumbents` is what currently wins per target, `rejected_routes` is what has already been refuted, and `open_work` is what is worth doing next. Do not restart a rejected route without new evidence.",
+  "rejected_routes": [
+    {
+      "detail": "DeepSeek issued a legal stop; no candidate beat the frozen A0 baseline.",
+      "evidence": "_pipelines/02_task_datasets/sweetspot/_outputs/p28_agentic_optimization/summary.json",
+      "outcome": "reject",
+      "restart_condition": "Only with a different incumbent to optimise against, or a target with lower fold variance.",
+      "route": "LLM directly selecting T3 XGBoost hyperparameter actions (P28)"
+    },
+    {
+      "detail": "Feedback-baseline bug fixed and rerun; all candidate deltas were non-positive. Note the A0 baseline is the archived XGBoost, which the foundation lane has since superseded.",
+      "evidence": "_pipelines/02_task_datasets/sweetspot/_outputs/p29_agent_action_effect/summary.json",
+      "outcome": "REJECT_AGENT",
+      "restart_condition": "Re-run only after A0 is switched to the current incumbent (see open_work).",
+      "route": "LLM action selection against a same-fold same-executor A0 baseline (P29)"
+    },
+    {
+      "detail": "Foundation average precision fell below the archived CatBoost leader; not promoted.",
+      "evidence": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
+      "outcome": "REJECTED_NO_GAIN",
+      "restart_condition": "Requires more water-breakthrough events, not a different model.",
+      "route": "Chronos-2 direct forecasting for T4 water breakthrough"
+    },
+    {
+      "detail": "Labels are CPI interpretation products. RHOB alone reaches R2=0.9696 on T6 against 0.9709 for all sixteen curves, so there is no unknown quantity left to learn.",
+      "evidence": "_wiki-methodology/_top/_findings/P44_sweetspot_label_provenance_collapse.md",
+      "outcome": "NOT_MEANINGFUL",
+      "restart_condition": "Only if a field-truth label replaces the interpretation-derived one.",
+      "route": "Model optimisation on T1/T2/T6/T7"
+    }
+  ],
+  "schema_version": "sweetspot-incumbent/v1",
+  "track_id": "sweetspot"
+}

@@ -27,7 +27,7 @@ tracked_paths_hint:
 - _pipelines/02_task_datasets/reconstruction/p39_query_local_well_seismic_fusion.py
 - _pipelines/02_task_datasets/lithofacies/lithofacies_p40_crossmodal_foundation_pilot.py
 - _pipelines/02_task_datasets/reservoir/p41_property_crossmodal_qualification.py
-last_verified_hash: b430ad28aaaf62aab7b9c8b40af57ea5e2381e483edf267b44b7c04f1f56b2ef
+last_verified_hash: a85cda5d9319488402b8e5beeefcb843db5cf0ec1814f1f9736d83929316790a
 validator_version: 1
 ---
 
@@ -104,10 +104,28 @@ python3 _code/six_track_pipeline/cli.py verify \
 | ② 地震相识别 | `facies` | `_pipelines/02_task_datasets/facies/pipeline_adapter.py` | `_pipelines/facies_agentic_optimization.yml` | `_pipelines/02_task_datasets/facies/p32_hybrid_agent_optimizer.py` |
 | ③ 储层物性预测 | `property` | `_pipelines/02_task_datasets/reservoir/pipeline_adapter.py` | `_pipelines/property_agentic_optimization.yml` | `_pipelines/02_task_datasets/reservoir/p32_hybrid_agent_optimizer.py` |
 | ④ 岩相识别 | `lithofacies` | `_pipelines/02_task_datasets/lithofacies/pipeline_adapter.py` | `_pipelines/lithofacies_agentic_optimization.yml` | `_pipelines/02_task_datasets/lithofacies/lithofacies_p33_hybrid_agent_optimizer.py` |
-| ⑤ 甜点评价 | `sweetspot` | `_pipelines/02_task_datasets/sweetspot/pipeline_adapter.py` | `_pipelines/sweetspot_agentic_optimization.yml` | `_pipelines/02_task_datasets/sweetspot/p29_agent_action_effect.py` |
+| ⑤ 甜点评价 | `sweetspot` | `_pipelines/02_task_datasets/sweetspot/pipeline_adapter.py` | `_pipelines/sweetspot_agentic_optimization.yml` | `sweetspot_incumbent.py`（baseline，解析三层冠军）+ `p29_agent_action_effect.py`（optimize） |
 | ⑥ 三维重建 | `reconstruction` | `_pipelines/02_task_datasets/reconstruction/pipeline_adapter.py` | `_pipelines/reconstruction_agentic_optimization.yml` | `p29_agent_action_effect_repair.py` + `p30_bounded_geostatistics_feasibility.py` |
 
 `property` 是公共 track id，而磁盘上的历史目录名是 `reservoir`。这个差异只由 adapter 处理，用户不应把目录名当作新的 track id。
+
+### ⑤甜点的三层技术流
+
+⑤是目前唯一在 adapter 里显式区分三层的赛道，固定套路为「小模型 + 大模型 + 智能体」：
+
+| 层 | 阶段 | 入口 | 当前结论 |
+|---|---|---|---|
+| 小模型 | `baseline` | P5 Stage-3 多模型 CV（LightGBM/XGBoost/CatBoost/InceptionTime）| T1/T2/T4 的冠军 |
+| 大模型 | `baseline` | P7/P8 Chronos-2（真实预训练权重）| **T3 已 `PROMOTE`：MAE 186.572，较归档 XGBoost 267.118 降 30.15%** |
+| 智能体 | `optimize` | P28/P29 DeepSeek 动作选择 | 两轮 `REJECT_AGENT`；其 A0 仍指向已被超越的 XGBoost |
+
+🔴 **接手先读 `_pipelines/02_task_datasets/sweetspot/_outputs/incumbent/incumbent.json`**。
+它由 `baseline` 阶段的 `sweetspot_incumbent.py` 生成，是本赛道的单一真源：
+`incumbents` 给出各目标当前冠军及其证据路径，`rejected_routes` 给出已否决路线、原因和
+重启条件，`open_work` 给出下一步。该脚本只读归档证据、不训练、不打开 frozen test，
+纯标准库依赖，任何解释器都能跑。
+
+在此之前 adapter 只引用智能体层，`verify` 可以全绿而完全验不到 Chronos-2 那个真正的冠军。
 
 ## 非默认研究入口
 

@@ -336,7 +336,14 @@ entrypoints:
     type: pipeline_step
     status: active
     owner: project
-    description: "Map the seven-target sweet-spot modules, preprocessing and fail-closed agent route into the seven-stage contract."
+    description: "Map the seven-target sweet-spot modules and the three-layer stack (P5 small models + P7/P8 Chronos-2 foundation in baseline, P28/P29 agent in optimize) into the seven-stage contract."
+
+  - id: sweetspot_incumbent
+    path: _pipelines/02_task_datasets/sweetspot/sweetspot_incumbent.py
+    type: pipeline_step
+    status: active
+    owner: project
+    description: "Single source of truth for the sweetspot track. Reads the archived evidence of all three layers, resolves the current incumbent per target, and writes _outputs/incumbent/incumbent.json with incumbents, rejected_routes and open_work. Trains nothing, opens no frozen test, stdlib only. Read this before restarting any sweetspot work."
 
   - id: reconstruction_pipeline_adapter
     path: _pipelines/02_task_datasets/reconstruction/pipeline_adapter.py

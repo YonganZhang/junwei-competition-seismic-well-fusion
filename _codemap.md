@@ -61,8 +61,16 @@
 
 `plan --track all --through verify` 给出六条完整阶段链；`preflight --intent execute`
 在任何训练或网络调用前一次性检查参数、输入和 manual 阻断；`verify --track all`
-逐赛道逐阶段调用证据校验器并可写便携 trace。⑤甜点缺少获批标签合同且旧优化器依赖
-隐式 worktree，因此 prepare/baseline/optimize 明确标为 manual，不能被统一入口静默跳过。
+逐赛道逐阶段调用证据校验器并可写便携 trace。⑤甜点缺少获批标签合同，因此
+prepare/baseline/optimize 明确标为 manual，不能被统一入口静默跳过；旧优化器对隐式
+worktree 的依赖已在 `c9a85f4` 修复，路径改由 git 反查。
+
+⑤甜点的三层技术流已在 adapter 中显式接线：`baseline` 同时覆盖小模型层（P5 Stage-3
+多模型 CV）与大模型层（P7/P8 Chronos-2）并解析出 incumbent，`optimize` 是智能体层
+（P28/P29），`verify` 三层同验。**单一真源是
+`_pipelines/02_task_datasets/sweetspot/_outputs/incumbent/incumbent.json`**：
+`incumbents` 记各目标当前冠军，`rejected_routes` 记已否决路线与重启条件，
+`open_work` 记待办。换会话接手先读它，不要重启已否决路线。
 
 | 赛道 | 当前默认/晋级结论 | 不晋级路线 |
 |---|---|---|
@@ -70,7 +78,7 @@
 | ②地震相 | P32 混合优化：F3 联合配置 + Penobscot A0 | DeepSeek 直接端点；无调度的单次选择 |
 | ③储层物性 | P32 混合优化：`reservoir_linear(lr=0.01)` | A2L 不单独保留；CIG-Bench PropertyPredictor 不可用 |
 | ④岩相 | XGBoost `depth=3, eta=0.1, rounds=60` | P33 混合候选未超过现 A0；P29 LLM 策略；MOMENT/大模型因果归因 |
-| ⑤甜点 | 冻结 A0 XGBoost | 候选无正改善后的 LLM 路线 |
+| ⑤甜点 | **T3 产能：P7 Chronos-2 `F1_chronos2_train_blend`，macro-fold MAE 186.572（较归档 XGBoost 267.118 降 30.15%，较因果历史均值 204.637 降 8.83%，`PROMOTE`）**；T1/T2/T4 仍为 P5 小模型冠军 | P28/P29 的 LLM 动作选择（候选无正改善，`REJECT_AGENT`，且其 A0 仍指向已被超越的 XGBoost）；Chronos-2 直接预测 T4（AP 0.509 < CatBoost 0.654）；T1/T2/T6/T7 的模型优化（标签为 CPI 解释产物，见 finding P44） |
 | ⑥三维重建 | P21 固定三核集成 | P29 LLM 选择的数值策略 |
 
 `track_lifecycle.py --track <id> --stage verify` 仍是底层证据核验器，不重训模型；
