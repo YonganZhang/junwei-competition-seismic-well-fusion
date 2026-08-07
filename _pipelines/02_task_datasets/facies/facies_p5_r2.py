@@ -73,7 +73,13 @@ from p4_tasks import TASK_IDS, get_task_spec  # noqa: E402
 
 ROOT_SEED = 2693
 RESULT_SCHEMA = "facies-p5-r2-v1"
-EXPECTED_GPU_LOCK = Path("/mnt/data/yongan-admin-2/.cache/volve-p5/locks/gpu0.lock")
+# Shared 8-GPU box: CUDA runs must flock one agreed file so two jobs cannot claim
+# the same card. The guard further down enforces it. The default keeps this host's
+# original path, so existing runs and their recorded provenance are unchanged;
+# set VOLVE_P5_GPU_LOCK to relocate it on another machine.
+EXPECTED_GPU_LOCK = Path(
+    os.environ.get("VOLVE_P5_GPU_LOCK", "/mnt/data/yongan-admin-2/.cache/volve-p5/locks/gpu0.lock")
+)
 DEFAULT_PORTABLE_OUTPUT = TRACK_DIR / "_outputs" / "p5_r2"
 DEFAULT_RUNTIME_OUTPUT = TRACK_DIR / "_outputs" / "p5_r2_runtime"
 EXPECTED_R01_SOURCE_SHA256 = "db2d3cab1f26814c279bebaf8c72e80ea79f6a3b383944ba0ed7a21535b8a13b"
