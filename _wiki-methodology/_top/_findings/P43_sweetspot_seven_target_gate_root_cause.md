@@ -14,6 +14,20 @@ created_at: 2026-08-07
 ⑤甜点赛道的统一 Pipeline 七阶段 `verify` 全部 `exit_code=0`，`status=PASS`，但 P5 Stage-3
 的七个目标只有四个 `rankable`。本轮对两处门限做了只读根因审计，结论与门限的字面表述不完全一致。
 
+### 前提更正：T6/T7 不是"没跑过"，P4 阶段已完整完成
+
+`not_rankable` 只描述 P5 Stage-3 的排行榜资格，不代表这两个目标没有结果。两者的 P4 产物
+（`config.json`/`folds`/`oof`/`refit`/`frozen_test`/`lifecycle.json`）齐全，且已通过 frozen test：
+
+| | 模型 | development | OOF | Frozen test |
+|---|---|---|---|---|
+| T6 `PHIF` | `reservoir_ridge` | 1216 样本 / 4 折 | MAE `0.017833`，R² `0.85997` | MAE `0.012056`，**R² `0.93411`** |
+| T7 `KLOGH` | `reservoir_ridge` | 1216 样本 / 4 折 | log1p MAE `0.835387`，R² `0.829915`；物理 MAE `197.127` | log1p MAE `0.706676`，R² `0.868730`；物理 MAE `226.476` |
+
+两者的 `downgrade_reason` 均为 `only 4 independent development groups are available`。
+因此 T6 的孔隙度模型实际上是当前七目标里 frozen-test 表现最好的一个，只是它停在 P4，
+没有进入 P5 的多模型 CV 与智能体优化流程。任何"T6/T7 不可训练"的表述都是错的。
+
 ### T6/T7：不是"没有特征源"，是样本身份不可逆
 
 Stage-3 给 T6/T7 的 `reason` 是 `no development-only feature source exists; materialized
@@ -87,6 +101,10 @@ Stage-3 的 T2 三个模型 average precision 落在 `0.9813`–`0.9847`，worst
   `target6-phif-cpi-v1` / `target7-klogh-cpi-v1` 当前 split 绑定关系，属于科学决策，不是实现细节。
 - 重做后可用样本量级从 1216 变为 35810，与 T1 同源同粒度，这也意味着 T6/T7 将与 T1 高度相关
   （RQI 由 PHIF 和 KLOGH 定义），独立性需要在合同层重新论证。
+- **重做的收益不是"从不能跑到能跑"**，而是让已有 P4 结果进入 P5 的多模型对比与智能体优化流程。
+  代价是新旧结果不可比：现有 `R²=0.93411`（T6 frozen test）建立在 1216 个物化样本上，
+  重做后的指标基于 35810 个井-深度样本，二者不能同框比较，旧结论也不会自动继承。
+  决定重做前应先明确：是要一个可进入 P5 流程的新基线，还是要保留 P4 这条已过 frozen test 的证据链。
 - `15/9-19` 需要单独决策：补原始曲线、或从 T6/T7 的 `development_groups` 中移除。保留现状会让
   声明的井数与实际参与建模的井数长期不一致。
 - T2 的 `0.9847` 若被写进任何对外材料，必须同时写明它是 `SAND_FLAG` 代理任务，
