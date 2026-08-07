@@ -1,0 +1,106 @@
+{
+  "st10010_survey": {
+    "segy": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p45-well-tie-generalization/_sandbox/volve_data/_extracted_seismic/ST10010/Stacks/ST10010ZC11_PZ_PSDM_KIRCH_FULL_T.MIG_FIN.POST_STACK.3D.JS-017536.segy",
+    "time_range_ms": [
+      12.0,
+      3408.0
+    ],
+    "sample_interval_ms": 4.0,
+    "il_range": [
+      9961,
+      10361
+    ],
+    "xl_range": [
+      1961,
+      2680
+    ]
+  },
+  "st0202_survey_reference": {
+    "time_range_ms": [
+      0.0,
+      4500.0
+    ],
+    "sample_interval_ms": 4.0
+  },
+  "results": {
+    "19A": {
+      "status": "evaluated",
+      "st10010_t0_ms": 528.0,
+      "st10010_xcorr": 0.5200721794843312,
+      "st10010_ambiguity_gap": 0.0019396253864304436,
+      "st10010_reject_ambiguous": true,
+      "st10010_metrics": {
+        "rows": 39,
+        "mae_ms": 1919.925905882385,
+        "rmse_ms": 1922.196949997642,
+        "bias_ms": -1919.925905882385,
+        "median_absolute_error_ms": 1920.5973855101947
+      },
+      "st0202_t0_ms": 2740.0,
+      "st0202_metrics": {
+        "rows": 39,
+        "mae_ms": 265.9366332605604,
+        "rmse_ms": 278.7825669505464,
+        "bias_ms": 265.9366332605604,
+        "median_absolute_error_ms": 255.80000000000018
+      },
+      "t0_delta_ms": -2212.0,
+      "mae_delta_ms": 1653.9892726218245,
+      "both_rejected_or_both_kept": true
+    },
+    "19BT2": {
+      "status": "evaluated",
+      "st10010_t0_ms": 3332.0,
+      "st10010_xcorr": 0.45862756745787886,
+      "st10010_ambiguity_gap": 0.04768805665697018,
+      "st10010_reject_ambiguous": true,
+      "st10010_metrics": {
+        "rows": 71,
+        "mae_ms": 838.4813604451217,
+        "rmse_ms": 850.3447433683199,
+        "bias_ms": 838.4813604451217,
+        "median_absolute_error_ms": 862.1999999999998
+      },
+      "st0202_t0_ms": 2560.0,
+      "st0202_metrics": {
+        "rows": 71,
+        "mae_ms": 183.83144712558519,
+        "rmse_ms": 192.52525448776927,
+        "bias_ms": 183.83144712558519,
+        "median_absolute_error_ms": 175.09380759648457
+      },
+      "t0_delta_ms": 772.0,
+      "mae_delta_ms": 654.6499133195365,
+      "both_rejected_or_both_kept": false
+    },
+    "19SR": {
+      "status": "evaluated",
+      "st10010_t0_ms": 3328.0,
+      "st10010_xcorr": 0.8000069661526708,
+      "st10010_ambiguity_gap": 0.22880626166131823,
+      "st10010_reject_ambiguous": false,
+      "st10010_metrics": {
+        "rows": 20,
+        "mae_ms": 804.5782894142055,
+        "rmse_ms": 804.9410498321714,
+        "bias_ms": 804.5782894142055,
+        "median_absolute_error_ms": 808.7481327762409
+      },
+      "st0202_t0_ms": 612.0,
+      "st0202_metrics": {
+        "rows": 20,
+        "mae_ms": 1863.746025332791,
+        "rmse_ms": 1864.430982067737,
+        "bias_ms": -1863.746025332791,
+        "median_absolute_error_ms": 1863.9232854945112
+      },
+      "t0_delta_ms": 2716.0,
+      "mae_delta_ms": -1059.1677359185855,
+      "both_rejected_or_both_kept": false
+    }
+  },
+  "verdict": {
+    "n_wells_evaluated_on_both": 3,
+    "n_wells_ambiguity_gate_agrees": 1
+  }
+}

@@ -289,6 +289,17 @@ code_domains:
       留一验证全部变差，诚实判定I1_NOT_PROMOTED_INSUFFICIENT_EVIDENCE，
       暂不推进I2(接入MOMENT/GFM做特征提取器)。
 
+  - id: p45_well_tie_st10010_robustness
+    path: _pipelines/02_task_datasets/reconstruction/p45_well_tie_st10010_robustness.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P45 (c)：不需要新数据，直接用Volve已有的ST0202(0-4500ms)与ST10010
+      (12-3408ms，不同处理批次)对同一套I0代码测鲁棒性。结果诚实为未通过：
+      t0预测偏移最大2716ms，3口井里2口的歧义判定换地震源后翻转，印证了
+      GitHub issue #1 "改变SEG-Y时间范围后预测明显变化"这条具体担心。
+
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
     type: pipeline
