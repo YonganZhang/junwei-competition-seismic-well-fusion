@@ -1,7 +1,7 @@
 # 军伟的比赛（地震+测井多模态融合识别有利油气目标） — 任务计划
 
 > 创建: 2026-07-08
-> **🧭 当前: [P45 无checkshot井震标定 I0+I1] 军伟 GitHub issue #1 驱动。I0物理baseline已跑通(19BT2 MAE=183.8ms通过歧义门)；I1(Ridge残差修正+留一井交叉验证)诚实停止——n=3口井不足以支撑跨井泛化的学习组件，三口井全部变差，判定`I1_NOT_PROMOTED_INSUFFICIENT_EVIDENCE`，暂不推进I2。下一步：补更多DT+RHOB井/真实F3井LAS数据，或先做ST0202 vs ST10010鲁棒性测试。（另：Codex已把depth-local地震适配器工作改号为P46-P48，避免跟本P45撞号。）**
+> **🧭 当前: [P45 无checkshot井震标定 I0+I1] 军伟 GitHub issue #1 驱动。I0物理baseline已跑通(19BT2 MAE=183.8ms通过歧义门)；I1(Ridge残差修正+留一井交叉验证)诚实停止——n=3口井不足以支撑跨井泛化的学习组件，三口井全部变差，判定`I1_NOT_PROMOTED_INSUFFICIENT_EVIDENCE`，暂不推进I2。下一步：补更多DT+RHOB井/真实F3井LAS数据，或先做ST0202 vs ST10010鲁棒性测试。（编号协调：P46 已用于甜点三层技术流，depth-local 地震适配器与③④重跑现冻结为 P47--P49。）**
 >   2026-08-06 增量：⑥P39 固定共同 well-only base 后，双预训练融合宏平均 RMSE=`0.075908484`，仍弱于 well-only `0.075314433`；④P40 双基础融合 Macro-F1=`0.161312`，弱于 B0 `0.213349`；③P41 双基础融合相对 B0 仅改善 `0.1703%`，2/4 外层胜出且 bootstrap 区间跨零。三条均不晋级，实验代码、轻量证据和结论边界已归档。
 >   2026-08-06 结论收窄：用户质疑触发 Claude 子智能体 + Codex 双独立复核（不预设立场，重新从数据侧核查）。⑥P38/P39 负结果确认可信、无 bug。但④P40、③P41 发现同一类结构性接口缺陷——GFM 地震侧只保留整道 CLS token、未传入查询点 time_idx，导致 P40 的 447 个样本只对应 69 个不同地震表示（443/447 行落在同道重复组，39 组内部混着不同岩相标签）、P41 的 1216 个样本只对应 211 个不同地震表示（1201/1216 行同道重复但组内真实物性值明显不同）。这不是数据/坐标/标签 bug，是"整道级表征当作深度局部表征使用"的接口设计缺陷。P40、P41 的结论已从 `R0_STOP_NO_ATTRIBUTABLE_SIGNAL` 收窄为 `R0_INCONCLUSIVE_DEPTH_BLIND_SEISMIC_INTERFACE`（详见各自 finding），下一步应换用 P39 已验证过的 query-local 波形 token 设计重新测试，而非直接判定井震融合在④③无效。
 >   2026-08-03 增量：① P30 连续三维开发体已集成，CIG-Bench guard 逐体素 F1=`0.003555` 低于 baseline `0.017641`，不晋级；忽略目录中的 joblib 已转为哈希绑定的可移植系数检查点，在完整 P30 体上复算指标至 12 位小数一致。④默认 XGBoost 已升级为 `depth=3/eta=0.1/rounds=60`，Macro-F1=`0.213349`，与 MOMENT/LLM 无关。六赛道聚焦回归共 61 项通过。
@@ -119,6 +119,9 @@
 | P44 甜点标签溯源 | ✅ | 1/1 | 特征消融显示 T6 上单条 `RHOB` 即达 R²=`0.9696`、全 16 条仅 `0.9709`；T1/T2/T6/T7 的标签均为 CPI 解释产物，模型在复现解析式而非预测地质，其中 T6/T7 的 `is_proxy=False` 标注与证据不符。七目标中仅 T3/T4/T5 具备真实预测意义。详见 `_findings/P44_sweetspot_label_provenance_collapse.md`。 |
 | P45 无checkshot井震标定 | 🔄 | 2/3(I0+I1) | 军伟issue #1驱动。I0物理baseline(声波积分+bruges反射系数+Ricker子波+相关搜索+斜率约束DTW)在Volve 3口有DT+RHOB的井上测试：19BT2通过歧义门MAE=183.8ms，19A/19SR被歧义检测正确拒绝(19SR因DT+RHOB覆盖区间跟checkshot范围只有边缘重叠导致周期跳跃，MAE若不拒绝会是1863.8ms)。对比P23 checkshot锚定(8.7ms)仍差1-2个数量级，但比纯官方分层弱标定(633ms)有意义提升。I1(Ridge残差修正+留一井交叉验证)：首版误用井级常数特征导致19BT2灾难性外推到32332ms(已定位并修复为bug，非负结果)，修复后三口井留一验证全部变差(+228~+429ms)，`I1_NOT_PROMOTED_INSUFFICIENT_EVIDENCE`——诊断为n=3口井不足以支撑跨井泛化的学习组件，不是模型容量问题，因此I2(接入MOMENT/GFM做特征提取器)暂缓，先补数据(更多DT+RHOB井或真实F3井LAS)或改测ST0202/ST10010鲁棒性。**重要发现**：项目已下载的F3数据是图块+层位解释集，不含LAS测井曲线，原计划的跨工区冒烟测试暂不可行。详见`_findings/P45_well_tie_physics_baseline_no_checkshot.md`。 |
 | P46 甜点三层技术流固化 | ✅ | 1/1 | ⑤甜点的小模型层（P5）、大模型层（P7/P8 Chronos-2）与智能体层（P28/P29）已写进 adapter：`baseline` 解析 incumbent、`optimize` 承载智能体、`verify` 三层同验。此前 P7 Chronos-2 的晋级结果（T3 MAE `186.572`，较归档 XGBoost 降 `30.15%`）完全游离于 pipeline 之外，verify 可以全绿而验不到真正的冠军。新增单一真源 `sweetspot/_outputs/incumbent/incumbent.json`（incumbents / rejected_routes / open_work）。六赛道 verify 仍 PASS。⚠️2026-08-07：Codex此前口头提议把depth-local地震适配器工作也编为P46-P48，跟本行撞号——本行已先落盘为P46，Codex的depth-local工作请改用P47起，此处只做记录不代为决定。 |
+| P47 深度局部接口门 | ⏳ | 0/1 | 冻结为③④共享的 query-local 地震适配器与数据身份门；复用 P39 局部波形设计，先验证同道异深可分辨、时间错位敏感、无 NaN/零模态及原始 SEG-Y 回放，再进入模型重跑。 |
+| P48 岩相局部融合重跑 | ⏳ | 0/1 | ④岩相在锁定 P40 强基线、LOGO split、seed 与预算下重跑 local-only / global+local 及 random、shuffle、time-shift、fusion-off 控制；不等待⑤标签门。 |
+| P49 物性局部融合重跑 | ⏳ | 0/1 | ③物性在锁定 P41 强基线、LOGO split、seed 与预算下重跑 local-only / global+local 及 random、shuffle、time-shift、fusion-off 控制；不等待⑤标签门。 |
 
 ## 协作与决策权边界
 
