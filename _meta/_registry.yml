@@ -380,6 +380,24 @@ entrypoints:
     owner: project
     description: "Single source of truth for the sweetspot track. Reads the archived evidence of all three layers, resolves the current incumbent per target, and writes _outputs/incumbent/incumbent.json with incumbents, rejected_routes and open_work. Trains nothing, opens no frozen test, stdlib only. Read this before restarting any sweetspot work."
 
+  - id: six_track_p5_r2_implementations
+    path: _pipelines/02_task_datasets
+    type: research_pipeline
+    status: active
+    owner: project
+    description: >
+      P5.2 R2 协议的六赛道实现，2026-08-08 由各 p5-r2-* 分支按文件集成入主线：
+      facies/facies_p5_r2.py、fault/fault_p5_r2.py、lithofacies/lithofacies_p5_r2.py
+      （含 models/inceptiontime_window.py、models/xgboost_multisoftprob_window.py）、
+      reservoir/reservoir_p5_r2.py、reconstruction/reconstruction_p5_r2.py 及各自测试。
+      此前主线只有 R2 的产物（_outputs/p5_r2_visualization/ 共 26 项，含
+      figure_02_r2_scientific_results.pdf 与六赛道 source_snapshots）和可视化脚本
+      _code/visualization/p5_r2_six_track.py，产生这些结果的实现不在主线，
+      结果可引用但不可复现。
+      已知适配缺口：reservoir 测试 8/10 通过——`historical_source_lock_mismatch`
+      断言编码了分支局部环境，`loss_name` 键因主线 property adapter 接口变更而缺失；
+      lithofacies 的 InceptionTime 需可选依赖 tsai；fault 4/4 通过。详见 finding P47。
+
   - id: reconstruction_pipeline_adapter
     path: _pipelines/02_task_datasets/reconstruction/pipeline_adapter.py
     type: pipeline_step
