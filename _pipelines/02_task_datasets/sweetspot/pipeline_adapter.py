@@ -78,6 +78,26 @@ ADAPTER = {
                 "small_model": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards",
                 "foundation_model": "_pipelines/02_task_datasets/sweetspot/p7/_outputs/t3_chronos2_cv/summary.json",
             },
+            # The stage entrypoint resolves incumbent identity, which is this stage's contractual
+            # responsibility. Actually retraining the provisional per-target baselines is a separate,
+            # still-gated action; keeping the pointer here so the trainer is not lost from the adapter.
+            "training_entrypoint": {
+                "path": "_pipelines/02_task_datasets/sweetspot/targets/baseline.py",
+                "argv": [
+                    "{python}",
+                    "-m", "_pipelines.02_task_datasets.sweetspot.targets.baseline",
+                    "--target", "all",
+                    "--source-root", "{source_root}",
+                ],
+                "required_parameters": ["source_root"],
+                "outputs": [
+                    "_pipelines/02_task_datasets/sweetspot/targets/reservoir_quality/_outputs/baseline_v1/status.json",
+                    "_pipelines/02_task_datasets/sweetspot/targets/hydrocarbon_pay/_outputs/baseline_v1/status.json",
+                    "_pipelines/02_task_datasets/sweetspot/targets/productivity/_outputs/baseline_v1/status.json",
+                    "_pipelines/02_task_datasets/sweetspot/targets/water_breakthrough/_outputs/baseline_v1/status.json",
+                ],
+                "gated_by": "No approved canonical label contract; running it would bypass the label gate.",
+            },
         },
         "optimize": {
             "id": "optimize",

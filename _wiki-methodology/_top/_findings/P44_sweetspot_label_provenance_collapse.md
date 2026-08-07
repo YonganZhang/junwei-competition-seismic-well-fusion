@@ -61,8 +61,13 @@ T1/T2 老实标了 `is_proxy=True` 并带 warning；T6/T7 标了 `is_proxy=False
 
 ## Evidence
 
-- 探测脚本与结果：`_sandbox/t6t7_probe/probe.py`、`_sandbox/t6t7_probe/result.json`
-  （sandbox，未纳入版本控制；结论已抄录于本文件）
+- 探测在 `_sandbox/` 中一次性执行，脚本与中间结果已按 sandbox 纪律清理；全部关键数值已抄录于
+  上方两张表。复现方式（约 3 分钟，只读 development 数据，不触碰 frozen test）：
+  用带 `yaml`+`sklearn` 的解释器（如 `envs/gaia-v2-8a4915-py312`）导入
+  `p5.sweetspot_p5_stage2_data`，以 `_load_development_petrophysical_tables` 取
+  `{15/9-F-1, 15/9-F-11, 15/9-F-12}` 三个井族的 CPI 表，特征取 `RAW_LOG_FEATURES`、
+  标签取 `labels["PHIF"]`，按 `well_family` 做 LOGO 交叉验证（训练折中位数填充 + 标准化），
+  分别以全部 16 列和仅 `RHOB` 一列拟合 `HistGradientBoostingRegressor(random_state=2693)`。
 - 特征定义：`p5/sweetspot_p5_stage2_data.py:34-40`（`RAW_LOG_FEATURES` 含 `RHOB`/`NPHI`；
   `LABEL_ONLY_FIELDS` 含 `PHIF`/`KLOGH`）
 - 标注来源：`p5/sweetspot_p5_label_mapping.v1.json`（`targets.T6.is_proxy=False`、

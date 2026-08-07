@@ -1,5 +1,11 @@
 {
-  "generation_base_commit": "9d456d9110394daaf51e379cba66dc3c964a60ae",
+  "data_notes": [
+    {
+      "note": "Declared in the T6/T7 development_groups but carries no raw log curves in the authorized archive members, so it cannot enter a RAW_LOG_FEATURES matrix. Measured: passing three or four families to _load_development_petrophysical_tables returns the same tables. See decision D3.",
+      "subject": "well family 15/9-19"
+    }
+  ],
+  "generation_base_commit": "2922d04cbd4ce570769e23a0162818f541574065",
   "incumbents": {
     "T1": {
       "evidence": "_pipelines/02_task_datasets/sweetspot/p5/_outputs/stage3_cv/leaderboards/T1.json",
@@ -77,6 +83,11 @@
       }
     },
     "foundation_model": {
+      "p6_private_gaia_dagt": {
+        "note": "Private geoscience foundation lane. Not trained, no API calls, no downloads — it contributes no prediction on this track. Listed so its presence is not mistaken for an active model.",
+        "source": "_pipelines/02_task_datasets/sweetspot/p6/_outputs/private_gaia_dagt/p6_gaia_dagt_conclusion.json",
+        "status": "PARTIAL_READY"
+      },
       "p7_t3": {
         "archived_xgboost_macro_fold_mae": 267.1179548547381,
         "causal_history_mean_macro_fold_mae": 204.6370684329111,
@@ -202,7 +213,7 @@
       "why": "The agent currently optimises against the archived XGBoost, which the foundation lane superseded by 30%. Its rejection verdicts are therefore measured against a stale frontier."
     }
   ],
-  "read_this_first": "This file is the sweetspot track's single source of truth. `incumbents` is what currently wins per target, `rejected_routes` is what has already been refuted, and `open_work` is what is worth doing next. Do not restart a rejected route without new evidence.",
+  "read_this_first": "This file is the sweetspot track's single source of truth. `incumbents` is what currently wins per target, `rejected_routes` is what has already been refuted, `user_decisions` is what the project owner has ruled, and `open_work` is what is worth doing next. Do not restart a rejected route without new evidence. Frozen P4 artifacts are never edited to reflect a later ruling — their sha256 is quoted by archived evidence.",
   "rejected_routes": [
     {
       "detail": "DeepSeek issued a legal stop; no candidate beat the frozen A0 baseline.",
@@ -234,5 +245,32 @@
     }
   ],
   "schema_version": "sweetspot-incumbent/v1",
-  "track_id": "sweetspot"
+  "track_id": "sweetspot",
+  "user_decisions": [
+    {
+      "id": "D1_t5_simulation_labels",
+      "implementation_note": "T5 has no data pipeline at all (completed_cells 0/0). Honouring this ruling means building the target end to end — locating the Eclipse/RMS dynamic saturation volumes, defining the label, building a leak-free spatial split, then training. It is not a gate-flag change. The gate must also keep simulation-derived results labelled as such rather than as field truth.",
+      "ruling": "Simulation output is accepted as a legitimate label source for T5 remaining-oil/infill.",
+      "status": "ACCEPTED_NOT_YET_IMPLEMENTED",
+      "supersedes": "Stage-3 currently refuses T5 with 'no label is defined; simulation case must not be presented as field truth'."
+    },
+    {
+      "id": "D2_t4_continue",
+      "implementation_note": "T4's problem is event scarcity, not model choice: CatBoost macro AP 0.654 but the 95% CI runs [0.396, 0.867] and the worst fold is 0.143. Chronos-2 direct forecasting was already tried and rejected (AP 0.509). The actionable step is more breakthrough events or a longer causal window, not another architecture.",
+      "ruling": "Keep investing in T4 water-breakthrough rather than downgrading it.",
+      "status": "ACCEPTED_NOT_YET_IMPLEMENTED"
+    },
+    {
+      "id": "D3_remove_well_15_9_19",
+      "implementation_note": "The frozen T6/T7 split manifests still name it and are left untouched — their sha256 is quoted by seven archived files each. In practice the well never participated: it has three CPI tables carrying PHIF+KLOGH but no companion raw curves among its four authorized members, so passing three or four families to the loader yields an identical table set. Any future split must not include it.",
+      "ruling": "Drop well family 15/9-19 from T6/T7 rather than sourcing its raw curves.",
+      "status": "ACCEPTED_RECORDED"
+    },
+    {
+      "id": "D4_t6_t7_split_rework",
+      "implementation_note": "The rework was approved on the premise that T6/T7 were untrainable. They were not — both completed P4 and passed frozen test (T6 R2=0.93411). P44 then showed RHOB alone reaches R2=0.9696 on T6, so comparing models on these targets measures reproduction of an analytical relation. Reworking the split would have bought a new, incomparable baseline for a target with nothing left to learn. Not doing it is the correct outcome.",
+      "ruling": "Originally approved, then withdrawn on the same day after P44.",
+      "status": "WITHDRAWN"
+    }
+  ]
 }

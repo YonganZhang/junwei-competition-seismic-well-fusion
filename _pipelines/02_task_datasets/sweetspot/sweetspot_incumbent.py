@@ -45,6 +45,7 @@ P7_SUMMARY = TRACK_DIR / "p7/_outputs/t3_chronos2_cv/summary.json"
 P8_SUMMARY = TRACK_DIR / "p8/_outputs/t3_chronos2_calendar_cv/summary.json"
 P28_SUMMARY = TRACK_DIR / "_outputs/p28_agentic_optimization/summary.json"
 P29_SUMMARY = TRACK_DIR / "_outputs/p29_agent_action_effect/summary.json"
+P6_CONCLUSION = TRACK_DIR / "p6/_outputs/private_gaia_dagt/p6_gaia_dagt_conclusion.json"
 
 TARGET_NAMES = {
     "T1": "reservoir_quality",
@@ -138,6 +139,16 @@ def _foundation_layer() -> dict[str, Any]:
             "effect_supported": decision.get("effect_supported"),
             "default_enabled": decision.get("default_enabled"),
             "blocking_control": decision.get("reason"),
+        }
+    p6 = _load(P6_CONCLUSION)
+    if p6 is not None:
+        layer["p6_private_gaia_dagt"] = {
+            "source": _rel(P6_CONCLUSION),
+            "status": p6.get("status"),
+            "note": (
+                "Private geoscience foundation lane. Not trained, no API calls, no downloads — it contributes "
+                "no prediction on this track. Listed so its presence is not mistaken for an active model."
+            ),
         }
     return layer
 
@@ -252,6 +263,75 @@ def _rejected_routes(agent: dict[str, Any], foundation: dict[str, Any]) -> list[
     return routes
 
 
+# Rulings made by the project owner on 2026-08-07, recorded here rather than by
+# editing the frozen P4 artifacts. label_mapping.v1.json and the T6/T7 split
+# manifests each have their sha256 quoted by archived protocol/manifest files
+# (5 and 7 referencing files respectively), so editing them would break the
+# provenance chain of evidence that is already on record. Current truth lives
+# here; history stays intact.
+USER_DECISIONS = [
+    {
+        "id": "D1_t5_simulation_labels",
+        "ruling": "Simulation output is accepted as a legitimate label source for T5 remaining-oil/infill.",
+        "supersedes": "Stage-3 currently refuses T5 with 'no label is defined; simulation case must not be presented as field truth'.",
+        "status": "ACCEPTED_NOT_YET_IMPLEMENTED",
+        "implementation_note": (
+            "T5 has no data pipeline at all (completed_cells 0/0). Honouring this ruling means building "
+            "the target end to end — locating the Eclipse/RMS dynamic saturation volumes, defining the "
+            "label, building a leak-free spatial split, then training. It is not a gate-flag change. "
+            "The gate must also keep simulation-derived results labelled as such rather than as field truth."
+        ),
+    },
+    {
+        "id": "D2_t4_continue",
+        "ruling": "Keep investing in T4 water-breakthrough rather than downgrading it.",
+        "status": "ACCEPTED_NOT_YET_IMPLEMENTED",
+        "implementation_note": (
+            "T4's problem is event scarcity, not model choice: CatBoost macro AP 0.654 but the 95% CI runs "
+            "[0.396, 0.867] and the worst fold is 0.143. Chronos-2 direct forecasting was already tried and "
+            "rejected (AP 0.509). The actionable step is more breakthrough events or a longer causal window, "
+            "not another architecture."
+        ),
+    },
+    {
+        "id": "D3_remove_well_15_9_19",
+        "ruling": "Drop well family 15/9-19 from T6/T7 rather than sourcing its raw curves.",
+        "status": "ACCEPTED_RECORDED",
+        "implementation_note": (
+            "The frozen T6/T7 split manifests still name it and are left untouched — their sha256 is quoted "
+            "by seven archived files each. In practice the well never participated: it has three CPI tables "
+            "carrying PHIF+KLOGH but no companion raw curves among its four authorized members, so passing "
+            "three or four families to the loader yields an identical table set. Any future split must not "
+            "include it."
+        ),
+    },
+    {
+        "id": "D4_t6_t7_split_rework",
+        "ruling": "Originally approved, then withdrawn on the same day after P44.",
+        "status": "WITHDRAWN",
+        "implementation_note": (
+            "The rework was approved on the premise that T6/T7 were untrainable. They were not — both "
+            "completed P4 and passed frozen test (T6 R2=0.93411). P44 then showed RHOB alone reaches "
+            "R2=0.9696 on T6, so comparing models on these targets measures reproduction of an analytical "
+            "relation. Reworking the split would have bought a new, incomparable baseline for a target with "
+            "nothing left to learn. Not doing it is the correct outcome."
+        ),
+    },
+]
+
+# Declared in the frozen T6/T7 split manifests but absent from every rebuilt table set.
+DATA_NOTES = [
+    {
+        "subject": "well family 15/9-19",
+        "note": (
+            "Declared in the T6/T7 development_groups but carries no raw log curves in the authorized "
+            "archive members, so it cannot enter a RAW_LOG_FEATURES matrix. Measured: passing three or four "
+            "families to _load_development_petrophysical_tables returns the same tables. See decision D3."
+        ),
+    },
+]
+
+
 def _open_work(foundation: dict[str, Any]) -> list[dict[str, Any]]:
     work: list[dict[str, Any]] = []
     p8 = foundation.get("p8_t3_calendar") or {}
@@ -287,8 +367,10 @@ def build_incumbent_record() -> dict[str, Any]:
         "generation_base_commit": _git_output(["rev-parse", "HEAD"], ROOT),
         "read_this_first": (
             "This file is the sweetspot track's single source of truth. `incumbents` is what "
-            "currently wins per target, `rejected_routes` is what has already been refuted, and "
-            "`open_work` is what is worth doing next. Do not restart a rejected route without new evidence."
+            "currently wins per target, `rejected_routes` is what has already been refuted, "
+            "`user_decisions` is what the project owner has ruled, and `open_work` is what is worth "
+            "doing next. Do not restart a rejected route without new evidence. Frozen P4 artifacts are "
+            "never edited to reflect a later ruling — their sha256 is quoted by archived evidence."
         ),
         "layers": {
             "small_model": small,
@@ -297,6 +379,8 @@ def build_incumbent_record() -> dict[str, Any]:
         },
         "incumbents": _resolve_incumbents(small, foundation),
         "rejected_routes": _rejected_routes(agent, foundation),
+        "user_decisions": USER_DECISIONS,
+        "data_notes": DATA_NOTES,
         "open_work": _open_work(foundation),
     }
 
@@ -322,7 +406,11 @@ def main() -> None:
             sup = item["superseded"]
             line += f"  (supersedes {sup['method']} {sup['value']:.3f}, -{sup['improvement_percent']:.2f}%)"
         print(line)
-    print(f"  rejected routes: {len(record['rejected_routes'])}   open work: {len(record['open_work'])}")
+    pending = [d for d in record["user_decisions"] if d["status"] == "ACCEPTED_NOT_YET_IMPLEMENTED"]
+    print(f"  rejected routes: {len(record['rejected_routes'])}   open work: {len(record['open_work'])}"
+          f"   owner decisions: {len(record['user_decisions'])} ({len(pending)} pending)")
+    for d in pending:
+        print(f"    pending: {d['id']} — {d['ruling']}")
     print(f"  written: {_rel(OUTPUT_DIR / 'incumbent.json')}")
 
 
