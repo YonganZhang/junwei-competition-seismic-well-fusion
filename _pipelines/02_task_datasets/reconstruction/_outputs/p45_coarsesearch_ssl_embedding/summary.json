@@ -1,0 +1,221 @@
+{
+  "status": "OK",
+  "purpose": "Replace I0's amplitude-domain normalized-xcorr coarse-search score with cosine similarity between self-supervised-encoder embeddings of the synthetic and real trace windows. Candidate t0 range, top-3 NMS, and the ambiguity-gate threshold are unchanged from p45_well_tie_physics_baseline.predict_well.",
+  "encoder": {
+    "path": "_outputs/p45_seismic_trace_ssl_pretrain/encoder.pt",
+    "n_params": 27680,
+    "embed_dim": 64,
+    "note": "Encoder was pretrained on fixed 256-sample (1024ms) windows; here it scores variable-length windows spanning each well's whole reflectivity interval (hundreds to ~2000 samples), which is off-distribution from pretraining. Architecturally valid (global-average-pool head), but a real caveat, not swept under."
+  },
+  "config": {
+    "nms_gap_ms": 40.0,
+    "ambiguity_gap_threshold": 0.05,
+    "t0_search_range_ms": [
+      0.0,
+      3596.0
+    ]
+  },
+  "st0202_results": {
+    "19A": {
+      "coarse_t0_ms": 1900.0,
+      "coarse_score": 0.855598509311676,
+      "top_k_peaks": [
+        [
+          1900.0,
+          0.855598509311676
+        ],
+        [
+          2196.0,
+          0.7764975428581238
+        ],
+        [
+          2000.0,
+          0.7574916481971741
+        ]
+      ],
+      "ambiguity_gap": 0.07910096645355225,
+      "reject_ambiguous": false,
+      "dtw_distance": 0.24437168067219653,
+      "wavelet_freq_hz": 25.976909413854347,
+      "inline": 10183,
+      "crossline": 2191,
+      "n_checkshot_points_in_range": 39,
+      "metrics_vs_own_checkshot": {
+        "rows": 39,
+        "mae_ms": 589.1171544040044,
+        "rmse_ms": 596.4444439783967,
+        "bias_ms": -589.1171544040044,
+        "median_absolute_error_ms": 596.5973855101947
+      }
+    },
+    "19BT2": {
+      "coarse_t0_ms": 2436.0,
+      "coarse_score": 0.9044479131698608,
+      "top_k_peaks": [
+        [
+          2436.0,
+          0.9044479131698608
+        ],
+        [
+          2612.0,
+          0.8499009609222412
+        ],
+        [
+          2724.0,
+          0.8493459820747375
+        ]
+      ],
+      "ambiguity_gap": 0.05454695224761963,
+      "reject_ambiguous": false,
+      "dtw_distance": 0.3490995400924312,
+      "wavelet_freq_hz": 23.09058614564831,
+      "inline": 10107,
+      "crossline": 2159,
+      "n_checkshot_points_in_range": 71,
+      "metrics_vs_own_checkshot": {
+        "rows": 71,
+        "mae_ms": 167.3387223985195,
+        "rmse_ms": 169.36416094700164,
+        "bias_ms": 167.3387223985195,
+        "median_absolute_error_ms": 167.6001000000001
+      }
+    },
+    "19SR": {
+      "coarse_t0_ms": 1360.0,
+      "coarse_score": 0.8591693639755249,
+      "top_k_peaks": [
+        [
+          1360.0,
+          0.8591693639755249
+        ],
+        [
+          640.0,
+          0.8570168018341064
+        ],
+        [
+          2616.0,
+          0.8373018503189087
+        ]
+      ],
+      "ambiguity_gap": 0.002152562141418457,
+      "reject_ambiguous": true,
+      "dtw_distance": 0.24687207724079704,
+      "wavelet_freq_hz": 30.639431616341028,
+      "inline": 10132,
+      "crossline": 2300,
+      "n_checkshot_points_in_range": 20,
+      "metrics_vs_own_checkshot": {
+        "rows": 20,
+        "mae_ms": 1155.4998531772987,
+        "rmse_ms": 1155.7268692371028,
+        "bias_ms": -1155.4998531772987,
+        "median_absolute_error_ms": 1154.8700821725797
+      }
+    }
+  },
+  "st0202_vs_xcorr_baseline": {
+    "19A": {
+      "embedding_mae_ms": 589.1171544040044,
+      "xcorr_baseline_mae_ms": 265.9366332605604,
+      "mae_delta_ms": 323.18052114344397,
+      "embedding_improves_on_xcorr": false,
+      "embedding_reject_ambiguous": false,
+      "xcorr_reject_ambiguous": true
+    },
+    "19BT2": {
+      "embedding_mae_ms": 167.3387223985195,
+      "xcorr_baseline_mae_ms": 183.83144712558519,
+      "mae_delta_ms": -16.492724727065678,
+      "embedding_improves_on_xcorr": true,
+      "embedding_reject_ambiguous": false,
+      "xcorr_reject_ambiguous": false
+    },
+    "19SR": {
+      "embedding_mae_ms": 1155.4998531772987,
+      "xcorr_baseline_mae_ms": 1863.746025332791,
+      "mae_delta_ms": -708.2461721554923,
+      "embedding_improves_on_xcorr": true,
+      "embedding_reject_ambiguous": true,
+      "xcorr_reject_ambiguous": true
+    }
+  },
+  "st10010_results": {
+    "19A": {
+      "status": "evaluated",
+      "coarse_t0_ms": 2296.0,
+      "coarse_score": 0.8061932921409607,
+      "ambiguity_gap": 0.012049496173858643,
+      "reject_ambiguous": true,
+      "metrics_vs_own_checkshot": {
+        "rows": 39,
+        "mae_ms": 141.09827745590076,
+        "rmse_ms": 166.89444532617605,
+        "bias_ms": -141.09827745590076,
+        "median_absolute_error_ms": 119.39989999999989
+      }
+    },
+    "19BT2": {
+      "status": "evaluated",
+      "coarse_t0_ms": 696.0,
+      "coarse_score": 0.9759868383407593,
+      "ambiguity_gap": 0.000907599925994873,
+      "reject_ambiguous": true,
+      "metrics_vs_own_checkshot": {
+        "rows": 71,
+        "mae_ms": 1661.11648308034,
+        "rmse_ms": 1664.7913235823096,
+        "bias_ms": -1661.11648308034,
+        "median_absolute_error_ms": 1686.0
+      }
+    },
+    "19SR": {
+      "status": "evaluated",
+      "coarse_t0_ms": 3328.0,
+      "coarse_score": 0.8590046167373657,
+      "ambiguity_gap": 0.03446769714355469,
+      "reject_ambiguous": true,
+      "metrics_vs_own_checkshot": {
+        "rows": 20,
+        "mae_ms": 804.5782894142055,
+        "rmse_ms": 804.9410498321714,
+        "bias_ms": 804.5782894142055,
+        "median_absolute_error_ms": 808.7481327762409
+      }
+    }
+  },
+  "st10010_vs_xcorr_baseline": {
+    "19A": {
+      "embedding_t0_delta_ms": 396.0,
+      "xcorr_baseline_t0_delta_ms": -2212.0,
+      "embedding_drift_smaller_than_xcorr": true,
+      "embedding_mae_ms": 141.09827745590076,
+      "xcorr_baseline_mae_ms": 1919.925905882385
+    },
+    "19BT2": {
+      "embedding_t0_delta_ms": -1740.0,
+      "xcorr_baseline_t0_delta_ms": 772.0,
+      "embedding_drift_smaller_than_xcorr": false,
+      "embedding_mae_ms": 1661.11648308034,
+      "xcorr_baseline_mae_ms": 838.4813604451217
+    },
+    "19SR": {
+      "embedding_t0_delta_ms": 1968.0,
+      "xcorr_baseline_t0_delta_ms": 2716.0,
+      "embedding_drift_smaller_than_xcorr": true,
+      "embedding_mae_ms": 804.5782894142055,
+      "xcorr_baseline_mae_ms": 804.5782894142055
+    }
+  },
+  "verdict": {
+    "st0202_n_wells_embedding_beats_xcorr_mae": 2,
+    "st0202_n_wells_total": 3,
+    "st10010_n_wells_embedding_drift_smaller_than_xcorr": 2,
+    "st10010_n_wells_evaluated": 3,
+    "honest_summary": "Embedding-cosine scoring is compared per-well against xcorr on both accuracy (ST0202 MAE) and cross-source robustness (ST10010 t0 drift). See per-well comparison dicts above for the actual counts; no aggregate claim of 'better' is made beyond the literal counts."
+  },
+  "elapsed_seconds": 8.290806531906128,
+  "inputs": {
+    "well_picks_sha256": "1c132bba09555915b62e23dc4475f790a304856d369d9d26cc76466cf7b77d3a",
+    "checkshot_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4"
+  }
+}
