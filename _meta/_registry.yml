@@ -327,6 +327,20 @@ code_domains:
       p45_dtw_window_sensitivity.py(排除DTW窗宽为根因，指向粗搜索本身脆弱)。
       结论：粗相关搜索对噪声的脆弱性是核心瓶颈，非数据或DTW参数问题。
 
+  - id: p45_well_tie_coarsesearch_scoring_attempts
+    path: _pipelines/02_task_datasets/reconstruction/p45_coarsesearch_envelope_correlation.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P45 针对"粗相关搜索本身脆弱"这一诊断出的核心瓶颈，尝试三条打分函数
+      改进(2026-08-08，Workflow并行+独立复核，均不采纳)：包络相关全面更差
+      (跨源偏移2716→2792ms)；带通滤波接近中性(仅19SR部分改善，跨源2716→
+      2516ms仍远差于邻井先验的316ms)；粗到细多尺度搜索拆东墙补西墙(19SR改善
+      但19A/19BT2显著恶化)。同批文件：p45_coarsesearch_bandpass_correlation.py、
+      p45_coarsesearch_multiscale.py。结论：排除"让打分函数更聪明"这一整类
+      方向，唯一已知有效路径仍是用外部先验(邻井checkshot)约束搜索空间。
+
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
     type: pipeline
