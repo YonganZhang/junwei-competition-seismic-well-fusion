@@ -254,7 +254,11 @@ def dtw_refine(synthetic_local: np.ndarray, real_local: np.ndarray) -> tuple[np.
     return np.array(path), float(distance)
 
 
-def predict_well(well: str, index: dict, get_trace) -> dict:
+def predict_well(well: str, index: dict, get_trace, t0_candidates: np.ndarray | None = None) -> dict:
+    """t0_candidates lets a caller narrow the coarse search (e.g. to a
+    regional prior built from nearby wells' real checkshots) instead of
+    the module-default blind full-range T0_SEARCH_MS."""
+    search_candidates = T0_SEARCH_MS if t0_candidates is None else t0_candidates
     curve = load_well_curve(well)
     picks = parse_well_picks_full(WELL_PICKS)[PICK_NAME[well]]
     tvdss = md_to_tvdss(curve["depth_md"], picks)
@@ -280,7 +284,7 @@ def predict_well(well: str, index: dict, get_trace) -> dict:
     # rather than silently trusting a single best correlation peak).
     scored: list[tuple[float, float]] = []
     synthetics: dict[float, np.ndarray] = {}
-    for t0 in T0_SEARCH_MS:
+    for t0 in search_candidates:
         synthetic = build_synthetic(physics["reflectivity"], physics["relative_twt_ms"], t0, sample_ms, wavelet_freq)
         window_mask = (sample_ms >= t0 - 2) & (sample_ms <= t0 + span_ms + 2)
         idx = np.where(window_mask)[0]
