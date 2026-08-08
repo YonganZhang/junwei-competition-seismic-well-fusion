@@ -7,7 +7,7 @@
 > loss/activation 机制），`p5_contract.py` 与主线相同，`p18` evidence 差异仅 request_id。
 
 
-这份文档是给后续 Claude/其他 AI 接手当前 `track-property` 工作树时看的。目标是把当前仓库里已经确认过的记录、已完成的产物、已知阻塞和下一步入口一次讲清楚，避免重复找路。
+这份文档写于 2026-08-06，记录 `track-property` 工作树在当时已确认的记录、已完成产物、已知阻塞与下一步入口。它是历史快照；实时进度见 `_task_plan.md`。
 
 ## 1. 2026-08-06 当时的仓库状态（历史追溯用，当前状态见 `_task_plan.md`）
 
