@@ -947,8 +947,11 @@ def _write_csv(path: Path, rows: list[dict[str, Any]], columns: Iterable[str]) -
             writer.writerow({key: row.get(key) for key in columns})
 
 
-def _figure_path() -> Path:
-    return OUTPUT_DIR / "before_after_primary_metric.png"
+def _figure_path(output_dir: Path = OUTPUT_DIR) -> Path:
+    # Must follow the caller's output_dir. It previously always returned
+    # OUTPUT_DIR, so build(tmp) still overwrote the archived figure in the source
+    # tree — the tests pass a temporary directory precisely to avoid that.
+    return output_dir / "before_after_primary_metric.png"
 
 
 def _plot_before_after(rows: list[dict[str, Any]], path: Path) -> None:
@@ -1212,7 +1215,7 @@ def build(output_dir: Path = OUTPUT_DIR) -> dict[str, Any]:
     rows = collect_rows()
     output_dir.mkdir(parents=True, exist_ok=True)
     workbook_path = output_dir / "track_model_metrics.xlsx"
-    figure_path = _figure_path()
+    figure_path = _figure_path(output_dir)
     _write_workbook(rows, workbook_path)
     _plot_before_after(rows, figure_path)
     figure_manifest_rows = _figure_manifest_rows(figure_path)

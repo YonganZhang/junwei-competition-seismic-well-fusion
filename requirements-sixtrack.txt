@@ -1,0 +1,48 @@
+# 六赛道统一运行环境 —— 目标 env: /mnt/data/yongan-admin-2/envs/geo-sixtrack-py311
+#
+# 为什么需要它：本机原有 6 个候选解释器没有任何一个能跑全六赛道测试，
+# 依赖散在 torch / openpyxl / lasio / tsai / plotly 等不同 env 里，
+# 导致"通过率"在不同解释器间不可比。详见 finding P61。
+#
+# 🔴 硬钉（不可改，改了会让归档产物失效或让适配器被 gate 拒绝）
+#   scikit-learn==1.7.2
+#     · 1.9.0 会让 fault/_outputs/runs/audited_v2/baseline_model.joblib 反序列化失败
+#       （No module named '_loss'）
+#     · tsai 1.0.1 硬性要求 scikit-learn<1.8
+#     · 1.7.2 与 1.8.0 数值 hash 实测一致，故 1.7.2 是唯一同时满足两侧的交点
+#   torch / torchvision / monai / smp / transformers
+#     · _models/facies/_p5_common.py 的 allowed_versions 闸门会校验这几个发行版版本，
+#       不符即 P5AdapterSkip(runtime_version_mismatch)
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch==2.12.1+cu130
+torchvision==0.27.1+cu130
+monai==1.6.0
+segmentation-models-pytorch==0.5.0
+transformers==4.50.0
+scikit-learn==1.7.2
+
+# 软钉：对齐已归档 provenance，升级前先复核对应赛道的 source_lock
+numpy==2.4.4
+scipy==1.17.1
+pandas==2.3.3
+h5py==3.16.0
+segyio==1.9.14
+joblib==1.5.3
+PyYAML==6.0.3
+pytest==9.1.1
+xgboost==3.2.0
+tsai==1.0.1
+chronos-forecasting==2.2.0
+lightgbm==4.6.0
+
+# 未钉：取兼容的最新
+matplotlib
+pillow
+openpyxl
+jsonschema
+lasio
+plotly
+tqdm
+einops
+huggingface-hub
+catboost
