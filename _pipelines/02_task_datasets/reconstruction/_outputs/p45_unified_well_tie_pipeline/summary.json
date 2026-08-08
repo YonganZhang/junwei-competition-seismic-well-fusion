@@ -1,0 +1,175 @@
+{
+  "status": "OK",
+  "method": "5-stage configurable well-tie pipeline: (1) sonic-integration physics [reused from p45_well_tie_physics_baseline], (2) regional-checkshot-prior t0 search-window narrowing or blind fallback [reused from p45_well_tie_regional_prior], (3) switchable scoring: amplitude xcorr (default) or ssl_embedding (optional, off by default) [reused from p45_coarsesearch_ssl_embedding], (4) slope-constrained DTW refine, (5) ambiguity gate -- (4)+(5) bundled inside the stage-3 predict_* call, unchanged.",
+  "default_config": {
+    "use_regional_prior": true,
+    "scoring_method": "amplitude"
+  },
+  "default_config_results": {
+    "19A": {
+      "stage2_search_window": {
+        "used_regional_prior": true,
+        "prior_t0_ms": 2641.8364519243796,
+        "donor_wells": [
+          "19BT2",
+          "19SR"
+        ],
+        "search_window_ms": [
+          2341.8364519243796,
+          2941.8364519243796
+        ]
+      },
+      "coarse_t0_ms": 2617.8364519243796,
+      "confidence": 0.4560592660812152,
+      "ambiguity_gap": 0.021789472954812872,
+      "reject_ambiguous": true,
+      "dtw_distance": 0.31808718556863796,
+      "metrics_vs_own_checkshot": {
+        "rows": 39,
+        "mae_ms": 88.43228471330613,
+        "rmse_ms": 117.73591094150832,
+        "bias_ms": 88.43228471330613,
+        "median_absolute_error_ms": 52.37931295237968
+      }
+    },
+    "19BT2": {
+      "stage2_search_window": {
+        "used_regional_prior": true,
+        "prior_t0_ms": 2543.5650016284512,
+        "donor_wells": [
+          "19A",
+          "19SR"
+        ],
+        "search_window_ms": [
+          2243.5650016284512,
+          2843.5650016284512
+        ]
+      },
+      "coarse_t0_ms": 2555.5650016284512,
+      "confidence": 0.38764333996246403,
+      "ambiguity_gap": 0.014289374783177378,
+      "reject_ambiguous": true,
+      "dtw_distance": 0.341308298402509,
+      "metrics_vs_own_checkshot": {
+        "rows": 71,
+        "mae_ms": 312.8494998634393,
+        "rmse_ms": 321.3618850759112,
+        "bias_ms": 312.8494998634393,
+        "median_absolute_error_ms": 293.3106150457138
+      }
+    },
+    "19SR": {
+      "stage2_search_window": {
+        "used_regional_prior": true,
+        "prior_t0_ms": 2588.4356913687757,
+        "donor_wells": [
+          "19A",
+          "19BT2"
+        ],
+        "search_window_ms": [
+          2288.4356913687757,
+          2888.4356913687757
+        ]
+      },
+      "coarse_t0_ms": 2880.4356913687757,
+      "confidence": 0.5292021095803022,
+      "ambiguity_gap": 0.04508553250791075,
+      "reject_ambiguous": true,
+      "dtw_distance": 0.3883311108355957,
+      "metrics_vs_own_checkshot": {
+        "rows": 20,
+        "mae_ms": 326.2026939784174,
+        "rmse_ms": 326.50523187670075,
+        "bias_ms": 326.2026939784174,
+        "median_absolute_error_ms": 326.8852927826422
+      }
+    }
+  },
+  "default_config_n_wells_evaluated": 3,
+  "ssl_embedding_slot": {
+    "available": true,
+    "encoder_path": "/mnt/data/yongan-admin-2/projects/师弟-军伟的比赛-2693e5/.claude/worktrees/p45-well-tie-generalization/_pipelines/02_task_datasets/reconstruction/_outputs/p45_seismic_trace_ssl_pretrain/encoder.pt",
+    "note": "wired into stage3_score_refine_gate via scoring_method='ssl_embedding'; own module (p45_coarsesearch_ssl_embedding) reports a MIXED accuracy result vs amplitude xcorr (2/3 wells better, 1/3 worse), so it stays off by default here, not enabled by default -- an available-but-not-proven-better optional slot, per the user's own honesty requirement.",
+    "results_with_regional_prior_window": {
+      "19A": {
+        "status": "evaluated",
+        "coarse_t0_ms": 2357.8364519243796,
+        "confidence": 0.8039617538452148,
+        "reject_ambiguous": true,
+        "metrics_vs_own_checkshot": {
+          "rows": 39,
+          "mae_ms": 138.53605526703126,
+          "rmse_ms": 140.01788109682553,
+          "bias_ms": -138.53605526703126,
+          "median_absolute_error_ms": 143.62068704762032
+        },
+        "mae_delta_vs_default_ms": 50.10377055372513
+      },
+      "19BT2": {
+        "status": "evaluated",
+        "coarse_t0_ms": 2299.5650016284512,
+        "confidence": 0.9388308525085449,
+        "reject_ambiguous": true,
+        "metrics_vs_own_checkshot": {
+          "rows": 71,
+          "mae_ms": 115.40405365943512,
+          "rmse_ms": 119.80986495260699,
+          "bias_ms": -115.40405365943512,
+          "median_absolute_error_ms": 126.39989999999989
+        },
+        "mae_delta_vs_default_ms": -197.44544620400416
+      },
+      "19SR": {
+        "status": "evaluated",
+        "coarse_t0_ms": 2680.4356913687757,
+        "confidence": 0.6422242522239685,
+        "reject_ambiguous": true,
+        "metrics_vs_own_checkshot": {
+          "rows": 20,
+          "mae_ms": 193.9092646004455,
+          "rmse_ms": 213.3880506589332,
+          "bias_ms": 193.9092646004455,
+          "median_absolute_error_ms": 187.78238595574703
+        },
+        "mae_delta_vs_default_ms": -132.2934293779719
+      }
+    }
+  },
+  "stage2_switch_check_blind_fallback": {
+    "19A": {
+      "search_window_ms": [
+        0.0,
+        3596.0
+      ],
+      "used_regional_prior": false,
+      "matches_full_t0_search_range": true
+    }
+  },
+  "stage2_donor_wells_restriction_check": {
+    "well": "19A",
+    "requested_donor_wells": [
+      "19BT2"
+    ],
+    "stage2_search_window": {
+      "used_regional_prior": true,
+      "prior_t0_ms": 2650.048522692659,
+      "donor_wells": [
+        "19BT2"
+      ],
+      "search_window_ms": [
+        2350.048522692659,
+        2950.048522692659
+      ]
+    }
+  },
+  "reference_numbers_from_regional_prior_module": {
+    "19A": 88.43228471330613,
+    "19BT2": 312.8494998634393,
+    "19SR": 326.2026939784174
+  },
+  "elapsed_seconds": 3.003413677215576,
+  "inputs": {
+    "well_picks_sha256": "1c132bba09555915b62e23dc4475f790a304856d369d9d26cc76466cf7b77d3a",
+    "checkshot_zip_sha256": "e3c7f0ce7fb2590bc2dc0a24be6df5d90af174c6fb782d95424463e615acc8f4"
+  }
+}

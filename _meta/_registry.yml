@@ -341,6 +341,25 @@ code_domains:
       p45_coarsesearch_multiscale.py。结论：排除"让打分函数更聪明"这一整类
       方向，唯一已知有效路径仍是用外部先验(邻井checkshot)约束搜索空间。
 
+  - id: p45_well_tie_unified_pipeline
+    path: _pipelines/02_task_datasets/reconstruction/p45_unified_well_tie_pipeline.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P45 统一井震标定技术流(2026-08-09，Workflow+独立复核)：入口
+      run_well_tie_pipeline(well, index, get_trace, use_regional_prior,
+      scoring_method, donor_wells)，5阶段可独立开关(物理声波积分→邻井先验
+      缩小搜索窗口→打分方式amplitude/ssl_embedding可切换→斜率约束DTW→歧义
+      门)。默认配置(邻井先验+振幅打分)端到端跑通复现已知最优数字(19A
+      MAE=88.4ms、19BT2=312.8ms、19SR=326.2ms)。同批文件：
+      p45_seismic_trace_ssl_pretrain.py(自监督预训练2.8万参数编码器，4000条
+      ST0202真实道、不需要t0标签、验证loss降8.8%，encoder.pt已独立复核为
+      真实训练非造假)、p45_coarsesearch_ssl_embedding.py(embedding打分接入
+      测试，混合结果2/3井改善19A变差，未构成净提升)。用户要求的"小模型
+      存在、能跑"门槛已达到；"已带来提升"门槛未达到，需扩大训练量或换用
+      项目已有MOMENT/GFM基础模型做特征提取器。
+
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
     type: pipeline
