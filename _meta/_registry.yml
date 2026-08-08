@@ -380,6 +380,24 @@ entrypoints:
     owner: project
     description: "Single source of truth for the sweetspot track. Reads the archived evidence of all three layers, resolves the current incumbent per target, and writes _outputs/incumbent/incumbent.json with incumbents, rejected_routes and open_work. Trains nothing, opens no frozen test, stdlib only. Read this before restarting any sweetspot work."
 
+  - id: foundation_adaptation_timellm
+    path: _pipelines/04_foundation_adaptation
+    type: research_pipeline
+    status: active
+    owner: project
+    description: >
+      P6 Time-LLM 风格 GPT-2 reprogramming 试点，2026-08-08 由
+      p6-foundation-reprogramming-pilot 分支按文件集成入主线（此前主线零代码零产物）。
+      共享改造层 `_code/foundation/timellm_reprogrammer.py`，赛道封装
+      `_models/{property,lithofacies}/gaia_timellm_gpt2.py`，pilot 入口
+      property_timellm_pilot.py / lithofacies_timellm_pilot.py 与 plot_p6_results.py。
+      🔴 科学价值：它带有**架构匹配的随机初始化对照**，是本项目目前唯一已完成该对照的
+      基础模型实验。预训练 GPT-2 相对同架构随机 GPT-2 一致占优——property 的
+      macro standardized RMSE 1.160538 → 1.089137（相对改善 13.50%），lithofacies 的
+      accuracy 0.183712 → 0.277778、macro-F1 +0.089571、ECE 0.191935 → 0.084987、
+      NLL 2.615645 → 1.807097。但 adapter 仍未打赢同输入的简单基线，因此不晋级。
+      结论与 P8 待完成的 random-init 对照直接相关，见 finding P6。
+
   - id: six_track_p5_r2_implementations
     path: _pipelines/02_task_datasets
     type: research_pipeline

@@ -1,0 +1,617 @@
+{
+  "aggregate": {
+    "lora_pretraining_ablation": {
+      "absolute_RMSE_gain": 0.17003539151541203,
+      "pretraining_helped": true,
+      "relative_gain_fraction": 0.135037371083501
+    },
+    "ridge_same_sequence": {
+      "cell_count": 1,
+      "lower_is_better": true,
+      "macro_standardized_RMSE_mean": 0.8646324033782857,
+      "macro_standardized_RMSE_std": 0.0
+    },
+    "timellm_pretrained_lora_gpt2": {
+      "cell_count": 3,
+      "lower_is_better": true,
+      "macro_standardized_RMSE_mean": 1.0891374593117107,
+      "macro_standardized_RMSE_std": 0.09221622054216613
+    },
+    "timellm_random_lora_gpt2": {
+      "cell_count": 3,
+      "lower_is_better": true,
+      "macro_standardized_RMSE_mean": 1.2591728508271227,
+      "macro_standardized_RMSE_std": 0.18466736477029091
+    }
+  },
+  "backbone": {
+    "family": "GPT-2 small",
+    "license": "MIT",
+    "local_snapshot_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "model_safetensors_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+    "path_persisted": false
+  },
+  "development_batch_sha256": "fb130d14fb9107729a87d280d9f6ea1387bf59f643b08f447a42d0df53577471",
+  "domain_control": {
+    "numeric_checkpoint_claimed": false,
+    "role": "input whitelist, units, physical bounds and task prompt",
+    "system": "Gaia V2 petroleum expert/control plane"
+  },
+  "evidence_sha256": "a18aaccb0667c933ad229af8f9788a93fbf1e4d2d7dbe34c0650d8bf13391c09",
+  "evidence_state": "development_only_not_blind",
+  "protocol": {
+    "architecture_matched_random_backbone_ablation": true,
+    "full_parameter_llm_finetuning": false,
+    "preprocessing_fit": "fold_train_only",
+    "test_access": false,
+    "test_path_argument_exists": false,
+    "validation_used_for_early_stopping": false
+  },
+  "results": [
+    {
+      "metrics": {
+        "macro_standardized_RMSE": 0.8646324033782857,
+        "targets": {
+          "KLOGH": {
+            "model_domain": {
+              "MAE": 1.105891602648491,
+              "R2": 0.6922805006944561,
+              "RMSE": 1.3006697857689333
+            },
+            "physical": {
+              "MAE": 88.8116886004532,
+              "R2": 0.31913599823778105,
+              "RMSE": 206.86261146788755
+            },
+            "valid_count": 81
+          },
+          "PHIF": {
+            "model_domain": {
+              "MAE": 0.01402539230975104,
+              "R2": 0.9172976638480259,
+              "RMSE": 0.018374658615557145
+            },
+            "physical": {
+              "MAE": 0.01335588773643529,
+              "R2": 0.9261181100233973,
+              "RMSE": 0.017367183321820655
+            },
+            "valid_count": 81
+          },
+          "SW": {
+            "model_domain": {
+              "MAE": 0.3749312336016216,
+              "R2": -2.068076202244,
+              "RMSE": 0.48623244485359246
+            },
+            "physical": {
+              "MAE": 0.3207453891037055,
+              "R2": -1.2937993054558712,
+              "RMSE": 0.42042503798276254
+            },
+            "valid_count": 81
+          }
+        }
+      },
+      "parameterization": {
+        "foundation_model": false,
+        "pretrained_backbone": false
+      },
+      "resources": {
+        "peak_cuda_bytes": 0,
+        "wall_seconds": 0.007170362048782408
+      },
+      "seed": null,
+      "status": "completed",
+      "variant": "ridge_same_sequence"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 1739339,
+        "path_persisted": false,
+        "sha256": "3ddf354a8751dac0e8deed9d83ef769cfa836858917965f1fa64ded54df6fcf3"
+      },
+      "metrics": {
+        "macro_standardized_RMSE": 1.219503314034067,
+        "targets": {
+          "KLOGH": {
+            "model_domain": {
+              "MAE": 1.0958144944218666,
+              "R2": 0.6982469153717702,
+              "RMSE": 1.2879986339250218
+            },
+            "physical": {
+              "MAE": 91.15414211751043,
+              "R2": 0.21367616148429236,
+              "RMSE": 222.30669264643726
+            },
+            "valid_count": 81
+          },
+          "PHIF": {
+            "model_domain": {
+              "MAE": 0.0756978362246796,
+              "R2": -0.7884808739405569,
+              "RMSE": 0.08544812558197187
+            },
+            "physical": {
+              "MAE": 0.0756978362246796,
+              "R2": -0.7884808739405569,
+              "RMSE": 0.08544812558197187
+            },
+            "valid_count": 81
+          },
+          "SW": {
+            "model_domain": {
+              "MAE": 0.4601494168379792,
+              "R2": -2.1394477439657953,
+              "RMSE": 0.4918554556710837
+            },
+            "physical": {
+              "MAE": 0.45793946646153927,
+              "R2": -2.136505356071922,
+              "RMSE": 0.4916249105382339
+            },
+            "valid_count": 81
+          }
+        }
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": true,
+        "total_parameters": 124675331,
+        "trainable_fraction": 0.001889090633334673,
+        "trainable_parameters": 235523
+      },
+      "resources": {
+        "peak_cuda_bytes": 2046696960,
+        "wall_seconds": 4.803986283950508
+      },
+      "seed": 2693,
+      "status": "completed",
+      "training": {
+        "batch_size": 24,
+        "learning_rate": 0.0003,
+        "loss_first": 1.7065773010253906,
+        "loss_last": 0.36944377422332764,
+        "loss_min": 0.36944377422332764,
+        "update_steps": 120,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_pretrained_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 1739339,
+        "path_persisted": false,
+        "sha256": "ec9860195d40a5e498e8c73d4d4a2b615fcefcd3bbde9a418b2ec11a74b95374"
+      },
+      "metrics": {
+        "macro_standardized_RMSE": 1.0270049316791379,
+        "targets": {
+          "KLOGH": {
+            "model_domain": {
+              "MAE": 1.1640387291583105,
+              "R2": 0.6098858050526674,
+              "RMSE": 1.4644866591908308
+            },
+            "physical": {
+              "MAE": 71.75307610340435,
+              "R2": 0.5003625980231994,
+              "RMSE": 177.20635281029948
+            },
+            "valid_count": 81
+          },
+          "PHIF": {
+            "model_domain": {
+              "MAE": 0.05752713867911586,
+              "R2": -0.11021215515607774,
+              "RMSE": 0.06732298740435814
+            },
+            "physical": {
+              "MAE": 0.05752713867911586,
+              "R2": -0.11021215515607774,
+              "RMSE": 0.06732298740435814
+            },
+            "valid_count": 81
+          },
+          "SW": {
+            "model_domain": {
+              "MAE": 0.35619077921189646,
+              "R2": -0.9677292659290324,
+              "RMSE": 0.38939783815723356
+            },
+            "physical": {
+              "MAE": 0.3559763378889104,
+              "R2": -0.9676809288672941,
+              "RMSE": 0.3893930553694631
+            },
+            "valid_count": 81
+          }
+        }
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": true,
+        "total_parameters": 124675331,
+        "trainable_fraction": 0.001889090633334673,
+        "trainable_parameters": 235523
+      },
+      "resources": {
+        "peak_cuda_bytes": 2046696960,
+        "wall_seconds": 4.210804212023504
+      },
+      "seed": 2701,
+      "status": "completed",
+      "training": {
+        "batch_size": 24,
+        "learning_rate": 0.0003,
+        "loss_first": 0.91387939453125,
+        "loss_last": 0.5136552453041077,
+        "loss_min": 0.3749252259731293,
+        "update_steps": 120,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_pretrained_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 1739339,
+        "path_persisted": false,
+        "sha256": "ab07831bd3e9cf8a43ae3100c54d42eaa64ae6b0214a0ce91426dcc2dad7bdad"
+      },
+      "metrics": {
+        "macro_standardized_RMSE": 1.0209041322219274,
+        "targets": {
+          "KLOGH": {
+            "model_domain": {
+              "MAE": 1.3835826542998813,
+              "R2": 0.4953387347285899,
+              "RMSE": 1.6656721689787124
+            },
+            "physical": {
+              "MAE": 99.62464234394503,
+              "R2": 0.14724169756658478,
+              "RMSE": 231.5073558185875
+            },
+            "valid_count": 81
+          },
+          "PHIF": {
+            "model_domain": {
+              "MAE": 0.04979108090018049,
+              "R2": 0.17259633839528543,
+              "RMSE": 0.05811913065530977
+            },
+            "physical": {
+              "MAE": 0.04979108090018049,
+              "R2": 0.17259633839528543,
+              "RMSE": 0.05811913065530977
+            },
+            "valid_count": 81
+          },
+          "SW": {
+            "model_domain": {
+              "MAE": 0.37602345468361437,
+              "R2": -1.0813836672228927,
+              "RMSE": 0.40048562741582144
+            },
+            "physical": {
+              "MAE": 0.37602345468361437,
+              "R2": -1.0813836672228927,
+              "RMSE": 0.40048562741582144
+            },
+            "valid_count": 81
+          }
+        }
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": true,
+        "total_parameters": 124675331,
+        "trainable_fraction": 0.001889090633334673,
+        "trainable_parameters": 235523
+      },
+      "resources": {
+        "peak_cuda_bytes": 2046696960,
+        "wall_seconds": 4.203958518919535
+      },
+      "seed": 2711,
+      "status": "completed",
+      "training": {
+        "batch_size": 24,
+        "learning_rate": 0.0003,
+        "loss_first": 1.2844510078430176,
+        "loss_last": 0.5089653730392456,
+        "loss_min": 0.37676483392715454,
+        "update_steps": 120,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_pretrained_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 1739143,
+        "path_persisted": false,
+        "sha256": "249d18ead70c3d59557a5fe79bda6aeccf912c999bc1951cb137b8563ed97d58"
+      },
+      "metrics": {
+        "macro_standardized_RMSE": 1.2714544353057404,
+        "targets": {
+          "KLOGH": {
+            "model_domain": {
+              "MAE": 1.545779955561882,
+              "R2": 0.37527228643575894,
+              "RMSE": 1.8532539281004712
+            },
+            "physical": {
+              "MAE": 113.76577342798883,
+              "R2": -0.12956364829111333,
+              "RMSE": 266.4447517328511
+            },
+            "valid_count": 81
+          },
+          "PHIF": {
+            "model_domain": {
+              "MAE": 0.07528384195433722,
+              "R2": -0.6724353413558903,
+              "RMSE": 0.08262948737214283
+            },
+            "physical": {
+              "MAE": 0.07528384195433722,
+              "R2": -0.6724353413558903,
+              "RMSE": 0.08262948737214283
+            },
+            "valid_count": 81
+          },
+          "SW": {
+            "model_domain": {
+              "MAE": 0.46468957069755334,
+              "R2": -1.9954598049595638,
+              "RMSE": 0.4804438204628951
+            },
+            "physical": {
+              "MAE": 0.45283248199632875,
+              "R2": -1.9497932134083351,
+              "RMSE": 0.47676750732822837
+            },
+            "valid_count": 81
+          }
+        }
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": false,
+        "total_parameters": 124675331,
+        "trainable_fraction": 0.001889090633334673,
+        "trainable_parameters": 235523
+      },
+      "resources": {
+        "peak_cuda_bytes": 2046696960,
+        "wall_seconds": 4.111548091983423
+      },
+      "seed": 2693,
+      "status": "completed",
+      "training": {
+        "batch_size": 24,
+        "learning_rate": 0.0003,
+        "loss_first": 1.2351951599121094,
+        "loss_last": 0.7761814594268799,
+        "loss_min": 0.6288653612136841,
+        "update_steps": 120,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_random_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 1739143,
+        "path_persisted": false,
+        "sha256": "6144981608373df230b6286f190a5f75224d2bcc5282992989a8703e3dfef062"
+      },
+      "metrics": {
+        "macro_standardized_RMSE": 1.4789522334921956,
+        "targets": {
+          "KLOGH": {
+            "model_domain": {
+              "MAE": 1.75878539658439,
+              "R2": 0.19995228086674954,
+              "RMSE": 2.097236893337202
+            },
+            "physical": {
+              "MAE": 114.59889943227992,
+              "R2": -0.03830731509391061,
+              "RMSE": 255.4552151801945
+            },
+            "valid_count": 81
+          },
+          "PHIF": {
+            "model_domain": {
+              "MAE": 0.07449137033135803,
+              "R2": -0.6536154100903151,
+              "RMSE": 0.08216325682199238
+            },
+            "physical": {
+              "MAE": 0.07449137033135803,
+              "R2": -0.6536154100903151,
+              "RMSE": 0.08216325682199238
+            },
+            "valid_count": 81
+          },
+          "SW": {
+            "model_domain": {
+              "MAE": 0.6057780129995979,
+              "R2": -4.091671916766225,
+              "RMSE": 0.6263845968570088
+            },
+            "physical": {
+              "MAE": 0.5741568144042919,
+              "R2": -3.77679952450365,
+              "RMSE": 0.6067075104343348
+            },
+            "valid_count": 81
+          }
+        }
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": false,
+        "total_parameters": 124675331,
+        "trainable_fraction": 0.001889090633334673,
+        "trainable_parameters": 235523
+      },
+      "resources": {
+        "peak_cuda_bytes": 2046696960,
+        "wall_seconds": 4.180383929051459
+      },
+      "seed": 2701,
+      "status": "completed",
+      "training": {
+        "batch_size": 24,
+        "learning_rate": 0.0003,
+        "loss_first": 1.598134994506836,
+        "loss_last": 1.236337423324585,
+        "loss_min": 0.6877545714378357,
+        "update_steps": 120,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_random_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 1739143,
+        "path_persisted": false,
+        "sha256": "6e93b71ccc6ba03233681f9b05f02bff36694809a9ce6e9b645b2546fa287991"
+      },
+      "metrics": {
+        "macro_standardized_RMSE": 1.027111883683432,
+        "targets": {
+          "KLOGH": {
+            "model_domain": {
+              "MAE": 2.2807170908012786,
+              "R2": -0.24914852115835595,
+              "RMSE": 2.620574932084049
+            },
+            "physical": {
+              "MAE": 124.32658960083172,
+              "R2": 0.20501548228630895,
+              "RMSE": 223.52759833212826
+            },
+            "valid_count": 81
+          },
+          "PHIF": {
+            "model_domain": {
+              "MAE": 0.05079654300654376,
+              "R2": 0.06827891898290062,
+              "RMSE": 0.061674175348749055
+            },
+            "physical": {
+              "MAE": 0.05079654300654376,
+              "R2": 0.06827891898290062,
+              "RMSE": 0.061674175348749055
+            },
+            "valid_count": 81
+          },
+          "SW": {
+            "model_domain": {
+              "MAE": 0.2604964271325756,
+              "R2": 0.003146102976919196,
+              "RMSE": 0.2771574896993795
+            },
+            "physical": {
+              "MAE": 0.2604964271325756,
+              "R2": 0.003146102976919196,
+              "RMSE": 0.2771574896993795
+            },
+            "valid_count": 81
+          }
+        }
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": false,
+        "total_parameters": 124675331,
+        "trainable_fraction": 0.001889090633334673,
+        "trainable_parameters": 235523
+      },
+      "resources": {
+        "peak_cuda_bytes": 2046696960,
+        "wall_seconds": 4.224427116918378
+      },
+      "seed": 2711,
+      "status": "completed",
+      "training": {
+        "batch_size": 24,
+        "learning_rate": 0.0003,
+        "loss_first": 1.307619333267212,
+        "loss_last": 0.7717680931091309,
+        "loss_min": 0.6089521646499634,
+        "update_steps": 120,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_random_lora_gpt2"
+    }
+  ],
+  "schema_version": 1,
+  "split_hash": "48897a8dfb1a33929a09bf31f97c30a81ba1fd443239370433fb2e30f415453d",
+  "stage": "P6_foundation_development_pilot",
+  "track_id": "property"
+}

@@ -1,0 +1,8 @@
+__pycache__/
+_outputs/*
+!_outputs/property_lora_multiseed/
+_outputs/property_lora_multiseed/*
+!_outputs/property_lora_multiseed/property_timellm_pilot.json
+!_outputs/lithofacies_lora_multiseed/
+_outputs/lithofacies_lora_multiseed/*
+!_outputs/lithofacies_lora_multiseed/lithofacies_timellm_pilot.json

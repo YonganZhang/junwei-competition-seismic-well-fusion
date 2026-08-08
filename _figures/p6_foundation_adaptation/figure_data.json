@@ -1,0 +1,69 @@
+{
+  "figure": "fig1_foundation_pretraining_ablation",
+  "font_rendered": "Liberation Serif",
+  "font_request": "Times New Roman",
+  "note": "Error bars are standard deviations across three training seeds; baselines are deterministic single fits.",
+  "panels": {
+    "a": {
+      "lower_is_better": true,
+      "metric": "macro_standardized_RMSE",
+      "track": "property",
+      "values": [
+        {
+          "cell_count": 1,
+          "lower_is_better": true,
+          "macro_standardized_RMSE_mean": 0.8646324033782857,
+          "macro_standardized_RMSE_std": 0.0
+        },
+        {
+          "cell_count": 3,
+          "lower_is_better": true,
+          "macro_standardized_RMSE_mean": 1.0891374593117107,
+          "macro_standardized_RMSE_std": 0.09221622054216613
+        },
+        {
+          "cell_count": 3,
+          "lower_is_better": true,
+          "macro_standardized_RMSE_mean": 1.2591728508271227,
+          "macro_standardized_RMSE_std": 0.18466736477029091
+        }
+      ]
+    },
+    "b": {
+      "higher_is_better": true,
+      "metric": "accuracy",
+      "track": "lithofacies",
+      "values": [
+        {
+          "accuracy_mean": 0.3939393939393939,
+          "accuracy_std": 0.0,
+          "cell_count": 1,
+          "macro_F1_fixed9_mean": 0.15681726686201944
+        },
+        {
+          "accuracy_mean": 0.2777777777777778,
+          "accuracy_std": 0.05544065252550544,
+          "cell_count": 3,
+          "macro_F1_fixed9_mean": 0.11137902617998319
+        },
+        {
+          "accuracy_mean": 0.11363636363636363,
+          "accuracy_std": 0.07499617376220959,
+          "cell_count": 3,
+          "macro_F1_fixed9_mean": 0.02180814354727398
+        }
+      ]
+    }
+  },
+  "schema_version": "1.0",
+  "source_evidence": {
+    "lithofacies_json": {
+      "path": "_pipelines/04_foundation_adaptation/_outputs/lithofacies_lora_multiseed/lithofacies_timellm_pilot.json",
+      "sha256": "0df1c69cd860c88375746301945cf476757fdc6723d693da4720878242da5757"
+    },
+    "property_json": {
+      "path": "_pipelines/04_foundation_adaptation/_outputs/property_lora_multiseed/property_timellm_pilot.json",
+      "sha256": "d85ac4175d5fbbae294c4ca6d27046762da4c014112282bb6b8e277cc854551f"
+    }
+  }
+}

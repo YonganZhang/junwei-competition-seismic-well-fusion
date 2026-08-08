@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "gaia_role": "petroleum knowledge constraints, schema/unit audit, explanation and service routing",
+    "numeric_foundation_role": "modality-specific frozen or parameter-efficient backbone",
+    "full_parameter_llm_finetuning_default": false,
+    "test_tuning_forbidden": true,
+    "required_ablation": "pretrained backbone versus architecture-matched random backbone"
+  },
+  "tracks": {
+    "fault": {
+      "foundation_family": "3D vision or seismic foundation",
+      "adapter": "prompted segmentation or low-rank 3D encoder adaptation",
+      "gaia_integration": "fault ontology, interpretation rules and QC explanation",
+      "current_gate": "blocked_no_verified_negative_labels_or_legal_development_folds",
+      "timellm_applicable": false
+    },
+    "facies": {
+      "foundation_family": "pretrained vision or seismic encoder",
+      "adapter": "frozen encoder plus decoder adapter, then LoRA if the weight license is approved",
+      "gaia_integration": "facies vocabulary, stratigraphic consistency and interpretation",
+      "current_gate": "source_code_ready_checkpoint_weight_not_yet_approved",
+      "timellm_applicable": false
+    },
+    "property": {
+      "foundation_family": "Time-LLM-style language reprogramming plus tabular foundation benchmark",
+      "adapter": "frozen GPT-2 vocabulary prototypes, numerical reprogramming and LoRA on the final two attention blocks",
+      "gaia_integration": "input whitelist, units, physical bounds and petroleum task prompt",
+      "current_gate": "three_seed_development_pilot_complete_pretraining_helped_but_ridge_remains_better_no_promotion",
+      "timellm_applicable": true
+    },
+    "lithofacies": {
+      "foundation_family": "time-series foundation or frozen language reprogramming",
+      "adapter": "multimodal well-log/seismic sequence adapter and LoRA on the final two attention blocks",
+      "gaia_integration": "GM09 nine-class definition and modality-missing rules",
+      "current_gate": "three_seed_development_pilot_complete_pretraining_helped_but_logistic_remains_better_no_promotion",
+      "timellm_applicable": true
+    },
+    "sweetspot": {
+      "foundation_family": "target-specific tabular or time-series foundation",
+      "adapter": "separate regression/classification heads; no forced shared objective",
+      "gaia_integration": "seven-target business meaning, threshold and feasibility explanation",
+      "current_gate": "T1_T2_runnable_T3_T4_need_objective_or_sample_repair_T5_T7_gated",
+      "timellm_applicable": true
+    },
+    "reconstruction": {
+      "foundation_family": "3D masked autoencoder, FNO or conditional diffusion",
+      "adapter": "masked-volume reconstruction with conditioning channels",
+      "gaia_integration": "geological continuity, variogram and property-volume QC",
+      "current_gate": "development_pilot_runnable",
+      "timellm_applicable": false
+    }
+  }
+}

@@ -1,0 +1,1072 @@
+{
+  "aggregate": {
+    "logistic_same_sequence": {
+      "accuracy_mean": 0.3939393939393939,
+      "accuracy_std": 0.0,
+      "cell_count": 1,
+      "macro_F1_fixed9_mean": 0.15681726686201944
+    },
+    "lora_pretraining_ablation": {
+      "accuracy_gain": 0.16414141414141414,
+      "macro_F1_gain": 0.08957088263270921,
+      "pretraining_helped_accuracy": true
+    },
+    "timellm_pretrained_lora_gpt2": {
+      "accuracy_mean": 0.2777777777777778,
+      "accuracy_std": 0.05544065252550544,
+      "cell_count": 3,
+      "macro_F1_fixed9_mean": 0.11137902617998319
+    },
+    "timellm_random_lora_gpt2": {
+      "accuracy_mean": 0.11363636363636363,
+      "accuracy_std": 0.07499617376220959,
+      "cell_count": 3,
+      "macro_F1_fixed9_mean": 0.02180814354727398
+    }
+  },
+  "backbone": {
+    "family": "GPT-2 small",
+    "license": "MIT",
+    "local_snapshot_revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+    "model_safetensors_sha256": "248dfc3911869ec493c76e65bf2fcf7f615828b0254c12b473182f0f81d3a707",
+    "path_persisted": false
+  },
+  "development_batch_sha256": "4ac53f54ba2b8def9d7edc40d71d114e0c173308311f9524b58bad5c99afaab8",
+  "domain_control": {
+    "numeric_checkpoint_claimed": false,
+    "role": "GM09 ontology, fixed output schema and leakage constraints",
+    "system": "Gaia V2 petroleum expert/control plane"
+  },
+  "evidence_sha256": "3451b6d15117aff643982815b35f97106695b9ef6d08c2f2de6b5885184bcc5f",
+  "evidence_state": "development_only_not_blind",
+  "protocol": {
+    "architecture_matched_random_backbone_ablation": true,
+    "full_parameter_llm_finetuning": false,
+    "preprocessing_fit": "fold_train_only",
+    "test_access": false,
+    "test_path_argument_exists": false,
+    "validation_used_for_early_stopping": false
+  },
+  "results": [
+    {
+      "metrics": {
+        "ECE_10bin": 0.3112920286862366,
+        "NLL": 4.6691100934941145,
+        "accuracy": 0.3939393939393939,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            9,
+            1,
+            5,
+            0,
+            0,
+            13,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            4,
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            11,
+            2,
+            5,
+            0,
+            5,
+            14,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            1,
+            3,
+            0,
+            1,
+            34,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "mIoU_fixed9": 0.10032763440906439,
+        "macro_F1_fixed9": 0.15681726686201944,
+        "validation_samples": 132
+      },
+      "parameterization": {
+        "foundation_model": false,
+        "pretrained_backbone": false
+      },
+      "resources": {
+        "peak_cuda_bytes": 0,
+        "wall_seconds": 0.29143757303245366
+      },
+      "seed": 2693,
+      "status": "completed",
+      "variant": "logistic_same_sequence"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 2582667,
+        "path_persisted": false,
+        "sha256": "12b895b4a2ce55f9fb7858d96ae3ec755c6abf52a5c106acce016945409cf59f"
+      },
+      "metrics": {
+        "ECE_10bin": 0.030900114413463707,
+        "NLL": 1.77275550365448,
+        "accuracy": 0.3560606060606061,
+        "confusion_matrix": [
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            6,
+            0,
+            0,
+            2,
+            2,
+            17,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            2,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            2,
+            4,
+            0,
+            0
+          ],
+          [
+            6,
+            9,
+            0,
+            0,
+            1,
+            8,
+            13,
+            0,
+            0
+          ],
+          [
+            7,
+            3,
+            0,
+            0,
+            3,
+            2,
+            29,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "mIoU_fixed9": 0.10116763349695077,
+        "macro_F1_fixed9": 0.16167089477300356,
+        "validation_samples": 132
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": true,
+        "total_parameters": 124886153,
+        "trainable_fraction": 0.0035740151272014922,
+        "trainable_parameters": 446345
+      },
+      "resources": {
+        "peak_cuda_bytes": 3519549952,
+        "wall_seconds": 12.684436060022563
+      },
+      "seed": 2693,
+      "status": "completed",
+      "training": {
+        "batch_size": 32,
+        "learning_rate": 0.0003,
+        "loss_first": 2.3787755966186523,
+        "loss_last": 1.5606480836868286,
+        "loss_min": 1.2813085317611694,
+        "update_steps": 180,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_pretrained_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 2582667,
+        "path_persisted": false,
+        "sha256": "0424faf138222f9ba6fa97d124ec0e3900b65b4d10d72e988d0c3715eb93a375"
+      },
+      "metrics": {
+        "ECE_10bin": 0.09217759244369739,
+        "NLL": 1.7581617832183838,
+        "accuracy": 0.23484848484848486,
+        "confusion_matrix": [
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            27,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            36,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            41,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "mIoU_fixed9": 0.05197132616487456,
+        "macro_F1_fixed9": 0.08417954378219278,
+        "validation_samples": 132
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": true,
+        "total_parameters": 124886153,
+        "trainable_fraction": 0.0035740151272014922,
+        "trainable_parameters": 446345
+      },
+      "resources": {
+        "peak_cuda_bytes": 3521352192,
+        "wall_seconds": 12.091212734929286
+      },
+      "seed": 2701,
+      "status": "completed",
+      "training": {
+        "batch_size": 32,
+        "learning_rate": 0.0003,
+        "loss_first": 2.485183000564575,
+        "loss_last": 1.7065800428390503,
+        "loss_min": 1.480652093887329,
+        "update_steps": 180,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_pretrained_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 2582667,
+        "path_persisted": false,
+        "sha256": "2a8a4e90162a82293bf96612cec6ac49bdad085c2e9cdfe7bd4649c889d835a9"
+      },
+      "metrics": {
+        "ECE_10bin": 0.13188214554931177,
+        "NLL": 1.8903744220733643,
+        "accuracy": 0.24242424242424243,
+        "confusion_matrix": [
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            14,
+            0,
+            0,
+            0,
+            10,
+            3,
+            2,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            4,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            0,
+            0,
+            2,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            19,
+            0,
+            2,
+            0,
+            14,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            29,
+            0,
+            0,
+            0,
+            8,
+            4,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "mIoU_fixed9": 0.05184950810642948,
+        "macro_F1_fixed9": 0.0882866399847532,
+        "validation_samples": 132
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": true,
+        "total_parameters": 124886153,
+        "trainable_fraction": 0.0035740151272014922,
+        "trainable_parameters": 446345
+      },
+      "resources": {
+        "peak_cuda_bytes": 3521352192,
+        "wall_seconds": 12.070282370899804
+      },
+      "seed": 2711,
+      "status": "completed",
+      "training": {
+        "batch_size": 32,
+        "learning_rate": 0.0003,
+        "loss_first": 2.5204994678497314,
+        "loss_last": 1.7011245489120483,
+        "loss_min": 1.2346367835998535,
+        "update_steps": 180,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_pretrained_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 2582535,
+        "path_persisted": false,
+        "sha256": "9c54ee3a2f6c4f3632094020694b5ccec0963a900f836a9291d069ed4a1aecf8"
+      },
+      "metrics": {
+        "ECE_10bin": 0.18499562324899615,
+        "NLL": 1.8433729410171509,
+        "accuracy": 0.06060606060606061,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            29,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            37,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            44,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "mIoU_fixed9": 0.006734006734006735,
+        "macro_F1_fixed9": 0.012698412698412698,
+        "validation_samples": 132
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": false,
+        "total_parameters": 124886153,
+        "trainable_fraction": 0.0035740151272014922,
+        "trainable_parameters": 446345
+      },
+      "resources": {
+        "peak_cuda_bytes": 3521352192,
+        "wall_seconds": 12.079306553001516
+      },
+      "seed": 2693,
+      "status": "completed",
+      "training": {
+        "batch_size": 32,
+        "learning_rate": 0.0003,
+        "loss_first": 2.2313194274902344,
+        "loss_last": 2.554110288619995,
+        "loss_min": 1.6435102224349976,
+        "update_steps": 180,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_random_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 2582535,
+        "path_persisted": false,
+        "sha256": "03ec3f963a8a42abc5f1a28bd07fcc7d4b2d0e5d18f7f6b717818e8bfe8f9219"
+      },
+      "metrics": {
+        "ECE_10bin": 0.11409807114890128,
+        "NLL": 1.9269922971725464,
+        "accuracy": 0.2196969696969697,
+        "confusion_matrix": [
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            29,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            37,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            44,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "mIoU_fixed9": 0.02441077441077441,
+        "macro_F1_fixed9": 0.04002760524499655,
+        "validation_samples": 132
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": false,
+        "total_parameters": 124886153,
+        "trainable_fraction": 0.0035740151272014922,
+        "trainable_parameters": 446345
+      },
+      "resources": {
+        "peak_cuda_bytes": 3521352192,
+        "wall_seconds": 12.230363807058893
+      },
+      "seed": 2701,
+      "status": "completed",
+      "training": {
+        "batch_size": 32,
+        "learning_rate": 0.0003,
+        "loss_first": 2.290682554244995,
+        "loss_last": 3.354355812072754,
+        "loss_min": 1.69845449924469,
+        "update_steps": 180,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_random_lora_gpt2"
+    },
+    {
+      "checkpoint": {
+        "adapter_only": true,
+        "bytes": 2582535,
+        "path_persisted": false,
+        "sha256": "15610c2308e31c21631b2e7f584161f36fb79205e905df65fdb35706419b6176"
+      },
+      "metrics": {
+        "ECE_10bin": 0.15735568286794605,
+        "NLL": 2.0231051445007324,
+        "accuracy": 0.06060606060606061,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            29,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            37,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            44,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "mIoU_fixed9": 0.006734006734006735,
+        "macro_F1_fixed9": 0.012698412698412698,
+        "validation_samples": 132
+      },
+      "parameterization": {
+        "backbone_frozen": true,
+        "frozen_parameters": 124439808,
+        "full_parameter_finetuning": false,
+        "lora_enabled": true,
+        "lora_modules": [
+          "h.10.attn.c_attn",
+          "h.10.attn.c_proj",
+          "h.11.attn.c_attn",
+          "h.11.attn.c_proj"
+        ],
+        "pretrained_backbone": false,
+        "total_parameters": 124886153,
+        "trainable_fraction": 0.0035740151272014922,
+        "trainable_parameters": 446345
+      },
+      "resources": {
+        "peak_cuda_bytes": 3521352192,
+        "wall_seconds": 12.165016266983002
+      },
+      "seed": 2711,
+      "status": "completed",
+      "training": {
+        "batch_size": 32,
+        "learning_rate": 0.0003,
+        "loss_first": 2.474963903427124,
+        "loss_last": 3.2283105850219727,
+        "loss_min": 1.5966426134109497,
+        "update_steps": 180,
+        "validation_used_for_early_stopping": false
+      },
+      "variant": "timellm_random_lora_gpt2"
+    }
+  ],
+  "schema_version": 1,
+  "split_hash": "278eff958d3fa0a2c7b35c65f0515df3972abbb475d6fc777a58ca3e1fd9ef3d",
+  "stage": "P6_foundation_development_pilot",
+  "track_id": "lithofacies"
+}
