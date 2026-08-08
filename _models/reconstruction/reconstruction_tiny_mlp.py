@@ -26,6 +26,7 @@ class ReconstructionTinyMLP:
         self, task_spec: TaskSpec, *, n_features: int, learning_rate: float = 0.01,
         ridge_alpha: float = 0.0, n_training_samples: int = 1,
         hidden_features: int = 8, seed: int = 20260713,
+        loss_name: str = "mse", huber_delta: float = 0.01,
     ) -> None:
         if task_spec.task_type not in {"reconstruction", "regression"} or len(task_spec.targets) != 1:
             raise ValueError("reconstruction_tiny_mlp requires one reconstruction target")
@@ -40,6 +41,12 @@ class ReconstructionTinyMLP:
         self.ridge_alpha = float(ridge_alpha)
         self.l2 = self.ridge_alpha / float(n_training_samples)
         self.seed = int(seed)
+        self.loss_name = str(loss_name)
+        self.huber_delta = float(huber_delta)
+        if self.loss_name not in {"mse", "huber"}:
+            raise ValueError("loss_name must be 'mse' or 'huber'")
+        if not np.isfinite(self.huber_delta) or self.huber_delta <= 0:
+            raise ValueError("huber_delta must be a positive finite value")
         rng = np.random.default_rng(self.seed)
         self.hidden_weights = rng.normal(
             0.0, np.sqrt(2.0 / (self.n_features + self.hidden_features)),
@@ -72,6 +79,19 @@ class ReconstructionTinyMLP:
             raise FloatingPointError("tiny MLP prediction is non-finite")
         return hidden, prediction
 
+    def _loss_and_grad(self, error: np.ndarray) -> tuple[float, np.ndarray]:
+        if self.loss_name == "mse":
+            return float(np.mean(error**2)), 2.0 * error
+        abs_error = np.abs(error)
+        delta = self.huber_delta
+        loss = np.where(
+            abs_error <= delta,
+            0.5 * error**2,
+            delta * (abs_error - 0.5 * delta),
+        )
+        grad = np.where(abs_error <= delta, error, delta * np.sign(error))
+        return float(np.mean(loss)), grad
+
     def predict_array(self, features: np.ndarray) -> np.ndarray:
         return self._forward(self._features(features))[1]
 
@@ -84,8 +104,8 @@ class ReconstructionTinyMLP:
         y = self._target(target, len(x))
         hidden, prediction = self._forward(x)
         error = prediction - y
-        loss = float(np.mean(error**2))
-        grad_prediction = 2.0 * error / len(y)
+        loss, grad_prediction = self._loss_and_grad(error)
+        grad_prediction = grad_prediction / len(y)
         grad_output_weights = hidden.T @ grad_prediction + 2.0 * self.l2 * self.output_weights
         grad_hidden = (grad_prediction[:, None] * self.output_weights[None, :]) * (1.0 - hidden**2)
         self.output_weights -= self.learning_rate * grad_output_weights
@@ -104,7 +124,8 @@ class ReconstructionTinyMLP:
         x, target = batch
         x = self._features(x)
         y = self._target(target, len(x))
-        return float(np.mean((self.predict_array(x) - y) ** 2))
+        loss, _ = self._loss_and_grad(self.predict_array(x) - y)
+        return loss
 
     def save_checkpoint(self, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -112,6 +133,7 @@ class ReconstructionTinyMLP:
             np.savez(
                 handle, n_features=self.n_features, hidden_features=self.hidden_features,
                 learning_rate=self.learning_rate, ridge_alpha=self.ridge_alpha, seed=self.seed,
+                loss_name=self.loss_name, huber_delta=self.huber_delta,
                 hidden_weights=self.hidden_weights, hidden_bias=self.hidden_bias,
                 output_weights=self.output_weights, output_bias=self.output_bias,
                 update_count=self.update_count,
@@ -123,6 +145,8 @@ class ReconstructionTinyMLP:
                 raise ValueError("checkpoint feature count mismatch")
             if int(checkpoint["hidden_features"]) != self.hidden_features:
                 raise ValueError("checkpoint hidden width mismatch")
+            if str(checkpoint["loss_name"]) != self.loss_name:
+                raise ValueError("checkpoint loss name mismatch")
             self.hidden_weights = checkpoint["hidden_weights"].astype(float)
             self.hidden_bias = checkpoint["hidden_bias"].astype(float)
             self.output_weights = checkpoint["output_weights"].astype(float)

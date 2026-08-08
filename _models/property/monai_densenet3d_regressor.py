@@ -24,6 +24,8 @@ def capabilities() -> dict[str, Any]:
         "input_modalities": ["seismic_patch"],
         "supports_missing_mask": False,
         "supports_uncertainty": False,
+        "supported_losses": ["mse", "mae", "huber"],
+        "supported_output_activations": ["identity", "bounded"],
         "pretrained_lane": "scratch_only",
         "cuda_determinism": "strict_with_fixed_pooling_replacements",
         "target_strategy": "shared seismic backbone with independently masked target losses",

@@ -189,13 +189,16 @@ def build_smp_model(
     encoder_name = str(mutable.pop("encoder_name", "resnet18"))
     if encoder_name != "resnet18":
         raise ValueError(f"{model_id} source lock requires encoder_name='resnet18'")
+    in_channels = int(mutable.pop("in_channels", 1))
+    if in_channels not in (1, 3):
+        raise ValueError(f"{model_id} source lock allows only in_channels=1 or 3, got {in_channels}")
     if mutable:
         raise ValueError(f"unsupported {model_id} config: {sorted(mutable)}")
     constructor = getattr(smp, architecture)
     return constructor(
         encoder_name="resnet18",
         encoder_weights=None,
-        in_channels=1,
+        in_channels=in_channels,
         classes=classes,
         activation=None,
         aux_params=None,

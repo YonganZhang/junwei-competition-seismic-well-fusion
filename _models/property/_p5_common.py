@@ -352,6 +352,13 @@ class TorchMultiTargetAdapter:
         self.module = torch_module.to(self.device)
         self.input_builder = input_builder
         self.config = dict(config)
+        self.loss_name = str(self.config.get("loss_name", "mse")).lower()
+        self.output_activation = str(self.config.get("output_activation", "identity")).lower()
+        self.huber_delta = float(self.config.get("huber_delta", 1.0))
+        if self.loss_name not in {"mse", "mae", "huber"}:
+            raise ValueError(f"unsupported torch loss_name {self.loss_name!r}")
+        if self.output_activation not in {"identity", "bounded"}:
+            raise ValueError(f"unsupported torch output_activation {self.output_activation!r}")
         parameter_groups = (
             self.module.make_parameter_groups()
             if hasattr(self.module, "make_parameter_groups")
@@ -374,6 +381,16 @@ class TorchMultiTargetAdapter:
 
     def _forward(self, batch: ModelBatch) -> Any:
         prediction = self.module(*self._inputs(batch))
+        if self.output_activation == "bounded":
+            activated = prediction.clone()
+            for index, target in enumerate(self.task_spec.targets):
+                if target in {"PHIF", "SW"}:
+                    activated[..., index] = self.torch.sigmoid(prediction[..., index])
+                elif target == "KLOGH":
+                    activated[..., index] = self.torch.nn.functional.softplus(prediction[..., index])
+                else:  # pragma: no cover - frozen property target set
+                    raise KeyError(target)
+            prediction = activated
         if prediction.ndim not in {2, 3} or prediction.shape[0] != len(batch.sample_ids):
             raise ValueError(f"unexpected torch prediction shape {tuple(prediction.shape)}")
         if prediction.shape[-1] != len(self.task_spec.targets) or not self.torch.isfinite(prediction).all():
@@ -385,7 +402,7 @@ class TorchMultiTargetAdapter:
         targets = self.torch.as_tensor(targets_np, dtype=prediction.dtype, device=self.device)
         masks = self.torch.as_tensor(masks_np, dtype=prediction.dtype, device=self.device)
         if prediction.ndim == 3:
-            targets = targets[:, None, :]
+            targets = targets[:, None, :].expand(-1, prediction.shape[1], -1)
             masks = masks[:, None, :].expand(-1, prediction.shape[1], -1)
             reduce_dims = (0, 1)
         else:
@@ -393,7 +410,18 @@ class TorchMultiTargetAdapter:
         denominator = masks.sum(dim=reduce_dims)
         if bool((denominator <= 0).any()):
             raise ValueError("every property target needs at least one valid label")
-        per_target = (((prediction - targets) ** 2) * masks).sum(dim=reduce_dims) / denominator
+        if self.loss_name == "mse":
+            per_element = (prediction - targets) ** 2
+        elif self.loss_name == "mae":
+            per_element = self.torch.abs(prediction - targets)
+        else:
+            per_element = self.torch.nn.functional.smooth_l1_loss(
+                prediction,
+                targets,
+                reduction="none",
+                beta=self.huber_delta,
+            )
+        per_target = (per_element * masks).sum(dim=reduce_dims) / denominator
         return per_target.mean(), {
             target: int(masks_np[:, index].sum()) for index, target in enumerate(self.task_spec.targets)
         }
@@ -410,7 +438,13 @@ class TorchMultiTargetAdapter:
             if parameter.grad is not None and not self.torch.isfinite(parameter.grad).all():
                 raise FloatingPointError("torch backward produced non-finite gradients")
         self.optimizer.step()
-        return {"loss": float(loss.detach().cpu()), "valid_counts": valid_counts, "backward": True}
+        return {
+            "loss": float(loss.detach().cpu()),
+            "loss_name": self.loss_name,
+            "output_activation": self.output_activation,
+            "valid_counts": valid_counts,
+            "backward": True,
+        }
 
     def predict_array(self, batch: ModelBatch) -> np.ndarray:
         self.module.eval()

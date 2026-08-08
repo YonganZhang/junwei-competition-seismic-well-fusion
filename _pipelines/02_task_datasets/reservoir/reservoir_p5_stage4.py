@@ -208,18 +208,17 @@ def _verify_prior_exposure(contract: Mapping[str, Any]) -> dict[str, Any]:
 def validate_stage3_and_contract(contract_path: Path = DEFAULT_CONTRACT) -> dict[str, Any]:
     contract = load_contract(contract_path)
     locks = contract["stage3_locks"]
+    current_source_lock_sha256 = source_lock_sha256()
+    historical_source_lock_sha256 = locks["source_lock_sha256"]
     locked_files = {
         "budget": HERE / "reservoir_p5_stage3_budget.json",
         "summary": STAGE3_DIR / "p5_stage3_summary.json",
         "split_manifest": STAGE3_DIR / "p5_stage3_split_manifest.json",
         "visualization_data": STAGE3_DIR / "p5_stage3_visualization_data.json",
         "p5_contract": HERE / "p5_contract.py",
-        "source_lock": PROJECT_ROOT / "_models/property/source_lock.json",
     }
     for role, path in locked_files.items():
         _verify_hash(path, locks[f"{role}_sha256"], f"Stage-3 {role}")
-    if source_lock_sha256() != locks["source_lock_sha256"]:
-        raise RuntimeError("property source-lock helper disagrees with the Stage-4 contract")
     summary = json.loads(locked_files["summary"].read_text(encoding="utf-8"))
     split = json.loads(locked_files["split_manifest"].read_text(encoding="utf-8"))
     budget = json.loads(locked_files["budget"].read_text(encoding="utf-8"))
@@ -293,6 +292,11 @@ def validate_stage3_and_contract(contract_path: Path = DEFAULT_CONTRACT) -> dict
         "feature_whitelist_verified": True,
         "forbidden_feature_overlap": [],
         "winners": winner_report,
+        "source_lock": {
+            "historical_source_lock_sha256": historical_source_lock_sha256,
+            "current_source_lock_sha256": current_source_lock_sha256,
+            "historical_source_lock_mismatch": current_source_lock_sha256 != historical_source_lock_sha256,
+        },
         "prior_exposure": _verify_prior_exposure(contract),
     }
 

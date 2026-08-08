@@ -30,7 +30,9 @@ sys.path.insert(0, str(PROJECT_ROOT / "_code"))
 from dataset_io import save_split  # noqa: E402
 
 
-VOLVE_DIR = PROJECT_ROOT / "_sandbox" / "volve_data"
+_LOCAL_VOLVE_DIR = PROJECT_ROOT / "_sandbox" / "volve_data"
+_REPO_ROOT_VOLVE_DIR = PROJECT_ROOT.parents[2] / "_sandbox" / "volve_data"
+VOLVE_DIR = _LOCAL_VOLVE_DIR if _LOCAL_VOLVE_DIR.is_dir() else _REPO_ROOT_VOLVE_DIR
 WELL_LOG_ZIP = VOLVE_DIR / "Volve_Well_logs.zip"
 INTERP_DIR = VOLVE_DIR / "_extracted_interp" / "Geophysical_Interpretations"
 PICKS_PATH = INTERP_DIR / "Wells" / "Well_picks_Volve_v1.dat"
@@ -483,7 +485,11 @@ def project_relative_path(path: Path) -> str:
     try:
         return resolved_path.relative_to(resolved_root).as_posix()
     except ValueError as error:
-        raise RuntimeError(f"报告路径逃出项目根: {resolved_path}") from error
+        project_root = PROJECT_ROOT.parents[2].resolve()
+        try:
+            return resolved_path.relative_to(project_root).as_posix()
+        except ValueError as nested_error:
+            raise RuntimeError(f"报告路径逃出项目根: {resolved_path}") from nested_error
 
 
 def build_real_dataset(depth_step_m: float = 2.0, sequence_step_m: float = 0.5) -> dict[str, Any]:
@@ -640,9 +646,9 @@ def build_real_dataset(depth_step_m: float = 2.0, sequence_step_m: float = 0.5) 
         "excluded_target_aliases": ["KLOGH_NEW", "LFP_PHIE"],
         "input_channels": list(INPUT_CHANNELS),
         "forbidden_input_curves": sorted(FORBIDDEN_INPUT_CURVES),
-        "hugin_top_surface": str(top_path.relative_to(PROJECT_ROOT)),
-        "hugin_base_surface": str(base_path.relative_to(PROJECT_ROOT)),
-        "segy": str(SEGY_PATH.relative_to(PROJECT_ROOT)),
+        "hugin_top_surface": project_relative_path(top_path),
+        "hugin_base_surface": project_relative_path(base_path),
+        "segy": project_relative_path(SEGY_PATH),
         "depth_step_m": depth_step_m,
         "sequence_offsets_m": sequence_offsets.tolist(),
         "sample_counts": {name: len(value) for name, value in samples.items()},

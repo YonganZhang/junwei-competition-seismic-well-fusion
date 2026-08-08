@@ -22,6 +22,8 @@ def capabilities() -> dict[str, Any]:
         "input_modalities": ["tabular"],
         "supports_missing_mask": True,
         "supports_uncertainty": False,
+        "supported_losses": ["mse", "mae", "huber"],
+        "supported_output_activations": ["identity", "bounded"],
         "target_strategy": "shared backbone with independently masked target losses",
     }
 

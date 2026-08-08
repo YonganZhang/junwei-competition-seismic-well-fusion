@@ -16,4 +16,6 @@ _outputs/p5_stage1/
 _outputs/p5_stage2_runtime/
 _outputs/p5_stage3_runtime/
 _outputs/p5_stage4_confirmation_runtime/
+_outputs/p5_r2_runtime/
+_outputs/p5_r2_failed_*/
 _outputs/leakage_fixed_v2/data_build_manifest.json
