@@ -472,7 +472,7 @@ entrypoints:
       结果可引用但不可复现。
       已知适配缺口：reservoir 测试 8/10 通过——`historical_source_lock_mismatch`
       断言编码了分支局部环境，`loss_name` 键因主线 property adapter 接口变更而缺失；
-      lithofacies 的 InceptionTime 需可选依赖 tsai；fault 4/4 通过。详见 finding P47。
+      lithofacies 的 InceptionTime 需可选依赖 tsai；fault 4/4 通过。详见 finding P54。
 
   - id: reconstruction_pipeline_adapter
     path: _pipelines/02_task_datasets/reconstruction/pipeline_adapter.py

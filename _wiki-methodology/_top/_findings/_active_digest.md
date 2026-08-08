@@ -1,3 +1,11 @@
+---
+phase_id: index
+status: accepted
+owner_col: COL2
+source: navigation
+created_at: 2026-08-07
+---
+
 # Active Findings 摘要
 
 新会话接手时先读这一页，再按需展开单个 finding。这里只列 `status: accepted|pending` 的条目；

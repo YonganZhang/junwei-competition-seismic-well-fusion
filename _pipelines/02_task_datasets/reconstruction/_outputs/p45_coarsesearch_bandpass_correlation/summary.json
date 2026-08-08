@@ -37,7 +37,7 @@
           "bias_ms": 265.9366332605604,
           "median_absolute_error_ms": 255.80000000000018
         },
-        "wall_time_s": 0.16125273704528809
+        "wall_time_s": 0.13197016716003418
       },
       "bandpass_correlation": {
         "coarse_t0_ms": 3044.0,
@@ -69,7 +69,7 @@
           8.0,
           60.0
         ],
-        "wall_time_s": 0.2519047260284424
+        "wall_time_s": 0.2375471591949463
       },
       "mae_delta_ms_bandpass_minus_raw": 228.68601271492798,
       "bandpass_improved": false
@@ -101,7 +101,7 @@
           "bias_ms": 183.83144712558519,
           "median_absolute_error_ms": 175.09380759648457
         },
-        "wall_time_s": 0.15301275253295898
+        "wall_time_s": 0.17004799842834473
       },
       "bandpass_correlation": {
         "coarse_t0_ms": 2560.0,
@@ -133,7 +133,7 @@
           8.0,
           60.0
         ],
-        "wall_time_s": 0.24751496315002441
+        "wall_time_s": 0.25074267387390137
       },
       "mae_delta_ms_bandpass_minus_raw": 0.0,
       "bandpass_improved": false
@@ -165,7 +165,7 @@
           "bias_ms": -1863.746025332791,
           "median_absolute_error_ms": 1863.9232854945112
         },
-        "wall_time_s": 0.11362075805664062
+        "wall_time_s": 0.1097562313079834
       },
       "bandpass_correlation": {
         "coarse_t0_ms": 1144.0,
@@ -197,7 +197,7 @@
           8.0,
           60.0
         ],
-        "wall_time_s": 0.21102285385131836
+        "wall_time_s": 0.20888543128967285
       },
       "mae_delta_ms_bandpass_minus_raw": -506.2312308781975,
       "bandpass_improved": true
@@ -231,7 +231,7 @@
           "bias_ms": -1919.925905882385,
           "median_absolute_error_ms": 1920.5973855101947
         },
-        "wall_time_s": 0.1296844482421875
+        "wall_time_s": 0.16697382926940918
       },
       "bandpass_correlation": {
         "coarse_t0_ms": 528.0,
@@ -263,7 +263,7 @@
           8.0,
           60.0
         ],
-        "wall_time_s": 0.2211775779724121
+        "wall_time_s": 0.24655628204345703
       },
       "mae_delta_ms_bandpass_minus_raw": 0.0,
       "bandpass_improved": false
@@ -295,7 +295,7 @@
           "bias_ms": 838.4813604451217,
           "median_absolute_error_ms": 862.1999999999998
         },
-        "wall_time_s": 0.14037370681762695
+        "wall_time_s": 0.1779158115386963
       },
       "bandpass_correlation": {
         "coarse_t0_ms": 3348.0,
@@ -327,7 +327,7 @@
           8.0,
           60.0
         ],
-        "wall_time_s": 0.22790980339050293
+        "wall_time_s": 0.28645896911621094
       },
       "mae_delta_ms_bandpass_minus_raw": 1.0079932638703895,
       "bandpass_improved": false
@@ -359,7 +359,7 @@
           "bias_ms": 804.5782894142055,
           "median_absolute_error_ms": 808.7481327762409
         },
-        "wall_time_s": 0.10485720634460449
+        "wall_time_s": 0.11809515953063965
       },
       "bandpass_correlation": {
         "coarse_t0_ms": 3328.0,
@@ -391,7 +391,7 @@
           8.0,
           60.0
         ],
-        "wall_time_s": 0.19109892845153809
+        "wall_time_s": 0.2126469612121582
       },
       "mae_delta_ms_bandpass_minus_raw": 0.0,
       "bandpass_improved": false
