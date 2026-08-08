@@ -1,3 +1,12 @@
+---
+phase_id: P4
+status: accepted
+owner_col: COL2
+source: external
+created_at: 2026-07-14
+status_basis: 目标 1-4、6、7 操作定义已冻结；目标 5 fail-closed
+---
+
 # P4 甜点目标网络调研与本地数据可行性
 
 > 日期：2026-07-14

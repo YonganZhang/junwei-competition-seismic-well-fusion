@@ -1,3 +1,12 @@
+---
+phase_id: P5.2
+status: accepted
+owner_col: COL2
+source: external
+created_at: 2026-07-25
+status_basis: 专家咨询实施指南，作为参考资料保留
+---
+
 # 盖亚 V2 地震/储层专家咨询 · 完整三维属性体与 SCI 可视化实施指南
 
 - 咨询日期：2026-07-25

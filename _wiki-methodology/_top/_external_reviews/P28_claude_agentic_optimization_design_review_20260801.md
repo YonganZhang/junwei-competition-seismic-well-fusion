@@ -1,3 +1,12 @@
+---
+phase_id: P28
+status: accepted
+owner_col: COL2
+source: external
+created_at: 2026-08-01
+status_basis: 文内含「已采纳修改」段
+---
+
 # P28 Claude 独立方法审查
 
 日期：2026-08-01  

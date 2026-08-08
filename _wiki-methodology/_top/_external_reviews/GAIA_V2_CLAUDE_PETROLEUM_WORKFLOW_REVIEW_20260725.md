@@ -1,3 +1,12 @@
+---
+phase_id: P5.2
+status: accepted
+owner_col: COL2
+source: external
+created_at: 2026-07-25
+status_basis: 终审结论 ✅ PASS（附必须修改项）
+---
+
 # 第六赛道 · 三维属性体流水线独立终审(石油地质建模/油藏工程视角)
 
 - 审查日期：2026-07-25

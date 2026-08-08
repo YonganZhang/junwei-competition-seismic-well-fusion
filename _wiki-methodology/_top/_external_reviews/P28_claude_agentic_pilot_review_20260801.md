@@ -1,3 +1,12 @@
+---
+phase_id: P28
+status: accepted
+owner_col: COL2
+source: external
+created_at: 2026-08-01
+status_basis: 文内标 FINAL_REVIEW_COMPLETE
+---
+
 # P28 执行型智能体消融：Claude 独立审查摘要
 
 日期：2026-08-01  
