@@ -74,7 +74,11 @@ P5_SOURCE_FILES = {
     ),
     "common_adapter": (
         P5_ROOT / "_models/property/_p5_common.py",
-        "36053f02ed1bfdc25b195229a0c9b76616cdeee312afc996981210a68688e6ad",
+        # Refreshed 2026-08-09: 1a2a02a added loss_name/output_activation to
+        # TorchMultiTargetAdapter (bounded routes PHIF/SW through sigmoid and
+        # KLOGH through softplus). That is a legitimate mainline change which
+        # this lock had not followed, leaving P41 unrunnable.
+        "accced9402b696f1401321e0ccfe06c2e4d40063703b6ddccc351b8e80dfc6fd",
     ),
 }
 P5_BOARD_HASHES = {
