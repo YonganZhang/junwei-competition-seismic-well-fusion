@@ -155,9 +155,12 @@ def load_r2_contract() -> dict[str, Any]:
         "stage4_validation_status": "unvalidated",
         "stage4_validation_error": None,
     }
+    if preflight["historical_source_lock_mismatch"]:
+        preflight["stage4_validation_status"] = "historical_source_lock_mismatch"
     try:
         stage4.validate_stage3_and_contract()
-        preflight["stage4_validation_status"] = "verified"
+        if not preflight["historical_source_lock_mismatch"]:
+            preflight["stage4_validation_status"] = "verified"
     except RuntimeError as error:
         message = str(error)
         if "source-lock helper disagrees" in message or "Stage-3 source_lock" in message:

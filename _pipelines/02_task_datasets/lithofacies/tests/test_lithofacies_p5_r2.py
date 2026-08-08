@@ -56,6 +56,41 @@ class LithofaciesR2ContractTests(unittest.TestCase):
         self.assertEqual(lane["finite_center_md_count"], 0)
         self.assertIn("forbidden", lane["reason"])
 
+    def test_stage3_batch_fold_reconstruction_is_portable(self) -> None:
+        arrays = {
+            "f0_preprocessor": np.asarray(
+                json.dumps(
+                    {
+                        "fit_families": ["a"],
+                        "class_support": [1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        "class_weights": [1.0] * r2.NUM_CLASSES,
+                    }
+                )
+            ),
+            "f0_train_well": np.ones((2, 26, 33), dtype=np.float32),
+            "f0_train_seismic": np.ones((2, 3, 3, 33), dtype=np.float32),
+            "f0_train_labels": np.asarray([0, 1], dtype=np.int64),
+            "f0_train_ids": np.asarray(["train-a", "train-b"], dtype=np.str_),
+            "f0_validation_well": np.full((2, 26, 33), 2.0, dtype=np.float32),
+            "f0_validation_seismic": np.full((2, 3, 3, 33), 2.0, dtype=np.float32),
+            "f0_validation_labels": np.asarray([2, 3], dtype=np.int64),
+            "f0_validation_ids": np.asarray(["val-a", "val-b"], dtype=np.str_),
+            "f0_validation_center_md_m": np.asarray([np.nan, np.nan], dtype=np.float64),
+        }
+        fold = r2._fold_from_stage3_batch(
+            arrays,
+            {
+                "fold_id": 0,
+                "train_groups": ["15/9-19"],
+                "validation_groups": ["15/9-F-14"],
+            },
+        )
+        self.assertEqual(fold["fold_id"], 0)
+        self.assertEqual(tuple(fold["train_arrays"]["well"].shape), (2, 26, 33))
+        self.assertEqual(tuple(fold["validation_arrays"]["seismic"].shape), (2, 3, 3, 33))
+        self.assertEqual(fold["preprocessor"]["class_support"], [1] * r2.NUM_CLASSES)
+        self.assertEqual(int(np.isfinite(fold["validation_center_md_m"]).sum()), 0)
+
 
 class LithofaciesR2SmokeTests(unittest.TestCase):
     def test_torch_models_support_forward_step_and_state_roundtrip(self) -> None:

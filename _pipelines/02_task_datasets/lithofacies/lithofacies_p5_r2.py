@@ -63,8 +63,8 @@ from p4_contract import (  # noqa: E402
 )
 from p5_stage1 import (  # noqa: E402
     _read_development_hdf5,
-    build_development_logo4,
 )
+from lithofacies_p5_stage3 import load_stage3_batch  # noqa: E402
 
 
 ROOT_SEED = 2693
@@ -109,6 +109,14 @@ def _track_owned(path: Path) -> Path:
     if TRACK_DIR.resolve() not in resolved.parents:
         raise ValueError(f"R2 artifacts must stay below {TRACK_DIR}")
     return resolved
+
+
+def _portable_path(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(PROJECT_ROOT))
+    except ValueError:
+        return resolved.name
 
 
 def _atomic_json(path: Path, payload: Mapping[str, Any]) -> None:
@@ -234,9 +242,59 @@ class FoldPack:
     preprocessor: Any
 
 
-def _load_development_folds(dataset_root: Path) -> tuple[list[dict[str, Any]], Path]:
+def _fold_from_stage3_batch(
+    arrays: Mapping[str, np.ndarray], fold: Mapping[str, Any]
+) -> dict[str, Any]:
+    fold_id = int(fold["fold_id"])
+    prefix = f"f{fold_id}"
+    preprocessor = json.loads(str(np.asarray(arrays[f"{prefix}_preprocessor"]).item()))
+    train_well = np.asarray(arrays[f"{prefix}_train_well"], dtype=np.float32)
+    train_seismic = np.asarray(arrays[f"{prefix}_train_seismic"], dtype=np.float32)
+    train_labels = np.asarray(arrays[f"{prefix}_train_labels"], dtype=np.int64)
+    validation_well = np.asarray(arrays[f"{prefix}_validation_well"], dtype=np.float32)
+    validation_seismic = np.asarray(arrays[f"{prefix}_validation_seismic"], dtype=np.float32)
+    validation_labels = np.asarray(arrays[f"{prefix}_validation_labels"], dtype=np.int64)
+    validation_md = np.asarray(arrays.get(f"{prefix}_validation_center_md_m", np.asarray([], dtype=np.float64)), dtype=np.float64)
+    return {
+        "fold_id": fold_id,
+        "train_groups": list(fold["train_groups"]),
+        "validation_groups": list(fold["validation_groups"]),
+        "train_arrays": {"well": train_well, "seismic": train_seismic, "labels": train_labels},
+        "validation_arrays": {
+            "well": validation_well,
+            "seismic": validation_seismic,
+            "labels": validation_labels,
+        },
+        "validation_center_md_m": validation_md,
+        "preprocessor": preprocessor,
+    }
+
+
+def _load_development_folds(
+    dataset_root: Path | None, batch_file: Path | None
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    if batch_file is not None:
+        arrays, manifest = load_stage3_batch(batch_file)
+        folds = [_fold_from_stage3_batch(arrays, fold) for fold in manifest["folds"]]
+        source = {
+            "source": "stage3_batch",
+            "batch_file": _portable_path(batch_file),
+            "batch_sha256": _sha256(batch_file),
+            "development_hdf5_sha256": manifest["development_hdf5_sha256"],
+            "development_sample_count": manifest["development_sample_count"],
+        }
+        return folds, source
+    if dataset_root is None:
+        raise ValueError("either --dataset-root or --batch-file is required")
     samples, hdf5_path = _read_development_hdf5(dataset_root)
-    folds_raw = build_development_logo4(samples)
+    folds_raw = []
+    try:
+        from lithofacies_p5_stage3 import build_development_logo4 as build_logo4
+    except Exception:  # pragma: no cover - import-time compatibility only
+        build_logo4 = None
+    if build_logo4 is None:
+        raise RuntimeError("LOGO4 fold builder unavailable")
+    folds_raw = build_logo4(samples)
     packs: list[FoldPack] = []
     by_sample_id = {sample_id(sample): sample for sample in samples}
     for fold in folds_raw:
@@ -253,7 +311,7 @@ def _load_development_folds(dataset_root: Path) -> tuple[list[dict[str, Any]], P
                 preprocessor=preprocessor,
             )
         )
-    return [asdict(pack) for pack in packs], hdf5_path
+    return [asdict(pack) for pack in packs], {"source": "hdf5", "development_hdf5_sha256": _sha256(hdf5_path)}
 
 
 def _build_task_spec() -> Any:
@@ -601,18 +659,45 @@ def _plot_learning_curves(summary: Mapping[str, Any], output_dir: Path) -> dict[
     }
 
 
-def run(dataset_root: Path, output_dir: Path, *, device: str) -> dict[str, Any]:
+def run(
+    dataset_root: Path | None,
+    output_dir: Path,
+    *,
+    device: str,
+    batch_file: Path | None = None,
+) -> dict[str, Any]:
     output_dir = _track_owned(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    folds, hdf5_path = _load_development_folds(dataset_root)
+    folds, source = _load_development_folds(dataset_root, batch_file)
     if len(folds) != EFFECTIVE_N_SPLITS:
         raise RuntimeError("development archive is not the frozen LOGO4 downgrade")
-    s_lane_samples = {
-        sample_id(sample): sample
-        for fold in folds
-        for sample in fold["train_samples"] + fold["validation_samples"]
-    }
-    s_lane = _evaluate_s_lane(list(s_lane_samples.values()))
+    if source.get("source") == "stage3_batch":
+        finite_center_md = int(
+            sum(
+                np.isfinite(np.asarray(fold.get("validation_center_md_m", []), dtype=np.float64)).sum()
+                for fold in folds
+            )
+        )
+        s_lane = (
+            {
+                "status": "available",
+                "finite_center_md_count": finite_center_md,
+                "reason": None,
+            }
+            if finite_center_md
+            else {
+                "status": "not_rankable",
+                "finite_center_md_count": 0,
+                "reason": "no real finite center_md_m; sequence fabrication is forbidden",
+            }
+        )
+    else:
+        s_lane_samples = {
+            sample_id(sample): sample
+            for fold in folds
+            for sample in fold["train_samples"] + fold["validation_samples"]
+        }
+        s_lane = _evaluate_s_lane(list(s_lane_samples.values()))
     rows: list[dict[str, Any]] = []
     model_groups: dict[str, dict[str, Any]] = defaultdict(lambda: {"label": "", "curves": {"M": [], "W": []}})
     fold_seed_matrix = np.zeros((len(MODEL_ROSTER), len(folds) * len(REPEAT_SEEDS)), dtype=np.float64)
@@ -629,18 +714,22 @@ def run(dataset_root: Path, output_dir: Path, *, device: str) -> dict[str, Any]:
         model_groups[model_id]["label"] = model_id
         for fold in folds:
             fold_id = int(fold["fold_id"])
-            train_samples = fold["train_samples"]
-            validation_samples = fold["validation_samples"]
-            train_arrays = {
-                "well": _stack_well(train_samples),
-                "seismic": _stack_seismic(train_samples),
-                "labels": _stack_labels(train_samples),
-            }
-            val_arrays = {
-                "well": _stack_well(validation_samples),
-                "seismic": _stack_seismic(validation_samples),
-                "labels": _stack_labels(validation_samples),
-            }
+            if "train_arrays" in fold:
+                train_arrays = fold["train_arrays"]
+                val_arrays = fold["validation_arrays"]
+            else:
+                train_samples = fold["train_samples"]
+                validation_samples = fold["validation_samples"]
+                train_arrays = {
+                    "well": _stack_well(train_samples),
+                    "seismic": _stack_seismic(train_samples),
+                    "labels": _stack_labels(train_samples),
+                }
+                val_arrays = {
+                    "well": _stack_well(validation_samples),
+                    "seismic": _stack_seismic(validation_samples),
+                    "labels": _stack_labels(validation_samples),
+                }
             preprocessor = fold["preprocessor"]
             class_weights = _class_weights(np.asarray(preprocessor["class_support"], dtype=np.float64))
             for repeat_id, seed in enumerate(REPEAT_SEEDS):
@@ -775,7 +864,7 @@ def run(dataset_root: Path, output_dir: Path, *, device: str) -> dict[str, Any]:
         "expected_calibration_error": 0.0,
         "missing_modality_diagnostic": missing_diag,
         "S_lane": s_lane,
-        "development_hdf5_sha256": _sha256(hdf5_path),
+        **source,
         "frozen_test_accessed": False,
         "development_only": True,
     }
@@ -851,7 +940,8 @@ def run(dataset_root: Path, output_dir: Path, *, device: str) -> dict[str, Any]:
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset-root", type=Path, required=True)
+    parser.add_argument("--dataset-root", type=Path)
+    parser.add_argument("--batch-file", type=Path)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default="cpu")
     return parser
@@ -859,7 +949,7 @@ def _parser() -> argparse.ArgumentParser:
 
 def main() -> int:
     args = _parser().parse_args()
-    summary = run(args.dataset_root, args.output_dir, device=args.device)
+    summary = run(args.dataset_root, args.output_dir, device=args.device, batch_file=args.batch_file)
     print(json.dumps({
         "status": summary["status"],
         "completed_cells": summary["completed_cells"],
