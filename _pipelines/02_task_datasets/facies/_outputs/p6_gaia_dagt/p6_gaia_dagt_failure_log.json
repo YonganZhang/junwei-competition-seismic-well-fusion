@@ -1,0 +1,30 @@
+{
+  "predictive_text_agent": {
+    "status": "blocked",
+    "reason": "no sample-level raw text provenance exists for facies"
+  },
+  "approved_pretrained_weights": {
+    "status": "blocked",
+    "reason": "p5 source lock does not approve pretrained lanes; scratch only is allowed"
+  },
+  "f0": {
+    "status": "blocked",
+    "reason": "no approved pretrained weights are available"
+  },
+  "f1": {
+    "status": "blocked",
+    "reason": "no approved pretrained weights are available"
+  },
+  "f2": {
+    "status": "disabled",
+    "reason": "predictive_text_agent is unavailable for facies"
+  },
+  "c1": {
+    "status": "disabled",
+    "reason": "predictive_text_agent is unavailable for facies"
+  },
+  "c2": {
+    "status": "disabled",
+    "reason": "predictive_text_agent is unavailable for facies"
+  }
+}

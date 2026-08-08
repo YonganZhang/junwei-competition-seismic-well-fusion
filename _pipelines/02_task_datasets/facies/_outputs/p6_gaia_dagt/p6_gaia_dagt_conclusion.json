@@ -1,0 +1,60 @@
+{
+  "schema_version": "facies-p6-gaia-dagt-v1",
+  "state": "blocked_by_data",
+  "states": [
+    "verified_gain",
+    "foundation_gain_only",
+    "agent_signal_but_no_baseline_win",
+    "no_verified_gain",
+    "blocked_by_data"
+  ],
+  "agent_mode": "supervisory_qc_agent",
+  "predictive_text_agent": "agent_unavailable",
+  "reusable_holdout_claim": "previously_seen_reusable_holdout",
+  "approved_weight_gate": "blocked",
+  "tasks": {
+    "facies_f3": {
+      "task_label": "F3",
+      "state": "blocked_by_data",
+      "agent_mode": "supervisory_qc_agent",
+      "reusable_holdout_claim": "previously_seen_reusable_holdout",
+      "approved_weight_gate": "blocked",
+      "baseline_index": {
+        "B0": {
+          "path": "_pipelines/02_task_datasets/facies/_outputs/p5_stage4_confirmation/facies_f3/metrics.json",
+          "sha256": "c89b6c1ec92f17a95e1a7e22f1ffb49efa7db87fc8cd77ce50f7f9e73257dbb2",
+          "kind": "existing_p5_evidence",
+          "claim_boundary": "previously_seen_reusable_holdout"
+        },
+        "B1": {
+          "path": "_pipelines/02_task_datasets/facies/_outputs/p5_r2/facies_f3/p5_r2_summary.json",
+          "sha256": "38289c7df1599815726261bfa98041a6371ea6b876c44e31e2c9ecf7a1b3321e",
+          "kind": "existing_p5_evidence",
+          "claim_boundary": "previously_seen_reusable_holdout"
+        }
+      }
+    },
+    "facies_penobscot": {
+      "task_label": "Penobscot",
+      "state": "blocked_by_data",
+      "agent_mode": "supervisory_qc_agent",
+      "reusable_holdout_claim": "previously_seen_reusable_holdout",
+      "approved_weight_gate": "blocked",
+      "baseline_index": {
+        "B0": {
+          "path": "_pipelines/02_task_datasets/facies/_outputs/p5_stage4_confirmation/facies_penobscot/metrics.json",
+          "sha256": "6f7d70043d82018824ab9a8486e68c518a786008cfa09378a855c39c9e65e89e",
+          "kind": "existing_p5_evidence",
+          "claim_boundary": "previously_seen_reusable_holdout"
+        },
+        "B1": {
+          "path": "_pipelines/02_task_datasets/facies/_outputs/p5_r2/facies_penobscot/p5_r2_summary.json",
+          "sha256": "8f694e61228105feb87ff1bf4d56e9977ea8b775a63f92df779da3d3591c5f13",
+          "kind": "existing_p5_evidence",
+          "claim_boundary": "previously_seen_reusable_holdout"
+        }
+      }
+    }
+  },
+  "scientific_claim_boundary": "previously_seen_reusable_holdout"
+}

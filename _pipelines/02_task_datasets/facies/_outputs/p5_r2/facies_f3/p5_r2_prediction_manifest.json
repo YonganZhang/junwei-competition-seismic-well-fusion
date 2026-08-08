@@ -1,0 +1,43 @@
+{
+  "checkpoint_runtime_relative_path": "facies_f3/ce_2d/seed_1/checkpoints/best.ckpt",
+  "checkpoint_sha256": "ba31672a654f49f1b8fb40d63383fe7c36e118d6fb6309429ec33f79ece69994",
+  "figure": "p5_r2_prediction_diagnostics.png",
+  "figure_sha256": "69f7ac6cff467be666b4b6b4f4ab060b4e82d6dea39e655c04a826ceb27e9c7d",
+  "firewall": {
+    "fresh_blind": false,
+    "known_holdout_predictions_or_metrics_read": false,
+    "test_archive_opened": false,
+    "test_labels_read": false
+  },
+  "schema_version": "facies-p5-r2-v1",
+  "selection_inline": 583,
+  "selection_rule": "prefer_validation_section_with_>=2_gt_classes_and_correct_plus_error_pixels",
+  "selection_sample_id": "facies_f3:validation:inline=583",
+  "selection_statistics": {
+    "boundary_error_pixels": 6283,
+    "boundary_pixels": 17338,
+    "correct_pixels": 399415,
+    "coverage": {
+      "blend": "uniform_mean_raw_logits",
+      "coverage_fraction": 1.0,
+      "covered_unique_voxels": 439362,
+      "duplicate_prediction_assignments_before_blend": 1166270,
+      "inline": 583,
+      "max_predictions_per_voxel": 9,
+      "metric_entry_rule": "one_argmax_prediction_per_unique_voxel",
+      "min_predictions_per_voxel": 1,
+      "unique_scored_voxels": 439362,
+      "valid_voxels": 439362
+    },
+    "error_fraction": 0.09092047104665402,
+    "error_pixels": 39947,
+    "gt_class_count": 10,
+    "has_informative_signal": true,
+    "inline": 583,
+    "sample_id": "facies_f3:validation:inline=583",
+    "total_pixels": 439362
+  },
+  "storage_boundary": "track_private_portable_evidence",
+  "task_id": "facies_f3",
+  "track_id": "facies"
+}

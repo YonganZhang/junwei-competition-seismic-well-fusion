@@ -1,0 +1,74 @@
+{
+  "schema_version": "facies-p6-gaia-dagt-v1",
+  "track_id": "facies",
+  "artifacts": {
+    "conclusion": "p6_gaia_dagt_conclusion.json",
+    "manifest": "p6_gaia_dagt_evidence_manifest.json",
+    "resource_log": "p6_gaia_dagt_resource_log.json",
+    "failure_log": "p6_gaia_dagt_failure_log.json",
+    "figure": "p6_gaia_dagt_sci.svg"
+  },
+  "source_manifest_digest": "dc8c57ab540eefbed06c00ea37f13c9f64f5a11bf19ab8bff0d3e8f76919204a",
+  "source_manifest_commit": "0987684d6ecb7409bade73a35555593b678d70e1",
+  "approved_weight_gate": {
+    "smp_fpn_r18": {
+      "status": "blocked",
+      "allowed_lanes": [
+        "scratch"
+      ],
+      "weight_status": "not_approved",
+      "weight_license": "encoder-specific license not frozen",
+      "weight_url": null,
+      "weight_sha256": null
+    },
+    "smp_deeplabv3plus_r18": {
+      "status": "blocked",
+      "allowed_lanes": [
+        "scratch"
+      ],
+      "weight_status": "not_approved",
+      "weight_license": "encoder-specific license not frozen",
+      "weight_url": null,
+      "weight_sha256": null
+    }
+  },
+  "baseline_index": {
+    "facies_f3": {
+      "B0": {
+        "path": "_pipelines/02_task_datasets/facies/_outputs/p5_stage4_confirmation/facies_f3/metrics.json",
+        "sha256": "c89b6c1ec92f17a95e1a7e22f1ffb49efa7db87fc8cd77ce50f7f9e73257dbb2",
+        "kind": "existing_p5_evidence",
+        "claim_boundary": "previously_seen_reusable_holdout"
+      },
+      "B1": {
+        "path": "_pipelines/02_task_datasets/facies/_outputs/p5_r2/facies_f3/p5_r2_summary.json",
+        "sha256": "38289c7df1599815726261bfa98041a6371ea6b876c44e31e2c9ecf7a1b3321e",
+        "kind": "existing_p5_evidence",
+        "claim_boundary": "previously_seen_reusable_holdout"
+      }
+    },
+    "facies_penobscot": {
+      "B0": {
+        "path": "_pipelines/02_task_datasets/facies/_outputs/p5_stage4_confirmation/facies_penobscot/metrics.json",
+        "sha256": "6f7d70043d82018824ab9a8486e68c518a786008cfa09378a855c39c9e65e89e",
+        "kind": "existing_p5_evidence",
+        "claim_boundary": "previously_seen_reusable_holdout"
+      },
+      "B1": {
+        "path": "_pipelines/02_task_datasets/facies/_outputs/p5_r2/facies_penobscot/p5_r2_summary.json",
+        "sha256": "8f694e61228105feb87ff1bf4d56e9977ea8b775a63f92df779da3d3591c5f13",
+        "kind": "existing_p5_evidence",
+        "claim_boundary": "previously_seen_reusable_holdout"
+      }
+    }
+  },
+  "shared_contract_tests": {
+    "tests": 14,
+    "status": "passed"
+  },
+  "private_tests": {
+    "tests": 81,
+    "skipped": 2,
+    "status": "passed"
+  }
+}

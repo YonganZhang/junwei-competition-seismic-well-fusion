@@ -1,0 +1,208 @@
+{
+  "tables": [
+    {
+      "curve": {
+        "160": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 0.11852870948378337,
+          "mean_worst_family_RMSE": 0.11852870948378337
+        },
+        "40": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 0.14959280466786865,
+          "mean_worst_family_RMSE": 0.14959280466786865
+        },
+        "640": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 0.08686126256320438,
+          "mean_worst_family_RMSE": 0.08686126256320438
+        }
+      },
+      "model_id": "tabm_regressor",
+      "plateau": {
+        "budget": 160,
+        "reason": "higher budget <1% improvement",
+        "status": "plateaued"
+      },
+      "pooled_curve": {
+        "160": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 3.2030491737243126e+96,
+          "mean_worst_family_RMSE": 3.2030491737243126e+96
+        },
+        "40": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 3.6695567036211146e+105,
+          "mean_worst_family_RMSE": 3.6695567036211146e+105
+        },
+        "640": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 1.0334896098935364e+104,
+          "mean_worst_family_RMSE": 1.0334896098935364e+104
+        }
+      },
+      "selected_budget": 160,
+      "target": "PHIF"
+    },
+    {
+      "curve": {
+        "160": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 9.609147521172937e+96,
+          "mean_worst_family_RMSE": 9.609147521172937e+96
+        },
+        "40": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 1.1008670110863344e+106,
+          "mean_worst_family_RMSE": 1.1008670110863344e+106
+        },
+        "640": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 3.100468829680609e+104,
+          "mean_worst_family_RMSE": 3.100468829680609e+104
+        }
+      },
+      "model_id": "tabm_regressor",
+      "plateau": {
+        "budget": 160,
+        "reason": "higher budget <1% improvement",
+        "status": "plateaued"
+      },
+      "pooled_curve": {
+        "160": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 3.2030491737243126e+96,
+          "mean_worst_family_RMSE": 3.2030491737243126e+96
+        },
+        "40": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 3.6695567036211146e+105,
+          "mean_worst_family_RMSE": 3.6695567036211146e+105
+        },
+        "640": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 1.0334896098935364e+104,
+          "mean_worst_family_RMSE": 1.0334896098935364e+104
+        }
+      },
+      "selected_budget": 160,
+      "target": "KLOGH"
+    },
+    {
+      "curve": {
+        "160": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 0.3520214762954336,
+          "mean_worst_family_RMSE": 0.3520214762954336
+        },
+        "40": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 0.4366390183800975,
+          "mean_worst_family_RMSE": 0.4366390183800975
+        },
+        "640": {
+          "completed_cells": 12,
+          "mean_physical_RMSE": 0.3371602794171154,
+          "mean_worst_family_RMSE": 0.3371602794171154
+        }
+      },
+      "model_id": "tabm_regressor",
+      "plateau": {
+        "budget": 160,
+        "reason": "higher budget <1% improvement",
+        "status": "plateaued"
+      },
+      "pooled_curve": {
+        "160": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 3.2030491737243126e+96,
+          "mean_worst_family_RMSE": 3.2030491737243126e+96
+        },
+        "40": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 3.6695567036211146e+105,
+          "mean_worst_family_RMSE": 3.6695567036211146e+105
+        },
+        "640": {
+          "completed_cells": 36,
+          "mean_physical_RMSE": 1.0334896098935364e+104,
+          "mean_worst_family_RMSE": 1.0334896098935364e+104
+        }
+      },
+      "selected_budget": 160,
+      "target": "SW"
+    },
+    {
+      "curve": {},
+      "model_id": "tabiclv2_regressor",
+      "plateau": {
+        "budget": null,
+        "reason": "no completed curve rows",
+        "status": "not_rankable"
+      },
+      "pooled_curve": {},
+      "selected_budget": null,
+      "target": "PHIF"
+    },
+    {
+      "curve": {},
+      "model_id": "tabiclv2_regressor",
+      "plateau": {
+        "budget": null,
+        "reason": "no completed curve rows",
+        "status": "not_rankable"
+      },
+      "pooled_curve": {},
+      "selected_budget": null,
+      "target": "KLOGH"
+    },
+    {
+      "curve": {},
+      "model_id": "tabiclv2_regressor",
+      "plateau": {
+        "budget": null,
+        "reason": "no completed curve rows",
+        "status": "not_rankable"
+      },
+      "pooled_curve": {},
+      "selected_budget": null,
+      "target": "SW"
+    },
+    {
+      "curve": {},
+      "model_id": "monai_densenet3d_regressor",
+      "plateau": {
+        "budget": null,
+        "reason": "no completed curve rows",
+        "status": "not_rankable"
+      },
+      "pooled_curve": {},
+      "selected_budget": null,
+      "target": "PHIF"
+    },
+    {
+      "curve": {},
+      "model_id": "monai_densenet3d_regressor",
+      "plateau": {
+        "budget": null,
+        "reason": "no completed curve rows",
+        "status": "not_rankable"
+      },
+      "pooled_curve": {},
+      "selected_budget": null,
+      "target": "KLOGH"
+    },
+    {
+      "curve": {},
+      "model_id": "monai_densenet3d_regressor",
+      "plateau": {
+        "budget": null,
+        "reason": "no completed curve rows",
+        "status": "not_rankable"
+      },
+      "pooled_curve": {},
+      "selected_budget": null,
+      "target": "SW"
+    }
+  ]
+}

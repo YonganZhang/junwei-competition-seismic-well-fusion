@@ -1,0 +1,238 @@
+{
+  "R3_allowed": false,
+  "baseline_commit": "af8c066de0c3fc24fce024abb350b4f2c9e82d9b",
+  "current_trainable_lanes": [],
+  "lane": "fault_3d_segmentation_data_gate",
+  "lane_reason_codes": {
+    "formal_audited": [
+      "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+      "FEWER_THAN_TWO_LEGAL_BUFFERED_FOLDS"
+    ],
+    "masked_weak_label": [
+      "MASKED_WEAK_OBJECTIVE_NOT_CONFIGURED",
+      "AUDITED_EVALUATION_NEGATIVES_MISSING"
+    ],
+    "synthetic_only": [
+      "REGISTERED_DENSE_SYNTHETIC_DATASET_MISSING"
+    ]
+  },
+  "minimum_unblock_contract": [
+    {
+      "contract_id": "registered_dense_synthetic_dataset",
+      "lane_id": "synthetic_only",
+      "minimum": "registered dense synthetic dataset with source/label/split hashes; contract fixture cannot unlock the lane"
+    },
+    {
+      "contract_id": "independent_generated_volume_split",
+      "lane_id": "synthetic_only",
+      "minimum": "independent generated training/validation volume IDs with disjoint split hashes"
+    },
+    {
+      "contract_id": "dense_ground_truth_and_both_classes",
+      "lane_id": "synthetic_only",
+      "minimum": "dense ground truth must be registered and both classes must be present before any trainable cell can exist"
+    },
+    {
+      "contract_id": "weak_objective_preregistered",
+      "lane_id": "masked_weak_label",
+      "minimum": "masked weak / PU / SSL objective must be explicitly preregistered and tested before any training is allowed"
+    },
+    {
+      "contract_id": "independent_spatial_dev_split",
+      "lane_id": "masked_weak_label",
+      "minimum": "independent spatial development split with fold-train-only preprocessing, class prior, and consistency fit"
+    },
+    {
+      "contract_id": "audited_or_approved_weak_evaluation",
+      "lane_id": "masked_weak_label",
+      "minimum": "approved unbiased weak evaluation or audited negatives are required before ranking"
+    },
+    {
+      "contract_id": "coverage_manifest",
+      "lane_id": "formal_audited",
+      "minimum": "coordinate-aligned per-volume/per-block/per-slice annotation coverage manifest with source SHA-256 and annotation_status"
+    },
+    {
+      "contract_id": "verified_negative_mask",
+      "lane_id": "formal_audited",
+      "minimum": "non-empty coverage-audited verified_negative_mask disjoint from fault positives; count and provenance reported for every development block"
+    },
+    {
+      "contract_id": "unknown_and_proxy_masks",
+      "lane_id": "formal_audited",
+      "minimum": "explicit unknown_mask equals complement of valid_label_mask; proxy_mask remains separate and never enables formal loss or metrics"
+    },
+    {
+      "contract_id": "buffered_development_folds",
+      "lane_id": "formal_audited",
+      "minimum": "P4-regenerated buffered spatial plan with at least two independent valid folds; each train/validation side contains positives and audited negatives"
+    },
+    {
+      "contract_id": "fold_train_fit_provenance",
+      "lane_id": "formal_audited",
+      "minimum": "preprocessing, class weights, target transform, and calibration each carry a fold-train-only fit hash before any Stage-3 cell can run"
+    },
+    {
+      "contract_id": "test_firewall",
+      "lane_id": "formal_audited",
+      "minimum": "development coordinates and artifacts exclude frozen/regression-test material; test paths, labels, predictions, and metrics remain unavailable to selection"
+    }
+  ],
+  "model_roster_used": [],
+  "observed_acquisition_baselines": [
+    {
+      "data_ready": false,
+      "lane_id": "synthetic_only",
+      "observed": true,
+      "rank_allowed": false,
+      "reason_codes": [
+        "REGISTERED_DENSE_SYNTHETIC_DATASET_MISSING"
+      ],
+      "status": "blocked",
+      "train_allowed": false
+    },
+    {
+      "data_ready": true,
+      "lane_id": "masked_weak_label",
+      "observed": true,
+      "rank_allowed": false,
+      "reason_codes": [
+        "MASKED_WEAK_OBJECTIVE_NOT_CONFIGURED",
+        "AUDITED_EVALUATION_NEGATIVES_MISSING"
+      ],
+      "status": "data_ready_but_not_trainable",
+      "train_allowed": false
+    },
+    {
+      "data_ready": false,
+      "lane_id": "formal_audited",
+      "observed": true,
+      "rank_allowed": false,
+      "reason_codes": [
+        "AUDITED_VERIFIED_NEGATIVE_COVERAGE_MISSING",
+        "FEWER_THAN_TWO_LEGAL_BUFFERED_FOLDS"
+      ],
+      "status": "blocked",
+      "train_allowed": false
+    }
+  ],
+  "official_learning_curve_generated": false,
+  "planned_null_points": [
+    {
+      "lane_id": "synthetic_only",
+      "points": [
+        {
+          "contract_id": "registered_dense_synthetic_dataset",
+          "metric": null,
+          "observed": false,
+          "value": null
+        },
+        {
+          "contract_id": "independent_generated_volume_split",
+          "metric": null,
+          "observed": false,
+          "value": null
+        },
+        {
+          "contract_id": "fixture_only_contract_cannot_unlock",
+          "metric": null,
+          "observed": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "lane_id": "masked_weak_label",
+      "points": [
+        {
+          "contract_id": "weak_objective_preregistered",
+          "metric": null,
+          "observed": false,
+          "value": null
+        },
+        {
+          "contract_id": "independent_spatial_dev_split",
+          "metric": null,
+          "observed": false,
+          "value": null
+        },
+        {
+          "contract_id": "audited_or_approved_weak_evaluation",
+          "metric": null,
+          "observed": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "lane_id": "formal_audited",
+      "points": [
+        {
+          "contract_id": "coverage_manifest",
+          "metric": null,
+          "observed": false,
+          "value": null
+        },
+        {
+          "contract_id": "verified_negative_mask",
+          "metric": null,
+          "observed": false,
+          "value": null
+        },
+        {
+          "contract_id": "buffered_development_folds",
+          "metric": null,
+          "observed": false,
+          "value": null
+        }
+      ]
+    }
+  ],
+  "protocol": "fault-p5-r2-data-acquisition-contract-v1",
+  "ranking_status": "not_rankable",
+  "reason_code": "NO_VALID_FAULT_DEVELOPMENT_FOLDS",
+  "root_seed": 2693,
+  "source_hashes": {
+    "buffered_cv_plan": "042523535cb0f92f444bbd99369bff9c372a49bb5d91c37cfb74219a836799d9",
+    "r0_lane_gates": "1819f16d563dd3c411e87fbd42493ce546d5516a03888f2292a82d039a74169e",
+    "r0_summary": "ca3628ac6440ba80814b4009b72107a50e7e9fc73ade44ae414a9b19f07a2ce2",
+    "source_locks": "0e69a7a6ea12d059d0be97b1f19bf645e35ec360ae003a2d1033cadd12b0289f",
+    "stage2_summary": "3d83d6f91c5ab6bd32628703a5d595bdf5f5cdccfd618260b04f277427421511",
+    "stage3_artifact_manifest": "ae5e709a0ba3838ee0e3ad69c12d1ef32b1c3b6dca8e12e2e2d1e1a5756d5e5e",
+    "stage3_data_manifest": "66f7f922fad93dfb8adc218cfcbebd65cbc0b7e4f061dca99a1feb3e884083a1",
+    "stage3_summary": "52351babd768dc89dcf86b753a15e9392193ca140ce4aedecd020506bc8f6985",
+    "stage3_visualization_manifest": "3fe7edbfb236b958d4ffde15521456766dfb49e7ff7817de99e3270f5744e1dd"
+  },
+  "stage3_visualization_reuse": {
+    "figures": [
+      {
+        "path": "p5_stage3/figures/fault_readiness.svg",
+        "sha256": "4e33c97a0bb7801c30db32f0196054ede573074d254433e1228860a6dd420d7b"
+      },
+      {
+        "path": "p5_stage3/figures/fault_negative_coverage.svg",
+        "sha256": "4bdcda77826e8c9543b2efb9410aa058b8e67afbc3bdc44c237ed69336720230"
+      },
+      {
+        "path": "p5_stage3/figures/fault_unknown_coverage.svg",
+        "sha256": "8459b8d75dcb8cf3a9dd84cbe28bed3bdfd42ec70adf42b230f9fde3cd9de5a4"
+      }
+    ],
+    "path": "p5_stage3/p5_stage3_visualization_manifest.json",
+    "sha256": "3fe7edbfb236b958d4ffde15521456766dfb49e7ff7817de99e3270f5744e1dd"
+  },
+  "status": "blocked",
+  "task_id": "fault_stick_segmentation",
+  "test_firewall": {
+    "frozen_test_accessed": false,
+    "historical_holdout_arrays_accessed": false,
+    "runner_accepts_test_inputs": false,
+    "selection_or_ranking_performed": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault",
+  "training_cell_count": 0,
+  "winner": null
+}

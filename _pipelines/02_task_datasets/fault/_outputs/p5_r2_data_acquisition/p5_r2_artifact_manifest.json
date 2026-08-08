@@ -1,0 +1,50 @@
+{
+  "artifacts": [
+    {
+      "bytes": 7530,
+      "path": "p5_r2_results.jsonl",
+      "role": "observed_acquisition_rows",
+      "sha256": "6903ca2c3627f5581851ef751bc20bfed2dc4a753501df00620d5de3a407c7bc"
+    },
+    {
+      "bytes": 8299,
+      "path": "p5_r2_data_acquisition_contract.json",
+      "role": "data_acquisition_contract",
+      "sha256": "eee9ab43e75322d8184dfd5f4fc3cfa2f4ba055d417986c2cd2b04bfe06c02e4"
+    },
+    {
+      "bytes": 3374,
+      "path": "p5_r2_summary.json",
+      "role": "summary",
+      "sha256": "6cbcb2aa92a1a36dd45468e4f57e137cbff172c7a214257ce9d8601474711978"
+    }
+  ],
+  "baseline_commit": "af8c066de0c3fc24fce024abb350b4f2c9e82d9b",
+  "checkpoint_count": 0,
+  "current_trainable_lanes": [],
+  "holdout_accessed": false,
+  "lane": "fault_3d_segmentation_data_gate",
+  "large_artifacts_committed": false,
+  "model_roster_used": [],
+  "official_learning_curve_generated": false,
+  "prediction_payload_count": 0,
+  "protocol": "fault-p5-r2-artifact-manifest-v1",
+  "ranking_status": "not_rankable",
+  "refit_executed": false,
+  "root_seed": 2693,
+  "runner_sha256": "508eec7e100f4ca4c328477f21ea3d8b0fc91a8b196e2b144b9b672f69186dd0",
+  "status": "blocked",
+  "task_id": "fault_stick_segmentation",
+  "test_firewall": {
+    "frozen_test_accessed": false,
+    "historical_holdout_arrays_accessed": false,
+    "runner_accepts_test_inputs": false,
+    "selection_or_ranking_performed": false,
+    "test_labels_accessed": false,
+    "test_metrics_accessed": false,
+    "test_predictions_accessed": false
+  },
+  "track_id": "fault",
+  "training_cell_count": 0,
+  "winner": null
+}

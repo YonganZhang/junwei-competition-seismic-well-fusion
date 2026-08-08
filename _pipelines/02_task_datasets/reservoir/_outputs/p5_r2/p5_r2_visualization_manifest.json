@@ -1,0 +1,94 @@
+{
+  "figure_count": 12,
+  "figures": [
+    {
+      "kind": "budget_curve",
+      "model_id": "tabm_regressor",
+      "path": "figures/tabm_regressor/phif_budget_curve.png",
+      "sha256": "0e0f68ed366d17715bea2d817856d3ac940a49bcd64df5ab142e69ece6b8efae",
+      "target": "PHIF"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "tabm_regressor",
+      "path": "figures/tabm_regressor/klogh_budget_curve.png",
+      "sha256": "d92fafb7ff77d3578d627b4379b3bb635439b0d73703133fc27483bb2f09f939",
+      "target": "KLOGH"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "tabm_regressor",
+      "path": "figures/tabm_regressor/sw_budget_curve.png",
+      "sha256": "66b2b96ef791dd0ef725bf4e0036fcf806d292b5ebf110cebbda5fb065d1b4ef",
+      "target": "SW"
+    },
+    {
+      "kind": "ablation_heatmap",
+      "model_id": "tabm_regressor",
+      "path": "figures/tabm_regressor/phif_ablation_heatmap.png",
+      "sha256": "ebe9a1882cdeaa325c144afbfe7b5ac042c06e32e71cb3dda58636fb4a24b291",
+      "target": "PHIF"
+    },
+    {
+      "kind": "ablation_heatmap",
+      "model_id": "tabm_regressor",
+      "path": "figures/tabm_regressor/klogh_ablation_heatmap.png",
+      "sha256": "82f59217f62faa57dcc70b292a6c365ad02bf974c198f3564714ff11c5d23cc1",
+      "target": "KLOGH"
+    },
+    {
+      "kind": "ablation_heatmap",
+      "model_id": "tabm_regressor",
+      "path": "figures/tabm_regressor/sw_ablation_heatmap.png",
+      "sha256": "1db10f6029f58f685fa2d953ac9579533a9ae0882d195a609664dfa06971dd83",
+      "target": "SW"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "tabiclv2_regressor",
+      "path": "figures/tabiclv2_regressor/phif_budget_curve.png",
+      "sha256": "413b77f179ad218cbc57297739e4a0e647f6155fc0d353f1693df6241a5dafa2",
+      "target": "PHIF"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "tabiclv2_regressor",
+      "path": "figures/tabiclv2_regressor/klogh_budget_curve.png",
+      "sha256": "e8161ec9f44fbe36aadc2a2ef675f0198051b5a5e7f9405efff18166f1d9ea74",
+      "target": "KLOGH"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "tabiclv2_regressor",
+      "path": "figures/tabiclv2_regressor/sw_budget_curve.png",
+      "sha256": "ef7b477d38fc2d4207a231d0a3fb8e97a1baadf5a375e19bbcde6507fc8ec68a",
+      "target": "SW"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "monai_densenet3d_regressor",
+      "path": "figures/monai_densenet3d_regressor/phif_budget_curve.png",
+      "sha256": "b8a9fc47cd0a97639c7a4fe215a13b2e7f9e60490940120e7846c7956df97cc8",
+      "target": "PHIF"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "monai_densenet3d_regressor",
+      "path": "figures/monai_densenet3d_regressor/klogh_budget_curve.png",
+      "sha256": "007e282c032c17281c1662d374b1612c2b4f0f09debb56fddf1c55e49cc9d4b9",
+      "target": "KLOGH"
+    },
+    {
+      "kind": "budget_curve",
+      "model_id": "monai_densenet3d_regressor",
+      "path": "figures/monai_densenet3d_regressor/sw_budget_curve.png",
+      "sha256": "167d562e26ecdb394c46c745652a2e247ba2dfa95c7021d8177a39cd3b745902",
+      "target": "SW"
+    }
+  ],
+  "root_seed": 2693,
+  "schema_version": 1,
+  "sha256": "4146e4f066b0b878cb6cc6b2530736bef6cd60ea22fa5628a1959f2b52319621",
+  "stage": 2,
+  "track_id": "property"
+}

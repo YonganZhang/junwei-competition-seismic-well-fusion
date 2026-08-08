@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "batch_size": 2,
+    "eval_batch_size": 8,
+    "learning_rate": 0.0001,
+    "max_updates": 1000,
+    "max_wall_seconds": 7200.0,
+    "profile_id": "facies-p5-r2-fixed-v1",
+    "root_seed": 2693,
+    "stride": 64,
+    "val_proxy_windows": 128,
+    "weight_decay": 0.0,
+    "window_size": 128
+  },
+  "control_models": {
+    "facies_f3": "smp_fpn_r18",
+    "facies_penobscot": "smp_deeplabv3plus_r18"
+  },
+  "endpoints": [
+    40,
+    400,
+    1000
+  ],
+  "fresh_blind": false,
+  "gpu_lock_name": "gpu0.lock",
+  "known_holdout_predictions_or_metrics_read": false,
+  "model_seeds": [
+    1867973658,
+    2137841944,
+    3902865753
+  ],
+  "root_seed": 2693,
+  "schema_version": "facies-p5-r2-v1",
+  "source_hashes": {
+    "control_adapter_sha256": {
+      "facies_f3": "3eb40bae400d9eaf2ebb1d6e4109f8ba03607a527cbd09254f08346eb14b4178",
+      "facies_penobscot": "1f16e9d8c221eeecff613d45ab901d2798d3567611117e51407c70a087179bdd"
+    },
+    "r01_source_sha256": "db2d3cab1f26814c279bebaf8c72e80ea79f6a3b383944ba0ed7a21535b8a13b",
+    "source_lock_sha256": "1a301d6e5764e73bf55719c54eb384de9efb14f7932beb4574cfd537896a8b97"
+  },
+  "task_ids": [
+    "facies_f3",
+    "facies_penobscot"
+  ],
+  "test_archive_opened": false,
+  "test_labels_read": false,
+  "track_id": "facies"
+}

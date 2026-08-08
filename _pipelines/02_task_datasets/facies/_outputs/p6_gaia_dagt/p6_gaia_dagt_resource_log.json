@@ -1,0 +1,21 @@
+{
+  "pipeline_version": "facies-p6-gaia-dagt-v1",
+  "branch": "p6-gaia-facies",
+  "head": "99f5953ab596fd473891334c7617f34da7f756db",
+  "shared_gaia_dagt_contract": {
+    "tests": 14,
+    "status": "passed"
+  },
+  "facies_private_tests": {
+    "tests": 81,
+    "skipped": 2,
+    "status": "passed"
+  },
+  "shared_torch_environment": "/mnt/data/yongan-admin-2/.cache/volve-p5/envs/torch-common/bin/python",
+  "gpu_contract": {
+    "device": "cuda:0",
+    "lock": "gpu0.lock",
+    "mechanism": "fcntl.flock(LOCK_EX)"
+  },
+  "download_bytes": 0
+}

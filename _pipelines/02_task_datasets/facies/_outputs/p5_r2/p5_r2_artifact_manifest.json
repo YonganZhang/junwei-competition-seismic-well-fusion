@@ -1,0 +1,96 @@
+{
+  "artifacts": {
+    "facies_f3/p5_r2_context_ablation.png": {
+      "bytes": 24131,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "8d475363740776af440965a94421dd48280f47373526b8a901f24259e582dd0b"
+    },
+    "facies_f3/p5_r2_learning_curve.png": {
+      "bytes": 137167,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "bf3a6fc5c2f0f06f7f0055574f545c67b4ee78282675f4f44733a1f7db15b866"
+    },
+    "facies_f3/p5_r2_loss_ablation.png": {
+      "bytes": 35931,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "e9aeee288e8ab683000b08b45da07153bc334298a4dba15d758d9979a244b72a"
+    },
+    "facies_f3/p5_r2_prediction_diagnostics.png": {
+      "bytes": 785444,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "69f7ac6cff467be666b4b6b4f4ab060b4e82d6dea39e655c04a826ceb27e9c7d"
+    },
+    "facies_f3/p5_r2_prediction_manifest.json": {
+      "bytes": 1607,
+      "metadata": {},
+      "role": "manifest",
+      "sha256": "94229402439bcf1ccfb16201cd315aae2a9f241ef0979095d3a0b467816c2c39"
+    },
+    "facies_f3/p5_r2_summary.json": {
+      "bytes": 3350,
+      "metadata": {},
+      "role": "task-summary",
+      "sha256": "38289c7df1599815726261bfa98041a6371ea6b876c44e31e2c9ecf7a1b3321e"
+    },
+    "facies_penobscot/p5_r2_context_ablation.png": {
+      "bytes": 24139,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "e2dfaa62bec2950c738d40eaf399536ad9e4c9e29eb0639d445413afa29a9b24"
+    },
+    "facies_penobscot/p5_r2_learning_curve.png": {
+      "bytes": 207952,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "6edcf188899c166b25d968369f6f2dc429ed4fb21dd51475c59eead1255b9330"
+    },
+    "facies_penobscot/p5_r2_loss_ablation.png": {
+      "bytes": 36427,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "294b1c4a81b2235b0fa9edc807021477c25ead27633803cf956cb92cc297d869"
+    },
+    "facies_penobscot/p5_r2_prediction_diagnostics.png": {
+      "bytes": 532972,
+      "metadata": {},
+      "role": "figure",
+      "sha256": "42cb984f0060da2519a37aa264fb0855007145f54acb127c7ae12113d240f6cf"
+    },
+    "facies_penobscot/p5_r2_prediction_manifest.json": {
+      "bytes": 1637,
+      "metadata": {},
+      "role": "manifest",
+      "sha256": "eee86e1c8b4c7ed036192cf6a4dcd957d25a38fd1ee8462ee1dd1159c88f95cd"
+    },
+    "facies_penobscot/p5_r2_summary.json": {
+      "bytes": 3369,
+      "metadata": {},
+      "role": "task-summary",
+      "sha256": "8f694e61228105feb87ff1bf4d56e9977ea8b775a63f92df779da3d3591c5f13"
+    },
+    "p5_r2_config.json": {
+      "bytes": 1290,
+      "metadata": {},
+      "role": "config",
+      "sha256": "79897e676901f1d3e14d337bb60ee3eb78869b12664e1aad9c2a9888a13a5552"
+    },
+    "p5_r2_results.jsonl": {
+      "bytes": 5257393,
+      "metadata": {},
+      "role": "results",
+      "sha256": "ce00ba864deec57380c804cd5225acaa70e3ffafbf8ee00ef61c70b51b7b2116"
+    },
+    "p5_r2_summary.json": {
+      "bytes": 9335,
+      "metadata": {},
+      "role": "summary",
+      "sha256": "437638c466b415cf65fbd9dc725757cb87efe632154e316e3fe9389852e14d23"
+    }
+  },
+  "manifest_version": "p4-v1",
+  "run_id": "facies-p5-r2-v1"
+}
