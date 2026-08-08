@@ -1,0 +1,276 @@
+{
+  "method": "sweep_MAX_LOCAL_STRETCH_isolating_dtw_refinement_sensitivity_to_coarse_t0_jitter",
+  "baseline_max_local_stretch": 1.2,
+  "stretch_values_tested": [
+    1.05,
+    1.1,
+    1.2,
+    1.3,
+    1.5,
+    2.0
+  ],
+  "core_well": "19BT2",
+  "core_experiment_fixed_t0": {
+    "1.05": {
+      "max_local_stretch": 1.05,
+      "is_current_default": false,
+      "t0_i0_blind_ms": 2560.0,
+      "t0_regional_prior_ms": 2555.5650016284512,
+      "start_point_diff_ms": 4.434998371548772,
+      "mae_at_t0_i0_ms": 267.63097338188413,
+      "mae_at_t0_prior_ms": 280.9517141915392,
+      "delta_mae_ms": 13.320740809655092,
+      "dtw_distance_at_t0_i0": 0.4082800673735117,
+      "dtw_distance_at_t0_prior": 0.38179259408606225
+    },
+    "1.10": {
+      "max_local_stretch": 1.1,
+      "is_current_default": false,
+      "t0_i0_blind_ms": 2560.0,
+      "t0_regional_prior_ms": 2555.5650016284512,
+      "start_point_diff_ms": 4.434998371548772,
+      "mae_at_t0_i0_ms": 256.31147143028505,
+      "mae_at_t0_prior_ms": 300.42528145191034,
+      "delta_mae_ms": 44.113810021625284,
+      "dtw_distance_at_t0_i0": 0.39584466650983535,
+      "dtw_distance_at_t0_prior": 0.36313643284441305
+    },
+    "1.20": {
+      "max_local_stretch": 1.2,
+      "is_current_default": true,
+      "t0_i0_blind_ms": 2560.0,
+      "t0_regional_prior_ms": 2555.5650016284512,
+      "start_point_diff_ms": 4.434998371548772,
+      "mae_at_t0_i0_ms": 183.83144712558519,
+      "mae_at_t0_prior_ms": 312.8494998634393,
+      "delta_mae_ms": 129.0180527378541,
+      "dtw_distance_at_t0_i0": 0.3366213115153063,
+      "dtw_distance_at_t0_prior": 0.341308298402509
+    },
+    "1.30": {
+      "max_local_stretch": 1.3,
+      "is_current_default": false,
+      "t0_i0_blind_ms": 2560.0,
+      "t0_regional_prior_ms": 2555.5650016284512,
+      "start_point_diff_ms": 4.434998371548772,
+      "mae_at_t0_i0_ms": 183.83144712558519,
+      "mae_at_t0_prior_ms": 313.0598198106112,
+      "delta_mae_ms": 129.22837268502602,
+      "dtw_distance_at_t0_i0": 0.3366213115153063,
+      "dtw_distance_at_t0_prior": 0.3407437009320903
+    },
+    "1.50": {
+      "max_local_stretch": 1.5,
+      "is_current_default": false,
+      "t0_i0_blind_ms": 2560.0,
+      "t0_regional_prior_ms": 2555.5650016284512,
+      "start_point_diff_ms": 4.434998371548772,
+      "mae_at_t0_i0_ms": 80.40058108107166,
+      "mae_at_t0_prior_ms": 311.1152412468734,
+      "delta_mae_ms": 230.71466016580172,
+      "dtw_distance_at_t0_i0": 0.33293973094736523,
+      "dtw_distance_at_t0_prior": 0.3407437009320903
+    },
+    "2.00": {
+      "max_local_stretch": 2.0,
+      "is_current_default": false,
+      "t0_i0_blind_ms": 2560.0,
+      "t0_regional_prior_ms": 2555.5650016284512,
+      "start_point_diff_ms": 4.434998371548772,
+      "mae_at_t0_i0_ms": 82.25942146852731,
+      "mae_at_t0_prior_ms": 313.0598198106112,
+      "delta_mae_ms": 230.8003983420839,
+      "dtw_distance_at_t0_i0": 0.33293973094736523,
+      "dtw_distance_at_t0_prior": 0.3407437009320903
+    }
+  },
+  "side_effect_check_all_wells_blind_search": {
+    "19A": {
+      "1.05": {
+        "max_local_stretch": 1.05,
+        "coarse_t0_ms": 2740.0,
+        "mae_ms": 261.9696649571652,
+        "dtw_distance": 0.36477232095432793,
+        "reject_ambiguous": true
+      },
+      "1.10": {
+        "max_local_stretch": 1.1,
+        "coarse_t0_ms": 2740.0,
+        "mae_ms": 272.4674749193981,
+        "dtw_distance": 0.346962777337224,
+        "reject_ambiguous": true
+      },
+      "1.20": {
+        "max_local_stretch": 1.2,
+        "coarse_t0_ms": 2740.0,
+        "mae_ms": 265.9366332605604,
+        "dtw_distance": 0.3239245240984555,
+        "reject_ambiguous": true
+      },
+      "1.30": {
+        "max_local_stretch": 1.3,
+        "coarse_t0_ms": 2740.0,
+        "mae_ms": 244.29820163590767,
+        "dtw_distance": 0.3002817345771835,
+        "reject_ambiguous": true
+      },
+      "1.50": {
+        "max_local_stretch": 1.5,
+        "coarse_t0_ms": 2740.0,
+        "mae_ms": 243.8533039454448,
+        "dtw_distance": 0.26830590950475186,
+        "reject_ambiguous": true
+      },
+      "2.00": {
+        "max_local_stretch": 2.0,
+        "coarse_t0_ms": 2740.0,
+        "mae_ms": 243.8533039454448,
+        "dtw_distance": 0.26830590950475186,
+        "reject_ambiguous": true
+      }
+    },
+    "19BT2": {
+      "1.05": {
+        "max_local_stretch": 1.05,
+        "coarse_t0_ms": 2560.0,
+        "mae_ms": 267.63097338188413,
+        "dtw_distance": 0.4082800673735117,
+        "reject_ambiguous": false
+      },
+      "1.10": {
+        "max_local_stretch": 1.1,
+        "coarse_t0_ms": 2560.0,
+        "mae_ms": 256.31147143028505,
+        "dtw_distance": 0.39584466650983535,
+        "reject_ambiguous": false
+      },
+      "1.20": {
+        "max_local_stretch": 1.2,
+        "coarse_t0_ms": 2560.0,
+        "mae_ms": 183.83144712558519,
+        "dtw_distance": 0.3366213115153063,
+        "reject_ambiguous": false
+      },
+      "1.30": {
+        "max_local_stretch": 1.3,
+        "coarse_t0_ms": 2560.0,
+        "mae_ms": 183.83144712558519,
+        "dtw_distance": 0.3366213115153063,
+        "reject_ambiguous": false
+      },
+      "1.50": {
+        "max_local_stretch": 1.5,
+        "coarse_t0_ms": 2560.0,
+        "mae_ms": 80.40058108107166,
+        "dtw_distance": 0.33293973094736523,
+        "reject_ambiguous": false
+      },
+      "2.00": {
+        "max_local_stretch": 2.0,
+        "coarse_t0_ms": 2560.0,
+        "mae_ms": 82.25942146852731,
+        "dtw_distance": 0.33293973094736523,
+        "reject_ambiguous": false
+      }
+    },
+    "19SR": {
+      "1.05": {
+        "max_local_stretch": 1.05,
+        "coarse_t0_ms": 612.0,
+        "mae_ms": 1865.1328033973052,
+        "dtw_distance": 0.4711793436618346,
+        "reject_ambiguous": true
+      },
+      "1.10": {
+        "max_local_stretch": 1.1,
+        "coarse_t0_ms": 612.0,
+        "mae_ms": 1864.3328033973053,
+        "dtw_distance": 0.4572177716099156,
+        "reject_ambiguous": true
+      },
+      "1.20": {
+        "max_local_stretch": 1.2,
+        "coarse_t0_ms": 612.0,
+        "mae_ms": 1863.746025332791,
+        "dtw_distance": 0.42291840067336817,
+        "reject_ambiguous": true
+      },
+      "1.30": {
+        "max_local_stretch": 1.3,
+        "coarse_t0_ms": 612.0,
+        "mae_ms": 1863.746025332791,
+        "dtw_distance": 0.42291840067336817,
+        "reject_ambiguous": true
+      },
+      "1.50": {
+        "max_local_stretch": 1.5,
+        "coarse_t0_ms": 612.0,
+        "mae_ms": 1872.6177164351727,
+        "dtw_distance": 0.4213848162480855,
+        "reject_ambiguous": true
+      },
+      "2.00": {
+        "max_local_stretch": 2.0,
+        "coarse_t0_ms": 612.0,
+        "mae_ms": 1870.746025332791,
+        "dtw_distance": 0.4213848162480855,
+        "reject_ambiguous": true
+      }
+    }
+  },
+  "candidate_verdicts": {
+    "1.05": {
+      "max_local_stretch": 1.05,
+      "improves_core_sensitivity": true,
+      "no_regression_on_other_wells": false,
+      "regressed_wells": [
+        "19BT2",
+        "19SR"
+      ],
+      "net_recommended": false
+    },
+    "1.10": {
+      "max_local_stretch": 1.1,
+      "improves_core_sensitivity": true,
+      "no_regression_on_other_wells": false,
+      "regressed_wells": [
+        "19A",
+        "19BT2",
+        "19SR"
+      ],
+      "net_recommended": false
+    },
+    "1.30": {
+      "max_local_stretch": 1.3,
+      "improves_core_sensitivity": false,
+      "no_regression_on_other_wells": true,
+      "regressed_wells": [],
+      "net_recommended": false
+    },
+    "1.50": {
+      "max_local_stretch": 1.5,
+      "improves_core_sensitivity": false,
+      "no_regression_on_other_wells": false,
+      "regressed_wells": [
+        "19SR"
+      ],
+      "net_recommended": false
+    },
+    "2.00": {
+      "max_local_stretch": 2.0,
+      "improves_core_sensitivity": false,
+      "no_regression_on_other_wells": false,
+      "regressed_wells": [
+        "19SR"
+      ],
+      "net_recommended": false
+    }
+  },
+  "verdict": {
+    "baseline_delta_mae_ms": 129.0180527378541,
+    "most_stable_stretch": 1.05,
+    "most_stable_delta_mae_ms": 13.320740809655092,
+    "any_stretch_improves_core_without_regressing_other_wells": false,
+    "honest_conclusion": "no MAX_LOCAL_STRETCH value tested both reduces 19BT2's sensitivity to the coarse-t0 jitter AND avoids regressing at least one other well; window width alone does not fix the underlying instability"
+  }
+}

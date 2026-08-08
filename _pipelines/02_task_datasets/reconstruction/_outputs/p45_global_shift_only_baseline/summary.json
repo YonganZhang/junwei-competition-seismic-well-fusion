@@ -1,0 +1,95 @@
+{
+  "method": "sonic_integration + reuse_I0_coarse_t0 + RIGID GLOBAL SHIFT ONLY (no DTW)",
+  "acceptance_criterion": "(4) synthetic-vs-real-trace match should be better than sonic integration + rigid global shift baseline",
+  "wells": {
+    "19A": {
+      "coarse_t0_ms": 2740.0,
+      "coarse_xcorr": 0.5534511299866991,
+      "reject_ambiguous": true,
+      "own_log_depth_tvdss_range": [
+        2721.033720710308,
+        3259.9583856159143
+      ],
+      "metrics_global_shift_only": {
+        "rows": 39,
+        "mae_ms": 270.9061334968513,
+        "rmse_ms": 271.0108588642193,
+        "bias_ms": 270.9061334968513,
+        "median_absolute_error_ms": 271.4026144898053,
+        "n_checkshot_points_in_range": 39
+      },
+      "metrics_i0_shift_plus_dtw": {
+        "rows": 39,
+        "mae_ms": 265.9366332605604,
+        "rmse_ms": 278.7825669505464,
+        "bias_ms": 265.9366332605604,
+        "median_absolute_error_ms": 255.80000000000018,
+        "n_checkshot_points_in_range": 39
+      },
+      "dtw_reduces_mae": true,
+      "mae_delta_ms_dtw_minus_shift_only": -4.969500236290855
+    },
+    "19BT2": {
+      "coarse_t0_ms": 2560.0,
+      "coarse_xcorr": 0.4304705763120544,
+      "reject_ambiguous": false,
+      "own_log_depth_tvdss_range": [
+        2409.3906590415754,
+        3304.97
+      ],
+      "metrics_global_shift_only": {
+        "rows": 71,
+        "mae_ms": 278.9381637734864,
+        "rmse_ms": 279.48670121266366,
+        "bias_ms": 278.9381637734864,
+        "median_absolute_error_ms": 280.599345886023,
+        "n_checkshot_points_in_range": 71
+      },
+      "metrics_i0_shift_plus_dtw": {
+        "rows": 71,
+        "mae_ms": 183.83144712558519,
+        "rmse_ms": 192.52525448776927,
+        "bias_ms": 183.83144712558519,
+        "median_absolute_error_ms": 175.09380759648457,
+        "n_checkshot_points_in_range": 71
+      },
+      "dtw_reduces_mae": true,
+      "mae_delta_ms_dtw_minus_shift_only": -95.10671664790121
+    },
+    "19SR": {
+      "coarse_t0_ms": 612.0,
+      "coarse_xcorr": 0.5472104567654732,
+      "reject_ambiguous": true,
+      "own_log_depth_tvdss_range": [
+        2759.4620257285796,
+        3061.39
+      ],
+      "metrics_global_shift_only": {
+        "rows": 20,
+        "mae_ms": 1861.823210783937,
+        "rmse_ms": 1861.8533887765832,
+        "bias_ms": -1861.823210783937,
+        "median_absolute_error_ms": 1864.653305413029,
+        "n_checkshot_points_in_range": 20
+      },
+      "metrics_i0_shift_plus_dtw": {
+        "rows": 20,
+        "mae_ms": 1863.746025332791,
+        "rmse_ms": 1864.430982067737,
+        "bias_ms": -1863.746025332791,
+        "median_absolute_error_ms": 1863.9232854945112,
+        "n_checkshot_points_in_range": 20
+      },
+      "dtw_reduces_mae": false,
+      "mae_delta_ms_dtw_minus_shift_only": 1.9228145488541486
+    }
+  },
+  "aggregate": {
+    "n_wells": 3,
+    "n_wells_where_dtw_reduces_mae": 2,
+    "mean_mae_ms_global_shift_only": 803.8891693514248,
+    "mean_mae_ms_i0_shift_plus_dtw": 771.1713685729788,
+    "dtw_reduces_mean_mae": true
+  },
+  "note": "Both methods use the SAME best_t0 from I0's own blind coarse xcorr search over T0_SEARCH_MS (no checkshot used to pick it). The only difference is whether the DTW local-warp refinement step runs afterward. Ground truth (VSP checkshot) is read only for scoring, identically for both methods."
+}

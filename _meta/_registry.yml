@@ -311,6 +311,22 @@ code_domains:
       checkshot。3口井里2口明显改善(19A 265.9→88.4ms、19SR 1863.7→326.2ms
       约6倍)，19BT2变差(183.8→312.8ms)；歧义阈值需为窄窗口场景重新校准。
 
+  - id: p45_well_tie_acceptance_criteria_audit
+    path: _pipelines/02_task_datasets/reconstruction/p45_monotonicity_and_uncertainty_audit.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P45 issue #1剩余7条验收标准逐项核查(2026-08-08，Workflow并行6个子智能体
+      +独立复核)：标准(2)时深曲线单调性不通过(32.2%步长倒退)；(3)跨SEG-Y源
+      鲁棒性用邻井先验修复后从2716ms偏移降到316ms但仍未达200ms容差；(4)DTW
+      精修优于纯整体平移但边际改善(4%，2/3井)；(6)不确定性-误差相关性弱且
+      方向不稳定(n=9低置信度)；F3数据缺口仍阻塞，发现NLOG.nl新线索未验证。
+      同批文件：p45_global_shift_only_baseline.py(标准4)、
+      p45_regional_prior_st10010_robustness.py(标准3修复)、
+      p45_dtw_window_sensitivity.py(排除DTW窗宽为根因，指向粗搜索本身脆弱)。
+      结论：粗相关搜索对噪声的脆弱性是核心瓶颈，非数据或DTW参数问题。
+
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
     type: pipeline

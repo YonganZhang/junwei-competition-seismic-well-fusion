@@ -1,0 +1,130 @@
+{
+  "method": "same_regional_prior_narrows_t0_search_on_BOTH_st0202_and_st10010_then_compare_with_prior_vs_with_prior",
+  "prior_half_width_ms": 300.0,
+  "t0_consistency_tolerance_ms": 200.0,
+  "st10010_time_range_ms": [
+    12.0,
+    3408.0
+  ],
+  "results": {
+    "19A": {
+      "status": "evaluated",
+      "regional_prior_t0_ms": 2641.8364519243796,
+      "st10010_search_window_ms": [
+        2341.8364519243796,
+        2937.8364519243796
+      ],
+      "st10010_chosen_t0_ms": 2681.8364519243796,
+      "st10010_xcorr": 0.44338792785190073,
+      "st10010_ambiguity_gap": 0.03892035968322455,
+      "st10010_reject_ambiguous": true,
+      "st10010_dtw_distance": 18.767958270422454,
+      "st10010_metrics_with_prior": {
+        "rows": 39,
+        "mae_ms": 140.32960962457045,
+        "rmse_ms": 145.50173778319606,
+        "bias_ms": 140.32960962457045,
+        "median_absolute_error_ms": 152.62415601976954
+      },
+      "st0202_search_window_ms": [
+        2341.8364519243796,
+        2937.8364519243796
+      ],
+      "st0202_chosen_t0_ms": 2617.8364519243796,
+      "st0202_reject_ambiguous": true,
+      "st0202_metrics_with_prior": {
+        "rows": 39,
+        "mae_ms": 88.43228471330613,
+        "rmse_ms": 117.73591094150832,
+        "bias_ms": 88.43228471330613,
+        "median_absolute_error_ms": 52.37931295237968
+      },
+      "t0_delta_ms": 64.0,
+      "mae_delta_ms": 51.89732491126432,
+      "both_rejected_or_both_kept": true,
+      "t0_consistent_within_tolerance": true
+    },
+    "19BT2": {
+      "status": "evaluated",
+      "regional_prior_t0_ms": 2543.5650016284512,
+      "st10010_search_window_ms": [
+        2243.5650016284512,
+        2839.5650016284512
+      ],
+      "st10010_chosen_t0_ms": 2567.5650016284512,
+      "st10010_xcorr": 0.3075196465836388,
+      "st10010_ambiguity_gap": 0.05804759238978133,
+      "st10010_reject_ambiguous": false,
+      "st10010_dtw_distance": 22.95739677937263,
+      "st10010_metrics_with_prior": {
+        "rows": 71,
+        "mae_ms": 218.7551376268653,
+        "rmse_ms": 228.495162932614,
+        "bias_ms": 218.7551376268653,
+        "median_absolute_error_ms": 215.6001000000001
+      },
+      "st0202_search_window_ms": [
+        2243.5650016284512,
+        2839.5650016284512
+      ],
+      "st0202_chosen_t0_ms": 2555.5650016284512,
+      "st0202_reject_ambiguous": true,
+      "st0202_metrics_with_prior": {
+        "rows": 71,
+        "mae_ms": 312.8494998634393,
+        "rmse_ms": 321.3618850759112,
+        "bias_ms": 312.8494998634393,
+        "median_absolute_error_ms": 293.3106150457138
+      },
+      "t0_delta_ms": 12.0,
+      "mae_delta_ms": -94.094362236574,
+      "both_rejected_or_both_kept": false,
+      "t0_consistent_within_tolerance": true
+    },
+    "19SR": {
+      "status": "evaluated",
+      "regional_prior_t0_ms": 2588.4356913687757,
+      "st10010_search_window_ms": [
+        2288.4356913687757,
+        2884.4356913687757
+      ],
+      "st10010_chosen_t0_ms": 2564.4356913687757,
+      "st10010_xcorr": 0.49766229380600796,
+      "st10010_ambiguity_gap": 0.020657594515974986,
+      "st10010_reject_ambiguous": true,
+      "st10010_dtw_distance": 16.983551667798817,
+      "st10010_metrics_with_prior": {
+        "rows": 20,
+        "mae_ms": 103.78168712104704,
+        "rmse_ms": 131.6765929347469,
+        "bias_ms": 101.56963828713967,
+        "median_absolute_error_ms": 59.78238595574703
+      },
+      "st0202_search_window_ms": [
+        2288.4356913687757,
+        2884.4356913687757
+      ],
+      "st0202_chosen_t0_ms": 2880.4356913687757,
+      "st0202_reject_ambiguous": true,
+      "st0202_metrics_with_prior": {
+        "rows": 20,
+        "mae_ms": 326.2026939784174,
+        "rmse_ms": 326.50523187670075,
+        "bias_ms": 326.2026939784174,
+        "median_absolute_error_ms": 326.8852927826422
+      },
+      "t0_delta_ms": -316.0,
+      "mae_delta_ms": -222.42100685737037,
+      "both_rejected_or_both_kept": true,
+      "t0_consistent_within_tolerance": false
+    }
+  },
+  "verdict": {
+    "n_wells_evaluated_on_both": 3,
+    "n_wells_ambiguity_gate_agrees": 2,
+    "n_wells_t0_consistent_within_tolerance": 2,
+    "max_abs_t0_delta_ms_with_prior": 316.0,
+    "max_abs_t0_delta_ms_blind_search_reference": 2716.0,
+    "passes_acceptance_criterion_c": false
+  }
+}
