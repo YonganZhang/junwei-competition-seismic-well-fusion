@@ -22,6 +22,8 @@ def capabilities() -> dict[str, Any]:
         "input_modalities": ["tabular"],
         "supports_missing_mask": True,
         "supports_uncertainty": False,
+        "supported_losses": ["not_applicable"],
+        "supported_output_activations": ["not_applicable"],
         "requires_pretrained_weight": True,
         "auto_download": False,
         "target_strategy": "three independent in-context regressors",
