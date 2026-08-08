@@ -9,7 +9,7 @@
 
 这份文档是给后续 Claude/其他 AI 接手当前 `track-property` 工作树时看的。目标是把当前仓库里已经确认过的记录、已完成的产物、已知阻塞和下一步入口一次讲清楚，避免重复找路。
 
-## 1. 当前仓库状态
+## 1. 2026-08-06 当时的仓库状态（历史追溯用，当前状态见 `_task_plan.md`）
 
 - 当前分支：`track-property`
 - 当前 HEAD：`54cae62ee4bf92b02deffab517b5f2c55f65802c`
@@ -39,7 +39,7 @@
   - `_pipelines/02_task_datasets/reservoir/_outputs/p29_agent_action_effect/`
   - `_pipelines/02_task_datasets/reservoir/_outputs/p18_cigbench_property/`
 
-## 3. 已确认的当前进度
+## 3. 2026-08-06 当时已确认的进度
 
 ### 3.1 3D 科学可视化（已完成）
 
@@ -189,7 +189,7 @@ sed -n '1,260p' _pipelines/02_task_datasets/reservoir/p5_stage1.py
 sed -n '1,220p' _models/property/source_lock.json
 ```
 
-## 6. 一句话状态
+## 6. 一句话状态（截至 2026-08-06）
 
 当前仓库不是“空白待开工”，而是已经有一批真实产物、阻塞证据和未跟踪草稿；接手时优先处理未提交项和 P18/P5 的边界，不要重复造证据。
 
