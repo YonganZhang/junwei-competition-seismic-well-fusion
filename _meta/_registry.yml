@@ -380,6 +380,23 @@ entrypoints:
     owner: project
     description: "Single source of truth for the sweetspot track. Reads the archived evidence of all three layers, resolves the current incumbent per target, and writes _outputs/incumbent/incumbent.json with incumbents, rejected_routes and open_work. Trains nothing, opens no frozen test, stdlib only. Read this before restarting any sweetspot work."
 
+  - id: six_track_model_results_summary
+    path: _outputs/model_results_summary
+    type: pipeline_step
+    status: active
+    owner: project
+    description: >
+      P10 六赛道模型结果汇总，2026-08-08 由 p10-results-integration 分支按文件集成入主线：
+      `build_six_track_summary.py` 汇总各赛道 `_outputs/p10_model_results/track_model_metrics.xlsx`，
+      产出 `six_track_model_metrics.xlsx`、`human_summary.md`、图表 manifest 与
+      `field_validation_report.json`。同批补齐 fault / reservoir / sweetspot 三条赛道的
+      p10 结果模块与产物（facies、lithofacies 的对应模块此前已在主线）。
+      🔴 读写 xlsx 需要 `openpyxl`：缺它时 pytest 在 collection 阶段即 ImportError，
+      不是代码故障。本机 `envs/gaia-v2-8a4915-py312` 与系统 python3 具备。
+      验证：5 passed / 3 skipped / 0 failed。
+      `sweetspot/p10/results.py` 原有 7 处本机绝对路径（共享 torch 解释器、Chronos-2 权重快照），
+      已改为 `VOLVE_P5_TORCH_PYTHON` / `CHRONOS2_SNAPSHOT_DIR` 可覆盖，默认值逐字符不变。
+
   - id: foundation_adaptation_timellm
     path: _pipelines/04_foundation_adaptation
     type: research_pipeline

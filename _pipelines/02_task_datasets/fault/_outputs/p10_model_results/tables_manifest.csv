@@ -1,0 +1,9 @@
+kind,path,status,title,source_evidence,notes
+metric_workbook,_outputs/p10_model_results/track_model_metrics.xlsx,valid,Fault model metrics workbook,_outputs/runs/audited_v2/baseline_metrics.json,single-sheet workbook only
+source_table,_outputs/runs/audited_v2/baseline_metrics.json,valid,Audited baseline metrics,_outputs/runs/audited_v2/build_summary.json,reference-only baseline evidence
+source_table,_outputs/runs/audited_v2/build_summary.json,valid,Audited baseline build summary,_outputs/runs/audited_v2/baseline_metrics.json,build provenance and split hashes
+source_table,_outputs/p5_stage3/p5_stage3_summary.json,valid,Fault P5 Stage-3 summary,_outputs/p5_stage3/p5_stage3_data_manifest.json,zero-fold readiness gate
+source_table,_outputs/p5_stage3/p5_stage3_data_manifest.json,valid,Fault P5 Stage-3 data manifest,_outputs/p5_stage3/p5_stage3_summary.json,verified-negative and unknown-mask blockers
+source_table,_outputs/p5_stage3/p5_stage3_visualization_manifest.json,valid,Fault P5 Stage-3 visualization manifest,_outputs/p5_stage3/p5_stage3_data_manifest.json,readiness figures only
+source_table,_outputs/p5_stage4_confirmation/p5_stage4_confirmation.json,valid,Fault P5 Stage-4 confirmation,_outputs/p5_stage3/p5_stage3_summary.json,blocked confirmation; no winner/refit/holdout
+source_table,_outputs/p9_sammed3d_gate/summary.json,valid,Fault SAM-Med3D gate summary,_outputs/p5_stage4_confirmation/p5_stage4_confirmation.json,foundation route is connected-data blocked

@@ -1,0 +1,309 @@
+{
+  "evidence_checked": 1456,
+  "evidence_missing": [],
+  "figures_manifest": {
+    "path": "_outputs/model_results_summary/all_figures_manifest.csv",
+    "row_count": 40
+  },
+  "generated_at": "2026-07-29T09:31:47.963137+00:00",
+  "generated_files": {
+    "field_validation_report": "_outputs/model_results_summary/field_validation_report.json",
+    "figures_manifest": "_outputs/model_results_summary/all_figures_manifest.csv",
+    "human_summary": "_outputs/model_results_summary/human_summary.md",
+    "tables_manifest": "_outputs/model_results_summary/all_tables_manifest.csv",
+    "workbook": "_outputs/model_results_summary/six_track_model_metrics.xlsx"
+  },
+  "initial_validation": {
+    "canonical_tracks": [
+      "fault",
+      "facies",
+      "property",
+      "lithofacies",
+      "sweetspot",
+      "reconstruction"
+    ],
+    "combined": {
+      "evidence_checked": 0,
+      "evidence_missing": [],
+      "manifest_rows": {
+        "figures": 40,
+        "tables": 43
+      },
+      "status_counts": {
+        "beneficial": 119,
+        "blocked": 2,
+        "complete": 11,
+        "confirmed_holdout": 12,
+        "control": 59,
+        "data_blocked": 2,
+        "diagnostic_only": 84,
+        "effect_supported_not_promoted": 14,
+        "evidence_only": 36,
+        "known_holdout_confirmation": 8,
+        "negative_control": 8,
+        "non_beneficial": 136,
+        "passed": 31,
+        "production_reference": 12,
+        "promote": 5,
+        "proxy_feasible": 16,
+        "ranked": 632,
+        "reference": 258,
+        "reference_only": 7,
+        "rejected_no_gain": 4
+      },
+      "track_count": 6,
+      "track_counts": {
+        "facies": 680,
+        "fault": 8,
+        "lithofacies": 264,
+        "property": 399,
+        "reconstruction": 64,
+        "sweetspot": 41
+      },
+      "tracks_present": [
+        "facies",
+        "fault",
+        "lithofacies",
+        "property",
+        "reconstruction",
+        "sweetspot"
+      ],
+      "workbook": {
+        "column_count": 26,
+        "path": "_outputs/model_results_summary/six_track_model_metrics.xlsx",
+        "row_count": 1456,
+        "sheet_name": "模型指标"
+      }
+    },
+    "generated_at": "2026-07-29T09:31:46.720702+00:00",
+    "repo_root": ".",
+    "schema_version": "model-results-summary/v1",
+    "sources": {
+      "facies": {
+        "figures_manifest": {
+          "path": "_pipelines/02_task_datasets/facies/_outputs/p10_model_results/figures_manifest.csv",
+          "row_count": 5
+        },
+        "source_key": "facies",
+        "tables_manifest": {
+          "path": "_pipelines/02_task_datasets/facies/_outputs/p10_model_results/tables_manifest.csv",
+          "row_count": 8
+        },
+        "workbook": {
+          "header_count": 26,
+          "path": "_pipelines/02_task_datasets/facies/_outputs/p10_model_results/track_model_metrics.xlsx",
+          "row_count": 680,
+          "sheet_name": "模型指标",
+          "status_counts": {
+            "confirmed_holdout": 12,
+            "control": 14,
+            "effect_supported_not_promoted": 4,
+            "non_beneficial": 14,
+            "ranked": 632,
+            "reference": 4
+          },
+          "tracks": [
+            "facies"
+          ]
+        }
+      },
+      "fault": {
+        "figures_manifest": {
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p10_model_results/figures_manifest.csv",
+          "row_count": 6
+        },
+        "source_key": "fault",
+        "tables_manifest": {
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p10_model_results/tables_manifest.csv",
+          "row_count": 8
+        },
+        "workbook": {
+          "header_count": 26,
+          "path": "_pipelines/02_task_datasets/fault/_outputs/p10_model_results/track_model_metrics.xlsx",
+          "row_count": 8,
+          "sheet_name": "模型指标",
+          "status_counts": {
+            "data_blocked": 1,
+            "reference_only": 7
+          },
+          "tracks": [
+            "fault"
+          ]
+        }
+      },
+      "lithofacies": {
+        "figures_manifest": {
+          "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p10_model_results/figures_manifest.csv",
+          "row_count": 7
+        },
+        "source_key": "lithofacies",
+        "tables_manifest": {
+          "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p10_model_results/tables_manifest.csv",
+          "row_count": 3
+        },
+        "workbook": {
+          "header_count": 26,
+          "path": "_pipelines/02_task_datasets/lithofacies/_outputs/p10_model_results/track_model_metrics.xlsx",
+          "row_count": 264,
+          "sheet_name": "模型指标",
+          "status_counts": {
+            "diagnostic_only": 84,
+            "non_beneficial": 84,
+            "reference": 96
+          },
+          "tracks": [
+            "lithofacies"
+          ]
+        }
+      },
+      "property": {
+        "figures_manifest": {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/p10_model_results/figures_manifest.csv",
+          "row_count": 10
+        },
+        "source_key": "reservoir",
+        "tables_manifest": {
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/p10_model_results/tables_manifest.csv",
+          "row_count": 5
+        },
+        "workbook": {
+          "header_count": 26,
+          "path": "_pipelines/02_task_datasets/reservoir/_outputs/p10_model_results/track_model_metrics.xlsx",
+          "row_count": 399,
+          "sheet_name": "模型指标",
+          "status_counts": {
+            "beneficial": 119,
+            "control": 45,
+            "effect_supported_not_promoted": 9,
+            "evidence_only": 36,
+            "non_beneficial": 25,
+            "production_reference": 12,
+            "reference": 153
+          },
+          "tracks": [
+            "property"
+          ]
+        }
+      },
+      "reconstruction": {
+        "figures_manifest": {
+          "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p10_model_results/figures_manifest.csv",
+          "row_count": 7
+        },
+        "source_key": "reconstruction",
+        "tables_manifest": {
+          "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p10_model_results/tables_manifest.csv",
+          "row_count": 1
+        },
+        "workbook": {
+          "header_count": 26,
+          "path": "_pipelines/02_task_datasets/reconstruction/_outputs/p10_model_results/track_model_metrics.xlsx",
+          "row_count": 64,
+          "sheet_name": "模型指标",
+          "status_counts": {
+            "known_holdout_confirmation": 8,
+            "negative_control": 8,
+            "non_beneficial": 12,
+            "passed": 31,
+            "reference": 5
+          },
+          "tracks": [
+            "reconstruction"
+          ]
+        }
+      },
+      "sweetspot": {
+        "figures_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p10_model_results/figures_manifest.csv",
+          "row_count": 5
+        },
+        "source_key": "sweetspot",
+        "tables_manifest": {
+          "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p10_model_results/tables_manifest.csv",
+          "row_count": 12
+        },
+        "workbook": {
+          "header_count": 26,
+          "path": "_pipelines/02_task_datasets/sweetspot/_outputs/p10_model_results/track_model_metrics.xlsx",
+          "row_count": 41,
+          "sheet_name": "模型指标",
+          "status_counts": {
+            "blocked": 2,
+            "complete": 11,
+            "data_blocked": 1,
+            "effect_supported_not_promoted": 1,
+            "non_beneficial": 1,
+            "promote": 5,
+            "proxy_feasible": 16,
+            "rejected_no_gain": 4
+          },
+          "tracks": [
+            "sweetspot"
+          ]
+        }
+      }
+    },
+    "track_alias_map": {
+      "facies": "facies",
+      "fault": "fault",
+      "lithofacies": "lithofacies",
+      "property": "property",
+      "reconstruction": "reconstruction",
+      "reservoir": "property",
+      "sweetspot": "sweetspot"
+    }
+  },
+  "manifest_evidence_checked": 86,
+  "manifest_evidence_missing": [],
+  "schema_version": "model-results-summary/v1",
+  "tables_manifest": {
+    "path": "_outputs/model_results_summary/all_tables_manifest.csv",
+    "row_count": 46
+  },
+  "track_alias_map": {
+    "facies": "facies",
+    "fault": "fault",
+    "lithofacies": "lithofacies",
+    "property": "property",
+    "reconstruction": "reconstruction",
+    "reservoir": "property",
+    "sweetspot": "sweetspot"
+  },
+  "workbook": {
+    "column_count": 26,
+    "path": "_outputs/model_results_summary/six_track_model_metrics.xlsx",
+    "row_count": 1456,
+    "sheet_name": "模型指标",
+    "status_counts": {
+      "beneficial": 119,
+      "blocked": 2,
+      "complete": 11,
+      "confirmed_holdout": 12,
+      "control": 59,
+      "data_blocked": 2,
+      "diagnostic_only": 84,
+      "effect_supported_not_promoted": 14,
+      "evidence_only": 36,
+      "known_holdout_confirmation": 8,
+      "negative_control": 8,
+      "non_beneficial": 136,
+      "passed": 31,
+      "production_reference": 12,
+      "promote": 5,
+      "proxy_feasible": 16,
+      "ranked": 632,
+      "reference": 258,
+      "reference_only": 7,
+      "rejected_no_gain": 4
+    },
+    "track_count": 6,
+    "tracks": [
+      "facies",
+      "fault",
+      "lithofacies",
+      "property",
+      "reconstruction",
+      "sweetspot"
+    ]
+  }
+}

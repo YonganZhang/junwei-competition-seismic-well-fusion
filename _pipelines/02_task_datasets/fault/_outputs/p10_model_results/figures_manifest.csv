@@ -1,0 +1,7 @@
+kind,path,status,title,source_evidence,notes
+existing_chart,_outputs/runs/audited_v2/loss_curve.png,valid,Audited baseline loss curve,_outputs/runs/audited_v2/baseline_metrics.json,canonical audited_v2 regression chart
+existing_chart,_outputs/runs/audited_v2/prediction_visualization.png,valid,Audited baseline prediction visualization,_outputs/runs/audited_v2/visualization_report.json,canonical audited_v2 regression chart
+existing_chart,_outputs/p5_stage3/figures/fault_readiness.svg,valid,Fault readiness coverage,_outputs/p5_stage3/p5_stage3_data_manifest.json,readiness evidence reused by the blocked gate
+existing_chart,_outputs/p5_stage3/figures/fault_negative_coverage.svg,valid,Fault negative coverage,_outputs/p5_stage3/p5_stage3_data_manifest.json,readiness evidence reused by the blocked gate
+existing_chart,_outputs/p5_stage3/figures/fault_unknown_coverage.svg,valid,Fault unknown coverage,_outputs/p5_stage3/p5_stage3_data_manifest.json,readiness evidence reused by the blocked gate
+generated_chart,_outputs/p10_model_results/before_after_primary_metric.png,valid,Fault primary metric before/after comparison,_outputs/runs/audited_v2/baseline_metrics.json,after side is explicitly blocked rather than an observed metric
