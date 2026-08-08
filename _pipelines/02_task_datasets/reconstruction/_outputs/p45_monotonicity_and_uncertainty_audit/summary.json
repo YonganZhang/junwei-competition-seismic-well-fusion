@@ -1,0 +1,557 @@
+{
+  "criterion_2_monotonicity_and_velocity": {
+    "velocity_range_checked_m_s": [
+      1500.0,
+      6000.0
+    ],
+    "curves": [
+      {
+        "well": "19A",
+        "method": "I0_blind_ST0202",
+        "n_depth_samples": 1189,
+        "n_steps": 1188,
+        "strictly_monotonic_increasing": false,
+        "n_non_monotonic_steps": 358,
+        "non_monotonic_fraction": 0.30134680134680136,
+        "examples_non_monotonic": [
+          {
+            "depth_tvdss_m": 2721.033720710308,
+            "twt_ms_at_depth": 2628.0,
+            "twt_ms_at_next_depth": 2628.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2721.493739623831,
+            "twt_ms_at_depth": 2628.0,
+            "twt_ms_at_next_depth": 2628.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2721.953758537354,
+            "twt_ms_at_depth": 2628.0,
+            "twt_ms_at_next_depth": 2628.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2722.413777450877,
+            "twt_ms_at_depth": 2628.0,
+            "twt_ms_at_next_depth": 2628.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2722.8737963644007,
+            "twt_ms_at_depth": 2628.0,
+            "twt_ms_at_next_depth": 2628.0,
+            "twt_delta_ms": 0.0
+          }
+        ],
+        "velocity_range_checked_m_s": [
+          1500.0,
+          6000.0
+        ],
+        "n_velocity_steps_checked": 830,
+        "n_velocity_out_of_range": 175,
+        "velocity_out_of_range_fraction": 0.21084337349397592,
+        "examples_velocity_out_of_range": [
+          {
+            "depth_tvdss_m": 2744.0346663864666,
+            "implied_velocity_m_s": 37314.261807330404
+          },
+          {
+            "depth_tvdss_m": 2751.85498791636,
+            "implied_velocity_m_s": 15502.857937471234
+          },
+          {
+            "depth_tvdss_m": 2760.1353283597773,
+            "implied_velocity_m_s": 111.89705402378792
+          },
+          {
+            "depth_tvdss_m": 2786.816425344121,
+            "implied_velocity_m_s": 75.3705612866383
+          },
+          {
+            "depth_tvdss_m": 2795.5567847010616,
+            "implied_velocity_m_s": 9317.947724843229
+          }
+        ],
+        "velocity_m_s_min_observed": 16.34902559196993,
+        "velocity_m_s_max_observed": 69197.64442033778,
+        "velocity_m_s_median_observed": 3497.7210606900717
+      },
+      {
+        "well": "19A",
+        "method": "regional_prior",
+        "n_depth_samples": 1189,
+        "n_steps": 1188,
+        "strictly_monotonic_increasing": false,
+        "n_non_monotonic_steps": 260,
+        "non_monotonic_fraction": 0.21885521885521886,
+        "examples_non_monotonic": [
+          {
+            "depth_tvdss_m": 2721.033720710308,
+            "twt_ms_at_depth": 2492.0,
+            "twt_ms_at_next_depth": 2492.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2721.493739623831,
+            "twt_ms_at_depth": 2492.0,
+            "twt_ms_at_next_depth": 2492.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2721.953758537354,
+            "twt_ms_at_depth": 2492.0,
+            "twt_ms_at_next_depth": 2492.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2722.413777450877,
+            "twt_ms_at_depth": 2492.0,
+            "twt_ms_at_next_depth": 2492.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2722.8737963644007,
+            "twt_ms_at_depth": 2492.0,
+            "twt_ms_at_next_depth": 2492.0,
+            "twt_delta_ms": 0.0
+          }
+        ],
+        "velocity_range_checked_m_s": [
+          1500.0,
+          6000.0
+        ],
+        "n_velocity_steps_checked": 928,
+        "n_velocity_out_of_range": 133,
+        "velocity_out_of_range_fraction": 0.14331896551724138,
+        "examples_velocity_out_of_range": [
+          {
+            "depth_tvdss_m": 2872.839962172954,
+            "implied_velocity_m_s": 111.0980216337624
+          },
+          {
+            "depth_tvdss_m": 2882.3298507462687,
+            "implied_velocity_m_s": 205.79381217662862
+          },
+          {
+            "depth_tvdss_m": 2891.350746268657,
+            "implied_velocity_m_s": 107.14984749698964
+          },
+          {
+            "depth_tvdss_m": 2900.371641791045,
+            "implied_velocity_m_s": 72.79680588394787
+          },
+          {
+            "depth_tvdss_m": 2931.9447761194033,
+            "implied_velocity_m_s": 208.015783614075
+          }
+        ],
+        "velocity_m_s_min_observed": 21.970906920280754,
+        "velocity_m_s_max_observed": 495917.68444074295,
+        "velocity_m_s_median_observed": 3395.6072388808607
+      },
+      {
+        "well": "19BT2",
+        "method": "I0_blind_ST0202",
+        "n_depth_samples": 2119,
+        "n_steps": 2118,
+        "strictly_monotonic_increasing": false,
+        "n_non_monotonic_steps": 886,
+        "non_monotonic_fraction": 0.4183191690273843,
+        "examples_non_monotonic": [
+          {
+            "depth_tvdss_m": 2422.074984064256,
+            "twt_ms_at_depth": 2444.0,
+            "twt_ms_at_next_depth": 2444.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2422.408782091169,
+            "twt_ms_at_depth": 2444.0,
+            "twt_ms_at_next_depth": 2444.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2422.7425801180816,
+            "twt_ms_at_depth": 2444.0,
+            "twt_ms_at_next_depth": 2444.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2423.076378144994,
+            "twt_ms_at_depth": 2444.0,
+            "twt_ms_at_next_depth": 2444.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2423.4101761719066,
+            "twt_ms_at_depth": 2444.0,
+            "twt_ms_at_next_depth": 2444.0,
+            "twt_delta_ms": 0.0
+          }
+        ],
+        "velocity_range_checked_m_s": [
+          1500.0,
+          6000.0
+        ],
+        "n_velocity_steps_checked": 1232,
+        "n_velocity_out_of_range": 153,
+        "velocity_out_of_range_fraction": 0.1241883116883117,
+        "examples_velocity_out_of_range": [
+          {
+            "depth_tvdss_m": 2413.73003339144,
+            "implied_velocity_m_s": 153.38425546746208
+          },
+          {
+            "depth_tvdss_m": 2421.7411860373436,
+            "implied_velocity_m_s": 30564.645289815955
+          },
+          {
+            "depth_tvdss_m": 2433.424116979286,
+            "implied_velocity_m_s": 53.97751384434751
+          },
+          {
+            "depth_tvdss_m": 2437.7958841575655,
+            "implied_velocity_m_s": 30.30619250976637
+          },
+          {
+            "depth_tvdss_m": 2449.3808025524604,
+            "implied_velocity_m_s": 8988.101196598665
+          }
+        ],
+        "velocity_m_s_min_observed": 0.0,
+        "velocity_m_s_max_observed": 30564.645289815955,
+        "velocity_m_s_median_observed": 2879.2218681738404
+      },
+      {
+        "well": "19BT2",
+        "method": "regional_prior",
+        "n_depth_samples": 2119,
+        "n_steps": 2118,
+        "strictly_monotonic_increasing": false,
+        "n_non_monotonic_steps": 748,
+        "non_monotonic_fraction": 0.35316336166194523,
+        "examples_non_monotonic": [
+          {
+            "depth_tvdss_m": 2444.66102098417,
+            "twt_ms_at_depth": 2588.0,
+            "twt_ms_at_next_depth": 2588.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2445.0900920358326,
+            "twt_ms_at_depth": 2588.0,
+            "twt_ms_at_next_depth": 2588.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2445.5191630874956,
+            "twt_ms_at_depth": 2588.0,
+            "twt_ms_at_next_depth": 2588.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2445.9482341391586,
+            "twt_ms_at_depth": 2588.0,
+            "twt_ms_at_next_depth": 2588.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2446.377305190821,
+            "twt_ms_at_depth": 2588.0,
+            "twt_ms_at_next_depth": 2588.0,
+            "twt_delta_ms": 0.0
+          }
+        ],
+        "velocity_range_checked_m_s": [
+          1500.0,
+          6000.0
+        ],
+        "n_velocity_steps_checked": 1370,
+        "n_velocity_out_of_range": 279,
+        "velocity_out_of_range_fraction": 0.20364963503649636,
+        "examples_velocity_out_of_range": [
+          {
+            "depth_tvdss_m": 2409.724457068488,
+            "implied_velocity_m_s": 27.455130714573617
+          },
+          {
+            "depth_tvdss_m": 2414.0638314183525,
+            "implied_velocity_m_s": 27.41183413124117
+          },
+          {
+            "depth_tvdss_m": 2422.074984064256,
+            "implied_velocity_m_s": 80.88170624786451
+          },
+          {
+            "depth_tvdss_m": 2426.0805603872077,
+            "implied_velocity_m_s": 11.846987507308636
+          },
+          {
+            "depth_tvdss_m": 2434.0917130331113,
+            "implied_velocity_m_s": 154.12101226202032
+          }
+        ],
+        "velocity_m_s_min_observed": 0.0,
+        "velocity_m_s_max_observed": 248668.56438055952,
+        "velocity_m_s_median_observed": 2826.3366448975075
+      },
+      {
+        "well": "19SR",
+        "method": "I0_blind_ST0202",
+        "n_depth_samples": 844,
+        "n_steps": 843,
+        "strictly_monotonic_increasing": false,
+        "n_non_monotonic_steps": 137,
+        "non_monotonic_fraction": 0.16251482799525505,
+        "examples_non_monotonic": [
+          {
+            "depth_tvdss_m": 2814.3569872151197,
+            "twt_ms_at_depth": 664.0,
+            "twt_ms_at_next_depth": 664.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2814.715777813071,
+            "twt_ms_at_depth": 664.0,
+            "twt_ms_at_next_depth": 664.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2815.074568411022,
+            "twt_ms_at_depth": 664.0,
+            "twt_ms_at_next_depth": 664.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2815.4333590089736,
+            "twt_ms_at_depth": 664.0,
+            "twt_ms_at_next_depth": 664.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2815.792149606925,
+            "twt_ms_at_depth": 664.0,
+            "twt_ms_at_next_depth": 664.0,
+            "twt_delta_ms": 0.0
+          }
+        ],
+        "velocity_range_checked_m_s": [
+          1500.0,
+          6000.0
+        ],
+        "n_velocity_steps_checked": 706,
+        "n_velocity_out_of_range": 21,
+        "velocity_out_of_range_fraction": 0.029745042492917848,
+        "examples_velocity_out_of_range": [
+          {
+            "depth_tvdss_m": 2778.1191368220443,
+            "implied_velocity_m_s": 6.396028722773407
+          },
+          {
+            "depth_tvdss_m": 2791.035598348289,
+            "implied_velocity_m_s": 169.64815504838853
+          },
+          {
+            "depth_tvdss_m": 2808.2575470499487,
+            "implied_velocity_m_s": 44.12854707744181
+          },
+          {
+            "depth_tvdss_m": 2813.9981966171686,
+            "implied_velocity_m_s": 6114.826626194939
+          },
+          {
+            "depth_tvdss_m": 2858.9145283018865,
+            "implied_velocity_m_s": 178.72275338072436
+          }
+        ],
+        "velocity_m_s_min_observed": 0.0,
+        "velocity_m_s_max_observed": 14465.803146979102,
+        "velocity_m_s_median_observed": 2969.9869938503093
+      },
+      {
+        "well": "19SR",
+        "method": "regional_prior",
+        "n_depth_samples": 844,
+        "n_steps": 843,
+        "strictly_monotonic_increasing": false,
+        "n_non_monotonic_steps": 283,
+        "non_monotonic_fraction": 0.33570581257413995,
+        "examples_non_monotonic": [
+          {
+            "depth_tvdss_m": 2759.4620257285796,
+            "twt_ms_at_depth": 2816.0,
+            "twt_ms_at_next_depth": 2816.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2759.820816326531,
+            "twt_ms_at_depth": 2816.0,
+            "twt_ms_at_next_depth": 2816.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2760.179606924482,
+            "twt_ms_at_depth": 2816.0,
+            "twt_ms_at_next_depth": 2816.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2760.538397522433,
+            "twt_ms_at_depth": 2816.0,
+            "twt_ms_at_next_depth": 2816.0,
+            "twt_delta_ms": 0.0
+          },
+          {
+            "depth_tvdss_m": 2760.8971881203847,
+            "twt_ms_at_depth": 2816.0,
+            "twt_ms_at_next_depth": 2816.0,
+            "twt_delta_ms": 0.0
+          }
+        ],
+        "velocity_range_checked_m_s": [
+          1500.0,
+          6000.0
+        ],
+        "n_velocity_steps_checked": 560,
+        "n_velocity_out_of_range": 24,
+        "velocity_out_of_range_fraction": 0.04285714285714286,
+        "examples_velocity_out_of_range": [
+          {
+            "depth_tvdss_m": 2770.225743667117,
+            "implied_velocity_m_s": 19087.71058659227
+          },
+          {
+            "depth_tvdss_m": 2784.2185769872153,
+            "implied_velocity_m_s": 170.35530340008168
+          },
+          {
+            "depth_tvdss_m": 2819.021264988486,
+            "implied_velocity_m_s": 87.01017556956565
+          },
+          {
+            "depth_tvdss_m": 2858.5324528301885,
+            "implied_velocity_m_s": 8847.001747017033
+          },
+          {
+            "depth_tvdss_m": 2909.6948744769875,
+            "implied_velocity_m_s": 20951.143755310033
+          }
+        ],
+        "velocity_m_s_min_observed": 0.0,
+        "velocity_m_s_max_observed": 59060.37031840325,
+        "velocity_m_s_median_observed": 3008.824738865036
+      }
+    ],
+    "aggregate": {
+      "n_curves": 6,
+      "n_curves_strictly_monotonic": 0,
+      "n_curves_non_monotonic": 6,
+      "total_depth_steps": 8298,
+      "total_non_monotonic_steps": 2672,
+      "overall_non_monotonic_step_fraction": 0.3220053024825259,
+      "total_velocity_steps_checked": 5626,
+      "total_velocity_out_of_range": 785,
+      "overall_velocity_out_of_range_fraction": 0.13953075008887308
+    }
+  },
+  "criterion_6_uncertainty_vs_error": {
+    "points": [
+      {
+        "well": "19A",
+        "method": "I0_blind_ST0202",
+        "ambiguity_gap": 0.01827527804198037,
+        "coarse_xcorr": 0.5534511299866991,
+        "mae_ms": 265.9366332605604
+      },
+      {
+        "well": "19BT2",
+        "method": "I0_blind_ST0202",
+        "ambiguity_gap": 0.06593915188232957,
+        "coarse_xcorr": 0.4304705763120544,
+        "mae_ms": 183.83144712558519
+      },
+      {
+        "well": "19SR",
+        "method": "I0_blind_ST0202",
+        "ambiguity_gap": 0.021749449285655365,
+        "coarse_xcorr": 0.5472104567654732,
+        "mae_ms": 1863.746025332791
+      },
+      {
+        "well": "19A",
+        "method": "regional_prior",
+        "ambiguity_gap": 0.021789472954812872,
+        "coarse_xcorr": 0.4560592660812152,
+        "mae_ms": 88.43228471330613
+      },
+      {
+        "well": "19BT2",
+        "method": "regional_prior",
+        "ambiguity_gap": 0.014289374783177378,
+        "coarse_xcorr": 0.38764333996246403,
+        "mae_ms": 312.8494998634393
+      },
+      {
+        "well": "19SR",
+        "method": "regional_prior",
+        "ambiguity_gap": 0.04508553250791075,
+        "coarse_xcorr": 0.5292021095803022,
+        "mae_ms": 326.2026939784174
+      },
+      {
+        "well": "19A",
+        "method": "I0_blind_ST10010",
+        "ambiguity_gap": 0.0019396253864304436,
+        "coarse_xcorr": 0.5200721794843312,
+        "mae_ms": 1919.925905882385
+      },
+      {
+        "well": "19BT2",
+        "method": "I0_blind_ST10010",
+        "ambiguity_gap": 0.04768805665697018,
+        "coarse_xcorr": 0.45862756745787886,
+        "mae_ms": 838.4813604451217
+      },
+      {
+        "well": "19SR",
+        "method": "I0_blind_ST10010",
+        "ambiguity_gap": 0.22880626166131823,
+        "coarse_xcorr": 0.8000069661526708,
+        "mae_ms": 804.5782894142055
+      }
+    ],
+    "n_points": 9,
+    "spearman_ambiguity_gap_vs_mae": {
+      "x": "ambiguity_gap",
+      "y": "mae_ms",
+      "n": 9,
+      "spearman_r": -0.21666666666666667,
+      "p_value": 0.5755148957119259,
+      "note": "n<10: correlation estimate is LOW CONFIDENCE, reported as-is, not treated as a validated relationship"
+    },
+    "spearman_coarse_xcorr_vs_mae": {
+      "x": "coarse_xcorr",
+      "y": "mae_ms",
+      "n": 9,
+      "spearman_r": 0.38333333333333336,
+      "p_value": 0.30849527238037144,
+      "note": "n<10: correlation estimate is LOW CONFIDENCE, reported as-is, not treated as a validated relationship"
+    },
+    "expected_relationship": {
+      "ambiguity_gap": "negative (higher gap = less ambiguous = expected lower MAE)",
+      "coarse_xcorr": "negative (higher xcorr = better fit = expected lower MAE)"
+    },
+    "observed_matches_expectation": {
+      "ambiguity_gap": true,
+      "coarse_xcorr": false
+    },
+    "caveat": "Only 9 (well,method) points from 3 wells across 3 already-run experiments -- not independent samples in the statistical sense (same 3 wells reused 3 times), and far below any n needed for a reliable correlation estimate. Any correlation value here is a weak, low-confidence signal, not evidence that the uncertainty measures are calibrated."
+  },
+  "verdict": {
+    "criterion_2_passed": false,
+    "criterion_6_uncertainty_tracks_error": false,
+    "note": "criterion_6 verdict is a directional read of a low-confidence correlation (n<=9), not a statistically validated claim."
+  }
+}
