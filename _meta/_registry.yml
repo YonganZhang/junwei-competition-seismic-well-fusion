@@ -300,6 +300,17 @@ code_domains:
       t0预测偏移最大2716ms，3口井里2口的歧义判定换地震源后翻转，印证了
       GitHub issue #1 "改变SEG-Y时间范围后预测明显变化"这条具体担心。
 
+  - id: p45_well_tie_regional_prior
+    path: _pipelines/02_task_datasets/reconstruction/p45_well_tie_regional_prior.py
+    type: pipeline
+    status: active
+    owner: project
+    description: >
+      P45 传统方法对照：借邻井真实checkshot(反距离加权)缩小t0搜索窗口
+      (±300ms)，替代I0的全轴盲搜。留一井交叉验证，绝不读held-out井自己的
+      checkshot。3口井里2口明显改善(19A 265.9→88.4ms、19SR 1863.7→326.2ms
+      约6倍)，19BT2变差(183.8→312.8ms)；歧义阈值需为窄窗口场景重新校准。
+
   - id: domain_visualization_delivery
     path: _pipelines/03_domain_visualization_delivery
     type: pipeline
